@@ -1,0 +1,6013 @@
+{
+  "schemaVersion": 1,
+  "title": "Shanti Parva: all Sanskrit verses without a written-meanings entry in PR #245",
+  "source": "https://github.com/bhavykhatri/DharmicData/blob/main/Mahabharata/mahabharata_book_12.json",
+  "sourceBlobSha": "03b6accf1e01c4c636de05546832a8ed435f2afc",
+  "draftBlobSha": "3632342510e450e0522a37fd455dea1c23609977",
+  "caution": "This source-to-draft difference is not proof that published source data lacks Hindi; omitted editorial reasons are NOT inferred from Sanskrit. Determine a faithful meaning and record review per key.",
+  "sanskritVerseRows": 12866,
+  "writtenMeaningEntries": 11866,
+  "unwrittenCount": 1000,
+  "items": [
+    {
+      "verse": "12:2.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:3.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:3.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:3.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:3.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:3.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:4.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:4.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:4.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:6.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:7.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:7.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:8.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:8.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:9.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:10.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:10.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:10.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:10.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:11.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:12.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:12.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:14.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:14.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:14.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:14.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:14.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:14.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:14.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:15.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:15.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:15.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:16.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:17.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:18.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:18.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:18.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:19.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:19.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:20.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:22.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:22.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:23.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:23.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:23.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:25.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:25.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:26.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:27.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:27.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:27.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:27.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:27.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:28.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:28.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:28.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:28.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.51",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.58",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.59",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.61",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.70",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.100",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.109",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.116",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.119",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.120",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:29.125",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:30.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:30.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:30.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:30.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:30.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:30.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:33.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:33.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:34.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:34.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:34.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:35.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:36.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:37.40",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:39.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:39.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:39.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:44.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:45.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:46.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:46.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:47.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:47.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:47.43",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:49.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:49.60",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:49.61",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:49.69",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:50.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:50.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:50.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:51.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:54.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:54.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:54.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:55.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.52",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:56.53",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:57.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:57.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:57.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:57.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:57.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.60",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.69",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.71",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.82",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.101",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.102",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.103",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.114",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:59.128",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.39",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.41",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.43",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:60.51",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:61.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:61.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:61.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:62.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:62.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:62.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:63.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:64.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:64.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:64.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:65.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:66.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:67.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:67.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:67.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:67.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:68.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:68.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:69.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:69.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:69.50",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:70.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:70.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:70.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:70.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:70.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:70.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:71.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:72.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:72.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:73.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:74.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:74.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:74.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:74.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:74.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:76.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:76.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:77.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:78.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:79.40",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:80.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:80.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:84.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:84.53",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:86.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:86.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:87.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:89.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:89.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:90.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:91.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:92.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:92.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:92.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:92.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:92.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:96.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:96.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:97.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:98.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:98.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:98.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:98.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:98.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:99.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:99.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:99.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:100.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:102.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:102.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:102.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:104.39",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:104.43",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:106.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:106.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:106.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:107.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:108.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:108.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:110.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:111.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:111.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:112.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:112.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:112.48",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:112.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:112.54",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:112.60",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:112.69",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:112.86",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:113.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:113.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:113.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:115.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:115.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:117.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:117.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:117.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:118.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:118.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:119.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:119.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:121.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:121.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:121.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:122.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:122.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:123.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:124.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:125.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:125.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:125.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:125.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:125.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:125.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:126.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:128.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:128.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:128.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:130.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:131.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:131.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:132.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:133.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:133.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:133.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:133.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:135.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:136.109",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:136.110",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:136.173",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:136.189",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.56",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.60",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.78",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.82",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.85",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.89",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:137.90",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:138.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:138.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:138.41",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:138.50",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.39",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.41",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.43",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.46",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.47",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.48",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.50",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.51",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.52",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.53",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.54",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.55",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.56",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.60",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.62",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.64",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.65",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.66",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.67",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.68",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.69",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.70",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.71",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.72",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.73",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.74",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.75",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.76",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.77",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.78",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.79",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.80",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.81",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.82",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.83",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.84",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.85",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.86",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.87",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.88",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:139.89",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:140.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:140.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:141.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:141.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:141.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:141.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:141.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:142.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:142.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:142.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:142.41",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:142.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:143.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:143.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:143.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:143.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:143.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:144.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:144.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:144.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:144.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:145.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:145.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:145.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:145.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:147.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:148.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:149.62",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:149.96",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:149.116",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:152.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:155.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:156.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.40",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.41",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.43",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.46",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.47",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.48",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.50",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.51",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.52",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.53",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.54",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.55",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.56",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.58",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.59",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.60",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.61",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.62",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.63",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.64",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.65",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.66",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.67",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.68",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.69",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.70",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.71",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:159.72",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:160.61",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:161.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.40",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:162.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:164.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:164.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:165.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:165.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:165.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:166.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:166.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:166.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:166.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:166.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:166.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:166.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:167.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:167.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:168.46",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:168.47",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:168.48",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:168.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:168.50",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:168.51",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:168.52",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:169.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:170.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:170.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:171.61",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:172.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:173.39",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:175.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:175.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:181.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:182.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:182.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:182.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:182.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:182.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:182.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:182.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:182.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:183.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:183.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:185.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:186.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:186.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:186.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:186.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:186.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:189.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:189.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:192.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:192.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:192.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:193.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:196.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:196.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:198.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.39",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.40",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.41",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:200.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:201.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:201.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:202.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:203.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:205.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:205.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:206.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:206.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:206.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:206.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:206.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:206.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:207.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:210.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:210.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:211.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:211.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:213.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:213.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:214.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:214.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:214.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:214.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:215.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:216.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:217.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:217.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:220.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:220.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:220.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:220.112",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:220.113",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:220.114",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.54",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.59",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.62",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.64",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.66",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.67",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.70",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.75",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:221.78",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:224.61",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:224.65",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:226.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:227.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:227.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:228.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:229.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:230.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:230.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:231.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:232.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:232.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:234.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:235.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:235.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:235.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:237.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:241.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:251.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:253.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:254.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:254.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:254.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:254.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:254.41",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:254.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:254.46",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:254.47",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:255.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:255.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:255.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:255.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:257.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:257.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:257.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:257.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.46",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:258.59",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:259.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:260.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:260.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:260.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:260.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:260.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:260.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:260.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:261.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:261.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:261.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:261.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:261.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:261.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:262.18",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:264.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:264.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:264.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:264.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:264.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:267.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:268.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:273.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:273.52",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:273.58",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:273.59",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:276.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:276.51",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:277.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:277.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:277.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:277.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:278.30",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:278.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:279.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:280.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:280.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:280.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:282.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:282.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:282.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:282.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:282.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:282.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:282.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:282.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:283.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:283.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:283.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:283.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:284.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.2",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.27",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.28",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:285.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:286.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:286.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:286.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:286.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:286.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:286.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:287.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:289.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:289.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:289.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:289.16",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:289.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:289.38",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:290.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:290.33",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:290.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:291.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:292.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:293.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:295.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:297.1",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:297.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:297.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:306.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:306.85",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:306.86",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:306.87",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:306.88",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.53",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.54",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.55",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.56",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.58",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.59",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.60",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.61",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.62",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.64",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.65",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.69",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.72",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.73",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.75",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.111",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.116",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.136",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.139",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.160",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.169",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.172",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.176",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.177",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.180",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:308.181",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:309.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:309.19",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:309.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:309.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:309.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:309.59",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:309.74",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:311.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:311.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:311.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:311.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:311.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:311.9",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:312.35",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:312.36",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:312.37",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:314.43",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:314.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:314.47",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:315.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:315.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:315.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:316.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:316.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:316.43",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:317.24",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.15",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.20",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.23",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.34",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:318.42",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:320.17",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:320.29",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:323.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:324.3",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:324.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:324.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:327.74",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:327.104",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:328.44",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:328.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:328.46",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:328.47",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.8",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.10",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.11",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.12",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.13",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.14",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.21",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.22",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.31",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.32",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.41",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.45",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.49",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:329.50",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:331.25",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:336.26",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:337.48",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:347.4",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:347.5",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:347.6",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    },
+    {
+      "verse": "12:347.7",
+      "meaningStatus": "absent-in-cumulative-draft",
+      "reason": "unclassified",
+      "reviewStatus": "pending"
+    }
+  ]
+}
