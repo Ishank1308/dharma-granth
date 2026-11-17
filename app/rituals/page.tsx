@@ -312,7 +312,7 @@ function RitualDetail({ ritual, onClose }: { ritual: Ritual; onClose: () => void
         aria-labelledby="ritual-dialog-title"
         tabIndex={-1}
         className="bg-dharma-bg text-dharma-text rounded-3xl shadow-2xl border border-dharma-border max-w-3xl w-full max-h-[90dvh] flex flex-col overflow-hidden"
-        onClick={(e) => e.stopPropagation()
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Sticky Modal Header */}
         <div className={`relative shrink-0 bg-gradient-to-br ${ritual.gradient} text-white px-5 py-5 sm:px-6`}>
