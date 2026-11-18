@@ -64,12 +64,13 @@ test('opening ordinary verse explanation does not fetch full verse-page extras',
   await expect(card.locator('.verse-page-extras')).toBeVisible({ timeout: 30_000 });
 });
 
-test('hydration does not animate every default-open verse explanation', async ({ page }) => {
+test('saved Understand preference opens explanations without automatic motion', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('dharma.readingDepth', 'understand'));
   await page.goto(chapter);
 
   const card = page.locator('article.verse-card:not(.vt)').first();
   const study = card.getByRole('button', { name: /Verse study/ });
-  // First-time readers use Understand mode; auto-opened panels should be calm.
+  // Returning readers may prefer expanded notes; hydration must not animate all of them.
   await expect(study).toHaveAttribute('aria-expanded', 'true');
   const panel = card.locator('.verse-study-panel');
   await expect(panel).toBeVisible();
@@ -80,4 +81,21 @@ test('hydration does not animate every default-open verse explanation', async ({
   await study.click();
   await expect(study).toHaveAttribute('aria-expanded', 'true');
   await expect(panel).toHaveClass(/liquid-reveal/);
+});
+
+test('first-time readers see Sanskrit and meaning, with optional study folded', async ({ page }) => {
+  await page.goto(chapter);
+
+  const group = page.getByRole('radiogroup', { name: /Reading depth/ });
+  if (!(await group.isVisible())) await page.getByRole('button', { name: /Options/ }).click();
+  await expect(group.getByRole('radio').nth(0)).toHaveAttribute('aria-checked', 'true');
+
+  const card = page.locator('article.verse-card:not(.vt)').first();
+  await expect(card.locator('.verse-folio > p[lang="sa"]')).toBeVisible();
+  await expect(card.locator('section[id$="-arth"]')).toBeVisible();
+
+  const study = card.getByRole('button', { name: /Verse study/ });
+  await expect(study).toHaveAttribute('aria-expanded', 'false');
+  await study.click();
+  await expect(card.locator('.verse-study-panel')).toBeVisible();
 });
