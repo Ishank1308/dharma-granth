@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { JsonLd } from '@/app/components/JsonLd';
 import { CalendarClient } from './CalendarClient';
 import {
@@ -134,6 +135,8 @@ export default function PanchangCalendarPage() {
         lead="Explore day-by-day Udaya Tithis, Nakshatras, sacred Ekadashi vratas, Pradosha twilights, Purnima and Amavasya cycles, and major Hindu festivals across 2026, 2027, and 2028 with astronomical precision and Gita Press scriptural context."
         width="wide"
       />
+
+      <PanchangLimbSwitcher />
 
       {/* ─── MAIN INTERACTIVE CALENDAR ───────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-gutter pt-8 pb-16">

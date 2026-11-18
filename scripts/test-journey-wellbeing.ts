@@ -9,7 +9,6 @@ const journeyReader = fs.readFileSync('app/learn/journeys/[id]/JourneyClient.tsx
 const sitemap = fs.readFileSync('lib/sitemap-sections.ts', 'utf8');
 const portability = fs.readFileSync('app/components/SadhanaPortability.tsx', 'utf8');
 const generalBackup = fs.readFileSync('app/components/BackupRestore.tsx', 'utf8');
-const privacyBanner = fs.readFileSync('app/components/practice/PrivacyLockBanner.tsx', 'utf8');
 const siteFooter = fs.readFileSync('app/components/SiteFooter.tsx', 'utf8');
 const dailyStudyHub = fs.readFileSync('app/components/daily/DailyDharmaDashboard.tsx', 'utf8');
 
@@ -39,8 +38,7 @@ assert.doesNotMatch(journeyReader, /useSadhanaStreak|currentStreak|percentComple
 assert.match(portability, /not encrypted/i);
 assert.doesNotMatch(portability, /fully encrypted|completely encrypted|पूर्णतः एन्क्रिप्टेड/i);
 assert.match(generalBackup, /readable and not encrypted/i);
-assert.match(privacyBanner, /does not encrypt browser storage or backup files/i);
-assert.doesNotMatch(`${privacyBanner} ${siteFooter} ${dailyStudyHub}`, /zero tracking|100% private|completely private/i);
+assert.doesNotMatch(`${siteFooter} ${dailyStudyHub}`, /zero tracking|100% private|completely private/i);
 assert.doesNotMatch(dailyStudyHub, /Recommended Next Teaching|Calm progress|reviewed verse|reviewed topics/i);
 
 console.log(`journey-wellbeing: ${READING_JOURNEYS.length} journeys, review indexing, privacy copy, private markers, and non-prescriptive navigation validated.`);

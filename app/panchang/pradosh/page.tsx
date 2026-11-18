@@ -3,9 +3,10 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
-import { SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { JsonLd } from '@/app/components/JsonLd';
-import { BookOpen, Sparkles } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'प्रदोष व्रत तिथियाँ 2026–2028 · Pradosh Vrat Dates & Shiva Mahatmya',
@@ -84,57 +85,59 @@ const JSON_LD = {
   ],
 };
 
+function getIstTodayIso(): string {
+  const ist = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  return `${ist.getFullYear()}-${String(ist.getMonth() + 1).padStart(2, '0')}-${String(ist.getDate()).padStart(2, '0')}`;
+}
+
 export default function PradoshPage() {
+  const todayIso = getIstTodayIso();
+  const nextUpcomingDateEn = PRADOSH_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
+
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text pb-20">
       <JsonLd data={JSON_LD} />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Panchang', href: '/panchang/' },
-          { label: 'Pradosh Dates' },
-        ]}
+      <div className="mx-auto max-w-7xl px-gutter pt-6">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Panchang', href: '/panchang/' },
+            { label: 'Pradosh Dates' },
+          ]}
+        />
+      </div>
+
+      <PageHeader
+        eyebrow="Trayodashi & Shiva Sandhya"
+        eyebrowHi="शिव सायुज्य एवं प्रदोष काल"
+        title="Pradosh Vrat Dates (2026–2027)"
+        titleHi="प्रदोष व्रत तिथियाँ व शिव महात्म्य"
+        lead="शिव पुराण एवं स्कंद पुराण के अनुसार प्रत्येक पक्ष की त्रयोदशी तिथि का प्रदोष काल आशुतोष भगवान शिव की कृपा प्राप्त करने का सर्वश्रेष्ठ मुहूर्त है।"
+        width="wide"
       />
 
-      {/* Hero Header */}
-      <section className="border-b border-dharma-border bg-gradient-to-b from-blue-50/60 via-dharma-card to-dharma-bg py-12 px-4 sm:px-6 dark:from-blue-950/20">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-700 bg-blue-100/80 px-3.5 py-1.5 rounded-full dark:bg-blue-900/40 dark:text-blue-300 mb-4">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>शिव सायुज्य एवं प्रदोष काल</span>
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-dharma-text">
-            प्रदोष व्रत तिथियाँ व शिव महात्म्य
-          </h1>
-          <p className="mt-2 text-base sm:text-lg text-blue-800 dark:text-blue-300 font-serif">
-            Pradosh Vrata: Sacred Twilight Worship &amp; Astronomical Timing
-          </p>
-          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-dharma-muted">
-            शिव पुराण एवं स्कंद पुराण के अनुसार प्रत्येक पक्ष की त्रयोदशी तिथि का प्रदोष काल आशुतोष भगवान शिव की कृपा प्राप्त करने का सर्वश्रेष्ठ मुहूर्त है।
-          </p>
-        </div>
-      </section>
+      <PanchangLimbSwitcher />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Core Principles Bento */}
         <section aria-labelledby="pradosh-meaning" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
             <span className="text-2xl mb-2 block">🌙</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">त्रयोदशी तिथि (13th Lunar Day)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
               पूर्णिमा और अमावस्या से दो दिन पूर्व, जब चित्त की वृत्तियों को शांत करना अत्यंत सहज होता है।
             </p>
           </div>
-          <div className="rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
             <span className="text-2xl mb-2 block">🔱</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">कैलाश तांडव (Divine Twilight)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
               संध्याकाल में शिवजी का नृत्य — समस्त नकारात्मक ऊर्जा व क्लेशों के भस्म होने की पावन बेला।
             </p>
           </div>
-          <div className="rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
             <span className="text-2xl mb-2 block">🔔</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">महामृत्युंजय साधना (Japa &amp; Peace)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
@@ -144,7 +147,7 @@ export default function PradoshPage() {
         </section>
 
         {/* Dates Table */}
-        <section aria-labelledby="dates-heading" className="rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
+        <section aria-labelledby="dates-heading" className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
@@ -163,39 +166,50 @@ export default function PradoshPage() {
           </div>
 
           <div className="divide-y divide-dharma-border/60">
-            {PRADOSH_DATES.map((item) => (
-              <div
-                key={item.dateEn}
-                className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-blue-50/30 dark:hover:bg-blue-950/20"
-              >
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
-                      {item.name}
-                    </span>
-                    {item.type && (
-                      <span className="text-2xs rounded-full bg-blue-100 px-2 py-0.5 font-bold text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
-                        {item.type}
+            {PRADOSH_DATES.map((item) => {
+              const isNextUpcoming = item.dateEn === nextUpcomingDateEn;
+              return (
+                <div
+                  key={item.dateEn}
+                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-blue-50/30 dark:hover:bg-blue-950/20 ${
+                    isNextUpcoming ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.06]' : ''
+                  }`}
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
+                        {item.name}
                       </span>
-                    )}
+                      {isNextUpcoming && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
+                          <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                          आगामी व्रत · Next Upcoming
+                        </span>
+                      )}
+                      {item.type && (
+                        <span className="text-2xs rounded-full bg-blue-100 px-2 py-0.5 font-bold text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
+                          {item.type}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-dharma-muted mt-0.5">
+                      {item.paksha} · {item.day}
+                    </p>
                   </div>
-                  <p className="text-xs text-dharma-muted mt-0.5">
-                    {item.paksha} · {item.day}
-                  </p>
+                  <div className="text-left sm:text-right">
+                    <span className="font-mono text-sm font-semibold text-blue-800 dark:text-blue-300 block">
+                      {item.date}
+                    </span>
+                    <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
+                  </div>
                 </div>
-                <div className="text-left sm:text-right">
-                  <span className="font-mono text-sm font-semibold text-blue-800 dark:text-blue-300 block">
-                    {item.date}
-                  </span>
-                  <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         {/* Sacred Mantra & Scriptural Citation */}
-        <section aria-labelledby="mantra-heading" className="rounded-2xl border border-dharma-border bg-gradient-to-br from-blue-50/50 via-dharma-card to-dharma-bg p-6 dark:from-blue-950/20 shadow-xs">
+        <section aria-labelledby="mantra-heading" className="card-sacred rounded-2xl border border-dharma-border bg-gradient-to-br from-blue-50/50 via-dharma-card to-dharma-bg p-6 dark:from-blue-950/20 shadow-xs">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-3">
             <BookOpen className="h-4 w-4" />
             <span>शिव पंचाक्षर व महामृत्युंजय मंत्र</span>

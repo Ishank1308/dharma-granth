@@ -3,9 +3,10 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
-import { SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { JsonLd } from '@/app/components/JsonLd';
-import { BookOpen, Sparkles } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'पूर्णिमा तिथियाँ 2026–2028 · Purnima Dates & Satyanarayan Vrata',
@@ -82,42 +83,44 @@ const JSON_LD = {
   ],
 };
 
+function getIstTodayIso(): string {
+  const ist = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  return `${ist.getFullYear()}-${String(ist.getMonth() + 1).padStart(2, '0')}-${String(ist.getDate()).padStart(2, '0')}`;
+}
+
 export default function PurnimaPage() {
+  const todayIso = getIstTodayIso();
+  const nextUpcomingDateEn = PURNIMA_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
+
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text pb-20">
       <JsonLd data={JSON_LD} />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Panchang', href: '/panchang/' },
-          { label: 'Purnima Dates' },
-        ]}
+      <div className="mx-auto max-w-7xl px-gutter pt-6">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Panchang', href: '/panchang/' },
+            { label: 'Purnima Dates' },
+          ]}
+        />
+      </div>
+
+      <PageHeader
+        eyebrow="Full Moon & Satyanarayan Vrata"
+        eyebrowHi="पूर्ण चंद्र एवं सत्यनारायण व्रत"
+        title="Purnima Calendar (2026–2027)"
+        titleHi="पूर्णिमा तिथियाँ व सत्यनारायण माहात्म्य"
+        lead="उपनिषदों में चंद्रमा को मन का अधिष्ठाता देव (चन्द्रमा मनसो जातः) कहा गया है। पूर्णिमा के पूर्ण चंद्र का दर्शन आत्म-शांति व कृतज्ञता का पावन अवसर है।"
+        width="wide"
       />
 
-      {/* Hero Header */}
-      <section className="border-b border-dharma-border bg-gradient-to-b from-amber-50/60 via-dharma-card to-dharma-bg py-12 px-4 sm:px-6 dark:from-amber-950/20">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-amber-700 bg-amber-100/80 px-3.5 py-1.5 rounded-full dark:bg-amber-900/40 dark:text-amber-300 mb-4">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>पूर्ण चंद्र एवं सत्यनारायण व्रत</span>
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-dharma-text">
-            पूर्णिमा तिथियाँ व सत्यनारायण माहात्म्य
-          </h1>
-          <p className="mt-2 text-base sm:text-lg text-amber-800 dark:text-amber-300 font-serif">
-            Purnima Calendar: Full Moon Dates, Katha Vidhi &amp; Lunar Wisdom
-          </p>
-          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-dharma-muted">
-            उपनिषदों में चंद्रमा को मन का अधिष्ठाता देव (चन्द्रमा मनसो जातः) कहा गया है। पूर्णिमा के पूर्ण चंद्र का दर्शन आत्म-शांति व कृतज्ञता का पावन अवसर है।
-          </p>
-        </div>
-      </section>
+      <PanchangLimbSwitcher />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Dates Table */}
-        <section aria-labelledby="dates-heading" className="rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
+        <section aria-labelledby="dates-heading" className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
@@ -136,41 +139,54 @@ export default function PurnimaPage() {
           </div>
 
           <div className="divide-y divide-dharma-border/60">
-            {PURNIMA_DATES.map((item) => (
-              <div
-                key={item.dateEn}
-                className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-amber-50/30 dark:hover:bg-amber-950/20 ${
-                  item.highlight ? 'bg-amber-50/40 dark:bg-amber-950/30' : ''
-                }`}
-              >
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
-                      {item.name}
-                    </span>
-                    {item.highlight && (
-                      <span className="text-2xs rounded-full bg-amber-100 px-2 py-0.5 font-bold text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">
-                        प्रमुख
+            {PURNIMA_DATES.map((item) => {
+              const isNextUpcoming = item.dateEn === nextUpcomingDateEn;
+              return (
+                <div
+                  key={item.dateEn}
+                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-amber-50/30 dark:hover:bg-amber-950/20 ${
+                    isNextUpcoming
+                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.06]'
+                      : item.highlight
+                        ? 'bg-amber-50/40 dark:bg-amber-950/30'
+                        : ''
+                  }`}
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
+                        {item.name}
                       </span>
-                    )}
+                      {isNextUpcoming && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
+                          <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                          आगामी व्रत · Next Upcoming
+                        </span>
+                      )}
+                      {item.highlight && (
+                        <span className="text-2xs rounded-full bg-amber-100 px-2 py-0.5 font-bold text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">
+                          प्रमुख
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-dharma-muted mt-0.5">
+                      {item.month} मास पूर्णिमा
+                    </p>
                   </div>
-                  <p className="text-xs text-dharma-muted mt-0.5">
-                    {item.month} मास पूर्णिमा
-                  </p>
+                  <div className="text-left sm:text-right">
+                    <span className="font-mono text-sm font-semibold text-amber-800 dark:text-amber-300 block">
+                      {item.date}
+                    </span>
+                    <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
+                  </div>
                 </div>
-                <div className="text-left sm:text-right">
-                  <span className="font-mono text-sm font-semibold text-amber-800 dark:text-amber-300 block">
-                    {item.date}
-                  </span>
-                  <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         {/* Sacred Shloka */}
-        <section aria-labelledby="mantra-heading" className="rounded-2xl border border-dharma-border bg-gradient-to-br from-amber-50/50 via-dharma-card to-dharma-bg p-6 dark:from-amber-950/20 shadow-xs">
+        <section aria-labelledby="mantra-heading" className="card-sacred rounded-2xl border border-dharma-border bg-gradient-to-br from-amber-50/50 via-dharma-card to-dharma-bg p-6 dark:from-amber-950/20 shadow-xs">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-3">
             <BookOpen className="h-4 w-4" />
             <span>ऋग्वेद एवं पुरुष सूक्त संदर्भ</span>

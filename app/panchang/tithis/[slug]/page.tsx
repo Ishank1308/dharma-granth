@@ -151,12 +151,12 @@ export default async function TithiDetailPage({ params }: PageProps) {
     <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       <Breadcrumbs
         items={[
+          { label: 'Home', href: '/' },
           { label: 'Panchang', href: '/panchang/' },
           { label: '16 Vedic Tithis', href: '/panchang/tithis/' },
           { label: tithi.name },

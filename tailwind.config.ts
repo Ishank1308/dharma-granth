@@ -37,6 +37,7 @@ const config: Config = {
           strong: 'var(--separator-strong)',
         },
         surface: {
+          DEFAULT: themeVar('--dharma-card'),
           canvas: 'var(--surface-canvas)',
           raised: 'var(--surface-raised)',
           elevated: 'var(--surface-elevated)',
@@ -85,6 +86,7 @@ const config: Config = {
       },
       // Design tokens (app/styles/tokens.css). Type roles carry their own leading and tracking.
       fontSize: {
+        '2xs': ['0.6875rem', { lineHeight: '1.35' }],
         'caption-2': ['0.6875rem', { lineHeight: '1.3' }],
         'caption-1': ['var(--text-caption)', { lineHeight: '1.35' }],
         caption: ['var(--text-caption)', { lineHeight: '1.35' }],
