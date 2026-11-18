@@ -212,96 +212,22 @@
   height: 3px;
 }
 
-/* ───────── layered journey: becomes quieter with each stage ───────── */
+/* ───────── editorial journey: use the same theme-aware card surfaces ────
+   The old bespoke four-colour panels and animated chapter timeline made
+   Ashtavakra look unrelated to the Dharma Granth scripture library. Keep
+   gentle differentiation via theme tokens rather than fixed Light colours. */
 .ash-stage {
-  border-radius: 1.25rem;
+  border: 1px solid var(--dharma-border);
+  border-radius: var(--radius-card, 22px);
   padding: 1.5rem;
-  border: 1px solid var(--ash-line);
+  color: var(--dharma-text);
+  background: var(--dharma-card);
+  box-shadow: var(--shadow-raised);
 }
-.ash-stage[data-stage='1'] {
-  background: linear-gradient(135deg, #e9d3a8, #f1e1bd);
-  color: #2b241b;
-}
-.ash-stage[data-stage='2'] {
-  background: linear-gradient(135deg, #e8e2cf, #dfe3dc);
-  color: #2b241b;
-}
-.ash-stage[data-stage='3'] {
-  background: linear-gradient(135deg, #1d2850, #17213f);
-  color: #f1e8d2;
-}
-.ash-stage[data-stage='4'] {
-  background: linear-gradient(135deg, #fbf6e8, #f7edd0);
-  color: #2b241b;
-}
-
-/* ───────── chapter path ───────── */
-.ash-path {
-  position: relative;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.ash-path::before {
-  content: '';
-  position: absolute;
-  left: 1.6rem;
-  top: 1rem;
-  bottom: 1rem;
-  width: 2px;
-  background: linear-gradient(180deg, var(--ash-gold), transparent 95%);
-  opacity: 0.6;
-}
-.ash-portal {
-  position: relative;
-  display: block;
-  padding: 1rem 1rem 1rem 4.25rem;
-  min-height: 44px;
-  border-radius: 1rem;
-  border: 1px solid transparent;
-  text-decoration: none;
-  color: inherit;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
-}
-.ash-portal:hover {
-  background: var(--ash-glow);
-  border-color: var(--ash-line);
-}
-.ash-node {
-  position: absolute;
-  left: 0.5rem;
-  top: 0.9rem;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  border: 2px solid var(--ash-gold);
-  background: var(--ash-bg);
-  color: var(--ash-ink);
-  font-size: 0.95rem;
-}
-.ash-portal[data-ready='true'] .ash-node {
-  background: var(--ash-accent-fill);
-  color: #1d1408;
-}
-.ash-portal[data-read='true'] .ash-node {
-  box-shadow: 0 0 0 4px var(--ash-glow), 0 0 14px 2px var(--ash-gold);
-}
-@media (min-width: 900px) {
-  .ash-path {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 3rem;
-  }
-  .ash-path::before {
-    left: 50%;
-  }
-  .ash-path li:nth-child(even) {
-    margin-top: 2.5rem;
-  }
-}
+.ash-stage[data-stage='1'] { border-inline-start: 4px solid var(--dharma-saffron); }
+.ash-stage[data-stage='2'] { border-inline-start: 4px solid var(--hue-gold); }
+.ash-stage[data-stage='3'] { border-inline-start: 4px solid var(--hue-peacock); }
+.ash-stage[data-stage='4'] { border-inline-start: 4px solid var(--hue-indigo); }
 
 /* ───────── motion (only when allowed) ───────── */
 @keyframes ash-rise {
@@ -352,9 +278,6 @@
 .ash[data-motion='full'][data-visual='immersive'] .ash-dust:nth-child(4) { animation-delay: -9s; animation-duration: 19s; }
 .ash[data-motion='full'][data-visual='immersive'] .ash-dust:nth-child(5) { animation-delay: -12s; }
 .ash[data-motion='full'][data-visual='immersive'] .ash-dust:nth-child(6) { animation-delay: -15s; animation-duration: 21s; }
-.ash[data-motion='full'][data-visual='immersive'] .ash-node-current {
-  animation: ash-breathe 6s ease-in-out infinite;
-}
 .ash[data-motion='full'][data-visual='immersive'] .ash-cloud {
   animation: ash-cloud 40s ease-in-out infinite alternate;
 }
