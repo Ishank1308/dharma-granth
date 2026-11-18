@@ -20,8 +20,8 @@ import { applySourceCheckedMeanings, verifiedMeaningOverlayBytes } from "./lib/s
 
 const PILOT = loadPilotOverlay();
 
-/** Bump when shard output logic changes (stubs, templates, echo rules, manifest shape). */
-const SHARD_REV = "9";
+/** Bump when shard output logic changes (stubs, templates, echo rules, alignment exemptions, manifest shape). */
+const SHARD_REV = "10";
 
 interface ShardStamp {
   rev: string;
