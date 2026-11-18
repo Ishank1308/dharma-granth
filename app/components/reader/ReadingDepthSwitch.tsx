@@ -51,7 +51,7 @@ export function ReadingDepthSwitch({ className = '' }: { className?: string }) {
             title={d.hint}
             onClick={() => setDepth(d.id)}
             onKeyDown={(event) => onRadioKeyDown(event, index)}
-            className={`inline-flex min-h-[44px] items-center gap-1.5 rounded-track px-3 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 on ? 'bg-saffron-600 text-white shadow-sm' : 'text-dharma-text hover:bg-saffron-50 dark:hover:bg-saffron-950/30'`}
+            className={`inline-flex min-h-[44px] items-center gap-1.5 rounded-track px-3 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${on ? 'bg-saffron-600 text-white shadow-sm' : 'text-dharma-text hover:bg-saffron-50 dark:hover:bg-saffron-950/30'}`}
           >
             <span lang="hi" className="font-devanagari">{d.hi}</span>
             {/* A flex gap separates the words on screen; this space separates them for screen readers and copy. */}
