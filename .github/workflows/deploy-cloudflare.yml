@@ -295,10 +295,24 @@ jobs:
         run: |
           if [[ -n "$IMMUTABLE_DEPLOY_URL" ]]; then
             echo "::notice::Checking immutable Pages deployment parity: $IMMUTABLE_DEPLOY_URL"
-            if ! node scripts/verify-rsc-canary.mjs \
-              --local dist/scripture/bhagavadgita/chapter/2/index.txt \
-              --url "${IMMUTABLE_DEPLOY_URL%/}/scripture/bhagavadgita/chapter/2/index.txt"; then
-              echo "::error::Immutable Pages deployment RSC differs from the tested build; this is not custom-domain propagation."
+            # Wrangler may announce completion a few seconds before the immutable
+            # hostname starts serving files. Retry the same strict byte check;
+            # never treat a persistent 404 or mismatch as success.
+            immutable_ready=false
+            for attempt in {1..12}; do
+              if node scripts/verify-rsc-canary.mjs \
+                --local dist/scripture/bhagavadgita/chapter/2/index.txt \
+                --url "${IMMUTABLE_DEPLOY_URL%/}/scripture/bhagavadgita/chapter/2/index.txt"; then
+                immutable_ready=true
+                break
+              fi
+              if [ "$attempt" -lt 12 ]; then
+                echo "::warning::Immutable deployment is not ready on attempt $attempt; retrying in 10 seconds."
+                sleep 10
+              fi
+            done
+            if [[ "$immutable_ready" != true ]]; then
+              echo "::error::Immutable Pages deployment did not reach strict RSC parity after the propagation window."
               exit 1
             fi
           else
