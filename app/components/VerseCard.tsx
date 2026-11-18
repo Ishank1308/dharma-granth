@@ -918,7 +918,7 @@ export function VerseCard({
               <VerseStudyDisclosure
                 key={`${depth}:${layers.commentary}:${studyRequested ? 1 : 0}`}
                 depth={depth}
-                defaultOpen={studyRequested || (depth !== 'read' && layers.commentary)}
+                defaultOpen={studyRequested}
                 loadFullStudy={studyRequested}
                 canDeepen={Boolean(v.wordMeaning || science || v.keywords?.length)}
                 versePageHref={versePageHref}
