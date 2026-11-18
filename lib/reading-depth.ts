@@ -20,13 +20,15 @@ export const READING_DEPTHS: { id: ReadingDepth; en: string; hi: string; hint: s
 const KEY = 'dharma.readingDepth';
 const EVENT = 'dharma-reading-depth';
 /**
- * A reader who has not chosen sees each verse with its explanation, inside the chapter, so nobody has to
- * leave the adhyay to find the व्याख्या. "Read" stays one tap away for scripture and translation only.
+ * New readers start with the original verse and selected meaning visible. The inline
+ * व्याख्या remains one tap away on each card; readers who explicitly selected
+ * Understand or Study keep their saved preference. This avoids auto-expanding
+ * dozens of long explanations during initial chapter hydration.
  */
-export const DEFAULT_DEPTH: ReadingDepth = 'understand';
+export const DEFAULT_DEPTH: ReadingDepth = 'read';
 /**
- * The server render (and the first client render, which must match it) uses "read": the explanations open
- * after hydration, so the exported chapter HTML, repeated across thousands of chapter pages, does not grow.
+ * The server render matches the initial compact reading view. A saved deeper preference
+ * is restored after hydration, without increasing every exported chapter's HTML size.
  */
 const SERVER_DEPTH: ReadingDepth = 'read';
 
