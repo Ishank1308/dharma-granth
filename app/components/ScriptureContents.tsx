@@ -10,8 +10,15 @@ function chapterHref(scriptureId: string, chapterId: number): string {
   return `/scripture/${scriptureId}/chapter/${chapterId}/`;
 }
 
-function resumeHref(visit: ChapterVisit): string {
-  return `${chapterHref(visit.scriptureId, visit.chapterId)}${visit.verseId ? `#verse-${visit.verseId}` : ''}`;
+function resumeHref(visit: ChapterVisit, scriptureId: string, chapters: ChapterPreview[]): string {
+  // Reading history is device-local and not a source of trusted URLs. Resolve
+  // its chapter number against the actual server-provided book contents.
+  const chapter = chapters.find((entry) => entry.id === visit.chapterId && entry.verseCount > 0);
+  if (!chapter) return `/scripture/${scriptureId}/`;
+  const fragment = visit.verseId && /^[a-z0-9.-]{1,20}$/i.test(visit.verseId)
+    ? `#verse-${encodeURIComponent(visit.verseId)}`
+    : '';
+  return `${chapterHref(scriptureId, chapter.id)}${fragment}`;
 }
 
 interface ScriptureContentsProps {
@@ -136,7 +143,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                   सूची में देखें · Find in contents
                 </button>
               )}
-              <Link href={resumeHref(visit)} className="inline-flex min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-saffron-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
+              <Link href={resumeHref(visit, scriptureId, chapters)} className="inline-flex min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-saffron-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
                 <BookOpen className="h-4 w-4" aria-hidden="true" />
                 Resume reading
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
