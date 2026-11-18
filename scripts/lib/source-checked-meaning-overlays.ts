@@ -1,12 +1,12 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, plus chapter 3 verses 1–43.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, chapter 3 verses 1–43, and chapter 4 verses 1–15.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
  * blocked. Source Sanskrit is never modified.
  *
  * Witness: https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html
- * chapters 1.1 (1–25), 1.2 (1–40) and 1.3 (1–43). Hindi is an AI-assisted, independently worded
+ * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–15). Hindi is an AI-assisted, independently worded
  * interpretation of that Sanskrit; it is NOT a Gita Press transcription or
  * scholar-certified translation. The reader displays an editorial study-translation label and provides truthful AI-assistance provenance.
  */
@@ -130,6 +130,24 @@ export const DEVI_CHAPTER_3_WITNESS_OPENINGS = [
   'यः प्राप्य कर्णयुगलं',
 ] as const;
 
+export const DEVI_CHAPTER_4_WITNESS_OPENINGS = [
+  "सौम्य व्यासस्य भार्यायां कस्यां जातः सुतः शुकः",
+  "अयोनिजस्त्वया प्रोक्तस्तथा चारणिजः शुकः",
+  "गर्भयोगी श्रुतः पूर्वं शुको नाम महातपाः",
+  "पुरा सरस्वतीतीरे व्यासः सत्यवतीसुतः",
+  "जातमात्रं शिशुं नीडे मुक्तमण्डान्मनोहरम्",
+  "तौ तु भक्ष्यार्थमत्यन्तं रतौ श्रमपरायणौ",
+  "अङ्गेनाङ्गानि बालस्य घर्षयन्तौ मुदान्वितौ",
+  "वीक्ष्य प्रेमाद्भुतं तत्र बाले चटकयोस्तदा",
+  "तिरश्चामपि यत्प्रेम पुत्रे समभिलक्ष्यते",
+  "किमेतौ चटकौ चास्य विवाहं सुखसाधनम्",
+  "अथवा वार्धके प्राप्ते परिचर्यां करिष्यति",
+  "अर्जयित्वाथवा द्रव्यं पितरौ तर्पयिष्यति",
+  "अथवा किं गयाश्राद्धं गत्वा संवितरिष्यति",
+  "संसारेऽत्र समाख्यातं सुखानामुत्तमं सुखम्",
+  "अपुत्रस्य गतिर्नास्ति स्वर्गो नैव च नैव च",
+] as const;
+
 type Verse = Record<string, unknown>;
 type Book = { chapters?: Array<{ number: number | string; verses?: unknown[] }> };
 type MeaningBatch = {
@@ -158,6 +176,7 @@ export function applySourceCheckedMeanings(id: string, book: Book): number {
     [1, 25, DEVI_CHAPTER_1_WITNESS_OPENINGS],
     [2, 40, DEVI_CHAPTER_2_WITNESS_OPENINGS],
     [3, 43, DEVI_CHAPTER_3_WITNESS_OPENINGS],
+    [4, 65, DEVI_CHAPTER_4_WITNESS_OPENINGS],
   ];
   for (const [chapterNumber, expectedVerseCount, openings] of chapters) {
     const ch = book.chapters?.find((item) => Number(item.number) === chapterNumber);
