@@ -78,6 +78,17 @@ jobs:
       - name: Sitemap tests
         run: npm run test:sitemap
 
+      # Evidence-only gaps report. Hindi field coverage is not translation validation.
+      - name: Generate Karna Parva missing-Hindi register
+        run: node scripts/report-mahabharata-meaning-gaps.mjs --parva=8 --json > karna-missing-hindi.json
+
+      - name: Upload Karna Parva missing-Hindi register
+        uses: actions/upload-artifact@v6
+        with:
+          name: karna-missing-hindi
+          path: karna-missing-hindi.json
+          retention-days: 7
+
       - name: Sanskrit lexicon integrity
         run: npm run test:sanskrit-lexicon
 
@@ -134,7 +145,7 @@ jobs:
         uses: actions/cache/restore@v5
         with:
           path: public/og/verse
-          key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
+          key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json', 'public/data/scriptures-full/*.json.gz') }}
           restore-keys: |
             og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-
             og-verse-
@@ -150,7 +161,7 @@ jobs:
         uses: actions/cache/save@v5
         with:
           path: public/og/verse
-          key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json') }}
+          key: og-verse-${{ hashFiles('scripts/generate-og-images.ts', 'lib/verse-paths.ts', 'lib/verse-pages.ts') }}-${{ hashFiles('public/data/scriptures-full/*.json', 'public/data/scriptures-full/*.json.gz') }}
 
       - name: Cache Next.js build
         uses: actions/cache@v5
