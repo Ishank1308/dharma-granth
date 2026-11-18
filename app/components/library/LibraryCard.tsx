@@ -159,6 +159,14 @@ export function LibraryCard({
     : 'Catalogue entry';
 
   const [visitedChapter, setVisitedChapter] = useState<number | null>(null);
+  // Library entries are catalog data, but the saved chapter comes from localStorage.
+  // Restrict generated routes to known-safe slug characters and positive integers.
+  const safeId = /^[a-z0-9-]+$/.test(item.id) ? item.id : null;
+  const lastReadHref = safeId && visitedChapter !== null && Number.isSafeInteger(visitedChapter)
+    ? safeId === 'ashtavakra'
+      ? `/ashtavakra/${visitedChapter}/`
+      : `/scripture/${encodeURIComponent(safeId)}/chapter/${visitedChapter}/`
+    : null;
 
   useEffect(() => {
     try {
@@ -242,13 +250,13 @@ export function LibraryCard({
         </dl>
       )}
 
-      {visitedChapter !== null && (
+      {lastReadHref && (
         <div className="mt-3 border-t border-dharma-border/60 pt-3">
           <p className="font-devanagari text-xs text-dharma-muted">
             हाल में खोला · अध्याय {visitedChapter} / {item.totalChapters}
           </p>
           <Link
-            href={item.id === 'ashtavakra' ? `/ashtavakra/${visitedChapter}/` : `/scripture/${item.id}/chapter/${visitedChapter}/`}
+            href={lastReadHref}
             className="focus-ring mt-1 inline-flex min-h-[44px] items-center text-xs font-semibold text-dharma-saffron hover:underline"
           >
             इस अध्याय को खोलें
