@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { HiCommentaryFragment } from "./_types";
 import { canonicalVerseId } from "../../lib/canonical-verse-id";
+import { aiCommentaryReviewHolds } from "./_ai-holds";
 
 /** Review queue written by scripts/generate-verse-commentary.ts. */
 export const AI_QUEUE_DIR = path.resolve("data/ai-commentary");
@@ -66,8 +67,11 @@ export function approvedAiEntries(scriptureId: string): {
 
   const queue = JSON.parse(fs.readFileSync(file, "utf8")) as Record<string, QueuedEntry>;
   const sanskritNow = currentSanskrit(scriptureId);
+  const held = aiCommentaryReviewHolds(scriptureId);
 
   for (const [key, q] of Object.entries(queue)) {
+    // Explicit editorial holds take precedence over old approved/source-checked flags.
+    if (held.has(key)) continue;
     const sourceChecked = q.status === "source-checked";
     if (q.status !== "approved" && !sourceChecked) continue;
     if (sourceChecked) {
