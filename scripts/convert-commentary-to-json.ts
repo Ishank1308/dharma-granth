@@ -12,6 +12,7 @@ import { pathToFileURL } from "node:url";
 import { filterCuratedFragment } from "../data/hi-commentary/publish";
 import { isBoilerplateField, isTranslationEchoNote, TRANSLATION_ECHO_SCRIPTURES } from "../data/hi-commentary/quality";
 import { aiQueueScriptureIds, approvedAiEntries } from "../data/hi-commentary/_ai-queue";
+import { aiCommentaryReviewHolds } from "../data/hi-commentary/_ai-holds";
 import type { HiCommentaryFragment } from "../data/hi-commentary/_types";
 import { findTemplateFields } from "./lib/template-text";
 import { commentaryEntry, loadPilotOverlay } from "./pilot/overlay";
@@ -108,10 +109,13 @@ async function main(): Promise<void> {
       aiPublished++;
     }
 
+    const held = aiCommentaryReviewHolds(name);
     const restPath = path.join(SRC, `${name}-rest.json`);
     if (fs.existsSync(restPath)) {
       const rest = JSON.parse(fs.readFileSync(restPath, "utf8")) as HiCommentaryFragment;
       for (const [restKey, entry] of Object.entries(rest)) {
+        // Do not publish modern context coupled to an interpretation on editorial hold.
+        if (held.has(restKey)) continue;
         // "1:1.9" and "1:9" name the same verse. If the short key already holds the व्याख्या, merge into it:
         // an exact "1:1.9" entry would win the reader's lookup and hide that व्याख्या.
         const dotted = /^(\d+):(\d+)\.(\d+)$/.exec(restKey);
