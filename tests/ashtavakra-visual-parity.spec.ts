@@ -17,6 +17,10 @@ for (const theme of ['sunset', 'night'] as const) {
     await expect(hero.getByRole('heading', { name: 'अष्टावक्र गीता', exact: true })).toBeVisible();
     await expect(hero.getByRole('navigation', { name: 'Breadcrumb' })).toBeVisible();
     await expect(hero.getByRole('link', { name: /Start reading/ })).toHaveAttribute('href', '/ashtavakra/1/');
+    await expect(hero.getByRole('link', { name: 'शब्दावली' })).toHaveAttribute('href', '/ashtavakra/words/');
+    // No second bespoke navigation row is inserted above a standard scripture.
+    await expect(page.getByRole('navigation', { name: 'अष्टावक्र गीता', exact: true })).toHaveCount(0);
+    await expect(page.getByText('पन्ने के ऊपर “दृश्य, गति और थीम की सेटिंग” से बदलें।', { exact: false })).toHaveCount(0);
 
     const chapters = page.locator('#chapters');
     await expect(chapters.getByRole('heading', { name: 'Adhyay / Sections' })).toBeVisible();
