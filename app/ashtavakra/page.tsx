@@ -79,6 +79,9 @@ export default function AshtavakraHome() {
             <a href="#daily" className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text hover:border-dharma-saffron">
               आज का श्लोक
             </a>
+            <Link href="/ashtavakra/words/" className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text hover:border-dharma-saffron">
+              शब्दावली
+            </Link>
             <SkipAnimation />
           </div>
           <p className="mt-5 text-sm leading-relaxed text-dharma-muted">
@@ -212,15 +215,14 @@ export default function AshtavakraHome() {
           </div>
         </section>
 
-        {/* 14. Modes */}
-        <section aria-labelledby="modes" className="ash-card">
-          <h2 id="modes" className="font-bold" style={{ fontSize: '1.25rem' }}>पहुँच और पढ़ने के मोड</h2>
-          <ul lang="hi" className="ash-hindi mt-2 grid gap-1" style={{ listStyle: 'disc', paddingLeft: '1.25rem' }}>
-            <li><strong>पूर्ण अनुभव:</strong> हल्की परतदार पृष्ठभूमि और बहुत सीमित गति।</li>
-            <li><strong>संतुलित:</strong> स्थिर चित्र, कम गति। यह डिफ़ॉल्ट है।</li>
-            <li><strong>केवल पाठ:</strong> कोई सजावट नहीं, अधिकतम स्पष्टता।</li>
-          </ul>
-          <p className="ash-meta mt-2">पन्ने के ऊपर “दृश्य, गति और थीम की सेटिंग” से बदलें। आपके डिवाइस की “कम गति” सेटिंग सदा मानी जाती है। सारा पाठ बिना JavaScript या एनिमेशन के भी पढ़ा जा सकता है।</p>
+        {/* Reader help uses the same two site themes; there is no parallel Ash theme switcher. */}
+        <section aria-labelledby="reader-help" className="ash-card">
+          <h2 id="reader-help" className="font-bold" style={{ fontSize: '1.25rem' }}>पाठक सुविधाएँ</h2>
+          <p lang="hi" className="ash-hindi mt-2">
+            इस ग्रंथ पर भी धर्म ग्रंथ की साझा हल्की और गहरी थीम लागू होती है।
+            श्लोक खोलने पर अध्ययन मार्ग, अर्थ-व्याख्या की परतें और अक्षर छोटे-बड़े करने के नियंत्रण उपलब्ध हैं।
+            आपके डिवाइस की “कम गति” सेटिंग का सम्मान किया जाता है और मूल पाठ बिना एनीमेशन के भी पढ़ा जा सकता है।
+          </p>
         </section>
       </div>
     </main>
