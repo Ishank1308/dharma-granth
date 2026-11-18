@@ -130,9 +130,11 @@ export interface AlignmentOptions {
  * passage (own 0.84 against baseline 0.52) and the test hid 141 passages that match their hymns when read.
  * Two only trip the repeat test: the Samaveda repeats a mantra with variant spelling under the same Hindi, and the
  * Durga Saptashati's printed Hindi spans groups of verses (its 27 repeated lines are listed for editorial review).
+ * Shukla Yajurveda's Hindi (data/written-meanings/yajurveda.json) is written per mantra, including Chapter 28's
+ * formulaic praisha hymns ("होता यक्षत्... इन्द्रम्") whose repeated stems raise the baseline above own-stem score.
  */
 export const ALIGNMENT_EXEMPT: Record<Field, ReadonlySet<string>> = {
-  hindi: new Set(['maitri', 'chandogya', 'mundaka', 'samaveda', 'durgasaptashati', 'taittiriya', 'kaushitaki']),
+  hindi: new Set(['maitri', 'chandogya', 'mundaka', 'samaveda', 'durgasaptashati', 'taittiriya', 'kaushitaki', 'yajurveda']),
   translation: new Set(['maitri', 'chandogya', 'mundaka', 'yajurveda', 'yogasutra', 'naradabhaktisutra', 'shandilyabhaktisutra', 'taittiriya', 'kaushitaki', 'yogarasayanam', 'shivaswarodaya', 'shivasamhita', 'atharvaveda']),
 };
 
