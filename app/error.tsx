@@ -93,7 +93,7 @@ export default function Error({
             className="inline-flex items-center gap-2 bg-saffron-600 hover:bg-saffron-700 text-white px-6 py-3 rounded-full font-semibold transition shadow-md active:scale-95"
           >
             <RotateCcw className="w-4 h-4" />
-            {isChunkError ? 'पृष्ठ रीलोड करें (Reload)' : 'पुनः प्रयास करें (Try Again)'}
+            {isChunkError ? 'पृष्ठ पुनः खोलें (Reload)' : 'पुनः प्रयास करें (Try Again)'}
           </button>
           <Link
             href="/"

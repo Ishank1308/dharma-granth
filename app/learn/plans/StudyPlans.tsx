@@ -191,7 +191,7 @@ function TodayCard({
           href={step.href}
           className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-xl bg-saffron-600 px-4 text-sm font-semibold text-white"
         >
-          <span lang="hi">पृष्ठ खोलें</span>
+          <span lang="hi">अध्ययन करें</span>
           <ArrowRight className="h-4 w-4" />
         </Link>
         <button

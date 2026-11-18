@@ -168,7 +168,7 @@ export default function LocationsPage() {
                   {/* Legend overlay */}
                   <div className="absolute bottom-3 left-3 bg-white/80 backdrop-blur-sm rounded-lg px-3 py-2 text-xs text-dharma-muted">
                     <p className="font-bold mb-1">मानचित्र संकेत</p>
-                    <p>● स्थान चुनने के लिए मार्कर पर टैप या Enter दबाएँ</p>
+                    <p>● स्थान चुनने के लिए मानचित्र के चिह्न पर टैप करें या Enter दबाएँ</p>
                     <p>● ब्रह्मांडीय स्थान मानचित्र पर नहीं</p>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export default function LocationsPage() {
                 <div className="p-6 flex flex-col items-center justify-center text-center h-full min-h-[300px]">
                   <MapPin className="w-12 h-12 text-teal-400 mb-4" />
                   <p className="text-dharma-muted">
-                    मानचित्र पर किसी मार्कर पर क्लिक करें या नीचे कोई स्थान चुनें विवरण देखने के लिए।
+                    विवरण देखने के लिए मानचित्र पर स्थान का चिह्न चुनें या नीचे दी गई सूची से स्थान चुनें।
                   </p>
                 </div>
               </div>

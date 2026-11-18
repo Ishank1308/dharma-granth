@@ -308,7 +308,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
           const p = JSON.parse(raw);
           if (p.scriptureSlug && p.chapterNumber) {
             router.push(`/scripture/${p.scriptureSlug}/chapter/${p.chapterNumber}/#verse-${p.verseNumber || 1}`);
-            triggerPranaToast({ message: `श्लोक ${p.verseNumber || 1} से आगे · Resuming reading`, icon: '📖' });
+            triggerPranaToast({ message: `श्लोक ${p.verseNumber || 1} से पढ़ना जारी · Resuming reading`, icon: '📖' });
             onClose();
             return;
           }

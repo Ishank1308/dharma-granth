@@ -377,7 +377,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                     className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-saffron-500/35 bg-saffron-500/10 px-4 py-2 text-xs font-bold text-saffron-800 dark:text-saffron-300 transition hover:bg-saffron-500/15"
                   >
                     <span lang="hi" className="font-devanagari">
-                      {isExpanded ? 'विस्तृत व्याख्या समेटें' : 'पदच्छेद व विस्तृत व्याख्या देखें'}
+                      {isExpanded ? 'व्याख्या छिपाएँ' : 'पदच्छेद व विस्तृत व्याख्या देखें'}
                     </span>
                     <span aria-hidden="true">·</span>
                     <span lang="en">{isExpanded ? 'Hide Explanation' : 'Detailed Explanation'}</span>
@@ -566,7 +566,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                       >
                         <ChevronUp className="h-4 w-4" aria-hidden="true" />
                         <span lang="hi" className="font-devanagari">
-                          विस्तृत व्याख्या समेटें
+                          व्याख्या छिपाएँ
                         </span>
                         <span aria-hidden="true">·</span>
                         <span lang="en">Close detailed explanation</span>
