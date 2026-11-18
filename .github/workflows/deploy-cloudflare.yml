@@ -295,10 +295,25 @@ jobs:
         run: |
           if [[ -n "$IMMUTABLE_DEPLOY_URL" ]]; then
             echo "::notice::Checking immutable Pages deployment parity: $IMMUTABLE_DEPLOY_URL"
-            if ! node scripts/verify-rsc-canary.mjs \
-              --local dist/scripture/bhagavadgita/chapter/2/index.txt \
-              --url "${IMMUTABLE_DEPLOY_URL%/}/scripture/bhagavadgita/chapter/2/index.txt"; then
-              echo "::error::Immutable Pages deployment RSC differs from the tested build; this is not custom-domain propagation."
+            # Cloudflare can return a transient 404 for a just-created immutable
+            # deployment before its assets reach every edge. Never accept an
+            # HTTP error, stale payload or byte mismatch: only an exact match
+            # may end the retry loop successfully.
+            immutable_verified=false
+            for attempt in {1..12}; do
+              if node scripts/verify-rsc-canary.mjs \
+                --local dist/scripture/bhagavadgita/chapter/2/index.txt \
+                --url "${IMMUTABLE_DEPLOY_URL%/}/scripture/bhagavadgita/chapter/2/index.txt"; then
+                immutable_verified=true
+                break
+              fi
+              if [[ "$attempt" -lt 12 ]]; then
+                echo "::warning::Immutable Pages RSC not ready or mismatched (attempt $attempt/12); retrying in 10 seconds."
+                sleep 10
+              fi
+            done
+            if [[ "$immutable_verified" != true ]]; then
+              echo "::error::Immutable Pages RSC still missing or does not match tested bytes after bounded retries; refusing release."
               exit 1
             fi
           else
