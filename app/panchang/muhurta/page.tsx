@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Compass, Sparkles, ShieldCheck, ChevronRight, BookOpen } from 'lucide-react';
 import { calculateEducationalPanchang, PRESET_LOCATIONS, todayForLocation } from '@/lib/panchang';
 import { MUHURTA_FAQS } from '@/data/muhurta-data';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { MuhurtaMatrixClient } from './MuhurtaMatrixClient';
 
 export const metadata: Metadata = {
@@ -131,6 +132,8 @@ export default function MuhurtaPage() {
           </div>
         </div>
       </section>
+
+      <PanchangLimbSwitcher activeLimb="muhurta" />
 
       {/* Main Interactive Matrix */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-8">

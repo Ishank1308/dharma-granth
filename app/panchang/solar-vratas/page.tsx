@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { SolarVratasClient } from './SolarVratasClient';
 import { SOLAR_VRATAS } from '@/data/solar-vratas-data';
 import { calculateEducationalPanchang } from '@/lib/panchang';
@@ -94,16 +95,18 @@ export default function SolarVratasPage() {
     <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       <Breadcrumbs
         items={[
+          { label: 'Home', href: '/' },
           { label: 'Panchang', href: '/panchang/' },
           { label: 'Solar Observances (सौर व्रत)' },
         ]}
       />
+
+      <PanchangLimbSwitcher />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6 space-y-10">
         {/* Sacred Header */}

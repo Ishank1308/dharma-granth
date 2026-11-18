@@ -3,9 +3,10 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
-import { SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { JsonLd } from '@/app/components/JsonLd';
-import { Calendar, Clock, BookOpen, CheckCircle2, ChevronRight, HelpCircle, Sparkles } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'एकादशी व्रत तिथियाँ 2026–2028 · Ekadashi Dates & Vrata Mahatmya',
@@ -91,57 +92,59 @@ const JSON_LD = {
   ],
 };
 
+function getIstTodayIso(): string {
+  const ist = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  return `${ist.getFullYear()}-${String(ist.getMonth() + 1).padStart(2, '0')}-${String(ist.getDate()).padStart(2, '0')}`;
+}
+
 export default function EkadashiPage() {
+  const todayIso = getIstTodayIso();
+  const nextUpcomingDateEn = EKADASHI_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
+
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text pb-20">
       <JsonLd data={JSON_LD} />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Panchang', href: '/panchang/' },
-          { label: 'Ekadashi Dates' },
-        ]}
+      <div className="mx-auto max-w-7xl px-gutter pt-6">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Panchang', href: '/panchang/' },
+            { label: 'Ekadashi Dates' },
+          ]}
+        />
+      </div>
+
+      <PageHeader
+        eyebrow="Hari-Vasara & Vrata Mahatmya"
+        eyebrowHi="हरि-वासर एवं व्रत दर्शन"
+        title="Ekadashi Vrata Dates (2026–2027)"
+        titleHi="एकादशी व्रत तिथियाँ व माहात्म्य"
+        lead="पद्म पुराण एवं विष्णु पुराण के अनुसार प्रत्येक मास के शुक्ल व कृष्ण पक्ष की एकादशी तिथि मन, प्राण और इंद्रियों के शुद्धिकरण का परम साधन है।"
+        width="wide"
       />
 
-      {/* Hero Header */}
-      <section className="border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg py-12 px-4 sm:px-6 dark:from-amber-950/20">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-saffron-700 bg-saffron-100/80 px-3.5 py-1.5 rounded-full dark:bg-saffron-900/40 dark:text-saffron-300 mb-4">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>हरि-वासर एवं व्रत दर्शन</span>
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-dharma-text">
-            एकादशी व्रत तिथियाँ व माहात्म्य
-          </h1>
-          <p className="mt-2 text-base sm:text-lg text-saffron-800 dark:text-saffron-300 font-serif">
-            Ekadashi Vrata: Classical Dates, Parana Rules &amp; Scriptural Wisdom
-          </p>
-          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-dharma-muted">
-            पद्म पुराण एवं विष्णु पुराण के अनुसार प्रत्येक मास के शुक्ल व कृष्ण पक्ष की एकादशी तिथि मन, प्राण और इंद्रियों के शुद्धिकरण का परम साधन है।
-          </p>
-        </div>
-      </section>
+      <PanchangLimbSwitcher />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Core Principles Bento */}
         <section aria-labelledby="ekadashi-meaning" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
             <span className="text-2xl mb-2 block">🌿</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">कायिक शुद्धि (Metabolic Alignment)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
               चंद्रमा के गुरुत्वाकर्षण और शरीर के जलीय संतुलन को साधने के लिए अन्न का त्याग और सात्विक फलाहार।
             </p>
           </div>
-          <div className="rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
             <span className="text-2xl mb-2 block">📿</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">मानसिक एकाग्रता (Mental Sattva)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
               दस इंद्रियां और ग्यारहवां मन — इन ग्यारहों को परमात्मा के चिंतन और स्वाध्याय में लगाने का संकल्प।
             </p>
           </div>
-          <div className="rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
             <span className="text-2xl mb-2 block">📖</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">शास्त्रीय स्वाध्याय (Scriptural Study)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
@@ -151,7 +154,7 @@ export default function EkadashiPage() {
         </section>
 
         {/* Dates Table */}
-        <section aria-labelledby="dates-heading" className="rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
+        <section aria-labelledby="dates-heading" className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
@@ -170,41 +173,54 @@ export default function EkadashiPage() {
           </div>
 
           <div className="divide-y divide-dharma-border/60">
-            {EKADASHI_DATES.map((item) => (
-              <div
-                key={item.dateEn}
-                className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-saffron-50/40 dark:hover:bg-saffron-950/20 ${
-                  item.highlight ? 'bg-amber-50/50 dark:bg-amber-950/30' : ''
-                }`}
-              >
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
-                      {item.name}
-                    </span>
-                    {item.highlight && (
-                      <span className="text-2xs rounded-full bg-saffron-100 px-2 py-0.5 font-bold text-saffron-800 dark:bg-saffron-900/60 dark:text-saffron-300">
-                        महापर्व
+            {EKADASHI_DATES.map((item) => {
+              const isNextUpcoming = item.dateEn === nextUpcomingDateEn;
+              return (
+                <div
+                  key={item.dateEn}
+                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-saffron-50/40 dark:hover:bg-saffron-950/20 ${
+                    isNextUpcoming
+                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.06]'
+                      : item.highlight
+                        ? 'bg-amber-50/50 dark:bg-amber-950/30'
+                        : ''
+                  }`}
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
+                        {item.name}
                       </span>
-                    )}
+                      {isNextUpcoming && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
+                          <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                          आगामी व्रत · Next Upcoming
+                        </span>
+                      )}
+                      {item.highlight && (
+                        <span className="text-2xs rounded-full bg-saffron-100 px-2 py-0.5 font-bold text-saffron-800 dark:bg-saffron-900/60 dark:text-saffron-300">
+                          महापर्व
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-dharma-muted mt-0.5">
+                      {item.month} मास · {item.paksha}
+                    </p>
                   </div>
-                  <p className="text-xs text-dharma-muted mt-0.5">
-                    {item.month} मास · {item.paksha}
-                  </p>
+                  <div className="text-left sm:text-right">
+                    <span className="font-mono text-sm font-semibold text-saffron-800 dark:text-saffron-300 block">
+                      {item.date}
+                    </span>
+                    <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
+                  </div>
                 </div>
-                <div className="text-left sm:text-right">
-                  <span className="font-mono text-sm font-semibold text-saffron-800 dark:text-saffron-300 block">
-                    {item.date}
-                  </span>
-                  <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         {/* Sacred Mantra & Scriptural Citation */}
-        <section aria-labelledby="mantra-heading" className="rounded-2xl border border-dharma-border bg-gradient-to-br from-amber-50/50 via-dharma-card to-dharma-bg p-6 dark:from-amber-950/20 shadow-xs">
+        <section aria-labelledby="mantra-heading" className="card-sacred rounded-2xl border border-dharma-border bg-gradient-to-br from-amber-50/50 via-dharma-card to-dharma-bg p-6 dark:from-amber-950/20 shadow-xs">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400 mb-3">
             <BookOpen className="h-4 w-4" />
             <span>शास्त्रीय श्लोक व जप</span>

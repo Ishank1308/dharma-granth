@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getAllKaranas, karanaSlug } from '@/lib/panchang';
+import { getAllKaranas, calculateEducationalPanchang, PRESET_LOCATIONS, todayForLocation, type KaranaMeta } from '@/lib/panchang';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Sparkles, Moon, Sun, ArrowRight, BookOpen, Layers, ShieldCheck, Compass, HelpCircle, AlertCircle } from 'lucide-react';
@@ -108,9 +108,96 @@ const JSON_LD = {
   ],
 };
 
+function KaranaCard({
+  karana,
+  index,
+  isToday,
+  variant,
+}: {
+  karana: KaranaMeta;
+  index: number;
+  isToday: boolean;
+  variant: 'chara' | 'sthira';
+}) {
+  const isChara = variant === 'chara';
+  return (
+    <Link
+      href={`/panchang/karanas/${karana.slug}/`}
+      className={`group card-sacred sheen-sweep relative p-5 rounded-2xl border flex flex-col justify-between ${
+        isToday
+          ? 'border-saffron-500 bg-saffron-500/[0.04] shadow-md ring-2 ring-saffron-500/50 animate-prana-pulse'
+          : `bg-surface border-dharma-border/80 ${isChara ? 'hover:border-amber-500/50' : 'hover:border-indigo-500/50'}`
+      }`}
+    >
+      <div>
+        <div className="flex items-center justify-between gap-2 mb-3 flex-wrap">
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-dharma-bg text-dharma-muted border border-dharma-border/60">
+              {isChara ? 'Chara' : 'Fixed'} #{index + 1}
+            </span>
+            {isToday && (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
+                <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                आज का करण · Active Today
+              </span>
+            )}
+          </div>
+          <span
+            className={`text-xs font-sans px-2.5 py-0.5 rounded-full font-medium border ${
+              isChara
+                ? 'bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border-emerald-500/20'
+                : 'bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/20'
+            }`}
+          >
+            {karana.natureHi}
+          </span>
+        </div>
+
+        <h3
+          className={`text-lg font-bold text-dharma-text transition-colors ${
+            isChara ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400' : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
+          }`}
+        >
+          {karana.name}{' '}
+          <span className="text-base text-dharma-muted font-normal">
+            ({karana.nameHi})
+          </span>
+        </h3>
+        <p
+          className={`text-xs font-sans font-medium mt-0.5 ${
+            isChara ? 'text-amber-700/90 dark:text-amber-400' : 'text-indigo-700/90 dark:text-indigo-400'
+          }`}
+        >
+          Deity: {karana.deity}
+        </p>
+
+        <p className="text-xs text-dharma-muted font-sans mt-2.5 leading-relaxed line-clamp-2">
+          {karana.explanation}
+        </p>
+      </div>
+
+      <div className="mt-4 pt-3 border-t border-dharma-border/50 flex items-center justify-between text-xs font-sans text-dharma-muted">
+        <span className={`text-[11px] text-dharma-muted ${isChara ? '' : 'truncate max-w-[120px]'}`}>
+          {isChara ? '6° Half-Tithi' : karana.occurrence}
+        </span>
+        <span
+          className={`flex items-center gap-1 font-semibold group-hover:translate-x-0.5 transition-transform ${
+            isChara ? 'text-amber-700 dark:text-amber-400' : 'text-indigo-700 dark:text-indigo-400'
+          }`}
+        >
+          Details
+          <ArrowRight className="w-3.5 h-3.5" />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 export default function KaranasPage() {
   const charaKaranas = allKaranas.filter((k) => k.nature.startsWith('Chara'));
   const sthiraKaranas = allKaranas.filter((k) => k.nature.startsWith('Sthira'));
+  const todayPanchang = calculateEducationalPanchang(todayForLocation(PRESET_LOCATIONS[0]), PRESET_LOCATIONS[0]);
+  const todayKaranaName = todayPanchang.karana.name;
 
   return (
     <main className="min-h-screen bg-dharma-bg text-dharma-text font-serif">
@@ -211,44 +298,13 @@ export default function KaranasPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {charaKaranas.map((k, idx) => (
-              <Link
+              <KaranaCard
                 key={k.slug}
-                href={`/panchang/karanas/${k.slug}/`}
-                className="group card-sacred sheen-sweep relative p-5 rounded-2xl bg-surface border border-dharma-border/80 hover:border-amber-500/50 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-dharma-bg text-dharma-muted border border-dharma-border/60">
-                      Chara #{idx + 1}
-                    </span>
-                    <span className="text-xs font-sans px-2.5 py-0.5 rounded-full font-medium bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
-                      {k.natureHi}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-dharma-text group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-                    {k.name}{' '}
-                    <span className="text-base text-dharma-muted font-normal">
-                      ({k.nameHi})
-                    </span>
-                  </h3>
-                  <p className="text-xs font-sans text-amber-700/90 dark:text-amber-400 font-medium mt-0.5">
-                    Deity: {k.deity}
-                  </p>
-
-                  <p className="text-xs text-dharma-muted font-sans mt-2.5 leading-relaxed line-clamp-2">
-                    {k.explanation}
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-dharma-border/50 flex items-center justify-between text-xs font-sans text-dharma-muted">
-                  <span className="text-[11px] text-dharma-muted">6° Half-Tithi</span>
-                  <span className="flex items-center gap-1 font-semibold text-amber-700 dark:text-amber-400 group-hover:translate-x-0.5 transition-transform">
-                    Details
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </Link>
+                karana={k}
+                index={idx}
+                isToday={k.name === todayKaranaName}
+                variant="chara"
+              />
             ))}
           </div>
         </section>
@@ -269,44 +325,13 @@ export default function KaranasPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {sthiraKaranas.map((k, idx) => (
-              <Link
+              <KaranaCard
                 key={k.slug}
-                href={`/panchang/karanas/${k.slug}/`}
-                className="group card-sacred sheen-sweep relative p-5 rounded-2xl bg-surface border border-dharma-border/80 hover:border-indigo-500/50 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-dharma-bg text-dharma-muted border border-dharma-border/60">
-                      Fixed #{idx + 1}
-                    </span>
-                    <span className="text-xs font-sans px-2.5 py-0.5 rounded-full font-medium bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border border-indigo-500/20">
-                      {k.natureHi}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-dharma-text group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {k.name}{' '}
-                    <span className="text-base text-dharma-muted font-normal">
-                      ({k.nameHi})
-                    </span>
-                  </h3>
-                  <p className="text-xs font-sans text-indigo-700/90 dark:text-indigo-400 font-medium mt-0.5">
-                    Deity: {k.deity}
-                  </p>
-
-                  <p className="text-xs text-dharma-muted font-sans mt-2.5 leading-relaxed line-clamp-2">
-                    {k.explanation}
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-dharma-border/50 flex items-center justify-between text-xs font-sans text-dharma-muted">
-                  <span className="text-[11px] text-dharma-muted truncate max-w-[120px]">{k.occurrence}</span>
-                  <span className="flex items-center gap-1 font-semibold text-indigo-700 dark:text-indigo-400 group-hover:translate-x-0.5 transition-transform">
-                    Details
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </div>
-              </Link>
+                karana={k}
+                index={idx}
+                isToday={k.name === todayKaranaName}
+                variant="sthira"
+              />
             ))}
           </div>
         </section>

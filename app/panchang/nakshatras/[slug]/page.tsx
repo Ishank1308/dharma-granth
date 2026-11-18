@@ -153,12 +153,12 @@ export default async function NakshatraDetailPage({ params }: PageProps) {
     <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       <Breadcrumbs
         items={[
+          { label: 'Home', href: '/' },
           { label: 'Panchang', href: '/panchang/' },
           { label: '27 Nakshatras', href: '/panchang/nakshatras/' },
           { label: nakshatra.name },

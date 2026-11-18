@@ -3,9 +3,10 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
-import { SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { JsonLd } from '@/app/components/JsonLd';
-import { BookOpen, Sparkles } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'अमावस्या तिथियाँ 2026–2028 · Amavasya Dates, Pitru Tarpan & Shanti',
@@ -82,42 +83,44 @@ const JSON_LD = {
   ],
 };
 
+function getIstTodayIso(): string {
+  const ist = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  return `${ist.getFullYear()}-${String(ist.getMonth() + 1).padStart(2, '0')}-${String(ist.getDate()).padStart(2, '0')}`;
+}
+
 export default function AmavasyaPage() {
+  const todayIso = getIstTodayIso();
+  const nextUpcomingDateEn = AMAVASYA_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
+
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text pb-20">
       <JsonLd data={JSON_LD} />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Panchang', href: '/panchang/' },
-          { label: 'Amavasya Dates' },
-        ]}
+      <div className="mx-auto max-w-7xl px-gutter pt-6">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Panchang', href: '/panchang/' },
+            { label: 'Amavasya Dates' },
+          ]}
+        />
+      </div>
+
+      <PageHeader
+        eyebrow="New Moon & Pitru Tarpan"
+        eyebrowHi="पितृ तर्पण एवं मौन साधना"
+        title="Amavasya Calendar (2026–2027)"
+        titleHi="अमावस्या तिथियाँ व पितृ तर्पण माहात्म्य"
+        lead="अमावस्या वह तिथि है जब सूर्य और चंद्रमा एक ही राशि में स्थित होते हैं। यह बाह्य चकाचौंध से हटकर अंतर्मुखी होने और पूर्वजों के प्रति कृतज्ञता ज्ञापित करने का पावन दिन है।"
+        width="wide"
       />
 
-      {/* Hero Header */}
-      <section className="border-b border-dharma-border bg-gradient-to-b from-stone-100/70 via-dharma-card to-dharma-bg py-12 px-4 sm:px-6 dark:from-stone-900/40">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-stone-700 bg-stone-200/80 px-3.5 py-1.5 rounded-full dark:bg-stone-800 dark:text-stone-300 mb-4">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>पितृ तर्पण एवं मौन साधना</span>
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-dharma-text">
-            अमावस्या तिथियाँ व पितृ तर्पण माहात्म्य
-          </h1>
-          <p className="mt-2 text-base sm:text-lg text-stone-700 dark:text-stone-300 font-serif">
-            Amavasya Calendar: New Moon Dates, Ancestral Tarpan &amp; Silence
-          </p>
-          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed text-dharma-muted">
-            अमावस्या वह तिथि है जब सूर्य और चंद्रमा एक ही राशि में स्थित होते हैं। यह बाह्य चकाचौंध से हटकर अंतर्मुखी होने और पूर्वजों के प्रति कृतज्ञता ज्ञापित करने का पावन दिन है।
-          </p>
-        </div>
-      </section>
+      <PanchangLimbSwitcher />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Dates Table */}
-        <section aria-labelledby="dates-heading" className="rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
+        <section aria-labelledby="dates-heading" className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
@@ -136,41 +139,54 @@ export default function AmavasyaPage() {
           </div>
 
           <div className="divide-y divide-dharma-border/60">
-            {AMAVASYA_DATES.map((item) => (
-              <div
-                key={item.dateEn}
-                className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-stone-50/50 dark:hover:bg-stone-900/30 ${
-                  item.highlight ? 'bg-stone-50/60 dark:bg-stone-900/40' : ''
-                }`}
-              >
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
-                      {item.name}
-                    </span>
-                    {item.highlight && (
-                      <span className="text-2xs rounded-full bg-stone-200 px-2 py-0.5 font-bold text-stone-800 dark:bg-stone-800 dark:text-stone-300">
-                        प्रमुख
+            {AMAVASYA_DATES.map((item) => {
+              const isNextUpcoming = item.dateEn === nextUpcomingDateEn;
+              return (
+                <div
+                  key={item.dateEn}
+                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-stone-50/50 dark:hover:bg-stone-900/30 ${
+                    isNextUpcoming
+                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.06]'
+                      : item.highlight
+                        ? 'bg-stone-50/60 dark:bg-stone-900/40'
+                        : ''
+                  }`}
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
+                        {item.name}
                       </span>
-                    )}
+                      {isNextUpcoming && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
+                          <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                          आगामी व्रत · Next Upcoming
+                        </span>
+                      )}
+                      {item.highlight && (
+                        <span className="text-2xs rounded-full bg-stone-200 px-2 py-0.5 font-bold text-stone-800 dark:bg-stone-800 dark:text-stone-300">
+                          प्रमुख
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-dharma-muted mt-0.5">
+                      {item.month} मास अमावस्या
+                    </p>
                   </div>
-                  <p className="text-xs text-dharma-muted mt-0.5">
-                    {item.month} मास अमावस्या
-                  </p>
+                  <div className="text-left sm:text-right">
+                    <span className="font-mono text-sm font-semibold text-stone-800 dark:text-stone-300 block">
+                      {item.date}
+                    </span>
+                    <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
+                  </div>
                 </div>
-                <div className="text-left sm:text-right">
-                  <span className="font-mono text-sm font-semibold text-stone-800 dark:text-stone-300 block">
-                    {item.date}
-                  </span>
-                  <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         {/* Sacred Shloka */}
-        <section aria-labelledby="mantra-heading" className="rounded-2xl border border-dharma-border bg-gradient-to-br from-stone-50/50 via-dharma-card to-dharma-bg p-6 dark:from-stone-900/30 shadow-xs">
+        <section aria-labelledby="mantra-heading" className="card-sacred rounded-2xl border border-dharma-border bg-gradient-to-br from-stone-50/50 via-dharma-card to-dharma-bg p-6 dark:from-stone-900/30 shadow-xs">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-400 mb-3">
             <BookOpen className="h-4 w-4" />
             <span>पितृ गायत्री एवं तर्पण मंत्र</span>
