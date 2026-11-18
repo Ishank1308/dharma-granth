@@ -175,10 +175,8 @@ test('reader: verse study opens in place with a touch-sized control on mobile', 
   const card = page.locator('article.verse-card:not(.vt)').filter({ has: page.getByRole('button', { name: /Verse study/ }) }).first();
   const study = card.getByRole('button', { name: /Verse study/ });
   await expect(study).toBeVisible();
-  // The server renders the panel closed (reading depth "read"); after hydration a new reader's default depth
-  // opens it. Wait for that, so the state the test reads is the settled one, then close it to start.
-  await expect(study).toHaveAttribute('aria-expanded', 'true');
-  await study.click();
+  // New readers now stay compact by default: Sanskrit and meaning are visible,
+  // and the deeper explanation opens only on request.
   await expect(study).toHaveAttribute('aria-expanded', 'false');
   await study.focus();
   await page.keyboard.press('Enter');
