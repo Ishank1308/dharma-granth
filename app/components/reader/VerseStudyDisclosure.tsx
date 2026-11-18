@@ -30,7 +30,7 @@ export function VerseStudyDisclosure({
   // The extra questions/context are fetched from a standalone verse page only on explicit request.
   // Opening the local व्याख्या alone never triggers a network request for every card in the chapter.
   const [fullStudy, setFullStudy] = useState(loadFullStudy);
-  const [studyDepth, setStudyDepth] = useState<StudyDepth>(depth === 'understand' ? 'understand' : 'study');
+  const [studyDepth, setStudyDepth] = useState<StudyDepth>(depth === 'study' ? 'study' : 'understand');
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelId = useId();
   const titleId = useId();
