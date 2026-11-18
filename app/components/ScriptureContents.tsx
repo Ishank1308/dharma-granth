@@ -81,6 +81,30 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
     });
   }, [chapters, query, rangeStart, ranges]);
 
+  // A long book initially shows only its first 20 chapters. A reader who
+  // returns to chapter 50 (for example) needs a direct route to that card,
+  // not just a separate resume link into the chapter itself.
+  function locateLastRead() {
+    if (!visit || lastPosition < 0) return;
+    const matchingRange = ranges.find((range) =>
+      lastPosition >= range.startIndex && lastPosition < range.endIndex,
+    );
+    chooseRange(matchingRange?.start ?? null);
+
+    // The new range is rendered after the click. Focus the actual chapter
+    // link so keyboard/screen reader users land on the item they requested.
+    window.requestAnimationFrame(() => {
+      const card = document.getElementById(`contents-chapter-${visit.chapterId}`);
+      if (!card) return;
+      const link = card.querySelector<HTMLAnchorElement>('a[href]');
+      link?.focus({ preventScroll: true });
+      card.scrollIntoView({
+        block: 'center',
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+      });
+    });
+  }
+
   return (
     <div className="space-y-7">
       {visit && (
@@ -101,11 +125,23 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
                 </div>
               )}
             </div>
-            <Link href={resumeHref(visit)} className="inline-flex min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-saffron-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
-              <BookOpen className="h-4 w-4" aria-hidden="true" />
-              Resume reading
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <div className="flex shrink-0 flex-wrap items-center gap-2">
+              {showNavigator && chapters.length > 60 && lastPosition >= 0 && (
+                <button
+                  type="button"
+                  onClick={locateLastRead}
+                  aria-label={`Find chapter ${visit.chapterId} in contents`}
+                  className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2 text-sm font-semibold text-dharma-text hover:border-dharma-saffron"
+                >
+                  सूची में देखें · Find in contents
+                </button>
+              )}
+              <Link href={resumeHref(visit)} className="inline-flex min-h-[44px] shrink-0 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-saffron-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2">
+                <BookOpen className="h-4 w-4" aria-hidden="true" />
+                Resume reading
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </section>
       )}
@@ -229,7 +265,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
               const isLastRead = visit?.chapterId === chapter.id;
               const isVisited = visitedIds.has(chapter.id);
               return (
-                <li key={chapter.id}>
+                <li key={chapter.id} id={`contents-chapter-${chapter.id}`} className="scroll-mt-24">
                   <Link
                     href={chapterHref(scriptureId, chapter.id)}
                     data-tilt
