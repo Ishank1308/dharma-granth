@@ -20,15 +20,17 @@ export function VerseStudyDisclosure({
   canDeepen?: boolean;
   defaultOpen?: boolean;
   versePageHref?: string;
-  /** Load the verse page's full study as soon as the panel is open (the reader asked for this verse). */
+  /** Preload additional verse-page context only when this exact verse was explicitly selected. */
   loadFullStudy?: boolean;
   children: (depth: StudyDepth) => ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen ?? (depth !== 'read'));
-  // The full study is a fetch of the verse page, so it loads when the reader opens this panel or asks for it,
-  // never for every panel a reading depth opens by default as the chapter scrolls by.
+  // Do not animate dozens of automatically expanded chapter panels during hydration.
+  const [openedByReader, setOpenedByReader] = useState(false);
+  // The extra questions/context are fetched from a standalone verse page only on explicit request.
+  // Opening the local व्याख्या alone never triggers a network request for every card in the chapter.
   const [fullStudy, setFullStudy] = useState(loadFullStudy);
-  const [studyDepth, setStudyDepth] = useState<StudyDepth>(depth === 'understand' ? 'understand' : 'study');
+  const [studyDepth, setStudyDepth] = useState<StudyDepth>(depth === 'study' ? 'study' : 'understand');
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelId = useId();
   const titleId = useId();
@@ -49,7 +51,7 @@ export function VerseStudyDisclosure({
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => {
-          if (!open) setFullStudy(true);
+          setOpenedByReader(true);
           setOpen((value) => !value);
         }}
         className="flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border border-dharma-border/60 bg-dharma-card-soft/50 px-3 py-2 text-left text-xs font-medium text-dharma-muted transition-colors hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
@@ -62,11 +64,11 @@ export function VerseStudyDisclosure({
       </button>
 
       {open && (
-        <div id={panelId} role="region" aria-labelledby={titleId} className="verse-study-panel liquid-reveal min-w-0 pt-2 sm:pt-3">
+        <div id={panelId} role="region" aria-labelledby={titleId} className={`verse-study-panel min-w-0 pt-2 sm:pt-3 ${openedByReader ? 'liquid-reveal' : ''}`}>
           {children(studyDepth)}
           {versePageHref && fullStudy && <VersePageExtras href={versePageHref} />}
-          {/* One "more" control under the explanation: it adds the word meanings and notes (study depth)
-              and the verse page's own study, here in the chapter. */}
+          {/* Deliberately opt in to deeper word notes and questions from the verse page.
+              The regular व्याख्या opens without fetching that separate document. */}
           {((versePageHref && !fullStudy) || (canDeepen && studyDepth === 'understand')) && (
             <div className="mt-3 sm:mt-5 flex justify-center">
               <button
@@ -78,7 +80,7 @@ export function VerseStudyDisclosure({
                 className="inline-flex min-h-11 items-center gap-2 rounded-full border border-dharma-border/70 px-3.5 py-2 text-xs font-semibold text-saffron-800 transition-colors hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 dark:text-saffron-300"
               >
                 <Layers className="h-3.5 w-3.5" aria-hidden="true" />
-                <span><span lang="hi" className="font-devanagari">पूर्ण अध्ययन यहीं देखें</span> · <span lang="en">Show the full study here</span></span>
+                <span><span lang="hi" className="font-devanagari">अधिक अध्ययन सामग्री देखें</span> · <span lang="en">Show more study details</span></span>
               </button>
             </div>
           )}

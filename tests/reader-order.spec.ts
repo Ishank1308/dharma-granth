@@ -31,7 +31,7 @@ test('chapter study shows related questions once after grouping', async ({ page 
   if ((await trigger.getAttribute('aria-expanded')) !== 'true') await trigger.click();
   // A panel the reading depth opened by default does not fetch the verse page's
   // study until the reader asks for it (VerseStudyDisclosure).
-  const showFull = card.getByRole('button', { name: /Show the full study here/ });
+  const showFull = card.getByRole('button', { name: /Show more study details/ });
   await expect(card.locator('.verse-study-panel')).toBeVisible();
   if (await showFull.count()) await showFull.click();
   const extras = card.locator('.verse-page-extras');
