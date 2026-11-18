@@ -284,7 +284,7 @@ export function ReaderLayers({
   const meaningNow = meaningState(verse);
   const hasArth = showHindiTrans || showEnglishTrans;
   const bothPending = showHindiTrans && showEnglishTrans && meaningNow.hi === 'pending' && meaningNow.en === 'pending';
-  const hasPadas = Boolean(settings.showCommentary && !isQuick && !settings.liteMode && verse.wordMeaning);
+  const hasPadas = Boolean(settings.showCommentary && !isQuick && !settings.liteMode && glosses.length > 0);
   const [showPadas, setShowPadas] = useState(false);
   // Traditional commentary appears only once a reviewed commentary exists for this verse;
   // until then the layer would just repeat the text above around an "add commentary" notice.
