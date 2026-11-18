@@ -209,11 +209,10 @@ jobs:
           path: dist.tar.zst
           key: dist-export-${{ github.run_id }}
 
-      # For deploy-cloudflare.yml after the merge. Best effort: when the upload
-      # fails (for example, the artifact storage quota is used up), master
-      # simply builds again as before.
+      # For deploy-cloudflare.yml after the merge, and as a fallback for e2e/preview
+      # in this run when actions/cache/save is denied (e.g. Cache mode: read after quick merge).
       - name: Keep export for the master deploy
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
         continue-on-error: true
         uses: actions/upload-artifact@v6
         with:
@@ -271,11 +270,17 @@ jobs:
           npm install --no-audit --no-fund $deps
 
       - name: Restore export
+        id: restore-export
         uses: actions/cache/restore@v5
         with:
           path: dist.tar.zst
           key: dist-export-${{ github.run_id }}
-          fail-on-cache-miss: true
+
+      - name: Download export artifact on cache miss
+        if: steps.restore-export.outputs.cache-hit != 'true'
+        uses: actions/download-artifact@v7
+        with:
+          name: dist-tree-${{ needs.build.outputs.tree }}
 
       - name: Unpack export
         run: zstd -d -q -c dist.tar.zst | tar -xf - && rm dist.tar.zst
@@ -326,12 +331,18 @@ jobs:
           filter: blob:none
 
       - name: Restore export
+        id: restore-export
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
         uses: actions/cache/restore@v5
         with:
           path: dist.tar.zst
           key: dist-export-${{ github.run_id }}
-          fail-on-cache-miss: true
+
+      - name: Download export artifact on cache miss
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true' && steps.restore-export.outputs.cache-hit != 'true'
+        uses: actions/download-artifact@v7
+        with:
+          name: dist-tree-${{ needs.build.outputs.tree }}
 
       - name: Unpack export
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
