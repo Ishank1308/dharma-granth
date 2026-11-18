@@ -6,8 +6,8 @@ test('chapter padaccheda keeps original Sanskrit, verse number and recitation te
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/scripture/ishavasya/chapter/1/');
 
+  await page.locator('#verse-4').scrollIntoViewIfNeeded();
   const card = page.locator('article.verse-card:not(.vt)#verse-4');
-  await card.scrollIntoViewIfNeeded();
   const source = card.locator('.verse-folio > p[lang="sa"]');
   await expect(source).toBeVisible();
 
