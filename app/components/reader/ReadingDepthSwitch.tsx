@@ -37,7 +37,7 @@ export function ReadingDepthSwitch({ className = '' }: { className?: string }) {
   };
 
   return (
-    <div role="radiogroup" aria-label="Reading depth · पठन गहराई" className={`inline-flex rounded-xl border border-dharma-border bg-dharma-bg p-0.5 ${className}`}>
+    <div role="group" aria-label="Reading depth · पठन गहराई" className={`inline-flex rounded-xl border border-dharma-border bg-dharma-bg p-0.5 ${className}`}>
       {READING_DEPTHS.map((d, index) => {
         const on = d.id === depth;
         return (
@@ -45,8 +45,7 @@ export function ReadingDepthSwitch({ className = '' }: { className?: string }) {
             key={d.id}
             ref={(el) => { buttons.current[index] = el; }}
             type="button"
-            role="radio"
-            aria-checked={on}
+            aria-pressed={on}
             tabIndex={on ? 0 : -1}
             title={d.hint}
             onClick={() => setDepth(d.id)}
