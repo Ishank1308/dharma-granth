@@ -103,3 +103,6 @@ data/sources-local/gitapress_official_epubs/
 # Extraction tokens and cookies
 scripts/*session_token*
 scripts/*cookies*
+
+# Over GitHub's 100 MB limit: committed as .json.gz, unpacked by scripts/unpack-data.mjs
+/public/data/scriptures-full/mahabharata.json
