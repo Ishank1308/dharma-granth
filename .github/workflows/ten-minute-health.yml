@@ -108,7 +108,8 @@ jobs:
                   redirect: 'follow',
                   signal: AbortSignal.timeout(15000),
                   headers: {
-                    'User-Agent': 'Mozilla/5.0 (compatible; DharmaGranthHealth/1.0; +https://dharmagranth.dev/)',
+                    // Match the default Node fetch identity used by the production RSC parity verifier.
+                    // Cloudflare rejects the self-identified health-bot UA even while browser traffic is healthy.
                     'Accept': 'text/html,application/xhtml+xml',
                   },
                 });
