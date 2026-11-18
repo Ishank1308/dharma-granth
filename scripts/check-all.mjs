@@ -29,6 +29,7 @@ const CHECKS = [
   'scripts/check-printed-footnotes.ts',
   'scripts/check-filler-chapters.ts',
   'scripts/check-catalogue-counts.ts',
+  'scripts/test-word-gloss.ts',
   'scripts/test-ocr-hindi-review.ts',
   'scripts/test-written-meaning-review.ts',
   'scripts/test-devibhagavat-source-integrity.ts',

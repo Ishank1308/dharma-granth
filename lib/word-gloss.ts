@@ -16,7 +16,17 @@ export function parseWordMeanings(text?: string): WordGloss[] {
       if (cut > 0) {
         const pada = item.slice(0, cut).trim();
         const meaning = item.slice(cut).replace(/^\s*[—–-]\s*/, '').trim();
-        if (pada && meaning) out.push({ pada, meaning });
+        const unquotedPada = pada.replace(/^[\"'“”]+|[\"'“”]+$/g, '').trim();
+        // Many legacy wordMeaning fields actually contain long editorial prose.
+        // A dash in an English sentence is not evidence of Sanskrit word glosses.
+        const isWordLike =
+          unquotedPada.length > 0 &&
+          unquotedPada.length <= 48 &&
+          unquotedPada.split(/\s+/).length <= 3 &&
+          !/[.!?:;]/.test(unquotedPada) &&
+          !/^(?:the|this|that|these|those|a|an|when|where|how|why)\b/i.test(unquotedPada);
+        const isConciseMeaning = meaning.length > 0 && meaning.length <= 160;
+        if (isWordLike && isConciseMeaning) out.push({ pada, meaning });
       }
     });
   return out;

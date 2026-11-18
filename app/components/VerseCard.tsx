@@ -699,42 +699,6 @@ export function VerseCard({
                 </span>
               </div>
             )}
-            {isSandhiSplit && hasSplitData ? (
-              <div data-reveal="1" className="mx-auto my-2 max-w-2xl text-center">
-                <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-amber-300/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-amber-950/30">
-                  {splitWords.map((w, wIdx) => {
-                    const isHovered = hoveredWordIndex === wIdx;
-                    return (
-                      <button
-                        key={wIdx}
-                        type="button"
-                        onMouseEnter={() => setHoveredWordIndex(wIdx)}
-                        onMouseLeave={() => setHoveredWordIndex(null)}
-                        onClick={() => setHoveredWordIndex(isHovered ? null : wIdx)}
-                        className={`cursor-pointer rounded-xl px-3 py-1.5 text-base md:text-lg font-devanagari font-bold transition-all ${
-                          isHovered
-                            ? 'bg-saffron-600 text-white shadow-md scale-105 ring-2 ring-saffron-400'
-                            : 'bg-dharma-card/90 text-dharma-text border border-dharma-border/80 hover:border-saffron-400 hover:bg-saffron-50 dark:hover:bg-saffron-950/40'
-                        }`}
-                      >
-                        {w.pada}
-                      </button>
-                    );
-                  })}
-                </div>
-                {hoveredWordIndex !== null && splitWords[hoveredWordIndex] && (
-                  <div className="mt-3 inline-flex items-center gap-2 rounded-xl border border-saffron-300 bg-saffron-100/90 px-3.5 py-1.5 text-xs text-saffron-950 shadow-sm dark:border-saffron-700 dark:bg-saffron-950/60 dark:text-saffron-200">
-                    <span className="font-devanagari font-bold text-sm">{splitWords[hoveredWordIndex].pada}</span>
-                    {splitWords[hoveredWordIndex].meaning && (
-                      <span className="font-medium">→ {splitWords[hoveredWordIndex].meaning}</span>
-                    )}
-                  </div>
-                )}
-                <p className="mt-2 text-[11px] text-dharma-muted italic">
-                  किसी पद पर कर्सर ले जाएँ या टैप करें — हिंदी और अंग्रेज़ी अर्थ देखें
-                </p>
-              </div>
-            ) : (
               <p data-reveal="1" lang="sa" className={`font-devanagari ${sanskritFontSizeClass} text-dharma-text`}>
                 {lines.map((line, i) => {
                   const recitationLineIdx = hasSpeakerInText ? i + 1 : i;
@@ -760,6 +724,44 @@ export function VerseCard({
                   ॥ {verseMarkNumber(verseLabel)} ॥
                 </span>
               </p>
+            {isSandhiSplit && hasSplitData && (
+              <div data-reveal="2" role="group" aria-label="पदच्छेद और शब्दार्थ · Word-by-word reading aid" className="mx-auto mt-3 max-w-2xl text-center">
+                <p lang="hi" className="mb-2 text-xs font-medium text-dharma-muted">पदच्छेद · मूल श्लोक के शब्दों का पृथक अध्ययन</p>
+                <div className="flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-amber-300/80 bg-amber-50/70 p-4 dark:border-amber-900/40 dark:bg-amber-950/30">
+                  {splitWords.map((w, wIdx) => {
+                    const isHovered = hoveredWordIndex === wIdx;
+                    return (
+                      <button
+                        key={wIdx}
+                        type="button"
+                        onMouseEnter={() => setHoveredWordIndex(wIdx)}
+                        onMouseLeave={() => setHoveredWordIndex(null)}
+                        onClick={() => setHoveredWordIndex(isHovered ? null : wIdx)}
+                        aria-pressed={isHovered}
+                        lang="sa"
+                        className={`cursor-pointer rounded-xl px-3 py-1.5 text-base md:text-lg font-devanagari font-bold transition-all ${
+                          isHovered
+                            ? 'bg-saffron-600 text-white shadow-md scale-105 ring-2 ring-saffron-400'
+                            : 'bg-dharma-card/90 text-dharma-text border border-dharma-border/80 hover:border-saffron-400 hover:bg-saffron-50 dark:hover:bg-saffron-950/40'
+                        }`}
+                      >
+                        {w.pada}
+                      </button>
+                    );
+                  })}
+                </div>
+                {hoveredWordIndex !== null && splitWords[hoveredWordIndex] && (
+                  <div className="mt-3 inline-flex items-center gap-2 rounded-xl border border-saffron-300 bg-saffron-100/90 px-3.5 py-1.5 text-xs text-saffron-950 shadow-sm dark:border-saffron-700 dark:bg-saffron-950/60 dark:text-saffron-200">
+                    <span className="font-devanagari font-bold text-sm">{splitWords[hoveredWordIndex].pada}</span>
+                    {splitWords[hoveredWordIndex].meaning && (
+                      <span className="font-medium">→ {splitWords[hoveredWordIndex].meaning}</span>
+                    )}
+                  </div>
+                )}
+                <p className="mt-2 text-[11px] text-dharma-muted italic">
+                  किसी पद पर कर्सर ले जाएँ या टैप करें — हिंदी और अंग्रेज़ी अर्थ देखें
+                </p>
+              </div>
             )}
             {transliterationText && layers.translit && (
               <p
