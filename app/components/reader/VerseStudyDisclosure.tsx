@@ -25,6 +25,8 @@ export function VerseStudyDisclosure({
   children: (depth: StudyDepth) => ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen ?? (depth !== 'read'));
+  // Do not animate dozens of automatically expanded chapter panels during hydration.
+  const [openedByReader, setOpenedByReader] = useState(false);
   // The extra questions/context are fetched from a standalone verse page only on explicit request.
   // Opening the local व्याख्या alone never triggers a network request for every card in the chapter.
   const [fullStudy, setFullStudy] = useState(loadFullStudy);
@@ -48,7 +50,10 @@ export function VerseStudyDisclosure({
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => {
+          setOpenedByReader(true);
+          setOpen((value) => !value);
+        }}
         className="flex min-h-11 w-full items-center justify-between gap-2 rounded-xl border border-dharma-border/60 bg-dharma-card-soft/50 px-3 py-2 text-left text-xs font-medium text-dharma-muted transition-colors hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
       >
         <span id={titleId}>
@@ -59,7 +64,7 @@ export function VerseStudyDisclosure({
       </button>
 
       {open && (
-        <div id={panelId} role="region" aria-labelledby={titleId} className="verse-study-panel liquid-reveal min-w-0 pt-2 sm:pt-3">
+        <div id={panelId} role="region" aria-labelledby={titleId} className={`verse-study-panel min-w-0 pt-2 sm:pt-3 ${openedByReader ? 'liquid-reveal' : ''}`}>
           {children(studyDepth)}
           {versePageHref && fullStudy && <VersePageExtras href={versePageHref} />}
           {/* Deliberately opt in to deeper word notes and questions from the verse page.
