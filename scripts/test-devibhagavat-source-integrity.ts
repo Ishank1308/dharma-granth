@@ -133,6 +133,29 @@ for (let n = 1; n <= 43; n++) {
 }
 console.log('✓ Devi Bhagavata publishes all 108 source-keyed Hindi meanings (chapters 1–2 and 3:1–43).');
 
+// Future chapter gate: the next chapter must not inherit the success signal for
+// chapters 1–3. Readers should never confuse the raw Sanskrit chapter count with
+// an independently checked and released Hindi interpretation.
+const subsequentChapters = scripture.chapters.filter((entry) => Number(entry.number) > 3);
+assert.ok(subsequentChapters.length > 0, 'Devi Bhagavata should retain chapters after 1.3');
+for (const sourceChapter of subsequentChapters) {
+  const n = Number(sourceChapter.number);
+  assert.ok(Number.isInteger(n), 'Devi Bhagavata chapter number must be numeric');
+  assert.ok(sourceChapter.verses.length > 0, `Devi Bhagavata chapter ${n} has no Sanskrit verses`);
+  const keys = sourceChapter.verses.map((verse) => String(verse.number));
+  assert.equal(new Set(keys).size, keys.length, `Duplicate Sanskrit verse identity in chapter ${n}`);
+  assert.ok(sourceChapter.verses.every((verse) =>
+    typeof verse.sanskrit === 'string' && /[ऀ-ॿ]/u.test(verse.sanskrit)),
+  `Missing Sanskrit text in chapter ${n}`);
+}
+const nextChapter = subsequentChapters.find((entry) => Number(entry.number) === 4);
+assert.ok(nextChapter, 'Devi Bhagavata 1.4 must exist before drafting the next guarded release');
+assert.ok(nextChapter.verses.length > 0, 'Devi Bhagavata 1.4 has no numbered Sanskrit verses');
+assert.ok(!Object.keys(draft.meanings).some((key) => /^[4-9]:|^[1-9][0-9]+:/.test(key)),
+  'Unverified later chapters must not be silently added to the 108-verse release batch');
+console.log(`✓ Devi Bhagavata later Sanskrit chapters retained; chapter 4 has ${nextChapter.verses.length} verses awaiting independent release checks.`);
+
+
 
 /**
  * Reader-visible structured व्याख्या, separately from verse meanings:
