@@ -20,7 +20,9 @@ const ROUTES = [
   { id: 'long-index', url: '/scripture/bhagavatapurana/' },
   { id: 'gita-chapter', url: '/scripture/bhagavadgita/chapter/2/' },
   { id: 'gita-verse', url: '/scripture/bhagavadgita/chapter/2/verse/47/' },
+  { id: 'ashtavakra-index', url: '/ashtavakra/' },
   { id: 'ashtavakra', url: '/ashtavakra/1/' },
+  { id: 'ashtavakra-verse', url: '/ashtavakra/1/3/' },
   { id: 'panchang', url: '/panchang/' },
   { id: 'practice', url: '/practice/' },
 ] as const;
@@ -98,10 +100,17 @@ for (const theme of THEMES) {
   for (const width of WIDTHS) {
     for (const route of ROUTES) {
       test(`visual audit ${route.id}: ${theme}, ${width}px`, async ({ page }) => {
-        if (route.id === 'gita-chapter' || route.id === 'gita-verse') test.slow();
+        if (['gita-chapter', 'gita-verse', 'ashtavakra-verse'].includes(route.id)) test.slow();
         await prepare(page, route.url, theme, width);
         await capture(page, route.id, theme, width, false);
 
+        if (route.id === 'ashtavakra-index') {
+          await page.locator('#chapters').screenshot({
+            path: join(OUT, `ashtavakra-index-${theme}-${width}-chapters.png`),
+            animations: 'disabled',
+            timeout: 20_000,
+          });
+        }
         if (route.id === 'gita-index' || route.id === 'ramayana-index' || route.id === 'devi-index') {
           const illustrations = page.locator('section[aria-labelledby="chapter-highlights-title"]');
           if (await illustrations.count()) {
@@ -112,8 +121,8 @@ for (const theme of THEMES) {
             });
           }
         }
-        if (route.id === 'gita-chapter' || route.id === 'gita-verse') {
-          const verse = page.locator('[id^="verse-"]').first();
+        if (['gita-chapter', 'gita-verse', 'ashtavakra-verse'].includes(route.id)) {
+          const verse = page.locator('[id^="verse-"], [id^="ash-"][id$="-verse"]').first();
           if (await verse.count()) {
             await verse.scrollIntoViewIfNeeded();
             await page.screenshot({
@@ -127,7 +136,7 @@ for (const theme of THEMES) {
     }
   }
 
-  for (const route of ROUTES.filter((r) => ['home', 'gita-index', 'long-index', 'gita-chapter', 'ashtavakra'].includes(r.id))) {
+  for (const route of ROUTES.filter((r) => ['home', 'gita-index', 'long-index', 'gita-chapter', 'ashtavakra', 'ashtavakra-index'].includes(r.id))) {
     test(`200% text resize ${route.id}: ${theme}, 390px`, async ({ page }) => {
       if (route.id === 'gita-chapter') test.slow();
       await prepare(page, route.url, theme, 390);
