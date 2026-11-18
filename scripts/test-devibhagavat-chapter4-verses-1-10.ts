@@ -21,7 +21,7 @@ assert.equal(staged.sourceWitness, 'https://sanskritdocuments.org/doc_purana/dev
 assert.equal(staged.reviewStatus, 'unreviewed');
 assert.equal(staged.publicationStatus, 'staged');
 assert.equal(staged.keyFormat, 'chapter:verse');
-const keys = Object.keys(staged.entries).sort();
+const keys = Object.keys(staged.entries).sort((a, b) => Number(a.split(':')[1]) - Number(b.split(':')[1]));
 assert.deepEqual(keys, Array.from({length: 10}, (_, i) => `4:${i + 1}`), 'Only first ten chapter 4 verse identities are staged');
 const chapter = source.chapters.find((entry) => Number(entry.number) === 4);
 assert.ok(chapter && chapter.verses.length >= 10, 'Devi Bhagavata chapter 4 Sanskrit is missing');
