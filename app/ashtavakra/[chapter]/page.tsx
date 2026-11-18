@@ -110,14 +110,22 @@ export default async function ChapterPage(props: { params: Promise<{ chapter: st
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <header className="relative overflow-hidden">
+      <header className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 bg-dharma-card/60">
         <ChapterEnvironment meta={m} />
-        <div className="mx-auto max-w-4xl px-4 pb-10 pt-12 sm:px-6 sm:pt-16">
-          <nav aria-label="ब्रेडक्रम्ब" className="ash-meta">
-            <Link href="/ashtavakra/" className="ash-link underline">अष्टावक्र गीता</Link> / <span>{m.bookTitle}</span>
+        <div className="relative mx-auto max-w-4xl px-5 pb-10 pt-8 sm:px-6 sm:pt-12">
+          <nav aria-label="Breadcrumb" className="mb-5 text-sm text-dharma-muted">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <li><Link href="/" className="focus-ring rounded-md hover:underline">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href="/scriptures/" className="focus-ring rounded-md hover:underline">Scriptures</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href="/ashtavakra/" className="focus-ring rounded-md hover:underline">अष्टावक्र गीता</Link></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="font-semibold text-dharma-text">{m.bookTitle}</li>
+            </ol>
           </nav>
-          <p className="ash-eyebrow mt-4">अध्याय {n} · {m.bookTitle}</p>
-          <h1 lang="hi" className="ash-hero-title font-bold" style={{ fontSize: 'clamp(2rem, 1.4rem + 3vw, 3.4rem)', lineHeight: 1.35 }}>
+          <p className="editorial-section-eyebrow">अध्याय {n} · {m.bookTitle} · Sacred reading</p>
+          <h1 lang="hi" className="mt-3 max-w-3xl break-words font-devanagari text-[clamp(1.8rem,6vw,3rem)] font-bold leading-[1.4] text-dharma-text">
             {m.title}
           </h1>
           <p className="ash-meta">संपादकीय विषय-शीर्षक · पुस्तक में नाम: {m.bookTitle}</p>
@@ -129,14 +137,27 @@ export default async function ChapterPage(props: { params: Promise<{ chapter: st
             <div><dt className="ash-meta">प्रमुख विषय</dt><dd lang="hi" className="font-bold">{d.hero.mainTopics.join(' · ')}</dd></div>
           </dl>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#verses" className="ash-btn ash-btn-primary">पढ़ना प्रारम्भ करें</a>
-            <Link href={verseHref(d.verses[0].verseNumber)} className="ash-btn">श्लोक {d.verses[0].verseNumber} से</Link>
+            <a href="#verses" className="cta-primary focus-ring inline-flex min-h-11 items-center justify-center rounded-full bg-saffron-700 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-saffron-800">पढ़ना शुरू करें · Start reading</a>
+            <Link href={verseHref(d.verses[0].verseNumber)} className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text hover:border-dharma-saffron">श्लोक {d.verses[0].verseNumber} देखें</Link>
           </div>
           <div className="mt-5"><ChapterFigureCaption meta={m} /></div>
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-4xl gap-10 px-4 pb-24 sm:px-6">
+      <div className="mx-auto grid max-w-4xl gap-10 px-5 pb-24 pt-6 sm:px-6 sm:pt-8">
+        {/* Keep Sanskrit reading immediately accessible; editorial orientation follows. */}
+        <section id="verses" aria-labelledby="verses-h" className="grid gap-6 scroll-mt-24 sm:gap-8">
+          <div>
+            <h2 id="verses-h" className="editorial-section-title text-dharma-text">श्लोक-दर-श्लोक स्वाध्याय · Sacred Reading</h2>
+            <p className="ash-meta mt-1">
+              {d.verses.length} श्लोक, पुस्तक के क्रम में।{' '}
+              {reviewCount > 0 ? `${reviewCount} श्लोकों पर पुस्तक के छपे पाठ में भेद मिला है और उन पर “समीक्षा आवश्यक” दर्शाया गया है।` : 'सभी श्लोक मूल पृष्ठ से मिलान किए गए हैं।'}
+            </p>
+            <p className="mt-2 flex flex-wrap gap-2"><VerificationBadge status="verified" /><VerificationBadge status="review-required" /></p>
+          </div>
+          {d.verses.map((v) => <VerseCompact key={v.verseNumber} v={v} />)}
+        </section>
+
         <section aria-labelledby="intro" className="ash-card">
           <h2 id="intro" className="font-bold" style={{ fontSize: '1.4rem' }}>अध्याय का परिचय</h2>
           <Paras text={d.introduction} className="ash-hindi mt-2" />
@@ -163,18 +184,6 @@ export default async function ChapterPage(props: { params: Promise<{ chapter: st
               <div key={c.term} className="ash-card"><dt lang="sa" className="font-bold">{c.term}</dt><dd lang="hi" className="ash-hindi">{c.definition}</dd></div>
             ))}
           </dl>
-        </section>
-
-        <section id="verses" aria-labelledby="verses-h" className="grid gap-6 sm:gap-8 scroll-mt-6">
-          <div>
-            <h2 id="verses-h" className="font-bold text-xl sm:text-2xl text-dharma-text">श्लोक-दर-श्लोक स्वाध्याय · Sacred Reading</h2>
-            <p className="ash-meta mt-1">
-              {d.verses.length} श्लोक, पुस्तक के क्रम में।{' '}
-              {reviewCount > 0 ? `${reviewCount} श्लोकों पर पुस्तक के छपे पाठ में भेद मिला है और उन पर “समीक्षा आवश्यक” दर्शाया गया है।` : 'सभी श्लोक मूल पृष्ठ से मिलान किए गए हैं।'}
-            </p>
-            <p className="mt-2 flex flex-wrap gap-2"><VerificationBadge status="verified" /><VerificationBadge status="review-required" /></p>
-          </div>
-          {d.verses.map((v) => <VerseCompact key={v.verseNumber} v={v} />)}
         </section>
 
         <section aria-labelledby="end" className="ash-card">
