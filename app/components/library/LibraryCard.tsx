@@ -175,8 +175,15 @@ export function LibraryCard({
       const visits = JSON.parse(raw);
       if (!Array.isArray(visits)) return;
       const match = visits.find((v: { scriptureId?: string }) => v?.scriptureId === item.id);
-      if (match && Number.isInteger(match.chapterId) && match.chapterId >= 1 && match.chapterId <= item.totalChapters) {
-        setVisitedChapter(match.chapterId);
+      const rawChapter: unknown = match?.chapterId;
+      // Rebuild the chapter number from digits only; never forward stored HTML
+      // or free-form text into a rendered link.
+      if (typeof rawChapter !== 'number' && typeof rawChapter !== 'string') return;
+      const digits = String(rawChapter);
+      if (!/^[1-9][0-9]{0,4}$/.test(digits)) return;
+      const chapterNumber = Number(digits);
+      if (Number.isSafeInteger(chapterNumber) && chapterNumber <= item.totalChapters) {
+        setVisitedChapter(chapterNumber);
       }
     } catch {
       // ignore storage errors
