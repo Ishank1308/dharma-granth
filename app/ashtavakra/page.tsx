@@ -47,25 +47,35 @@ export default function AshtavakraHome() {
   return (
     <main id="main">
       {/* 1. Hero */}
-      <header className="relative overflow-hidden">
+      <header className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 text-dharma-text">
         <HeroEnvironment />
-        <div className="mx-auto max-w-5xl px-4 pb-14 pt-16 text-center sm:px-6 sm:pt-24">
-          <h1 lang="hi" className="ash-hero-title font-bold" style={{ fontSize: 'clamp(2.4rem, 1.6rem + 4vw, 4.2rem)', lineHeight: 1.3 }}>
+        <div className="relative mx-auto max-w-5xl px-6 pb-10 pt-10 sm:py-14">
+          <nav aria-label="Breadcrumb" className="mb-5 text-sm text-dharma-muted">
+            <ol className="flex flex-wrap items-center gap-2">
+              <li><Link href="/" className="focus-ring hover:text-saffron-700">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href="/scriptures/" className="focus-ring hover:text-saffron-700">Scriptures</Link></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="font-semibold text-dharma-text">अष्टावक्र गीता</li>
+            </ol>
+          </nav>
+          <p className="editorial-section-eyebrow">Scripture contents · ग्रंथ सूची</p>
+          <h1 lang="hi" className="mt-2 font-serif text-[clamp(1.8rem,8vw,3rem)] font-bold leading-tight tracking-tight text-dharma-text">
             अष्टावक्र गीता
           </h1>
-          <p lang="hi" className="ash-reveal mt-3 font-bold" style={{ fontSize: 'clamp(1.15rem, 1rem + 0.8vw, 1.5rem)' }}>
+          <p lang="hi" className="mt-3 font-devanagari text-lg font-semibold text-dharma-text" style={{ fontSize: 'clamp(1.15rem, 1rem + 0.8vw, 1.5rem)' }}>
             स्वयं को बदलने से पहले, स्वयं को पहचानने की यात्रा
           </p>
-          <p lang="hi" className="ash-reveal ash-hindi mx-auto mt-3 max-w-2xl">
+          <p lang="hi" className="mt-3 max-w-2xl font-devanagari text-base leading-relaxed text-dharma-muted">
             मूल संस्कृत, पुस्तकानुसार हिन्दी भावार्थ, सरल व्याख्या और आधुनिक जीवन से जुड़ी समझ
           </p>
-          <div className="ash-reveal mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/ashtavakra/1/" className="ash-btn ash-btn-primary">अध्ययन प्रारम्भ करें</Link>
-            <a href="#chapters" className="ash-btn">20 अध्याय देखें</a>
-            <a href="#daily" className="ash-btn">आज का श्लोक</a>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Link href="/ashtavakra/1/" className="focus-ring inline-flex min-h-11 items-center rounded-full bg-saffron-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-saffron-800">अध्ययन प्रारम्भ करें</Link>
+            <a href="#chapters" className="focus-ring inline-flex min-h-11 items-center rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-sm font-semibold text-dharma-text hover:border-saffron-400">20 अध्याय देखें</a>
+            <a href="#daily" className="focus-ring inline-flex min-h-11 items-center rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-sm font-semibold text-dharma-text hover:border-saffron-400">आज का श्लोक</a>
             <SkipAnimation />
           </div>
-          <p className="ash-meta mt-6">
+          <p className="mt-5 text-sm text-dharma-muted">
             अभी उपलब्ध: {totals.chapters} प्रकरण और {totals.verses} श्लोक, कुल {totals.allChapters} में से।
             {unpublished.length > 0 ? ' शेष प्रकरण क्रम से जोड़े जा रहे हैं।' : ''}
           </p>
@@ -98,8 +108,9 @@ export default function AshtavakraHome() {
         </section>
 
         {/* 4. Chapter path */}
-        <section id="chapters" aria-labelledby="path-h" className="scroll-mt-6">
-          <h2 id="path-h" className="font-bold" style={{ fontSize: '1.5rem' }}>चेतना का पथ: प्रकरण 1–{totals.chapters} प्रकाशित</h2>
+        <section id="chapters" aria-labelledby="path-h" className="scroll-mt-24">
+          <p className="editorial-section-eyebrow">पाठ संरचना · Reading structure</p>
+          <h2 id="path-h" className="editorial-section-title mt-2">Adhyay / Sections · प्रकरण 1–{totals.chapters}</h2>
           <p className="ash-meta mt-1 mb-4">
             परंपरा में {totals.allChapters} प्रकरण हैं। इस स्थल पर प्रकरण 1 से {totals.chapters} तक प्रकाशित हैं और खुलते हैं।
             {unpublished.length > 0 ? ` प्रकरण ${unpublished.join(' और ')} अभी स्थल पर नहीं हैं; वे नीचे केवल संकेत के रूप में हैं और किसी पृष्ठ पर नहीं खुलते।` : ''}

@@ -104,24 +104,32 @@ export default async function ChapterPage(props: { params: Promise<{ chapter: st
   const nextPublished = nextMeta && getChapterData(n + 1);
 
   return (
-    <main id="main">
+    <main id="main" className="min-h-screen bg-dharma-bg text-dharma-text">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <header className="relative overflow-hidden">
+      <header className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60">
         <ChapterEnvironment meta={m} />
-        <div className="mx-auto max-w-4xl px-4 pb-10 pt-12 sm:px-6 sm:pt-16">
-          <nav aria-label="ब्रेडक्रम्ब" className="ash-meta">
-            <Link href="/ashtavakra/" className="ash-link underline">अष्टावक्र गीता</Link> / <span>{m.bookTitle}</span>
+        <div className="relative mx-auto max-w-4xl px-6 pb-10 pt-10 sm:py-14">
+          <nav aria-label="Breadcrumb" className="mb-5 text-sm text-dharma-muted">
+            <ol className="flex flex-wrap items-center gap-2">
+              <li><Link href="/" className="focus-ring hover:text-saffron-700">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href="/scriptures/" className="focus-ring hover:text-saffron-700">Scriptures</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href="/ashtavakra/" className="focus-ring hover:text-saffron-700">अष्टावक्र गीता</Link></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="font-semibold text-dharma-text">{m.bookTitle}</li>
+            </ol>
           </nav>
-          <p className="ash-eyebrow mt-4">अध्याय {n} · {m.bookTitle}</p>
-          <h1 lang="hi" className="ash-hero-title font-bold" style={{ fontSize: 'clamp(2rem, 1.4rem + 3vw, 3.4rem)', lineHeight: 1.35 }}>
+          <p className="editorial-section-eyebrow">Sacred reading · पवित्र पाठ · अध्याय {n}</p>
+          <h1 lang="hi" className="mt-2 font-serif text-[clamp(1.8rem,8vw,3rem)] font-bold leading-tight tracking-tight text-dharma-text">
             {m.title}
           </h1>
           <p className="ash-meta">संपादकीय विषय-शीर्षक · पुस्तक में नाम: {m.bookTitle}</p>
-          <p lang="hi" className="ash-reveal ash-hindi mt-3 max-w-2xl">{d.hero.oneLineSummary}</p>
+          <p lang="hi" className="mt-3 max-w-2xl font-devanagari text-base leading-relaxed text-dharma-muted">{d.hero.oneLineSummary}</p>
           <dl className="ash-reveal mt-5 grid gap-x-8 gap-y-2 text-base sm:grid-cols-2">
             <div><dt className="ash-meta">श्लोकों की कुल संख्या</dt><dd className="font-bold">{d.hero.totalVerses}</dd></div>
             <div><dt className="ash-meta">अनुमानित पठन समय</dt><dd className="font-bold" lang="hi">{d.hero.estimatedReadingTime.split(';')[0]}</dd></div>
@@ -129,8 +137,8 @@ export default async function ChapterPage(props: { params: Promise<{ chapter: st
             <div><dt className="ash-meta">प्रमुख विषय</dt><dd lang="hi" className="font-bold">{d.hero.mainTopics.join(' · ')}</dd></div>
           </dl>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#verses" className="ash-btn ash-btn-primary">पढ़ना प्रारम्भ करें</a>
-            <Link href={verseHref(d.verses[0].verseNumber)} className="ash-btn">श्लोक {d.verses[0].verseNumber} से</Link>
+            <a href="#verses" className="focus-ring inline-flex min-h-11 items-center rounded-full bg-saffron-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-saffron-800">पढ़ना प्रारम्भ करें</a>
+            <Link href={verseHref(d.verses[0].verseNumber)} className="focus-ring inline-flex min-h-11 items-center rounded-full border border-dharma-border bg-dharma-card px-5 py-2.5 text-sm font-semibold text-dharma-text hover:border-saffron-400">श्लोक {d.verses[0].verseNumber} से</Link>
           </div>
           <div className="mt-5"><ChapterFigureCaption meta={m} /></div>
         </div>

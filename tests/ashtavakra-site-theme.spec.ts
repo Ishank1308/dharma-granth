@@ -24,3 +24,33 @@ test('Legacy Ashtavakra Dark choice cannot override Sandhya Sunset', async ({ pa
   const accent = await page.locator('.ash').evaluate((el) => getComputedStyle(el).getPropertyValue('--ash-accent').trim());
   expect(accent).not.toBe('#e0b066');
 });
+
+test('Ashtavakra index uses standard scripture breadcrumbs and responsive chapter cards', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/ashtavakra/');
+
+  const breadcrumbs = page.getByRole('navigation', { name: 'Breadcrumb' });
+  await expect(breadcrumbs.getByRole('link', { name: 'Scriptures' })).toHaveAttribute('href', '/scriptures/');
+  const chapters = page.locator('#chapters');
+  await expect(chapters.getByRole('heading', { name: /Adhyay \/ Sections/ })).toBeVisible();
+  const cards = chapters.locator('ol > li');
+  await expect(cards).toHaveCount(20);
+  await expect(chapters.locator('.ash-path')).toHaveCount(0);
+  await expect(chapters.getByRole('link', { name: /पहला प्रकरण/ }).first()).toBeVisible();
+
+  const width = await page.evaluate(() => document.documentElement.scrollWidth);
+  expect(width).toBeLessThanOrEqual(321);
+});
+
+test('Ashtavakra chapter shares scripture breadcrumb and reading header', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.goto('/ashtavakra/1/');
+  const breadcrumb = page.getByRole('navigation', { name: 'Breadcrumb' });
+  await expect(breadcrumb.getByRole('link', { name: 'Scriptures' })).toHaveAttribute('href', '/scriptures/');
+  await expect(breadcrumb.getByRole('link', { name: 'अष्टावक्र गीता' })).toHaveAttribute('href', '/ashtavakra/');
+  await expect(page.getByText('Sacred reading · पवित्र पाठ · अध्याय 1')).toBeVisible();
+  await expect(page.locator('#verses')).toBeVisible();
+  const width = await page.evaluate(() => document.documentElement.scrollWidth);
+  expect(width).toBeLessThanOrEqual(321);
+});
