@@ -1,12 +1,12 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, chapter 3 verses 1–43, and chapter 4 verses 1–15.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, chapter 3 verses 1–43, and chapter 4 verses 1–20.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
  * blocked. Source Sanskrit is never modified.
  *
  * Witness: https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html
- * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–15). Hindi is an AI-assisted, independently worded
+ * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–20). Hindi is an AI-assisted, independently worded
  * interpretation of that Sanskrit; it is NOT a Gita Press transcription or
  * scholar-certified translation. The reader displays an editorial study-translation label and provides truthful AI-assistance provenance.
  */
@@ -146,6 +146,11 @@ export const DEVI_CHAPTER_4_WITNESS_OPENINGS = [
   "अथवा किं गयाश्राद्धं गत्वा संवितरिष्यति",
   "संसारेऽत्र समाख्यातं सुखानामुत्तमं सुखम्",
   "अपुत्रस्य गतिर्नास्ति स्वर्गो नैव च नैव च",
+  "मन्वादिभिश्च मुनिभिर्धर्मशास्त्रेषु भाषितम्",
+  "दृश्यतेऽत्र समक्षं तन्नानुमानेन साध्यते",
+  "आतुरे मृत्युकालेऽपि भूमिशय्यागतो नरः",
+  "धनं मे विपुलं गेहे पात्राणि विविधानि च",
+  "मृत्युकाले मनस्तस्य दुःखेन भ्रमते यतः",
 ] as const;
 
 type Verse = Record<string, unknown>;
