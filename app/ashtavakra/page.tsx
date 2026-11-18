@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
 import { keepDanda, CHAPTERS, getChapterData, getVerse, publishedChapterNumbers, publishedTotals, verseHref } from '@/lib/ashtavakra';
-import { HeroEnvironment, ConceptVisual } from './visuals';
+import { ConceptVisual } from './visuals';
 import { ChapterPath, type PathChapter } from './ChapterPath';
 import { ContinueReading, DailyVerse, SkipAnimation, type DailyItem } from './VerseBits';
 
@@ -46,33 +46,61 @@ export default function AshtavakraHome() {
 
   return (
     <main id="main">
-      {/* 1. Hero */}
-      <header className="relative overflow-hidden">
-        <HeroEnvironment />
-        <div className="mx-auto max-w-5xl px-4 pb-14 pt-16 text-center sm:px-6 sm:pt-24">
-          <h1 lang="hi" className="ash-hero-title font-bold" style={{ fontSize: 'clamp(2.4rem, 1.6rem + 4vw, 4.2rem)', lineHeight: 1.3 }}>
+      {/* Same scripture-contents header used across the library. */}
+      <header className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 bg-dharma-card/60">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-28 h-80 w-80 rounded-full bg-dharma-saffron/5 blur-3xl" />
+        <div className="relative mx-auto max-w-5xl px-5 pb-10 pt-7 sm:px-6 sm:pb-14 sm:pt-12">
+          <nav aria-label="Breadcrumb" className="mb-5 text-sm text-dharma-muted">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
+              <li><Link href="/" className="focus-ring rounded-md underline-offset-4 hover:underline">Home</Link></li>
+              <li aria-hidden="true">/</li>
+              <li><Link href="/scriptures/" className="focus-ring rounded-md underline-offset-4 hover:underline">Scriptures</Link></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="font-semibold text-dharma-text">अष्टावक्र गीता</li>
+            </ol>
+          </nav>
+          <p className="editorial-section-eyebrow">Scripture contents · ग्रंथ सूची</p>
+          <h1 lang="hi" className="mt-3 max-w-3xl break-words font-devanagari text-[clamp(2rem,7vw,3.4rem)] font-bold leading-[1.35] text-dharma-text">
             अष्टावक्र गीता
           </h1>
-          <p lang="hi" className="ash-reveal mt-3 font-bold" style={{ fontSize: 'clamp(1.15rem, 1rem + 0.8vw, 1.5rem)' }}>
+          <p lang="hi" className="mt-2 max-w-3xl font-devanagari text-lg font-semibold leading-relaxed text-dharma-text">
             स्वयं को बदलने से पहले, स्वयं को पहचानने की यात्रा
           </p>
-          <p lang="hi" className="ash-reveal ash-hindi mx-auto mt-3 max-w-2xl">
-            मूल संस्कृत, पुस्तकानुसार हिन्दी भावार्थ, सरल व्याख्या और आधुनिक जीवन से जुड़ी समझ
+          <p lang="hi" className="mt-3 max-w-3xl font-devanagari text-base leading-relaxed text-dharma-muted">
+            मूल संस्कृत, पुस्तकानुसार हिन्दी भावार्थ, सरल व्याख्या और आधुनिक जीवन से जुड़ी समझ।
           </p>
-          <div className="ash-reveal mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/ashtavakra/1/" className="ash-btn ash-btn-primary">अध्ययन प्रारम्भ करें</Link>
-            <a href="#chapters" className="ash-btn">20 अध्याय देखें</a>
-            <a href="#daily" className="ash-btn">आज का श्लोक</a>
+          <div className="mt-6 flex flex-wrap items-center gap-2.5">
+            <Link href="/ashtavakra/1/" className="cta-primary focus-ring inline-flex min-h-11 items-center justify-center rounded-full bg-saffron-700 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-saffron-800">
+              पढ़ना शुरू करें · Start reading
+            </Link>
+            <a href="#chapters" className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text hover:border-dharma-saffron">
+              प्रकरण सूची · Browse chapters
+            </a>
+            <a href="#daily" className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text hover:border-dharma-saffron">
+              आज का श्लोक
+            </a>
             <SkipAnimation />
           </div>
-          <p className="ash-meta mt-6">
-            अभी उपलब्ध: {totals.chapters} प्रकरण और {totals.verses} श्लोक, कुल {totals.allChapters} में से।
-            {unpublished.length > 0 ? ' शेष प्रकरण क्रम से जोड़े जा रहे हैं।' : ''}
+          <p className="mt-5 text-sm leading-relaxed text-dharma-muted">
+            उपलब्ध: {totals.chapters} प्रकरण · {totals.verses} श्लोक · परंपरागत प्रकरण {totals.allChapters}
+            {unpublished.length > 0 ? ' · अन्य प्रकरण क्रम से जोड़े जा रहे हैं।' : ''}
           </p>
         </div>
       </header>
 
       <div className="mx-auto grid max-w-5xl gap-14 px-4 pb-24 sm:px-6">
+        {/* Chapter contents is the primary action, before editorial supplements. */}
+        <section id="chapters" aria-labelledby="path-h" className="scroll-mt-24">
+          <p className="editorial-section-eyebrow">पाठ संरचना · Reading structure</p>
+          <h2 id="path-h" className="editorial-section-title mt-2">Adhyay / Sections</h2>
+          <p lang="hi" className="mt-2 mb-5 max-w-3xl font-devanagari text-sm leading-relaxed text-dharma-muted">
+            सभी {totals.chapters} प्रकाशित प्रकरण नीचे पुस्तक के क्रम में उपलब्ध हैं। इनके विषय-शीर्षक संपादकीय अध्ययन-सहायक हैं;
+            मूल ग्रंथ प्रकरणों को पहला, दूसरा आदि कहता है। पढ़ने की स्थिति इसी डिवाइस पर रहती है, उपलब्धि का अंक नहीं है।
+            {unpublished.length > 0 ? ` प्रकरण ${unpublished.join(' और ')} अभी प्रकाशित नहीं हैं।` : ''}
+          </p>
+          <ChapterPath chapters={pathChapters} />
+        </section>
+
         {/* 2. Why read */}
         <section aria-labelledby="why" className="ash-card">
           <h2 id="why" className="font-bold" style={{ fontSize: '1.5rem' }}>अष्टावक्र गीता क्यों पढ़ें?</h2>
@@ -95,17 +123,6 @@ export default function AshtavakraHome() {
               </li>
             ))}
           </ol>
-        </section>
-
-        {/* 4. Chapter path */}
-        <section id="chapters" aria-labelledby="path-h" className="scroll-mt-6">
-          <h2 id="path-h" className="font-bold" style={{ fontSize: '1.5rem' }}>चेतना का पथ: प्रकरण 1–{totals.chapters} प्रकाशित</h2>
-          <p className="ash-meta mt-1 mb-4">
-            परंपरा में {totals.allChapters} प्रकरण हैं। इस स्थल पर प्रकरण 1 से {totals.chapters} तक प्रकाशित हैं और खुलते हैं।
-            {unpublished.length > 0 ? ` प्रकरण ${unpublished.join(' और ')} अभी स्थल पर नहीं हैं; वे नीचे केवल संकेत के रूप में हैं और किसी पृष्ठ पर नहीं खुलते।` : ''}
-            {' '}अध्याय-नाम और प्रतीक संपादकीय संकेत हैं; पुस्तक केवल “पहला प्रकरण”, “दूसरा प्रकरण” आदि नाम देती है। चमक केवल इस डिवाइस पर आपके पढ़े हुए चिह्नों को दिखाती है, किसी स्तर या उपलब्धि को नहीं।
-          </p>
-          <ChapterPath chapters={pathChapters} />
         </section>
 
         {/* 5. Featured + 6. reading preview */}
