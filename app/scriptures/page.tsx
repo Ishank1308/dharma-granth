@@ -49,16 +49,16 @@ function loadLibrary() {
 }
 
 export const metadata: Metadata = {
-  title: 'सम्पूर्ण ग्रंथालय · Hindu Scriptures, Vedas & Puranas',
+  title: 'ग्रंथालय · Hindu Scriptures, Vedas & Puranas',
   description:
-    'मूल संस्कृत श्लोक, पदच्छेद, हिंदी अर्थ और अंग्रेजी अनुवाद सहित संपूर्ण वैदिक ग्रंथालय: वेद, उपनिषद्, भगवद्गीता, रामायण, महाभारत, पुराण, विदुर नीति एवं दर्शन।',
+    'वेद, उपनिषद्, भगवद्गीता, रामायण, महाभारत और पुराण सहित भारतीय ग्रंथों के उपलब्ध मूल पाठ, हिन्दी अर्थ, अनुवाद और अध्ययन-सामग्री का डिजिटल पुस्तकालय।',
   alternates: { canonical: '/scriptures/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     type: 'website',
-    title: 'सम्पूर्ण ग्रंथालय · Hindu Scriptures, Vedas & Puranas — Dharma Granth',
+    title: 'ग्रंथालय · Hindu Scriptures, Vedas & Puranas — Dharma Granth',
     description:
-      'मूल संस्कृत श्लोक, पदच्छेद, हिंदी अर्थ और अंग्रेजी अनुवाद सहित संपूर्ण वैदिक ग्रंथालय: वेद, उपनिषद्, भगवद्गीता, रामायण, महाभारत, पुराण एवं दर्शन।',
+      'उपलब्ध मूल श्लोक, हिन्दी अर्थ, अनुवाद एवं अध्ययन-सामग्री के साथ वेद, उपनिषद्, गीता, रामायण, महाभारत और पुराणों का डिजिटल ग्रंथालय।',
     url: '/scriptures/',
   },
 };
@@ -102,7 +102,7 @@ export default function ScripturesPage() {
               </h2>
             </div>
             <span className="text-xs text-dharma-muted">
-              मूल संस्कृत, पदच्छेद व प्रामाणिक हिंदी अनुवाद
+              मूल पाठ, हिन्दी अर्थ एवं व्याख्या — जहाँ उपलब्ध
             </span>
           </div>
 

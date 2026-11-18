@@ -7,6 +7,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import {
   LANGUAGES,
   isBeginnerFriendly,
+  plural,
   readingLevelOf,
   summaryOf,
   themesOf,
@@ -154,11 +155,18 @@ export function LibraryCard({
     ? ` of about ${formatNumber(item.canonicalTotalVerses)}`
     : '';
   const countLabel = item.totalVerses > 0
-    ? `${formatNumber(item.totalChapters)} chapters · ${formatNumber(item.totalVerses)}${ofAbout} verses`
+    ? `${plural(item.totalChapters, 'chapter')} · ${formatNumber(item.totalVerses)}${ofAbout} ${item.totalVerses === 1 ? 'verse' : 'verses'}`
     : 'Catalogue entry';
 
-  const [progressPercent, setProgressPercent] = useState<number | null>(null);
   const [visitedChapter, setVisitedChapter] = useState<number | null>(null);
+  // Library entries are catalog data, but the saved chapter comes from localStorage.
+  // Restrict generated routes to known-safe slug characters and positive integers.
+  const safeId = /^[a-z0-9-]+$/.test(item.id) ? item.id : null;
+  const lastReadHref = safeId && visitedChapter !== null && Number.isSafeInteger(visitedChapter)
+    ? safeId === 'ashtavakra'
+      ? `/ashtavakra/${visitedChapter}/`
+      : `/scripture/${encodeURIComponent(safeId)}/chapter/${visitedChapter}/`
+    : null;
 
   useEffect(() => {
     try {
@@ -167,10 +175,15 @@ export function LibraryCard({
       const visits = JSON.parse(raw);
       if (!Array.isArray(visits)) return;
       const match = visits.find((v: { scriptureId?: string }) => v?.scriptureId === item.id);
-      if (match && typeof match.chapterId === 'number' && item.totalChapters > 0) {
-        setVisitedChapter(match.chapterId);
-        const pct = Math.min(100, Math.round((match.chapterId / item.totalChapters) * 100));
-        setProgressPercent(pct);
+      const rawChapter: unknown = match?.chapterId;
+      // Rebuild the chapter number from digits only; never forward stored HTML
+      // or free-form text into a rendered link.
+      if (typeof rawChapter !== 'number' && typeof rawChapter !== 'string') return;
+      const digits = String(rawChapter);
+      if (!/^[1-9][0-9]{0,4}$/.test(digits)) return;
+      const chapterNumber = Number(digits);
+      if (Number.isSafeInteger(chapterNumber) && chapterNumber <= item.totalChapters) {
+        setVisitedChapter(chapterNumber);
       }
     } catch {
       // ignore storage errors
@@ -244,22 +257,17 @@ export function LibraryCard({
         </dl>
       )}
 
-      {progressPercent !== null && progressPercent > 0 && (
-        <div className="mt-3 pt-2.5 border-t border-dharma-border/60">
-          <div className="flex items-center justify-between text-[11px] text-dharma-muted mb-1">
-            <span className="font-devanagari font-medium text-dharma-text/90">
-              पठन प्रगति · अध्याय {visitedChapter} / {item.totalChapters}
-            </span>
-            <span className="font-semibold text-saffron-700 dark:text-saffron-400">
-              {progressPercent}%
-            </span>
-          </div>
-          <div className="h-1.5 w-full overflow-hidden rounded-full bg-dharma-text/[0.08]">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-amber-500 to-saffron-600 transition-all duration-300"
-              style={{ width: `${Math.max(6, progressPercent)}%` }}
-            />
-          </div>
+      {lastReadHref && (
+        <div className="mt-3 border-t border-dharma-border/60 pt-3">
+          <p className="font-devanagari text-xs text-dharma-muted">
+            हाल में खोला · अध्याय {visitedChapter} / {item.totalChapters}
+          </p>
+          <Link
+            href={lastReadHref}
+            className="focus-ring mt-1 inline-flex min-h-[44px] items-center text-xs font-semibold text-dharma-saffron hover:underline"
+          >
+            इस अध्याय को खोलें
+          </Link>
         </div>
       )}
 

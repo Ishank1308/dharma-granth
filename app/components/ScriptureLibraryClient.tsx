@@ -471,6 +471,9 @@ export function ScriptureLibraryClient({
           )}
 
           <div className="mt-6">
+            <p lang="hi" className="mb-4 font-devanagari text-xs leading-relaxed text-dharma-muted">
+              भाषा प्रतिशत केवल यहाँ उपलब्ध श्लोकों में भाषा-पाठ की उपलब्धता दिखाते हैं; ये सम्पूर्ण ग्रंथ के प्रकाशन या विद्वत्-सत्यापन का प्रमाण नहीं हैं।
+            </p>
             {/* Parent heading for the cards' h3s (the visible Filters h2 is desktop-only). */}
             <h2 className="sr-only">ग्रंथ · Texts</h2>
             {results.length === 0 ? (
