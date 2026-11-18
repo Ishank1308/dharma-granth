@@ -63,3 +63,21 @@ test('opening ordinary verse explanation does not fetch full verse-page extras',
   await extra.click();
   await expect(card.locator('.verse-page-extras')).toBeVisible({ timeout: 30_000 });
 });
+
+test('hydration does not animate every default-open verse explanation', async ({ page }) => {
+  await page.goto(chapter);
+
+  const card = page.locator('article.verse-card:not(.vt)').first();
+  const study = card.getByRole('button', { name: /Verse study/ });
+  // First-time readers use Understand mode; auto-opened panels should be calm.
+  await expect(study).toHaveAttribute('aria-expanded', 'true');
+  const panel = card.locator('.verse-study-panel');
+  await expect(panel).toBeVisible();
+  await expect(panel).not.toHaveClass(/liquid-reveal/);
+
+  await study.click();
+  await expect(study).toHaveAttribute('aria-expanded', 'false');
+  await study.click();
+  await expect(study).toHaveAttribute('aria-expanded', 'true');
+  await expect(panel).toHaveClass(/liquid-reveal/);
+});
