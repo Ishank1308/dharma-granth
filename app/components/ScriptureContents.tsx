@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, BookOpen, History, Search, X } from 'lucide-react';
 import { useRecentChapters, type ChapterVisit } from '@/lib/reading-history';
@@ -30,6 +30,7 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
     [visits, scriptureId],
   );
 
+  const lastReadLinkRef = useRef<HTMLAnchorElement>(null);
   const [query, setQuery] = useState('');
   // Large editions should not expand hundreds of chapter cards on first paint.
   // Readers can still switch to All or search across the entire published book.
@@ -94,11 +95,10 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
     // The new range is rendered after the click. Focus the actual chapter
     // link so keyboard/screen reader users land on the item they requested.
     window.requestAnimationFrame(() => {
-      const card = document.getElementById(`contents-chapter-${visit.chapterId}`);
-      if (!card) return;
-      const link = card.querySelector<HTMLAnchorElement>('a[href]');
-      link?.focus({ preventScroll: true });
-      card.scrollIntoView({
+      const link = lastReadLinkRef.current;
+      if (!link) return;
+      link.focus({ preventScroll: true });
+      link.scrollIntoView({
         block: 'center',
         behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
       });
@@ -265,9 +265,10 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
               const isLastRead = visit?.chapterId === chapter.id;
               const isVisited = visitedIds.has(chapter.id);
               return (
-                <li key={chapter.id} id={`contents-chapter-${chapter.id}`} className="scroll-mt-24">
+                <li key={chapter.id} className="scroll-mt-24">
                   <Link
                     href={chapterHref(scriptureId, chapter.id)}
+                    ref={isLastRead ? lastReadLinkRef : undefined}
                     data-tilt
                     className={`vibe-card group relative flex min-h-[104px] items-center gap-4 rounded-2xl border bg-dharma-card p-4 hover:border-saffron-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 ${isLastRead ? 'border-saffron-400/70' : 'border-dharma-border'
                       }`}
