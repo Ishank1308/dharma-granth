@@ -3907,37 +3907,43 @@
           "sanskrit": "उ॒त्तु॒दस्त्वोत् तु॑दतु॒ मा धृ॑थाः॒ शय॑ने॒ स्वे ।\nइषुः॒ काम॑स्य॒ या भी॒मा तया॑ विध्यामि त्वा हृ॒दि ॥",
           "transliteration": "uttudastvot tudatu mā dhṛthāḥ śayane sve |\niṣuḥ kāmasya yā bhīmā tayā vidhyāmi tvā hṛdi ||",
           "translation": "A man’s love-charm\nLet the Impeller goad thee on. Rest not in peace upon thy bed.\nTerrible is the shaft of Love: therewith I pierce thee to the heart.\nThat arrow winged with longing thought, its stem Desire, its neck, Resolve,\nLet Kāma, having truly aimed, shoot forth and pierce thee in the heart.\nThe shaft of Kāma, pointed well, that withers and consumes the spleen.\nWith hasty feathers, all aglow, therewith I pierce thee to the heart.\nPierced through with fiercely-burning heat, steal to me with thy parching lips,\nGentle and humble, all mine own, devoted, with sweet words of love.\nAway Lfrom mother and from sire I drive thee hither with a whip,\nThat thou mayst be at my command and yield to every wish of mine.\nMitra and Varuna, expel all thought and purpose from her heart.\nDeprive her of her own free will and make her subject unto me.",
-          "translationRange": "25.1-25.6"
+          "translationRange": "25.1-25.6",
+          "hindi": "उद्विग्न करने वाले कामदेव आपको प्रेरित करें, जिससे आप अपनी शय्या पर शान्त न रह सकें; प्रेम के इस भीषण बाण से मैं आपके हृदय का वेधन करता हूँ।"
         },
         {
           "number": "25.2",
           "sanskrit": "आ॒धीप॑र्णां॒ काम॑शल्या॒मिषुं॑ संक॒ल्पकु॑ल्मलाम् ।\nतां सुसं॑नतां कृ॒त्वा कामो॑ विध्यतु त्वा हृ॒दि ॥",
           "transliteration": "ādhīparṇāṃ kāmaśalyāmiṣuṃ saṃkalpakulmalām |\ntāṃ susaṃnatāṃ kṛtvā kāmo vidhyatu tvā hṛdi ||",
-          "translationSeeVerse": "25.1"
+          "translationSeeVerse": "25.1",
+          "hindi": "उत्कट अभिलाषा जिसके पंख हैं, कामना जिसका फलक है और दृढ़ संकल्प जिसका मूल है— उस भली-भाँति सजे हुए बाण को साधकर कामदेव आपके हृदय में प्रवेश कराएँ।"
         },
         {
           "number": "25.3",
           "sanskrit": "या प्ली॒हानं॑ शो॒षय॑ति॒ काम॒स्येषुः॒ सुसं॑नता ।\nप्रा॒चीन॑पक्षा॒ व्योऽषा॒ तया॑ विध्यामि त्वा हृ॒दि ॥",
           "transliteration": "yā plīhānaṃ śoṣayati kāmasyeṣuḥ susaṃnatā |\nprācīnapakṣā vyo'ṣā tayā vidhyāmi tvā hṛdi ||",
-          "translationSeeVerse": "25.1"
+          "translationSeeVerse": "25.1",
+          "hindi": "जो प्लीहा (अन्तःकरण के संताप) को सुखा देती है, भली-भाँति लक्ष्य पर जाने वाली, आगे की ओर पंखों से युक्त तथा प्रज्वलित कामदेव का वह बाण है— उससे मैं आपके हृदय को बींधता हूँ।"
         },
         {
           "number": "25.4",
           "sanskrit": "शु॒चा वि॒द्धा व्योऽषया॒ शुष्का॑स्या॒भि स॑र्प मा ।\nमृ॒दुर्निम॑न्युः॒ केव॑ली प्रियवा॒दिन्यनु॑व्रता ॥",
           "transliteration": "śucā viddhā vyo'ṣayā śuṣkāsyābhi sarpa mā |\nmṛdurnimanyuḥ kevalī priyavādinyanuvratā ||",
-          "translationSeeVerse": "25.1"
+          "translationSeeVerse": "25.1",
+          "hindi": "अन्तःताप से बिंधी हुई और शुष्क अधरों वाली होकर आप मेरे समीप आइए— कोमल, क्रोध से रहित, केवल मेरी, मधुर वचन बोलने वाली तथा मेरे अनुकूल रहने वाली बनें।"
         },
         {
           "number": "25.5",
           "sanskrit": "आजा॑मि॒ त्वाज॑न्या॒ परि॑ मा॒तुरथो॑ पि॒तुः ।\nयथा॒ मम॒ क्रता॒वसो॒ मम॑ चि॒त्तमु॒पाय॑सि ॥",
           "transliteration": "ājāmi tvājanyā pari māturatho pituḥ |\nyathā mama kratāvaso mama cittamupāyasi ||",
-          "translationSeeVerse": "25.1"
+          "translationSeeVerse": "25.1",
+          "hindi": "मैं आपको अंकुश (प्रबल आकर्षण) से माता-पिता के बंधन से अपनी ओर प्रेरित करता हूँ, जिससे आप मेरे संकल्प और मेरी इच्छा के अनुकूल रहकर मेरे चित्त को प्राप्त हों।"
         },
         {
           "number": "25.6",
           "sanskrit": "व्यऽस्यै मित्रावरुणौ हृ॒दश्चि॒त्तान्य॑स्यतम् ।\nअथै॑नामक्र॒तुं कृ॒त्वा ममै॒व कृ॑णुतं॒ वशे॑ ॥",
           "transliteration": "vya'syai mitrāvaruṇau hṛdaścittānyasyatam |\nathaināmakratuṃ kṛtvā mamaiva kṛṇutaṃ vaśe ||",
-          "translationSeeVerse": "25.1"
+          "translationSeeVerse": "25.1",
+          "hindi": "हे मित्रावरुण देव! आप इनके हृदय से अन्य समस्त संकोच और संकल्पों को दूर कर दीजिए तथा समस्त दुविधाओं से मुक्त करके इन्हें केवल मेरे वश में कर दीजिए।"
         },
         {
           "number": "26.1",
@@ -4419,49 +4425,57 @@
           "sanskrit": "यां त्वा॑ गन्ध॒र्वो अख॑न॒द् वरु॑णाय मृ॒तभ्र॑जे ।\nतां त्वा॑ व॒यं ख॑नाम॒स्योष॑धिं शेप॒हर्ष॑णीम् ॥",
           "transliteration": "yāṃ tvā gandharvo akhanad varuṇāya mṛtabhraje |\ntāṃ tvā vayaṃ khanāmasyoṣadhiṃ śepaharṣaṇīm ||",
           "translation": "A charm to restore virile power\nWe dig thee from the earth, the Plant which strengthens and exalts the nerves,\nThe Plant which the Gandharva dug for Varuna whose power was lost.\nLet Ushas and let Sūrya rise, let this the speech I utter rise.\nLet the strong male Prajāpati arise with manly energy.\nSicut tui surgentis (membrum virile) tanquam inflammatum palpitat, hoc illud tui ardentius haec herba faciat.\nSursum (estote) herbarum vires, taurorum vigor. Tu, Indra, corporis potens, virorum masculum robur in hoc homine depone.\nRos aquarum primigenitus atque arborum, Somae etiam frater es, vatum sacrorum masculus vigor es.\nHodie, Agnis! hodie Savitar! hodie dea Sarasvatis! hodie Brahmanaspatis! hujus fascinum velut arcum extende.\nVelut nervum in arcu ego tuum fascinum extendo. Aggredere (mulierem) semper indefessus velut cervus damam.\nQuae sunt equi vires, muli, capri, arietis, atque tauri, illas, cor-poris potens! in hoc homine depone.",
-          "translationRange": "4.1-4.8"
+          "translationRange": "4.1-4.8",
+          "hindi": "वरुण के नष्ट हुए तेज की पुनः प्राप्ति के लिए जिसे गन्धर्व ने खोदा था, हम पौरुष और बल की वृद्धि करने वाली उसी दिव्य औषधि को खोद रहे हैं।"
         },
         {
           "number": "4.2",
           "sanskrit": "उदु॒षा उदु॒ सूर्य॒ उदि॒दं मा॑म॒कं वचः॑ ।\nउदे॑जतु प्र॒जाप॑ति॒र्वृषा॒ शुष्मे॑ण वा॒जिना॑ ॥",
           "transliteration": "uduṣā udu sūrya udidaṃ māmakaṃ vacaḥ |\nudejatu prajāpatirvṛṣā śuṣmeṇa vājinā ||",
-          "translationSeeVerse": "4.1"
+          "translationSeeVerse": "4.1",
+          "hindi": "उषा प्रकट हो, सूर्य उदित हो और मेरी यह वाणी फलवती हो; वीर्यवान तथा बलशाली अश्व के समान सृष्टिकर्ता प्रजापति दिव्य पौरुष के साथ जागृत हों।"
         },
         {
           "number": "4.3",
           "sanskrit": "यथा॑ स्म ते वि॒रोह॑तो॒ऽभित॑प्तमि॒वान॑ति ।\nतत॑स्ते॒ शुष्म॑वत्तरमि॒यं कृ॑णो॒त्वोष॑धिः ॥",
           "transliteration": "yathā sma te virohato'bhitaptamivānati |\ntataste śuṣmavattaramiyaṃ kṛṇotvoṣadhiḥ ||",
-          "translationSeeVerse": "4.1"
+          "translationSeeVerse": "4.1",
+          "hindi": "जिस प्रकार ऊपर उठती हुई जीवन-शक्ति प्रज्वलित होकर स्पन्दित होती है, उससे भी अधिक तेज और शक्तिमत्ता यह दिव्य औषधि आपको प्रदान करे।"
         },
         {
           "number": "4.4",
           "sanskrit": "उच्छुष्मौष॑धीनां॒ सार॑ ऋष॒भाणा॑म् ।\nसं पुं॒सामि॑न्द्र॒ वृष्ण्य॑म॒स्मिन्धे॑हि तनूवशिन् ॥",
           "transliteration": "ucchuṣmauṣadhīnāṃ sāra ṛṣabhāṇām |\nsaṃ puṃsāmindra vṛṣṇyamasmindhehi tanūvaśin ||",
-          "translationSeeVerse": "4.1"
+          "translationSeeVerse": "4.1",
+          "hindi": "हे शरीर के स्वामी इन्द्र! वनस्पतियों का श्रेष्ठ रस और वृषभों (साँड़ों) का सारभूत तेज तथा समस्त पुरुषों का पौरुष आप इस मनुष्य में स्थापित कीजिए।"
         },
         {
           "number": "4.5",
           "sanskrit": "अ॒पां रसः॑ प्रथम॒जोऽथो॒ वन॒स्पती॑नाम् ।\nउ॒त सोम॑स्य॒ भ्राता॑स्यु॒तार्शम॑सि॒ वृष्ण्य॑म् ॥",
           "transliteration": "apāṃ rasaḥ prathamajo'tho vanaspatīnām |\nuta somasya bhrātāsyutārśamasi vṛṣṇyam ||",
-          "translationSeeVerse": "4.1"
+          "translationSeeVerse": "4.1",
+          "hindi": "हे दिव्य औषधि! आप जल के प्रथम रस और वनस्पतियों के सार हैं; आप सोम की सहोदरा (बहिन) तथा मन्त्रद्रष्टाओं का श्रेष्ठ बल और वीर्य हैं।"
         },
         {
           "number": "4.6",
           "sanskrit": "अ॒द्याग्ने॑ अ॒द्य स॑वितर॒द्य दे॑वि सरस्वति ।\nअ॑द्यास्य ब्र॑ह्मणस्पते॒ धनु॑रि॒वा ता॑नया॒ पसः॑ ॥",
           "transliteration": "adyāgne adya savitaradya devi sarasvati |\nadyāsya brahmaṇaspate dhanurivā tānayā pasaḥ ||",
-          "translationSeeVerse": "4.1"
+          "translationSeeVerse": "4.1",
+          "hindi": "हे अग्निदेव! हे सविता देव! हे देवी सरस्वती! हे ब्रह्मणस्पति! आज ही आप इनके शिथिल पौरुष को धनुष की भाँति सुदृढ़ एवं तना हुआ कर दीजिए।"
         },
         {
           "number": "4.7",
           "sanskrit": "आहं त॑नोमि ते॒ पसो॒ अधि॒ ज्यामि॑व॒ धन्व॑नि ।\nक्रम॒स्वर्श॑ इव रो॒हित॒मन॑वग्लायता॒ सदा॑ ॥",
           "transliteration": "āhaṃ tanomi te paso adhi jyāmiva dhanvani |\nkramasvarśa iva rohitamanavaglāyatā sadā ||",
-          "translationSeeVerse": "4.1"
+          "translationSeeVerse": "4.1",
+          "hindi": "जैसे धनुष पर प्रत्यंचा चढ़ाई जाती है, वैसे ही मैं आपके पौरुष का विस्तार करता हूँ; आप बिना थके हुए रोहिता हिरण के समान सदैव सशक्त और समर्थ रहें।"
         },
         {
           "number": "4.8",
           "sanskrit": "अश्व॑स्याश्वत॒रस्या॒जस्य॒ पेत्व॑स्य च ।\nअथ॑ ऋष॒भस्य॒ ये वाजा॒स्तान॒स्मिन्धे॑हि तनूवशिन् ॥",
           "transliteration": "aśvasyāśvatarasyājasya petvasya ca |\natha ṛṣabhasya ye vājāstānasmindhehi tanūvaśin ||",
-          "translationSeeVerse": "4.1"
+          "translationSeeVerse": "4.1",
+          "hindi": "हे शरीर के स्वामी इन्द्र! घोड़े, खच्चर, बकरे, भेड़ तथा बलवान वृषभ का जो पौरुष और बल है, वह सब आप इस पुरुष में स्थापित कीजिए।"
         },
         {
           "number": "5.1",
@@ -6128,7 +6142,8 @@
           "number": "34.2",
           "sanskrit": "अ॒न॒स्थाः पू॒ताः पव॑नेन शु॒द्धाः शुच॑यः॒ शुचि॒मपि॑ यन्ति लो॒कम् ।\nनैषां शि॒श्नं प्र द॑हति जा॒तवे॑दाः स्व॒र्गे लो॒के ब॒हु स्त्रैण॑मेषाम् ॥",
           "transliteration": "anasthāḥ pūtāḥ pavanena śuddhāḥ śucayaḥ śucimapi yanti lokam |\nnaiṣāṃ śiśnaṃ pra dahati jātavedāḥ svarge loke bahu straiṇameṣām ||",
-          "translationSeeVerse": "34.1"
+          "translationSeeVerse": "34.1",
+          "hindi": "अस्थि-बन्धन से मुक्त, वायु द्वारा पवित्र किए गए तथा परम शुद्ध हुए वे पुण्यात्मा उपासक पवित्र लोकों को प्राप्त होते हैं; जातवेदा अग्नि उनके अंगों को नहीं जलाता और स्वर्गलोक में उन्हें असीम आनन्द तथा सुख की प्राप्ति होती है।"
         },
         {
           "number": "34.3",
@@ -6340,7 +6355,8 @@
           "number": "37.7",
           "sanskrit": "आ॒नृत्य॑तः शिख॒ण्डिनो॑ गन्ध॒र्वस्या॑प्सराप॒तेः ।\nभि॒नद्मि॑ मु॒ष्कावपि॑ यामि॒ शेपः॑ ॥",
           "transliteration": "ānṛtyataḥ śikhaṇḍino gandharvasyāpsarāpateḥ |\nbhinadmi muṣkāvapi yāmi śepaḥ ||",
-          "translationSeeVerse": "37.1"
+          "translationSeeVerse": "37.1",
+          "hindi": "नृत्य करने वाले, शिखाधारी तथा अप्सराओं के स्वामी गन्धर्व के पौरुष और अभिमान को मैं नष्ट करता हूँ और उसके उन्माद को समाप्त करता हूँ।"
         },
         {
           "number": "37.8",
@@ -8282,13 +8298,15 @@
           "number": "22.6",
           "sanskrit": "तक्म॒न् व्याऽल॒ वि ग॑द॒ व्यऽङ्ग॒ भूरि॑ यावय ।\nदा॒सीं नि॒ष्टक्व॑रीमिछ॒ तां वज्रे॑ण॒ सम॑र्पय ॥",
           "transliteration": "takman vyā'la vi gada vya'ṅga bhūri yāvaya |\ndāsīṃ niṣṭakvarīmicha tāṃ vajreṇa samarpaya ||",
-          "translationSeeVerse": "22.1"
+          "translationSeeVerse": "22.1",
+          "hindi": "हे ज्वर (तक्मन्)! अरे कपटी, बड़बड़ाने वाले और कुटिल रोग! तू यहाँ से बहुत दूर चला जा; तू किसी दूर देश की अनार्य, भटकने वाली दासी को खोज ले और उस पर ही अपना प्रहार कर।"
         },
         {
           "number": "22.7",
           "sanskrit": "तक्म॒न् मूज॑वतो गच्छ॒ बल्हि॑कान् वा परस्त॒राम् ।\nशू॒द्रामि॑च्छ प्रफ॒र्व्यं॑१ तां त॑क्म॒न् वीऽव धूनुहि ॥",
           "transliteration": "takman mūjavato gaccha balhikān vā parastarām |\nśūdrāmiccha prapharvyaṃ tāṃ takman vī'va dhūnuhi ||",
-          "translationSeeVerse": "22.1"
+          "translationSeeVerse": "22.1",
+          "hindi": "हे ज्वर! तू मूजवत् पर्वत अथवा बाह्लीक देश से भी परे चला जा; वहाँ किसी उच्छृंखल शूद्रा को खोजकर हे ज्वर! उसी को कँपा और व्यथित कर।"
         },
         {
           "number": "22.8",
@@ -8556,7 +8574,8 @@
           "sanskrit": "पर्व॑ताद् दि॒वो योने॒रङ्गा॑दङ्गात् स॒माभृ॑तम् ।\nशेपो॒ गर्भ॑स्य रेतो॒धाः सरौ॑ प॒र्णमि॒वा द॑धत् ॥",
           "transliteration": "parvatād divo yoneraṅgādaṅgāt samābhṛtam |\nśepo garbhasya retodhāḥ sarau parṇamivā dadhat ||",
           "translation": "A charm to facilitate conception\nLet the man, sower of the germ, lay, as a feather on a shaft.\nLimb drawn from limb, whate’er is culled from cloud and from the womb of heaven.\nEven as this broad earth received the germ of all the things that be,\nThus within thee I lay the germ. I call thee, Earth, to strengthen it.\nO Sinivāli, set the germ, set thou the germ, Sarasvati! In thee let both the Asvins, crowned with lotuses, bestow the germ.\nLet Mitra-Varuna and God Brihaspati lay the germ in thee.\nIndra and Agni lay the germ, Dhātar bestow the germ in thee.\nLet Vishnu form and mould the womb, let Tvashtar duly shape the forms,\nPrajāpati infuse the stream, and Dhātar lay for thee the germ.\nDrink thou the procreative draught well-known to Varuna the King,\nKnown to divine Sarasvati, and Indra slayer of the foe.\nThou art the germ of plants and herbs, thou art the germ of forest trees,\nThe germ of each existing thing, so here, O Agni, lay the germ.\nRise up, put forth thy manly strength, and lay thy germ within the womb.\nA bull art thou with vigorous strength: for progeny we bring thee near.\nPrepare thee, Bārhatsāmā, let the germ be laid within thy side.\nThe Soma-drinking Gods have given a son to thee, thy son and mine.\nO Dhātar, thou Disposer, lay within the body of this dame.\nA male germ with the noblest form, for her, in the tenth month, to bear.Tvashtar, celestial artist, lay within the body of this dame.\nA male germ with the noblest form for her in the tenth month to bear.\nSavitar, vivifier, lay within the body of this dame A male germ with the noblest form for her in the tenth month to bear.\nO Lord of Life, Prajāpati, within this woman’s body lay A male germ with the noblest form for her in the tenth month to bear.",
-          "translationRange": "25.1-25.13"
+          "translationRange": "25.1-25.13",
+          "hindi": "पर्वत, द्युलोक और गर्भ-स्थान के प्रत्येक अंग से संचित किए हुए तेज को सृजनकर्ता पुरुष उसी प्रकार धारण कराए, जैसे बाण में पंख लगाए जाते हैं।"
         },
         {
           "number": "25.2",
@@ -8604,13 +8623,15 @@
           "number": "25.8",
           "sanskrit": "अधि॑ स्कन्द वी॒रय॑स्व॒ गर्भ॒मा धे॑हि॒ योन्या॑म् ।\nवृषा॑सि वृष्ण्यावन् प्र॒जायै॒ त्वा न॑यामसि ॥",
           "transliteration": "adhi skanda vīrayasva garbhamā dhehi yonyām |\nvṛṣāsi vṛṣṇyāvan prajāyai tvā nayāmasi ||",
-          "translationSeeVerse": "25.1"
+          "translationSeeVerse": "25.1",
+          "hindi": "हे वीर्यवान एवं सृजन-समर्थ पुरुष! आप पराक्रम और तेज के साथ गर्भ-स्थान में बीज की स्थापना करें; हम उत्तम सन्तान की प्राप्ति के लिए आपका ही अनुसरण करते हैं।"
         },
         {
           "number": "25.9",
           "sanskrit": "वि जि॑हीष्व बार्हत्सामे॒ गर्भ॑स्ते॒ योनि॒मा श॑याम् ।\nअदु॑ष्टे दे॒वाः पु॒त्रं सो॑म॒पा उ॑भया॒विन॑म् ॥",
           "transliteration": "vi jihīṣva bārhatsāme garbhaste yonimā śayām |\naduṣṭe devāḥ putraṃ somapā ubhayāvinam ||",
-          "translationSeeVerse": "25.1"
+          "translationSeeVerse": "25.1",
+          "hindi": "हे बार्हत्सामा (सुन्दर शरीर वाली स्त्री)! आप अवसर प्रदान करें ताकि उत्तम गर्भ स्थापित हो सके; आप में कोई दोष नहीं है, अतः सोमपायी देवता आपको दोनों लोकों के सुख देने वाला श्रेष्ठ पुत्र प्रदान करें।"
         },
         {
           "number": "25.10",
@@ -9385,38 +9406,44 @@
           "sanskrit": "यथा॑ वृ॒क्षं लिबु॑जा सम॒न्तं प॑रिषस्व॒जे ।\nए॒वा परि॑ ष्वजस्व॒ मां यथा॒ मां का॒मिन्यसो॒ यथा॒ मन्नाप॑गा॒ असः॑ ॥",
           "transliteration": "yathā vṛkṣaṃ libujā samantaṃ pariṣasvaje |\nevā pari ṣvajasva māṃ yathā māṃ kāminyaso yathā mannāpagā asaḥ ||",
           "translation": "A man’s love-charm\nLike as the creeper throws, her arms on every side around the tree,\nSo hold thou me in thine embrace that thou mayst be in love with me, my darling, never to depart.\nAs, when he mounts, the eagle strikes his pinions downward on the earth,\nSo do I strike thy spirit down that thou mayst be in love with me, my darling, never to depart.\nAs in his rapid course the Sun encompasses the heaven and: earth,\nSo do I compass round thy mind that thou mayst be in love with. me, my darling, never to depart.",
-          "translationRange": "8.1-8.3"
+          "translationRange": "8.1-8.3",
+          "hindi": "जैसे लता वृक्ष को चारों ओर से आलिंगन करके लपेट लेती है, वैसे ही आप मेरा आलिंगन करें— जिससे आप मुझसे प्रेम करने वाली बनें और मुझसे कभी दूर न जाएँ।"
         },
         {
           "number": "8.2",
           "sanskrit": "यथा॑ सुप॒र्णः प्र॒पत॑न् प॒क्षौ नि॒हन्ति॒ भूम्या॑म् ।\nए॒वा नि ह॑न्मि ते॒ मनो॒ यथा॒ मां का॒मिन्यसो॒ यथा॒ मन्नाप॑गा॒ असः॑ ॥",
           "transliteration": "yathā suparṇaḥ prapatan pakṣau nihanti bhūmyām |\nevā ni hanmi te mano yathā māṃ kāminyaso yathā mannāpagā asaḥ ||",
-          "translationSeeVerse": "8.1"
+          "translationSeeVerse": "8.1",
+          "hindi": "जैसे ऊपर उड़कर गरुड़ भूमि की ओर अपने दोनों पंख झपटता है, वैसे ही मैं आपके मन को अपने अनुकूल करता हूँ— जिससे आप मुझसे प्रेम करने वाली बनें और मुझसे कभी दूर न जाएँ।"
         },
         {
           "number": "8.3",
           "sanskrit": "यथे॒मे द्यावा॑पृथि॒वी स॒द्यः प॒र्येति॒ सूर्यः॑ ।\nए॒वा पर्ये॑मि ते॒ मनो॒ यथा॒ मां का॒मिन्यसो॒ यथा॒ मन्नाप॑गा॒ असः॑ ॥",
           "transliteration": "yatheme dyāvāpṛthivī sadyaḥ paryeti sūryaḥ |\nevā paryemi te mano yathā māṃ kāminyaso yathā mannāpagā asaḥ ||",
-          "translationSeeVerse": "8.1"
+          "translationSeeVerse": "8.1",
+          "hindi": "जैसे सूर्य द्युलोक और पृथ्वी की शीघ्रतापूर्वक परिक्रमा करता है, वैसे ही मैं आपके चित्त को चारों ओर से घेर लेता हूँ— जिससे आप मुझसे प्रेम करने वाली बनें और मुझसे कभी दूर न जाएँ।"
         },
         {
           "number": "9.1",
           "sanskrit": "वाञ्छ॑ मे त॒न्वं॑१ पादौ॒ वाञ्छा॒क्ष्यौ॒३वाञ्छ॑ स॒क्थ्यौऽ ।\nअ॒क्ष्यौऽ वृष॒ण्यन्त्याः॒ केशा॒ मां ते॑ कामे॑न शुष्यन्तु ॥",
           "transliteration": "vāñcha me tanvaṃ pādau vāñchākṣyauvāñcha sakthyau' |\nakṣyau' vṛṣaṇyantyāḥ keśā māṃ te kāmena śuṣyantu ||",
           "translation": "A man’s love-charm\nDesire my body, love my feet, love thou mine eyes, and love my legs.\nLet both thine eyes and hair, fond girl! be dried and parched. through love of me.\nI make thee hang upon mine arm, I make thee lie upon my heart.\nThou yieldest to my wish, that thou mayst be submissive to my will.\nMay they whose kisses are a bond, a love-charm laid within the heart,\nMothers of butter, may the cows incline that maid to love of me.",
-          "translationRange": "9.1-9.3"
+          "translationRange": "9.1-9.3",
+          "hindi": "आप मेरे शरीर और चरणों की कामना करें, मेरे नेत्रों और जंघाओं से स्नेह करें; अनुराग करने वाली सुन्दरी के दोनों नेत्र और केश मेरे प्रेम की आतुरता में मग्न हो जाएँ।"
         },
         {
           "number": "9.2",
           "sanskrit": "मम॑ त्वा दोषणि॒श्रिषं॑ कृ॒णोमि॑ हृदय॒श्रिष॑म् ।\nयथा॒ मम॒ क्रता॒वसो॒ मम॑ चि॒त्तमु॒पाय॑सि ॥",
           "transliteration": "mama tvā doṣaṇiśriṣaṃ kṛṇomi hṛdayaśriṣam |\nyathā mama kratāvaso mama cittamupāyasi ||",
-          "translationSeeVerse": "9.1"
+          "translationSeeVerse": "9.1",
+          "hindi": "मैं आपको अपनी भुजाओं का आश्रय और हृदय का आधार बनाता हूँ, जिससे आप मेरे संकल्प के अनुरूप होकर मेरे चित्त का अनुसरण करें।"
         },
         {
           "number": "9.3",
           "sanskrit": "यासां॒ नाभि॑रा॒रेह॑णं हृ॒दि सं॒वन॑नं कृ॒तम् ।\nगावो॑ घृ॒तस्य॑ मा॒तरो॒ ऽमूं सं वा॑नयन्तु मे ॥",
           "transliteration": "yāsāṃ nābhirārehaṇaṃ hṛdi saṃvananaṃ kṛtam |\ngāvo ghṛtasya mātaro 'mūṃ saṃ vānayantu me ||",
-          "translationSeeVerse": "9.1"
+          "translationSeeVerse": "9.1",
+          "hindi": "जिनकी नाभि में प्रेम का बन्धन और हृदय में परस्पर मिलन रचा गया है, वे घृत की जननी गौएँ उस सुन्दरी को मेरे प्रति स्नेहयुक्त बनाकर समीप ले आएँ।"
         },
         {
           "number": "10.1",
@@ -10785,19 +10812,22 @@
           "sanskrit": "यथा॑ मां॒सं॑ यथा॒ सुरा॒ यथा॒क्षा अ॑धि॒देव॑ने ।\nयथा॑ पुं॒सो वृ॑षण्य॒त स्त्रि॒यां नि॑ह॒न्यते॒ मनः॑ ।\nए॒वा ते॑ अघ्न्ये॒ मनोऽधि॑ व॒त्से नि ह॑न्यताम् ॥",
           "transliteration": "yathā māṃsaṃ yathā surā yathākṣā adhidevane |\nyathā puṃso vṛṣaṇyata striyāṃ nihanyate manaḥ |\nevā te aghnye mano'dhi vatse ni hanyatām ||",
           "translation": "A benediction on cow and calf\nAs wine associates with flesh, as dice attend the gaming-board,\nAs an enamoured man’s desire is firmly set upon a dame,\nSo let thy heart and soul, O Cow, be firmly set upou thy calf.\nAs the male elephant pursues with eager step his female’s track,\nAs an enamoured man’s desire is firmly set upon a dame,\nSo let thy heart and soul, O Cow, be firmly set upon the calf.\nClose as the felly and the spoke, fixt as the wheel-rim on the nave,\nAs an enamoured man’s desire is firmly set upon a dame,\nSo let thy heart and soul, O Cow, be firmly set upon thy calf.",
-          "translationRange": "70.1-70.3"
+          "translationRange": "70.1-70.3",
+          "hindi": "जैसे सुरा और मांस का संग होता है, जैसे द्यूतफलक पर पाँसों का आकर्षण होता है, और जैसे किसी अनुरक्त पुरुष का मन स्त्री में लग जाता है— हे अवध्या गौ! वैसे ही आपका मन अपने बछड़े में दृढ़ता से लग जाए।"
         },
         {
           "number": "70.2",
           "sanskrit": "यथा॑ ह॒स्ती ह॑स्ति॒न्याः प॒देन॑ प॒दमु॑द्यु॒जे ।\nयथा॑ पुं॒सो वृ॑षण्य॒त स्त्रि॒यां नि॑ह॒न्यते॒ मनः॑ ।\nए॒वा ते॑ अघ्न्ये॒ मनोऽधि॑ व॒त्से नि ह॑न्यताम् ॥",
           "transliteration": "yathā hastī hastinyāḥ padena padamudyuje |\nyathā puṃso vṛṣaṇyata striyāṃ nihanyate manaḥ |\nevā te aghnye mano'dhi vatse ni hanyatām ||",
-          "translationSeeVerse": "70.1"
+          "translationSeeVerse": "70.1",
+          "hindi": "जैसे हाथी हथिनी के पदचिह्नों का एक-एक पग अनुसरण करता है, और जैसे अनुरक्त पुरुष का मन स्त्री में रम जाता है— हे गौ! वैसे ही आपका मन अपने बछड़े में लग जाए।"
         },
         {
           "number": "70.3",
           "sanskrit": "यथा॑ प्र॒धिर्यथो॑प॒धिर्यथा॒ नभ्यं॑ प्र॒धावधि॑ ।\nयथा॑ पुं॒सो वृ॑षण्य॒त स्त्रि॒यां नि॑ह॒न्यते॒ मनः॑ ।\nए॒वा ते॑ अघ्न्ये॒ मनोऽधि॑ व॒त्से नि ह॑न्यताम् ॥",
           "transliteration": "yathā pradhiryathopadhiryathā nabhyaṃ pradhāvadhi |\nyathā puṃso vṛṣaṇyata striyāṃ nihanyate manaḥ |\nevā te aghnye mano'dhi vatse ni hanyatām ||",
-          "translationSeeVerse": "70.1"
+          "translationSeeVerse": "70.1",
+          "hindi": "जैसे पहिए का घेरा और उसके आरे नाभि (धुरी) पर दृढ़ता से टिके रहते हैं, और जैसे अनुरक्त पुरुष का मन स्त्री में स्थिर हो जाता है— हे गौ! वैसे ही आपका मन अपने बछड़े में स्थिर हो जाए।"
         },
         {
           "number": "71.1",
@@ -10826,19 +10856,22 @@
           "sanskrit": "यथा॑सि॒तः प्र॒थय॑ते॒ वशाँ॒ अनु॒ वपूं॑षि कृ॒ण्वन्नसु॑रस्य मा॒यया॑ ।\nए॒वा ते॒ शेपः॒ सह॑सा॒यम॒र्कोऽङ्गे॒नाङ्गं॒ संस॑मकं कृणोतु ॥",
           "transliteration": "yathāsitaḥ prathayate vaśām̐ anu vapūṃṣi kṛṇvannasurasya māyayā |\nevā te śepaḥ sahasāyamarko'ṅgenāṅgaṃ saṃsamakaṃ kṛṇotu ||",
           "translation": "A charm to restore or increase virile power\nSicut anguis niger ad voluntatem se extendit, Asurarum arte magica formas novas efficiens, sic fascinum tuum, partem cum parte, conjunctum, hic hymnus efficiat.\nVelut penis (tayadarus quem ventus permagnum fecit, quantus. est onagri penis, tantus penis tuus increscat.\nQuantum estonagri membrum masculinum, elephanti, asinique, quantum est fortis equi, tantus penis tuus increscat.",
-          "translationRange": "72.1-72.3"
+          "translationRange": "72.1-72.3",
+          "hindi": "जैसे काला सर्प अपनी इच्छा से असुरों की माया द्वारा विविध रूप रचता हुआ फैल जाता है, वैसे ही यह मन्त्र आपके शिथिल शरीर में बल भरकर अंग-प्रत्यंग को सम्यक् और सुदृढ़ बना दे।"
         },
         {
           "number": "72.2",
           "sanskrit": "यथा॒ पस॑स्तायाद॒रं वाते॑न स्थूल॒भं कृ॒तम् ।\nयाव॒त् पर॑स्वतः॒ पस॒स्ताव॒त् ते वर्धतां॒ पसः॑ ॥",
           "transliteration": "yathā pasastāyādaraṃ vātena sthūlabhaṃ kṛtam |\nyāvat parasvataḥ pasastāvat te vardhatāṃ pasaḥ ||",
-          "translationSeeVerse": "72.1"
+          "translationSeeVerse": "72.1",
+          "hindi": "जैसे वायु द्वारा बलशाली प्राणी का अंग पुष्ट और स्थूल हो जाता है, और जैसा वन्य अश्व (परस्वान्) का पौरुष होता है— वैसा ही आपका पौरुष और बल वृद्धि को प्राप्त हो।"
         },
         {
           "number": "72.3",
           "sanskrit": "या॒व॒द॒ङ्गीनं॒ पार॑स्वतं॒ हास्ति॑नं॒ गार्द॑भं च॒ यत् ।\nयाव॒दश्वस्य वा॒जिन॒स्ताव॑त् ते वर्धतां॒ पसः॑ ॥",
           "transliteration": "yāvadaṅgīnaṃ pārasvataṃ hāstinaṃ gārdabhaṃ ca yat |\nyāvadaśvasya vājinastāvat te vardhatāṃ pasaḥ ||",
-          "translationSeeVerse": "72.1"
+          "translationSeeVerse": "72.1",
+          "hindi": "अंग-प्रत्यंग की जो शक्ति परस्वान् (वन्य गज/अश्व), हाथी और गधे में होती है तथा जो वेगवान घोड़े में होती है— उतनी ही पौरुष-शक्ति आपकी भी बढ़े।"
         },
         {
           "number": "73.1",
@@ -11218,19 +11251,22 @@
           "sanskrit": "इ॒दं यत् प्रे॒ण्यः शिरो॑ द॒त्तं सोमे॑न॒ वृष्ण्य॑म् ।\nततः॒ परि॒ प्रजा॑तेन॒ हार्दिं॑ ते शोचयामसि ॥",
           "transliteration": "idaṃ yat preṇyaḥ śiro dattaṃ somena vṛṣṇyam |\ntataḥ pari prajātena hārdiṃ te śocayāmasi ||",
           "translation": "A man’s love charm\nThis strength that Soma hath bestowed, the head of her who gladdeneth,—\nWith that which thence hath been produced we make thy spirit sorrowful.\nWe make thy spirit sorrowful, we fill thy mind with pain and grief.\nAs smoke accompanies the wind, so let thy fancy follow me.\nMay Varuna and Mitra, may Sarasvati the Goddess,\nMay the centre of the earth, and both her limits bring thee close to me.",
-          "translationRange": "89.1-89.3"
+          "translationRange": "89.1-89.3",
+          "hindi": "प्रेम करने वाली के शिरोभाग से और सोम द्वारा प्रदत्त जो यह आकर्षण-शक्ति उत्पन्न हुई है, उससे हम आपके हृदय को अनुराग से व्याकुल कर देते हैं।"
         },
         {
           "number": "89.2",
           "sanskrit": "शो॒चया॑मसि ते॒ हार्दिं॑ शो॒चया॑मसि ते॒ मनः॑ ।\nवातं॑ धू॒म इ॑व स॒ध्र्य॑१ङ्मामे॒वान्वे॑तु ते॒ मनः॑ ॥",
           "transliteration": "śocayāmasi te hārdiṃ śocayāmasi te manaḥ |\nvātaṃ dhūma iva sadhryaṅmāmevānvetu te manaḥ ||",
-          "translationSeeVerse": "89.1"
+          "translationSeeVerse": "89.1",
+          "hindi": "हम आपके हृदय को प्रेम से तप्त करते हैं, आपके मन को स्नेह से भरते हैं; जैसे धुआँ वायु के पीछे-पीछे चलता है, वैसे ही आपका मन एकनिष्ठ होकर मेरा ही अनुसरण करे।"
         },
         {
           "number": "89.3",
           "sanskrit": "मह्यं॑ त्वा मि॒त्रावरु॑णौ॒ मह्यं॑ दे॒वी सर॑स्वती ।\nमह्यं॑ त्वा॒ मध्यं॒ भूम्या॑ उ॒भावन्तौ॒ सम॑स्यताम् ॥",
           "transliteration": "mahyaṃ tvā mitrāvaruṇau mahyaṃ devī sarasvatī |\nmahyaṃ tvā madhyaṃ bhūmyā ubhāvantau samasyatām ||",
-          "translationSeeVerse": "89.1"
+          "translationSeeVerse": "89.1",
+          "hindi": "मेरे लिए मित्रावरुण, मेरे लिए देवी सरस्वती तथा मेरे ही लिए पृथ्वी का मध्यभाग और दोनों छोर हम दोनों को परस्पर एक साथ जोड़ दें।"
         },
         {
           "number": "90.1",
@@ -11479,38 +11515,44 @@
           "sanskrit": "आ वृ॑षायस्व श्वसि॒हि वर्ध॑स्व प्र॒थय॑स्व च ।\nय॒था॒ङ्गं व॑र्धतां॒ शेप॒स्तेन॑ यो॒षित॒मिज्ज॑हि ॥",
           "transliteration": "ā vṛṣāyasva śvasihi vardhasva prathayasva ca |\nyathāṅgaṃ vardhatāṃ śepastena yoṣitamijjahi ||",
           "translation": "A charm to promote virile vigour\nTaurum age, palpita, incresce et teipsum extende: per totum membrum increscat penis: hoc tu caede feminam.\nQuo debilem stimulant, quo aegrum excitant (homines), hoc, O Brahmanaspatis, hujus penem in arcus modum extende.\nVelut nervum in arcu ego tuum fascinum extendo. Aggredere (mulierem) semper indefessus velut cervus damam.",
-          "translationRange": "101.1-101.3"
+          "translationRange": "101.1-101.3",
+          "hindi": "बलशाली वृषभ के समान पुरुषार्थ से सम्पन्न होइए, प्राण-संचार कीजिए, पुष्ट होइए और बल का विस्तार कीजिए; अंग-प्रत्यंग में पौरुष बढ़कर गृहस्थ-समागम में समर्थ हो।"
         },
         {
           "number": "101.2",
           "sanskrit": "येन॑ कृ॒षं वा॒जय॑न्ति॒ येन॑ हि॒न्वन्त्यातु॑रम् ।\nतेना॒स्य ब्र॑ह्मणस्पते॒ धनु॑रि॒वा ता॑नया॒ पसः॑ ॥",
           "transliteration": "yena kṛṣaṃ vājayanti yena hinvantyāturam |\ntenāsya brahmaṇaspate dhanurivā tānayā pasaḥ ||",
-          "translationSeeVerse": "101.1"
+          "translationSeeVerse": "101.1",
+          "hindi": "हे ब्रह्मणस्पति देव! जिस औषधि और बल से लोग दुर्बल को शक्तिशाली बनाते हैं तथा रोगी को स्वस्थ करते हैं, उसी से आप इनके पौरुष को धनुष की भाँति तानकर सुदृढ़ कर दीजिए।"
         },
         {
           "number": "101.3",
           "sanskrit": "आहं त॑नोमि ते॒ पसो॒ अधि॒ ज्यामि॑व॒ धन्व॑नि ।\nक्रम॒स्वर्श॑ इव रो॒हित॒मन॑वग्लायता॒ सदा॑ ॥",
           "transliteration": "āhaṃ tanomi te paso adhi jyāmiva dhanvani |\nkramasvarśa iva rohitamanavaglāyatā sadā ||",
-          "translationSeeVerse": "101.1"
+          "translationSeeVerse": "101.1",
+          "hindi": "जैसे धनुष पर प्रत्यंचा चढ़ाई जाती है, वैसे ही मैं आपके पौरुष को दृढ़ करता हूँ; आप कभी न थकने वाले तेजस्वी रोहिता मृग के समान सदा समर्थ बने रहें।"
         },
         {
           "number": "102.1",
           "sanskrit": "यथा॒यं वा॒हो अ॑श्विना स॒मैति॒ सं च॒ वर्त॑ते ।\nए॒वा माम॒भि ते॒ मनः॑ स॒मैतु॒ सं च॑ वर्तताम् ॥",
           "transliteration": "yathāyaṃ vāho aśvinā samaiti saṃ ca vartate |\nevā māmabhi te manaḥ samaitu saṃ ca vartatām ||",
           "translation": "A man’s love charm\nEven as this ox, O Asvins, steps and turns together with his mate,\nSo let thy fancy turn itself, come nearer, and unite with me.\nI, as the shaft-horse draws the mare beside him, draw thee to myself.\nLike grass that storm and wind have rent, so be thy mind at-tached to me!\nSwiftly from Bhaga’s hands I bear away a love-compelling charm Of ointment and of sugar-cane, of Spikenard and the Kushtha plant.",
-          "translationRange": "102.1-102.3"
+          "translationRange": "102.1-102.3",
+          "hindi": "हे अश्विनीकुमारों! जैसे यह रथ का अश्व अपनी सहचरी के साथ एक लय में चलता और मुड़ता है, वैसे ही आपका मन मेरी ओर प्रवृत्त हो, समवेत हो और मेरे साथ चले।"
         },
         {
           "number": "102.2",
           "sanskrit": "आहं खि॑दामि ते॒ मनो॑ राजा॒श्वः पृ॒ष्ट्यामि॑व ।\nरे॒ष्मच्छि॑न्नं॒ यथा॒ तृणं॒ मयि॑ ते वेष्टतां॒ मनः॑ ॥",
           "transliteration": "āhaṃ khidāmi te mano rājāśvaḥ pṛṣṭyāmiva |\nreṣmacchinnaṃ yathā tṛṇaṃ mayi te veṣṭatāṃ manaḥ ||",
-          "translationSeeVerse": "102.1"
+          "translationSeeVerse": "102.1",
+          "hindi": "जैसे श्रेष्ठ रथाश्व अपने पास चलने वाली घोड़ी को साथ खींचता है, वैसे ही मैं आपके मन को आकर्षित करता हूँ; आँधी-तूफान से बिखरे तिनके की भाँति आपका मन मुझसे लिपट जाए।"
         },
         {
           "number": "102.3",
           "sanskrit": "आञ्ज॑नस्य म॒दुघ॑स्य॒ कुष्ठ॑स्य॒ नल॑दस्य च ।\nतु॒रो भग॑स्य॒ हस्ता॑भ्यामनु॒रोध॑न॒मुद् भ॑रे ॥",
           "transliteration": "āñjanasya madughasya kuṣṭhasya naladasya ca |\nturo bhagasya hastābhyāmanurodhanamud bhare ||",
-          "translationSeeVerse": "102.1"
+          "translationSeeVerse": "102.1",
+          "hindi": "अंजन (सुरमा), मधुक (मुलैठी), कुष्ठ और नलद (सुगन्धित औषधि) के संयोग से मैं सौभाग्य के देवता भग के हाथों से शीघ्र ही आपका अनुराग और वशीकरण-प्रेम प्राप्त करता हूँ।"
         },
         {
           "number": "103.1",
@@ -12181,75 +12223,87 @@
           "sanskrit": "र॒थ॒जितां॑ राथजिते॒यीना॑मप्स॒रसा॑म॒यं स्म॒रः ।\nदेवाः॒ प्र हि॑णुत स्म॒रम॒सौ मामनु॑ शोचतु ॥",
           "transliteration": "rathajitāṃ rāthajiteyīnāmapsarasāmayaṃ smaraḥ |\ndevāḥ pra hiṇuta smaramasau māmanu śocatu ||",
           "translation": "A woman’s love-charm\nThis is the Apsarases’ love-spell, the conquering, resistless ones’.\nSend the spell forth, ye Deities! Let him consume with love of me.\nI pray, may he remember me, think of me, loving and beloved.\nSend forth the spell, ye Deities! Let him consume with love of me.\nThat he may think of me, that I may never, never think of him,.\nSend forth the spell, ye Deities! Let him consume with love of me.\nMadden him, Maruts, madden him. Madden him, madden him,\nO Air.\nMadden him, Agni, madden him. Let him consume with love of me.",
-          "translationRange": "130.1-130.4"
+          "translationRange": "130.1-130.4",
+          "hindi": "यह रथों को जीतने वाली तथा विजेता वंश की अप्सराओं का 'स्मर' (प्रेम-आकर्षण) मन्त्र है; हे देवताओं! उस स्मर को भेजिए, जिससे वह मेरे प्रेम में तप्त हो।"
         },
         {
           "number": "130.2",
           "sanskrit": "अ॒सौ मे॑ स्मरता॒दिति॑ प्रि॒यो मे॑ स्मरता॒दिति॑ ।\nदेवाः॒ प्र हि॑णुत स्म॒रम॒सौ मामनु॑ शोचतु ॥",
           "transliteration": "asau me smaratāditi priyo me smaratāditi |\ndevāḥ pra hiṇuta smaramasau māmanu śocatu ||",
-          "translationSeeVerse": "130.1"
+          "translationSeeVerse": "130.1",
+          "hindi": "वह मेरा स्मरण करे, मुझ प्रिय का ध्यान करे— ऐसा विचार करके हे देवगणों! उस स्मर (अनुराग) को प्रेषित कीजिए, जिससे वह मेरे लिए व्याकुल हो उठे।"
         },
         {
           "number": "130.3",
           "sanskrit": "यथा॒ मम॒ स्मरा॑द॒सौ नामुष्या॒हं क॒दा च॒न ।\nदेवाः॒ प्र हि॑णुत स्म॒रम॒सौ मामनु॑ शोचतु ॥",
           "transliteration": "yathā mama smarādasau nāmuṣyāhaṃ kadā cana |\ndevāḥ pra hiṇuta smaramasau māmanu śocatu ||",
-          "translationSeeVerse": "130.1"
+          "translationSeeVerse": "130.1",
+          "hindi": "जिस प्रकार वह मेरा स्मरण करे और मैं कभी भी उसके वश होकर व्याकुल न होऊँ— हे देवताओं! ऐसा स्मर भेजें कि वह केवल मेरा ही अनुराग करे।"
         },
         {
           "number": "130.4",
           "sanskrit": "उन्मा॑दयत मरुत॒ उद॑न्तरिक्ष मादय ।\nअग्न॒ उन्मा॑दया॒ त्वम॒सौ मामनु॑ शोचतु ॥",
           "transliteration": "unmādayata maruta udantarikṣa mādaya |\nagna unmādayā tvamasau māmanu śocatu ||",
-          "translationSeeVerse": "130.1"
+          "translationSeeVerse": "130.1",
+          "hindi": "हे मरुद्गणों! उसे प्रेम से उन्मादित कीजिए; हे अन्तरिक्ष! उसे मोहित कीजिए; हे अग्निदेव! आप भी उसे स्नेह से विकल कर दें, जिससे वह मेरे प्रेम का अनुसरण करे।"
         },
         {
           "number": "131.1",
           "sanskrit": "नि शी॑र्ष॒तो नि प॑त्त॒त आ॒ध्यो॒३ नि ति॑रामि ते ।\nदेवाः प्र हि॑णुत स्म॒रम॒सौ मामनु॑ शोचतु ॥",
           "transliteration": "ni śīrṣato ni pattata ādhyo ni tirāmi te |\ndevāḥ pra hiṇuta smaramasau māmanu śocatu ||",
           "translation": "A woman’s love-charm\nDown upon thee, from head to foot, I draw the pangs of long-ing love.\nSend forth the charm, ye Deities! Let him consume with love of me.\nAssent to this, O Heavenly Grace! Celestial Purpose, guide it well!\nSend forth the charm, ye Deities! Let him consume with love of me.\nIf thou shouldst run three leagues away, five leagues, a horse’s daily stage,\nThence thou shalt come to me again and be the father of our sons.",
-          "translationRange": "131.1-131.3"
+          "translationRange": "131.1-131.3",
+          "hindi": "सिर से लेकर पैर तक मैं आपकी सारी उत्कण्ठाओं और चिन्ताओं को अपनी ओर खींच लेता हूँ; हे देवताओं! प्रेम-आवेग को प्रेषित कीजिए कि वह मुझ पर आसक्त हो।"
         },
         {
           "number": "131.2",
           "sanskrit": "अनु॑म॒तेऽन्वि॒दं म॑न्य॒स्वाकू॑ते॒ समि॒दं नमः॑ ।\nदेवाः॒ प्र हि॑णुत स्म॒रम॒सौ मामनु॑ शोचतु ॥",
           "transliteration": "anumate'nvidaṃ manyasvākūte samidaṃ namaḥ |\ndevāḥ pra hiṇuta smaramasau māmanu śocatu ||",
-          "translationSeeVerse": "131.1"
+          "translationSeeVerse": "131.1",
+          "hindi": "हे अनुमति देवी! इसकी स्वीकृति दीजिए; हे आकूति (संकल्प) देवी! इसे पूर्ण कीजिए; हे देवगणों! आप इस स्मर को भेजें जिससे वह मेरे अनुराग में मग्न हो।"
         },
         {
           "number": "131.3",
           "sanskrit": "यद् धाव॑सि त्रियोज॒नं प॑ञ्चयोज॒नमाश्वि॑नम् ।\nतत॒स्त्वं पुन॒राय॑सि पु॒त्राणां॑ नो असः पि॒ता ॥",
           "transliteration": "yad dhāvasi triyojanaṃ pañcayojanamāśvinam |\ntatastvaṃ punarāyasi putrāṇāṃ no asaḥ pitā ||",
-          "translationSeeVerse": "131.1"
+          "translationSeeVerse": "131.1",
+          "hindi": "यदि आप तीन योजन अथवा घोड़े की एक दिन की यात्रा के बराबर पाँच योजन दूर भी चले जाएँ, तो भी वहाँ से लौटकर आप पुनः मेरे पास ही आएँ और हमारे पुत्रों के पिता बनें।"
         },
         {
           "number": "132.1",
           "sanskrit": "यं दे॒वाः स्म॒रमसि॑ञ्चन्न॒प्स्व१न्तः शोशु॑चानं स॒हाध्या ।\nतं ते॑ तपामि॒ वरु॑णस्य॒ धर्म॑णा ॥",
           "transliteration": "yaṃ devāḥ smaramasiñcannapsvantaḥ śośucānaṃ sahādhyā |\ntaṃ te tapāmi varuṇasya dharmaṇā ||",
           "translation": "The same\nThe Philter, burning with the pangs of yearning love, which Gods have poured within the bosom of the floods,\nThat spell for thee I heat by Varuna’s decree.\nThe charm which, burning with the pangs of love, the General Gods have poured within the bosom of the floods,\nThat spell for thee I heat by Varuna’s decree.\nThe Philter, burning with the pangs of longing, which Indrāni hath effused within the waters’ depth,\nThat spell for thee I heat by Varuna’s decree.\nThe charm, aglow with longing, which Indra and Agni have effused within the bosom of the floods,\nThat spell for thee I heat by Varuna’s decree.\nThe charm aglow with longing which Mitra and Varuna have poured within the bosom of the floods,\nThat spell for thee I heat by Varuna’s decree.",
-          "translationRange": "132.1-132.5"
+          "translationRange": "132.1-132.5",
+          "hindi": "उत्कट अभिलाषा के साथ जल के भीतर प्रदीप्त होने वाला जो प्रेम-रस देवताओं ने सिंचित किया है, वरुण के विधान से मैं आपके लिए उसी अनुराग को प्रज्वलित करता हूँ।"
         },
         {
           "number": "132.2",
           "sanskrit": "यं विश्वे॑ दे॒वाः स्म॒रमसि॑ञ्चन्न॒प्स्व१न्तः शोशु॑चानं स॒हाध्या ।\nतं ते॑ तपामि॒ वरु॑णस्य॒ धर्म॑णा ॥",
           "transliteration": "yaṃ viśve devāḥ smaramasiñcannapsvantaḥ śośucānaṃ sahādhyā |\ntaṃ te tapāmi varuṇasya dharmaṇā ||",
-          "translationSeeVerse": "132.1"
+          "translationSeeVerse": "132.1",
+          "hindi": "समस्त विश्वेदेवों ने उत्कट अभिलाषा के साथ जल के भीतर जो प्रदीप्त प्रेम-रस सिंचित किया है, वरुण के विधान से मैं आपके लिए उसी अनुराग को प्रदीप्त करता हूँ।"
         },
         {
           "number": "132.3",
           "sanskrit": "यमि॑न्द्रा॒णी स्म॒रमसि॑ञ्चद॒प्स्व॑१न्तः शोशु॑चानं स॒हाध्या ।\nतं ते॑ तपामि॒ वरु॑णस्य॒ धर्म॑णा ॥",
           "transliteration": "yamindrāṇī smaramasiñcadapsvantaḥ śośucānaṃ sahādhyā |\ntaṃ te tapāmi varuṇasya dharmaṇā ||",
-          "translationSeeVerse": "132.1"
+          "translationSeeVerse": "132.1",
+          "hindi": "देवी इन्द्राणी ने उत्कट अभिलाषा सहित जल के भीतर जो प्रदीप्त प्रेम-रस सिंचित किया है, वरुण के विधान से मैं आपके लिए उसी अनुराग को प्रदीप्त करता हूँ।"
         },
         {
           "number": "132.4",
           "sanskrit": "यमि॑न्द्रा॒ग्नी स्म॒रमसि॑ञ्चताम॒प्स्व॑१न्तः शोशु॑चानं स॒हाध्या ।\nतं ते॑ तपामि॒ वरु॑णस्य॒ धर्म॑णा ॥",
           "transliteration": "yamindrāgnī smaramasiñcatāmapsvantaḥ śośucānaṃ sahādhyā |\ntaṃ te tapāmi varuṇasya dharmaṇā ||",
-          "translationSeeVerse": "132.1"
+          "translationSeeVerse": "132.1",
+          "hindi": "इन्द्र और अग्नि ने उत्कट अभिलाषा सहित जल के भीतर जो प्रदीप्त प्रेम-रस सिंचित किया है, वरुण के धर्म से मैं आपके लिए उसी अनुराग को प्रदीप्त करता हूँ।"
         },
         {
           "number": "132.5",
           "sanskrit": "यं मि॒त्रावरु॑णौ स्म॒रमसि॑ञ्चताम॒प्स्व॑१न्तः शोशु॑चानं स॒हाध्या ।\nतं ते॑ तपामि॒ वरु॑णस्य॒ धर्म॑णा ॥",
           "transliteration": "yaṃ mitrāvaruṇau smaramasiñcatāmapsvantaḥ śośucānaṃ sahādhyā |\ntaṃ te tapāmi varuṇasya dharmaṇā ||",
-          "translationSeeVerse": "132.1"
+          "translationSeeVerse": "132.1",
+          "hindi": "मित्र और वरुण ने उत्कट अभिलाषा सहित जल के भीतर जो प्रदीप्त प्रेम-रस सिंचित किया है, वरुण के नियम से मैं आपके लिए उसी अनुराग को प्रदीप्त करता हूँ।"
         },
         {
           "number": "133.1",
@@ -12380,62 +12434,72 @@
           "sanskrit": "त्वं वी॒रुधां॒ श्रेष्ठ॑तमाभिश्रु॒तास्यो॑षधे ।\nइ॒मं मे॑ अ॒द्य पुरु॑षं क्ली॒बमो॑प॒शिनं॑ कृधि ॥",
           "transliteration": "tvaṃ vīrudhāṃ śreṣṭhatamābhiśrutāsyoṣadhe |\nimaṃ me adya puruṣaṃ klībamopaśinaṃ kṛdhi ||",
           "translation": "A woman’s imprecation on her unfaithful lover\nO Plant, thy fame is spread abroad as best of all the herbs that grow.\nUnman for me to-day this man that he may wear the horn of hair.\nMake him a eunuch with a horn, set thou the crest upon his-head.\nLet Indra with two pressing-stones deprive him of his manly strength.\nI have unmanned thee, eunuch! yea, impotent! made thee-impotent, and robbed thee, weakling! of thy strength.\nUpon his head we set the horn, we set the branching ornament.\nDuas tuas venas, a Diis factas, in quibus stat vigor virilis, paxillo ligneo in testiculis ob istam mulierem tibi findo.\nUt mulieres mattam (tegetem) facturae arundinem lapide findunt, sic fascinum tuum cum testiculis ob istam mulierem findo.",
-          "translationRange": "138.1-138.5"
+          "translationRange": "138.1-138.5",
+          "hindi": "हे औषधे! आप समस्त वनस्पतियों में सर्वश्रेष्ठ कहकर सुनी गई हैं; अतः आज मेरे लिए उस कुटिल पुरुष को निस्तेज, नपुंसक तथा लज्जाजनक शिरोभूषण (औपश) से युक्त कर दीजिए।"
         },
         {
           "number": "138.2",
           "sanskrit": "क्ली॒बं कृ॑ध्योप॒शिन॒मथो॑ कुरी॒रिणं॑ कृधि ।\nअथा॒स्येन्द्रो॒ ग्राव॑भ्यामु॒भे भि॑नत्त्वा॒ण्ड्यौऽ ॥",
           "transliteration": "klībaṃ kṛdhyopaśinamatho kurīriṇaṃ kṛdhi |\nathāsyendro grāvabhyāmubhe bhinattvāṇḍyau' ||",
-          "translationSeeVerse": "138.1"
+          "translationSeeVerse": "138.1",
+          "hindi": "उस पुरुष को नपुंसक और औपशिन (स्त्रीवत केशसज्जा वाला) बना दो, उसके सिर पर स्त्रियों जैसा मुकुट रख दो; तत्पश्चात् इन्द्रदेव दो पाषाणों से उसका सारा पौरुष चूर्ण कर दें।"
         },
         {
           "number": "138.3",
           "sanskrit": "क्लीब॑ क्ली॒बं त्वा॑करं॒ वध्रे॒ वध्रिं॑ त्वाकर॒मर॑सार॒सं त्वा॑करम् ।\nकु॒रीर॑मस्य शी॒र्षणि॒ कुम्बं॑ चाधि॒निद॑ध्मसि ॥",
           "transliteration": "klība klībaṃ tvākaraṃ vadhre vadhriṃ tvākaramarasārasaṃ tvākaram |\nkurīramasya śīrṣaṇi kumbaṃ cādhinidadhmasi ||",
-          "translationSeeVerse": "138.1"
+          "translationSeeVerse": "138.1",
+          "hindi": "अरे नपुंसक! मैंने तुझे पौरुषहीन कर दिया है, अरे वध्रि (बलहीन)! मैंने तुझे रसहीन और निस्तेज कर दिया है; अब हम इसके सिर पर स्त्रियों जैसा जूड़ा और आभूषण धारण करा देते हैं।"
         },
         {
           "number": "138.4",
           "sanskrit": "ये ते॑ ना॒ड्यौऽदे॒वकृ॑ते॒ ययो॒स्तिष्ठ॑ति॒ वृष्ण्य॑म् ।\nते ते॑ भिनद्मि॒ शम्य॑या॒मुष्या॒ अधि॑ मु॒ष्कयोः॑ ॥",
           "transliteration": "ye te nāḍyau'devakṛte yayostiṣṭhati vṛṣṇyam |\nte te bhinadmi śamyayāmuṣyā adhi muṣkayoḥ ||",
-          "translationSeeVerse": "138.1"
+          "translationSeeVerse": "138.1",
+          "hindi": "देवताओं द्वारा रची हुई तेरी जिन दो नाड़ियों में तेरा पुरुषोचित वेग स्थित है, उन्हें मैं उस दुराचारी के विरुद्ध काष्ठ की कील (शम्या) से भेदन करके अवरुद्ध कर देती हूँ।"
         },
         {
           "number": "138.5",
           "sanskrit": "यथा॑ न॒डं क॒शिपु॑ने॒ स्त्रियो॑ भि॒न्दन्त्यश्म॑ना ।\nए॒वा भि॑नद्मि ते॒ शेपो॒ऽमुष्या॒ अधि॑ मु॒ष्कयोः॑ ॥",
           "transliteration": "yathā naḍaṃ kaśipune striyo bhindantyaśmanā |\nevā bhinadmi te śepo'muṣyā adhi muṣkayoḥ ||",
-          "translationSeeVerse": "138.1"
+          "translationSeeVerse": "138.1",
+          "hindi": "जिस प्रकार स्त्रियाँ चटाई बुनने के लिए पत्थर से नरकट को कूटकर तोड़ देती हैं, वैसे ही मैं तेरे उद्दण्ड पौरुष और दर्प को पूर्णतः भंग कर देती हूँ।"
         },
         {
           "number": "139.1",
           "sanskrit": "न्य॒स्ति॒का रु॑रोहिथ सुभगं॒कर॑णी॒ मम॑ ।\nश॒तं तव॑ प्रता॒नास्त्रय॑स्त्रिंशन्निता॒नाः ॥\nतया॑ सहस्रप॒र्ण्या हृद॑यं शोषयामि ते ॥",
           "transliteration": "nyastikā rurohitha subhagaṃkaraṇī mama |\nśataṃ tava pratānāstrayastriṃśannitānāḥ ||\ntayā sahasraparṇyā hṛdayaṃ śoṣayāmi te ||",
           "translation": "A woman’s love-charm\nThou hast grown up, a source of joy to bless me with pros-perity.\nA hundred are thy tendrils, three-and-thirty thy descending shoots.\nWith this that bears a thousand leaves I dry thy heart and wither it.\nLet thy heart wither for my love and let thy month be dry for me.\nParch and dry up with longing, go with lips that love of me hath dried.\nDrive us together, tawny! fair! a go-between who wakens love.\nDrive us together, him and me, and give us both one heart and mind.\nEven as his mouth is parched who finds no water for his burn-ing thirst,\nSo parch and burn with longing, go with lips that love of me hath dried.\nEven as the Mungoose bites and rends and then restores the wounded snake,\nSo do thou, Mighty one, restore the fracture of our severed love.",
-          "translationRange": "139.1-139.5"
+          "translationRange": "139.1-139.5",
+          "hindi": "हे मुझे सौभाग्य प्रदान करने वाली न्यस्तिका (वशीकरण औषधि)! आप यहाँ उगी हैं; आपकी सौ शाखाएँ और तैंतीस जड़ें नीचे फैली हुई हैं— हजार पत्तों वाली आप से मैं उनका हृदय प्रेमातुर करके सुखा देती हूँ।"
         },
         {
           "number": "139.2",
           "sanskrit": "शुष्य॑तु॒ मयि॑ ते॒ हृद॑य॒मथो॑ शुष्यत्वा॒स्यऽम् ।\nअथो॒ नि शु॑ष्य॒ मां कामे॒नाथो॒ शुष्का॑स्या चर ॥",
           "transliteration": "śuṣyatu mayi te hṛdayamatho śuṣyatvāsya'm |\natho ni śuṣya māṃ kāmenātho śuṣkāsyā cara ||",
-          "translationSeeVerse": "139.1"
+          "translationSeeVerse": "139.1",
+          "hindi": "मुझ में आपका हृदय विरह से तप्त हो जाए और आपका मुख भी सूख जाए; मेरी कामना से अत्यन्त क्षीण होकर आप सूखे मुख वाले होकर मेरे पास विचरण करें।"
         },
         {
           "number": "139.3",
           "sanskrit": "सं॒वन॑नी समुष्प॒ला बभ्रु॒ कल्या॑णि॒ सं नु॑द ।\nअमूं च॒ मां च॒ सं नु॑द समा॒नं हृद॑यं कृधि ॥",
           "transliteration": "saṃvananī samuṣpalā babhru kalyāṇi saṃ nuda |\namūṃ ca māṃ ca saṃ nuda samānaṃ hṛdayaṃ kṛdhi ||",
-          "translationSeeVerse": "139.1"
+          "translationSeeVerse": "139.1",
+          "hindi": "हे प्रेमानुराग जगाने वाली और सुशोभित कल्याणी वल्लरी! मुझे और उन्हें एक साथ प्रेरित करो तथा हम दोनों के हृदय को एक समान कर दो।"
         },
         {
           "number": "139.4",
           "sanskrit": "यथो॑द॒कमप॑पुषोऽप॒शुष्य॑त्या॒स्यऽम् ।\nए॒वा नि शु॑ष्य॒ मां कामे॒नाथो॒ शुष्का॑स्या चर ॥",
           "transliteration": "yathodakamapapuṣo'paśuṣyatyāsya'm |\nevā ni śuṣya māṃ kāmenātho śuṣkāsyā cara ||",
-          "translationSeeVerse": "139.1"
+          "translationSeeVerse": "139.1",
+          "hindi": "जैसे जल न पीने वाले प्यासे का मुख सूख जाता है, वैसे ही मेरी अभिलाषा से सूखकर और तप्त होकर आप केवल मेरी प्रतीक्षा में विचरण करें।"
         },
         {
           "number": "139.5",
           "sanskrit": "यथा॑ नकु॒लो वि॒च्छिद्य॑ सं॒दधा॒त्यहिं॒ पुनः॑ ।\nए॒वा काम॑स्य॒ विच्छि॑न्नं॒ सं धे॑हि वीर्यावति ॥",
           "transliteration": "yathā nakulo vicchidya saṃdadhātyahiṃ punaḥ |\nevā kāmasya vicchinnaṃ saṃ dhehi vīryāvati ||",
-          "translationSeeVerse": "139.1"
+          "translationSeeVerse": "139.1",
+          "hindi": "जैसे नेवला काटे हुए साँप को भी औषधि से पुनः जोड़ देता है, वैसे ही हे शक्तिशाली औषधे! हमारे विच्छिन्न हुए प्रेम को भी पुनः जोड़ दो।"
         },
         {
           "number": "140.1",
@@ -13032,13 +13096,15 @@
           "number": "35.2",
           "sanskrit": "इ॒मा यास्ते॑ श॒तं हि॒राः स॒हस्रं॑ ध॒मनी॑रु॒त ।\nतासां॑ ते॒ सर्वा॑साम॒हमश्म॑ना॒ बिल॒मप्य॑धाम् ॥",
           "transliteration": "imā yāste śataṃ hirāḥ sahasraṃ dhamanīruta |\ntāsāṃ te sarvāsāmahamaśmanā bilamapyadhām ||",
-          "translationSeeVerse": "35.1"
+          "translationSeeVerse": "35.1",
+          "hindi": "आपके शरीर में जो सौ सिराएँ (नाड़ियाँ) और हजार धमनियाँ हैं, उन सबके छिद्र को मैं पाषाण (औषधि/मन्त्र-संकल्प) से बन्द कर देती हूँ (सौत या शत्रु-निग्रह सूक्त)।"
         },
         {
           "number": "35.3",
           "sanskrit": "परं॒ योने॒रव॑रं ते कृणोमि॒ मा त्वा॑ प्र॒जाभि भू॒न्मोत सूनुः॑ ।\nअ॒स्वं॑१ त्वाप्र॑जसं कृणो॒म्यश्मा॑नं ते अपि॒धानं कृणोमि ॥",
           "transliteration": "paraṃ yoneravaraṃ te kṛṇomi mā tvā prajābhi bhūnmota sūnuḥ |\nasvaṃ tvāprajasaṃ kṛṇomyaśmānaṃ te apidhānaṃ kṛṇomi ||",
-          "translationSeeVerse": "35.1"
+          "translationSeeVerse": "35.1",
+          "hindi": "मैं इसके गर्भ-द्वार को ऊपरी की अपेक्षा नीचे की ओर अवरुद्ध कर देती हूँ— इसमें सन्तान उत्पन्न न हो और न पुत्र ही हो; इसे सन्तानहीन कर देती हूँ और पाषाण का आवरण रख देती हूँ।"
         },
         {
           "number": "36.1",
@@ -13059,31 +13125,36 @@
           "sanskrit": "इ॒दं ख॑नामि भेष॒जं मां॑प॒श्यम॑भिरोरु॒दम् ।\nप॒रा॒य॒तो नि॒वर्त॑नमाय॒तः प्र॑ति॒नन्द॑नम् ॥",
           "transliteration": "idaṃ khanāmi bheṣajaṃ māṃpaśyamabhirorudam |\nparāyato nivartanamāyataḥ pratinandanam ||",
           "translation": "A maiden’s love-charm\nI dig this Healing Herb that makes my lover look on me and weep;\nThat bids the parting friend return and kindly greets him as he comes.\nThis Herb wherewith the Asuri drew Indra downward from the Gods,\nWith this same Herb I draw thee close that I may be most dear to thee.\nThou art the peer of Soma, yea, thou art the equal of the Sun, The peer of all the Gods art thou: therefore we call thee hither— ward.\nI am the speaker here, not thou: speak thou where the assembly meets.\nThou shalt be mine and only mine, and never mention other dames.\nIf thou art far away beyond the rivers, far away from men,\nThis Herb shall seem to bind thee fast and bring thee back my prisoner.",
-          "translationRange": "38.1-38.5"
+          "translationRange": "38.1-38.5",
+          "hindi": "प्रेमी को मेरी ओर निहारने और स्नेह से द्रवित करने वाली इस औषधि को मैं खोदती हूँ— जो दूर जाने वाले को लौटा लाने वाली और आने वाले को आनन्दित करने वाली है।"
         },
         {
           "number": "38.2",
           "sanskrit": "येना॑ निच॒क्र आ॑सु॒रीन्द्रं॑ दे॒वेभ्य॒स्परि॑ ।\nतेना॒ नि कु॑र्वे॒ त्वाम॒हं यथा॒ तेऽसा॑नि॒ सुप्रि॑या ॥",
           "transliteration": "yenā nicakra āsurīndraṃ devebhyaspari |\ntenā ni kurve tvāmahaṃ yathā te'sāni supriyā ||",
-          "translationSeeVerse": "38.1"
+          "translationSeeVerse": "38.1",
+          "hindi": "जिस विद्या से आसुरी देवी ने इन्द्र को भी देवताओं से हटाकर अपनी ओर आकर्षित किया था, उसी से मैं आपको अपने अनुकूल बनाती हूँ जिससे मैं आपकी अत्यन्त प्रिया बनूँ।"
         },
         {
           "number": "38.3",
           "sanskrit": "प्र॒तीची॒ सोम॑मसि प्र॒तीच्यु॒त सूर्य॑म् ।\nप्र॒तीची॒ विश्वा॑न् दे॒वान् तां त्वा॒च्छाव॑दामसि ॥",
           "transliteration": "pratīcī somamasi pratīcyuta sūryam |\npratīcī viśvān devān tāṃ tvācchāvadāmasi ||",
-          "translationSeeVerse": "38.1"
+          "translationSeeVerse": "38.1",
+          "hindi": "हे औषधे! आप सोम के सामने हैं, सूर्य के समतुल्य हैं और समस्त देवताओं के तुल्य समर्थ हैं; इसलिए हम आपका आह्वान करती हैं।"
         },
         {
           "number": "38.4",
           "sanskrit": "अ॒हं व॑दामि॒ नेत् त्वं स॒भाया॒मह॒ त्वं वद॑ ।\nममेदस॒स्त्वं केव॑लो॒ नान्यासां॑ की॒र्तया॑श्च॒न ॥",
           "transliteration": "ahaṃ vadāmi net tvaṃ sabhāyāmaha tvaṃ vada |\nmamedasastvaṃ kevalo nānyāsāṃ kīrtayāścana ||",
-          "translationSeeVerse": "38.1"
+          "translationSeeVerse": "38.1",
+          "hindi": "मैं ही बोलूँगी, सभा में आप नहीं बोलेंगे (केवल मेरी ही बात मानें); आप केवल मेरे ही होकर रहें और किसी अन्य स्त्री का नाम तक न लें।"
         },
         {
           "number": "38.5",
           "sanskrit": "यदि॒ वासि॑ तिरोज॒नं यदि॑ वा न॒द्यऽस्ति॒रः ।\nइ॒यं ह॒ मह्यं॒ त्वामोष॑धिर्ब॒द्ध्वेव॒ न्यान॑यत् ॥",
           "transliteration": "yadi vāsi tirojanaṃ yadi vā nadya'stiraḥ |\niyaṃ ha mahyaṃ tvāmoṣadhirbaddhveva nyānayat ||",
-          "translationSeeVerse": "38.1"
+          "translationSeeVerse": "38.1",
+          "hindi": "चाहे आप अनजाने लोगों के देश में हों अथवा नदियों के उस पार हों, यह दिव्य औषधि आपको मानो प्रेमपाश में बाँधकर मेरे समीप लौटा लाएगी।"
         },
         {
           "number": "39.1",
@@ -14168,19 +14239,22 @@
           "sanskrit": "अपि॑ वृश्च पुराण॒वद् व्र॒तते॑रिव गुष्पि॒तम् ।\nओजो॑ दा॒स्यस्य॑ दम्भय ॥",
           "transliteration": "api vṛśca purāṇavad vratateriva guṣpitam |\nojo dāsyasya dambhaya ||",
           "translation": "A charm against a rival in love\nTear thou asunder, as of old, like tangles of a creeping plant.\nDemolish thou the Dāsa’s might.\nMay we with Indra’s help divide the gathered treasure of the foe.\nI, by the law of Varuna, bring down thy pride and wantonness.\nUt virga abeat et feminis innocua fiat, (virga) membri humidi, membri quod verberat penetratque, id quod tentum est laxa, id quod sursum tentum est deorsum tende.",
-          "translationRange": "90.1-90.3"
+          "translationRange": "90.1-90.3",
+          "hindi": "जैसे प्राचीन काल में लताओं के उलझे जाल को काट देते हैं, वैसे ही इस शत्रु को काट गिराओ और उस दास्य-वृत्ति वाले दुष्ट के बल को नष्ट कर दो।"
         },
         {
           "number": "90.2",
           "sanskrit": "व॒यं तद॑स्य॒ सम्भृ॑तं॒ वस्विन्द्रे॑ण॒ वि भ॑जामहै ।\nम्ला॒पया॑मि भ्र॒जः शि॒भ्रं वरु॑णस्य व्र॒तेन॑ ते ॥",
           "transliteration": "vayaṃ tadasya sambhṛtaṃ vasvindreṇa vi bhajāmahai |\nmlāpayāmi bhrajaḥ śibhraṃ varuṇasya vratena te ||",
-          "translationSeeVerse": "90.1"
+          "translationSeeVerse": "90.1",
+          "hindi": "हम इन्द्रदेव के साथ मिलकर इसके द्वारा एकत्र किए गए धन को आपस में बाँट लें; और हे वरुण देव के व्रत के कारण, मैं तेरे प्रज्वलित उद्दण्ड पौरुष को शिथिल कर देता हूँ।"
         },
         {
           "number": "90.3",
           "sanskrit": "यथा॒ शेपो॑ अ॒पाया॑तै स्त्री॒षु चास॒दना॑वयाः ।\nअ॒व॒स्थस्य॑ क्न॒दीव॑तः शाङ्-कु॒रस्य॑ नितो॒दिनः॑ ।\nयदात॑त॒मव॒ तत् त॑नु॒ यदुत्त॑तं॒ नि तत् त॑नु ॥",
           "transliteration": "yathā śepo apāyātai strīṣu cāsadanāvayāḥ |\navasthasya knadīvataḥ śāṅ-kurasya nitodinaḥ |\nyadātatamava tat tanu yaduttataṃ ni tat tanu ||",
-          "translationSeeVerse": "90.1"
+          "translationSeeVerse": "90.1",
+          "hindi": "जिससे इसका कामुक वेग स्त्रियों से दूर हटकर अवरुद्ध हो जाए; इस मदोन्मत्त और पीड़ा देने वाले व्यभिचारी की जो उठी हुई वासना है, उसे नीचे गिरा दो और जो विस्तृत है, उसे समेट दो।"
         },
         {
           "number": "91.1",
@@ -14215,19 +14289,22 @@
           "sanskrit": "उद॑स्य श्या॒वौ वि॑थु॒रौ गृध्रौ॒ द्यामि॑व पेततुः ।\nउ॒च्छो॒च॒न॒प्र॒शो॒च॒नाव॒स्योच्छोच॑नौ हृ॒दः ॥",
           "transliteration": "udasya śyāvau vithurau gṛdhrau dyāmiva petatuḥ |\nucchocanapraśocanāvasyocchocanau hṛdaḥ ||",
           "translation": "An incantation against an undetected thief\nTo heaven, as ‘twere, have soared this man’s two vultures, staggering, dusky hued.\nThe Parcher and the Drier-up, the pair who parch and dry his heart.\nI verily have stirred them up like oxen resting after toil.\nLike two loud-snarling curs, or like two wolves who watch to make their spring:\nLike two that thrust, like two that pierce, like two that strike with mutual blows.\nI bind the conduit of the man or dame who hence hath taken aught.",
-          "translationRange": "95.1-95.3"
+          "translationRange": "95.1-95.3",
+          "hindi": "इस दुष्ट के हृदय को तपाने और सुखाने वाले दो डगमगाते हुए श्यामवर्ण के गृध्र (शत्रु-रूपी प्रबल पक्षी) मानो आकाश की ओर उड़े जा रहे हैं।"
         },
         {
           "number": "95.2",
           "sanskrit": "अ॒हमे॑ना॒वुद॑तिष्ठिपं॑ गावौ॑ श्रान्त॒सदा॑विव ।\nकु॒र्कु॒रावि॑व॒ कूज॑न्तावु॒दव॑न्तौ॒ वृका॑विव ॥",
           "transliteration": "ahamenāvudatiṣṭhipaṃ gāvau śrāntasadāviva |\nkurkurāviva kūjantāvudavantau vṛkāviva ||",
-          "translationSeeVerse": "95.1"
+          "translationSeeVerse": "95.1",
+          "hindi": "थककर बैठे हुए दो बैलों के समान मैंने इन दोनों को जगाकर खड़ा कर दिया है— जो भूँकते हुए श्वानों और झपटने के लिए तत्पर भेड़ियों के समान हैं।"
         },
         {
           "number": "95.3",
           "sanskrit": "आ॒तो॒दिनौ॑ नितो॒दिना॒वथो॑ संतो॒दिना॑वु॒त ।\nअपि॑ नह्याम्यस्य॒ मेढ्रं॒ य इ॒तः स्त्री पुमा॑न् ज॒भार॑ ॥",
           "transliteration": "ātodinau nitodināvatho saṃtodināvuta |\napi nahyāmyasya meḍhraṃ ya itaḥ strī pumān jabhāra ||",
-          "translationSeeVerse": "95.1"
+          "translationSeeVerse": "95.1",
+          "hindi": "जो कोई स्त्री अथवा पुरुष यहाँ से हमारी वस्तु चुरा कर ले गया है, इन दोनों आघात करने वाले प्राण-प्रहारियों द्वारा मैं उसकी समस्त शक्ति और पौरुष को अवरुद्ध कर देता हूँ।"
         },
         {
           "number": "96.1",
@@ -14477,13 +14554,15 @@
           "sanskrit": "तृष्टि॑के॒ तृष्ट॑वन्दन॒ उद॒मूं छि॑न्धि तृष्टिके ।\nयथा॑ कृ॒तद्वि॒ष्टासो॒ऽमुष्मै॑ शे॒प्याव॑ते ॥",
           "transliteration": "tṛṣṭike tṛṣṭavandana udamūṃ chindhi tṛṣṭike |\nyathā kṛtadviṣṭāso'muṣmai śepyāvate ||",
           "translation": "A woman’s incantation against a rival\nRough Plant, thou rough rude parasite, cut thou that man, O Rough and Rude,\nThat thou mayst hinder from his act that man in all his manly strength.\nThou, rugged Plant, art rude and rough, Vishā, Vishātaki art thou.\nThat thou mayest be cast off by him, as by a bull a barren cow.",
-          "translationRange": "113.1-113.2"
+          "translationRange": "113.1-113.2",
+          "hindi": "हे कठोर काँटों वाली तृष्टिका (वनस्पति)! कठोर प्रहार करने वाली आप उस दुराचारी के वेग को काट दें, जिससे आप उस प्रबल पुरुष के कुत्सित कर्म को रोक सकें।"
         },
         {
           "number": "113.2",
           "sanskrit": "तृ॒ष्टासि॑ तृष्टि॒का वि॒षा वि॑षात॒क्यऽसि ।\nपरि॑वृक्ता॒ यथास॑स्यृष॒भस्य॑ व॒शेव॑ ॥",
           "transliteration": "tṛṣṭāsi tṛṣṭikā viṣā viṣātakya'si |\nparivṛktā yathāsasyṛṣabhasya vaśeva ||",
-          "translationSeeVerse": "113.1"
+          "translationSeeVerse": "113.1",
+          "hindi": "हे तृष्टिका! आप तीक्ष्ण और विषातकी (काँटों वाली विष-औषधि) हैं; जिससे वह अन्य स्त्री उस परित्यक्ता बांझ गाय के समान हो जाए जिसे वृषभ त्याग देता है।"
         },
         {
           "number": "114.1",
@@ -15443,19 +15522,22 @@
           "number": "6.3",
           "sanskrit": "मा सं वृ॑तो॒ मोप॑ सृप ऊ॒रू माव॑ सृपोऽन्त॒रा ।\nकृ॒णोम्य॑स्यै भेष॒जं ब॒जं दु॑र्णाम॒चात॑नम् ॥",
           "transliteration": "mā saṃ vṛto mopa sṛpa ūrū māva sṛpo'ntarā |\nkṛṇomyasyai bheṣajaṃ bajaṃ durṇāmacātanam ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "हे अनिष्टकारी प्रेत! गर्भ की रक्षा हेतु गर्भिणी के पास मत आओ और न जंघाओं के बीच रेंगो; मैं इनकी रक्षा के लिए भूत-प्रेतों को भगाने वाली 'बज' नामक दिव्य औषधि का प्रयोग करता हूँ।"
         },
         {
           "number": "6.4",
           "sanskrit": "दु॒र्णामा॑ च सु॒नामा॑ चो॒भा सं॒वृत॑मिच्छतः ।\nअ॒राया॒नप॑ हन्मः सु॒नामा॒ स्त्रैण॑मिच्छताम् ॥",
           "transliteration": "durṇāmā ca sunāmā cobhā saṃvṛtamicchataḥ |\narāyānapa hanmaḥ sunāmā straiṇamicchatām ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "दुष्ट नाम वाले और भले वेष वाले दोनों प्रकार के अनिष्टकारी जीव एकान्त में प्रवेश करना चाहते हैं; स्त्रियों की कामना करने वाले उन दुष्ट अरायों को हम यहाँ से मार भगाते हैं।"
         },
         {
           "number": "6.5",
           "sanskrit": "यः कृ॒ष्णः के॒श्यसु॑र स्तम्ब॒ज उ॒त तुण्डि॑कः ।\nअ॒राया॑नस्या मु॒ष्काभ्यां॒ भंस॒सोप॑ हन्मसि ॥",
           "transliteration": "yaḥ kṛṣṇaḥ keśyasura stambaja uta tuṇḍikaḥ |\narāyānasyā muṣkābhyāṃ bhaṃsasopa hanmasi ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "जो कृष्णवर्ण का, बड़े केशों वाला, असुर, स्तम्बज (झाड़ियों में जन्मा) अथवा लम्बी चोंच वाला भूत है— ऐसे दुष्ट अरायों को हम उनके अवरोहण से ही मार भगाते हैं।"
         },
         {
           "number": "6.6",
@@ -15468,7 +15550,8 @@
           "number": "6.7",
           "sanskrit": "यस्त्वा॒ स्वप्ने॑ नि॒पद्य॑ते॒ भ्राता॑ भू॒त्वा पि॒तेव॑ च ।\nब॒जस्तान्त्स॑हतामि॒तः क्ली॒बरू॑पांस्तिरी॒टिनः॑ ॥",
           "transliteration": "yastvā svapne nipadyate bhrātā bhūtvā piteva ca |\nbajastāntsahatāmitaḥ klībarūpāṃstirīṭinaḥ ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "जो भाई अथवा पिता का छल-रूप धारण करके स्वप्न में कुत्सित आचरण करता है, दिव्य बज औषधि उन नपुंसक रूप वाले मुकुटधारी प्रेतों को यहाँ से खदेड़ दे।"
         },
         {
           "number": "6.8",
@@ -15495,7 +15578,8 @@
           "number": "6.11",
           "sanskrit": "ये कु॒कुन्धाः॑ कु॒कूर॑भाः॒ कृत्ती॑र्दू॒र्शानि॒ बिभ्र॑ति ।\nक्ली॒बा इ॑व प्र॒नृत्य॑न्तो॒ वने॒ ये कु॒र्वते॒ घोषं॒ तानि॒तो ना॑शयामसि ॥",
           "transliteration": "ye kukundhāḥ kukūrabhāḥ kṛttīrdūrśāni bibhrati |\nklībā iva pranṛtyanto vane ye kurvate ghoṣaṃ tānito nāśayāmasi ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "जो विकृत आकृति वाले और कुत्ते जैसे स्वरूप वाले प्रेत कच्चा चर्म या वस्त्र पहने नपुंसकों की भाँति नाचते हुए वन में भयानक कोलाहल करते हैं, उन्हें हम यहाँ से नष्ट करते हैं।"
         },
         {
           "number": "6.12",
@@ -15508,7 +15592,8 @@
           "number": "6.13",
           "sanskrit": "य आ॒त्मान॑मतिमा॒त्रमंस॑ आ॒धाय॒ बिभ्र॑ति ।\nस्त्री॒णां श्रो॑णिप्रतो॒दिन॒ इन्द्र॒ रक्षां॑सि नाशय ॥",
           "transliteration": "ya ātmānamatimātramaṃsa ādhāya bibhrati |\nstrīṇāṃ śroṇipratodina indra rakṣāṃsi nāśaya ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "हे इन्द्र! जो राक्षस अपने शरीर को अति विशाल बनाकर कन्धों पर लदे रहते हैं और स्त्रियों के कटि-प्रदेश को पीड़ा पहुँचाते हैं, उन राक्षसों को नष्ट कर दीजिए।"
         },
         {
           "number": "6.14",
@@ -15521,19 +15606,22 @@
           "number": "6.15",
           "sanskrit": "येषां॑ प॒श्चात् प्रप॑दानि पु॒रः पार्ष्णीः॑ पु॒रो मुखा॑ ।\nख॒ल॒जाः श॑कधूम॒जा उरु॑ण्डा॒ ये च॑ मट्म॒टाः कु॒म्भमु॑ष्का अया॒शवः॑ ।\nतान॒स्या ब्र॑ह्मणस्पते प्रतीबो॒धेन॑ नाशय ॥",
           "transliteration": "yeṣāṃ paścāt prapadāni puraḥ pārṣṇīḥ puro mukhā |\nkhalajāḥ śakadhūmajā uruṇḍā ye ca maṭmaṭāḥ kumbhamuṣkā ayāśavaḥ |\ntānasyā brahmaṇaspate pratībodhena nāśaya ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "हे ब्रह्मणस्पति! जिनके पैर के अगले भाग पीछे और एड़ियाँ आगे की ओर हैं, जो गोबर के धुएँ या खलिहान में उत्पन्न होते हैं तथा जो उरुण्ड, मट्मट और अयाशु हैं— उन सबको अपने प्रबोधन से इस स्त्री के निकट से नष्ट कर दीजिए।"
         },
         {
           "number": "6.16",
           "sanskrit": "प॒र्य॒स्ता॒क्षा अप्र॑चङ्कशा अस्त्रै॒णाः स॑न्तु॒ पण्ड॑गाः ।\nअव॑ भेषज पादय॒ य इ॒मां सं॒विवृ॑त्स॒त्यप॑तिः स्वप॒तिं स्त्रिय॑म् ॥",
           "transliteration": "paryastākṣā apracaṅkaśā astraiṇāḥ santu paṇḍagāḥ |\nava bheṣaja pādaya ya imāṃ saṃvivṛtsatyapatiḥ svapatiṃ striyam ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "हे औषधे! उलटी आँखों वाले, भयंकर दृष्टि वाले और स्त्रियों के अयोग्य ये दुष्ट प्रेत नपुंसक होकर गिर पड़ें; जो कोई पराया होकर पति की इस पत्नी के समीप आने की कुचेष्टा करे, उसे गिरा दो।"
         },
         {
           "number": "6.17",
           "sanskrit": "उ॒द्ध॒र्षिणं॒ मुनि॑केशं ज॒म्भय॑न्तं मरीमृ॒शम् ।\nउपेष॑न्तमुदु॒म्बलं॑ तु॒ण्डेल॑मु॒त शालु॑डम् ।\nप॒दा प्र वि॑ध्य॒ पार्ष्ण्या॑ स्था॒लीं गौरि॑व स्पन्द॒ना ॥",
           "transliteration": "uddharṣiṇaṃ munikeśaṃ jambhayantaṃ marīmṛśam |\nupeṣantamudumbalaṃ tuṇḍelamuta śāluḍam |\npadā pra vidhya pārṣṇyā sthālīṃ gauriva spandanā ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "रोमांच उत्पन्न करने वाले, जटाधारी, कुचलने वाले, मसलने वाले तथा उदुम्बल, तुण्डेल और शालुड नामक प्रेतों को वैसे ही एड़ी से ठोकर मारकर भगा दो, जैसे लात मारती हुई गाय पात्र को गिरा देती है।"
         },
         {
           "number": "6.18",
@@ -15595,7 +15683,8 @@
           "number": "6.26",
           "sanskrit": "अ॒प्र॒जा॒स्त्वं मार्त॑वत्स॒माद् रोद॑म॒घमा॑व॒यम् ।\nवृ॒क्षादि॑व॒ स्रजं॑ कृ॒त्वाप्रि॑ये॒ प्रति॑ मुञ्च॒ तत् ॥",
           "transliteration": "aprajāstvaṃ mārtavatsamād rodamaghamāvayam |\nvṛkṣādiva srajaṃ kṛtvāpriye prati muñca tat ||",
-          "translationSeeVerse": "6.1"
+          "translationSeeVerse": "6.1",
+          "hindi": "सन्तानहीनता, मृतवत्स-योग, रुदन तथा पापकर्म को हम माला की भाँति उतारकर वृक्ष के समान अपने शत्रु के गले में लपेट देते हैं (ताकि माता व सन्तान सुरक्षित रहें)।"
         },
         {
           "number": "7.1",
@@ -18146,7 +18235,8 @@
           "number": "7.13",
           "sanskrit": "क्रोधो॑ वृ॒क्कौ म॒न्युरा॒ण्डौ प्र॒जा शेपः॑ ॥",
           "transliteration": "krodho vṛkkau manyurāṇḍau prajā śepaḥ ||",
-          "translationSeeVerse": "7.1"
+          "translationSeeVerse": "7.1",
+          "hindi": "क्रोध उनके वृक्क (गुर्दे) हैं, मन्यु (उग्र आवेग) अण्डकोष हैं और प्रजा-सृष्टि की शक्ति उनके पौरुष रूप में स्थित है।"
         },
         {
           "number": "7.14",
@@ -18870,7 +18960,8 @@
           "number": "1.17",
           "sanskrit": "वात॑ इव वृ॒क्षान् नि मृ॑णीहि पा॒दय॒ मा गामश्वं॒ पुरु॑ष॒मुच्छि॑ष एषाम् ।\nक॒र्तॄन् नि॒वृत्ये॒तः कृ॑त्योऽप्रजा॒स्त्वाय॑ बोधय ॥",
           "transliteration": "vāta iva vṛkṣān ni mṛṇīhi pādaya mā gāmaśvaṃ puruṣamucchiṣa eṣām |\nkartṝn nivṛtyetaḥ kṛtyo'prajāstvāya bodhaya ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "हे कृत्ये! प्रचण्ड वायु द्वारा वृक्षों के समान इन शत्रुओं को मसलकर गिरा दो; इनकी गौ, अश्व और किसी भी पुरुष को शेष मत छोड़ो; इन्हें करने वालों को पलटकर सन्तानहीनता के लिए प्रबुद्ध कर दो।"
         },
         {
           "number": "1.18",
@@ -18883,7 +18974,8 @@
           "number": "1.19",
           "sanskrit": "उ॒पाहृ॑त॒मनु॑बुद्धं॒ निखा॑तं॒ वैरं॑ त्सा॒र्यन्व॑विदाम॒ कर्त्र॑म् ।\nतदे॑तु॒ यत॒ आभृ॑तं॒ तत्राश्व॑ इव॒ वि व॑र्ततां॒ हन्तु॑ कृत्या॒कृतः॑ प्र॒जाम् ॥",
           "transliteration": "upāhṛtamanubuddhaṃ nikhātaṃ vairaṃ tsāryanvavidāma kartram |\ntadetu yata ābhṛtaṃ tatrāśva iva vi vartatāṃ hantu kṛtyākṛtaḥ prajām ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "लाए गए, चलाए गए तथा भूमि में गाड़े गए शत्रु-अभिचार (वैर) को हम जान गए हैं, और उसके कर्ता को भी पहचान लिया है; वह अभिचार जहाँ से लाया गया था वहीं लौट जाए और अश्व की भाँति पलटकर उस अभिचारकर्ता की सन्तान व बल को नष्ट कर दे।"
         },
         {
           "number": "1.20",
@@ -18966,7 +19058,8 @@
           "number": "1.31",
           "sanskrit": "कृ॒त्या॒कृतो॑ वल॒गिनो॑ऽभिनिष्का॒रिणः॑ प्र॒जाम् ।\nमृ॒णी॒हि कृ॑त्ये॒ मोच्छि॑षो॒ऽमून् कृ॑त्या॒कृतो॑ जहि ॥",
           "transliteration": "kṛtyākṛto valagino'bhiniṣkāriṇaḥ prajām |\nmṛṇīhi kṛtye mocchiṣo'mūn kṛtyākṛto jahi ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "हे कृत्ये! अभिचार करने वालों, मन्त्र-गड्ढे खोदने वालों और अनिष्ट रचने वालों के संहार के लिए उठो; इन कृत्या करने वालों में से किसी को भी शेष मत छोड़ो और उन्हें परास्त करो।"
         },
         {
           "number": "1.32",
@@ -27079,7 +27172,8 @@
           "number": "1.27",
           "sanskrit": "अ॒श्ली॒ला त॒नूर्भ॑वति॒ रुश॑ती पा॒पया॑मु॒या ।\nपति॒र्यद् व॒ध्वो॒३वास॑सः॒ स्वमङ्ग॑मभ्यूर्णु॒ते ॥",
           "transliteration": "aślīlā tanūrbhavati ruśatī pāpayāmuyā |\npatiryad vadhvovāsasaḥ svamaṅgamabhyūrṇute ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "वधू के परिधान और आभूषणों को अनुचित या अशुद्ध जानकर अपवित्र नहीं मानना चाहिए, जब पति मंगल-विधि से नववधू के वस्त्र से अपने अंग का संस्पर्श करता है (विवाह संस्कार का मङ्गल विधान)।"
         },
         {
           "number": "1.28",
@@ -27436,7 +27530,8 @@
           "number": "2.14",
           "sanskrit": "आ॒त्म॒न्वत्यु॒र्वरा॒ नारी॒यमाग॒न् तस्यां॑ नरो वपत॒ बीज॑मस्याम् ।\nसा वः॑ प्र॒जां ज॑नयद् व॒क्षणा॑भ्यो॒ बिभ्र॑ती दु॒ग्धमृ॑ष॒भस्य॒ रेतः॑ ॥",
           "transliteration": "ātmanvatyurvarā nārīyamāgan tasyāṃ naro vapata bījamasyām |\nsā vaḥ prajāṃ janayad vakṣaṇābhyo bibhratī dugdhamṛṣabhasya retaḥ ||",
-          "translationSeeVerse": "2.1"
+          "translationSeeVerse": "2.1",
+          "hindi": "चेतना से युक्त और उर्वर भूमि के समान यह वधू आई है; हे श्रेष्ठ पुरुष! इसमें उत्तम सन्तान रूपी बीज का रोपण करो— यह तेजस्वी पौरुष को धारण करती हुई अपनी कोख से श्रेष्ठ सन्तान उत्पन्न करेगी।"
         },
         {
           "number": "2.15",
@@ -27561,7 +27656,8 @@
           "number": "2.32",
           "sanskrit": "दे॒वा अग्रे॒ न्यपद्यन्त॒ पत्नीः॒ सम॑स्पृशन्त त॒न्वऽस्त॒नूभिः॑ ।\nसू॒र्येव॑ नारि वि॒श्वरू॑पा महि॒त्वा प्र॒जाव॑ती॒ पत्या॒ सं भ॑वे॒ह ॥",
           "transliteration": "devā agre nyapadyanta patnīḥ samaspṛśanta tanva'stanūbhiḥ |\nsūryeva nāri viśvarūpā mahitvā prajāvatī patyā saṃ bhaveha ||",
-          "translationSeeVerse": "2.1"
+          "translationSeeVerse": "2.1",
+          "hindi": "पूर्वकाल में देवताओं ने अपने पत्नियों के साथ शरीर का संस्पर्श करके मर्यादित गृहस्थ-धर्म अपनाया था; हे वधू! सूर्य के समान विश्वरूप और महिमामयी होकर आप सन्तानवती बनें और अपने पति के साथ गृहस्थ आश्रम में रमण करें।"
         },
         {
           "number": "2.33",
@@ -27595,19 +27691,22 @@
           "number": "2.37",
           "sanskrit": "सं पि॑तरा॒वृत्वि॑ये सृजेथां मा॒ता पि॒ता च॒ रेत॑सो भवाथः ।\nमर्य॑ इव॒ योषा॒मधि॑रोहयैनां प्र॒जां कृ॑ण्वाथामि॒ह पु॑ष्यतं र॒यिम् ॥",
           "transliteration": "saṃ pitarāvṛtviye sṛjethāṃ mātā pitā ca retaso bhavāthaḥ |\nmarya iva yoṣāmadhirohayaināṃ prajāṃ kṛṇvāthāmiha puṣyataṃ rayim ||",
-          "translationSeeVerse": "2.1"
+          "translationSeeVerse": "2.1",
+          "hindi": "हे माता-पिता (नवदम्पती)! ऋतुकाल में परस्पर मिलकर उत्तम बीज और सृजन का आधार बनें; तेजस्वी युवक की भाँति उत्तम सन्तान उत्पन्न करें और इस घर में ऐश्वर्य व श्री का पोषण करें।"
         },
         {
           "number": "2.38",
           "sanskrit": "तां पूषं॑छि॒वत॑मा॒मेर॑यस्व॒ यस्यां॒ बीजं॑ मनु॒ष्या॒३वप॑न्ति ।\nया न॑ ऊ॒रू उ॑श॒ती वि॒श्रया॑ति॒ यस्या॑मु॒शन्तः॑ प्र॒हरे॑म॒ शेपः॑ ॥",
           "transliteration": "tāṃ pūṣaṃchivatamāmerayasva yasyāṃ bījaṃ manuṣyāvapanti |\nyā na ūrū uśatī viśrayāti yasyāmuśantaḥ praharema śepaḥ ||",
-          "translationSeeVerse": "2.1"
+          "translationSeeVerse": "2.1",
+          "hindi": "हे पूषन् देव! उस परम कल्याणकारिणी वधू को प्रेरित कीजिए, जिसमें पुरुष श्रेष्ठ सन्तान रूपी बीज बोते हैं; जो प्रेमपूर्वक जीवन-रथ के समान साथ चलती है और जिसमें अनुराग से सृष्टि-यज्ञ सम्पन्न होता है।"
         },
         {
           "number": "2.39",
           "sanskrit": "आ रो॑हो॒रुमुप॑ धत्स्व॒ हस्तं॒ परि॑ ष्वजस्व जा॒यां सु॑मन॒स्यमा॑नः ।\nप्र॒जां कृ॑ण्वाथामि॒ह मोद॑मानौ दी॒र्घं वा॒मायुः॑ सवि॒ता कृ॑णोतु ॥",
           "transliteration": "ā rohorumupa dhatsva hastaṃ pari ṣvajasva jāyāṃ sumanasyamānaḥ |\nprajāṃ kṛṇvāthāmiha modamānau dīrghaṃ vāmāyuḥ savitā kṛṇotu ||",
-          "translationSeeVerse": "2.1"
+          "translationSeeVerse": "2.1",
+          "hindi": "हे वर! प्रसन्नचित्त होकर वधू का आलिंगन और कर-स्पर्श कीजिए; आप दोनों आनन्दित होते हुए यहाँ श्रेष्ठ सन्तान उत्पन्न करें, तथा सविता देव आप दोनों को दीर्घ आयु प्रदान करें।"
         },
         {
           "number": "2.40",
@@ -30421,97 +30520,113 @@
           "sanskrit": "ओ चि॒त् सखा॑यं स॒ख्या व॑वृत्यां ति॒रः पु॒रु चि॑दर्ण॒वं ज॑ग॒न्वान् ।\nपि॒तुर्नपा॑त॒मा द॑धीत वे॒धा अधि॒ क्षमि॑ प्रत॒रं दीध्या॑नः ॥",
           "transliteration": "o cit sakhāyaṃ sakhyā vavṛtyāṃ tiraḥ puru cidarṇavaṃ jaganvān |\npiturnapātamā dadhīta vedhā adhi kṣami prataraṃ dīdhyānaḥ ||",
           "translation": "An accompaniment to funeral ceremonies and sacrificial offerings to ancestral spirits\nFain would I win my friend to kindly friendship. So may the Sage, come through the air’s wide ocean,\nRemembering the earth and days to follow, obtain a son the issue of his father.\nThy friend loves not the friendship which considers her who is near in kindred as a stranger.\nSons of the mighty Asura, the heroes, supporters of the heaven, see far around them.\nYea, this the Immortals seek of thee with longing, a scion of the only man existing.\nThen let thy soul and mine be knit together. Embrace thy con-sort as her loving husband.\nShall we do now what we ne’er did aforetime? we who spoke righteously now talk impurely?\nGandharva in the floods, the Dame of Waters—such is our bond, such our most lofty kinship.\nEven in the womb God Tvashtar, vivifier, shaping all forms,\nCreator, made us consorts.\nNe’er are his holy statutes violated: that we are his the heaven and earth acknowledge.\nWho yokes to-day unto the pole of Order the strong and passio-nate steers of checkless spirit,\nWith shaft-armed mouths, heart-piercing, joy-bestowing? Long shall he live who duly pays them service.\nWho knows that earliest day whereof thou speakest, Who hath beheld it? Who can here declare it?\nGreat is the law of Varuna and Mitra. What, wanton, wilt thou say to men to tempt them?\nYami am possessed by love of Yama, that I may rest on the same couch beside him.\nI as a wife would yield me to my husband. Like car-wheels let us speed to meet each other.\nThey stand not still, they never close their eyelids, those senti-nels of Gods who wander round us.\nNot me—go quickly, wanton, with another, and hasten like a chariot-wheel to meet him.\nMay Sūrya’s eye with days and nights endow him, and ever may his light spread out before him.\nIn heaven and earth the kindred pair commingle. On Yami be the unbrotherly act of Yama.\nSure there will come succeeding times when brothers and sisters will do acts unmeet for kinsfolk.\nNot me, O fair one—seek another husband, and make thine arm a pillow for thy consort.\nIs he a brother when no help is left her? Is she a sister when Destruction cometh?\nForced by my love these many words I utter. Come near, and hold me in thy close embraces,\nI am no help for thee, no refuge, Yami, I will not clasp and press thee to my bosom.\nThis is abhorrent to my mind and spirit—a brother on the couch beside a sister.\nI will not fold mine arms about thy body: they call it sin when one comes near a sister.\nNot me—prepare thy pleasure with another. Thy brother seeks not this from thee, O fair one.\nAlas; thou art indeed a weakling Yama. We find in thee no trace o f heart or spirit.\nAs round a tree the woodbine clings, another will cling about thee girt as with a girdle.\nEmbrace another, Yami. Let some other, even as the woodbine rings a tree, enfold thee.\nWin thou his heart and let him win thy fancy; so make with him a bond of blest alliance.\nThree hymns the Sages have disposed in order, the many-formed, the fair, the all-beholding.\nThese in one single world are placed and settled—the growing plants, the breezes, and the waters.\nThe Bull hath yielded for the Bull the milk of heaven: inviolable is the Son of Aditi.\nAccording to his wisdom Varuna knoweth all: he halloweth, the holy, times for sacrifice.\nGandharvi spake. May she, the Lady of the Flood amid the river’s roaring leave my heart untouched.\nMay Aditi accomplish all that we desire, and may our eldest Brother tell us this as chief.\nYea, even this blessed Morning, rich in store of food, splendid, with heavenly lustre, hath shone out for man,\nSince they as was the wish of yearning Gods, brought forth that yearning Agni for the assembly as the Priest.\nAnd the fleet Falcon brought for sacrifice from afar this flowing. drop most excellent and passing wise,\nThen when the Aryan tribes chose as invoking Priest Agni the wonder-worker, and the hymn rose up.\nStill art thou kind to him who feeds thee as with grass, and. skilled in sacrifice offers thee holy gifts.\nWhen thou having received the sage’s strengthening food with lauds, after long toil comest with many more.\nUrge thou thy Parents, as a lover, to delight: the lovely One desires and craves it from his heart.\nAs Priest he calls aloud, as Warrior shows his skill, as Asura tries his strength, and with the hymn is stirred.\nFar famed is he, the mortal man, O Agni thou Son of strength, who hath obtained thy favour.\nHe, gathering power, borne onward by his horses, makes his, days lovely in his might and splendour.\nHear us, O Agni, in the great assembly: harness thy rapid car,. the car of Amrit.\nBring Heaven and Earth, the Deities’ Parents, hither: stay with us here, nor from the Gods be absent.\nWhen, holy Agni, the divine assembly, the holy synod mid the Gods, is gathered,\nAnd when thou, godlike One, dealest forth treasures vouchsafe us too our portion of the riches.\nAgni hath looked upon the van of Mornings, and on the days. the earliest Jātavedas.\nAfter the Dawns, after their rays of brightness, Sūrya hath enter-ed into earth and heaven.\nAgni hath looked against the van of Mornings, against the days-the earliest Jātavedas;\nIn many a place against the beams of Sūrya, against the heavens and earth hath he extended.\nHeaven and Earth, first by everlasting Order, speakers of truth, are near enough to hear us,\nWhen the God, urging men to worship, sitteth as Priest, assum-ing all his vital vigour.\nAs God comprising Gods by Law eternal, bear, as the chief who knoweth, our oblation,\nSmoke-bannered with the fuel, radiant, joyous, better to praise and worship, Priest for ever.\nI praise your work .that ye may make me prosper: hear, Heaven and Earth, twain worlds that drop with fatness!\nWhile days and Gods go to the world of spirits, have let the Parents with sweet mead refresh us.\nWhen the Cow’s nectar wins the God completely, men here below are heaven’s and earth’s sustainers All the Gods come to this thy heavenly Yajus which from the motley Pair milked oil and water Hath the King seized us? How have we offended against his holy Ordinance? Who knoweth?\nFor even Mitra mid the Gods is angry. There are both song and wealth for those who come not.\n34’Tis hard to understand the Immortal’s nature, where she who is akin becomes a stranger.\nGuard ceaselessly, great Agni, him who ponders Yama’s name easy to be comprehended.\nThey in the synod where the Gods rejoice them, where they are seated in Vivasvan’s dwelling,\nHave given the Moon his beams, the Sun his splendour: the two unweariedly maintain their brightness.\nThe counsel which the Gods meet to consider, their secret plan, of that we have no knowledge.\nThere let God Savitar, Aditi, and Mitra proclaim to Varuna that we are sinless.\nCompanions, let us learn a prayer to Indra whom the thunder arms,\nTo glorify your bold and most heroic Friend.\nFor thou by slaying Vritra art the Vritra-slayer, famed for might.\nThou, Hero, in rich gifts surpassest wealthy chiefs.\nO’er the broad land thou goest like a Stega: here on vast earth let breezes blow upon us,\nHere hath our dear Friend Varuna, united, like Agni in the wood, shot forth his splendour.\nSing praise to him the chariot-borne, the famous, Sovran of men, the dread and strong destroyer.\nO Rudra, praised be gracious to the singer; let thy darts spare us and smite down another.\nThe pious call Sarasvati, they worship Sarasvati while sacrifice proceedeth.\nThe virtuous call Sarasvati to hear them. Sarasvati send bliss to him who giveth!\nSarasvati is called on by the Fathers who come right forward to our solemn worship.\nSeated upon this sacred grass rejoice you. Give thou us strengthening food that brings no sickness.\nSarasvati, who comest with the Fathers, joying in hymns, O Goddess, and oblations,\nGive plenteous wealth to this the sacrificer, a portion, worth a thousand, of refreshment.\nMay they ascend, the lowest, highest, midmost, the Fathers, who deserve a share of Soma.\nMay they who have attained to life, the Fathers, righteous and gentle, aid us when we call them.\nI have attained the gracious-minded Fathers, I have gained son and progeny from Vishnu.\nThey who enjoy pressed juices with oblation, seated on sacred grass, come oftenest hither.\nNow be this homage offered to the Fathers, to those who passed of old and those who followed,\nThose who have rested in the earthly region and those who dwell among the happy races.\nMātali prospers there with Kavyas, Yama with Angiras’ sons,\nBrihaspati with singers.\nExalters of the Gods, by Gods exalted, aid us those Fathers in our invocations?\nYes, this is good to taste and full of sweetness, verily it is strong and rich in flavour.\nNo one may conquer Indra in the battle when he hath drunken of the draught we offer.\nHonour the King with your oblations, Yama, Vivasvān’s son, who gathers men together.\nEven him who travelled o’er the mighty rivers, who searches out and shows the path to many.\nYama first found for us the road to travel: this pasture never can be taken from us.\nMen born on earth tread their own paths that lead them whither our ancient Fathers have departed.\nFathers who sit on sacred grass, come, help us: these offsprings have we made for you; accept them.\nSo come to us with most auspicious favour: bestow on us unfailing health and plenty.\nBowing their bended knees and seated southward let all accept this sacrifice with favour.\nPunish us not for any sin, O fathers which we through human frailty have committed.\nTvashtar prepares the bridal for his daughter: therefore the whole of this our world assembles.\nBut Yama’s mother, spouse of great Vivasvān, vanished as she was carried to her dwelling.\nGo forth, go forth upon the homeward pathways whither our sires of old have gone before us.\nThen shalt thou look on both the Kings enjoying their sacred food, God Varuna and Yama.\nGo hence, depart ye, fly in all directions. This world for him the Fathers have provided.\nYama bestow upon this man a dwelling adorned with days and beams of light and waters.\nWe set thee down with yearning, and with yearning we enkindle thee,\nYearning, bring yearning Fathers nigh to eat the food of sacrifice.\nWe, splendid men, deposit thee, we, splendid men, enkindle thee.\nSplendid, bring splendid Fathers nigh to eat the sacrificial food.\nOur Fathers are Angirases, Navagvas, Atharvans, Bhrigus, who deserve the Soma.\nMay these, the holy, look on us with favour; may we enjoy their gracious loving-kindness.\nCome, Yama, with Angirases, the holy; rejoice thee here with children of Virūpa.\nSeated on sacred grass at this oblation: I call Vivasvān too, thy father, hither.\nCome, seat thee on this bed of grass. O Yama, accordant with Angirases and Fathers.\nLet texts recited by the sages bring thee. O. King, let this oblation make thee joyful.\nHe hath gone hence and risen on high mounting heaven’s ridges by that path Whereon the sons of Angiras, the conquerors of earth, went up.",
-          "translationRange": "1.1-1.61"
+          "translationRange": "1.1-1.61",
+          "hindi": "मैं (यमी) विशाल समुद्र के उस पार से आए अपने सखा (यम) को मैत्री की ओर आकृष्ट करती हूँ; पृथ्वी पर दूर तक विचार करता हुआ विधाता पिता का सुयोग्य पौत्र (सन्तान) उत्पन्न करे।"
         },
         {
           "number": "1.2",
           "sanskrit": "न ते॒ सखा॑ स॒ख्यं व॑ष्ट्ये॒तत् सल॑क्ष्मा॒ यद् विषु॑रूपा॒ भवा॑ति ।\nम॒हस्पु॒त्रासो॒ असु॑रस्य वी॒रा दि॒वो ध॒र्तार॑ उर्वि॒या परि॑ ख्यन् ॥",
           "transliteration": "na te sakhā sakhyaṃ vaṣṭyetat salakṣmā yad viṣurūpā bhavāti |\nmahasputrāso asurasya vīrā divo dhartāra urviyā pari khyan ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "(यम ने कहा-) आपका मित्र ऐसी मैत्री नहीं चाहता, जहाँ समान गोत्र की सहोदरा ही असामान्य (विजातीय-सा) व्यवहार करे; महाप्रतापी असुर के वीर पुत्र और द्युलोक के धारक देवता चारों ओर सर्वत्र देख रहे हैं।"
         },
         {
           "number": "1.3",
           "sanskrit": "उ॒शन्ति॑ घा॒ ते अ॒मृता॑स ए॒तदेक॑स्य चित् त्य॒जसं॒ मर्त्य॑स्य ।\nनि ते॒ मनो॒ मन॑सि धाय्य॒स्मे जन्युः॒ पति॑स्त॒न्व॑१मा वि॑विश्याः ॥",
           "transliteration": "uśanti ghā te amṛtāsa etadekasya cit tyajasaṃ martyasya |\nni te mano manasi dhāyyasme janyuḥ patistanvamā viviśyāḥ ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "(यमी ने कहा-) वे अमर देवता भी एकमात्र शेष बचे मर्त्य पुरुष से ऐसी ही सन्तान चाहते हैं; आपका मन मेरे मन में स्थिर हो और आप स्त्री के पति रूप में गृहस्थ-संयोग को स्वीकार करें।"
         },
         {
           "number": "1.4",
           "sanskrit": "न यत् पु॒रा च॑कृ॒मा कद्ध॑ नू॒नमृ॒तं वद॑न्तो॒ अनृ॑तं रपेम ।\nग॒न्ध॒र्वो अ॒प्स्वप्या॑ च॒ योषा॒ सा नौ॒ नाभिः॑ पर॒मं जा॒मि तन्नौ॑ ॥",
           "transliteration": "na yat purā cakṛmā kaddha nūnamṛtaṃ vadanto anṛtaṃ rapema |\ngandharvo apsvapyā ca yoṣā sā nau nābhiḥ paramaṃ jāmi tannau ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "(यम ने कहा-) जो आचरण हमने पहले कभी नहीं किया, वह आज भला कैसे करें? क्या सत्य बोलने वाले होकर अब हम असत्य व अमर्यादित बातें बोलें? जल-प्रदेश का गन्धर्व और अप्सरा— वे ही हमारी नाभि (मूल जनक) और परम बन्धु हैं।"
         },
         {
           "number": "1.5",
           "sanskrit": "गर्भे॒ नु नौ॑ जनि॒ता दम्प॑ती कर्दे॒वस्त्वष्टा॑ सवि॒ता वि॒श्वरू॑पः ।\nनकि॑रस्य॒ प्र मि॑नन्ति व्र॒तानि॒ वेद॑ नाव॒स्य पृ॑थि॒वी उ॒त द्यौः ॥",
           "transliteration": "garbhe nu nau janitā dampatī kardevastvaṣṭā savitā viśvarūpaḥ |\nnakirasya pra minanti vratāni veda nāvasya pṛthivī uta dyauḥ ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "गर्भ में ही हमारे स्रष्टा, सब को प्रेरित करने वाले और समस्त रूपों को गढ़ने वाले देव त्वष्टा ने मानो हमें दम्पती-सा बनाया था; उनके पवित्र नियमों को कोई भंग नहीं कर सकता— हमारे इस सम्बन्ध को द्युलोक और पृथ्वी भी जानते हैं।"
         },
         {
           "number": "1.6",
           "sanskrit": "को अ॒द्य यु॑ङ्क्ते धु॒रि गा ऋ॒तस्य॒ शिमी॑वतो भा॒मिनो॑ दुर्हृणा॒यून् ।\nआ॒सन्नि॑षून् हृ॒त्स्वसो॑ मयो॒भून् य ए॑षां भृ॒त्यामृ॒णध॒त् स जी॑वात् ॥",
           "transliteration": "ko adya yuṅkte dhuri gā ṛtasya śimīvato bhāmino durhṛṇāyūn |\nāsanniṣūn hṛtsvaso mayobhūn ya eṣāṃ bhṛtyāmṛṇadhat sa jīvāt ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "(यमी ने कहा-) सनातन ऋत के धुरे पर गतिशील, तेजोमय और अजेय रथ को आज कौन जोतेगा— जिसके मुख में बाण और हृदय में सुखकारी प्राण हैं? जो इनका भरण-पोषण करेगा, वही दीर्घायु होगा।"
         },
         {
           "number": "1.7",
           "sanskrit": "को अ॒स्य वे॑द प्रथ॒मस्याह्नः॒ क ईं॑ ददर्श॒ क इ॒ह प्र वो॑चत् ।\nबृ॒हन्मि॒त्रस्य॒ वरु॑णस्य॒ धाम॒ कदु॑ ब्रव आहनो॒ वीच्या॒ नॄन् ॥",
           "transliteration": "ko asya veda prathamasyāhnaḥ ka īṃ dadarśa ka iha pra vocat |\nbṛhanmitrasya varuṇasya dhāma kadu brava āhano vīcyā nṝn ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "उस प्रथम दिन की बात कौन जानता है? किसने उसे देखा है और कौन यहाँ उसका वर्णन कर सकता है? मित्र और वरुण का नियम (धाम) अत्यन्त विशाल है— अरे कामिनी! पुरुषों के प्रति अनुचित मार्ग से तू क्या कह रही है?"
         },
         {
           "number": "1.8",
           "sanskrit": "य॒मस्य॑ मा य॒म्यं॑ काम॒ आग॑न्त्समा॒ने योनौ॑ सह॒शेय्या॑य ।\nजा॒येव॒ पत्ये॑ त॒न्वं रिरिच्यां॒ वि चि॑द् वृहेव॒ रथ्ये॑व च॒क्रा ॥",
           "transliteration": "yamasya mā yamyaṃ kāma āgantsamāne yonau sahaśeyyāya |\njāyeva patye tanvaṃ riricyāṃ vi cid vṛheva rathyeva cakrā ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "मुझ यमी में यम के प्रति यह कामना उत्पन्न हुई है कि मैं इनके साथ एक ही शय्या पर शयन करूँ; जैसे पत्नी पति को अपना शरीर अर्पित करती है, वैसे ही हम दोनों रथ के पहियों की भाँति साथ चलें।"
         },
         {
           "number": "1.9",
           "sanskrit": "न ति॑ष्ठन्ति॒ न नि मि॑षन्त्ये॒ते दे॒वानां॒ स्पश॑ इ॒ह ये चर॑न्ति ।\nअ॒न्येन॒ मदा॑हनो याहि॒ तूयं॒ तेन॒ वि वृ॑ह॒ रथ्ये॑व च॒क्रा ॥",
           "transliteration": "na tiṣṭhanti na ni miṣantyete devānāṃ spaśa iha ye caranti |\nanyena madāhano yāhi tūyaṃ tena vi vṛha rathyeva cakrā ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "यहाँ विचरण करने वाले देवताओं के ये गुप्तचर न कभी ठहरते हैं और न अपनी पलकें ही झपकाते हैं; अरे निन्दित आचरण करने वाली! मुझ से भिन्न किसी अन्य पुरुष के साथ शीघ्र जा और उसी के साथ रथ के पहियों की भाँति चल।"
         },
         {
           "number": "1.10",
           "sanskrit": "रात्री॑भिरस्मा॒ अह॑भिर्दशस्ये॒त् सूर्य॑स्य॒ चक्षु॒र्मुहु॒रुन्मि॑मीयात् ।\nदि॒वा पृ॑थि॒व्या मि॑थु॒ना सब॑न्धू य॒मीर्य॒मस्य॑ विवृहा॒दजा॑मि ॥",
           "transliteration": "rātrībhirasmā ahabhirdaśasyet sūryasya cakṣurmuhurunmimīyāt |\ndivā pṛthivyā mithunā sabandhū yamīryamasya vivṛhādajāmi ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "सूर्यदेव का नेत्र इसे अनेक दिनों और रात्रियों से सम्पन्न करे; आकाश और पृथ्वी का यह युगल सगोत्री है, अतः यमी यम के अतिरिक्त किसी अन्य से ही सगाई-सम्बन्ध स्थापित करे।"
         },
         {
           "number": "1.11",
           "sanskrit": "आ घा॒ ता ग॑च्छा॒नुत्त॑रा यु॒गानि॒ यत्र॑ जा॒मयः॑ कृ॒णव॒न्नजा॑मि ।\nउप॑ बर्बृहि वृष॒भाय॑ बा॒हुम॒न्यमि॑च्छस्व सुभगे॒ पतिं॒ मत् ॥",
           "transliteration": "ā ghā tā gacchānuttarā yugāni yatra jāmayaḥ kṛṇavannajāmi |\nupa barbṛhi vṛṣabhāya bāhumanyamicchasva subhage patiṃ mat ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "आगे आने वाले वे युग निश्चय ही आएँगे, जब सगे भाई-बहिन भी मर्यादा से रहित अनुचित आचरण करेंगे; हे सौभाग्यवती! मुझ से भिन्न किसी अन्य समर्थ पुरुष को अपने बाहुओं का आश्रय बनाइए और उसे पति रूप में वरण कीजिए।"
         },
         {
           "number": "1.12",
           "sanskrit": "किं भ्राता॑स॒द् यद॑ना॒थं भवा॑ति॒ किमु॒ स्वसा॒ यन्निरृ॑तिर्नि॒गच्छा॑त् ।\nकाम॑मूता ब॒ह्वे॒३तद् र॑पामि त॒न्वा॒ऽमे त॒न्वं॑१ सं पि॑पृग्धि ॥",
           "transliteration": "kiṃ bhrātāsad yadanāthaṃ bhavāti kimu svasā yannirṛtirnigacchāt |\nkāmamūtā bahvetad rapāmi tanvā'me tanvaṃ saṃ pipṛgdhi ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "यदि कोई भाई रहते हुए भी बहिन असहाय रहे और बहिन के रहते हुए विपत्ति आ जाए, तो भला ऐसा भाई किस काम का? काम से व्याकुल होकर मैं यह बहुत कुछ कह रही हूँ— मुझे अपना सान्निध्य प्रदान कीजिए।"
         },
         {
           "number": "1.13",
           "sanskrit": "न ते॑ ना॒थं य॒म्यत्रा॒हम॑स्मि॒ न ते॑ त॒नूं त॒न्वा॒३ सं प॑पृच्याम् ।\nअ॒न्येन॒ मत् प्र॒मुदः॑ कल्पयस्व॒ न ते॒ भ्राता॑ सुभगे वष्ट्ये॒तत् ॥",
           "transliteration": "na te nāthaṃ yamyatrāhamasmi na te tanūṃ tanvā saṃ papṛcyām |\nanyena mat pramudaḥ kalpayasva na te bhrātā subhage vaṣṭyetat ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "हे यमि! मैं तेरा ऐसा आश्रय नहीं बन सकता; मैं अपने शरीर से तेरे शरीर का संस्पर्श कदापि नहीं कर सकता। हे सुभगे! मुझ से भिन्न किसी अन्य के साथ अपना सुख खोज, क्योंकि तेरा यह भाई ऐसा अनुचित कार्य कदापि नहीं चाहता।"
         },
         {
           "number": "1.14",
           "sanskrit": "न वा उ॑ ते त॒नूं त॒न्वा॒३ सं प॑पृच्यां पा॒पमा॑हु॒र्यः स्वसा॑रं नि॒गच्छा॑त् ।\nअसं॑यदे॒तन्मन॑सो हृ॒दो मे॒ भ्राता॒ स्वसुः॒ शय॑ने॒ यच्छ॑यीय ॥",
           "transliteration": "na vā u te tanūṃ tanvā saṃ papṛcyāṃ pāpamāhuryaḥ svasāraṃ nigacchāt |\nasaṃyadetanmanaso hṛdo me bhrātā svasuḥ śayane yacchayīya ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "मैं तेरे शरीर से अपना शरीर कदापि नहीं जोड़ सकता; जो सहोदरा बहिन के साथ ऐसा आचरण करता है, उसे ज्ञानीजन पापी कहते हैं— यदि भाई बहिन की शय्या पर सोए तो यह मेरे मन और हृदय के सर्वथा विरुद्ध है।"
         },
         {
           "number": "1.15",
           "sanskrit": "ब॒तो ब॑तासि यम॒ नैव ते॒ मनो॒ हृद॑यं चाविदामा ।\nअ॒न्या किल॒ त्वां क॒क्ष्येऽव यु॒क्तं परि॑ ष्वजातै॒ लिबु॑जेव वृ॒क्षम् ॥",
           "transliteration": "bato batāsi yama naiva te mano hṛdayaṃ cāvidāmā |\nanyā kila tvāṃ kakṣye'va yuktaṃ pari ṣvajātai libujeva vṛkṣam ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "\"हे यम! सचमुच आप अत्यन्त दुर्बल और निस्तेज हैं; हमने आपके मन और हृदय को पहले नहीं पहचाना था। रथ के पहिए की भाँति आपको कोई अन्य स्त्री उसी प्रकार आलिंगन कर लेगी, जैसे वृक्ष से लता लिपट जाती है।\""
         },
         {
           "number": "1.16",
           "sanskrit": "अ॒न्यमू॒ षु य॑म्य॒न्य उ॒ त्वां परि॑ ष्वजातै लिबु॑जेव वृ॒क्षम् ।\nतस्य॑ वा॒ त्वं मन॑ इ॒च्छा स वा॒ तवाधा॑ कृणुष्व स॒विदं॒ सुभ॑द्राम् ॥",
           "transliteration": "anyamū ṣu yamyanya u tvāṃ pari ṣvajātai libujeva vṛkṣam |\ntasya vā tvaṃ mana icchā sa vā tavādhā kṛṇuṣva savidaṃ subhadrām ||",
-          "translationSeeVerse": "1.1"
+          "translationSeeVerse": "1.1",
+          "hindi": "\"हे यमि! निश्चय ही कोई अन्य पुरुष आपको वैसे ही आलिंगन करेगा, जैसे वृक्ष को लता लपेट लेती है; आप उसी के मन की कामना करें और वह आपके मन को चाहे— उसी के साथ अपना मंगलमय बन्धन स्थापित करें।\""
         },
         {
           "number": "1.17",
@@ -40223,19 +40338,22 @@
           "number": "96.14",
           "sanskrit": "यस्त॑ ऊ॒रू वि॒हर॑त्यन्त॒रा दम्प॑ती॒ शये॑ ।\nयोनिं॒ यो अ॒न्तरा॒रेल्हि॒ तमि॒तो ना॑शयामसि ॥",
           "transliteration": "yasta ūrū viharatyantarā dampatī śaye |\nyoniṃ yo antarārelhi tamito nāśayāmasi ||",
-          "translationSeeVerse": "96.1"
+          "translationSeeVerse": "96.1",
+          "hindi": "जो दम्पती के मध्य शयन करके गृहस्थ-मर्यादा में विघ्न डालता है और जो अनैतिक कुदृष्टि व कामुकता फैलाता है, उस दुष्ट को हम यहाँ से विनष्ट कर देते हैं।"
         },
         {
           "number": "96.15",
           "sanskrit": "यस्त्वा॒ भ्राता॒ पति॑र्भू॒त्वा जा॒रो भू॒त्वा नि॒पद्य॑ते ।\nप्र॒जां यस्ते॒ जिघां॑सति॒ तमि॒तो ना॑शयामसि ॥",
           "transliteration": "yastvā bhrātā patirbhūtvā jāro bhūtvā nipadyate |\nprajāṃ yaste jighāṃsati tamito nāśayāmasi ||",
-          "translationSeeVerse": "96.1"
+          "translationSeeVerse": "96.1",
+          "hindi": "जो भाई अथवा पति का छल-वेष धारण करके और व्यभिचारी बनकर समीप आता है तथा जो आपकी सन्तान का हनन करना चाहता है, उस दुष्ट को हम यहाँ से नष्ट कर देते हैं।"
         },
         {
           "number": "96.16",
           "sanskrit": "यस्त्वा॒ स्वप्ने॑न॒ तम॑सा मोहयि॒त्वा नि॒पद्य॑ते ।\nप्र॒जां यस्ते॒ जिघां॑सति॒ तमि॒तो ना॑शयामसि ॥",
           "transliteration": "yastvā svapnena tamasā mohayitvā nipadyate |\nprajāṃ yaste jighāṃsati tamito nāśayāmasi ||",
-          "translationSeeVerse": "96.1"
+          "translationSeeVerse": "96.1",
+          "hindi": "जो स्वप्न और अन्धकार से मोहित करके छलपूर्वक समीप आता है तथा आपकी सन्तान को नष्ट करना चाहता है, उस पिशाच को हम यहाँ से नष्ट कर देते हैं।"
         },
         {
           "number": "96.17",
@@ -41076,19 +41194,22 @@
           "number": "126.6",
           "sanskrit": "न मत् स्त्री सु॑भ॒सत्त॑रा॒ न सु॒याशु॑तरा भुवत् ।\nन मत् प्रति॑च्यवीयसी॒ न सक्थ्युद्य॑मीयसी॒ विश्व॑स्मा॒दिन्द्र॒ उत्त॑रः ॥",
           "transliteration": "na mat strī subhasattarā na suyāśutarā bhuvat |\nna mat praticyavīyasī na sakthyudyamīyasī viśvasmādindra uttaraḥ ||",
-          "translationSeeVerse": "126.1"
+          "translationSeeVerse": "126.1",
+          "hindi": "(वृषाकपि सूक्त में इन्द्राणी कहती हैं-) मुझसे बढ़कर सौभाग्यवती, सुन्दरी, पौरुषवती तथा सब प्रकार से पति के अनुकूल चलने वाली कोई अन्य स्त्री नहीं है; सबसे ऊपर भगवान इन्द्र विराजमान हैं।"
         },
         {
           "number": "126.7",
           "sanskrit": "उ॒वे अ॑म्ब सुलाभिके॒ यथे॑वा॒ङ्गं भ॑वि॒ष्यति॑ ।\nभ॒सन्मे॑ अम्ब॒ सक्थि॑ मे॒ शिरो॑ मे॒ वीऽव हृष्यति॒ विश्व॑स्मा॒दिन्द्र॒ उत्त॑रः ॥",
           "transliteration": "uve amba sulābhike yathevāṅgaṃ bhaviṣyati |\nbhasanme amba sakthi me śiro me vī'va hṛṣyati viśvasmādindra uttaraḥ ||",
-          "translationSeeVerse": "126.1"
+          "translationSeeVerse": "126.1",
+          "hindi": "हे माता! सुलभ सुख देने वाली यह पौरुष-शक्ति मेरे अंगों के अनुरूप पूर्णतः सिद्ध होगी; मेरा मन और समस्त अंग प्रफुल्लित हो रहे हैं— विश्व भर में इन्द्रदेव ही सर्वोत्तम हैं।"
         },
         {
           "number": "126.8",
           "sanskrit": "किं सु॑बाहो स्वङ्गुरे॒ पृथु॑ष्टो॒ पृथु॑जाघने ।\nकिं शू॑रपत्नि न॒स्त्वम॒भ्यऽमीषि वृ॒षाक॑पिं॒ विश्व॑स्मा॒दिन्द्र॒ उत्त॑रः ॥",
           "transliteration": "kiṃ subāho svaṅgure pṛthuṣṭo pṛthujāghane |\nkiṃ śūrapatni nastvamabhya'mīṣi vṛṣākapiṃ viśvasmādindra uttaraḥ ||",
-          "translationSeeVerse": "126.1"
+          "translationSeeVerse": "126.1",
+          "hindi": "हे सुन्दर भुजाओं और सुन्दर अंगुलियों वाली, विशाल जंघाओं और शूरवीर की पत्नी! आप हमारे वृषाकपि पर क्यों कुपित हो रही हैं? समस्त विश्व से इन्द्र ही श्रेष्ठतर हैं।"
         },
         {
           "number": "126.9",
@@ -41143,13 +41264,15 @@
           "number": "126.16",
           "sanskrit": "न सेशे॒ यस्य॒ रम्ब॑तेऽन्त॒रा स॒क्थ्या॒३ कपृ॑त् ।\nसेदी॑शे॒ यस्य॒ रोम॒शं नि॑षे॒दुषो॑ वि॒जृम्भ॑ते॒ विश्व॑स्मा॒दिन्द्र॒ उत्त॑रः ॥",
           "transliteration": "na seśe yasya rambate'ntarā sakthyā kapṛt |\nsedīśe yasya romaśaṃ niṣeduṣo vijṛmbhate viśvasmādindra uttaraḥ ||",
-          "translationSeeVerse": "126.1"
+          "translationSeeVerse": "126.1",
+          "hindi": "जिसका पौरुष जंघाओं के बीच लटका और निस्तेज रहता है, वह समर्थ नहीं होता; वही स्वामी बनता है जिसका रोम-रोम और बल बैठने पर भी जागृत और तेजस्वी रहता है— विश्व से इन्द्र श्रेष्ठतर हैं।"
         },
         {
           "number": "126.17",
           "sanskrit": "न सेशे॒ यस्य॑ रोम॒शं नि॑षे॒दुषो॑ वि॒जृम्भ॑ते ।\nसेदी॑शे॒ यस्य॒ रम्ब॑तेऽन्त॒रा स॒क्थ्या॒३ कपृ॑द् विश्व॑स्मा॒दिन्द्र॒ उत्त॑रः ॥",
           "transliteration": "na seśe yasya romaśaṃ niṣeduṣo vijṛmbhate |\nsedīśe yasya rambate'ntarā sakthyā kapṛd viśvasmādindra uttaraḥ ||",
-          "translationSeeVerse": "126.1"
+          "translationSeeVerse": "126.1",
+          "hindi": "जिसका रोमश बल बैठने पर केवल जम्हाई लेता (शिथिल) हो वह समर्थ नहीं; अपितु इस प्रतीकात्मक संवाद में पौरुष की पूर्णता ही समर्थता का प्रतीक है— और विश्व भर में इन्द्र ही सर्वोत्तम हैं।"
         },
         {
           "number": "126.18",
@@ -41346,13 +41469,15 @@
           "number": "128.8",
           "sanskrit": "अप्र॑पा॒णा च॑ वेश॒न्ता रे॒वां अप्रति॑दिश्ययः ।\nअय॑भ्या क॒न्या कल्या॒णी तो॒ता कल्पे॑षु सं॒मिता॑ ॥",
           "transliteration": "aprapāṇā ca veśantā revāṃ apratidiśyayaḥ |\nayabhyā kanyā kalyāṇī totā kalpeṣu saṃmitā ||",
-          "translationSeeVerse": "128.1"
+          "translationSeeVerse": "128.1",
+          "hindi": "(अथर्ववेद खिल-प्रहेलिका सूक्त) जहां प्याऊ (प्रपाण) सुलभ न हो और छोटे सरोवर अप्राप्य हों, वहाँ कल्याणी कन्या की प्राप्ति भी कठिन कही जाती है— यह कल्पों में एक मर्यादित उपमा के रूप में वर्णित है।"
         },
         {
           "number": "128.9",
           "sanskrit": "सुप्र॑पा॒णा च॑ वेश॒न्ता रे॒वान्त्सुप्रति॑दिश्ययः ।\nसुय॑भ्या क॒न्या कल्या॒णी तो॒ता कल्पे॑षु सं॒मिता॑ ॥",
           "transliteration": "suprapāṇā ca veśantā revāntsupratidiśyayaḥ |\nsuyabhyā kanyā kalyāṇī totā kalpeṣu saṃmitā ||",
-          "translationSeeVerse": "128.1"
+          "translationSeeVerse": "128.1",
+          "hindi": "जहाँ प्याऊ (जलपान का स्थान) भली-भाँति सुलभ हो और सरोवर स्वच्छ व दर्शनीय हों, वहाँ कल्याणी कन्या का वरण सुखद एवं कल्याणकारी होता है— ऐसा कल्प-शास्त्रों में वर्णित है।"
         },
         {
           "number": "128.10",
@@ -41499,7 +41624,8 @@
           "number": "129.14",
           "sanskrit": "पुमां॑ कु॒स्ते निमि॑च्छसि ॥",
           "transliteration": "pumāṃ kuste nimicchasi ||",
-          "translationSeeVerse": "129.1"
+          "translationSeeVerse": "129.1",
+          "hindi": "हे पुरुष! आप कुत्सा और उपहास में किसकी इच्छा कर रहे हैं? (इस प्रहेलिका मंत्र में संयम और वाणी-नियन्त्रण का संकेत है।)"
         },
         {
           "number": "129.15",
@@ -41943,37 +42069,43 @@
           "sanskrit": "वित॑तौ किरणौ॒ द्वौ तावा॑ पिनष्टि॒ पूरु॑षः ।\nन वै॑ कुमारि॒ तत्तथा॒ यथा॑ कुमारि॒ मन्य॑से ॥",
           "transliteration": "vitatau kiraṇau dvau tāvā pinaṣṭi pūruṣaḥ |\nna vai kumāri tattathā yathā kumāri manyase ||",
           "translation": "The Enigmatical Verses\nTwo rays of light are lengthened out, and the man gently touches them with the two beatings on the drum.\nMaiden, it truly is not so as thou, O maiden, fanciest.\nTwo are thy mother’s rays of light: the skin is guarded from the man.",
-          "translationRange": "133.1-133.6"
+          "translationRange": "133.1-133.6",
+          "hindi": "(अथर्ववेद प्रहेलिका/ऐतालप सूक्त) फैली हुई दो किरणें (दुन्दुभि-रज्जु या प्रकाश-रेखाएँ) हैं, जिन्हें पुरुष बजाता (दबाता) है; हे कुमारी! वास्तव में वह वैसा नहीं है जैसा आप सोचती हैं।"
         },
         {
           "number": "133.2",
           "sanskrit": "मा॒तुष्टे कि॑रणौ॒ द्वौ निवृ॑त्तः॒ पुरु॑षानृते ।\nन वै॑ कुमारि॒ तत्तथा॒ यथा॑ कुमारि॒ मन्य॑से ॥",
           "transliteration": "mātuṣṭe kiraṇau dvau nivṛttaḥ puruṣānṛte |\nna vai kumāri tattathā yathā kumāri manyase ||",
-          "translationSeeVerse": "133.1"
+          "translationSeeVerse": "133.1",
+          "hindi": "पुरुष के बिना भी आपकी माता की दो किरणें (संस्कार और तेज) स्थिर रहती हैं; हे कुमारी! यह रहस्य वैसा नहीं है जैसा आप समझती हैं।"
         },
         {
           "number": "133.3",
           "sanskrit": "निगृ॑ह्य॒ कर्ण॑कौ॒ द्वौ निरा॑यच्छसि॒ मध्य॑मे ।\nन वै॑ कुमारि॒ तत्तथा॒ यथा॑ कुमारि॒ मन्य॑से ॥",
           "transliteration": "nigṛhya karṇakau dvau nirāyacchasi madhyame |\nna vai kumāri tattathā yathā kumāri manyase ||",
-          "translationSeeVerse": "133.1"
+          "translationSeeVerse": "133.1",
+          "hindi": "दोनों कानों (अथवा सिरों) को पकड़कर आप मध्यभाग को तानती हैं (चर्मवाद्य या करघे की उपमा); हे कुमारी! वास्तविक अर्थ वैसा नहीं है जैसा आप मानती हैं।"
         },
         {
           "number": "133.4",
           "sanskrit": "उ॒त्ता॒नायै॒ शया॒नायै॒ तिष्ठ॑न्ती॒ वाव॑ गूहसि ।\nन वै॑ कमारि॒ तत्तथा॒ यथा॑ कुमारि॒ मन्य॑से ॥",
           "transliteration": "uttānāyai śayānāyai tiṣṭhantī vāva gūhasi |\nna vai kamāri tattathā yathā kumāri manyase ||",
-          "translationSeeVerse": "133.1"
+          "translationSeeVerse": "133.1",
+          "hindi": "ऊपर मुँह किए लेटी हुई (या भूमि पर रखी वस्तु) के सामने खड़ी होकर आप उसे ढँकती हैं; हे कुमारी! यह गूढ़ संकेत वैसा नहीं है जैसा आप सोचती हैं।"
         },
         {
           "number": "133.5",
           "sanskrit": "श्लक्ष्णा॑यां॒ श्लक्ष्णि॑कायां॒ श्लक्ष्ण॑मे॒वाव॒ गूहसि ।\nन वै॑ कुमारि॒ तत्तथा॒ यथा॑ कुमारि॒ मन्य॑से ॥",
           "transliteration": "ślakṣṇāyāṃ ślakṣṇikāyāṃ ślakṣṇamevāva gūhasi |\nna vai kumāri tattathā yathā kumāri manyase ||",
-          "translationSeeVerse": "133.1"
+          "translationSeeVerse": "133.1",
+          "hindi": "चिकनी और कोमल वस्तु पर चिकना आवरण ही आप बिछाती हैं; हे कुमारी! यह रूपक वैसा नहीं है जैसा आप मान रही हैं।"
         },
         {
           "number": "133.6",
           "sanskrit": "अव॑श्लक्ष्ण॒मिव॑ भ्रंशद॒न्तर्लोममति॑ ह्र॒दे ।\nन वै॑ कुमारि॒ तत्तथा॒ यथा॑ कुमारि॒ मन्य॑से ॥",
           "transliteration": "avaślakṣṇamiva bhraṃśadantarlomamati hrade |\nna vai kumāri tattathā yathā kumāri manyase ||",
-          "translationSeeVerse": "133.1"
+          "translationSeeVerse": "133.1",
+          "hindi": "सरोवर के भीतर कोमल तृण के झुरमुट में छिपे सत्य के समान यह पहेली है; हे कुमारी! इसका मर्म वैसा नहीं है जैसा आप समझती हैं।"
         },
         {
           "number": "134.1",
@@ -42008,13 +42140,15 @@
           "number": "134.5",
           "sanskrit": "इ॒हेत्थ प्रागपा॒गुद॑ग॒धराग् – आष्टे॑ लाहणि॒ लीशा॑थी ॥",
           "transliteration": "ihettha prāgapāgudagadharāg – āṣṭe lāhaṇi līśāthī ||",
-          "translationSeeVerse": "134.1"
+          "translationSeeVerse": "134.1",
+          "hindi": "यहाँ इस प्रकार पूर्व, पश्चिम, उत्तर और अधोदिशा में विचरण करते हुए यह प्रतीकात्मक संवाद (प्रहेलिका) गतिशील होता है।"
         },
         {
           "number": "134.6",
           "sanskrit": "इ॒हेत्थ प्रागपा॒गुद॑ग॒धराग् – अक्ष्लि॑ली॒ पुच्छिली॑यते ॥",
           "transliteration": "ihettha prāgapāgudagadharāg – akṣlilī pucchilīyate ||",
-          "translationSeeVerse": "134.1"
+          "translationSeeVerse": "134.1",
+          "hindi": "यहाँ इस प्रकार पूर्व, पश्चिम, उत्तर और अधोदिशा में— सूर्य की गति के समान कालचक्र क्रमशः घूमता रहता है।"
         },
         {
           "number": "135.1",
@@ -42028,7 +42162,8 @@
           "number": "135.2",
           "sanskrit": "को॒श॒बिले॑ रजनि॒ ग्रन्थे॑र्धा॒नमु॒पानहि॑ पा॒दम् ।\nउत्त॑मां॒ जनि॑मां ज॒न्यानुत्त॑मां जनी॒न्वर्त्म॑न्यात् ॥",
           "transliteration": "kośabile rajani grantherdhānamupānahi pādam |\nuttamāṃ janimāṃ janyānuttamāṃ janīnvartmanyāt ||",
-          "translationSeeVerse": "135.1"
+          "translationSeeVerse": "135.1",
+          "hindi": "रात्रि में कोष के भीतर गाँठ को बाँधकर तथा चरणों में पादुका धारण करके, श्रेष्ठ जन्म और श्रेष्ठ सन्तान के लिए साधक उत्तम मार्ग पर गमन करे।"
         },
         {
           "number": "135.3",
@@ -42112,97 +42247,113 @@
           "sanskrit": "यद॑स्या अंहु॒भेद्याः॑ कृ॒धु स्थू॒लमु॒पात॑सत् ।\nमु॒ष्काविद॑स्या एज॒तो गो॑श॒फे श॑कु॒लावि॑व ॥",
           "transliteration": "yadasyā aṃhubhedyāḥ kṛdhu sthūlamupātasat |\nmuṣkāvidasyā ejato gośaphe śakulāviva ||",
           "translation": "Erotica\nSi quis in hujus tenui rima praeditae feminae augustias fascinum intromittit, vaccae ungularum et Sakula. rum pisci-um more pudenda ejus agitantur.\nQuum magno pene parvula ejus pudenda vir percutit, huc et illuc ilia increscunt veluti duo asini in solo arenoso.\nQuum parvum, admodum parvum, Ziziphi Jujubae quasi granum in eam incidit, ventris ejus partes interiores, velut verno tempore arundo, extentae videntur.\nSi Dii mentulae intumescenti faverunt, cum femoribus suis se: ostentat femina tanquam vero testi.\nMagnopere delectata est arnica: ut equns solutus adveniens vocem edidit: Vaginam juvenis! pene percute: medium. femur paratum est.\nArnica, pilam superans, dixit: Ut tua, Arbor, ! (verbera) pinsunt, sic etiam nunc (hic me permolit).\nArnica eum alloquitur: Tum etiam tu defecisti. Ut tua. Arbor!\n(verbera) Pinsunt, sic etiam nunc (me permole).\nArnica eum alloquitur: Tum etiam tu defceisti. Ut silvae ignis. inflammatur, sic ardent mea membra.\nArnica eum alloquitur: Fauste infixus est penis; arboris fructu celeriter fruamur.\nArnica cum fuste gallum circumcurrit. Nos nescimus quae bestia pudendum muliebre in capite gerat.\nArnica post currentem amatorem currit: Has ejus boves custodi tu. Me futue: coctam oryzam ede.\nFortunatus, Arnica, te opprimit. Bona est magni viri fututio,\nMacrum pinguis. femina obtineat. Futue me, etc.\nSine digito mulcta vacca vanankaram producit, Magna et bona est Aegle Marmelos. Futue me, etc.\nInfelix, Amice, te opprimit. Bona est magni viri fututio. Flava puollula, opere suo perfecto, procurrit.\nMagna certe et bona est Aegle Marmelos. Bona est magna Ficus Glomerata. Magnus vir ubique opprimit. Bona est magni viri fututio.\nQuem macrum factum puella flava pinguisque capiat sicut pollicem ex olei cado fossorem ilium extrahat.",
-          "translationRange": "136.1-136.16"
+          "translationRange": "136.1-136.16",
+          "hindi": "(महानग्नी-कौतूहल प्रहेलिका सूक्त में) कृषि-यज्ञ और सृष्टि-क्रिया के रूपक में कहा गया है कि सूक्ष्म भूमि और विशाल हल-प्रहार के मिलन से वैसे ही प्रबल स्पन्दन उत्पन्न होता है, जैसे गाय के खुर के जल में दो मछलियाँ हिलती हैं।"
         },
         {
           "number": "136.2",
           "sanskrit": "यदा॑ स्थू॒लेन॒ पस॑साणौ मु॒ष्का उपा॑वधीत् ।\nविष्व॑ञ्चा व॒स्या वर्ध॑तः॒ सिक॑तास्वेव॒ गर्द॑भौ ॥",
           "transliteration": "yadā sthūlena pasasāṇau muṣkā upāvadhīt |\nviṣvañcā vasyā vardhataḥ sikatāsveva gardabhau ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "जैसे बलशाली प्रहार से सृष्टि-चक्र सक्रिय होता है, वैसे ही रेतीले मैदान में दो गर्दभों की भाँति चारों ओर उर्वरता और विस्तार बढ़ता है।"
         },
         {
           "number": "136.3",
           "sanskrit": "यदल्पि॑का॒स्वऽल्पिका॒ कर्क॑धू॒केव॒षद्य॑ते ।\nवास॑न्ति॒कमि॑व॒ तेज॑नं॒ यन्त्य॒वाता॑य॒ वित्प॑ति ॥",
           "transliteration": "yadalpikāsva'lpikā karkadhūkevaṣadyate |\nvāsantikamiva tejanaṃ yantyavātāya vitpati ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "जब अत्यन्त सूक्ष्म क्षेत्र में बेर के फल के समान छोटा बीज गिरता है, तब भीतर की शक्ति वसन्त ऋतु के सरकण्डे की भाँति ऊपर की ओर पल्लवित होकर विस्तृत होती है।"
         },
         {
           "number": "136.4",
           "sanskrit": "यद्दे॒वासो॑ ललामगुं॒ प्रवि॑ष्टी॒मिन॑माविषुः ।\nस॒कु॒ला दे॑दिश्यते॒ नारी॑ स॒त्यस्या॑क्षि॒भुवो॑ यथा ॥",
           "transliteration": "yaddevāso lalāmaguṃ praviṣṭīminamāviṣuḥ |\nsakulā dediśyate nārī satyasyākṣibhuvo yathā ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "जब देवगणों ने उज्ज्वल और उत्तम प्रतिष्ठा वाले तेज में प्रवेश किया, तब नारी अपनी दृढ़ता और सतीत्व से वैसे ही प्रकाशित हुई जैसे सत्य प्रत्यक्ष प्रमाण होता है।"
         },
         {
           "number": "136.5",
           "sanskrit": "म॒हा॒न॒ग्न्यतृप्नद्वि॒ मोक्र॑द॒दस्था॑नासरन् ।\nशक्ति॑का॒नना स्व॑च॒मश॑कं सक्तु॒ पद्य॑म ॥",
           "transliteration": "mahānagnyatṛpnadvi mokradadasthānāsaran |\nśaktikānanā svacamaśakaṃ saktu padyama ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "महानग्नी (लोक-प्रहेलिका की नायिका) अत्यन्त तृप्त हुई और मधुर वचन बोली; तदनन्तर सक्तु तथा अन्य हव्य पदार्थ व्यवस्थित होकर प्राप्त हुए।"
         },
         {
           "number": "136.6",
           "sanskrit": "म॒हा॒न॒ग्न्युलूखलमति॒क्राम॑न्त्यब्रवीत् ।\nयथा॒ तव॑ वनस्पते॒ निर॑घ्नन्ति॒ तथै॑वति ॥",
           "transliteration": "mahānagnyulūkhalamatikrāmantyabravīt |\nyathā tava vanaspate niraghnanti tathaivati ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "ओखली (उलूखल) को लाँघती हुई महानग्नी ने हँसी में कहा— 'हे वनस्पते (मूसल)! जिस प्रकार लोग तुम्हें धान कूटने के लिए पटकते हैं, वैसे ही आज यह प्रहार हो रहा है।' "
         },
         {
           "number": "136.7",
           "sanskrit": "म॒हा॒न॒ग्न्युप॑ ब्रूते भ्र॒ष्टोथाप्य॑भूभुवः ।\nयथै॒व ते॑ वनस्पते॒ पिप्प॑ति॒ तथै॑वति ॥",
           "transliteration": "mahānagnyupa brūte bhraṣṭothāpyabhūbhuvaḥ |\nyathaiva te vanaspate pippati tathaivati ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "महानग्नी पुनः विनोदपूर्ण वाणी में कहती है— 'हे वनस्पते! जिस प्रकार कूटने से फल-अन्न तैयार होता है, उसी प्रकार यह कर्म भी सिद्धि की ओर बढ़ता है।' "
         },
         {
           "number": "136.8",
           "sanskrit": "म॒हा॒न॒ग्न्युप॑ ब्रूते भ्र॒ष्टोथाप्य॑भूभुवः ।\nयथा॑ वयो॒ विदाह्य॑ स्व॒र्गे न॒मवद॑ह्यते ॥",
           "transliteration": "mahānagnyupa brūte bhraṣṭothāpyabhūbhuvaḥ |\nyathā vayo vidāhya svarge namavadahyate ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "महानग्नी बोलती है कि जैसे पके हुए अन्न का परिपाक होता है और हवि स्वर्गलोक तक पहुँचती है, वैसे ही तेज प्रज्वलित रहता है।"
         },
         {
           "number": "136.9",
           "sanskrit": "म॒हा॒न॒ग्न्युप॑ ब्रूते स्वसा॒वेशि॑तं॒ पसः॑ ।\nइ॒त्थं फल॑स्य॒ वृक्ष॑स्य॒ शूर्पे॑ शूर्पं॒ भजे॑महि ॥",
           "transliteration": "mahānagnyupa brūte svasāveśitaṃ pasaḥ |\nitthaṃ phalasya vṛkṣasya śūrpe śūrpaṃ bhajemahi ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "महानग्नी कहती है— 'सूप में सूप भरकर (विपुल मात्रा में) हम इस फलदार वृक्ष के अन्न और समृद्धि का परस्पर विभाजन व उपभोग करें।' "
         },
         {
           "number": "136.10",
           "sanskrit": "म॒हा॒न॒ग्नी कृ॑कवाकं॒ शम्य॑या॒ परि॑ धावति ।\nअ॒यं न वि॒द्म यो॑ मृ॒गः शी॒र्ष्णा ह॑रति॒ धाणि॑काम् ॥",
           "transliteration": "mahānagnī kṛkavākaṃ śamyayā pari dhāvati |\nayaṃ na vidma yo mṛgaḥ śīrṣṇā harati dhāṇikām ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "महानग्नी हाथ में छड़ी लेकर मुर्गे (कृकवाकु) के पीछे चारों ओर दौड़ती है और कहती है— 'हम नहीं जानते कि वह कौन-सा प्राणी है जो सिर पर धारिका (अन्न-पात्र) उठाए भागा जा रहा है।' "
         },
         {
           "number": "136.11",
           "sanskrit": "म॒हा॒न॒ग्नी म॑हान॒ग्नं धाव॑न्त॒मनु॑ धावति ।\nइ॒मास्तद॑स्य॒ गा र॑क्ष॒ यभ॒ माम॑द्ध्यौद॒नम् ॥",
           "transliteration": "mahānagnī mahānagnaṃ dhāvantamanu dhāvati |\nimāstadasya gā rakṣa yabha māmaddhyaudanam ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "महानग्नी दौड़ते हुए महानग्न (नायक) के पीछे भागती है और परिहास में कहती है— 'तुम इनकी इन गौओं की रक्षा करो, गृहस्थ-धर्म का निर्वाह करो और पका हुआ भात (ओदन) खाओ।' "
         },
         {
           "number": "136.12",
           "sanskrit": "सुदे॑वस्त्वा म॒हान॑ग्नी॒र्बबा॑धते मह॒तः सा॑धु खो॒दन॑म् ।\nकु॒सं पीव॒रो न॑वत् ॥",
           "transliteration": "sudevastvā mahānagnīrbabādhate mahataḥ sādhu khodanam |\nkusaṃ pīvaro navat ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "सुन्दर द्युति वाले साधक को महानग्नी बड़े कार्य (धान्य-शोधन) के लिए प्रेरित करती है और पुष्टि तथा समृद्धि की कामना करती है।"
         },
         {
           "number": "136.13",
           "sanskrit": "व॒शा द॒ग्धामि॑माङ्गु॒रिं प्रसृ॑जतो॒ग्रतं॑ परे ।\nम॒हान्वै भ॒द्रो यभ॒ माम॑द्ध्यौद॒नम् ॥",
           "transliteration": "vaśā dagdhāmimāṅguriṃ prasṛjatogrataṃ pare |\nmahānvai bhadro yabha māmaddhyaudanam ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "पवित्र आहुति और अँगुलियों के संयोग से आगे कार्य बढ़ता है; वे कहती हैं— 'महान और कल्याणकारी अन्न (भात) का प्रेमपूर्वक भोजन करो।' "
         },
         {
           "number": "136.14",
           "sanskrit": "विदे॑वस्त्वा म॒हान॑ग्नी॒र्विबा॑धते मह॑तः सा॑धु खो॒दन॑म् ।\nकु॒मा॒री॒का पि॑ङ्गलि॒का कार्द॒ भस्मा॑ कु॒ धाव॑ति ॥",
           "transliteration": "videvastvā mahānagnīrvibādhate mahataḥ sādhu khodanam |\nkumārīkā piṅgalikā kārda bhasmā ku dhāvati ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "महानग्नी कहती है— 'महान कार्य की सम्यक् सिद्धि हो रही है; यह पीतवर्णा कुमारी कन्या किस भस्म-स्थान की ओर दौड़ती जा रही है?'"
         },
         {
           "number": "136.15",
           "sanskrit": "म॒हान्वै भ॒द्रो बि॒ल्वो म॒हान्भ॑द्र उदु॒म्बरः॑ ।\nम॒हां अ॑भि॒क्त बा॑धते मह॒तः सा॑धु खो॒दन॑म् ॥",
           "transliteration": "mahānvai bhadro bilvo mahānbhadra udumbaraḥ |\nmahāṃ abhikta bādhate mahataḥ sādhu khodanam ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "बेल (बिल्व) का वृक्ष बड़ा कल्याणकारी है और गूलर (उदुम्बर) का वृक्ष भी बड़ा कल्याणकारी है; दोनों ही श्रेष्ठ और बड़े फलों से युक्त होने के कारण समृद्धिदायक हैं।"
         },
         {
           "number": "136.16",
           "sanskrit": "यः कु॑मा॒री पि॑ङ्गलि॒का वस॑न्तं पीव॒री ल॑भेत् ।\nतैल॑कुण्ड॒मिमा॑ङ्गु॒ष्ठं रोद॑न्तं शुद॒मुद्ध॑रेत् ॥",
           "transliteration": "yaḥ kumārī piṅgalikā vasantaṃ pīvarī labhet |\ntailakuṇḍamimāṅguṣṭhaṃ rodantaṃ śudamuddharet ||",
-          "translationSeeVerse": "136.1"
+          "translationSeeVerse": "136.1",
+          "hindi": "जो पीतवर्णा और पुष्ट कुमारी इस प्रकार सम्पन्न वसन्त को प्राप्त करे, वह घी-तेल के कुण्ड से बाहर निकलते अँगूठे के समान परिश्रम का फल प्राप्त करे।"
         },
         {
           "number": "137.1",
@@ -42216,7 +42367,8 @@
           "number": "137.2",
           "sanskrit": "कपृ॑न्नरः कपृ॒थमुद्द॑धातन चो॒दय॑त खु॒दत॒ वाज॑सातये ।\nनि॒ष्टि॒ग्र्यः पु॒त्रमा च्या॑वयो॒तय॒ इन्द्रं॑ स॒बाध॑ इ॒ह सोम॑पीतये ॥",
           "transliteration": "kapṛnnaraḥ kapṛthamuddadhātana codayata khudata vājasātaye |\nniṣṭigryaḥ putramā cyāvayotaya indraṃ sabādha iha somapītaye ||",
-          "translationSeeVerse": "137.1"
+          "translationSeeVerse": "137.1",
+          "hindi": "हे पुरुषों! बल एवं अन्न-ऐश्वर्य की प्राप्ति के लिए उद्यम और पौरुष को जागृत करो तथा उत्साह से कर्म करो; निष्टिग्री के पुत्र (इन्द्र) अपनी बाधाओं को दूर करके यहाँ सोमपान के लिए पधारें।"
         },
         {
           "number": "137.3",
