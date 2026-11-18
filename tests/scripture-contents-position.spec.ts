@@ -98,3 +98,53 @@ test('short scripture indexes keep all chapters visible without the long-book co
   await expect(contents.locator('ol > li')).toHaveCount(18);
   await expect(page.getByRole('combobox', { name: 'Choose chapter range' })).toHaveCount(0);
 });
+
+test('last-read chapter remains discoverable in compact long-book contents', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.localStorage.setItem('dharma.recentChapters', JSON.stringify([{
+      scriptureId: 'bhagavatapurana',
+      scriptureTitle: 'Bhagavata Purana',
+      chapterId: 50,
+      chapterTitle: 'Chapter 50',
+      totalChapters: 335,
+      readAt: '2026-11-18T04:00:00.000Z',
+    }]));
+  });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.goto('/scripture/bhagavatapurana/');
+
+  const contents = page.locator('section[aria-labelledby="contents-heading"]');
+  const cards = contents.locator('ol > li');
+  await expect(cards).toHaveCount(20);
+  const saved = page.getByRole('region', { name: /Continue reading/ });
+  await expect(saved.getByRole('link', { name: /Resume reading/ })).toHaveAttribute(
+    'href', '/scripture/bhagavatapurana/chapter/50/',
+  );
+  await saved.getByRole('button', { name: 'Find chapter 50 in contents' }).click();
+  await expect(cards).toHaveCount(20);
+
+  const target = contents.locator('a[href="/scripture/bhagavatapurana/chapter/50/"]');
+  await expect(target).toBeVisible();
+  await expect(target).toBeFocused();
+  await expect(contents.getByRole('combobox', { name: 'Choose chapter range' })).toHaveValue('41');
+  await expect(contents.getByRole('status')).toContainText('20 of');
+  const width = await page.evaluate(() => document.documentElement.scrollWidth);
+  expect(width).toBeLessThanOrEqual(321);
+});
+
+test('short books do not show the compact last-read locator', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.localStorage.setItem('dharma.recentChapters', JSON.stringify([{
+      scriptureId: 'bhagavadgita',
+      scriptureTitle: 'Bhagavad Gita',
+      chapterId: 9,
+      chapterTitle: 'Chapter 9',
+      totalChapters: 18,
+      readAt: '2026-11-18T04:00:00.000Z',
+    }]));
+  });
+  await page.goto('/scripture/bhagavadgita/');
+  await expect(page.getByRole('region', { name: /Continue reading/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /Find chapter .* in contents/ })).toHaveCount(0);
+});
