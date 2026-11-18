@@ -778,7 +778,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
           className="fluid-search-dialog fixed inset-0 z-50 flex items-end justify-center sm:items-start sm:p-6 md:p-12"
           role="dialog"
           aria-modal="true"
-          aria-label="Global Search · ग्रंथ और श्लोक खोजें"
+          aria-label="Global Search"
         >
           <motion.div
             initial={{ opacity: 0 }}
@@ -854,7 +854,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                         inputRef.current?.focus();
                       }}
                       className="focus-ring flex h-11 w-11 items-center justify-center rounded-control text-label-tertiary hover:bg-fill-quaternary hover:text-label-primary transition"
-                      aria-label="खोज मिटाएँ"
+                      aria-label="Clear search"
                     >
                       <X className="h-4 w-4" aria-hidden="true" />
                     </button>
@@ -862,7 +862,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       type="button"
                       onClick={onClose}
                       className="focus-ring inline-flex min-h-[44px] items-center rounded-control px-2.5 text-footnote font-semibold text-tint hover:bg-fill-quaternary transition sm:hidden"
-                      aria-label="खोज बंद करें"
+                      aria-label="Close search"
                     >
                       बन्द करें
                     </button>
@@ -873,7 +873,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       type="button"
                       onClick={onClose}
                       className="focus-ring inline-flex min-h-[44px] items-center rounded-control px-2.5 text-footnote font-semibold text-tint hover:bg-fill-quaternary transition sm:hidden"
-                      aria-label="खोज बंद करें"
+                      aria-label="Close search"
                     >
                       बन्द करें
                     </button>
@@ -881,7 +881,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       type="button"
                       onClick={onClose}
                       className="focus-ring hidden min-h-[32px] rounded-control border border-separator bg-fill-quaternary px-2 text-caption font-mono font-medium text-label-secondary hover:text-label-primary hover:bg-fill-tertiary transition sm:inline-block"
-                      aria-label="खोज बंद करें"
+                      aria-label="Close search"
                     >
                       ESC
                     </button>
@@ -1111,7 +1111,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
             {/* Body */}
             <div
               role="region"
-              aria-label="खोज परिणाम और सुझाव"
+              aria-label="Search results and suggestions"
               tabIndex={0}
               className="focus-ring min-h-0 flex-1 overflow-y-auto p-3 sm:p-5"
             >
@@ -1331,7 +1331,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
               )}
 
               {trimmed && result && result.totalMatches > 0 && (
-                <div id={listboxId} role="listbox" aria-label="खोज परिणाम" className="space-y-6">
+                <div id={listboxId} role="listbox" aria-label="Search results" className="space-y-6">
                   {SEARCH_GROUPS.map((group) => {
                     const items = display.filter((r) => r.group === group.id);
                     if (items.length === 0) return null;
