@@ -31,6 +31,7 @@ const CHECKS = [
   'scripts/check-catalogue-counts.ts',
   'scripts/test-word-gloss.ts',
   'scripts/test-packed-scripture-integrity.mjs',
+  'scripts/test-ai-commentary-review-holds.ts',
   'scripts/test-ocr-hindi-review.ts',
   'scripts/test-written-meaning-review.ts',
   'scripts/test-devibhagavat-source-integrity.ts',
