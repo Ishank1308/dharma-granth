@@ -25,7 +25,7 @@ const keys = Object.keys(staged.entries).sort();
 assert.deepEqual(keys, ['4:1', '4:2', '4:3', '4:4', '4:5'], 'Only first five chapter 4 verse identities are staged');
 const chapter = source.chapters.find((entry) => Number(entry.number) === 4);
 assert.ok(chapter && chapter.verses.length >= 5, 'Devi Bhagavata chapter 4 Sanskrit is missing');
-const normalize = (s: string) => s.normalize('NFC').replace(/[\\s।॥|.,:;!?०-९0-9\\u200c\\u200d]/g, '');
+const normalize = (s: string) => s.normalize('NFC').replace(/[\s।॥|.,:;!?०-९0-9\u200c\u200d]/g, '');
 const explanations = new Set<string>();
 const modernContexts = new Set<string>();
 for (let n = 1; n <= 5; n++) {
@@ -37,7 +37,7 @@ for (let n = 1; n <= 5; n++) {
     `Sanskrit numbered witness mismatch for ${key}`);
   assert.ok(note.hindi.length >= 40 && /[ऀ-ॿ]/u.test(note.hindi),
     `Hindi meaning absent for ${key}`);
-  const count = note.explanation.trim().split(/\\s+/).length;
+  const count = note.explanation.trim().split(/\s+/).length;
   assert.ok(count >= 200 && count <= 280, `${key} must have 200–280 words, found ${count}`);
   for (const heading of ['प्रसंग एवं भाव —', 'पद-विवेचन —', 'जीवन-साधना —']) {
     assert.ok(note.explanation.includes(heading), `Missing ${heading} in ${key}`);
