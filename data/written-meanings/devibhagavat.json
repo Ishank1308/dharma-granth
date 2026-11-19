@@ -1,5 +1,5 @@
 {
-  "note": "133 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40), 3 (3:1–3:43), and 4 (4:1–4:25). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html. Corresponding explanatory notes and modern-context panels are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT proof of complete critical text collation. reviewStatus remains unreviewed and publication is only through strict source-checked verse allowlist.",
+  "note": "138 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40), 3 (3:1–3:43), and 4 (4:1–4:30). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html. Corresponding explanatory notes and modern-context panels are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT proof of complete critical text collation. reviewStatus remains unreviewed and publication is only through strict source-checked verse allowlist.",
   "reviewStatus": "unreviewed",
   "keyFormat": "chapter:verse",
   "meanings": {
@@ -401,6 +401,21 @@
     },
     "4:25": {
       "hindi": "जब व्यासजी इस प्रकार विचार कर रहे थे, तभी मुनियों में श्रेष्ठ नारदजी संयोगवश वहाँ आ पहुँचे; उनके हाथ में वीणा थी और उनका चित्त एकाग्र था।"
+    },
+    "4:26": {
+      "hindi": "नारदजी को देखकर सत्यवतीपुत्र व्यासजी अत्यन्त प्रसन्न हुए। उन्होंने अर्घ्य अर्पित किया, बैठने के लिए आसन दिया और मुनि से उनका कुशल-समाचार पूछा।"
+    },
+    "4:27": {
+      "hindi": "व्यासजी का कुशल-प्रश्न सुनकर मुनियों में श्रेष्ठ नारदजी ने पूछा—हे द्वैपायन, आप किस कारण चिंता से व्याकुल हैं? मुझे स्पष्ट रूप से बताइए।"
+    },
+    "4:28": {
+      "hindi": "व्यासजी ने कहा—मेरे मन में यह धारणा है कि पुत्रहीन व्यक्ति की गति नहीं होती और उसे मानसिक सुख नहीं मिलता; इसी कारण मैं दुःखी होकर बार-बार विचार कर रहा हूँ।"
+    },
+    "4:29": {
+      "hindi": "आज तपस्या द्वारा किस ऐसे देवता को प्रसन्न करूँ जो इच्छित फल दे सके—इसी प्रश्न से मैं व्याकुल हूँ; इसलिए मार्गदर्शन पाने के लिए आपकी शरण में आया हूँ।"
+    },
+    "4:30": {
+      "hindi": "हे महर्षे, आप सर्वज्ञ और करुणा के भण्डार हैं; शीघ्र बताइए कि मैं किस देवता की शरण लूँ, जो मुझे पुत्र प्रदान कर सके।"
     }
   }
 }
