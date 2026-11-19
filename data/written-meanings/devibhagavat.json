@@ -1,5 +1,5 @@
 {
-  "note": "128 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40), 3 (3:1–3:43), and 4 (4:1–4:20). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html. Corresponding explanatory notes and modern-context panels are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT proof of complete critical text collation. reviewStatus remains unreviewed and publication is only through strict source-checked verse allowlist.",
+  "note": "133 independently drafted AI-assisted Hindi meanings for Devī Bhāgavata Purāṇa Skandha 1 Adhyāyas 1 (1:1–1:25), 2 (2:1–2:40), 3 (3:1–3:43), and 4 (4:1–4:25). Each is source-key checked against numbered Sanskrit openings in https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html. Corresponding explanatory notes and modern-context panels are in data/ai-commentary/devibhagavat.json. These are NOT copyrighted Gita Press Hindi transcriptions, NOT independently Sanskrit-scholar-certified, and NOT proof of complete critical text collation. reviewStatus remains unreviewed and publication is only through strict source-checked verse allowlist.",
   "reviewStatus": "unreviewed",
   "keyFormat": "chapter:verse",
   "meanings": {
@@ -386,6 +386,21 @@
     },
     "4:20": {
       "hindi": "व्यासजी के विचार में मृत्यु के समय ऐसी चिंता से उस व्यक्ति का मन दुःख के कारण भ्रमित होता है; इसीलिए उस व्याकुल चित्त वाले की दुर्गति निश्चित मानी गई है।"
+    },
+    "4:21": {
+      "hindi": "इस प्रकार अनेक चिंताएँ करते हुए सत्यवतीपुत्र व्यासजी बार-बार गर्म साँसें भरने लगे और उनका मन अत्यन्त उदास हो गया।"
+    },
+    "4:22": {
+      "hindi": "मन में गहराई से विचार करके और दृढ़ निश्चय बनाकर व्यासजी तपस्या करने के लिए मेरु पर्वत के समीप चले गए।"
+    },
+    "4:23": {
+      "hindi": "वहाँ वे मन में विचार करने लगे—हम किस देवता की उपासना करें, जो वर देने में समर्थ हो और इच्छित फल प्रदान कर सके?"
+    },
+    "4:24": {
+      "hindi": "व्यासजी विचार करते हैं—क्या विष्णु, रुद्र, देवराज इन्द्र, ब्रह्मा, सूर्य, गणेश, कार्तिकेय, अग्नि अथवा वरुण में से किसी की उपासना की जाए?"
+    },
+    "4:25": {
+      "hindi": "जब व्यासजी इस प्रकार विचार कर रहे थे, तभी मुनियों में श्रेष्ठ नारदजी संयोगवश वहाँ आ पहुँचे; उनके हाथ में वीणा थी और उनका चित्त एकाग्र था।"
     }
   }
 }
