@@ -1,12 +1,12 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, chapter 3 verses 1–43, and chapter 4 verses 1–25.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, chapter 3 verses 1–43, and chapter 4 verses 1–30.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
  * blocked. Source Sanskrit is never modified.
  *
  * Witness: https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html
- * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–25). Hindi is an AI-assisted, independently worded
+ * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–30). Hindi is an AI-assisted, independently worded
  * interpretation of that Sanskrit; it is NOT a Gita Press transcription or
  * scholar-certified translation. The reader displays an editorial study-translation label and provides truthful AI-assistance provenance.
  */
@@ -156,6 +156,11 @@ export const DEVI_CHAPTER_4_WITNESS_OPENINGS = [
   "मनसा चिन्तयामास कं देवं समुपास्महे",
   "विष्णुं रुद्रं सुरेन्द्रं वा ब्रह्माणं वा दिवाकरम्",
   "एवं चिन्तयतस्तस्य नारदो मुनिसत्तमः",
+  "तं दृष्ट्वा परमप्रीतो व्यासः सत्यवतीसुतः",
+  "श्रुत्वाथ कुशलप्रश्नं पप्रच्छ मुनिसत्तमः",
+  "अपुत्रस्य गतिर्नास्ति न सुखं मानसे यतः",
+  "तपसा तोषयाम्यद्य कं देवं वाच्छितार्थदम्",
+  "सर्वज्ञोऽसि महर्षे त्वं कथयाशु कृपानिधे",
 ] as const;
 
 type Verse = Record<string, unknown>;
