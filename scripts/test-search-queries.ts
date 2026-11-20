@@ -59,6 +59,25 @@ assert.equal(gayatri?.item.href, '/mantras/gayatri-mantra/');
 const ekadashi = searchCoreIndex('ekadashi').find(({ item }) => item.href === '/panchang/ekadashi/');
 assert.ok(ekadashi, 'searching ekadashi should direct to /panchang/ekadashi/');
 
+const pradosh = searchCoreIndex('pradosh').find(({ item }) => item.href === '/panchang/pradosh/');
+assert.ok(pradosh, 'searching pradosh should direct to /panchang/pradosh/');
+
+const purnima = searchCoreIndex('purnima').find(({ item }) => item.href === '/panchang/purnima/');
+assert.ok(purnima, 'searching purnima should direct to /panchang/purnima/');
+
+const amavasya = searchCoreIndex('amavasya').find(({ item }) => item.href === '/panchang/amavasya/');
+assert.ok(amavasya, 'searching amavasya should direct to /panchang/amavasya/');
+
+for (const [hiTerm, expectedHref] of [
+  ['एकादशी', '/panchang/ekadashi/'],
+  ['प्रदोष', '/panchang/pradosh/'],
+  ['पूर्णिमा', '/panchang/purnima/'],
+  ['अमावस्या', '/panchang/amavasya/'],
+] as const) {
+  const match = searchCoreIndex(hiTerm).find(({ item }) => item.href === expectedHref);
+  assert.ok(match, `searching ${hiTerm} should direct to ${expectedHref}`);
+}
+
 const chalisa = searchCoreIndex('chalisa').find(({ item }) => item.href === '/mantras/hanuman-chalisa/');
 assert.ok(chalisa, 'searching chalisa should find hanuman chalisa');
 

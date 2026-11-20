@@ -13,6 +13,9 @@ const GROUPS: string[][] = [
   ['गीता', 'gītā', 'geeta', 'gita'],
   ['शान्ति', 'śānti', 'shanti'],
   ['संसार', 'सन्सार', 'saṃsāra', 'sansaara'],
+  ['एकादशी', 'ekādaśī', 'ekadashi', 'ekadasi'],
+  ['पूर्णिमा', 'pūrṇimā', 'purnima', 'poornima'],
+  ['प्रदोष', 'pradoṣa', 'pradosha'],
 ];
 
 for (const group of GROUPS) {
