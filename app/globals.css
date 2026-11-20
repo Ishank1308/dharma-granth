@@ -385,16 +385,19 @@
         border: 1px solid var(--dharma-manuscript-border);
     }
     .scripture-card {
-        @apply bg-dharma-card rounded-xl border border-dharma-border transition-[box-shadow,border-color] duration-300 hover:border-saffron-300 p-6;
+        @apply rounded-xl border border-dharma-border transition-[box-shadow,border-color] duration-300 hover:border-saffron-300 p-6;
+        background-color: var(--glass-surface);
+        -webkit-backdrop-filter: var(--glass-blur-card);
+        backdrop-filter: var(--glass-blur-card);
         box-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.6) inset,
+            0 1px 0 var(--glass-specular-top) inset,
             0 2px 4px rgba(45, 42, 38, 0.04),
             0 12px 28px -10px rgba(124, 45, 18, 0.14);
         will-change: transform;
     }
     .scripture-card:hover {
         box-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.7) inset,
+            0 1px 0 var(--glass-specular-top) inset,
             0 8px 18px rgba(45, 42, 38, 0.08),
             0 30px 60px -18px rgba(124, 45, 18, 0.3);
     }
@@ -792,7 +795,10 @@
     /* ── Pillar Cards (homepage value props) ────────────────────── */
     .pillar-card {
         @apply rounded-2xl border border-dharma-border p-6 shadow-sm hover:shadow-xl hover:border-saffron-200 transition-all hover:-translate-y-1 duration-300;
-        background: color-mix(in srgb, var(--dharma-card) 88%, transparent);
+        background: var(--glass-surface);
+        -webkit-backdrop-filter: var(--glass-blur-card);
+        backdrop-filter: var(--glass-blur-card);
+        box-shadow: inset 0 1px 0 var(--glass-specular-top), var(--shadow-raised);
     }
     .pillar-icon-wrap {
         @apply w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white;
@@ -822,13 +828,17 @@
     }
 
     :root[data-theme='night'] .bg-white,
+    :root[data-theme='night'] .bg-dharma-card:not(.apple-card):not(.glass):not(.glass-card):not(.liquid-glass),
+    :root[data-theme='night'] .infographic-content-panel {
+        background-color: var(--dharma-card);
+        color: var(--dharma-text);
+    }
+
     :root[data-theme='night'] .bg-white\/80,
     :root[data-theme='night'] .bg-white\/90,
     :root[data-theme='night'] .bg-white\/95,
-    :root[data-theme='night'] .bg-dharma-card,
-    :root[data-theme='night'] .scripture-card,
-    :root[data-theme='night'] .infographic-content-panel {
-        background-color: var(--dharma-card);
+    :root[data-theme='night'] .scripture-card {
+        background-color: var(--glass-surface);
         color: var(--dharma-text);
     }
 
@@ -1049,25 +1059,27 @@
 
     /* ── Glassmorphism ────────────────────────────────────────────── */
     .glass {
-        background: color-mix(in srgb, var(--dharma-card) 65%, transparent);
-        backdrop-filter: blur(20px) saturate(1.4);
-        -webkit-backdrop-filter: blur(20px) saturate(1.4);
-        border: 1px solid color-mix(in srgb, var(--dharma-border) 50%, transparent);
+        background: var(--glass-surface);
+        backdrop-filter: var(--glass-blur-card);
+        -webkit-backdrop-filter: var(--glass-blur-card);
+        border: 1px solid color-mix(in srgb, var(--dharma-border) 55%, var(--glass-specular-rim));
+        box-shadow: inset 0 1px 0 var(--glass-specular-top);
     }
     .glass-dark {
-        background: rgba(15, 14, 13, 0.55);
-        backdrop-filter: blur(20px) saturate(1.3);
-        -webkit-backdrop-filter: blur(20px) saturate(1.3);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(15, 14, 13, 0.62);
+        backdrop-filter: var(--glass-blur-card);
+        -webkit-backdrop-filter: var(--glass-blur-card);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
     }
     .glass-card {
-        background: color-mix(in srgb, var(--dharma-card) 72%, transparent);
-        backdrop-filter: blur(16px) saturate(1.3);
-        -webkit-backdrop-filter: blur(16px) saturate(1.3);
-        border: 1px solid color-mix(in srgb, var(--dharma-border) 45%, transparent);
+        background: var(--glass-surface);
+        backdrop-filter: var(--glass-blur-card);
+        -webkit-backdrop-filter: var(--glass-blur-card);
+        border: 1px solid color-mix(in srgb, var(--dharma-border) 50%, var(--glass-specular-rim));
         box-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.5) inset,
-            0 8px 32px rgba(45, 42, 38, 0.06);
+            0 1px 0 var(--glass-specular-top) inset,
+            0 10px 34px -8px rgba(var(--shadow-ink), 0.1);
     }
 
     /* ── 3D Text Effect ───────────────────────────────────────────── */
@@ -2360,9 +2372,12 @@ main.bg-dharma-bg,
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    border: 1px solid color-mix(in srgb, var(--dharma-border) 70%, transparent);
-    background-image: linear-gradient(to bottom, color-mix(in srgb, var(--dharma-card) 92%, transparent), color-mix(in srgb, var(--dharma-card) 70%, transparent));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 6px 18px -12px rgba(45, 42, 38, 0.3);
+    border: 1px solid color-mix(in srgb, var(--dharma-border) 68%, var(--glass-specular-rim));
+    background-color: var(--glass-surface);
+    background-image: linear-gradient(to bottom, color-mix(in srgb, var(--dharma-card) 84%, transparent), color-mix(in srgb, var(--dharma-card) 62%, transparent));
+    -webkit-backdrop-filter: blur(14px) saturate(165%);
+    backdrop-filter: blur(14px) saturate(165%);
+    box-shadow: inset 0 1px 0 var(--glass-specular-top), 0 6px 18px -12px rgba(45, 42, 38, 0.3);
     transition:
         transform 0.5s var(--ease-spring),
         box-shadow 0.4s var(--ease-gentle),
@@ -2646,15 +2661,18 @@ svg.lucide {
     box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--dharma-accent) 42%, transparent);
 }
 
-/* Bento cards: no blur (the glass budget is spent elsewhere); a tinted surface and a specular rim. */
+/* Bento cards: translucent frosted-glass surface with caustic corner pools and a specular rim. */
 .granth-card {
-    border-color: color-mix(in srgb, var(--dharma-border) 70%, transparent);
-    background:
-        radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c1) 22%, transparent), transparent 60%),
-        radial-gradient(90% 80% at 0% 100%, color-mix(in srgb, var(--c2) 16%, transparent), transparent 60%),
-        linear-gradient(to bottom, color-mix(in srgb, var(--dharma-card) 92%, transparent), color-mix(in srgb, var(--dharma-card) 72%, transparent));
+    border-color: color-mix(in srgb, var(--dharma-border) 65%, var(--glass-specular-rim));
+    background-color: var(--glass-surface);
+    -webkit-backdrop-filter: var(--glass-blur-card);
+    backdrop-filter: var(--glass-blur-card);
+    background-image:
+        radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--c1) 24%, transparent), transparent 60%),
+        radial-gradient(90% 80% at 0% 100%, color-mix(in srgb, var(--c2) 18%, transparent), transparent 60%),
+        linear-gradient(to bottom, color-mix(in srgb, var(--dharma-card) 82%, transparent), color-mix(in srgb, var(--dharma-card) 64%, transparent));
     box-shadow:
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 0 var(--glass-specular-top),
         0 18px 40px -28px rgba(0, 0, 0, 0.6);
     transition: border-color 0.4s var(--ease-gentle), box-shadow 0.4s var(--ease-gentle);
 }
@@ -3160,12 +3178,13 @@ svg.lucide {
    one on the bottom on phones, hairline separators and a single tint
    (--dharma-saffron). Page layouts adopt the rest page by page. */
 @layer components {
-    /* The bar is the regular material (app/styles/tokens.css). */
+    /* The bar is the regular material (app/styles/tokens.css) with a specular top edge. */
     .apple-bar {
         background-color: var(--material-regular);
-        -webkit-backdrop-filter: var(--material-filter);
-        backdrop-filter: var(--material-filter);
+        -webkit-backdrop-filter: var(--glass-blur-chrome);
+        backdrop-filter: var(--glass-blur-chrome);
         border-color: var(--separator);
+        box-shadow: inset 0 1px 0 var(--glass-specular-top);
     }
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
         .apple-bar { background-color: var(--dharma-bg); }
@@ -3176,12 +3195,18 @@ svg.lucide {
         justify-content: center;
         border-radius: 9999px;
         color: var(--dharma-text);
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition:
+            transform var(--duration-base) var(--motion-spring),
+            background-color 0.2s ease,
+            color 0.2s ease,
+            box-shadow 0.2s ease;
     }
     .apple-icon-button:hover {
         background-color: color-mix(in srgb, var(--dharma-text) 7%, transparent);
+        box-shadow: inset 0 1px 0 var(--glass-specular-top);
     }
     .apple-icon-button:active {
+        transform: scale(0.95);
         background-color: color-mix(in srgb, var(--dharma-text) 12%, transparent);
     }
     /* Home library tiles: the book's colour, lifted on dark canvases. */
@@ -3193,17 +3218,24 @@ svg.lucide {
     .apple-bar { -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 
-/* Reader surfaces in the Apple idiom (unlayered, to sit over the material rules above).
-   The verse in focus is a plain card rather than tinted glass, and the shloka is plain text
-   on every scripture except those written on palm leaf, which keep a faint leaf. */
+/* Reader surfaces in the Apple Liquid Glass idiom (unlayered, to sit over the material rules above).
+   The verse in focus lifts onto a translucent frosted-glass spatial sheet with a subtle specular rim,
+   while keeping high-contrast legibility across all four themes. */
 [data-chapter-reading] .liquid-glass.spatial-focused,
 [data-material] .liquid-glass.spatial-focused {
-    background-image: none;
-    background-color: var(--dharma-card);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    border-color: transparent;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.06);
+    background-color: var(--glass-surface-elevated);
+    background-image: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--v3, var(--dharma-saffron)) 10%, var(--glass-specular-rim)),
+        transparent 65%
+    );
+    -webkit-backdrop-filter: var(--glass-blur-chrome);
+    backdrop-filter: var(--glass-blur-chrome);
+    border-color: color-mix(in srgb, var(--foil, var(--dharma-saffron)) 32%, var(--glass-specular-rim));
+    box-shadow:
+        inset 0 1px 0 var(--glass-specular-top),
+        0 4px 12px rgba(var(--shadow-ink), 0.05),
+        0 20px 52px -18px rgba(var(--shadow-ink), 0.18);
 }
 [data-material] .verse-folio {
     background-image: none;

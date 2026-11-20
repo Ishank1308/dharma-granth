@@ -25,7 +25,7 @@ export function HomeHero() {
 
       <div className="relative mx-auto grid w-full max-w-[1180px] items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div className="max-w-[660px]">
-          <p className="inline-flex flex-wrap items-center gap-2 rounded-full border border-dharma-saffron/25 bg-dharma-saffron/10 px-3.5 py-2 text-xs font-semibold text-dharma-saffron">
+          <p className="inline-flex flex-wrap items-center gap-2 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/10 px-3.5 py-2 text-xs font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md">
             <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-dharma-saffron" />
             <span>A living archive of Indian wisdom</span>
             <span aria-hidden="true" className="opacity-50">·</span>
@@ -136,7 +136,7 @@ export function HomeHero() {
           <div className="mt-3 grid grid-cols-2 gap-3 sm:mt-4 sm:gap-4">
             <Link
               href="/scripture/ishavasya/"
-              className="focus-ring group flex min-h-[138px] flex-col justify-between rounded-[22px] border border-dharma-border bg-dharma-card/95 p-4 shadow-raised motion-safe:transition-[transform,border-color] motion-safe:duration-base motion-safe:hover:-translate-y-1 hover:border-dharma-saffron/45 sm:p-5"
+              className="apple-card focus-ring group flex min-h-[138px] flex-col justify-between rounded-[22px] border border-dharma-border/80 bg-dharma-card/75 p-4 shadow-raised backdrop-blur-xl motion-safe:transition-[transform,border-color,box-shadow] motion-safe:duration-base motion-safe:hover:-translate-y-1 hover:border-dharma-saffron/45 sm:p-5"
             >
               <span className="flex items-center justify-between text-dharma-saffron">
                 <Compass aria-hidden="true" className="h-5 w-5" />
@@ -149,7 +149,7 @@ export function HomeHero() {
             </Link>
             <Link
               href="/daily-verse/"
-              className="focus-ring group flex min-h-[138px] flex-col justify-between rounded-[22px] border border-dharma-saffron/20 bg-dharma-saffron/10 p-4 motion-safe:transition-[transform,border-color] motion-safe:duration-base motion-safe:hover:-translate-y-1 hover:border-dharma-saffron/50 sm:p-5"
+              className="apple-card focus-ring group flex min-h-[138px] flex-col justify-between rounded-[22px] border border-dharma-saffron/25 bg-dharma-saffron/10 p-4 backdrop-blur-xl motion-safe:transition-[transform,border-color,box-shadow] motion-safe:duration-base motion-safe:hover:-translate-y-1 hover:border-dharma-saffron/50 sm:p-5"
             >
               <span className="flex items-center justify-between text-dharma-saffron">
                 <BookOpen aria-hidden="true" className="h-5 w-5" />

@@ -408,7 +408,7 @@ export function HomeScriptureTabs() {
       <div
         role="tablist"
         aria-label="ग्रन्थ श्रेणियां · Scripture Categories"
-        className="flex items-center gap-2 overflow-x-auto pb-4 pt-1 scrollbar-none sm:flex-wrap sm:justify-center"
+        className="flex items-center gap-2 overflow-x-auto pb-4 pt-1 scrollbar-none sm:mx-auto sm:w-fit sm:flex-wrap sm:justify-center sm:rounded-full sm:border sm:border-dharma-border/70 sm:bg-dharma-card/55 sm:p-1.5 sm:shadow-[inset_0_1px_0_var(--glass-specular-top)] sm:backdrop-blur-xl"
       >
         {CATEGORY_TABS.map((tab, index) => {
           const isSelected = activeTab === tab.id;
@@ -428,10 +428,10 @@ export function HomeScriptureTabs() {
                 triggerTactileFeedback('selection', 'softTap');
                 setActiveTab(tab.id);
               }}
-              className={`library-category-tab focus-ring relative isolate inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold ${
+              className={`library-category-tab focus-ring relative isolate inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
                 isSelected
                   ? 'border-dharma-saffron text-dharma-text'
-                  : 'border-dharma-border/80 bg-dharma-card/80 text-dharma-muted hover:border-dharma-saffron/40 hover:text-dharma-text'
+                  : 'border-dharma-border/75 bg-dharma-card/65 text-dharma-muted backdrop-blur-md hover:border-dharma-saffron/40 hover:text-dharma-text'
               }`}
             >
               {isSelected && (
@@ -461,7 +461,7 @@ export function HomeScriptureTabs() {
         {currentItems.map((book) => (
           <article
             key={`${activeTab}-${book.id}`}
-            className="library-showcase-book group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/90 p-5 shadow-raised backdrop-blur-xs transition-all hover:border-dharma-saffron/40 hover:shadow-hover sm:p-6"
+            className="library-showcase-book group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/75 p-5 shadow-raised backdrop-blur-xl transition-all hover:border-dharma-saffron/40 hover:shadow-hover sm:p-6"
             style={{ borderLeftWidth: '5px', borderLeftColor: book.colour }}
           >
             {/* Archival gallery rhythm, inspired by editorial library and museum UI.
