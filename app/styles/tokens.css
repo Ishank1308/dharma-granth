@@ -157,56 +157,76 @@
     --tint-fill: color-mix(in srgb, var(--dharma-saffron) 12%, transparent);
     --focus-ring: 0 0 0 4px color-mix(in srgb, var(--dharma-saffron) 28%, transparent);
 
-    --material-ultrathin: color-mix(in srgb, var(--dharma-bg) 52%, transparent);
-    --material-thin: color-mix(in srgb, var(--dharma-bg) 66%, transparent);
-    --material-regular: color-mix(in srgb, var(--dharma-bg) 76%, transparent);
-    --material-thick: color-mix(in srgb, var(--dharma-bg) 88%, transparent);
-    --material-filter: saturate(190%) blur(24px);
+    --material-ultrathin: color-mix(in srgb, var(--dharma-bg) 44%, transparent);
+    --material-thin: color-mix(in srgb, var(--dharma-bg) 56%, transparent);
+    --material-regular: color-mix(in srgb, var(--dharma-card) 62%, rgba(255, 255, 255, 0.22));
+    --material-thick: color-mix(in srgb, var(--dharma-card) 78%, rgba(255, 255, 255, 0.25));
+    --material-filter: saturate(200%) blur(26px);
 
     /* Translucent Frosted Glass & Fluid UI materials (Dribbble / Behance Liquid Glass 2.0) */
-    --glass-surface: color-mix(in srgb, var(--dharma-card) 74%, transparent);
-    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 85%, transparent);
-    --glass-surface-recessed: color-mix(in srgb, var(--dharma-text) 5%, rgba(255, 255, 255, 0.42));
-    --glass-specular-top: rgba(255, 255, 255, 0.82);
-    --glass-specular-rim: rgba(255, 255, 255, 0.5);
-    --glass-blur-card: saturate(180%) blur(20px);
-    --glass-blur-chrome: saturate(195%) blur(28px);
+    --glass-surface: color-mix(in srgb, var(--dharma-card) 58%, rgba(255, 255, 255, 0.16));
+    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 74%, rgba(255, 255, 255, 0.22));
+    --glass-surface-recessed: color-mix(in srgb, var(--dharma-text) 5%, rgba(255, 255, 255, 0.45));
+    --glass-sheen: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.66) 0%,
+        rgba(255, 255, 255, 0.16) 50%,
+        rgba(255, 248, 236, 0.38) 100%
+    );
+    --glass-specular-top: rgba(255, 255, 255, 0.94);
+    --glass-specular-rim: rgba(255, 255, 255, 0.68);
+    --glass-blur-card: saturate(195%) blur(22px);
+    --glass-blur-chrome: saturate(210%) blur(30px);
 
     /* Shadow colour: neutral on Usha, warm on the paper themes (below). */
     --shadow-ink: 0, 0, 0;
     --shadow-hairline: 0 1px 2px rgba(var(--shadow-ink), 0.04);
-    --shadow-raised: 0 2px 6px rgba(var(--shadow-ink), 0.04), 0 12px 40px rgba(var(--shadow-ink), 0.06);
-    --shadow-lifted: 0 4px 10px rgba(var(--shadow-ink), 0.05), 0 22px 50px -16px rgba(var(--shadow-ink), 0.22);
+    --shadow-raised: 0 4px 12px rgba(var(--shadow-ink), 0.05), 0 16px 44px -10px rgba(var(--shadow-ink), 0.08);
+    --shadow-lifted: 0 6px 14px rgba(var(--shadow-ink), 0.06), 0 26px 56px -14px rgba(var(--shadow-ink), 0.22);
     --shadow-overlay: 0 10px 30px rgba(var(--shadow-ink), 0.12), 0 40px 90px -20px rgba(var(--shadow-ink), 0.3);
     --shadow-control: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
     /* The selected segment of a segmented control. */
-    --surface-segment: color-mix(in srgb, var(--dharma-card) 88%, rgba(255, 255, 255, 0.6));
+    --surface-segment: color-mix(in srgb, var(--dharma-card) 82%, rgba(255, 255, 255, 0.7));
 }
 
 :root[data-theme='sunset'] {
     --shadow-ink: 92, 46, 14;
-    --glass-surface: color-mix(in srgb, var(--dharma-card) 76%, transparent);
-    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 86%, transparent);
-    --glass-specular-top: rgba(255, 252, 245, 0.84);
-    --glass-specular-rim: rgba(255, 248, 235, 0.54);
+    --glass-surface: color-mix(in srgb, var(--dharma-card) 58%, rgba(255, 255, 255, 0.18));
+    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 76%, rgba(255, 255, 255, 0.24));
+    --glass-sheen: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.68) 0%,
+        rgba(255, 252, 245, 0.18) 50%,
+        rgba(255, 244, 228, 0.42) 100%
+    );
+    --glass-specular-top: rgba(255, 255, 255, 0.95);
+    --glass-specular-rim: rgba(255, 252, 244, 0.72);
 }
 
 :root[data-theme='paper'] {
     --shadow-ink: 74, 52, 28;
-    --glass-surface: color-mix(in srgb, var(--dharma-card) 80%, transparent);
-    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 88%, transparent);
-    --glass-specular-top: rgba(255, 250, 240, 0.74);
-    --glass-specular-rim: rgba(255, 246, 228, 0.46);
+    --glass-surface: color-mix(in srgb, var(--dharma-card) 64%, rgba(255, 255, 255, 0.16));
+    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 80%, rgba(255, 255, 255, 0.22));
+    --glass-specular-top: rgba(255, 252, 244, 0.88);
+    --glass-specular-rim: rgba(255, 248, 232, 0.62);
 }
 
 :root[data-theme='night'],
 :root[data-theme='dark'] {
     --surface-elevated: var(--dharma-card-soft);
-    --glass-surface: color-mix(in srgb, var(--dharma-card) 68%, transparent);
-    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card-soft) 82%, transparent);
-    --glass-surface-recessed: color-mix(in srgb, var(--dharma-text) 8%, rgba(0, 0, 0, 0.38));
-    --glass-specular-top: rgba(255, 255, 255, 0.16);
-    --glass-specular-rim: rgba(255, 255, 255, 0.08);
+    --material-regular: color-mix(in srgb, var(--dharma-card) 62%, rgba(255, 255, 255, 0.04));
+    --material-thick: color-mix(in srgb, var(--dharma-card-soft) 76%, rgba(255, 255, 255, 0.06));
+    --glass-surface: color-mix(in srgb, var(--dharma-card) 54%, rgba(255, 255, 255, 0.04));
+    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card-soft) 72%, rgba(255, 255, 255, 0.06));
+    --glass-surface-recessed: color-mix(in srgb, var(--dharma-text) 8%, rgba(0, 0, 0, 0.42));
+    --glass-sheen: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.02) 52%,
+        rgba(251, 146, 60, 0.06) 100%
+    );
+    --glass-specular-top: rgba(255, 255, 255, 0.26);
+    --glass-specular-rim: rgba(255, 255, 255, 0.13);
     --fill-primary: color-mix(in srgb, var(--dharma-text) 18%, transparent);
     --fill-secondary: color-mix(in srgb, var(--dharma-text) 14%, transparent);
     --fill-tertiary: color-mix(in srgb, var(--dharma-text) 10%, transparent);
@@ -240,14 +260,14 @@
     --hue-tulsi: #16a34a;
 
     /* How strongly colour shows: the wash inside a card, its edge, its glow, the aurora. */
-    --tone-wash: 9%;
-    --tone-edge: 22%;
-    --tone-glow: 38%;
-    --tone-aurora: 20%;
+    --tone-wash: 13%;
+    --tone-edge: 28%;
+    --tone-glow: 42%;
+    --tone-aurora: 32%;
 }
 :root[data-theme='sunset'] {
-    --tone-wash: 11%;
-    --tone-aurora: 22%;
+    --tone-wash: 15%;
+    --tone-aurora: 34%;
 }
 :root[data-theme='paper'] {
     --hue-saffron: #c2410c;
@@ -257,8 +277,8 @@
     --hue-indigo: #4338ca;
     --hue-peacock: #0f766e;
     --hue-tulsi: #15803d;
-    --tone-wash: 8%;
-    --tone-aurora: 16%;
+    --tone-wash: 11%;
+    --tone-aurora: 24%;
 }
 :root[data-theme='night'],
 :root[data-theme='dark'] {
@@ -269,10 +289,10 @@
     --hue-indigo: #818cf8;
     --hue-peacock: #2dd4bf;
     --hue-tulsi: #4ade80;
-    --tone-wash: 15%;
-    --tone-edge: 28%;
-    --tone-glow: 34%;
-    --tone-aurora: 20%;
+    --tone-wash: 18%;
+    --tone-edge: 32%;
+    --tone-glow: 38%;
+    --tone-aurora: 28%;
 }
 :root {
     /* Dawn: saffron through vermilion to lotus, for titles and highlights. */

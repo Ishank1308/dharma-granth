@@ -828,12 +828,12 @@
     }
 
     :root[data-theme='night'] .bg-white,
-    :root[data-theme='night'] .bg-dharma-card:not(.apple-card):not(.glass):not(.glass-card):not(.liquid-glass),
     :root[data-theme='night'] .infographic-content-panel {
         background-color: var(--dharma-card);
         color: var(--dharma-text);
     }
 
+    :root[data-theme='night'] .bg-dharma-card,
     :root[data-theme='night'] .bg-white\/80,
     :root[data-theme='night'] .bg-white\/90,
     :root[data-theme='night'] .bg-white\/95,
@@ -3178,13 +3178,16 @@ svg.lucide {
    one on the bottom on phones, hairline separators and a single tint
    (--dharma-saffron). Page layouts adopt the rest page by page. */
 @layer components {
-    /* The bar is the regular material (app/styles/tokens.css) with a specular top edge. */
+    /* The bar is the regular material (app/styles/tokens.css) with a specular top edge and glass sheen. */
     .apple-bar {
         background-color: var(--material-regular);
+        background-image: var(--glass-sheen);
         -webkit-backdrop-filter: var(--glass-blur-chrome);
         backdrop-filter: var(--glass-blur-chrome);
-        border-color: var(--separator);
-        box-shadow: inset 0 1px 0 var(--glass-specular-top);
+        border-color: var(--glass-specular-rim);
+        box-shadow:
+            inset 0 1px 0 var(--glass-specular-top),
+            0 8px 28px -14px rgba(var(--shadow-ink), 0.14);
     }
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
         .apple-bar { background-color: var(--dharma-bg); }

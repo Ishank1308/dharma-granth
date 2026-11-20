@@ -29,7 +29,7 @@ export function PanchangLimbSwitcher({ activeLimb }: { activeLimb?: PanchangLimb
   return (
     <nav
       aria-label="पंचांग के पांच अंग व मुहूर्त"
-      className="sticky top-[52px] z-20 border-b border-dharma-border/80 bg-dharma-bg/95 backdrop-blur-md transition-colors"
+      className="apple-bar sticky top-[52px] z-20 border-b border-dharma-border/70 bg-dharma-bg/55 backdrop-blur-2xl transition-colors"
     >
       <div className="mx-auto max-w-7xl px-3 sm:px-6">
         <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 no-scrollbar">
@@ -47,10 +47,10 @@ export function PanchangLimbSwitcher({ activeLimb }: { activeLimb?: PanchangLimb
                 onClick={() => triggerTactileFeedback('light', 'softTap')}
                 aria-current={isActive ? 'page' : undefined}
                 data-limb={limb.id}
-                className={`group inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
+                className={`liquid-pill group inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
                   isActive
-                    ? 'border border-saffron-500/60 bg-saffron-500/15 text-saffron-800 dark:text-saffron-200 shadow-xs'
-                    : 'border border-dharma-border/70 bg-dharma-card text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
+                    ? 'border border-saffron-500/60 bg-saffron-500/18 text-saffron-800 dark:text-saffron-200 shadow-xs'
+                    : 'border border-dharma-border/70 bg-dharma-card/55 text-dharma-muted backdrop-blur-md hover:border-saffron-300 hover:text-dharma-text'
                 }`}
               >
                 <Icon
