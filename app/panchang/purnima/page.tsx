@@ -63,6 +63,9 @@ const PURNIMA_DATES: VrataDateItem[] = [
   { name: 'श्रावण पूर्णिमा (रक्षाबंधन 2028)', month: 'श्रावण', date: '05 अगस्त 2028', dateEn: '2028-08-05', highlight: true },
   { name: 'भाद्रपद पूर्णिमा (श्राद्ध पूर्णिमा 2028)', month: 'भाद्रपद', date: '03 सितंबर 2028', dateEn: '2028-09-03' },
   { name: 'अश्विन पूर्णिमा (शरद पूर्णिमा 2028)', month: 'अश्विन', date: '03 अक्टूबर 2028', dateEn: '2028-10-03', highlight: true },
+  { name: 'कार्तिक पूर्णिमा (देव दीपावली 2028)', month: 'कार्तिक', date: '01 नवंबर 2028', dateEn: '2028-11-01', highlight: true },
+  { name: 'मार्गशीर्ष पूर्णिमा (दत्तात्रेय जयंती 2028)', month: 'मार्गशीर्ष', date: '01 दिसंबर 2028', dateEn: '2028-12-01' },
+  { name: 'पौष पूर्णिमा (शाकंभरी जयंती 2028)', month: 'पौष', date: '31 दिसंबर 2028', dateEn: '2028-12-31', highlight: true },
 ];
 
 const FAQS = [
@@ -146,7 +149,7 @@ export default function PurnimaPage() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Core Principles Bento */}
         <section aria-labelledby="purnima-pillars" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">🌕</span>
             <h3 className="font-serif font-bold text-base text-label-primary">पूर्ण कला व मनःशांति</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
@@ -154,7 +157,7 @@ export default function PurnimaPage() {
             </p>
           </div>
 
-          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">🪔</span>
             <h3 className="font-serif font-bold text-base text-label-primary">सत्यनारायण व्रत व कथा</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
@@ -162,7 +165,7 @@ export default function PurnimaPage() {
             </p>
           </div>
 
-          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">🌊</span>
             <h3 className="font-serif font-bold text-base text-label-primary">तीर्थ स्नान व दीपदान</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
