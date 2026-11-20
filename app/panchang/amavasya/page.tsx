@@ -63,6 +63,9 @@ const AMAVASYA_DATES: VrataDateItem[] = [
   { name: 'श्रावण अमावस्या (हरियाली अमावस्या 2028)', month: 'श्रावण', date: '22 जुलाई 2028', dateEn: '2028-07-22', highlight: true },
   { name: 'भाद्रपद अमावस्या (कुशोत्पाटिनी 2028)', month: 'भाद्रपद', date: '20 अगस्त 2028', dateEn: '2028-08-20' },
   { name: 'अश्विन अमावस्या (सर्वपितृ अमावस्या 2028)', month: 'अश्विन', date: '19 सितंबर 2028', dateEn: '2028-09-19', highlight: true },
+  { name: 'कार्तिक अमावस्या (दीपावली पूजन 2028)', month: 'कार्तिक', date: '17 अक्टूबर 2028', dateEn: '2028-10-17', highlight: true },
+  { name: 'मार्गशीर्ष अमावस्या (दर्श अमावस्या 2028)', month: 'मार्गशीर्ष', date: '16 नवंबर 2028', dateEn: '2028-11-16' },
+  { name: 'पौष अमावस्या (पौष पितृ अमावस्या 2028)', month: 'पौष', date: '15 दिसंबर 2028', dateEn: '2028-12-15' },
 ];
 
 const FAQS = [
@@ -146,7 +149,7 @@ export default function AmavasyaPage() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Core Principles Bento */}
         <section aria-labelledby="amavasya-pillars" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">🌑</span>
             <h3 className="font-serif font-bold text-base text-label-primary">आत्म-चिंतन व मौन</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
@@ -154,7 +157,7 @@ export default function AmavasyaPage() {
             </p>
           </div>
 
-          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">🕊️</span>
             <h3 className="font-serif font-bold text-base text-label-primary">पितृ तर्पण व कृतज्ञता</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
@@ -162,7 +165,7 @@ export default function AmavasyaPage() {
             </p>
           </div>
 
-          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">🌾</span>
             <h3 className="font-serif font-bold text-base text-label-primary">अन्नदान व पंचबलि</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
