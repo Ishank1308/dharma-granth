@@ -13,19 +13,27 @@ export default function FestivalsPage() {
   const selected = festivals.find((f) => f.id === selectedId);
 
   return (
-    <main className="min-h-screen bg-dharma-bg">
-      <PageHeader
-        width="wide"
-        eyebrow="Festivals"
-        eyebrowHi="उत्सव"
-        title="Festival Knowledge Centre"
-        titleHi="उत्सव ज्ञान केंद्र"
-        lead={
-          <p lang="hi" className="font-devanagari">
+    <main className="apple-scope min-h-screen bg-dharma-bg relative overflow-hidden">
+      {/* Festive Radiant Halos Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-[500px] w-full max-w-6xl rounded-full bg-radial from-amber-400/22 via-saffron-500/12 to-transparent blur-3xl"
+      />
+
+      <div className="relative z-10">
+        <PageHeader
+          width="wide"
+          eyebrow="Festivals"
+          eyebrowHi="उत्सव"
+          title="Festival Knowledge Centre"
+          titleHi="उत्सव ज्ञान केंद्र"
+          lead={
+            <p lang="hi" className="font-devanagari">
               {festivals.length} प्रमुख त्योहारों का विस्तृत ज्ञान — अर्थ, शास्त्रीय स्रोत, क्षेत्रीय परंपराएँ, संबंधित देवता, पारंपरिक अनुष्ठान, जप और प्रार्थना, भोजन परंपरा, पर्यावरणीय विचार, और शास्त्रीय बनाम सांस्कृतिक रिवाज़ों का भेद।
             </p>
-        }
-      />
+          }
+        />
+      </div>
 
       {/* Festival Grid */}
       <section className="max-w-6xl mx-auto px-6 pt-6 relative z-10 pb-20">
@@ -35,7 +43,7 @@ export default function FestivalsPage() {
             <div key={festival.id} className="fade-up-in" style={{ animationDelay: `${Math.min(i, 12) * 50}ms` }}>
               <Link
                 href={`/festivals/${festival.id}/`}
-                className="group block relative overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-6 text-left hover:shadow-xl transition-all h-full"
+                className="card-sacred group block relative overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 text-left shadow-soft hover:shadow-xl hover:border-saffron-400/50 hover:-translate-y-0.5 transition-all h-full"
               >
                 <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${festival.gradient}`} />
                 <div className="flex items-start gap-4 mb-3">
@@ -43,14 +51,14 @@ export default function FestivalsPage() {
                     {festival.icon}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-serif font-bold text-dharma-text group-hover:text-saffron-700 transition">{festival.name}</h3>
-                    <p className="text-sm text-saffron-700 font-semibold">{festival.sanskrit}</p>
+                    <h3 className="text-lg font-serif font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">{festival.name}</h3>
+                    <p className="text-sm text-saffron-700 dark:text-saffron-400 font-semibold">{festival.sanskrit}</p>
                   </div>
                 </div>
                 <p className="text-sm text-dharma-muted leading-relaxed mb-4">{festival.shortDesc}</p>
                 <div className="flex items-center justify-between text-xs pt-2 border-t border-dharma-border/60">
                   <span className="text-dharma-muted">{festival.category}</span>
-                  <span className="font-semibold text-saffron-700 group-hover:translate-x-1 transition-transform">
+                  <span className="font-semibold text-saffron-700 dark:text-saffron-400 group-hover:translate-x-1 transition-transform">
                     पूरा विवरण व मंत्र देखें &rarr;
                   </span>
                 </div>

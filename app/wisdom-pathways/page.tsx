@@ -28,27 +28,34 @@ export default function WisdomPathwaysPage() {
   };
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text">
+    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text relative overflow-hidden">
+      {/* Contemplative Sage Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[520px] w-full max-w-6xl rounded-full bg-radial from-amber-400/20 via-saffron-500/10 to-transparent blur-3xl"
+      />
       <JsonLd data={faq} />
 
-      <PageHeader
-        eyebrow="Wisdom from the Masters"
-        eyebrowHi="ज्ञान मार्ग"
-        title="Wisdom Pathways"
-        titleHi="जीवन के प्रश्नों से शास्त्र तक"
-        lead={
-          <>
-            <span>
-              Each pathway begins with a real human challenge and guides you through scriptural teachings, the sages who transmitted them, and quiet reflection. The scripture is the authority; this site is only the bridge.
-            </span>
-            <span lang="hi" className="mt-1.5 block font-devanagari text-subhead">
-              प्रत्येक मार्ग आपके किसी वास्तविक जीवन-प्रश्न से आरम्भ होकर प्रमाणित श्लोकों, आचार्य-परम्परा और शान्त आत्म-चिन्तन तक ले जाता है।
-            </span>
-          </>
-        }
-      />
+      <div className="relative z-10">
+        <PageHeader
+          eyebrow="Wisdom from the Masters"
+          eyebrowHi="ज्ञान मार्ग"
+          title="Wisdom Pathways"
+          titleHi="जीवन के प्रश्नों से शास्त्र तक"
+          lead={
+            <>
+              <span>
+                Each pathway begins with a real human challenge and guides you through scriptural teachings, the sages who transmitted them, and quiet reflection. The scripture is the authority; this site is only the bridge.
+              </span>
+              <span lang="hi" className="mt-1.5 block font-devanagari text-subhead">
+                प्रत्येक मार्ग आपके किसी वास्तविक जीवन-प्रश्न से आरम्भ होकर प्रमाणित श्लोकों, आचार्य-परम्परा और शान्त आत्म-चिन्तन तक ले जाता है।
+              </span>
+            </>
+          }
+        />
+      </div>
 
-      <div className="mx-auto max-w-content px-gutter pb-20 pt-6 space-y-14">
+      <div className="mx-auto max-w-content px-gutter pb-20 pt-6 space-y-14 relative z-10">
         {/* Core Canonical Pathways */}
         <section aria-labelledby="canonical-pathways-heading">
           <SectionTitle
@@ -63,7 +70,7 @@ export default function WisdomPathwaysPage() {
               <Link
                 key={p.slug}
                 href={`/wisdom-pathways/${p.slug}/`}
-                className="apple-card group flex flex-col justify-between rounded-card border border-dharma-border bg-dharma-card p-6 hover:border-saffron-500/50 hover:shadow-raised transition-all"
+                className="card-sacred group flex flex-col justify-between rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 shadow-soft hover:border-saffron-400/60 hover:shadow-raised hover:-translate-y-0.5 transition-all"
               >
                 <div>
                   <p className="text-caption font-semibold uppercase tracking-wider text-dharma-saffron">
