@@ -21,7 +21,7 @@ Earlier status (2026-09-29), kept for the items below:
 | **P0** — romanized → Devanagari | ✅ **Done** — `npm run migrate:devanagari` |
 | **P2** — header-artifact verses | ✅ **Done** — `tsx scripts/strip-header-artifacts.ts` |
 | **P1** — missing English translations | ⚠️ **Open** — 48/65 complete; worst: mahabharata (10%, 29k missing), agnipuran, naradapuran, brahmapuran (`npx tsx scripts/_coverage-report.ts`) |
-| **P1b** — missing Hindi (bulk corpus) | ⚠️ **Open** — 53/65 complete; worst: shivpurana, brahmapuran, brahmandpuran, skandapuran, manusmriti (35%), durgasaptashati (2%) (`npx tsx scripts/_hindi-coverage-report.ts`) |
+| **P1b** — missing Hindi (bulk corpus) | ⚠️ **Open** — 65/66 complete (65/67 canon); all 18 Maha Puranas at 100% Hindi (Shiva Purana completed); only devibhagavat remaining (`npx tsx scripts/_hindi-coverage-report.ts`) |
 | **P3** — durgasaptashati misalignment | ✅ **Done** — structural `chapter.id` + `verse.id` merge (16/16 aligned) |
 | **P2b** — mangled mixed-script headers | ✅ **Done** — parser fix + `fix-mixed-script-verses.ts` (0 mixed-script verses remain) |
 
