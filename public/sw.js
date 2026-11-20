@@ -5,7 +5,7 @@
 //   • icons, fonts     stale-while-revalidate
 //   • scripture JSON   network-first for files you have opened (capped)
 // Everything else (analytics) goes straight to the network.
-const VERSION = 'dg-v7';
+const VERSION = 'dg-v8';
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
 const SCRIPTURE = `${VERSION}-scripture`;
