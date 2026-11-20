@@ -209,6 +209,10 @@
     "next": {
       "postcss": "^8.5.31"
     },
-    "fflate@0.7": "^0.7.5"
+    "fflate@0.7": "^0.7.5",
+    "toml": "^5.0.1",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    }
   }
 }
