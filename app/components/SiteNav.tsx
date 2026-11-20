@@ -677,7 +677,7 @@ export function SiteNav({
                     <div
                       id="desktop-discovery-menu"
                       data-closing={discoverMenu.closing || undefined}
-                      className="chrome-pop absolute right-0 top-[calc(100%+0.75rem)] w-[46rem] max-w-[calc(100vw-2rem)] max-h-[calc(100dvh-4.5rem)] overflow-y-auto rounded-2xl border border-dharma-border bg-dharma-card p-4 shadow-2xl z-50 divide-y divide-dharma-border/60"
+                      className="chrome-pop material-thick liquid-glass absolute right-0 top-[calc(100%+0.75rem)] w-[46rem] max-w-[calc(100vw-2rem)] max-h-[calc(100dvh-4.5rem)] overflow-y-auto rounded-2xl border border-dharma-border/80 bg-dharma-card/85 p-4 shadow-2xl backdrop-blur-2xl z-50 divide-y divide-dharma-border/60"
                     >
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 pb-3">
                         {discoveryGroups.map((group) => {
@@ -695,10 +695,10 @@ export function SiteNav({
                                     <Link
                                       key={item.href}
                                       href={item.href}
-                                      className={`group flex items-start gap-2.5 rounded-lg px-2.5 py-1.5 transition-colors ${
+                                      className={`group flex items-start gap-2.5 rounded-xl px-2.5 py-1.5 transition-all ${
                                         isActive(item.href)
-                                          ? 'bg-saffron-50 text-saffron-800 dark:bg-saffron-950/40 dark:text-saffron-300'
-                                          : 'hover:bg-dharma-bg'
+                                          ? 'bg-saffron-500/15 text-saffron-800 shadow-[inset_0_1px_0_var(--glass-specular-top)] dark:bg-saffron-950/50 dark:text-saffron-300'
+                                          : 'hover:bg-dharma-bg/65 hover:shadow-[inset_0_1px_0_var(--glass-specular-top)]'
                                       }`}
                                     >
                                       <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center text-dharma-muted group-hover:text-saffron-600">
@@ -847,7 +847,7 @@ export function SiteNav({
                     event.preventDefault();
                     items[next]?.focus();
                   }}
-                  className="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-dharma-border bg-dharma-card p-1 shadow-xl"
+                  className="material-thick liquid-glass absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-dharma-border/80 bg-dharma-card/85 p-1 shadow-xl backdrop-blur-2xl"
                 >
                   {THEME_IDS.map((id) => {
                     const Icon = THEME_ICONS[id] || Sun;
@@ -920,7 +920,7 @@ export function SiteNav({
               aria-modal="true"
               aria-label="मोबाइल नेविगेशन मेनू"
               data-closing={drawer.closing || undefined}
-              className="chrome-sheet fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border bg-dharma-card shadow-2xl"
+              className="chrome-sheet material-thick fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border/80 bg-dharma-card/88 shadow-2xl backdrop-blur-2xl"
               style={{
                 paddingTop: 'max(0.75rem, env(safe-area-inset-top, 0.75rem))',
                 paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 1rem))',

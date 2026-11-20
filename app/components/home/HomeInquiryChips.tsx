@@ -54,11 +54,11 @@ export function HomeInquiryChips() {
         <nav
           key={guide.id}
           aria-labelledby={'home-guide-' + guide.id}
-          className={'relative overflow-hidden rounded-panel border border-dharma-border/80 p-4 shadow-raised sm:p-5 ' + guide.accent}
+          className={'apple-card relative overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/65 p-4 shadow-raised backdrop-blur-xl sm:p-5 ' + guide.accent}
         >
           <div className="pointer-events-none absolute -right-16 -top-20 size-52 rounded-full border border-dharma-saffron/10" aria-hidden="true" />
           <div className="relative flex items-center gap-3">
-            <span className={'grid h-11 w-11 shrink-0 place-items-center rounded-2xl ' + guide.iconAccent}>
+            <span className={'grid h-11 w-11 shrink-0 place-items-center rounded-2xl shadow-[inset_0_1px_0_var(--glass-specular-top)] ' + guide.iconAccent}>
               <guide.icon className="h-5 w-5" aria-hidden="true" />
             </span>
             <div className="min-w-0 flex-1">
@@ -77,9 +77,9 @@ export function HomeInquiryChips() {
                 <Link
                   href={item.href}
                   onClick={() => triggerTactileFeedback('selection', 'softTap')}
-                  className="focus-ring group flex h-full min-h-[65px] items-center gap-2.5 rounded-xl border border-dharma-border/70 bg-dharma-card/90 px-3 py-2.5 text-dharma-text motion-safe:transition-[transform,border-color,background-color] motion-safe:duration-standard motion-safe:hover:-translate-y-0.5 hover:border-dharma-saffron/45 hover:bg-dharma-card"
+                  className="focus-ring group flex h-full min-h-[65px] items-center gap-2.5 rounded-xl border border-dharma-border/70 bg-dharma-card/75 px-3 py-2.5 text-dharma-text shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md motion-safe:transition-[transform,border-color,background-color,box-shadow] motion-safe:duration-standard motion-safe:hover:-translate-y-0.5 hover:border-dharma-saffron/45 hover:bg-dharma-card/95"
                 >
-                  <span aria-hidden="true" className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-dharma-saffron/10 text-dharma-saffron">
+                  <span aria-hidden="true" className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-dharma-saffron/12 text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)]">
                     <item.Icon className="h-4 w-4" />
                   </span>
                   <span className="min-w-0 flex-1">

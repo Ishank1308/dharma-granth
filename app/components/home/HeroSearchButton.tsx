@@ -18,10 +18,10 @@ export function HeroSearchButton() {
       type="button"
       onClick={(event) => openGlobalSearch(undefined, event.currentTarget)}
       aria-haspopup="dialog"
-      className="focus-ring mx-auto mt-5 flex min-h-[54px] w-full max-w-[580px] items-center gap-2.5 rounded-2xl border border-dharma-border/80 bg-dharma-card/90 px-4 text-left text-body text-dharma-muted shadow-raised backdrop-blur-md lift-hover hover:border-dharma-saffron/40 hover:text-dharma-text sm:px-5"
+      className="liquid-pill focus-ring mx-auto mt-5 flex min-h-[54px] w-full max-w-[580px] items-center gap-2.5 rounded-2xl border border-dharma-border/80 bg-dharma-card/75 px-4 text-left text-body text-dharma-muted shadow-raised backdrop-blur-xl lift-hover hover:border-dharma-saffron/45 hover:text-dharma-text sm:px-5"
       aria-label="Search scriptures: a verse, word or question / श्लोक या प्रश्न खोजें"
     >
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-dharma-saffron/10 text-dharma-saffron">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-dharma-saffron/12 text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)]">
         <Search className="h-4 w-4 shrink-0" aria-hidden="true" />
       </span>
       <span className="min-w-0 flex-1 py-2.5">
@@ -33,7 +33,7 @@ export function HeroSearchButton() {
           Search verse or question
         </span>
       </span>
-      <kbd className="kbd-hint hidden shrink-0 sm:inline-block rounded-md border border-dharma-border bg-dharma-bg/60 px-2 py-0.5 font-sans text-xs text-dharma-text-secondary">{shortcut}</kbd>
+      <kbd className="kbd-hint hidden shrink-0 sm:inline-block rounded-md border border-dharma-border/80 bg-dharma-bg/65 px-2 py-0.5 font-sans text-xs text-dharma-text-secondary backdrop-blur-sm">{shortcut}</kbd>
       </button>
       <div role="group" aria-label="Try a search" className="mt-2 flex flex-wrap items-center justify-center gap-2 sm:justify-start">
         <span className="mr-0.5 text-xs font-medium text-dharma-muted">Try · खोजें</span>
@@ -48,7 +48,7 @@ export function HeroSearchButton() {
             type="button"
             onClick={(event) => openGlobalSearch(example.query, event.currentTarget)}
             aria-label={`Search example: ${example.label}`}
-            className="focus-ring inline-flex min-h-[44px] items-center rounded-full border border-dharma-border/75 bg-dharma-card/70 px-3.5 font-devanagari text-xs font-semibold text-dharma-text transition-colors hover:border-dharma-saffron/60 hover:bg-dharma-saffron/10"
+            className="liquid-pill focus-ring inline-flex min-h-[44px] items-center rounded-full border border-dharma-border/75 bg-dharma-card/65 px-3.5 font-devanagari text-xs font-semibold text-dharma-text backdrop-blur-md transition-colors hover:border-dharma-saffron/60 hover:bg-dharma-saffron/12"
           >
             {example.label}
           </button>

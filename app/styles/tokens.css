@@ -157,11 +157,20 @@
     --tint-fill: color-mix(in srgb, var(--dharma-saffron) 12%, transparent);
     --focus-ring: 0 0 0 4px color-mix(in srgb, var(--dharma-saffron) 28%, transparent);
 
-    --material-ultrathin: color-mix(in srgb, var(--dharma-bg) 55%, transparent);
-    --material-thin: color-mix(in srgb, var(--dharma-bg) 68%, transparent);
-    --material-regular: color-mix(in srgb, var(--dharma-bg) 78%, transparent);
-    --material-thick: color-mix(in srgb, var(--dharma-bg) 90%, transparent);
-    --material-filter: saturate(180%) blur(20px);
+    --material-ultrathin: color-mix(in srgb, var(--dharma-bg) 52%, transparent);
+    --material-thin: color-mix(in srgb, var(--dharma-bg) 66%, transparent);
+    --material-regular: color-mix(in srgb, var(--dharma-bg) 76%, transparent);
+    --material-thick: color-mix(in srgb, var(--dharma-bg) 88%, transparent);
+    --material-filter: saturate(190%) blur(24px);
+
+    /* Translucent Frosted Glass & Fluid UI materials (Dribbble / Behance Liquid Glass 2.0) */
+    --glass-surface: color-mix(in srgb, var(--dharma-card) 74%, transparent);
+    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 85%, transparent);
+    --glass-surface-recessed: color-mix(in srgb, var(--dharma-text) 5%, rgba(255, 255, 255, 0.42));
+    --glass-specular-top: rgba(255, 255, 255, 0.82);
+    --glass-specular-rim: rgba(255, 255, 255, 0.5);
+    --glass-blur-card: saturate(180%) blur(20px);
+    --glass-blur-chrome: saturate(195%) blur(28px);
 
     /* Shadow colour: neutral on Usha, warm on the paper themes (below). */
     --shadow-ink: 0, 0, 0;
@@ -171,20 +180,33 @@
     --shadow-overlay: 0 10px 30px rgba(var(--shadow-ink), 0.12), 0 40px 90px -20px rgba(var(--shadow-ink), 0.3);
     --shadow-control: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
     /* The selected segment of a segmented control. */
-    --surface-segment: var(--dharma-card);
+    --surface-segment: color-mix(in srgb, var(--dharma-card) 88%, rgba(255, 255, 255, 0.6));
 }
 
 :root[data-theme='sunset'] {
     --shadow-ink: 92, 46, 14;
+    --glass-surface: color-mix(in srgb, var(--dharma-card) 76%, transparent);
+    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 86%, transparent);
+    --glass-specular-top: rgba(255, 252, 245, 0.84);
+    --glass-specular-rim: rgba(255, 248, 235, 0.54);
 }
 
 :root[data-theme='paper'] {
     --shadow-ink: 74, 52, 28;
+    --glass-surface: color-mix(in srgb, var(--dharma-card) 80%, transparent);
+    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card) 88%, transparent);
+    --glass-specular-top: rgba(255, 250, 240, 0.74);
+    --glass-specular-rim: rgba(255, 246, 228, 0.46);
 }
 
 :root[data-theme='night'],
 :root[data-theme='dark'] {
     --surface-elevated: var(--dharma-card-soft);
+    --glass-surface: color-mix(in srgb, var(--dharma-card) 68%, transparent);
+    --glass-surface-elevated: color-mix(in srgb, var(--dharma-card-soft) 82%, transparent);
+    --glass-surface-recessed: color-mix(in srgb, var(--dharma-text) 8%, rgba(0, 0, 0, 0.38));
+    --glass-specular-top: rgba(255, 255, 255, 0.16);
+    --glass-specular-rim: rgba(255, 255, 255, 0.08);
     --fill-primary: color-mix(in srgb, var(--dharma-text) 18%, transparent);
     --fill-secondary: color-mix(in srgb, var(--dharma-text) 14%, transparent);
     --fill-tertiary: color-mix(in srgb, var(--dharma-text) 10%, transparent);
@@ -197,7 +219,7 @@
     --shadow-lifted: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 22px 50px -16px rgba(0, 0, 0, 0.8);
     --shadow-overlay: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 90px -20px rgba(0, 0, 0, 0.9);
     --shadow-control: 0 1px 3px rgba(0, 0, 0, 0.4);
-    --surface-segment: #636366;
+    --surface-segment: color-mix(in srgb, #636366 78%, rgba(255, 255, 255, 0.14));
 }
 
 /* 6. Colour: the sacred spectrum ─────────────────────────────────────────

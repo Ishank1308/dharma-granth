@@ -53,7 +53,7 @@ export function TodayVerseCard({
   return (
     <section
       aria-labelledby="today-verse-heading"
-      className="reveal verse-card today-verse relative overflow-hidden rounded-panel border border-amber-500/25 bg-dharma-card/95 px-6 py-10 text-center shadow-raised backdrop-blur-md sm:px-12 sm:py-14"
+      className="reveal verse-card today-verse relative overflow-hidden rounded-panel border border-amber-500/25 bg-dharma-card/75 px-6 py-10 text-center shadow-raised backdrop-blur-xl sm:px-12 sm:py-14"
       data-scripture-id={item.scriptureId}
       data-material={attrs?.['data-material']}
       style={attrs?.style}

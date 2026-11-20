@@ -72,7 +72,7 @@ export function HomeSanctuaryGateway() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-12 sm:gap-5">
         {/* 1. Live Panchang & Muhurta */}
-        <article className="apple-card group relative isolate flex min-h-[340px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-saffron/35 bg-dharma-card bg-gradient-to-br from-dharma-saffron/10 via-dharma-card to-dharma-card p-6 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-7 sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[340px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-saffron/35 bg-dharma-card/75 bg-gradient-to-br from-dharma-saffron/12 via-dharma-card/70 to-dharma-card/80 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-7 sm:p-7">
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-20 size-72 rounded-full border border-dharma-saffron/15" />
           <div aria-hidden="true" className="pointer-events-none absolute -right-8 -top-12 size-52 rounded-full border border-dharma-saffron/10" />
           <div>
@@ -84,7 +84,7 @@ export function HomeSanctuaryGateway() {
                 <span lang="hi" className="font-devanagari normal-case">वैदिक पंचांग</span>
               </span>
               {panchang && (
-                <span lang="hi" className="rounded-full border border-dharma-border bg-dharma-bg px-2.5 py-0.5 font-devanagari text-xs font-medium text-dharma-muted">
+                <span lang="hi" className="rounded-full border border-dharma-border/80 bg-dharma-bg/65 px-2.5 py-0.5 font-devanagari text-xs font-medium text-dharma-muted backdrop-blur-sm">
                   {panchang.cityHi} · {panchang.isWaxing ? '🌔' : '🌖'} {panchang.pakshaHi} ({panchang.illuminationPercent}%)
                 </span>
               )}
@@ -101,17 +101,17 @@ export function HomeSanctuaryGateway() {
 
             {panchang ? (
               <div className="mt-2.5 space-y-2">
-                <p lang="hi" className="rounded-xl border border-dharma-saffron/25 bg-dharma-saffron/5 px-3.5 py-2.5 font-devanagari text-sm font-medium text-dharma-text">
+                <p lang="hi" className="rounded-xl border border-dharma-saffron/25 bg-dharma-saffron/8 px-3.5 py-2.5 font-devanagari text-sm font-medium text-dharma-text shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-sm">
                   <strong>{panchang.tithiHi}</strong> · {panchang.nakshatraHi} नक्षत्र (पाद {panchang.nakshatraPada}) · {panchang.yogaHi} · {panchang.varaHi}
                 </p>
                 <div className="flex flex-wrap items-center gap-2 text-xs text-dharma-muted">
-                  <span className="rounded-md bg-dharma-bg px-2 py-0.5 border border-dharma-border/60">
+                  <span className="rounded-md bg-dharma-bg/65 px-2 py-0.5 border border-dharma-border/60 backdrop-blur-sm">
                     🌅 सूर्योदय {panchang.sunrise}
                   </span>
-                  <span className="rounded-md bg-dharma-bg px-2 py-0.5 border border-dharma-border/60">
+                  <span className="rounded-md bg-dharma-bg/65 px-2 py-0.5 border border-dharma-border/60 backdrop-blur-sm">
                     🌇 सूर्यास्त {panchang.sunset}
                   </span>
-                  <span className="rounded-md bg-dharma-bg px-2 py-0.5 border border-dharma-border/60">
+                  <span className="rounded-md bg-dharma-bg/65 px-2 py-0.5 border border-dharma-border/60 backdrop-blur-sm">
                     🌿 {panchang.rituHi} ऋतु
                   </span>
                 </div>
@@ -133,13 +133,13 @@ export function HomeSanctuaryGateway() {
             </Link>
             <Link
               href="/panchang/calendar/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-medium text-dharma-text transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border/80 bg-dharma-bg/65 px-3.5 py-2 text-xs font-medium text-dharma-text backdrop-blur-sm transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
             >
               <span lang="hi" className="font-devanagari">मासिक कैलेंडर</span>
             </Link>
             <Link
               href="/panchang/muhurta/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-medium text-dharma-text transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border/80 bg-dharma-bg/65 px-3.5 py-2 text-xs font-medium text-dharma-text backdrop-blur-sm transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
             >
               <span lang="hi" className="font-devanagari">मुहूर्त तालिका</span>
             </Link>
@@ -147,7 +147,7 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 2. Wisdom Pathways & Life Guidance */}
-        <article className="apple-card group relative isolate flex min-h-[340px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border bg-dharma-card bg-gradient-to-br from-dharma-card via-dharma-card to-dharma-maroon/10 p-6 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-5 sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[340px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 via-dharma-card/70 to-dharma-maroon/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-5 sm:p-7">
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -bottom-16 size-52 rounded-full border border-dharma-maroon/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
@@ -181,13 +181,13 @@ export function HomeSanctuaryGateway() {
             </Link>
             <Link
               href="/wisdom-for-life/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-medium text-dharma-text transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border/80 bg-dharma-bg/65 px-3.5 py-2 text-xs font-medium text-dharma-text backdrop-blur-sm transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
             >
               <span lang="hi" className="font-devanagari">जीवन-समस्या समाधान</span>
             </Link>
             <Link
               href="/ask/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-medium text-dharma-text transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border/80 bg-dharma-bg/65 px-3.5 py-2 text-xs font-medium text-dharma-text backdrop-blur-sm transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
             >
               <span lang="hi" className="font-devanagari">धर्म जिज्ञासा</span>
             </Link>
@@ -195,7 +195,7 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 3. Sacred Mantras & Pilgrimage */}
-        <article className="apple-card group relative isolate flex min-h-[285px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border bg-dharma-card bg-gradient-to-br from-dharma-card to-dharma-saffron/10 p-6 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[285px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-saffron/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
           <div aria-hidden="true" className="pointer-events-none absolute -right-12 -top-16 size-44 rounded-full border border-dharma-saffron/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
@@ -229,7 +229,7 @@ export function HomeSanctuaryGateway() {
             </Link>
             <Link
               href="/locations/"
-              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-medium text-dharma-text transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
+              className="inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border/80 bg-dharma-bg/65 px-3.5 py-2 text-xs font-medium text-dharma-text backdrop-blur-sm transition-colors hover:border-dharma-saffron/50 hover:text-dharma-saffron"
             >
               <span lang="hi" className="font-devanagari">पवित्र स्थान</span>
             </Link>
@@ -237,7 +237,7 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 4. Daily Sadhana & Puja Vidhi */}
-        <article className="apple-card group relative isolate flex min-h-[285px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border bg-dharma-card bg-gradient-to-br from-dharma-card to-dharma-gold/10 p-6 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[285px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-gold/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
           <div aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-14 size-44 rounded-full border border-dharma-gold/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
