@@ -11,7 +11,7 @@ import { CONCEPT_RELATIONS, RELATION_LABEL } from '../data/concept-relations';
 import { CONCEPT_DETAILS } from '../data/concept-details';
 
 const strip = (s: string) => s.replace(/[\s|।॥0-9०-९.‌‍]+/g, '');
-const EXPLORER = ['dharma', 'karma', 'atman', 'brahman', 'moksha', 'bhakti', 'jnana', 'yoga', 'maya', 'ahimsa', 'samsara', 'vairagya'];
+const EXPLORER = ['dharma', 'karma', 'atman', 'brahman', 'moksha', 'bhakti', 'jnana', 'yoga', 'maya', 'ahimsa', 'yajna', 'samsara', 'vairagya'];
 let bad = 0;
 const fail = (m: string) => { bad++; console.error(`FAIL ${m}`); };
 

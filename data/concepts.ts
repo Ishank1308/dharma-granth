@@ -199,6 +199,28 @@ export const concepts: Concept[] = [
     connections: ['yoga', 'om', 'manas'],
     scriptureRefs: ['bhagavadgita', 'yogasutras'],
   },
+  {
+    id: 'ahimsa',
+    label: 'Ahimsa',
+    sanskrit: 'अहिंसा',
+    transliteration: 'ahiṁsā',
+    category: 'practice',
+    shortDesc: 'अहिंसा परम धर्म — मन, वाणी और कर्म से समस्त प्राणियों के प्रति अद्रोह व करुणा।',
+    description: 'अहिंसा सनातन आचार का मूल आधार और अष्टांग योग का प्रथम महाव्रत (यम) है। इसका अर्थ केवल शारीरिक चोट से बचना ही नहीं, अपितु विचार, वाणी और आचरण में दुर्भाव, कटुता और ईर्ष्या का सर्वथा त्याग करना है। "अहिंसा परमो धर्मः" महाभारत का शाश्वत संदेश है।',
+    connections: ['dharma', 'yoga', 'yajna', 'karma'],
+    scriptureRefs: ['mahabharata', 'bhagavadgita', 'yogasutras'],
+  },
+  {
+    id: 'yajna',
+    label: 'Yajna',
+    sanskrit: 'यज्ञ',
+    transliteration: 'yajña',
+    category: 'practice',
+    shortDesc: 'त्याग व पारस्परिक सहयोग — सृष्टि चक्र और समाज के संतुलन का पावन सिद्धांत।',
+    description: 'यज्ञ का व्यापक अर्थ निःस्वार्थ भाव से समाज, प्रकृति और ईश्वर के प्रति सर्वस्व अर्पण करना है। गीता (3.9-16) के अनुसार सम्पूर्ण ब्रह्मांड पारस्परिक पोषण के यज्ञ-चक्र पर प्रतिष्ठित है। जब मनुष्य उपभोग की बजाय परोपकार और सेवा को जीवन का लक्ष्य बनाता है, तो उसका प्रत्येक कर्म यज्ञ बन जाता है।',
+    connections: ['karma', 'dharma', 'ahimsa', 'karma-yoga'],
+    scriptureRefs: ['bhagavadgita', 'rigveda'],
+  },
 
   // ── Psychology ────────────────────────────────────────────────
   {

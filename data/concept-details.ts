@@ -113,8 +113,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Better is one’s own duty, though deficient in outer polish, than the duty of another well performed. Death in the performance of one’s own duty is blessed; the duty of another is fraught with danger.',
         translationHi: 'अच्छी तरह आचरण किए हुए दूसरे के धर्म से गुणरहित भी अपना धर्म श्रेष्ठ है। अपने धर्म में तो मरना भी कल्याणकारक है और दूसरे का धर्म भय को देने वाला है।',
         reference: 'Bhagavad Gita 3.35',
-        referenceHi: 'भगवद्गीता ३.३५',
-        href: '/scripture/bhagavadgita/chapter/3/verse/35',
+        referenceHi: 'भगवद्गीता 3.35',
+        href: '/scripture/bhagavadgita/chapter/3/verse/35/',
       },
       {
         sanskrit: 'धारणाद्धर्ममित्याहुर्धर्मेण विधृताः प्रजाः ।\nयत्स्याद्धारणसंयुक्तं स धर्म इति निश्चयः ॥',
@@ -122,7 +122,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Dharma is named from upholding; all created beings are held together by Dharma. That which possesses the power of upholding and sustaining is assuredly Dharma.',
         translationHi: 'धारण करने के कारण ही धर्म को धर्म कहा जाता है; धर्म ही प्रजा को संभाले रखता है। जो धारण करने की शक्ति से संपन्न हो, वही निश्चय ही धर्म है।',
         reference: 'Mahabharata, Karna Parva 69.58',
-        referenceHi: 'महाभारत, कर्णपर्व ६९.५८',
+        referenceHi: 'महाभारत, कर्णपर्व 69.58',
       },
       {
         sanskrit: 'सत्यं वद । धर्मं चर । स्वाध्यायान्मा प्रमदः ॥',
@@ -130,8 +130,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Speak the truth. Practice righteousness. Do not neglect daily sacred self-study.',
         translationHi: 'सत्य बोलो। धर्म का आचरण करो। स्वाध्याय में कभी प्रमाद मत करो।',
         reference: 'Taittiriya Upanishad 1.11.1',
-        referenceHi: 'तैत्तिरीयोपनिषद् १.११.१',
-        href: '/scripture/taittiriya/chapter/1',
+        referenceHi: 'तैत्तिरीयोपनिषद् 1.11.1',
+        href: '/scripture/taittiriya/chapter/1/verse/11/',
       },
     ],
     traditions: [
@@ -223,8 +223,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'You have a right only to perform your prescribed duty; the fruits thereof are never your entitlement. Let not the fruit of action be your motive, nor let attachment to inaction take hold of you.',
         translationHi: 'तुम्हारा अधिकार केवल कर्म करने में है, उसके फलों में कभी नहीं। इसलिए तुम कर्मफल के हेतु मत बनो और तुम्हारी अकर्मण्यता (कर्म न करने) में भी आसक्ति न हो।',
         reference: 'Bhagavad Gita 2.47',
-        referenceHi: 'भगवद्गीता २.४७',
-        href: '/scripture/bhagavadgita/chapter/2/verse/47',
+        referenceHi: 'भगवद्गीता 2.47',
+        href: '/scripture/bhagavadgita/chapter/2/verse/47/',
       },
       {
         sanskrit: 'यथाकारी यथाचारी तथा भवति —\nसाधुकारी साधुर्भवति, पापकारी पापो भवति ।\nपुण्यः पुण्येन कर्मणा भवति, पापः पापेन ॥',
@@ -232,7 +232,17 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'According as one acts and according as one behaves, so does one become. The doer of good becomes good; the doer of evil becomes evil. One becomes virtuous by virtuous deeds, and unrighteous by unrighteous deeds.',
         translationHi: 'मनुष्य जैसा कर्म करता है और जैसा आचरण करता है, वैसा ही वह बन जाता है। शुभ कर्म करने वाला साधु बनता है और पाप कर्म करने वाला पापी। पुण्य कर्मों से पुण्य आत्मा और पाप कर्मों से पापात्मा बनता है।',
         reference: 'Brihadaranyaka Upanishad 4.4.5',
-        referenceHi: 'बृहदारण्यकोपनिषद् ४.४.५',
+        referenceHi: 'बृहदारण्यकोपनिषद् 4.4.5',
+        href: '/scripture/brihadaranyaka/chapter/25/verse/4.4.5/',
+      },
+      {
+        sanskrit: 'कर्मणो ह्यपि बोद्धव्यं बोद्धव्यं च विकर्मणः ।\nअकर्मणश्च बोद्धव्यं गहना कर्मणो गतिः ॥',
+        transliteration: 'karmaṇo hyapi boddhavyaṃ boddhavyaṃ ca vikarmaṇaḥ |\nakarmaṇaśca boddhavyaṃ gahanā karmaṇo gatiḥ ||',
+        translationEn: 'The true nature of action must be understood, as must the nature of forbidden action and inaction. Inscrutable is the way of karma.',
+        translationHi: 'कर्म का स्वरूप भी जानना चाहिए, विकर्म (निषिद्ध कर्म) का स्वरूप भी जानना चाहिए और अकर्म का स्वरूप भी जानना चाहिए; क्योंकि कर्म की गति गहन है।',
+        reference: 'Bhagavad Gita 4.17',
+        referenceHi: 'भगवद्गीता 4.17',
+        href: '/scripture/bhagavadgita/chapter/4/verse/17/',
       },
     ],
     traditions: [
@@ -254,7 +264,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         myth: 'Karma is fatalism; since everything is pre-ordained by past karma, personal effort is useless.',
         mythHi: 'कर्म भाग्यवादिता (Fatalism) है; सब कुछ पहले से तय है तो प्रयास का क्या लाभ?',
         correction: 'Karma is the exact opposite of fatalism: it is radical responsibility. While past karma forms present circumstances (Prarabdha), our conscious response right now (Purushartha) shapes future destiny completely.',
-        correctionHi: 'कर्म भाग्य का खेल नहीं, बल्कि पुरुषार्थ की प्रेरणा है। अतीत ने वर्तमान परिस्थितियाँ बनाई हैं, परंतु आज का हमारा श्रेष्ठ कर्म भविष्य का निर्माण करता है।',
+        correctionHi: 'कर्म भाग्य का खेल नहीं, बल्कि पुरुषार्थ की प्रेरणा है। अतीत ने वर्तमान परिस्थितियाँ बनाई हैं, परंतु आज का हमारा श्रेष्ठ कर्म भविष्य का निर्माण करता है। आप अपने विवेक और सत्कर्म से अपने भविष्य का निर्माण कर सकते हैं।',
       },
       {
         myth: 'You can blame victims of injustice or tragedy by saying "it was just their karma".',
@@ -312,8 +322,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'The soul is never born, nor does it die at any time. It has not come to be, nor does it cease to be. Unborn, eternal, ever-existing and primeval, it is not slain when the body is slain.',
         translationHi: 'यह आत्मा किसी काल में भी न तो जन्म लेता है और न मरता ही है; तथा न यह उत्पन्न होकर फिर होने वाला ही है। यह अजन्मा, नित्य, सनातन और पुरातन है; शरीर के मारे जाने पर भी यह नहीं मारा जाता।',
         reference: 'Bhagavad Gita 2.20 / Katha Upanishad 1.2.18',
-        referenceHi: 'भगवद्गीता २.२० / कठोपनिषद् १.२.१८',
-        href: '/scripture/bhagavadgita/chapter/2/verse/20',
+        referenceHi: 'भगवद्गीता 2.20 / कठोपनिषद् 1.2.18',
+        href: '/scripture/bhagavadgita/chapter/2/verse/20/',
       },
       {
         sanskrit: 'अयमात्मा ब्रह्म ॥',
@@ -321,8 +331,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'This Self is Brahman.',
         translationHi: 'यह आत्मा ही ब्रह्म है।',
         reference: 'Mandukya Upanishad 2',
-        referenceHi: 'माण्डूक्योपनिषद् २',
-        href: '/scripture/mandukya',
+        referenceHi: 'माण्डूक्योपनिषद् 2',
+        href: '/scripture/mandukya/chapter/1/verse/2/',
       },
     ],
     traditions: [
@@ -402,8 +412,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Brahman is Truth, Consciousness, and Infinitude.',
         translationHi: 'ब्रह्म सत्य, ज्ञान और अनंत स्वरूप है।',
         reference: 'Taittiriya Upanishad 2.1',
-        referenceHi: 'तैत्तिरीयोपनिषद् २.१',
-        href: '/scripture/taittiriya/chapter/2',
+        referenceHi: 'तैत्तिरीयोपनिषद् 2.1',
+        href: '/scripture/taittiriya/chapter/2/verse/1/',
       },
       {
         sanskrit: 'सर्वं खल्विदं ब्रह्म तज्जलानिति शान्त उपासीत ॥',
@@ -411,8 +421,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'All this universe is verily Brahman. From It all things arise, into It they dissolve, and by It they are sustained. In tranquility, meditate on this.',
         translationHi: 'यह सब कुछ निश्चय ही ब्रह्म है। उसी से सब उत्पन्न होता है, उसी में विलीन होता है और उसी में चेष्टा करता है। शांत होकर उसकी उपासना करें।',
         reference: 'Chandogya Upanishad 3.14.1',
-        referenceHi: 'छान्दोग्योपनिषद् ३.१४.१',
-        href: '/scripture/chandogya',
+        referenceHi: 'छान्दोग्योपनिषद् 3.14.1',
+        href: '/scripture/chandogya/chapter/51/verse/3.14.1/',
       },
       {
         sanskrit: 'तत्त्वमसि ॥',
@@ -420,8 +430,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'You are That.',
         translationHi: 'तू वही (ब्रह्म) है।',
         reference: 'Chandogya Upanishad 6.8.7',
-        referenceHi: 'छान्दोग्योपनिषद् ६.८.७',
-        href: '/scripture/chandogya',
+        referenceHi: 'छान्दोग्योपनिषद् 6.8.7',
+        href: '/scripture/chandogya/chapter/105/verse/6.8.7/',
       },
     ],
     traditions: [
@@ -501,8 +511,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'He who knows the supreme Brahman becomes Brahman indeed. He crosses beyond sorrow; he crosses beyond sin; freed from the knots of the heart, he becomes immortal.',
         translationHi: 'जो ब्रह्म को जान लेता है, वह ब्रह्म ही हो जाता है। वह शोक को पार कर जाता है, पाप को पार कर जाता है और हृदय की ग्रंथियों से मुक्त होकर अमर हो जाता है।',
         reference: 'Mundaka Upanishad 3.2.9',
-        referenceHi: 'मुण्डकोपनिषद् ३.२.९',
-        href: '/scripture/mundaka',
+        referenceHi: 'मुण्डकोपनिषद् 3.2.9',
+        href: '/scripture/mundaka/chapter/6/verse/9/',
       },
       {
         sanskrit: 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज ।\nअहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः ॥',
@@ -510,8 +520,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Abandoning all reliances, surrender to Me alone. I will liberate you from all sins and sorrows; grieve not.',
         translationHi: 'संपूर्ण धर्मों और आश्रयों को छोड़कर केवल मेरी शरण में आ जाओ। मैं तुम्हें समस्त पापों और बंधनों से मुक्त कर दूँगा; तुम शोक मत करो।',
         reference: 'Bhagavad Gita 18.66',
-        referenceHi: 'भगवद्गीता १८.६६',
-        href: '/scripture/bhagavadgita/chapter/18/verse/66',
+        referenceHi: 'भगवद्गीता 18.66',
+        href: '/scripture/bhagavadgita/chapter/18/verse/66/',
       },
     ],
     traditions: [
@@ -579,8 +589,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Verily this divine illusion of Mine, composed of the three gunas, is difficult to cross. But those who take refuge in Me alone cross beyond this Maya.',
         translationHi: 'मेरी यह अलौकिक त्रिगुणमयी माया बड़ी दुस्तर है; परंतु जो केवल मेरी ही शरण में आते हैं, वे इस माया को सरलता से पार कर जाते हैं।',
         reference: 'Bhagavad Gita 7.14',
-        referenceHi: 'भगवद्गीता ७.१४',
-        href: '/scripture/bhagavadgita/chapter/7/verse/14',
+        referenceHi: 'भगवद्गीता 7.14',
+        href: '/scripture/bhagavadgita/chapter/7/verse/14/',
       },
       {
         sanskrit: 'मायां तु प्रकृतिं विद्यान्मायिनं च महेश्वरम् ।',
@@ -588,7 +598,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Know then nature (prakriti) to be Maya, and the Supreme Lord to be the master of Maya.',
         translationHi: 'प्रकृति को ही माया जानो और उस माया के स्वामी परमेश्वर हैं।',
         reference: 'Shvetashvatara Upanishad 4.10',
-        referenceHi: 'श्वेताश्वतरोपनिषद् ४.१०',
+        referenceHi: 'श्वेताश्वतरोपनिषद् 4.10',
+        href: '/scripture/shvetashvatara/chapter/4/verse/10/',
       },
     ],
     traditions: [
@@ -656,8 +667,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Whoever offers to Me with devotion even a leaf, a flower, a fruit, or water—that offering of love from the pure-hearted seeker I accept with joy.',
         translationHi: 'जो कोई भक्त मेरे लिए प्रेमपूर्वक एक पत्ता, फूल, फल या जल भी भेंट करता है, उस शुद्ध अंतःकरण वाले निष्काम भक्त द्वारा प्रेम से अर्पित उस उपहार को मैं साक्षात् स्वीकार करता हूँ।',
         reference: 'Bhagavad Gita 9.26',
-        referenceHi: 'भगवद्गीता ९.२६',
-        href: '/scripture/bhagavadgita/chapter/9/verse/26',
+        referenceHi: 'भगवद्गीता 9.26',
+        href: '/scripture/bhagavadgita/chapter/9/verse/26/',
       },
       {
         sanskrit: 'सा त्वस्मिन् परमप्रेमरूपा ॥\nअमृतस्वरूपा च ॥',
@@ -665,7 +676,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Bhakti is of the nature of supreme love toward the Divine. And it is of the nature of immortality.',
         translationHi: 'वह भक्ति ईश्वर के प्रति परम प्रेम स्वरूपा है। और वह अमृत स्वरूपा भी है।',
         reference: 'Narada Bhakti Sutras 2–3',
-        referenceHi: 'नारद भक्ति सूत्र २–३',
+        referenceHi: 'नारद भक्ति सूत्र 2–3',
+        href: '/scripture/naradabhaktisutra/chapter/1/#verse-2',
       },
     ],
     traditions: [
@@ -739,8 +751,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Perform your duty established in Yoga, abandoning attachment, O Dhananjaya. Be even-minded in both success and failure; equanimity of mind is called Yoga.',
         translationHi: 'हे धनंजय! आसक्ति को त्यागकर तथा सिद्धि और असिद्धि में समान रहकर अपने कर्तव्य कर्म करो; यह समत्व (समभाव) ही योग कहलाता है।',
         reference: 'Bhagavad Gita 2.48',
-        referenceHi: 'भगवद्गीता २.४८',
-        href: '/scripture/bhagavadgita/chapter/2/verse/48',
+        referenceHi: 'भगवद्गीता 2.48',
+        href: '/scripture/bhagavadgita/chapter/2/verse/48/',
       },
       {
         sanskrit: 'योगश्चित्तवृत्तिनिरोधः ॥\nतदा द्रष्टुः स्वरूपेऽवस्थानम् ॥',
@@ -748,7 +760,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Yoga is the cessation of the modifications of the mind. Then the Seer abides in its own true nature.',
         translationHi: 'चित्त की वृत्तियों का निरोध ही योग है। तब दृष्टा (साक्षी आत्मा) अपने वास्तविक स्वरूप में स्थित हो जाता है।',
         reference: 'Patanjali Yoga Sutras 1.2–3',
-        referenceHi: 'पातंजल योगसूत्र १.२–३',
+        referenceHi: 'पातंजल योगसूत्र 1.2–3',
+        href: '/scripture/yogasutra/chapter/1/#verse-2',
       },
     ],
     traditions: [
@@ -822,7 +835,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Ahimsa is the highest virtue; Ahimsa is the highest self-restraint. Ahimsa is the supreme gift; Ahimsa is the supreme austerity.',
         translationHi: 'अहिंसा ही परम धर्म है, अहिंसा ही परम संयम है, अहिंसा ही सबसे बड़ा दान है और अहिंसा ही सर्वोच्च तपस्या है।',
         reference: 'Mahabharata, Anushasana Parva 115.1',
-        referenceHi: 'महाभारत, अनुशासन पर्व ११५.१',
+        referenceHi: 'महाभारत, अनुशासन पर्व 115.1',
       },
       {
         sanskrit: 'अहिंसाप्रतिष्ठायां तत्सन्निधौ वैरत्यागः ॥',
@@ -830,7 +843,26 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'When one is firmly established in Ahimsa, all living beings cease their hostility in their presence.',
         translationHi: 'अहिंसा में प्रतिष्ठित हो जाने पर योगी के सान्निध्य में सभी प्राणियों का वैर-भाव समाप्त हो जाता है।',
         reference: 'Patanjali Yoga Sutras 2.35',
-        referenceHi: 'पातंजल योगसूत्र २.३५',
+        referenceHi: 'पातंजल योगसूत्र 2.35',
+        href: '/scripture/yogasutra/chapter/2/#verse-35',
+      },
+      {
+        sanskrit: 'अहिंसा सत्यमक्रोधस्त्यागः शान्तिरपैशुनम् ।\nदया भूतेष्वलौलुप्त्वं मार्दवं ह्रीरचापलम् ॥',
+        transliteration: 'ahiṁsā satyam akrodhas tyāgaḥ śāntir apaiśunam |\ndayā bhūteṣv aloluptvaṁ mārdavaṁ hrīr acāpalam ||',
+        translationEn: 'Non-violence, truth, freedom from anger, renunciation, peacefulness, restraint from fault-finding, compassion to all beings, freedom from covetousness, gentleness, modesty, and steady resolve—these constitute divine wealth.',
+        translationHi: 'अहिंसा, सत्य, क्रोध न करना, त्याग, शांति, चुगली न करना, सब प्राणियों पर दया, विषयों में अनासक्ति, कोमलता, लज्जा और चपलता का अभाव—ये दैवी संपदा के लक्षण हैं।',
+        reference: 'Bhagavad Gita 16.2',
+        referenceHi: 'भगवद्गीता 16.2',
+        href: '/scripture/bhagavadgita/chapter/16/verse/2/',
+      },
+      {
+        sanskrit: 'अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम् ।\nआचार्योपासनं शौचं स्थैर्यमात्मविनिग्रहः ॥',
+        transliteration: 'amānitvam adambhitvam ahiṁsā kṣāntir ārjavam |\nācāryopāsanaṁ śaucaṁ sthairyam ātma-vinigrahaḥ ||',
+        translationEn: 'Humility, unpretentiousness, non-violence, forgiveness, uprightness, service to the teacher, purity, steadfastness, and self-restraint—this is declared to be true knowledge.',
+        translationHi: 'मान का अभाव, दंभ का न होना, अहिंसा, क्षमाशीलता, सरलता, गुरु की सेवा, आंतरिक और बाह्य शुद्धि, स्थिरता और मन का निग्रह—यह सब ज्ञान कहलाता है।',
+        reference: 'Bhagavad Gita 13.7',
+        referenceHi: 'भगवद्गीता 13.7',
+        href: '/scripture/bhagavadgita/chapter/13/verse/7/',
       },
     ],
     traditions: [
@@ -852,7 +884,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         myth: 'Ahimsa means passive submission when criminals or oppressors attack innocent people.',
         mythHi: 'अहिंसा का अर्थ है कि कोई अत्याचारी हमला करे तो चुपचाप अन्याय सहते रहो।',
         correction: 'Ahimsa is grounded in moral courage. When adharma threatens society, stopping perpetrators with righteous strength is dharmic protection.',
-        correctionHi: 'अहिंसा दुर्बलता नहीं है। निर्दोषों की रक्षा और समाज को अराजकता से बचाना भी धर्म का अनिवार्य अंग है।',
+        correctionHi: 'अहिंसा दुर्बलता या कायरता नहीं है। निर्दोषों की रक्षा और समाज को अराजकता से बचाना भी धर्म का अनिवार्य अंग है। जब आप अन्याय का प्रतिकार करते हैं, तो वह भी करुणा से प्रेरित होना चाहिए, व्यक्तिगत द्वेष से नहीं।',
       },
     ],
     relatedConceptIds: ['dharma', 'yoga', 'satya', 'yajna', 'vairagya'],
@@ -904,8 +936,17 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Work done as a sacrifice for the Divine binds not; all other work causes bondage in this world. Therefore, O son of Kunti, perform your actions for the sake of Yajna, free from attachment.',
         translationHi: 'यज्ञ (परोपकार व ईश्वरीय कार्य) के अतिरिक्त अन्य कर्मों में लगा हुआ यह मनुष्य संसार में बंधता है। इसलिए हे कुंतीपुत्र! आसक्ति रहित होकर यज्ञ के निमित्त ही कर्म करो।',
         reference: 'Bhagavad Gita 3.9',
-        referenceHi: 'भगवद्गीता ३.९',
-        href: '/scripture/bhagavadgita/chapter/3/verse/9',
+        referenceHi: 'भगवद्गीता 3.9',
+        href: '/scripture/bhagavadgita/chapter/3/verse/9/',
+      },
+      {
+        sanskrit: 'अन्नाद्भवन्ति भूतानि पर्जन्यादन्नसम्भवः ।\nयज्ञाद्भवति पर्जन्यो यज्ञः कर्मसमुद्भवः ॥',
+        transliteration: 'annād bhavanti bhūtāni parjanyād anna-sambhavaḥ |\nyajñād bhavati parjanyo yajñaḥ karma-samudbhavaḥ ||',
+        translationEn: 'All living beings subsist on food, and food arises from rain. Rain is generated through Yajna, and Yajna is born of prescribed action.',
+        translationHi: 'संपूर्ण प्राणी अन्न से उत्पन्न होते हैं, अन्न की उत्पत्ति वृष्टि से होती है, वृष्टि यज्ञ से होती है और यज्ञ कर्तव्य कर्मों से संपन्न होता है।',
+        reference: 'Bhagavad Gita 3.14',
+        referenceHi: 'भगवद्गीता 3.14',
+        href: '/scripture/bhagavadgita/chapter/3/verse/14/',
       },
       {
         sanskrit: 'श्रेयान्द्रव्यमयाद्यज्ञाज्ज्ञानयज्ञः परन्तप ।\nसर्वं कर्माखिलं पार्थ ज्ञाने परिसमाप्यते ॥',
@@ -913,8 +954,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Superior is the sacrifice of wisdom (Jnana Yajna) to any material sacrifice, O scorcher of foes. All action without exception culminates in wisdom.',
         translationHi: 'द्रव्यमय (सामग्रियों के) यज्ञ की अपेक्षा ज्ञानयज्ञ अत्यंत श्रेष्ठ है। हे पार्थ! संपूर्ण कर्म ज्ञान में ही समाप्त होते हैं।',
         reference: 'Bhagavad Gita 4.33',
-        referenceHi: 'भगवद्गीता ४.३३',
-        href: '/scripture/bhagavadgita/chapter/4/verse/33',
+        referenceHi: 'भगवद्गीता 4.33',
+        href: '/scripture/bhagavadgita/chapter/4/verse/33/',
       },
     ],
     traditions: [
@@ -936,7 +977,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         myth: 'Yajna is only burning material wood in a pit for magical favors.',
         mythHi: 'यज्ञ केवल कुछ लकड़ी जलाकर वरदान मांगने का अंधविश्वास है।',
         correction: 'Yajna is the profound spirit of selfless contribution. When we contribute more to the world than we consume, our entire life becomes a Yajna.',
-        correctionHi: 'यज्ञ प्रकृति और समाज से जितना लिया है, उससे अधिक लौटाने का जीवन-मंत्र है।',
+        correctionHi: 'यज्ञ प्रकृति और समाज से जितना लिया है, उससे अधिक लौटाने का जीवन-मंत्र है। जब आप अपने कर्मों को अहंकार और स्वार्थ से मुक्त करके लोककल्याण हेतु समर्पित करते हैं, तो आपका जीवन ही यज्ञ बन जाता है।',
       },
     ],
     relatedConceptIds: ['karma', 'dharma', 'seva', 'ahimsa', 'vairagya'],
@@ -982,8 +1023,26 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Having attained Me, these great souls do not take rebirth in this transient world which is the abode of miseries; they have reached the highest perfection.',
         translationHi: 'परम सिद्धि को प्राप्त हुए वे महात्मा मुझे पाकर दुखों के घर और क्षणभंगुर पुनर्जन्म को प्राप्त नहीं होते।',
         reference: 'Bhagavad Gita 8.15',
-        referenceHi: 'भगवद्गीता ८.१५',
-        href: '/scripture/bhagavadgita/chapter/8/verse/15',
+        referenceHi: 'भगवद्गीता 8.15',
+        href: '/scripture/bhagavadgita/chapter/8/verse/15/',
+      },
+      {
+        sanskrit: 'यस्त्वविज्ञानवान् भवत्यमनस्कः सदाशुचिः ।\nन स तत्पदमाप्नोति संसारं चाधिगच्छति ॥',
+        transliteration: 'yastvavijñānavān bhavatyamanaskaḥ sadāśuciḥ |\nna sa tatpadamāpnoti saṁsāraṁ cādhigacchati ||',
+        translationEn: 'He who lacks spiritual discernment, whose mind is undisciplined and ever unpurified, does not attain that supreme state, but wanders endlessly in the cycle of samsara.',
+        translationHi: 'जो मनुष्य विवेकहीन, अनियंत्रित मन वाला और सदा अशुचि रहता है, वह उस परम पद को प्राप्त नहीं करता; वह संसार के जन्म-मरण के चक्र में ही भटकता रहता है।',
+        reference: 'Katha Upanishad 1.3.7',
+        referenceHi: 'कठोपनिषद् 1.3.7',
+        href: '/scripture/katha/chapter/3/verse/7/',
+      },
+      {
+        sanskrit: 'अश्रद्दधानाः पुरुषा धर्मस्यास्य परन्तप ।\nअप्राप्य मां निवर्तन्ते मृत्युसंसारवर्त्मनि ॥',
+        transliteration: 'aśraddadhānāḥ puruṣā dharmasyāsya parantapa |\naprāpya māṁ nivartante mṛtyu-saṁsāra-vartmani ||',
+        translationEn: 'Those who have no faith in this sacred dharma, O scorcher of foes, do not attain Me, but return to the path of the world of death and rebirth.',
+        translationHi: 'हे परंतप! इस धर्म में श्रद्धा न रखने वाले मनुष्य मुझे प्राप्त न होकर मृत्यु रूप संसार के चक्र में बार-बार भटकते रहते हैं।',
+        reference: 'Bhagavad Gita 9.3',
+        referenceHi: 'भगवद्गीता 9.3',
+        href: '/scripture/bhagavadgita/chapter/9/verse/3/',
       },
       {
         sanskrit: 'पुनरपि जननं पुनरपि मरणं\nपुनरपि जननीजठरे शयनम् ।\nइह संसारे बहुदुस्तारे\nकृपयाऽपारे पाहि मुरारे ॥',
@@ -991,7 +1050,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Birth again, death again, and again lying in a mother’s womb! This cycle of worldly transmigration is terribly hard to cross; protect me, O Lord, through Your boundless compassion.',
         translationHi: 'फिर जन्म, फिर मृत्यु और फिर गर्भ में वास! यह संसार पार करना अत्यंत कठिन है; हे प्रभु! अपनी असीम कृपा से मेरी रक्षा करो।',
         reference: 'Adi Shankaracharya, Bhaja Govindam 21',
-        referenceHi: 'आदि शंकराचार्य, भज गोविंदम् २१',
+        referenceHi: 'आदि शंकराचार्य, भज गोविंदम् 21',
       },
     ],
     traditions: [
@@ -1013,7 +1072,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         myth: 'Samsara means the earth is evil and must be despised.',
         mythHi: 'संसार बुरा है इसलिए जीवन और प्रकृति से घृणा करनी चाहिए।',
         correction: 'Samsara is a sacred school of wisdom and evolution. It is called transient (ashashvatam) to prevent foolish clinginess, not to cultivate cynicism.',
-        correctionHi: 'संसार आत्मा की शिक्षा का विद्यालय है। इसे नश्वर इसलिए कहा गया है ताकि हम इसमें अंधों की तरह न उलझें, घृणा करने के लिए नहीं।',
+        correctionHi: 'संसार आत्मा की शिक्षा और आध्यात्मिक विकास का विद्यालय है। इसे नश्वर (अशाश्वत) इसलिए कहा गया है ताकि आप इसमें आसक्त होकर अपने शाश्वत स्वरूप को न भूलें।',
       },
     ],
     relatedConceptIds: ['karma', 'moksha', 'maya', 'atman', 'vairagya'],
@@ -1065,8 +1124,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'Without doubt, O mighty-armed Arjuna, the mind is restless and difficult to curb. But by patient practice (Abhyasa) and by dispassion (Vairagya), it can be restrained.',
         translationHi: 'हे महाबाहो! इसमें तनिक भी संदेह नहीं कि मन चंचल और कठिनता से वश में होने वाला है। परंतु हे कुंतीपुत्र! अभ्यास और वैराग्य से इसे वश में किया जा सकता है।',
         reference: 'Bhagavad Gita 6.35',
-        referenceHi: 'भगवद्गीता ६.३५',
-        href: '/scripture/bhagavadgita/chapter/6/verse/35',
+        referenceHi: 'भगवद्गीता 6.35',
+        href: '/scripture/bhagavadgita/chapter/6/verse/35/',
       },
       {
         sanskrit: 'अभ्यासवैराग्याभ्यां तन्निरोधः ॥',
@@ -1074,7 +1133,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'The stilling of the mental modifications is achieved through practice and non-attachment.',
         translationHi: 'चित्तवृत्तियों का निरोध अभ्यास और वैराग्य दोनों के द्वारा होता है।',
         reference: 'Patanjali Yoga Sutras 1.12',
-        referenceHi: 'पातंजल योगसूत्र १.१२',
+        referenceHi: 'पातंजल योगसूत्र 1.12',
+        href: '/scripture/yogasutra/chapter/1/#verse-12',
       },
       {
         sanskrit: 'भोगे रोगभयं कुले च्युतिभयं वित्ते नृपालाद्भयं...\nसर्वं वस्तु भयान्वितं भुवि नृणां वैराग्यमेवाभयम् ॥',
@@ -1082,7 +1142,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'In enjoyment there is fear of disease; in family status fear of decline; in wealth fear of rulers... Everything in this world is accompanied by fear; dispassion alone bestows fearlessness.',
         translationHi: 'भोगों में रोग का भय है, कुल में पतन का भय है, धन में राजा का भय है... संसार की हर वस्तु भय से युक्त है; केवल वैराग्य ही पूर्ण निर्भयता प्रदान करता है।',
         reference: 'Bhartrihari, Vairagya Shatakam 100',
-        referenceHi: 'भर्तृहरि, वैराग्य शतकम् १००',
+        referenceHi: 'भर्तृहरि, वैराग्य शतकम् 100',
       },
     ],
     traditions: [
@@ -1145,7 +1205,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         "context": "Knowledge in the Gita",
         "contextHi": "गीता में ज्ञान",
         "meaningEn": "The Gita praises knowledge as a purifier (4.38), places it at the end of all action (4.33) and describes seeing one undivided reality in all beings as knowledge (18.20).",
-        "meaningHi": "गीता ज्ञान को पवित्र करने वाला कहती है (४.३८), उसे सब कर्मों की परिणति बताती है (४.३३) और सब प्राणियों में एक अविभक्त भाव को देखना ज्ञान कहती है (१८.२०)।"
+        "meaningHi": "गीता ज्ञान को पवित्र करने वाला कहती है (4.38), उसे सब कर्मों की परिणति बताती है (4.33) और सब प्राणियों में एक अविभक्त भाव को देखना ज्ञान कहती है (18.20)।"
       }
     ],
     "verses": [
@@ -1155,8 +1215,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         "translationEn": "The sacrifice of knowledge is superior to material sacrifice. O Arjuna, all actions and everything else culminate in knowledge.",
         "translationHi": "हे परन्तप अर्जुन ! द्रव्यमय यज्ञसे ज्ञानयज्ञ श्रेष्ठ है। सम्पूर्ण कर्म और पदार्थ ज्ञान-(तत्त्वज्ञान-) में समाप्त हो जाते हैं।",
         "reference": "Bhagavad Gita 4.33",
-        "referenceHi": "भगवद्गीता ४.३३",
-        "href": "/scripture/bhagavadgita/chapter/4/verse/33"
+        "referenceHi": "भगवद्गीता 4.33",
+        "href": "/scripture/bhagavadgita/chapter/4/verse/33/"
       },
       {
         "sanskrit": "न हि ज्ञानेन सदृशं पवित्रमिह विद्यते।\nतत्स्वयं योगसंसिद्धः कालेनात्मनि विन्दति",
@@ -1164,8 +1224,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         "translationEn": "For there is no purifier equal to knowledge; he who is perfected in Karma Yoga finds this knowledge of his own accord in himself in due time.",
         "translationHi": "इस मनुष्यलोकमें ज्ञानके समान पवित्र करनेवाला निःसन्देह दूसरा कोई साधन नहीं है। जिसका योग भली-भाँति सिद्ध हो गया है, वह (कर्मयोगी) उस तत्त्वज्ञानको अवश्य ही स्वयं अपने-आपमें पा लेता है।",
         "reference": "Bhagavad Gita 4.38",
-        "referenceHi": "भगवद्गीता ४.३८",
-        "href": "/scripture/bhagavadgita/chapter/4/verse/38"
+        "referenceHi": "भगवद्गीता 4.38",
+        "href": "/scripture/bhagavadgita/chapter/4/verse/38/"
       },
       {
         "sanskrit": "ज्ञानेन तु तदज्ञानं येषां नाशितमात्मनः।\nतेषामादित्यवज्ज्ञानं प्रकाशयति तत्परम्",
@@ -1173,8 +1233,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         "translationEn": "But for those in whom this ignorance is destroyed by the knowledge of the Self, that knowledge, in their case, is supreme and shines brightly like the sun.",
         "translationHi": "परन्तु जिन्होंने अपने जिस ज्ञान-(विवक-) के द्वारा उस अज्ञानका नाश कर दिया है, उनका वह ज्ञान सूर्यकी तरह परमतत्त्व परमात्माको प्रकाशित कर देता है।",
         "reference": "Bhagavad Gita 5.16",
-        "referenceHi": "भगवद्गीता ५.१६",
-        "href": "/scripture/bhagavadgita/chapter/5/verse/16"
+        "referenceHi": "भगवद्गीता 5.16",
+        "href": "/scripture/bhagavadgita/chapter/5/verse/16/"
       },
       {
         "sanskrit": "सर्वभूतेषु येनैकं भावमव्ययमीक्षते।अविभक्तं विभक्तेषु तज्ज्ञानं विद्धि सात्त्विकम्",
@@ -1182,8 +1242,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         "translationEn": "Know that knowledge to be sattvika, by which one sees in all beings an immutable existence, undivided even in the divided.",
         "translationHi": "जिस ज्ञानके द्वारा साधक सम्पूर्ण विभक्त प्राणियोंमें विभागरहित एक अविनाशी भाव-(सत्ता-) को देखता है, उस ज्ञानको तुम सात्त्विक समझो।",
         "reference": "Bhagavad Gita 18.20",
-        "referenceHi": "भगवद्गीता १८.२०",
-        "href": "/scripture/bhagavadgita/chapter/18/verse/20"
+        "referenceHi": "भगवद्गीता 18.20",
+        "href": "/scripture/bhagavadgita/chapter/18/verse/20/"
       }
     ],
     "traditions": [
@@ -1266,7 +1326,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'I am the Absolute Brahman.',
         translationHi: 'मैं ही वह शुद्ध, अविनाशी परब्रह्म हूँ।',
         reference: 'Brihadaranyaka Upanishad 1.4.10',
-        referenceHi: 'बृहदारण्यकोपनिषद् १.४.१०',
+        referenceHi: 'बृहदारण्यकोपनिषद् 1.4.10',
+        href: '/scripture/brihadaranyaka/chapter/4/verse/1.4.10/',
       },
       {
         sanskrit: 'सर्वं खल्विदं ब्रह्म तज्जलानिति शांत उपासीत ।',
@@ -1274,7 +1335,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'All this universe is verily Brahman; from It it arises, into It it dissolves, in It it breathes. Thus should one meditate with a peaceful mind.',
         translationHi: 'यह सब कुछ निश्चय ही ब्रह्म है; उसी से उत्पन्न होता है, उसी में विलीन होता है और उसी में चेष्टा करता है। इसलिए शांत होकर उसकी उपासना करनी चाहिए।',
         reference: 'Chandogya Upanishad 3.14.1',
-        referenceHi: 'छांदोग्योपनिषद् ३.१४.१',
+        referenceHi: 'छांदोग्योपनिषद् 3.14.1',
+        href: '/scripture/chandogya/chapter/51/verse/3.14.1/',
       },
       {
         sanskrit: 'वेदान्तकृद्वेदविदेव चाहम् ।',
@@ -1282,8 +1344,8 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationEn: 'I am the author of the Vedanta and the knower of the Vedas.',
         translationHi: 'मैं ही वेदान्त का रचयिता और वेदों का यथार्थ ज्ञाता हूँ।',
         reference: 'Bhagavad Gita 15.15',
-        referenceHi: 'भगवद्गीता १५.१५',
-        href: '/scripture/bhagavadgita/chapter/15/verse/15',
+        referenceHi: 'भगवद्गीता 15.15',
+        href: '/scripture/bhagavadgita/chapter/15/verse/15/',
       },
     ],
     traditions: [

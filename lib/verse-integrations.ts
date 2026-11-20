@@ -79,6 +79,8 @@ const CONCEPT_KEYWORDS: Record<string, string[]> = {
   ishvara: ['ishvara', 'ईश्वर', 'परमेश्वर', 'भगवान्', 'lord'],
   avatar: ['avatar', 'अवतार', 'संभवामि', 'यदा यदा हि', 'incarnation'],
   yuga: ['yuga', 'युग', 'कालचक्र', 'सत्ययुग', 'कलियुग', 'cosmic age'],
+  ahimsa: ['ahimsa', 'अहिंसा', 'अहिंसक', 'अद्रोह', 'non-violence', 'harmlessness'],
+  yajna: ['yajna', 'यज्ञ', 'हवन', 'आहुति', 'यज्ञार्थ', 'ज्ञानयज्ञ', 'sacrifice'],
 };
 
 /** Phrases where a concept word means something else ("ध्यान दीजिये" = pay attention, not meditation). */
