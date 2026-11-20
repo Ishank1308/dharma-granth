@@ -95,10 +95,15 @@ export default function PradoshPage() {
   const nextUpcomingDateEn = PRADOSH_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg text-dharma-text pb-20 relative overflow-hidden" data-limb="tithis">
+      {/* Twilight Shiva Sandhya Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-[440px] w-full max-w-5xl rounded-full bg-radial from-indigo-500/22 via-blue-600/12 to-transparent blur-3xl"
+      />
       <JsonLd data={JSON_LD} />
 
-      <div className="mx-auto max-w-7xl px-gutter pt-6">
+      <div className="mx-auto max-w-7xl px-gutter pt-6 relative z-10">
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
@@ -117,27 +122,27 @@ export default function PradoshPage() {
         width="wide"
       />
 
-      <PanchangLimbSwitcher />
+      <PanchangLimbSwitcher activeLimb="tithis" />
 
       {/* Main Content */}
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12 relative z-10">
         {/* Core Principles Bento */}
         <section aria-labelledby="pradosh-meaning" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-5 shadow-soft transition hover:border-indigo-400/40 hover:shadow-md">
             <span className="text-2xl mb-2 block">🌙</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">त्रयोदशी तिथि (13th Lunar Day)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
               पूर्णिमा और अमावस्या से दो दिन पूर्व, जब चित्त की वृत्तियों को शांत करना अत्यंत सहज होता है।
             </p>
           </div>
-          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-5 shadow-soft transition hover:border-indigo-400/40 hover:shadow-md">
             <span className="text-2xl mb-2 block">🔱</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">कैलाश तांडव (Divine Twilight)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
               संध्याकाल में शिवजी का नृत्य — समस्त नकारात्मक ऊर्जा व क्लेशों के भस्म होने की पावन बेला।
             </p>
           </div>
-          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-5 shadow-soft transition hover:border-indigo-400/40 hover:shadow-md">
             <span className="text-2xl mb-2 block">🔔</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">महामृत्युंजय साधना (Japa &amp; Peace)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
@@ -147,8 +152,8 @@ export default function PradoshPage() {
         </section>
 
         {/* Dates Table */}
-        <section aria-labelledby="dates-heading" className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
-          <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <section aria-labelledby="dates-heading" className="card-sacred rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl overflow-hidden shadow-soft">
+          <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-surface-elevated/40">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
                 आगामी प्रदोष व्रत तिथियाँ (2026–2027)
@@ -171,8 +176,8 @@ export default function PradoshPage() {
               return (
                 <div
                   key={item.dateEn}
-                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-blue-50/30 dark:hover:bg-blue-950/20 ${
-                    isNextUpcoming ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.06]' : ''
+                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-surface-elevated/70 ${
+                    isNextUpcoming ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.08]' : ''
                   }`}
                 >
                   <div>
@@ -181,13 +186,16 @@ export default function PradoshPage() {
                         {item.name}
                       </span>
                       {isNextUpcoming && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
-                          <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 shadow-xs">
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-saffron-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-saffron-500" />
+                          </span>
                           आगामी व्रत · Next Upcoming
                         </span>
                       )}
                       {item.type && (
-                        <span className="text-2xs rounded-full bg-blue-100 px-2 py-0.5 font-bold text-blue-800 dark:bg-blue-900/60 dark:text-blue-300">
+                        <span className="text-2xs rounded-full bg-blue-100/90 dark:bg-blue-900/60 px-2 py-0.5 font-bold text-blue-800 dark:text-blue-300 border border-blue-200/50 dark:border-blue-700/50">
                           {item.type}
                         </span>
                       )}
@@ -209,7 +217,7 @@ export default function PradoshPage() {
         </section>
 
         {/* Sacred Mantra & Scriptural Citation */}
-        <section aria-labelledby="mantra-heading" className="card-sacred rounded-2xl border border-dharma-border bg-gradient-to-br from-blue-50/50 via-dharma-card to-dharma-bg p-6 dark:from-blue-950/20 shadow-xs">
+        <section aria-labelledby="mantra-heading" className="card-sacred rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-indigo-500/10 via-dharma-card/85 to-dharma-bg/80 backdrop-blur-xl p-6 shadow-soft">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-3">
             <BookOpen className="h-4 w-4" />
             <span>शिव पंचाक्षर व महामृत्युंजय मंत्र</span>
@@ -243,13 +251,13 @@ export default function PradoshPage() {
         <section className="flex flex-wrap gap-4 pt-6 border-t border-dharma-border">
           <Link
             href="/panchang/"
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 transition"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border/80 bg-dharma-card/80 backdrop-blur-md px-5 py-2.5 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:bg-dharma-card transition shadow-xs"
           >
             &larr; मुख्य पंचांग
           </Link>
           <Link
             href="/festivals/shivaratri/"
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-blue-600/40 bg-blue-50 px-4 py-2 text-xs font-semibold text-blue-800 hover:bg-blue-100 transition dark:bg-blue-950/40 dark:text-blue-300"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-md px-5 py-2.5 text-xs font-semibold text-blue-800 dark:text-blue-300 hover:bg-blue-500/20 transition shadow-xs"
           >
             महाशिवरात्रि दर्शन &rarr;
           </Link>

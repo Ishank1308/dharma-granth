@@ -93,8 +93,20 @@ export default function PurnimaPage() {
   const nextUpcomingDateEn = PURNIMA_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main
+      className="apple-scope panchang-scope panchang-limb relative min-h-screen bg-dharma-bg text-dharma-text pb-20 overflow-x-clip"
+      data-limb="tithis"
+    >
       <JsonLd data={JSON_LD} />
+
+      {/* Luminous Lunar Aura / पूर्ण चंद्र आभा Backdrop */}
+      <div
+        className="pointer-events-none absolute inset-x-0 -top-12 h-[540px] overflow-hidden select-none -z-10 opacity-70 dark:opacity-45"
+        aria-hidden="true"
+      >
+        <div className="absolute left-1/2 -translate-x-1/2 -top-10 w-[740px] h-[420px] rounded-full bg-radial from-amber-400/25 via-saffron-500/12 to-transparent blur-3xl" />
+        <div className="absolute right-[10%] top-20 w-[500px] h-[340px] rounded-full bg-radial from-indigo-500/22 via-lotus-400/12 to-transparent blur-3xl" />
+      </div>
 
       <div className="mx-auto max-w-7xl px-gutter pt-6">
         <Breadcrumbs
@@ -115,12 +127,15 @@ export default function PurnimaPage() {
         width="wide"
       />
 
-      <PanchangLimbSwitcher />
+      <PanchangLimbSwitcher activeLimb="tithis" />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Dates Table */}
-        <section aria-labelledby="dates-heading" className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
+        <section
+          aria-labelledby="dates-heading"
+          className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl overflow-hidden shadow-xs"
+        >
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
@@ -144,11 +159,11 @@ export default function PurnimaPage() {
               return (
                 <div
                   key={item.dateEn}
-                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-amber-50/30 dark:hover:bg-amber-950/20 ${
+                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition duration-200 hover:bg-surface-elevated/70 ${
                     isNextUpcoming
-                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.06]'
+                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.08] dark:bg-saffron-500/[0.14]'
                       : item.highlight
-                        ? 'bg-amber-50/40 dark:bg-amber-950/30'
+                        ? 'bg-amber-500/[0.04] dark:bg-amber-500/[0.08]'
                         : ''
                   }`}
                 >
@@ -158,13 +173,16 @@ export default function PurnimaPage() {
                         {item.name}
                       </span>
                       {isNextUpcoming && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
-                          <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 shadow-xs">
+                          <span className="relative flex size-2">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-saffron-400 opacity-75" />
+                            <span className="relative inline-flex size-2 rounded-full bg-saffron-500" />
+                          </span>
                           आगामी व्रत · Next Upcoming
                         </span>
                       )}
                       {item.highlight && (
-                        <span className="text-2xs rounded-full bg-amber-100 px-2 py-0.5 font-bold text-amber-800 dark:bg-amber-900/60 dark:text-amber-300">
+                        <span className="text-2xs rounded-full bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 font-bold text-amber-800 dark:text-amber-300">
                           प्रमुख
                         </span>
                       )}
@@ -186,7 +204,10 @@ export default function PurnimaPage() {
         </section>
 
         {/* Sacred Shloka */}
-        <section aria-labelledby="mantra-heading" className="card-sacred rounded-2xl border border-dharma-border bg-gradient-to-br from-amber-50/50 via-dharma-card to-dharma-bg p-6 dark:from-amber-950/20 shadow-xs">
+        <section
+          aria-labelledby="mantra-heading"
+          className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-amber-50/40 via-dharma-card/80 to-dharma-bg/60 p-6 dark:from-amber-950/20 backdrop-blur-xl shadow-xs overflow-hidden"
+        >
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-3">
             <BookOpen className="h-4 w-4" />
             <span>ऋग्वेद एवं पुरुष सूक्त संदर्भ</span>
@@ -220,13 +241,13 @@ export default function PurnimaPage() {
         <section className="flex flex-wrap gap-4 pt-6 border-t border-dharma-border">
           <Link
             href="/panchang/"
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 transition"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border/80 bg-dharma-card/70 backdrop-blur-md px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-700 transition"
           >
             &larr; मुख्य पंचांग
           </Link>
           <Link
             href="/festivals/guru-purnima/"
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-amber-600/40 bg-amber-50 px-4 py-2 text-xs font-semibold text-amber-800 hover:bg-amber-100 transition dark:bg-amber-950/40 dark:text-amber-300"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-amber-600/40 bg-amber-500/10 backdrop-blur-md px-4 py-2 text-xs font-semibold text-amber-800 hover:bg-amber-500/20 transition dark:text-amber-300"
           >
             गुरु पूर्णिमा दर्शन &rarr;
           </Link>

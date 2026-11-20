@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { getAllKaranas, getKaranaBySlug } from '@/lib/panchang';
 import { clipDescription } from '@/lib/meta-text';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Sparkles, Moon, Sun, ArrowLeft, ArrowRight, BookOpen, Layers, ShieldCheck, Compass, HelpCircle, AlertCircle } from 'lucide-react';
 
 interface PageProps {
@@ -175,13 +176,19 @@ export default async function KaranaDetailPage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text font-serif">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg text-dharma-text font-serif relative overflow-hidden" data-limb="karanas">
+      {/* Earthly Tulsi Karana Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-[460px] w-full max-w-5xl rounded-full bg-radial from-emerald-500/18 via-teal-500/12 to-transparent blur-3xl"
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="mx-auto max-w-4xl px-gutter pt-8 pb-16">
+      <div className="mx-auto max-w-4xl px-gutter pt-8 pb-16 relative z-10">
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
@@ -190,6 +197,10 @@ export default async function KaranaDetailPage({ params }: PageProps) {
             { label: karana.name },
           ]}
         />
+
+        <div className="mt-4 mb-2">
+          <PanchangLimbSwitcher activeLimb="karanas" />
+        </div>
 
         {/* Header Hero */}
         <header className="mt-8">

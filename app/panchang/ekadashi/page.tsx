@@ -102,8 +102,20 @@ export default function EkadashiPage() {
   const nextUpcomingDateEn = EKADASHI_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main
+      className="apple-scope panchang-scope panchang-limb relative min-h-screen bg-dharma-bg text-dharma-text pb-20 overflow-x-clip"
+      data-limb="tithis"
+    >
       <JsonLd data={JSON_LD} />
+
+      {/* Luminous Hari-Vasara Aura / वैकुण्ठ पावन आभा Backdrop */}
+      <div
+        className="pointer-events-none absolute inset-x-0 -top-12 h-[560px] overflow-hidden select-none -z-10 opacity-70 dark:opacity-45"
+        aria-hidden="true"
+      >
+        <div className="absolute left-1/2 -translate-x-1/2 -top-10 w-[760px] h-[420px] rounded-full bg-radial from-amber-400/28 via-saffron-500/14 to-transparent blur-3xl" />
+        <div className="absolute right-[10%] top-20 w-[520px] h-[340px] rounded-full bg-radial from-emerald-500/18 via-teal-500/10 to-transparent blur-3xl" />
+      </div>
 
       <div className="mx-auto max-w-7xl px-gutter pt-6">
         <Breadcrumbs
@@ -124,27 +136,27 @@ export default function EkadashiPage() {
         width="wide"
       />
 
-      <PanchangLimbSwitcher />
+      <PanchangLimbSwitcher activeLimb="tithis" />
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Core Principles Bento */}
         <section aria-labelledby="ekadashi-meaning" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 p-5 backdrop-blur-xl shadow-xs">
             <span className="text-2xl mb-2 block">🌿</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">कायिक शुद्धि (Metabolic Alignment)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
               चंद्रमा के गुरुत्वाकर्षण और शरीर के जलीय संतुलन को साधने के लिए अन्न का त्याग और सात्विक फलाहार।
             </p>
           </div>
-          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 p-5 backdrop-blur-xl shadow-xs">
             <span className="text-2xl mb-2 block">📿</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">मानसिक एकाग्रता (Mental Sattva)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
               दस इंद्रियां और ग्यारहवां मन — इन ग्यारहों को परमात्मा के चिंतन और स्वाध्याय में लगाने का संकल्प।
             </p>
           </div>
-          <div className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xs">
+          <div className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 p-5 backdrop-blur-xl shadow-xs">
             <span className="text-2xl mb-2 block">📖</span>
             <h3 className="font-serif font-bold text-base text-dharma-text">शास्त्रीय स्वाध्याय (Scriptural Study)</h3>
             <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
@@ -154,7 +166,10 @@ export default function EkadashiPage() {
         </section>
 
         {/* Dates Table */}
-        <section aria-labelledby="dates-heading" className="card-sacred rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-xs">
+        <section
+          aria-labelledby="dates-heading"
+          className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl overflow-hidden shadow-xs"
+        >
           <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
@@ -178,11 +193,11 @@ export default function EkadashiPage() {
               return (
                 <div
                   key={item.dateEn}
-                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition hover:bg-saffron-50/40 dark:hover:bg-saffron-950/20 ${
+                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition duration-200 hover:bg-surface-elevated/70 ${
                     isNextUpcoming
-                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.06]'
+                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.08] dark:bg-saffron-500/[0.14]'
                       : item.highlight
-                        ? 'bg-amber-50/50 dark:bg-amber-950/30'
+                        ? 'bg-amber-500/[0.04] dark:bg-amber-500/[0.08]'
                         : ''
                   }`}
                 >
@@ -192,13 +207,16 @@ export default function EkadashiPage() {
                         {item.name}
                       </span>
                       {isNextUpcoming && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
-                          <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 shadow-xs">
+                          <span className="relative flex size-2">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-saffron-400 opacity-75" />
+                            <span className="relative inline-flex size-2 rounded-full bg-saffron-500" />
+                          </span>
                           आगामी व्रत · Next Upcoming
                         </span>
                       )}
                       {item.highlight && (
-                        <span className="text-2xs rounded-full bg-saffron-100 px-2 py-0.5 font-bold text-saffron-800 dark:bg-saffron-900/60 dark:text-saffron-300">
+                        <span className="text-2xs rounded-full bg-saffron-500/15 border border-saffron-500/30 px-2 py-0.5 font-bold text-saffron-800 dark:text-saffron-300">
                           महापर्व
                         </span>
                       )}
@@ -220,7 +238,10 @@ export default function EkadashiPage() {
         </section>
 
         {/* Sacred Mantra & Scriptural Citation */}
-        <section aria-labelledby="mantra-heading" className="card-sacred rounded-2xl border border-dharma-border bg-gradient-to-br from-amber-50/50 via-dharma-card to-dharma-bg p-6 dark:from-amber-950/20 shadow-xs">
+        <section
+          aria-labelledby="mantra-heading"
+          className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-amber-50/40 via-dharma-card/80 to-dharma-bg/60 p-6 dark:from-amber-950/20 backdrop-blur-xl shadow-xs overflow-hidden"
+        >
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400 mb-3">
             <BookOpen className="h-4 w-4" />
             <span>शास्त्रीय श्लोक व जप</span>
@@ -254,13 +275,13 @@ export default function EkadashiPage() {
         <section className="flex flex-wrap gap-4 pt-6 border-t border-dharma-border">
           <Link
             href="/panchang/"
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 transition"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border/80 bg-dharma-card/70 backdrop-blur-md px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-700 transition"
           >
             &larr; मुख्य पंचांग
           </Link>
           <Link
             href="/festivals/gita-jayanti/"
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-saffron-600/40 bg-saffron-50 px-4 py-2 text-xs font-semibold text-saffron-800 hover:bg-saffron-100 transition dark:bg-saffron-950/40 dark:text-saffron-300"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-saffron-600/40 bg-saffron-500/10 backdrop-blur-md px-4 py-2 text-xs font-semibold text-saffron-800 hover:bg-saffron-500/20 transition dark:text-saffron-300"
           >
             गीता जयंती दर्शन &rarr;
           </Link>

@@ -114,10 +114,15 @@ const JSON_LD = {
 
 export default function PanchangCalendarPage() {
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg relative overflow-hidden" data-limb="tithis">
+      {/* Celestial Cosmic Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[520px] w-full max-w-6xl rounded-full bg-radial from-amber-400/22 via-saffron-500/12 to-transparent blur-3xl"
+      />
       <JsonLd data={JSON_LD} />
 
-      <div className="mx-auto max-w-7xl px-gutter pt-6">
+      <div className="mx-auto max-w-7xl px-gutter pt-6 relative z-10">
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
@@ -127,19 +132,21 @@ export default function PanchangCalendarPage() {
         />
       </div>
 
-      <PageHeader
-        eyebrow="Vedic Lunisolar Calendar · 2026–2028"
-        eyebrowHi="वैदिक सौर-चान्द्र पंचांग कैलेंडर"
-        title="Solar & Lunar Festival Calendar"
-        titleHi="दैनिक तिथि, नक्षत्र एवं प्रमुख पर्व पंचांग (2026–2028)"
-        lead="Explore day-by-day Udaya Tithis, Nakshatras, sacred Ekadashi vratas, Pradosha twilights, Purnima and Amavasya cycles, and major Hindu festivals across 2026, 2027, and 2028 with astronomical precision and Gita Press scriptural context."
-        width="wide"
-      />
+      <div className="relative z-10">
+        <PageHeader
+          eyebrow="Vedic Lunisolar Calendar · 2026–2028"
+          eyebrowHi="वैदिक सौर-चान्द्र पंचांग कैलेंडर"
+          title="Solar & Lunar Festival Calendar"
+          titleHi="दैनिक तिथि, नक्षत्र एवं प्रमुख पर्व पंचांग (2026–2028)"
+          lead="Explore day-by-day Udaya Tithis, Nakshatras, sacred Ekadashi vratas, Pradosha twilights, Purnima and Amavasya cycles, and major Hindu festivals across 2026, 2027, and 2028 with astronomical precision and Gita Press scriptural context."
+          width="wide"
+        />
 
-      <PanchangLimbSwitcher />
+        <PanchangLimbSwitcher activeLimb="tithis" />
+      </div>
 
       {/* ─── MAIN INTERACTIVE CALENDAR ───────────────────────────────────── */}
-      <section className="mx-auto max-w-7xl px-gutter pt-8 pb-16">
+      <section className="mx-auto max-w-7xl px-gutter pt-8 pb-16 relative z-10">
         <CalendarClient />
 
         {/* ─── EDUCATIONAL FOUNDATIONS ──────────────────────────────────── */}
@@ -157,7 +164,7 @@ export default function PanchangCalendarPage() {
             </p>
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6">
+              <div className="card-sacred rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 shadow-soft transition hover:border-saffron-400/40 hover:shadow-md">
                 <div className="apple-tint-chip mb-4 !h-10 !w-10" style={{ '--chip': 'var(--hue-gold)' } as React.CSSProperties}>
                   <Sun className="h-5 w-5" />
                 </div>
@@ -167,7 +174,7 @@ export default function PanchangCalendarPage() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6">
+              <div className="card-sacred rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 shadow-soft transition hover:border-saffron-400/40 hover:shadow-md">
                 <div className="apple-tint-chip mb-4 !h-10 !w-10" style={{ '--chip': 'var(--hue-indigo)' } as React.CSSProperties}>
                   <Moon className="h-5 w-5" />
                 </div>
@@ -177,7 +184,7 @@ export default function PanchangCalendarPage() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6">
+              <div className="card-sacred rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 shadow-soft transition hover:border-saffron-400/40 hover:shadow-md">
                 <div className="apple-tint-chip mb-4 !h-10 !w-10" style={{ '--chip': 'var(--hue-tulsi)' } as React.CSSProperties}>
                   <Compass className="h-5 w-5" />
                 </div>

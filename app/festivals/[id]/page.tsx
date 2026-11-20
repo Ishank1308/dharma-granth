@@ -154,7 +154,13 @@ export default async function FestivalDetailPage(props: PageProps) {
   );
 
   return (
-    <main className="min-h-screen bg-dharma-bg pb-20">
+    <main className="apple-scope min-h-screen bg-dharma-bg pb-20 relative overflow-hidden">
+      {/* Sacred Festival Halo Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-full max-w-6xl rounded-full bg-radial from-amber-400/20 via-saffron-500/10 to-transparent blur-3xl"
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -168,7 +174,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         <div className="relative mx-auto max-w-5xl px-gutter">
           <Link
             href="/festivals/"
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white text-xs sm:text-sm font-semibold mb-6 transition"
+            className="liquid-pill inline-flex items-center gap-2 text-white/90 hover:text-white text-xs sm:text-sm font-semibold mb-6 transition px-4 py-2 rounded-full bg-black/20 backdrop-blur-md border border-white/20 hover:bg-black/30 shadow-xs"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>सभी त्यौहार (All Festivals)</span>
@@ -201,7 +207,7 @@ export default async function FestivalDetailPage(props: PageProps) {
             </div>
 
             {/* Timing Card & Quick Share */}
-            <div className="rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-md space-y-3.5 md:min-w-[280px]">
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-md space-y-3.5 md:min-w-[280px] shadow-lg">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-200">
                 <Clock className="h-4 w-4" />
                 <span>पारंपरिक काल गणना (Timing)</span>
@@ -213,14 +219,14 @@ export default async function FestivalDetailPage(props: PageProps) {
                   href={`https://api.whatsapp.com/send?text=${shareText}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-3.5 py-1.5 text-xs font-bold text-white transition shadow-sm"
+                  className="liquid-pill inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-3.5 py-1.5 text-xs font-bold text-white transition shadow-sm"
                 >
                   <Share2 className="h-3.5 w-3.5" />
                   <span>WhatsApp Share</span>
                 </a>
                 <Link
                   href="/panchang/"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white underline underline-offset-4"
+                  className="liquid-pill inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition"
                 >
                   <Calendar className="h-3.5 w-3.5" />
                   <span>पंचांग देखें</span>
@@ -234,7 +240,7 @@ export default async function FestivalDetailPage(props: PageProps) {
       {/* Main Content Layout */}
       <section className="relative mx-auto max-w-5xl px-gutter -mt-6 sm:-mt-8 space-y-8 z-10">
         {/* 1. Meaning & Core Philosophy */}
-        <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
+        <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             <Sparkles className="h-4 w-4" />
             <span>दार्शनिक अर्थ व महत्व (Spiritual Significance)</span>
@@ -248,7 +254,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         </div>
 
         {/* 2. Scriptural Authority & Sources */}
-        <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
+        <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             <BookOpen className="h-4 w-4" />
             <span>शास्त्रीय स्रोत व प्रमाण (Scriptural References)</span>
@@ -270,7 +276,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         </div>
 
         {/* 3. Sacred Narrative & Deities */}
-        <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
+        <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             <Heart className="h-4 w-4" />
             <span>संबंधित देवता व पावन कथा (Deity & Narrative)</span>
@@ -278,7 +284,7 @@ export default async function FestivalDetailPage(props: PageProps) {
           <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
             आराध्य देवता: {festival.relatedDeity}
           </h2>
-          <div className="rounded-2xl border border-dharma-border bg-dharma-panel p-5">
+          <div className="rounded-2xl border border-dharma-border/80 bg-dharma-panel/60 p-5">
             <p className="text-sm sm:text-base text-dharma-text leading-relaxed">
               {festival.relatedNarrative}
             </p>
@@ -287,7 +293,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
         {/* 4. Common Chants & Mantras */}
         {festival.commonChants.length > 0 && (
-          <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
+          <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               <Music className="h-4 w-4" />
               <span>जप और प्रार्थना (Chants & Prayers)</span>
@@ -299,7 +305,7 @@ export default async function FestivalDetailPage(props: PageProps) {
               {festival.commonChants.map((chant, i) => (
                 <div
                   key={i}
-                  className="rounded-2xl border border-dharma-border bg-dharma-panel p-5 space-y-2"
+                  className="rounded-2xl border border-dharma-border/80 bg-dharma-panel/60 p-5 space-y-2"
                 >
                   <p lang="sa" className="font-devanagari text-[clamp(1.1rem,calc(1rem+0.75vw),1.5rem)] leading-[1.9] [overflow-wrap:anywhere] font-bold text-saffron-800 dark:text-saffron-400">
                     {chant.sanskrit}
@@ -318,7 +324,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
         {/* 5. Scriptural vs Cultural Distinction */}
         {festival.scripturalVsCustom.length > 0 && (
-          <div className="rounded-3xl border border-amber-300 dark:border-amber-900/60 bg-amber-500/5 p-6 sm:p-8 space-y-4">
+          <div className="card-sacred rounded-3xl border border-amber-300/80 dark:border-amber-900/60 bg-amber-500/5 backdrop-blur-xl p-6 sm:p-8 space-y-4 shadow-soft">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
               <AlertCircle className="h-4 w-4" />
               <span>विवेक दर्शन: शास्त्रीय बनाम सांस्कृतिक रिवाज़</span>
@@ -332,10 +338,10 @@ export default async function FestivalDetailPage(props: PageProps) {
 
             <div className="grid gap-4 sm:grid-cols-2 pt-2">
               {festival.scripturalVsCustom.map((item, i) => (
-                <div key={i} className="rounded-2xl border border-dharma-border bg-dharma-card p-4 space-y-3">
+                <div key={i} className="card-sacred rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-md p-4 space-y-3">
                   <div className="rounded-xl border border-emerald-300 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/40 p-3">
                     <p className="text-xs font-bold uppercase text-emerald-800 dark:text-emerald-300 mb-1">
-                      शास्त्रीय मूल (Scriptural)
+                       शास्त्रीय मूल (Scriptural)
                     </p>
                     <p className="text-xs sm:text-sm text-dharma-text">{item.scriptural}</p>
                   </div>
@@ -353,7 +359,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
         {/* 6. Regional Diversity & Traditions */}
         {festival.regionalTraditions.length > 0 && (
-          <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
+          <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               <MapPin className="h-4 w-4" />
               <span>क्षेत्रीय विविधता (Regional Traditions Across Bharat)</span>
@@ -363,7 +369,7 @@ export default async function FestivalDetailPage(props: PageProps) {
             </h2>
             <div className="grid gap-3 sm:grid-cols-2">
               {festival.regionalTraditions.map((rt, i) => (
-                <div key={i} className="rounded-2xl border border-dharma-border bg-dharma-panel p-4">
+                <div key={i} className="rounded-2xl border border-dharma-border/80 bg-dharma-panel/60 p-4">
                   <p className="text-xs font-bold text-saffron-700 dark:text-saffron-400 mb-1">
                     {rt.region}
                   </p>
@@ -382,7 +388,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         {/* 7. Traditional Practices & Food Traditions */}
         <div className="grid gap-6 md:grid-cols-2">
           {festival.traditionalPractices.length > 0 && (
-            <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
+            <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                 <CheckCircle2 className="h-4 w-4" />
                 <span>पारंपरिक अनुष्ठान (Ritual Practices)</span>
@@ -400,7 +406,7 @@ export default async function FestivalDetailPage(props: PageProps) {
           )}
 
           {festival.foodTraditions.length > 0 && (
-            <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 shadow-sm space-y-4">
+            <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                 <Utensils className="h-4 w-4" />
                 <span>नैवेद्य व भोजन परंपरा (Sacred Food Offerings)</span>
@@ -420,7 +426,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
         {/* 8. Environmental Considerations */}
         {festival.environmentalConsiderations && (
-          <div className="rounded-3xl border border-emerald-300 dark:border-emerald-900 bg-emerald-500/5 p-6 sm:p-8 space-y-3">
+          <div className="card-sacred rounded-3xl border border-emerald-300/80 dark:border-emerald-900/80 bg-emerald-500/5 backdrop-blur-xl p-6 sm:p-8 space-y-3 shadow-soft">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
               <Leaf className="h-4 w-4" />
               <span>प्रकृति व पर्यावरण संचेतना (Ecological Mindfulness)</span>
@@ -438,7 +444,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-dharma-border">
           <Link
             href="/festivals/"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
+            className="liquid-pill inline-flex items-center gap-2 text-sm font-semibold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 transition px-4 py-2 rounded-full border border-dharma-border/80 bg-dharma-card/80 backdrop-blur-md shadow-xs"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>सभी त्यौहार सूची (Browse All Festivals)</span>
@@ -446,7 +452,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
           <Link
             href="/panchang/"
-            className="inline-flex items-center gap-2 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-4 py-2 text-xs sm:text-sm font-bold text-white transition shadow-sm"
+            className="liquid-pill inline-flex items-center gap-2 rounded-full bg-saffron-600 hover:bg-saffron-700 px-5 py-2.5 text-xs sm:text-sm font-bold text-white transition shadow-sm"
           >
             <Calendar className="h-4 w-4" />
             <span>दैनिक पंचांग देखें (View Daily Panchang) &rarr;</span>

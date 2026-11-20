@@ -52,7 +52,7 @@ export default async function WisdomPathwayPage(props: { params: Promise<{ slug:
     ],
   };
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text">
+    <main className="apple-scope min-h-screen bg-dharma-bg text-dharma-text relative overflow-hidden">
       <JsonLd data={jsonLd} />
       <JsonLd data={faq} />
       <PathwayDetailClient

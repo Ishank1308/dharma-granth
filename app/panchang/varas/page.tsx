@@ -140,10 +140,15 @@ export default function VarasDirectoryPage() {
   const todayDayIndex = getTodayIstDayIndex();
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg relative overflow-hidden" data-limb="varas">
+      {/* Radiant Golden Solar Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-[480px] w-full max-w-5xl rounded-full bg-radial from-amber-400/22 via-saffron-500/12 to-transparent blur-3xl"
+      />
       <JsonLd data={JSON_LD} />
 
-      <div className="mx-auto max-w-7xl px-gutter pt-6">
+      <div className="mx-auto max-w-7xl px-gutter pt-6 relative z-10">
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
@@ -153,16 +158,18 @@ export default function VarasDirectoryPage() {
         />
       </div>
 
-      <PageHeader
-        eyebrow="The 5 Limbs of Panchanga · Limb 2"
-        eyebrowHi="पंचांग का द्वितीय अंग · वार (वासर)"
-        title="7 Vedic Varas"
-        titleHi="सप्त वासर — ग्रह अधिपति, तत्त्व एवं शास्त्रीय साधना"
-        lead="Explore the seven planetary solar weekdays of Vedic astronomy and the classical Hora system. Understand their celestial lords, cosmic elements (Maha-Bhootas), traditional fasts, and spiritual study guidelines."
-        width="wide"
-      />
+      <div className="relative z-10">
+        <PageHeader
+          eyebrow="The 5 Limbs of Panchanga · Limb 2"
+          eyebrowHi="पंचांग का द्वितीय अंग · वार (वासर)"
+          title="7 Vedic Varas"
+          titleHi="सप्त वासर — ग्रह अधिपति, तत्त्व एवं शास्त्रीय साधना"
+          lead="Explore the seven planetary solar weekdays of Vedic astronomy and the classical Hora system. Understand their celestial lords, cosmic elements (Maha-Bhootas), traditional fasts, and spiritual study guidelines."
+          width="wide"
+        />
 
-      <PanchangLimbSwitcher activeLimb="varas" />
+        <PanchangLimbSwitcher activeLimb="varas" />
+      </div>
 
       <section className="mx-auto max-w-7xl px-gutter pt-8 pb-16 space-y-16">
         {/* ─── 7 VARAS MASTER GRID ────────────────────────────────────────── */}
