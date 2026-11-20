@@ -479,14 +479,14 @@ export function VerseCard({
       id={`verse-${v.number}`}
       className={`verse-card book-verse ${REVEAL_SEQUENCE} group relative scroll-mt-24 transition-all duration-300 ${
         isReciting
-          ? 'book-verse-ringed bg-amber-500/5 ring-2 ring-amber-400/50 animate-prana-pulse'
+          ? 'book-verse-ringed bg-amber-500/5 ring-2 ring-amber-400/50 animate-prana-pulse motion-reduce:animate-none'
           : highlight
           ? `book-verse-ringed ${HIGHLIGHTS[highlight].ring}`
           : ''
       }`}
       style={{
-        contentVisibility: isActive || isReciting ? 'visible' : 'auto',
-        containIntrinsicSize: 'auto 420px',
+        contentVisibility: isActive || isReciting || studyRequested ? 'visible' : 'auto',
+        containIntrinsicSize: 'auto 300px',
       }}
       aria-label={`श्लोक ${verseLabel}${isReciting ? ' · श्लोक उच्चारण चालू' : ''}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
     >

@@ -17,7 +17,7 @@ interface VrataDatesTableProps {
   dates: VrataDateItem[];
   title: string;
   subtitle: string;
-  vrataType: 'amavasya' | 'purnima' | 'ekadashi';
+  vrataType: 'amavasya' | 'purnima' | 'ekadashi' | 'pradosh' | 'sankashti' | 'vrata';
 }
 
 function getIstTodayIso(): string {
@@ -228,7 +228,7 @@ export function VrataDatesTable({ dates, title, subtitle, vrataType }: VrataDate
                     )}
                   </div>
                   <p className="text-xs text-label-secondary">
-                    {item.month} मास {vrataType === 'amavasya' ? 'अमावस्या' : vrataType === 'purnima' ? 'पूर्णिमा' : 'एकादशी'}
+                    {item.month} मास {vrataType === 'amavasya' ? 'अमावस्या' : vrataType === 'purnima' ? 'पूर्णिमा' : vrataType === 'pradosh' ? 'प्रदोष व्रत' : vrataType === 'sankashti' ? 'संकष्टी चतुर्थी' : 'एकादशी'}
                   </p>
                 </div>
 
