@@ -96,30 +96,36 @@ export function HomeDynamicBackground() {
     <div className="prana-fluid-stage" aria-hidden="true" data-decorative>
       {/* Blob 1: Solar Prana / सौर्य तेज (Top-Left) */}
       <div
-        className="prana-blob prana-blob-1 -left-28 -top-28 h-[540px] w-[580px] bg-gradient-to-tr from-amber-500/25 via-saffron-500/20 to-orange-400/15 dark:from-indigo-600/20 dark:via-purple-700/15 dark:to-blue-500/10"
-        style={{ '--prana-opacity': '0.24' } as React.CSSProperties}
+        className="prana-blob prana-blob-1 -left-24 -top-24 h-[560px] w-[620px] bg-gradient-to-tr from-amber-500/45 via-saffron-500/38 to-rose-400/30 dark:from-indigo-500/38 dark:via-purple-600/30 dark:to-blue-500/24"
+        style={{ '--prana-opacity': '0.46' } as React.CSSProperties}
       />
 
       {/* Blob 2: Amrita Dawn / अमृत प्रवाह (Top-Right) */}
       <div
-        className="prana-blob prana-blob-2 -right-24 -top-16 h-[580px] w-[620px] bg-gradient-to-br from-rose-400/20 via-amber-300/15 to-transparent dark:from-cyan-500/20 dark:via-blue-600/15 dark:to-transparent"
-        style={{ '--prana-opacity': '0.22' } as React.CSSProperties}
+        className="prana-blob prana-blob-2 -right-20 -top-12 h-[600px] w-[650px] bg-gradient-to-br from-rose-400/40 via-amber-400/32 to-teal-400/22 dark:from-cyan-500/35 dark:via-blue-600/28 dark:to-indigo-500/20"
+        style={{ '--prana-opacity': '0.42' } as React.CSSProperties}
       />
 
       {/* Blob 3: Central Sanctuary Glow / काल ज्योति (Mid-Page) */}
       <div
-        className="prana-blob prana-blob-3 left-[15%] top-[40%] h-[680px] w-[720px] bg-gradient-to-r from-amber-400/15 via-saffron-600/15 to-yellow-500/10 dark:from-blue-700/15 dark:via-indigo-800/15 dark:to-teal-600/10"
-        style={{ '--prana-opacity': '0.18' } as React.CSSProperties}
+        className="prana-blob prana-blob-3 left-[10%] top-[34%] h-[700px] w-[760px] bg-gradient-to-r from-amber-400/35 via-saffron-500/32 to-rose-400/25 dark:from-blue-600/32 dark:via-indigo-700/28 dark:to-teal-500/22"
+        style={{ '--prana-opacity': '0.38' } as React.CSSProperties}
+      />
+
+      {/* Blob 4: Lower Sanctuary Caustic Pool (Behind Library & Sanctuary Bento) */}
+      <div
+        className="prana-blob prana-blob-2 right-[8%] top-[68%] h-[640px] w-[700px] bg-gradient-to-tl from-teal-400/28 via-amber-400/32 to-saffron-500/28 dark:from-purple-600/28 dark:via-indigo-600/25 dark:to-amber-500/18"
+        style={{ '--prana-opacity': '0.36' } as React.CSSProperties}
       />
 
       {/* Interactive Fluid Wake / स्पर्श तेज (Follows pointer smoothly) */}
       <div
         ref={pointerBlobRef}
-        className="prana-blob pointer-events-none hidden h-[400px] w-[400px] bg-gradient-to-r from-dharma-saffron/15 to-amber-400/10 dark:from-cyan-400/15 dark:to-indigo-500/15 sm:block"
+        className="prana-blob pointer-events-none hidden h-[420px] w-[420px] bg-gradient-to-r from-dharma-saffron/32 to-amber-400/26 dark:from-cyan-400/28 dark:to-indigo-500/28 sm:block"
         style={{
           transform: 'translate3d(40vw, 280px, 0)',
-          filter: 'blur(70px)',
-          opacity: 0.16,
+          filter: 'blur(65px)',
+          opacity: 0.34,
         }}
       />
 

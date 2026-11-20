@@ -30,43 +30,68 @@
     --raised-under: 0 0 #0000;
 }
 
-/* 1. Aurora ──────────────────────────────────────────────────────────────
-   Five soft caustic pools of colour (saffron, lotus, peacock, indigo and golden light)
-   on a fixed layer behind the page so translucent frosted-glass surfaces refract living
-   depth across every screen. Page wrappers that painted the canvas colour let it show
-   through; the body already paints that colour. It drifts on a long loop, transform only,
-   and holds still on reading pages, under reduced motion and in the quiet modes. */
+/* 1. Aurora & Fluid Caustic Orbs ─────────────────────────────────────────
+   Two fixed fluid layers (body::before and body::after) behind every page:
+   - body::before paints five deep pools of sacred colour (saffron, lotus, peacock, indigo, gold)
+   - body::after paints four luminous counter-drifting fluid caustic orbs positioned behind the
+     main content column so translucent frosted-glass cards refract living colour gradients across
+     their edges and interiors.
+   All full-screen page wrappers let the fluid canvas shine through; reading pages quiet it. */
 body::before {
     content: '';
     position: fixed;
     inset: -12vmax;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(42vmax 34vmax at 14% 12%, color-mix(in srgb, var(--hue-saffron) var(--tone-aurora), transparent), transparent 72%),
+        radial-gradient(38vmax 32vmax at 86% 20%, color-mix(in srgb, var(--hue-lotus) calc(var(--tone-aurora) * 0.9), transparent), transparent 72%),
+        radial-gradient(44vmax 34vmax at 72% 88%, color-mix(in srgb, var(--hue-peacock) calc(var(--tone-aurora) * 0.82), transparent), transparent 72%),
+        radial-gradient(36vmax 28vmax at 20% 78%, color-mix(in srgb, var(--hue-indigo) calc(var(--tone-aurora) * 0.78), transparent), transparent 72%),
+        radial-gradient(32vmax 26vmax at 50% 46%, color-mix(in srgb, var(--hue-gold) calc(var(--tone-aurora) * 0.72), transparent), transparent 74%);
+    transform: translate3d(0, 0, 0);
+}
+body::after {
+    content: '';
+    position: fixed;
+    inset: -8vmax;
     z-index: -1;
     pointer-events: none;
     background:
-        radial-gradient(38vmax 30vmax at 12% 8%, color-mix(in srgb, var(--hue-saffron) var(--tone-aurora), transparent), transparent 72%),
-        radial-gradient(34vmax 28vmax at 88% 18%, color-mix(in srgb, var(--hue-lotus) calc(var(--tone-aurora) * 0.82), transparent), transparent 72%),
-        radial-gradient(40vmax 30vmax at 70% 92%, color-mix(in srgb, var(--hue-peacock) calc(var(--tone-aurora) * 0.72), transparent), transparent 72%),
-        radial-gradient(30vmax 24vmax at 18% 80%, color-mix(in srgb, var(--hue-indigo) calc(var(--tone-aurora) * 0.65), transparent), transparent 72%),
-        radial-gradient(28vmax 22vmax at 52% 44%, color-mix(in srgb, var(--hue-gold) calc(var(--tone-aurora) * 0.55), transparent), transparent 74%);
+        radial-gradient(24vmax 20vmax at 28% 30%, color-mix(in srgb, var(--hue-saffron) calc(var(--tone-aurora) * 0.85), transparent), transparent 68%),
+        radial-gradient(22vmax 20vmax at 72% 38%, color-mix(in srgb, var(--hue-lotus) calc(var(--tone-aurora) * 0.75), transparent), transparent 68%),
+        radial-gradient(24vmax 20vmax at 32% 68%, color-mix(in srgb, var(--hue-peacock) calc(var(--tone-aurora) * 0.72), transparent), transparent 68%),
+        radial-gradient(22vmax 18vmax at 70% 74%, color-mix(in srgb, var(--hue-gold) calc(var(--tone-aurora) * 0.78), transparent), transparent 68%);
     transform: translate3d(0, 0, 0);
 }
-main.bg-dharma-bg:not([data-chapter-reading]):not([data-cosmos]) {
-    background-color: transparent;
+:is(main, .min-h-screen).bg-dharma-bg:not([data-cosmos]) {
+    background-color: transparent !important;
 }
 /* Reading pages: the aurora sinks to a whisper so the verse is the only colour. */
-body:has(main[data-chapter-reading], .verse-card.single-verse)::before {
-    opacity: 0.45;
+body:has(main[data-chapter-reading], .verse-card.single-verse)::before,
+body:has(main[data-chapter-reading], .verse-card.single-verse)::after {
+    opacity: 0.42;
 }
 @keyframes aurora-drift {
     0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-    33% { transform: translate3d(3.2vmax, -2.2vmax, 0) scale(1.06) rotate(1.5deg); }
-    66% { transform: translate3d(-2.4vmax, 2.6vmax, 0) scale(0.97) rotate(-1.5deg); }
+    33% { transform: translate3d(3.5vmax, -2.5vmax, 0) scale(1.07) rotate(2deg); }
+    66% { transform: translate3d(-2.8vmax, 2.8vmax, 0) scale(0.96) rotate(-2deg); }
     100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+}
+@keyframes fluid-orb-drift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-3.5vmax, 2.5vmax, 0) scale(1.09); }
+    100% { transform: translate3d(3vmax, -2vmax, 0) scale(0.95); }
 }
 @media (prefers-reduced-motion: no-preference) {
     :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
         body:not(:has(main[data-chapter-reading], .verse-card.single-verse))::before {
-        animation: aurora-drift 48s var(--ease-in-out) infinite;
+        animation: aurora-drift 42s var(--ease-in-out) infinite;
+        will-change: transform;
+    }
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        body:not(:has(main[data-chapter-reading], .verse-card.single-verse))::after {
+        animation: fluid-orb-drift 28s var(--ease-in-out) infinite alternate;
         will-change: transform;
     }
 }
@@ -224,38 +249,65 @@ footer[aria-labelledby='footer-heading'] {
     background-repeat: no-repeat;
 }
 
-/* 4. Cards ──────────────────────────────────────────────────────────────
-   Each card carries a hue: its icon tile's colour when the page gives one (--chip on the
-   card), otherwise the next hue of the spectrum in turn, so a grid of cards reads as a
-   garland rather than a wall of white. The hue shows as a lit specular top edge, a caustic
-   wash in the corners over translucent frosted glass, and under the pointer, a fluid glow. */
-.apple-card {
+/* 4. Cards & Universal Frosted Glass Surfaces ───────────────────────────
+   Every card surface across the project (.apple-card, .card-sacred, .scripture-card,
+   .pillar-card, .granth-card, and rounded cards using .bg-dharma-card / .bg-surface-raised)
+   wears the Translucent Frosted Glass (Liquid Glass 2.0) material:
+   - Translucent base (--glass-surface) with 22px backdrop blur & 195% saturation
+   - Diagonal glass reflection sheen (--glass-sheen) + corner sacred-hue caustic wash
+   - 1.5px luminous top specular edge + 1px perimeter refraction rim + ambient depth shadow
+   - Neutralized opaque Tailwind gradient stops (via-dharma-card / to-dharma-card) so gradients
+      stay translucent over the fluid aurora. */
+:is(
+    .apple-card,
+    .card-sacred,
+    .scripture-card,
+    .pillar-card,
+    :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+) {
     --card-hue: var(--chip, var(--cycle-hue, var(--tint)));
-    background-color: var(--glass-surface);
+    --tw-gradient-via: var(--glass-surface);
+    --tw-gradient-to: var(--glass-surface);
+    background-color: var(--glass-surface) !important;
     -webkit-backdrop-filter: var(--glass-blur-card);
     backdrop-filter: var(--glass-blur-card);
+    border-color: color-mix(in srgb, var(--card-hue) 22%, var(--glass-specular-rim));
     box-shadow:
         var(--raised-under),
-        inset 0 1px 0 color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) + 20%), var(--glass-specular-top)),
-        inset 0 0 0 1px color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) * 0.65), var(--glass-specular-rim)),
-        0 18px 40px -30px color-mix(in srgb, var(--card-hue) var(--tone-glow), transparent);
+        inset 0 1.5px 0 0 color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) + 12%), var(--glass-specular-top)),
+        inset 0 0 0 1px color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) * 0.55), var(--glass-specular-rim)),
+        0 18px 42px -28px color-mix(in srgb, var(--card-hue) var(--tone-glow), transparent);
 }
-:root:is([data-theme='night'], [data-theme='dark']) .apple-card {
+:root:is([data-theme='night'], [data-theme='dark'])
+    :is(
+        .apple-card,
+        .card-sacred,
+        .scripture-card,
+        .pillar-card,
+        :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+    ) {
     /* Deep icon colours lift toward light on the dark canvas. */
     --card-hue: color-mix(in srgb, var(--chip, var(--cycle-hue, var(--tint))) 72%, var(--color-absolute-white));
 }
-.apple-card:not([class*='bg-gradient']) {
+:is(
+    .apple-card,
+    .card-sacred,
+    .scripture-card,
+    .pillar-card,
+    :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+):not([class*='bg-gradient']) {
     background-image:
         radial-gradient(
             130% 90% at 0% 0%,
             color-mix(in srgb, var(--card-hue) var(--tone-wash), transparent),
-            transparent 60%
+            transparent 62%
         ),
         radial-gradient(
             90% 70% at 100% 100%,
-            color-mix(in srgb, var(--card-hue) calc(var(--tone-wash) * 0.45), transparent),
+            color-mix(in srgb, var(--card-hue) calc(var(--tone-wash) * 0.55), transparent),
             transparent 65%
-        );
+        ),
+        var(--glass-sheen);
 }
 :nth-child(6n + 1) > .apple-card,
 .apple-card:nth-child(6n + 1) { --cycle-hue: var(--hue-saffron); }
@@ -398,17 +450,20 @@ a.apple-card:focus-visible {
    a wash of its own colour in the top corner, a spine that shades into gold, and a glow
    in that colour under the pointer. */
 .home-book {
-    background-color: var(--glass-surface);
+    background-color: var(--glass-surface) !important;
     -webkit-backdrop-filter: var(--glass-blur-card);
     backdrop-filter: var(--glass-blur-card);
-    background-image: radial-gradient(
-        110% 70% at 100% 0%,
-        color-mix(in srgb, var(--book-ink) var(--tone-wash), transparent),
-        transparent 62%
-    );
+    background-image:
+        radial-gradient(
+            110% 70% at 100% 0%,
+            color-mix(in srgb, var(--book-ink) var(--tone-wash), transparent),
+            transparent 62%
+        ),
+        var(--glass-sheen);
     box-shadow:
         var(--raised-under),
-        inset 0 1px 0 color-mix(in srgb, var(--book-ink) var(--tone-edge), var(--glass-specular-top));
+        inset 0 1.5px 0 0 color-mix(in srgb, var(--book-ink) var(--tone-edge), var(--glass-specular-top)),
+        inset 0 0 0 1px var(--glass-specular-rim);
 }
 .home-book > span[aria-hidden='true']:first-child {
     background-image: linear-gradient(180deg, var(--book-ink), color-mix(in srgb, var(--book-ink) 55%, var(--hue-gold)));
@@ -993,13 +1048,16 @@ nav a[data-limb][aria-current='page'] {
 }
 
 .library-showcase-book {
-    background-color: var(--glass-surface);
+    background-color: var(--glass-surface) !important;
     -webkit-backdrop-filter: var(--glass-blur-card);
     backdrop-filter: var(--glass-blur-card);
-    background-image: linear-gradient(115deg, color-mix(in srgb, var(--library-category-hue) 11%, transparent), transparent 70%);
+    background-image:
+        linear-gradient(115deg, color-mix(in srgb, var(--library-category-hue) 14%, transparent), transparent 70%),
+        var(--glass-sheen);
     box-shadow:
         var(--raised-under),
-        inset 0 1px 0 var(--glass-specular-top);
+        inset 0 1.5px 0 0 var(--glass-specular-top),
+        inset 0 0 0 1px var(--glass-specular-rim);
 }
 
 @media (forced-colors: active) {
@@ -1045,6 +1103,7 @@ nav a[data-limb][aria-current='page'] {
 
 /* 10. Quiet modes, reduced motion, print and forced colours ────────────── */
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) body::before,
+:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) body::after,
 :root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true']) .aura-header {
     animation: none;
 }
@@ -1052,14 +1111,18 @@ nav a[data-limb][aria-current='page'] {
     :is(
         .apple-card,
         .apple-group,
+        .card-sacred,
+        .scripture-card,
+        .pillar-card,
         .home-book,
         .library-showcase-book,
         .eyebrow-capsule,
         .verse-card.today-verse,
         .verse-card.single-verse,
+        :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised),
         .panchang-scope :is(.card-sacred, .rounded-3xl.bg-dharma-card, .rounded-2xl.bg-dharma-card, .rounded-xl.bg-dharma-card, .grid > .rounded-2xl.bg-dharma-bg)
     ) {
-    background-color: var(--surface-raised);
+    background-color: var(--surface-raised) !important;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
 }
@@ -1082,15 +1145,22 @@ nav a[data-limb][aria-current='page'] {
     [data-painting] {
         --painting: none;
     }
-    body::before {
+    body::before,
+    body::after {
         display: none;
     }
-    .apple-card,
-    .apple-group,
-    .home-book,
-    .library-showcase-book,
-    .eyebrow-capsule {
-        background-color: var(--surface-raised);
+    :is(
+        .apple-card,
+        .apple-group,
+        .card-sacred,
+        .scripture-card,
+        .pillar-card,
+        .home-book,
+        .library-showcase-book,
+        .eyebrow-capsule,
+        :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+    ) {
+        background-color: var(--surface-raised) !important;
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
     }
@@ -1102,16 +1172,23 @@ nav a[data-limb][aria-current='page'] {
     [data-painting] {
         --painting: none;
     }
-    body::before {
+    body::before,
+    body::after {
         display: none;
     }
-    .apple-card,
-    .apple-group,
-    .home-book,
-    .library-showcase-book,
-    .eyebrow-capsule {
-        background-color: var(--surface-raised);
-        background-image: none;
+    :is(
+        .apple-card,
+        .apple-group,
+        .card-sacred,
+        .scripture-card,
+        .pillar-card,
+        .home-book,
+        .library-showcase-book,
+        .eyebrow-capsule,
+        :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+    ) {
+        background-color: var(--surface-raised) !important;
+        background-image: none !important;
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
         box-shadow: none;

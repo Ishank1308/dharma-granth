@@ -626,17 +626,18 @@ export function SiteNav({
               </div>
             </Link>{' '}
 
-            {/* Desktop Primary Navigation */}
-            <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 lg:flex">
+            {/* Desktop Primary Navigation: Floating Frosted Glass Pill Track */}
+            <div className="hidden min-w-0 flex-1 items-center justify-center lg:flex">
+              <div className="inline-flex items-center gap-0.5 rounded-full border border-white/60 bg-white/40 px-1.5 py-1 shadow-[inset_0_1px_0_var(--glass-specular-top),0_4px_18px_-6px_rgba(0,0,0,0.08)] backdrop-blur-xl dark:border-white/12 dark:bg-white/[0.06]">
               {desktopPrimaryItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`relative whitespace-nowrap px-2 xl:px-3 py-2 text-footnote transition-colors duration-200 ${
+                  className={`relative whitespace-nowrap rounded-full px-2.5 xl:px-3.5 py-1.5 text-footnote transition-all duration-200 ${
                     isActive(item.href)
-                      ? 'text-dharma-saffron'
-                      : 'text-dharma-text/80 hover:text-dharma-text'
+                      ? 'bg-dharma-saffron/15 font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] ring-1 ring-dharma-saffron/30'
+                      : 'text-dharma-text/85 hover:bg-white/50 hover:text-dharma-text dark:hover:bg-white/10'
                   }`}
                 >
                   <span className="inline-flex items-baseline gap-1">
@@ -654,10 +655,10 @@ export function SiteNav({
                   ref={discoverButtonRef}
                   type="button"
                   onClick={() => setDiscoverOpen((open) => !open)}
-                  className={`flex items-center gap-1 px-2 xl:px-3 py-2 text-footnote transition-colors ${
+                  className={`flex items-center gap-1 rounded-full px-2.5 xl:px-3.5 py-1.5 text-footnote transition-all ${
                     discoveryIsActive || discoverOpen
-                      ? 'text-dharma-saffron'
-                      : 'text-dharma-text/80 hover:text-dharma-text'
+                      ? 'bg-dharma-saffron/15 font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] ring-1 ring-dharma-saffron/30'
+                      : 'text-dharma-text/85 hover:bg-white/50 hover:text-dharma-text dark:hover:bg-white/10'
                   }`}
                   aria-expanded={discoverOpen}
                   aria-controls="desktop-discovery-menu"
@@ -741,6 +742,7 @@ export function SiteNav({
                       </div>
                     </div>
                   )}
+              </div>
               </div>
             </div>
 
