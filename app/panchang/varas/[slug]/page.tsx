@@ -9,6 +9,7 @@ import {
 } from '@/lib/panchang';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { JsonLd } from '@/app/components/JsonLd';
 import {
   Sun,
@@ -128,10 +129,15 @@ export default async function VaraDetailPage({ params }: Props) {
   };
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg relative overflow-hidden" data-limb="varas">
+      {/* Radiant Golden Solar Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-[480px] w-full max-w-5xl rounded-full bg-radial from-amber-400/22 via-saffron-500/12 to-transparent blur-3xl"
+      />
       <JsonLd data={jsonLd} />
 
-      <div className="mx-auto max-w-7xl px-gutter pt-6">
+      <div className="mx-auto max-w-7xl px-gutter pt-6 relative z-10">
         <Breadcrumbs
           items={[
             { label: 'Home', href: '/' },
@@ -142,14 +148,18 @@ export default async function VaraDetailPage({ params }: Props) {
         />
       </div>
 
-      <PageHeader
-        eyebrow={`Vedic Weekday ${vara.index + 1} of 7 · ${vara.grahaLord}`}
-        eyebrowHi={`${vara.nameHi} · ${vara.grahaLordHi}`}
-        title={`${vara.name} (${vara.nameHi})`}
-        titleHi={`${vara.grahaLordHi} का वासर · ${vara.natureHi}`}
-        lead={vara.explanation}
-        width="wide"
-      />
+      <div className="relative z-10">
+        <PageHeader
+          eyebrow={`Vedic Weekday ${vara.index + 1} of 7 · ${vara.grahaLord}`}
+          eyebrowHi={`${vara.nameHi} · ${vara.grahaLordHi}`}
+          title={`${vara.name} (${vara.nameHi})`}
+          titleHi={`${vara.grahaLordHi} का वासर · ${vara.natureHi}`}
+          lead={vara.explanation}
+          width="wide"
+        />
+
+        <PanchangLimbSwitcher activeLimb="varas" />
+      </div>
 
       <section className="mx-auto max-w-7xl px-gutter pt-8 pb-16 space-y-12">
         {/* ─── ATTRIBUTES CARD GRID ────────────────────────────────────────── */}

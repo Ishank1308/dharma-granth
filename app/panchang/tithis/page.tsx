@@ -117,21 +117,29 @@ export default function TithisHubPage() {
   const todayTithiNumber = todayPanchang.tithi.number;
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg text-dharma-text pb-24 relative overflow-hidden" data-limb="tithis">
+      {/* Radiant Lunar Indigo Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-[460px] w-full max-w-5xl rounded-full bg-radial from-indigo-500/22 via-saffron-500/10 to-transparent blur-3xl"
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Panchang', href: '/panchang/' },
-          { label: '16 Vedic Tithis' },
-        ]}
-      />
+      <div className="relative z-10">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Panchang', href: '/panchang/' },
+            { label: '16 Vedic Tithis' },
+          ]}
+        />
 
-      <PanchangLimbSwitcher activeLimb="tithis" />
+        <PanchangLimbSwitcher activeLimb="tithis" />
+      </div>
 
       {/* Hero Header */}
       <section className="relative overflow-hidden bg-gradient-to-b from-amber-950/20 via-saffron-950/10 to-transparent pt-10 pb-12 border-b border-dharma-border">

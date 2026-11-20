@@ -92,23 +92,31 @@ export default function SolarVratasPage() {
   };
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg text-dharma-text pb-24 relative overflow-hidden" data-limb="varas">
+      {/* Radiant Solar Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-[460px] w-full max-w-5xl rounded-full bg-radial from-amber-400/25 via-saffron-500/12 to-transparent blur-3xl"
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Panchang', href: '/panchang/' },
-          { label: 'Solar Observances (सौर व्रत)' },
-        ]}
-      />
+      <div className="relative z-10">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Panchang', href: '/panchang/' },
+            { label: 'Solar Observances (सौर व्रत)' },
+          ]}
+        />
 
-      <PanchangLimbSwitcher />
+        <PanchangLimbSwitcher activeLimb="varas" />
+      </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6 space-y-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6 space-y-10 relative z-10">
         {/* Sacred Header */}
         <header className="space-y-4 border-b border-dharma-border pb-8">
           <div className="flex flex-wrap items-center gap-2">

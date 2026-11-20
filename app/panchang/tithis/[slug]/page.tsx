@@ -6,6 +6,7 @@ import { UNIQUE_TITHI_ARCHETYPES, getUniqueTithiBySlug } from '@/lib/panchang';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { clipDescription } from '@/lib/meta-text';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Moon, Sun, ArrowLeft, ArrowRight, BookOpen, Sparkles, Calendar, Layers, ShieldCheck, ExternalLink } from 'lucide-react';
 
 interface PageProps {
@@ -148,20 +149,30 @@ export default async function TithiDetailPage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg text-dharma-text pb-24 relative overflow-hidden" data-limb="tithis">
+      {/* Radiant Lunar Indigo Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-[460px] w-full max-w-5xl rounded-full bg-radial from-indigo-500/22 via-saffron-500/10 to-transparent blur-3xl"
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Home', href: '/' },
-          { label: 'Panchang', href: '/panchang/' },
-          { label: '16 Vedic Tithis', href: '/panchang/tithis/' },
-          { label: tithi.name },
-        ]}
-      />
+      <div className="relative z-10">
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Panchang', href: '/panchang/' },
+            { label: '16 Vedic Tithis', href: '/panchang/tithis/' },
+            { label: tithi.name },
+          ]}
+        />
+
+        <PanchangLimbSwitcher activeLimb="tithis" />
+      </div>
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 pt-6">
         {/* Header Hero */}

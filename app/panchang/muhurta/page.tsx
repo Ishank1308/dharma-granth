@@ -76,14 +76,20 @@ export default function MuhurtaPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg text-dharma-text pb-20 relative overflow-hidden" data-limb="muhurta">
+      {/* Radiant Muhurta Gold Aura Backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-28 left-1/2 -translate-x-1/2 h-[460px] w-full max-w-5xl rounded-full bg-radial from-amber-400/22 via-saffron-500/12 to-transparent blur-3xl"
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       {/* Hero Header */}
-      <section className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-saffron-500/10 via-amber-500/5 to-transparent pt-10 pb-12">
+      <section className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-saffron-500/10 via-amber-500/5 to-transparent pt-10 pb-12 z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-1.5 text-xs text-dharma-muted mb-4">
@@ -136,7 +142,7 @@ export default function MuhurtaPage() {
       <PanchangLimbSwitcher activeLimb="muhurta" />
 
       {/* Main Interactive Matrix */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-8">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 relative z-10" aria-label="Muhurta Decision Matrix">
         <MuhurtaMatrixClient
           initialPanchang={{
             isoDate: panchang.isoDate,
@@ -217,7 +223,7 @@ export default function MuhurtaPage() {
             </Link>
           </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
