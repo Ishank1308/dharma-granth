@@ -53,6 +53,7 @@ export const CONCEPT_RELATIONS: ConceptRelation[] = [
   { from: 'moksha', to: 'bhakti', type: 'related', note: 'Verse 18.66 speaks of taking refuge and being freed from sin. Commentators differ on how it relates to liberation.', evidence: { scriptureId: GITA, chapter: 18, verse: 66, expect: 'मोक्षयिष्यामि' }, review: 'draft' },
   { from: 'brahman', to: 'moksha', type: 'related', note: 'Verse 18.53 speaks of becoming fit for oneness with Brahman. Traditions describe that state differently.', evidence: { scriptureId: GITA, chapter: 18, verse: 53, expect: 'ब्रह्मभूयाय' }, review: 'draft' },
   { from: 'ahimsa', to: 'dharma', type: 'related', note: 'Verse 16.2 lists non-violence first among the qualities the chapter calls divine. How it relates to dharma is read in different ways.', evidence: { scriptureId: GITA, chapter: 16, verse: 2, expect: 'अहिंसा सत्यमक्रोध' }, review: 'draft' },
+  { from: 'yajna', to: 'karma', type: 'develops', note: 'Verse 3.9 links action with sacrifice, teaching that work performed for yajna frees rather than binds.', evidence: { scriptureId: GITA, chapter: 3, verse: 9, expect: 'यज्ञार्थात्कर्मणो' }, review: 'draft' },
 ];
 
 export const relationsFor = (conceptId: string): ConceptRelation[] => CONCEPT_RELATIONS.filter((r) => r.from === conceptId || r.to === conceptId);

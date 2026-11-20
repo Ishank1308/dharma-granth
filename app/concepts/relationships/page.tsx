@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-const IDS = ['dharma', 'karma', 'atman', 'brahman', 'moksha', 'bhakti', 'jnana', 'yoga', 'maya', 'ahimsa', 'samsara', 'vairagya'];
+const IDS = ['dharma', 'karma', 'atman', 'brahman', 'moksha', 'bhakti', 'jnana', 'yoga', 'maya', 'ahimsa', 'yajna', 'samsara', 'vairagya'];
 
 const PRACTICE: Record<string, { href: string; label: string }> = {
   dharma: { href: '/wisdom-for-life/duty-and-decision-making', label: 'कर्तव्य का जीवन-विषय' },
@@ -30,6 +30,8 @@ const PRACTICE: Record<string, { href: string; label: string }> = {
   bhakti: { href: '/wisdom-for-life/devotion', label: 'भक्ति का जीवन-विषय' },
   jnana: { href: '/wisdom-for-life/self-knowledge', label: 'आत्मज्ञान का जीवन-विषय' },
   yoga: { href: '/learn/plans/#plan-meditation-journey', label: 'ध्यान का पढ़ने का क्रम' },
+  ahimsa: { href: '/concepts/ahimsa', label: 'अहिंसा का आचार-दर्शन' },
+  yajna: { href: '/concepts/yajna', label: 'यज्ञ का पावन सिद्धांत' },
   samsara: { href: '/wisdom-for-life/death', label: 'मृत्यु का जीवन-विषय' },
   vairagya: { href: '/wisdom-for-life/detachment', label: 'अनासक्ति का जीवन-विषय' },
 };
