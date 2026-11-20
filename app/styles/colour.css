@@ -64,7 +64,7 @@ body::after {
         radial-gradient(22vmax 18vmax at 70% 74%, color-mix(in srgb, var(--hue-gold) calc(var(--tone-aurora) * 0.78), transparent), transparent 68%);
     transform: translate3d(0, 0, 0);
 }
-:is(main, .min-h-screen).bg-dharma-bg:not([data-cosmos]) {
+:is(main, .min-h-screen).bg-dharma-bg {
     background-color: transparent !important;
 }
 /* Reading pages: the aurora sinks to a whisper so the verse is the only colour. */
@@ -263,7 +263,7 @@ footer[aria-labelledby='footer-heading'] {
     .card-sacred,
     .scripture-card,
     .pillar-card,
-    :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+    :where(section, article, div, aside, nav, a, button, header, details, li, ul, form):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-card, .rounded-panel, .rounded-group):is(.bg-dharma-card, .bg-surface-raised)
 ) {
     --card-hue: var(--chip, var(--cycle-hue, var(--tint)));
     --tw-gradient-via: var(--glass-surface);
@@ -278,13 +278,22 @@ footer[aria-labelledby='footer-heading'] {
         inset 0 0 0 1px color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) * 0.55), var(--glass-specular-rim)),
         0 18px 42px -28px color-mix(in srgb, var(--card-hue) var(--tone-glow), transparent);
 }
+:where(a, button, input, select):is(.rounded-full, .rounded-pill):is(.bg-dharma-card, .bg-surface-raised) {
+    background-color: var(--glass-surface) !important;
+    background-image: var(--glass-sheen);
+    -webkit-backdrop-filter: blur(14px) saturate(175%);
+    backdrop-filter: blur(14px) saturate(175%);
+    box-shadow:
+        inset 0 1px 0 0 var(--glass-specular-top),
+        0 4px 14px -6px rgba(var(--shadow-ink), 0.12);
+}
 :root:is([data-theme='night'], [data-theme='dark'])
     :is(
         .apple-card,
         .card-sacred,
         .scripture-card,
         .pillar-card,
-        :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+        :where(section, article, div, aside, nav, a, button, header, details, li, ul, form):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-card, .rounded-panel, .rounded-group):is(.bg-dharma-card, .bg-surface-raised)
     ) {
     /* Deep icon colours lift toward light on the dark canvas. */
     --card-hue: color-mix(in srgb, var(--chip, var(--cycle-hue, var(--tint))) 72%, var(--color-absolute-white));
@@ -294,7 +303,7 @@ footer[aria-labelledby='footer-heading'] {
     .card-sacred,
     .scripture-card,
     .pillar-card,
-    :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+    :where(section, article, div, aside, nav, a, button, header, details, li, ul, form):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-card, .rounded-panel, .rounded-group):is(.bg-dharma-card, .bg-surface-raised)
 ):not([class*='bg-gradient']) {
     background-image:
         radial-gradient(
@@ -1119,7 +1128,8 @@ nav a[data-limb][aria-current='page'] {
         .eyebrow-capsule,
         .verse-card.today-verse,
         .verse-card.single-verse,
-        :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised),
+        :where(section, article, div, aside, nav, a, button, header, details, li, ul, form):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-card, .rounded-panel, .rounded-group):is(.bg-dharma-card, .bg-surface-raised),
+        :where(a, button, input, select):is(.rounded-full, .rounded-pill):is(.bg-dharma-card, .bg-surface-raised),
         .panchang-scope :is(.card-sacred, .rounded-3xl.bg-dharma-card, .rounded-2xl.bg-dharma-card, .rounded-xl.bg-dharma-card, .grid > .rounded-2xl.bg-dharma-bg)
     ) {
     background-color: var(--surface-raised) !important;
