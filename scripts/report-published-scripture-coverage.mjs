@@ -16,9 +16,14 @@ const ROOT = process.cwd();
 const ROOT_DIR = path.join(ROOT, 'public', 'data', 'scriptures-full');
 const OVERLAY_DIR = path.join(ROOT, 'public', 'data', 'hi-commentary');
 const JSON_MODE = process.argv.includes('--json');
+const WRITE_MODE = process.argv.includes('--write');
 
 function hasText(value) {
   return typeof value === 'string' && value.trim().length > 0;
+}
+
+function hasRef(value) {
+  return (typeof value === 'string' && value.trim().length > 0) || typeof value === 'number';
 }
 
 function readJson(file) {
@@ -85,9 +90,9 @@ for (const id of ids) {
       const commentary = overlay[key] ?? {};
       if (hasText(verse.sanskrit)) row.sanskrit += 1;
       if (hasText(verse.hindi)) row.hindi += 1;
-      else if (hasText(verse.hindiSeeVerse)) row.hindiLinked += 1;
+      else if (hasRef(verse.hindiSeeVerse)) row.hindiLinked += 1;
       if (hasText(verse.translation)) row.english += 1;
-      else if (hasText(verse.translationSeeVerse)) row.englishLinked += 1;
+      else if (hasRef(verse.translationSeeVerse)) row.englishLinked += 1;
       if (hasText(commentary.explanation) || hasText(verse.explanation) || hasText(verse.commentary)) row.explanation += 1;
       if (hasText(commentary.science) || hasText(verse.science)) row.research += 1;
       if (hasText(commentary.lifeLesson) || hasText(verse.lifeLesson)) row.lifeLesson += 1;
@@ -107,22 +112,43 @@ const totals = Object.fromEntries(keys.map((key) => [key, tally(rows, key)]));
 if (JSON_MODE) {
   console.log(JSON.stringify({ reported: rows.length, totalCatalogued: ids.length, totals, rows, notGenerated, inconsistent }, null, 2));
 } else {
-  console.log('# Published Scripture Field Coverage');
-  console.log('');
-  console.log('Based on post-filter chapter shards and published Hindi commentary overlays.');
-  console.log('A linked passage meaning is counted separately from a verse-owned meaning.');
-  console.log('Field presence does NOT prove verse alignment, accuracy, source completeness, or editorial review.');
-  console.log('');
-  console.log('| Scripture | Verses | Sanskrit | Hindi | Hindi linked | English | English linked | व्याख्या | Research |');
-  console.log('| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |');
-  for (const row of rows) {
-    console.log('| ' + [row.id, row.published, row.sanskrit, row.hindi, row.hindiLinked, row.english, row.englishLinked, row.explanation, row.research].join(' | ') + ' |');
+  const dateStr = new Date().toISOString().slice(0, 10);
+  const lines = [
+    '# Published Scripture Field Coverage',
+    '',
+    `Generated ${dateStr} by scripts/report-published-scripture-coverage.mjs.`,
+    'Based on post-filter chapter shards and published Hindi commentary overlays.',
+    'A linked passage meaning is counted separately from a verse-owned meaning.',
+    'Field presence does NOT prove verse alignment, accuracy, source completeness, or editorial review.',
+    'See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-report.md` (editorial flags).',
+    '',
+    '| Scripture | Verses | Sanskrit | Hindi | Hindi linked | English | English linked | व्याख्या | Research |',
+    '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
+    ...rows.map(
+      (row) =>
+        '| ' +
+        [row.id, row.published, row.sanskrit, row.hindi, row.hindiLinked, row.english, row.englishLinked, row.explanation, row.research].join(' | ') +
+        ' |'
+    ),
+    '| **Total** | ' +
+      [totals.published, totals.sanskrit, totals.hindi, totals.hindiLinked, totals.english, totals.englishLinked, totals.explanation, totals.research].join(' | ') +
+      ' |',
+    '',
+    `Measured ${rows.length}/${ids.length} catalogued scripture files.`,
+    '',
+  ];
+
+  if (WRITE_MODE) {
+    const outFile = path.join(ROOT, 'docs', 'published-coverage-report.md');
+    fs.writeFileSync(outFile, lines.join('\n'), 'utf8');
+    console.error(`Wrote ${outFile} (${rows.length} scriptures)`);
   }
-  console.log('| **Total** | ' + [totals.published, totals.sanskrit, totals.hindi, totals.hindiLinked, totals.english, totals.englishLinked, totals.explanation, totals.research].join(' | ') + ' |');
-  console.log('');
+
+  for (const line of lines) {
+    console.log(line);
+  }
   if (notGenerated.length) console.error('Missing generated manifests: ' + notGenerated.join(', '));
   for (const item of inconsistent) console.error('INCONSISTENT: ' + item);
-  console.log('Measured ' + rows.length + '/' + ids.length + ' catalogued scripture files.');
 }
 
 if (notGenerated.length || inconsistent.length) {
