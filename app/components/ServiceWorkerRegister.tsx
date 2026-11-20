@@ -12,9 +12,20 @@ export default function ServiceWorkerRegister() {
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production' || !('serviceWorker' in navigator)) return;
 
+    // In automated testing environments (e.g. Playwright / WebDriver), never auto-reload
+    if (typeof navigator !== 'undefined' && 'webdriver' in navigator && (navigator as { webdriver?: boolean }).webdriver) {
+      navigator.serviceWorker.register(`${BASE_PATH}/sw.js`, { scope: `${BASE_PATH}/` }).catch(() => {});
+      return;
+    }
+
+    // Only reload on controllerchange if a previous service worker was already controlling
+    // the page. On fresh installs (where controller was initially null), the page is already
+    // rendering the latest assets and must not trigger an unexpected reload.
+    const hadController = Boolean(navigator.serviceWorker.controller);
+
     let refreshing = false;
     const onControllerChange = () => {
-      if (refreshing) return;
+      if (!hadController || refreshing) return;
       refreshing = true;
       window.location.reload();
     };
