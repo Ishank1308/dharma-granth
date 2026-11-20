@@ -5,8 +5,9 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
+import { VrataDatesTable, type VrataDateItem } from '@/app/panchang/components/VrataDatesTable';
 import { JsonLd } from '@/app/components/JsonLd';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Moon, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'पूर्णिमा तिथियाँ 2026–2028 · Purnima Dates & Satyanarayan Vrata',
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     'पूर्णिमा तिथियाँ',
     'Purnima dates 2026',
     'Purnima dates 2027',
+    'Purnima dates 2028',
     'आज पूर्णिमा कब है',
     'सत्यनारायण व्रत',
     'कार्तिक पूर्णिमा',
@@ -28,24 +30,39 @@ export const metadata: Metadata = {
     images: [DEFAULT_OG_IMAGE],
     title: 'पूर्णिमा तिथियाँ 2026–2028 · Purnima Dates & Satyanarayan Vrata — Dharma Granth',
     description:
-      'समस्त पूर्णिमा तिथियाँ, सत्यनारायण कथा, चंद्र दर्शन एवं वैदिक पूर्णिमा व्रत का शास्त्रीय महत्व।',
+      'वर्ष 2026, 2027 एवं 2028 की समस्त पूर्णिमा तिथियाँ, सत्यनारायण कथा, चंद्र दर्शन एवं वैदिक पूर्णिमा व्रत का शास्त्रीय महत्व।',
     url: 'https://dharmagranth.dev/panchang/purnima/',
   },
 };
 
-const PURNIMA_DATES = [
+const PURNIMA_DATES: VrataDateItem[] = [
+  // 2026
   { name: 'कार्तिक पूर्णिमा (त्रिपुरारी पूर्णिमा / देव दीपावली)', month: 'कार्तिक', date: '24 नवंबर 2026', dateEn: '2026-11-24', highlight: true },
   { name: 'मार्गशीर्ष पूर्णिमा (दत्तात्रेय जयंती)', month: 'मार्गशीर्ष', date: '23 दिसंबर 2026', dateEn: '2026-12-23' },
-  { name: 'पौष पूर्णिमा (शाकंभरी पूर्णिमा)', month: 'पौष', date: '22 जनवरी 2027', dateEn: '2027-01-22' },
-  { name: 'माघ पूर्णिमा (माघी पूर्णिमा)', month: 'माघ', date: '20 फरवरी 2027', dateEn: '2027-02-20' },
-  { name: 'फाल्गुन पूर्णिमा (होलिका दहन)', month: 'फाल्गुन', date: '22 मार्च 2027', dateEn: '2027-03-22', highlight: true },
-  { name: 'चैत्र पूर्णिमा (हनुमान जयंती)', month: 'चैत्र', date: '21 अप्रैल 2027', dateEn: '2027-04-21', highlight: true },
+  // 2027
+  { name: 'पौष पूर्णिमा (शाकंभरी पूर्णिमा / माघ स्नान आरंभ)', month: 'पौष', date: '22 जनवरी 2027', dateEn: '2027-01-22' },
+  { name: 'माघ पूर्णिमा (माघी पूर्णिमा / कुंभ पर्व स्नान)', month: 'माघ', date: '20 फरवरी 2027', dateEn: '2027-02-20', highlight: true },
+  { name: 'फाल्गुन पूर्णिमा (होलिका दहन / लक्ष्मी जयंती)', month: 'फाल्गुन', date: '22 मार्च 2027', dateEn: '2027-03-22', highlight: true },
+  { name: 'चैत्र पूर्णिमा (हनुमान जयंती / चैत्री पूर्णिमा)', month: 'चैत्र', date: '21 अप्रैल 2027', dateEn: '2027-04-21', highlight: true },
   { name: 'वैशाख पूर्णिमा (बुद्ध पूर्णिमा / कूर्म जयंती)', month: 'वैशाख', date: '20 मई 2027', dateEn: '2027-05-20', highlight: true },
-  { name: 'ज्येष्ठ पूर्णिमा (वट पूर्णिमा)', month: 'ज्येष्ठ', date: '19 जून 2027', dateEn: '2027-06-19' },
-  { name: 'आषाढ़ पूर्णिमा (गुरु पूर्णिमा / व्यास पूर्णिमा)', month: 'आषाढ़', date: '18 जुलाई 2027', dateEn: '2027-07-18', highlight: true },
-  { name: 'श्रावण पूर्णिमा (रक्षाबंधन / संस्कृत दिवस)', month: 'श्रावण', date: '17 अगस्त 2027', dateEn: '2027-08-17', highlight: true },
-  { name: 'भाद्रपद पूर्णिमा (श्राद्ध पूर्णिमा)', month: 'भाद्रपद', date: '15 सितंबर 2027', dateEn: '2027-09-15' },
-  { name: 'अश्विन पूर्णिमा (शरद पूर्णिमा / कोजागरी)', month: 'अश्विन', date: '14 अक्टूबर 2027', dateEn: '2027-10-14', highlight: true },
+  { name: 'ज्येष्ठ पूर्णिमा (वट पूर्णिमा / कबीर जयंती)', month: 'ज्येष्ठ', date: '19 जून 2027', dateEn: '2027-06-19' },
+  { name: 'आषाढ़ पूर्णिमा (गुरु पूर्णिमा / वेदव्यास जयंती)', month: 'आषाढ़', date: '18 जुलाई 2027', dateEn: '2027-07-18', highlight: true },
+  { name: 'श्रावण पूर्णिमा (रक्षाबंधन / हयग्रीव जयंती / संस्कृत दिवस)', month: 'श्रावण', date: '17 अगस्त 2027', dateEn: '2027-08-17', highlight: true },
+  { name: 'भाद्रपद पूर्णिमा (श्राद्ध पूर्णिमा / उमा महेश्वर व्रत)', month: 'भाद्रपद', date: '15 सितंबर 2027', dateEn: '2027-09-15' },
+  { name: 'अश्विन पूर्णिमा (शरद पूर्णिमा / कोजागरी लक्ष्मी पूजा)', month: 'अश्विन', date: '14 अक्टूबर 2027', dateEn: '2027-10-14', highlight: true },
+  { name: 'कार्तिक पूर्णिमा (देव दीपावली 2027)', month: 'कार्तिक', date: '13 नवंबर 2027', dateEn: '2027-11-13', highlight: true },
+  { name: 'मार्गशीर्ष पूर्णिमा (दत्तात्रेय जयंती 2027)', month: 'मार्गशीर्ष', date: '13 दिसंबर 2027', dateEn: '2027-12-13' },
+  // 2028
+  { name: 'पौष पूर्णिमा (शाकंभरी जयंती 2028)', month: 'पौष', date: '12 जनवरी 2028', dateEn: '2028-01-12' },
+  { name: 'माघ पूर्णिमा (माघी पूर्णिमा 2028)', month: 'माघ', date: '10 फरवरी 2028', dateEn: '2028-02-10', highlight: true },
+  { name: 'फाल्गुन पूर्णिमा (होलिका दहन 2028)', month: 'फाल्गुन', date: '11 मार्च 2028', dateEn: '2028-03-11', highlight: true },
+  { name: 'चैत्र पूर्णिमा (हनुमान जयंती 2028)', month: 'चैत्र', date: '09 अप्रैल 2028', dateEn: '2028-04-09', highlight: true },
+  { name: 'वैशाख पूर्णिमा (बुद्ध पूर्णिमा 2028)', month: 'वैशाख', date: '09 मई 2028', dateEn: '2028-05-09', highlight: true },
+  { name: 'ज्येष्ठ पूर्णिमा (वट पूर्णिमा 2028)', month: 'ज्येष्ठ', date: '07 जून 2028', dateEn: '2028-06-07' },
+  { name: 'आषाढ़ पूर्णिमा (गुरु पूर्णिमा 2028)', month: 'आषाढ़', date: '07 जुलाई 2028', dateEn: '2028-07-07', highlight: true },
+  { name: 'श्रावण पूर्णिमा (रक्षाबंधन 2028)', month: 'श्रावण', date: '05 अगस्त 2028', dateEn: '2028-08-05', highlight: true },
+  { name: 'भाद्रपद पूर्णिमा (श्राद्ध पूर्णिमा 2028)', month: 'भाद्रपद', date: '03 सितंबर 2028', dateEn: '2028-09-03' },
+  { name: 'अश्विन पूर्णिमा (शरद पूर्णिमा 2028)', month: 'अश्विन', date: '03 अक्टूबर 2028', dateEn: '2028-10-03', highlight: true },
 ];
 
 const FAQS = [
@@ -56,6 +73,10 @@ const FAQS = [
   {
     q: 'शरद पूर्णिमा और कार्तिक पूर्णिमा में क्या विशेषता है?',
     a: 'शरद पूर्णिमा पर चंद्रमा से अमृत-तुल्य किरणों का वर्षण माना जाता है, इसलिए रात्रि में खीर रखने का विधान है। कार्तिक पूर्णिमा पर भगवान शिव ने त्रिपुरासुर का वध किया था, जिसे "त्रिपुरारी पूर्णिमा" और "देव दीपावली" के रूप में काशी में दीपदान करके मनाया जाता है।',
+  },
+  {
+    q: 'पूर्णिमा पर चंद्र दर्शन एवं अर्घ्य देने का शास्त्रीय नियम क्या है?',
+    a: 'सूर्यास्त के उपरांत जब चंद्रोदय हो, तब तांबे या चांदी के पात्र में जल, दूध, श्वेत पुष्प और अक्षत लेकर "ॐ सों सोमाय नमः" अथवा "ॐ क्षीरपुत्राय विद्महे अमृततत्त्वाय धीमहि तन्नो चन्द्रः प्रचोदयात्" मंत्र से चंद्रमा को अर्घ्य दिया जाता है। यह मानसिक शांति और नेत्र-ज्योति के लिए अत्यंत मंगलकारी माना गया है।',
   },
 ];
 
@@ -68,7 +89,7 @@ const JSON_LD = {
       url: 'https://dharmagranth.dev/panchang/purnima/',
       name: 'पूर्णिमा तिथियाँ 2026–2028 · Purnima Dates & Satyanarayan Vrata',
       description:
-        'समस्त पूर्णिमा तिथियाँ, सत्यनारायण कथा, चंद्र दर्शन एवं वैदिक पूर्णिमा व्रत का शास्त्रीय महत्व।',
+        'वर्ष 2026, 2027 एवं 2028 की समस्त पूर्णिमा तिथियाँ, सत्यनारायण कथा, चंद्र दर्शन एवं वैदिक पूर्णिमा व्रत का शास्त्रीय महत्व।',
       inLanguage: ['hi', 'sa', 'en'],
     },
     {
@@ -83,29 +104,21 @@ const JSON_LD = {
   ],
 };
 
-function getIstTodayIso(): string {
-  const ist = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-  return `${ist.getFullYear()}-${String(ist.getMonth() + 1).padStart(2, '0')}-${String(ist.getDate()).padStart(2, '0')}`;
-}
-
 export default function PurnimaPage() {
-  const todayIso = getIstTodayIso();
-  const nextUpcomingDateEn = PURNIMA_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
-
   return (
     <main
-      className="apple-scope panchang-scope panchang-limb relative min-h-screen bg-dharma-bg text-dharma-text pb-20 overflow-x-clip"
+      className="apple-scope panchang-scope panchang-limb relative min-h-screen bg-dharma-bg text-dharma-text pb-24 overflow-x-clip"
       data-limb="tithis"
     >
       <JsonLd data={JSON_LD} />
 
-      {/* Luminous Lunar Aura / पूर्ण चंद्र आभा Backdrop */}
+      {/* Luminous Lunar Aura / पूर्णिमा चंद्र-आभा Backdrop */}
       <div
-        className="pointer-events-none absolute inset-x-0 -top-12 h-[540px] overflow-hidden select-none -z-10 opacity-70 dark:opacity-45"
+        className="pointer-events-none absolute inset-x-0 -top-12 h-[560px] overflow-hidden select-none -z-10 opacity-70 dark:opacity-40"
         aria-hidden="true"
       >
-        <div className="absolute left-1/2 -translate-x-1/2 -top-10 w-[740px] h-[420px] rounded-full bg-radial from-amber-400/25 via-saffron-500/12 to-transparent blur-3xl" />
-        <div className="absolute right-[10%] top-20 w-[500px] h-[340px] rounded-full bg-radial from-indigo-500/22 via-lotus-400/12 to-transparent blur-3xl" />
+        <div className="absolute left-1/2 -translate-x-1/2 -top-10 w-[780px] h-[420px] rounded-full bg-radial from-amber-300/25 via-saffron-400/12 to-transparent blur-3xl" />
+        <div className="absolute right-[12%] top-24 w-[520px] h-[340px] rounded-full bg-radial from-amber-400/20 via-orange-400/10 to-transparent blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-gutter pt-6">
@@ -119,11 +132,11 @@ export default function PurnimaPage() {
       </div>
 
       <PageHeader
-        eyebrow="Full Moon & Satyanarayan Vrata"
-        eyebrowHi="पूर्ण चंद्र एवं सत्यनारायण व्रत"
-        title="Purnima Calendar (2026–2027)"
-        titleHi="पूर्णिमा तिथियाँ व सत्यनारायण माहात्म्य"
-        lead="उपनिषदों में चंद्रमा को मन का अधिष्ठाता देव (चन्द्रमा मनसो जातः) कहा गया है। पूर्णिमा के पूर्ण चंद्र का दर्शन आत्म-शांति व कृतज्ञता का पावन अवसर है।"
+        eyebrow="Full Moon & Sacred Vrata"
+        eyebrowHi="सत्यनारायण व्रत व चंद्र दर्शन"
+        title="Purnima Calendar (2026–2028)"
+        titleHi="पूर्णिमा तिथियाँ व सत्यनारायण व्रत माहात्म्य"
+        lead="पूर्णिमा वह तिथि है जब चंद्रमा अपनी समस्त सोलह कलाओं से परिपूर्ण होकर आकाश को अमृतमयी चाँदनी से आलोकित करता है। यह श्री सत्यनारायण भगवान की कथा, उपवास, गंगा स्नान और दीपदान का परम पावन दिन है।"
         width="wide"
       />
 
@@ -131,93 +144,56 @@ export default function PurnimaPage() {
 
       {/* Main Content */}
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
-        {/* Dates Table */}
-        <section
-          aria-labelledby="dates-heading"
-          className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl overflow-hidden shadow-xs"
-        >
-          <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
-                आगामी पूर्णिमा तिथियाँ (2026–2027)
-              </h2>
-              <p className="text-xs text-dharma-muted mt-0.5">
-                सत्यनारायण व्रत, दीपदान व चंद्र दर्शन
-              </p>
-            </div>
-            <Link
-              href="/panchang/"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300"
-            >
-              दैनिक पंचांग देखें &rarr;
-            </Link>
+        {/* Core Principles Bento */}
+        <section aria-labelledby="purnima-pillars" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+            <span className="text-2xl mb-2 block" aria-hidden="true">🌕</span>
+            <h3 className="font-serif font-bold text-base text-label-primary">पूर्ण कला व मनःशांति</h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
+              चंद्रमा के मनस्-तत्त्व से जुड़े होने के कारण पूर्णिमा पर ध्यान व उपवास अंतःकरण को सात्विक शीतलता प्रदान करता है।
+            </p>
           </div>
 
-          <div className="divide-y divide-dharma-border/60">
-            {PURNIMA_DATES.map((item) => {
-              const isNextUpcoming = item.dateEn === nextUpcomingDateEn;
-              return (
-                <div
-                  key={item.dateEn}
-                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition duration-200 hover:bg-surface-elevated/70 ${
-                    isNextUpcoming
-                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.08] dark:bg-saffron-500/[0.14]'
-                      : item.highlight
-                        ? 'bg-amber-500/[0.04] dark:bg-amber-500/[0.08]'
-                        : ''
-                  }`}
-                >
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
-                        {item.name}
-                      </span>
-                      {isNextUpcoming && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 shadow-xs">
-                          <span className="relative flex size-2">
-                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-saffron-400 opacity-75" />
-                            <span className="relative inline-flex size-2 rounded-full bg-saffron-500" />
-                          </span>
-                          आगामी व्रत · Next Upcoming
-                        </span>
-                      )}
-                      {item.highlight && (
-                        <span className="text-2xs rounded-full bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 font-bold text-amber-800 dark:text-amber-300">
-                          प्रमुख
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-xs text-dharma-muted mt-0.5">
-                      {item.month} मास पूर्णिमा
-                    </p>
-                  </div>
-                  <div className="text-left sm:text-right">
-                    <span className="font-mono text-sm font-semibold text-amber-800 dark:text-amber-300 block">
-                      {item.date}
-                    </span>
-                    <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+            <span className="text-2xl mb-2 block" aria-hidden="true">🪔</span>
+            <h3 className="font-serif font-bold text-base text-label-primary">सत्यनारायण व्रत व कथा</h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
+              स्कंद पुराण के अनुसार सत्यनारायण भगवान की कथा व पंचामृत-पंजीरी प्रसाद से सांसारिक क्लेशों का शमन होता है।
+            </p>
+          </div>
+
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs">
+            <span className="text-2xl mb-2 block" aria-hidden="true">🌊</span>
+            <h3 className="font-serif font-bold text-base text-label-primary">तीर्थ स्नान व दीपदान</h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
+              पवित्र नदियों (गंगा, नर्मदा, यमुना) में स्नान और सायंकाल जलाशयों व मंदिरों में दीपदान से असीम पुण्य लाभ।
+            </p>
           </div>
         </section>
 
-        {/* Sacred Shloka */}
+        {/* Dates Table with Year Filter & ICS Download */}
+        <VrataDatesTable
+          dates={PURNIMA_DATES}
+          title="पूर्णिमा व्रत एवं उत्सव तिथियाँ (2026–2028)"
+          subtitle="सत्यनारायण कथा, चंद्र अर्घ्य, देव दीपावली व पावन स्नान पर्व"
+          vrataType="purnima"
+        />
+
+        {/* Sacred Shloka Card */}
         <section
           aria-labelledby="mantra-heading"
-          className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-amber-50/40 via-dharma-card/80 to-dharma-bg/60 p-6 dark:from-amber-950/20 backdrop-blur-xl shadow-xs overflow-hidden"
+          className="tadpatra-card relative rounded-3xl border border-separator/80 bg-surface-elevated/85 p-6 sm:p-8 backdrop-blur-xl shadow-soft overflow-hidden"
         >
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-3">
-            <BookOpen className="h-4 w-4" />
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tint mb-3">
+            <BookOpen className="size-4" aria-hidden="true" />
             <span>ऋग्वेद एवं पुरुष सूक्त संदर्भ</span>
           </div>
-          <p lang="sa" className="font-devanagari text-lg sm:text-xl font-bold leading-relaxed text-dharma-text text-center py-3">
+          <p lang="sa" className="font-devanagari text-lg sm:text-2xl font-bold leading-relaxed text-label-primary text-center py-4">
             चन्द्रमा मनसो जातश्चक्षोः सूर्यो अजायत ।<br />
             मुखादिन्द्रश्चाग्निश्च प्राणाद्वायुरजायत ॥
           </p>
-          <p className="text-xs text-center text-dharma-muted max-w-xl mx-auto mt-2 leading-relaxed">
-            पुरुष सूक्त (ऋग्वेद 10.90): विराट पुरुष के मन से चंद्रमा का प्रादुर्भाव हुआ। इसीलिए पूर्णिमा तिथि पर अंतःकरण की शांति और मन की निर्मलता के लिए विशेष ध्यान का विधान है।
+          <p className="text-xs sm:text-sm text-center text-label-secondary max-w-xl mx-auto mt-2 leading-relaxed">
+            पुरुष सूक्त (ऋग्वेद 10.90): विराट परमेश्वर के मन से चंद्रमा का प्रादुर्भाव हुआ। इसीलिए पूर्णिमा तिथि पर अंतःकरण की शुद्धि और मन की निर्मलता के लिए विशेष ध्यान का विधान है।
           </p>
         </section>
 
@@ -227,27 +203,33 @@ export default function PurnimaPage() {
           <div className="apple-group mt-6">
             {FAQS.map((f) => (
               <details key={f.q} className="apple-row group block !py-0 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex min-h-[52px] cursor-pointer items-center justify-between gap-3 text-callout font-medium text-dharma-text">
+                <summary className="flex min-h-[52px] cursor-pointer items-center justify-between gap-3 text-callout font-medium text-label-primary">
                   <span>{f.q}</span>
                   <span aria-hidden="true" className="apple-chevron transition group-open:rotate-90">›</span>
                 </summary>
-                <p className="pb-4 text-subhead leading-relaxed text-dharma-muted">{f.a}</p>
+                <p className="pb-4 text-subhead leading-relaxed text-label-secondary">{f.a}</p>
               </details>
             ))}
           </div>
         </section>
 
         {/* Related Hub Navigation */}
-        <section className="flex flex-wrap gap-4 pt-6 border-t border-dharma-border">
+        <section className="flex flex-wrap gap-4 pt-6 border-t border-separator/80">
           <Link
             href="/panchang/"
-            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border/80 bg-dharma-card/70 backdrop-blur-md px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-700 transition"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-separator/80 bg-surface-raised hover:bg-fill-tertiary px-4 py-2 text-xs font-semibold text-label-primary shadow-xs transition"
           >
             &larr; मुख्य पंचांग
           </Link>
           <Link
+            href="/panchang/amavasya/"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-separator/80 bg-surface-raised hover:bg-fill-tertiary px-4 py-2 text-xs font-semibold text-label-primary shadow-xs transition"
+          >
+            अमावस्या तिथियाँ देखें &rarr;
+          </Link>
+          <Link
             href="/festivals/guru-purnima/"
-            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-amber-600/40 bg-amber-500/10 backdrop-blur-md px-4 py-2 text-xs font-semibold text-amber-800 hover:bg-amber-500/20 transition dark:text-amber-300"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-amber-600/40 bg-amber-500/10 hover:bg-amber-500/20 px-4 py-2 text-xs font-semibold text-amber-800 dark:text-amber-300 shadow-xs transition"
           >
             गुरु पूर्णिमा दर्शन &rarr;
           </Link>
