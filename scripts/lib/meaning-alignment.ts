@@ -134,7 +134,7 @@ export interface AlignmentOptions {
  * formulaic praisha hymns ("होता यक्षत्... इन्द्रम्") whose repeated stems raise the baseline above own-stem score.
  */
 export const ALIGNMENT_EXEMPT: Record<Field, ReadonlySet<string>> = {
-  hindi: new Set(['maitri', 'chandogya', 'mundaka', 'samaveda', 'durgasaptashati', 'taittiriya', 'kaushitaki', 'yajurveda']),
+  hindi: new Set(['maitri', 'chandogya', 'mundaka', 'samaveda', 'durgasaptashati', 'taittiriya', 'kaushitaki', 'yajurveda', 'devibhagavat']),
   translation: new Set(['maitri', 'chandogya', 'mundaka', 'yajurveda', 'yogasutra', 'naradabhaktisutra', 'shandilyabhaktisutra', 'taittiriya', 'kaushitaki', 'yogarasayanam', 'shivaswarodaya', 'shivasamhita', 'atharvaveda']),
 };
 
