@@ -8,24 +8,24 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 
 | Scripture | Verses | Sanskrit | Hindi | Hindi linked | English | English linked | व्याख्या | Research |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| naradapuran | 15139 | 15139 | 131 | 0 | 7969 | 0 | 299 | 0 |
-| brahmandpuran | 13487 | 13487 | 0 | 0 | 4199 | 0 | 513 | 0 |
+| naradapuran | 15139 | 15139 | 131 | 0 | 7969 | 8 | 299 | 0 |
+| brahmandpuran | 13487 | 13487 | 0 | 0 | 4199 | 14 | 513 | 0 |
 | brahmapuran | 13444 | 13444 | 96 | 0 | 9017 | 0 | 45 | 8 |
 | shivpurana | 15576 | 15576 | 2197 | 1083 | 4544 | 0 | 46 | 0 |
-| garudpurana | 11866 | 11866 | 38 | 0 | 1232 | 0 | 333 | 0 |
-| agnipuran | 11034 | 11034 | 242 | 0 | 6990 | 0 | 284 | 0 |
-| devibhagavat | 18385 | 18385 | 10076 | 10 | 9 | 0 | 152 | 0 |
+| garudpurana | 11866 | 11866 | 38 | 0 | 1232 | 3 | 333 | 0 |
+| agnipuran | 11034 | 11034 | 242 | 0 | 6990 | 3 | 284 | 0 |
 | matsyapuran | 8289 | 8289 | 459 | 0 | 8 | 0 | 220 | 0 |
 | vayupuran | 7622 | 7622 | 239 | 0 | 0 | 0 | 12 | 0 |
 | lingapuran | 6712 | 6712 | 223 | 0 | 150 | 0 | 168 | 0 |
 | skandapuran | 6444 | 6444 | 0 | 0 | 4261 | 0 | 4 | 0 |
 | vamanpuran | 5584 | 5584 | 56 | 0 | 288 | 0 | 1739 | 0 |
+| devibhagavat | 18385 | 18385 | 10076 | 6121 | 9 | 0 | 152 | 0 |
 | harivanshpuran | 16005 | 16005 | 15606 | 0 | 0 | 0 | 1 | 1 |
-| narasimhapuran | 3337 | 3337 | 3336 | 0 | 1115 | 0 | 1411 | 0 |
+| narasimhapuran | 3337 | 3337 | 3336 | 0 | 1115 | 11 | 1411 | 0 |
 | aitareya | 33 | 33 | 33 | 0 | 33 | 0 | 33 | 30 |
 | amritabindu | 22 | 22 | 22 | 0 | 22 | 0 | 22 | 6 |
 | atharvaveda | 5985 | 5985 | 5985 | 0 | 779 | 5206 | 5 | 5 |
-| bhagavadgita | 701 | 701 | 701 | 0 | 699 | 0 | 701 | 67 |
+| bhagavadgita | 701 | 701 | 701 | 0 | 699 | 2 | 701 | 67 |
 | bhagavatapurana | 14408 | 14408 | 14408 | 0 | 7 | 0 | 7 | 0 |
 | brahmasutra | 564 | 564 | 564 | 0 | 564 | 0 | 564 | 1 |
 | brahmavaivartapuran | 10 | 10 | 10 | 0 | 10 | 0 | 10 | 1 |
@@ -46,7 +46,7 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | maitri | 99 | 99 | 99 | 0 | 99 | 0 | 99 | 0 |
 | mandukya | 12 | 12 | 12 | 0 | 12 | 0 | 12 | 3 |
 | manusmriti | 2684 | 2684 | 2684 | 0 | 2682 | 2 | 0 | 0 |
-| markandeypuran | 4324 | 4324 | 4324 | 0 | 670 | 0 | 117 | 0 |
+| markandeypuran | 4324 | 4324 | 4324 | 0 | 670 | 1 | 117 | 0 |
 | muktika | 137 | 137 | 137 | 0 | 137 | 0 | 137 | 0 |
 | mundaka | 64 | 64 | 64 | 0 | 64 | 0 | 64 | 64 |
 | naradabhaktisutra | 84 | 84 | 84 | 0 | 84 | 0 | 84 | 2 |
@@ -68,13 +68,13 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | varahapuran | 10 | 10 | 10 | 0 | 10 | 0 | 10 | 4 |
 | viduraniti | 594 | 594 | 594 | 0 | 594 | 0 | 593 | 8 |
 | vinayapatrika | 1483 | 1483 | 1483 | 0 | 2 | 0 | 1483 | 0 |
-| vishnupurana | 5480 | 5480 | 5480 | 0 | 2235 | 0 | 1364 | 1 |
+| vishnupurana | 5480 | 5480 | 5480 | 0 | 2235 | 42 | 1364 | 1 |
 | vivekchudamani | 580 | 580 | 580 | 0 | 580 | 0 | 580 | 4 |
 | yajurveda | 1975 | 1975 | 1975 | 0 | 1963 | 0 | 987 | 4 |
 | yogarasayanam | 301 | 301 | 301 | 0 | 301 | 0 | 301 | 0 |
 | yogasutra | 195 | 195 | 195 | 0 | 195 | 0 | 195 | 3 |
 | yogavasishtha | 13 | 13 | 13 | 0 | 13 | 0 | 13 | 13 |
 | yogavasistha | 13 | 13 | 13 | 0 | 13 | 0 | 13 | 13 |
-| **Total** | 318932 | 318932 | 198707 | 1093 | 87563 | 5209 | 18877 | 664 |
+| **Total** | 318932 | 318932 | 198707 | 7204 | 87563 | 5293 | 18877 | 664 |
 
 Measured 67/67 catalogued scripture files.

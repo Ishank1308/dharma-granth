@@ -22,6 +22,10 @@ function hasText(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
+function hasRef(value) {
+  return (typeof value === 'string' && value.trim().length > 0) || typeof value === 'number';
+}
+
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
@@ -86,9 +90,9 @@ for (const id of ids) {
       const commentary = overlay[key] ?? {};
       if (hasText(verse.sanskrit)) row.sanskrit += 1;
       if (hasText(verse.hindi)) row.hindi += 1;
-      else if (hasText(verse.hindiSeeVerse)) row.hindiLinked += 1;
+      else if (hasRef(verse.hindiSeeVerse)) row.hindiLinked += 1;
       if (hasText(verse.translation)) row.english += 1;
-      else if (hasText(verse.translationSeeVerse)) row.englishLinked += 1;
+      else if (hasRef(verse.translationSeeVerse)) row.englishLinked += 1;
       if (hasText(commentary.explanation) || hasText(verse.explanation) || hasText(verse.commentary)) row.explanation += 1;
       if (hasText(commentary.science) || hasText(verse.science)) row.research += 1;
       if (hasText(commentary.lifeLesson) || hasText(verse.lifeLesson)) row.lifeLesson += 1;
