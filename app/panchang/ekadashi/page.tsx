@@ -5,6 +5,7 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
+import { VrataDatesTable, type VrataDateItem } from '@/app/panchang/components/VrataDatesTable';
 import { JsonLd } from '@/app/components/JsonLd';
 import { BookOpen } from 'lucide-react';
 
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     'एकादशी व्रत',
     'Ekadashi dates 2026',
     'Ekadashi dates 2027',
+    'Ekadashi dates 2028',
     'आज कौन सी एकादशी है',
     'मोक्षदा एकादशी',
     'निर्जला एकादशी',
@@ -34,23 +36,64 @@ export const metadata: Metadata = {
   },
 };
 
-const EKADASHI_DATES = [
-  { name: 'उत्पन्ना एकादशी (Utpanna)', paksha: 'कृष्ण पक्ष', month: 'मार्गशीर्ष', date: '05 दिसंबर 2026', dateEn: '2026-12-05' },
+const EKADASHI_DATES: VrataDateItem[] = [
+  // 2026
+  { name: 'उत्पन्ना एकादशी (Utpanna Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'मार्गशीर्ष', date: '05 दिसंबर 2026', dateEn: '2026-12-05' },
   { name: 'मोक्षदा एकादशी (Mokshada / गीता जयंती)', paksha: 'शुक्ल पक्ष', month: 'मार्गशीर्ष', date: '20 दिसंबर 2026', dateEn: '2026-12-20', highlight: true },
-  { name: 'सफला एकादशी (Saphala)', paksha: 'कृष्ण पक्ष', month: 'पौष', date: '04 जनवरी 2027', dateEn: '2027-01-04' },
-  { name: 'पुत्रदा एकादशी (Putrada)', paksha: 'शुक्ल पक्ष', month: 'पौष', date: '18 जनवरी 2027', dateEn: '2027-01-18' },
-  { name: 'षट्तिला एकादशी (Shattila)', paksha: 'कृष्ण पक्ष', month: 'माघ', date: '02 फरवरी 2027', dateEn: '2027-02-02' },
-  { name: 'जया एकादशी (Jaya)', paksha: 'शुक्ल पक्ष', month: 'माघ', date: '17 फरवरी 2027', dateEn: '2027-02-17' },
-  { name: 'विजया एकादशी (Vijaya)', paksha: 'कृष्ण पक्ष', month: 'फाल्गुन', date: '04 मार्च 2027', dateEn: '2027-03-04' },
-  { name: 'आमलकी एकादशी (Amalaki)', paksha: 'शुक्ल पक्ष', month: 'फाल्गुन', date: '19 मार्च 2027', dateEn: '2027-03-19' },
+
+  // 2027
+  { name: 'सफला एकादशी (Saphala Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'पौष', date: '04 जनवरी 2027', dateEn: '2027-01-04' },
+  { name: 'पुत्रदा एकादशी (Pausha Putrada)', paksha: 'शुक्ल पक्ष', month: 'पौष', date: '18 जनवरी 2027', dateEn: '2027-01-18' },
+  { name: 'षट्तिला एकादशी (Shattila Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'माघ', date: '02 फरवरी 2027', dateEn: '2027-02-02' },
+  { name: 'जया एकादशी (Jaya Ekadashi)', paksha: 'शुक्ल पक्ष', month: 'माघ', date: '17 फरवरी 2027', dateEn: '2027-02-17' },
+  { name: 'विजया एकादशी (Vijaya Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'फाल्गुन', date: '04 मार्च 2027', dateEn: '2027-03-04' },
+  { name: 'आमलकी एकादशी (Amalaki Ekadashi)', paksha: 'शुक्ल पक्ष', month: 'फाल्गुन', date: '19 मार्च 2027', dateEn: '2027-03-19', highlight: true },
   { name: 'पापमोचिनी एकादशी (Papmochini)', paksha: 'कृष्ण पक्ष', month: 'चैत्र', date: '03 अप्रैल 2027', dateEn: '2027-04-03' },
-  { name: 'कामदा एकादशी (Kamada)', paksha: 'शुक्ल पक्ष', month: 'चैत्र', date: '17 अप्रैल 2027', dateEn: '2027-04-17' },
-  { name: 'वरूथिनी एकादशी (Varuthini)', paksha: 'कृष्ण पक्ष', month: 'वैशाख', date: '02 मई 2027', dateEn: '2027-05-02' },
-  { name: 'मोहिनी एकादशी (Mohini)', paksha: 'शुक्ल पक्ष', month: 'वैशाख', date: '16 मई 2027', dateEn: '2027-05-16' },
-  { name: 'अपरा एकादशी (Apara)', paksha: 'कृष्ण पक्ष', month: 'ज्येष्ठ', date: '31 मई 2027', dateEn: '2027-05-31' },
-  { name: 'निर्जला एकादशी (Nirjala)', paksha: 'शुक्ल पक्ष', month: 'ज्येष्ठ', date: '15 जून 2027', dateEn: '2027-06-15', highlight: true },
-  { name: 'योगिनी एकादशी (Yogini)', paksha: 'कृष्ण पक्ष', month: 'आषाढ़', date: '30 जून 2027', dateEn: '2027-06-30' },
-  { name: 'देवशयनी एकादशी (Devshayani / चातुर्मास)', paksha: 'शुक्ल पक्ष', month: 'आषाढ़', date: '15 जुलाई 2027', dateEn: '2027-07-15', highlight: true },
+  { name: 'कामदा एकादशी (Kamada Ekadashi)', paksha: 'शुक्ल पक्ष', month: 'चैत्र', date: '17 अप्रैल 2027', dateEn: '2027-04-17' },
+  { name: 'वरूथिनी एकादशी (Varuthini Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'वैशाख', date: '02 मई 2027', dateEn: '2027-05-02' },
+  { name: 'मोहिनी एकादशी (Mohini Ekadashi)', paksha: 'शुक्ल पक्ष', month: 'वैशाख', date: '16 मई 2027', dateEn: '2027-05-16' },
+  { name: 'अपरा एकादशी (Apara Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'ज्येष्ठ', date: '31 मई 2027', dateEn: '2027-05-31' },
+  { name: 'निर्जला एकादशी (Nirjala / भीमसेनी)', paksha: 'शुक्ल पक्ष', month: 'ज्येष्ठ', date: '15 जून 2027', dateEn: '2027-06-15', highlight: true },
+  { name: 'योगिनी एकादशी (Yogini Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'आषाढ़', date: '30 जून 2027', dateEn: '2027-06-30' },
+  { name: 'देवशयनी एकादशी (Devshayani / चातुर्मास आरंभ)', paksha: 'शुक्ल पक्ष', month: 'आषाढ़', date: '15 जुलाई 2027', dateEn: '2027-07-15', highlight: true },
+  { name: 'कामिका एकादशी (Kamika Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'श्रावण', date: '29 जुलाई 2027', dateEn: '2027-07-29' },
+  { name: 'श्रावण पुत्रदा एकादशी (Pavitropana)', paksha: 'शुक्ल पक्ष', month: 'श्रावण', date: '13 अगस्त 2027', dateEn: '2027-08-13' },
+  { name: 'अजा एकादशी (Aja Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'भाद्रपद', date: '28 अगस्त 2027', dateEn: '2027-08-28' },
+  { name: 'परिवर्तिनी एकादशी (Parivartini / वामन जयंती)', paksha: 'शुक्ल पक्ष', month: 'भाद्रपद', date: '11 सितंबर 2027', dateEn: '2027-09-11', highlight: true },
+  { name: 'इन्दिरा एकादशी (Indira Ekadashi / पितृ पक्ष)', paksha: 'कृष्ण पक्ष', month: 'अश्विन', date: '26 सितंबर 2027', dateEn: '2027-09-26' },
+  { name: 'पापांकुशा एकादशी (Papankusha)', paksha: 'शुक्ल पक्ष', month: 'अश्विन', date: '11 अक्टूबर 2027', dateEn: '2027-10-11' },
+  { name: 'रमा एकादशी (Rama Ekadashi)', paksha: 'कृष्ण पक्ष', month: 'कार्तिक', date: '26 अक्टूबर 2027', dateEn: '2027-10-26' },
+  { name: 'देवउठनी एकादशी (Prabodhini / तुलसी विवाह)', paksha: 'शुक्ल पक्ष', month: 'कार्तिक', date: '09 नवंबर 2027', dateEn: '2027-11-09', highlight: true },
+  { name: 'उत्पन्ना एकादशी (Utpanna Ekadashi 2027)', paksha: 'कृष्ण पक्ष', month: 'मार्गशीर्ष', date: '24 नवंबर 2027', dateEn: '2027-11-24' },
+  { name: 'मोक्षदा एकादशी (Mokshada / गीता जयंती 2027)', paksha: 'शुक्ल पक्ष', month: 'मार्गशीर्ष', date: '09 दिसंबर 2027', dateEn: '2027-12-09', highlight: true },
+  { name: 'सफला एकादशी (Saphala Ekadashi 2027)', paksha: 'कृष्ण पक्ष', month: 'पौष', date: '24 दिसंबर 2027', dateEn: '2027-12-24' },
+
+  // 2028
+  { name: 'पौष पुत्रदा एकादशी (Putrada Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'पौष', date: '07 जनवरी 2028', dateEn: '2028-01-07' },
+  { name: 'षट्तिला एकादशी (Shattila Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'माघ', date: '22 जनवरी 2028', dateEn: '2028-01-22' },
+  { name: 'जया एकादशी (Jaya Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'माघ', date: '06 फरवरी 2028', dateEn: '2028-02-06' },
+  { name: 'विजया एकादशी (Vijaya Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'फाल्गुन', date: '21 फरवरी 2028', dateEn: '2028-02-21' },
+  { name: 'आमलकी एकादशी (Amalaki Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'फाल्गुन', date: '06 मार्च 2028', dateEn: '2028-03-06', highlight: true },
+  { name: 'पापमोचिनी एकादशी (Papmochini 2028)', paksha: 'कृष्ण पक्ष', month: 'चैत्र', date: '21 मार्च 2028', dateEn: '2028-03-21' },
+  { name: 'कामदा एकादशी (Kamada Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'चैत्र', date: '05 अप्रैल 2028', dateEn: '2028-05-05' },
+  { name: 'वरूथिनी एकादशी (Varuthini Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'वैशाख', date: '20 अप्रैल 2028', dateEn: '2028-04-20' },
+  { name: 'मोहिनी एकादशी (Mohini Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'वैशाख', date: '05 मई 2028', dateEn: '2028-05-05' },
+  { name: 'अपरा एकादशी (Apara Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'ज्येष्ठ', date: '20 मई 2028', dateEn: '2028-05-20' },
+  { name: 'निर्जला एकादशी (Nirjala Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'ज्येष्ठ', date: '03 जून 2028', dateEn: '2028-06-03', highlight: true },
+  { name: 'योगिनी एकादशी (Yogini Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'आषाढ़', date: '18 जून 2028', dateEn: '2028-06-18' },
+  { name: 'देवशयनी एकादशी (Devshayani 2028)', paksha: 'शुक्ल पक्ष', month: 'आषाढ़', date: '03 जुलाई 2028', dateEn: '2028-07-03', highlight: true },
+  { name: 'कामिका एकादशी (Kamika Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'श्रावण', date: '18 जुलाई 2028', dateEn: '2028-07-18' },
+  { name: 'श्रावण पुत्रदा एकादशी (Pavitra 2028)', paksha: 'शुक्ल पक्ष', month: 'श्रावण', date: '01 अगस्त 2028', dateEn: '2028-08-01' },
+  { name: 'अजा एकादशी (Aja Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'भाद्रपद', date: '16 अगस्त 2028', dateEn: '2028-08-16' },
+  { name: 'परिवर्तिनी एकादशी (Parivartini 2028)', paksha: 'शुक्ल पक्ष', month: 'भाद्रपद', date: '30 अगस्त 2028', dateEn: '2028-08-30', highlight: true },
+  { name: 'इन्दिरा एकादशी (Indira Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'अश्विन', date: '15 सितंबर 2028', dateEn: '2028-09-15' },
+  { name: 'पापांकुशा एकादशी (Papankusha 2028)', paksha: 'शुक्ल पक्ष', month: 'अश्विन', date: '29 सितंबर 2028', dateEn: '2028-09-29' },
+  { name: 'रमा एकादशी (Rama Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'कार्तिक', date: '14 अक्टूबर 2028', dateEn: '2028-10-14' },
+  { name: 'देवउठनी एकादशी (Prabodhini 2028)', paksha: 'शुक्ल पक्ष', month: 'कार्तिक', date: '28 अक्टूबर 2028', dateEn: '2028-10-28', highlight: true },
+  { name: 'उत्पन्ना एकादशी (Utpanna 2028)', paksha: 'कृष्ण पक्ष', month: 'मार्गशीर्ष', date: '13 नवंबर 2028', dateEn: '2028-11-13' },
+  { name: 'मोक्षदा एकादशी (Mokshada / गीता जयंती 2028)', paksha: 'शुक्ल पक्ष', month: 'मार्गशीर्ष', date: '27 नवंबर 2028', dateEn: '2028-11-27', highlight: true },
+  { name: 'सफला एकादशी (Saphala Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'पौष', date: '13 दिसंबर 2028', dateEn: '2028-12-13' },
+  { name: 'पौष पुत्रदा एकादशी (Putrada 2028)', paksha: 'शुक्ल पक्ष', month: 'पौष', date: '27 दिसंबर 2028', dateEn: '2028-12-27' },
 ];
 
 const FAQS = [
@@ -92,18 +135,10 @@ const JSON_LD = {
   ],
 };
 
-function getIstTodayIso(): string {
-  const ist = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
-  return `${ist.getFullYear()}-${String(ist.getMonth() + 1).padStart(2, '0')}-${String(ist.getDate()).padStart(2, '0')}`;
-}
-
 export default function EkadashiPage() {
-  const todayIso = getIstTodayIso();
-  const nextUpcomingDateEn = EKADASHI_DATES.find((d) => d.dateEn >= todayIso)?.dateEn;
-
   return (
     <main
-      className="apple-scope panchang-scope panchang-limb relative min-h-screen bg-dharma-bg text-dharma-text pb-20 overflow-x-clip"
+      className="apple-scope panchang-scope panchang-limb relative min-h-screen bg-dharma-bg text-dharma-text pb-24 overflow-x-clip"
       data-limb="tithis"
     >
       <JsonLd data={JSON_LD} />
@@ -130,7 +165,7 @@ export default function EkadashiPage() {
       <PageHeader
         eyebrow="Hari-Vasara & Vrata Mahatmya"
         eyebrowHi="हरि-वासर एवं व्रत दर्शन"
-        title="Ekadashi Vrata Dates (2026–2027)"
+        title="Ekadashi Vrata Dates (2026–2028)"
         titleHi="एकादशी व्रत तिथियाँ व माहात्म्य"
         lead="पद्म पुराण एवं विष्णु पुराण के अनुसार प्रत्येक मास के शुक्ल व कृष्ण पक्ष की एकादशी तिथि मन, प्राण और इंद्रियों के शुद्धिकरण का परम साधन है।"
         width="wide"
@@ -142,115 +177,51 @@ export default function EkadashiPage() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 mt-10 space-y-12">
         {/* Core Principles Bento */}
         <section aria-labelledby="ekadashi-meaning" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 p-5 backdrop-blur-xl shadow-xs">
-            <span className="text-2xl mb-2 block">🌿</span>
-            <h3 className="font-serif font-bold text-base text-dharma-text">कायिक शुद्धि (Metabolic Alignment)</h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
+            <span className="text-2xl mb-2 block" aria-hidden="true">🌿</span>
+            <h3 className="font-serif font-bold text-base text-label-primary">कायिक शुद्धि (Metabolic Alignment)</h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
               चंद्रमा के गुरुत्वाकर्षण और शरीर के जलीय संतुलन को साधने के लिए अन्न का त्याग और सात्विक फलाहार।
             </p>
           </div>
-          <div className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 p-5 backdrop-blur-xl shadow-xs">
-            <span className="text-2xl mb-2 block">📿</span>
-            <h3 className="font-serif font-bold text-base text-dharma-text">मानसिक एकाग्रता (Mental Sattva)</h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
+            <span className="text-2xl mb-2 block" aria-hidden="true">📿</span>
+            <h3 className="font-serif font-bold text-base text-label-primary">मानसिक एकाग्रता (Mental Sattva)</h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
               दस इंद्रियां और ग्यारहवां मन — इन ग्यारहों को परमात्मा के चिंतन और स्वाध्याय में लगाने का संकल्प।
             </p>
           </div>
-          <div className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 p-5 backdrop-blur-xl shadow-xs">
-            <span className="text-2xl mb-2 block">📖</span>
-            <h3 className="font-serif font-bold text-base text-dharma-text">शास्त्रीय स्वाध्याय (Scriptural Study)</h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
+          <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
+            <span className="text-2xl mb-2 block" aria-hidden="true">📖</span>
+            <h3 className="font-serif font-bold text-base text-label-primary">शास्त्रीय स्वाध्याय (Scriptural Study)</h3>
+            <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
               श्रीमद्भगवद्गीता के 18 अध्यायों का पाठ, विष्णु सहस्रनाम और नारायण सूक्त का जप।
             </p>
           </div>
         </section>
 
-        {/* Dates Table */}
-        <section
-          aria-labelledby="dates-heading"
-          className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl overflow-hidden shadow-xs"
-        >
-          <div className="p-5 sm:p-6 border-b border-dharma-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <h2 id="dates-heading" className="font-serif text-xl font-bold text-dharma-text">
-                आगामी एकादशी व्रत तिथियाँ (2026–2027)
-              </h2>
-              <p className="text-xs text-dharma-muted mt-0.5">
-                भारतीय मानक समय (IST) एवं स्मार्त पञ्चाङ्ग गणना अनुसार
-              </p>
-            </div>
-            <Link
-              href="/panchang/"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300"
-            >
-              दैनिक पंचांग देखें &rarr;
-            </Link>
-          </div>
-
-          <div className="divide-y divide-dharma-border/60">
-            {EKADASHI_DATES.map((item) => {
-              const isNextUpcoming = item.dateEn === nextUpcomingDateEn;
-              return (
-                <div
-                  key={item.dateEn}
-                  className={`p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition duration-200 hover:bg-surface-elevated/70 ${
-                    isNextUpcoming
-                      ? 'border-l-4 border-l-saffron-500 bg-saffron-500/[0.08] dark:bg-saffron-500/[0.14]'
-                      : item.highlight
-                        ? 'bg-amber-500/[0.04] dark:bg-amber-500/[0.08]'
-                        : ''
-                  }`}
-                >
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-serif font-bold text-sm sm:text-base text-dharma-text">
-                        {item.name}
-                      </span>
-                      {isNextUpcoming && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 shadow-xs">
-                          <span className="relative flex size-2">
-                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-saffron-400 opacity-75" />
-                            <span className="relative inline-flex size-2 rounded-full bg-saffron-500" />
-                          </span>
-                          आगामी व्रत · Next Upcoming
-                        </span>
-                      )}
-                      {item.highlight && (
-                        <span className="text-2xs rounded-full bg-saffron-500/15 border border-saffron-500/30 px-2 py-0.5 font-bold text-saffron-800 dark:text-saffron-300">
-                          महापर्व
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-xs text-dharma-muted mt-0.5">
-                      {item.month} मास · {item.paksha}
-                    </p>
-                  </div>
-                  <div className="text-left sm:text-right">
-                    <span className="font-mono text-sm font-semibold text-saffron-800 dark:text-saffron-300 block">
-                      {item.date}
-                    </span>
-                    <span className="text-2xs text-dharma-muted">{item.dateEn}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
+        {/* Dates Table with Year Filter & ICS Download */}
+        <VrataDatesTable
+          dates={EKADASHI_DATES}
+          title="एकादशी व्रत तिथियाँ (2026–2028)"
+          subtitle="भारतीय मानक समय (IST) एवं स्मार्त पञ्चाङ्ग गणना अनुसार"
+          vrataType="ekadashi"
+        />
 
         {/* Sacred Mantra & Scriptural Citation */}
         <section
           aria-labelledby="mantra-heading"
-          className="card-sacred relative rounded-2xl border border-dharma-border/80 bg-gradient-to-br from-amber-50/40 via-dharma-card/80 to-dharma-bg/60 p-6 dark:from-amber-950/20 backdrop-blur-xl shadow-xs overflow-hidden"
+          className="tadpatra-card relative rounded-3xl border border-separator/80 bg-surface-elevated/85 p-6 sm:p-8 backdrop-blur-xl shadow-soft overflow-hidden"
         >
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400 mb-3">
-            <BookOpen className="h-4 w-4" />
-            <span>शास्त्रीय श्लोक व जप</span>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tint mb-3">
+            <BookOpen className="size-4" aria-hidden="true" />
+            <span>पद्म पुराण एवं विष्णु माहात्म्य</span>
           </div>
-          <p lang="sa" className="font-devanagari text-lg sm:text-xl font-bold leading-relaxed text-dharma-text text-center py-3">
+          <p lang="sa" className="font-devanagari text-lg sm:text-2xl font-bold leading-relaxed text-label-primary text-center py-4">
             ॐ नमो भगवते वासुदेवाय ॥<br />
             शान्ताकारं भुजगशयनं पद्मनाभं सुरेशं विश्वाधारं गगनसदृशं मेघवर्णं शुभाङ्गम् ।
           </p>
-          <p className="text-xs text-center text-dharma-muted max-w-xl mx-auto mt-2 leading-relaxed">
+          <p className="text-xs sm:text-sm text-center text-label-secondary max-w-xl mx-auto mt-2 leading-relaxed">
             पद्म पुराण में श्रीकृष्ण युधिष्ठिर से कहते हैं: &quot;हे राजन्! न गंगा, न काशी, न गया और न ही पुष्कर एकादशी के समान पापनाशक हैं। जो प्राणी श्रद्धापूर्वक एकादशी व्रत करता है, वह परम पद को प्राप्त होता है।&quot;
           </p>
         </section>
@@ -261,29 +232,35 @@ export default function EkadashiPage() {
           <div className="apple-group mt-6">
             {FAQS.map((f) => (
               <details key={f.q} className="apple-row group block !py-0 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex min-h-[52px] cursor-pointer items-center justify-between gap-3 text-callout font-medium text-dharma-text">
+                <summary className="flex min-h-[52px] cursor-pointer items-center justify-between gap-3 text-callout font-medium text-label-primary">
                   <span>{f.q}</span>
                   <span aria-hidden="true" className="apple-chevron transition group-open:rotate-90">›</span>
                 </summary>
-                <p className="pb-4 text-subhead leading-relaxed text-dharma-muted">{f.a}</p>
+                <p className="pb-4 text-subhead leading-relaxed text-label-secondary">{f.a}</p>
               </details>
             ))}
           </div>
         </section>
 
         {/* Related Hub Navigation */}
-        <section className="flex flex-wrap gap-4 pt-6 border-t border-dharma-border">
+        <section className="flex flex-wrap gap-4 pt-6 border-t border-separator/80">
           <Link
             href="/panchang/"
-            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-dharma-border/80 bg-dharma-card/70 backdrop-blur-md px-4 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-400 hover:text-saffron-700 transition"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-separator/80 bg-surface-raised hover:bg-fill-tertiary px-4 py-2 text-xs font-semibold text-label-primary shadow-xs transition"
           >
             &larr; मुख्य पंचांग
           </Link>
           <Link
             href="/festivals/gita-jayanti/"
-            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-saffron-600/40 bg-saffron-500/10 backdrop-blur-md px-4 py-2 text-xs font-semibold text-saffron-800 hover:bg-saffron-500/20 transition dark:text-saffron-300"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-saffron-600/40 bg-saffron-500/10 hover:bg-saffron-500/20 px-4 py-2 text-xs font-semibold text-saffron-800 dark:text-saffron-300 shadow-xs transition"
           >
             गीता जयंती दर्शन &rarr;
+          </Link>
+          <Link
+            href="/panchang/pradosh/"
+            className="liquid-pill inline-flex min-h-11 items-center gap-1.5 rounded-full border border-separator/80 bg-surface-raised hover:bg-fill-tertiary px-4 py-2 text-xs font-semibold text-label-primary shadow-xs transition"
+          >
+            प्रदोष व्रत तिथियाँ &rarr;
           </Link>
         </section>
       </div>

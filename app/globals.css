@@ -2412,18 +2412,9 @@ main.bg-dharma-bg,
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 6px 18px -12px rgba(0, 0, 0, 0.6);
 }
 
-/* Verse study reads as continuous prose: the section headings already name each part, so the
-   type badges go, and nested boxes lose their frames. Draft and AI notices stay (VerseCard). */
-.verse-study-panel [data-content-label] {
-    display: none;
-}
-.verse-study-panel div.rounded-2xl.border,
-.verse-study-panel div.rounded-xl.border {
-    border-color: transparent;
-    background: transparent;
-    box-shadow: none;
-    padding-left: 0;
-    padding-right: 0;
+/* Verse study reading-first flow: preserve content labels and structured card boundaries for source-warning distinctions and clear section hierarchy (Issue #330). */
+:root:is([data-lite-mode], [data-reading-lite], [data-low-power='true'], [data-data-saver='true']) .animate-prana-pulse {
+    animation: none !important;
 }
 
 /* A flowing hairline in the scripture's colours. */
