@@ -110,7 +110,7 @@ function StatusBarScrim() {
       pointerEvents="none"
       accessible={false}
       importantForAccessibility="no-hide-descendants"
-      style={{ position: 'absolute', top: 0, left: 0, right: 0, height: top, backgroundColor: palette.bg, opacity: 0.94 }}
+      style={{ position: 'absolute', top: 0, left: 0, right: 0, height: top, backgroundColor: palette.bg }}
     />
   );
 }
