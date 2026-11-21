@@ -8,7 +8,7 @@ import { Backdrop, Chip, glass, GroupTitle, LargeHeader, Muted } from '@/compone
 import { knowledge, matchWisdom, type WisdomTopic } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
-import { barClearance, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 /**
  * Wisdom for life, after dharmagranth.dev/wisdom-for-life/: start from what you are facing (fear, anger,
@@ -88,16 +88,16 @@ function TopicCard({ topic }: { topic: WisdomTopic }) {
       style={({ pressed }) => [styles.card, glass(palette), pressed && { transform: [{ scale: 0.985 }], opacity: 0.9 }]}>
       <View style={[styles.stripe, { backgroundColor: topic.accent }]} />
       <View style={{ flex: 1, rowGap: 4, paddingVertical: SPACE.md }}>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '700' }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '700' }}>
           {t(topic.title)}
         </Text>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={1} style={{ color: palette.muted, fontSize: TYPE.caption }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} numberOfLines={1} style={{ color: palette.muted, fontSize: TYPE.caption }}>
           {topic.sanskrit}
         </Text>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={3} style={{ color: palette.text, fontSize: TYPE.footnote, lineHeight: TYPE.footnote * 1.5 }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} numberOfLines={3} style={{ color: palette.text, fontSize: TYPE.footnote, lineHeight: TYPE.footnote * 1.5 }}>
           {t(topic.short)}
         </Text>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, marginTop: 2 }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, marginTop: 2 }}>
           {`${t(S.wisdomVerseCount(topic.verses.length))} · ${t(S.wisdomMinutes(topic.minutes))}`}
         </Text>
       </View>

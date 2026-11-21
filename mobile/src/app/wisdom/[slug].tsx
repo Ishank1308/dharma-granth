@@ -9,7 +9,7 @@ import { getEntry } from '@/content/catalog';
 import { knowledge } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
-import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 /**
  * One Wisdom for life topic, in the website's order: a compassionate opening, the verses (each whole, with
@@ -49,18 +49,18 @@ export default function WisdomTopicScreen() {
         {/* Hero: the topic's own colour, as the website's gradient banner, kept as a tint so text stays legible. */}
         <View style={[styles.hero, { borderColor: `${topic.accent}55`, backgroundColor: `${topic.accent}${palette.dark ? '33' : '1a'}` }]}>
           {category ? (
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: 0.4 }}>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: 0.4 }}>
               {t(category)}
             </Text>
           ) : null}
           <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.largeTitle, fontWeight: '800', lineHeight: TYPE.largeTitle * 1.25 }}>
             {p(topic.title)}
           </Text>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.subhead, opacity: 0.8 }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.subhead, opacity: 0.8 }}>
             {topic.sanskrit}
           </Text>
           <Para lang={lang}>{p(topic.short)}</Para>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
             {`${t(S.wisdomVerseCount(topic.verses.length))} · ${t(S.wisdomMinutes(topic.minutes))}`}
           </Text>
         </View>
@@ -87,7 +87,7 @@ export default function WisdomTopicScreen() {
               reference={p(v.ref)}
               target={{ id: v.scriptureId, chapter: v.chapter, verse: v.verse }}>
               {v.speaker ? (
-                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
+                <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
                   {t(S.wisdomSpeaker(v.speaker, v.addressee))}
                 </Text>
               ) : null}
@@ -133,7 +133,7 @@ export default function WisdomTopicScreen() {
               const body = (
                 <>
                   <View style={{ flex: 1, rowGap: 2 }}>
-                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
+                    <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
                       {`${c.sanskrit}  ·  ${p(c.label)}`}
                     </Text>
                     <Para muted size={TYPE.footnote} lang={lang}>
@@ -174,10 +174,10 @@ export default function WisdomTopicScreen() {
                   style={({ pressed }) => [styles.linkRow, { opacity: pressed ? 0.7 : 1 }]}>
                   <Ionicons name="book-outline" size={18} color={hues.peacock} />
                   <View style={{ flex: 1 }}>
-                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
+                    <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
                       {s.sanskrit || p(s.title)}
                     </Text>
-                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+                    <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
                       {p(s.title)}
                     </Text>
                   </View>
@@ -201,7 +201,7 @@ export default function WisdomTopicScreen() {
         <Card style={{ rowGap: SPACE.sm, borderColor: `${hues.vermilion}55` }}>
           <View style={styles.inline}>
             <Ionicons name="heart-circle-outline" size={20} color={hues.vermilion} />
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flex: 1, color: palette.text, fontSize: TYPE.body, fontWeight: '700' }}>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flex: 1, color: palette.text, fontSize: TYPE.body, fontWeight: '700' }}>
               {p(topic.care.headline)}
             </Text>
           </View>
@@ -244,10 +244,10 @@ function PagerButton({
       style={({ pressed }) => [styles.pagerButton, { backgroundColor: quietFill(palette), opacity: pressed ? 0.7 : 1 }, end && { justifyContent: 'flex-end' }]}>
       {!end ? <Ionicons name={icon} size={18} color={palette.accent} /> : null}
       <View style={{ flexShrink: 1, alignItems: end ? 'flex-end' : 'flex-start' }}>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
           {label}
         </Text>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '600', textAlign: end ? 'right' : 'left' }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '600', textAlign: end ? 'right' : 'left' }}>
           {title}
         </Text>
       </View>

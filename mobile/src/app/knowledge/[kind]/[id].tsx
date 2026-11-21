@@ -28,7 +28,7 @@ import {
 } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
-import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, type Hues } from '@/theme/themes';
+import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP, type Hues } from '@/theme/themes';
 
 /** One entry of a knowledge collection, laid out in the website's section order for its kind. */
 export default function KnowledgeEntry() {
@@ -96,7 +96,7 @@ function Hero({
         <EntryTile hue={hue} icon={icon} letter={sanskrit.slice(0, 1) || title.slice(0, 1)} size={64} />
         {category ? (
           <View style={[styles.catPill, { backgroundColor: palette.dark ? `${color}2e` : `${color}1a` }]}>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color, fontSize: TYPE.caption, fontWeight: '700' }}>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color, fontSize: TYPE.caption, fontWeight: '700' }}>
               {category}
             </Text>
           </View>
@@ -107,7 +107,7 @@ function Hero({
           {sanskrit || title}
         </Text>
         {sanskrit ? (
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color, fontSize: TYPE.title3, fontWeight: '600' }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color, fontSize: TYPE.title3, fontWeight: '600' }}>
             {title}
             {translit && translit.toLowerCase() !== title.toLowerCase() ? (
               <Text style={{ color: palette.muted, fontStyle: 'italic', fontWeight: '400' }}>{`  ${translit}`}</Text>
@@ -153,7 +153,7 @@ function ConceptPage({ c }: { c: Concept }) {
       ) : null}
       {d ? (
         <KSection title={t(S.kDerivation)} hue={hue}>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ fontSize: TYPE.title3, fontWeight: '700', color: huesFor(palette)[hue] }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ fontSize: TYPE.title3, fontWeight: '700', color: huesFor(palette)[hue] }}>
             {t(S.kRoot(d.derivation.root))}
           </Text>
           <Para muted>{hi ? d.derivation.rootMeaningHi : d.derivation.rootMeaning}</Para>
@@ -295,7 +295,7 @@ function CharacterPage({ x }: { x: Character }) {
               <View style={{ flex: 1 }}>
                 <NameChips names={[r.name]} prefer="characters" />
               </View>
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flex: 1, color: palette.muted, fontSize: TYPE.footnote, textAlign: 'right' }}>
+              <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flex: 1, color: palette.muted, fontSize: TYPE.footnote, textAlign: 'right' }}>
                 {r.relation}
               </Text>
             </View>
@@ -393,10 +393,10 @@ function PlacePage({ x }: { x: Place }) {
           }
           style={({ pressed }) => [styles.mapButton, { backgroundColor: quietFill(palette), opacity: pressed ? 0.7 : 1 }]}>
           <Ionicons name="map-outline" size={18} color={palette.accent} />
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flex: 1, color: palette.accent, fontSize: TYPE.subhead, fontWeight: '600' }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flex: 1, color: palette.accent, fontSize: TYPE.subhead, fontWeight: '600' }}>
             {t(S.kOpenMap)}
           </Text>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
             {`${x.coordinates.lat.toFixed(2)}°, ${x.coordinates.lng.toFixed(2)}°`}
           </Text>
         </Pressable>
@@ -425,7 +425,7 @@ function TimelinePage({ x }: { x: Timeline }) {
       {note ? (
         <Card style={{ flexDirection: 'row', columnGap: SPACE.sm, alignItems: 'center' }}>
           <Ionicons name="information-circle-outline" size={18} color={color} />
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flex: 1, color: palette.text, fontSize: TYPE.footnote }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flex: 1, color: palette.text, fontSize: TYPE.footnote }}>
             {note}
           </Text>
         </Card>
@@ -439,7 +439,7 @@ function TimelinePage({ x }: { x: Timeline }) {
               {i < x.events.length - 1 ? <View style={[styles.line, { backgroundColor: `${color}55` }]} /> : null}
             </View>
             <View style={{ flex: 1, paddingBottom: SPACE.lg, rowGap: 4 }}>
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color, fontSize: TYPE.caption, fontWeight: '700' }}>
+              <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color, fontSize: TYPE.caption, fontWeight: '700' }}>
                 {e.date}
               </Text>
               <Para weight="700" lang="hi">

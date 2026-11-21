@@ -378,6 +378,12 @@ export const S = {
   }),
   wisdomEntryDetail: { en: 'Fear, anger, grief, duty and more', hi: 'डर, गुस्सा, दुख, कर्तव्य और भी' },
 
+  // Accessibility (TalkBack labels, hints and announcements)
+  verseOfTheDayFullA11y: (ref: string, text: string) => ({ en: `Verse of the day, ${ref}. ${text}`, hi: `आज का श्लोक, ${ref}। ${text}` }),
+  verseSavedAnnounce: { en: 'Verse saved', hi: 'श्लोक सहेजा गया' },
+  verseRemovedAnnounce: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
+  readingNowA11y: { en: 'reading now', hi: 'अभी पढ़ रहे हैं' },
+
   // Verse search screen: large header, the field at the bottom in the thumb zone
   searchTitle: { en: 'Search verses', hi: 'श्लोक खोजें' },
   searchEyebrow: { en: 'Works offline', hi: 'बिना इंटरनेट' },

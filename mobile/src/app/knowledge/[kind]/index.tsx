@@ -9,7 +9,7 @@ import { Backdrop, Chip, glass, GroupRow, LargeHeader, Muted } from '@/component
 import { entries, hueKey, isKind, KINDS, knowledge } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
-import { barClearance, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 const fold = (s: string) =>
   s
@@ -111,16 +111,16 @@ export default function KnowledgeList() {
             />
             <View style={{ flex: 1 }}>
               <View style={styles.titleRow}>
-                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
+                <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
                   {kind === 'timelines' ? item.title : item.sanskrit || item.title}
                 </Text>
                 {kind !== 'timelines' && item.sanskrit ? (
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
                     {item.title}
                   </Text>
                 ) : null}
               </View>
-              <Text numberOfLines={2} maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
+              <Text numberOfLines={2} maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
                 {item.subtitle}
               </Text>
             </View>

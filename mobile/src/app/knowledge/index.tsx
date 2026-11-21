@@ -7,7 +7,7 @@ import { Backdrop, Card, GroupCard, GroupRow, LargeHeader } from '@/components/u
 import { KINDS, knowledge } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
-import { barClearance, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, huesFor, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 /**
  * The knowledge hub, after the website's Learn and knowledge pages: Wisdom for life first (the way in for
@@ -40,10 +40,10 @@ export default function KnowledgeHub() {
                 <Ionicons name="flower-outline" size={24} color={hues.lotus} />
               </View>
               <View style={{ flex: 1 }}>
-                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
+                <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
                   {t(S.wisdomTitle)}
                 </Text>
-                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
+                <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
                   {t(S.wisdomSummary)}
                 </Text>
               </View>
@@ -53,7 +53,7 @@ export default function KnowledgeHub() {
             <View style={styles.tags}>
               {wisdom.items.slice(0, 6).map((topic) => (
                 <View key={topic.id} style={[styles.tag, { borderColor: `${topic.accent}66` }]}>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
                     {t(topic.title)}
                   </Text>
                 </View>
@@ -77,14 +77,14 @@ export default function KnowledgeHub() {
                   <Ionicons name={k.icon} size={18} color="#ffffff" />
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
                     {t(k.title)}
                   </Text>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
                     {t(k.blurb)}
                   </Text>
                 </View>
-                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+                <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
                   {count}
                 </Text>
                 <Ionicons name="chevron-forward" size={18} color={palette.muted} />

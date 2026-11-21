@@ -15,7 +15,7 @@ import { findByName, type KnowledgeKind, type KVerse } from '@/content/knowledge
 import { S, useI18n, type Msg } from '@/i18n';
 import { sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
-import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, type Hues } from '@/theme/themes';
+import { fontCap, huesFor, quietFill, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP, type Hues } from '@/theme/themes';
 
 /** A section of a knowledge page: a glass card with a heading in the page's hue. */
 export function KSection({
@@ -35,7 +35,7 @@ export function KSection({
     <Card style={[{ rowGap: SPACE.md }, style]}>
       <View style={styles.sectionHead} accessibilityRole="header">
         <View style={[styles.bar, { backgroundColor: color }]} />
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
           {title}
         </Text>
       </View>
@@ -83,7 +83,7 @@ export function Label({ children, hue }: { children: ReactNode; hue?: keyof Hues
   const { palette } = useAppState();
   return (
     <Text
-      maxFontSizeMultiplier={TITLE_FONT_CAP}
+      maxFontSizeMultiplier={UI_FONT_CAP}
       style={{ color: hue ? huesFor(palette)[hue] : palette.muted, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: 0.4 }}>
       {children}
     </Text>
@@ -101,7 +101,7 @@ export function LangNote({ content }: { content: 'en' | 'hi' }) {
   return (
     <View style={[styles.note, { backgroundColor: quietFill(palette) }]}>
       <Ionicons name="language-outline" size={16} color={palette.muted} />
-      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flex: 1, color: palette.muted, fontSize: TYPE.footnote }}>
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flex: 1, color: palette.muted, fontSize: TYPE.footnote }}>
         {t(content === 'en' ? S.kEnglishOnly : S.kHindiOnly)}
       </Text>
     </View>
@@ -164,7 +164,7 @@ export function VerseBlock({
   const size = TYPE.body * settings.textScale;
   return (
     <View style={[styles.verse, { borderLeftColor: color, backgroundColor: quietFill(palette) }]}>
-      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color, fontSize: TYPE.footnote, fontWeight: '700' }}>
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color, fontSize: TYPE.footnote, fontWeight: '700' }}>
         {reference}
       </Text>
       <View accessible accessibilityLanguage="sa">
@@ -191,7 +191,7 @@ export function VerseBlock({
           accessibilityLabel={t(S.kReadVerseA11y(reference))}
           style={({ pressed }) => [styles.readLink, { opacity: pressed ? 0.6 : 1 }]}>
           <Ionicons name="book-outline" size={16} color={palette.accent} />
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.subhead, fontWeight: '600' }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.subhead, fontWeight: '600' }}>
             {t(S.kReadVerse)}
           </Text>
         </Pressable>
@@ -226,7 +226,7 @@ export function NameChips({ names, prefer }: { names: string[]; prefer?: Knowled
       {names.map((name) => {
         const page = findByName(name, prefer);
         const body = (
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: page ? palette.accent : palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: page ? palette.accent : palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
             {name}
           </Text>
         );
