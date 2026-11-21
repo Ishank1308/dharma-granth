@@ -1,5 +1,6 @@
 /**
- * Local backup of everything the reader keeps on the phone: bookmarks, reading position and settings.
+ * Local backup of everything the reader keeps on the phone: bookmarks, reading position, settings, and the
+ * journal with its verse collections.
  * Nothing is sent anywhere (zero-account privacy); the reader exports a JSON file and imports it back.
  */
 import type { ThemeName } from '@/theme/themes';
@@ -69,6 +70,16 @@ export interface BackupFile extends AppData {
   format: typeof BACKUP_FORMAT;
   version: number;
   exportedAt: string;
+  /**
+   * Journal entries and verse collections (@/lib/journal), added after version 1 shipped. Optional, so older
+   * backups still read; an older app ignores it. Passed through here and normalised by the journal store.
+   */
+  journal?: unknown;
+}
+
+/** What a backup file holds: the app data, plus the raw sections that other stores normalise themselves. */
+export interface ParsedBackup extends AppData {
+  journal?: unknown;
 }
 
 const THEMES: ThemeName[] = ['day', 'sunset', 'paper', 'dark'];
@@ -131,8 +142,8 @@ export function normalizeLastRead(raw: unknown): LastRead | null {
   return { id: r.id, chapter, at: typeof r.at === 'string' ? r.at : new Date(0).toISOString() };
 }
 
-export function makeBackup(data: AppData, now = new Date()): BackupFile {
-  return { format: BACKUP_FORMAT, version: BACKUP_VERSION, exportedAt: now.toISOString(), ...data };
+export function makeBackup(data: AppData, now = new Date(), extra: { journal?: unknown } = {}): BackupFile {
+  return { format: BACKUP_FORMAT, version: BACKUP_VERSION, exportedAt: now.toISOString(), ...data, ...extra };
 }
 
 /** Why a backup could not be read. The message is English; the code lets the UI show it in the reader's language. */
@@ -146,7 +157,7 @@ export class BackupError extends Error {
 }
 
 /** Reads a backup file's text. Throws a BackupError when it is not one of ours. */
-export function parseBackup(text: string): AppData {
+export function parseBackup(text: string): ParsedBackup {
   let parsed: unknown;
   try {
     parsed = JSON.parse(text);
@@ -164,6 +175,7 @@ export function parseBackup(text: string): AppData {
     settings: normalizeSettings(b.settings),
     bookmarks: normalizeBookmarks(b.bookmarks),
     lastRead: normalizeLastRead(b.lastRead),
+    ...(b.journal !== undefined ? { journal: b.journal } : {}),
   };
 }
 

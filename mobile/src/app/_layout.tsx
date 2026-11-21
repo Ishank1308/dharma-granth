@@ -7,6 +7,7 @@ import { DailyReminderEffects } from '@/components/daily-reminder-effects';
 import { DailyWidgetEffects } from '@/components/daily-widget-effects';
 import { RecitationProvider } from '@/audio/player';
 import { AppStateProvider, useAppState } from '@/state/app-state';
+import { JournalProvider } from '@/state/journal';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -50,6 +51,10 @@ function Navigator() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="scripture/[id]/index" options={{ title: '' }} />
           <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '' }} />
+          <Stack.Screen name="journal/index" options={{ title: '' }} />
+          <Stack.Screen name="journal/edit" options={{ title: '' }} />
+          <Stack.Screen name="journal/collections" options={{ title: '' }} />
+          <Stack.Screen name="share" options={{ title: '', presentation: 'modal' }} />
         </Stack>
     </ThemeProvider>
   );
@@ -58,9 +63,11 @@ function Navigator() {
 export default function RootLayout() {
   return (
     <AppStateProvider>
-      <RecitationProvider>
-        <Navigator />
-      </RecitationProvider>
+      <JournalProvider>
+        <RecitationProvider>
+          <Navigator />
+        </RecitationProvider>
+      </JournalProvider>
     </AppStateProvider>
   );
 }
