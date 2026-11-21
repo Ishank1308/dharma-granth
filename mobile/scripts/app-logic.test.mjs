@@ -231,3 +231,13 @@ test('progress from a backup merges with the phone and bad data is dropped', () 
   assert.equal(many.days.length, MAX_DAYS);
   assert.equal(many.best, MAX_DAYS);
 });
+
+test('a speaker run into the verse gets its own line, as on the website', () => {
+  const lines = sanskritLines('अर्जुन उवाचएवं सततयुक्ता ये भक्तास्त्वां पर्युपासते।येचाप्यक्षरमव्यक्तं तेषां के योगवित्तमाः।।12.1।।');
+  assert.equal(lines[0], 'अर्जुन उवाच');
+  assert.equal(lines[1], 'एवं सततयुक्ता ये भक्तास्त्वां पर्युपासते।');
+  assert.equal(lines.length, 3);
+  assert.equal(sanskritLines('श्रीभगवानुवाचमय्यावेश्य मनो ये मां नित्ययुक्ता उपासते।')[0], 'श्रीभगवानुवाच');
+  // A sandhi on a vowel sign is not a lost line break.
+  assert.equal(sanskritLines('स होवाचेदम् इति।')[0], 'स होवाचेदम् इति');
+});

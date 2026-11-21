@@ -7,13 +7,15 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { barSurface, FloatingBar, glass } from '@/components/ui';
 import { S, useI18n, type Msg } from '@/i18n';
 import { useAppState } from '@/state/app-state';
-import { BAR_GAP, BAR_HEIGHT, SPACE } from '@/theme/themes';
+import { BAR_GAP, BAR_HEIGHT, SPACE, TYPE } from '@/theme/themes';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
 const TABS: Record<string, { label: Msg; icon: IconName; iconActive: IconName }> = {
+  home: { label: S.tabHome, icon: 'home-outline', iconActive: 'home' },
   index: { label: S.tabLibrary, icon: 'book-outline', iconActive: 'book' },
   bookmarks: { label: S.tabSaved, icon: 'bookmark-outline', iconActive: 'bookmark' },
+  explore: { label: S.tabExplore, icon: 'compass-outline', iconActive: 'compass' },
   settings: { label: S.tabSettings, icon: 'settings-outline', iconActive: 'settings' },
 };
 
@@ -24,7 +26,7 @@ const TABS: Record<string, { label: Msg; icon: IconName; iconActive: IconName }>
  */
 export function FloatingTabBar({ state, emitter, navigateToTab, insets }: BottomTabBarProps) {
   const { palette } = useAppState();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const bottom = Math.max(insets.bottom, SPACE.sm) + BAR_GAP;
 
   return (
@@ -56,8 +58,10 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
                 <Ionicons name={focused ? tab.iconActive : tab.icon} size={22} color={focused ? palette.accent : palette.muted} />
                 <Text
                   numberOfLines={1}
+                  // The label grows with the system font size only this far, so it stays inside the capsule;
+                  // TalkBack reads the full name either way. Devanagari is set a size larger to stay legible.
                   maxFontSizeMultiplier={1.3}
-                  style={{ fontSize: 11, fontWeight: focused ? '700' : '500', color: focused ? palette.accent : palette.muted }}>
+                  style={{ fontSize: lang === 'hi' ? TYPE.caption + 1 : TYPE.caption, fontWeight: focused ? '700' : '500', color: focused ? palette.accent : palette.muted }}>
                   {label}
                 </Text>
               </Pressable>
@@ -86,10 +90,12 @@ const styles = StyleSheet.create({
   wrap: { position: 'absolute', left: SPACE.lg, right: SPACE.lg, flexDirection: 'row', alignItems: 'center', columnGap: 10 },
   tabs: { flex: 1, paddingHorizontal: 6 },
   row: { flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
+  // Tabs share the bar evenly (up to 96 wide), so four or five fit beside Search on a 360 dp phone.
   tab: {
-    minWidth: 72,
+    flex: 1,
+    maxWidth: 96,
     height: BAR_HEIGHT - 12,
-    paddingHorizontal: SPACE.md,
+    paddingHorizontal: SPACE.xs,
     borderRadius: (BAR_HEIGHT - 12) / 2,
     alignItems: 'center',
     justifyContent: 'center',

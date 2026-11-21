@@ -37,11 +37,15 @@ export function initNotifications() {
   });
 }
 
-async function ensureChannel() {
+/**
+ * Creates the channel, or renames it in the reader's language. Android lets an app change a channel's
+ * name and description at any time (the reader's own sound and importance choices are kept).
+ */
+async function ensureChannel(lang: Lang) {
   if (Platform.OS !== 'android') return;
   await Notifications.setNotificationChannelAsync(DAILY_CHANNEL_ID, {
-    name: 'Verse of the day · आज का श्लोक',
-    description: 'One Bhagavad Gita verse a day, at the time you choose.',
+    name: S.dailyChannelName[lang],
+    description: S.dailyChannelDescription[lang],
     importance: AndroidImportance.DEFAULT,
     showBadge: false,
   });
@@ -55,9 +59,9 @@ export async function getReminderPermission(): Promise<ReminderPermission> {
 }
 
 /** Asks Android 13+ for POST_NOTIFICATIONS. The channel must exist first or the prompt does not show. */
-export async function requestReminderPermission(): Promise<ReminderPermission> {
+export async function requestReminderPermission(lang: Lang): Promise<ReminderPermission> {
   if (!remindersSupported) return 'denied';
-  await ensureChannel();
+  await ensureChannel(lang);
   const current = await Notifications.getPermissionsAsync();
   if (current.granted) return 'granted';
   if (!current.canAskAgain) return 'denied';
@@ -67,40 +71,45 @@ export async function requestReminderPermission(): Promise<ReminderPermission> {
 
 /**
  * The notification text for one day: the whole shloka (never cut mid-verse) and its reference, then an
- * optional gentle line under it (the reading streak).
+ * optional gentle line under it (the reading streak). The title and book name follow the interface
+ * language; the verse itself is always Sanskrit.
  */
-export function verseNotificationFor(date: Date, note?: string): Notifications.NotificationContentInput | undefined {
+export function verseNotificationFor(date: Date, lang: Lang, note?: string): Notifications.NotificationContentInput | undefined {
   const pick = dailyVerse(date);
   if (!pick) return undefined;
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
   if (!verse) return undefined;
   const lines = sanskritLines(verse.sanskrit);
   if (lines.length === 0) return undefined;
-  const title = getEntry(pick.id)?.title ?? 'Bhagavad Gita';
+  const entry = getEntry(pick.id);
+  const book = (lang === 'hi' ? entry?.titleSanskrit : undefined) ?? entry?.title ?? S.bhagavadGita[lang];
   return {
-    title: 'आज का श्लोक · Verse of the day',
-    body: `${lines.join('\n')}\n${title} ${formatVerseRef(pick.id, pick.chapter, verse.number)}${note ? `\n${note}` : ''}`,
+    title: S.verseOfTheDay[lang],
+    body: `${lines.join('\n')}\n${book} ${formatVerseRef(pick.id, pick.chapter, verse.number)}${note ? `\n${note}` : ''}`,
     data: { id: pick.id, chapter: pick.chapter, verse: String(verse.number) },
   };
 }
-
-/**
- * Replaces the queue with one notification per day for the next 30 days. Safe to call often: it runs on
- * every app start and whenever the reader changes the switch or the time. When the reminder is off, or
- * the permission was taken away in Android settings, the queue is simply emptied.
- */
-let queue: Promise<void> = Promise.resolve();
 
 export interface ReminderOptions {
   enabled: boolean;
   hour: number;
   minute: number;
+  /** Interface language: the notification text is written in it when scheduled. */
+  lang: Lang;
   /**
-   * The reading streak, when the reader shows it: the days read on, and the interface language for the
-   * line. Only the next notification can mention it (see streakForNotification); later ones stay plain.
+   * Days read on, when the reader shows the reading streak. Only the next notification can mention it
+   * (see streakForNotification); later ones stay plain.
    */
-  streak?: { days: string[]; lang: Lang } | null;
+  streakDays?: string[] | null;
 }
+
+/**
+ * Replaces the queue with one notification per day for the next 30 days. Safe to call often: it runs on
+ * every app start and whenever the reader changes the switch, the time or the interface language (the
+ * text is fixed when a notification is scheduled, so a language change has to re-plan the queue). When the reminder is off, or
+ * the permission was taken away in Android settings, the queue is simply emptied.
+ */
+let queue: Promise<void> = Promise.resolve();
 
 export function syncDailyReminder(opts: ReminderOptions): Promise<void> {
   // Run one sync at a time, so flicking the switch quickly cannot interleave cancel and schedule calls.
@@ -115,12 +124,12 @@ async function runSync(opts: ReminderOptions): Promise<void> {
   await Notifications.cancelAllScheduledNotificationsAsync();
   if (!opts.enabled) return;
   if ((await getReminderPermission()) !== 'granted') return;
-  await ensureChannel();
+  await ensureChannel(opts.lang);
   const now = new Date();
   const today = dayKey(now);
   for (const when of upcomingReminderTimes(now, opts.hour, opts.minute)) {
-    const run = opts.streak ? streakForNotification(opts.streak.days, today, dayKey(when)) : 0;
-    const content = verseNotificationFor(when, run > 0 && opts.streak ? S.streakNotification(run)[opts.streak.lang] : undefined);
+    const run = opts.streakDays ? streakForNotification(opts.streakDays, today, dayKey(when)) : 0;
+    const content = verseNotificationFor(when, opts.lang, run > 0 ? S.streakNotification(run)[opts.lang] : undefined);
     if (!content) continue;
     await Notifications.scheduleNotificationAsync({
       content,

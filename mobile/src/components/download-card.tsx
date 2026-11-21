@@ -7,7 +7,7 @@ import { cancelDownload, deleteDownload, formatBytes, startDownload, useDownload
 import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
-import { RADIUS, SPACE, TYPE } from '@/theme/themes';
+import { RADIUS, SPACE, TOUCH, TYPE } from '@/theme/themes';
 
 /** Download, progress, update and delete for one large text, shown at the top of its chapter list. */
 export function DownloadCard({ entry }: { entry: CatalogEntry }) {
@@ -71,7 +71,7 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
             <Text style={[styles.btnText, { color: palette.onAccent }]}>{t(S.updateBtn)}</Text>
           </Pressable>
         ) : null}
-        <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(entry.title))} onPress={confirmDelete} hitSlop={8}>
+        <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(entry.title))} onPress={confirmDelete} style={styles.icon}>
           <Ionicons name="trash-outline" size={20} color={palette.muted} />
         </Pressable>
       </Card>
@@ -119,8 +119,10 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', columnGap: SPACE.md, alignItems: 'center' },
-  btn: { borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, paddingHorizontal: SPACE.lg },
-  wide: { flex: 1, borderRadius: RADIUS.pill, paddingVertical: SPACE.md, alignItems: 'center' },
+  // Every control is at least 48 dp tall (Android's minimum touch target).
+  btn: { minHeight: TOUCH, justifyContent: 'center', borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, paddingHorizontal: SPACE.lg },
+  wide: { flex: 1, minHeight: TOUCH, justifyContent: 'center', borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, alignItems: 'center' },
+  icon: { width: TOUCH, height: TOUCH, marginRight: -SPACE.sm, alignItems: 'center', justifyContent: 'center' },
   btnText: { fontWeight: '700', fontSize: TYPE.footnote },
   track: { height: 6, borderRadius: 3, overflow: 'hidden' },
   fill: { height: 6, borderRadius: 3 },
@@ -159,7 +161,7 @@ export function DownloadsSection() {
                     {title} · {formatBytes(installed[id].bytes)}
                   </Text>
                 </View>
-                <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(title))} onPress={() => confirmDelete(id, title)} hitSlop={8}>
+                <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(title))} onPress={() => confirmDelete(id, title)} style={styles.icon}>
                   <Ionicons name="trash-outline" size={20} color={palette.muted} />
                 </Pressable>
               </View>

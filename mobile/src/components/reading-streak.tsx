@@ -7,7 +7,7 @@ import { S, useI18n } from '@/i18n';
 import { dayKey, streakInfo } from '@/lib/progress';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { useAppState } from '@/state/app-state';
-import { quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+import { quietFill, RADIUS, SPACE, UI_FONT_CAP, TYPE } from '@/theme/themes';
 
 const DOT = 30;
 
@@ -39,15 +39,15 @@ export function ReadingStreakCard() {
           <Ionicons name={alive ? 'flame' : 'flame-outline'} size={22} color={palette.accent} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '700' }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '700' }}>
             {alive ? t(S.streakDays(info.current)) : t(S.streakStart)}
           </Text>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
             {t(note)}
           </Text>
         </View>
         {info.best > 1 ? (
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
             {t(S.streakBest(info.best))}
           </Text>
         ) : null}
@@ -67,7 +67,7 @@ export function ReadingStreakCard() {
                 {d.read ? <Ionicons name="checkmark" size={16} color={palette.onAccent} /> : null}
               </View>
               <Text
-                maxFontSizeMultiplier={TITLE_FONT_CAP}
+                maxFontSizeMultiplier={UI_FONT_CAP}
                 style={{ color: isToday ? palette.accent : palette.muted, fontSize: TYPE.caption, fontWeight: isToday ? '700' : '500' }}>
                 {initials[weekday] ?? ''}
               </Text>

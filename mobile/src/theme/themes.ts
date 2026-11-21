@@ -49,17 +49,20 @@ export const THEMES: Record<ThemeName, Palette> = {
     cardSoft: '#fbfbfd',
     text: '#1d1d1f',
     textSecondary: '#424245',
-    muted: '#6e6e73',
+    // Text colours are tuned to WCAG AA: muted, accent and gold all reach 4.5:1 on the thinnest glass over the
+    // brightest aurora pool (scripts/contrast.test.mjs). Muted also holds 4.5:1 straight on the backdrop.
+    muted: '#58585c',
     border: '#d2d2d7',
-    accent: '#c2410c',
-    gold: '#c69234',
+    accent: '#b83e0b',
+    gold: '#876323',
     glass: 'rgba(255, 255, 255, 0.62)',
     glassStrong: 'rgba(255, 255, 255, 0.8)',
     chrome: 'rgba(245, 245, 247, 0.86)',
     rim: 'rgba(255, 255, 255, 0.75)',
     rimTop: 'rgba(255, 255, 255, 0.95)',
     aurora: ['rgba(234, 88, 12, 0.30)', 'rgba(219, 39, 119, 0.22)', 'rgba(13, 148, 136, 0.22)', 'rgba(79, 70, 229, 0.20)', 'rgba(217, 119, 6, 0.20)'],
-    accentGradient: ['#ea580c', '#c2410c'],
+    // White labels sit on both ends of the gradient, so its light end stops at 4.5:1 too.
+    accentGradient: ['#cb4c0a', '#b83e0b'],
     onAccent: '#ffffff',
   },
   sunset: {
@@ -72,17 +75,17 @@ export const THEMES: Record<ThemeName, Palette> = {
     cardSoft: '#ffeed9',
     text: '#332016',
     textSecondary: '#5c3f2d',
-    muted: '#7c5745',
+    muted: '#704f3e',
     border: '#ecc9a7',
-    accent: '#c2410c',
-    gold: '#d97706',
+    accent: '#b83e0b',
+    gold: '#9d5604',
     glass: 'rgba(255, 250, 242, 0.62)',
     glassStrong: 'rgba(255, 250, 242, 0.82)',
     chrome: 'rgba(255, 244, 229, 0.88)',
     rim: 'rgba(255, 252, 244, 0.75)',
     rimTop: 'rgba(255, 255, 255, 0.95)',
     aurora: ['rgba(234, 88, 12, 0.32)', 'rgba(219, 39, 119, 0.22)', 'rgba(13, 148, 136, 0.18)', 'rgba(79, 70, 229, 0.16)', 'rgba(217, 119, 6, 0.26)'],
-    accentGradient: ['#ea580c', '#c2410c'],
+    accentGradient: ['#cb4c0a', '#b83e0b'],
     onAccent: '#ffffff',
   },
   paper: {
@@ -95,10 +98,10 @@ export const THEMES: Record<ThemeName, Palette> = {
     cardSoft: '#f2e7d3',
     text: '#2c241c',
     textSecondary: '#4a3d31',
-    muted: '#6f6252',
+    muted: '#605547',
     border: '#ded1bd',
-    accent: '#b45309',
-    gold: '#b45309',
+    accent: '#a24b08',
+    gold: '#a24b08',
     glass: 'rgba(253, 248, 238, 0.68)',
     glassStrong: 'rgba(253, 248, 238, 0.86)',
     chrome: 'rgba(245, 237, 224, 0.9)',
@@ -162,8 +165,32 @@ export function fontCap(textScale: number): number {
   return Math.max(1, MAX_TEXT_ZOOM / textScale);
 }
 
-/** Large titles are already big; they follow the system font size only this far. */
+/** Large titles (26 dp and up) are already big; they follow the system font size only this far. */
 export const TITLE_FONT_CAP = 1.5;
+
+/**
+ * Interface text that does not follow the reader's text size (labels, notes, row subtitles) still follows
+ * Android's font size in full, up to its 200% maximum.
+ */
+export const UI_FONT_CAP = 2;
+
+/**
+ * Devanagari needs a little more size than Latin to be equally legible: its matras and conjuncts carry detail
+ * that small Latin letters do not. Small interface text in Hindi (captions, chips, tab labels, notes) is set
+ * one or two dp larger; body sizes and up are left alone.
+ */
+export function scriptSize(size: number, lang: 'en' | 'hi'): number {
+  if (lang !== 'hi' || size > TYPE.subhead) return size;
+  return size <= TYPE.caption ? size + 2 : size + 1;
+}
+
+/**
+ * The off track of a Switch: a non-text control needs 3:1 against the surface behind it, which the theme's
+ * hairline border colour does not reach.
+ */
+export function switchOffTrack(palette: Pick<Palette, 'dark' | 'muted'>): string {
+  return palette.dark ? '#8e8e93' : palette.muted;
+}
 
 /**
  * Corner radii, named by what they round (as the website's tokens.css). Nested shapes stay concentric:

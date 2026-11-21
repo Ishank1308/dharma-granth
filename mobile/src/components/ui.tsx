@@ -1,10 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ComponentProps, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, useWindowDimensions, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useAppState } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
-import { BAR_HEIGHT, fontCap, RADIUS, separator, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, type Palette } from '@/theme/themes';
+import { BAR_HEIGHT, fontCap, RADIUS, scriptSize, separator, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP, type Palette } from '@/theme/themes';
 
 /**
  * Frosted glass, after the website's Liquid Glass cards (app/styles/colour.css):
@@ -91,7 +92,26 @@ export function Backdrop({ children, quiet }: { children: ReactNode; quiet?: boo
     <View style={{ flex: 1 }}>
       <Aurora quiet={quiet} />
       {children}
+      <StatusBarScrim />
     </View>
+  );
+}
+
+/**
+ * A strip of the page colour behind the status bar. Lists scroll under the edge-to-edge status bar, and without
+ * it a scrolled heading ("Itihasa") runs into the clock and the battery icons.
+ */
+function StatusBarScrim() {
+  const { palette } = useAppState();
+  const { top } = useSafeAreaInsets();
+  if (!top) return null;
+  return (
+    <View
+      pointerEvents="none"
+      accessible={false}
+      importantForAccessibility="no-hide-descendants"
+      style={{ position: 'absolute', top: 0, left: 0, right: 0, height: top, backgroundColor: palette.bg }}
+    />
   );
 }
 
@@ -167,6 +187,13 @@ export function GlassRow({
   );
 }
 
+/**
+ * A capsule button. With `active` set it is one choice of several (language, theme, filter) and TalkBack
+ * reads it as a radio button, checked or not; put such chips in a View with accessibilityRole="radiogroup".
+ * Without `active` it is a plain button (the search examples).
+ *
+ * The capsule is drawn 40 dp tall to keep rows of chips compact; hitSlop makes the touch target the full 48.
+ */
 export function Chip({
   label,
   active,
@@ -178,18 +205,26 @@ export function Chip({
   onPress: () => void;
   accessibilityLabel?: string;
 }) {
-  const { palette } = useAppState();
+  const { palette, lang } = useAppState();
+  const choice = active !== undefined;
   return (
     <Pressable
       onPress={onPress}
-      accessibilityRole="button"
-      accessibilityState={{ selected: !!active }}
+      accessibilityRole={choice ? 'radio' : 'button'}
+      accessibilityState={choice ? { checked: active } : undefined}
       accessibilityLabel={accessibilityLabel ?? label}
+      hitSlop={(TOUCH - CHIP_HEIGHT) / 2}
       style={({ pressed }) => [styles.chip, active ? accentFill(palette) : glass(palette), { opacity: pressed ? 0.75 : 1 }]}>
-      <Text style={{ color: active ? palette.onAccent : palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>{label}</Text>
+      <Text
+        maxFontSizeMultiplier={UI_FONT_CAP}
+        style={{ color: active ? palette.onAccent : palette.text, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
+        {label}
+      </Text>
     </Pressable>
   );
 }
+
+const CHIP_HEIGHT = 40;
 
 /** The small frosted capsule over a page title, like the website's eyebrow. */
 export function Eyebrow({ en, hi, style }: { en: string; hi: string; style?: StyleProp<ViewStyle> }) {
@@ -197,7 +232,9 @@ export function Eyebrow({ en, hi, style }: { en: string; hi: string; style?: Sty
   return (
     <View style={[styles.eyebrow, glass(palette), style]}>
       <View style={[styles.dot, { backgroundColor: palette.accent }]} />
-      <Text style={{ flexShrink: 1, color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.6 }}>
+      <Text
+        maxFontSizeMultiplier={UI_FONT_CAP}
+        style={{ flexShrink: 1, color: palette.accent, fontSize: scriptSize(TYPE.caption, lang), fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.6 }}>
         {lang === 'hi' ? hi : en.toUpperCase()}
       </Text>
     </View>
@@ -207,7 +244,7 @@ export function Eyebrow({ en, hi, style }: { en: string; hi: string; style?: Sty
 export function SectionTitle({ en, hi }: { en: string; hi: string }) {
   const { palette, lang } = useAppState();
   return (
-    <View style={styles.sectionTitle}>
+    <View style={styles.sectionTitle} accessibilityRole="header">
       <Text style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
         {lang === 'hi' ? hi : en}
       </Text>
@@ -216,9 +253,11 @@ export function SectionTitle({ en, hi }: { en: string; hi: string }) {
 }
 
 export function Muted({ children, style }: { children: ReactNode; style?: StyleProp<TextStyle> }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings, lang } = useAppState();
   return (
-    <Text maxFontSizeMultiplier={fontCap(settings.textScale)} style={[{ color: palette.muted, fontSize: TYPE.footnote * settings.textScale }, style]}>
+    <Text
+      maxFontSizeMultiplier={fontCap(settings.textScale)}
+      style={[{ color: palette.muted, fontSize: scriptSize(TYPE.footnote, lang) * settings.textScale }, style]}>
       {children}
     </Text>
   );
@@ -267,7 +306,7 @@ export function LargeHeader({
       </View>
       {children}
       {subtitle ? (
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>
           {subtitle}
         </Text>
       ) : null}
@@ -284,7 +323,7 @@ export function GroupTitle({ title, detail }: { title: string; detail?: string }
         {title}
       </Text>
       {detail ? (
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
           {detail}
         </Text>
       ) : null}
@@ -514,7 +553,15 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.row,
     marginBottom: SPACE.sm,
   },
-  chip: { paddingHorizontal: SPACE.md + 2, paddingVertical: 7, borderRadius: RADIUS.pill },
+  chip: {
+    minHeight: CHIP_HEIGHT,
+    minWidth: TOUCH,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: SPACE.md + 2,
+    paddingVertical: 6,
+    borderRadius: RADIUS.pill,
+  },
   eyebrow: {
     flexDirection: 'row',
     alignItems: 'center',

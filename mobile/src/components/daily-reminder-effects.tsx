@@ -24,18 +24,19 @@ export function DailyReminderEffects() {
 
   // The streak line only changes when a day is added (the first verse read each day), the days are
   // cleared or restored, or the date turns over. Re-plan then, not on every verse marked.
-  const streakKey = showStreak ? `${lang}|${todayKey}|${progress.days.length}|${progress.days[progress.days.length - 1] ?? ''}` : '';
-  const streak = useMemo(
-    () => (streakKey ? { days: progress.days.slice(-400), lang } : null),
+  const streakKey = showStreak ? `${todayKey}|${progress.days.length}|${progress.days[progress.days.length - 1] ?? ''}` : '';
+  const streakDays = useMemo(
+    () => (streakKey ? progress.days.slice(-400) : null),
     [streakKey], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
-  // Re-plan the next 30 days on start and whenever the switch, the time or the streak changes.
+  // Re-plan the next 30 days on start and whenever the switch, the time, the interface language or the
+  // streak changes.
   useEffect(() => {
     if (!ready || !remindersSupported) return;
     lastSync.current = Date.now();
-    void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, streak });
-  }, [ready, dailyReminder, reminderHour, reminderMinute, streak]);
+    void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, lang, streakDays });
+  }, [ready, dailyReminder, reminderHour, reminderMinute, lang, streakDays]);
 
   // Top the queue up when the app comes back after a long time in the background.
   useEffect(() => {
@@ -43,10 +44,10 @@ export function DailyReminderEffects() {
     const sub = AppState.addEventListener('change', (state) => {
       if (state !== 'active' || Date.now() - lastSync.current < RESYNC_MS) return;
       lastSync.current = Date.now();
-      void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, streak });
+      void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, lang, streakDays });
     });
     return () => sub.remove();
-  }, [ready, dailyReminder, reminderHour, reminderMinute, streak]);
+  }, [ready, dailyReminder, reminderHour, reminderMinute, lang, streakDays]);
 
   // A tap on the notification opens that day's verse, both from a cold start and while running.
   useEffect(() => {

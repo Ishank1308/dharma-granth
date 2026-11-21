@@ -39,6 +39,8 @@ interface AppState {
   lang: Lang;
   /** Light effects in use (the reader's choice, or Automatic on a budget phone). Also on palette.lite. */
   lightEffects: boolean;
+  /** Android's "Remove animations" (or the platform's reduce-motion switch) is on: sheets and screens appear without sliding. */
+  reduceMotion: boolean;
   bookmarks: Bookmark[];
   lastRead: LastRead | null;
   /** Verses read and the days read on, for progress bars and the reading streak. */
@@ -214,6 +216,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       settings,
       palette,
       lightEffects,
+      reduceMotion,
       lang: resolveLanguage(settings.language),
       bookmarks,
       lastRead,
@@ -233,6 +236,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       settings,
       palette,
       lightEffects,
+      reduceMotion,
       bookmarks,
       lastRead,
       progress,
