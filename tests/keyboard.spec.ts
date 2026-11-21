@@ -75,7 +75,10 @@ test('reader: settings dialog opens with Enter, Space toggles a layer, Escape cl
   const before = await hindi.isChecked();
   await page.keyboard.press('Space');
   expect(await hindi.isChecked()).toBe(!before);
+  // The change re-renders the chapter behind the sheet; focus stays on the control just used.
+  await expect(hindi).toBeFocused();
   await page.keyboard.press('Space');
+  expect(await hindi.isChecked()).toBe(before);
 
   await page.keyboard.press('Escape');
   await expect(trigger).toHaveAttribute('aria-expanded', 'false');
