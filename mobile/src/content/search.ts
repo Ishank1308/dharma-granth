@@ -1,6 +1,7 @@
 /**
  * Offline verse search over the bundled books. Nothing loads until the first search: each book's
- * corpus is a lazy require() (generated/search-loaders.ts), prepared once and kept for later queries.
+ * corpus is read lazily (generated/search-loaders.android.ts: an APK asset; search-loaders.ts on web),
+ * prepared once and kept for later queries.
  * The search runs book by book and yields between books, so typing stays smooth.
  */
 import { CATALOG, CATEGORIES } from './catalog';
@@ -44,7 +45,12 @@ function corpus(id: string): PreparedCorpus | undefined {
   if (cached) return cached;
   const load = SEARCH_LOADERS[id];
   if (!load) return undefined;
-  const book = prepareCorpus(id, load());
+  let book: PreparedCorpus;
+  try {
+    book = prepareCorpus(id, load());
+  } catch {
+    return undefined;
+  }
   prepared.set(id, book);
   return book;
 }

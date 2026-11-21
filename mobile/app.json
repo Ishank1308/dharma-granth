@@ -82,7 +82,8 @@
           ]
         }
       ],
-      "./plugins/with-optional-portrait"
+      "./plugins/with-optional-portrait",
+      "./plugins/with-smaller-android"
     ],
     "experiments": {
       "typedRoutes": true,

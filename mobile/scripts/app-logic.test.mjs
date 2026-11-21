@@ -72,7 +72,7 @@ test('settings are clamped to safe values', () => {
 });
 
 // Philological integrity (CLAUDE.md rule 4): the reader shows every verse's complete Sanskrit.
-const BOOKS = new URL('../src/content/generated/books/', import.meta.url).pathname;
+const BOOKS = new URL('../src/content/generated/assets/content/books/', import.meta.url).pathname;
 test('bundled content keeps every Sanskrit line', { skip: !existsSync(BOOKS) && 'run `npm run content` first' }, () => {
   const strip = (s) => s.replace(/[\s|।॥0-9०-९.]/gu, '');
   let checked = 0;
