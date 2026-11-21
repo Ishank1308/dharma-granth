@@ -4,9 +4,10 @@ import { useMemo, useState } from 'react';
 import { Pressable, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Backdrop, Bilingual, Card, Chip, Eyebrow, glass, GlassRow, Muted, SectionTitle } from '@/components/ui';
+import { Backdrop, Bilingual, Card, Chip, Eyebrow, glass, GlassRow, Muted, PageTitle, SectionTitle } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import type { CatalogEntry } from '@/content/types';
+import { S, useI18n } from '@/i18n';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { RADIUS, SPACE, TYPE } from '@/theme/themes';
@@ -19,6 +20,7 @@ function matches(b: CatalogEntry, q: string) {
 
 function DailyVerseCard() {
   const { palette, settings } = useAppState();
+  const { t } = useI18n();
   const pick = useMemo(() => dailyVerse(), []);
   if (!pick) return null;
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
@@ -27,7 +29,7 @@ function DailyVerseCard() {
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel="Open the verse of the day"
+      accessibilityLabel={t(S.verseOfTheDayA11y)}
       onPress={() =>
         router.push({
           pathname: '/scripture/[id]/[chapter]',
@@ -35,7 +37,7 @@ function DailyVerseCard() {
         })
       }>
       <Card>
-        <Bilingual en="Verse of the day" hi="आज का श्लोक" size={TYPE.footnote} color={palette.accent} />
+        <Bilingual {...S.verseOfTheDay} size={TYPE.footnote} color={palette.accent} />
         <View style={{ marginTop: SPACE.sm }}>
           {lines.map((l, i) => (
             <Text
@@ -49,7 +51,7 @@ function DailyVerseCard() {
             </Text>
           ))}
         </View>
-        <Muted style={{ marginTop: SPACE.sm }}>Bhagavad Gita {formatVerseRef(pick.id, pick.chapter, verse.number)}</Muted>
+        <Muted style={{ marginTop: SPACE.sm }}>{t(S.gitaRef(formatVerseRef(pick.id, pick.chapter, verse.number)))}</Muted>
       </Card>
     </Pressable>
   );
@@ -57,6 +59,7 @@ function DailyVerseCard() {
 
 function ContinueCard() {
   const { lastRead, palette } = useAppState();
+  const { t } = useI18n();
   if (!lastRead) return null;
   const entry = getEntry(lastRead.id);
   const ch = entry?.chapters.find((c) => c.number === lastRead.chapter);
@@ -64,12 +67,12 @@ function ContinueCard() {
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`Continue reading ${entry.title}, chapter ${ch.number}`}
+      accessibilityLabel={t(S.continueReadingA11y(entry.title, ch.number))}
       onPress={() => router.push({ pathname: '/scripture/[id]/[chapter]', params: { id: entry.id, chapter: String(ch.number) } })}>
       <Card style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
         <Ionicons name="book-outline" size={24} color={palette.accent} />
         <View style={{ flex: 1 }}>
-          <Bilingual en="Continue reading" hi="पढ़ना जारी रखें" size={TYPE.footnote} color={palette.accent} />
+          <Bilingual {...S.continueReading} size={TYPE.footnote} color={palette.accent} />
           <Text style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '600', marginTop: 2 }}>
             {entry.title} · {ch.titleSanskrit ?? ch.title}
           </Text>
@@ -83,6 +86,7 @@ function ContinueCard() {
 export default function LibraryScreen() {
   const insets = useSafeAreaInsets();
   const { palette } = useAppState();
+  const { t, lang } = useI18n();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
 
@@ -109,10 +113,13 @@ export default function LibraryScreen() {
         ListHeaderComponent={
           <View style={{ rowGap: SPACE.md }}>
             <View style={{ rowGap: SPACE.sm }}>
-              <Eyebrow en="Scripture library" hi="ग्रन्थ संग्रह" />
+              <Eyebrow {...S.libraryEyebrow} />
+              {/* The name reads in both scripts; the interface language leads. */}
               <View>
-                <Text style={{ color: palette.text, fontSize: 34, fontWeight: '800', letterSpacing: -0.6 }}>Dharma Granth</Text>
-                <Text style={{ color: palette.accent, fontSize: TYPE.title2, fontWeight: '600' }}>धर्म ग्रन्थ</Text>
+                <PageTitle {...S.appName} />
+                <Text style={{ color: palette.accent, fontSize: TYPE.title2, fontWeight: '600' }}>
+                  {lang === 'hi' ? S.appName.en : S.appName.hi}
+                </Text>
               </View>
             </View>
             <ContinueCard />
@@ -122,10 +129,10 @@ export default function LibraryScreen() {
               <TextInput
                 value={query}
                 onChangeText={setQuery}
-                placeholder="Search scriptures / ग्रन्थ खोजें"
+                placeholder={t(S.searchPlaceholder)}
                 placeholderTextColor={palette.muted}
                 style={{ flex: 1, color: palette.text, fontSize: TYPE.callout, paddingVertical: SPACE.sm }}
-                accessibilityLabel="Search scriptures"
+                accessibilityLabel={t(S.searchPlaceholder)}
                 autoCorrect={false}
               />
             </View>
@@ -144,11 +151,11 @@ export default function LibraryScreen() {
               <Ionicons name="chevron-forward" size={18} color={palette.muted} />
             </Pressable>
             <View style={styles.chips}>
-              <Chip label="All · सभी" active={!category} onPress={() => setCategory(null)} />
+              <Chip label={t(S.filterAll)} active={!category} onPress={() => setCategory(null)} />
               {CATEGORIES.map((c) => (
                 <Chip
                   key={c.key}
-                  label={`${c.en} · ${c.hi}`}
+                  label={t(c)}
                   active={category === c.key}
                   onPress={() => setCategory(category === c.key ? null : c.key)}
                 />
@@ -159,23 +166,23 @@ export default function LibraryScreen() {
         renderSectionHeader={({ section }) => <SectionTitle en={section.en} hi={section.hi} />}
         renderItem={({ item }) => (
           <GlassRow
-            accessibilityLabel={`${item.title}, ${item.chapters.length} chapters`}
+            accessibilityLabel={t(S.bookA11y(item.title, item.chapters.length))}
             onPress={() => router.push({ pathname: '/scripture/[id]', params: { id: item.id } })}>
             <View style={{ flex: 1 }}>
               <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
               <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
-                {item.title} · {item.chapters.length} ch · {item.totalVerses.toLocaleString('en-IN')} verses
+                {item.title} · {t(S.bookSummary(item.chapters.length, item.totalVerses))}
               </Text>
             </View>
             {item.bundled ? (
-              <Ionicons name="download-outline" size={16} color={palette.gold} accessibilityLabel="Available offline" />
+              <Ionicons name="download-outline" size={16} color={palette.gold} accessibilityLabel={t(S.availableOffline)} />
             ) : (
-              <Ionicons name="globe-outline" size={16} color={palette.muted} accessibilityLabel="Opens on dharmagranth.dev" />
+              <Ionicons name="globe-outline" size={16} color={palette.muted} accessibilityLabel={t(S.opensOnWebsite)} />
             )}
             <Ionicons name="chevron-forward" size={18} color={palette.muted} />
           </GlassRow>
         )}
-        ListEmptyComponent={<Muted style={{ marginTop: SPACE.xl, textAlign: 'center' }}>No scripture matches “{query}”.</Muted>}
+        ListEmptyComponent={<Muted style={{ marginTop: SPACE.xl, textAlign: 'center' }}>{t(S.noMatch(query))}</Muted>}
       />
     </Backdrop>
   );

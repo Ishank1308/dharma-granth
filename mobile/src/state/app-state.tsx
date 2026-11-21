@@ -14,6 +14,7 @@ import {
   type LastRead,
   type Settings,
 } from '@/lib/backup';
+import { resolveLanguage, type Lang } from '@/i18n/language';
 import { THEMES, type Palette } from '@/theme/themes';
 
 /** Everything stays on the device, under these keys. */
@@ -27,6 +28,8 @@ interface AppState {
   ready: boolean;
   settings: Settings;
   palette: Palette;
+  /** The interface language in effect: the reader's choice, or the phone's language. */
+  lang: Lang;
   bookmarks: Bookmark[];
   lastRead: LastRead | null;
   updateSettings: (patch: Partial<Settings>) => void;
@@ -137,6 +140,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       ready,
       settings,
       palette: THEMES[settings.theme],
+      lang: resolveLanguage(settings.language),
       bookmarks,
       lastRead,
       updateSettings,
