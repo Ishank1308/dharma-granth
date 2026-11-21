@@ -809,7 +809,10 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
 
 /* ── 12. Dynamic Fluid Sanctuary Background (Prana Fluid Canvas) ───────
    Organic morphing fluid mesh and subtle undulating river currents.
-   Compositor-only transforms and border-radius morphing with hardware acceleration. */
+   Transform-only, so the compositor runs it. Each blob keeps one lopsided shape and the
+   drift, scale and turn give the morph; under an 80px blur that reads the same as the
+   border-radius keyframes it used to have, which repainted four 600px blurred layers on
+   the main thread every frame (most of the home page's idle work on a phone). */
 .prana-fluid-stage {
     position: absolute;
     inset: 0;
@@ -824,8 +827,17 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
     border-radius: 50%;
     filter: blur(80px);
     opacity: var(--prana-opacity, 0.22);
-    will-change: transform, border-radius;
+    will-change: transform;
     transform-origin: center center;
+}
+.prana-blob-1 {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+}
+.prana-blob-2 {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+.prana-blob-3 {
+    border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
 }
 
 :root[data-theme='sunset'] .prana-blob {
@@ -848,53 +860,42 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
 @keyframes fluid-morph-1 {
     0% {
         transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
     }
     33% {
         transform: translate3d(4vw, -3vh, 0) scale(1.12) rotate(120deg);
-        border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
     }
     66% {
         transform: translate3d(-3vw, 4vh, 0) scale(0.92) rotate(240deg);
-        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
     }
     100% {
         transform: translate3d(0, 0, 0) scale(1) rotate(360deg);
-        border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
     }
 }
 
 @keyframes fluid-morph-2 {
     0% {
         transform: translate3d(0, 0, 0) scale(1.05) rotate(0deg);
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
     33% {
         transform: translate3d(-4vw, 4vh, 0) scale(0.95) rotate(-120deg);
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
     }
     66% {
         transform: translate3d(3vw, -2vh, 0) scale(1.1) rotate(-240deg);
-        border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
     }
     100% {
         transform: translate3d(0, 0, 0) scale(1.05) rotate(-360deg);
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
 }
 
 @keyframes fluid-morph-3 {
     0% {
         transform: translate3d(0, 0, 0) scale(0.98) rotate(0deg);
-        border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
     }
     50% {
         transform: translate3d(3vw, 3vh, 0) scale(1.08) rotate(180deg);
-        border-radius: 65% 35% 55% 45% / 45% 55% 35% 65%;
     }
     100% {
         transform: translate3d(0, 0, 0) scale(0.98) rotate(360deg);
-        border-radius: 50% 50% 45% 55% / 55% 45% 55% 45%;
     }
 }
 
