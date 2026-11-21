@@ -1,15 +1,18 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { router } from 'expo-router';
-import { useMemo, type ReactNode } from 'react';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback, useMemo, useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Backdrop, Card, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
+import { MoonPhase } from '@/components/moon-phase';
+import { accentFill, Backdrop, Card, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
 import { CATALOG, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
+import { daysBetween, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { FEATURED, LIFE_GUIDES, PRACTICE_GUIDES, SAYINGS, SHELF, WISDOM_PICKS, type Guide, type Passage } from '@/content/home-picks';
 import { knowledge } from '@/content/knowledge';
 import { S, useI18n, type Msg } from '@/i18n';
+import { usePanchangCity } from '@/lib/panchang-city';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
@@ -312,6 +315,87 @@ function VerseOfTheDay() {
   );
 }
 
+/**
+ * Today's Panchang, as the website home's "Kāla-Darśana" card: the moon, the tithi and paksha, nakshatra,
+ * sunrise and sunset for the city saved on the Panchang screen, the next festival, and the way into
+ * Panchang, Festivals and Mantras (src/app/explore).
+ */
+function PanchangCard() {
+  const { palette } = useAppState();
+  const { t, lang } = useI18n();
+  const pressed = usePressed();
+  const hues = huesFor(palette);
+  const [city] = usePanchangCity();
+  // Recomputed whenever Home comes back into view, so the day turns over even if the app stays open.
+  const [now, setNow] = useState(() => new Date());
+  useFocusEffect(useCallback(() => setNow(new Date()), []));
+  const today = useMemo(() => todayPanchang(city, now), [city, now]);
+  const next = upcomingFestivals(today.isoDate, 1)[0];
+  const tithi = lang === 'hi' ? today.tithi.nameHi : today.tithi.transliteration;
+  const paksha = lang === 'hi' ? today.paksha.nameHi : today.paksha.transliteration;
+  const nakshatra = lang === 'hi' ? today.nakshatra.nameHi : today.nakshatra.transliteration;
+  const cityName = lang === 'hi' ? today.location.nameHi : today.location.name;
+  const fact = (icon: 'sunny-outline' | 'moon-outline' | 'star-outline', label: string, value: string, color: string) => (
+    <View style={[styles.fact, { backgroundColor: quietFill(palette) }]}>
+      <Ionicons name={icon} size={14} color={color} />
+      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
+        {label}
+      </Text>
+      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.caption, fontWeight: '700' }}>
+        {value}
+      </Text>
+    </View>
+  );
+  const pill = (label: string, href: string, primary = false) => (
+    <Pressable
+      key={href}
+      accessibilityRole="link"
+      accessibilityLabel={label}
+      onPress={() => open(href)}
+      style={({ pressed: p }) => [styles.pill, primary ? accentFill(palette) : glass(palette), p && { opacity: 0.8 }]}>
+      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: primary ? palette.onAccent : palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+  return (
+    <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`${t(S.openPanchangA11y)}. ${tithi}, ${paksha}, ${nakshatra}`}
+        onPress={() => open('/explore/panchang')}
+        style={({ pressed: p }) => [{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }, pressed(p)]}>
+        <MoonPhase illumination={today.paksha.illuminationPercent} waxing={today.paksha.isWaxing} size={56} />
+        <View style={{ flex: 1 }}>
+          <Kicker color={palette.accent}>{t(S.todayAt(cityName))}</Kicker>
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '800', marginTop: 2 }}>
+            {tithi}
+          </Text>
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
+            {paksha} · {Math.round(today.paksha.illuminationPercent)}%
+          </Text>
+        </View>
+        <Ionicons name="chevron-forward" size={20} color={palette.muted} />
+      </Pressable>
+      <View style={styles.facts}>
+        {fact('star-outline', t(S.limbNakshatra), nakshatra, hues.indigo)}
+        {fact('sunny-outline', t(S.sunrise), today.solarTimes.sunrise, hues.gold)}
+        {fact('moon-outline', t(S.sunset), today.solarTimes.sunset, hues.vermilion)}
+      </View>
+      {next ? (
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.textSecondary, fontSize: TYPE.footnote }}>
+          {t(S.nextFestival)}: <Text style={{ fontWeight: '700' }}>{lang === 'hi' ? (next.nameHindi ?? next.name) : next.name}</Text> · {t(S.inDays(daysBetween(today.isoDate, next.date)))}
+        </Text>
+      ) : null}
+      <View style={styles.pills}>
+        {pill(t(S.panchangTitle), '/explore/panchang', true)}
+        {pill(t(S.festivalsTitle), '/explore/festivals')}
+        {pill(t(S.mantrasTitle), '/explore/mantras')}
+      </View>
+    </Card>
+  );
+}
+
 function SectionHead({ title, detail, action }: { title: string; detail?: string; action?: ReactNode }) {
   const { palette } = useAppState();
   return (
@@ -572,6 +656,7 @@ export default function HomeScreen() {
         <QuickTiles />
         <ContinueCard />
         <VerseOfTheDay />
+        <PanchangCard />
         <Shelf />
         <Guides />
         <Wisdom />
@@ -653,6 +738,10 @@ const styles = StyleSheet.create({
   bookFrame: { position: 'absolute', top: 6, left: 6, right: 6, bottom: 6, borderWidth: 1, borderRadius: RADIUS.row - 6 },
   guideHead: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md, paddingHorizontal: SPACE.lg, paddingTop: SPACE.lg, paddingBottom: SPACE.sm },
   guideIcon: { width: 32, height: 32, borderRadius: 9, alignItems: 'center', justifyContent: 'center' },
+  fact: { flexDirection: 'row', alignItems: 'center', columnGap: 5, paddingHorizontal: SPACE.sm + 2, paddingVertical: 6, borderRadius: RADIUS.pill },
+  facts: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
+  pills: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: 'rgba(128,128,128,0.25)', paddingTop: SPACE.md },
+  pill: { minHeight: TOUCH - 4, paddingHorizontal: SPACE.lg, borderRadius: RADIUS.pill, justifyContent: 'center' },
   wisdomGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.md },
   wisdomTile: { width: '47.5%', flexGrow: 1, minHeight: 104, borderRadius: RADIUS.card, padding: SPACE.lg, paddingLeft: SPACE.lg + 4, rowGap: SPACE.xs, overflow: 'hidden' },
   wisdomStripe: { position: 'absolute', left: 0, top: 0, bottom: 0, width: 4 },
