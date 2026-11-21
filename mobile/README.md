@@ -6,7 +6,7 @@ and English, readable offline, no account.
 ## What it does
 
 - **Library** of all 66 scriptures, grouped like the website (Vedas, Upanishads, Itihasa, Puranas…),
-  with search, a verse of the day and "continue reading".
+  with search, a verse of the day (with an opt-in daily notification) and "continue reading".
 - **Offline reader** for 44 texts whose verse data ships inside the app (Bhagavad Gita, the principal
   Upanishads, Yoga Sutras, Brahma Sutra, Durga Saptashati, Vidura Niti, Manusmriti, Sama and Yajur Veda,
   Vinaya Patrika, Ramcharitmanas and more). Each verse shows the complete Sanskrit, transliteration, Hindi and English,

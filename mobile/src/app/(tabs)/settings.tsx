@@ -1,16 +1,125 @@
+import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { File, Paths } from 'expo-file-system';
+import { useFocusEffect } from 'expo-router';
 import * as Sharing from 'expo-sharing';
-import { useState } from 'react';
-import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { useCallback, useState } from 'react';
+import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { accentFill, Backdrop, Bilingual, Card, Eyebrow, glass, Muted, SectionTitle } from '@/components/ui';
 import { CATALOG, SITE } from '@/content/catalog';
 import { makeBackup, parseBackup } from '@/lib/backup';
+import {
+  getReminderPermission,
+  remindersSupported,
+  requestReminderPermission,
+  type ReminderPermission,
+} from '@/lib/daily-notification';
+import { formatReminderTime } from '@/lib/reminder';
 import { useAppState } from '@/state/app-state';
 import { RADIUS, SPACE, THEME_ORDER, THEMES, TYPE } from '@/theme/themes';
 
 const SCALES = [0.9, 1, 1.15, 1.3, 1.5];
+
+/** Opt-in daily verse notification: a switch and a time. Scheduled on the phone, nothing sent anywhere. */
+function DailyVerseSettings() {
+  const { palette, settings, updateSettings } = useAppState();
+  const [permission, setPermission] = useState<ReminderPermission>('undetermined');
+  const time = new Date(2000, 0, 1, settings.reminderHour, settings.reminderMinute);
+
+  // Re-check on every visit: the reader may have turned notifications off in Android settings.
+  useFocusEffect(
+    useCallback(() => {
+      let alive = true;
+      getReminderPermission()
+        .then((p) => alive && setPermission(p))
+        .catch(() => {});
+      return () => {
+        alive = false;
+      };
+    }, []),
+  );
+
+  const openSystemSettings = () => Linking.openSettings().catch(() => {});
+
+  const toggle = async (on: boolean) => {
+    if (!on) {
+      updateSettings({ dailyReminder: false });
+      return;
+    }
+    const p = await requestReminderPermission().catch((): ReminderPermission => 'denied');
+    setPermission(p);
+    if (p === 'granted') {
+      updateSettings({ dailyReminder: true });
+    } else {
+      Alert.alert('Notifications are off', 'Allow notifications for Dharma Granth in your phone settings to get the daily verse.', [
+        { text: 'Not now', style: 'cancel' },
+        { text: 'Open settings', onPress: openSystemSettings },
+      ]);
+    }
+  };
+
+  const setTime = (d: Date) => updateSettings({ reminderHour: d.getHours(), reminderMinute: d.getMinutes() });
+
+  const pickTime = () =>
+    DateTimePickerAndroid.open({
+      mode: 'time',
+      value: time,
+      onValueChange: (_e, d) => setTime(d),
+    });
+
+  const blocked = settings.dailyReminder && permission === 'denied';
+
+  return (
+    <>
+      <SectionTitle en="Daily verse" hi="दैनिक श्लोक" />
+      <Card style={{ paddingVertical: SPACE.xs }}>
+        <View style={styles.toggle}>
+          <View style={{ flex: 1 }}>
+            <Bilingual en="Verse of the day notification" hi="आज के श्लोक की सूचना" weight="500" />
+          </View>
+          <Switch
+            value={settings.dailyReminder}
+            onValueChange={(v) => void toggle(v)}
+            trackColor={{ true: palette.accent, false: palette.dark ? '#48484a' : palette.border }}
+            thumbColor="#fff"
+            {...({ activeThumbColor: '#fff' } as object)}
+            accessibilityLabel="Verse of the day notification"
+          />
+        </View>
+        {settings.dailyReminder ? (
+          <View style={[styles.toggle, { borderTopWidth: StyleSheet.hairlineWidth, borderColor: palette.border }]}>
+            <Bilingual en="Time" hi="समय" style={{ flex: 1 }} weight="500" />
+            {Platform.OS === 'ios' ? (
+              <DateTimePicker mode="time" display="compact" value={time} onValueChange={(_e, d) => setTime(d)} />
+            ) : (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={`Notification time ${formatReminderTime(settings.reminderHour, settings.reminderMinute)}. Change`}
+                onPress={pickTime}
+                style={[styles.timeBtn, glass(palette, true)]}>
+                <Text style={{ color: palette.accent, fontWeight: '700', fontSize: TYPE.callout }}>
+                  {formatReminderTime(settings.reminderHour, settings.reminderMinute)}
+                </Text>
+              </Pressable>
+            )}
+          </View>
+        ) : null}
+      </Card>
+      {blocked ? (
+        <Pressable accessibilityRole="button" onPress={openSystemSettings} style={{ marginTop: SPACE.sm }}>
+          <Text style={{ color: palette.accent, fontWeight: '600' }}>
+            Notifications are turned off for this app. Open phone settings to allow them.
+          </Text>
+        </Pressable>
+      ) : (
+        <Muted style={{ marginTop: SPACE.sm }}>
+          One Bhagavad Gita verse each day, in full, at the time you pick. Scheduled on this phone; nothing is sent anywhere.
+        </Muted>
+      )}
+    </>
+  );
+}
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
@@ -126,6 +235,8 @@ export default function SettingsScreen() {
         </Card>
         <Muted style={{ marginTop: SPACE.sm }}>The Sanskrit text is always shown in full.</Muted>
 
+        {remindersSupported ? <DailyVerseSettings /> : null}
+
         <SectionTitle en="Backup" hi="बैकअप" />
         <Card style={{ rowGap: SPACE.md }}>
           <Muted>
@@ -169,4 +280,5 @@ const styles = StyleSheet.create({
   toggle: { flexDirection: 'row', alignItems: 'center', paddingVertical: SPACE.md, columnGap: SPACE.md },
   btn: { flex: 1, borderRadius: RADIUS.pill, paddingVertical: SPACE.md, alignItems: 'center' },
   btnText: { color: '#fff', fontWeight: '700' },
+  timeBtn: { borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, paddingHorizontal: SPACE.lg },
 });
