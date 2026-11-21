@@ -4,6 +4,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import test from 'node:test';
 
 import {
+  CorpusChunker,
   devSearchForm,
   devToIndex,
   englishToIndex,
@@ -15,6 +16,8 @@ import {
   prepareCorpus,
   rankHits,
   searchCorpus,
+  shiftChunkHits,
+  verseToCorpusLine,
 } from '../src/lib/verse-search.ts';
 
 function corpusOf(verses) {
@@ -147,4 +150,61 @@ test('little words need not match, but count towards the phrase', () => {
   assert.equal(parseQuery('of the').every((t) => !t.stop), true);
   const s = makeSnippet(GITA, 0, parseQuery('to action alone'));
   assert.deepEqual(s.marks.map(([a, b]) => s.text.slice(a, b)), ['to action alone']);
+});
+
+// Downloaded books are indexed on the phone in chunks (src/content/download-index.ts) and searched one
+// chunk at a time. That must find exactly what one whole-book corpus finds, with the same verse places.
+function chunkedSearch(chapters, chunkChars, queries) {
+  const whole = { d: [], t: [], e: [], n: [], c: [] };
+  for (const ch of chapters) {
+    whole.c.push([ch.number, ch.verses.length]);
+    for (const v of ch.verses) {
+      const line = verseToCorpusLine(v);
+      for (const k of ['d', 't', 'e', 'n']) whole[k].push(line[k]);
+    }
+  }
+  const book = prepareCorpus('x', { d: whole.d.join('\n'), t: whole.t.join('\n'), e: whole.e.join('\n'), n: whole.n.join('\n'), c: whole.c });
+  const chunks = [];
+  const chunker = new CorpusChunker(chunkChars, (chunk) => chunks.push(chunk));
+  for (const ch of chapters) ch.verses.forEach((v, i) => chunker.addVerse(ch.number, i, v));
+  chunker.flush();
+  assert.equal(chunks.reduce((a, c) => a + c.lines, 0), whole.n.length);
+  const prepared = chunks.map((c) => ({ ...c, book: prepareCorpus('x', c.corpus) }));
+  for (const q of queries) {
+    const tokens = parseQuery(q);
+    const expected = searchCorpus(book, tokens);
+    const got = prepared.flatMap((c) => shiftChunkHits(searchCorpus(c.book, tokens), c.book, c));
+    assert.deepEqual(got, expected, q);
+    for (const h of got) {
+      const c = prepared.find((p) => h.line >= p.start && h.line < p.start + p.lines);
+      assert.deepEqual(makeSnippet(c.book, h.line - c.start, tokens), makeSnippet(book, h.line, tokens), q);
+    }
+  }
+  return chunks;
+}
+
+test('a book searched chunk by chunk finds the same verses in the same places', () => {
+  const words = ['धर्म', 'कर्म', 'शान्ति', 'योग'];
+  const chapters = [1, 2, 3].map((number) => ({
+    number,
+    verses: Array.from({ length: number === 2 ? 40 : 7 }, (_, i) => ({
+      number: `${number}.${i + 1}`,
+      sanskrit: `${words[i % 4]} श्लोक ${number} पद ${words[(i + number) % 4]}`,
+      hindi: 'अर्थ',
+      transliteration: `dharma shloka ${i}`,
+      translation: `Verse ${i} of chapter ${number} about ${['duty', 'action', 'peace', 'union'][i % 4]}.`,
+    })),
+  }));
+  const chunks = chunkedSearch(chapters, 300, ['धर्म', 'शांति', 'kshetra', 'dharma', 'peace', 'action duty', 'chapter 2']);
+  assert.ok(chunks.length > 5, 'small chunks split the long chapter');
+  assert.ok(chunks.some((c) => c.firstIndex > 0), 'a chapter continues across chunks');
+});
+
+const DATA = new URL('../../public/data/scriptures-full/', import.meta.url).pathname;
+test('the Mahabharata searched in chunks matches the whole book', { skip: !existsSync(DATA + 'mahabharata') && !existsSync(DATA + 'mahabharata.json.gz') && 'no published data' }, async () => {
+  const { openBook } = await import('./content-lib.mjs');
+  const book = openBook(DATA, 'mahabharata');
+  const chapters = book.chapters.map((c) => ({ number: c.number, verses: book.readVerses(c.number) }));
+  const chunks = chunkedSearch(chapters, 1_500_000, ['धर्म', 'krishna', 'arjuna', 'नारायणं नमस्कृत्य', 'king']);
+  assert.ok(chunks.length > 1);
 });

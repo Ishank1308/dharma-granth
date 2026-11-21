@@ -46,6 +46,17 @@ export const S = {
   availableOffline: { en: 'Available offline', hi: 'बिना इंटरनेट उपलब्ध' },
   opensOnWebsite: { en: 'Opens on dharmagranth.dev', hi: 'dharmagranth.dev पर खुलेगा' },
   noMatch: (query: string) => ({ en: `No scripture matches “${query}”.`, hi: `“${query}” से मिलता कोई ग्रन्थ नहीं मिला।` }),
+  searchInsideVerses: { en: 'Search inside verses', hi: 'श्लोकों में खोजें' },
+  searchVersesFor: (query: string) => ({ en: `Search verses for “${query}”`, hi: `श्लोकों में “${query}” खोजें` }),
+
+  // Verse search results
+  searchResultCount: (total: number) => ({ en: `${n(total)} ${total === 1 ? 'verse' : 'verses'}`, hi: `${n(total)} श्लोक` }),
+  searchResultBest: (shown: number, total: number) => ({
+    en: `Best ${n(shown)} of ${n(total)} verses`,
+    hi: `${n(total)} श्लोकों में से सबसे मिलते ${n(shown)}`,
+  }),
+  searching: { en: 'Searching…', hi: 'खोज रहे हैं…' },
+  searchTooShort: { en: 'Type at least two letters.', hi: 'कम से कम दो अक्षर लिखें।' },
 
   // Scripture (chapter list)
   notFoundTitle: { en: 'Not found', hi: 'नहीं मिला' },
@@ -74,6 +85,21 @@ export const S = {
   shareVerseA11y: (ref: string) => ({ en: `Share verse ${ref}`, hi: `श्लोक ${ref} शेयर करें` }),
   bookmarkVerseA11y: (ref: string) => ({ en: `Save verse ${ref}`, hi: `श्लोक ${ref} सहेजें` }),
   unbookmarkVerseA11y: (ref: string) => ({ en: `Remove saved verse ${ref}`, hi: `सहेजा श्लोक ${ref} हटाएँ` }),
+  listenVerseA11y: (ref: string) => ({ en: `Listen to verse ${ref}`, hi: `श्लोक ${ref} सुनें` }),
+  pauseVerseA11y: (ref: string) => ({ en: `Pause verse ${ref}`, hi: `श्लोक ${ref} रोकें` }),
+  retryVerseA11y: (ref: string) => ({ en: `Verse ${ref} could not load. Try again`, hi: `श्लोक ${ref} नहीं चल सका। फिर से कोशिश करें` }),
+
+  // Recitation (reader toolbar)
+  listenChapterA11y: (verse: string) => ({
+    en: `Listen to the Sanskrit recitation from verse ${verse}`,
+    hi: `श्लोक ${verse} से संस्कृत पाठ सुनें`,
+  }),
+  pauseRecitation: { en: 'Pause recitation', hi: 'पाठ रोकें' },
+  resumeRecitation: { en: 'Resume recitation', hi: 'पाठ फिर से चलाएँ' },
+  retryRecitation: { en: 'Recitation could not load. Try again', hi: 'पाठ नहीं चल सका। फिर से कोशिश करें' },
+  stopRecitation: { en: 'Stop recitation', hi: 'पाठ बंद करें' },
+  recitingVerse: (verse: string, total: number) => ({ en: `Reciting ${verse} of ${n(total)}`, hi: `पाठ: श्लोक ${verse} / ${n(total)}` }),
+  recitationCredit: { en: 'Recitation voice made with ElevenLabs', hi: 'पाठ की आवाज़ ElevenLabs से बनी है' },
   labelHindi: { en: 'Hindi', hi: 'हिन्दी अर्थ' },
   labelEnglish: { en: 'English', hi: 'अंग्रेज़ी अनुवाद' },
   labelHindiRange: (range: string) => ({ en: `Hindi for verses ${range.replace('-', '–')}`, hi: `श्लोक ${range.replace('-', '–')} का हिन्दी अर्थ` }),
@@ -139,6 +165,14 @@ export const S = {
   showHindi: { en: 'Hindi meaning', hi: 'हिन्दी अर्थ' },
   showEnglish: { en: 'English translation', hi: 'अंग्रेज़ी अनुवाद' },
   showNotes: { en: 'Open notes by default', hi: 'टिप्पणी पहले से खुली रखें' },
+  effects: { en: 'Visual effects', hi: 'दृश्य प्रभाव' },
+  effectsAuto: { en: 'Automatic', hi: 'अपने-आप' },
+  effectsFull: { en: 'Full glass', hi: 'पूरा ग्लास' },
+  effectsLight: { en: 'Light', hi: 'हल्का' },
+  effectsNote: (lightNow: boolean) => ({
+    en: `Light keeps the colours but drops the shadows and sheen on cards, so long lists scroll smoothly on budget phones. Automatic picks it on older or entry-level phones and when animations are turned off. In use now: ${lightNow ? 'Light' : 'Full glass'}.`,
+    hi: `हल्का प्रभाव रंग वैसे ही रखता है, पर कार्ड की छाया और चमक हटा देता है, ताकि सस्ते फ़ोन पर भी लम्बी सूचियाँ आराम से स्क्रॉल हों। 'अपने-आप' पुराने या कम क्षमता वाले फ़ोन पर, और ऐनिमेशन बंद होने पर, इसे चुन लेता है। अभी: ${lightNow ? 'हल्का' : 'पूरा ग्लास'}।`,
+  }),
   sanskritAlwaysFull: { en: 'The Sanskrit text is always shown in full.', hi: 'संस्कृत मूल पाठ हमेशा पूरा दिखाया जाता है।' },
   backup: { en: 'Backup', hi: 'बैकअप' },
   backupBody: (saved: number) => ({
@@ -211,5 +245,45 @@ export const S = {
     hi: `यह अध्याय बिना इंटरनेट पढ़ने के लिए ${title} डाउनलोड करें।`,
   }),
   goToDownload: { en: 'Go to download', hi: 'डाउनलोड पर जाएँ' },
-} satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 
+  // Verse search over downloaded texts (src/content/download-index.ts)
+  searchIntro: (texts: number, downloaded: number) => ({
+    en: `Sanskrit, Hindi, transliteration or English, across ${n(texts)} texts${downloaded ? `, including the ${n(downloaded)} you downloaded` : ''}. Works offline.`,
+    hi: `संस्कृत, हिन्दी, लिप्यन्तरण या अंग्रेज़ी में, ${n(texts)} ग्रन्थों में${downloaded ? `, जिनमें आपके डाउनलोड किए ${n(downloaded)} भी हैं` : ''}। बिना इंटरनेट चलता है।`,
+  }),
+  searchPreparingDownloads: (titles: string) => ({
+    en: `Getting ${titles} ready for search. Their verses will show up here in a moment.`,
+    hi: `${titles} को खोज के लिए तैयार कर रहे हैं। इनके श्लोक थोड़ी देर में यहाँ दिखेंगे।`,
+  }),
+
+  // Redesign: floating tab bar, large headers, reader toolbar and sheets
+  tabA11y: (label: string, position: number, count: number) => ({
+    en: `${label}, tab ${position} of ${count}`,
+    hi: `${label}, ${count} में से टैब ${position}`,
+  }),
+  librarySummary: (offline: number, toDownload: number) => ({
+    en: `${n(offline)} texts on this phone${toDownload ? ` · ${n(toDownload)} to download` : ''}`,
+    hi: `इस फ़ोन में ${n(offline)} ग्रन्थ${toDownload ? ` · ${n(toDownload)} डाउनलोड के लिए` : ''}`,
+  }),
+  onThisPhone: { en: 'On this phone', hi: 'इस फ़ोन में' },
+  savedCount: (count: number) => ({ en: `${n(count)} saved`, hi: `${n(count)} सहेजे गए` }),
+  readingNow: { en: 'Reading now', hi: 'अभी पढ़ रहे हैं' },
+  continueChapter: (num: number) => ({ en: `Continue at chapter ${num}`, hi: `अध्याय ${num} से आगे पढ़ें` }),
+  readingOptions: { en: 'Reading options', hi: 'पढ़ने के विकल्प' },
+  close: { en: 'Close', hi: 'बंद करें' },
+  jumpToVerse: { en: 'Go to verse', hi: 'श्लोक पर जाएँ' },
+  jumpToVerseA11y: (verse: string, total: number) => ({
+    en: `Verse ${verse} of ${n(total)}. Go to another verse`,
+    hi: `${n(total)} में से श्लोक ${verse}। किसी और श्लोक पर जाएँ`,
+  }),
+  verseOf: (verse: string, total: number) => ({ en: `Verse ${verse} of ${n(total)}`, hi: `श्लोक ${verse} / ${n(total)}` }),
+  nextChapterLabel: { en: 'Next chapter', hi: 'अगला अध्याय' },
+  firstChapter: { en: 'This is the first chapter', hi: 'यह पहला अध्याय है' },
+  lastChapter: { en: 'This is the last chapter', hi: 'यह आख़िरी अध्याय है' },
+  savedSummary: (count: number) => ({
+    en: `${n(count)} ${count === 1 ? 'verse' : 'verses'} · kept on this phone only`,
+    hi: `${n(count)} श्लोक · केवल इसी फ़ोन में`,
+  }),
+  savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
+  startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+} satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
