@@ -21,6 +21,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="home" options={{ title: t(S.tabHome) }} />
       <Tabs.Screen name="index" options={{ title: t(S.tabLibrary) }} />
       <Tabs.Screen name="bookmarks" options={{ title: t(S.tabSaved) }} />
+      <Tabs.Screen name="explore" options={{ title: t(S.tabExplore) }} />
       <Tabs.Screen name="settings" options={{ title: t(S.tabSettings) }} />
     </Tabs>
   );

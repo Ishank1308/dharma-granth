@@ -15,6 +15,7 @@ const TABS: Record<string, { label: Msg; icon: IconName; iconActive: IconName }>
   home: { label: S.tabHome, icon: 'home-outline', iconActive: 'home' },
   index: { label: S.tabLibrary, icon: 'book-outline', iconActive: 'book' },
   bookmarks: { label: S.tabSaved, icon: 'bookmark-outline', iconActive: 'bookmark' },
+  explore: { label: S.tabExplore, icon: 'compass-outline', iconActive: 'compass' },
   settings: { label: S.tabSettings, icon: 'settings-outline', iconActive: 'settings' },
 };
 
