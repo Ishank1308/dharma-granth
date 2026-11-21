@@ -5,16 +5,20 @@ import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, TextInput, Vi
 
 import { Backdrop, Bilingual, Card, Chip, glass, Muted } from '@/components/ui';
 import { getEntry } from '@/content/catalog';
+import { useDownloads } from '@/content/downloads';
 import {
+  BUNDLED_SEARCHABLE_COUNT,
   MAX_RESULTS,
-  SEARCH_SECTIONS,
-  SEARCHABLE_COUNT,
+  prepareSearchIndexes,
+  searchSections,
   searchVerses,
   snippetFor,
+  useSearchIndexing,
   type QueryToken,
   type SearchResult,
   type VerseHit,
 } from '@/content/search';
+import { S, useI18n } from '@/i18n';
 import { formatVerseRef } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import type { Palette } from '@/theme/themes';
@@ -97,13 +101,21 @@ const ResultCard = memo(function ResultCard({
 export default function SearchScreen() {
   const params = useLocalSearchParams<{ q?: string }>();
   const { palette, settings } = useAppState();
+  const { t } = useI18n();
   const [query, setQuery] = useState(typeof params.q === 'string' ? params.q : '');
   const [section, setSection] = useState<string | null>(null);
+  // Downloaded large texts are searched too. Their index is built during the download; a text
+  // downloaded by an older version of the app gets one built here, in the background.
+  const { installed } = useDownloads();
+  const downloaded = useMemo(() => Object.keys(installed).sort(), [installed]);
+  const indexing = useSearchIndexing();
+  const sections = useMemo(() => searchSections(downloaded), [downloaded]);
+  useEffect(() => prepareSearchIndexes(downloaded), [downloaded]);
   // The last finished search, tagged with what it searched for, so a newer query shows as busy.
   const [done, setDone] = useState<{ key: string; result: SearchResult } | null>(null);
   const run = useRef(0);
   const q = query.trim();
-  const key = `${section ?? ''}\u0000${q}`;
+  const key = `${section ?? ''}\u0000${q}\u0000${downloaded.join(',')}\u0000${indexing.generation}`;
   const result: SearchResult | null = q !== '' && done ? done.result : null;
   const busy = !!q && done?.key !== key;
 
@@ -176,7 +188,7 @@ export default function SearchScreen() {
               </View>
               <View style={styles.chips}>
                 <Chip label="All · सभी" active={!section} onPress={() => setSection(null)} />
-                {SEARCH_SECTIONS.map((c) => (
+                {sections.map((c) => (
                   <Chip
                     key={c.key}
                     label={`${c.en} · ${c.hi}`}
@@ -186,6 +198,9 @@ export default function SearchScreen() {
                 ))}
               </View>
               {status ? <Muted>{status}</Muted> : null}
+              {indexing.pending.length > 0 ? (
+                <Muted>{t(S.searchPreparingDownloads(indexing.pending.map((id) => getEntry(id)?.title ?? id).join(', ')))}</Muted>
+              ) : null}
             </View>
           }
           renderItem={({ item }) => (
@@ -196,7 +211,7 @@ export default function SearchScreen() {
               <Card>
                 <Bilingual en="Search inside the verses" hi="श्लोकों में खोजें" color={palette.accent} />
                 <Muted style={{ marginTop: SPACE.sm }}>
-                  Sanskrit, Hindi, transliteration or English, across the {SEARCHABLE_COUNT} texts in the app. Works offline.
+                  {t(S.searchIntro(BUNDLED_SEARCHABLE_COUNT + downloaded.length, downloaded.length))}
                 </Muted>
                 <View style={[styles.chips, { marginTop: SPACE.md }]}>
                   {EXAMPLES.map((ex) => (
