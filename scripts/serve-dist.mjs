@@ -47,9 +47,15 @@ function loadHeaderRules() {
     if (!raw.trim() || raw.trim().startsWith('#')) continue;
     if (!/^\s/.test(raw)) {
       const pattern = new RegExp(`^${raw.trim().replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*')}$`);
-      current = { pattern, headers: {} };
+      current = { pattern, headers: {}, detach: [] };
       rules.push(current);
     } else if (current) {
+      // `! Header-Name` detaches a header that an earlier matching rule set.
+      const detached = raw.trim().match(/^!\s*(\S+)$/);
+      if (detached) {
+        current.detach.push(detached[1]);
+        continue;
+      }
       const i = raw.indexOf(':');
       if (i > 0) current.headers[raw.slice(0, i).trim()] = raw.slice(i + 1).trim();
     }
@@ -57,8 +63,15 @@ function loadHeaderRules() {
   return rules;
 }
 const headerRules = loadHeaderRules();
-const headersFor = (path) =>
-  Object.assign({}, ...headerRules.filter((r) => r.pattern.test(path)).map((r) => r.headers));
+const headersFor = (path) => {
+  const headers = {};
+  for (const rule of headerRules) {
+    if (!rule.pattern.test(path)) continue;
+    for (const name of rule.detach) delete headers[name];
+    Object.assign(headers, rule.headers);
+  }
+  return headers;
+};
 
 createServer((req, res) => {
   const url = req.url ?? '/';

@@ -91,6 +91,23 @@ for (const file of ['public/_headers', join(DIST.slice(ROOT.length + 1), '_heade
       fail('headers', `${file}: ${pattern} must set "X-Robots-Tag: noindex" (RSC payloads are duplicates of their page)`);
     }
   }
+  // The verse-of-the-day widget is an iframe on other sites (public/embed.js): /embed/* alone must be
+  // frameable, and must replace (not merge with) the site-wide X-Frame-Options and frame-ancestors.
+  {
+    const embed = rules.get('/embed/*') ?? [];
+    const csp = embed.filter((l) => /^Content-Security-Policy:/i.test(l));
+    const site = (rules.get('/*') ?? []).filter((l) => /^Content-Security-Policy:/i.test(l));
+    if (!embed.includes('! X-Frame-Options') || csp.length !== 1 || !/frame-ancestors \*(;|$)/.test(csp[0])) {
+      fail('headers', `${file}: /embed/* must detach X-Frame-Options and set one Content-Security-Policy with "frame-ancestors *", or the embed widget is blocked on other sites`);
+    } else if (!embed.includes('! Content-Security-Policy') || embed.indexOf('! Content-Security-Policy') > embed.indexOf(csp[0])) {
+      fail('headers', `${file}: /embed/* must detach Content-Security-Policy ("! Content-Security-Policy") before setting it, so it does not merge with the /* policy`);
+    } else if (site.length === 1 && csp[0].replace('frame-ancestors *', "frame-ancestors 'self'") !== site[0]) {
+      fail('headers', `${file}: the /embed/* policy must match the /* policy except for frame-ancestors`);
+    }
+    if (site.length !== 1 || !/frame-ancestors 'self'(;|$)/.test(site[0]) || !(rules.get('/*') ?? []).some((l) => /^X-Frame-Options:\s*SAMEORIGIN$/i.test(l))) {
+      fail('headers', `${file}: /* must keep "X-Frame-Options: SAMEORIGIN" and "frame-ancestors 'self'" (only /embed/* may be framed by other sites)`);
+    }
+  }
   for (const [pattern, lines] of rules) {
     if (pattern === '/*' || cache(pattern).length === 0) continue;
     if (lines[0] !== '! Cache-Control') fail('headers', `${file}: ${pattern} sets Cache-Control without first resetting it ("! Cache-Control"), so it merges with the HTML rule`);
