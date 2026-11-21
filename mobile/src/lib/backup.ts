@@ -33,6 +33,10 @@ export interface Settings {
   showNotes: boolean;
   /** Interface language. 'system' follows the phone. Verse text is not affected. */
   language: LanguageSetting;
+  /** Opt-in daily verse notification, scheduled on the phone (no server, no push token). */
+  dailyReminder: boolean;
+  reminderHour: number;
+  reminderMinute: number;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -43,6 +47,9 @@ export const DEFAULT_SETTINGS: Settings = {
   showEnglish: true,
   showNotes: false,
   language: 'system',
+  dailyReminder: false,
+  reminderHour: 7,
+  reminderMinute: 0,
 };
 
 export interface AppData {
@@ -63,6 +70,11 @@ export function bookmarkKey(b: Pick<Bookmark, 'id' | 'chapter' | 'verse'>): stri
   return `${b.id}:${b.chapter}:${b.verse}`;
 }
 
+function wholeIn(raw: unknown, min: number, max: number, fallback: number): number {
+  const n = typeof raw === 'number' ? raw : Number.NaN;
+  return Number.isInteger(n) && n >= min && n <= max ? n : fallback;
+}
+
 export function normalizeSettings(raw: unknown): Settings {
   const s = (raw && typeof raw === 'object' ? raw : {}) as Partial<Settings>;
   const scale = Number(s.textScale);
@@ -74,6 +86,9 @@ export function normalizeSettings(raw: unknown): Settings {
     showEnglish: typeof s.showEnglish === 'boolean' ? s.showEnglish : DEFAULT_SETTINGS.showEnglish,
     showNotes: typeof s.showNotes === 'boolean' ? s.showNotes : DEFAULT_SETTINGS.showNotes,
     language: LANGUAGES.includes(s.language as LanguageSetting) ? (s.language as LanguageSetting) : DEFAULT_SETTINGS.language,
+    dailyReminder: typeof s.dailyReminder === 'boolean' ? s.dailyReminder : DEFAULT_SETTINGS.dailyReminder,
+    reminderHour: wholeIn(s.reminderHour, 0, 23, DEFAULT_SETTINGS.reminderHour),
+    reminderMinute: wholeIn(s.reminderMinute, 0, 59, DEFAULT_SETTINGS.reminderMinute),
   };
 }
 

@@ -29,7 +29,10 @@ export const S = {
   // Library
   libraryEyebrow: { en: 'Scripture library', hi: 'ग्रन्थ संग्रह' },
   continueReading: { en: 'Continue reading', hi: 'पढ़ना जारी रखें' },
-  continueReadingA11y: (title: string) => ({ en: `Continue reading ${title}`, hi: `${title} पढ़ना जारी रखें` }),
+  continueReadingA11y: (title: string, chapter: number) => ({
+    en: `Continue reading ${title}, chapter ${chapter}`,
+    hi: `${title}, अध्याय ${chapter} पढ़ना जारी रखें`,
+  }),
   verseOfTheDay: { en: 'Verse of the day', hi: 'आज का श्लोक' },
   verseOfTheDayA11y: { en: 'Open the verse of the day', hi: 'आज का श्लोक खोलें' },
   gitaRef: (ref: string) => ({ en: `Bhagavad Gita ${ref}`, hi: `भगवद्गीता ${ref}` }),
@@ -90,7 +93,8 @@ export const S = {
     en: 'Tap the bookmark on any verse to keep it here. Saved verses stay on this phone only.',
     hi: 'किसी भी श्लोक पर बुकमार्क दबाएँ, वह यहाँ आ जाएगा। सहेजे गए श्लोक केवल इसी फ़ोन में रहते हैं।',
   },
-  removeBookmarkA11y: { en: 'Remove saved verse', hi: 'सहेजा श्लोक हटाएँ' },
+  openSavedA11y: (ref: string) => ({ en: `Open ${ref}`, hi: `${ref} खोलें` }),
+  removeSavedA11y: (ref: string) => ({ en: `Remove saved verse ${ref}`, hi: `सहेजा श्लोक ${ref} हटाएँ` }),
 
   // Settings
   settingsEyebrow: { en: 'Preferences', hi: 'पसंद' },
@@ -101,6 +105,25 @@ export const S = {
     en: 'Changes the menus, buttons and messages. Verses always show Sanskrit with the Hindi and English you pick below.',
     hi: 'इससे मेन्यू, बटन और संदेशों की भाषा बदलती है। श्लोक हमेशा संस्कृत में दिखते हैं, साथ में नीचे चुने गए हिन्दी और अंग्रेज़ी अर्थ।',
   },
+  dailyVerse: { en: 'Daily verse', hi: 'दैनिक श्लोक' },
+  dailyVerseNotification: { en: 'Verse of the day notification', hi: 'आज के श्लोक की सूचना' },
+  reminderTime: { en: 'Time', hi: 'समय' },
+  reminderTimeA11y: (time: string) => ({ en: `Notification time ${time}. Change`, hi: `सूचना का समय ${time}। बदलें` }),
+  dailyVerseNote: {
+    en: 'One Bhagavad Gita verse each day, in full, at the time you pick. Scheduled on this phone; nothing is sent anywhere.',
+    hi: 'हर दिन भगवद्गीता का एक पूरा श्लोक, आपके चुने समय पर। सूचना इसी फ़ोन पर तय होती है, कहीं कुछ नहीं भेजा जाता।',
+  },
+  notificationsOffTitle: { en: 'Notifications are off', hi: 'सूचनाएँ बंद हैं' },
+  notificationsOffBody: {
+    en: 'Allow notifications for Dharma Granth in your phone settings to get the daily verse.',
+    hi: 'रोज़ का श्लोक पाने के लिए फ़ोन की सेटिंग्स में धर्म ग्रन्थ की सूचनाएँ चालू करें।',
+  },
+  notificationsBlocked: {
+    en: 'Notifications are turned off for this app. Open phone settings to allow them.',
+    hi: 'इस ऐप की सूचनाएँ बंद हैं। उन्हें चालू करने के लिए फ़ोन की सेटिंग्स खोलें।',
+  },
+  notNow: { en: 'Not now', hi: 'अभी नहीं' },
+  openSettings: { en: 'Open settings', hi: 'सेटिंग्स खोलें' },
   theme: { en: 'Theme', hi: 'रंग-रूप' },
   themeA11y: (name: string) => ({ en: `${name} theme`, hi: `${name} थीम` }),
   textSize: { en: 'Text size', hi: 'अक्षर का आकार' },

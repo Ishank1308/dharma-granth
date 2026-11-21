@@ -27,7 +27,8 @@ interface Props {
   /** Interface language, for labels and screen-reader text. The verse text itself is never translated. */
   lang: Lang;
   bookmarked: boolean;
-  onToggleBookmark: () => void;
+  /** Called with the verse number; keep it stable (useCallback) so memo skips unchanged cards. */
+  onToggleBookmark: (verse: string) => void;
 }
 
 function Label({ msg, lang, palette, extra }: { msg: Msg; lang: Lang; palette: Palette; extra?: string }) {
@@ -41,7 +42,10 @@ function Label({ msg, lang, palette, extra }: { msg: Msg; lang: Lang; palette: P
 
 function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, settings, lang, bookmarked, onToggleBookmark }: Props) {
   const t = (m: Msg) => m[lang];
-  const [notesOpen, setNotesOpen] = useState(settings.showNotes);
+  // A tap on Notes overrides the "Open notes by default" setting until that setting changes again.
+  const [override, setOverride] = useState<{ when: boolean; open: boolean } | null>(null);
+  const notesOpen = override && override.when === settings.showNotes ? override.open : settings.showNotes;
+  const setNotesOpen = (f: (open: boolean) => boolean) => setOverride({ when: settings.showNotes, open: f(notesOpen) });
   const scale = settings.textScale;
   const ref = formatVerseRef(scriptureId, chapter, verse.number);
   const lines = sanskritLines(verse.sanskrit);
@@ -94,7 +98,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             <Ionicons name="share-outline" size={18} color={palette.muted} />
           </Pressable>
           <Pressable
-            onPress={onToggleBookmark}
+            onPress={() => onToggleBookmark(String(verse.number))}
             hitSlop={6}
             style={[styles.iconBtn, glass(palette)]}
             accessibilityRole="button"
