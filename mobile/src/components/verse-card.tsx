@@ -15,6 +15,8 @@ import {
   verseMarkNumber,
 } from '@/lib/verse-format';
 import { S, type Lang, type Msg } from '@/i18n';
+import { toScript } from '@/lib/sanskrit-script';
+import { LINE_FACTOR, sanskritFont } from '@/theme/fonts';
 import type { Settings } from '@/lib/backup';
 import type { Cover } from '@/theme/covers';
 import { fontCap, huesFor, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
@@ -73,6 +75,8 @@ function VerseCardImpl({
   const setNotesOpen = (f: (open: boolean) => boolean) => setOverride({ when: settings.showNotes, open: f(notesOpen) });
   const scale = settings.textScale;
   const cap = fontCap(scale);
+  const lh = LINE_FACTOR[settings.lineSpacing];
+  const script = settings.sanskritScript;
   const ref = formatVerseRef(scriptureId, chapter, verse.number);
   const lines = sanskritLines(verse.sanskrit);
   const state = meaningState(verse);
@@ -184,11 +188,14 @@ function VerseCardImpl({
               key={i}
               selectable
               maxFontSizeMultiplier={cap}
-              style={{ color: palette.text, fontSize: TYPE.title3 * scale, lineHeight: TYPE.title3 * scale * 1.6, textAlign: 'center' }}>
-              {line}
+              style={[
+                { color: palette.text, fontSize: TYPE.title3 * scale, lineHeight: TYPE.title3 * scale * 1.7 * lh, textAlign: 'center' },
+                sanskritFont(script),
+              ]}>
+              {toScript(line, script)}
               {i === lines.length - 1 ? (
                 // The gilt verse mark.
-                <Text style={{ color: palette.gold }}>{`\u00a0॥\u00a0${toDevanagari(verseMarkNumber(verse.number))}\u00a0॥`}</Text>
+                <Text style={{ color: palette.gold }}>{`\u00a0॥\u00a0${toScript(toDevanagari(verseMarkNumber(verse.number)), script)}\u00a0॥`}</Text>
               ) : null}
             </Text>
           ))}
@@ -202,7 +209,7 @@ function VerseCardImpl({
           style={{
             color: palette.textSecondary,
             fontSize: TYPE.subhead * scale,
-            lineHeight: TYPE.subhead * scale * 1.5,
+            lineHeight: TYPE.subhead * scale * 1.5 * lh,
             fontStyle: 'italic',
             textAlign: 'center',
             marginTop: SPACE.sm,
@@ -228,7 +235,7 @@ function VerseCardImpl({
               {
                 color: state.hi === 'text' ? palette.text : palette.muted,
                 fontSize: TYPE.body * scale,
-                lineHeight: TYPE.body * scale * 1.55,
+                lineHeight: TYPE.body * scale * 1.55 * lh,
               },
             ]}>
             {state.hi === 'text'
@@ -259,7 +266,7 @@ function VerseCardImpl({
               {
                 color: state.en === 'text' ? palette.text : palette.muted,
                 fontSize: TYPE.body * scale,
-                lineHeight: TYPE.body * scale * 1.5,
+                lineHeight: TYPE.body * scale * 1.5 * lh,
               },
             ]}>
             {state.en === 'text' ? english : state.en === 'with' ? MEANING_COPY.enWith(verse.translationSeeVerse!) : MEANING_COPY.enPending}

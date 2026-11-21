@@ -3,8 +3,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { IconButton } from '@/components/ui';
 import { S, useI18n, type Msg } from '@/i18n';
+import { SANSKRIT_SCRIPTS, SCRIPT_NAMES } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
+import { LINE_SPACINGS, sanskritFont, type LineSpacing } from '@/theme/fonts';
 import { huesFor, quietFill, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+
+const SPACING_LABELS: Record<LineSpacing, Msg> = { compact: S.spacingCompact, normal: S.spacingNormal, relaxed: S.spacingRelaxed };
 
 type ShowKey = 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes';
 
@@ -57,6 +61,51 @@ export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: 
                     style={[styles.segmentItem, active && { backgroundColor: palette.dark ? '#3a3a3c' : '#ffffff' }]}>
                     <Text allowFontScaling={false} style={{ color: active ? palette.accent : palette.text, fontSize: 13 + i * 3, fontWeight: '600' }}>
                       अ
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+
+          <View>
+            <Text accessibilityRole="header" style={[styles.label, { color: palette.muted }]}>{t(S.lineSpacing)}</Text>
+            <View accessibilityRole="radiogroup" style={[styles.segment, { backgroundColor: quietFill(palette) }]}>
+              {LINE_SPACINGS.map((sp) => {
+                const active = settings.lineSpacing === sp;
+                return (
+                  <Pressable
+                    key={sp}
+                    accessibilityRole="radio"
+                    accessibilityState={{ checked: active }}
+                    onPress={() => updateSettings({ lineSpacing: sp })}
+                    style={[styles.segmentItem, active && { backgroundColor: palette.dark ? '#3a3a3c' : '#ffffff' }]}>
+                    <Text maxFontSizeMultiplier={1.5} style={{ color: active ? palette.accent : palette.text, fontSize: TYPE.subhead, fontWeight: '600' }}>
+                      {t(SPACING_LABELS[sp])}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+
+          <View>
+            <Text accessibilityRole="header" style={[styles.label, { color: palette.muted }]}>{t(S.sanskritScript)}</Text>
+            {/* Each script is named in its own letters, so a reader spots theirs in any interface language. */}
+            <View accessibilityRole="radiogroup" style={styles.layers}>
+              {SANSKRIT_SCRIPTS.map((sc) => {
+                const active = settings.sanskritScript === sc;
+                return (
+                  <Pressable
+                    key={sc}
+                    accessibilityRole="radio"
+                    accessibilityState={{ checked: active }}
+                    onPress={() => updateSettings({ sanskritScript: sc })}
+                    style={[styles.layer, active ? { backgroundColor: palette.text } : { borderWidth: 1, borderColor: palette.border }]}>
+                    <Text
+                      maxFontSizeMultiplier={1.5}
+                      style={[{ color: active ? palette.bg : palette.text, fontSize: TYPE.subhead + 1 }, sanskritFont(sc)]}>
+                      {SCRIPT_NAMES[sc]}
                     </Text>
                   </Pressable>
                 );
