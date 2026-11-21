@@ -4,14 +4,17 @@ import { FlatList, Linking, Pressable, StyleSheet, Text, View } from 'react-nati
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DownloadCard } from '@/components/download-card';
-import { accentFill, Backdrop, coverFill, GroupRow, Muted } from '@/components/ui';
+import { QuizRow } from '@/components/quiz';
+import { accentFill, Backdrop, coverFill, GroupRow, GroupTitle, IconTile, Muted } from '@/components/ui';
 import { CATEGORIES, getEntry, webUrl } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
+import { quizzesForBook, summaryCollection } from '@/content/study';
+import { useQuizResults } from '@/state/quiz-scores';
 import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
-import { BAR_GAP, BAR_HEIGHT, barClearance, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+import { BAR_GAP, BAR_HEIGHT, barClearance, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -20,6 +23,7 @@ export default function ScriptureScreen() {
   const { t } = useI18n();
   const entry = getEntry(String(id));
   const { installed } = useDownloads();
+  const quizResults = useQuizResults();
 
   if (!entry) {
     return (
@@ -47,6 +51,9 @@ export default function ScriptureScreen() {
   };
 
   const last = entry.chapters.length - 1;
+  // Study aids from the website: every chapter's summary, and the quizzes on this book.
+  const summaries = summaryCollection(entry.id);
+  const quizzes = quizzesForBook(entry.id);
 
   return (
     <Backdrop>
@@ -117,6 +124,31 @@ export default function ScriptureScreen() {
                 </View>
               </View>
               {!entry.bundled ? <DownloadCard entry={entry} /> : null}
+              {summaries ? (
+                <GroupRow
+                  first
+                  last
+                  inset={64}
+                  accessibilityRole="link"
+                  accessibilityLabel={`${t(summaries.heading)}. ${t(S.summaryAllSub)}`}
+                  onPress={() => router.push({ pathname: '/summary/[id]', params: { id: entry.id } })}
+                  style={{ marginBottom: 0 }}>
+                  <IconTile icon="reader-outline" color={huesFor(palette).peacock} />
+                  <View style={{ flex: 1 }}>
+                    <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{t(summaries.heading)}</Text>
+                    <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>{t(S.summaryAllSub)}</Text>
+                  </View>
+                  <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+                </GroupRow>
+              ) : null}
+              {quizzes.length > 0 ? (
+                <View style={{ marginBottom: -SPACE.lg }}>
+                  <GroupTitle title={t(S.quizzesForBook)} detail={String(quizzes.length)} />
+                  {quizzes.map((q, i) => (
+                    <QuizRow key={q.id} quiz={q} result={quizResults[q.id]} first={i === 0} last={i === quizzes.length - 1} />
+                  ))}
+                </View>
+              ) : null}
             </View>
           }
           renderItem={({ item, index }) => {

@@ -4,8 +4,9 @@ import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupRow, GroupTitle, LargeHeader, Muted } from '@/components/ui';
+import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupRow, GroupTitle, IconTile, LargeHeader, Muted } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
+import { QUIZZES } from '@/content/study';
 import { useDownloads } from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
@@ -13,7 +14,7 @@ import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
-import { barClearance, fontCap, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 function matches(b: CatalogEntry, q: string) {
   if (!q) return true;
@@ -116,6 +117,28 @@ function ContinueCard() {
   );
 }
 
+/** The way into the quizzes (src/app/quiz), under the verse of the day. */
+function QuizzesRow() {
+  const { palette } = useAppState();
+  const { t } = useI18n();
+  return (
+    <GroupRow
+      first
+      last
+      inset={64}
+      accessibilityLabel={`${t(S.quizzesTitle)}. ${t(S.quizzesRowSub(QUIZZES.length))}`}
+      onPress={() => router.push('/quiz')}
+      style={{ marginBottom: 0 }}>
+      <IconTile icon="help-circle-outline" color={huesFor(palette).indigo} />
+      <View style={{ flex: 1 }}>
+        <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{t(S.quizzesTitle)}</Text>
+        <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>{t(S.quizzesRowSub(QUIZZES.length))}</Text>
+      </View>
+      <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+    </GroupRow>
+  );
+}
+
 export default function LibraryScreen() {
   const insets = useSafeAreaInsets();
   const { palette } = useAppState();
@@ -159,6 +182,7 @@ export default function LibraryScreen() {
             </LargeHeader>
             <ContinueCard />
             <DailyVerseCard />
+            <QuizzesRow />
             <View style={[styles.search, glass(palette, true)]}>
               <Ionicons name="search" size={18} color={palette.muted} />
               <TextInput
