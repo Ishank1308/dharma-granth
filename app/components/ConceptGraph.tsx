@@ -46,8 +46,9 @@ function simulateLayout(
 
     nodes.set(id, {
       id,
-      x: cx + Math.cos(angle) * r,
-      y: cy + Math.sin(angle) * r,
+      // Rounded, so Node (the exported HTML) and the browser agree to the last digit: cos and sin differ between engines.
+      x: Math.round((cx + Math.cos(angle) * r) * 100) / 100,
+      y: Math.round((cy + Math.sin(angle) * r) * 100) / 100,
       vx: 0,
       vy: 0,
     });

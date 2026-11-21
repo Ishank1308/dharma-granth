@@ -71,7 +71,9 @@
 
 @media (prefers-reduced-motion: no-preference) {
     :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
-        [data-scene] .verse-folio::before {
+        [data-scene] .verse-folio[data-live]::before {
+        /* Only panels near the viewport drift (FolioMotion sets data-live): mask-position
+           repaints on the main thread, so a long chapter must not run hundreds of these. */
         animation: scene-drift var(--scene-duration) linear infinite;
     }
 }

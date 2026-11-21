@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { WisdomOperatingSystem } from '@/app/components/wos/WisdomOperatingSystem';
+import { PageHeader } from '@/app/components/apple/PageHeader';
 
 export const metadata: Metadata = {
   title: 'Wisdom Operating System (WOS) — प्रज्ञा व्यवस्था — Dharma Granth',
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default function WisdomOperatingSystemPage() {
   return (
     <main className="min-h-screen bg-dharma-bg text-dharma-text">
+      <PageHeader eyebrow="Reflect" eyebrowHi="मनन" title="Wisdom Operating System" titleHi="प्रज्ञा व्यवस्था" />
       <WisdomOperatingSystem />
     </main>
   );

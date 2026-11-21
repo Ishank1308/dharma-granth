@@ -262,6 +262,54 @@ a.apple-row:active,
     box-shadow: var(--shadow-raised);
 }
 
+/* One voice on every page ────────────────────────────────────────────────
+   Pages written before the design system set their titles, card headings and buttons in the
+   book serif, each at a size of its own. Here every page's title takes the large-title role
+   and its headings and controls the interface face, as PageHeader and SectionTitle already do
+   on the primary pages. The serif stays where it is a reading voice (a translation, a
+   quotation, a transliteration), and Sanskrit keeps its own face.
+   :where() keeps these at one class and one element, which is enough to beat a size or weight
+   utility on the element in whatever order the CSS chunks load. */
+:where(#main-content) :is(h1, h2, h3, h4, h5, h6, summary, button, label, legend, th, dt).font-serif:not([lang='sa'], .shloka-text),
+:where(#main-content) :is(h1, h2, h3, h4, h5, h6, summary, button, label, legend, th, dt) .font-serif:not([lang='sa'], .shloka-text),
+:where(#main-content .font-serif) :is(h1, h2, h3, h4, h5, h6, summary, button):not([lang='sa'], .shloka-text, .font-serif),
+:where(#main-content) :is(a, p, span, div, li).font-serif:is(.font-bold, .font-semibold, .font-extrabold, .font-black):not([lang='sa'], .shloka-text, blockquote *) {
+    /* Inter has no Devanagari, so a Hindi word in the same heading takes the site's own. */
+    font-family: 'Inter', 'Inter-Fallback', var(--font-noto-devanagari);
+}
+:where(#main-content) :is(h1, h2, h3).font-serif:not([lang='sa'], [lang='hi'], .shloka-text, .font-devanagari) {
+    font-weight: 600;
+    letter-spacing: var(--tracking-headline);
+}
+:where(#main-content) h1.font-serif:not([lang='sa'], .shloka-text) {
+    /* Capped by the screen's width: with text enlarged to 200% the token alone reaches 68px on a
+       phone, and a long word in the title ("Bhagavad") splits across two lines. */
+    font-size: min(var(--text-large-title), 11vw);
+    font-weight: 600;
+    line-height: 1.12;
+}
+:where(#main-content) h1.font-serif:not([lang='sa'], [lang='hi'], .shloka-text, .font-devanagari) {
+    letter-spacing: var(--tracking-title);
+}
+:where(#main-content) h1.font-serif:is([lang='hi'], .font-devanagari) {
+    line-height: 1.3;
+}
+
+/* The smallest text, beyond phones ───────────────────────────────────────────
+   Phones already have their floors (globals.css: nothing under 12px, sentences at 14px).
+   Wider screens had none, so older pages kept 9px and 10px labels and set whole paragraphs,
+   list items and definitions at 12px. There the scale's own floors apply: caption-2 (11px)
+   for a label, footnote (13px) for anything read as a sentence. The header and footer are
+   outside #main-content and keep their sizes. */
+@media (min-width: 640px) {
+    :where(#main-content) :is(.text-\[9px\], .text-\[10px\], .text-\[10\.5px\]):not(text, tspan) {
+        font-size: 0.6875rem;
+    }
+    :where(#main-content) :is(p, li, dd, blockquote):is(.text-xs, .text-2xs, .text-caption, .text-caption-1, .text-caption-2, .text-\[9px\], .text-\[10px\], .text-\[10\.5px\], .text-\[11px\], .text-\[12px\]) {
+        font-size: var(--text-footnote);
+    }
+}
+
 /* Verse card (chapter reader) ─────────────────────────────────────────────
    Each verse sits on its own card, as in Apple Books' highlights or a grouped list:
    the shloka is the largest thing on it, the Hindi and English meanings follow under
@@ -369,6 +417,14 @@ a.apple-row:active,
 .verse-card.vt .vt-sa > span {
     padding-block: 0.125rem;
 }
+/* A half-verse too wide for a phone breaks into even parts instead of leaving one word alone
+   on a second line; in most metres the even break is the pāda boundary. Wrapping only: every
+   line is still complete. The verse page's own Sanskrit block (ReaderLayers) follows suit. */
+.verse-card.book-verse .verse-folio > p[lang='sa'] > span,
+.verse-card.vt .vt-sa > span,
+p.verse-folio[lang='sa'] > span {
+    text-wrap: balance;
+}
 .verse-card.book-verse .verse-folio,
 .verse-card.vt .vt-leaf {
     padding-block: var(--space-4) var(--space-5);
@@ -426,6 +482,12 @@ a.apple-row:active,
     .verse-card.vt .vt-en {
         font-size: 1.125rem;
     }
+}
+/* A meaning not written yet is a quiet note in its slot. Without this the rules above set it at
+   body size, which reads as content when it repeats under every verse of a long chapter. */
+.verse-card.book-verse section[id$='-arth'] p.meaning-pending {
+    font-size: var(--text-footnote);
+    line-height: 1.5;
 }
 
 /* The draft label stays (it is honest), but in a neutral voice rather than violet. */
@@ -682,4 +744,76 @@ a.apple-row:active,
         border-color: #ccc;
         animation: none !important;
     }
+}
+
+/* Saved-verse dot ────────────────────────────────────────────────────────
+   Marks a saved verse in a verse-number grid (verse page sidebar, jump dialog, phone verse
+   picker). The cell is position: relative; the dot is saffron, or the cell's own text colour
+   on the current verse, where the cell itself is saffron. */
+.verse-saved-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    pointer-events: none;
+}
+
+/* Two-language labels ────────────────────────────────────────────────────
+   A label written in both languages marks its halves data-bi="en" and data-bi="hi" (and any
+   "·" between them data-bi="sep"). The reader's language choice sits on <html data-ui-lang>
+   (lib/useLanguagePreference.ts); with हिन्दी, संस्कृत or English chosen, only that half shows.
+   Both halves stay in the markup, so the default द्विभाषी page and what crawlers read are unchanged.
+   The half that stays takes the label's own colour, since the muted tone marked it as the
+   second language. */
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='en'],
+html[data-ui-lang='english'] [data-bi='hi'],
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit'], [data-ui-lang='english']) [data-bi='sep'] {
+    display: none !important;
+}
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='hi'],
+html[data-ui-lang='english'] [data-bi='en'] {
+    display: inline !important;
+    color: inherit;
+    opacity: 1;
+}
+/* The night theme recolours muted text with a three-part selector (globals.css), which would
+   leave the half that stays in the muted tone there; this outranks it. */
+:root[data-theme='night']:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='hi'],
+:root[data-theme='night'][data-ui-lang='english'] [data-bi='en'] {
+    color: inherit;
+}
+/* data-bi-lead: where the second language is set smaller, it takes the label's own size and
+   weight when it stands alone. */
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='hi'][data-bi-lead],
+html[data-ui-lang='english'] [data-bi='en'][data-bi-lead] {
+    font-size: inherit;
+    font-weight: inherit;
+}
+/* A page title (PageHeader) standing in Hindi alone sits one step under the large title: the
+   Hindi line is usually the longer of the two, and Devanagari reads larger at the same size. */
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) h1 > [data-bi='hi'][data-bi-lead] {
+    font-size: var(--text-title-1);
+    line-height: 1.3;
+}
+/* data-bi="en-only": the English for a label that is Hindi alone by default (a tight bar with
+   no room for both). It shows only when English is chosen. */
+[data-bi='en-only'] {
+    display: none;
+}
+html[data-ui-lang='english'] [data-bi='en-only'] {
+    display: inline !important;
+}
+
+/* The shloka pinned in the verse page's sidebar (PinnedShloka) opens by height, so the verse
+   numbers under it slide down rather than jump. The duration is a token, so reduced motion
+   collapses it. */
+.pinned-shloka-open {
+    display: grid;
+    grid-template-rows: 1fr;
+    animation: pinned-shloka-open var(--duration-standard) var(--ease-out) backwards;
+}
+@keyframes pinned-shloka-open {
+    from { grid-template-rows: 0fr; opacity: 0; }
 }

@@ -254,8 +254,8 @@ export function PanchangCalendar() {
           </div>
         </div>
 
-        {/* Date Display and Day Navigation */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        {/* Date Display and Day Navigation. The opening day card links here ("Another day"). */}
+        <div id="panchang-day" className="flex scroll-mt-24 flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               <span>{panchang.dayOfWeek} · {panchang.dayOfWeekHi}</span>

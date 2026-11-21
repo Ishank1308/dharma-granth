@@ -3,16 +3,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState, startTransition, type MouseEvent as ReactMouseEvent } from 'react';
 import {
   BookOpen,
-  ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Flame,
-  Maximize2,
   RotateCcw,
   Search,
-  SlidersHorizontal,
   X,
-  MessageSquare,
 } from 'lucide-react';
 import { updateReaderScrollProgress, triggerPranaToast } from '@/lib/prana-capsule-store';
 import type { ScriptureCategory } from '@/data/types';
@@ -35,7 +30,6 @@ const AddToCollectionModal = dynamic(() => import('./AddToCollectionModal').then
 const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').then((m) => m.ContributeMeaningModal), { ssr: false });
 const ReaderSettingsPanel = dynamic(() => import('@/app/components/reader/ReaderSettingsPanel').then((m) => m.ReaderSettingsPanel), { ssr: false });
 import { VerseCard } from './VerseCard';
-import { ReadingDepthSwitch } from '@/app/components/reader/ReadingDepthSwitch';
 import { useReadingDepth } from '@/lib/reading-depth';
 import { useConnectivity } from '@/lib/useConnectivity';
 import { VerseText } from './VerseText';
@@ -229,8 +223,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const [isConversationMode, setIsConversationMode] = useState(false);
   const showCommentary = readerSettings.showCommentary;
   const [readerSettingsOpen, setReaderSettingsOpen] = useState(false);
-  // Phones show only title, count and parayana; the rest opens on tap so the first shloka stays near the top.
-  const [toolsOpen, setToolsOpen] = useState(false);
+  // The search field opens on tap, so the first shloka stays near the top.
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const [filterQuery, setFilterQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [bookmarkedMap, setBookmarkedMap] = useState<Record<string, boolean>>({});
@@ -665,15 +660,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
   }, [state.kind]);
 
-  const updateLayers = (updates: Partial<{ translit: boolean; hindi: boolean; english: boolean; commentary: boolean }>) => {
-    if (updates.translit !== undefined) updateReaderSetting('showTransliteration', updates.translit);
-    if (updates.hindi !== undefined) updateReaderSetting('showHindi', updates.hindi);
-    if (updates.english !== undefined) updateReaderSetting('showEnglish', updates.english);
-    if (updates.commentary !== undefined) updateReaderSetting('showCommentary', updates.commentary);
-    if (updates.commentary !== undefined || updates.translit !== undefined || updates.hindi !== undefined || updates.english !== undefined) {
-      triggerTactileFeedback('light', 'softTap');
-    }
-  };
 
   const handleCopyVerse = async (v: FullVerse) => {
     try {
@@ -1131,10 +1117,10 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   return (
     <>
       <section>
-        {/* Sanctuary sticky running head: active chapter & verse progress, ‹/› micro-steppers,
-            quick inline language toggles (हिन्दी/EN/IAST), 1-tap verse jump, typography (Aa), and options */}
-        <div className="sticky top-[52px] z-30 -mx-2 mb-4 border-b border-dharma-border/60 bg-dharma-bg/92 px-2 py-1.5 backdrop-blur-md sm:mb-6 sm:pb-2.5 sm:pt-2">
-          {/* One row on phones (360px up): the chapter number and the Options label show from sm. */}
+        {/* Sticky running head: chapter and verse progress, ‹/› steppers, verse jump, the Aa sheet
+            (every reading choice: depth, type, layers, recitation) and search within the chapter. */}
+        <div className="sticky top-[52px] z-30 -mx-2 mb-4 border-b border-dharma-border/60 bg-dharma-bg/95 px-2 py-1.5 backdrop-blur-md sm:mb-6 sm:pb-2.5 sm:pt-2">
+          {/* One row on phones (360px up): the chapter number shows from sm. */}
           <div className="flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
             <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
               <p className="text-xs text-dharma-muted truncate">
@@ -1201,50 +1187,6 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
             </div>
 
             <div className="flex min-w-0 flex-wrap items-center gap-1 sm:gap-2">
-              {/* Quick Language Layer Chips on desktop/tablet */}
-              <div
-                className="hidden md:inline-flex items-center rounded-full border border-dharma-border/80 bg-dharma-bg/70 p-0.5 text-xs font-semibold"
-                role="group"
-                aria-label="भाषा परतें (Language layers)"
-              >
-                <button
-                  type="button"
-                  onClick={() => updateLayers({ hindi: !showHindi })}
-                  className={`rounded-full px-2.5 py-1 transition-all ${showHindi
-                    ? 'bg-saffron-600 text-white font-bold shadow-xs'
-                    : 'text-dharma-muted hover:text-dharma-text'
-                    }`}
-                  title={showHindi ? 'हिन्दी अर्थ छिपाएँ' : 'हिन्दी अर्थ दिखाएँ'}
-                  aria-pressed={showHindi}
-                >
-                  हिन्दी
-                </button>
-                <button
-                  type="button"
-                  onClick={() => updateLayers({ english: !showEnglish })}
-                  className={`rounded-full px-2.5 py-1 transition-all ${showEnglish
-                    ? 'bg-saffron-600 text-white font-bold shadow-xs'
-                    : 'text-dharma-muted hover:text-dharma-text'
-                    }`}
-                  title={showEnglish ? 'Hide English translation' : 'Show English translation'}
-                  aria-pressed={showEnglish}
-                >
-                  EN
-                </button>
-                <button
-                  type="button"
-                  onClick={() => updateLayers({ translit: !showTranslit })}
-                  className={`rounded-full px-2.5 py-1 transition-all ${showTranslit
-                    ? 'bg-saffron-600 text-white font-bold shadow-xs'
-                    : 'text-dharma-muted hover:text-dharma-text'
-                    }`}
-                  title={showTranslit ? 'Hide IAST transliteration' : 'Show IAST transliteration'}
-                  aria-pressed={showTranslit}
-                >
-                  IAST
-                </button>
-              </div>
-
               {state.verses.length > 5 && (
                 <label className="liquid-pill inline-flex min-h-[40px] items-center rounded-full px-2 text-xs sm:px-2.5 font-medium text-dharma-muted hover:text-dharma-text">
                   <span className="sr-only">श्लोक पर जाएं</span>
@@ -1264,7 +1206,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     </option>
                     {state.verses.map((v) => (
                       <option key={String(v.number)} value={String(v.number)} className="bg-dharma-card text-dharma-text">
-                        श्लोक {toAsciiDigits(v.number)}
+                        श्लोक {toAsciiDigits(v.number)}{bookmarkedMap[String(v.number)] ? ' · सहेजा हुआ' : ''}
                       </option>
                     ))}
                   </select>
@@ -1283,15 +1225,19 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               </button>
               <button
                 type="button"
-                onClick={() => setToolsOpen((o) => !o)}
-                className="liquid-pill inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 rounded-full px-2.5 sm:px-3.5 text-xs font-medium text-dharma-text hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
-                aria-label="विकल्प · Options"
-                aria-expanded={toolsOpen}
-                aria-controls="chapter-reader-tools"
+                onClick={() => {
+                  const opening = !searchOpen;
+                  setSearchOpen(opening);
+                  // After the field is shown, so a keyboard or phone reader can type at once.
+                  if (opening) requestAnimationFrame(() => searchInputRef.current?.focus());
+                }}
+                className={`liquid-pill inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full px-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${filterQuery.trim() ? 'text-saffron-700 dark:text-saffron-300' : 'text-dharma-text'}`}
+                title="इस अध्याय में खोजें · Search this chapter"
+                aria-label="इस अध्याय में खोजें · Search this chapter"
+                aria-expanded={searchOpen}
+                aria-controls="chapter-verse-search"
               >
-                <SlidersHorizontal className="h-4 w-4 sm:h-3.5 sm:w-3.5" aria-hidden="true" />
-                <span className="hidden sm:inline"><span lang="hi">विकल्प</span><span> · Options</span></span>
-                <ChevronDown className={`hidden h-3.5 w-3.5 transition-transform sm:block ${toolsOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                <Search className="h-4 w-4" aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -1306,161 +1252,32 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           )}
 
           <div
-            id="chapter-reader-tools"
-            className={`${toolsOpen ? 'flex liquid-reveal' : 'hidden'} mt-3 flex-col gap-3`}
+            id="chapter-verse-search"
+            className={`${searchOpen ? 'liquid-reveal' : 'hidden'} relative mt-2`}
           >
-            <div className="flex flex-wrap items-center gap-2">
-              {/* Bilingual Cadence Mode Selector */}
-              <div
-                className="inline-flex items-center rounded-xl border border-dharma-border bg-dharma-bg p-0.5 text-xs font-semibold text-dharma-text"
-                role="radiogroup"
-                aria-label="पारायण वाचन शैली (Recitation cadence mode)"
-              >
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={cadenceMode === 'sanskrit_only'}
-                  onClick={() => setParayanaCadenceMode('sanskrit_only')}
-                  className={`rounded-lg px-2.5 py-1 transition ${cadenceMode === 'sanskrit_only'
-                    ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 font-bold shadow-sm'
-                    : 'text-dharma-muted hover:text-dharma-text'
-                    }`}
-                  title="केवल मूल संस्कृत श्लोक पाठ (Sanskrit Only)"
-                >
-                  संस्कृत
-                </button>
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={cadenceMode === 'sanskrit_hindi'}
-                  onClick={() => setParayanaCadenceMode('sanskrit_hindi')}
-                  className={`rounded-lg px-2.5 py-1 transition ${cadenceMode === 'sanskrit_hindi'
-                    ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 font-bold shadow-sm'
-                    : 'text-dharma-muted hover:text-dharma-text'
-                    }`}
-                  title="संस्कृत श्लोक + संक्षिप्त हिन्दी भावार्थ (Sanskrit + Hindi)"
-                >
-                  + हिन्दी
-                </button>
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={cadenceMode === 'sanskrit_english'}
-                  onClick={() => setParayanaCadenceMode('sanskrit_english')}
-                  className={`rounded-lg px-2.5 py-1 transition ${cadenceMode === 'sanskrit_english'
-                    ? 'bg-dharma-card text-saffron-700 dark:text-saffron-300 font-bold shadow-sm'
-                    : 'text-dharma-muted hover:text-dharma-text'
-                    }`}
-                  title="संस्कृत श्लोक + English Translation (Sanskrit + English)"
-                >
-                  + Eng
-                </button>
-              </div>
-
-              {/* Chanting Mode Toggle */}
-              <button
-                type="button"
-                onClick={() => setChantingMode(!chantingMode)}
-                className={`inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 px-3 py-1.5 text-xs font-semibold transition ${chantingMode
-                  ? 'bg-saffron-600 text-white shadow-sm ring-2 ring-saffron-400/30'
-                  : 'border border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-300 hover:text-saffron-700'
-                  }`}
-                title="केवल मूल संस्कृत श्लोक पाठ के लिए स्वाध्याय मोड ऑन/ऑफ करें"
-                aria-label="स्वाध्याय मोड"
-                aria-pressed={chantingMode}
-              >
-                <Flame className={`h-3.5 w-3.5 ${chantingMode ? 'text-white' : 'text-saffron-600'}`} />
-                <span className="hidden sm:inline">स्वाध्याय मोड</span>
-              </button>
-
-              {/* Focus Mode Button */}
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-dharma-muted" aria-hidden="true" />
+            <input
+              ref={searchInputRef}
+              type="search"
+              aria-label="श्लोक संख्या या शब्द खोजें (Search verses in this chapter)"
+              value={filterQuery}
+              onChange={(e) => setFilterQuery(e.target.value)}
+              placeholder="श्लोक संख्या या शब्द खोजें... (e.g. 5, धर्म, कृष्ण)"
+              className="min-h-[44px] w-full rounded-xl border border-dharma-border/70 bg-dharma-bg/80 pl-9 pr-11 text-sm text-dharma-text placeholder:text-dharma-muted/70 outline-none focus:border-saffron-400 focus:ring-1 focus:ring-saffron-400/20 [&::-webkit-search-cancel-button]:hidden"
+            />
+            {filterQuery && (
               <button
                 type="button"
                 onClick={() => {
-                  setFocusVerseIndex(0);
-                  setFocusModeOpen(true);
-                  triggerTactileFeedback('medium', 'click');
+                  setFilterQuery('');
+                  searchInputRef.current?.focus();
                 }}
-                className="inline-flex min-h-[40px] items-center justify-center gap-1.5 rounded-xl sm:min-h-0 border border-dharma-border bg-dharma-bg px-3 py-1.5 text-xs font-semibold text-dharma-text transition hover:border-saffron-300 hover:text-saffron-700 active:scale-95"
-                title="एक-एक श्लोक स्वाध्याय के लिए एकाग्रता मोड खोलें (Focus Mode)"
-                aria-label="एकाग्रता मोड"
+                className="absolute right-0 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                aria-label="Clear filter"
               >
-                <Maximize2 className="h-3.5 w-3.5 text-amber-600" />
-                <span className="hidden sm:inline">एकाग्रता मोड</span>
+                <X className="h-4 w-4" aria-hidden="true" />
               </button>
-
-              {/* Reading depth: Read / Understand / Study */}
-              {!chantingMode && <ReadingDepthSwitch />}
-
-
-              {/* Conversation Mode for Dialogue Scriptures (Bhagavad Gita) */}
-              {scriptureId === 'bhagavadgita' && (
-                <button
-                  type="button"
-                  onClick={() => setIsConversationMode(!isConversationMode)}
-                  className={`inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold transition sm:min-h-0 ${isConversationMode
-                    ? 'border-saffron-600 bg-saffron-600 text-white shadow-2xs'
-                    : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-400'
-                    }`}
-                  title="संवाद स्वरूप (Conversation Mode)"
-                  aria-pressed={isConversationMode}
-                >
-                  <MessageSquare className="h-3.5 w-3.5" />
-                  <span>संवाद स्वरूप</span>
-                </button>
-              )}
-            </div>
-
-            {/* Quick in-chapter search & verse jump */}
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="relative flex-1 min-w-[200px]">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-dharma-muted" />
-                <input
-                  type="text"
-                  aria-label="श्लोक संख्या या शब्द खोजें (Search verses in this chapter)"
-                  value={filterQuery}
-                  onChange={(e) => setFilterQuery(e.target.value)}
-                  placeholder="श्लोक संख्या या शब्द खोजें... (e.g. 5, धर्म, कृष्ण)"
-                  className="w-full rounded-xl border border-dharma-border/70 bg-dharma-bg/80 pl-8 pr-8 py-1.5 text-xs text-dharma-text placeholder:text-dharma-muted/70 outline-none focus:border-saffron-400 focus:ring-1 focus:ring-saffron-400/20"
-                />
-                {filterQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setFilterQuery('')}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 p-0.5 text-dharma-muted hover:text-dharma-text"
-                    aria-label="Clear filter"
-                  >
-                    <X className="h-3.5 w-3.5" />
-                  </button>
-                )}
-              </div>
-
-              {state.verses.length > 5 && (
-                <div className="flex items-center gap-1.5 text-xs text-dharma-muted">
-                  <span className="shrink-0 text-[11px] font-medium">श्लोक पर जाएं:</span>
-                  <select
-                    onChange={(e) => {
-                      if (e.target.value) {
-                        scrollToVerse(e.target.value);
-                        e.target.value = '';
-                      }
-                    }}
-                    defaultValue=""
-                    aria-label="श्लोक पर सीधे जाएं"
-                    className="rounded-lg border border-dharma-border/70 bg-dharma-bg px-2 py-1 text-xs text-dharma-text outline-none focus:border-saffron-400 cursor-pointer"
-                  >
-                    <option value="" disabled>
-                      चुनें...
-                    </option>
-                    {state.verses.map((v) => (
-                      <option key={String(v.number)} value={String(v.number)}>
-                        श्लोक {toAsciiDigits(v.number)} ({v.number})
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </div>
 
@@ -1718,6 +1535,17 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           theme={theme}
           setTheme={setTheme}
           scope="chapter"
+          chapter={{
+            recitation: chantingMode,
+            setRecitation: setChantingMode,
+            cadence: cadenceMode,
+            setCadence: setParayanaCadenceMode,
+            ...(scriptureId === 'bhagavadgita' ? { conversation: isConversationMode, setConversation: setIsConversationMode } : null),
+            openFocus: () => {
+              setFocusVerseIndex(0);
+              setFocusModeOpen(true);
+            },
+          }}
         />
       )}
 

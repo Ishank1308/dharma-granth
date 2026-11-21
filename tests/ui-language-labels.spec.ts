@@ -1,0 +1,109 @@
+import { expect, test, type Page } from '@playwright/test';
+
+/**
+ * The language choice in the header shows two-language labels (data-bi="en" / "hi") in that
+ * language only. The choice sits on <html data-ui-lang>; app/layout.tsx sets it before first
+ * paint and lib/useLanguagePreference.ts keeps it in step afterwards.
+ */
+
+const header = '[data-site-header="true"]';
+
+async function chooseInHeader(page: Page, option: RegExp) {
+  await page.getByRole('button', { name: /^भाषा प्राथमिकता/ }).click();
+  await page.getByRole('listbox', { name: 'भाषा प्राथमिकता चुनें' }).getByRole('option', { name: option }).click();
+}
+
+test('the header language choice shows labels in one language and survives a reload', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/scriptures/');
+  await page.waitForLoadState('networkidle');
+
+  // First desktop nav link: "Home" beside "मुख".
+  const english = page.locator(`${header} a [data-bi="en"]`).first();
+  const hindi = page.locator(`${header} a [data-bi="hi"]`).first();
+  await expect(english).toBeVisible();
+  await expect(hindi).toBeVisible();
+
+  await chooseInHeader(page, /हिन्दी \(Hindi\)/);
+  await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'hindi');
+  await expect(english).toBeHidden();
+  await expect(hindi).toBeVisible();
+  // Both halves stay in the page for crawlers and screen readers that ignore the choice.
+  await expect(english).toHaveCount(1);
+
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'hindi');
+  await expect(english).toBeHidden();
+  await expect(hindi).toBeVisible();
+
+  await chooseInHeader(page, /^English/);
+  await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'english');
+  await expect(english).toBeVisible();
+  await expect(hindi).toBeHidden();
+
+  await chooseInHeader(page, /द्विभाषी/);
+  await expect(english).toBeVisible();
+  await expect(hindi).toBeVisible();
+});
+
+test('the phone drawer shows the same choice as the header menu', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/scriptures/');
+  await page.waitForLoadState('networkidle');
+  await chooseInHeader(page, /हिन्दी \(Hindi\)/);
+  await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'hindi');
+
+  // Same page, now at phone width: the drawer's copy of the setting must agree without a reload.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.locator('button[aria-controls="mobile-navigation-drawer"]').first().click();
+  const radios = page.getByRole('radiogroup', { name: 'भाषा प्राथमिकता' }).getByRole('radio');
+  await expect(radios.filter({ hasText: 'प्राथमिक हिन्दी' })).toHaveAttribute('aria-checked', 'true');
+
+  await radios.filter({ hasText: 'English focus' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'english');
+  await expect(radios.filter({ hasText: 'English focus' })).toHaveAttribute('aria-checked', 'true');
+});
+
+for (const choice of [
+  { lang: 'hindi', shown: 'hi', hidden: 'en', title: 'शास्त्र स्वाध्याय' },
+  { lang: 'english', shown: 'en', hidden: 'hi', title: 'Study the scriptures' },
+] as const) {
+  test(`page titles, section headings and the footer show ${choice.lang} alone when it is chosen`, async ({ page }) => {
+    await page.addInitScript((lang) => localStorage.setItem('dharma.language_preference', JSON.stringify(lang)), choice.lang);
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/learn/');
+
+    // PageHeader: the title in the chosen language, at title size and in the title's own colour.
+    const title = page.locator('#main-content h1').first();
+    const shown = title.locator(`[data-bi="${choice.shown}"]`);
+    await expect(shown).toBeVisible();
+    await expect(shown).toHaveText(choice.title);
+    await expect(title.locator(`[data-bi="${choice.hidden}"]`)).toBeHidden();
+    // Both halves stay in the page for crawlers and screen readers that ignore the choice.
+    await expect(title.locator(`[data-bi="${choice.hidden}"]`)).toHaveCount(1);
+    const look = await shown.evaluate((el) => ({
+      size: Number.parseFloat(getComputedStyle(el).fontSize),
+      sameColour: getComputedStyle(el).color === getComputedStyle(el.closest('h1') as HTMLElement).color,
+    }));
+    expect(look.size).toBeGreaterThanOrEqual(26);
+    if (choice.shown === 'hi') expect(look.sameColour).toBe(true);
+
+    // The eyebrow's second part here is a Sanskrit phrase, not a translation: both parts stay.
+    const eyebrow = page.locator('#main-content header p').first();
+    await expect(eyebrow).toContainText('Learn');
+    await expect(eyebrow.locator('[lang="sa"]')).toBeVisible();
+
+    // SectionTitle
+    const section = page.locator('#main-content h2').filter({ has: page.locator('[data-bi]') }).first();
+    await expect(section.locator(`[data-bi="${choice.shown}"]`)).toBeVisible();
+    await expect(section.locator(`[data-bi="${choice.hidden}"]`)).toBeHidden();
+
+    // Footer links
+    const link = page.locator('footer nav a').first();
+    await expect(link.locator(`[data-bi="${choice.shown}"]`)).toBeVisible();
+    await expect(link.locator(`[data-bi="${choice.hidden}"]`)).toBeHidden();
+
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(1);
+  });
+}

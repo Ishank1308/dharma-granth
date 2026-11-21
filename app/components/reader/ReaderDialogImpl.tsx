@@ -40,6 +40,13 @@ export function ReaderDialog({
   const panelRef = useRef<HTMLDivElement>(null);
   const { handle } = useSheetGesture(onClose, panelRef);
   const { mounted, closing } = usePresence(open, 200);
+  // The latest onClose, read when it is needed. A page that passes a new function on every
+  // render (the chapter reader does, on each setting change) must not restart the effect below:
+  // restarting it moved keyboard focus from the control just used back to the panel.
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -53,7 +60,7 @@ export function ReaderDialog({
       if (e.key === 'Escape') {
         e.preventDefault();
         e.stopPropagation();
-        onClose();
+        onCloseRef.current();
         return;
       }
       if (e.key !== 'Tab' || !panelRef.current) return;
@@ -76,7 +83,7 @@ export function ReaderDialog({
       document.body.style.overflow = previousOverflow;
       if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!mounted) return null;
 

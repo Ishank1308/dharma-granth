@@ -20,7 +20,7 @@ export default function NotFound() {
         <p className="text-xs uppercase tracking-[0.3em] text-saffron-700 font-semibold mb-3">
           <span lang="hi">पृष्ठ नहीं मिला</span> · Page Not Found
         </p>
-        <h1 className="text-4xl md:text-5xl font-serif font-bold text-dharma-text mb-4">
+        <h1 lang="hi" className="text-4xl md:text-5xl font-serif font-bold text-dharma-text mb-4">
           यह पथ ग्रंथालय में उपलब्ध नहीं है
         </h1>
         <p className="mb-3 text-base font-semibold text-dharma-text" lang="en">This path is not in the library.</p>

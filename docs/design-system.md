@@ -171,6 +171,8 @@ All in `components.css`, built from named tokens and the scripture cover variabl
 - `.apple-tint-chip` (set `--chip` for its colour)
 - `.apple-stat` (tabular figures for numbers)
 - `.apple-scope` on a page wrapper quiets older components inside it
+- **Older pages** need no wrapper for the basics. Inside `#main-content`, an `h1` written with `font-serif` takes the large-title role, and headings, buttons and bold labels written with `font-serif` take the interface face ("One voice on every page" in `components.css`). The serif stays for reading text: paragraphs, quotations, transliteration. From 640px up, labels sized 9 to 10.5px render at 11px and sentences (`p`, `li`, `dd`, `blockquote`) sized 12px or less render at 13px; phones have their own floors in `globals.css`. Write a new page with `PageHeader` and `SectionTitle` and none of this applies to it. `tests/sitewide-page-voice.spec.ts` checks the title rule.
+- A small link or pill that is tapped on a phone takes `.tap-target` (44px under a coarse pointer, unchanged with a mouse).
 - The chapter reader's verse card (`.verse-card.book-verse` and its exported form `.verse-card.vt`) is styled here too: one card per verse in the scripture's own cover colours (`--v1..3`, `--foil` from `lib/scripture-vibes.ts`), with a gradient edge, a luminous shloka panel, a filled verse capsule and a gilt ॥ mark. Cards rise in and a band of light crosses the shloka as you scroll (view timelines; still under reduced motion and the quiet modes). The markup in `VerseCard.tsx` and `VerseText` is unchanged, and both forms share one box so hydration does not shift the page.
 
 Use `/design-system-preview/` to review the reader card in both public themes and across the five cover materials, including larger Sanskrit text and a keyboard-operable study disclosure. The preview is noindex and does not appear in site navigation.
@@ -182,6 +184,8 @@ Present the original Sanskrit first, followed by अर्थ and व्या�
 
 On phones, keep previous and next verse controls reachable and clearly labeled. Reader controls use at least a 44px touch area, a visible keyboard focus state, and a clear selected state. Keep the verse and meaning readable before offering secondary actions.
 
+Every reading choice lives in one place, the Aa sheet (`ReaderSettingsPanel`): type and script, theme, the layers shown, reading depth and, on a chapter, the recitation and conversation views, the one-verse view and what read-aloud speaks (the chapter page passes those as its `chapter` prop). The chapter's running head and the verse page's study path only move the reader through the text (verse count, jump, search, section links). Add a new reading choice to the sheet, not to a bar. `tests/reader-one-sheet.spec.ts` checks this.
+
 React pieces:
 
 - `PageHeader`: eyebrow, large title, Hindi line, lead. Server component. Every primary page uses
@@ -189,6 +193,12 @@ React pieces:
   `eyebrowLang="sa"` marks a Sanskrit phrase in the eyebrow.
 - `SectionTitle`: optional eyebrow, title and Hindi line, sub line, trailing link, and the
   accent rule that draws itself in. Use it for every section heading.
+- Two-language labels: the English half carries `data-bi="en"`, the Hindi half `data-bi="hi"`
+  and any "·" between them `data-bi="sep"`, so the reader's language choice (the header menu,
+  mirrored on `<html data-ui-lang>`) shows one of them. `PageHeader`, `SectionTitle`, `Eyebrow`
+  and the footer mark theirs already; a Sanskrit phrase beside an English title is not its
+  translation and stays unmarked. Both halves stay in the HTML. The rules are under
+  "Two-language labels" in `components.css`.
 - `CountUp` (`app/components/motion/CountUp.tsx`): a number that counts up once when it scrolls
   into view. The HTML always has the true value.
 - `WisdomTicker` (`app/components/home/WisdomTicker.tsx`): the slow band of mahāvākyas on home.

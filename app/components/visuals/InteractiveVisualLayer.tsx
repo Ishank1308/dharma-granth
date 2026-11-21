@@ -256,10 +256,12 @@ export function InteractiveVisualLayer({
                   {/* Radiating 12 Rays */}
                   {Array.from({ length: 12 }).map((_, i) => {
                     const angle = (i * 30 * Math.PI) / 180;
-                    const x1 = 200 + Math.cos(angle) * 35;
-                    const y1 = 200 + Math.sin(angle) * 35;
-                    const x2 = 200 + Math.cos(angle) * 185;
-                    const y2 = 200 + Math.sin(angle) * 185;
+                    // Rounded, so Node (the exported HTML) and the browser agree to the last digit: cos and sin differ between engines.
+                    const at = (base: number, unit: number, r: number) => Math.round((base + unit * r) * 100) / 100;
+                    const x1 = at(200, Math.cos(angle), 35);
+                    const y1 = at(200, Math.sin(angle), 35);
+                    const x2 = at(200, Math.cos(angle), 185);
+                    const y2 = at(200, Math.sin(angle), 185);
                     return (
                       <line
                         key={i}

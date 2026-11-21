@@ -31,8 +31,9 @@ export function ConceptRelationshipGraph({
 
   const nodePositions = concepts.map((c, i) => {
     const angle = (2 * Math.PI * i) / concepts.length - Math.PI / 2;
-    const x = centerX + radius * Math.cos(angle);
-    const y = centerY + radius * Math.sin(angle);
+    // Rounded, so Node (the exported HTML) and the browser agree to the last digit: cos and sin differ between engines.
+    const x = Math.round((centerX + radius * Math.cos(angle)) * 100) / 100;
+    const y = Math.round((centerY + radius * Math.sin(angle)) * 100) / 100;
     return { ...c, x, y };
   });
 

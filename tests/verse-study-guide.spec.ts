@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 const verseUrl = '/scripture/bhagavadgita/chapter/2/verse/47/';
 
-test('verse study path follows the Sanskrit, navigates to real layers, and resizes text', async ({ page }) => {
+test('verse study path follows the Sanskrit and navigates to real layers; text size is in the Aa sheet', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 780 });
   await page.goto(verseUrl);
 
@@ -25,7 +25,11 @@ test('verse study path follows the Sanskrit, navigates to real layers, and resiz
 
   const sanskrit = page.locator('#sanskrit-text');
   const before = await sanskrit.getAttribute('class');
-  await guide.getByRole('button', { name: 'Decrease verse and translation text size' }).click();
+  // The study path only navigates; sizes are chosen in the Aa sheet with the other reading choices.
+  await expect(guide.getByRole('button')).toHaveCount(0);
+  await page.getByRole('button', { name: /^Reader settings/ }).first().click();
+  const sheet = page.getByRole('dialog', { name: /Reader settings/ });
+  await sheet.getByRole('group', { name: /Sanskrit size/ }).getByText('S', { exact: true }).click();
   await expect(sanskrit).not.toHaveAttribute('class', before ?? '');
 });
 
@@ -35,7 +39,7 @@ test('verse study controls fit 320px and work in both supported themes', async (
   await page.goto(verseUrl);
 
   const guide = page.getByRole('navigation', { name: /Verse study guide/ });
-  await expect(guide.getByRole('button', { name: 'Increase verse and translation text size' })).toBeVisible();
+  await expect(guide.getByRole('link', { name: /Original Sanskrit/ })).toBeVisible();
   await expect(guide.getByRole('link', { name: /Sources and edition/ })).toHaveAttribute('href', '#layer-sources');
 
   for (const theme of ['sunset', 'night']) {

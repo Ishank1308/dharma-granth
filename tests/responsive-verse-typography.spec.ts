@@ -42,12 +42,14 @@ test('dedicated reader uses readable fluid Sanskrit sizes on phone, tablet and d
 test('manual text-size choices still override the responsive base', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 });
   await page.goto(gita);
-  const guide = page.getByRole('navigation', { name: /Verse study guide/ });
   const first = await measureSanskrit(page, '#sanskrit-text');
-  await guide.getByRole('button', { name: 'Decrease verse and translation text size' }).click();
+  // Sizes are chosen in the Aa sheet; the default is L.
+  await page.getByRole('button', { name: /^Reader settings/ }).first().click();
+  const sizes = page.getByRole('dialog', { name: /Reader settings/ }).getByRole('group', { name: /Sanskrit size/ });
+  await sizes.getByText('S', { exact: true }).click();
   const smaller = await measureSanskrit(page, '#sanskrit-text');
   expect(smaller.size).toBeLessThan(first.size);
-  await guide.getByRole('button', { name: 'Increase verse and translation text size' }).click();
+  await sizes.getByText('L', { exact: true }).click();
   const restored = await measureSanskrit(page, '#sanskrit-text');
   expect(restored.size).toBeGreaterThan(smaller.size);
 });

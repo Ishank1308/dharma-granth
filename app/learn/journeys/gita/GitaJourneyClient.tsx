@@ -369,7 +369,7 @@ export function GitaJourneyClient() {
 
                   <Link
                     href={`/scripture/bhagavadgita/chapter/${ch.chapter}/`}
-                    className="focus-ring inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-3.5 py-2 text-xs font-bold text-white transition shadow-xs"
+                    className="focus-ring tap-target inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-3.5 py-2 text-xs font-bold text-white transition shadow-xs"
                   >
                     <span>Read Chapter</span>
                     <ArrowRight className="w-3.5 h-3.5" />

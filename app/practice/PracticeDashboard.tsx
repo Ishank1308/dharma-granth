@@ -72,7 +72,7 @@ export function PracticeDashboard() {
   const on = (id: ToolId) => enabled[id] !== false;
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg pb-16 text-dharma-text">
+    <main data-deva-labels className="apple-scope min-h-screen bg-dharma-bg pb-16 text-dharma-text">
       <PageHeader
         eyebrow="Sadhana"
         eyebrowHi="साधना"

@@ -167,7 +167,7 @@ export function ModernContextBody({
           className="rounded-xl border border-dharma-border bg-dharma-card-soft p-3 sm:p-5"
         >
           <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-            आज के जीवन में प्रयोग · Practical Application
+            <span lang="hi">आज के जीवन में प्रयोग</span> · Practical Application
           </p>
           <LightMarkdown
             text={parsed.applicationText}
