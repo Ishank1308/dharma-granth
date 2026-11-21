@@ -13,6 +13,9 @@ name: Deploy Cloudflare Pages
 on:
   push:
     branches: ["master"]
+    # A merge that only changes the Android app leaves the website as it is.
+    paths-ignore:
+      - "mobile/**"
   workflow_dispatch:
 
 permissions:

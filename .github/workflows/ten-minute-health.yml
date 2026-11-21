@@ -1,10 +1,13 @@
-name: 10-minute repository health
+name: Hourly repository health
 
 # Lightweight monitoring only; scripture writing/repair remains in the
 # separate autonomous task. GitHub cron is best-effort and can run late.
+# Hourly, not every 10 minutes: each run bills at least a full minute, so the
+# 10-minute schedule alone used about 4,300 Actions minutes a month.
+# (The file keeps its old name so links to its run history still work.)
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "23 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -29,7 +32,7 @@ jobs:
             const { owner, repo } = context.repo;
             const failures = [];
             const report = [
-              '# Dharma Granth · 10-minute health snapshot',
+              '# Dharma Granth · hourly health snapshot',
               '',
               'Lightweight read-only checks; this workflow does **not** merge, deploy, edit scripture, or rerun builds.',
               '',
