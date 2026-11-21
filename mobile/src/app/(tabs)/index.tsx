@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupRow, GroupTitle, LargeHeader, Muted } from '@/components/ui';
@@ -11,6 +11,10 @@ import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
+import { AnimatedSectionList, useScrollY } from '@/motion/parallax';
+import { PressableScale } from '@/motion/pressable-scale';
+import { Reveal } from '@/motion/reveal';
+import { TitleBar } from '@/motion/title-bar';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
 import { barClearance, fontCap, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
@@ -32,7 +36,7 @@ function DailyVerseCard() {
   if (!verse) return null;
   const lines = sanskritLines(verse.sanskrit);
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       accessibilityLabel={t(S.verseOfTheDayA11y)}
       onPress={() =>
@@ -41,7 +45,7 @@ function DailyVerseCard() {
           params: { id: pick.id, chapter: String(pick.chapter), verse: String(verse.number) },
         })
       }
-      style={({ pressed }) => pressed && { transform: [{ scale: 0.985 }] }}>
+      haptic>
       <Card style={{ borderRadius: RADIUS.panel - 2 }}>
         <View style={styles.cardHead}>
           <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
@@ -67,7 +71,7 @@ function DailyVerseCard() {
           ))}
         </View>
       </Card>
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -82,11 +86,11 @@ function ContinueCard() {
   const cover = coverFor(entry.id, entry.category);
   const progress = (idx + 1) / entry.chapters.length;
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       accessibilityLabel={t(S.continueReadingA11y(entry.title, ch.number))}
       onPress={() => router.push({ pathname: '/scripture/[id]/[chapter]', params: { id: entry.id, chapter: String(ch.number) } })}
-      style={({ pressed }) => pressed && { transform: [{ scale: 0.985 }] }}>
+      haptic>
       <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
           <CoverTile cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} size={TOUCH} />
@@ -112,7 +116,7 @@ function ContinueCard() {
           <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(progress * 100))}%` }]} />
         </View>
       </Card>
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -123,6 +127,7 @@ export default function LibraryScreen() {
   const { t, lang } = useI18n();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
+  const { scrollY, onScroll } = useScrollY();
 
   const sections = useMemo(() => {
     return CATEGORIES.filter((c) => !category || c.key === category)
@@ -139,8 +144,10 @@ export default function LibraryScreen() {
 
   return (
     <Backdrop>
-      <SectionList
+      <AnimatedSectionList
         style={{ backgroundColor: 'transparent' }}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
         contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}
         sections={sections}
         keyExtractor={(b) => b.id}
@@ -150,6 +157,7 @@ export default function LibraryScreen() {
           <View style={{ rowGap: SPACE.md }}>
             <LargeHeader
               title={S.appName}
+              scrollY={scrollY}
               eyebrow={S.libraryEyebrow}
               subtitle={t(S.librarySummary(offline, CATALOG.length - offline))}>
               {/* The name reads in both scripts; the interface language leads. */}
@@ -157,8 +165,12 @@ export default function LibraryScreen() {
                 {lang === 'hi' ? S.appName.en : S.appName.hi}
               </Text>
             </LargeHeader>
-            <ContinueCard />
-            <DailyVerseCard />
+            <Reveal index={0}>
+              <ContinueCard />
+            </Reveal>
+            <Reveal index={1}>
+              <DailyVerseCard />
+            </Reveal>
             <View style={[styles.search, glass(palette, true)]}>
               <Ionicons name="search" size={18} color={palette.muted} />
               <TextInput
@@ -221,6 +233,7 @@ export default function LibraryScreen() {
         }}
         ListEmptyComponent={<Muted style={{ marginTop: SPACE.xl, textAlign: 'center' }}>{t(S.noMatch(query))}</Muted>}
       />
+      <TitleBar scrollY={scrollY} title={S.appName} />
     </Backdrop>
   );
 }

@@ -16,6 +16,8 @@ import {
 } from '@/lib/verse-format';
 import { S, type Lang, type Msg } from '@/i18n';
 import type { Settings } from '@/lib/backup';
+import { hapticOff, hapticOn } from '@/motion/haptics';
+import { PopIcon } from '@/motion/pop-icon';
 import type { Cover } from '@/theme/covers';
 import { fontCap, huesFor, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
 import { Card, coverFill } from './ui';
@@ -142,7 +144,11 @@ function VerseCardImpl({
             <Ionicons name="share-outline" size={20} color={palette.muted} />
           </Pressable>
           <Pressable
-            onPress={() => onToggleBookmark(String(verse.number))}
+            onPress={() => {
+              if (bookmarked) hapticOff();
+              else hapticOn();
+              onToggleBookmark(String(verse.number));
+            }}
             style={({ pressed }) => [
               styles.iconBtn,
               bookmarked && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
@@ -151,7 +157,7 @@ function VerseCardImpl({
             accessibilityRole="button"
             accessibilityState={{ selected: bookmarked }}
             accessibilityLabel={t(bookmarked ? S.unbookmarkVerseA11y(ref) : S.bookmarkVerseA11y(ref))}>
-            <Ionicons name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={bookmarked ? palette.accent : palette.muted} />
+            <PopIcon on={bookmarked} name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={bookmarked ? palette.accent : palette.muted} />
           </Pressable>
         </View>
       </View>

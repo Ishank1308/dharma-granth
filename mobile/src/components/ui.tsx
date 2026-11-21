@@ -1,7 +1,10 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ComponentProps, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, useWindowDimensions, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import Animated, { type SharedValue } from 'react-native-reanimated';
 
+import { hapticSelect } from '@/motion/haptics';
+import { useLargeTitleStyle } from '@/motion/parallax';
 import { useAppState } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 import { BAR_HEIGHT, fontCap, RADIUS, separator, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, type Palette } from '@/theme/themes';
@@ -181,7 +184,11 @@ export function Chip({
   const { palette } = useAppState();
   return (
     <Pressable
-      onPress={onPress}
+      onPress={() => {
+        // A tick as the choice changes, like a segmented control; plain buttons stay silent.
+        if (active === false) hapticSelect();
+        onPress();
+      }}
       accessibilityRole="button"
       accessibilityState={{ selected: !!active }}
       accessibilityLabel={accessibilityLabel ?? label}
@@ -251,20 +258,24 @@ export function LargeHeader({
   eyebrow,
   subtitle,
   children,
+  scrollY,
 }: {
   title: { en: string; hi: string };
   eyebrow?: { en: string; hi: string };
   subtitle?: string;
   children?: ReactNode;
+  /** The list's scroll position: the title hands over to the compact TitleBar (src/motion/title-bar) as it scrolls away. */
+  scrollY?: SharedValue<number>;
 }) {
   const { palette } = useAppState();
   const { height } = useWindowDimensions();
+  const titleStyle = useLargeTitleStyle(scrollY, height);
   return (
     <View style={[styles.largeHeader, { minHeight: Math.round(height * 0.28) }]}>
       {eyebrow ? <Eyebrow {...eyebrow} /> : null}
-      <View accessibilityRole="header">
+      <Animated.View accessibilityRole="header" style={[{ transformOrigin: 'left bottom' }, titleStyle]}>
         <PageTitle {...title} />
-      </View>
+      </Animated.View>
       {children}
       {subtitle ? (
         <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>

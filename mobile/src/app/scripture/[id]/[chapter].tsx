@@ -15,6 +15,7 @@ import { useDownloads } from '@/content/downloads';
 import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
+import { useToast } from '@/motion/toast';
 import { useAppState } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
 import { BAR_GAP, barClearance, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
@@ -100,7 +101,23 @@ export default function ChapterScreen() {
     () => new Set(bookmarks.filter((b) => b.id === id && b.chapter === chapterNo).map((b) => b.verse)),
     [bookmarks, id, chapterNo],
   );
-  const onToggleBookmark = useCallback((verse: string) => toggleBookmark(id, chapterNo, verse), [toggleBookmark, id, chapterNo]);
+  // Saving or removing confirms itself with a toast and Undo, so the reader never meets a dialog mid-chapter.
+  const toast = useToast();
+  const savedRef = useRef(saved);
+  useEffect(() => {
+    savedRef.current = saved;
+  }, [saved]);
+  const onToggleBookmark = useCallback(
+    (verse: string) => {
+      const wasSaved = savedRef.current.has(verse);
+      toggleBookmark(id, chapterNo, verse);
+      toast.show((wasSaved ? S.toastRemoved : S.toastSaved)[lang], {
+        icon: wasSaved ? 'bookmark-outline' : 'bookmark',
+        action: { label: S.undo[lang], onPress: () => toggleBookmark(id, chapterNo, verse) },
+      });
+    },
+    [toggleBookmark, id, chapterNo, toast, lang],
+  );
 
   // The verse at the top of the screen, for the toolbar's "Verse 12 of 47".
   // FlatList must get the same callback on every render; setVisibleIndex never changes, so no deps.
