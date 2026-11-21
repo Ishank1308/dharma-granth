@@ -23,6 +23,16 @@ export function illumination(phase: number): number {
   return (1 - Math.cos(2 * Math.PI * phase)) / 2;
 }
 
+/**
+ * The phase (0 new, 0.5 full) from the Panchang's illuminated percentage and paksha: the lit fraction is
+ * (1 - cos 2πφ) / 2, waxing in the first half of the month and waning in the second.
+ */
+export function phaseFromIllumination(percent: number, waxing: boolean): number {
+  const lit = Math.min(1, Math.max(0, percent / 100));
+  const half = Math.acos(1 - 2 * lit) / (2 * Math.PI);
+  return waxing ? half : 1 - half;
+}
+
 export function Moon3D({ phase, size = 120, style }: { phase: number; size?: number; style?: StyleProp<ViewStyle> }) {
   const { palette } = useAppState();
   const { rich } = useMotion();
