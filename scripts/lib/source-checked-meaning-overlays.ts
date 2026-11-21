@@ -1,12 +1,12 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, chapter 3 verses 1–43, and chapter 4 verses 1–35.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, chapter 3 verses 1–43, and chapter 4 verses 1–40.
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
  * blocked. Source Sanskrit is never modified.
  *
  * Witness: https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html
- * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–35). Hindi is an AI-assisted, independently worded
+ * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–40). Hindi is an AI-assisted, independently worded
  * interpretation of that Sanskrit; it is NOT a Gita Press transcription or
  * scholar-certified translation. The reader displays an editorial study-translation label and provides truthful AI-assistance provenance.
  */
@@ -166,6 +166,11 @@ export const DEVI_CHAPTER_4_WITNESS_OPENINGS = [
   "ध्यानस्थं च हरिं दृष्ट्वा पिता मे विस्मयं गतः",
   "कौस्तुभोद्भासितं दिव्यं शङ्खचक्रगदाधरम्",
   "कारणं सर्वलोकानां देवदेवं जगद्गुरुम्",
+  "देवदेव जगन्नाथ भूतभव्यभवत्प्रभो",
+  "विस्मयोऽयं ममात्यर्थं त्वं सर्वजगतां प्रभुः",
+  "त्वन्नाभिकमलाज्जातः कर्ताहमखिलस्य ह",
+  "जानाम्यहं जगन्नाथ त्वमादिः सर्वकारणम्",
+  "इच्छया ते महाराज सृजाम्यहमिदं जगत्",
 ] as const;
 
 type Verse = Record<string, unknown>;
