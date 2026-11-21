@@ -140,6 +140,9 @@ export function LibraryCard({
   onToggleSave: (id: string) => void;
 }) {
   const detailed = view === 'detailed';
+  // Compact view on a phone: one short row per text (name, kind, size) that opens on a tap, so
+  // 67 texts are a few screens of scrolling. The fuller card returns from 640px, and in Detailed.
+  const row = (classes: string) => (detailed ? '' : ` ${classes}`);
   const headingId = `lib-${item.id}-title`;
   const level = readingLevelOf(item);
   const themes = themesOf(item).slice(0, 6);
@@ -195,11 +198,11 @@ export function LibraryCard({
       aria-labelledby={headingId}
       data-tilt
       style={{ '--book': CATEGORY_COLOURS[item.category] ?? CATEGORY_COLOURS.other } as CSSProperties}
-      className="home-book card-sacred sheen-sweep group relative flex h-full flex-col overflow-hidden rounded-card bg-dharma-card p-4 pl-6 shadow-raised sm:p-6 sm:pl-8"
+      className={`home-book card-sacred sheen-sweep group relative flex h-full flex-col overflow-hidden rounded-card bg-dharma-card p-4 pl-6 shadow-raised sm:p-6 sm:pl-8${row('max-sm:py-3')}`}
     >
       <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-[color:var(--book-ink)]" />
-      <header className="flex items-start justify-between gap-3">
-        <p className="text-xs text-dharma-muted">{categoryLabel}</p>
+      <header className={`flex items-start justify-between gap-3${row('max-sm:absolute max-sm:right-3 max-sm:top-3 max-sm:z-[2]')}`}>
+        <p className={`text-xs text-dharma-muted${row('max-sm:hidden')}`}>{categoryLabel}</p>
         <button
           type="button"
           onClick={() => onToggleSave(item.id)}
@@ -211,23 +214,24 @@ export function LibraryCard({
         </button>
       </header>
 
-      <h3 id={headingId} className="mt-1">
+      <h3 id={headingId} className={`mt-1${row('max-sm:mt-0 max-sm:pr-10')}`}>
         {item.titleSanskrit && (
-          <span lang="sa" className="shloka-text block text-[28px] leading-tight text-[color:var(--book-ink)] sm:text-[34px]">
+          <span lang="sa" className={`shloka-text block text-[28px] leading-tight text-[color:var(--book-ink)] sm:text-[34px]${row('max-sm:text-title-3 max-sm:tracking-normal')}`}>
             {item.titleSanskrit}
           </span>
         )}{' '}
-        <span lang="en" className="mt-2 block text-title-3 font-semibold text-dharma-text">
+        <span lang="en" className={`mt-2 block text-title-3 font-semibold text-dharma-text${row('max-sm:mt-0.5 max-sm:text-callout')}`}>
           {englishTitle}
         </span>
         {detailed && item.titleIast && <span className="mt-0.5 block font-serif text-sm font-normal italic text-dharma-muted">{item.titleIast}</span>}
       </h3>
-      <p className="mt-1 text-footnote text-dharma-muted">
-        {item.author ? <span>Attributed to {item.author} · </span> : null}
-        {countLabel}
+      <p className={`mt-1 text-footnote text-dharma-muted${row('max-sm:mt-0.5 max-sm:pr-6')}`}>
+        {!detailed && <span className="sm:hidden">{categoryLabel} · </span>}
+        {item.author ? <span className={row('max-sm:hidden')}>Attributed to {item.author} · </span> : null}
+        <span>{countLabel}</span>
       </p>
 
-      <p className={`mt-3 text-sm leading-relaxed text-dharma-muted ${detailed ? '' : 'line-clamp-3'}`}>
+      <p className={`mt-3 text-sm leading-relaxed text-dharma-muted ${detailed ? '' : 'line-clamp-3 max-sm:hidden'}`}>
         {detailed ? item.description : summaryOf(item.description)}
       </p>
       {detailed && item.explanation && (
@@ -236,11 +240,11 @@ export function LibraryCard({
         </p>
       )}
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+      <div className={`mt-3 flex flex-wrap items-center gap-x-4 gap-y-2${row('max-sm:hidden')}`}>
         <LanguageChips item={item} />
         <StatusBadge item={item} />
       </div>
-      {!detailed && <p className="mt-2 text-sm text-dharma-muted">Reading level: {level.label}</p>}
+      {!detailed && <p className="mt-2 text-sm text-dharma-muted max-sm:hidden">Reading level: {level.label}</p>}
 
       {detailed && (
         <dl className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 border-t border-dharma-border/70 pt-5 sm:grid-cols-2">
@@ -258,27 +262,35 @@ export function LibraryCard({
       )}
 
       {lastReadHref && (
-        <div className="mt-3 border-t border-dharma-border/60 pt-3">
+        <div className={`mt-3 border-t border-dharma-border/60 pt-3${row('max-sm:mt-2 max-sm:flex max-sm:items-center max-sm:gap-3 max-sm:pt-1')}`}>
           <p className="font-devanagari text-xs text-dharma-muted">
             हाल में खोला · अध्याय {visitedChapter} / {item.totalChapters}
           </p>
           <Link
             href={lastReadHref}
-            className="focus-ring mt-1 inline-flex min-h-[44px] items-center text-xs font-semibold text-dharma-saffron hover:underline"
+            className={`focus-ring mt-1 inline-flex min-h-[44px] items-center text-xs font-semibold text-dharma-saffron hover:underline${row('max-sm:relative max-sm:z-[2] max-sm:mt-0')}`}
           >
             इस अध्याय को खोलें
           </Link>
         </div>
       )}
 
-      <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">
+      <div className={`mt-auto flex flex-wrap items-center gap-2 pt-4${row('max-sm:pt-0')}`}>
+        {/* On a phone row the link covers the row, so the whole row opens the text. */}
         <Link
           href={readingHref}
           aria-label={`Start reading ${item.title}`}
-          className="inline-flex min-h-[44px] items-center text-body text-dharma-saffron hover:underline"
+          className={`inline-flex min-h-[44px] items-center text-body text-dharma-saffron hover:underline${row('max-sm:absolute max-sm:inset-0 max-sm:z-[1] max-sm:min-h-0 max-sm:rounded-card')}`}
         >
-          Start reading <span aria-hidden="true">&nbsp;›</span>
+          <span className={row('max-sm:sr-only')}>
+            Start reading <span aria-hidden="true">&nbsp;›</span>
+          </span>
         </Link>
+        {!detailed && (
+          <span aria-hidden="true" className="absolute bottom-3 right-5 text-title-3 leading-none text-dharma-saffron sm:hidden">
+            ›
+          </span>
+        )}
       </div>
     </article>
   );
