@@ -644,7 +644,7 @@ export function SiteNav({
                   key={item.href}
                   href={item.href}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`relative whitespace-nowrap rounded-full px-2.5 xl:px-3.5 py-1.5 text-footnote transition-all duration-200 ${
+                  className={`relative whitespace-nowrap rounded-full px-2.5 2xl:px-3.5 py-1.5 text-footnote transition-all duration-200 ${
                     isActive(item.href)
                       ? 'bg-dharma-saffron/15 font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] ring-1 ring-dharma-saffron/30'
                       : 'text-dharma-text/85 hover:bg-white/50 hover:text-dharma-text dark:hover:bg-white/10'
@@ -665,7 +665,7 @@ export function SiteNav({
                   ref={discoverButtonRef}
                   type="button"
                   onClick={() => setDiscoverOpen((open) => !open)}
-                  className={`flex items-center gap-1 rounded-full px-2.5 xl:px-3.5 py-1.5 text-footnote transition-all ${
+                  className={`flex items-center gap-1 rounded-full px-2.5 2xl:px-3.5 py-1.5 text-footnote transition-all ${
                     discoveryIsActive || discoverOpen
                       ? 'bg-dharma-saffron/15 font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] ring-1 ring-dharma-saffron/30'
                       : 'text-dharma-text/85 hover:bg-white/50 hover:text-dharma-text dark:hover:bg-white/10'
@@ -778,7 +778,7 @@ export function SiteNav({
                 aria-keyshortcuts="Control+K Meta+K /"
               >
                 <Search className="h-4 w-4 text-dharma-text" aria-hidden="true" />
-                <kbd className="kbd-hint hidden xl:inline rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-[11px] text-dharma-text-secondary">
+                <kbd className="kbd-hint hidden 2xl:inline rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-[11px] text-dharma-text-secondary">
                   {shortcutLabel}
                 </kbd>
               </button>{' '}
