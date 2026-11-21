@@ -19,10 +19,15 @@ export const SPRING = {
 } satisfies Record<string, WithSpringConfig>;
 
 export const DURATION = {
-  /** A content fade, as a screen's rows arrive. */
-  enter: 420,
-  /** One step of a staggered list. */
-  stagger: 45,
+  /**
+   * A content fade, as a screen's rows arrive. NN/g puts most UI motion at 100–500 ms and warns that
+   * animation seen often should be shorter: these screens open many times a day, so it stays under 300.
+   */
+  enter: 280,
+  /** One step of a staggered list: ten rows land within a third of a second. */
+  stagger: 32,
+  /** Simple feedback (a toggle, a toast leaving): about 100–200 ms. */
+  quick: 180,
   /** The slow breath of ambient artwork (drift, foil shimmer). */
   ambient: 9000,
 } as const;

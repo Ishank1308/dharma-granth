@@ -1,33 +1,42 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { accentFill, Backdrop, Card, coverFill, LargeHeader, Muted } from '@/components/ui';
 import { getEntry, loadChapter } from '@/content/catalog';
 import { S, useI18n } from '@/i18n';
 import { cleanVerseField, formatVerseRef, meaningState, MEANING_COPY, sanskritLines } from '@/lib/verse-format';
+import { useScrollY } from '@/motion/parallax';
+import { TitleBar } from '@/motion/title-bar';
+import { useToast } from '@/motion/toast';
 import { useAppState } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 export default function BookmarksScreen() {
   const insets = useSafeAreaInsets();
-  const { palette, settings, bookmarks, removeBookmark } = useAppState();
+  const { palette, settings, bookmarks, removeBookmark, toggleBookmark } = useAppState();
+  const { scrollY, onScroll } = useScrollY();
+  const toast = useToast();
   const scale = settings.textScale;
   const cap = fontCap(scale);
   const { t } = useI18n();
 
   return (
     <Backdrop>
-      <FlatList
+      <Animated.FlatList
         style={{ backgroundColor: 'transparent' }}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
         contentContainerStyle={{ flexGrow: 1, paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}
         data={bookmarks}
         keyExtractor={(b) => `${b.id}:${b.chapter}:${b.verse}`}
         ListHeaderComponent={
           <LargeHeader
             title={S.savedTitle}
+            scrollY={scrollY}
             eyebrow={S.savedEyebrow}
             subtitle={bookmarks.length ? t(S.savedSummary(bookmarks.length)) : undefined}
           />
@@ -133,13 +142,21 @@ export default function BookmarksScreen() {
                 style={styles.remove}
                 accessibilityRole="button"
                 accessibilityLabel={t(S.removeSavedA11y(ref))}
-                onPress={() => removeBookmark(item)}>
+                onPress={() => {
+                  // Removing is instant; the toast offers Undo instead of asking first.
+                  removeBookmark(item);
+                  toast.show(t(S.toastRemoved), {
+                    icon: 'trash-outline',
+                    action: { label: t(S.undo), onPress: () => toggleBookmark(item.id, item.chapter, item.verse) },
+                  });
+                }}>
                 <Ionicons name="trash-outline" size={18} color={palette.muted} />
               </Pressable>
             </Card>
           );
         }}
       />
+      <TitleBar scrollY={scrollY} title={S.savedTitle} />
     </Backdrop>
   );
 }

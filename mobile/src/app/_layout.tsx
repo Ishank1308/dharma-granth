@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { DailyReminderEffects } from '@/components/daily-reminder-effects';
 import { DailyWidgetEffects } from '@/components/daily-widget-effects';
 import { RecitationProvider } from '@/audio/player';
+import { ToastProvider } from '@/motion/toast';
 import { useMotion } from '@/motion/use-motion';
 import { AppStateProvider, useAppState } from '@/state/app-state';
 
@@ -65,7 +66,9 @@ export default function RootLayout() {
   return (
     <AppStateProvider>
       <RecitationProvider>
-        <Navigator />
+        <ToastProvider>
+          <Navigator />
+        </ToastProvider>
       </RecitationProvider>
     </AppStateProvider>
   );

@@ -299,4 +299,9 @@ export const S = {
     hi: `${inSection ? 'इस वर्ग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
   }),
   searchResultA11y: (ref: string, text: string) => ({ en: `${ref}. ${text}. Opens the verse`, hi: `${ref}। ${text}। श्लोक खोलता है` }),
+
+  // Toasts: a short confirmation with Undo, in place of "Are you sure?" dialogs
+  toastSaved: { en: 'Saved to your collection', hi: 'आपके संग्रह में सहेजा गया' },
+  toastRemoved: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
+  undo: { en: 'Undo', hi: 'वापस लें' },
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;

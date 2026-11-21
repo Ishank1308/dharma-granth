@@ -60,6 +60,17 @@ export default function ScriptureScreen() {
   return (
     <Backdrop>
       <>
+        {/* The page takes on the book's own colour, like a cover lighting the table it lies on, so moving from
+            the library into a book feels like a change of place. */}
+        {!palette.lite ? (
+          <View
+            pointerEvents="none"
+            style={[
+              StyleSheet.absoluteFill,
+              { backgroundImage: `radial-gradient(120% 55% at 50% 0%, ${cover.colors[1]}${palette.dark ? '59' : '38'} 0%, transparent 70%)` },
+            ]}
+          />
+        ) : null}
         {/* The header floats over the cover; the title is on the cover itself. */}
         <Stack.Screen
           options={{

@@ -4,7 +4,8 @@ import { File, Paths } from 'expo-file-system';
 import { useFocusEffect } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useState } from 'react';
-import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, useWindowDimensions, View } from 'react-native';
+import { Alert, Linking, Platform, Pressable, StyleSheet, Switch, Text, useWindowDimensions, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DownloadsSection } from '@/components/download-card';
@@ -19,6 +20,8 @@ import {
   type ReminderPermission,
 } from '@/lib/daily-notification';
 import { formatReminderTime } from '@/lib/reminder';
+import { useScrollY } from '@/motion/parallax';
+import { TitleBar } from '@/motion/title-bar';
 import { useAppState } from '@/state/app-state';
 import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
@@ -150,6 +153,7 @@ function DailyVerseSettings() {
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
+  const { scrollY, onScroll } = useScrollY();
   const { palette, settings, updateSettings, exportData, importData, bookmarks, lightEffects } = useAppState();
   // At large system font sizes the four theme names no longer fit in one row; show them two by two.
   const { fontScale } = useWindowDimensions();
@@ -211,10 +215,12 @@ export default function SettingsScreen() {
 
   return (
     <Backdrop>
-      <ScrollView
+      <Animated.ScrollView
         style={{ backgroundColor: 'transparent' }}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
         contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}>
-        <LargeHeader title={S.settingsTitle} eyebrow={S.settingsEyebrow} />
+        <LargeHeader title={S.settingsTitle} eyebrow={S.settingsEyebrow} scrollY={scrollY} />
 
         <SectionTitle {...S.language} />
         <View style={styles.chips}>
@@ -338,7 +344,8 @@ export default function SettingsScreen() {
             <Ionicons name="open-outline" size={18} color={palette.muted} />
           </GroupRow>
         </GroupCard>
-      </ScrollView>
+      </Animated.ScrollView>
+      <TitleBar scrollY={scrollY} title={S.settingsTitle} />
     </Backdrop>
   );
 }

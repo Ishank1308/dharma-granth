@@ -6,7 +6,8 @@
  *   <Animated.FlatList onScroll={onScroll} scrollEventThrottle={16} … />
  *   const style = useParallax(scrollY, 0.4);
  */
-import { Extrapolation, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, type SharedValue } from 'react-native-reanimated';
+import { SectionList } from 'react-native';
+import Animated, { Extrapolation, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, type SharedValue } from 'react-native-reanimated';
 
 export function useScrollY() {
   const scrollY = useSharedValue(0);
@@ -38,3 +39,25 @@ export function useScrollProgressStyle(scrollY: SharedValue<number>, start: numb
     return { opacity: p, transform: [{ translateY: (1 - p) * rise }] };
   });
 }
+
+/**
+ * Where a LargeHeader's title passes under the compact title bar, for a window `height` tall: the header holds
+ * 28% of the screen with the title near its foot. Returns the scroll range over which the two titles swap.
+ */
+export function titleSwap(height: number): [number, number] {
+  const start = Math.max(40, Math.round(height * 0.28) - 130);
+  return [start, start + 50];
+}
+
+/** The large title's side of the swap: it fades and settles back slightly as the compact title arrives. */
+export function useLargeTitleStyle(scrollY: SharedValue<number> | undefined, height: number) {
+  const [start, end] = titleSwap(height);
+  return useAnimatedStyle(() => {
+    if (!scrollY) return {};
+    const p = interpolate(scrollY.value, [start, end], [0, 1], Extrapolation.CLAMP);
+    return { opacity: 1 - p, transform: [{ scale: 1 - p * 0.04 }] };
+  });
+}
+
+/** Animated versions of the list components that screens use, so they can take a UI-thread scroll handler. */
+export const AnimatedSectionList = Animated.createAnimatedComponent(SectionList) as unknown as typeof SectionList;
