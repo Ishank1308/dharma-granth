@@ -383,6 +383,19 @@ export const S = {
   shareFullVerse: { en: 'The whole verse is always on the card, every line.', hi: 'कार्ड पर पूरा श्लोक रहता है, हर पंक्ति।' },
   shareAndMore: { en: 'Share', hi: 'शेयर' },
   backupJournalAdded: (count: number) => ({ en: ` ${n(count)} journal reflections added.`, hi: ` डायरी के ${n(count)} चिन्तन जोड़े गए।` }),
+
+  // Verse search screen: large header, the field at the bottom in the thumb zone
+  searchTitle: { en: 'Search verses', hi: 'श्लोक खोजें' },
+  searchEyebrow: { en: 'Works offline', hi: 'बिना इंटरनेट' },
+  searchField: { en: 'Words from a verse', hi: 'श्लोक के शब्द' },
+  clearSearch: { en: 'Clear search', hi: 'खोज मिटाएँ' },
+  searchTry: { en: 'Try', hi: 'ऐसे खोजें' },
+  searchForA11y: (example: string) => ({ en: `Search for ${example}`, hi: `${example} खोजें` }),
+  searchNoVerse: (query: string, inSection: boolean) => ({
+    en: `No verse matches “${query}”${inSection ? ' in this section' : ''}. Try fewer words or another spelling.`,
+    hi: `${inSection ? 'इस वर्ग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
+  }),
+  searchResultA11y: (ref: string, text: string) => ({ en: `${ref}. ${text}. Opens the verse`, hi: `${ref}। ${text}। श्लोक खोलता है` }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 
 /** Journal moods (@/lib/journal MOODS), as on the website. */
