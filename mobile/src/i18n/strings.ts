@@ -291,6 +291,8 @@ export const S = {
   }),
   savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
   startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+  shelfTitle: { en: 'Good places to begin', hi: 'आरंभ के लिए' },
+  openBookA11y: (title: string) => ({ en: `Open ${title}`, hi: `${title} खोलें` }),
 
   // Accessibility (TalkBack labels, hints and announcements)
   verseOfTheDayFullA11y: (ref: string, text: string) => ({ en: `Verse of the day, ${ref}. ${text}`, hi: `आज का श्लोक, ${ref}। ${text}` }),

@@ -4,6 +4,7 @@ import { Platform, Pressable, StyleSheet, Text, useWindowDimensions, View, type 
 import Animated, { type SharedValue } from 'react-native-reanimated';
 
 import { hapticSelect } from '@/motion/haptics';
+import { PressableScale } from '@/motion/pressable-scale';
 import { useLargeTitleStyle } from '@/motion/parallax';
 import { useAppState } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
@@ -160,13 +161,13 @@ export function GlassRow({
 }) {
   const { palette } = useAppState();
   return (
-    <Pressable
+    <PressableScale
       onPress={onPress}
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
-      style={({ pressed }) => [styles.row, glass(palette), pressed && { transform: [{ scale: 0.985 }], opacity: 0.85 }]}>
+      style={[styles.row, glass(palette)]}>
       {children}
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -201,10 +202,11 @@ export function Chip({
       accessibilityState={choice ? { checked: active } : undefined}
       accessibilityLabel={accessibilityLabel ?? label}
       hitSlop={(TOUCH - CHIP_HEIGHT) / 2}
-      style={({ pressed }) => [styles.chip, active ? accentFill(palette) : glass(palette), { opacity: pressed ? 0.75 : 1 }]}>
+      // The chosen chip is ink, not saffron: the one saffron thing on a screen stays the action to take.
+      style={({ pressed }) => [styles.chip, active ? { backgroundColor: palette.text } : glass(palette), { opacity: pressed ? 0.75 : 1 }]}>
       <Text
         maxFontSizeMultiplier={UI_FONT_CAP}
-        style={{ color: active ? palette.onAccent : palette.text, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
+        style={{ color: active ? palette.bg : palette.text, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
         {label}
       </Text>
     </Pressable>
@@ -484,19 +486,16 @@ export function IconButton({
           : null;
   const tint = color ?? (tone === 'accent' ? palette.onAccent : selected ? palette.accent : palette.muted);
   return (
-    <Pressable
+    <PressableScale
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
       disabled={disabled}
       accessibilityState={{ selected, disabled }}
-      style={({ pressed }) => [
-        { width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center' },
-        fill,
-        pressed && { opacity: 0.7, transform: [{ scale: 0.94 }] },
-      ]}>
+      scaleTo={0.9}
+      style={[{ width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center' }, fill]}>
       <Ionicons name={icon} size={Math.round(size * 0.44)} color={tint} />
-    </Pressable>
+    </PressableScale>
   );
 }
 

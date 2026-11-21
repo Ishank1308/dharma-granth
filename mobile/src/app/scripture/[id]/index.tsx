@@ -15,6 +15,7 @@ import { useScrollProgressStyle, useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
+import { SANSKRIT_FONT } from '@/theme/fonts';
 import { BAR_GAP, BAR_HEIGHT, barClearance, RADIUS, SPACE, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export default function ScriptureScreen() {
@@ -149,7 +150,7 @@ export default function ScriptureScreen() {
                 accessibilityLabel={`${t(S.chapterA11y(item.number, item.title))}${current ? `, ${t(S.readingNowA11y)}` : ''}`}
                 accessibilityHint={offline ? undefined : t(S.opensOnWebsite)}
                 onPress={() => open(item.number)}>
-                <Text style={[styles.num, { color: current ? palette.accent : palette.gold, fontWeight: current ? '800' : '600' }]}>
+                <Text style={[styles.num, { color: current ? palette.accent : palette.gold }]}>
                   {toDevanagari(item.number)}
                 </Text>
                 <View style={{ flex: 1 }}>
@@ -157,7 +158,7 @@ export default function ScriptureScreen() {
                   <Text style={{ color: current ? palette.accent : palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
                     {current
                       ? t(S.readingNow)
-                      : `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}${item.verseCount ? ` · ${t(S.verseCount(item.verseCount))}` : ''}`}
+                      : `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}${item.verseCount ? `, ${t(S.verseCount(item.verseCount))}` : ''}`}
                   </Text>
                 </View>
                 <Ionicons name={offline ? 'chevron-forward' : 'open-outline'} size={18} color={palette.muted} />
@@ -165,6 +166,13 @@ export default function ScriptureScreen() {
             );
           }}
         />
+        {resume && !palette.lite ? (
+          // The list fades into the page behind the button, so rows never look cut off by it.
+          <View
+            pointerEvents="none"
+            style={[styles.fade, { height: barClearance(insets.bottom) + SPACE.lg, backgroundImage: `linear-gradient(180deg, transparent 0%, ${palette.bg} 60%)` }]}
+          />
+        ) : null}
         {resume ? (
           // Continue where you left off, in the thumb zone.
           <PressableScale
@@ -187,7 +195,8 @@ export default function ScriptureScreen() {
 const styles = StyleSheet.create({
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   // minWidth, not width: chapter numbers like १२० grow past 32 dp at large font sizes.
-  num: { minWidth: 32, fontSize: TYPE.title3 + 1, textAlign: 'center' },
+  // Chapter numerals in the shloka face, gilt, as a printed book numbers its chapters.
+  num: { minWidth: 32, fontFamily: SANSKRIT_FONT, fontSize: TYPE.title3 + 1, lineHeight: (TYPE.title3 + 1) * 1.5, textAlign: 'center' },
   badges: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm, marginTop: SPACE.lg, justifyContent: 'center' },
   badge: {
     flexDirection: 'row',
@@ -199,6 +208,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.14)',
   },
   badgeText: { color: '#ffffff', fontSize: TYPE.footnote, fontWeight: '500' },
+  fade: { position: 'absolute', left: 0, right: 0, bottom: 0 },
   resume: {
     position: 'absolute',
     left: SPACE.lg,

@@ -18,9 +18,8 @@ import { AccessibilityInfo, Pressable, StyleSheet, Text, View } from 'react-nati
 import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { barSurface, glass } from '@/components/ui';
 import { useAppState } from '@/state/app-state';
-import { BAR_GAP, BAR_HEIGHT, RADIUS, SPACE, TOUCH, TYPE } from '@/theme/themes';
+import { BAR_GAP, BAR_HEIGHT, RADIUS, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
 
 import { DURATION, SPRING } from './tokens';
 import { useMotion } from './use-motion';
@@ -88,6 +87,7 @@ function ToastView({ toast, onDone }: { toast: Current; onDone: () => void }) {
     transform: [{ translateY: (1 - shown.value) * 24 }, { scale: 0.96 + shown.value * 0.04 }],
   }));
 
+  const ink = toastInk(palette);
   // Above the floating tab bar or the reader's toolbar, wherever the screen keeps its bottom controls.
   const bottom = Math.max(insets.bottom, SPACE.sm) + BAR_GAP + BAR_HEIGHT + SPACE.sm;
 
@@ -97,13 +97,12 @@ function ToastView({ toast, onDone }: { toast: Current; onDone: () => void }) {
         accessibilityLiveRegion="polite"
         style={[
           styles.toast,
-          glass(palette, true),
-          { backgroundColor: barSurface(palette), bottom },
-          !palette.lite && { boxShadow: palette.dark ? '0 10px 28px rgba(0,0,0,0.5)' : '0 10px 28px rgba(60,30,10,0.18)' },
+          { backgroundColor: ink.surface, bottom },
+          !palette.lite && { boxShadow: palette.dark ? '0 12px 30px rgba(0,0,0,0.6)' : '0 12px 30px rgba(30,20,10,0.28)' },
           style,
         ]}>
-        {toast.icon ? <Ionicons name={toast.icon} size={18} color={palette.accent} /> : null}
-        <Text maxFontSizeMultiplier={1.6} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.subhead, fontWeight: '600' }}>
+        {toast.icon ? <Ionicons name={toast.icon} size={18} color={TOAST_GILT} /> : null}
+        <Text maxFontSizeMultiplier={1.6} style={{ flexShrink: 1, color: ink.text, fontSize: TYPE.subhead, fontWeight: '500' }}>
           {toast.message}
         </Text>
         {toast.action ? (
@@ -116,7 +115,7 @@ function ToastView({ toast, onDone }: { toast: Current; onDone: () => void }) {
               setTimeout(onDone, animate ? DURATION.quick : 0);
             }}
             style={({ pressed }) => [styles.action, { opacity: pressed ? 0.6 : 1 }]}>
-            <Text maxFontSizeMultiplier={1.6} style={{ color: palette.accent, fontSize: TYPE.subhead, fontWeight: '800' }}>
+            <Text maxFontSizeMultiplier={1.6} style={{ color: TOAST_ACTION, fontSize: TYPE.subhead, fontWeight: '700' }}>
               {toast.action.label}
             </Text>
           </Pressable>
@@ -126,13 +125,26 @@ function ToastView({ toast, onDone }: { toast: Current; onDone: () => void }) {
   );
 }
 
+/**
+ * The toast is drawn in ink, the reverse of the page, so it reads as news rather than as one more glass
+ * surface stacked on the glass bar under it. Gilt icon and amber action, as on the book covers.
+ */
+const TOAST_GILT = '#f6c768';
+const TOAST_ACTION = '#ffb340';
+function toastInk(palette: Palette): { surface: string; text: string } {
+  if (palette.dark) return { surface: 'rgba(58,58,60,0.97)', text: '#f5f5f7' };
+  const hex = palette.text.replace('#', '');
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  return { surface: `rgba(${r}, ${g}, ${b}, ${palette.lite ? 1 : 0.95})`, text: palette.card };
+}
+
 const styles = StyleSheet.create({
   toast: {
     position: 'absolute',
     left: SPACE.lg,
     right: SPACE.lg,
     minHeight: TOUCH + 4,
-    borderRadius: RADIUS.pill,
+    borderRadius: RADIUS.row,
     flexDirection: 'row',
     alignItems: 'center',
     columnGap: SPACE.sm,

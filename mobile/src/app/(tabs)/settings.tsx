@@ -25,6 +25,7 @@ import { TitleBar } from '@/motion/title-bar';
 import { useAppState } from '@/state/app-state';
 import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
+import { SANSKRIT_FONT } from '@/theme/fonts';
 
 /** Icon tiles keep the deep spectrum hues in every theme, so their white glyphs stay readable. */
 const TILE = huesFor({ dark: false });
@@ -250,13 +251,15 @@ export default function SettingsScreen() {
                 accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
                 onPress={() => updateSettings({ theme: name })}
                 style={[styles.theme, themesInTwoRows && styles.themeHalf]}>
-                {/* A small page in the theme's own colours: a title line and two lines of text. */}
+                {/* A small page in the theme's own colours: the Gita's first word in the shloka face, then two lines of text. */}
                 <View
                   style={[
                     styles.preview,
                     { backgroundColor: theme.bg, borderColor: active ? palette.accent : theme.border, borderWidth: active ? 2.5 : 1 },
                   ]}>
-                  <View style={[styles.previewLine, { width: '60%', height: 6, backgroundColor: theme.text }]} />
+                  <Text allowFontScaling={false} numberOfLines={1} style={{ fontFamily: SANSKRIT_FONT, color: theme.dark ? theme.gold : theme.text, fontSize: 15, lineHeight: 24 }}>
+                    धर्मक्षेत्रे
+                  </Text>
                   <View style={[styles.previewLine, { backgroundColor: theme.border }]} />
                   <View style={[styles.previewLine, { width: '80%', backgroundColor: theme.border }]} />
                   <View style={[styles.previewDot, { backgroundColor: theme.accent }]} />

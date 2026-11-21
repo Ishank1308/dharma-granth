@@ -17,8 +17,9 @@ export interface Motion {
 }
 
 export function useMotion(): Motion {
+  // Either source: Reanimated reads the system flag on the UI side, app state (#418) on the JS side.
   const reduced = useReducedMotion();
-  const { lightEffects } = useAppState();
-  const animate = !reduced;
+  const { lightEffects, reduceMotion } = useAppState();
+  const animate = !reduced && !reduceMotion;
   return { animate, rich: animate && !lightEffects };
 }

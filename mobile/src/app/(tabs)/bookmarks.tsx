@@ -9,13 +9,14 @@ import { getEntry, loadChapter } from '@/content/catalog';
 import { S, useI18n } from '@/i18n';
 import { cleanVerseField, formatVerseRef, meaningState, MEANING_COPY, sanskritLines } from '@/lib/verse-format';
 import { useScrollY } from '@/motion/parallax';
+import { PressableScale } from '@/motion/pressable-scale';
 import { TitleBar } from '@/motion/title-bar';
 import { useToast } from '@/motion/toast';
 import { toScript } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
-import { sanskritFont } from '@/theme/fonts';
+import { SANSKRIT_FONT, sanskritFont } from '@/theme/fonts';
 import { coverFor } from '@/theme/covers';
-import { barClearance, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
+import { barClearance, fontCap, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export default function BookmarksScreen() {
   const insets = useSafeAreaInsets();
@@ -45,22 +46,34 @@ export default function BookmarksScreen() {
         }
         ListEmptyComponent={
           <View style={styles.empty}>
-            <View style={[styles.emptyIcon, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.14)' : 'rgba(194,65,12,0.10)' }]}>
-              <Ionicons name="flower-outline" size={44} color={huesFor(palette).saffron} />
+            {/* The double danda that closes every verse, in gilt: the place where kept verses will gather. */}
+            <View
+              importantForAccessibility="no-hide-descendants"
+              accessibilityElementsHidden
+              style={[
+                styles.emptyIcon,
+                palette.lite
+                  ? { backgroundColor: palette.dark ? 'rgba(229,193,88,0.12)' : 'rgba(198,146,52,0.12)' }
+                  : { backgroundImage: `radial-gradient(circle at 50% 40%, ${palette.dark ? 'rgba(229,193,88,0.26)' : 'rgba(198,146,52,0.24)'} 0%, transparent 70%)` },
+              ]}>
+              <Text allowFontScaling={false} style={{ fontFamily: SANSKRIT_FONT, color: palette.gold, fontSize: 44, lineHeight: 70 }}>
+                ॥
+              </Text>
             </View>
             <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '700', textAlign: 'center' }}>
               {t(S.savedEmptyTitle)}
             </Text>
             <Muted style={{ textAlign: 'center', fontSize: TYPE.callout, lineHeight: TYPE.callout * 1.5 }}>{t(S.savedEmpty)}</Muted>
             {getEntry('bhagavadgita') ? (
-              <Pressable
+              <PressableScale
+                haptic
                 accessibilityRole="button"
                 onPress={() => router.push({ pathname: '/scripture/[id]', params: { id: 'bhagavadgita' } })}
-                style={({ pressed }) => [styles.cta, accentFill(palette), pressed && { transform: [{ scale: 0.97 }] }]}>
+                style={[styles.cta, accentFill(palette)]}>
                 <Text maxFontSizeMultiplier={1.4} style={{ color: palette.onAccent, fontSize: TYPE.body, fontWeight: '700' }}>
                   {t(S.startWithGita)}
                 </Text>
-              </Pressable>
+              </PressableScale>
             ) : null}
           </View>
         }
