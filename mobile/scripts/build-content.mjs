@@ -24,12 +24,17 @@
 // On Android the text ships as compressed APK assets, not inside the Hermes JS bundle. The JS bundle is
 // stored uncompressed in the APK (Hermes maps it into memory), so 35 MB of verses there cost 35 MB on the
 // phone; as deflated assets they cost about a third of that, and the download is smaller too.
+//   src/content/generated/explore/…      the website's Panchang, festival and mantra data (scripts/build-explore.mjs)
+//   src/content/generated/study/…        chapter summaries (scripts/build-study.mjs)
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Buffer } from 'node:buffer';
 
+import { buildExplore } from './build-explore.mjs';
+import { buildKnowledge } from './build-knowledge.mjs';
 import { buildSearchIndex } from './build-search-index.mjs';
+import { buildStudy, STUDY_FILES } from './build-study.mjs';
 import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -45,6 +50,9 @@ const ifMissing = args.includes('--if-missing');
 const maxMbArg = args.find((a) => a.startsWith('--max-mb='));
 const MAX_BYTES = Math.round(Number(maxMbArg ? maxMbArg.split('=')[1] : DEFAULT_MAX_MB) * 1024 * 1024);
 
+// Cheap, so it runs even when the scripture content is already built.
+buildExplore();
+
 if (
   ifMissing &&
   existsSync(join(OUT, 'catalog.json')) &&
@@ -53,7 +61,11 @@ if (
   existsSync(join(OUT, 'search-loaders.ts')) &&
   existsSync(join(OUT, 'search-loaders.android.ts'))
 ) {
+  // The knowledge pages take under a second, so they are rebuilt even then: an older checkout has none.
+  await buildKnowledge();
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
+  // A checkout built before chapter summaries existed gets just those, not a full rebuild.
+  if (!STUDY_FILES.every((f) => existsSync(f))) await buildStudy();
   process.exit(0);
 }
 
@@ -160,3 +172,5 @@ if (usedShards < bundledIds.length) {
 }
 
 await buildSearchIndex();
+await buildKnowledge();
+await buildStudy();

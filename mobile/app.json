@@ -13,7 +13,7 @@
     },
     "android": {
       "package": "dev.dharmagranth.app",
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
         "backgroundColor": "#FDF6EA",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -42,6 +42,15 @@
     },
     "plugins": [
       "expo-router",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false
+        }
+      ],
       [
         "expo-splash-screen",
         {
@@ -83,6 +92,12 @@
         }
       ],
       "./plugins/with-optional-portrait",
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/TiroDevanagariSanskrit.ttf"]
+        }
+      ],
       "./plugins/with-smaller-android"
     ],
     "experiments": {

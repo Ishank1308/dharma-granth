@@ -28,7 +28,7 @@ const OUT = join(MOBILE, 'src/content/generated');
 
 export async function buildSearchIndex() {
   const fold = await import(pathToFileURL(join(MOBILE, 'src/lib/verse-search.ts')).href);
-  const { devToIndex, englishToIndex, foldLatin, FIELD_SEP } = fold;
+  const { verseToCorpusLine } = fold;
 
   const catalog = JSON.parse(readFileSync(join(OUT, 'catalog.json'), 'utf8'));
   const content = join(OUT, 'assets/content');
@@ -38,7 +38,6 @@ export async function buildSearchIndex() {
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
 
-  const flat = (s) => (s ?? '').replace(/\s+/g, ' ');
   const ids = [];
   let bytes = 0;
   let verses = 0;
@@ -59,10 +58,11 @@ export async function buildSearchIndex() {
     for (const ch of book.chapters) {
       c.push([ch.number, ch.verses.length]);
       for (const v of ch.verses) {
-        d.push(devToIndex(flat(v.sanskrit)) + FIELD_SEP + devToIndex(flat(v.hindi)));
-        t.push(foldLatin(flat(v.transliteration)));
-        e.push(englishToIndex(flat(v.translation)));
-        n.push(String(v.number).replace(/\n/g, ' '));
+        const line = verseToCorpusLine(v);
+        d.push(line.d);
+        t.push(line.t);
+        e.push(line.e);
+        n.push(line.n);
       }
     }
     verses += n.length;

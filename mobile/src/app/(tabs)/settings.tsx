@@ -1,16 +1,17 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { File, Paths } from 'expo-file-system';
 import { useFocusEffect } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useState } from 'react';
-import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DownloadsSection } from '@/components/download-card';
-import { accentFill, Backdrop, Bilingual, Card, Chip, Eyebrow, glass, Muted, PageTitle, SectionTitle } from '@/components/ui';
+import { accentFill, Backdrop, Bilingual, Card, Chip, glass, GroupCard, GroupRow, IconTile, LargeHeader, Muted, SectionTitle } from '@/components/ui';
 import { CATALOG, SITE } from '@/content/catalog';
 import { LANGUAGE_SETTINGS, S, useI18n, type LanguageSetting, type Msg } from '@/i18n';
-import { BackupError, makeBackup, parseBackup } from '@/lib/backup';
+import { BackupError, EFFECTS_SETTINGS, makeBackup, parseBackup, type EffectsSetting } from '@/lib/backup';
 import {
   getReminderPermission,
   remindersSupported,
@@ -20,12 +21,15 @@ import {
 import { formatReminderTime } from '@/lib/reminder';
 import { useAppState } from '@/state/app-state';
 import { addWidgetToHomeScreen } from '@/widget/pin';
-import { RADIUS, SPACE, THEME_ORDER, THEMES, TYPE } from '@/theme/themes';
+import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
 
-const SCALES = [0.9, 1, 1.15, 1.3, 1.5];
+/** Icon tiles keep the deep spectrum hues in every theme, so their white glyphs stay readable. */
+const TILE = huesFor({ dark: false });
 
 /** Language names are always shown in their own script, whatever the interface language. */
 const LANGUAGE_NAMES: Record<Exclude<LanguageSetting, 'system'>, string> = { en: 'English', hi: 'हिन्दी' };
+
+const EFFECTS_LABELS: Record<EffectsSetting, Msg> = { auto: S.effectsAuto, full: S.effectsFull, light: S.effectsLight };
 
 const BACKUP_ERRORS: Record<BackupError['code'], Msg> = {
   'not-json': S.backupNotJson,
@@ -36,7 +40,7 @@ const BACKUP_ERRORS: Record<BackupError['code'], Msg> = {
 /** Opt-in daily verse notification: a switch and a time. Scheduled on the phone, nothing sent anywhere. */
 function DailyVerseSettings() {
   const { palette, settings, updateSettings } = useAppState();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [permission, setPermission] = useState<ReminderPermission>('undetermined');
   const time = new Date(2000, 0, 1, settings.reminderHour, settings.reminderMinute);
 
@@ -60,7 +64,7 @@ function DailyVerseSettings() {
       updateSettings({ dailyReminder: false });
       return;
     }
-    const p = await requestReminderPermission().catch((): ReminderPermission => 'denied');
+    const p = await requestReminderPermission(lang).catch((): ReminderPermission => 'denied');
     setPermission(p);
     if (p === 'granted') {
       updateSettings({ dailyReminder: true });
@@ -86,22 +90,24 @@ function DailyVerseSettings() {
   return (
     <>
       <SectionTitle {...S.dailyVerse} />
-      <Card style={{ paddingVertical: SPACE.xs }}>
-        <View style={styles.toggle}>
+      <GroupCard>
+        <GroupRow standalone inset={60}>
+          <IconTile icon="notifications" color={TILE.gold} />
           <View style={{ flex: 1 }}>
             <Bilingual {...S.dailyVerseNotification} weight="500" />
           </View>
           <Switch
             value={settings.dailyReminder}
             onValueChange={(v) => void toggle(v)}
-            trackColor={{ true: palette.accent, false: palette.dark ? '#48484a' : palette.border }}
+            trackColor={{ true: palette.accent, false: switchOffTrack(palette) }}
             thumbColor="#fff"
             {...({ activeThumbColor: '#fff' } as object)}
             accessibilityLabel={t(S.dailyVerseNotification)}
           />
-        </View>
+        </GroupRow>
         {settings.dailyReminder ? (
-          <View style={[styles.toggle, { borderTopWidth: StyleSheet.hairlineWidth, borderColor: palette.border }]}>
+          <GroupRow inset={60}>
+            <IconTile icon="time" color={TILE.indigo} />
             <Bilingual {...S.reminderTime} style={{ flex: 1 }} weight="500" />
             {Platform.OS === 'ios' ? (
               <DateTimePicker mode="time" display="compact" value={time} onValueChange={(_e, d) => setTime(d)} />
@@ -116,12 +122,13 @@ function DailyVerseSettings() {
                 </Text>
               </Pressable>
             )}
-          </View>
+          </GroupRow>
         ) : null}
-      </Card>
+      </GroupCard>
       {blocked ? (
-        <Pressable accessibilityRole="button" onPress={openSystemSettings} style={{ marginTop: SPACE.sm }}>
-          <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.notificationsBlocked)}</Text>
+        <Pressable accessibilityRole="button" onPress={openSystemSettings} style={[styles.linkBtn, glass(palette, true)]}>
+          <Ionicons name="alert-circle-outline" size={20} color={palette.accent} />
+          <Text style={[styles.linkText, { color: palette.accent }]}>{t(S.notificationsBlocked)}</Text>
         </Pressable>
       ) : (
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.dailyVerseNote)}</Muted>
@@ -134,8 +141,9 @@ function DailyVerseSettings() {
               if (!pinned) Alert.alert(t(S.widgetHowTitle), t(S.widgetHowBody));
             })
           }
-          style={{ marginTop: SPACE.md }}>
-          <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.widgetAdd)}</Text>
+          style={[styles.linkBtn, glass(palette, true)]}>
+          <Ionicons name="apps-outline" size={20} color={palette.accent} />
+          <Text style={[styles.linkText, { color: palette.accent }]}>{t(S.widgetAdd)}</Text>
         </Pressable>
       ) : null}
     </>
@@ -144,16 +152,25 @@ function DailyVerseSettings() {
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
-  const { palette, settings, updateSettings, exportData, importData, bookmarks } = useAppState();
+  const { palette, settings, updateSettings, exportData, importData, bookmarks, lightEffects } = useAppState();
+  // At large system font sizes the four theme names no longer fit in one row; show them two by two.
+  const { fontScale } = useWindowDimensions();
+  const themesInTwoRows = fontScale > 1.3;
   const { t, lang } = useI18n();
   const [busy, setBusy] = useState(false);
   const bundled = CATALOG.filter((b) => b.bundled).length;
 
-  const toggles: { key: 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes'; label: Msg }[] = [
-    { key: 'showTransliteration', label: S.showTransliteration },
-    { key: 'showHindi', label: S.showHindi },
-    { key: 'showEnglish', label: S.showEnglish },
-    { key: 'showNotes', label: S.showNotes },
+  // Each layer keeps its website hue: अर्थ peacock, English indigo, notes saffron.
+  const toggles: {
+    key: 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes';
+    label: Msg;
+    icon: 'text' | 'language' | 'globe-outline' | 'reader';
+    color: string;
+  }[] = [
+    { key: 'showTransliteration', label: S.showTransliteration, icon: 'text', color: TILE.gold },
+    { key: 'showHindi', label: S.showHindi, icon: 'language', color: TILE.peacock },
+    { key: 'showEnglish', label: S.showEnglish, icon: 'globe-outline', color: TILE.indigo },
+    { key: 'showNotes', label: S.showNotes, icon: 'reader', color: TILE.saffron },
   ];
 
   const errorText = (e: unknown) =>
@@ -198,14 +215,11 @@ export default function SettingsScreen() {
     <Backdrop>
       <ScrollView
         style={{ backgroundColor: 'transparent' }}
-        contentContainerStyle={{ paddingTop: insets.top + SPACE.lg, paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xxl * 3 }}>
-        <Eyebrow {...S.settingsEyebrow} />
-        <View style={{ marginTop: SPACE.sm }}>
-          <PageTitle {...S.settingsTitle} />
-        </View>
+        contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}>
+        <LargeHeader title={S.settingsTitle} eyebrow={S.settingsEyebrow} />
 
         <SectionTitle {...S.language} />
-        <View style={styles.chips}>
+        <View style={styles.chips} accessibilityRole="radiogroup">
           {LANGUAGE_SETTINGS.map((l) => (
             <Chip
               key={l}
@@ -218,34 +232,46 @@ export default function SettingsScreen() {
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.languageNote)}</Muted>
 
         <SectionTitle {...S.theme} />
-        <View style={styles.themes}>
+        <View style={styles.themes} accessibilityRole="radiogroup">
           {THEME_ORDER.map((name) => {
             const theme = THEMES[name];
             const active = settings.theme === name;
             return (
               <Pressable
                 key={name}
-                accessibilityRole="button"
-                accessibilityState={{ selected: active }}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: active }}
                 accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
                 onPress={() => updateSettings({ theme: name })}
-                style={[styles.theme, glass(theme, true), active && { borderColor: palette.accent, borderWidth: 2 }]}>
-                <View style={[styles.swatch, { backgroundColor: theme.accent }]} />
-                <Text style={{ color: theme.text, fontWeight: '700', fontSize: TYPE.footnote }}>{lang === 'hi' ? theme.labelHi : theme.label}</Text>
+                style={[styles.theme, themesInTwoRows && styles.themeHalf]}>
+                {/* A small page in the theme's own colours: a title line and two lines of text. */}
+                <View
+                  style={[
+                    styles.preview,
+                    { backgroundColor: theme.bg, borderColor: active ? palette.accent : theme.border, borderWidth: active ? 2.5 : 1 },
+                  ]}>
+                  <View style={[styles.previewLine, { width: '60%', height: 6, backgroundColor: theme.text }]} />
+                  <View style={[styles.previewLine, { backgroundColor: theme.border }]} />
+                  <View style={[styles.previewLine, { width: '80%', backgroundColor: theme.border }]} />
+                  <View style={[styles.previewDot, { backgroundColor: theme.accent }]} />
+                </View>
+                <Text style={{ color: active ? palette.accent : palette.text, fontWeight: active ? '700' : '500', fontSize: TYPE.footnote }}>
+                  {lang === 'hi' ? theme.labelHi : theme.label}
+                </Text>
               </Pressable>
             );
           })}
         </View>
 
         <SectionTitle {...S.textSize} />
-        <View style={styles.scales}>
-          {SCALES.map((s) => {
+        <View style={styles.scales} accessibilityRole="radiogroup">
+          {TEXT_SCALES.map((s) => {
             const active = Math.abs(settings.textScale - s) < 0.01;
             return (
               <Pressable
                 key={s}
-                accessibilityRole="button"
-                accessibilityState={{ selected: active }}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: active }}
                 accessibilityLabel={t(S.textSizeA11y(Math.round(s * 100)))}
                 onPress={() => updateSettings({ textScale: s })}
                 style={[styles.scale, active ? accentFill(palette) : glass(palette)]}>
@@ -255,22 +281,31 @@ export default function SettingsScreen() {
           })}
         </View>
 
+        <SectionTitle {...S.effects} />
+        <View style={styles.chips} accessibilityRole="radiogroup">
+          {EFFECTS_SETTINGS.map((e) => (
+            <Chip key={e} label={t(EFFECTS_LABELS[e])} active={settings.effects === e} onPress={() => updateSettings({ effects: e })} />
+          ))}
+        </View>
+        <Muted style={{ marginTop: SPACE.sm }}>{t(S.effectsNote(lightEffects))}</Muted>
+
         <SectionTitle {...S.showInVerses} />
-        <Card style={{ paddingVertical: SPACE.xs }}>
+        <GroupCard>
           {toggles.map((row, i) => (
-            <View key={row.key} style={[styles.toggle, i > 0 && { borderTopWidth: StyleSheet.hairlineWidth, borderColor: palette.border }]}>
+            <GroupRow key={row.key} standalone={i === 0} inset={60}>
+              <IconTile icon={row.icon} color={row.color} />
               <Bilingual {...row.label} style={{ flex: 1 }} weight="500" />
               <Switch
                 value={settings[row.key]}
                 onValueChange={(v) => updateSettings({ [row.key]: v })}
-                trackColor={{ true: palette.accent, false: palette.dark ? '#48484a' : palette.border }}
+                trackColor={{ true: palette.accent, false: switchOffTrack(palette) }}
                 thumbColor="#fff"
               {...({ activeThumbColor: '#fff' } as object)}
                 accessibilityLabel={t(row.label)}
               />
-            </View>
+            </GroupRow>
           ))}
-        </Card>
+        </GroupCard>
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.sanskritAlwaysFull)}</Muted>
 
         {remindersSupported ? <DailyVerseSettings /> : null}
@@ -292,15 +327,19 @@ export default function SettingsScreen() {
         </Card>
 
         <SectionTitle {...S.about} />
-        <Card style={{ rowGap: SPACE.sm }}>
-          <Muted>{t(S.aboutBody(CATALOG.length, bundled))}</Muted>
-          <Pressable accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
-            <Text style={{ color: palette.accent, fontWeight: '600' }}>dharmagranth.dev</Text>
-          </Pressable>
-          <Pressable accessibilityRole="link" onPress={() => Linking.openURL(`${SITE}/privacy/`).catch(() => {})}>
-            <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.privacyPolicy)}</Text>
-          </Pressable>
-        </Card>
+        <Muted style={{ marginBottom: SPACE.sm, paddingHorizontal: SPACE.xs }}>{t(S.aboutBody(CATALOG.length, bundled))}</Muted>
+        <GroupCard>
+          <GroupRow standalone inset={60} accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
+            <IconTile icon="globe" color={TILE.saffron} />
+            <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>dharmagranth.dev</Text>
+            <Ionicons name="open-outline" size={18} color={palette.muted} />
+          </GroupRow>
+          <GroupRow inset={60} accessibilityRole="link" onPress={() => Linking.openURL(`${SITE}/privacy/`).catch(() => {})}>
+            <IconTile icon="shield-checkmark" color={TILE.tulsi} />
+            <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>{t(S.privacyPolicy)}</Text>
+            <Ionicons name="open-outline" size={18} color={palette.muted} />
+          </GroupRow>
+        </GroupCard>
       </ScrollView>
     </Backdrop>
   );
@@ -308,13 +347,29 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
-  themes: { flexDirection: 'row', gap: SPACE.sm },
-  theme: { flex: 1, borderRadius: RADIUS.control, padding: SPACE.sm, alignItems: 'center', rowGap: 2 },
-  swatch: { width: 18, height: 18, borderRadius: 9, marginBottom: 2 },
-  scales: { flexDirection: 'row', gap: SPACE.sm },
-  scale: { width: 52, height: 46, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },
+  themes: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
+  themeHalf: { flexBasis: '45%' },
+  theme: { flex: 1, alignItems: 'center', rowGap: 6, minHeight: TOUCH },
+  preview: { alignSelf: 'stretch', height: 72, borderRadius: RADIUS.row, padding: 10, rowGap: 5 },
+  previewLine: { height: 5, borderRadius: 3 },
+  previewDot: { position: 'absolute', right: 8, bottom: 8, width: 10, height: 10, borderRadius: 5 },
+  scales: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
+  // Minimum sizes, not fixed ones: the अ preview grows with the system font size and must not spill out.
+  scale: { minWidth: 52, minHeight: TOUCH, paddingHorizontal: SPACE.xs, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },
   toggle: { flexDirection: 'row', alignItems: 'center', paddingVertical: SPACE.md, columnGap: SPACE.md },
-  btn: { flex: 1, borderRadius: RADIUS.pill, paddingVertical: SPACE.md, alignItems: 'center' },
+  btn: { flex: 1, borderRadius: RADIUS.pill, minHeight: TOUCH, justifyContent: 'center', alignItems: 'center' },
   btnText: { color: '#fff', fontWeight: '700' },
-  timeBtn: { borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, paddingHorizontal: SPACE.lg },
+  timeBtn: { borderRadius: RADIUS.pill, minHeight: TOUCH, justifyContent: 'center', paddingHorizontal: SPACE.lg },
+  // Text actions get a full-height glass capsule: a 48 dp target, and the accent text sits on glass, not on the aurora.
+  linkBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    columnGap: SPACE.sm,
+    minHeight: TOUCH,
+    marginTop: SPACE.md,
+    paddingHorizontal: SPACE.lg,
+    paddingVertical: SPACE.sm,
+    borderRadius: RADIUS.row,
+  },
+  linkText: { flexShrink: 1, fontWeight: '600', fontSize: TYPE.subhead },
 });
