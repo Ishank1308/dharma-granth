@@ -6,7 +6,7 @@ and English, readable offline, no account.
 ## What it does
 
 - **Library** of all 66 scriptures, grouped like the website (Vedas, Upanishads, Itihasa, Puranas…),
-  with search, a verse of the day (with an opt-in daily notification) and "continue reading".
+  with search, a verse of the day (with an opt-in daily notification and a home-screen widget) and "continue reading".
 - **Offline reader** for 44 texts whose verse data ships inside the app (Bhagavad Gita, the principal
   Upanishads, Yoga Sutras, Brahma Sutra, Durga Saptashati, Vidura Niti, Manusmriti, Sama and Yajur Veda,
   Vinaya Patrika, Ramcharitmanas and more). Each verse shows the complete Sanskrit, transliteration, Hindi and English,
@@ -105,3 +105,20 @@ Sanskrit compound finds it. Spelling variants meet: शांति / शान�
 loads until the first search, and each book's index is then kept for later queries. The index adds
 about 10 MB to the Hermes bundle (about 4 MB compressed). Logic and tests: `src/lib/verse-search.ts`,
 `scripts/search.test.mjs`.
+
+## Home-screen widget
+
+"Verse of the day · आज का श्लोक" is an Android widget (4×2, resizable) built with
+[react-native-android-widget](https://github.com/sAleksovski/react-native-android-widget). Its config plugin in
+`app.json` writes the widget provider during `expo prebuild`; `index.ts` registers the headless task that
+draws it (`src/widget/task-handler.tsx`), so it works while the app is closed.
+
+- Shows the whole shloka (Android shrinks the text to fit, it never cuts a verse), the label in the interface
+  language and the reference. The light version uses the reader's light theme, the dark one follows the
+  phone's dark mode.
+- Tapping opens `dharmagranth://scripture/<id>/<chapter>?verse=<n>` in the reader, with the library behind it.
+- Android redraws it hourly, so the verse changes within an hour of midnight; the app also redraws it when it
+  comes to the front or the language or theme changes. Settings → Daily verse has a button to place it.
+- No runtime permission prompts. The library schedules its redraws with AndroidX WorkManager, which adds the
+  install-time `WAKE_LOCK` and `ACCESS_NETWORK_STATE`; `FOREGROUND_SERVICE` is blocked in `app.json` because
+  nothing starts a foreground service. `assets/images/widget-preview.png` is the picker preview.

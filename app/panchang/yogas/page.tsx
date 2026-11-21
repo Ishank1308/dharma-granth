@@ -146,7 +146,7 @@ export default function YogasPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-dharma-text mb-4">
-            27 Nitya Yogas (27 नित्य योग)
+            <span data-bi="en">27 Nitya Yogas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">27 नित्य योग</span><span data-bi="sep">)</span>
           </h1>
           <p className="text-base sm:text-lg text-dharma-muted font-sans leading-relaxed">
             The additive harmony of the Sun (soul) and the Moon (mind). Discover the 27 solar-lunar
@@ -178,7 +178,7 @@ export default function YogasPage() {
                 Surya-Siddhanta Astronomical Formula
               </span>
               <h2 className="text-xl sm:text-2xl font-bold text-dharma-text mt-1">
-                How Yoga Is Calculated (संयोग गणित)
+                <span data-bi="en">How Yoga Is Calculated</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">संयोग गणित</span><span data-bi="sep">)</span>
               </h2>
               <p className="text-sm text-dharma-muted font-sans mt-2.5 leading-relaxed">
                 In Sanskrit, <em>Yoga</em> signifies union or addition. While a <strong>Tithi</strong> measures
@@ -209,7 +209,7 @@ export default function YogasPage() {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold text-dharma-text">
-                All 27 Nitya Yogas (27 नित्य योग सूची)
+                <span data-bi="en">All 27 Nitya Yogas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">27 नित्य योग सूची</span><span data-bi="sep">)</span>
               </h2>
               <p className="text-sm text-dharma-muted font-sans mt-1">
                 Arranged in continuous 13°20&apos; zodiacal arc sequence from 0° to 360°.
@@ -253,10 +253,10 @@ export default function YogasPage() {
 
                     {/* Titles */}
                     <h3 className="text-lg font-bold text-dharma-text group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-                      {y.name}{' '}
-                      <span className="text-base text-dharma-muted font-normal">
-                        ({y.nameHi})
-                      </span>
+                      <span data-bi="en">{y.name}</span>{' '}
+                      <span data-bi="sep" className="text-base text-dharma-muted font-normal">(</span>
+                      <span lang="hi" data-bi="hi" data-bi-lead className="text-base text-dharma-muted font-normal">{y.nameHi}</span>
+                      <span data-bi="sep" className="text-base text-dharma-muted font-normal">)</span>
                     </h3>
                     <p className="text-xs font-sans text-amber-700/90 dark:text-amber-400 font-medium mt-0.5">
                       Deity: {y.deity}
@@ -289,7 +289,7 @@ export default function YogasPage() {
           <div className="flex items-center gap-2 mb-6">
             <HelpCircle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
             <h2 className="text-2xl font-bold text-dharma-text">
-              Frequently Asked Questions (अक्सर पूछे जाने वाले प्रश्न)
+              <span data-bi="en">Frequently Asked Questions</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">अक्सर पूछे जाने वाले प्रश्न</span><span data-bi="sep">)</span>
             </h2>
           </div>
 

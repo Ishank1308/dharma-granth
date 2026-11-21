@@ -106,7 +106,7 @@ export function TeachingFlow({ steps }: { steps: NonNullable<UnderstandingExtras
   return (
     <section aria-label="Teaching flow" className="understand-fade rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-5">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <h3 className="font-serif text-base font-bold text-dharma-text">Teaching flow <span lang="hi" className="font-devanagari text-sm font-semibold text-dharma-muted">शिक्षा का क्रम</span></h3>
+        <h3 className="font-serif text-base font-bold text-dharma-text"><span data-bi="en">Teaching flow</span> <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-sm font-semibold text-dharma-muted">शिक्षा का क्रम</span></h3>
         <button
           type="button"
           onClick={() => setAsText((v) => !v)}
@@ -185,8 +185,8 @@ export function Misunderstanding({ claim, better }: { claim: string; better: str
       <div className="mb-3 flex flex-wrap items-center gap-3">
         <h3 className="flex items-center gap-2 font-serif text-base font-bold text-dharma-text">
           <Info className="h-4 w-4 text-amber-800 dark:text-amber-300" aria-hidden="true" />
-          Common misunderstanding
-          <span lang="hi" className="font-devanagari text-sm font-semibold text-dharma-muted">आम भ्रांति</span>
+          <span data-bi="en">Common misunderstanding</span>
+          <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-sm font-semibold text-dharma-muted">आम भ्रांति</span>
         </h3>
         <LabelChip kind="editorial" />
       </div>
@@ -218,7 +218,7 @@ export function ContextTimeline({
     <section aria-label="Where this verse sits" className="understand-fade rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-5">
       <div className="mb-3 flex flex-wrap items-center gap-3">
         <h3 className="font-serif text-base font-bold text-dharma-text">
-          Where this verse sits <span lang="hi" className="font-devanagari text-sm font-semibold text-dharma-muted">प्रसंग</span>
+          <span data-bi="en">Where this verse sits</span> <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-sm font-semibold text-dharma-muted">प्रसंग</span>
         </h3>
         <LabelChip kind="editorial" />
       </div>

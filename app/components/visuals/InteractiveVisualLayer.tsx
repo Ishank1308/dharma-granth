@@ -482,7 +482,7 @@ export function InteractiveVisualLayer({
               <div className="flex items-center gap-2 border-b border-dharma-border/60 pb-2">
                 <BookOpen className="h-4 w-4 text-saffron-600" />
                 <h4 className="font-serif text-sm font-bold text-dharma-text">
-                  शास्त्रीय आधार (Foundational Scriptures)
+                  <span lang="hi" data-bi="hi">शास्त्रीय आधार</span><span data-bi="sep"> (</span><span data-bi="en">Foundational Scriptures</span><span data-bi="sep">)</span>
                 </h4>
               </div>
               <ul className="space-y-2 text-xs">
@@ -503,7 +503,7 @@ export function InteractiveVisualLayer({
               <div className="flex items-center gap-2 border-b border-dharma-border/60 pb-2">
                 <Sparkles className="h-4 w-4 text-amber-600" />
                 <h4 className="font-serif text-sm font-bold text-dharma-text">
-                  मूल लक्षण (Core Attributes & Pillars)
+                  <span lang="hi" data-bi="hi">मूल लक्षण</span><span data-bi="sep"> (</span><span data-bi="en">Core Attributes & Pillars</span><span data-bi="sep">)</span>
                 </h4>
               </div>
               <ul className="space-y-2 text-xs">
@@ -524,7 +524,7 @@ export function InteractiveVisualLayer({
               <div className="flex items-center gap-2 border-b border-dharma-border/60 pb-2">
                 <Workflow className="h-4 w-4 text-emerald-600" />
                 <h4 className="font-serif text-sm font-bold text-dharma-text">
-                  दैनिक साधना एवं आचरण (Spiritual Practices)
+                  <span lang="hi" data-bi="hi">दैनिक साधना एवं आचरण</span><span data-bi="sep"> (</span><span data-bi="en">Spiritual Practices</span><span data-bi="sep">)</span>
                 </h4>
               </div>
               <ul className="space-y-2 text-xs">
@@ -545,7 +545,7 @@ export function InteractiveVisualLayer({
               <div className="flex items-center gap-2 border-b border-dharma-border/60 pb-2">
                 <Milestone className="h-4 w-4 text-saffron-600" />
                 <h4 className="font-serif text-sm font-bold text-dharma-text">
-                  परम फल (Ultimate Fruit of Realization)
+                  <span lang="hi" data-bi="hi">परम फल</span><span data-bi="sep"> (</span><span data-bi="en">Ultimate Fruit of Realization</span><span data-bi="sep">)</span>
                 </h4>
               </div>
               <p className="font-devanagari text-sm font-semibold text-dharma-text leading-relaxed">

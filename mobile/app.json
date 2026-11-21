@@ -31,6 +31,7 @@
         "android.permission.SYSTEM_ALERT_WINDOW",
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.FOREGROUND_SERVICE",
         "com.google.android.c2dm.permission.RECEIVE",
         "com.google.android.gms.permission.AD_ID"
       ]
@@ -58,6 +59,27 @@
         {
           "icon": "./assets/images/notification-icon.png",
           "color": "#C2410C"
+        }
+      ],
+      [
+        "react-native-android-widget",
+        {
+          "widgets": [
+            {
+              "name": "DailyVerse",
+              "label": "Verse of the day · आज का श्लोक",
+              "description": "Today's Bhagavad Gita verse, in full. Tap to read it.",
+              "minWidth": "250dp",
+              "minHeight": "110dp",
+              "targetCellWidth": 4,
+              "targetCellHeight": 2,
+              "maxResizeWidth": "600dp",
+              "maxResizeHeight": "400dp",
+              "resizeMode": "horizontal|vertical",
+              "previewImage": "./assets/images/widget-preview.png",
+              "updatePeriodMillis": 3600000
+            }
+          ]
         }
       ],
       "./plugins/with-optional-portrait"

@@ -51,7 +51,7 @@ export function ConversationModeView({
               <MessageSquare className="h-4 w-4" />
             </span>
             <h3 className="font-serif text-lg font-bold text-dharma-text">
-              Conversation Mode <span lang="hi" className="font-devanagari text-base font-normal text-dharma-muted">· संवाद स्वरूप</span>
+              <span data-bi="en">Conversation Mode</span> <span data-bi="sep" className="font-devanagari text-base font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-base font-normal text-dharma-muted">संवाद स्वरूप</span>
             </h3>
           </div>
           <p className="mt-1 text-xs text-dharma-muted">
@@ -128,7 +128,7 @@ export function ConversationModeView({
                   </span>
                   <div>
                     <h4 className="font-serif text-base font-bold text-dharma-text leading-tight">
-                      {spk.nameEn} <span lang="hi" className="font-devanagari text-sm font-normal text-dharma-muted">({spk.nameHi})</span>
+                      <span data-bi="en">{spk.nameEn}</span> <span data-bi="sep" className="font-devanagari text-sm font-normal text-dharma-muted">(</span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-sm font-normal text-dharma-muted">{spk.nameHi}</span><span data-bi="sep" className="font-devanagari text-sm font-normal text-dharma-muted">)</span>
                     </h4>
                     <p className="text-[11px] text-dharma-muted">
                       Addressing: <strong>{lis.nameEn}</strong> ({lis.roleEn})
