@@ -3240,12 +3240,14 @@ svg.lucide {
 }
 
 /* Letter-spacing pulls Devanagari conjuncts and vowel signs apart ("का ल द र्श न"), so Devanagari
-   text never takes tracking. <html> is lang="hi", hence explicit attributes rather than :lang(). */
-[lang='hi']:not(html),
-[lang='sa'],
-[lang='mr'],
-.font-devanagari,
-.font-sanskrit {
+   text never takes tracking. <html> is lang="hi", hence explicit attributes rather than :lang().
+   The `html` prefix lifts this above single-class tracking utilities (text-title-2, tracking-wider),
+   whatever order the CSS chunks load in. */
+html [lang='hi'],
+html [lang='sa'],
+html [lang='mr'],
+html .font-devanagari,
+html .font-sanskrit {
     letter-spacing: normal;
 }
 

@@ -85,7 +85,7 @@ export default function AshtavakraHome() {
       <div className="mx-auto grid max-w-5xl gap-14 px-4 pb-24 sm:px-6">
         {/* 2. Why read */}
         <section aria-labelledby="why" className="ash-card">
-          <h2 id="why" className="font-bold" style={{ fontSize: '1.5rem' }}>अष्टावक्र गीता क्यों पढ़ें?</h2>
+          <h2 id="why" lang="hi" className="font-bold" style={{ fontSize: '1.5rem' }}>अष्टावक्र गीता क्यों पढ़ें?</h2>
           <div lang="hi" className="ash-hindi mt-3">
             <p>अष्टावक्र गीता राजा जनक और ऋषि अष्टावक्र के संवाद के रूप में है। यह कुछ नया पाने की बात नहीं करती; यह उन सीमित पहचानों को देखने की बात करती है जिन्हें हम अपना पूरा स्वरूप मान लेते हैं: शरीर, भूमिका, मन की हलचल और “मैं ही सब करने वाला हूँ” का भाव।</p>
             <p>यहाँ मूल श्लोक सबसे ऊपर रहता है। उसके बाद पुस्तक की टीका पर आधारित भावार्थ, अलग से सरल हिन्दी व्याख्या और, जहाँ उपयुक्त हो, आधुनिक उदाहरण आते हैं। हर परत पर साफ़ लिखा रहता है कि वह क्या है।</p>
@@ -94,12 +94,12 @@ export default function AshtavakraHome() {
 
         {/* 3. Four stages */}
         <section aria-labelledby="stages">
-          <h2 id="stages" className="font-bold" style={{ fontSize: '1.5rem' }}>पहचान से अनंत जागरूकता तक: चार पड़ाव</h2>
+          <h2 id="stages" lang="hi" className="font-bold" style={{ fontSize: '1.5rem' }}>पहचान से अनंत जागरूकता तक: चार पड़ाव</h2>
           <p className="ash-meta mt-1">संपादकीय अध्ययन-सहायक। मूल ग्रंथ का क्रम या अध्याय-विभाजन नहीं बदला गया है।</p>
           <ol className="mt-4 grid gap-3 md:grid-cols-2">
             {STAGES.map((s) => (
               <li key={s.n} className="ash-stage" data-stage={s.n}>
-                <p className="ash-eyebrow" style={{ color: 'inherit', opacity: 0.8 }}>पड़ाव {s.n}</p>
+                <p lang="hi" className="ash-eyebrow" style={{ color: 'inherit', opacity: 0.8 }}>पड़ाव {s.n}</p>
                 <h3 lang="hi" className="font-bold" style={{ fontSize: '1.25rem' }}>{s.name}</h3>
                 <p lang="hi" className="ash-hindi">{s.text}</p>
               </li>

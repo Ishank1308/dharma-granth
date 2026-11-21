@@ -95,10 +95,10 @@ export default function ScripturesPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <span className="text-[11px] font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
-                विशेष संग्रह · Curated Holdings
+                <span lang="hi">विशेष संग्रह</span> · Curated Holdings
               </span>
               <h2 className="text-lg sm:text-xl font-serif font-bold text-dharma-text mt-0.5">
-                दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ (Practical Philosophy &amp; Rare Texts)
+                <span lang="hi">दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ</span> (Practical Philosophy &amp; Rare Texts)
               </h2>
             </div>
             <span className="text-xs text-dharma-muted">

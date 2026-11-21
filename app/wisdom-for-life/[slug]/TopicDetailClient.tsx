@@ -127,7 +127,7 @@ export function TopicDetailClient({
               <div className="flex-1 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 mb-4">
                   <Compass className="w-3.5 h-3.5" />
-                  <span>{topic.categoryLabelEn} • {topic.categoryLabelHi}</span>
+                  <span>{topic.categoryLabelEn} • <span lang="hi">{topic.categoryLabelHi}</span></span>
                 </div>
 
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-2 leading-tight">
@@ -181,7 +181,7 @@ export function TopicDetailClient({
             </div>
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                1. A Compassionate Introduction • संवेदनशील प्रस्तावना
+                1. A Compassionate Introduction • <span lang="hi">संवेदनशील प्रस्तावना</span>
               </p>
               <h2 id="heading-compassionate-intro" className="text-2xl font-serif font-bold text-dharma-text">
                 Understanding the Burden You Carry
@@ -210,7 +210,7 @@ export function TopicDetailClient({
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                <h3 lang="hi" className="text-xs font-bold uppercase tracking-wider text-dharma-muted">
                   आंतरिक परिप्रेक्ष्य (हिंदी)
                 </h3>
                 <p lang="hi" className="text-sm sm:text-base font-devanagari text-dharma-muted leading-loose">
@@ -241,7 +241,7 @@ export function TopicDetailClient({
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                2. Scriptural Foundation • मूल श्लोक एवं शास्त्रीय संदर्भ
+                2. Scriptural Foundation • <span lang="hi">मूल श्लोक एवं शास्त्रीय संदर्भ</span>
               </p>
               <h2 id="heading-curated-verses" className="text-2xl sm:text-3xl font-serif font-bold text-dharma-text">
                 Curated Scripture References ({topic.verses.length})
@@ -360,7 +360,7 @@ export function TopicDetailClient({
                   {/* 3. Original Verses in Sanskrit Devanagari */}
                   <div className="p-5 sm:p-6 rounded-2xl bg-saffron-500/5 dark:bg-stone-900/60 border border-saffron-500/20 text-center">
                     <p className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400 mb-3">
-                      मूल संस्कृत श्लोक (Original Sanskrit)
+                      <span lang="hi">मूल संस्कृत श्लोक</span> (Original Sanskrit)
                     </p>
                     <p
                       lang="sa"
@@ -409,7 +409,7 @@ export function TopicDetailClient({
                     <div className="flex items-center gap-2">
                       <Scroll className="w-4 h-4 text-saffron-600" />
                       <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-text">
-                        Traditional context (पारंपरिक संदर्भ)
+                        Traditional context (<span lang="hi">पारंपरिक संदर्भ</span>)
                       </h4>
                     </div>
 
@@ -561,7 +561,7 @@ export function TopicDetailClient({
             </div>
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
-                3. Practical Reflection • व्यावहारिक मनन एवं साधना
+                3. Practical Reflection • <span lang="hi">व्यावहारिक मनन एवं साधना</span>
               </p>
               <h2 id="heading-practical-reflection" className="text-2xl font-serif font-bold text-dharma-text">
                 Bringing Scriptural Truth into Daily Living

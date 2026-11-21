@@ -427,6 +427,12 @@ a.apple-row:active,
         font-size: 1.125rem;
     }
 }
+/* A meaning not written yet is a quiet note in its slot. Without this the rules above set it at
+   body size, which reads as content when it repeats under every verse of a long chapter. */
+.verse-card.book-verse section[id$='-arth'] p.meaning-pending {
+    font-size: var(--text-footnote);
+    line-height: 1.5;
+}
 
 /* The draft label stays (it is honest), but in a neutral voice rather than violet. */
 .verse-card [title^='AI-सहायता'] {

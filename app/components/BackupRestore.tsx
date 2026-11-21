@@ -65,7 +65,7 @@ export function BackupRestore() {
   return (
     <section aria-labelledby="backup-heading" className="apple-card mt-6 p-5 sm:p-6">
       <h2 id="backup-heading" className="text-title-3 font-semibold text-dharma-text">
-        बैकअप और पुनर्स्थापन · Backup &amp; Restore
+        <span lang="hi">बैकअप और पुनर्स्थापन</span> · Backup &amp; Restore
       </h2>
       <p className="mt-1 text-sm text-dharma-muted">
         Your practice and study data stays in this browser. Export a JSON copy to move it to another device; no account is needed.

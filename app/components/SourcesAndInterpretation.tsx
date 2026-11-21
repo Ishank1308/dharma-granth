@@ -69,11 +69,11 @@ export function SourcesAndInterpretation({
         <div>
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
             <Scale className="w-3.5 h-3.5 text-saffron-600" />
-            <span>शास्त्रीय प्रामाणिकता एवं पारदर्शकता</span>
+            <span lang="hi">शास्त्रीय प्रामाणिकता एवं पारदर्शकता</span>
             <span aria-hidden="true">·</span>
             <span>Sources & Interpretation</span>
           </div>
-          <h2 id="sources-interpretation-heading" className="text-xl sm:text-2xl font-serif font-bold text-dharma-text mt-1">
+          <h2 id="sources-interpretation-heading" lang="hi" className="text-xl sm:text-2xl font-serif font-bold text-dharma-text mt-1">
             स्रोत, संस्करण एवं व्याख्या वर्गीकरण
           </h2>
           <p className="text-xs sm:text-sm text-dharma-muted mt-1 max-w-2xl leading-relaxed">
@@ -88,7 +88,7 @@ export function SourcesAndInterpretation({
         <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-2 rounded-xl [&::-webkit-details-marker]:hidden">
           <h3 className="text-xs font-bold uppercase tracking-wider text-dharma-muted flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5 text-saffron-600" />
-            सामग्री वर्गीकरण संकेत (Epistemic Content Labels)
+            <span lang="hi">सामग्री वर्गीकरण संकेत</span> (Epistemic Content Labels)
           </h3>
           <span className="flex items-center gap-1 text-[11px] text-dharma-muted">
             6 स्तरिय प्रमाण व्यवस्था

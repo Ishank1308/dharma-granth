@@ -533,15 +533,15 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           </Link>
           <span aria-hidden="true" className="h-5 w-px bg-dharma-border" />
           {prevPartHref || prevHref ? (
-            <Link href={prevPartHref ?? prevHref!} rel="prev" className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+            <Link href={prevPartHref ?? prevHref!} rel="prev" className="inline-flex min-h-11 items-center gap-1 whitespace-nowrap rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" /> पिछला {prevPartHref ? 'भाग' : 'अध्याय'}
             </Link>
           ) : null}
-          <span lang="hi" className="min-w-0 flex-1 text-center font-devanagari text-xs text-dharma-muted">
+          <span lang="hi" className="hidden min-w-0 flex-1 whitespace-nowrap text-center font-devanagari text-xs text-dharma-muted sm:block">
             अध्याय {chapter.id}{part ? ` · भाग ${part.part}/${parts?.length ?? 1}` : ''}
           </span>
           {nextPartHref || nextHref ? (
-            <Link href={nextPartHref ?? nextHref!} rel="next" className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
+            <Link href={nextPartHref ?? nextHref!} rel="next" className="ml-auto inline-flex min-h-11 items-center gap-1 whitespace-nowrap rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
               अगला {nextPartHref ? 'भाग' : 'अध्याय'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           ) : null}
@@ -633,7 +633,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               >
                 <ArrowLeft className="h-5 w-5 shrink-0 text-label-secondary transition-transform group-hover:-translate-x-1" aria-hidden="true" />
                 <span className="min-w-0">
-                  <span className="block text-caption-2 uppercase font-semibold tracking-wider text-label-tertiary">Previous · पिछला अध्याय</span>
+                  <span className="block text-caption-2 uppercase font-semibold tracking-wider text-label-tertiary">Previous · <span lang="hi">पिछला अध्याय</span></span>
                   <span lang="hi" className="block text-subhead font-bold text-label-primary">अध्याय {chapterId - 1}</span>
                   {prevLabel && <span className="block truncate text-caption-1 text-label-secondary">{prevLabel}</span>}
                 </span>
@@ -649,7 +649,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                 className="group flex flex-1 min-w-0 items-center justify-end text-right gap-3 rounded-card border border-separator/80 bg-surface-raised p-4 transition-all hover:bg-fill-quaternary hover:border-separator shadow-xs"
               >
                 <span className="min-w-0">
-                  <span className="block text-caption-2 uppercase font-semibold tracking-wider text-label-tertiary">Next · अगला अध्याय</span>
+                  <span className="block text-caption-2 uppercase font-semibold tracking-wider text-label-tertiary">Next · <span lang="hi">अगला अध्याय</span></span>
                   <span lang="hi" className="block text-subhead font-bold text-label-primary">अध्याय {chapterId + 1}</span>
                   {nextLabel && <span className="block truncate text-caption-1 text-label-secondary">{nextLabel}</span>}
                 </span>

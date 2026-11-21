@@ -264,7 +264,7 @@ function PassageText({ lang, label, long, className, children }: { lang: 'hi' | 
 /** A meaning not written yet in one language, said quietly in the slot it will fill. */
 function PendingMeaning({ lang, children }: { lang: 'hi' | 'en'; children: ReactNode }) {
   return (
-    <p lang={lang} className={`text-sm italic text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`}>
+    <p lang={lang} className={`meaning-pending text-sm italic text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`}>
       {children}
     </p>
   );

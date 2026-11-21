@@ -34,6 +34,7 @@ import {
   Sunset,
   Users,
   FileText,
+  GraduationCap,
   X,
 } from 'lucide-react';
 import { usePresence } from '@/app/components/motion/usePresence';
@@ -78,6 +79,7 @@ const desktopPrimaryItems = [
   { label: 'Home', labelHi: 'मुख', href: '/' },
   { label: 'Scriptures', labelHi: 'ग्रंथालय', href: '/scriptures/' },
   { label: 'Bhagavad Gita', labelHi: 'गीता', href: '/scripture/bhagavadgita/' },
+  { label: 'Learn', labelHi: 'अध्ययन', href: '/learn/' },
   { label: 'Sadhana', labelHi: 'साधना', href: '/practice/' },
   { label: 'Panchang', labelHi: 'पंचांग', href: '/panchang/' },
 ];
@@ -493,6 +495,14 @@ export function SiteNav({
       badgeType: 'accent',
     },
     {
+      id: 'learn',
+      label: 'शास्त्र स्वाध्याय',
+      labelEn: 'Learn',
+      description: 'अध्ययन मार्ग, पाठ, फ्लैशकार्ड व प्रश्नोत्तरी',
+      href: '/learn/',
+      icon: GraduationCap,
+    },
+    {
       id: 'sadhana',
       label: 'दैनिक साधना',
       labelEn: 'Sadhana',
@@ -618,7 +628,7 @@ export function SiteNav({
                   <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">
                     धर्म ग्रंथ
                   </span>
-                </div>
+                </div>{' '}
                 {/* The page's large title, once it has folded up under the bar (lib/useFoldingTitle). */}
                 <span className="bar-page-title truncate text-body font-semibold tracking-[-0.022em] text-dharma-text" aria-hidden="true">
                   {fold.title}
