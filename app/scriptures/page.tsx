@@ -74,23 +74,11 @@ export default function ScripturesPage() {
     loadError = true;
   }
 
-  return (
-    <main className="min-h-screen bg-dharma-bg">
-      <PageHeader
-        width="wide"
-        eyebrow="Library"
-        title="Scriptures"
-        titleHi="ग्रंथालय"
-        lead={
-          <p>
-            Vedas, Upanishads, Itihasas and Puranas in one place. Search by name or topic, filter by tradition, length or
-            language, then open any text to read it verse by verse.
-          </p>
-        }
-      />
-
-      {/* Featured Rare & Practical Philosophy Collection */}
-      <section aria-label="दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ" className="mx-auto max-w-7xl px-gutter mb-8">
+  const featured = (
+    <>
+      {/* Featured Rare & Practical Philosophy Collection. The library shows it under the search
+          bar and filters, so those come first on a phone, and hides it while a search or filter is on. */}
+      <section aria-label="दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ" className="pt-6">
         <div className="apple-card rounded-card border border-dharma-border bg-dharma-card p-4 sm:p-6 shadow-xs">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
@@ -185,8 +173,25 @@ export default function ScripturesPage() {
           </div>
         </div>
       </section>
+    </>
+  );
 
-      <ScriptureLibraryClient scriptures={scriptures} categories={categories} loadError={loadError} />
+  return (
+    <main className="min-h-screen bg-dharma-bg">
+      <PageHeader
+        width="wide"
+        eyebrow="Library"
+        title="Scriptures"
+        titleHi="ग्रंथालय"
+        lead={
+          <p>
+            Vedas, Upanishads, Itihasas and Puranas in one place. Search by name or topic, filter by tradition, length or
+            language, then open any text to read it verse by verse.
+          </p>
+        }
+      />
+
+      <ScriptureLibraryClient scriptures={scriptures} categories={categories} loadError={loadError} featured={featured} />
     </main>
   );
 }
