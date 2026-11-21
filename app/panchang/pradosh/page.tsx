@@ -178,7 +178,7 @@ export default function PradoshPage() {
         <section aria-labelledby="pradosh-meaning" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">🌙</span>
-            <h3 className="font-serif font-bold text-base text-label-primary">त्रयोदशी तिथि (13th Lunar Day)</h3>
+            <h3 className="font-serif font-bold text-base text-label-primary"><span lang="hi" data-bi="hi">त्रयोदशी तिथि</span><span data-bi="sep"> (</span><span data-bi="en">13th Lunar Day</span><span data-bi="sep">)</span></h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
               पूर्णिमा और अमावस्या से दो दिन पूर्व, जब चित्त की वृत्तियों को शांत और अंतर्मुखी करना अत्यंत सहज होता है।
             </p>
@@ -227,7 +227,7 @@ export default function PradoshPage() {
 
         {/* FAQ Accordion */}
         <section aria-labelledby="faq-heading">
-          <SectionTitle id="faq-heading" title="जिज्ञासा एवं समाधान" titleHi="FAQ" />
+          <SectionTitle id="faq-heading" title="FAQ" titleHi="जिज्ञासा एवं समाधान" />
           <div className="apple-group mt-6">
             {FAQS.map((f) => (
               <details key={f.q} className="apple-row group block !py-0 [&_summary::-webkit-details-marker]:hidden">

@@ -403,10 +403,11 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                         <div className="flex items-center gap-2 mb-4">
                           <BookOpen className="h-5 w-5 text-saffron-700 dark:text-saffron-300 shrink-0" aria-hidden="true" />
                           <h3 className="font-serif text-lg sm:text-xl font-bold text-dharma-text">
-                            <span lang="hi" className="font-devanagari">
+                            <span lang="hi" data-bi="hi" className="font-devanagari">
                               पदच्छेद, अन्वय एवं शब्दार्थ
                             </span>{' '}
-                            <span className="text-sm font-normal text-dharma-muted">· Word-by-Word Meaning</span>
+                            <span data-bi="sep" className="text-sm font-normal text-dharma-muted">· </span>
+                            <span data-bi="en" data-bi-lead className="text-sm font-normal text-dharma-muted">Word-by-Word Meaning</span>
                           </h3>
                         </div>
 
@@ -507,10 +508,11 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                       <div className="flex items-center gap-2">
                         <Sparkles className="h-5 w-5 text-amber-600 shrink-0" aria-hidden="true" />
                         <h3 className="font-serif text-lg sm:text-xl font-bold text-dharma-text">
-                          <span lang="hi" className="font-devanagari">
+                          <span lang="hi" data-bi="hi" className="font-devanagari">
                             दार्शनिक रहस्य एवं साधना-महत्त्व
                           </span>{' '}
-                          <span className="text-sm font-normal text-dharma-muted">· Spiritual Significance</span>
+                          <span data-bi="sep" className="text-sm font-normal text-dharma-muted">· </span>
+                          <span data-bi="en" data-bi-lead className="text-sm font-normal text-dharma-muted">Spiritual Significance</span>
                         </h3>
                       </div>
                       <p lang="hi" className="font-devanagari text-sm sm:text-base leading-relaxed text-dharma-text">
@@ -527,10 +529,11 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                         <div className="flex items-center gap-2">
                           <HelpCircle className="h-5 w-5 text-saffron-700 dark:text-saffron-300 shrink-0" aria-hidden="true" />
                           <h3 className="font-serif text-lg sm:text-xl font-bold text-dharma-text">
-                            <span lang="hi" className="font-devanagari">
+                            <span lang="hi" data-bi="hi" className="font-devanagari">
                               जिज्ञासा समाधान
                             </span>{' '}
-                            <span className="text-sm font-normal text-dharma-muted">· Frequently Asked Questions</span>
+                            <span data-bi="sep" className="text-sm font-normal text-dharma-muted">· </span>
+                            <span data-bi="en" data-bi-lead className="text-sm font-normal text-dharma-muted">Frequently Asked Questions</span>
                           </h3>
                         </div>
                         <div className="space-y-2.5">

@@ -24,8 +24,8 @@ export function ChapterSummaryBox({
           <BookOpen className="h-4 w-4" aria-hidden="true" />
         </div>
         <h2 id="chapter-summary-heading" className="text-subhead font-bold text-label-primary">
-          <span lang="hi" className="font-devanagari">{unitHi} सार</span>
-          <span className="font-normal text-label-secondary"> · Chapter Summary</span>
+          <span lang="hi" data-bi="hi" className="font-devanagari">{unitHi} सार</span>
+          <span data-bi="sep" className="font-normal text-label-secondary"> · </span><span data-bi="en" data-bi-lead className="font-normal text-label-secondary">Chapter Summary</span>
         </h2>
       </div>
       <p lang="hi" className="mt-3.5 font-devanagari text-body leading-relaxed text-label-primary sm:text-lg">

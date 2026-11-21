@@ -367,7 +367,7 @@ export function GitaSankalpaClient() {
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4 text-saffron-600" />
                 <h2 id="today-assignment-h" className="font-serif text-lg font-bold text-dharma-text">
-                  आज का स्वाध्याय · Today’s Reading
+                  <span lang="hi" data-bi="hi">आज का स्वाध्याय</span><span data-bi="sep"> · </span><span data-bi="en">Today’s Reading</span>
                 </h2>
               </div>
               <span className="rounded-full bg-saffron-500/10 px-3 py-1 text-xs font-bold text-saffron-700 dark:text-saffron-300">
@@ -500,7 +500,7 @@ export function GitaSankalpaClient() {
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-dharma-border pb-4">
               <div>
                 <h3 id="parayana-mala-h" className="font-serif text-xl font-bold text-dharma-text">
-                  अष्टादश अध्याय माला (18 Chapters Mala)
+                  <span lang="hi" data-bi="hi">अष्टादश अध्याय माला</span><span data-bi="sep"> (</span><span data-bi="en">18 Chapters Mala</span><span data-bi="sep">)</span>
                 </h3>
                 <p className="text-xs text-dharma-muted mt-0.5">
                   Tap any chapter to read or check off in your active cycle.

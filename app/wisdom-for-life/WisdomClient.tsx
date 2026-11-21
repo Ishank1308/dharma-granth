@@ -213,7 +213,7 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
           <div className="flex items-center gap-2">
             <Filter className="w-4 h-4 text-saffron-600" />
             <h2 className="text-sm font-bold uppercase tracking-wider text-dharma-muted">
-              Filter by Life Domain (विषय वर्ग)
+              <span data-bi="en">Filter by Life Domain</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">विषय वर्ग</span><span data-bi="sep">)</span>
             </h2>
           </div>
 

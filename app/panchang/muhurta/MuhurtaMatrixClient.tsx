@@ -278,7 +278,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   चुनी हुई तिथि का पञ्चाङ्ग · Educational day view
                 </p>
                 <h2 aria-live="polite" className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
-                  {livePanchang.dayOfWeekHi} ({livePanchang.dayOfWeek}) · {livePanchang.isoDate}
+                  <span lang="hi" data-bi="hi">{livePanchang.dayOfWeekHi}</span><span data-bi="sep"> (</span><span data-bi="en">{livePanchang.dayOfWeek}</span><span data-bi="sep">)</span> · {livePanchang.isoDate}
                 </h2>
               </div>
               <div className="flex flex-wrap items-center gap-2.5">
@@ -367,7 +367,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
           <section aria-labelledby="muhurta-daylight-title" className="space-y-4 rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-6">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h3 id="muhurta-daylight-title" className="text-lg font-serif font-bold text-dharma-text">
-                दिन का समय-क्रम · Daylight timeline
+                <span lang="hi" data-bi="hi">दिन का समय-क्रम</span><span data-bi="sep"> · </span><span data-bi="en">Daylight timeline</span>
               </h3>
               <Link href={calendarHref} className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg px-2 text-xs font-semibold text-dharma-saffron hover:underline">
                 मासिक पंचांग · Monthly calendar <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -402,7 +402,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   <div className="rounded-xl border border-rose-500/30 bg-rose-500/5 p-3">
                     <h4 className="flex items-center gap-2 text-sm font-semibold text-dharma-text">
                       <ShieldAlert className="h-4 w-4 shrink-0 text-rose-600 dark:text-rose-400" aria-hidden="true" />
-                      राहुकाल · Rahu Kalam
+                      <span><span lang="hi" data-bi="hi">राहुकाल</span><span data-bi="sep"> · </span><span data-bi="en">Rahu Kalam</span></span>
                     </h4>
                     <p className="mt-1 text-sm font-semibold tabular-nums text-dharma-text">
                       {formatPanchangClock(daylight.rahu.start)} – {formatPanchangClock(daylight.rahu.end)}
@@ -412,7 +412,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
                   <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-3">
                     <h4 className="flex items-center gap-2 text-sm font-semibold text-dharma-text">
                       <Sun className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden="true" />
-                      अभिजीत मुहूर्त · Abhijit Muhurta
+                      <span><span lang="hi" data-bi="hi">अभिजीत मुहूर्त</span><span data-bi="sep"> · </span><span data-bi="en">Abhijit Muhurta</span></span>
                     </h4>
                     {daylight.abhijit ? (
                       <>
@@ -775,7 +775,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
           <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-sm">
             <h3 className="text-lg font-serif font-bold text-dharma-text mb-2 flex items-center gap-2">
               <Compass className="w-5 h-5 text-saffron-500" />
-              <span>पञ्च-तिथि वर्गीकरण (5 Tithi Archetypes in Muhurta)</span>
+              <span><span lang="hi" data-bi="hi">पञ्च-तिथि वर्गीकरण</span><span data-bi="sep"> (</span><span data-bi="en">5 Tithi Archetypes in Muhurta</span><span data-bi="sep">)</span></span>
             </h3>
             <p className="text-xs text-dharma-muted mb-4">
               मुहूर्त चिन्तामणि में 30 तिथियों को पाँच विशिष्ट श्रेणियों में विभाजित किया गया है:
@@ -833,7 +833,7 @@ export function MuhurtaMatrixClient({ initialPanchang }: MuhurtaClientProps) {
           <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-sm">
             <h3 className="text-lg font-serif font-bold text-dharma-text mb-2 flex items-center gap-2">
               <ShieldAlert className="w-5 h-5 text-rose-500" />
-              <span>साप्ताहिक राहुकाल तालिका (Standard Rahu Kalam Guide)</span>
+              <span><span lang="hi" data-bi="hi">साप्ताहिक राहुकाल तालिका</span><span data-bi="sep"> (</span><span data-bi="en">Standard Rahu Kalam Guide</span><span data-bi="sep">)</span></span>
             </h3>
             <p className="text-xs text-dharma-muted mb-4">
               स्थानीय सूर्योदय से सूर्यास्त तक का समय 8 बराबर भागों में बाँटा जाता है। नीचे 06:00 AM से 06:00 PM तक के एक उदाहरण की तालिका है।

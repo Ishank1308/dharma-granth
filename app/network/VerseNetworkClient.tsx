@@ -196,7 +196,7 @@ export function VerseNetworkClient() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
             <h2 id="seed-selector-heading" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
-              Select Canonical Verse Node <span lang="hi" className="font-devanagari text-base font-normal text-dharma-muted">· प्रमुख श्लोक केंद्र</span>
+              <span data-bi="en">Select Canonical Verse Node</span> <span data-bi="sep" className="font-devanagari text-base font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-base font-normal text-dharma-muted">प्रमुख श्लोक केंद्र</span>
             </h2>
             <p className="text-xs sm:text-sm text-dharma-muted">
               Choose a celebrated verse below to explore its interconnected network across scriptures:
@@ -299,7 +299,7 @@ export function VerseNetworkClient() {
       {/* ─── EDUCATIONAL FOOTNOTE ─────────────────────────────────────────── */}
       <footer className="rounded-2xl border border-dharma-border bg-dharma-panel/60 p-5 text-xs sm:text-sm text-dharma-muted space-y-2">
         <h3 className="font-serif font-bold text-dharma-text text-sm">
-          About the Verse Relationship Engine & Methodology · ज्ञान जाल शोध विधि
+          <span data-bi="en">About the Verse Relationship Engine & Methodology</span><span data-bi="sep"> · </span><span lang="hi" data-bi="hi">ज्ञान जाल शोध विधि</span>
         </h3>
         <p className="leading-relaxed">
           The relationships shown in this network are compiled from classical bhashyas (commentaries by Shankaracharya, Ramanujacharya, Madhvacharya, and Vallabhacharya), cross-scriptural concordance indices, and peer-reviewed Vedic philology. No speculative links or machine guesses are shown—each connection represents a conscious thematic echo or direct scriptural citation.

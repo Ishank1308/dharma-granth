@@ -409,7 +409,7 @@ export function TopicDetailClient({
                     <div className="flex items-center gap-2">
                       <Scroll className="w-4 h-4 text-saffron-600" />
                       <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-text">
-                        Traditional context (<span lang="hi">पारंपरिक संदर्भ</span>)
+                        <span data-bi="en">Traditional context</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">पारंपरिक संदर्भ</span><span data-bi="sep">)</span>
                       </h4>
                     </div>
 
@@ -633,7 +633,7 @@ export function TopicDetailClient({
             <div className="flex items-center gap-2 mb-4">
               <Tag className="w-4 h-4 text-saffron-600" />
               <h3 className="text-lg font-serif font-bold text-dharma-text">
-                4. Related Concepts (संबंधित अवधारणाएं)
+                4. <span data-bi="en">Related Concepts</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">संबंधित अवधारणाएं</span><span data-bi="sep">)</span>
               </h3>
             </div>
             <p className="text-xs text-dharma-muted mb-4">
@@ -668,7 +668,7 @@ export function TopicDetailClient({
             <div className="flex items-center gap-2 mb-4">
               <BookOpen className="w-4 h-4 text-saffron-600" />
               <h3 className="text-lg font-serif font-bold text-dharma-text">
-                5. Related Scriptures (संबंधित ग्रंथ)
+                5. <span data-bi="en">Related Scriptures</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">संबंधित ग्रंथ</span><span data-bi="sep">)</span>
               </h3>
             </div>
             <p className="text-xs text-dharma-muted mb-4">
@@ -708,7 +708,7 @@ export function TopicDetailClient({
           <div className="flex items-center gap-2 mb-4">
             <Scroll className="w-4 h-4 text-saffron-600" />
             <h3 id="heading-sources" className="text-lg font-serif font-bold text-dharma-text">
-              6. Sources (स्रोत)
+              6. <span data-bi="en">Sources</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">स्रोत</span><span data-bi="sep">)</span>
             </h3>
           </div>
 

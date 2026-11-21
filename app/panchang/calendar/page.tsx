@@ -188,7 +188,7 @@ export default function PanchangCalendarPage() {
                 <div className="apple-tint-chip mb-4 !h-10 !w-10" style={{ '--chip': 'var(--hue-tulsi)' } as React.CSSProperties}>
                   <Compass className="h-5 w-5" />
                 </div>
-                <h3 className="text-subhead font-bold text-dharma-text">उदय तिथि नियम (Udaya Tithi Rule)</h3>
+                <h3 className="text-subhead font-bold text-dharma-text"><span lang="hi" data-bi="hi">उदय तिथि नियम</span><span data-bi="sep"> (</span><span data-bi="en">Udaya Tithi Rule</span><span data-bi="sep">)</span></h3>
                 <p className="mt-2 text-footnote text-dharma-muted leading-relaxed">
                   The lunar day current at local sunrise governs that civil solar day for fasts, temple worship, and ritual observance, even if the tithi changes minutes after dawn.
                 </p>
@@ -212,7 +212,7 @@ export default function PanchangCalendarPage() {
               >
                 <span className="apple-tint-chip mb-3 !h-10 !w-10" style={{ '--chip': 'var(--hue-indigo)' } as React.CSSProperties}><Moon className="h-5 w-5" aria-hidden="true" /></span>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
-                  16 वैदिक तिथियाँ (Tithis)
+                  16 <span lang="hi" data-bi="hi">वैदिक तिथियाँ</span><span data-bi="sep"> (</span><span data-bi="en">Tithis</span><span data-bi="sep">)</span>
                 </h4>
                 <p className="mt-1 text-caption-1 text-dharma-muted">
                   प्रतिपदा से पूर्णिमा व अमावस्या — नन्दा, भद्रा, जया, रिक्ता, पूर्णा वर्गीकरण।
@@ -229,7 +229,7 @@ export default function PanchangCalendarPage() {
               >
                 <span className="apple-tint-chip mb-3 !h-10 !w-10" style={{ '--chip': 'var(--hue-peacock)' } as React.CSSProperties}><Sparkles className="h-5 w-5" aria-hidden="true" /></span>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
-                  27 नक्षत्र (Nakshatras)
+                  27 <span lang="hi" data-bi="hi">नक्षत्र</span><span data-bi="sep"> (</span><span data-bi="en">Nakshatras</span><span data-bi="sep">)</span>
                 </h4>
                 <p className="mt-1 text-caption-1 text-dharma-muted">
                   अश्विनी से रेवती — अधिष्ठाता देवता, ग्रह स्वामी और स्वाध्याय हेतु मार्गदर्शन।
@@ -246,7 +246,7 @@ export default function PanchangCalendarPage() {
               >
                 <span className="apple-tint-chip mb-3 !h-10 !w-10" style={{ '--chip': 'var(--hue-lotus)' } as React.CSSProperties}><Sun className="h-5 w-5" aria-hidden="true" /></span>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
-                  27 नित्य योग (Yogas)
+                  27 <span lang="hi" data-bi="hi">नित्य योग</span><span data-bi="sep"> (</span><span data-bi="en">Yogas</span><span data-bi="sep">)</span>
                 </h4>
                 <p className="mt-1 text-caption-1 text-dharma-muted">
                   विष्कम्भ से वैधृति — सौर-चान्द्र संयोग, शुभ व विचारणीय योगों का विवेक।
@@ -263,7 +263,7 @@ export default function PanchangCalendarPage() {
               >
                 <span className="apple-tint-chip mb-3 !h-10 !w-10" style={{ '--chip': 'var(--hue-tulsi)' } as React.CSSProperties}><Clock className="h-5 w-5" aria-hidden="true" /></span>
                 <h4 className="text-subhead font-bold text-dharma-text group-hover:text-dharma-saffron transition-colors">
-                  11 करण (Karanas)
+                  11 <span lang="hi" data-bi="hi">करण</span><span data-bi="sep"> (</span><span data-bi="en">Karanas</span><span data-bi="sep">)</span>
                 </h4>
                 <p className="mt-1 text-caption-1 text-dharma-muted">
                   7 चर व 4 स्थिर करण — विष्टि (भद्रा) के नियम और दैनिक कर्म शुद्धि।

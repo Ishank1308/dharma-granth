@@ -48,7 +48,7 @@ export function RelationshipExplorer({ concepts, relations }: { concepts: Explor
           <li aria-current="page" className="font-semibold text-dharma-text">Relationships</li>
         </ol>
       </nav>
-      <h1 className="font-serif text-3xl font-bold text-dharma-text">Concept relationships <span lang="hi" className="font-devanagari text-xl font-normal text-dharma-muted">· अवधारणाओं के संबंध</span></h1>
+      <h1 className="font-serif text-3xl font-bold text-dharma-text"><span data-bi="en">Concept relationships</span> <span data-bi="sep" className="font-devanagari text-xl font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-xl font-normal text-dharma-muted">अवधारणाओं के संबंध</span></h1>
       <p className="mt-2 text-sm text-dharma-muted">
         Each link has a type and the verse that supports it. They are study aids and are drafts until an editor reviews them. Where traditions read a verse differently, the note says so.
       </p>
