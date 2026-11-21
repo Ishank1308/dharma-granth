@@ -383,8 +383,8 @@ export function ReaderLayers({
                   className={aidToggle}
                 >
                   <Languages className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>IAST</span>
-                  <span lang="hi" className="font-devanagari">लिप्यन्तरण</span>
+                  <span data-bi="en">IAST</span>
+                  <span lang="hi" data-bi="hi" className="font-devanagari">लिप्यन्तरण</span>
                 </button>
               )}
               {hasPadas && (
@@ -396,8 +396,8 @@ export function ReaderLayers({
                   className={aidToggle}
                 >
                   <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span lang="hi" className="font-devanagari">पदच्छेद</span>
-                  <span>Word by word</span>
+                  <span lang="hi" data-bi="hi" className="font-devanagari">पदच्छेद</span>
+                  <span data-bi="en">Word by word</span>
                 </button>
               )}
             </div>

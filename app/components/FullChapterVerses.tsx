@@ -1290,7 +1290,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 aria-controls="chapter-reader-tools"
               >
                 <SlidersHorizontal className="h-4 w-4 sm:h-3.5 sm:w-3.5" aria-hidden="true" />
-                <span className="hidden sm:inline"><span lang="hi">विकल्प</span><span> · Options</span></span>
+                <span className="hidden sm:inline"><span lang="hi" data-bi="hi">विकल्प</span><span data-bi="sep"> · </span><span data-bi="en">Options</span></span>
                 <ChevronDown className={`hidden h-3.5 w-3.5 transition-transform sm:block ${toolsOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
               </button>
             </div>

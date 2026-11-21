@@ -378,12 +378,18 @@ export function VerseReader(props: VerseReaderProps) {
         : 'min-h-[52px] px-4 gap-2.5';
     if (!target) return <span className={size === 'bar' ? 'w-16 shrink-0' : 'w-40'} aria-hidden="true" />;
     const crosses = otherChapter(target.href);
+    // The row under the verse has room for both languages; the bar and a chapter crossing use Hindi alone.
+    const pairEn = crosses == null && size !== 'bar';
     const hiLabel = crosses != null ? (dir === 'prev' ? 'पिछला अध्याय' : 'अगला अध्याय') : hi;
     const verseLine = crosses != null
       ? (size === 'bar'
         ? `${toAsciiDigits(crosses)}.${toAsciiDigits(target.number)}`
         : `अध्याय ${toAsciiDigits(crosses)}, श्लोक ${toAsciiDigits(target.number)}`)
       : `श्लोक ${toAsciiDigits(target.number)}`;
+    // The bar's cross-chapter reference ("3.1") is a number alone and needs no English.
+    const verseLineEn = crosses != null
+      ? (size === 'bar' ? undefined : `Chapter ${toAsciiDigits(crosses)}, verse ${toAsciiDigits(target.number)}`)
+      : `Verse ${toAsciiDigits(target.number)}`;
     return (
       <Link
         href={target.href}
@@ -395,9 +401,12 @@ export function VerseReader(props: VerseReaderProps) {
         <Icon className="h-4 w-4 shrink-0 text-tint" aria-hidden="true" />
         <span className="leading-tight">
           <span className="block text-caption font-medium text-label-secondary">
-            <span lang="hi" className="font-devanagari">{hiLabel}</span>{crosses == null && size !== 'bar' ? ` · ${text}` : ''}
+            <span lang="hi" data-bi="hi" className="font-devanagari">{hiLabel}</span>
+            {pairEn && <span data-bi="sep"> · </span>}
+            <span data-bi={pairEn ? 'en' : 'en-only'}>{crosses != null ? `${text} chapter` : text}</span>
           </span>{' '}
-          <span lang="hi" className="font-devanagari text-subhead font-semibold">{verseLine}</span>
+          <span lang="hi" data-bi={verseLineEn ? 'hi' : undefined} className="font-devanagari text-subhead font-semibold">{verseLine}</span>
+          {verseLineEn && <span data-bi="en-only" className="text-subhead font-semibold">{verseLineEn}</span>}
         </span>
         {size === 'row' && (
           <kbd className="hidden rounded-chip border border-separator px-1.5 py-0.5 font-mono text-[10px] text-label-tertiary uppercase lg:inline-flex" aria-hidden="true">

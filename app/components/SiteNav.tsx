@@ -651,8 +651,8 @@ export function SiteNav({
                   }`}
                 >
                   <span className="inline-flex items-baseline gap-1">
-                    <span>{item.label}</span>{' '}
-                    <span lang="hi" className="hidden text-[12.5px] font-devanagari text-dharma-muted xl:inline">
+                    <span data-bi="en">{item.label}</span>{' '}
+                    <span lang="hi" data-bi="hi" data-bi-lead className="hidden text-[12.5px] font-devanagari text-dharma-muted xl:inline">
                       {item.labelHi}
                     </span>{' '}
                   </span>
@@ -674,8 +674,8 @@ export function SiteNav({
                   aria-controls="desktop-discovery-menu"
                   aria-haspopup="true"
                 >
-                  <span>Explore</span>{' '}
-                  <span lang="hi" className="hidden font-devanagari text-[12.5px] text-dharma-muted xl:inline">
+                  <span data-bi="en">Explore</span>{' '}
+                  <span lang="hi" data-bi="hi" data-bi-lead className="hidden font-devanagari text-[12.5px] text-dharma-muted xl:inline">
                     अन्वेषण
                   </span>
                   <ChevronDown
@@ -1089,14 +1089,14 @@ export function SiteNav({
                       className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-muted"
                     >
                       <Settings2 className="h-3.5 w-3.5 text-saffron-600" aria-hidden="true" />
-                      भाषा व थीम सेटिंग्स · Preferences
+                      <span><span lang="hi" data-bi="hi">भाषा व थीम सेटिंग्स</span><span data-bi="sep"> · </span><span data-bi="en">Preferences</span></span>
                     </h3>
                   </div>
 
                   {/* Language Selector (≥ 44px touch targets) */}
                   <div>
                     <p className="mb-2 block text-xs font-semibold text-dharma-text">
-                      पठन भाषा · Reading Language
+                      <span lang="hi" data-bi="hi">पठन भाषा</span><span data-bi="sep"> · </span><span data-bi="en">Reading Language</span>
                     </p>
                     <div className="grid grid-cols-2 gap-1.5" role="radiogroup" aria-label="भाषा प्राथमिकता">
                       {LANGUAGE_OPTIONS.map((opt) => {
@@ -1135,7 +1135,7 @@ export function SiteNav({
                   {/* Theme Selector (≥ 44px touch targets) */}
                   <div>
                     <p className="mb-2 block text-xs font-semibold text-dharma-text">
-                      थीम मोड · Display Theme
+                      <span lang="hi" data-bi="hi">थीम मोड</span><span data-bi="sep"> · </span><span data-bi="en">Display Theme</span>
                     </p>
                     <div className="grid grid-cols-2 gap-1.5" role="radiogroup" aria-label="थीम मोड">
                       {THEMES.map((opt) => {
@@ -1199,7 +1199,7 @@ export function SiteNav({
                         id="drawer-discover-heading"
                         className="mb-2 px-1 text-[11px] font-bold uppercase tracking-wider text-dharma-muted"
                       >
-                        अतिरिक्त संदर्भ व साधन · More Reference
+                        <span><span lang="hi" data-bi="hi">अतिरिक्त संदर्भ व साधन</span><span data-bi="sep"> · </span><span data-bi="en">More Reference</span></span>
                       </h3>
                       <div className="space-y-3">
                         {groupsWithUniqueItems.map((group) => {

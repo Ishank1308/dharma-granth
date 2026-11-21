@@ -697,3 +697,37 @@ p.verse-folio[lang='sa'] > span {
         animation: none !important;
     }
 }
+
+/* Two-language labels ────────────────────────────────────────────────────
+   A label written in both languages marks its halves data-bi="en" and data-bi="hi" (and any
+   "·" between them data-bi="sep"). The reader's language choice sits on <html data-ui-lang>
+   (lib/useLanguagePreference.ts); with हिन्दी, संस्कृत or English chosen, only that half shows.
+   Both halves stay in the markup, so the default द्विभाषी page and what crawlers read are unchanged.
+   The half that stays takes the label's own colour, since the muted tone marked it as the
+   second language. */
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='en'],
+html[data-ui-lang='english'] [data-bi='hi'],
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit'], [data-ui-lang='english']) [data-bi='sep'] {
+    display: none !important;
+}
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='hi'],
+html[data-ui-lang='english'] [data-bi='en'] {
+    display: inline !important;
+    color: inherit;
+    opacity: 1;
+}
+/* data-bi-lead: where the second language is set smaller, it takes the label's own size and
+   weight when it stands alone. */
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='hi'][data-bi-lead],
+html[data-ui-lang='english'] [data-bi='en'][data-bi-lead] {
+    font-size: inherit;
+    font-weight: inherit;
+}
+/* data-bi="en-only": the English for a label that is Hindi alone by default (a tight bar with
+   no room for both). It shows only when English is chosen. */
+[data-bi='en-only'] {
+    display: none;
+}
+html[data-ui-lang='english'] [data-bi='en-only'] {
+    display: inline !important;
+}

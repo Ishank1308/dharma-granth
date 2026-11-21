@@ -66,7 +66,7 @@ function DockButton({
         <span className="dock-pill absolute inset-0 rounded-full" />
       )}
       <span className="relative flex h-5 items-center">{children}</span>
-      <span data-dock-label="primary" className="relative max-w-full truncate leading-none max-[480px]:hidden">
+      <span data-dock-label="primary" data-bi={hintHi ? 'en' : undefined} className="relative max-w-full truncate leading-none max-[480px]:hidden">
         {touchLabel ? (
           <>
             <span className="kbd-hint">{label}</span>
@@ -77,7 +77,7 @@ function DockButton({
         )}
       </span>
       {hintHi && (
-        <span lang="hi" aria-hidden="true" data-dock-label="hindi" className="relative max-w-full truncate px-0.5 font-devanagari text-[clamp(12px,3.2vw,14px)] leading-tight opacity-80">
+        <span lang="hi" aria-hidden="true" data-dock-label="hindi" data-bi="hi" className="relative max-w-full truncate px-0.5 font-devanagari text-[clamp(12px,3.2vw,14px)] leading-tight opacity-80">
           {hintHi}
         </span>
       )}

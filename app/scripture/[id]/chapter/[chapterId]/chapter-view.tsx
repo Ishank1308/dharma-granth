@@ -488,9 +488,10 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         {(!part || part.part === 1) && hasChapterContext && (
           <details className="apple-card group mb-5 overflow-hidden sm:mb-8 rounded-card border border-separator/80 bg-surface-raised/80 shadow-xs">
             <summary className="focus-ring flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 sm:min-h-[52px] sm:px-5 sm:py-3.5 transition hover:bg-fill-quaternary [&::-webkit-details-marker]:hidden">
-              <span className="flex items-center gap-2">
-                <span className="text-subhead font-semibold text-label-primary">About this chapter</span>
-                <span lang="hi" className="font-devanagari text-caption-1 font-normal text-label-secondary">· अध्याय परिचय</span>
+              <span className="flex items-center gap-2 text-subhead font-semibold text-label-primary">
+                <span data-bi="en">About this chapter</span>
+                <span data-bi="sep" aria-hidden="true" className="text-caption-1 font-normal text-label-secondary">·</span>
+                <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-caption-1 font-normal text-label-secondary">अध्याय परिचय</span>
               </span>
               <span aria-hidden="true" className="apple-chevron text-lg transition-transform duration-standard ease-standard group-open:rotate-90">›</span>
             </summary>
@@ -531,12 +532,12 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             interactive cards once hydrated. */}
         <nav aria-label="अध्याय में आगे-पीछे जाएँ" className="mb-4 flex flex-wrap items-center gap-2 rounded-xl border border-dharma-border/70 bg-dharma-card px-2.5 py-2 sm:px-3">
           <Link href={`/scripture/${meta.id}`} className="inline-flex min-h-11 items-center rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
-            ग्रंथ सूची
+            <span lang="hi" data-bi="hi">ग्रंथ सूची</span> <span data-bi="en-only">Contents</span>
           </Link>
           <span aria-hidden="true" className="h-5 w-px bg-dharma-border" />
           {prevPartHref || prevHref ? (
             <Link href={prevPartHref ?? prevHref!} rel="prev" className="inline-flex min-h-11 items-center gap-1 whitespace-nowrap rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
-              <ArrowLeft className="h-4 w-4" aria-hidden="true" /> पिछला {prevPartHref ? 'भाग' : 'अध्याय'}
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" /> <span lang="hi" data-bi="hi">पिछला {prevPartHref ? 'भाग' : 'अध्याय'}</span> <span data-bi="en-only">Previous {prevPartHref ? 'part' : 'chapter'}</span>
             </Link>
           ) : null}
           <span lang="hi" className="hidden min-w-0 flex-1 whitespace-nowrap text-center font-devanagari text-xs text-dharma-muted sm:block">
@@ -544,7 +545,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           </span>
           {nextPartHref || nextHref ? (
             <Link href={nextPartHref ?? nextHref!} rel="next" className="ml-auto inline-flex min-h-11 items-center gap-1 whitespace-nowrap rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
-              अगला {nextPartHref ? 'भाग' : 'अध्याय'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <span lang="hi" data-bi="hi">अगला {nextPartHref ? 'भाग' : 'अध्याय'}</span> <span data-bi="en-only">Next {nextPartHref ? 'part' : 'chapter'}</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           ) : null}
         </nav>
