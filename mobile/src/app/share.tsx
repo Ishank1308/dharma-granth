@@ -6,7 +6,9 @@ import { ActivityIndicator, Alert, Platform, Pressable, ScrollView, Share, Style
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { captureRef } from 'react-native-view-shot';
 
-import { ShareCard, SHARE_STYLES, type ShareCardHandle, type ShareStyle } from '@/components/share-card';
+import { EDITORIAL_STYLES, FORMAT_RATIO, ShareCard, SHARE_STYLES, type EditorialStyle, type ShareCardHandle, type ShareFormat, type ShareStyle } from '@/components/share-card';
+import { editorialSwatch } from '@/components/share-editorial';
+import { SANSKRIT_FONT } from '@/theme/fonts';
 import { accentFill, Backdrop, Chip, glass, GroupTitle, Muted } from '@/components/ui';
 import { getEntry, loadChapter, SITE } from '@/content/catalog';
 import { S, useI18n, type Msg } from '@/i18n';
@@ -46,7 +48,8 @@ export default function ShareVerseScreen() {
   const hindi = verse && state?.hi === 'text' ? cleanVerseField(verse.hindi) : '';
   const english = verse && state?.en === 'text' ? cleanVerseField(verse.translation) : '';
 
-  const [look, setLook] = useState<ShareStyle>('cover');
+  const [look, setLook] = useState<ShareStyle>('arch');
+  const [format, setFormat] = useState<ShareFormat>('post');
   const [meaning, setMeaning] = useState<Meaning>(() => {
     if (lang === 'hi') return hindi ? 'hi' : english ? 'en' : 'none';
     return english ? 'en' : hindi ? 'hi' : 'none';
@@ -55,7 +58,8 @@ export default function ShareVerseScreen() {
   const cardRef = useRef<ShareCardHandle>(null);
   const cardHeight = useRef(0);
 
-  const cardWidth = Math.min(screenW - SPACE.lg * 2, 420);
+  // A story is tall, so its preview is narrower to keep the controls in reach; the export is 1080 px wide either way.
+  const cardWidth = Math.min(screenW - SPACE.lg * 2, 420) * (format === 'story' ? 0.82 : 1);
   const ref = formatVerseRef(id, chapterNo, verseNo);
   const title = entry?.title ?? id;
   const lines = sanskritLines(verse?.sanskrit);
@@ -78,7 +82,7 @@ export default function ShareVerseScreen() {
     if (!cardRef.current || busy) return;
     setBusy(true);
     try {
-      const h = cardHeight.current || cardWidth * 1.25;
+      const h = cardHeight.current || cardWidth * FORMAT_RATIO[format];
       const uri = await captureRef(cardRef, {
         format: 'png',
         quality: 1,
@@ -105,7 +109,16 @@ export default function ShareVerseScreen() {
     Share.share({ message }).catch(() => {});
   };
 
-  const lookLabel = (s: ShareStyle) => (s === 'cover' ? t(S.shareStyleCover) : lang === 'hi' ? THEMES[s].labelHi : THEMES[s].label);
+  const EDITORIAL_LABELS: Record<EditorialStyle, Msg> = {
+    arch: S.shareStyleArch,
+    midnight: S.shareStyleMidnight,
+    sage: S.shareStyleSage,
+    aura: S.shareStyleAura,
+    manuscript: S.shareStyleManuscript,
+  };
+  const isEditorial = (s: ShareStyle): s is EditorialStyle => (EDITORIAL_STYLES as string[]).includes(s);
+  const lookLabel = (s: ShareStyle) =>
+    isEditorial(s) ? t(EDITORIAL_LABELS[s]) : s === 'cover' ? t(S.shareStyleCover) : lang === 'hi' ? THEMES[s].labelHi : THEMES[s].label;
   const a11yCard = [t(S.shareCardA11y(`${title} ${ref}`)), lines.join(' '), showHi ? hindi : '', showEn ? english : ''].filter(Boolean).join('. ');
 
   return (
@@ -127,6 +140,7 @@ export default function ShareVerseScreen() {
               ref={cardRef}
               width={cardWidth}
               look={look}
+              format={format}
               cover={cover}
               bookTitle={entry.titleSanskrit ?? entry.title}
               bookTitleEn={entry.titleSanskrit ? entry.title : undefined}
@@ -141,10 +155,17 @@ export default function ShareVerseScreen() {
         <Muted style={{ textAlign: 'center', marginTop: SPACE.sm }}>{t(S.shareFullVerse)}</Muted>
 
         <GroupTitle title={t(S.shareStyle)} />
-        <View accessibilityRole="radiogroup" accessibilityLabel={t(S.shareStyle)} style={styles.swatches}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          accessibilityRole="radiogroup"
+          accessibilityLabel={t(S.shareStyle)}
+          style={{ marginHorizontal: -SPACE.lg }}
+          contentContainerStyle={styles.swatches}>
           {SHARE_STYLES.map((s) => {
             const active = s === look;
-            const p = s === 'cover' ? null : THEMES[s];
+            const ed = isEditorial(s) ? editorialSwatch(s) : null;
+            const p = ed || s === 'cover' ? null : THEMES[s as keyof typeof THEMES];
             return (
               <Pressable
                 key={s}
@@ -157,11 +178,13 @@ export default function ShareVerseScreen() {
                   style={[
                     styles.swatch,
                     { borderColor: active ? palette.accent : palette.border, borderWidth: active ? 2.5 : 1 },
-                    p
+                    ed
+                      ? { backgroundColor: ed.bg, backgroundImage: ed.image }
+                      : p
                       ? { backgroundColor: p.bg, backgroundImage: `radial-gradient(80% 60% at 20% 10%, ${p.aurora[0]} 0%, transparent 70%), radial-gradient(70% 60% at 90% 90%, ${p.aurora[2]} 0%, transparent 70%)` }
                       : { backgroundColor: cover.colors[1], backgroundImage: `linear-gradient(160deg, ${cover.colors[0]} 0%, ${cover.colors[1]} 60%, ${cover.colors[2]} 130%)` },
                   ]}>
-                  <Text allowFontScaling={false} style={{ color: p ? p.gold : cover.foil, fontSize: 18 }}>
+                  <Text allowFontScaling={false} style={{ fontFamily: SANSKRIT_FONT, color: ed ? (s === 'arch' ? '#fbeedd' : ed.accent) : p ? p.gold : cover.foil, fontSize: 20 }}>
                     ॐ
                   </Text>
                 </View>
@@ -174,6 +197,12 @@ export default function ShareVerseScreen() {
               </Pressable>
             );
           })}
+        </ScrollView>
+
+        <GroupTitle title={t(S.shareFormat)} />
+        <View accessibilityRole="radiogroup" accessibilityLabel={t(S.shareFormat)} style={styles.chips}>
+          <Chip label={t(S.shareFormatPost)} active={format === 'post'} onPress={() => setFormat('post')} />
+          <Chip label={t(S.shareFormatStory)} active={format === 'story'} onPress={() => setFormat('story')} />
         </View>
 
         <GroupTitle title={t(S.shareMeaning)} />
@@ -222,8 +251,8 @@ export default function ShareVerseScreen() {
 const styles = StyleSheet.create({
   missing: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: SPACE.xl },
   preview: { alignSelf: 'center', borderRadius: RADIUS.tile, overflow: 'hidden' },
-  swatches: { flexDirection: 'row', justifyContent: 'space-between', columnGap: SPACE.xs },
-  swatchBtn: { flex: 1, alignItems: 'center', rowGap: 6, minHeight: TOUCH, paddingVertical: SPACE.xs },
+  swatches: { flexDirection: 'row', columnGap: SPACE.xs, paddingHorizontal: SPACE.lg },
+  swatchBtn: { width: 72, alignItems: 'center', rowGap: 6, minHeight: TOUCH, paddingVertical: SPACE.xs },
   swatch: { width: 52, height: 64, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
   actions: {

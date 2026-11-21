@@ -4,6 +4,9 @@ import { StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import type { Cover } from '@/theme/covers';
 import { THEMES, type ThemeName } from '@/theme/themes';
 import { toDevanagari } from '@/lib/verse-format';
+import { SANSKRIT_FONT } from '@/theme/fonts';
+
+import { EditorialCard } from './share-editorial';
 
 /**
  * A verse drawn as a keepsake card, captured to a PNG (react-native-view-shot) and shared through the
@@ -13,8 +16,15 @@ import { toDevanagari } from '@/lib/verse-format';
  * Philological rule: every line of the Sanskrit is on the card, never an excerpt. The card grows taller
  * for a long verse instead of cutting it, and the type steps down so it still reads well.
  */
-export type ShareStyle = 'cover' | ThemeName;
-export const SHARE_STYLES: ShareStyle[] = ['cover', 'day', 'sunset', 'paper', 'dark'];
+export type EditorialStyle = 'arch' | 'midnight' | 'sage' | 'aura' | 'manuscript';
+export type ShareStyle = EditorialStyle | 'cover' | ThemeName;
+/** The editorial looks first (the Pinterest-style keepsakes), then the book cover and the four reading themes. */
+export const SHARE_STYLES: ShareStyle[] = ['arch', 'midnight', 'sage', 'aura', 'manuscript', 'cover', 'day', 'sunset', 'paper', 'dark'];
+export const EDITORIAL_STYLES: EditorialStyle[] = ['arch', 'midnight', 'sage', 'aura', 'manuscript'];
+
+/** A feed post (4:5, the tallest Instagram and Pinterest keep uncropped) or a story / status (9:16). */
+export type ShareFormat = 'post' | 'story';
+export const FORMAT_RATIO: Record<ShareFormat, number> = { post: 1.25, story: 16 / 9 };
 
 export type ShareCardHandle = ComponentRef<typeof View>;
 
@@ -23,6 +33,7 @@ export interface ShareCardProps {
   ref?: Ref<ShareCardHandle>;
   width: number;
   look: ShareStyle;
+  format?: ShareFormat;
   cover: Cover;
   /** The book's Devanagari title, shown in foil at the top. */
   bookTitle: string;
@@ -49,7 +60,7 @@ interface Look {
   dark: boolean;
 }
 
-function lookFor(look: ShareStyle, cover: Cover): Look {
+function lookFor(look: 'cover' | ThemeName, cover: Cover): Look {
   if (look === 'cover') {
     const [deep, mid, light] = cover.colors;
     return {
@@ -137,8 +148,12 @@ function Corner({ color, size, style }: { color: string; size: number; style: Vi
   );
 }
 
-export function ShareCard({ ref, width, look, cover, bookTitle, bookTitleEn, verseRef, markNumber, lines, hindi, english }: ShareCardProps) {
-  const L = lookFor(look, cover);
+export function ShareCard(props: ShareCardProps) {
+  return (EDITORIAL_STYLES as string[]).includes(props.look) ? <EditorialCard {...props} look={props.look as EditorialStyle} /> : <ClassicCard {...props} />;
+}
+
+function ClassicCard({ ref, width, look, format = 'post', cover, bookTitle, bookTitleEn, verseRef, markNumber, lines, hindi, english }: ShareCardProps) {
+  const L = lookFor(look as 'cover' | ThemeName, cover);
   const u = width / 360;
   const pad = Math.round(width * 0.1);
   const inset = Math.round(width * 0.04);
@@ -151,7 +166,7 @@ export function ShareCard({ ref, width, look, cover, bookTitle, bookTitleEn, ver
     <View
       ref={ref}
       collapsable={false}
-      style={{ width, minHeight: Math.round(width * 1.25), backgroundColor: L.bg, backgroundImage: L.image, overflow: 'hidden' }}>
+      style={{ width, minHeight: Math.round(width * FORMAT_RATIO[format]), backgroundColor: L.bg, backgroundImage: L.image, overflow: 'hidden' }}>
       {/* Double foil frame with diamond corners. */}
       <View pointerEvents="none" style={[StyleSheet.absoluteFill, { margin: inset, borderWidth: 1.5 * u, borderColor: L.frame, borderRadius: 14 * u }]} />
       <View
@@ -184,7 +199,7 @@ export function ShareCard({ ref, width, look, cover, bookTitle, bookTitleEn, ver
             }}
           />
         ) : null}
-        <Text allowFontScaling={false} style={{ color: L.foil, fontSize: 15 * u, fontWeight: '700', textAlign: 'center' }}>
+        <Text allowFontScaling={false} style={{ fontFamily: SANSKRIT_FONT, color: L.foil, fontSize: 16 * u, textAlign: 'center' }}>
           {bookTitle}
         </Text>
         {bookTitleEn ? (
@@ -234,7 +249,7 @@ export function ShareCard({ ref, width, look, cover, bookTitle, bookTitleEn, ver
               <Text
                 key={i}
                 allowFontScaling={false}
-                style={{ color: L.text, fontSize: sa, lineHeight: sa * 1.62, textAlign: 'center', fontWeight: '500' }}>
+                style={{ fontFamily: SANSKRIT_FONT, color: L.text, fontSize: sa, lineHeight: sa * 1.62, textAlign: 'center' }}>
                 {line}
                 {i === lines.length - 1 ? (
                   <Text style={{ color: L.foil }}>{` ॥ ${toDevanagari(markNumber)} ॥`}</Text>
