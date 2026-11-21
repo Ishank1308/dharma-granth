@@ -28,8 +28,8 @@ export function MoodCompass({ moods }: { moods: Mood[] }) {
           <span lang="en">Mood Compass</span>
         </p>
         <h2 id="mood-compass-heading" className="font-serif text-2xl font-bold text-dharma-text sm:text-3xl">
-          <span lang="en">How are you feeling right now?</span>{' '}
-          <span lang="hi" className="block font-devanagari text-lg font-semibold text-dharma-muted sm:text-xl">
+          <span lang="en" data-bi="en">How are you feeling right now?</span>{' '}
+          <span lang="hi" data-bi="hi" data-bi-lead className="block font-devanagari text-lg font-semibold text-dharma-muted sm:text-xl">
             आज मन कैसा है?
           </span>
         </h2>

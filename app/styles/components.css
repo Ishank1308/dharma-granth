@@ -791,6 +791,14 @@ html[data-ui-lang='english'] [data-bi='en'][data-bi-lead] {
     font-size: inherit;
     font-weight: inherit;
 }
+/* The second half often carries a small margin that sets it off from the first (ml-1, ml-2).
+   Standing alone, it starts where the label starts. */
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='en'] + [data-bi='hi'],
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='en'] + [data-bi='sep'] + [data-bi='hi'],
+html[data-ui-lang='english'] [data-bi='hi'] + [data-bi='en'],
+html[data-ui-lang='english'] [data-bi='hi'] + [data-bi='sep'] + [data-bi='en'] {
+    margin-left: 0;
+}
 /* A page title (PageHeader) standing in Hindi alone sits one step under the large title: the
    Hindi line is usually the longer of the two, and Devanagari reads larger at the same size. */
 html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) h1 > [data-bi='hi'][data-bi-lead] {

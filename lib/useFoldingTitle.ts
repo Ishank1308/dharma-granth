@@ -90,13 +90,18 @@ export function useFoldingTitle(pathname: string | null, enabled: boolean) {
 
 /**
  * The heading's main line for the bar: a `data-fold-text` part if the page marks one, else the
- * heading without its Hindi or Sanskrit second line (those are separate elements, see CLAUDE.md).
+ * heading without its Hindi or Sanskrit second line (those are separate elements, see CLAUDE.md)
+ * and without the dot or brackets that joined the two (data-bi="sep"). A reader who chose हिन्दी
+ * or संस्कृत gets the Hindi half of a two-language title (data-bi) instead, as on the page.
  */
 function shortTitle(h1: HTMLElement): string {
   const marked = h1.querySelector('[data-fold-text]');
   if (marked?.textContent?.trim()) return clean(marked.textContent);
   const copy = h1.cloneNode(true) as HTMLElement;
-  copy.querySelectorAll('[lang="hi"], [lang="sa"], [aria-hidden="true"], .sr-only').forEach((el) => el.remove());
+  const hindi = /hindi|sanskrit/.test(document.documentElement.dataset.uiLang ?? '') && copy.querySelector('[data-bi="hi"]');
+  copy
+    .querySelectorAll(`${hindi ? '[data-bi="en"]' : '[lang="hi"], [lang="sa"]'}, [data-bi="sep"], [aria-hidden="true"], .sr-only`)
+    .forEach((el) => el.remove());
   return clean(copy.textContent) || clean(h1.textContent);
 }
 

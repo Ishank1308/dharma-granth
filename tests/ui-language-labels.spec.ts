@@ -90,13 +90,16 @@ for (const choice of [
 
     // The eyebrow's second part here is a Sanskrit phrase, not a translation: both parts stay.
     const eyebrow = page.locator('#main-content header p').first();
-    await expect(eyebrow).toContainText('Learn');
+    await expect(eyebrow.locator('span').first()).toHaveText('Learn');
+    await expect(eyebrow.locator('span').first()).toBeVisible();
     await expect(eyebrow.locator('[lang="sa"]')).toBeVisible();
 
     // SectionTitle
     const section = page.locator('#main-content h2').filter({ has: page.locator('[data-bi]') }).first();
     await expect(section.locator(`[data-bi="${choice.shown}"]`)).toBeVisible();
     await expect(section.locator(`[data-bi="${choice.hidden}"]`)).toBeHidden();
+    // Alone, the half that stays starts where the heading starts, without the gap that set it off.
+    expect(await section.locator(`[data-bi="${choice.shown}"]`).evaluate((el) => getComputedStyle(el).marginLeft)).toBe('0px');
 
     // Footer links
     const link = page.locator('footer nav a').first();
@@ -105,5 +108,69 @@ for (const choice of [
 
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(1);
+  });
+}
+
+// Headings written by hand on older pages (not through PageHeader or SectionTitle) carry the same
+// marks. With one language chosen, each must still read as a whole heading: not empty, no bracket
+// or dot left hanging where the other half was, and the page no wider than the phone.
+const handWrittenHeadingRoutes = [
+  '/panchang/', '/panchang/karanas/', '/panchang/yogas/', '/panchang/calendar/', '/panchang/muhurta/',
+  '/locations/', '/timelines/', '/pathways/', '/rituals/upakarma/', '/practice/', '/wisdom-for-life/',
+];
+
+// Once a page title has scrolled under the bar, the bar shows its short form (lib/useFoldingTitle).
+const barTitle = async (page: Page) => {
+  await page.evaluate(() => window.scrollTo(0, 900));
+  await expect(page.locator('[data-title-folded="true"]')).toHaveCount(1);
+  return page.locator('.bar-page-title');
+};
+
+test('the bar shows a two-language title without the bracket that joined its halves', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/panchang/karanas/');
+  await expect(await barTitle(page)).toHaveText('The 11 Vedic Karanas');
+  // A title that opens with its Hindi half.
+  await page.goto('/locations/');
+  await expect(await barTitle(page)).toHaveText('Sacred Geography');
+});
+
+for (const choice of [
+  { lang: 'hindi', hidden: 'en', sample: '11 करण' },
+  { lang: 'english', hidden: 'hi', sample: 'The 11 Vedic Karanas' },
+] as const) {
+  test(`hand-written headings read whole with ${choice.lang} alone`, async ({ page }) => {
+    test.slow();
+    await page.addInitScript((lang) => localStorage.setItem('dharma.language_preference', JSON.stringify(lang)), choice.lang);
+    await page.setViewportSize({ width: 390, height: 844 });
+
+    for (const route of handWrittenHeadingRoutes) {
+      await page.goto(route);
+      await expect(page.locator('html')).toHaveAttribute('data-ui-lang', choice.lang);
+      await expect(page.locator('#main-content h1').first()).toBeVisible();
+
+      const report = await page.evaluate((hidden) => {
+        const marked = [...document.querySelectorAll<HTMLElement>('#main-content :is(h1, h2, h3, h4)')]
+          .filter((heading) => heading.querySelector('[data-bi]') && heading.getClientRects().length > 0);
+        const text = (heading: HTMLElement) => heading.innerText.replace(/\s+/g, ' ').trim();
+        return {
+          count: marked.length,
+          // innerText leaves out what the choice hides.
+          broken: marked.map(text).filter((t) => t === '' || /^[·|/(]|[·|/(]$|\(\s*\)/.test(t)),
+          stillShown: marked.flatMap((heading) => [...heading.querySelectorAll<HTMLElement>(`[data-bi="${hidden}"]`)])
+            .filter((half) => half.getClientRects().length > 0).length,
+          overflow: document.documentElement.scrollWidth - window.innerWidth,
+        };
+      }, choice.hidden);
+      expect(report.count, `${route} has marked headings`).toBeGreaterThan(0);
+      expect(report.broken, `${route} headings read whole`).toEqual([]);
+      expect(report.stillShown, `${route} hides the other language`).toBe(0);
+      expect(report.overflow, `${route} fits the phone`).toBeLessThanOrEqual(1);
+    }
+
+    await page.goto('/panchang/karanas/');
+    await expect(page.locator('#main-content h1').first()).toHaveText(choice.sample, { useInnerText: true });
+    // The bar's short title follows the same choice.
+    await expect(await barTitle(page)).toHaveText(choice.sample);
   });
 }

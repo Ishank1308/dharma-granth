@@ -86,7 +86,7 @@ export default function ScripturesPage() {
                 <span lang="hi">विशेष संग्रह</span> · Curated Holdings
               </span>
               <h2 className="text-lg sm:text-xl font-serif font-bold text-dharma-text mt-0.5">
-                <span lang="hi">दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ</span> (Practical Philosophy &amp; Rare Texts)
+                <span lang="hi" data-bi="hi">दुर्लभ एवं व्यावहारिक दर्शन ग्रंथ</span><span data-bi="sep"> (</span><span data-bi="en">Practical Philosophy &amp; Rare Texts</span><span data-bi="sep">)</span>
               </h2>
             </div>
             <span className="text-xs text-dharma-muted">

@@ -136,7 +136,7 @@ export function DailyVerseFeed() {
         <div className="flex items-center gap-2">
           <Code2 className="h-5 w-5 text-saffron-600" />
           <h2 id="embed-heading" className="font-serif text-xl font-bold">
-            Embed on your website · अपनी वेबसाइट पर जोड़ें
+            <span data-bi="en">Embed on your website</span><span data-bi="sep"> · </span><span lang="hi" data-bi="hi">अपनी वेबसाइट पर जोड़ें</span>
           </h2>
         </div>
         <p className="mt-2 text-sm text-dharma-muted">

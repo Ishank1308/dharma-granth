@@ -165,7 +165,7 @@ export function NetworkViewClient() {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-bold text-dharma-text flex items-center gap-2">
                 <Compass className="h-4 w-4 text-saffron-600" />
-                मूल दार्शनिक संकल्पनाएँ (Core Philosophical Concepts)
+                <span><span lang="hi" data-bi="hi">मूल दार्शनिक संकल्पनाएँ</span><span data-bi="sep"> (</span><span data-bi="en">Core Philosophical Concepts</span><span data-bi="sep">)</span></span>
               </h2>
               <span className="text-xs text-dharma-muted">
                 {concordanceList.length} संकल्पनाएँ
@@ -215,7 +215,7 @@ export function NetworkViewClient() {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-bold text-dharma-text flex items-center gap-2">
                 <MessageSquare className="h-4 w-4 text-saffron-600" />
-                पवित्र दार्शनिक संवाद (Sacred Saṃvāda Dialogues)
+                <span><span lang="hi" data-bi="hi">पवित्र दार्शनिक संवाद</span><span data-bi="sep"> (</span><span data-bi="en">Sacred Saṃvāda Dialogues</span><span data-bi="sep">)</span></span>
               </h2>
               <span className="text-xs text-dharma-muted">
                 {dialogueList.length} प्रमुख संवाद

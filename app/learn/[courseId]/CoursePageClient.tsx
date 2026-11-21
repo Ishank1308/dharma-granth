@@ -417,7 +417,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
 
                 <div>
                   <h3 className="font-serif font-bold text-sm uppercase tracking-wider text-dharma-muted mb-2">
-                    Core Learning Outcomes (प्राप्ति)
+                    <span data-bi="en">Core Learning Outcomes</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">प्राप्ति</span><span data-bi="sep">)</span>
                   </h3>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs md:text-sm text-dharma-text font-serif">
                     {course.overview.learningOutcomes.map((outcome, idx) => (
@@ -783,7 +783,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
           <div id="panel-quiz" role="tabpanel" aria-labelledby="tab-quiz" className="space-y-6">
             <div className="border-b border-dharma-border/60 pb-3">
               <h3 className="text-xl font-serif font-bold text-dharma-text">
-                Knowledge Check (ज्ञान परीक्षा)
+                <span data-bi="en">Knowledge Check</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">ज्ञान परीक्षा</span><span data-bi="sep">)</span>
               </h3>
               <p className="text-xs text-dharma-muted font-serif">
                 Review your comprehension with instantaneous scholarly citations and explanations.
@@ -892,7 +892,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
             {/* Core Verses to Memorize */}
             <div>
               <h4 className="font-serif font-bold text-lg text-dharma-text mb-3">
-                Core Verses to Memorize (कण्ठस्थ श्लोक)
+                <span data-bi="en">Core Verses to Memorize</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">कण्ठस्थ श्लोक</span><span data-bi="sep">)</span>
               </h4>
               <div className="space-y-3">
                 {course.revisionRecommendations.coreVersesToMemorize.map((v, idx) => (

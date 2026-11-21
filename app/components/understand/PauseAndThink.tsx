@@ -108,7 +108,7 @@ export function PauseAndThink({
   return (
     <section aria-labelledby={`${fieldId}-h`} className="understand-fade rounded-2xl border border-violet-500/30 bg-violet-50/60 p-4 dark:bg-violet-950/20 sm:p-5">
       <h3 id={`${fieldId}-h`} className="font-serif text-base font-bold text-dharma-text">
-        Pause and think <span lang="hi" className="font-devanagari text-sm font-semibold text-dharma-muted">रुकें और सोचें</span>
+        <span data-bi="en">Pause and think</span> <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-sm font-semibold text-dharma-muted">रुकें और सोचें</span>
       </h3>
       <p className="mt-2 text-lg leading-snug text-dharma-text">{question}</p>
       {questionHi && <p lang="hi" className="mt-1 font-devanagari text-base text-dharma-muted">{questionHi}</p>}

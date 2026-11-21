@@ -92,8 +92,8 @@ export function FilterSheet({
               <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-dharma-border" aria-hidden="true" />
               <div className="flex items-center justify-between px-5 pb-2 pt-3">
                 <h2 className="font-serif text-xl font-bold text-dharma-text">
-                  Filters{' '}
-                  <span lang="hi" className="ml-1 font-devanagari text-base font-normal text-dharma-muted">
+                  <span data-bi="en">Filters</span>{' '}
+                  <span lang="hi" data-bi="hi" data-bi-lead className="ml-1 font-devanagari text-base font-normal text-dharma-muted">
                     फ़िल्टर
                   </span>
                 </h2>
