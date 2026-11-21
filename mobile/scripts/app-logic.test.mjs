@@ -4,8 +4,25 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
 
-import { BACKUP_FORMAT, makeBackup, mergeBookmarks, normalizeSettings, parseBackup } from '../src/lib/backup.ts';
+import { BACKUP_FORMAT, BackupError, makeBackup, mergeBookmarks, normalizeSettings, parseBackup } from '../src/lib/backup.ts';
+import { LANGUAGE_SETTINGS, resolveLanguage } from '../src/i18n/language.ts';
 import { formatVerseRef, meaningState, sanskritLines, verseMarkNumber } from '../src/lib/verse-format.ts';
+
+test('interface language follows the setting, then the phone', () => {
+  assert.equal(resolveLanguage('hi', 'en'), 'hi');
+  assert.equal(resolveLanguage('en', 'hi'), 'en');
+  assert.equal(resolveLanguage('system', 'hi'), 'hi');
+  assert.equal(resolveLanguage(undefined, 'en'), 'en');
+  assert.equal(normalizeSettings({}).language, 'system');
+  assert.equal(normalizeSettings({ language: 'hi' }).language, 'hi');
+  assert.equal(normalizeSettings({ language: 'fr' }).language, 'system');
+  for (const l of LANGUAGE_SETTINGS) assert.equal(normalizeSettings({ language: l }).language, l);
+});
+
+test('backup errors carry a code the UI can translate', () => {
+  assert.throws(() => parseBackup('not json'), (e) => e instanceof BackupError && e.code === 'not-json');
+  assert.throws(() => parseBackup('{"format":"other"}'), (e) => e instanceof BackupError && e.code === 'wrong-file');
+});
 
 test('verse references match the website', () => {
   assert.equal(formatVerseRef('bhagavadgita', 2, 47), '2.47');

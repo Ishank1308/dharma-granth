@@ -3,8 +3,9 @@ import { router } from 'expo-router';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Backdrop, Card, Eyebrow, Muted } from '@/components/ui';
+import { Backdrop, Card, Eyebrow, Muted, PageTitle } from '@/components/ui';
 import { getEntry, loadChapter } from '@/content/catalog';
+import { S, useI18n } from '@/i18n';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { SPACE, TYPE } from '@/theme/themes';
@@ -12,6 +13,7 @@ import { SPACE, TYPE } from '@/theme/themes';
 export default function BookmarksScreen() {
   const insets = useSafeAreaInsets();
   const { palette, bookmarks, removeBookmark } = useAppState();
+  const { t } = useI18n();
 
   return (
     <Backdrop>
@@ -22,14 +24,13 @@ export default function BookmarksScreen() {
         keyExtractor={(b) => `${b.id}:${b.chapter}:${b.verse}`}
         ListHeaderComponent={
           <View style={{ marginBottom: SPACE.lg, rowGap: SPACE.sm }}>
-            <Eyebrow en="Your collection" hi="संग्रह" />
-            <Text style={{ color: palette.text, fontSize: 34, fontWeight: '800', letterSpacing: -0.6 }}>Saved verses</Text>
-            <Text style={{ color: palette.accent, fontSize: TYPE.title2, fontWeight: '600', marginTop: -SPACE.sm }}>सहेजे गए श्लोक</Text>
+            <Eyebrow {...S.savedEyebrow} />
+            <PageTitle {...S.savedTitle} />
           </View>
         }
         ListEmptyComponent={
           <Muted style={{ textAlign: 'center', marginTop: SPACE.xl }}>
-            Tap the bookmark on any verse to keep it here. Saved verses stay on this phone only.
+            {t(S.savedEmpty)}
           </Muted>
         }
         renderItem={({ item }) => {
@@ -44,7 +45,7 @@ export default function BookmarksScreen() {
               <Pressable
                 style={{ flex: 1 }}
                 accessibilityRole="button"
-                accessibilityLabel={`Open ${ref}`}
+                accessibilityLabel={t(S.openSavedA11y(ref))}
                 onPress={() =>
                   router.push({
                     pathname: '/scripture/[id]/[chapter]',
@@ -62,7 +63,7 @@ export default function BookmarksScreen() {
               <Pressable
                 style={styles.remove}
                 accessibilityRole="button"
-                accessibilityLabel={`Remove bookmark ${ref}`}
+                accessibilityLabel={t(S.removeSavedA11y(ref))}
                 onPress={() => removeBookmark(item)}>
                 <Ionicons name="trash-outline" size={18} color={palette.muted} />
               </Pressable>

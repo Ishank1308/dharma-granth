@@ -7,6 +7,7 @@ import { Backdrop, Eyebrow, glass, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
 import { getEntry, loadChapter } from '@/content/catalog';
 import type { Verse } from '@/content/types';
+import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { SPACE, TYPE } from '@/theme/themes';
@@ -15,7 +16,8 @@ export default function ChapterScreen() {
   const params = useLocalSearchParams<{ id: string; chapter: string; verse?: string }>();
   const id = String(params.id);
   const chapterNo = Number(params.chapter);
-  const { palette, settings, bookmarks, toggleBookmark, setLastRead } = useAppState();
+  const { palette, settings, lang, bookmarks, toggleBookmark, setLastRead } = useAppState();
+  const t = (m: Msg) => m[lang];
   const entry = getEntry(id);
   const meta = entry?.chapters.find((c) => c.number === chapterNo);
   const chapter = useMemo(() => loadChapter(id, chapterNo), [id, chapterNo]);
@@ -43,27 +45,27 @@ export default function ChapterScreen() {
   );
   const onToggleBookmark = useCallback((verse: string) => toggleBookmark(id, chapterNo, verse), [toggleBookmark, id, chapterNo]);
 
-  const renderItem = useCallback(
-    ({ item }: { item: Verse }) => (
-      <VerseCard
-        scriptureId={id}
-        scriptureTitle={entry?.title ?? id}
-        chapter={chapterNo}
-        verse={item}
-        palette={palette}
-        settings={settings}
-        bookmarked={saved.has(String(item.number))}
-        onToggleBookmark={onToggleBookmark}
-      />
-    ),
-    [id, chapterNo, entry?.title, palette, settings, saved, onToggleBookmark],
+  // A plain function: the React Compiler memoizes it on these same inputs. (A manual useCallback here
+  // makes the compiler skip this whole component, because the localized labels below read `entry`.)
+  const renderItem = ({ item }: { item: Verse }) => (
+    <VerseCard
+      scriptureId={id}
+      scriptureTitle={entry?.title ?? id}
+      chapter={chapterNo}
+      verse={item}
+      palette={palette}
+      settings={settings}
+      lang={lang}
+      bookmarked={saved.has(String(item.number))}
+      onToggleBookmark={onToggleBookmark}
+    />
   );
 
   if (!entry || !meta || !chapter) {
     return (
       <View style={styles.center}>
         <Stack.Screen options={{ title: entry?.title ?? '' }} />
-        <Muted>This chapter is not available in the app.</Muted>
+        <Muted>{t(S.chapterUnavailable)}</Muted>
       </View>
     );
   }
@@ -103,20 +105,20 @@ export default function ChapterScreen() {
                 {meta.titleSanskrit ?? meta.title}
               </Text>
               {meta.titleSanskrit ? <Text style={{ color: palette.muted, fontSize: TYPE.subhead }}>{meta.title}</Text> : null}
-              <Muted style={{ marginTop: SPACE.xs }}>{chapter.verses.length} verses</Muted>
+              <Muted style={{ marginTop: SPACE.xs }}>{t(S.verseCount(chapter.verses.length))}</Muted>
             </View>
           }
-          ListEmptyComponent={<Muted style={{ textAlign: 'center' }}>No verses in this chapter yet.</Muted>}
+          ListEmptyComponent={<Muted style={{ textAlign: 'center' }}>{t(S.noVersesYet)}</Muted>}
           ListFooterComponent={
             <View style={styles.pager}>
               {prev ? (
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={`Previous chapter, ${prev.title}`}
+                  accessibilityLabel={t(S.prevChapterA11y(prev.title))}
                   onPress={() => go(prev.number)}
                   style={[styles.pageBtn, glass(palette)]}>
                   <Ionicons name="chevron-back" size={18} color={palette.accent} />
-                  <Text style={{ color: palette.accent, fontWeight: '600' }}>Chapter {prev.number}</Text>
+                  <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.chapterN(prev.number))}</Text>
                 </Pressable>
               ) : (
                 <View />
@@ -124,10 +126,10 @@ export default function ChapterScreen() {
               {next ? (
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={`Next chapter, ${next.title}`}
+                  accessibilityLabel={t(S.nextChapterA11y(next.title))}
                   onPress={() => go(next.number)}
                   style={[styles.pageBtn, glass(palette)]}>
-                  <Text style={{ color: palette.accent, fontWeight: '600' }}>Chapter {next.number}</Text>
+                  <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.chapterN(next.number))}</Text>
                   <Ionicons name="chevron-forward" size={18} color={palette.accent} />
                 </Pressable>
               ) : (
