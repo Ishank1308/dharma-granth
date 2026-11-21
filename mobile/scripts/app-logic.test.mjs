@@ -122,3 +122,10 @@ test('reminder settings are optional, validated and survive a backup', () => {
   const back = parseBackup(JSON.stringify(makeBackup({ settings: on, bookmarks: [], lastRead: null })));
   assert.deepEqual([back.settings.dailyReminder, back.settings.reminderHour, back.settings.reminderMinute], [true, 21, 45]);
 });
+
+test('visual effects setting defaults to automatic and rejects unknown values', () => {
+  assert.equal(normalizeSettings({}).effects, 'auto');
+  assert.equal(normalizeSettings({ effects: 'light' }).effects, 'light');
+  assert.equal(normalizeSettings({ effects: 'full' }).effects, 'full');
+  assert.equal(normalizeSettings({ effects: 'ultra' }).effects, 'auto');
+});
