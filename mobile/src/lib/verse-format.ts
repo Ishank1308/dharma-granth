@@ -28,6 +28,8 @@ export function sanskritLines(sanskrit?: string): string[] {
     .replace(/[\s|।॥0-9०-९.]+$/u, '')
     .trim();
   if (!cleaned) return [];
+  const glued = splitGluedSpeaker(cleaned);
+  if (glued) return [glued.speaker, ...sanskritLines(glued.verse)];
   const byNewline = cleaned
     .split(/\n+/)
     .map((l) => l.trim())
@@ -47,6 +49,30 @@ export function sanskritLines(sanskrit?: string): string[] {
   }
   if (current.trim() && !/^[\s|।॥0-9०-९.]+$/u.test(current)) lines.push(current.trim());
   return lines.length ? lines : [cleaned];
+}
+
+// Speaker phrase at the very start, run straight into the next word: "अर्जुन उवाचएवं सततयुक्ता…"
+// (Bhagavad Gita 12 to 18 store most verses this way). Same rule as splitGluedSpeaker in lib/verse-format.ts:
+// उवाच never compounds, so a consonant or independent vowel right after it means the line break was lost.
+const GLUED_SPEAKER = /^\s*((?:श्री\s*)?(?:\S+\s+उवाच|भगवानुवाच))(?=[अ-ह])/;
+
+/** Splits "अर्जुन उवाचएवं…" into the speaker and the verse; null when the text has no such join. */
+export function splitGluedSpeaker(sanskrit: string): { speaker: string; verse: string } | null {
+  const match = GLUED_SPEAKER.exec(sanskrit);
+  return match && isSpeakerLine(match[1]) ? { speaker: match[1], verse: sanskrit.slice(match[0].length).trim() } : null;
+}
+
+/** "श्रीभगवानुवाच", "अर्जुन उवाच", "सञ्जय उवाच", "ऋषय ऊचुः": mirrors isSpeakerLine on the website. */
+export function isSpeakerLine(line: string): boolean {
+  const stripped = line.replace(/[|।॥:;—–-]+$/, '').trim();
+  if (!stripped || stripped.length > 22) return false;
+  if (/[|।॥]/.test(stripped)) return false;
+  const words = stripped.split(/\s+/);
+  const maxWords = words[0] === 'श्री' ? 3 : 2;
+  if (words.length > maxWords) return false;
+  if (/^(?:स|सा|तम्|तं|तत|ततः|तस्मै|तेन|अथ|अथैनं|एवम्|इति|पुनर्)(?:\s|$)/u.test(stripped)) return false;
+  if (/(?:प्रत्युवाच|होवाच)$/u.test(stripped)) return false;
+  return /(?:^|\s)उवाच$|(?:नुवाच|दुवाच|युवाच|ोवाच)$|(?:^|\s)ऊचुः$/u.test(stripped);
 }
 
 export const MEANING_COPY = {

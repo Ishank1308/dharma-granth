@@ -23,6 +23,7 @@ import { formatReminderTime } from '@/lib/reminder';
 import { useScrollY } from '@/motion/parallax';
 import { TitleBar } from '@/motion/title-bar';
 import { useAppState } from '@/state/app-state';
+import { useJournal } from '@/state/journal';
 import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
 import { SANSKRIT_FONT } from '@/theme/fonts';
@@ -158,6 +159,7 @@ export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { scrollY, onScroll } = useScrollY();
   const { palette, settings, updateSettings, exportData, importData, bookmarks, lightEffects } = useAppState();
+  const { journal, importJournal } = useJournal();
   // At large system font sizes the four theme names no longer fit in one row; show them two by two.
   const { fontScale } = useWindowDimensions();
   const themesInTwoRows = fontScale > 1.3;
@@ -188,7 +190,7 @@ export default function SettingsScreen() {
       const file = new File(Paths.cache, `dharma-granth-backup-${date}.json`);
       if (file.exists) file.delete();
       file.create();
-      file.write(JSON.stringify(makeBackup(exportData()), null, 2));
+      file.write(JSON.stringify(makeBackup(exportData(), new Date(), { journal }), null, 2));
       if (await Sharing.isAvailableAsync()) {
         await Sharing.shareAsync(file.uri, { mimeType: 'application/json', dialogTitle: t(S.saveBackupDialog) });
       } else {
@@ -208,7 +210,8 @@ export default function SettingsScreen() {
       if (picked.canceled) return;
       const data = parseBackup(await picked.result.text());
       importData(data);
-      Alert.alert(t(S.backupRestored), t(S.backupRestoredBody(data.bookmarks.length)));
+      const reflections = data.journal === undefined ? 0 : importJournal(data.journal);
+      Alert.alert(t(S.backupRestored), t(S.backupRestoredBody(data.bookmarks.length)) + (reflections ? t(S.backupJournalAdded(reflections)) : ''));
     } catch (e) {
       Alert.alert(t(S.importFailed), errorText(e));
     } finally {

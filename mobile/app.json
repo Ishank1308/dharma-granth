@@ -96,7 +96,11 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/TiroDevanagariSanskrit.ttf"]
+          "fonts": [
+            "./assets/fonts/TiroDevanagariSanskrit.ttf",
+            "./assets/fonts/CormorantGaramond-SemiBold.ttf",
+            "./assets/fonts/CormorantGaramond-Italic.ttf"
+          ]
         }
       ]
     ],

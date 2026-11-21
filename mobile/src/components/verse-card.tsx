@@ -1,6 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { memo, useState } from 'react';
-import { ActivityIndicator, Pressable, Share, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { RecitationPhase } from '@/audio/player';
 
@@ -26,6 +27,7 @@ import { Card, coverFill } from './ui';
 
 interface Props {
   scriptureId: string;
+  /** The book's title. The share screen looks it up itself now; kept so callers need not change. */
   scriptureTitle: string;
   chapter: number;
   verse: Verse;
@@ -42,6 +44,8 @@ interface Props {
   audio?: RecitationPhase;
   /** Called with the verse number; keep it stable like onToggleBookmark. */
   onToggleAudio?: (verse: string) => void;
+  /** How many journal reflections are linked to this verse; the pen fills in when there are any. */
+  reflections?: number;
 }
 
 /** A study layer's label, in the layer's own hue (the layer's rule carries the colour down the margin). */
@@ -58,7 +62,6 @@ function Label({ msg, lang, palette, extra, hue }: { msg: Msg; lang: Lang; palet
 
 function VerseCardImpl({
   scriptureId,
-  scriptureTitle,
   chapter,
   verse,
   palette,
@@ -69,6 +72,7 @@ function VerseCardImpl({
   onToggleBookmark,
   audio,
   onToggleAudio,
+  reflections = 0,
 }: Props) {
   const hues = huesFor(palette);
   const t = (m: Msg) => m[lang];
@@ -95,19 +99,10 @@ function VerseCardImpl({
     // once, as the website does (splitVyakhyaCommentary), rather than the same block twice.
     .filter((n, i, all) => n.text && all.findIndex((m) => m.text === n.text) === i);
 
-  const share = () => {
-    // The whole verse goes out: every line of the Sanskrit, never a cut-down excerpt.
-    const message = [
-      `${scriptureTitle} ${ref}`,
-      lines.join('\n'),
-      hindi,
-      english,
-      `https://dharmagranth.dev/scripture/${scriptureId}/chapter/${chapter}/`,
-    ]
-      .filter(Boolean)
-      .join('\n\n');
-    Share.share({ message }).catch(() => {});
-  };
+  const verseParams = { id: scriptureId, chapter: String(chapter), verse: String(verse.number) };
+  // Share opens the verse card screen (an image in the app's looks, or the whole verse as text).
+  const share = () => router.push({ pathname: '/share', params: verseParams });
+  const reflect = () => router.push({ pathname: '/journal/edit', params: verseParams });
 
   return (
     <Card style={styles.card} strong>
@@ -145,6 +140,13 @@ function VerseCardImpl({
               )}
             </Pressable>
           ) : null}
+          <Pressable
+            onPress={reflect}
+            style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
+            accessibilityRole="button"
+            accessibilityLabel={t(reflections ? S.reflectedVerseA11y(ref, reflections) : S.reflectVerseA11y(ref))}>
+            <Ionicons name={reflections ? 'create' : 'create-outline'} size={20} color={reflections ? palette.accent : palette.muted} />
+          </Pressable>
           <Pressable
             onPress={share}
             style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}

@@ -10,6 +10,13 @@ import type { SanskritScript } from '@/lib/sanskrit-script';
  */
 export const SANSKRIT_FONT = 'TiroDevanagariSanskrit';
 
+/**
+ * Cormorant Garamond, an editorial serif for the English on share cards (src/components/share-card.tsx),
+ * subset to Latin. Embedded the same way as Tiro; SIL Open Font License (assets/fonts/CormorantGaramond-OFL.txt).
+ */
+export const SERIF_FONT = 'CormorantGaramond-SemiBold';
+export const SERIF_ITALIC_FONT = 'CormorantGaramond-Italic';
+
 /** The shloka face for Devanagari. Other scripts keep the phone's own Noto fonts, which cover them well. */
 export function sanskritFont(script: SanskritScript): TextStyle {
   return script === 'deva' ? { fontFamily: SANSKRIT_FONT } : {};
