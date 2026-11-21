@@ -22,6 +22,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Buffer } from 'node:buffer';
 
+import { buildKnowledge } from './build-knowledge.mjs';
 import { buildSearchIndex } from './build-search-index.mjs';
 import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
 
@@ -42,6 +43,8 @@ if (
   existsSync(join(OUT, 'loaders.ts')) &&
   existsSync(join(OUT, 'search-loaders.ts'))
 ) {
+  // The knowledge pages take under a second, so they are rebuilt even then: an older checkout has none.
+  await buildKnowledge();
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
   process.exit(0);
 }
@@ -126,3 +129,4 @@ if (usedShards < bundledIds.length) {
 }
 
 await buildSearchIndex();
+await buildKnowledge();
