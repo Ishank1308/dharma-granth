@@ -9,6 +9,8 @@ import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
 import { barClearance, huesFor, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /**
  * The knowledge hub, after the website's Learn and knowledge pages: Wisdom for life first (the way in for
  * someone who comes with a question, not a scripture name), then the five reference collections.

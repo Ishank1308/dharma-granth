@@ -10,6 +10,8 @@ import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
 import { barClearance, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /**
  * Wisdom for life, after dharmagranth.dev/wisdom-for-life/: start from what you are facing (fear, anger,
  * grief, a hard decision), not from a scripture name, and get the verses that speak to it.

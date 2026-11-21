@@ -11,6 +11,9 @@ import { RecitationProvider } from '@/audio/player';
 import { AppStateProvider, useAppState } from '@/state/app-state';
 import { SANSKRIT_FONT } from '@/theme/fonts';
 
+// A render error on this screen shows a Try again page instead of closing the app.
+export { ErrorBoundary } from '@/components/error-boundary';
+
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
 // A deep link (the home-screen widget) can open the reader on a cold start; keep the tabs underneath so
