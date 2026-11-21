@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { SolarVratasClient } from './SolarVratasClient';
 import { SOLAR_VRATAS } from '@/data/solar-vratas-data';
-import { calculateEducationalPanchang } from '@/lib/panchang';
+import { PRESET_LOCATIONS, calculateEducationalPanchang, todayForLocation } from '@/lib/panchang';
 import { Sun, Compass, ExternalLink, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -54,8 +54,10 @@ export default function SolarVratasPage() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const pageUrl = `${siteUrl}/panchang/solar-vratas/`;
 
-  // Compute live solar parameters
-  const panchangNow = calculateEducationalPanchang(new Date());
+  // This runs once, when the site is built, so these are the build day's times.
+  // They fill the pre-rendered page; SolarVratasClient replaces them with
+  // today's as soon as it runs in the reader's browser.
+  const panchangNow = calculateEducationalPanchang(todayForLocation(PRESET_LOCATIONS[0]), PRESET_LOCATIONS[0]);
   const initialSolarTimes = {
     sunrise: panchangNow.solarTimes.sunrise,
     sunset: panchangNow.solarTimes.sunset,

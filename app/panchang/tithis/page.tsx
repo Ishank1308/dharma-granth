@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { UNIQUE_TITHI_ARCHETYPES, calculateEducationalPanchang, PRESET_LOCATIONS, todayForLocation } from '@/lib/panchang';
+import { UNIQUE_TITHI_ARCHETYPES } from '@/lib/panchang';
+import { TodayBadge, TodayCard } from '@/app/panchang/components/TodayMarkers';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
@@ -113,9 +114,6 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export default function TithisHubPage() {
-  const todayPanchang = calculateEducationalPanchang(todayForLocation(PRESET_LOCATIONS[0]), PRESET_LOCATIONS[0]);
-  const todayTithiNumber = todayPanchang.tithi.number;
-
   return (
     <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg text-dharma-text pb-24 relative overflow-hidden" data-limb="tithis">
       {/* Radiant Lunar Indigo Aura Backdrop */}
@@ -213,15 +211,15 @@ export default function TithisHubPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {UNIQUE_TITHI_ARCHETYPES.map((t) => {
             const badgeClass = CATEGORY_COLORS[t.categoryType] || 'border-dharma-border bg-dharma-bg text-dharma-text';
-            const isToday = t.shuklaNumber === todayTithiNumber || t.krishnaNumber === todayTithiNumber;
+            // Today's tithi is marked in the browser: this page is built once per deploy.
+            const todayValues = [t.shuklaNumber, t.krishnaNumber].filter((n): n is number => n !== undefined);
             return (
-              <article
+              <TodayCard
                 key={t.slug}
-                className={`group card-sacred sheen-sweep relative rounded-2xl border p-5 flex flex-col justify-between ${
-                  isToday
-                    ? 'border-saffron-500 bg-saffron-500/[0.04] shadow-md ring-2 ring-saffron-500/50 animate-prana-pulse'
-                    : 'border-dharma-border bg-dharma-card shadow-xs hover:border-saffron-500/50'
-                }`}
+                limb="tithi"
+                values={todayValues}
+                className="group card-sacred sheen-sweep relative rounded-2xl border p-5 flex flex-col justify-between"
+                otherClassName="border-dharma-border bg-dharma-card shadow-xs hover:border-saffron-500/50"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 border-b border-dharma-border/60 pb-3 mb-3 flex-wrap">
@@ -229,12 +227,7 @@ export default function TithisHubPage() {
                       <span className="text-xs font-mono font-bold text-saffron-700 dark:text-saffron-400 bg-saffron-500/10 px-2 py-0.5 rounded-md">
                         #{t.number}
                       </span>
-                      {isToday && (
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
-                          <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
-                          आज की तिथि · Active Today
-                        </span>
-                      )}
+                      <TodayBadge limb="tithi" values={todayValues} />
                     </div>
                     <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-md border ${badgeClass}`}>
                       {t.categoryType}
@@ -279,7 +272,7 @@ export default function TithisHubPage() {
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
-              </article>
+              </TodayCard>
             );
           })}
         </div>

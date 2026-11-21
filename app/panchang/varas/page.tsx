@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { VARA_DATA, type VaraMeta } from '@/lib/panchang';
+import { TodayBadge, TodayCard } from '@/app/panchang/components/TodayMarkers';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { JsonLd } from '@/app/components/JsonLd';
@@ -127,18 +128,7 @@ const JSON_LD = {
   ],
 };
 
-function getTodayIstDayIndex(): number {
-  try {
-    const istString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-    return new Date(istString).getDay();
-  } catch {
-    return new Date().getDay();
-  }
-}
-
 export default function VarasDirectoryPage() {
-  const todayDayIndex = getTodayIstDayIndex();
-
   return (
     <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg relative overflow-hidden" data-limb="varas">
       {/* Radiant Golden Solar Aura Backdrop */}
@@ -184,37 +174,28 @@ export default function VarasDirectoryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {VARA_DATA.map((vara) => {
-              const isToday = vara.index === todayDayIndex;
+              // Today's weekday is marked in the browser: this page is built once per deploy.
+              const todayValues = [vara.index];
 
               return (
-                <Link
+                <TodayCard
                   key={vara.slug}
+                  limb="vara"
+                  values={todayValues}
                   href={`/panchang/varas/${vara.slug}/`}
-                  className={`group card-sacred sheen-sweep rounded-2xl border p-6 flex flex-col justify-between ${
-                    isToday
-                      ? 'border-saffron-500 bg-saffron-500/[0.04] shadow-md ring-2 ring-saffron-500/50 animate-prana-pulse'
-                      : 'border-dharma-border bg-dharma-card hover:border-dharma-saffron'
-                  }`}
+                  className="group card-sacred sheen-sweep rounded-2xl border p-6 flex flex-col justify-between"
+                  otherClassName="border-dharma-border bg-dharma-card hover:border-dharma-saffron"
                 >
                   <div>
                     {/* Top Bar: Index & Planetary Lord & Active Today Badge */}
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
                         <span
-                          className={`inline-flex items-center justify-center h-8 w-8 rounded-full font-bold text-footnote ${
-                            isToday
-                              ? 'bg-saffron-500 text-white shadow-xs'
-                              : 'bg-dharma-saffron/10 text-dharma-saffron'
-                          }`}
+                          className="inline-flex items-center justify-center h-8 w-8 rounded-full font-bold text-footnote bg-dharma-saffron/10 text-dharma-saffron group-data-[today=true]:bg-saffron-500 group-data-[today=true]:text-white group-data-[today=true]:shadow-xs"
                         >
                           {vara.index + 1}
                         </span>
-                        {isToday && (
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
-                            <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
-                            आज का वार · Active Today
-                          </span>
-                        )}
+                        <TodayBadge limb="vara" values={todayValues} />
                       </div>
                       <span className="inline-flex items-center gap-1 rounded-full bg-dharma-bg border border-dharma-border px-3 py-1 text-caption-1 font-semibold text-dharma-text">
                         {vara.grahaLordHi}
@@ -265,7 +246,7 @@ export default function VarasDirectoryPage() {
                   <span>पूर्ण विवरण व स्तोत्र पढ़ें</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
-              </Link>
+              </TodayCard>
             );
           })}
           </div>
