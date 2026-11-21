@@ -13,7 +13,7 @@
     },
     "android": {
       "package": "dev.dharmagranth.app",
-      "versionCode": 1,
+      "versionCode": 2,
       "adaptiveIcon": {
         "backgroundColor": "#FDF6EA",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -81,7 +81,8 @@
             }
           ]
         }
-      ]
+      ],
+      "./plugins/with-optional-portrait"
     ],
     "experiments": {
       "typedRoutes": true,
