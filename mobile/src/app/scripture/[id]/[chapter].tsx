@@ -27,6 +27,10 @@ export default function ChapterScreen() {
   const listRef = useRef<FlatList<Verse>>(null);
   const jumped = useRef(false);
   const jumpTries = useRef(0);
+  // Set once the reader scrolls by hand, so the settling jumps below never fight their finger.
+  const userScrolled = useRef(false);
+  const settleTimers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  useEffect(() => () => settleTimers.current.forEach(clearTimeout), []);
 
   useEffect(() => {
     if (chapter) setLastRead(id, chapterNo);
@@ -102,14 +106,25 @@ export default function ChapterScreen() {
           onLayout={() => {
             if (target <= 0 || jumped.current) return;
             jumped.current = true;
-            listRef.current?.scrollToIndex({ index: target, animated: false, viewPosition: 0 });
+            const jump = () => {
+              if (!userScrolled.current) listRef.current?.scrollToIndex({ index: target, animated: false, viewPosition: 0 });
+            };
+            jump();
+            // The first jump lands on estimated heights. As the cards above the verse mount and measure
+            // taller than the estimate, the verse slides down, so jump again while the layout settles.
+            settleTimers.current = [300, 700, 1300, 2200].map((ms) => setTimeout(jump, ms));
+          }}
+          onScrollBeginDrag={() => {
+            userScrolled.current = true;
           }}
           onScrollToIndexFailed={(info) => {
             // Verse heights vary, so jump to an estimate, let that window render, then retry a few times.
             if (jumpTries.current >= 8) return;
             jumpTries.current += 1;
             listRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: false });
-            setTimeout(() => listRef.current?.scrollToIndex({ index: info.index, animated: false }), 120);
+            setTimeout(() => {
+              if (!userScrolled.current) listRef.current?.scrollToIndex({ index: info.index, animated: false, viewPosition: 0 });
+            }, 120);
           }}
           ListHeaderComponent={
             <View style={{ marginBottom: SPACE.lg, alignItems: 'center', rowGap: SPACE.xs }}>
