@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Appearance } from 'react-native';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 import {
@@ -13,6 +14,7 @@ import {
   type LastRead,
   type Settings,
 } from '@/lib/backup';
+import { resolveLanguage, type Lang } from '@/i18n/language';
 import { THEMES, type Palette } from '@/theme/themes';
 
 /** Everything stays on the device, under these keys. */
@@ -26,6 +28,8 @@ interface AppState {
   ready: boolean;
   settings: Settings;
   palette: Palette;
+  /** The interface language in effect: the reader's choice, or the phone's language. */
+  lang: Lang;
   bookmarks: Bookmark[];
   lastRead: LastRead | null;
   updateSettings: (patch: Partial<Settings>) => void;
@@ -65,7 +69,13 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
             return undefined;
           }
         };
-        setSettings(normalizeSettings(parse(map[KEYS.settings])));
+        const saved = parse(map[KEYS.settings]);
+        // First launch: match the phone's dark mode (the splash screen already does) instead of a bright Day theme.
+        setSettings(
+          saved === undefined
+            ? { ...DEFAULT_SETTINGS, theme: Appearance.getColorScheme() === 'dark' ? 'dark' : DEFAULT_SETTINGS.theme }
+            : normalizeSettings(saved),
+        );
         setBookmarks(normalizeBookmarks(parse(map[KEYS.bookmarks])));
         setLastReadState(normalizeLastRead(parse(map[KEYS.lastRead])));
       })
@@ -130,6 +140,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       ready,
       settings,
       palette: THEMES[settings.theme],
+      lang: resolveLanguage(settings.language),
       bookmarks,
       lastRead,
       updateSettings,
