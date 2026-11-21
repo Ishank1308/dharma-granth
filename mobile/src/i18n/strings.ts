@@ -12,6 +12,8 @@
  * Hindi register: everyday spoken Hindi as on a phone's own menus ("सहेजें", "खोजें", "बैकअप"),
  * not heavy tatsama. Numbers stay in Western digits, as most Hindi apps show them.
  */
+import type { BuiltinCollection, JournalMood } from '@/lib/journal';
+
 export interface Msg {
   en: string;
   hi: string;
@@ -26,6 +28,55 @@ export const S = {
   tabSaved: { en: 'Saved', hi: 'सहेजे गए' },
   tabSettings: { en: 'Settings', hi: 'सेटिंग्स' },
   tabExplore: { en: 'Explore', hi: 'अन्वेषण' },
+  tabHome: { en: 'Home', hi: 'होम' },
+
+  // Home (src/app/(tabs)/home.tsx), after the website's home page
+  homeEyebrow: { en: 'A living archive of Indian wisdom', hi: 'सनातन ग्रन्थ कोश' },
+  homeTitleLead: { en: 'Ancient words.', hi: 'प्राचीन वाणी,' },
+  homeTitleAccent: { en: 'Living wisdom.', hi: 'जीवंत ज्ञान।' },
+  homeTagline: { en: 'Conversations with the scriptures, for everyday life.', hi: 'शास्त्रों से संवाद, जीवन के साथ।' },
+  homeIntro: {
+    en: 'The Vedas, Upanishads, Gita, Itihasas and Puranas, in the original with Hindi and English meanings, on your phone.',
+    hi: 'वेद, उपनिषद्, गीता, इतिहास और पुराण, मूल पाठ के साथ हिन्दी और अंग्रेज़ी अर्थ, आपके फ़ोन में।',
+  },
+  homeGreetingMorning: { en: 'Good morning', hi: 'सुप्रभात' },
+  homeGreetingDay: { en: 'Namaste', hi: 'नमस्ते' },
+  homeGreetingEvening: { en: 'Good evening', hi: 'शुभ संध्या' },
+  homeSearch: { en: 'Search verses, words, ideas', hi: 'श्लोक, शब्द या विचार खोजें' },
+  homeFeatured: { en: 'Featured passage', hi: 'विशेष श्लोक' },
+  homeFeaturedTheme: { en: 'Action & intention', hi: 'कर्म और भावना' },
+  homeFeaturedNote: { en: 'On action, expectation and duty.', hi: 'कर्म, अपेक्षा और कर्तव्य पर एक विचार।' },
+  homeReadVerse: { en: 'Read the verse', hi: 'श्लोक पढ़ें' },
+  homeFeaturedA11y: { en: 'Featured passage: Bhagavad Gita chapter 2, verse 47. Read the verse', hi: 'विशेष श्लोक: भगवद्गीता अध्याय 2, श्लोक 47। श्लोक पढ़ें' },
+  homeStartGita: { en: 'Start with the Gita', hi: 'गीता से आरम्भ' },
+  homeStartGitaDetail: { en: '18 chapters, 700 verses', hi: '18 अध्याय, 700 श्लोक' },
+  homeUpanishads: { en: 'Discover the Upanishads', hi: 'उपनिषद् पढ़ें' },
+  homeUpanishadsDetail: (count: number) => ({ en: `${n(count)} on this phone`, hi: `इस फ़ोन में ${n(count)}` }),
+  homeShelf: { en: 'From the library', hi: 'ग्रन्थ संग्रह से' },
+  homeSeeAll: { en: 'See all', hi: 'सभी देखें' },
+  homeSeeAllA11y: (count: number) => ({ en: `See all ${n(count)} texts in the library`, hi: `संग्रह के सभी ${n(count)} ग्रन्थ देखें` }),
+  homeGuides: { en: 'Find your way in', hi: 'कहाँ से शुरू करें' },
+  homeGuidesDetail: { en: 'Simple doorways into knowledge and practice', hi: 'ज्ञान और साधना के सरल प्रवेश-द्वार' },
+  homeGuideLife: { en: 'Life & reflection', hi: 'जीवन के प्रश्न' },
+  homeGuidePractice: { en: 'Daily practice', hi: 'दैनिक साधना' },
+  homeTopicWorry: { en: 'Steadiness in hard times', hi: 'कठिन समय में धैर्य' },
+  homeTopicDuty: { en: 'Action & duty', hi: 'कर्म और कर्तव्य' },
+  homeTopicGrief: { en: 'Living with grief', hi: 'शोक से उबरना' },
+  homeTopicSelf: { en: 'Self-knowledge', hi: 'आत्मज्ञान' },
+  homeTopicNitya: { en: 'Daily rites', hi: 'नित्य कर्म' },
+  homeTopicDevi: { en: 'Durga Saptashati', hi: 'दुर्गा सप्तशती' },
+  homeTopicVinaya: { en: 'Hymns of Tulsidas', hi: 'विनय पत्रिका' },
+  homeTopicYoga: { en: 'Yoga Sutra', hi: 'योगसूत्र' },
+  homeSayings: { en: 'Sayings of the Upanishads', hi: 'उपनिषद् के महावाक्य' },
+  homeSayingA11y: (gloss: string, cite: string) => ({ en: `${gloss}, ${cite}. Open the passage`, hi: `${cite}। पूरा पाठ खोलें` }),
+  homeWisdomDetail: { en: 'Start from what you are facing, and find the verses that speak to it', hi: 'जो सामने है, वहीं से शुरू करें और उससे जुड़े श्लोक पाएँ' },
+  homeAllTopics: (count: number) => ({ en: `All ${n(count)} topics`, hi: `सभी ${n(count)} विषय` }),
+  homeTopicA11y: (title: string, minutes: number) => ({ en: `${title}, ${n(minutes)} minute read`, hi: `${title}, ${n(minutes)} मिनट` }),
+  homeTrust: { en: 'Open access · No ads · No account', hi: 'निःशुल्क · कोई विज्ञापन नहीं · कोई खाता नहीं' },
+  homeStats: (books: number, verses: number) => ({
+    en: `${n(books)} texts and ${n(verses)} verses work without internet`,
+    hi: `${n(books)} ग्रन्थ और ${n(verses)} श्लोक बिना इंटरनेट`,
+  }),
 
   // Library
   libraryEyebrow: { en: 'Scripture library', hi: 'ग्रन्थ संग्रह' },
@@ -300,8 +351,8 @@ export const S = {
   sanskritAlwaysFull: { en: 'The Sanskrit text is always shown in full.', hi: 'संस्कृत मूल पाठ हमेशा पूरा दिखाया जाता है।' },
   backup: { en: 'Backup', hi: 'बैकअप' },
   backupBody: (saved: number) => ({
-    en: `No account, nothing uploaded. Your ${n(saved)} saved verses and settings live only on this phone. Export a JSON file to keep a copy, and import it on a new phone.`,
-    hi: `न कोई खाता, न कुछ अपलोड। आपके ${n(saved)} सहेजे गए श्लोक और सेटिंग्स केवल इसी फ़ोन में हैं। एक कॉपी रखने के लिए JSON फ़ाइल एक्सपोर्ट करें, और नए फ़ोन में उसे इम्पोर्ट करें।`,
+    en: `No account, nothing uploaded. Your ${n(saved)} saved verses, journal, collections and settings live only on this phone. Export a JSON file to keep a copy, and import it on a new phone.`,
+    hi: `न कोई खाता, न कुछ अपलोड। आपके ${n(saved)} सहेजे गए श्लोक, डायरी, संग्रह और सेटिंग्स केवल इसी फ़ोन में हैं। एक कॉपी रखने के लिए JSON फ़ाइल एक्सपोर्ट करें, और नए फ़ोन में उसे इम्पोर्ट करें।`,
   }),
   exportBtn: { en: 'Export', hi: 'एक्सपोर्ट' },
   importBtn: { en: 'Import', hi: 'इम्पोर्ट' },
@@ -429,6 +480,111 @@ export const S = {
   }),
   savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
   startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+  shelfTitle: { en: 'Good places to begin', hi: 'आरंभ के लिए' },
+  openBookA11y: (title: string) => ({ en: `Open ${title}`, hi: `${title} खोलें` }),
+  // Svadhyaya journal (src/app/journal, src/lib/journal.ts)
+  journalTitle: { en: 'Svadhyaya journal', hi: 'स्वाध्याय डायरी' },
+  journalEyebrow: { en: 'Personal reflections', hi: 'निजी चिन्तन' },
+  journalSummary: (count: number) => ({
+    en: `${n(count)} ${count === 1 ? 'reflection' : 'reflections'} · kept on this phone only`,
+    hi: `${n(count)} चिन्तन · केवल इसी फ़ोन में`,
+  }),
+  journalRowDetail: (count: number) => ({
+    en: count ? `${n(count)} ${count === 1 ? 'reflection' : 'reflections'}` : 'Write what a verse stirs in you',
+    hi: count ? `${n(count)} चिन्तन` : 'कोई श्लोक मन में जो जगाए, लिखें',
+  }),
+  journalEmptyTitle: { en: 'Begin your svadhyaya', hi: 'अपना स्वाध्याय शुरू करें' },
+  journalEmpty: {
+    en: 'Write what a verse stirred in you today. Tap the pen on any verse to reflect on it, or start a blank page. Nothing leaves this phone.',
+    hi: 'आज किसी श्लोक ने मन में जो जगाया, उसे लिखें। किसी भी श्लोक पर क़लम दबाकर उस पर चिन्तन लिखें, या ख़ाली पन्ने से शुरू करें। कुछ भी इस फ़ोन से बाहर नहीं जाता।',
+  },
+  journalNoMatch: { en: 'No reflection matches.', hi: 'कोई चिन्तन नहीं मिला।' },
+  journalSearch: { en: 'Search reflections', hi: 'चिन्तन में खोजें' },
+  newReflection: { en: 'New reflection', hi: 'नया चिन्तन' },
+  editReflection: { en: 'Reflection', hi: 'चिन्तन' },
+  reflectVerseA11y: (ref: string) => ({ en: `Write a reflection on verse ${ref}`, hi: `श्लोक ${ref} पर चिन्तन लिखें` }),
+  reflectedVerseA11y: (ref: string, count: number) => ({
+    en: `Write a reflection on verse ${ref}. ${n(count)} already written`,
+    hi: `श्लोक ${ref} पर चिन्तन लिखें। ${n(count)} पहले से लिखे हैं`,
+  }),
+  openReflectionA11y: (title: string) => ({ en: `Open reflection: ${title}`, hi: `चिन्तन खोलें: ${title}` }),
+  untitled: { en: 'Untitled reflection', hi: 'बिना शीर्षक का चिन्तन' },
+  titleLabel: { en: 'Title', hi: 'शीर्षक' },
+  titlePlaceholder: { en: 'A line to remember this by', hi: 'याद रखने के लिए एक पंक्ति' },
+  bodyLabel: { en: 'Reflection', hi: 'चिन्तन' },
+  bodyPlaceholder: {
+    en: 'What does this verse ask of you today? Where did you see it in your life?',
+    hi: 'यह श्लोक आज आपसे क्या कहता है? आपने इसे अपने जीवन में कहाँ देखा?',
+  },
+  moodLabel: { en: 'How you feel', hi: 'मन का भाव' },
+  moodAll: { en: 'All moods', hi: 'सभी भाव' },
+  tagsLabel: { en: 'Tags', hi: 'टैग' },
+  tagsPlaceholder: { en: 'karma, family, courage', hi: 'कर्म, परिवार, साहस' },
+  tagsHint: { en: 'Separate tags with commas.', hi: 'टैग को कॉमा से अलग करें।' },
+  linkedVerse: { en: 'On this verse', hi: 'इस श्लोक पर' },
+  unlinkVerseA11y: (ref: string) => ({ en: `Remove the link to ${ref}`, hi: `${ref} से जुड़ाव हटाएँ` }),
+  openLinkedA11y: (ref: string) => ({ en: `Open ${ref} in the reader`, hi: `${ref} पाठ में खोलें` }),
+  saveBtn: { en: 'Save', hi: 'सहेजें' },
+  deleteReflectionTitle: { en: 'Delete this reflection?', hi: 'यह चिन्तन हटाएँ?' },
+  deleteReflectionBody: { en: 'It is removed from this phone. A backup you exported earlier still has it.', hi: 'यह इस फ़ोन से हट जाएगा। पहले एक्सपोर्ट किए बैकअप में यह बना रहेगा।' },
+  privateNote: { en: 'Private. Stays on this phone and in your backup file.', hi: 'निजी। केवल इस फ़ोन में और आपकी बैकअप फ़ाइल में।' },
+  writtenOn: (date: string) => ({ en: `Written ${date}`, hi: `${date} को लिखा` }),
+  reflectionsOnVerse: (count: number) => ({
+    en: `${n(count)} earlier ${count === 1 ? 'reflection' : 'reflections'} on this verse`,
+    hi: `इस श्लोक पर पहले के ${n(count)} चिन्तन`,
+  }),
+
+  // Verse collections (Saved tab)
+  collections: { en: 'Collections', hi: 'संग्रह' },
+  collectionAll: (count: number) => ({ en: `All · ${n(count)}`, hi: `सभी · ${n(count)}` }),
+  collectionChip: (name: string, count: number) => ({ en: `${name} · ${n(count)}`, hi: `${name} · ${n(count)}` }),
+  moveToCollection: { en: 'Move to collection', hi: 'संग्रह में रखें' },
+  inCollectionA11y: (ref: string, name: string) => ({
+    en: `${ref} is in ${name}. Move to another collection`,
+    hi: `${ref} “${name}” में है। दूसरे संग्रह में रखें`,
+  }),
+  newCollection: { en: 'New collection', hi: 'नया संग्रह' },
+  manageCollections: { en: 'Manage collections', hi: 'संग्रह सँभालें' },
+  collectionName: { en: 'Collection name', hi: 'संग्रह का नाम' },
+  collectionNamePlaceholder: { en: 'For example, Morning verses', hi: 'जैसे, सुबह के श्लोक' },
+  renameCollection: { en: 'Rename', hi: 'नाम बदलें' },
+  renameCollectionA11y: (name: string) => ({ en: `Rename ${name}`, hi: `${name} का नाम बदलें` }),
+  deleteCollectionA11y: (name: string) => ({ en: `Delete ${name}`, hi: `${name} हटाएँ` }),
+  deleteCollectionTitle: (name: string) => ({ en: `Delete “${name}”?`, hi: `“${name}” हटाएँ?` }),
+  deleteCollectionBody: { en: 'Its verses move to Read Later. No saved verse is lost.', hi: 'इसके श्लोक “बाद में पढ़ें” में चले जाएँगे। कोई सहेजा श्लोक नहीं खोएगा।' },
+  builtinCollectionNote: { en: 'The five starting collections keep their names.', hi: 'शुरू के पाँच संग्रहों के नाम नहीं बदलते।' },
+  collectionErrorEmpty: { en: 'Give the collection a name.', hi: 'संग्रह को कोई नाम दें।' },
+  collectionErrorTaken: { en: 'A collection with that name already exists.', hi: 'इस नाम का संग्रह पहले से है।' },
+  collectionEmpty: { en: 'No saved verses in this collection yet.', hi: 'इस संग्रह में अभी कोई श्लोक नहीं है।' },
+  versesInCollection: (count: number) => ({ en: `${n(count)} ${count === 1 ? 'verse' : 'verses'}`, hi: `${n(count)} श्लोक` }),
+
+  // Share a verse as an image (src/app/share.tsx)
+  shareImageTitle: { en: 'Share as image', hi: 'चित्र के रूप में शेयर करें' },
+  shareImageEyebrow: { en: 'Verse card', hi: 'श्लोक कार्ड' },
+  shareStyle: { en: 'Style', hi: 'रूप' },
+  shareStyleCover: { en: 'Book cover', hi: 'ग्रन्थ का रंग' },
+  shareStyleArch: { en: 'Temple arch', hi: 'मन्दिर तोरण' },
+  shareStyleMidnight: { en: 'Midnight gold', hi: 'स्वर्ण रात्रि' },
+  shareStyleSage: { en: 'Sage leaves', hi: 'हरित पत्र' },
+  shareStyleAura: { en: 'Aura', hi: 'आभा' },
+  shareStyleManuscript: { en: 'Manuscript', hi: 'पाण्डुलिपि' },
+  shareFormat: { en: 'Size', hi: 'आकार' },
+  shareFormatPost: { en: 'Post 4:5', hi: 'पोस्ट 4:5' },
+  shareFormatStory: { en: 'Story 9:16', hi: 'स्टोरी 9:16' },
+  shareMeaning: { en: 'Meaning on the card', hi: 'कार्ड पर अर्थ' },
+  shareMeaningHi: { en: 'Hindi', hi: 'हिन्दी' },
+  shareMeaningEn: { en: 'English', hi: 'अंग्रेज़ी' },
+  shareMeaningBoth: { en: 'Both', hi: 'दोनों' },
+  shareMeaningNone: { en: 'Sanskrit only', hi: 'केवल संस्कृत' },
+  shareImageBtn: { en: 'Share image', hi: 'चित्र शेयर करें' },
+  shareTextBtn: { en: 'Share as text', hi: 'लिखकर शेयर करें' },
+  shareImageA11y: (ref: string) => ({ en: `Share verse ${ref} as an image`, hi: `श्लोक ${ref} चित्र के रूप में शेयर करें` }),
+  shareCardA11y: (ref: string) => ({ en: `Preview of the card for verse ${ref}`, hi: `श्लोक ${ref} के कार्ड की झलक` }),
+  shareFailed: { en: 'Could not make the image', hi: 'चित्र नहीं बन सका' },
+  shareNoVerse: { en: 'This verse is not available on this phone.', hi: 'यह श्लोक इस फ़ोन में उपलब्ध नहीं है।' },
+  shareFullVerse: { en: 'The whole verse is always on the card, every line.', hi: 'कार्ड पर पूरा श्लोक रहता है, हर पंक्ति।' },
+  shareAndMore: { en: 'Share', hi: 'शेयर' },
+  backupJournalAdded: (count: number) => ({ en: ` ${n(count)} journal reflections added.`, hi: ` डायरी के ${n(count)} चिन्तन जोड़े गए।` }),
   // Knowledge pages and Wisdom for life (src/app/knowledge, src/app/wisdom)
   knowledgeTitle: { en: 'Knowledge', hi: 'ज्ञान कोश' },
   knowledgeEyebrow: { en: 'Learn the tradition', hi: 'परंपरा को समझें' },
@@ -539,4 +695,34 @@ export const S = {
     hi: `${inSection ? 'इस वर्ग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
   }),
   searchResultA11y: (ref: string, text: string) => ({ en: `${ref}. ${text}. Opens the verse`, hi: `${ref}। ${text}। श्लोक खोलता है` }),
+
+  // Toasts: a short confirmation with Undo, in place of "Are you sure?" dialogs
+  toastSaved: { en: 'Saved to your collection', hi: 'आपके संग्रह में सहेजा गया' },
+  toastRemoved: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
+  undo: { en: 'Undo', hi: 'वापस लें' },
+
+  // A book's title page: its size in plain words, under the English title
+  titlePageFacts: (chapters: number, verses: number) => ({
+    en: `${n(chapters)} ${chapters === 1 ? 'chapter' : 'chapters'} and ${n(verses)} verses`,
+    hi: `${n(chapters)} अध्याय, ${n(verses)} श्लोक`,
+  }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
+
+/** Journal moods (@/lib/journal MOODS), as on the website. */
+export const MOOD_LABELS: Record<JournalMood, Msg> = {
+  peaceful: { en: 'Peaceful', hi: 'शांत' },
+  contemplative: { en: 'Contemplative', hi: 'मनन' },
+  restless: { en: 'Restless', hi: 'अशांत' },
+  seeking: { en: 'Seeking', hi: 'जिज्ञासु' },
+  grateful: { en: 'Grateful', hi: 'कृतज्ञ' },
+  grief: { en: 'Loss / Healing', hi: 'शोक / स्वीकार' },
+};
+
+/** The five built-in verse collections (@/lib/journal BUILTIN_COLLECTIONS), as on the website. */
+export const COLLECTION_LABELS: Record<BuiltinCollection, Msg> = {
+  'read-later': { en: 'Read Later', hi: 'बाद में पढ़ें' },
+  favourites: { en: 'Favourites', hi: 'पसंदीदा' },
+  'study-carefully': { en: 'Study Carefully', hi: 'ध्यान से पढ़ें' },
+  'daily-reflection': { en: 'Daily Reflection', hi: 'रोज़ का चिन्तन' },
+  'share-later': { en: 'Share Later', hi: 'बाद में शेयर करें' },
+};

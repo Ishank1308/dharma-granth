@@ -1,6 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { memo, useState } from 'react';
-import { AccessibilityInfo, ActivityIndicator, Pressable, Share, StyleSheet, Text, View } from 'react-native';
+import { router } from 'expo-router';
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { RecitationPhase } from '@/audio/player';
 
@@ -18,12 +19,15 @@ import { S, type Lang, type Msg } from '@/i18n';
 import { toScript } from '@/lib/sanskrit-script';
 import { LINE_FACTOR, sanskritFont } from '@/theme/fonts';
 import type { Settings } from '@/lib/backup';
+import { hapticOff, hapticOn } from '@/motion/haptics';
+import { PopIcon } from '@/motion/pop-icon';
 import type { Cover } from '@/theme/covers';
-import { fontCap, huesFor, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
+import { fontCap, huesFor, SPACE, TOUCH, TYPE, UI_FONT_CAP, type Palette } from '@/theme/themes';
 import { Card, coverFill } from './ui';
 
 interface Props {
   scriptureId: string;
+  /** The book's title. The share screen looks it up itself now; kept so callers need not change. */
   scriptureTitle: string;
   chapter: number;
   verse: Verse;
@@ -40,14 +44,17 @@ interface Props {
   audio?: RecitationPhase;
   /** Called with the verse number; keep it stable like onToggleBookmark. */
   onToggleAudio?: (verse: string) => void;
+  /** How many journal reflections are linked to this verse; the pen fills in when there are any. */
+  reflections?: number;
 }
 
-/** A study layer's label, led by a dot in the layer's own hue, as on the website. */
+/** A study layer's label, in the layer's own hue (the layer's rule carries the colour down the margin). */
 function Label({ msg, lang, palette, extra, hue }: { msg: Msg; lang: Lang; palette: Palette; extra?: string; hue?: string }) {
   return (
     <View style={styles.labelRow}>
-      {hue ? <View style={[styles.layerDot, { backgroundColor: hue }]} /> : null}
-      <Text style={[styles.label, { color: hue ?? palette.accent }, lang === 'hi' && styles.labelHi]}>{msg[lang]}</Text>
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={[styles.label, { color: hue ?? palette.accent }, lang === 'hi' && styles.labelHi]}>
+        {msg[lang]}
+      </Text>
       {extra ? <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{extra}</Text> : null}
     </View>
   );
@@ -55,7 +62,6 @@ function Label({ msg, lang, palette, extra, hue }: { msg: Msg; lang: Lang; palet
 
 function VerseCardImpl({
   scriptureId,
-  scriptureTitle,
   chapter,
   verse,
   palette,
@@ -66,6 +72,7 @@ function VerseCardImpl({
   onToggleBookmark,
   audio,
   onToggleAudio,
+  reflections = 0,
 }: Props) {
   const hues = huesFor(palette);
   const t = (m: Msg) => m[lang];
@@ -92,19 +99,10 @@ function VerseCardImpl({
     // once, as the website does (splitVyakhyaCommentary), rather than the same block twice.
     .filter((n, i, all) => n.text && all.findIndex((m) => m.text === n.text) === i);
 
-  const share = () => {
-    // The whole verse goes out: every line of the Sanskrit, never a cut-down excerpt.
-    const message = [
-      `${scriptureTitle} ${ref}`,
-      lines.join('\n'),
-      hindi,
-      english,
-      `https://dharmagranth.dev/scripture/${scriptureId}/chapter/${chapter}/`,
-    ]
-      .filter(Boolean)
-      .join('\n\n');
-    Share.share({ message }).catch(() => {});
-  };
+  const verseParams = { id: scriptureId, chapter: String(chapter), verse: String(verse.number) };
+  // Share opens the verse card screen (an image in the app's looks, or the whole verse as text).
+  const share = () => router.push({ pathname: '/share', params: verseParams });
+  const reflect = () => router.push({ pathname: '/journal/edit', params: verseParams });
 
   return (
     <Card style={styles.card} strong>
@@ -143,6 +141,13 @@ function VerseCardImpl({
             </Pressable>
           ) : null}
           <Pressable
+            onPress={reflect}
+            style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
+            accessibilityRole="button"
+            accessibilityLabel={t(reflections ? S.reflectedVerseA11y(ref, reflections) : S.reflectVerseA11y(ref))}>
+            <Ionicons name={reflections ? 'create' : 'create-outline'} size={20} color={reflections ? palette.accent : palette.muted} />
+          </Pressable>
+          <Pressable
             onPress={share}
             style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
             accessibilityRole="button"
@@ -151,8 +156,9 @@ function VerseCardImpl({
           </Pressable>
           <Pressable
             onPress={() => {
+              if (bookmarked) hapticOff();
+              else hapticOn();
               onToggleBookmark(String(verse.number));
-              AccessibilityInfo.announceForAccessibility(t(bookmarked ? S.verseRemovedAnnounce : S.verseSavedAnnounce));
             }}
             style={({ pressed }) => [
               styles.iconBtn,
@@ -162,7 +168,7 @@ function VerseCardImpl({
             accessibilityRole="button"
             accessibilityState={{ selected: bookmarked }}
             accessibilityLabel={t(bookmarked ? S.unbookmarkVerseA11y(ref) : S.bookmarkVerseA11y(ref))}>
-            <Ionicons name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={bookmarked ? palette.accent : palette.muted} />
+            <PopIcon on={bookmarked} name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={bookmarked ? palette.accent : palette.muted} />
           </Pressable>
         </View>
       </View>
@@ -222,7 +228,7 @@ function VerseCardImpl({
       ) : null}
 
       {settings.showHindi ? (
-        <View style={styles.block}>
+        <View style={[styles.block, styles.layer, { borderLeftColor: hues.peacock }]}>
           <Label
             msg={verse.hindiRange ? S.labelHindiRange(verse.hindiRange) : S.labelHindi}
             lang={lang}
@@ -253,7 +259,7 @@ function VerseCardImpl({
       ) : null}
 
       {settings.showEnglish ? (
-        <View style={styles.block}>
+        <View style={[styles.block, styles.layer, { borderLeftColor: hues.indigo }]}>
           <Label
             msg={verse.translationRange ? S.labelEnglishRange(verse.translationRange) : S.labelEnglish}
             lang={lang}
@@ -278,14 +284,15 @@ function VerseCardImpl({
       ) : null}
 
       {notes.length > 0 ? (
-        <View style={styles.block}>
+        <View style={[styles.block, styles.layer, { borderLeftColor: hues.saffron }]}>
           <Pressable
             onPress={() => setNotesOpen((o) => !o)}
             accessibilityRole="button"
             accessibilityState={{ expanded: notesOpen }}
             style={styles.notesToggle}>
-            <View style={[styles.layerDot, { backgroundColor: hues.saffron }]} />
-            <Text style={[styles.label, { color: hues.saffron }, lang === 'hi' && styles.labelHi]}>{t(S.labelNotes)}</Text>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={[styles.label, { color: hues.saffron }, lang === 'hi' && styles.labelHi]}>
+              {t(S.labelNotes)}
+            </Text>
             <Ionicons name={notesOpen ? 'chevron-up' : 'chevron-down'} size={14} color={palette.muted} />
           </Pressable>
           {notesOpen
@@ -319,15 +326,16 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', columnGap: SPACE.xs, marginRight: -SPACE.sm },
   iconBtn: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
   edge: { position: 'absolute', top: 0, left: 0, right: 0, height: 3 },
-  layerDot: { width: 7, height: 7, borderRadius: 4 },
+  // Each study layer hangs from a rule in its own hue, in reading order: अर्थ peacock, English indigo, notes saffron.
+  layer: { borderLeftWidth: 3, paddingLeft: SPACE.md + 2 },
   // Shrinks and wraps before it can push the share and save buttons off a card at large font sizes.
   refPill: { flexShrink: 1, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 4 },
   sanskrit: { rowGap: 2, paddingVertical: SPACE.md + 2, paddingHorizontal: SPACE.sm, borderRadius: 18, borderWidth: 1 },
   block: { marginTop: SPACE.md },
   labelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: 6, marginBottom: 2 },
-  label: { fontSize: TYPE.caption, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
-  // Devanagari has no case, and letter-spacing breaks its conjuncts apart.
-  labelHi: { fontSize: TYPE.footnote, letterSpacing: 0 },
+  // Sentence case and untracked, like every label in the app.
+  label: { fontSize: TYPE.footnote, fontWeight: '600' },
+  labelHi: {},
   badge: { fontSize: TYPE.caption - 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4 },
   body: {},
   notesToggle: { flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', columnGap: 6, minHeight: TOUCH, paddingRight: SPACE.md },

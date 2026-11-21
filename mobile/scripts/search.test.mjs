@@ -17,6 +17,7 @@ import {
   rankHits,
   searchCorpus,
   shiftChunkHits,
+  snapToClusters,
   verseToCorpusLine,
 } from '../src/lib/verse-search.ts';
 
@@ -207,4 +208,16 @@ test('the Mahabharata searched in chunks matches the whole book', { skip: !exist
   const chapters = book.chapters.map((c) => ({ number: c.number, verses: book.readVerses(c.number) }));
   const chunks = chunkedSearch(chapters, 1_500_000, ['धर्म', 'krishna', 'arjuna', 'नारायणं नमस्कृत्य', 'king']);
   assert.ok(chunks.length > 1);
+});
+
+test('a highlight never ends inside a conjunct', () => {
+  const text = devToIndex('एतच्छ्रुत्वा धर्म्यमणुमेतमाप्य');
+  const at = text.indexOf(devToIndex('धर्म'));
+  const [a, b] = snapToClusters(text, at, at + devToIndex('धर्म').length);
+  assert.equal(indexToDev(text.slice(a, b)), 'धर्म्य');
+  const mid = text.indexOf(devToIndex('य'));
+  // ध is its own akshara; र्म्य is one conjunct.
+  assert.equal(indexToDev(text.slice(...snapToClusters(text, mid, mid + 1))), 'र्म्य');
+  const plain = devToIndex('धर्म का');
+  assert.deepEqual(snapToClusters(plain, 0, devToIndex('धर्म').length), [0, devToIndex('धर्म').length]);
 });

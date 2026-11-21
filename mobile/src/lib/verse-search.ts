@@ -557,6 +557,20 @@ function lineText(text: string, starts: Int32Array, line: number): string {
 }
 
 /** The piece of the verse to show under a result, with the query words marked. */
+const SIGNS = new Set([0x0902, 0x0903, ...range(0x093e, 0x094c), 0x094d, 0x0962, 0x0963].map((c) => DEV_TO_ASCII.get(String.fromCharCode(c))!));
+const CONSONANT_SET = new Set(CONSONANTS);
+
+/**
+ * Widens a highlight in index-alphabet text to whole aksharas. A match that ends inside a conjunct
+ * (धर्म in धर्म्यम्) would otherwise leave the next run starting with a bare virama or vowel sign,
+ * which Android draws on a dotted circle.
+ */
+export function snapToClusters(text: string, a: number, b: number): [number, number] {
+  while (a > 0 && (SIGNS.has(text[a]) || text[a - 1] === VIRAMA)) a--;
+  while (b < text.length && (SIGNS.has(text[b]) || (text[b - 1] === VIRAMA && CONSONANT_SET.has(text[b])))) b++;
+  return [a, b];
+}
+
 export function makeSnippet(book: PreparedCorpus, line: number, tokens: QueryToken[]): Snippet {
   const dLine = lineText(book.d, book.dShowLines, line);
   const sep = dLine.indexOf(FIELD_SEP);
@@ -570,7 +584,7 @@ export function makeSnippet(book: PreparedCorpus, line: number, tokens: QueryTok
     for (const tok of tokens) {
       if (tok.script !== 'dev' || tok.stop) continue;
       const re = devDisplayPattern(tok.form);
-      for (const m of field.matchAll(re)) if (m[0].length) out.push([m.index!, m.index! + m[0].length]);
+      for (const m of field.matchAll(re)) if (m[0].length) out.push(snapToClusters(field, m.index!, m.index! + m[0].length));
     }
     return out;
   };

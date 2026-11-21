@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 import { Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { MoonPhase } from '@/components/moon-phase';
+import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { Backdrop, Card, Chip, glass, GroupCard, GroupRow, GroupTitle, IconButton, LargeHeader, Muted } from '@/components/ui';
 import {
   addDays,
@@ -254,7 +254,7 @@ function MoonCard({ p }: { p: PanchangDayData }) {
   return (
     <Card strong style={{ marginTop: SPACE.md, rowGap: SPACE.md }}>
       <View style={styles.moonRow}>
-        <MoonPhase illumination={p.paksha.illuminationPercent} waxing={p.paksha.isWaxing} size={72} />
+        <Moon3D phase={phaseFromIllumination(p.paksha.illuminationPercent, p.paksha.isWaxing)} size={72} />
         <View style={{ flex: 1 }}>
           <View style={styles.pillRow}>
             <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: hues.saffron, fontSize: TYPE.caption, fontWeight: '700' }}>
