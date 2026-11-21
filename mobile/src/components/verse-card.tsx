@@ -87,7 +87,10 @@ function VerseCardImpl({
     { key: 'word', label: S.labelWordMeaning, text: cleanVerseField(verse.wordMeaning) },
     { key: 'commentary', label: S.labelCommentary, text: cleanVerseField(verse.commentary) },
     { key: 'explanation', label: S.labelExplanation, text: cleanVerseField(verse.explanation) },
-  ].filter((n) => n.text);
+  ]
+    // Many sources repeat the word meanings as the commentary (656 of the Gita's verses do). Show each text
+    // once, as the website does (splitVyakhyaCommentary), rather than the same block twice.
+    .filter((n, i, all) => n.text && all.findIndex((m) => m.text === n.text) === i);
 
   const share = () => {
     // The whole verse goes out: every line of the Sanskrit, never a cut-down excerpt.
