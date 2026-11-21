@@ -353,4 +353,23 @@ export const S = {
   }),
   savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
   startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+
+  // Accessibility (TalkBack labels, hints and announcements)
+  verseOfTheDayFullA11y: (ref: string, text: string) => ({ en: `Verse of the day, ${ref}. ${text}`, hi: `आज का श्लोक, ${ref}। ${text}` }),
+  verseSavedAnnounce: { en: 'Verse saved', hi: 'श्लोक सहेजा गया' },
+  verseRemovedAnnounce: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
+  readingNowA11y: { en: 'reading now', hi: 'अभी पढ़ रहे हैं' },
+
+  // Verse search screen: large header, the field at the bottom in the thumb zone
+  searchTitle: { en: 'Search verses', hi: 'श्लोक खोजें' },
+  searchEyebrow: { en: 'Works offline', hi: 'बिना इंटरनेट' },
+  searchField: { en: 'Words from a verse', hi: 'श्लोक के शब्द' },
+  clearSearch: { en: 'Clear search', hi: 'खोज मिटाएँ' },
+  searchTry: { en: 'Try', hi: 'ऐसे खोजें' },
+  searchForA11y: (example: string) => ({ en: `Search for ${example}`, hi: `${example} खोजें` }),
+  searchNoVerse: (query: string, inSection: boolean) => ({
+    en: `No verse matches “${query}”${inSection ? ' in this section' : ''}. Try fewer words or another spelling.`,
+    hi: `${inSection ? 'इस वर्ग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
+  }),
+  searchResultA11y: (ref: string, text: string) => ({ en: `${ref}. ${text}. Opens the verse`, hi: `${ref}। ${text}। श्लोक खोलता है` }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;

@@ -14,13 +14,13 @@ import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
-import { BAR_GAP, BAR_HEIGHT, barClearance, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+import { BAR_GAP, BAR_HEIGHT, barClearance, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
   const { palette, lastRead, bookmarks } = useAppState();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const entry = getEntry(String(id));
   const { installed } = useDownloads();
   const quizResults = useQuizResults();
@@ -85,23 +85,26 @@ export default function ScriptureScreen() {
                 <View pointerEvents="none" style={[styles.ring, { borderColor: cover.foil, opacity: 0.35, width: 170, height: 170, right: -40, top: -40 }]} />
                 <View pointerEvents="none" style={[styles.ring, { borderColor: cover.foil, opacity: 0.22, width: 116, height: 116, right: -12, top: -12 }]} />
                 {cat ? (
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={[styles.coverEyebrow, { color: cover.foil }]}>
+                  <Text
+                    maxFontSizeMultiplier={UI_FONT_CAP}
+                    // Letter-spacing pulls Devanagari conjuncts apart, and the script has no capitals.
+                    style={[styles.coverEyebrow, { color: cover.foil }, lang === 'hi' && { letterSpacing: 0, fontSize: TYPE.footnote }]}>
                     {t(cat)}
                   </Text>
                 ) : null}
                 <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.coverTitle}>
                   {entry.titleSanskrit ?? entry.title}
                 </Text>
-                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.coverSub}>
+                <Text maxFontSizeMultiplier={UI_FONT_CAP} style={styles.coverSub}>
                   {entry.title} · {t(S.chaptersVerses(entry.chapters.length, entry.totalVerses))}
                 </Text>
                 {cover.epigraph ? (
                   <View style={{ marginTop: SPACE.md }}>
                     <View style={[styles.foilRule, { backgroundColor: cover.foil }]} />
-                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: cover.foil, fontSize: TYPE.callout + 1, lineHeight: (TYPE.callout + 1) * 1.6, marginTop: SPACE.sm }}>
+                    <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: cover.foil, fontSize: TYPE.callout + 1, lineHeight: (TYPE.callout + 1) * 1.6, marginTop: SPACE.sm }}>
                       {cover.epigraph.sa}
                     </Text>
-                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: 'rgba(255,255,255,0.72)', fontSize: TYPE.caption }}>
+                    <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: 'rgba(255,255,255,0.84)', fontSize: TYPE.footnote }}>
                       {cover.epigraph.source}
                     </Text>
                   </View>
@@ -109,14 +112,14 @@ export default function ScriptureScreen() {
                 <View style={styles.badges}>
                   <View style={styles.badge}>
                     <Ionicons name={offline ? 'checkmark' : 'cloud-download-outline'} size={14} color={cover.foil} />
-                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.badgeText}>
+                    <Text maxFontSizeMultiplier={UI_FONT_CAP} style={styles.badgeText}>
                       {t(offline ? S.onThisPhone : S.canDownload)}
                     </Text>
                   </View>
                   {saved > 0 ? (
                     <View style={styles.badge}>
                       <Ionicons name="bookmark-outline" size={14} color={cover.foil} />
-                      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.badgeText}>
+                      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={styles.badgeText}>
                         {t(S.savedCount(saved))}
                       </Text>
                     </View>
@@ -160,7 +163,8 @@ export default function ScriptureScreen() {
                 inset={64}
                 highlight={current}
                 accessibilityRole={offline ? 'button' : 'link'}
-                accessibilityLabel={t(S.chapterA11y(item.number, item.title))}
+                accessibilityLabel={`${t(S.chapterA11y(item.number, item.title))}${current ? `, ${t(S.readingNowA11y)}` : ''}`}
+                accessibilityHint={offline ? undefined : t(S.opensOnWebsite)}
                 onPress={() => open(item.number)}>
                 <Text style={[styles.num, { color: current ? palette.accent : palette.gold, fontWeight: current ? '800' : '600' }]}>
                   {toDevanagari(item.number)}
