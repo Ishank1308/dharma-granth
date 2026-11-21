@@ -932,7 +932,7 @@ export function SiteNav({
               aria-modal="true"
               aria-label="मोबाइल नेविगेशन मेनू"
               data-closing={drawer.closing || undefined}
-              className="chrome-sheet material-thick fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border/80 bg-dharma-card/88 shadow-2xl backdrop-blur-2xl"
+              className="chrome-sheet material-thick fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border/80 bg-dharma-card/90 shadow-2xl backdrop-blur-2xl"
               style={{
                 paddingTop: 'max(0.75rem, env(safe-area-inset-top, 0.75rem))',
                 paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 1rem))',
