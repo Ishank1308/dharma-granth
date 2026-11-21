@@ -21,10 +21,10 @@ export function VerseJumpSheet({
   onPick: (index: number) => void;
 }) {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette, reduceMotion } = useAppState();
   const { t } = useI18n();
   return (
-    <Modal visible={visible} transparent animationType="slide" statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>
+    <Modal visible={visible} transparent animationType={reduceMotion ? 'none' : 'slide'} statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>
       {/* Tapping outside closes the sheet; screen readers use the Close button or Back instead. */}
       <Pressable style={styles.scrim} onPress={onClose} accessible={false} importantForAccessibility="no" />
       <View

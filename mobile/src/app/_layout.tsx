@@ -22,7 +22,7 @@ export const unstable_settings = { initialRouteName: '(tabs)' };
 const WEB_FONTS: Record<string, FontSource> = Platform.OS === 'web' ? { [SANSKRIT_FONT]: require('../../assets/fonts/TiroDevanagariSanskrit.ttf') } : {};
 
 function Navigator() {
-  const { palette, ready } = useAppState();
+  const { palette, ready, reduceMotion } = useAppState();
   useFonts(WEB_FONTS);
 
   useEffect(() => {
@@ -54,6 +54,8 @@ function Navigator() {
             headerTitleStyle: { color: palette.text },
             headerShadowVisible: false,
             contentStyle: { backgroundColor: palette.bg },
+            // With Android's "Remove animations" on, screens change without sliding.
+            animation: reduceMotion ? 'none' : 'default',
           }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="scripture/[id]/index" options={{ title: '' }} />
