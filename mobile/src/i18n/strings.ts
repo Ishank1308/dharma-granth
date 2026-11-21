@@ -286,4 +286,48 @@ export const S = {
   }),
   savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
   startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+
+  // Reading progress and the daily reading streak
+  percentRead: (pct: number) => ({ en: `${pct}% read`, hi: `${pct}% पढ़ा` }),
+  bookFinished: { en: 'Finished', hi: 'पूरा पढ़ा' },
+  chapterRead: { en: 'Read', hi: 'पढ़ लिया' },
+  chapterReadOf: (read: number, total: number) => ({ en: `${n(read)} of ${n(total)} read`, hi: `${n(total)} में से ${n(read)} पढ़े` }),
+  continueAtVerse: (chapter: number, verse: string) => ({ en: `Chapter ${chapter} · verse ${verse}`, hi: `अध्याय ${chapter} · श्लोक ${verse}` }),
+  continueReadingVerseA11y: (title: string, chapter: number, verse: string, pct: number) => ({
+    en: `Continue reading ${title}, chapter ${chapter}, verse ${verse}. ${pct}% of the book read`,
+    hi: `${title}, अध्याय ${chapter}, श्लोक ${verse} से पढ़ना जारी रखें। ग्रन्थ का ${pct}% पढ़ा`,
+  }),
+  verseReadToday: { en: 'Read', hi: 'पढ़ा' },
+  streakDays: (count: number) => ({ en: `${n(count)}-day reading streak`, hi: `${n(count)} दिन का सिलसिला` }),
+  streakStart: { en: 'A verse a day', hi: 'रोज़ एक श्लोक' },
+  streakReadToday: { en: 'You have read today. See you tomorrow.', hi: 'आज का पाठ हो गया। कल फिर मिलेंगे।' },
+  streakKeepGoing: { en: 'Read a verse today to keep it going.', hi: 'इसे जारी रखने के लिए आज एक श्लोक पढ़ें।' },
+  streakFresh: {
+    en: 'No pressure. Read one verse today and start again.',
+    hi: 'कोई जल्दी नहीं। आज एक श्लोक पढ़ें और फिर से शुरू करें।',
+  },
+  streakBest: (count: number) => ({ en: `Best ${n(count)} ${count === 1 ? 'day' : 'days'}`, hi: `सबसे लंबा ${n(count)} दिन` }),
+  streakA11y: (current: number, best: number, readToday: boolean, daysThisWeek: number) => ({
+    en: `Reading streak ${n(current)} ${current === 1 ? 'day' : 'days'}. Best ${n(best)}. ${readToday ? 'Read today.' : 'Not read yet today.'} ${n(daysThisWeek)} of the last 7 days read.`,
+    hi: `पढ़ने का सिलसिला ${n(current)} दिन। सबसे लंबा ${n(best)} दिन। ${readToday ? 'आज पढ़ लिया।' : 'आज अभी नहीं पढ़ा।'} पिछले 7 में से ${n(daysThisWeek)} दिन पढ़ा।`,
+  }),
+  /** Weekday initials, Sunday first, as Date.getDay() counts. */
+  weekdayInitials: { en: 'S,M,T,W,T,F,S', hi: 'र,सो,मं,बु,गु,शु,श' },
+  streakNotification: (count: number) => ({
+    en: `Day ${n(count + 1)} of your reading streak starts with this verse.`,
+    hi: `पढ़ने के सिलसिले का ${n(count + 1)}वाँ दिन इसी श्लोक से शुरू होता है।`,
+  }),
+  readingProgressSection: { en: 'Reading progress', hi: 'पढ़ने की प्रगति' },
+  showStreak: { en: 'Show reading streak', hi: 'पढ़ने का सिलसिला दिखाएँ' },
+  clearProgress: { en: 'Clear reading progress', hi: 'पढ़ने की प्रगति मिटाएँ' },
+  clearProgressTitle: { en: 'Clear reading progress?', hi: 'पढ़ने की प्रगति मिटाएँ?' },
+  clearProgressBody: {
+    en: 'Verses marked as read and your reading streak will be removed from this phone. Saved verses stay.',
+    hi: 'पढ़े गए श्लोकों का हिसाब और पढ़ने का सिलसिला इस फ़ोन से हट जाएगा। सहेजे गए श्लोक बने रहेंगे।',
+  },
+  clearBtn: { en: 'Clear', hi: 'मिटाएँ' },
+  readingProgressNote: {
+    en: 'A verse counts as read once it stays on screen for a moment. Progress and the streak stay on this phone and are included in your backup.',
+    hi: 'कोई श्लोक कुछ पल स्क्रीन पर रहे तो उसे पढ़ा हुआ माना जाता है। प्रगति और सिलसिला इसी फ़ोन में रहते हैं और बैकअप में शामिल होते हैं।',
+  },
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
