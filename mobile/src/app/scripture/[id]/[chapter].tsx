@@ -6,18 +6,20 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useRecitation } from '@/audio/player';
 import { recitedVerses } from '@/audio/recitation';
+import { ChapterSummaryCard } from '@/components/chapter-summary';
 import { ReadingSheet } from '@/components/reading-sheet';
 import { Backdrop, Eyebrow, FloatingBar, glass, IconButton, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
 import { VerseJumpSheet } from '@/components/verse-jump-sheet';
 import { getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
+import { chapterSummary, summaryCollection } from '@/content/study';
 import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
-import { BAR_GAP, barClearance, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { BAR_GAP, barClearance, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 const VIEWABILITY = { itemVisiblePercentThreshold: 40 };
 
@@ -185,6 +187,9 @@ export default function ChapterScreen() {
   }
 
   const total = chapter.verses.length;
+  // The chapter's summary (सार), where the website has one: the Gita and the Yoga Sutra.
+  const summaries = summaryCollection(id);
+  const summary = chapterSummary(id, chapterNo);
   const shownVerse = numbers[Math.min(visibleIndex, Math.max(total - 1, 0))] ?? '';
 
   return (
@@ -250,7 +255,7 @@ export default function ChapterScreen() {
                 {meta.titleSanskrit ?? meta.title}
               </Text>
               {meta.titleSanskrit ? (
-                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>
+                <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>
                   {meta.title}
                 </Text>
               ) : null}
@@ -259,6 +264,17 @@ export default function ChapterScreen() {
                 <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
                   {t(S.recitationCredit)}
                 </Text>
+              ) : null}
+              {summaries && summary ? (
+                <ChapterSummaryCard
+                  scriptureId={id}
+                  collection={summaries}
+                  summary={summary}
+                  onJumpToVerse={(verse) => {
+                    const index = numbers.indexOf(String(verse));
+                    if (index >= 0) jumpTo(index);
+                  }}
+                />
               ) : null}
             </View>
           }
@@ -272,13 +288,13 @@ export default function ChapterScreen() {
                 onPress={() => go(next.number)}
                 style={({ pressed }) => [styles.nextCard, glass(palette, true), pressed && { transform: [{ scale: 0.985 }] }]}>
                 <View style={{ flex: 1 }}>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
                     {t(S.nextChapterLabel)}
                   </Text>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600', marginTop: 2 }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600', marginTop: 2 }}>
                     {next.titleSanskrit ?? next.title}
                   </Text>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
                     {t(S.chapterN(next.number))}
                   </Text>
                 </View>

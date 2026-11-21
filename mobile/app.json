@@ -13,7 +13,7 @@
     },
     "android": {
       "package": "dev.dharmagranth.app",
-      "versionCode": 2,
+      "versionCode": 3,
       "adaptiveIcon": {
         "backgroundColor": "#FDF6EA",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -91,7 +91,13 @@
           ]
         }
       ],
-      "./plugins/with-optional-portrait"
+      "./plugins/with-optional-portrait",
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/TiroDevanagariSanskrit.ttf"]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
