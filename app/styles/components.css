@@ -745,3 +745,15 @@ html[data-ui-lang='english'] [data-bi='en'][data-bi-lead] {
 html[data-ui-lang='english'] [data-bi='en-only'] {
     display: inline !important;
 }
+
+/* The shloka pinned in the verse page's sidebar (PinnedShloka) opens by height, so the verse
+   numbers under it slide down rather than jump. The duration is a token, so reduced motion
+   collapses it. */
+.pinned-shloka-open {
+    display: grid;
+    grid-template-rows: 1fr;
+    animation: pinned-shloka-open var(--duration-standard) var(--ease-out) backwards;
+}
+@keyframes pinned-shloka-open {
+    from { grid-template-rows: 0fr; opacity: 0; }
+}

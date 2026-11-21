@@ -59,6 +59,9 @@ import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
 const MobileVerseCarousel = dynamic(() => import('./MobileVerseCarousel').then((m) => m.MobileVerseCarousel), { ssr: false });
+// The shloka kept beside its commentary: fetched the first time the verse scrolls off screen.
+const PinnedShloka = dynamic(() => import('./PinnedShloka').then((m) => m.PinnedShloka), { ssr: false });
+import { useScrolledPast } from '@/lib/useScrolledPast';
 import { setCurrentVerseContext, withSoundscape } from '@/lib/soundscape-lazy';
 import { useEverTrue } from '@/lib/use-ever-true';
 import { verseCount as fmtVerses } from '@/lib/format';
@@ -138,6 +141,14 @@ export function VerseReader(props: VerseReaderProps) {
     [scriptureId, scriptureTitle, scriptureTitleSanskrit, chapterId, chapterTitle, pageUrl],
   );
   const label = verseReference(ref, verse);
+
+  // Once the shloka has scrolled under the header it is offered again beside the commentary.
+  const shlokaAway = useScrolledPast('sanskrit-text', `${chapterId}:${verse.number}`);
+  const pinLoaded = useEverTrue(shlokaAway);
+  const pinnedShloka = (variant: 'aside' | 'bar') =>
+    pinLoaded && (
+      <PinnedShloka variant={variant} away={shlokaAway} scriptureId={scriptureId} chapterId={chapterId} number={verse.number} sanskrit={verse.sanskrit} smooth={!reducedMotion} />
+    );
 
   /* Reader mode: the site nav and companion dock step aside (see globals.css). The reader's own
      header keeps a way out: back to the chapter, the site menu and the theme. */
@@ -561,6 +572,7 @@ export function VerseReader(props: VerseReaderProps) {
           <button type="button" onClick={() => setDialog('chapters')} aria-haspopup="dialog" className="focus-ring mt-0.5 min-h-[44px] w-full rounded-lg text-left text-sm text-dharma-muted hover:text-saffron-800 dark:hover:text-saffron-300">
             Chapter {chapterId}: {chapterTitle} <ChevronDown className="inline h-3.5 w-3.5" aria-hidden="true" />
           </button>
+          {pinnedShloka('aside')}
           {/* Progress is shown once, in the sticky header; this grid marks the current verse. */}
           <nav aria-label="Verses in this chapter" className="mt-4">
             <ul className="grid grid-cols-5 gap-1.5">
@@ -588,6 +600,7 @@ export function VerseReader(props: VerseReaderProps) {
 
         {/* data-chapter-reading hides the global floating docks (globals.css), so nothing sits on the verse text. */}
         <main data-chapter-reading data-vt-pane style={paneStyle} className={`min-w-0 flex-1 px-4 pb-32 pt-6 sm:pb-20 sm:pt-8 xl:px-0 ${WIDTH[settings.readingWidth]}`}>
+          {pinnedShloka('bar')}
           {/* 2 · Verse navigation (desktop; phones get the sticky bar below) */}
           <nav aria-label="Verse navigation" className="mb-6 hidden items-center justify-between gap-3 sm:flex">
             {navLink(prev, 'prev', 'row')}
