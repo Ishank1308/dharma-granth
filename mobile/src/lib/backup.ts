@@ -2,11 +2,17 @@
  * Local backup of everything the reader keeps on the phone: bookmarks, reading position and settings.
  * Nothing is sent anywhere (zero-account privacy); the reader exports a JSON file and imports it back.
  */
+import type { SanskritScript } from '@/lib/sanskrit-script';
+import type { LineSpacing } from '@/theme/fonts';
 import type { ThemeName } from '@/theme/themes';
 
 // Kept in step with LANGUAGE_SETTINGS in @/i18n/language (inlined so the node tests need no path aliases).
 type LanguageSetting = 'system' | 'en' | 'hi';
 const LANGUAGES: LanguageSetting[] = ['system', 'en', 'hi'];
+
+// Kept in step with SANSKRIT_SCRIPTS (@/lib/sanskrit-script) and LINE_SPACINGS (@/theme/fonts), inlined for the node tests.
+const SCRIPTS: SanskritScript[] = ['deva', 'beng', 'gujr', 'orya', 'telu', 'knda', 'mlym'];
+const SPACINGS: LineSpacing[] = ['compact', 'normal', 'relaxed'];
 
 /** How much glass to draw. 'auto' picks 'light' on budget phones (see @/theme/effects). */
 export type EffectsSetting = 'auto' | 'full' | 'light';
@@ -43,6 +49,10 @@ export interface Settings {
   reminderMinute: number;
   /** Shadows and sheen on cards. 'light' keeps the colours but drops what makes long lists stutter. */
   effects: EffectsSetting;
+  /** Sanskrit shown in another Indian script, letter for letter (src/lib/sanskrit-script.ts). */
+  sanskritScript: SanskritScript;
+  /** Line height of the reading text. */
+  lineSpacing: LineSpacing;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -57,6 +67,8 @@ export const DEFAULT_SETTINGS: Settings = {
   reminderHour: 7,
   reminderMinute: 0,
   effects: 'auto',
+  sanskritScript: 'deva',
+  lineSpacing: 'normal',
 };
 
 export interface AppData {
@@ -97,6 +109,8 @@ export function normalizeSettings(raw: unknown): Settings {
     reminderHour: wholeIn(s.reminderHour, 0, 23, DEFAULT_SETTINGS.reminderHour),
     reminderMinute: wholeIn(s.reminderMinute, 0, 59, DEFAULT_SETTINGS.reminderMinute),
     effects: EFFECTS_SETTINGS.includes(s.effects as EffectsSetting) ? (s.effects as EffectsSetting) : DEFAULT_SETTINGS.effects,
+    sanskritScript: SCRIPTS.includes(s.sanskritScript as SanskritScript) ? (s.sanskritScript as SanskritScript) : DEFAULT_SETTINGS.sanskritScript,
+    lineSpacing: SPACINGS.includes(s.lineSpacing as LineSpacing) ? (s.lineSpacing as LineSpacing) : DEFAULT_SETTINGS.lineSpacing,
   };
 }
 

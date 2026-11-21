@@ -7,7 +7,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { barSurface, FloatingBar, glass } from '@/components/ui';
 import { S, useI18n, type Msg } from '@/i18n';
 import { useAppState } from '@/state/app-state';
-import { BAR_GAP, BAR_HEIGHT, SPACE } from '@/theme/themes';
+import { BAR_GAP, BAR_HEIGHT, SPACE, TYPE } from '@/theme/themes';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -24,7 +24,7 @@ const TABS: Record<string, { label: Msg; icon: IconName; iconActive: IconName }>
  */
 export function FloatingTabBar({ state, emitter, navigateToTab, insets }: BottomTabBarProps) {
   const { palette } = useAppState();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const bottom = Math.max(insets.bottom, SPACE.sm) + BAR_GAP;
 
   return (
@@ -56,8 +56,10 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
                 <Ionicons name={focused ? tab.iconActive : tab.icon} size={22} color={focused ? palette.accent : palette.muted} />
                 <Text
                   numberOfLines={1}
+                  // The label grows with the system font size only this far, so it stays inside the capsule;
+                  // TalkBack reads the full name either way. Devanagari is set a size larger to stay legible.
                   maxFontSizeMultiplier={1.3}
-                  style={{ fontSize: 11, fontWeight: focused ? '700' : '500', color: focused ? palette.accent : palette.muted }}>
+                  style={{ fontSize: lang === 'hi' ? TYPE.caption + 1 : TYPE.caption, fontWeight: focused ? '700' : '500', color: focused ? palette.accent : palette.muted }}>
                   {label}
                 </Text>
               </Pressable>
