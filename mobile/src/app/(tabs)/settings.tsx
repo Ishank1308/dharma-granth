@@ -20,6 +20,7 @@ import {
 } from '@/lib/daily-notification';
 import { formatReminderTime } from '@/lib/reminder';
 import { useAppState } from '@/state/app-state';
+import { exportPractice, importPractice } from '@/state/practice';
 import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
 
@@ -181,7 +182,8 @@ export default function SettingsScreen() {
       const file = new File(Paths.cache, `dharma-granth-backup-${date}.json`);
       if (file.exists) file.delete();
       file.create();
-      file.write(JSON.stringify(makeBackup(exportData()), null, 2));
+      // Practice (Gita Sankalpa, reading plans) is its own store; it rides along in the same file.
+      file.write(JSON.stringify({ ...makeBackup(exportData()), practice: await exportPractice() }, null, 2));
       if (await Sharing.isAvailableAsync()) {
         await Sharing.shareAsync(file.uri, { mimeType: 'application/json', dialogTitle: t(S.saveBackupDialog) });
       } else {
@@ -199,8 +201,10 @@ export default function SettingsScreen() {
     try {
       const picked = await File.pickFileAsync({ mimeTypes: ['application/json', 'text/plain', '*/*'] });
       if (picked.canceled) return;
-      const data = parseBackup(await picked.result.text());
+      const text = await picked.result.text();
+      const data = parseBackup(text);
       importData(data);
+      await importPractice((JSON.parse(text) as { practice?: unknown }).practice);
       Alert.alert(t(S.backupRestored), t(S.backupRestoredBody(data.bookmarks.length)));
     } catch (e) {
       Alert.alert(t(S.importFailed), errorText(e));

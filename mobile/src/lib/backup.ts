@@ -69,6 +69,8 @@ export interface BackupFile extends AppData {
   format: typeof BACKUP_FORMAT;
   version: number;
   exportedAt: string;
+  /** Gita Sankalpa and reading plans (src/state/practice.ts). Older backups have none; older apps ignore it. */
+  practice?: unknown;
 }
 
 const THEMES: ThemeName[] = ['day', 'sunset', 'paper', 'dark'];

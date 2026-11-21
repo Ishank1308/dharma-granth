@@ -17,11 +17,13 @@
 //   src/content/generated/loaders.ts     lazy require() map per chapter, so opening a chapter parses only
 //                                        that chapter (Ramcharitmanas is 5 MB; one kanda is under 1 MB)
 //   src/content/generated/search/…       offline verse search index (scripts/build-search-index.mjs)
+//   src/content/generated/plans.json      reading plans and Gita Sankalpa chapters (scripts/build-plans.mjs)
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Buffer } from 'node:buffer';
 
+import { buildPlans } from './build-plans.mjs';
 import { buildSearchIndex } from './build-search-index.mjs';
 import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
 
@@ -40,7 +42,8 @@ if (
   ifMissing &&
   existsSync(join(OUT, 'catalog.json')) &&
   existsSync(join(OUT, 'loaders.ts')) &&
-  existsSync(join(OUT, 'search-loaders.ts'))
+  existsSync(join(OUT, 'search-loaders.ts')) &&
+  existsSync(join(OUT, 'plans.json'))
 ) {
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
   process.exit(0);
@@ -126,3 +129,4 @@ if (usedShards < bundledIds.length) {
 }
 
 await buildSearchIndex();
+await buildPlans();

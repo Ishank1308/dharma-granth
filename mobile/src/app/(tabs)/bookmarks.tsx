@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { PracticeCard } from '@/components/practice-card';
 import { accentFill, Backdrop, Card, coverFill, LargeHeader, Muted } from '@/components/ui';
 import { getEntry, loadChapter } from '@/content/catalog';
 import { S, useI18n } from '@/i18n';
@@ -26,11 +27,14 @@ export default function BookmarksScreen() {
         data={bookmarks}
         keyExtractor={(b) => `${b.id}:${b.chapter}:${b.verse}`}
         ListHeaderComponent={
-          <LargeHeader
-            title={S.savedTitle}
-            eyebrow={S.savedEyebrow}
-            subtitle={bookmarks.length ? t(S.savedSummary(bookmarks.length)) : undefined}
-          />
+          <>
+            <LargeHeader
+              title={S.savedTitle}
+              eyebrow={S.savedEyebrow}
+              subtitle={bookmarks.length ? t(S.savedSummary(bookmarks.length)) : undefined}
+            />
+            <PracticeCard />
+          </>
         }
         ListEmptyComponent={
           <View style={styles.empty}>
