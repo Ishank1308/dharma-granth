@@ -7,7 +7,9 @@ import { accentFill, Backdrop, Card, coverFill, LargeHeader, Muted } from '@/com
 import { getEntry, loadChapter } from '@/content/catalog';
 import { S, useI18n } from '@/i18n';
 import { cleanVerseField, formatVerseRef, meaningState, MEANING_COPY, sanskritLines } from '@/lib/verse-format';
+import { toScript } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
+import { sanskritFont } from '@/theme/fonts';
 import { coverFor } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
@@ -100,8 +102,8 @@ export default function BookmarksScreen() {
                   <Text
                     key={i}
                     maxFontSizeMultiplier={cap}
-                    style={{ color: palette.text, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.6 }}>
-                    {l}
+                    style={[{ color: palette.text, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.7 }, sanskritFont(settings.sanskritScript)]}>
+                    {toScript(l, settings.sanskritScript)}
                   </Text>
                 ))}
                 {hindi ? (

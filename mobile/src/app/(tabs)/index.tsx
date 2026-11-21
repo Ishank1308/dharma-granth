@@ -11,7 +11,9 @@ import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
+import { toScript } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
+import { sanskritFont } from '@/theme/fonts';
 import { coverFor, monogram } from '@/theme/covers';
 import { barClearance, fontCap, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
@@ -57,12 +59,15 @@ function DailyVerseCard() {
             <Text
               key={i}
               maxFontSizeMultiplier={fontCap(settings.textScale)}
-              style={{
-                color: palette.text,
-                fontSize: TYPE.callout * settings.textScale,
-                lineHeight: TYPE.callout * settings.textScale * 1.65,
-              }}>
-              {l}
+              style={[
+                {
+                  color: palette.text,
+                  fontSize: TYPE.callout * settings.textScale,
+                  lineHeight: TYPE.callout * settings.textScale * 1.75,
+                },
+                sanskritFont(settings.sanskritScript),
+              ]}>
+              {toScript(l, settings.sanskritScript)}
             </Text>
           ))}
         </View>
