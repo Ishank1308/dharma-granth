@@ -27,6 +27,9 @@ env:
   # Same Node as deploy-cloudflare.yml: this export can go live as built.
   NODE_VERSION: "22"
   CLOUDFLARE_PROJECT: dharma-granth
+  # Verse share images are served from the project's `share` branch deployment
+  # (docs/deploy-cloudflare.md, "Verse share images"). Same value as deploy-cloudflare.yml.
+  NEXT_PUBLIC_SHARE_IMAGE_ORIGIN: https://share.dharma-granth.pages.dev
 
 jobs:
   checks:
@@ -347,6 +350,13 @@ jobs:
       - name: Unpack export
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
         run: zstd -d -q -c dist.tar.zst | tar -xf - && rm dist.tar.zst
+
+      # The live deploy uploads the verse share images as their own deployment
+      # (deploy-cloudflare.yml). A preview links to the live ones, so here they
+      # are only taken out of the upload, which keeps it under 20,000 files.
+      - name: Leave verse share images out of the preview
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        run: rm -rf dist/og/verse
 
       # A non-production branch: Cloudflare serves it at
       # pr-N.dharma-granth.pages.dev with X-Robots-Tag: noindex. Files it
