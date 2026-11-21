@@ -37,7 +37,9 @@ import { triggerTactileFeedback } from '@/lib/haptics';
 import {
   buildCopyText,
   buildDownloadMarkdown,
+  BOOKMARKS_CHANGED_EVENT,
   isBookmarked,
+  savedVerseNumbers,
   toggleBookmark,
   verseReference,
   type ReaderProvenance,
@@ -168,6 +170,23 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Bookmark ── */
   const [saved, setSaved] = useState(false);
   useEffect(() => setSaved(isBookmarked(ref, verse)), [ref, verse]);
+  // Which verses of this chapter are saved, so the verse grids can mark them. Read after
+  // mount (saves live in the browser), and again whenever the list changes.
+  const [savedInChapter, setSavedInChapter] = useState<ReadonlySet<string>>(() => new Set());
+  useEffect(() => {
+    const load = () => setSavedInChapter(savedVerseNumbers(scriptureId, chapterId));
+    load();
+    window.addEventListener(BOOKMARKS_CHANGED_EVENT, load);
+    window.addEventListener('storage', load);
+    return () => {
+      window.removeEventListener(BOOKMARKS_CHANGED_EVENT, load);
+      window.removeEventListener('storage', load);
+    };
+  }, [scriptureId, chapterId]);
+  const carouselVerses = useMemo(
+    () => verses.map((v) => ({ ...v, isBookmarked: savedInChapter.has(String(v.number)) })),
+    [verses, savedInChapter],
+  );
 
   /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
   useEffect(() => {
@@ -327,6 +346,17 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Verse picker ── */
   const [pick, setPick] = useState('');
   const visibleVerses = pick.trim() ? verses.filter((v) => String(v.number).startsWith(pick.trim())) : verses;
+  // Shown under a verse grid once the chapter has a saved verse, so the dot explains itself.
+  const savedLegend = (
+    <p className="mt-2 flex items-center gap-1.5 text-caption-1 text-label-secondary">
+      <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-dharma-saffron" />
+      <span>
+        <span lang="hi" data-bi="hi" className="font-devanagari">सहेजे गए श्लोक</span>
+        <span data-bi="sep"> · </span>
+        <span data-bi="en">Saved verses</span>
+      </span>
+    </p>
+  );
 
   /* ── Arrow-key navigation (never while typing or with a dialog open) ── */
   useEffect(() => {
@@ -540,20 +570,23 @@ export function VerseReader(props: VerseReaderProps) {
             <ul className="grid grid-cols-5 gap-1.5">
               {verses.map((v) => {
                 const current = String(v.number) === String(verse.number);
+                const isSaved = savedInChapter.has(String(v.number));
                 return (
                   <li key={String(v.number)}>
                     <Link
                       href={v.href}
                       aria-current={current ? 'true' : undefined}
-                      aria-label={`Verse ${v.number}`}
-                      className={`focus-ring flex h-11 items-center justify-center rounded-lg border text-xs font-semibold transition ${current ? 'border-transparent bg-dharma-saffron text-dharma-bg' : 'border-transparent bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'}`}
+                      aria-label={isSaved ? `Verse ${v.number}, saved` : `Verse ${v.number}`}
+                      className={`focus-ring relative flex h-11 items-center justify-center rounded-lg border text-xs font-semibold transition ${current ? 'border-transparent bg-dharma-saffron text-dharma-bg' : 'border-transparent bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'}`}
                     >
                       {v.number}
+                      {isSaved && <span aria-hidden="true" data-saved-dot className={`verse-saved-dot ${current ? 'bg-current' : 'bg-dharma-saffron'}`} />}
                     </Link>
                   </li>
                 );
               })}
             </ul>
+            {savedInChapter.size > 0 && savedLegend}
           </nav>
         </aside>
 
@@ -895,13 +928,18 @@ export function VerseReader(props: VerseReaderProps) {
                   href={v.href}
                   onClick={() => { close(); setPick(''); }}
                   aria-current={String(v.number) === String(verse.number) ? 'true' : undefined}
-                  className={`focus-ring flex h-12 items-center justify-center rounded-xl border text-sm font-semibold transition ${String(v.number) === String(verse.number) ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-500'}`}
+                  aria-label={savedInChapter.has(String(v.number)) ? `Verse ${v.number}, saved` : undefined}
+                  className={`focus-ring relative flex h-12 items-center justify-center rounded-xl border text-sm font-semibold transition ${String(v.number) === String(verse.number) ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-500'}`}
                 >
                   {v.number}
+                  {savedInChapter.has(String(v.number)) && (
+                    <span aria-hidden="true" data-saved-dot className={`verse-saved-dot ${String(v.number) === String(verse.number) ? 'bg-current' : 'bg-dharma-saffron'}`} />
+                  )}
                 </Link>
               </li>
             ))}
           </ul>
+          {savedInChapter.size > 0 && savedLegend}
           {visibleVerses.length === 0 && <p className="mt-3 text-sm text-dharma-muted">No verse starts with “{pick}”.</p>}
         </ReaderDialog>
         )}
@@ -932,7 +970,7 @@ export function VerseReader(props: VerseReaderProps) {
         {carouselOpen && <MobileVerseCarousel
           isOpen={carouselOpen}
           onClose={() => setCarouselOpen(false)}
-          verses={verses}
+          verses={carouselVerses}
           currentVerseNumber={verse.number}
           chapterTitle={`अध्याय ${chapterId}: ${chapterTitle}`}
           scriptureTitle={scriptureTitle}

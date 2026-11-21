@@ -216,6 +216,18 @@ export function readBookmarks(): SavedVerse[] {
 export const isBookmarked = (ref: ReaderRef, verse: ReaderVerseText): boolean =>
   readBookmarks().some((b) => sameVerse(b, ref, verse));
 
+/** Fired on this page whenever the saved-verse list changes (the `storage` event only reaches other tabs). */
+export const BOOKMARKS_CHANGED_EVENT = 'dharma-bookmark-updated';
+
+/** The saved verses of one chapter, by verse number, for marking verse grids and jump lists. */
+export function savedVerseNumbers(scriptureId: string, chapterId: number): Set<string> {
+  return new Set(
+    readBookmarks()
+      .filter((b) => b.scriptureId === scriptureId && b.chapterId === chapterId)
+      .map((b) => String(b.verseId)),
+  );
+}
+
 /** Toggles the bookmark; returns the new state, or null if storage is unavailable. */
 export function toggleBookmark(ref: ReaderRef, verse: ReaderVerseText): boolean | null {
   const list = readBookmarks();
@@ -238,6 +250,8 @@ export function toggleBookmark(ref: ReaderRef, verse: ReaderVerseText): boolean 
       ];
   try {
     localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(next));
+    // The header's saved count and the verse grids listen for this.
+    if (typeof window !== 'undefined') window.dispatchEvent(new Event(BOOKMARKS_CHANGED_EVENT));
     return !saved;
   } catch {
     return null;

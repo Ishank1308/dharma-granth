@@ -1264,7 +1264,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     </option>
                     {state.verses.map((v) => (
                       <option key={String(v.number)} value={String(v.number)} className="bg-dharma-card text-dharma-text">
-                        श्लोक {toAsciiDigits(v.number)}
+                        श्लोक {toAsciiDigits(v.number)}{bookmarkedMap[String(v.number)] ? ' · सहेजा हुआ' : ''}
                       </option>
                     ))}
                   </select>
@@ -1454,7 +1454,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     </option>
                     {state.verses.map((v) => (
                       <option key={String(v.number)} value={String(v.number)}>
-                        श्लोक {toAsciiDigits(v.number)} ({v.number})
+                        श्लोक {toAsciiDigits(v.number)} ({v.number}){bookmarkedMap[String(v.number)] ? ' · सहेजा हुआ' : ''}
                       </option>
                     ))}
                   </select>

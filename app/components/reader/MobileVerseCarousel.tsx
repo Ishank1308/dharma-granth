@@ -242,6 +242,7 @@ export function MobileVerseCarousel({
                   <span className={`text-[10px] font-mono leading-none ${isCurrent ? 'text-amber-100' : 'text-dharma-muted'}`}>
                     v{v.number}
                   </span>
+                  {v.isBookmarked && <span aria-hidden="true" data-saved-dot className={`verse-saved-dot ${isCurrent ? 'bg-current' : 'bg-dharma-saffron'}`} />}
                   {isCurrent && (
                     <span className="absolute -top-1.5 flex h-3 w-3 items-center justify-center">
                       <span className="absolute inline-flex h-full w-full animate-ping motion-reduce:animate-none rounded-full bg-amber-400 opacity-75" />
@@ -259,6 +260,16 @@ export function MobileVerseCarousel({
           <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-dharma-muted">
             <span className="font-devanagari">सभी श्लोक तालिका</span>
           </p>
+          {verses.some((v) => v.isBookmarked) && (
+            <p className="mb-2 flex items-center gap-1.5 text-[11px] text-dharma-muted">
+              <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-dharma-saffron" />
+              <span>
+                <span lang="hi" data-bi="hi" className="font-devanagari">सहेजे गए श्लोक</span>
+                <span data-bi="sep"> · </span>
+                <span data-bi="en">Saved verses</span>
+              </span>
+            </p>
+          )}
           <div className="grid grid-cols-6 gap-1.5">
             {filteredVerses.map((v) => {
               const isCurrent = String(v.number) === String(currentVerseNumber);
@@ -267,13 +278,15 @@ export function MobileVerseCarousel({
                   key={`grid-${v.number}`}
                   type="button"
                   onClick={() => handleSelectVerse(v.href)}
-                  className={`focus-ring flex min-h-[44px] items-center justify-center rounded-xl border text-xs font-bold transition-all ${
+                  aria-label={v.isBookmarked ? `श्लोक ${toAsciiDigits(v.number)}, सहेजा हुआ` : undefined}
+                  className={`focus-ring relative flex min-h-[44px] items-center justify-center rounded-xl border text-xs font-bold transition-all ${
                     isCurrent
                       ? 'border-saffron-500 bg-saffron-600 font-extrabold text-white shadow-md'
                       : 'border-dharma-border/70 bg-dharma-bg text-dharma-text hover:border-saffron-400'
                   }`}
                 >
                   <span className="font-devanagari">{toAsciiDigits(v.number)}</span>
+                  {v.isBookmarked && <span aria-hidden="true" data-saved-dot className={`verse-saved-dot ${isCurrent ? 'bg-current' : 'bg-dharma-saffron'}`} />}
                 </button>
               );
             })}

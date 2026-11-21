@@ -698,6 +698,20 @@ p.verse-folio[lang='sa'] > span {
     }
 }
 
+/* Saved-verse dot ────────────────────────────────────────────────────────
+   Marks a saved verse in a verse-number grid (verse page sidebar, jump dialog, phone verse
+   picker). The cell is position: relative; the dot is saffron, or the cell's own text colour
+   on the current verse, where the cell itself is saffron. */
+.verse-saved-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    pointer-events: none;
+}
+
 /* Two-language labels ────────────────────────────────────────────────────
    A label written in both languages marks its halves data-bi="en" and data-bi="hi" (and any
    "·" between them data-bi="sep"). The reader's language choice sits on <html data-ui-lang>
