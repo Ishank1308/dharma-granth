@@ -33,7 +33,7 @@ const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').
 const loadReaderSettingsPanel = () => import('@/app/components/reader/ReaderSettingsPanel');
 const ReaderSettingsPanel = dynamic(() => loadReaderSettingsPanel().then((m) => m.ReaderSettingsPanel), { ssr: false });
 import { VerseCard } from './VerseCard';
-import { DEFAULT_DEPTH, useReadingDepth } from '@/lib/reading-depth';
+import { useReadingDepth } from '@/lib/reading-depth';
 import { useConnectivity } from '@/lib/useConnectivity';
 import { VerseText } from './VerseText';
 import type { VerseInsight } from '@/lib/verse-insights';
@@ -222,7 +222,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   };
 
   const [chantingMode, setChantingMode] = useState(false);
-  const [readingDepth, setReadingDepth] = useReadingDepth();
+  const [readingDepth] = useReadingDepth();
   const [isConversationMode, setIsConversationMode] = useState(false);
   const showCommentary = readerSettings.showCommentary;
   const [readerSettingsOpen, setReaderSettingsOpen] = useState(false);
@@ -1555,9 +1555,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           settings={readerSettings}
           update={updateReaderSetting}
           reset={() => {
+            // Also forgets the shared depth choice, so the chapter opens at its first depth again.
             resetReaderSettings();
             // The sheet holds these chapter choices too, so its reset returns them to how a chapter first opens.
-            setReadingDepth(DEFAULT_DEPTH);
             setChantingMode(false);
             setIsConversationMode(false);
             setParayanaCadenceMode('sanskrit_only');

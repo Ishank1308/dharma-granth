@@ -637,7 +637,7 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
 
-          {/* 3 · Reading level and perspective now live in the Aa sheet (ReaderSettingsPanel). */}
+          {/* 3 · Reading depth (one choice with chapter pages) and perspective live in the Aa sheet (ReaderSettingsPanel). */}
 
           {/* 4 · The layers */}
           <ReaderLayers
