@@ -63,3 +63,47 @@ test('the phone drawer shows the same choice as the header menu', async ({ page 
   await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'english');
   await expect(radios.filter({ hasText: 'English focus' })).toHaveAttribute('aria-checked', 'true');
 });
+
+for (const choice of [
+  { lang: 'hindi', shown: 'hi', hidden: 'en', title: 'शास्त्र स्वाध्याय' },
+  { lang: 'english', shown: 'en', hidden: 'hi', title: 'Study the scriptures' },
+] as const) {
+  test(`page titles, section headings and the footer show ${choice.lang} alone when it is chosen`, async ({ page }) => {
+    await page.addInitScript((lang) => localStorage.setItem('dharma.language_preference', JSON.stringify(lang)), choice.lang);
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/learn/');
+
+    // PageHeader: the title in the chosen language, at title size and in the title's own colour.
+    const title = page.locator('#main-content h1').first();
+    const shown = title.locator(`[data-bi="${choice.shown}"]`);
+    await expect(shown).toBeVisible();
+    await expect(shown).toHaveText(choice.title);
+    await expect(title.locator(`[data-bi="${choice.hidden}"]`)).toBeHidden();
+    // Both halves stay in the page for crawlers and screen readers that ignore the choice.
+    await expect(title.locator(`[data-bi="${choice.hidden}"]`)).toHaveCount(1);
+    const look = await shown.evaluate((el) => ({
+      size: Number.parseFloat(getComputedStyle(el).fontSize),
+      sameColour: getComputedStyle(el).color === getComputedStyle(el.closest('h1') as HTMLElement).color,
+    }));
+    expect(look.size).toBeGreaterThanOrEqual(26);
+    if (choice.shown === 'hi') expect(look.sameColour).toBe(true);
+
+    // The eyebrow's second part here is a Sanskrit phrase, not a translation: both parts stay.
+    const eyebrow = page.locator('#main-content header p').first();
+    await expect(eyebrow).toContainText('Learn');
+    await expect(eyebrow.locator('[lang="sa"]')).toBeVisible();
+
+    // SectionTitle
+    const section = page.locator('#main-content h2').filter({ has: page.locator('[data-bi]') }).first();
+    await expect(section.locator(`[data-bi="${choice.shown}"]`)).toBeVisible();
+    await expect(section.locator(`[data-bi="${choice.hidden}"]`)).toBeHidden();
+
+    // Footer links
+    const link = page.locator('footer nav a').first();
+    await expect(link.locator(`[data-bi="${choice.shown}"]`)).toBeVisible();
+    await expect(link.locator(`[data-bi="${choice.hidden}"]`)).toBeHidden();
+
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(1);
+  });
+}

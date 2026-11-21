@@ -778,12 +778,24 @@ html[data-ui-lang='english'] [data-bi='en'] {
     color: inherit;
     opacity: 1;
 }
+/* The night theme recolours muted text with a three-part selector (globals.css), which would
+   leave the half that stays in the muted tone there; this outranks it. */
+:root[data-theme='night']:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='hi'],
+:root[data-theme='night'][data-ui-lang='english'] [data-bi='en'] {
+    color: inherit;
+}
 /* data-bi-lead: where the second language is set smaller, it takes the label's own size and
    weight when it stands alone. */
 html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='hi'][data-bi-lead],
 html[data-ui-lang='english'] [data-bi='en'][data-bi-lead] {
     font-size: inherit;
     font-weight: inherit;
+}
+/* A page title (PageHeader) standing in Hindi alone sits one step under the large title: the
+   Hindi line is usually the longer of the two, and Devanagari reads larger at the same size. */
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) h1 > [data-bi='hi'][data-bi-lead] {
+    font-size: var(--text-title-1);
+    line-height: 1.3;
 }
 /* data-bi="en-only": the English for a label that is Hindi alone by default (a tight bar with
    no room for both). It shows only when English is chosen. */

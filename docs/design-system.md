@@ -193,6 +193,12 @@ React pieces:
   `eyebrowLang="sa"` marks a Sanskrit phrase in the eyebrow.
 - `SectionTitle`: optional eyebrow, title and Hindi line, sub line, trailing link, and the
   accent rule that draws itself in. Use it for every section heading.
+- Two-language labels: the English half carries `data-bi="en"`, the Hindi half `data-bi="hi"`
+  and any "·" between them `data-bi="sep"`, so the reader's language choice (the header menu,
+  mirrored on `<html data-ui-lang>`) shows one of them. `PageHeader`, `SectionTitle`, `Eyebrow`
+  and the footer mark theirs already; a Sanskrit phrase beside an English title is not its
+  translation and stays unmarked. Both halves stay in the HTML. The rules are under
+  "Two-language labels" in `components.css`.
 - `CountUp` (`app/components/motion/CountUp.tsx`): a number that counts up once when it scrolls
   into view. The HTML always has the true value.
 - `WisdomTicker` (`app/components/home/WisdomTicker.tsx`): the slow band of mahāvākyas on home.
