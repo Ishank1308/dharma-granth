@@ -256,7 +256,13 @@ jobs:
           mv dist/og/verse share-images/og/verse
           printf '/*\n  Cache-Control: public, max-age=86400\n  X-Content-Type-Options: nosniff\n' > share-images/_headers
           printf '\n/og/verse/* %s/og/verse/:splat 301\n' "$NEXT_PUBLIC_SHARE_IMAGE_ORIGIN" >> dist/_redirects
-          sample="$(cd share-images && find og/verse -name '*.jpg' | sort | head -n 1)"
+          # -print -quit, not "| head -n 1": head closing the pipe early makes
+          # find or sort fail with SIGPIPE, which pipefail turns into a failed step.
+          sample="$(cd share-images && find og/verse -type f -name '*.jpg' -print -quit)"
+          if [[ -z "$sample" ]]; then
+            echo "::error::No verse share images in the export; the site was not deployed."
+            exit 1
+          fi
           echo "SHARE_IMAGE_SAMPLE=$sample" >> "$GITHUB_ENV"
           echo "Share images: $(find share-images/og -type f | wc -l). Site files: $(find dist -type f | wc -l)."
 
