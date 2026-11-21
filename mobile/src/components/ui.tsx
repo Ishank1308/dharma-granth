@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 
 import { useAppState } from '@/state/app-state';
-import { RADIUS, SPACE, TYPE, type Palette } from '@/theme/themes';
+import { fontCap, RADIUS, SPACE, TITLE_FONT_CAP, TYPE, type Palette } from '@/theme/themes';
 
 /**
  * Frosted glass, after the website's Liquid Glass cards (app/styles/colour.css):
@@ -91,7 +91,9 @@ export function Bilingual({
   const { palette, settings, lang } = useAppState();
   return (
     <View style={[styles.bilingual, style]}>
-      <Text style={{ fontSize: size * settings.textScale, fontWeight: weight, color: color ?? palette.text }}>
+      <Text
+        maxFontSizeMultiplier={fontCap(settings.textScale)}
+        style={{ flexShrink: 1, fontSize: size * settings.textScale, fontWeight: weight, color: color ?? palette.text }}>
         {lang === 'hi' ? hi : en}
       </Text>
     </View>
@@ -102,7 +104,9 @@ export function Bilingual({
 export function PageTitle({ en, hi }: { en: string; hi: string }) {
   const { palette, lang } = useAppState();
   return (
-    <Text style={{ color: palette.text, fontSize: 34, fontWeight: '800', letterSpacing: lang === 'hi' ? 0 : -0.6 }}>
+    <Text
+      maxFontSizeMultiplier={TITLE_FONT_CAP}
+      style={{ color: palette.text, fontSize: 34, fontWeight: '800', letterSpacing: lang === 'hi' ? 0 : -0.6 }}>
       {lang === 'hi' ? hi : en}
     </Text>
   );
@@ -167,7 +171,7 @@ export function Eyebrow({ en, hi, style }: { en: string; hi: string; style?: Sty
   return (
     <View style={[styles.eyebrow, glass(palette), style]}>
       <View style={[styles.dot, { backgroundColor: palette.accent }]} />
-      <Text style={{ color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.6 }}>
+      <Text style={{ flexShrink: 1, color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.6 }}>
         {lang === 'hi' ? hi : en.toUpperCase()}
       </Text>
     </View>
@@ -178,7 +182,7 @@ export function SectionTitle({ en, hi }: { en: string; hi: string }) {
   const { palette, lang } = useAppState();
   return (
     <View style={styles.sectionTitle}>
-      <Text style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
+      <Text style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
         {lang === 'hi' ? hi : en}
       </Text>
     </View>
@@ -187,7 +191,11 @@ export function SectionTitle({ en, hi }: { en: string; hi: string }) {
 
 export function Muted({ children, style }: { children: ReactNode; style?: StyleProp<TextStyle> }) {
   const { palette, settings } = useAppState();
-  return <Text style={[{ color: palette.muted, fontSize: TYPE.footnote * settings.textScale }, style]}>{children}</Text>;
+  return (
+    <Text maxFontSizeMultiplier={fontCap(settings.textScale)} style={[{ color: palette.muted, fontSize: TYPE.footnote * settings.textScale }, style]}>
+      {children}
+    </Text>
+  );
 }
 
 const styles = StyleSheet.create({

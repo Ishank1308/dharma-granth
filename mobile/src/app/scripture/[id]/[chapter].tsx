@@ -11,7 +11,7 @@ import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
-import { SPACE, TYPE } from '@/theme/themes';
+import { SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 export default function ChapterScreen() {
   const params = useLocalSearchParams<{ id: string; chapter: string; verse?: string }>();
@@ -114,7 +114,9 @@ export default function ChapterScreen() {
           ListHeaderComponent={
             <View style={{ marginBottom: SPACE.lg, alignItems: 'center', rowGap: SPACE.xs }}>
               <Eyebrow en={`Chapter ${chapterNo}`} hi={`अध्याय ${toDevanagari(chapterNo)}`} style={{ alignSelf: 'center' }} />
-              <Text style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '800', textAlign: 'center', marginTop: SPACE.xs }}>
+              <Text
+                maxFontSizeMultiplier={TITLE_FONT_CAP}
+                style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '800', textAlign: 'center', marginTop: SPACE.xs }}>
                 {meta.titleSanskrit ?? meta.title}
               </Text>
               {meta.titleSanskrit ? <Text style={{ color: palette.muted, fontSize: TYPE.subhead }}>{meta.title}</Text> : null}
@@ -158,7 +160,8 @@ export default function ChapterScreen() {
 
 const styles = StyleSheet.create({
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: SPACE.xl },
-  pager: { flexDirection: 'row', justifyContent: 'space-between', marginTop: SPACE.lg },
+  // Wraps onto two lines rather than overflowing when both buttons are wide at large font sizes.
+  pager: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', gap: SPACE.sm, marginTop: SPACE.lg },
   pageBtn: {
     flexDirection: 'row',
     alignItems: 'center',
