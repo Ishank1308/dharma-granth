@@ -59,13 +59,13 @@ const BOOKS = new URL('../src/content/generated/books/', import.meta.url).pathna
 test('bundled content keeps every Sanskrit line', { skip: !existsSync(BOOKS) && 'run `npm run content` first' }, () => {
   const strip = (s) => s.replace(/[\s|।॥0-9०-९.]/gu, '');
   let checked = 0;
-  for (const name of readdirSync(BOOKS)) {
-    const book = JSON.parse(readFileSync(join(BOOKS, name), 'utf8'));
-    for (const ch of book.chapters) {
+  for (const id of readdirSync(BOOKS)) {
+    for (const name of readdirSync(join(BOOKS, id))) {
+      const ch = JSON.parse(readFileSync(join(BOOKS, id, name), 'utf8'));
       for (const v of ch.verses) {
         if (!v.sanskrit) continue;
         // Only digits, dandas and whitespace may be dropped by line splitting.
-        assert.equal(strip(sanskritLines(v.sanskrit).join('')), strip(v.sanskrit), `${book.id} ${ch.number}.${v.number}`);
+        assert.equal(strip(sanskritLines(v.sanskrit).join('')), strip(v.sanskrit), `${id} ${ch.number}.${v.number}`);
         checked++;
       }
     }
