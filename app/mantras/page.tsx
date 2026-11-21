@@ -108,7 +108,7 @@ const jsonLd = {
 
 export default function MantrasPage() {
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
+    <main data-deva-labels className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

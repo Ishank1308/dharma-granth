@@ -87,7 +87,7 @@ export function SiteFooter() {
                       className="link-lift inline-block py-3 hover:text-dharma-text hover:underline sm:py-1"
                     >
                       <span>{link.en}</span>{' '}
-                      <span lang="hi" className="font-devanagari">
+                      <span lang="hi" className="inline-block font-devanagari">
                         {link.hi}
                       </span>
                     </Link>

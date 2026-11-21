@@ -37,7 +37,7 @@ const FAQ = [
 
 export default function PanchangPage() {
   return (
-    <main data-cosmos className="apple-scope min-h-screen bg-dharma-bg">
+    <main data-cosmos data-deva-labels className="apple-scope min-h-screen bg-dharma-bg">
       {/* ─── THE NIGHT SKY: Kāla-chakra and the five limbs of time ───────── */}
       <PanchangCosmos />
 

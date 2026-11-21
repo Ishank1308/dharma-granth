@@ -369,6 +369,14 @@ a.apple-row:active,
 .verse-card.vt .vt-sa > span {
     padding-block: 0.125rem;
 }
+/* A half-verse too wide for a phone breaks into even parts instead of leaving one word alone
+   on a second line; in most metres the even break is the pāda boundary. Wrapping only: every
+   line is still complete. The verse page's own Sanskrit block (ReaderLayers) follows suit. */
+.verse-card.book-verse .verse-folio > p[lang='sa'] > span,
+.verse-card.vt .vt-sa > span,
+p.verse-folio[lang='sa'] > span {
+    text-wrap: balance;
+}
 .verse-card.book-verse .verse-folio,
 .verse-card.vt .vt-leaf {
     padding-block: var(--space-4) var(--space-5);

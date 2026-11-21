@@ -231,6 +231,17 @@
     }
 }
 
+/* The shloka over a photo: a soft halo of the card's own surface behind the letters, so a stroke
+   that lands on a face or a border pattern keeps its edge. It follows the text, so the picture
+   is not dimmed any further than the veil already does. */
+:root:not([data-data-saver='true']) [data-photo] :is(.verse-folio, .vt-leaf) > p[lang='sa'],
+:root:not([data-data-saver='true']) [data-photo] p.verse-folio[lang='sa'] {
+    text-shadow:
+        0 0 2px var(--surface-raised),
+        0 0 8px var(--surface-raised),
+        0 0 18px var(--surface-raised);
+}
+
 /* In the light themes the verse number (॥ 47 ॥) sat in a pale ink on the pale photo wash
    and nearly vanished. Over a photo it takes the text colour with a soft halo of the page. */
 :root:not([data-theme='night']):not([data-theme='dark']) [data-photo] .verse-folio :is(.verse-mark, .vt-num) {
