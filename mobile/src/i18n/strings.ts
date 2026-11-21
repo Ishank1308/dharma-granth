@@ -304,4 +304,10 @@ export const S = {
   toastSaved: { en: 'Saved to your collection', hi: 'आपके संग्रह में सहेजा गया' },
   toastRemoved: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
   undo: { en: 'Undo', hi: 'वापस लें' },
+
+  // A book's title page: its size in plain words, under the English title
+  titlePageFacts: (chapters: number, verses: number) => ({
+    en: `${n(chapters)} ${chapters === 1 ? 'chapter' : 'chapters'} and ${n(verses)} verses`,
+    hi: `${n(chapters)} अध्याय, ${n(verses)} श्लोक`,
+  }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;

@@ -13,7 +13,6 @@ import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { AnimatedSectionList, useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
-import { Reveal } from '@/motion/reveal';
 import { TitleBar } from '@/motion/title-bar';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
@@ -165,12 +164,8 @@ export default function LibraryScreen() {
                 {lang === 'hi' ? S.appName.en : S.appName.hi}
               </Text>
             </LargeHeader>
-            <Reveal index={0}>
-              <ContinueCard />
-            </Reveal>
-            <Reveal index={1}>
-              <DailyVerseCard />
-            </Reveal>
+            <ContinueCard />
+            <DailyVerseCard />
             <View style={[styles.search, glass(palette, true)]}>
               <Ionicons name="search" size={18} color={palette.muted} />
               <TextInput

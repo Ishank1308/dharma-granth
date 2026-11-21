@@ -1,18 +1,24 @@
 /**
- * A book's title page: its cover colours washed with the website's watercolour for that family of texts, a slowly
- * turning gilt mandala, and the book itself standing in 3D (Book3D), above the title and the epigraph.
+ * A book's title page, and the one lavish thing in the app. The rest of the interface stays quiet, so that
+ * opening a book feels like opening a book.
  *
- * Scroll-linked when given `scrollY`: the painting drifts at a third of the page's speed and the book at a fifth,
- * so the layers separate in depth as the chapter list slides up over them. All of that switches off with light
- * effects or reduce motion, leaving the same page, still.
+ * Set like an illuminated manuscript's title page: the book's cover colours, washed with the website's
+ * watercolour for that family of texts, a gilt mandala behind the book itself standing in 3D (Book3D), then
+ * the title in Tiro Devanagari (the website's shloka face), the English name and the size of the book in plain
+ * words, and the title-page line set between dandas (॥), the way a verse closes in the text.
+ *
+ * Motion is one orchestrated moment: as the page opens, the book turns from its spine to face you and settles,
+ * the mandala blooms behind it, and the words arrive after it. Nothing else on the page animates on its own
+ * (scroll parallax only follows your finger). With reduce motion the page is simply there; with light effects
+ * the painting is a faint static wash and the mandala is still.
  */
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import Animated, { type SharedValue, useSharedValue } from 'react-native-reanimated';
+import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withSpring, withTiming, type SharedValue } from 'react-native-reanimated';
 
 import { coverFill } from '@/components/ui';
 import { useParallax } from '@/motion/parallax';
-import { Reveal } from '@/motion/reveal';
+import { DURATION, SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
 import { useAppState } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
@@ -22,91 +28,120 @@ import { Book3D } from './book-3d';
 import { artFor } from './cover-art';
 import { Mandala } from './mandala';
 
+/**
+ * Tiro Devanagari Sanskrit, embedded by the typography work (#429, src/theme/fonts.ts). Until that font is in
+ * the build the phone's own Devanagari face is used, so nothing breaks without it.
+ */
+const TITLE_FACE = 'TiroDevanagariSanskrit';
+
 export function BookHero({
   cover,
   category,
-  eyebrow,
+  kind,
   title,
-  subtitle,
+  englishTitle,
+  facts,
   letter,
   scrollY,
   children,
 }: {
   cover: Cover;
+  /** Category key, for the painting. */
   category: string;
-  eyebrow?: string;
+  /** The family of texts in the reader's language ("Itihasa", "इतिहास"). */
+  kind?: string;
+  /** The title in Devanagari. */
   title: string;
-  subtitle: string;
+  englishTitle?: string;
+  /** The book's size in plain words ("18 chapters and 701 verses"). */
+  facts: string;
   letter: string;
   scrollY?: SharedValue<number>;
   children?: ReactNode;
 }) {
   const { palette } = useAppState();
-  const { rich } = useMotion();
+  const { animate, rich } = useMotion();
   const fallback = useSharedValue(0);
   const y = scrollY ?? fallback;
   const art = useParallax(y, 0.33, { enabled: rich });
-  const book = useParallax(y, 0.18, { enabled: rich, scaleBy: 0.08 });
+  const stage = useParallax(y, 0.18, { enabled: rich, scaleBy: 0.08 });
+
+  // The opening: 0 → 1 for the book, the mandala and the words, each on its own clock.
+  const book = useSharedValue(animate ? 0 : 1);
+  const bloom = useSharedValue(animate ? 0 : 1);
+  const words = useSharedValue(animate ? 0 : 1);
+  useEffect(() => {
+    if (!animate) return;
+    book.set(withSpring(1, SPRING.gentle));
+    bloom.set(withDelay(120, withTiming(1, { duration: 700, easing: Easing.out(Easing.cubic) })));
+    words.set(withDelay(260, withTiming(1, { duration: DURATION.enter, easing: Easing.out(Easing.quad) })));
+  }, [animate, book, bloom, words]);
+
+  const bookIn = useAnimatedStyle(() => ({
+    opacity: Math.min(1, book.value * 1.6),
+    transform: [{ perspective: 900 }, { translateY: (1 - book.value) * 26 }, { rotateY: `${(1 - book.value) * -38}deg` }, { scale: 0.92 + book.value * 0.08 }],
+  }));
+  const bloomIn = useAnimatedStyle(() => ({ opacity: bloom.value, transform: [{ scale: 0.82 + bloom.value * 0.18 }, { rotate: `${(1 - bloom.value) * -24}deg` }] }));
+  const wordsIn = useAnimatedStyle(() => ({ opacity: words.value, transform: [{ translateY: (1 - words.value) * 8 }] }));
+
   const [deep] = cover.colors;
 
   return (
     <View style={[styles.hero, coverFill(cover, palette, true), !palette.lite && styles.lift]}>
-      {/* The painting, blended into the cover colours. */}
-      {/* The blend sits on the moving layer itself: a blend inside a transformed wrapper would only blend with the wrapper. */}
+      {/* The painting, blended into the cover colours. The blend sits on the moving layer itself: a blend inside
+          a transformed wrapper would only blend with the wrapper. */}
       <Animated.View
         pointerEvents="none"
         style={[styles.art, { opacity: palette.lite ? 0.16 : 0.85, mixBlendMode: palette.lite ? undefined : 'soft-light' }, art]}>
-        <Image
-          source={artFor(category)}
-          resizeMode="cover"
-          accessibilityIgnoresInvertColors
-          style={{ width: '100%', height: '100%' }}
-        />
+        <Image source={artFor(category)} resizeMode="cover" accessibilityIgnoresInvertColors style={{ width: '100%', height: '100%' }} />
       </Animated.View>
       {!palette.lite ? (
         <>
-          <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundImage: `radial-gradient(65% 45% at 50% 22%, ${cover.colors[2]} 0%, transparent 72%)`, opacity: 0.5 }]} />
-          {/* Deepens toward the foot, so the white title and gilt line stay readable over any painting. */}
-          <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundImage: `linear-gradient(180deg, transparent 30%, ${deep}cc 78%, ${deep} 100%)` }]} />
+          <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundImage: `radial-gradient(60% 40% at 50% 24%, ${cover.colors[2]} 0%, transparent 72%)`, opacity: 0.45 }]} />
+          {/* Deepens toward the foot, so the white title and the gilt line stay readable over any painting. */}
+          <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundImage: `linear-gradient(180deg, transparent 34%, ${deep}d9 72%, ${deep} 100%)` }]} />
         </>
       ) : null}
 
-      <Animated.View style={[styles.stage, book]}>
-        <Mandala size={250} color={cover.foil} opacity={0.22} spin={rich} petals={16} style={styles.mandala} />
-        <Book3D cover={cover} letter={letter} width={112} />
+      <Animated.View style={[styles.stage, stage]}>
+        <Animated.View style={[styles.mandala, bloomIn]}>
+          <Mandala size={250} color={cover.foil} opacity={0.24} spin={rich} petals={16} />
+        </Animated.View>
+        <Animated.View style={bookIn}>
+          <Book3D cover={cover} letter={letter} width={112} />
+        </Animated.View>
       </Animated.View>
 
-      <Reveal index={1} style={styles.text}>
-        {eyebrow ? (
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={[styles.eyebrow, { color: cover.foil }]}>
-            {eyebrow}
+      <Animated.View style={[styles.words, wordsIn]}>
+        {kind ? (
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={[styles.kind, { color: cover.foil }]}>
+            {kind}
           </Text>
         ) : null}
         <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.title}>
           {title}
         </Text>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.sub}>
-          {subtitle}
+        {englishTitle ? (
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.english}>
+            {englishTitle}
+          </Text>
+        ) : null}
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.facts}>
+          {facts}
         </Text>
         {cover.epigraph ? (
           <View style={styles.epigraph}>
-            <View style={styles.ruleRow}>
-              <View style={[styles.rule, { backgroundColor: cover.foil }]} />
-              <Text allowFontScaling={false} style={{ color: cover.foil, fontSize: 12 }}>
-                ✦
-              </Text>
-              <View style={[styles.rule, { backgroundColor: cover.foil }]} />
-            </View>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: cover.foil, fontSize: TYPE.callout + 1, lineHeight: (TYPE.callout + 1) * 1.6, textAlign: 'center' }}>
-              {cover.epigraph.sa}
+            {/* Between dandas, as a verse closes in the text itself (a line that already ends in one keeps just the pair). */}
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={[styles.line, { color: cover.foil }]}>
+              ॥ {cover.epigraph.sa.replace(/[\s।॥]+$/, '')} ॥
             </Text>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: 'rgba(255,255,255,0.75)', fontSize: TYPE.caption, textAlign: 'center' }}>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.source}>
               {cover.epigraph.source}
             </Text>
           </View>
         ) : null}
         {children}
-      </Reveal>
+      </Animated.View>
     </View>
   );
 }
@@ -115,13 +150,16 @@ const styles = StyleSheet.create({
   hero: { borderRadius: RADIUS.panel, overflow: 'hidden', paddingBottom: SPACE.xl },
   lift: { boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.28), 0 18px 40px rgba(10,20,50,0.32)' },
   art: { position: 'absolute', left: 0, right: 0, top: -60, bottom: -20 },
-  stage: { alignItems: 'center', justifyContent: 'center', paddingTop: SPACE.lg, height: 208 },
+  stage: { alignItems: 'center', justifyContent: 'center', paddingTop: SPACE.lg, height: 212 },
   mandala: { position: 'absolute', top: SPACE.lg + 181 / 2 - 125 },
-  text: { alignItems: 'center', paddingHorizontal: SPACE.xl - 2, rowGap: 2 },
-  eyebrow: { fontSize: TYPE.caption, fontWeight: '700', letterSpacing: 1.4, textTransform: 'uppercase', marginBottom: SPACE.xs },
-  title: { color: '#ffffff', fontSize: 32, lineHeight: 48, fontWeight: '600', textAlign: 'center' },
-  sub: { color: 'rgba(255,255,255,0.86)', fontSize: TYPE.subhead, textAlign: 'center' },
-  epigraph: { marginTop: SPACE.md, rowGap: SPACE.xs, alignItems: 'center', alignSelf: 'stretch' },
-  ruleRow: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm, alignSelf: 'stretch', justifyContent: 'center' },
-  rule: { height: 1, flex: 1, maxWidth: 90, opacity: 0.55 },
+  // Centred: a title page is the one place in the app where the text sits on the axis of the book.
+  words: { alignItems: 'center', paddingHorizontal: SPACE.xl - 2 },
+  kind: { fontSize: TYPE.footnote, fontWeight: '600', marginBottom: SPACE.xs },
+  // The largest type in the app, and the only Devanagari display face: the book's name, as on its cover.
+  title: { fontFamily: TITLE_FACE, color: '#ffffff', fontSize: 38, lineHeight: 58, textAlign: 'center' },
+  english: { color: '#ffffff', fontSize: TYPE.body, fontWeight: '600', textAlign: 'center', marginTop: -2 },
+  facts: { color: 'rgba(255,255,255,0.74)', fontSize: TYPE.subhead, textAlign: 'center', marginTop: 2 },
+  epigraph: { marginTop: SPACE.lg, rowGap: 2, alignItems: 'center', maxWidth: 320 },
+  line: { fontFamily: TITLE_FACE, fontSize: TYPE.title3 + 1, lineHeight: (TYPE.title3 + 1) * 1.7, textAlign: 'center' },
+  source: { color: 'rgba(255,255,255,0.7)', fontSize: TYPE.caption, textAlign: 'center' },
 });

@@ -13,7 +13,6 @@ import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useScrollProgressStyle, useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
-import { Reveal } from '@/motion/reveal';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
 import { BAR_GAP, BAR_HEIGHT, barClearance, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
@@ -112,9 +111,10 @@ export default function ScriptureScreen() {
               <BookHero
                 cover={cover}
                 category={entry.category}
-                eyebrow={cat ? t(cat) : undefined}
+                kind={cat ? t(cat) : undefined}
                 title={entry.titleSanskrit ?? entry.title}
-                subtitle={`${entry.title} · ${t(S.chaptersVerses(entry.chapters.length, entry.totalVerses))}`}
+                englishTitle={entry.titleSanskrit ? entry.title : undefined}
+                facts={t(S.titlePageFacts(entry.chapters.length, entry.totalVerses))}
                 letter={monogram(entry.titleSanskrit ?? entry.title)}
                 scrollY={scrollY}>
                 <View style={styles.badges}>
@@ -140,7 +140,6 @@ export default function ScriptureScreen() {
           renderItem={({ item, index }) => {
             const current = resume?.number === item.number;
             return (
-              <Reveal index={index + 2}>
               <GroupRow
                 first={index === 0}
                 last={index === last}
@@ -162,7 +161,6 @@ export default function ScriptureScreen() {
                 </View>
                 <Ionicons name={offline ? 'chevron-forward' : 'open-outline'} size={18} color={palette.muted} />
               </GroupRow>
-              </Reveal>
             );
           }}
         />

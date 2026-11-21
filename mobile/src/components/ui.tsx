@@ -204,8 +204,9 @@ export function Eyebrow({ en, hi, style }: { en: string; hi: string; style?: Sty
   return (
     <View style={[styles.eyebrow, glass(palette), style]}>
       <View style={[styles.dot, { backgroundColor: palette.accent }]} />
-      <Text style={{ flexShrink: 1, color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.6 }}>
-        {lang === 'hi' ? hi : en.toUpperCase()}
+      {/* Sentence case, untracked: a quiet label, not a shouted one. */}
+      <Text style={{ flexShrink: 1, color: palette.accent, fontSize: TYPE.footnote, fontWeight: '600' }}>
+        {lang === 'hi' ? hi : en}
       </Text>
     </View>
   );

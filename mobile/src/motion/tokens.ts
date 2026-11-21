@@ -20,20 +20,13 @@ export const SPRING = {
 
 export const DURATION = {
   /**
-   * A content fade, as a screen's rows arrive. NN/g puts most UI motion at 100–500 ms and warns that
-   * animation seen often should be shorter: these screens open many times a day, so it stays under 300.
+   * Content arriving (a book's title page opening, a toast). NN/g puts most UI motion at 100–500 ms and warns
+   * that motion seen often should be shorter, so arrivals stay under 300 ms.
    */
   enter: 280,
-  /** One step of a staggered list: ten rows land within a third of a second. */
-  stagger: 32,
-  /** Simple feedback (a toggle, a toast leaving): about 100–200 ms. */
+  /** Simple feedback and anything leaving (a toast going): exits are quicker than entrances. */
   quick: 180,
-  /** The slow breath of ambient artwork (drift, foil shimmer). */
-  ambient: 9000,
 } as const;
-
-/** Only the first rows of a list arrive with a stagger; the rest are already there when you scroll to them. */
-export const STAGGER_LIMIT = 10;
 
 /** How far a pressed card sinks. */
 export const PRESS_SCALE = 0.97;
