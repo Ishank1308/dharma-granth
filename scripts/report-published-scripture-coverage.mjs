@@ -11,10 +11,10 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { readPublishedCommentary } from './lib/commentary-store.mjs';
 
 const ROOT = process.cwd();
 const ROOT_DIR = path.join(ROOT, 'public', 'data', 'scriptures-full');
-const OVERLAY_DIR = path.join(ROOT, 'public', 'data', 'hi-commentary');
 const JSON_MODE = process.argv.includes('--json');
 const WRITE_MODE = process.argv.includes('--write');
 
@@ -55,8 +55,8 @@ for (const id of ids) {
   }
 
   const manifest = readJson(manifestFile);
-  const overlayFile = path.join(OVERLAY_DIR, id + '.json');
-  const overlay = fs.existsSync(overlayFile) ? readJson(overlayFile) : {};
+  // One folder of section files per scripture (docs/commentary-storage.md).
+  const overlay = readPublishedCommentary(id, ROOT);
   const row = {
     id,
     chapters: 0,

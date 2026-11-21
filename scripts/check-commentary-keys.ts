@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { canonicalVerseId } from "../lib/canonical-verse-id";
+import { readRecord, recordExists, unitFiles } from "./lib/commentary-store.mjs";
 
 const args = process.argv.slice(2);
 if (args.length && (args.length !== 2 || args[0] !== "--scripture" || !/^[a-z0-9-]+$/.test(args[1]))) {
@@ -12,7 +13,8 @@ const selected = args[1];
 const queueDir = path.resolve("data/ai-commentary");
 const publishedDir = path.resolve("public/data/hi-commentary");
 const proposalDir = path.resolve("data/ai-commentary/proposals");
-const names = (dir: string) => fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith(".json") && !f.endsWith("-research.json")).map(f => f.slice(0, -5)) : [];
+// A record is <id>.json or a folder of section files <id>/<chapter>-<unit>.json (scripts/lib/commentary-store.mjs).
+const names = (dir: string) => fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => (f.endsWith(".json") || unitFiles(path.join(dir, f)).length > 0) && !/-research(\.json)?$/.test(f)).map(f => f.replace(/\.json$/, "")) : [];
 const ids = selected ? [selected] : [...new Set([...names(queueDir), ...names(publishedDir), ...names(proposalDir)])].sort();
 let problems = 0, checked = 0, files = 0;
 function report(message: string) { if (problems < 50) console.error(message); problems++; }
@@ -27,13 +29,12 @@ for (const id of ids) {
     if (Number.isFinite(numeric)) keys.add(`${n}:${numeric}`);
     for (const key of keys) verses.set(key, [...(verses.get(key) ?? []), verse.sanskrit]);
   }
-  const queueFile = path.join(queueDir, `${id}.json`);
-  const queue = fs.existsSync(queueFile) ? JSON.parse(fs.readFileSync(queueFile, "utf8")) : {};
+  const queue = readRecord(path.join(queueDir, id));
   for (const [kind, dir] of [["queue", queueDir], ["published", publishedDir], ["proposal", proposalDir]] as const) {
-    const file = path.join(dir, `${id}.json`);
-    if (!fs.existsSync(file)) continue;
+    const base = path.join(dir, id);
+    if (!recordExists(base)) continue;
     files++;
-    const entries = JSON.parse(fs.readFileSync(file, "utf8"));
+    const entries = readRecord(base);
     if (!entries || typeof entries !== "object" || Array.isArray(entries)) { report(`${id} ${kind}: expected an object`); continue; }
     for (const [key, raw] of Object.entries(entries)) {
       checked++;

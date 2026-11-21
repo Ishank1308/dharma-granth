@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import { commentaryAmbiguities, commentaryLookupKey, lookupCommentary } from '../lib/commentary-lookup';
 import { commentaryOf } from '../lib/verse-has-meaning';
 import { commentaryFor, verseMeaningSummary } from '../lib/verse-meaning';
+import { readPublishedCommentary } from '../scripts/lib/commentary-store.mjs';
 
 test('exact dotted identifiers take precedence and ambiguous shortened keys are suppressed', () => {
   const all = { '1:1': 'ambiguous', '1:2.1': 'exact second', '1:3': 'unique' };
@@ -29,7 +30,7 @@ test('numeric, unique dotted and duplicate raw identifiers resolve safely', () =
 test('real Mahabharata collisions are suppressed and Prashna exact entries are preferred', () => {
   const chapter = JSON.parse(fs.readFileSync('public/data/scriptures-full/mahabharata/ch-1.json', 'utf8')).chapter;
   const context = commentaryAmbiguities(1, chapter.verses.map((v: { number: number | string }) => v.number));
-  const comments = JSON.parse(fs.readFileSync('public/data/hi-commentary/mahabharata.json', 'utf8'));
+  const comments = readPublishedCommentary('mahabharata');
   assert.ok(context.normalized.has('1:1'));
   assert.ok(comments['1:1']);
   assert.equal(lookupCommentary(comments, 1, '1.1', context), undefined);
@@ -38,7 +39,7 @@ test('real Mahabharata collisions are suppressed and Prashna exact entries are p
   assert.equal(verseMeaningSummary('mahabharata', 1, { number: '2.1' }).explanation, false);
   const prashna = JSON.parse(fs.readFileSync('public/data/scriptures-full/prashna/ch-1.json', 'utf8')).chapter;
   const pcontext = commentaryAmbiguities(1, prashna.verses.map((v: { number: number | string }) => v.number));
-  const pcomments = JSON.parse(fs.readFileSync('public/data/hi-commentary/prashna.json', 'utf8'));
+  const pcomments = readPublishedCommentary('prashna');
   assert.equal(lookupCommentary(pcomments, 1, '1.9', pcontext), pcomments['1:1.9']);
   assert.equal(commentaryFor('prashna', 1, '1.9')?.explanation, pcomments['1:1.9'].explanation);
 });
