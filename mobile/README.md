@@ -13,8 +13,17 @@ and English, readable offline, no account.
   with word meanings and commentary under Notes. The other large texts (Ramayana, Mahabharata, Puranas, Rig and Atharva Veda)
   open on dharmagranth.dev.
 - **Saved verses**, share a verse, four reading themes (Day, Sunset, Paper, Dark) and text size.
+- **Hindi or English interface**: Settings → Language switches menus, buttons and messages between
+  English and Hindi, and starts on the phone's language. Verse text is unaffected.
 - **Privacy**: bookmarks and settings live in on-device storage only. Settings → Backup exports a JSON
   file and imports it on another phone.
+
+## Interface text
+
+All interface strings live in `src/i18n/strings.ts` as `{ en, hi }` pairs (or functions returning one
+for counts and names). Read them with `const { t } = useI18n(); t(S.someKey)`, or spread a pair into
+components that take `en` and `hi` props (`<SectionTitle {...S.theme} />`). Add every new string there
+with both languages instead of writing it inline. Scripture text is content and never goes through it.
 
 ## Run it
 

@@ -12,6 +12,7 @@ import {
   toDevanagari,
   verseMarkNumber,
 } from '@/lib/verse-format';
+import { S, type Lang, type Msg } from '@/i18n';
 import type { Settings } from '@/lib/backup';
 import { SPACE, TYPE, type Palette } from '@/theme/themes';
 import { Card, glass } from './ui';
@@ -23,21 +24,23 @@ interface Props {
   verse: Verse;
   palette: Palette;
   settings: Settings;
+  /** Interface language, for labels and screen-reader text. The verse text itself is never translated. */
+  lang: Lang;
   bookmarked: boolean;
   onToggleBookmark: () => void;
 }
 
-function Label({ en, hi, palette, extra }: { en: string; hi: string; palette: Palette; extra?: string }) {
+function Label({ msg, lang, palette, extra }: { msg: Msg; lang: Lang; palette: Palette; extra?: string }) {
   return (
     <View style={styles.labelRow}>
-      <Text style={[styles.label, { color: palette.accent }]}>{en}</Text>
-      <Text style={[styles.label, { color: palette.muted }]}>{hi}</Text>
+      <Text style={[styles.label, { color: palette.accent }, lang === 'hi' && styles.labelHi]}>{msg[lang]}</Text>
       {extra ? <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{extra}</Text> : null}
     </View>
   );
 }
 
-function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, settings, bookmarked, onToggleBookmark }: Props) {
+function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, settings, lang, bookmarked, onToggleBookmark }: Props) {
+  const t = (m: Msg) => m[lang];
   const [notesOpen, setNotesOpen] = useState(settings.showNotes);
   const scale = settings.textScale;
   const ref = formatVerseRef(scriptureId, chapter, verse.number);
@@ -47,9 +50,9 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
   const english = cleanVerseField(verse.translation);
   const translit = cleanVerseField(verse.transliteration);
   const notes = [
-    { en: 'Word meaning', hi: 'शब्दार्थ', text: cleanVerseField(verse.wordMeaning) },
-    { en: 'Commentary', hi: 'व्याख्या', text: cleanVerseField(verse.commentary) },
-    { en: 'Explanation', hi: 'विवेचन', text: cleanVerseField(verse.explanation) },
+    { key: 'word', label: S.labelWordMeaning, text: cleanVerseField(verse.wordMeaning) },
+    { key: 'commentary', label: S.labelCommentary, text: cleanVerseField(verse.commentary) },
+    { key: 'explanation', label: S.labelExplanation, text: cleanVerseField(verse.explanation) },
   ].filter((n) => n.text);
 
   const share = () => {
@@ -77,7 +80,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
               borderColor: palette.dark ? 'rgba(229,193,88,0.3)' : 'rgba(198,146,52,0.3)',
             },
           ]}>
-          <Text style={[styles.ref, { color: palette.gold }]} accessibilityLabel={`Verse ${ref}`}>
+          <Text style={[styles.ref, { color: palette.gold }]} accessibilityLabel={t(S.verseA11y(ref))}>
             {ref}
           </Text>
         </View>
@@ -87,7 +90,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             hitSlop={6}
             style={[styles.iconBtn, glass(palette)]}
             accessibilityRole="button"
-            accessibilityLabel={`Share verse ${ref}`}>
+            accessibilityLabel={t(S.shareVerseA11y(ref))}>
             <Ionicons name="share-outline" size={18} color={palette.muted} />
           </Pressable>
           <Pressable
@@ -96,7 +99,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             style={[styles.iconBtn, glass(palette)]}
             accessibilityRole="button"
             accessibilityState={{ selected: bookmarked }}
-            accessibilityLabel={bookmarked ? `Remove bookmark ${ref}` : `Bookmark verse ${ref}`}>
+            accessibilityLabel={t(bookmarked ? S.unbookmarkVerseA11y(ref) : S.bookmarkVerseA11y(ref))}>
             <Ionicons name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={18} color={bookmarked ? palette.accent : palette.muted} />
           </Pressable>
         </View>
@@ -138,8 +141,8 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
       {settings.showHindi ? (
         <View style={styles.block}>
           <Label
-            en="Hindi"
-            hi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'हिन्दी अर्थ'}
+            msg={verse.hindiRange ? S.labelHindiRange(verse.hindiRange) : S.labelHindi}
+            lang={lang}
             palette={palette}
             extra={verse.hindiSource === 'ai' ? MEANING_COPY.aiLabelHi : undefined}
           />
@@ -167,8 +170,8 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
       {settings.showEnglish ? (
         <View style={styles.block}>
           <Label
-            en={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'English'}
-            hi="अंग्रेज़ी अनुवाद"
+            msg={verse.translationRange ? S.labelEnglishRange(verse.translationRange) : S.labelEnglish}
+            lang={lang}
             palette={palette}
             extra={verse.translationSource === 'ai' ? MEANING_COPY.aiLabelEn : undefined}
           />
@@ -194,14 +197,13 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             accessibilityRole="button"
             accessibilityState={{ expanded: notesOpen }}
             style={styles.notesToggle}>
-            <Text style={[styles.label, { color: palette.accent }]}>Notes</Text>
-            <Text style={[styles.label, { color: palette.muted }]}>टिप्पणी</Text>
+            <Text style={[styles.label, { color: palette.accent }, lang === 'hi' && styles.labelHi]}>{t(S.labelNotes)}</Text>
             <Ionicons name={notesOpen ? 'chevron-up' : 'chevron-down'} size={14} color={palette.muted} />
           </Pressable>
           {notesOpen
             ? notes.map((n) => (
-                <View key={n.en} style={{ marginTop: SPACE.sm }}>
-                  <Label en={n.en} hi={n.hi} palette={palette} />
+                <View key={n.key} style={{ marginTop: SPACE.sm }}>
+                  <Label msg={n.label} lang={lang} palette={palette} />
                   <Text
                     selectable
                     style={[
@@ -232,6 +234,8 @@ const styles = StyleSheet.create({
   block: { marginTop: SPACE.md },
   labelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: SPACE.sm, marginBottom: 2 },
   label: { fontSize: TYPE.caption, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
+  // Devanagari has no case, and letter-spacing breaks its conjuncts apart.
+  labelHi: { fontSize: TYPE.footnote, letterSpacing: 0 },
   badge: { fontSize: 10, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4 },
   body: {},
   notesToggle: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm, paddingVertical: SPACE.xs },
