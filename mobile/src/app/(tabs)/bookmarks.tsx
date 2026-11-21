@@ -1,7 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { AccessibilityInfo, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CollectionSheet, useCollectionName } from '@/components/collection-sheet';
@@ -10,17 +11,23 @@ import { getEntry, loadChapter } from '@/content/catalog';
 import { S, useI18n } from '@/i18n';
 import { cleanVerseField, formatVerseRef, meaningState, MEANING_COPY, sanskritLines } from '@/lib/verse-format';
 import { allCollections, collectionCounts, collectionOf, type VerseLink } from '@/lib/journal';
+import { useScrollY } from '@/motion/parallax';
+import { PressableScale } from '@/motion/pressable-scale';
+import { TitleBar } from '@/motion/title-bar';
+import { useToast } from '@/motion/toast';
 import { toScript } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
-import { sanskritFont } from '@/theme/fonts';
+import { SANSKRIT_FONT, sanskritFont } from '@/theme/fonts';
 import { coverFor } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export default function BookmarksScreen() {
   const insets = useSafeAreaInsets();
-  const { palette, settings, bookmarks, removeBookmark } = useAppState();
+  const { palette, settings, bookmarks, removeBookmark, toggleBookmark } = useAppState();
   const { journal, dropVerse } = useJournal();
+  const { scrollY, onScroll } = useScrollY();
+  const toast = useToast();
   const scale = settings.textScale;
   const cap = fontCap(scale);
   const { t } = useI18n();
@@ -36,8 +43,10 @@ export default function BookmarksScreen() {
 
   return (
     <Backdrop>
-      <FlatList
+      <Animated.FlatList
         style={{ backgroundColor: 'transparent' }}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
         contentContainerStyle={{ flexGrow: 1, paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}
         data={shown}
         keyExtractor={(b) => `${b.id}:${b.chapter}:${b.verse}`}
@@ -45,6 +54,7 @@ export default function BookmarksScreen() {
           <View>
             <LargeHeader
               title={S.savedTitle}
+              scrollY={scrollY}
               eyebrow={S.savedEyebrow}
               subtitle={bookmarks.length ? t(S.savedSummary(bookmarks.length)) : undefined}
             />
@@ -92,22 +102,34 @@ export default function BookmarksScreen() {
             <Muted style={{ textAlign: 'center', marginTop: SPACE.xl, fontSize: TYPE.callout }}>{t(S.collectionEmpty)}</Muted>
           ) : (
           <View style={styles.empty}>
-            <View style={[styles.emptyIcon, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.14)' : 'rgba(194,65,12,0.10)' }]}>
-              <Ionicons name="flower-outline" size={44} color={huesFor(palette).saffron} />
+            {/* The double danda that closes every verse, in gilt: the place where kept verses will gather. */}
+            <View
+              importantForAccessibility="no-hide-descendants"
+              accessibilityElementsHidden
+              style={[
+                styles.emptyIcon,
+                palette.lite
+                  ? { backgroundColor: palette.dark ? 'rgba(229,193,88,0.12)' : 'rgba(198,146,52,0.12)' }
+                  : { backgroundImage: `radial-gradient(circle at 50% 40%, ${palette.dark ? 'rgba(229,193,88,0.26)' : 'rgba(198,146,52,0.24)'} 0%, transparent 70%)` },
+              ]}>
+              <Text allowFontScaling={false} style={{ fontFamily: SANSKRIT_FONT, color: palette.gold, fontSize: 44, lineHeight: 70 }}>
+                ॥
+              </Text>
             </View>
             <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '700', textAlign: 'center' }}>
               {t(S.savedEmptyTitle)}
             </Text>
             <Muted style={{ textAlign: 'center', fontSize: TYPE.callout, lineHeight: TYPE.callout * 1.5 }}>{t(S.savedEmpty)}</Muted>
             {getEntry('bhagavadgita') ? (
-              <Pressable
+              <PressableScale
+                haptic
                 accessibilityRole="button"
                 onPress={() => router.push({ pathname: '/scripture/[id]', params: { id: 'bhagavadgita' } })}
-                style={({ pressed }) => [styles.cta, accentFill(palette), pressed && { transform: [{ scale: 0.97 }] }]}>
+                style={[styles.cta, accentFill(palette)]}>
                 <Text maxFontSizeMultiplier={1.4} style={{ color: palette.onAccent, fontSize: TYPE.body, fontWeight: '700' }}>
                   {t(S.startWithGita)}
                 </Text>
-              </Pressable>
+              </PressableScale>
             ) : null}
           </View>
           )
@@ -196,9 +218,13 @@ export default function BookmarksScreen() {
                 accessibilityRole="button"
                 accessibilityLabel={t(S.removeSavedA11y(ref))}
                 onPress={() => {
+                  // Removing is instant; the toast offers Undo instead of asking first.
                   removeBookmark(item);
                   dropVerse(item);
-                  AccessibilityInfo.announceForAccessibility(t(S.verseRemovedAnnounce));
+                  toast.show(t(S.toastRemoved), {
+                    icon: 'trash-outline',
+                    action: { label: t(S.undo), onPress: () => toggleBookmark(item.id, item.chapter, item.verse) },
+                  });
                 }}>
                 <Ionicons name="trash-outline" size={18} color={palette.muted} />
               </Pressable>
@@ -224,6 +250,7 @@ export default function BookmarksScreen() {
           );
         }}
       />
+      <TitleBar scrollY={scrollY} title={S.savedTitle} />
       <CollectionSheet verse={moving?.link ?? null} verseLabel={moving?.label ?? ''} onClose={() => setMoving(null)} />
     </Backdrop>
   );

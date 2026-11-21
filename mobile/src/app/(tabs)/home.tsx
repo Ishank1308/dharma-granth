@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { MoonPhase } from '@/components/moon-phase';
+import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { accentFill, Backdrop, Card, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
 import { CATALOG, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
@@ -365,7 +365,7 @@ function PanchangCard() {
         accessibilityLabel={`${t(S.openPanchangA11y)}. ${tithi}, ${paksha}, ${nakshatra}`}
         onPress={() => open('/explore/panchang')}
         style={({ pressed: p }) => [{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }, pressed(p)]}>
-        <MoonPhase illumination={today.paksha.illuminationPercent} waxing={today.paksha.isWaxing} size={56} />
+        <Moon3D phase={phaseFromIllumination(today.paksha.illuminationPercent, today.paksha.isWaxing)} size={56} />
         <View style={{ flex: 1 }}>
           <Kicker color={palette.accent}>{t(S.todayAt(cityName))}</Kicker>
           <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '800', marginTop: 2 }}>

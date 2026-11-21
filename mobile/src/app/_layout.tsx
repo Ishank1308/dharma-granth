@@ -8,6 +8,8 @@ import { Platform } from 'react-native';
 import { DailyReminderEffects } from '@/components/daily-reminder-effects';
 import { DailyWidgetEffects } from '@/components/daily-widget-effects';
 import { RecitationProvider } from '@/audio/player';
+import { ToastProvider } from '@/motion/toast';
+import { useMotion } from '@/motion/use-motion';
 import { AppStateProvider, useAppState } from '@/state/app-state';
 import { JournalProvider } from '@/state/journal';
 import { SANSKRIT_FONT, SERIF_FONT, SERIF_ITALIC_FONT } from '@/theme/fonts';
@@ -32,6 +34,11 @@ const WEB_FONTS: Record<string, FontSource> =
 function Navigator() {
   const { palette, ready, reduceMotion } = useAppState();
   useFonts(WEB_FONTS);
+
+  // Books and chapters slide in over the page they came from, which drifts back a little behind them (a
+  // native animation, so it costs nothing on the JS thread). With reduce motion they simply appear.
+  const { animate } = useMotion();
+  const push = animate ? 'ios_from_right' : 'none';
 
   useEffect(() => {
     if (ready) SplashScreen.hideAsync().catch(() => {});
@@ -66,13 +73,13 @@ function Navigator() {
             animation: reduceMotion ? 'none' : 'default',
           }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="scripture/[id]/index" options={{ title: '' }} />
-          <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '' }} />
-          <Stack.Screen name="journal/index" options={{ title: '' }} />
-          <Stack.Screen name="journal/edit" options={{ title: '' }} />
-          <Stack.Screen name="journal/collections" options={{ title: '' }} />
+          <Stack.Screen name="scripture/[id]/index" options={{ title: '', animation: push }} />
+          <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '', animation: push }} />
+          <Stack.Screen name="journal/index" options={{ title: '', animation: push }} />
+          <Stack.Screen name="journal/edit" options={{ title: '', animation: push }} />
+          <Stack.Screen name="journal/collections" options={{ title: '', animation: push }} />
           <Stack.Screen name="share" options={{ title: '', presentation: 'modal' }} />
-          <Stack.Screen name="summary/[id]" options={{ title: '' }} />
+          <Stack.Screen name="summary/[id]" options={{ title: '', animation: push }} />
         </Stack>
     </ThemeProvider>
   );
@@ -83,7 +90,9 @@ export default function RootLayout() {
     <AppStateProvider>
       <JournalProvider>
         <RecitationProvider>
-          <Navigator />
+          <ToastProvider>
+            <Navigator />
+          </ToastProvider>
         </RecitationProvider>
       </JournalProvider>
     </AppStateProvider>
