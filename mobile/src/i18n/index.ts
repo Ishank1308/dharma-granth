@@ -15,7 +15,7 @@ import type { Lang } from './language';
 import type { Msg } from './strings';
 
 export * from './language';
-export { S, type Msg } from './strings';
+export { COLLECTION_LABELS, MOOD_LABELS, S, type Msg } from './strings';
 
 export function useI18n(): { lang: Lang; t: (m: Msg) => string } {
   const { lang } = useAppState();

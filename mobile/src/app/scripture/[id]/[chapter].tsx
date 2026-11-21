@@ -16,6 +16,7 @@ import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
+import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
 import { BAR_GAP, barClearance, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
@@ -102,6 +103,16 @@ export default function ChapterScreen() {
   );
   const onToggleBookmark = useCallback((verse: string) => toggleBookmark(id, chapterNo, verse), [toggleBookmark, id, chapterNo]);
 
+  // Journal reflections per verse in this chapter, so the pen on a verse fills in once it has one.
+  const { journal } = useJournal();
+  const reflections = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const e of journal.entries) {
+      for (const r of e.refs) if (r.id === id && r.chapter === chapterNo) counts.set(r.verse, (counts.get(r.verse) ?? 0) + 1);
+    }
+    return counts;
+  }, [journal.entries, id, chapterNo]);
+
   // The verse at the top of the screen, for the toolbar's "Verse 12 of 47".
   // FlatList must get the same callback on every render; setVisibleIndex never changes, so no deps.
   const onViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: { index?: number | null }[] }) => {
@@ -162,6 +173,7 @@ export default function ChapterScreen() {
       onToggleBookmark={onToggleBookmark}
       audio={recitedSet.has(String(item.number)) ? (playingHere === String(item.number) ? phase : 'idle') : undefined}
       onToggleAudio={onToggleAudio}
+      reflections={reflections.get(String(item.number)) ?? 0}
     />
   );
 
