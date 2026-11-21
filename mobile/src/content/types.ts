@@ -39,7 +39,7 @@ export interface CatalogEntry {
   titleSanskrit?: string;
   category: string;
   totalVerses: number;
-  /** True when the verse text ships inside the app; otherwise the reader opens dharmagranth.dev. */
+  /** True when the verse text ships inside the app; otherwise it is downloaded on demand (src/content/downloads.ts). */
   bundled: boolean;
   chapters: CatalogChapter[];
 }

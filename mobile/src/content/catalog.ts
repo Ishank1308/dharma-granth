@@ -1,4 +1,5 @@
 import catalogJson from './generated/catalog.json';
+import { readDownloadedChapter } from './downloads';
 import { CHAPTER_LOADERS } from './generated/loaders';
 import type { BookChapter, CatalogEntry } from './types';
 
@@ -16,11 +17,12 @@ export function getEntry(id: string): CatalogEntry | undefined {
  * Loads one bundled chapter. Each chapter is its own module, so opening a chapter parses only that
  * chapter, not the whole book (Ramcharitmanas alone is 5 MB). Metro keeps a required module for the
  * rest of the session, so memory grows only with the chapters the reader has actually opened.
- * Returns undefined for books that live only on the website.
+ * Books too large to bundle are read from the phone once the reader has downloaded them
+ * (src/content/downloads.ts); otherwise this returns undefined.
  */
 export function loadChapter(id: string, chapter: number): BookChapter | undefined {
   const loader = CHAPTER_LOADERS[id]?.[chapter];
-  return loader ? loader() : undefined;
+  return loader ? loader() : readDownloadedChapter(id, chapter);
 }
 
 export function webUrl(id: string, chapter?: number): string {

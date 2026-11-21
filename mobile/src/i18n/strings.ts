@@ -155,9 +155,55 @@ export const S = {
   backupTooNew: { en: 'This backup was made by a newer version of the app.', hi: 'यह बैकअप ऐप के नए संस्करण से बना है। पहले ऐप अपडेट करें।' },
   about: { en: 'About', hi: 'परिचय' },
   aboutBody: (total: number, offline: number) => ({
-    en: `${n(total)} scriptures in the library, ${n(offline)} readable offline. Larger texts (epics, Puranas, Rig Veda) open on the website.`,
-    hi: `संग्रह में ${n(total)} ग्रन्थ हैं, जिनमें से ${n(offline)} बिना इंटरनेट पढ़े जा सकते हैं। बड़े ग्रन्थ (महाकाव्य, पुराण, ऋग्वेद) वेबसाइट पर खुलते हैं।`,
+    en: `${n(total)} scriptures in the library, ${n(offline)} readable offline out of the box. Larger texts (epics, Puranas, Rig Veda) can be downloaded from dharmagranth.dev to read offline.`,
+    hi: `संग्रह में ${n(total)} ग्रन्थ हैं, जिनमें से ${n(offline)} शुरू से बिना इंटरनेट पढ़े जा सकते हैं। बड़े ग्रन्थ (महाकाव्य, पुराण, ऋग्वेद) dharmagranth.dev से डाउनलोड करके बिना इंटरनेट पढ़ सकते हैं।`,
   }),
   privacyPolicy: { en: 'Privacy policy', hi: 'गोपनीयता नीति' },
+
+  // Downloads of the large texts (src/content/downloads.ts)
+  canDownload: { en: 'Can be downloaded', hi: 'डाउनलोड किया जा सकता है' },
+  downloadedOffline: { en: 'Downloaded, available offline', hi: 'डाउनलोड हो चुका, बिना इंटरनेट उपलब्ध' },
+  downloadTitle: { en: 'Download to read offline', hi: 'बिना इंटरनेट पढ़ने के लिए डाउनलोड करें' },
+  downloadSize: (download: string, onPhone: string) => ({
+    en: `About ${download} to download, ${onPhone} on your phone.`,
+    hi: `लगभग ${download} डाउनलोड होगा, फ़ोन में ${onPhone} जगह लेगा।`,
+  }),
+  downloadChecking: { en: 'Checking size…', hi: 'साइज़ देख रहे हैं…' },
+  downloadOffline: { en: 'Could not reach dharmagranth.dev. Check your connection.', hi: 'dharmagranth.dev से जुड़ नहीं पाए। इंटरनेट कनेक्शन देखें।' },
+  downloadNotYet: { en: 'This text is not available for download yet.', hi: 'यह ग्रन्थ अभी डाउनलोड के लिए उपलब्ध नहीं है।' },
+  downloadBtn: { en: 'Download', hi: 'डाउनलोड' },
+  downloadA11y: (title: string) => ({ en: `Download ${title}`, hi: `${title} डाउनलोड करें` }),
+  readOnline: { en: 'Read online', hi: 'ऑनलाइन पढ़ें' },
+  downloading: (pct: number) => ({ en: `Downloading… ${pct}%`, hi: `डाउनलोड हो रहा है… ${pct}%` }),
+  downloadProgress: (done: string, total: string) => ({ en: `${done} of ${total}`, hi: `${total} में से ${done}` }),
+  downloadStarting: { en: 'Starting…', hi: 'शुरू हो रहा है…' },
+  cancel: { en: 'Cancel', hi: 'रद्द करें' },
+  cancelDownloadA11y: { en: 'Cancel download', hi: 'डाउनलोड रद्द करें' },
+  downloadedSize: (size: string) => ({ en: `Downloaded · ${size}`, hi: `डाउनलोड हो चुका · ${size}` }),
+  downloadReady: { en: 'Readable offline.', hi: 'बिना इंटरनेट पढ़ सकते हैं।' },
+  downloadUpdateAvailable: { en: 'A corrected edition is available.', hi: 'सुधरा हुआ संस्करण उपलब्ध है।' },
+  updateBtn: { en: 'Update', hi: 'अपडेट' },
+  updateDownloadA11y: { en: 'Update download', hi: 'डाउनलोड अपडेट करें' },
+  deleteBtn: { en: 'Delete', hi: 'हटाएँ' },
+  deleteFromPhoneA11y: (title: string) => ({ en: `Delete ${title} from this phone`, hi: `${title} को इस फ़ोन से हटाएँ` }),
+  deleteDownloadTitle: (title: string) => ({ en: `Delete ${title}?`, hi: `${title} हटाएँ?` }),
+  deleteDownloadBody: (size: string) => ({
+    en: `This frees ${size}. You can download it again at any time.`,
+    hi: `इससे ${size} जगह खाली होगी। आप इसे कभी भी फिर से डाउनलोड कर सकते हैं।`,
+  }),
+  downloadsSection: { en: 'Downloaded texts', hi: 'डाउनलोड किए ग्रन्थ' },
+  downloadsEmpty: {
+    en: 'No texts downloaded yet. Open a large text such as the Mahabharata or a Purana and tap Download to read it offline.',
+    hi: 'अभी कोई ग्रन्थ डाउनलोड नहीं हुआ। महाभारत या कोई पुराण खोलें और बिना इंटरनेट पढ़ने के लिए डाउनलोड दबाएँ।',
+  },
+  downloadsSummary: (count: number, size: string, active: number) => ({
+    en: `${n(count)} ${count === 1 ? 'text' : 'texts'} on this phone, ${size} in all.${active ? ` ${n(active)} downloading.` : ''}`,
+    hi: `इस फ़ोन में ${n(count)} ग्रन्थ, कुल ${size}।${active ? ` ${n(active)} डाउनलोड हो रहे हैं।` : ''}`,
+  }),
+  chapterNeedsDownload: (title: string) => ({
+    en: `Download ${title} to read this chapter offline.`,
+    hi: `यह अध्याय बिना इंटरनेट पढ़ने के लिए ${title} डाउनलोड करें।`,
+  }),
+  goToDownload: { en: 'Go to download', hi: 'डाउनलोड पर जाएँ' },
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 

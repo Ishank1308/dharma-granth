@@ -6,6 +6,7 @@ import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Backdrop, Eyebrow, glass, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
 import { getEntry, loadChapter } from '@/content/catalog';
+import { useDownloads } from '@/content/downloads';
 import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
@@ -20,7 +21,9 @@ export default function ChapterScreen() {
   const t = (m: Msg) => m[lang];
   const entry = getEntry(id);
   const meta = entry?.chapters.find((c) => c.number === chapterNo);
-  const chapter = useMemo(() => loadChapter(id, chapterNo), [id, chapterNo]);
+  const downloaded = useDownloads().installed[id];
+  // Re-read when the book is downloaded, updated or deleted while this screen is open.
+  const chapter = useMemo(() => loadChapter(id, chapterNo), [id, chapterNo, downloaded]); // eslint-disable-line react-hooks/exhaustive-deps
   const listRef = useRef<FlatList<Verse>>(null);
   const jumped = useRef(false);
   const jumpTries = useRef(0);
@@ -65,7 +68,17 @@ export default function ChapterScreen() {
     return (
       <View style={styles.center}>
         <Stack.Screen options={{ title: entry?.title ?? '' }} />
-        <Muted>{t(S.chapterUnavailable)}</Muted>
+        <Muted style={{ textAlign: 'center' }}>
+          {entry && !entry.bundled && !downloaded ? t(S.chapterNeedsDownload(entry.title)) : t(S.chapterUnavailable)}
+        </Muted>
+        {entry && !entry.bundled && !downloaded ? (
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.replace({ pathname: '/scripture/[id]', params: { id } })}
+            style={[styles.pageBtn, glass(palette), { marginTop: SPACE.lg }]}>
+            <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.goToDownload)}</Text>
+          </Pressable>
+        ) : null}
       </View>
     );
   }

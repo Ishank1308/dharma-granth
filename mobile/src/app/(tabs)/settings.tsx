@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react';
 import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { DownloadsSection } from '@/components/download-card';
 import { accentFill, Backdrop, Bilingual, Card, Chip, Eyebrow, glass, Muted, PageTitle, SectionTitle } from '@/components/ui';
 import { CATALOG, SITE } from '@/content/catalog';
 import { LANGUAGE_SETTINGS, S, useI18n, type LanguageSetting, type Msg } from '@/i18n';
@@ -260,6 +261,9 @@ export default function SettingsScreen() {
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.sanskritAlwaysFull)}</Muted>
 
         {remindersSupported ? <DailyVerseSettings /> : null}
+
+        <SectionTitle {...S.downloadsSection} />
+        <DownloadsSection />
 
         <SectionTitle {...S.backup} />
         <Card style={{ rowGap: SPACE.md }}>
