@@ -64,6 +64,7 @@ function ContinueCard() {
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel={`Continue reading ${entry.title}, chapter ${ch.number}`}
       onPress={() => router.push({ pathname: '/scripture/[id]/[chapter]', params: { id: entry.id, chapter: String(ch.number) } })}>
       <Card style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
         <Ionicons name="book-outline" size={24} color={palette.accent} />

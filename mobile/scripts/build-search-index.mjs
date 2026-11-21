@@ -2,7 +2,7 @@
 //
 //   node scripts/build-search-index.mjs     (also runs at the end of scripts/build-content.mjs)
 //
-// Reads  src/content/generated/catalog.json + books/<id>.json
+// Reads  src/content/generated/catalog.json + books/<id>/ch-N.json
 // Writes src/content/generated/search/<id>.json   one compact corpus per bundled book
 //        src/content/generated/search-loaders.ts  lazy require() map, so nothing loads until the first search
 //
@@ -39,9 +39,13 @@ export async function buildSearchIndex() {
   let verses = 0;
 
   for (const entry of catalog) {
-    const path = join(OUT, 'books', `${entry.id}.json`);
-    if (!entry.bundled || !existsSync(path)) continue;
-    const book = JSON.parse(readFileSync(path, 'utf8'));
+    const dirOf = join(OUT, 'books', entry.id);
+    if (!entry.bundled || !existsSync(dirOf)) continue;
+    const book = { chapters: [] };
+    for (const ch of entry.chapters) {
+      const p = join(dirOf, `ch-${ch.number}.json`);
+      if (existsSync(p)) book.chapters.push(JSON.parse(readFileSync(p, 'utf8')));
+    }
     const d = [];
     const t = [];
     const e = [];

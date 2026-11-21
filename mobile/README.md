@@ -54,8 +54,8 @@ script reads `../public/data`. With a local Android SDK, `npm run android` build
 (falling back to the full-book JSON when shards are missing) and writes:
 
 - `src/content/generated/catalog.json`: every scripture and its chapters
-- `src/content/generated/books/<id>.json`: verse text for each bundled scripture
-- `src/content/generated/loaders.ts`: lazy `require()` map, so a book is parsed only when opened
+- `src/content/generated/books/<id>/ch-N.json`: verse text for each chapter of a bundled scripture
+- `src/content/generated/loaders.ts`: lazy `require()` map per chapter, so opening a chapter parses only that chapter
 - `src/content/generated/search/<id>.json` and `search-loaders.ts`: the verse search index, built by
   `scripts/build-search-index.mjs` (needs Node 22.18+, which runs the shared TypeScript fold code directly)
 
