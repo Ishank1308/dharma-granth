@@ -4,8 +4,25 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
 
-import { BACKUP_FORMAT, makeBackup, mergeBookmarks, normalizeSettings, parseBackup } from '../src/lib/backup.ts';
+import { BACKUP_FORMAT, BackupError, makeBackup, mergeBookmarks, normalizeSettings, parseBackup } from '../src/lib/backup.ts';
+import { LANGUAGE_SETTINGS, resolveLanguage } from '../src/i18n/language.ts';
 import { formatVerseRef, meaningState, sanskritLines, verseMarkNumber } from '../src/lib/verse-format.ts';
+
+test('interface language follows the setting, then the phone', () => {
+  assert.equal(resolveLanguage('hi', 'en'), 'hi');
+  assert.equal(resolveLanguage('en', 'hi'), 'en');
+  assert.equal(resolveLanguage('system', 'hi'), 'hi');
+  assert.equal(resolveLanguage(undefined, 'en'), 'en');
+  assert.equal(normalizeSettings({}).language, 'system');
+  assert.equal(normalizeSettings({ language: 'hi' }).language, 'hi');
+  assert.equal(normalizeSettings({ language: 'fr' }).language, 'system');
+  for (const l of LANGUAGE_SETTINGS) assert.equal(normalizeSettings({ language: l }).language, l);
+});
+
+test('backup errors carry a code the UI can translate', () => {
+  assert.throws(() => parseBackup('not json'), (e) => e instanceof BackupError && e.code === 'not-json');
+  assert.throws(() => parseBackup('{"format":"other"}'), (e) => e instanceof BackupError && e.code === 'wrong-file');
+});
 
 test('verse references match the website', () => {
   assert.equal(formatVerseRef('bhagavadgita', 2, 47), '2.47');
@@ -59,16 +76,49 @@ const BOOKS = new URL('../src/content/generated/books/', import.meta.url).pathna
 test('bundled content keeps every Sanskrit line', { skip: !existsSync(BOOKS) && 'run `npm run content` first' }, () => {
   const strip = (s) => s.replace(/[\s|।॥0-9०-९.]/gu, '');
   let checked = 0;
-  for (const name of readdirSync(BOOKS)) {
-    const book = JSON.parse(readFileSync(join(BOOKS, name), 'utf8'));
-    for (const ch of book.chapters) {
+  for (const id of readdirSync(BOOKS)) {
+    for (const name of readdirSync(join(BOOKS, id))) {
+      const ch = JSON.parse(readFileSync(join(BOOKS, id, name), 'utf8'));
       for (const v of ch.verses) {
         if (!v.sanskrit) continue;
         // Only digits, dandas and whitespace may be dropped by line splitting.
-        assert.equal(strip(sanskritLines(v.sanskrit).join('')), strip(v.sanskrit), `${book.id} ${ch.number}.${v.number}`);
+        assert.equal(strip(sanskritLines(v.sanskrit).join('')), strip(v.sanskrit), `${id} ${ch.number}.${v.number}`);
         checked++;
       }
     }
   }
   assert.ok(checked > 10000, `checked ${checked} verses`);
+});
+
+test('daily verse reminder: one notification per day at the chosen time, skipping a time already past', async () => {
+  const { upcomingReminderTimes, formatReminderTime, REMINDER_DAYS } = await import('../src/lib/reminder.ts');
+  const morning = new Date(2026, 10, 21, 6, 0);
+  const ahead = upcomingReminderTimes(morning, 7, 30);
+  assert.equal(ahead.length, REMINDER_DAYS);
+  assert.deepEqual([ahead[0].getDate(), ahead[0].getHours(), ahead[0].getMinutes()], [21, 7, 30]);
+  assert.equal(ahead[1].getDate(), 22);
+  const evening = new Date(2026, 10, 21, 20, 0);
+  const next = upcomingReminderTimes(evening, 7, 30, 3);
+  assert.deepEqual(next.map((d) => d.getDate()), [22, 23, 24]);
+  // Under a minute away counts as missed, so nothing fires while the queue is being rebuilt.
+  assert.equal(upcomingReminderTimes(new Date(2026, 10, 21, 7, 29, 30), 7, 30, 1)[0].getDate(), 22);
+  // Month rollover keeps the wall-clock time.
+  const end = upcomingReminderTimes(new Date(2026, 10, 30, 9, 0), 8, 0, 2);
+  assert.deepEqual(end.map((d) => [d.getMonth(), d.getDate(), d.getHours()]), [[11, 1, 8], [11, 2, 8]]);
+  assert.equal(formatReminderTime(7, 5), '7:05 AM');
+  assert.equal(formatReminderTime(0, 0), '12:00 AM');
+  assert.equal(formatReminderTime(19, 30), '7:30 PM');
+  assert.equal(formatReminderTime(19, 30, true), '19:30');
+});
+
+test('reminder settings are optional, validated and survive a backup', () => {
+  const s = normalizeSettings({});
+  assert.equal(s.dailyReminder, false);
+  assert.equal(s.reminderHour, 7);
+  assert.equal(s.reminderMinute, 0);
+  const bad = normalizeSettings({ dailyReminder: 'yes', reminderHour: 25, reminderMinute: 7.5 });
+  assert.deepEqual([bad.dailyReminder, bad.reminderHour, bad.reminderMinute], [false, 7, 0]);
+  const on = normalizeSettings({ dailyReminder: true, reminderHour: 21, reminderMinute: 45 });
+  const back = parseBackup(JSON.stringify(makeBackup({ settings: on, bookmarks: [], lastRead: null })));
+  assert.deepEqual([back.settings.dailyReminder, back.settings.reminderHour, back.settings.reminderMinute], [true, 21, 45]);
 });

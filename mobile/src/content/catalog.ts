@@ -1,6 +1,7 @@
 import catalogJson from './generated/catalog.json';
-import { BOOK_LOADERS } from './generated/loaders';
-import type { Book, BookChapter, CatalogEntry } from './types';
+import { readDownloadedChapter } from './downloads';
+import { CHAPTER_LOADERS } from './generated/loaders';
+import type { BookChapter, CatalogEntry } from './types';
 
 export const SITE = 'https://dharmagranth.dev';
 
@@ -12,21 +13,16 @@ export function getEntry(id: string): CatalogEntry | undefined {
   return byId.get(id);
 }
 
-const bookCache = new Map<string, Book>();
-
-/** Parses a bundled book the first time it is opened. Returns undefined for books that live only on the website. */
-export function loadBook(id: string): Book | undefined {
-  const cached = bookCache.get(id);
-  if (cached) return cached;
-  const loader = BOOK_LOADERS[id];
-  if (!loader) return undefined;
-  const book = loader();
-  bookCache.set(id, book);
-  return book;
-}
-
+/**
+ * Loads one bundled chapter. Each chapter is its own module, so opening a chapter parses only that
+ * chapter, not the whole book (Ramcharitmanas alone is 5 MB). Metro keeps a required module for the
+ * rest of the session, so memory grows only with the chapters the reader has actually opened.
+ * Books too large to bundle are read from the phone once the reader has downloaded them
+ * (src/content/downloads.ts); otherwise this returns undefined.
+ */
 export function loadChapter(id: string, chapter: number): BookChapter | undefined {
-  return loadBook(id)?.chapters.find((c) => c.number === chapter);
+  const loader = CHAPTER_LOADERS[id]?.[chapter];
+  return loader ? loader() : readDownloadedChapter(id, chapter);
 }
 
 export function webUrl(id: string, chapter?: number): string {
@@ -45,14 +41,20 @@ export const CATEGORIES: { key: string; en: string; hi: string }[] = [
   { key: 'other', en: 'Darshana & more', hi: 'दर्शन एवं अन्य' },
 ];
 
-/** The verse of the day: the same Gita verse for everyone on a given date. */
+/**
+ * The verse of the day: the same Gita verse for everyone on a given date. Picked from the catalog's
+ * verse counts, so only the one chapter that holds the verse is loaded at startup.
+ */
 export function dailyVerse(date = new Date()): { id: string; chapter: number; index: number } | undefined {
-  const book = loadBook('bhagavadgita');
-  if (!book) return undefined;
-  const all: { chapter: number; index: number }[] = [];
-  for (const ch of book.chapters) ch.verses.forEach((_, index) => all.push({ chapter: ch.number, index }));
-  if (all.length === 0) return undefined;
+  const entry = getEntry('bhagavadgita');
+  if (!entry?.bundled) return undefined;
+  const total = entry.chapters.reduce((n, c) => n + c.verseCount, 0);
+  if (total === 0) return undefined;
   const day = Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86_400_000);
-  const pick = all[day % all.length];
-  return { id: 'bhagavadgita', ...pick };
+  let i = day % total;
+  for (const ch of entry.chapters) {
+    if (i < ch.verseCount) return { id: entry.id, chapter: ch.number, index: i };
+    i -= ch.verseCount;
+  }
+  return undefined;
 }
