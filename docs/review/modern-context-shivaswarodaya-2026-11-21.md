@@ -1,0 +1,515 @@
+# Modern-context notes: Shiva Swarodaya (review note, 21 November 2026)
+
+This note goes with the pull request that adds modern-context notes to the Shiva Swarodaya. It lists how the notes were checked, the verses a reviewer should read first, and the facts to spot-check. The notes are AI drafts and have not had a human editorial review.
+
+## Status
+
+- **Coverage:** verses 1:1 to 4:395 (all 384 verses of the book) now have a modern-context note. Verse numbers run on across chapters, so chapter 2 begins at 2:101, chapter 3 at 3:201 and chapter 4 at 4:311; the source has no verses 3:267 to 3:277. None had a note before. The book is complete with this commit.
+- **Source file:** `data/hi-commentary/shivaswarodaya-rest.json` is new and holds only the `lifeLesson` field. The existing व्याख्या (`explanation`) is unchanged for all 384 entries; this is verified after each publish.
+- **Shape:** each note has आधुनिक संदर्भ (one real-world fact linked to the verse), आज के जीवन में प्रयोग (three applications) and चिंतन प्रश्न (one question).
+- **Size cap:** the published commentary total passes 60 MB with this book, so `MAX_TOTAL_MB` in `scripts/convert-commentary-to-json.ts` is raised from 60 to 61 in the same pull request. Each file stays far below Cloudflare's 25 MiB per-file limit.
+
+## How the notes were checked
+
+- **Register:** every note passed `scripts/check-hindi-register.mjs` with no sentences to fix. The words are tatsam with no Urdu, Persian or English beyond unavoidable proper names and scientific terms (for example डीएनए, एटीपी, हाइड्रोजन). There is no first person.
+- **Facts used once:** candidate facts were screened by keyword against every earlier note in all books before writing. After writing, each batch was run through the stricter check (rare words or years shared by any two notes, across all books including this one). One fact in 1:6 was found to repeat an earlier book and was replaced before publishing. For 1:81 to 2:160 the keyword screen ruled out more than sixty candidate facts that an earlier book had already used; the stricter check then found no repeats in the written batches. The only shared items it reports are years (for example 1854 or 1904) attached to different events. For 2:161 to 3:240 the keyword screen ruled out more than a hundred further candidates. The stricter check found three repeats in the written batch for 2:161 to 2:200 (Linnaeus's three kingdoms at 2:174, the eight-metal alloy at 2:180 and the Dreyfus skill model at 2:200); all three were replaced before publishing,  and the re-run found none. For 3:241 to 4:331 the screen ruled out more than a hundred and twenty further candidates; the stricter check found one repeat in the written batch (the first monsoon forecast of 1886 at 3:294), which was replaced before publishing. For 4:332 to 4:395 the screen ruled out more than eighty further candidates; the stricter check found three repeats in the written batches (Snellen's chart of 1862 at 4:333, the "little doll" origin of the word for the pupil at 4:349 and the anatomy of the hip and knee in the lotus posture at 4:375). All three were replaced before publishing, and the re-run found none.
+- **Anchoring:** each note says in one sentence what the verse itself teaches, following the existing व्याख्या.
+- **A correction to earlier notes:** fifteen notes published earlier in this pull request for verses with an unclear reading (3:224, 3:225, 3:232, 3:236, 3:237, 3:242, 3:251, 3:253, 3:282, 3:284, 3:304–3:306, 4:311, 4:327) opened their anchoring sentence with "यह श्लोक का", which is ungrammatical. The final commit changes it to "इस श्लोक का" in those fifteen and in the five new notes of the same kind. Nothing else in those notes changed.
+
+## What kind of book this is, and the standing caveats
+
+The Shiva Swarodaya is a manual of svara: it reads the flow of breath through the left and right nostril and ties it to success, travel, health, astrology and omens. Many verses promise results. The notes keep the verse's own teaching but never present these results as fact. Standing sentences are used, word for word, wherever they apply:
+
+- **Promised results of svara:** these statements are the tradition's faith and style, not proven fact; decisions about health, money and relationships should be made with judgement and qualified advice. Used at 1:10, 1:15, 1:19, 1:22–1:24, 1:54–1:56, 1:58, 1:61, 1:63, 1:64, 1:66, 1:78–1:81, 1:85, 1:89, 1:90, 1:92, 1:93, 1:95–2:112, 2:114, 2:116–2:118, 2:120, 2:122, 2:123, 2:126–2:131, 2:133, 2:145, 2:157–2:162, 2:170, 2:172, 2:174, 2:175, 2:178, 2:180, 2:181, 2:191, 2:198, 2:199, 3:207–3:209, 3:213–3:215, 3:226, 3:228, 3:230, 3:238, 3:239, 3:241, 3:254, 3:257–3:259, 3:261, 3:265, 3:296, 4:312, 4:322, 4:389.
+- **Astrology (tithi, nakshatra, auspicious and inauspicious yogas):** this is astrology's traditional belief; decisions should be made with judgement, not fear. Used at 1:17, 1:29, 1:30, 1:62, 1:65, 1:68, 1:69, 1:72, 1:73, 1:77, 2:113, 2:176, 2:177, 2:194–2:197, 3:224, 3:293, 4:314, 4:394.
+- **"Moon" and "Sun":** here these are symbolic names for the flow in the left and right nostril, not the bodies in the sky. Used at 1:50, 1:52, 1:57, 1:60, 2:133, 3:221, 3:222, 3:246, 3:255, 4:322, 4:379, 4:380.
+- **Direction, weekday and omen rules for travel:** these are traditional belief, not proven fact; travel safety depends on the route, the season and care, and nobody needs to fear these rules. Used at 1:59, 1:74–1:76, 1:86–1:88, 1:91, 1:94, 2:132, 2:134, 2:169, 2:183, 2:193, 3:223.
+- **Signs of illness and death:** these signs are traditional belief, not proven fact; nobody should be frightened by them, and any doubt about health should be taken to a doctor. Used at 1:82–1:84, 2:125, 2:155, 2:168, 2:171, 2:173, 2:179, 2:182, 3:307–4:311, 4:313, 4:315–4:318, 4:323–4:349, 4:351, 4:356–4:366, 4:368, 4:369.
+- **Lists of harmful acts:** such a list is the manner of texts of that age, not permission; harming, poisoning or controlling anyone is a crime. Used at 2:115, 2:119, 2:156.
+- **"Bringing under control":** this is the language of that age; no person is a thing to be controlled, and free consent is necessary in every relationship. Used at 1:99, 2:121, 4:393 (and in the note's own words at 1:23).
+- **Merit of giving multiplied by crores:** this is the style of praise, not a promise of a fixed result. Used at 1:53.
+- **Nadis:** these are the language of the subtle body in the yoga tradition and must not be equated with the nerves or blood vessels of modern anatomy. Used at 1:18, 1:31, 1:32, 1:34–1:41, 1:48, 1:49, 2:124, 3:230.
+- **The ten pranas:** this is the language of yoga and Ayurveda, not a statement of modern physiology. Used at 1:34, 1:42–1:47, 3:212.
+- **Order of creation and qualities of the elements:** this is philosophy's own language and classification, not a statement of modern physics. Used at 1:4, 1:6–1:8, 1:70, 1:71, 2:112, 2:137, 2:139–2:143, 2:146–2:151, 2:153, 2:154, 2:159–2:167, 2:169, 2:189, 2:190, 2:192, 4:383.
+- **The cosmos in the body:** this is yoga's symbolic language, not physiology. Used at 1:9, 1:20, 2:152, 2:184–2:188, 4:319, 4:367, 4:374.
+- **Science parallels:** where a note opens with a science fact, it adds "this likeness is only a metaphor" (132 notes).
+- **War and victory (new in chapter 3):** these rules are the belief of that age, not proven fact; they are not permission for violence, and today a dispute should be settled through dialogue and law. Used at 3:222, 3:224, 3:225, 3:227, 3:229, 3:231–3:237, 3:240, 3:242–3:253, 3:255, 3:256.
+- **Conception, children and the sex of a child (new in chapter 3):** these statements are traditional belief, not proven fact; a son and a daughter are equal; testing the sex of an unborn child is forbidden by law in India; and every question about pregnancy and birth should go to a doctor. Used at 3:278–3:291.
+- **Forecasts of the year, rain and harvest (new in chapter 3):** these are traditional belief, not proven fact; decisions in farming and trade should rest on the weather department's forecast and qualified advice. Used at 3:294, 3:295, 3:297–3:306.
+- **Others carried over from earlier books:** siddhi as faith and style (1:2, 1:67, 2:138, 3:201–3:205, 3:216–3:219, 3:260, 4:320, 4:321, 4:350, 4:352–4:355, 4:357, 4:370, 4:376, 4:380–4:382, 4:384–4:386, 4:395), secrecy as fitness and guidance (1:11), respect for the guru without giving up judgement (1:13, 2:200, 3:220, 3:292, 4:392), praise of one's own text as arthavāda (1:16, 1:21, 1:25, 1:27, 2:144, 3:206, 3:262, 3:263, 4:388, 4:390, 4:391), digestive fire as the language of yoga and Ayurveda (2:121), karma and rebirth as matters of faith that never make a person's suffering their own fault (2:200), chakra and kundalini as the language of meditation, with practices to be learned only from an experienced teacher (1:33, 4:387).
+
+Where a note opens with a modern study, it says what the study measured and no more, and for small or disputed studies it says so (1:22 "a small study"; 1:62 "the study is small and later results are mixed"; 1:23 and 1:30 open with studies that did not hold when repeated). The note at 1:56 adds that the study does not prove "knowledge of past and future".
+
+## Please read these places first
+
+- **Who must not be taught (1:14):** the verse lists the wicked, the angry, the untruthful, one who violates the honour of the guru's family, and others. The note says the list is for the seeker's own self-examination, not for judging others, and its first application repeats this.
+- **"Killing the enemy" (1:22):** the note says this wording is the style of its age and reports the verse as "victory over the enemy". Its second application turns it to the enemy within (anger).
+- **"Obtaining a maiden" and "controlling the king" (1:23):** the note says this is the language of its age, that no person is a thing to be controlled, and that free consent is necessary in every relationship. The third application repeats this.
+- **Astrology set aside in favour of svara (1:17, 1:29, 1:30):** the verses say that one who knows svara need not ask about tithi, nakshatra or bad yogas. The notes report this as the text's own view and add the astrology caveat; they do not say astrology is false or true.
+- **Unclear readings (1:19, 1:80):** the existing व्याख्या says the reading is unclear. Each note says so and reports the meaning with "possibly" (सम्भवतः).
+- **"Cruel" sushumna (1:58):** the note says "cruel" here means unfavourable for worldly work, not violent.
+- **Woman and man, fair and dark (1:60):** the verse calls the moon-flow female and fair and the sun-flow male and dark. The note says these are names for two flows and that no quality of any person, gender or complexion can be judged from them. Two of its applications say the same.
+- **Blocking a nostril by night or day (1:66):** the note says sleeping with a nostril forcibly blocked is not right, tells the reader to use only a natural method such as lying on one side and to put nothing in the nose, and sends anyone whose sleep is broken by breathing trouble to a doctor.
+- **"Controlling the three worlds" (1:67):** the note says this is hyperbole, that it must not be read as power over another person, and that commentators differ on the verse's meaning.
+- **Giving while breathing in (1:53):** the note opens with the Gita's marks of sattvic giving and adds the caveat on crore-fold merit.
+- **Travel prohibitions and the death warning (1:74–1:76):** the notes open with proven road-safety measures. The note at 1:76 says "death surely follows" is the hyperbole of a warning and that going in a direction does not cause death.
+- **Nadis, the navel root and the ten winds (1:31–1:49):** every note in this range carries the nadi line, the prana line or the "only a metaphor" line listed above, so that no note reads as modern anatomy.
+- **"Raudra" acts (1:61):** the note says the word here means hard and intense work, not violence.
+
+- **Death foretold by days of reversed breath (1:82–1:84):** the verses say reversed svara brings loss on successive days and death on the eighth. Each note carries the illness-and-death caveat. 1:83 opens with Stephen Jay Gould's "the median is not the message" and says no count of days can foretell a death; its third application says never to repeat an ill omen in front of a sick person. 1:84 opens with white-coat hypertension (one reading is not a diagnosis).
+- **First foot, number of steps, which hand (1:86–1:91):** the notes report the rules and add the travel-omen caveat (1:86–1:88, 1:91) or the results caveat (1:89, 1:90). An application at 1:86 says that missing the rule does not make a journey inauspicious, and 1:87 opens with the fact that the popular "10,000 steps" target did not come from research.
+- **Enemies, thieves and debtors (1:93, 1:97):** 1:93 says the harsh wording is that of its age and that today disputes go through dialogue and law; one application says to speak with respect even to a debtor.
+- **"As the omniscient has said" (1:96):** the note says this phrase marks reverence in the tradition and that reverence and testing can go together.
+- **Poison, "controlling a young woman", and liberation (1:99).** The note says snake venom is treated only with antivenom in a hospital and that relying on svara or mantra endangers life; it carries the consent caveat; its first application says to take a bitten person to hospital at once. Please read it closely.
+- **Unclear readings (1:100, 2:107, 2:130, 2:138, 2:155):** each note says so and reports the sense with "possibly".
+- **Medicine and long illness (2:104, 2:107, 2:110, 2:111, 2:118):** each note says medicines come from a qualified doctor. 2:110 (fever and fainting) says svara cannot be relied on and gives first aid for fainting; its third application points to a mental-health specialist when low mood lasts for weeks. 2:111 says poison is treated only in hospital.
+- **The list of acts for the sun-flow (2:114–2:120).** Please read these closely.
+  - 2:114 (hard studies, intercourse and visiting prostitutes, boarding large boats): the note says the list is a picture of that society and not approval, that the sex trade often involves exploitation, and that treating a person as an object of enjoyment is wrong.
+  - 2:115 (corrupt acts, drinking liquor, harassing enemies, destroying their land, giving poison): the note opens with the WHO figure for deaths from alcohol and carries the harmful-acts caveat. Its applications are about restraint and getting help to stop drinking.
+  - 2:116 (hunting): the note opens with the Wildlife (Protection) Act, 1972 and says hunting here belongs to the list of that age and is not a direction for today.
+  - 2:117 (gambling and theft): the note says these are part of that age's list and not permission, that theft is a crime and that gambling ruins families.
+  - 2:118 (crossing a river in flood): the note says not to enter a swollen stream.
+  - 2:119 (the six rites: killing, deluding, paralysing, causing enmity, driving away, subjugating): the note opens with Maharashtra's 2013 law against harmful "supernatural" practices and carries the harmful-acts caveat. Its second application says to stay away from anyone who offers, for money, to influence or harm a person.
+  - 2:120 (fighting with sword in hand, "cruel acts"): the note says this is the language of its age and that today it means no more than hard work and self-defence.
+- **Sleeping on the sun-flow side after food, and "controlling women" (2:121):** the note carries the consent caveat and the digestive-fire caveat.
+- **"No need to think" before harsh acts (2:122):** the note says this is the text's style and that thought is always needed before a harsh act.
+- **Sushumna as fire, poison and destroyer of works (2:123–2:127, 2:132):** the notes at 2:123 and 2:124 say this is said about worldly work, and that in the yoga tradition the same sushumna is the path of meditation; 2:126 and 2:127 turn the verse to putting off large tasks when the mind is unsteady. 2:125 (both nadis flowing out of order is "inauspicious") carries the illness-and-death caveat and tells the reader to see a doctor for breathlessness or broken breathing. 2:132 (travel then brings loss, trouble and death) says this is the hyperbole of a warning.
+- **Curse and boon (2:130):** the note says the bearing of fruit by a curse or a boon is the tradition's faith.
+- **Reading the questioner's position (2:133–2:134):** an application at 2:133 says to answer questions from facts, not from signs. 2:134 opens with Clever Hans and asks the reader to notice when an answer is shaped by what the questioner wants to hear.
+- **Shanmukhi mudra and inner lights (2:146–2:147):** 2:146 says not to press on the eyes and not to hold the breath by force, and to ask a doctor first in eye, ear or heart disease. 2:147 says such sights are not a special power and sends anyone who sees spots or flashes with open eyes to an eye doctor.
+- **Breath that points to death, and killing and driving-away rites by element (2:155–2:156):** 2:155 carries the illness-and-death caveat and says nobody's death should be guessed from the direction of breath. 2:156 carries the harmful-acts caveat.
+
+- **Loss and death foretold by element (2:168, 2:171, 2:173, 2:179, 2:182):** each note carries the illness-and-death caveat. 2:168 opens with Gigerenzer's count of extra road deaths after September 2001 (fear itself can do harm). 2:173 and 2:179 add that "loss and death" is no basis for a judgement about any person, and an application says not to pass on an ill guess about someone. 2:182 says a life table speaks about groups, never about one person, and its first application says not to foretell anyone's age or death.
+- **Planets and nakshatras by element (2:176, 2:177, 2:194–2:197):** the notes open with astronomy (Mars, Jupiter, Vega, Betelgeuse, the Pleiades, the 13°20′ span of a nakshatra) and carry both the "only a metaphor" line and the astrology caveat.
+- **Reading the questioner's thought (2:174, 2:175, 2:180):** the notes say that knowing what is in the questioner's mind is the tradition's faith; an application at 2:174 says not to claim to know another's mind.
+- **Unclear readings (2:193, 3:225, 3:232, 3:236, 3:237):** each note says the reading is unclear, as the existing व्याख्या does, and reports the sense with "possibly" or "the general sense appears to be". 3:232 opens with the undeciphered Indus script and asks the reader not to state what is not known.
+- **Rama, Arjuna and the Kauravas (2:199):** the verse ties victory and defeat in the epics to the element. The note says the Mahabharata itself ties the victory to dharma and also mourns the war; an application says not to rejoice at an opponent's defeat.
+- **Past-life impressions, the guru's grace and the "very impure" mind (2:200):** the note opens with Katha Upanishad 1.2.24 and carries the karma caveat and the guru caveat.
+- **Meditation on the five elements and its promised powers (3:201–3:205):** every note carries the siddhi caveat. 3:202 (staying under water) says never to practise breath-holding in water alone because of the risk of fainting; 3:203 (bearing fire) says the claim must never be tested; 3:204 (flying) says human flight came from patient study of air, not from meditation.
+- **Shortening the breath and the powers it brings (3:216–3:219):** every note carries the siddhi caveat. 3:216 says what the evidence on slow breathing covers and that the further results belong to the tradition; an application says not to hold the breath by force. 3:217 opens with the Buddha's rule against displaying powers. **3:219 ("who then needs food?")** says this is the language of praise, that pranayama cannot replace food and that giving up food endangers life; its third application says not to follow anyone who teaches living on air alone. Please read it closely.
+- **"Fruit without effort" (3:206) and "not from crores of texts" (3:220):** 3:206 says knowledge itself comes only through effort; 3:220 carries the guru caveat and its applications say to learn pranayama from a qualified teacher and to test a teacher's fitness and conduct.
+- **The war verses (3:222, 3:224, 3:225, 3:227, 3:229, 3:231–3:237, 3:240).** Please read these closely. Every note carries the war caveat above. 3:222 opens with the Arthashastra's advice to choose peace where peace and war bring equal gain. 3:227 (binding, loosing and striking with a weapon) opens with the eight stages of Japanese archery and an application says not to use a skill to hurt anyone. 3:229 ("alone he conquers the earth") calls this hyperbole. 3:233 ("even if Indra stands in front") has an application that warns against the language of certain victory. 3:234 has an application that says to use strength for protection and service.
+- **Men and women, right and left (3:240):** the note says the separate rule for men and women is the tradition's classification, and an application says not to make any such rule a measure of a woman's or a man's ability. The same note says a person with heart disease or high blood pressure should not strain with the breath held.
+
+- **More war verses (3:242–3:256).** Every note except 3:254 carries the war caveat (3:254, on the letters of a name, carries the results caveat). 3:249 ("the enemy comes under control") says this is the language of its age. 3:250 ("victory over gods, demons and men") calls this hyperbole and opens with Pyrrhus. **3:253 ("the enemy placed in the empty position dies")** says this is the language of its age and that the reading is unclear; it opens with the United Nations Charter, and its applications are about dialogue, mediation and not wishing anyone harm. Please read it closely.
+- **Where the wound will fall (3:243–3:245):** the notes open with trauma care, first aid for bleeding and India's helmet figures, and an application at 3:243 says not to spread ill guesses about anyone's safety.
+- **"No weapon, snake, enemy, disease or thief can destroy him" (3:260):** the note says this praises inner steadiness and that ordinary care for the body and home is still needed.
+- **Winning at dice (3:261):** the note opens with Nala's loss in the Mahabharata and says the statement about winning is the manner of that age, not permission; the applications say to stay away from games played for money and to seek help if the pull is out of control.
+- **Conception and the sex of a child (3:278–3:291).** Please read these closely. Every note carries the caveat listed above.
+  - 3:278 (a son from union on a given day and flow): the note opens with Nettie Stevens's 1905 finding that the father's cell decides the child's sex by chance, and says that blaming a mother for the birth of a daughter is ignorance.
+  - 3:279 (a herb in cow's milk before conception): the note opens with the 1991 folic-acid trial and says no herb should be taken without asking a doctor, because some plants can harm a pregnancy.
+  - 3:280 (the wife says a phrase three times; "a son like a lion"): the note reports the verse as the wife voicing her wish, says that the clear and free consent of both is needed every time, and calls the promised result the style of praise.
+  - 3:281 (a child "lacking a limb and fearful"): the note opens with rubella and its vaccine and says that a disabled child is not the fruit of anyone's fault and has full respect and rights.
+  - 3:282, 3:283 (the "barren" woman): the notes say this word, laid on the woman alone, is the language of its age; that being unable to have a child is a common medical condition; and that in about half of couples a cause lies with the man. The verses are reported with "a woman thought childless".
+  - 3:284 (an order of flows after which there is no conception): the note says the order of breath cannot be treated as contraception and that relying on it leads to unwanted pregnancy.
+  - 3:285–3:287 (girl, boy, "napumsaka", loss of the pregnancy): 3:285 opens with the 1994 law and the 2011 child sex ratio and says the question is not one to ask today. 3:286 opens with the Supreme Court's 2014 judgment and says the text's word belongs to its age and respectful language is right today. 3:287 says a rule with two outcomes is right half the time, and that foretelling the loss of a pregnancy only frightens a mother.
+  - 3:288–3:291 (twins, a happy or unhappy child, loss of the pregnancy, death at birth): the notes open with twin statistics, the first thousand days, the Lancet's miscarriage figures ("it is not the mother's fault") and the fall in India's infant mortality.
+- **Forecasts of famine, rain and prices (3:293–3:306):** every note from 3:294 except 3:296 carries the forecast caveat. 3:295 opens with Amartya Sen's finding that famine comes from failures of distribution, and an application says not to hoard out of fear of a predicted famine. **3:304 and 3:305 (storing up goods before prices rise):** the notes say this is the language of a merchant of that age and not a direction for today, and that holding essential goods beyond the legal limit in a shortage is an offence; an application at 3:305 says not to stake savings on a forecast of rising prices.
+- **Illness from water-spirits, shakinis and the ancestors (3:307).** The note opens with the state laws against branding women as witches and the recorded killings, and says the cause of illness lies in germs, diet and genes, not in any person or spirit. Its second application says to stand by a woman so accused and inform the authorities. Please read it closely.
+- **Whether the patient lives or dies, from where the questioner stands (3:308–4:316):** each note carries the illness-and-death caveat, except 4:312 (results caveat) and 4:314 (astrology caveat). 3:308 opens with chest compressions. 4:315 ("dies though surrounded by hundreds of physicians") and 4:316 ("dies though Maheshvara himself protects") are treated as emphatic style; an application at 4:316 says never to say "nothing more can be done" about a patient.
+- **A fixed time to death from the nostril or from the sun's reflection (4:323–4:327):** each note gives ordinary causes (a bent septum, allergy) or the limits of prediction (Gompertz's law speaks of groups, never one person). 4:327 says never to look at the sun, even at its reflection in water.
+- **The "inauspicious messenger" (4:328):** the verse lists red, ochre or black clothes, broken teeth, a shaven head, poverty and illness. The note says these are the marks of the poor, the sick, the old and the renunciate, and that judging anyone inauspicious by clothes, teeth, poverty or illness is unjust.
+- **Signs before death (4:329–4:331):** 4:329 says sudden confusion is an emergency that is treated. 4:330 opens with the Charaka Samhita's rule that a physician should not speak of a patient's death unasked. The source verse at 4:330 has Shiva speak in the first person; the note reports it in the third person. 4:331 says that remorse is a sign of good sense, not of death.
+- **Unclear readings in this range (3:242, 3:251, 3:253, 3:282, 3:284, 3:303–3:306, 4:311, 4:327):** each note says so and reports the sense with "the general sense appears to be". 3:303 is half a verse.
+- **Signs of death read from the body and the senses (4:332–4:349, 4:362–4:369).** Please read these closely. Every note in these ranges except 4:367 carries the illness-and-death caveat, and each opens with the ordinary medical cause or with a condition that is treated: sepsis (4:332), poor sight that a pair of glasses corrects (4:333), glaucoma (4:334), thyroid disease (4:337), the signs of a stroke (4:339, which says such signs call for a hospital within minutes, not a count of months), retinal detachment (4:341), long-standing sinus disease (4:363). 4:340 (no feeling in the skin of the breast) opens with Paul Brand's work on leprosy, says the disease is fully treatable, and an application says not to discriminate against a person who has recovered. 4:364 (loss of control of urine and stool) opens with Kerala's neighbourhood palliative-care network and says the duty then is dignity and comfort, not counting days; an application says a new loss of control should be shown to a doctor because it is often treatable.
+- **Tests made by pressing on the body (4:341, 4:342, 4:369):** the verses test for death by pressing the eyes, the teeth and testicles, or the corners of the eyes. Each note says not to press on the eyes or on any organ as a test. 4:369 opens with Newton's own account of pressing a bodkin behind his eye, says his sight survived by chance and that no doctor would advise it.
+- **The shadow-person practice (4:350–4:361).** The verses teach gazing at one's own shadow and then at the sky, and read powers or death from the figure that appears. The notes open with the optics of such figures (the Brocken spectre, afterimages and Emmert's law, the cells seen against a blue sky, pareidolia, Goethe's coloured afterimages, motion-induced blindness, Troxler's fading, migraine aura). 4:350 and 4:352–4:355 carry the siddhi caveat, 4:357 carries both the siddhi and the illness-and-death caveat, and 4:351 and 4:356–4:361 carry the illness-and-death caveat. An application at 4:352 says never to stare at the sun or at any strong light. **4:354 ("lord of those who walk the earth … doer, destroyer and lord")** says these fruits are the style of praise; its applications say not to treat any experience in meditation as proof of being above others. 4:361 says practices of gazing without blinking should be done only after asking an eye doctor.
+- **Averting death (4:370) and the doshas (4:371):** 4:370 opens with the Harvard study of five habits and adult life expectancy and carries the siddhi caveat. 4:371 says the account of dosha, dhatu and mala is the language of yoga and Ayurveda and that in illness a qualified doctor should be consulted.
+- **Bandha and breath-holding (4:375–4:379).** 4:375 says uddiyana bandha is done only on an empty stomach, is ruled out in pregnancy, high blood pressure and abdominal disease, and should be learned only from an experienced teacher. An application at 4:377 says a person with heart or lung disease should ask a doctor before any practice of holding the breath. 4:379 opens with Albert Craig's 1961 study of swimmers who lost consciousness under water without warning; its applications say to hold the breath only as far as it is comfortable and never to practise breath-holding in water alone.
+- **The advanced verse (4:387).** Please read this closely. The verse describes holding the apana upward, joining it with prana and taking it through the sushumna to the crown of the head. The note opens with the Valsalva manoeuvre and why straining with the breath held can make a person faint, says such practices are a danger for people with heart, eye or blood-pressure disease, and says the description here is in the language of symbol and is not a method to carry out. It carries the chakra-and-kundalini caveat. The applications say not to begin this from a book and to stop and tell a doctor at once if any practice brings dizziness or chest pain. This follows the existing व्याख्या, which already says the verse is not a method for ending life, for holding the breath by force or for harming the body.
+- **Promises of long life and youth (4:380, 4:381, 4:384–4:386):** each note carries the siddhi caveat. 4:380 ("lives as long as the moon and stars") opens with the phrase "as long as the moon and sun endure" in old land grants and reads the statement as praise of permanence, not a count of years. 4:381 opens with the longest verified human life (122 years) and says no method of making the body young again has been proven. 4:386 (life grows by three ghatis a day) opens with the measured rise in life expectancy and says it came from clean water, vaccines, nutrition and medicine.
+- **Closing the eyes, ears, nose and mouth with the fingers (4:382):** as at 2:146, the note says no pressure is put on the eyes, that the practice should not be done in eye or ear disease without asking a doctor, and an application says not to hold the breath.
+- **Praise of the text and of the knower of svara (4:388–4:391):** 4:388, 4:390 and 4:391 carry the arthavāda caveat and 4:389 (Lakshmi in the palm) the results caveat. 4:390 keeps the verse's own comparison ("as the sun among brahmins") and explains it as a reference to the worship of the sun at dawn and dusk; an application says to judge a person's knowledge by conduct, not by their own claim.
+- **The table of contents, with "bringing women under control" (4:393).** Please read this closely. The note reports the verse's list as it stands, says the sections on war, conception and death are the beliefs of that age and not rules for today, and carries the consent caveat. An application says a relationship rests only on the other person's free "yes".
+- **Recitation at eclipses (4:394):** the note carries the astrology caveat. It opens with Columbus using a predicted eclipse to frighten the people of Jamaica in 1504, and its applications say never to look at a solar eclipse without a certified filter and to keep away from anyone who asks for money by raising fear of an eclipse.
+- **"Little sleep and little food" (4:395):** the note says this means giving up sloth and excess, not keeping the body hungry or awake, and that most adults need at least seven hours of sleep; an application says to eat a little less than hunger asks but not to give up meals.
+- **Unclear readings in this range (4:333, 4:338, 4:361, 4:368, 4:381):** each note says so, as the existing व्याख्या does, and reports the sense with "the general sense appears to be".
+
+## Facts to spot-check
+
+Each line gives the verse and the fact that opens its note.
+
+- 1:1: Patanjali's Mahabhashya on texts with an auspicious beginning, middle and end.
+- 1:2: agama (Shiva speaks, the Goddess listens) and nigama (the reverse) in the tantra tradition.
+- 1:3: Paul Gauguin's 1897 painting in Tahiti with its three questions.
+- 1:4: Anaximenes (sixth century BCE) held air to be the source of all things.
+- 1:5: the word tattva is formed from tat and tva ("that-ness").
+- 1:6: Charles Fabry and Henri Buisson, 1913, the ozone layer 15 to 35 km up; pressed to sea-level pressure it would be about 3 mm thick.
+- 1:7: Empedocles' four roots; Aristotle added a fifth.
+- 1:8: the carbon cycle (one atom passing through air, leaf, animal and back).
+- 1:9: Charaka Samhita, Sharira-sthana: the person is like the world.
+- 1:10: Rama Prasad of Meerut, "Nature's Finer Forces", London, 1890.
+- 1:11: Sita gives Hanuman her chudamani (Valmiki Ramayana, Sundarakanda).
+- 1:12: the traditional meaning of astika (accepts the authority of the Veda) and nastika.
+- 1:13: the subhashita on five marks of a student (kaka-cheshta and the rest).
+- 1:14: the Asilomar conference, February 1975, about 140 scientists.
+- 1:15: Rainer Schandry, 1981, the heartbeat-counting task.
+- 1:16: Sharngadeva's Sangita Ratnakara (thirteenth century, Devagiri) on the word nada.
+- 1:17: Shawn Carlson's test of astrology, Nature, 1985.
+- 1:18: pulse examination first described at length in the Sharngadhara Samhita (thirteenth to fourteenth century).
+- 1:19: Franz Halberg coined "circadian" in 1959.
+- 1:20: the newborn's first breath and the change in the circulation.
+- 1:21: the subhashita that calls learning the chief wealth.
+- 1:22: Marlies De Couck and colleagues, 2019, slow breathing and decision-making, 56 participants.
+- 1:23: the 2010 "power pose" study and Eva Ranehill's 2015 replication with 200 participants that found no effect.
+- 1:24: Ivan Pavlov's 1904 Nobel Prize was for the physiology of digestion.
+- 1:25: Yajnavalkya Smriti's fourteen seats of learning.
+- 1:26: the stars of Orion (Mriga) lie at very different distances.
+- 1:27: Philipp Bozzini's "Lichtleiter", 1806.
+- 1:28: Mahaparinibbana Sutta: "be an island to yourselves".
+- 1:29: the five limbs of the panchanga; vishti (bhadra), vyatipata and vaidhriti.
+- 1:30: Lysann Damisch and colleagues, 2010, the "lucky ball" study, and the 2014 replication that did not find the effect.
+- 1:31: Sushruta Samhita's method of studying the body from within.
+- 1:32: the umbilical cord, its two arteries and one vein.
+- 1:33: about two metres of DNA coiled in each cell nucleus.
+- 1:34: René Laennec's stethoscope, Paris, 1816.
+- 1:35: ATP, the body's energy molecule; an adult makes and spends roughly their own body weight of it each day.
+- 1:36: Debra Werntz and colleagues, 1983, the nasal cycle and the two hemispheres.
+- 1:37: anatomical names taken from shapes: hippocampus (seahorse), atlas, coccyx (cuckoo's beak).
+- 1:38: the tear duct from the inner corner of the eye to the nose.
+- 1:39: Bartolomeo Eustachi described the tube from the middle ear to the throat, 1563.
+- 1:40: Katha Upanishad 2.2.1, the city of eleven gates.
+- 1:41: the nasal lining makes about a litre of mucus a day; cilia move it.
+- 1:42: Atharvaveda 11.4, the hymn to Prana.
+- 1:43: Gita 1.15: Arjuna's conch is Devadatta, and Arjuna is called Dhananjaya.
+- 1:44: an adult heart at rest pumps about five litres a minute.
+- 1:45: Marshall Hall, 1833, the concept of reflex action.
+- 1:46: Lydia Bourouiba and colleagues, 2014, the cloud of a sneeze.
+- 1:47: the Harvard committee's definition of brain death, 1968.
+- 1:48: the Glatzel mirror test of nasal airflow.
+- 1:49: situs inversus, about one person in ten thousand.
+- 1:50: Yoga-bija explains "hatha" as ha (sun) and tha (moon).
+- 1:51: Isha Upanishad 16, "so'ham asmi".
+- 1:52: the Sun is about 400 times wider than the Moon and about 400 times farther.
+- 1:53: Gita 17.20, the marks of sattvic giving.
+- 1:54: Daniel Levinson and colleagues, 2014, breath counting as a measure of mindfulness.
+- 1:55: Pierre Philippot and colleagues, 2002, breathing patterns and emotions.
+- 1:56: Shirley Telles and colleagues, Bengaluru, 1994, 48 men, nostril breathing and oxygen consumption (37 per cent rise with right-nostril breathing).
+- 1:57: anabolism and catabolism.
+- 1:58: Nyepi, Bali's day of silence; the airport closes.
+- 1:59: Janus, the two-faced Roman god of doors and beginnings.
+- 1:60: grammatical gender of sun and moon in Sanskrit, German and French.
+- 1:61: core body temperature is lowest in the early morning and highest in the early evening.
+- 1:62: Christian Cajochen and colleagues, 2013, 33 people, sleep around the full moon (about 5 minutes longer to fall asleep, about 20 minutes less sleep); later results are mixed.
+- 1:63: the ghati water-bowl clock; one ghati is 24 minutes.
+- 1:64: ethanol and dimethyl ether, the same atoms in a different order.
+- 1:65: Santorio of Padua and his weighing chair, about thirty years of measurements, published 1614.
+- 1:66: James Haight and Philip Cole, 1980s, pressure on one side of the body and the nostrils.
+- 1:67: Odysseus has himself bound to the mast to hear the Sirens.
+- 1:68: the order of the weekdays comes from the planetary hours (hora).
+- 1:69: Narayan Meghaji Lokhande and the Sunday holiday for Mumbai mill workers, 10 June 1890.
+- 1:70: the order of events in one heartbeat (atria, then ventricles).
+- 1:71: inhaled air has about 21 per cent oxygen, exhaled air about 16 per cent.
+- 1:72: each sign of the zodiac takes about two hours to rise; the rising sign is the lagna.
+- 1:73: Hipparchus and the precession of the equinoxes; the ayanamsha is now about 24 degrees.
+- 1:74: Nils Bohlin's three-point seat belt, Volvo, 1959; the patent was left open.
+- 1:75: sartha caravans and the sarthavaha in ancient India.
+- 1:76: World Health Organization report, 2023: about 1.2 million road deaths a year; the leading cause of death at ages 5 to 29.
+- 1:77: the first crescent is usually seen one to two days after the new moon, just after sunset, and not before it is about 15 hours old.
+- 1:78: Carl Linnaeus's flower clock, 1751.
+- 1:79: jet lag; the body clock shifts by about one time zone a day.
+- 1:80: chronotypes; adolescents lean towards late hours.
+- 1:81: Till Roenneberg and colleagues, 2006, "social jet lag".
+- 1:82: the Saffir–Simpson scale of five storm categories, 1971.
+- 1:83: Stephen Jay Gould, diagnosed 1982 with a cancer whose median survival was eight months, lived twenty more years ("The Median Isn't the Message").
+- 1:84: Thomas Pickering, 1988, white-coat hypertension in about one in five patients.
+- 1:85: Jean-Jacques de Mairan, 1729, the mimosa that kept its daily leaf movement in the dark.
+- 1:86: Petronius, Satyricon: a servant at the dining-room door calls on guests to enter right foot first.
+- 1:87: "10,000 steps" comes from a 1965 Japanese pedometer, the manpo-kei; I-Min Lee and colleagues, 2019, about 17,000 older women, lower mortality at about 4,400 steps a day.
+- 1:88: "mile" comes from Latin mille passus, a thousand double paces; Roman milestones.
+- 1:89: the morning custom of kara-darshana (Lakshmi at the fingertips, Sarasvati in the middle, Govinda at the base of the hand).
+- 1:90: Richard Oldfield's Edinburgh Handedness Inventory, 1971; about nine in ten people are right-handed.
+- 1:91: Bronisław Malinowski: Trobriand fishermen used ritual for the open sea, not for the lagoon.
+- 1:92: Luca Tommasi and Daniele Marzoli, 2009: requests made to the right ear (176 people) were granted about twice as often.
+- 1:93: the four means of statecraft (sama, dana, bheda, danda); Manusmriti chapter 7 on force as the last resort.
+- 1:94: a young bar-tailed godwit flew about 13,500 km from Alaska to Tasmania in eleven days without landing, 2022.
+- 1:95: Kerry Courneya and Albert Carron, 1992, review of home advantage in team sports (about 60 per cent in several sports).
+- 1:96: Bertrand Russell's remark that Aristotle said women have fewer teeth and never counted.
+- 1:97: the "Spanish Prisoner" swindle; the New York Times called it an old and familiar fraud in 1898.
+- 1:98: the Tokyo Metropolitan Police lost-and-found centre handles about four million items a year.
+- 1:99: Albert Calmette made the first snake antivenom in 1894, after starting his study of cobra venom in Saigon.
+- 1:100: Sweden changed from driving on the left to the right at 5 a.m. on 3 September 1967.
+- 2:101: the "go-around" in aviation, taught as a correct decision and not an error.
+- 2:102: the Taj Mahal: begun 1632, main building about eleven years, whole complex about twenty-two; foundations on deep wells by the Yamuna.
+- 2:103: Chand Baori at Abhaneri, Rajasthan: eighth to ninth century, thirteen storeys, about 3,500 steps.
+- 2:104: the hundi, the old Indian merchants' bill of exchange.
+- 2:105: the Egyptian–Hittite peace treaty of about 1259 BCE (Ramesses II and Hattusili III); a replica hangs at the United Nations in New York.
+- 2:106: the Vidyarambham rite on Vijayadashami in Kerala and Karnataka (first letter written in rice).
+- 2:107: the word godhuli for dusk (dust raised by cows coming home); held auspicious for weddings.
+- 2:108: the Hastyayurveda attributed to Palakapya, taught to King Romapada of Anga.
+- 2:109: the Natya Shastra's four classes of instruments (tata, sushira, avanaddha, ghana); Hornbostel and Sachs, 1914.
+- 2:110: the commonest cause of fainting and its first aid (lie the person down, raise the legs).
+- 2:111: the India Meteorological Department, founded 1875; normal monsoon onset over Kerala on 1 June, the whole country in about five to six weeks.
+- 2:112: Gheranda Samhita, chapter 5: begin yoga in spring or autumn, not in the other four seasons.
+- 2:113: "Blue Monday" (2005) came from a travel company's publicity and has no scientific basis.
+- 2:114: the Periplus on Hippalus and the monsoon route across the open sea to India's west coast.
+- 2:115: World Health Organization report, 2024: about 2.6 million deaths from alcohol in 2019, about one in twenty of all deaths; no amount shown to be safe.
+- 2:116: the Wildlife (Protection) Act, 1972; tiger count about 1,400 in 2006 and over 3,000 in 2022.
+- 2:117: the superintendent of gambling in Kautilya's Arthashastra (licensed places, true dice, five per cent of winnings to the state).
+- 2:118: Sequoyah's Cherokee syllabary, 1821, about 85 signs, after about twelve years' work; a newspaper in it from 1828.
+- 2:119: Maharashtra's 2013 Act against harmful "supernatural" practices, after Narendra Dabholkar's eighteen-year campaign and his murder that year; Karnataka's Act of 2017.
+- 2:120: the king's day in eight parts in the Arthashastra (first: defence and accounts; second: people's affairs; third: bath, meal, study; seventh: elephants, horses, chariots, troops).
+- 2:121: Androniki Naska and colleagues, 2007, about 24,000 Greek adults followed for six years: regular midday nap, about 37 per cent lower coronary mortality (an association only).
+- 2:122: the athletics rule that a start within one tenth of a second of the signal is a false start.
+- 2:123: slack water between flood and ebb tide.
+- 2:124: lodgepole pine cones sealed with resin that open only in the heat of a forest fire.
+- 2:125: Cheyne–Stokes breathing, described by John Cheyne (1818) and William Stokes (1854).
+- 2:126: the doldrums, the belt of light and shifting winds near the equator.
+- 2:127: the equinox (vishuva), about 20–21 March and 22–23 September.
+- 2:128: Reinhold Niebuhr's serenity prayer, 1930s, later used by recovery groups.
+- 2:129: Ishvara-pranidhana in three places in the Yoga Sutra (book 1 as a means to samadhi; the start of book 2 in kriya-yoga; the list of niyamas).
+- 2:130: J. L. Austin's 1955 Harvard lectures on sentences that are themselves acts.
+- 2:131: Amy Starmer and colleagues, 2014, nine hospitals: a structured handover cut medical errors by about 23 per cent.
+- 2:132: Ann Williamson and Anne-Marie Feyer, 2000: 17 to 19 hours awake impairs performance as much as the legal alcohol limit of many countries.
+- 2:133: the Guugu Yimithirr language of north-east Australia uses compass directions, not left and right.
+- 2:134: Clever Hans (Berlin, 1904) and Oskar Pfungst's 1907 finding that the horse read the questioner's cues.
+- 2:135: civil, nautical and astronomical twilight (Sun 6, 12 and 18 degrees below the horizon).
+- 2:136: the Vijnana Bhairava opens with the Goddess's question and gives 112 methods of meditation.
+- 2:137: about three quarters of all aluminium ever made is still in use; recycling takes about one twentieth of the energy.
+- 2:138: Wolfgang Wiltschko, 1972: European robins take direction from the Earth's magnetic field.
+- 2:139: the Chinese five phases (wood, fire, earth, metal, water).
+- 2:140: the shared genetic code (64 codons, 20 amino acids); human insulin made in bacteria.
+- 2:141: the eight branches of Ayurveda.
+- 2:142: Leopold Auenbrugger, Vienna, 1761, percussion of the chest, learned from tapping casks at his father's inn.
+- 2:143: Albert Munsell's colour system, 1905 (hue, value, chroma); used for soil colour.
+- 2:144: Matthias Mehl and colleagues, 2007, about 400 students: women and men both speak about 16,000 words a day.
+- 2:145: Gilbert White of Selborne kept a daily nature journal for about twenty-five years; his book appeared in 1789; he told three look-alike small birds apart as separate species.
+- 2:146: Wolfgang Metzger, 1930, the Ganzfeld (uniform field) and the patches and shapes people begin to see.
+- 2:147: Heinrich Klüver's four "form constants", from 1926.
+- 2:148: Hermann Rorschach's ten inkblots, 1921.
+- 2:149: the Japanese gorinto, a five-part stone tower (cube, sphere, pyramid, crescent, jewel) for the five elements.
+- 2:150: a candle flame in a spacecraft is small, round and blue (space experiments of the 1990s).
+- 2:151: Brent Berlin and Paul Kay, 1969, 98 languages: the order in which languages add basic colour words.
+- 2:152: the 107 marmas of the Sushruta Samhita.
+- 2:153: the "tongue map" came from a mistranslated German paper of 1901; every part of the tongue senses all basic tastes.
+- 2:154: Bernard Wright's peak flow meter, 1959.
+- 2:155: John Fieselmann and colleagues, 1993: a breathing rate above 27 a minute was the strongest warning of cardiac arrest within three days.
+- 2:156: the four temperaments of the Hippocratic and Galenic tradition, tied to air, fire, earth and water; no longer accepted in medicine.
+- 2:157: the medieval three-field system, with one field left fallow each year.
+- 2:158: Agave americana, the "century plant", flowers once after ten to thirty years and then dies.
+- 2:159: John Hutchinson's spirometer, London, 1846, measured in more than 2,000 people.
+- 2:160: breath from an open mouth feels warm and from pursed lips cool, though it leaves the lungs at the same temperature.
+- 2:161: Paul Ekman, Robert Levenson and Wallace Friesen, 1983: in anger the heart rate and finger temperature rose; in fear the heart rate rose but the fingers cooled.
+- 2:162: Paul Siple and Charles Passel's wind-chill measurements in Antarctica, 1945.
+- 2:163: white noise holds all audible frequencies at equal strength.
+- 2:164: the Indo-Gangetic plain is among the largest alluvial tracts in the world and feeds about forty per cent of India's people.
+- 2:165: water's high specific heat steadies the temperature of coasts and of the body.
+- 2:166: the air over a person presses with a weight of about ten tonnes.
+- 2:167: about 10^19 molecules in a cubic centimetre of air at ground level, against about one atom in interstellar space.
+- 2:168: Gerd Gigerenzer's estimate of about 1,500 extra road deaths in the twelve months after September 2001.
+- 2:169: the eight dikpalas and their directions.
+- 2:170: rice and wheat are low in lysine and pulses in methionine; eaten together they give complete protein.
+- 2:171: US fire-protection figures: the death rate in home fires is about half where a working smoke alarm is present.
+- 2:172: the Yi Jing and its sixty-four hexagrams.
+- 2:173: India's six-digit PIN code, 15 August 1972, designed by Shriram Bhikaji Velankar.
+- 2:174: Charaka Samhita, Sutrasthana 1: substances of three origins: animal (jangama), plant (audbhida) and earth (parthiva).
+- 2:175: the millipede Eumillipes persephone, described in 2021, with more than 1,300 legs.
+- 2:176: Mars is red from iron oxide; the Viking landers, 1976.
+- 2:177: Jupiter is about eleven times the Earth's diameter and mostly hydrogen and helium; its Great Red Spot is a storm larger than the Earth, watched for more than 150 years.
+- 2:178: United Nations, 2020: about 18 million people born in India live abroad, the most for any country.
+- 2:179: the Amur falcon's migration through Nagaland, protected by villagers since 2013.
+- 2:180: the Tokyo 2020 medals were made from metal recovered from about 79,000 tonnes of donated small electronics, including more than six million phones (about 32 kg of gold and 3,500 kg of silver).
+- 2:181: Kalervo Oberg's "culture shock", 1954.
+- 2:182: John Graunt's life table from the London bills of mortality, 1662.
+- 2:183: the pyramid at Chichén Itzá: 365 steps, and the serpent of light and shadow at the equinox.
+- 2:184: an adult body holds about 16 kg of carbon and about 4 g of iron.
+- 2:185: a human scalp carries about 100,000 hairs.
+- 2:186: the salivary glands make about a litre of saliva a day.
+- 2:187: ghrelin, the hunger hormone, identified in 1999.
+- 2:188: Jess Porter and colleagues, 2007: people can follow a scent trail across grass and improve with practice.
+- 2:189: the five kleshas of Yoga Sutra 2.3.
+- 2:190: the text's own arithmetic: the five elements' shares add to 150 palas, which is 60 minutes.
+- 2:191: the fire at Notre-Dame, Paris, 15 April 2019, and its reopening in December 2024.
+- 2:192: the Tarka-sangraha's definitions of the elements by their qualities.
+- 2:193: Mount St Helens, May 1980: the north flank bulged by one and a half to two metres a day before the eruption.
+- 2:194: Abhijit is the star Vega, about 25 light-years away.
+- 2:195: Ardra is Betelgeuse, which dimmed unusually in late 2019.
+- 2:196: Krittika is the Pleiades cluster, about 440 light-years away.
+- 2:197: the Moon's sidereal month of about 27 days 8 hours, and the nakshatra span of 13°20′.
+- 2:198: Elizabeth Loftus and John Palmer, 1974: the wording of a question changed the remembered speed of a crash.
+- 2:199: the eighteen akshauhinis at Kurukshetra, eleven on the Kaurava side and seven on the Pandava side.
+- 2:200: Katha Upanishad 1.2.24: one who has not turned from bad conduct and whose mind is not at peace cannot reach the Self by intellect alone (paraphrased, not quoted).
+- 3:201: Christopher Lowry and colleagues, 2007: the soil bacterium Mycobacterium vaccae activated serotonin-producing brain cells in mice; the note says this is not established in people.
+- 3:202: the mammalian diving response; a seal's heart can slow to about ten beats a minute.
+- 3:203: the thermic effect of food: about a tenth of the energy eaten goes into digesting it.
+- 3:204: Otto Lilienthal: his 1889 book on bird flight, about 2,000 glider flights from 1891, death in 1896.
+- 3:205: the Dome C ice core in Antarctica, more than three kilometres deep, with about 800,000 years of climate record.
+- 3:206: the Sanskrit maxim that a king is honoured in his own country but a scholar everywhere (reported, not quoted).
+- 3:207: Leo Tolstoy's story "Three Questions", 1903.
+- 3:208: the "Ask Me 3" programme of a US patient-safety body: three questions for every visit to a doctor.
+- 3:209: Ernst Engel, 1857: as a household's income rises, the share it spends on food falls.
+- 3:210: the Yaksha's question on friends in the Mahabharata (Vana Parva): the traveller's friend is his company of fellow travellers, the householder's his wife, the sick man's the physician, the dying man's his charity.
+- 3:211: the survival "rule of threes": about three minutes without air, three days without water, three weeks without food; the note calls these rough figures.
+- 3:212: Prashna Upanishad, third question: Kausalya Ashvalayana asks Pippalada where prana is born and how it enters and divides in the body.
+- 3:213: the Hawa Mahal, Jaipur, 1799, built by Sawai Pratap Singh, with 953 small windows.
+- 3:214: an adult at rest breathes about six litres a minute, and more than a hundred in hard running; the note says the text's figure for sleep does not match measurement.
+- 3:215: breathing pauses for about a second at each swallow, and a person swallows several hundred times a day.
+- 3:216: Andrea Zaccaro and colleagues, 2018: a review of fifteen studies of slow breathing (under ten breaths a minute).
+- 3:217: the Vinaya story of Pindola Bharadvaja and the sandalwood bowl, after which the Buddha forbade monks to display powers before lay people.
+- 3:218: "zero shadow" days between the tropics; in Bengaluru near the end of April and the middle of August.
+- 3:219: the resting body uses about sixty to seventy per cent of a day's energy just to stay alive.
+- 3:220: the United States rule (since 2013) of about 1,500 flight hours before serving as an airline co-pilot.
+- 3:221: the Moon rises about fifty minutes later each day, and the tide shifts with it.
+- 3:222: the Arthashastra's six measures of foreign policy, and its advice to choose peace where peace and war bring equal gain.
+- 3:223: ISO 8601 (1988) counts Monday as the first day of the week; the United States and others begin with Sunday.
+- 3:224: the storms that wrecked Kublai Khan's fleets off Japan in 1274 and 1281; the note says "according to the traditional account".
+- 3:225: Karna giving away the armour and earrings he was born with (Mahabharata).
+- 3:226: "shantih" said three times for the three kinds of suffering (adhidaivika, adhibhautika, adhyatmika).
+- 3:227: the eight stages of shooting in Japanese archery (kyudo), ending in zanshin.
+- 3:228: the "Dutch reach" for opening a car door, added to the UK Highway Code in 2022.
+- 3:229: in master-level chess, White scores about fifty-four per cent.
+- 3:230: Aitareya Upanishad: Agni enters the mouth as speech, Vayu the nostrils as breath, the Sun the eyes as sight, the Directions the ears as hearing, the Moon the heart as mind.
+- 3:231: the haka of the New Zealand rugby team; "Ka Mate" composed about 1820 by Te Rauparaha.
+- 3:232: the Indus script: about 4,000 short inscriptions, about 400 signs, still undeciphered.
+- 3:233: aircraft take off and land into the wind, and runways are aligned with the prevailing wind.
+- 3:234: the Mary Rose (sank 1545, raised 1982): 137 whole longbows about two metres long, with draw weights of roughly fifty to eighty kilograms.
+- 3:235: Peter Krogh's 3-2-1 rule for backups.
+- 3:236: the pulse on the top of the foot (dorsalis pedis), checked as a rule in people with diabetes.
+- 3:237: Michael Bar-Eli and colleagues, 2007: in 286 penalty kicks goalkeepers dived left or right about 94 per cent of the time, though staying in the centre stopped more.
+- 3:238: Christina Zelano and colleagues, 2016: fearful faces were recognised faster and objects remembered better during nasal inhalation.
+- 3:239: Bertram Forer, 1948: 39 students rated the same "personality sketch" 4.26 out of 5.
+- 3:240: Duncan MacDougall and colleagues, 1985: arterial pressure above 300 mmHg measured during heavy lifts with the breath held.
+- 3:241: the bar-headed goose, usually identified with the hamsa, tracked flying above 7,000 metres over the Himalaya.
+- 3:242: a boxer's stance keeps the weaker hand forward and the stronger hand back.
+- 3:243: R Adams Cowley's "golden hour" and the Baltimore shock-trauma centre; the note says later studies do not confirm a sixty-minute limit.
+- 3:244: a person can die of bleeding from a major artery in about five minutes; the United States bleeding-control campaign of 2015.
+- 3:245: India's road-transport ministry, 2022: more than 168,000 road deaths, about 45 per cent on two-wheelers, more than 50,000 without a helmet.
+- 3:246: Carl von Clausewitz, On War (1832): defence is the stronger form of war.
+- 3:247: Denos Gazis and colleagues, 1960: the "dilemma zone" at an amber traffic light.
+- 3:248: rip currents and the advice to swim parallel to the shore.
+- 3:249: Kumbhalgarh fort, fifteenth century, built by Rana Kumbha; wall about 36 km; UNESCO list 2013; taken only once, for want of water.
+- 3:250: Pyrrhus of Epirus, about 280 BCE, and Plutarch's report of his remark.
+- 3:251: palm-leaf manuscripts last about three to four hundred years in India's climate, so texts were recopied by hand.
+- 3:252: Joanne Miller and Jon Krosnick, 1998: in 118 Ohio races the first-listed candidate gained about 2.5 percentage points.
+- 3:253: the United Nations Charter, 1945, article 2; 193 member states.
+- 3:254: the 2002 "name-letter" claim and Uri Simonsohn's 2011 re-analysis, which found no effect.
+- 3:255: the Antarctic Treaty, 1959, twelve signatories; India joined in 1983.
+- 3:256: only two tied Tests in cricket: Brisbane, December 1960, and Chennai, September 1986.
+- 3:257: the United States Naval Academy resumed teaching celestial navigation in 2015.
+- 3:258: Persi Diaconis and colleagues, 2007 (a coin lands on its starting side about 51 per cent of the time), and the 2023 test with more than 350,000 tosses by 48 people.
+- 3:259: Rainer Schandry, 1981: accuracy in counting one's own heartbeats, and its link with felt emotion.
+- 3:260: the robbery at Ramana Maharshi's ashram, 26 June 1924.
+- 3:261: Nala loses his kingdom at dice to Pushkara and later learns the lore of dice from Rituparna (Mahabharata, Nalopakhyana).
+- 3:262: the Panchatantra story of the hare and the lion Bhasuraka.
+- 3:263: the Arthashastra's three powers of a king, with the power of counsel ranked highest.
+- 3:264: Dilip Mahalanabis, Bangaon refugee camps, 1971: oral rehydration cut cholera deaths from about 30 per cent to under 4 per cent.
+- 3:265: the "inner agnihotra" of the Kaushitaki Upanishad, taught under the name of Pratardana.
+- 3:266: the firebrand simile of Gaudapada's Mandukya Karika (chapter 4, Alatashanti).
+- 3:278: Nettie Stevens, 1905: the father's cell decides the sex of the offspring.
+- 3:279: the Medical Research Council vitamin study, 1991: folic acid cut the risk of neural-tube defects by about 70 per cent.
+- 3:280: the World Health Organization's working definition of sexual health (respect; free of coercion, discrimination and violence).
+- 3:281: rubella in the first three months of pregnancy, its vaccine, and India's campaign since 2017.
+- 3:282: World Health Organization, 2023: about one adult in six experiences infertility.
+- 3:283: in about half of couples a cause of infertility lies wholly or partly with the man.
+- 3:284: India began the world's first national family-planning programme in 1952.
+- 3:285: the 1994 law against prenatal sex determination; Census 2011: about 918 girls per 1,000 boys under the age of six.
+- 3:286: Supreme Court of India, 15 April 2014 (recognition of the third gender), and the 2019 Act.
+- 3:287: a 1999 United States study of 104 pregnant women: guesses of the baby's sex were right about 55 per cent of the time.
+- 3:288: Christiaan Monden and colleagues, 2021: about 1.6 million pairs of twins a year; one baby in 42 is a twin.
+- 3:289: the Lancet series of 2008 on the first thousand days from conception.
+- 3:290: the Lancet review of 2021: about 23 million miscarriages a year, about one in seven recognised pregnancies, mostly from chromosomal errors.
+- 3:291: Sample Registration System: India's infant mortality fell from 129 per 1,000 live births in 1971 to 28 in 2020.
+- 3:292: Charaka Samhita, Vimanasthana 8: examine the treatise, then the teacher, before study.
+- 3:293: Ugadi and Gudi Padwa on Chaitra Shukla Pratipada, and the six-taste Ugadi mixture.
+- 3:294: the weather sayings that go under the names of Ghagh and Bhaddari; the note says tests against rainfall records have given mixed results (stated generally, with no single study named).
+- 3:295: Amartya Sen, Poverty and Famines (1981), on the Bengal famine of 1943.
+- 3:296: plague in fourteenth-century Europe, and Ragusa's isolation rule of 1377, the origin of "quarantine".
+- 3:297: Mesha Sankranti as the solar new year (Baisakhi, Puthandu, Vishu, Poila Boishakh, Bohag Bihu, Pana Sankranti) and the reading of the new almanac.
+- 3:298: the Old Farmer's Almanac (since 1792) claims 80 per cent accuracy; a 1981 check of five years of its forecasts at 32 places found about half correct.
+- 3:299: the rice variety IR8, released in November 1966, and Nekkanti Subba Rao, who grew it in Andhra in 1967.
+- 3:300: Mumbai, 26 July 2005: 944 mm of rain in 24 hours at Santacruz.
+- 3:301: Maharashtra's employment guarantee scheme after the 1972 drought, and the national law of 2005 (100 days of work).
+- 3:302: Food and Agriculture Organization: a one-square-kilometre locust swarm (about 40 million insects) eats as much in a day as 35,000 people; swarms reached India in 2019 and 2020.
+- 3:303: the Food Corporation of India, founded 1965.
+- 3:304: the Essential Commodities Act, 1955.
+- 3:305: the Dojima rice exchange, Osaka, 1730.
+- 3:306: the Bhola cyclone, November 1970 (more than 300,000 deaths), and the cyclone of 2007 (about 3,500 deaths) after shelters and warning volunteers.
+- 3:307: Bihar's 1999 law against branding women as witches, followed by Jharkhand, Chhattisgarh, Odisha, Rajasthan and Assam; National Crime Records Bureau: more than 2,500 such killings between 2000 and 2016.
+- 3:308: bystander chest compressions double or triple survival in cardiac arrest; the chance falls by about a tenth with each minute without them.
+- 3:309: William Knaus's APACHE score for intensive-care patients, 1981.
+- 3:310: the six-step SPIKES protocol for giving bad news (Walter Baile, Robert Buckman and colleagues, 2000).
+- 4:311: a 2012 United States hospital study: patients judged a doctor's visit longer and better when the doctor sat down, though the time was the same.
+- 4:312: Amneet Sandhu and colleagues, 2014: about 24 per cent more heart-attack admissions in Michigan on the Monday after clocks go forward.
+- 4:313: Adolf Kussmaul, 1874: the deep laboured breathing of diabetic coma.
+- 4:314: the five classes of tithi (Nanda, Bhadra, Jaya, Rikta, Purna).
+- 4:315: the eSanjeevani telemedicine service (from late 2019); more than 100 million consultations by early 2023.
+- 4:316: the story of Markandeya, saved from Yama by Shiva; the temple at Thirukkadaiyur.
+- 4:317: Irving Selikoff, 1968: lung-cancer risk about five times with asbestos, about ten times with smoking, about fifty times with both.
+- 4:318: the Framingham Heart Study, begun in 1948 with 5,209 residents.
+- 4:319: Bhagavad Gita 6.19: the lamp in a windless place.
+- 4:320: Stéphane Mifsud's breath-hold of 11 minutes 35 seconds, 2009.
+- 4:321: Maiken Nedergaard's team, 2012 and 2013: the brain's fluid-clearance system, and its faster work in sleep (mice).
+- 4:322: the Hindi Gyan Svarodaya of Sant Charandas of Delhi (eighteenth century), and his disciples Sahajobai and Dayabai.
+- 4:323: some bend of the nasal septum is found in about eight people in ten.
+- 4:324: allergic rhinitis affects between one and three people in ten.
+- 4:325: Benjamin Gompertz, 1825: the adult risk of death doubles about every eight years.
+- 4:326: the "Hippocratic face" described in the Prognostic, with its instruction to rule out sleeplessness, diarrhoea and hunger first.
+- 4:327: Marc Amsler's grid for testing central vision, 1945.
+- 4:328: ochre robes and the shaven head as marks of renunciation; early Buddhist robes sewn from discarded rags.
+- 4:329: sudden confusion (delirium) in about one in three hospital patients over seventy.
+- 4:330: Charaka Samhita, Indriyasthana (twelve chapters on arishta), and its instruction that the physician should not announce a death unasked.
+- 4:331: Robert Butler, 1963: the "life review" of old age is a normal and healthy process.
+- 4:332: sepsis and its signs; a 2020 Lancet estimate of its worldwide burden.
+- 4:333: World Health Organization, World Report on Vision (2019): at least 2.2 billion people with impaired sight, at least 1 billion of them preventable or not yet treated.
+- 4:334: glaucoma: pressure in the eye, loss of side vision first, haloes round lamps.
+- 4:335: Calvin Hall's collection of more than fifty thousand dream reports, begun in the 1940s.
+- 4:336: Shinobu Ishihara's colour-vision plates, 1917; about one man in twelve has red-green colour deficiency.
+- 4:337: the thyroid gland: effects of too much and too little hormone.
+- 4:338: the pupil's reflex to light, and its use in examining an unconscious patient.
+- 4:339: the three signs of a stroke (face, arm, speech); about 1.9 million nerve cells lost each minute; treatment within about four and a half hours.
+- 4:340: Paul Brand at Vellore, 1940s and 1950s: in leprosy the fingers are lost through injury to numb skin, not through the disease itself.
+- 4:341: retinal detachment: flashes, a shower of floaters, a curtain across the sight.
+- 4:342: Nature, 2006: families in Pakistan whose children feel no pain, traced to a change in one gene.
+- 4:343: the moonbow (a rainbow by moonlight), seen for example at Victoria Falls.
+- 4:344: Ludwig Guttmann, 1944: turning paralysed patients every two hours to prevent pressure sores.
+- 4:345: Maurice Raynaud, 1862: fingers that turn white and blue in the cold.
+- 4:346: Giovanni Caputo, 2010: fifty people gazed at their own face in a dimly lit mirror for ten minutes; two-thirds saw it distort.
+- 4:347: Torsten Thunberg, 1896: interlaced warm and cool bars feel burning hot (the thermal grill).
+- 4:348: a 1984 study: healthy older men feel less thirst after going without water.
+- 4:349: the small reflection seen in another's eye forms on the cornea; Rob Jenkins (University of York), 2013: faces of bystanders recovered from the reflections in the eyes of photographed people.
+- 4:350: the Brocken spectre in the Harz mountains, described by Johann Silberschlag in 1780.
+- 4:351: Eratosthenes measuring the Earth from the length of a shadow.
+- 4:352: afterimages; Emil Emmert, 1881: an afterimage looks larger on a more distant surface.
+- 4:353: the blue-field entoptic phenomenon (one's own white blood cells seen against a blue sky).
+- 4:354: pareidolia: the brain's readiness to see faces in vague shapes.
+- 4:355: Bhagavad Gita 6.35: the mind is restrained through practice and dispassion.
+- 4:356: Goethe's Theory of Colours, 1810, on coloured afterimages.
+- 4:357: the meaning given to a colour differs from culture to culture.
+- 4:358: Yoram Bonneh, 2001: motion-induced blindness.
+- 4:359: Ignaz Troxler, 1804: a steadily fixated image fades.
+- 4:360: migraine aura; Hubert Airy's drawings of 1870.
+- 4:361: blinking falls by about half while looking at a screen; the rule of looking about six metres away for twenty seconds every twenty minutes.
+- 4:362: Ronald Eccles's studies of the nasal cycle and how much it varies between people.
+- 4:363: chronic sinusitis (lasting more than three months; found in about one adult in ten) as an ordinary cause of a blocked nostril.
+- 4:364: Kerala's neighbourhood network in palliative care, begun in 2001.
+- 4:365: David Karnofsky's performance scale, 1949.
+- 4:366: presbyopia (the eye's loss of near focus with age).
+- 4:367: the brain leaves one's own nose out of what is seen.
+- 4:368: the low rumble heard with the ears covered is the sound of one's own muscles.
+- 4:369: Isaac Newton's notebook, about 1666: pressing a bodkin behind his own eye to see coloured circles.
+- 4:370: Yanping Li and colleagues, 2018: five habits and about fourteen (women) and twelve (men) more years of life expectancy at age fifty.
+- 4:371: the Sushruta Samhita's statement that dosha, dhatu and mala are the roots of the body.
+- 4:372: Kalidasa, Kumarasambhava 5.33: "शरीरमाद्यं खलु धर्मसाधनम्"; Ayurveda's four classes of disease (easily curable, curable with difficulty, manageable, incurable).
+- 4:373: Brihadaranyaka Upanishad, chapter 4: Janaka's question on the light of man, ending in "आत्मैवास्य ज्योतिर्भवति".
+- 4:374: Rigveda 10.75 (the hymn to the rivers) names the Ganga, Yamuna and Sarasvati first, from east to west.
+- 4:375: Elmer Green's tests of Swami Rama at the Menninger Foundation, 1970: a temperature difference of several degrees between two spots on one palm.
+- 4:376: quiet breathing: inhalation is muscular, exhalation is passive elastic recoil, and a short pause follows.
+- 4:377: Christian Bohr, 1904: haemoglobin releases oxygen more readily where carbon dioxide is higher.
+- 4:378: Carl Ludwig, 1847: the heart quickens on breathing in and slows on breathing out.
+- 4:379: Albert Craig, 1961: over-breathing before a breath-hold dive delays the urge to breathe and leads to blackout under water.
+- 4:380: the phrase "आचन्द्रार्कम्" (as long as the moon and sun endure) in old land grants on copper plate and stone.
+- 4:381: Jeanne Calment, 1875–1997: 122 years and 164 days, the longest documented human life; nobody since has reached 120.
+- 4:382: Bhagavad Gita 2.58: the tortoise drawing in its limbs.
+- 4:383: the five ways Ayurveda knows a substance (rasa, guna, virya, vipaka, prabhava), Charaka Samhita, Sutrasthana.
+- 4:384: Hatha Yoga Pradipika 4.3–4: sixteen names, unmani among them, for one state.
+- 4:385: Norman Mackworth, 1948: watchers of a clock hand began missing signals within half an hour.
+- 4:386: Jim Oeppen and James Vaupel, Science, 2002: record life expectancy rose by about three months a year for some 160 years.
+- 4:387: Antonio Valsalva, 1704, and the manoeuvre named after him.
+- 4:388: Daf Yomi, begun by Rabbi Meir Shapiro in 1923: one page of the Talmud a day, 2,711 pages, a cycle of about seven and a half years, now in its fourteenth cycle.
+- 4:389: the verse "उद्योगिनं पुरुषसिंहमुपैति लक्ष्मीः" found in the Panchatantra and the Hitopadesha.
+- 4:390: Bhagavad Gita 17.23–24: "ॐ तत् सत्", and acts of sacrifice, giving and austerity begun with Om.
+- 4:391: Charaka Samhita, Chikitsasthana, chapter 1: the passage on conduct as rasayana (āchāra rasāyana).
+- 4:392: Frank Laubach in Lanao, Philippines, 1930: "Each One Teach One", later used in literacy work in more than a hundred countries.
+- 4:393: the anukramani tradition; Katyayana's Sarvanukramani to the Rigveda (opening words, number of verses, seer, deity and metre of each hymn).
+- 4:394: the lunar eclipse of 29 February 1504 and Columbus in Jamaica.
+- 4:395: Arjuna's name Gudakesha, "master of sleep" (Bhagavad Gita 1.24, 10.20); adults need at least seven hours of sleep a night.
