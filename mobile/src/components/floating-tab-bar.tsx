@@ -16,6 +16,7 @@ import { BAR_GAP, BAR_HEIGHT, SPACE, TYPE } from '@/theme/themes';
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
 const TABS: Record<string, { label: Msg; icon: IconName; iconActive: IconName }> = {
+  home: { label: S.tabHome, icon: 'home-outline', iconActive: 'home' },
   index: { label: S.tabLibrary, icon: 'book-outline', iconActive: 'book' },
   bookmarks: { label: S.tabSaved, icon: 'bookmark-outline', iconActive: 'bookmark' },
   explore: { label: S.tabExplore, icon: 'compass-outline', iconActive: 'compass' },
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
   wrap: { position: 'absolute', left: SPACE.lg, right: SPACE.lg, flexDirection: 'row', alignItems: 'center', columnGap: 10 },
   tabs: { flex: 1, paddingHorizontal: 6 },
   row: { flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
-  // Four tabs share the capsule evenly, so they still fit beside the Search button on a 360 dp phone.
+  // Tabs share the bar evenly (up to 96 wide), so four or five fit beside Search on a 360 dp phone.
   tab: {
     flex: 1,
     maxWidth: 96,
