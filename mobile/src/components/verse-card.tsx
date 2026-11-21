@@ -10,6 +10,7 @@ import {
   meaningState,
   MEANING_COPY,
   sanskritLines,
+  isMostlyDevanagari,
   splitVyakhyaCommentary,
   toDevanagari,
   verseMarkNumber,
@@ -18,8 +19,21 @@ import { S, type Lang, type Msg } from '@/i18n';
 import type { Settings } from '@/lib/backup';
 import type { Cover } from '@/theme/covers';
 import { fontCap, huesFor, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
-import { LifeLesson } from './life-lesson';
+import { parseModernContext } from '@/lib/modern-context';
+import { parseWordMeanings } from '@/lib/word-gloss';
 import { Card, coverFill } from './ui';
+import {
+  Badge,
+  ConnectedFlow,
+  ModernContextBody,
+  PillButton,
+  ReflectionBody,
+  SacredHeading,
+  StudyToggle,
+  SubLabel,
+  VyakhyaText,
+  WordByWord,
+} from './verse-study';
 
 interface Props {
   scriptureId: string;
@@ -37,27 +51,16 @@ interface Props {
   onToggleBookmark: (verse: string) => void;
 }
 
-/** A study layer's label, led by a dot in the layer's own hue, as on the website. */
-function Label({ msg, lang, palette, extra, hue }: { msg: Msg; lang: Lang; palette: Palette; extra?: string; hue?: string }) {
-  return (
-    <View style={styles.labelRow}>
-      {hue ? <View style={[styles.layerDot, { backgroundColor: hue }]} /> : null}
-      <Text style={[styles.label, { color: hue ?? palette.accent }, lang === 'hi' && styles.labelHi]}>{msg[lang]}</Text>
-      {extra ? <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{extra}</Text> : null}
-    </View>
-  );
-}
-
-/** Long व्याख्या opens at this many lines; the rest is a tap away so a chapter stays easy to scroll. */
-const VYAKHYA_LINES = 6;
-
 function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, settings, lang, cover, bookmarked, onToggleBookmark }: Props) {
   const hues = huesFor(palette);
   const t = (m: Msg) => m[lang];
-  // A tap on Notes overrides the "Open notes by default" setting until that setting changes again.
+  // "व्याख्या एवं संदर्भ" opens by default when the setting says so; a tap overrides it for this card until the setting changes.
   const [override, setOverride] = useState<{ when: boolean; open: boolean } | null>(null);
-  const notesOpen = override && override.when === settings.showNotes ? override.open : settings.showNotes;
-  const setNotesOpen = (f: (open: boolean) => boolean) => setOverride({ when: settings.showNotes, open: f(notesOpen) });
+  const studyOpen = override && override.when === settings.showVyakhya ? override.open : settings.showVyakhya;
+  const setStudyOpen = (open: boolean) => setOverride({ when: settings.showVyakhya, open });
+  // The deeper layers (पदच्छेद, आधुनिक परिप्रेक्ष्य) follow the setting, or one tap on this card.
+  const [deepened, setDeepened] = useState(false);
+  const deep = settings.showNotes || deepened;
   const scale = settings.textScale;
   const cap = fontCap(scale);
   const ref = formatVerseRef(scriptureId, chapter, verse.number);
@@ -66,28 +69,41 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
   const hindi = cleanVerseField(verse.hindi);
   const english = cleanVerseField(verse.translation);
   const translit = cleanVerseField(verse.transliteration);
-  const [vyakhyaOpen, setVyakhyaOpen] = useState(false);
   // The website's Hindi notes for this chapter, once they are on the phone (src/content/vyakhya.ts).
   const chapterNotes = useChapterVyakhya(scriptureId, chapter);
   const extra = chapterNotes?.[String(verse.number)];
   const wordMeaning = cleanVerseField(verse.wordMeaning);
+  const glosses = parseWordMeanings(wordMeaning);
   // As on the website: Hindi prose is the व्याख्या, English the commentary, whichever field holds it.
   const split = splitVyakhyaCommentary(
     [cleanVerseField(extra?.v), cleanVerseField(verse.explanation), cleanVerseField(verse.commentary)],
     wordMeaning,
   );
   const vyakhya = split.vyakhya;
-  const vyakhyaDraft = Boolean(extra?.vd && vyakhya && vyakhya === cleanVerseField(extra.v));
-  const lifeLesson = settings.showVyakhya ? cleanVerseField(extra?.l) : '';
-  const showVyakhya = settings.showVyakhya && Boolean(vyakhya);
-  const notes = [
-    { key: 'word', label: S.labelWordMeaning, text: wordMeaning, draft: false },
-    // With the व्याख्या layer turned off it still sits among the notes, as before.
-    { key: 'vyakhya', label: S.labelVyakhya, text: settings.showVyakhya ? '' : (vyakhya ?? ''), draft: vyakhyaDraft },
-    { key: 'commentary', label: S.labelCommentary, text: split.commentary ?? '', draft: false },
-    { key: 'research', label: S.labelResearch, text: cleanVerseField(extra?.r), draft: Boolean(extra?.rd) },
-  ].filter((n) => n.text);
+  const commentary = split.commentary;
   const draftBadge = lang === 'hi' ? MEANING_COPY.aiLabelHi : MEANING_COPY.aiLabelEn;
+  const vyakhyaDraft = Boolean(extra?.vd && vyakhya && vyakhya === cleanVerseField(extra.v));
+  const science = cleanVerseField(extra?.r);
+  const lesson = cleanVerseField(extra?.l);
+  const modern = lesson ? parseModernContext(lesson) : null;
+
+  // The same gates as the website's VerseCard: which sections this verse has.
+  const showVyakhyaSection = Boolean(vyakhya || commentary);
+  const showScience = Boolean(deep && science);
+  const showLessonModern = Boolean(modern && (modern.context || modern.application));
+  const showModern = showScience || showLessonModern;
+  const showReflection = Boolean(modern?.question);
+  const showWords = Boolean(deep && wordMeaning);
+  const hasStudy = Boolean(wordMeaning || showVyakhyaSection || science || lesson);
+  const canDeepen = !deep && Boolean(wordMeaning || science);
+  const showArth = settings.showHindi || settings.showEnglish;
+  const bothLangs = settings.showHindi && settings.showEnglish;
+
+  const prose = (hindiText: boolean) => ({
+    color: palette.text,
+    fontSize: (hindiText ? TYPE.callout : TYPE.body) * scale,
+    lineHeight: (hindiText ? TYPE.callout * 1.75 : TYPE.body * 1.55) * scale,
+  });
 
   const share = () => {
     // The whole verse goes out: every line of the Sanskrit, never a cut-down excerpt.
@@ -183,116 +199,127 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
         </Text>
       ) : null}
 
-      {settings.showHindi ? (
-        <View style={styles.block}>
-          <Label
-            msg={verse.hindiRange ? S.labelHindiRange(verse.hindiRange) : S.labelHindi}
-            lang={lang}
-            palette={palette}
-            hue={hues.peacock}
-            extra={verse.hindiSource === 'ai' ? MEANING_COPY.aiLabelHi : undefined}
-          />
-          <Text
-            selectable
-            maxFontSizeMultiplier={cap}
-            style={[
-              styles.body,
-              {
-                color: state.hi === 'text' ? palette.text : palette.muted,
-                fontSize: TYPE.body * scale,
-                lineHeight: TYPE.body * scale * 1.55,
-              },
-            ]}>
-            {state.hi === 'text'
-              ? hindi
-              : state.hi === 'review'
-                ? MEANING_COPY.hiReview
-                : state.hi === 'with'
-                  ? MEANING_COPY.hiWith(verse.hindiSeeVerse!)
-                  : MEANING_COPY.hiPending}
-          </Text>
-        </View>
-      ) : null}
-
-      {settings.showEnglish ? (
-        <View style={styles.block}>
-          <Label
-            msg={verse.translationRange ? S.labelEnglishRange(verse.translationRange) : S.labelEnglish}
-            lang={lang}
-            palette={palette}
-            hue={hues.indigo}
-            extra={verse.translationSource === 'ai' ? MEANING_COPY.aiLabelEn : undefined}
-          />
-          <Text
-            selectable
-            maxFontSizeMultiplier={cap}
-            style={[
-              styles.body,
-              {
-                color: state.en === 'text' ? palette.text : palette.muted,
-                fontSize: TYPE.body * scale,
-                lineHeight: TYPE.body * scale * 1.5,
-              },
-            ]}>
-            {state.en === 'text' ? english : state.en === 'with' ? MEANING_COPY.enWith(verse.translationSeeVerse!) : MEANING_COPY.enPending}
-          </Text>
-        </View>
-      ) : null}
-
-      {showVyakhya ? (
-        <View style={styles.block}>
-          <Label msg={S.labelVyakhya} lang={lang} palette={palette} hue={hues.saffron} extra={vyakhyaDraft ? draftBadge : undefined} />
-          <Text
-            selectable
-            numberOfLines={vyakhyaOpen ? undefined : VYAKHYA_LINES}
-            maxFontSizeMultiplier={cap}
-            style={[styles.body, { color: palette.text, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.65 }]}>
-            {vyakhya}
-          </Text>
-          {vyakhya!.length > 320 || vyakhya!.includes('\n') ? (
-            <Pressable
-              onPress={() => setVyakhyaOpen((o) => !o)}
-              accessibilityRole="button"
-              accessibilityState={{ expanded: vyakhyaOpen }}
-              style={({ pressed }) => [styles.moreBtn, pressed && { opacity: 0.6 }]}>
-              <Text style={{ color: hues.saffron, fontSize: TYPE.subhead, fontWeight: '600' }}>{t(vyakhyaOpen ? S.vyakhyaLess : S.vyakhyaMore)}</Text>
-              <Ionicons name={vyakhyaOpen ? 'chevron-up' : 'chevron-down'} size={14} color={hues.saffron} />
-            </Pressable>
+      {showArth ? (
+        <View style={styles.section}>
+          <SacredHeading msg={S.sacredArth} palette={palette} />
+          {settings.showHindi ? (
+            <View>
+              {verse.hindiRange ? (
+                <SubLabel msg={S.labelHindiRange(verse.hindiRange)} palette={palette} color={hues.saffron} />
+              ) : bothLangs && state.hi === 'text' ? (
+                <SubLabel msg={S.arthHindi} palette={palette} color={hues.saffron} />
+              ) : null}
+              <Text
+                selectable
+                maxFontSizeMultiplier={cap}
+                style={{
+                  color: state.hi === 'text' ? palette.text : palette.muted,
+                  fontSize: TYPE.body * scale,
+                  lineHeight: TYPE.body * scale * 1.6,
+                }}>
+                {state.hi === 'text'
+                  ? hindi
+                  : state.hi === 'review'
+                    ? MEANING_COPY.hiReview
+                    : state.hi === 'with'
+                      ? MEANING_COPY.hiWith(verse.hindiSeeVerse!)
+                      : MEANING_COPY.hiPending}
+                {state.hi === 'text' && verse.hindiSource === 'ai' ? <Text style={{ color: palette.muted, fontSize: 11 }}>{`  ${MEANING_COPY.aiLabelHi}`}</Text> : null}
+              </Text>
+            </View>
+          ) : null}
+          {settings.showEnglish ? (
+            <View style={settings.showHindi ? [styles.secondLang, { borderTopColor: palette.border }] : undefined}>
+              {verse.translationRange ? (
+                <SubLabel msg={S.labelEnglishRange(verse.translationRange)} palette={palette} color={hues.saffron} />
+              ) : bothLangs && state.en === 'text' ? (
+                <SubLabel msg={S.arthEnglish} palette={palette} color={hues.saffron} />
+              ) : null}
+              <Text
+                selectable
+                maxFontSizeMultiplier={cap}
+                style={{
+                  color: state.en === 'text' ? palette.text : palette.muted,
+                  fontSize: TYPE.body * scale,
+                  lineHeight: TYPE.body * scale * 1.5,
+                }}>
+                {state.en === 'text' ? english : state.en === 'with' ? MEANING_COPY.enWith(verse.translationSeeVerse!) : MEANING_COPY.enPending}
+                {state.en === 'text' && verse.translationSource === 'ai' ? <Text style={{ color: palette.muted, fontSize: 11 }}>{`  ${MEANING_COPY.aiLabelEn}`}</Text> : null}
+              </Text>
+            </View>
           ) : null}
         </View>
       ) : null}
 
-      {lifeLesson ? (
-        <LifeLesson text={lifeLesson} palette={palette} lang={lang} scale={scale} draftBadge={extra?.ld ? draftBadge : undefined} />
-      ) : null}
+      {hasStudy ? <StudyToggle open={studyOpen} onPress={() => setStudyOpen(!studyOpen)} palette={palette} lang={lang} /> : null}
 
-      {notes.length > 0 ? (
-        <View style={styles.block}>
-          <Pressable
-            onPress={() => setNotesOpen((o) => !o)}
-            accessibilityRole="button"
-            accessibilityState={{ expanded: notesOpen }}
-            style={styles.notesToggle}>
-            <View style={[styles.layerDot, { backgroundColor: palette.muted }]} />
-            <Text style={[styles.label, { color: palette.muted }, lang === 'hi' && styles.labelHi]}>{t(S.labelNotes)}</Text>
-            <Ionicons name={notesOpen ? 'chevron-up' : 'chevron-down'} size={14} color={palette.muted} />
-          </Pressable>
-          {notesOpen
-            ? notes.map((n) => (
-                <View key={n.key} style={{ marginTop: SPACE.sm }}>
-                  <Label msg={n.label} lang={lang} palette={palette} hue={palette.muted} extra={n.draft ? draftBadge : undefined} />
-                  <Text
-                    selectable
-                    maxFontSizeMultiplier={cap}
-                    style={[
-                      styles.body,
-                      { color: palette.textSecondary, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.5 },
-                    ]}>
-                    {n.text}
-                  </Text>
+      {hasStudy && studyOpen ? (
+        <View>
+          {showWords ? <WordByWord glosses={glosses} raw={wordMeaning} palette={palette} cap={cap} /> : null}
+
+          {showVyakhyaSection || showModern || showReflection ? (
+            <ConnectedFlow palette={palette}>
+              {showVyakhyaSection ? (
+                <View>
+                  <SacredHeading msg={S.sacredVyakhya} palette={palette} badge={vyakhyaDraft ? draftBadge : undefined} />
+                  <View style={{ rowGap: SPACE.md }}>
+                    {vyakhya ? (
+                      <View
+                        style={[
+                          styles.panel,
+                          {
+                            borderColor: palette.dark ? 'rgba(251,191,36,0.2)' : 'rgba(217,119,6,0.2)',
+                            backgroundColor: palette.dark ? 'rgba(251,191,36,0.05)' : 'rgba(251,191,36,0.06)',
+                          },
+                        ]}>
+                        <VyakhyaText text={vyakhya} style={prose(true)} cap={cap} />
+                      </View>
+                    ) : null}
+                    {commentary ? (
+                      <View style={[styles.panel, { borderColor: palette.border }]}>
+                        <SubLabel msg={S.commentaryEnglish} palette={palette} color={hues.saffron} />
+                        <Text selectable maxFontSizeMultiplier={cap} style={prose(false)}>
+                          {commentary}
+                        </Text>
+                      </View>
+                    ) : null}
+                  </View>
                 </View>
-              ))
-            : null}
+              ) : null}
+
+              {showModern ? (
+                <View>
+                  <SacredHeading msg={S.sacredModern} palette={palette} badge={extra?.ld && showLessonModern ? draftBadge : undefined} />
+                  <View style={{ rowGap: SPACE.md }}>
+                    {showScience ? (
+                      <View style={[styles.panel, { borderColor: palette.border }]}>
+                        <View style={styles.subRow}>
+                          <SubLabel msg={S.modernPerspective} palette={palette} />
+                          {extra?.rd ? <Badge text={draftBadge} palette={palette} /> : null}
+                        </View>
+                        <Text selectable maxFontSizeMultiplier={cap} style={prose(isMostlyDevanagari(science))}>
+                          {science}
+                        </Text>
+                      </View>
+                    ) : null}
+                    {showLessonModern && modern ? <ModernContextBody parsed={modern} style={prose(isMostlyDevanagari(lesson))} palette={palette} cap={cap} /> : null}
+                  </View>
+                </View>
+              ) : null}
+
+              {showReflection && modern ? (
+                <View>
+                  <SacredHeading msg={S.sacredReflection} palette={palette} />
+                  <ReflectionBody question={modern.question} style={prose(isMostlyDevanagari(modern.question))} palette={palette} cap={cap} />
+                </View>
+              ) : null}
+            </ConnectedFlow>
+          ) : null}
+
+          <View style={[styles.studyFoot, { borderTopColor: palette.border }]}>
+            {canDeepen ? <PillButton msg={S.verseStudyMore} icon="layers-outline" onPress={() => setDeepened(true)} palette={palette} color={hues.saffron} /> : null}
+            <PillButton msg={S.verseStudyClose} icon="chevron-up" onPress={() => setStudyOpen(false)} palette={palette} />
+          </View>
         </View>
       ) : null}
     </Card>
@@ -312,13 +339,9 @@ const styles = StyleSheet.create({
   // Shrinks and wraps before it can push the share and save buttons off a card at large font sizes.
   refPill: { flexShrink: 1, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 4 },
   sanskrit: { rowGap: 2, paddingVertical: SPACE.md + 2, paddingHorizontal: SPACE.sm, borderRadius: 18, borderWidth: 1 },
-  block: { marginTop: SPACE.md },
-  labelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: 6, marginBottom: 2 },
-  label: { fontSize: TYPE.caption, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
-  // Devanagari has no case, and letter-spacing breaks its conjuncts apart.
-  labelHi: { fontSize: TYPE.footnote, letterSpacing: 0 },
-  badge: { fontSize: 10, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4 },
-  body: {},
-  moreBtn: { flexDirection: 'row', alignItems: 'center', columnGap: 4, minHeight: TOUCH - 8, alignSelf: 'flex-start' },
-  notesToggle: { flexDirection: 'row', alignItems: 'center', columnGap: 6, minHeight: TOUCH - 4 },
+  section: { marginTop: SPACE.md },
+  secondLang: { marginTop: SPACE.sm, paddingTop: SPACE.sm, borderTopWidth: StyleSheet.hairlineWidth },
+  panel: { borderWidth: StyleSheet.hairlineWidth, borderRadius: 14, padding: SPACE.md },
+  subRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: 6 },
+  studyFoot: { marginTop: SPACE.lg, paddingTop: SPACE.sm, borderTopWidth: StyleSheet.hairlineWidth, rowGap: SPACE.xs, alignItems: 'center' },
 });
