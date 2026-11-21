@@ -1,6 +1,7 @@
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { sceneAttrs } from '@/lib/chapter-scenes';
 import { photoAttrs } from '@/lib/scene-photos';
+import { FolioMotion } from '@/app/components/motion/FolioMotion';
 import { chapterPainting } from '@/lib/chapter-paintings';
 import { clipDescription } from '@/lib/meta-text';
 import type { Metadata } from 'next';
@@ -388,6 +389,7 @@ export default async function VersePage(props: PageProps) {
     <>
       {/* The scripture's palette and folio material for everything on the page (display: contents, no box). */}
       <div className="contents" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(scriptureVibe(meta.id, meta.category))} {...sceneAttrs(meta.id, chapterId)} {...photoAttrs(meta.id, chapterId)} data-painting={chapterPainting(meta.id, chapterId)}>
+      <FolioMotion />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

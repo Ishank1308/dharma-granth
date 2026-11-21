@@ -684,6 +684,8 @@ export function VerseCard({
           <div className={`verse-folio relative rounded-2xl px-2 py-4 text-center md:px-8 md:py-6 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
+            {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
+            <span className="photo-light" />
             {speaker && (
               <div className="mb-3.5 flex justify-center">
                 <span

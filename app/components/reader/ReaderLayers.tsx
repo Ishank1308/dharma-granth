@@ -360,6 +360,8 @@ export function ReaderLayers({
             <span aria-hidden="true" className="verse-mark mt-2 block text-base font-semibold">
               ॥ {verseMarkNumber(verse.number)} ॥
             </span>
+            {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
+            <span className="photo-light" />
           </p>
           {!settings.liteMode && (
             <ExplainLine lines={lines} scopeId="sanskrit-text" verseLabel={formatVerseRef(scriptureId, chapterId, verse.number)} fullTranslation={cleanVerseField(verse.translation)} entries={verse.lineExplanations} />
