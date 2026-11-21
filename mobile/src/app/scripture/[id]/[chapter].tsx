@@ -420,12 +420,17 @@ export default function ChapterScreen() {
                 { backgroundColor: quietFill(palette) },
                 pressed && { opacity: 0.75 },
               ]}>
-              <Text maxFontSizeMultiplier={1.4} numberOfLines={1} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
+              <Text
+                maxFontSizeMultiplier={1.4}
+                numberOfLines={1}
+                adjustsFontSizeToFit
+                minimumFontScale={0.8}
+                style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
                 {playingHere ? (
                   <Ionicons name="musical-notes" size={TYPE.subhead} color={palette.accent} accessibilityElementsHidden />
                 ) : null}
                 {playingHere ? ' ' : ''}
-                {t(S.verseOf(playingHere ?? shownVerse, total))}
+                {playingHere ? t(S.verseOfShort(playingHere, total)) : t(S.verseOf(shownVerse, total))}
               </Text>
             </Pressable>
             {playingHere ? <IconButton icon="stop" onPress={stop} accessibilityLabel={t(S.stopRecitation)} color={palette.muted} /> : null}
