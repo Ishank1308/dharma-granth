@@ -4,7 +4,7 @@ This note goes with the pull request that adds modern-context notes to the Shiva
 
 ## Status
 
-- **Coverage:** verses 1:1 to 2:160 (160 of the book's 384 verses) now have a modern-context note. Verse numbers run on across chapters, so chapter 2 begins at 2:101. None had one before. The rest follow in later commits on the same pull request, and this note grows with them.
+- **Coverage:** verses 1:1 to 3:240 (240 of the book's 384 verses) now have a modern-context note. Verse numbers run on across chapters, so chapter 2 begins at 2:101 and chapter 3 at 3:201. None had one before. The rest follow in later commits on the same pull request, and this note grows with them.
 - **Source file:** `data/hi-commentary/shivaswarodaya-rest.json` is new and holds only the `lifeLesson` field. The existing व्याख्या (`explanation`) is unchanged for all 384 entries; this is verified after each publish.
 - **Shape:** each note has आधुनिक संदर्भ (one real-world fact linked to the verse), आज के जीवन में प्रयोग (three applications) and चिंतन प्रश्न (one question).
 - **Size cap:** the published commentary total passes 60 MB with this book, so `MAX_TOTAL_MB` in `scripts/convert-commentary-to-json.ts` is raised from 60 to 61 in the same pull request. Each file stays far below Cloudflare's 25 MiB per-file limit.
@@ -12,27 +12,28 @@ This note goes with the pull request that adds modern-context notes to the Shiva
 ## How the notes were checked
 
 - **Register:** every note passed `scripts/check-hindi-register.mjs` with no sentences to fix. The words are tatsam with no Urdu, Persian or English beyond unavoidable proper names and scientific terms (for example डीएनए, एटीपी, हाइड्रोजन). There is no first person.
-- **Facts used once:** candidate facts were screened by keyword against every earlier note in all books before writing. After writing, each batch was run through the stricter check (rare words or years shared by any two notes, across all books including this one). One fact in 1:6 was found to repeat an earlier book and was replaced before publishing. For 1:81 to 2:160 the keyword screen ruled out more than sixty candidate facts that an earlier book had already used; the stricter check then found no repeats in the written batches. The only shared items it reports are years (for example 1854 or 1904) attached to different events.
+- **Facts used once:** candidate facts were screened by keyword against every earlier note in all books before writing. After writing, each batch was run through the stricter check (rare words or years shared by any two notes, across all books including this one). One fact in 1:6 was found to repeat an earlier book and was replaced before publishing. For 1:81 to 2:160 the keyword screen ruled out more than sixty candidate facts that an earlier book had already used; the stricter check then found no repeats in the written batches. The only shared items it reports are years (for example 1854 or 1904) attached to different events. For 2:161 to 3:240 the keyword screen ruled out more than a hundred further candidates. The stricter check found three repeats in the written batch for 2:161 to 2:200 (Linnaeus's three kingdoms at 2:174, the eight-metal alloy at 2:180 and the Dreyfus skill model at 2:200); all three were replaced before publishing, and the re-run found none.
 - **Anchoring:** each note says in one sentence what the verse itself teaches, following the existing व्याख्या.
 
 ## What kind of book this is, and the standing caveats
 
 The Shiva Swarodaya is a manual of svara: it reads the flow of breath through the left and right nostril and ties it to success, travel, health, astrology and omens. Many verses promise results. The notes keep the verse's own teaching but never present these results as fact. Standing sentences are used, word for word, wherever they apply:
 
-- **Promised results of svara:** these statements are the tradition's faith and style, not proven fact; decisions about health, money and relationships should be made with judgement and qualified advice. Used at 1:10, 1:15, 1:19, 1:22–1:24, 1:54–1:56, 1:58, 1:61, 1:63, 1:64, 1:66, 1:78–1:81, 1:85, 1:89, 1:90, 1:92, 1:93, 1:95–2:112, 2:114, 2:116–2:118, 2:120, 2:122, 2:123, 2:126–2:131, 2:133, 2:145, 2:157–2:160.
-- **Astrology (tithi, nakshatra, auspicious and inauspicious yogas):** this is astrology's traditional belief; decisions should be made with judgement, not fear. Used at 1:17, 1:29, 1:30, 1:62, 1:65, 1:68, 1:69, 1:72, 1:73, 1:77, 2:113.
-- **"Moon" and "Sun":** here these are symbolic names for the flow in the left and right nostril, not the bodies in the sky. Used at 1:50, 1:52, 1:57, 1:60, 2:133.
-- **Direction, weekday and omen rules for travel:** these are traditional belief, not proven fact; travel safety depends on the route, the season and care, and nobody needs to fear these rules. Used at 1:59, 1:74–1:76, 1:86–1:88, 1:91, 1:94, 2:132, 2:134.
-- **Signs of illness and death:** these signs are traditional belief, not proven fact; nobody should be frightened by them, and any doubt about health should be taken to a doctor. Used at 1:82–1:84, 2:125, 2:155.
+- **Promised results of svara:** these statements are the tradition's faith and style, not proven fact; decisions about health, money and relationships should be made with judgement and qualified advice. Used at 1:10, 1:15, 1:19, 1:22–1:24, 1:54–1:56, 1:58, 1:61, 1:63, 1:64, 1:66, 1:78–1:81, 1:85, 1:89, 1:90, 1:92, 1:93, 1:95–2:112, 2:114, 2:116–2:118, 2:120, 2:122, 2:123, 2:126–2:131, 2:133, 2:145, 2:157–2:162, 2:170, 2:172, 2:174, 2:175, 2:178, 2:180, 2:181, 2:191, 2:198, 2:199, 3:207–3:209, 3:213–3:215, 3:226, 3:228, 3:230, 3:238, 3:239.
+- **Astrology (tithi, nakshatra, auspicious and inauspicious yogas):** this is astrology's traditional belief; decisions should be made with judgement, not fear. Used at 1:17, 1:29, 1:30, 1:62, 1:65, 1:68, 1:69, 1:72, 1:73, 1:77, 2:113, 2:176, 2:177, 2:194–2:197, 3:224.
+- **"Moon" and "Sun":** here these are symbolic names for the flow in the left and right nostril, not the bodies in the sky. Used at 1:50, 1:52, 1:57, 1:60, 2:133, 3:221, 3:222.
+- **Direction, weekday and omen rules for travel:** these are traditional belief, not proven fact; travel safety depends on the route, the season and care, and nobody needs to fear these rules. Used at 1:59, 1:74–1:76, 1:86–1:88, 1:91, 1:94, 2:132, 2:134, 2:169, 2:183, 2:193, 3:223.
+- **Signs of illness and death:** these signs are traditional belief, not proven fact; nobody should be frightened by them, and any doubt about health should be taken to a doctor. Used at 1:82–1:84, 2:125, 2:155, 2:168, 2:171, 2:173, 2:179, 2:182.
 - **Lists of harmful acts:** such a list is the manner of texts of that age, not permission; harming, poisoning or controlling anyone is a crime. Used at 2:115, 2:119, 2:156.
 - **"Bringing under control":** this is the language of that age; no person is a thing to be controlled, and free consent is necessary in every relationship. Used at 1:99, 2:121 (and in the note's own words at 1:23).
 - **Merit of giving multiplied by crores:** this is the style of praise, not a promise of a fixed result. Used at 1:53.
-- **Nadis:** these are the language of the subtle body in the yoga tradition and must not be equated with the nerves or blood vessels of modern anatomy. Used at 1:18, 1:31, 1:32, 1:34–1:41, 1:48, 1:49, 2:124.
-- **The ten pranas:** this is the language of yoga and Ayurveda, not a statement of modern physiology. Used at 1:34, 1:42–1:47.
-- **Order of creation and qualities of the elements:** this is philosophy's own language and classification, not a statement of modern physics. Used at 1:4, 1:6–1:8, 1:70, 1:71, 2:112, 2:137, 2:139–2:143, 2:146–2:151, 2:153, 2:154, 2:159, 2:160.
-- **The cosmos in the body:** this is yoga's symbolic language, not physiology. Used at 1:9, 1:20, 2:152.
-- **Science parallels:** where a note opens with a science fact, it adds "this likeness is only a metaphor" (48 notes so far).
-- **Others carried over from earlier books:** siddhi as faith and style (1:2, 1:67, 2:138), secrecy as fitness and guidance (1:11), respect for the guru without giving up judgement (1:13), praise of one's own text as arthavāda (1:16, 1:21, 1:25, 1:27, 2:144), digestive fire as the language of yoga and Ayurveda (2:121).
+- **Nadis:** these are the language of the subtle body in the yoga tradition and must not be equated with the nerves or blood vessels of modern anatomy. Used at 1:18, 1:31, 1:32, 1:34–1:41, 1:48, 1:49, 2:124, 3:230.
+- **The ten pranas:** this is the language of yoga and Ayurveda, not a statement of modern physiology. Used at 1:34, 1:42–1:47, 3:212.
+- **Order of creation and qualities of the elements:** this is philosophy's own language and classification, not a statement of modern physics. Used at 1:4, 1:6–1:8, 1:70, 1:71, 2:112, 2:137, 2:139–2:143, 2:146–2:151, 2:153, 2:154, 2:159–2:167, 2:169, 2:189, 2:190, 2:192.
+- **The cosmos in the body:** this is yoga's symbolic language, not physiology. Used at 1:9, 1:20, 2:152, 2:184–2:188.
+- **Science parallels:** where a note opens with a science fact, it adds "this likeness is only a metaphor" (84 notes so far).
+- **War and victory (new in chapter 3):** these rules are the belief of that age, not proven fact; they are not permission for violence, and today a dispute should be settled through dialogue and law. Used at 3:222, 3:224, 3:225, 3:227, 3:229, 3:231–3:237, 3:240.
+- **Others carried over from earlier books:** siddhi as faith and style (1:2, 1:67, 2:138, 3:201–3:205, 3:216–3:219), secrecy as fitness and guidance (1:11), respect for the guru without giving up judgement (1:13, 2:200, 3:220), praise of one's own text as arthavāda (1:16, 1:21, 1:25, 1:27, 2:144, 3:206), digestive fire as the language of yoga and Ayurveda (2:121), karma and rebirth as matters of faith that never make a person's suffering their own fault (2:200).
 
 Where a note opens with a modern study, it says what the study measured and no more, and for small or disputed studies it says so (1:22 "a small study"; 1:62 "the study is small and later results are mixed"; 1:23 and 1:30 open with studies that did not hold when repeated). The note at 1:56 adds that the study does not prove "knowledge of past and future".
 
@@ -74,6 +75,18 @@ Where a note opens with a modern study, it says what the study measured and no m
 - **Reading the questioner's position (2:133–2:134):** an application at 2:133 says to answer questions from facts, not from signs. 2:134 opens with Clever Hans and asks the reader to notice when an answer is shaped by what the questioner wants to hear.
 - **Shanmukhi mudra and inner lights (2:146–2:147):** 2:146 says not to press on the eyes and not to hold the breath by force, and to ask a doctor first in eye, ear or heart disease. 2:147 says such sights are not a special power and sends anyone who sees spots or flashes with open eyes to an eye doctor.
 - **Breath that points to death, and killing and driving-away rites by element (2:155–2:156):** 2:155 carries the illness-and-death caveat and says nobody's death should be guessed from the direction of breath. 2:156 carries the harmful-acts caveat.
+
+- **Loss and death foretold by element (2:168, 2:171, 2:173, 2:179, 2:182):** each note carries the illness-and-death caveat. 2:168 opens with Gigerenzer's count of extra road deaths after September 2001 (fear itself can do harm). 2:173 and 2:179 add that "loss and death" is no basis for a judgement about any person, and an application says not to pass on an ill guess about someone. 2:182 says a life table speaks about groups, never about one person, and its first application says not to foretell anyone's age or death.
+- **Planets and nakshatras by element (2:176, 2:177, 2:194–2:197):** the notes open with astronomy (Mars, Jupiter, Vega, Betelgeuse, the Pleiades, the 13°20′ span of a nakshatra) and carry both the "only a metaphor" line and the astrology caveat.
+- **Reading the questioner's thought (2:174, 2:175, 2:180):** the notes say that knowing what is in the questioner's mind is the tradition's faith; an application at 2:174 says not to claim to know another's mind.
+- **Unclear readings (2:193, 3:225, 3:232, 3:236, 3:237):** each note says the reading is unclear, as the existing व्याख्या does, and reports the sense with "possibly" or "the general sense appears to be". 3:232 opens with the undeciphered Indus script and asks the reader not to state what is not known.
+- **Rama, Arjuna and the Kauravas (2:199):** the verse ties victory and defeat in the epics to the element. The note says the Mahabharata itself ties the victory to dharma and also mourns the war; an application says not to rejoice at an opponent's defeat.
+- **Past-life impressions, the guru's grace and the "very impure" mind (2:200):** the note opens with Katha Upanishad 1.2.24 and carries the karma caveat and the guru caveat.
+- **Meditation on the five elements and its promised powers (3:201–3:205):** every note carries the siddhi caveat. 3:202 (staying under water) says never to practise breath-holding in water alone because of the risk of fainting; 3:203 (bearing fire) says the claim must never be tested; 3:204 (flying) says human flight came from patient study of air, not from meditation.
+- **Shortening the breath and the powers it brings (3:216–3:219):** every note carries the siddhi caveat. 3:216 says what the evidence on slow breathing covers and that the further results belong to the tradition; an application says not to hold the breath by force. 3:217 opens with the Buddha's rule against displaying powers. **3:219 ("who then needs food?")** says this is the language of praise, that pranayama cannot replace food and that giving up food endangers life; its third application says not to follow anyone who teaches living on air alone. Please read it closely.
+- **"Fruit without effort" (3:206) and "not from crores of texts" (3:220):** 3:206 says knowledge itself comes only through effort; 3:220 carries the guru caveat and its applications say to learn pranayama from a qualified teacher and to test a teacher's fitness and conduct.
+- **The war verses (3:222, 3:224, 3:225, 3:227, 3:229, 3:231–3:237, 3:240).** Please read these closely. Every note carries the war caveat above. 3:222 opens with the Arthashastra's advice to choose peace where peace and war bring equal gain. 3:227 (binding, loosing and striking with a weapon) opens with the eight stages of Japanese archery and an application says not to use a skill to hurt anyone. 3:229 ("alone he conquers the earth") calls this hyperbole. 3:233 ("even if Indra stands in front") has an application that warns against the language of certain victory. 3:234 has an application that says to use strength for protection and service.
+- **Men and women, right and left (3:240):** the note says the separate rule for men and women is the tradition's classification, and an application says not to make any such rule a measure of a woman's or a man's ability. The same note says a person with heart disease or high blood pressure should not strain with the breath held.
 
 ## Facts to spot-check
 
@@ -239,3 +252,83 @@ Each line gives the verse and the fact that opens its note.
 - 2:158: Agave americana, the "century plant", flowers once after ten to thirty years and then dies.
 - 2:159: John Hutchinson's spirometer, London, 1846, measured in more than 2,000 people.
 - 2:160: breath from an open mouth feels warm and from pursed lips cool, though it leaves the lungs at the same temperature.
+- 2:161: Paul Ekman, Robert Levenson and Wallace Friesen, 1983: in anger the heart rate and finger temperature rose; in fear the heart rate rose but the fingers cooled.
+- 2:162: Paul Siple and Charles Passel's wind-chill measurements in Antarctica, 1945.
+- 2:163: white noise holds all audible frequencies at equal strength.
+- 2:164: the Indo-Gangetic plain is among the largest alluvial tracts in the world and feeds about forty per cent of India's people.
+- 2:165: water's high specific heat steadies the temperature of coasts and of the body.
+- 2:166: the air over a person presses with a weight of about ten tonnes.
+- 2:167: about 10^19 molecules in a cubic centimetre of air at ground level, against about one atom in interstellar space.
+- 2:168: Gerd Gigerenzer's estimate of about 1,500 extra road deaths in the twelve months after September 2001.
+- 2:169: the eight dikpalas and their directions.
+- 2:170: rice and wheat are low in lysine and pulses in methionine; eaten together they give complete protein.
+- 2:171: US fire-protection figures: the death rate in home fires is about half where a working smoke alarm is present.
+- 2:172: the Yi Jing and its sixty-four hexagrams.
+- 2:173: India's six-digit PIN code, 15 August 1972, designed by Shriram Bhikaji Velankar.
+- 2:174: Charaka Samhita, Sutrasthana 1: substances of three origins: animal (jangama), plant (audbhida) and earth (parthiva).
+- 2:175: the millipede Eumillipes persephone, described in 2021, with more than 1,300 legs.
+- 2:176: Mars is red from iron oxide; the Viking landers, 1976.
+- 2:177: Jupiter is about eleven times the Earth's diameter and mostly hydrogen and helium; its Great Red Spot is a storm larger than the Earth, watched for more than 150 years.
+- 2:178: United Nations, 2020: about 18 million people born in India live abroad, the most for any country.
+- 2:179: the Amur falcon's migration through Nagaland, protected by villagers since 2013.
+- 2:180: the Tokyo 2020 medals were made from metal recovered from about 79,000 tonnes of donated small electronics, including more than six million phones (about 32 kg of gold and 3,500 kg of silver).
+- 2:181: Kalervo Oberg's "culture shock", 1954.
+- 2:182: John Graunt's life table from the London bills of mortality, 1662.
+- 2:183: the pyramid at Chichén Itzá: 365 steps, and the serpent of light and shadow at the equinox.
+- 2:184: an adult body holds about 16 kg of carbon and about 4 g of iron.
+- 2:185: a human scalp carries about 100,000 hairs.
+- 2:186: the salivary glands make about a litre of saliva a day.
+- 2:187: ghrelin, the hunger hormone, identified in 1999.
+- 2:188: Jess Porter and colleagues, 2007: people can follow a scent trail across grass and improve with practice.
+- 2:189: the five kleshas of Yoga Sutra 2.3.
+- 2:190: the text's own arithmetic: the five elements' shares add to 150 palas, which is 60 minutes.
+- 2:191: the fire at Notre-Dame, Paris, 15 April 2019, and its reopening in December 2024.
+- 2:192: the Tarka-sangraha's definitions of the elements by their qualities.
+- 2:193: Mount St Helens, May 1980: the north flank bulged by one and a half to two metres a day before the eruption.
+- 2:194: Abhijit is the star Vega, about 25 light-years away.
+- 2:195: Ardra is Betelgeuse, which dimmed unusually in late 2019.
+- 2:196: Krittika is the Pleiades cluster, about 440 light-years away.
+- 2:197: the Moon's sidereal month of about 27 days 8 hours, and the nakshatra span of 13°20′.
+- 2:198: Elizabeth Loftus and John Palmer, 1974: the wording of a question changed the remembered speed of a crash.
+- 2:199: the eighteen akshauhinis at Kurukshetra, eleven on the Kaurava side and seven on the Pandava side.
+- 2:200: Katha Upanishad 1.2.24: one who has not turned from bad conduct and whose mind is not at peace cannot reach the Self by intellect alone (paraphrased, not quoted).
+- 3:201: Christopher Lowry and colleagues, 2007: the soil bacterium Mycobacterium vaccae activated serotonin-producing brain cells in mice; the note says this is not established in people.
+- 3:202: the mammalian diving response; a seal's heart can slow to about ten beats a minute.
+- 3:203: the thermic effect of food: about a tenth of the energy eaten goes into digesting it.
+- 3:204: Otto Lilienthal: his 1889 book on bird flight, about 2,000 glider flights from 1891, death in 1896.
+- 3:205: the Dome C ice core in Antarctica, more than three kilometres deep, with about 800,000 years of climate record.
+- 3:206: the Sanskrit maxim that a king is honoured in his own country but a scholar everywhere (reported, not quoted).
+- 3:207: Leo Tolstoy's story "Three Questions", 1903.
+- 3:208: the "Ask Me 3" programme of a US patient-safety body: three questions for every visit to a doctor.
+- 3:209: Ernst Engel, 1857: as a household's income rises, the share it spends on food falls.
+- 3:210: the Yaksha's question on friends in the Mahabharata (Vana Parva): the traveller's friend is his company of fellow travellers, the householder's his wife, the sick man's the physician, the dying man's his charity.
+- 3:211: the survival "rule of threes": about three minutes without air, three days without water, three weeks without food; the note calls these rough figures.
+- 3:212: Prashna Upanishad, third question: Kausalya Ashvalayana asks Pippalada where prana is born and how it enters and divides in the body.
+- 3:213: the Hawa Mahal, Jaipur, 1799, built by Sawai Pratap Singh, with 953 small windows.
+- 3:214: an adult at rest breathes about six litres a minute, and more than a hundred in hard running; the note says the text's figure for sleep does not match measurement.
+- 3:215: breathing pauses for about a second at each swallow, and a person swallows several hundred times a day.
+- 3:216: Andrea Zaccaro and colleagues, 2018: a review of fifteen studies of slow breathing (under ten breaths a minute).
+- 3:217: the Vinaya story of Pindola Bharadvaja and the sandalwood bowl, after which the Buddha forbade monks to display powers before lay people.
+- 3:218: "zero shadow" days between the tropics; in Bengaluru near the end of April and the middle of August.
+- 3:219: the resting body uses about sixty to seventy per cent of a day's energy just to stay alive.
+- 3:220: the United States rule (since 2013) of about 1,500 flight hours before serving as an airline co-pilot.
+- 3:221: the Moon rises about fifty minutes later each day, and the tide shifts with it.
+- 3:222: the Arthashastra's six measures of foreign policy, and its advice to choose peace where peace and war bring equal gain.
+- 3:223: ISO 8601 (1988) counts Monday as the first day of the week; the United States and others begin with Sunday.
+- 3:224: the storms that wrecked Kublai Khan's fleets off Japan in 1274 and 1281; the note says "according to the traditional account".
+- 3:225: Karna giving away the armour and earrings he was born with (Mahabharata).
+- 3:226: "shantih" said three times for the three kinds of suffering (adhidaivika, adhibhautika, adhyatmika).
+- 3:227: the eight stages of shooting in Japanese archery (kyudo), ending in zanshin.
+- 3:228: the "Dutch reach" for opening a car door, added to the UK Highway Code in 2022.
+- 3:229: in master-level chess, White scores about fifty-four per cent.
+- 3:230: Aitareya Upanishad: Agni enters the mouth as speech, Vayu the nostrils as breath, the Sun the eyes as sight, the Directions the ears as hearing, the Moon the heart as mind.
+- 3:231: the haka of the New Zealand rugby team; "Ka Mate" composed about 1820 by Te Rauparaha.
+- 3:232: the Indus script: about 4,000 short inscriptions, about 400 signs, still undeciphered.
+- 3:233: aircraft take off and land into the wind, and runways are aligned with the prevailing wind.
+- 3:234: the Mary Rose (sank 1545, raised 1982): 137 whole longbows about two metres long, with draw weights of roughly fifty to eighty kilograms.
+- 3:235: Peter Krogh's 3-2-1 rule for backups.
+- 3:236: the pulse on the top of the foot (dorsalis pedis), checked as a rule in people with diabetes.
+- 3:237: Michael Bar-Eli and colleagues, 2007: in 286 penalty kicks goalkeepers dived left or right about 94 per cent of the time, though staying in the centre stopped more.
+- 3:238: Christina Zelano and colleagues, 2016: fearful faces were recognised faster and objects remembered better during nasal inhalation.
+- 3:239: Bertram Forer, 1948: 39 students rated the same "personality sketch" 4.26 out of 5.
+- 3:240: Duncan MacDougall and colleagues, 1985: arterial pressure above 300 mmHg measured during heavy lifts with the breath held.
