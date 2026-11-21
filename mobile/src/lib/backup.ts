@@ -35,6 +35,8 @@ export interface Settings {
   showHindi: boolean;
   showEnglish: boolean;
   showNotes: boolean;
+  /** The website's Hindi व्याख्या and जीवन सूत्र under each verse (src/content/vyakhya.ts). */
+  showVyakhya: boolean;
   /** Interface language. 'system' follows the phone. Verse text is not affected. */
   language: LanguageSetting;
   /** Opt-in daily verse notification, scheduled on the phone (no server, no push token). */
@@ -52,6 +54,7 @@ export const DEFAULT_SETTINGS: Settings = {
   showHindi: true,
   showEnglish: true,
   showNotes: false,
+  showVyakhya: true,
   language: 'system',
   dailyReminder: false,
   reminderHour: 7,
@@ -92,6 +95,7 @@ export function normalizeSettings(raw: unknown): Settings {
     showHindi: typeof s.showHindi === 'boolean' ? s.showHindi : DEFAULT_SETTINGS.showHindi,
     showEnglish: typeof s.showEnglish === 'boolean' ? s.showEnglish : DEFAULT_SETTINGS.showEnglish,
     showNotes: typeof s.showNotes === 'boolean' ? s.showNotes : DEFAULT_SETTINGS.showNotes,
+    showVyakhya: typeof s.showVyakhya === 'boolean' ? s.showVyakhya : DEFAULT_SETTINGS.showVyakhya,
     language: LANGUAGES.includes(s.language as LanguageSetting) ? (s.language as LanguageSetting) : DEFAULT_SETTINGS.language,
     dailyReminder: typeof s.dailyReminder === 'boolean' ? s.dailyReminder : DEFAULT_SETTINGS.dailyReminder,
     reminderHour: wholeIn(s.reminderHour, 0, 23, DEFAULT_SETTINGS.reminderHour),

@@ -3,12 +3,14 @@ import { memo, useState } from 'react';
 import { Pressable, Share, StyleSheet, Text, View } from 'react-native';
 
 import type { Verse } from '@/content/types';
+import { useChapterVyakhya } from '@/content/vyakhya';
 import {
   cleanVerseField,
   formatVerseRef,
   meaningState,
   MEANING_COPY,
   sanskritLines,
+  splitVyakhyaCommentary,
   toDevanagari,
   verseMarkNumber,
 } from '@/lib/verse-format';
@@ -16,6 +18,7 @@ import { S, type Lang, type Msg } from '@/i18n';
 import type { Settings } from '@/lib/backup';
 import type { Cover } from '@/theme/covers';
 import { fontCap, huesFor, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
+import { LifeLesson } from './life-lesson';
 import { Card, coverFill } from './ui';
 
 interface Props {
@@ -45,6 +48,9 @@ function Label({ msg, lang, palette, extra, hue }: { msg: Msg; lang: Lang; palet
   );
 }
 
+/** Long व्याख्या opens at this many lines; the rest is a tap away so a chapter stays easy to scroll. */
+const VYAKHYA_LINES = 6;
+
 function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, settings, lang, cover, bookmarked, onToggleBookmark }: Props) {
   const hues = huesFor(palette);
   const t = (m: Msg) => m[lang];
@@ -60,11 +66,28 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
   const hindi = cleanVerseField(verse.hindi);
   const english = cleanVerseField(verse.translation);
   const translit = cleanVerseField(verse.transliteration);
+  const [vyakhyaOpen, setVyakhyaOpen] = useState(false);
+  // The website's Hindi notes for this chapter, once they are on the phone (src/content/vyakhya.ts).
+  const chapterNotes = useChapterVyakhya(scriptureId, chapter);
+  const extra = chapterNotes?.[String(verse.number)];
+  const wordMeaning = cleanVerseField(verse.wordMeaning);
+  // As on the website: Hindi prose is the व्याख्या, English the commentary, whichever field holds it.
+  const split = splitVyakhyaCommentary(
+    [cleanVerseField(extra?.v), cleanVerseField(verse.explanation), cleanVerseField(verse.commentary)],
+    wordMeaning,
+  );
+  const vyakhya = split.vyakhya;
+  const vyakhyaDraft = Boolean(extra?.vd && vyakhya && vyakhya === cleanVerseField(extra.v));
+  const lifeLesson = settings.showVyakhya ? cleanVerseField(extra?.l) : '';
+  const showVyakhya = settings.showVyakhya && Boolean(vyakhya);
   const notes = [
-    { key: 'word', label: S.labelWordMeaning, text: cleanVerseField(verse.wordMeaning) },
-    { key: 'commentary', label: S.labelCommentary, text: cleanVerseField(verse.commentary) },
-    { key: 'explanation', label: S.labelExplanation, text: cleanVerseField(verse.explanation) },
+    { key: 'word', label: S.labelWordMeaning, text: wordMeaning, draft: false },
+    // With the व्याख्या layer turned off it still sits among the notes, as before.
+    { key: 'vyakhya', label: S.labelVyakhya, text: settings.showVyakhya ? '' : (vyakhya ?? ''), draft: vyakhyaDraft },
+    { key: 'commentary', label: S.labelCommentary, text: split.commentary ?? '', draft: false },
+    { key: 'research', label: S.labelResearch, text: cleanVerseField(extra?.r), draft: Boolean(extra?.rd) },
   ].filter((n) => n.text);
+  const draftBadge = lang === 'hi' ? MEANING_COPY.aiLabelHi : MEANING_COPY.aiLabelEn;
 
   const share = () => {
     // The whole verse goes out: every line of the Sanskrit, never a cut-down excerpt.
@@ -216,6 +239,33 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
         </View>
       ) : null}
 
+      {showVyakhya ? (
+        <View style={styles.block}>
+          <Label msg={S.labelVyakhya} lang={lang} palette={palette} hue={hues.saffron} extra={vyakhyaDraft ? draftBadge : undefined} />
+          <Text
+            selectable
+            numberOfLines={vyakhyaOpen ? undefined : VYAKHYA_LINES}
+            maxFontSizeMultiplier={cap}
+            style={[styles.body, { color: palette.text, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.65 }]}>
+            {vyakhya}
+          </Text>
+          {vyakhya!.length > 320 || vyakhya!.includes('\n') ? (
+            <Pressable
+              onPress={() => setVyakhyaOpen((o) => !o)}
+              accessibilityRole="button"
+              accessibilityState={{ expanded: vyakhyaOpen }}
+              style={({ pressed }) => [styles.moreBtn, pressed && { opacity: 0.6 }]}>
+              <Text style={{ color: hues.saffron, fontSize: TYPE.subhead, fontWeight: '600' }}>{t(vyakhyaOpen ? S.vyakhyaLess : S.vyakhyaMore)}</Text>
+              <Ionicons name={vyakhyaOpen ? 'chevron-up' : 'chevron-down'} size={14} color={hues.saffron} />
+            </Pressable>
+          ) : null}
+        </View>
+      ) : null}
+
+      {lifeLesson ? (
+        <LifeLesson text={lifeLesson} palette={palette} lang={lang} scale={scale} draftBadge={extra?.ld ? draftBadge : undefined} />
+      ) : null}
+
       {notes.length > 0 ? (
         <View style={styles.block}>
           <Pressable
@@ -223,14 +273,14 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             accessibilityRole="button"
             accessibilityState={{ expanded: notesOpen }}
             style={styles.notesToggle}>
-            <View style={[styles.layerDot, { backgroundColor: hues.saffron }]} />
-            <Text style={[styles.label, { color: hues.saffron }, lang === 'hi' && styles.labelHi]}>{t(S.labelNotes)}</Text>
+            <View style={[styles.layerDot, { backgroundColor: palette.muted }]} />
+            <Text style={[styles.label, { color: palette.muted }, lang === 'hi' && styles.labelHi]}>{t(S.labelNotes)}</Text>
             <Ionicons name={notesOpen ? 'chevron-up' : 'chevron-down'} size={14} color={palette.muted} />
           </Pressable>
           {notesOpen
             ? notes.map((n) => (
                 <View key={n.key} style={{ marginTop: SPACE.sm }}>
-                  <Label msg={n.label} lang={lang} palette={palette} hue={hues.saffron} />
+                  <Label msg={n.label} lang={lang} palette={palette} hue={palette.muted} extra={n.draft ? draftBadge : undefined} />
                   <Text
                     selectable
                     maxFontSizeMultiplier={cap}
@@ -269,5 +319,6 @@ const styles = StyleSheet.create({
   labelHi: { fontSize: TYPE.footnote, letterSpacing: 0 },
   badge: { fontSize: 10, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4 },
   body: {},
+  moreBtn: { flexDirection: 'row', alignItems: 'center', columnGap: 4, minHeight: TOUCH - 8, alignSelf: 'flex-start' },
   notesToggle: { flexDirection: 'row', alignItems: 'center', columnGap: 6, minHeight: TOUCH - 4 },
 });
