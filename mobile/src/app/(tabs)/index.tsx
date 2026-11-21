@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupRow, GroupTitle, LargeHeader, Muted } from '@/components/ui';
+import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader, Muted } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
@@ -13,7 +13,7 @@ import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
-import { barClearance, fontCap, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 function matches(b: CatalogEntry, q: string) {
   if (!q) return true;
@@ -116,6 +116,36 @@ function ContinueCard() {
   );
 }
 
+/** The way into the knowledge pages and Wisdom for life (src/app/knowledge, src/app/wisdom). */
+function KnowledgeCard() {
+  const { palette } = useAppState();
+  const { t } = useI18n();
+  // Deep hues in every theme, so the white glyph keeps its contrast on Dark too.
+  const hues = huesFor({ dark: false });
+  const rows = [
+    { key: 'wisdom', title: S.wisdomTitle, detail: S.wisdomEntryDetail, icon: 'flower-outline' as const, color: hues.lotus, go: () => router.push('/wisdom') },
+    { key: 'knowledge', title: S.knowledgeTitle, detail: S.knowledgeEntryDetail, icon: 'compass-outline' as const, color: hues.indigo, go: () => router.push('/knowledge') },
+  ];
+  return (
+    <GroupCard>
+      {rows.map((r, i) => (
+        <GroupRow key={r.key} standalone={i === 0} inset={60} accessibilityLabel={`${t(r.title)}. ${t(r.detail)}`} onPress={r.go}>
+          <IconTile icon={r.icon} color={r.color} />
+          <View style={{ flex: 1 }}>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
+              {t(r.title)}
+            </Text>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
+              {t(r.detail)}
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+        </GroupRow>
+      ))}
+    </GroupCard>
+  );
+}
+
 export default function LibraryScreen() {
   const insets = useSafeAreaInsets();
   const { palette } = useAppState();
@@ -159,6 +189,7 @@ export default function LibraryScreen() {
             </LargeHeader>
             <ContinueCard />
             <DailyVerseCard />
+            <KnowledgeCard />
             <View style={[styles.search, glass(palette, true)]}>
               <Ionicons name="search" size={18} color={palette.muted} />
               <TextInput
