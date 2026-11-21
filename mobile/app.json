@@ -33,7 +33,8 @@
         "android.permission.WRITE_EXTERNAL_STORAGE",
         "android.permission.FOREGROUND_SERVICE",
         "com.google.android.c2dm.permission.RECEIVE",
-        "com.google.android.gms.permission.AD_ID"
+        "com.google.android.gms.permission.AD_ID",
+        "android.permission.VIBRATE"
       ]
     },
     "web": {
@@ -95,7 +96,11 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/TiroDevanagariSanskrit.ttf"]
+          "fonts": [
+            "./assets/fonts/TiroDevanagariSanskrit.ttf",
+            "./assets/fonts/CormorantGaramond-SemiBold.ttf",
+            "./assets/fonts/CormorantGaramond-Italic.ttf"
+          ]
         }
       ]
     ],

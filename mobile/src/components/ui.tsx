@@ -1,7 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ComponentProps, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, useWindowDimensions, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import Animated, { type SharedValue } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { hapticSelect } from '@/motion/haptics';
+import { PressableScale } from '@/motion/pressable-scale';
+import { useLargeTitleStyle } from '@/motion/parallax';
 import { useAppState } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 import { BAR_HEIGHT, fontCap, RADIUS, scriptSize, separator, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP, type Palette } from '@/theme/themes';
@@ -91,7 +96,26 @@ export function Backdrop({ children, quiet }: { children: ReactNode; quiet?: boo
     <View style={{ flex: 1 }}>
       <Aurora quiet={quiet} />
       {children}
+      <StatusBarScrim />
     </View>
+  );
+}
+
+/**
+ * A strip of the page colour behind the status bar. Lists scroll under the edge-to-edge status bar, and without
+ * it a scrolled heading ("Itihasa") runs into the clock and the battery icons.
+ */
+function StatusBarScrim() {
+  const { palette } = useAppState();
+  const { top } = useSafeAreaInsets();
+  if (!top) return null;
+  return (
+    <View
+      pointerEvents="none"
+      accessible={false}
+      importantForAccessibility="no-hide-descendants"
+      style={{ position: 'absolute', top: 0, left: 0, right: 0, height: top, backgroundColor: palette.bg }}
+    />
   );
 }
 
@@ -157,13 +181,13 @@ export function GlassRow({
 }) {
   const { palette } = useAppState();
   return (
-    <Pressable
+    <PressableScale
       onPress={onPress}
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
-      style={({ pressed }) => [styles.row, glass(palette), pressed && { transform: [{ scale: 0.985 }], opacity: 0.85 }]}>
+      style={[styles.row, glass(palette)]}>
       {children}
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -189,15 +213,20 @@ export function Chip({
   const choice = active !== undefined;
   return (
     <Pressable
-      onPress={onPress}
+      onPress={() => {
+        // A tick as the choice changes, like a segmented control; plain buttons stay silent.
+        if (active === false) hapticSelect();
+        onPress();
+      }}
       accessibilityRole={choice ? 'radio' : 'button'}
       accessibilityState={choice ? { checked: active } : undefined}
       accessibilityLabel={accessibilityLabel ?? label}
       hitSlop={(TOUCH - CHIP_HEIGHT) / 2}
-      style={({ pressed }) => [styles.chip, active ? accentFill(palette) : glass(palette), { opacity: pressed ? 0.75 : 1 }]}>
+      // The chosen chip is ink, not saffron: the one saffron thing on a screen stays the action to take.
+      style={({ pressed }) => [styles.chip, active ? { backgroundColor: palette.text } : glass(palette), { opacity: pressed ? 0.75 : 1 }]}>
       <Text
         maxFontSizeMultiplier={UI_FONT_CAP}
-        style={{ color: active ? palette.onAccent : palette.text, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
+        style={{ color: active ? palette.bg : palette.text, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
         {label}
       </Text>
     </Pressable>
@@ -212,10 +241,9 @@ export function Eyebrow({ en, hi, style }: { en: string; hi: string; style?: Sty
   return (
     <View style={[styles.eyebrow, glass(palette), style]}>
       <View style={[styles.dot, { backgroundColor: palette.accent }]} />
-      <Text
-        maxFontSizeMultiplier={UI_FONT_CAP}
-        style={{ flexShrink: 1, color: palette.accent, fontSize: scriptSize(TYPE.caption, lang), fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.6 }}>
-        {lang === 'hi' ? hi : en.toUpperCase()}
+      {/* Sentence case, untracked: a quiet label, not a shouted one. */}
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flexShrink: 1, color: palette.accent, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
+        {lang === 'hi' ? hi : en}
       </Text>
     </View>
   );
@@ -270,20 +298,24 @@ export function LargeHeader({
   eyebrow,
   subtitle,
   children,
+  scrollY,
 }: {
   title: { en: string; hi: string };
   eyebrow?: { en: string; hi: string };
   subtitle?: string;
   children?: ReactNode;
+  /** The list's scroll position: the title hands over to the compact TitleBar (src/motion/title-bar) as it scrolls away. */
+  scrollY?: SharedValue<number>;
 }) {
   const { palette } = useAppState();
   const { height } = useWindowDimensions();
+  const titleStyle = useLargeTitleStyle(scrollY, height);
   return (
     <View style={[styles.largeHeader, { minHeight: Math.round(height * 0.28) }]}>
       {eyebrow ? <Eyebrow {...eyebrow} /> : null}
-      <View accessibilityRole="header">
+      <Animated.View accessibilityRole="header" style={[{ transformOrigin: 'left bottom' }, titleStyle]}>
         <PageTitle {...title} />
-      </View>
+      </Animated.View>
       {children}
       {subtitle ? (
         <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>
@@ -474,19 +506,16 @@ export function IconButton({
           : null;
   const tint = color ?? (tone === 'accent' ? palette.onAccent : selected ? palette.accent : palette.muted);
   return (
-    <Pressable
+    <PressableScale
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
       disabled={disabled}
       accessibilityState={{ selected, disabled }}
-      style={({ pressed }) => [
-        { width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center' },
-        fill,
-        pressed && { opacity: 0.7, transform: [{ scale: 0.94 }] },
-      ]}>
+      scaleTo={0.9}
+      style={[{ width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center' }, fill]}>
       <Ionicons name={icon} size={Math.round(size * 0.44)} color={tint} />
-    </Pressable>
+    </PressableScale>
   );
 }
 

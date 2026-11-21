@@ -1,9 +1,10 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { router } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { router, useScrollToTop } from 'expo-router';
+import { useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { CoverBook } from '@/components/art/cover-book';
 import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader, Muted } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
@@ -11,6 +12,9 @@ import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
+import { AnimatedSectionList, useScrollY } from '@/motion/parallax';
+import { PressableScale } from '@/motion/pressable-scale';
+import { TitleBar } from '@/motion/title-bar';
 import { toScript } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
 import { sanskritFont } from '@/theme/fonts';
@@ -34,8 +38,10 @@ function DailyVerseCard() {
   if (!verse) return null;
   const lines = sanskritLines(verse.sanskrit);
   const ref = t(S.gitaRef(formatVerseRef(pick.id, pick.chapter, verse.number)));
+  // A verse is a page of a book, so the card wears that book's cover: one of the few places colour is lavish.
+  const cover = coverFor(pick.id, getEntry(pick.id)?.category ?? 'other');
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       // The label carries the verse itself: a label made of the action alone would hide the shloka from TalkBack.
       accessibilityLabel={t(S.verseOfTheDayFullA11y(ref, lines.join('\n')))}
@@ -46,13 +52,19 @@ function DailyVerseCard() {
           params: { id: pick.id, chapter: String(pick.chapter), verse: String(verse.number) },
         })
       }
-      style={({ pressed }) => pressed && { transform: [{ scale: 0.985 }] }}>
-      <Card style={{ borderRadius: RADIUS.panel - 2 }}>
+      haptic>
+      <View style={[styles.daily, coverFill(cover, palette, true), !palette.lite && styles.dailyLift]}>
+        {!palette.lite ? (
+          <View
+            pointerEvents="none"
+            style={[StyleSheet.absoluteFill, { backgroundImage: `radial-gradient(70% 60% at 85% 0%, ${cover.colors[2]}73 0%, transparent 70%)` }]}
+          />
+        ) : null}
         <View style={styles.cardHead}>
-          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: cover.foil, fontSize: TYPE.footnote, fontWeight: '600' }}>
             {t(S.verseOfTheDay)}
           </Text>
-          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: 'rgba(255,255,255,0.78)', fontSize: TYPE.footnote }}>
             {ref}
           </Text>
         </View>
@@ -64,9 +76,9 @@ function DailyVerseCard() {
               maxFontSizeMultiplier={fontCap(settings.textScale)}
               style={[
                 {
-                  color: palette.text,
-                  fontSize: TYPE.callout * settings.textScale,
-                  lineHeight: TYPE.callout * settings.textScale * 1.75,
+                  color: '#ffffff',
+                  fontSize: TYPE.body * settings.textScale,
+                  lineHeight: TYPE.body * settings.textScale * 1.75,
                 },
                 sanskritFont(settings.sanskritScript),
               ]}>
@@ -74,8 +86,46 @@ function DailyVerseCard() {
             </Text>
           ))}
         </View>
-      </Card>
-    </Pressable>
+      </View>
+    </PressableScale>
+  );
+}
+
+/** A few well-known books standing on a shelf, so a first visit has somewhere obvious to begin. */
+const SHELF = ['bhagavadgita', 'ramcharitmanas', 'katha', 'ishavasya', 'yogasutra', 'vivekchudamani'];
+
+function BookShelf() {
+  const { palette } = useAppState();
+  const { t, lang } = useI18n();
+  const books = SHELF.map((id) => getEntry(id)).filter((b): b is CatalogEntry => !!b);
+  if (books.length === 0) return null;
+  return (
+    <View style={{ rowGap: SPACE.sm }}>
+      <GroupTitle title={t(S.shelfTitle)} />
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        // Room for the covers' shadows, which a scroller would otherwise clip.
+        style={{ marginHorizontal: -SPACE.lg, marginTop: -SPACE.sm }}
+        contentContainerStyle={{ paddingHorizontal: SPACE.lg, paddingTop: SPACE.sm, paddingBottom: SPACE.lg, columnGap: SPACE.lg }}>
+        {books.map((b) => {
+          const title = lang === 'hi' ? (b.titleSanskrit ?? b.title) : b.title;
+          return (
+            <PressableScale
+              key={b.id}
+              accessibilityRole="button"
+              accessibilityLabel={t(S.openBookA11y(b.title))}
+              onPress={() => router.push({ pathname: '/scripture/[id]', params: { id: b.id } })}
+              style={{ width: 92, rowGap: SPACE.sm }}>
+              <CoverBook cover={coverFor(b.id, b.category)} letter={monogram(b.titleSanskrit ?? b.title)} width={84} />
+              <Text numberOfLines={2} maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.footnote, fontWeight: '500' }}>
+                {title}
+              </Text>
+            </PressableScale>
+          );
+        })}
+      </ScrollView>
+    </View>
   );
 }
 
@@ -90,26 +140,24 @@ function ContinueCard() {
   const cover = coverFor(entry.id, entry.category);
   const progress = (idx + 1) / entry.chapters.length;
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       accessibilityLabel={t(S.continueReadingA11y(entry.title, ch.number))}
       onPress={() => router.push({ pathname: '/scripture/[id]/[chapter]', params: { id: entry.id, chapter: String(ch.number) } })}
-      style={({ pressed }) => pressed && { transform: [{ scale: 0.985 }] }}>
+      haptic>
       <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
-          <CoverTile cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} size={TOUCH} />
+          <CoverBook cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} width={52} turn={0} />
           <View style={{ flex: 1 }}>
             <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
               {t(S.continueReading)}
             </Text>
             <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600', marginTop: 2 }}>
-              {entry.title} · {t(S.chapterN(ch.number))}
+              {entry.title}
             </Text>
-            {ch.titleSanskrit ? (
-              <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
-                {ch.titleSanskrit}
-              </Text>
-            ) : null}
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
+              {ch.titleSanskrit ? `${t(S.chapterN(ch.number))}, ${ch.titleSanskrit}` : t(S.chapterN(ch.number))}
+            </Text>
           </View>
           <View style={[styles.play, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' }]}>
             <Ionicons name="play" size={18} color={palette.accent} />
@@ -120,7 +168,7 @@ function ContinueCard() {
           <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(progress * 100))}%` }]} />
         </View>
       </Card>
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -161,6 +209,12 @@ export default function LibraryScreen() {
   const { t, lang } = useI18n();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
+  const { scrollY, onScroll } = useScrollY();
+  // Tapping the Library tab again while on it scrolls back up to the header, as on iOS and One UI.
+  const listRef = useRef<SectionList<CatalogEntry, { key: string; en: string; hi: string; data: CatalogEntry[] }>>(null);
+  // The hook reaches the list's scroll view through getScrollResponder() at runtime; only its typings are
+  // narrower than SectionList's, hence the cast.
+  useScrollToTop(listRef as unknown as Parameters<typeof useScrollToTop>[0]);
 
   const sections = useMemo(() => {
     return CATEGORIES.filter((c) => !category || c.key === category)
@@ -177,8 +231,11 @@ export default function LibraryScreen() {
 
   return (
     <Backdrop>
-      <SectionList
+      <AnimatedSectionList
+        ref={listRef as never}
         style={{ backgroundColor: 'transparent' }}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
         contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}
         sections={sections}
         keyExtractor={(b) => b.id}
@@ -188,6 +245,7 @@ export default function LibraryScreen() {
           <View style={{ rowGap: SPACE.md }}>
             <LargeHeader
               title={S.appName}
+              scrollY={scrollY}
               eyebrow={S.libraryEyebrow}
               subtitle={t(S.librarySummary(offline, CATALOG.length - offline))}>
               {/* The name reads in both scripts; the interface language leads. */}
@@ -197,6 +255,7 @@ export default function LibraryScreen() {
             </LargeHeader>
             <ContinueCard />
             <DailyVerseCard />
+            <BookShelf />
             <KnowledgeCard />
             <View style={[styles.search, glass(palette, true)]}>
               <Ionicons name="search" size={18} color={palette.muted} />
@@ -261,11 +320,14 @@ export default function LibraryScreen() {
         }}
         ListEmptyComponent={<Muted style={{ marginTop: SPACE.xl, textAlign: 'center' }}>{t(S.noMatch(query))}</Muted>}
       />
+      <TitleBar scrollY={scrollY} title={S.appName} />
     </Backdrop>
   );
 }
 
 const styles = StyleSheet.create({
+  daily: { borderRadius: RADIUS.panel - 2, padding: SPACE.lg + 2, overflow: 'hidden' },
+  dailyLift: { boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), 0 14px 32px rgba(10,20,50,0.28)' },
   cardHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', columnGap: SPACE.sm, flexWrap: 'wrap' },
   play: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
   track: { height: 4, borderRadius: 2, overflow: 'hidden' },
