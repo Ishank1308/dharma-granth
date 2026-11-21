@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { AshtavakraCard } from '@/components/ashtavakra-card';
 import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupRow, GroupTitle, LargeHeader, Muted } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
@@ -159,6 +160,7 @@ export default function LibraryScreen() {
             </LargeHeader>
             <ContinueCard />
             <DailyVerseCard />
+            <AshtavakraCard />
             <View style={[styles.search, glass(palette, true)]}>
               <Ionicons name="search" size={18} color={palette.muted} />
               <TextInput
