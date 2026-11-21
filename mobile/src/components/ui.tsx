@@ -2,6 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ComponentProps, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, useWindowDimensions, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import Animated, { type SharedValue } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { hapticSelect } from '@/motion/haptics';
 import { PressableScale } from '@/motion/pressable-scale';
@@ -95,7 +96,26 @@ export function Backdrop({ children, quiet }: { children: ReactNode; quiet?: boo
     <View style={{ flex: 1 }}>
       <Aurora quiet={quiet} />
       {children}
+      <StatusBarScrim />
     </View>
+  );
+}
+
+/**
+ * A strip of the page colour behind the status bar. Lists scroll under the edge-to-edge status bar, and without
+ * it a scrolled heading ("Itihasa") runs into the clock and the battery icons.
+ */
+function StatusBarScrim() {
+  const { palette } = useAppState();
+  const { top } = useSafeAreaInsets();
+  if (!top) return null;
+  return (
+    <View
+      pointerEvents="none"
+      accessible={false}
+      importantForAccessibility="no-hide-descendants"
+      style={{ position: 'absolute', top: 0, left: 0, right: 0, height: top, backgroundColor: palette.bg }}
+    />
   );
 }
 

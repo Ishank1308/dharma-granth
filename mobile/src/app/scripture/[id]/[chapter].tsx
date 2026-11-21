@@ -75,7 +75,8 @@ export default function ChapterScreen() {
   const recitedSet = useMemo(() => new Set(recited), [recited]);
   const keyPrefix = `${id}/${chapterNo}/`;
   const playingHere = currentKey?.startsWith(keyPrefix) ? currentKey.slice(keyPrefix.length) : null;
-  const onToggleAudio = useCallback((verse: string) => toggleVerse(id, chapterNo, verse), [toggleVerse, id, chapterNo]);
+  // A verse's play button recites on through the rest of the chapter; Pause or Stop ends it.
+  const onToggleAudio = useCallback((verse: string) => toggleVerse(id, chapterNo, verse, recited), [toggleVerse, id, chapterNo, recited]);
   // Recitation belongs to the chapter on screen: leaving it, or turning to another chapter, stops it.
   useEffect(() => stop, [id, chapterNo, stop]);
 

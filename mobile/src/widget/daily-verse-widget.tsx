@@ -1,3 +1,8 @@
+// The React Compiler must leave this file alone: react-native-android-widget calls these components as
+// plain functions to build the widget tree, outside React, so the compiler's memo-cache hook throws
+// ("Invalid Hook Call") and the widget draws blank.
+'use no memo';
+
 /**
  * The "Verse of the day" home-screen widget (Android only), drawn with react-native-android-widget.
  * The widget is plain data in, widget tree out: no hooks or app state, because it is also rendered by a

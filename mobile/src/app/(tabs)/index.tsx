@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { router } from 'expo-router';
-import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { router, useScrollToTop } from 'expo-router';
+import { useMemo, useRef, useState } from 'react';
+import { Pressable, ScrollView, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CoverBook } from '@/components/art/cover-book';
@@ -210,6 +210,11 @@ export default function LibraryScreen() {
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
   const { scrollY, onScroll } = useScrollY();
+  // Tapping the Library tab again while on it scrolls back up to the header, as on iOS and One UI.
+  const listRef = useRef<SectionList<CatalogEntry, { key: string; en: string; hi: string; data: CatalogEntry[] }>>(null);
+  // The hook reaches the list's scroll view through getScrollResponder() at runtime; only its typings are
+  // narrower than SectionList's, hence the cast.
+  useScrollToTop(listRef as unknown as Parameters<typeof useScrollToTop>[0]);
 
   const sections = useMemo(() => {
     return CATEGORIES.filter((c) => !category || c.key === category)
@@ -227,6 +232,7 @@ export default function LibraryScreen() {
   return (
     <Backdrop>
       <AnimatedSectionList
+        ref={listRef as never}
         style={{ backgroundColor: 'transparent' }}
         onScroll={onScroll}
         scrollEventThrottle={16}
