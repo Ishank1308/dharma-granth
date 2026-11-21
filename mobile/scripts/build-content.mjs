@@ -15,11 +15,14 @@
 //   src/content/generated/catalog.json   every scripture with its chapter list
 //   src/content/generated/books/<id>.json   verse text of each bundled scripture
 //   src/content/generated/loaders.ts     lazy require() map, so a book is parsed only when opened
+//   src/content/generated/search/…       offline verse search index (scripts/build-search-index.mjs)
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Buffer } from 'node:buffer';
 import { gunzipSync } from 'node:zlib';
+
+import { buildSearchIndex } from './build-search-index.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const MOBILE = resolve(HERE, '..');
@@ -57,7 +60,12 @@ const VERSE_FIELDS = [
   'explanation',
 ];
 
-if (ifMissing && existsSync(join(OUT, 'catalog.json')) && existsSync(join(OUT, 'loaders.ts'))) {
+if (
+  ifMissing &&
+  existsSync(join(OUT, 'catalog.json')) &&
+  existsSync(join(OUT, 'loaders.ts')) &&
+  existsSync(join(OUT, 'search-loaders.ts'))
+) {
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
   process.exit(0);
 }
@@ -195,3 +203,5 @@ console.log(
 if (usedShards < bundledIds.length) {
   console.warn('[content] some books came from full-book JSON. Run `npm run shard:scriptures` at the repo root for the cleaned text.');
 }
+
+await buildSearchIndex();

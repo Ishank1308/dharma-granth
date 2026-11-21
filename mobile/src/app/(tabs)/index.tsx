@@ -128,6 +128,20 @@ export default function LibraryScreen() {
                 autoCorrect={false}
               />
             </View>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Search inside verses"
+              onPress={() => router.push({ pathname: '/search', params: query.trim() ? { q: query.trim() } : {} })}
+              style={({ pressed }) => [styles.verseSearch, glass(palette), { opacity: pressed ? 0.8 : 1 }]}>
+              <Ionicons name="text-outline" size={18} color={palette.accent} />
+              <Bilingual
+                en={query.trim() ? `Search verses for “${query.trim()}”` : 'Search inside verses'}
+                hi="श्लोकों में खोजें"
+                size={TYPE.subhead}
+                style={{ flex: 1 }}
+              />
+              <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+            </Pressable>
             <View style={styles.chips}>
               <Chip label="All · सभी" active={!category} onPress={() => setCategory(null)} />
               {CATEGORIES.map((c) => (
@@ -176,4 +190,12 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
   },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
+  verseSearch: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    columnGap: SPACE.sm,
+    borderRadius: RADIUS.row,
+    paddingHorizontal: SPACE.lg,
+    paddingVertical: SPACE.md,
+  },
 });
