@@ -9,8 +9,20 @@ import { RADIUS, SPACE, TYPE, type Palette } from '@/theme/themes';
  * a translucent surface over the aurora, a lit top edge, a soft rim and a diagonal sheen.
  * Android has no cheap backdrop blur, so the frost comes from translucency and the sheen;
  * the web build also gets a real backdrop-filter.
+ *
+ * With light effects (palette.lite) the surface, rim and lit top edge stay, as a plain top border, but the
+ * blurred drop shadow, the inset shadow and the gradient sheen go: those are what a budget GPU repaints on
+ * every scrolled frame.
  */
 export function glass(palette: Palette, strong = false): ViewStyle {
+  if (palette.lite) {
+    return {
+      backgroundColor: strong ? palette.glassStrong : palette.glass,
+      borderColor: palette.rim,
+      borderTopColor: palette.rimTop,
+      borderWidth: 1,
+    };
+  }
   const sheen = palette.dark
     ? 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 45%)'
     : 'linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 50%)';
@@ -28,6 +40,14 @@ export function glass(palette: Palette, strong = false): ViewStyle {
 
 /** Accent gradient fill for active chips and primary buttons. */
 export function accentFill(palette: Palette): ViewStyle {
+  if (palette.lite) {
+    return {
+      backgroundColor: palette.accentGradient[1],
+      borderColor: 'rgba(255,255,255,0.25)',
+      borderTopColor: 'rgba(255,255,255,0.4)',
+      borderWidth: 1,
+    };
+  }
   return {
     backgroundColor: palette.accentGradient[1],
     backgroundImage: `linear-gradient(135deg, ${palette.accentGradient[0]} 0%, ${palette.accentGradient[1]} 100%)`,
@@ -40,6 +60,9 @@ export function accentFill(palette: Palette): ViewStyle {
 /**
  * The aurora behind every screen: five soft pools of colour like the website's body::before,
  * so the glass above has something to frost. Drawn once, behind the navigator.
+ *
+ * With light effects it is cached as a GPU texture, so scrolling a list over it no longer repaints five
+ * full-screen gradients each frame. It looks the same; it only costs one screen-sized texture of memory.
  */
 export function Aurora({ quiet = false }: { quiet?: boolean }) {
   const { palette } = useAppState();
@@ -54,6 +77,7 @@ export function Aurora({ quiet = false }: { quiet?: boolean }) {
   return (
     <View
       pointerEvents="none"
+      renderToHardwareTextureAndroid={!!palette.lite}
       style={[StyleSheet.absoluteFill, { backgroundColor: palette.bg, backgroundImage: pools, opacity: quiet ? 0.6 : 1 }]}
     />
   );

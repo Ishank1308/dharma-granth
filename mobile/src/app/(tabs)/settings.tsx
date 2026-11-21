@@ -10,7 +10,7 @@ import { DownloadsSection } from '@/components/download-card';
 import { accentFill, Backdrop, Bilingual, Card, Chip, Eyebrow, glass, Muted, PageTitle, SectionTitle } from '@/components/ui';
 import { CATALOG, SITE } from '@/content/catalog';
 import { LANGUAGE_SETTINGS, S, useI18n, type LanguageSetting, type Msg } from '@/i18n';
-import { BackupError, makeBackup, parseBackup } from '@/lib/backup';
+import { BackupError, EFFECTS_SETTINGS, makeBackup, parseBackup, type EffectsSetting } from '@/lib/backup';
 import {
   getReminderPermission,
   remindersSupported,
@@ -25,6 +25,8 @@ const SCALES = [0.9, 1, 1.15, 1.3, 1.5];
 
 /** Language names are always shown in their own script, whatever the interface language. */
 const LANGUAGE_NAMES: Record<Exclude<LanguageSetting, 'system'>, string> = { en: 'English', hi: 'हिन्दी' };
+
+const EFFECTS_LABELS: Record<EffectsSetting, Msg> = { auto: S.effectsAuto, full: S.effectsFull, light: S.effectsLight };
 
 const BACKUP_ERRORS: Record<BackupError['code'], Msg> = {
   'not-json': S.backupNotJson,
@@ -131,7 +133,7 @@ function DailyVerseSettings() {
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
-  const { palette, settings, updateSettings, exportData, importData, bookmarks } = useAppState();
+  const { palette, settings, updateSettings, exportData, importData, bookmarks, lightEffects } = useAppState();
   const { t, lang } = useI18n();
   const [busy, setBusy] = useState(false);
   const bundled = CATALOG.filter((b) => b.bundled).length;
@@ -216,7 +218,11 @@ export default function SettingsScreen() {
                 accessibilityState={{ selected: active }}
                 accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
                 onPress={() => updateSettings({ theme: name })}
-                style={[styles.theme, glass(theme, true), active && { borderColor: palette.accent, borderWidth: 2 }]}>
+                style={[
+                  styles.theme,
+                  glass(palette.lite ? { ...theme, lite: true } : theme, true),
+                  active && { borderColor: palette.accent, borderWidth: 2 },
+                ]}>
                 <View style={[styles.swatch, { backgroundColor: theme.accent }]} />
                 <Text style={{ color: theme.text, fontWeight: '700', fontSize: TYPE.footnote }}>{lang === 'hi' ? theme.labelHi : theme.label}</Text>
               </Pressable>
@@ -241,6 +247,14 @@ export default function SettingsScreen() {
             );
           })}
         </View>
+
+        <SectionTitle {...S.effects} />
+        <View style={styles.chips}>
+          {EFFECTS_SETTINGS.map((e) => (
+            <Chip key={e} label={t(EFFECTS_LABELS[e])} active={settings.effects === e} onPress={() => updateSettings({ effects: e })} />
+          ))}
+        </View>
+        <Muted style={{ marginTop: SPACE.sm }}>{t(S.effectsNote(lightEffects))}</Muted>
 
         <SectionTitle {...S.showInVerses} />
         <Card style={{ paddingVertical: SPACE.xs }}>
