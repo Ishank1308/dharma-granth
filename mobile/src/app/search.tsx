@@ -182,6 +182,7 @@ export default function SearchScreen() {
     // One row that scrolls sideways, as on the Library tab.
     <ScrollView
       horizontal
+      accessibilityRole="radiogroup"
       showsHorizontalScrollIndicator={false}
       keyboardShouldPersistTaps="handled"
       // Vertical room so the chips' shadows aren't cut off at the scroller's edge.

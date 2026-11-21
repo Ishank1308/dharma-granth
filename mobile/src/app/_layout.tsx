@@ -15,7 +15,7 @@ SplashScreen.preventAutoHideAsync().catch(() => {});
 export const unstable_settings = { initialRouteName: '(tabs)' };
 
 function Navigator() {
-  const { palette, ready } = useAppState();
+  const { palette, ready, reduceMotion } = useAppState();
 
   useEffect(() => {
     if (ready) SplashScreen.hideAsync().catch(() => {});
@@ -46,6 +46,8 @@ function Navigator() {
             headerTitleStyle: { color: palette.text },
             headerShadowVisible: false,
             contentStyle: { backgroundColor: palette.bg },
+            // With Android's "Remove animations" on, screens change without sliding.
+            animation: reduceMotion ? 'none' : 'default',
           }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="scripture/[id]/index" options={{ title: '' }} />
