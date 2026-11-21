@@ -15,7 +15,7 @@ import { useScrollProgressStyle, useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
-import { BAR_GAP, BAR_HEIGHT, barClearance, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+import { BAR_GAP, BAR_HEIGHT, barClearance, RADIUS, SPACE, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -120,14 +120,14 @@ export default function ScriptureScreen() {
                 <View style={styles.badges}>
                   <View style={styles.badge}>
                     <Ionicons name={offline ? 'checkmark' : 'cloud-download-outline'} size={14} color={cover.foil} />
-                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.badgeText}>
+                    <Text maxFontSizeMultiplier={UI_FONT_CAP} style={styles.badgeText}>
                       {t(offline ? S.onThisPhone : S.canDownload)}
                     </Text>
                   </View>
                   {saved > 0 ? (
                     <View style={styles.badge}>
                       <Ionicons name="bookmark-outline" size={14} color={cover.foil} />
-                      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={styles.badgeText}>
+                      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={styles.badgeText}>
                         {t(S.savedCount(saved))}
                       </Text>
                     </View>
@@ -146,7 +146,8 @@ export default function ScriptureScreen() {
                 inset={64}
                 highlight={current}
                 accessibilityRole={offline ? 'button' : 'link'}
-                accessibilityLabel={t(S.chapterA11y(item.number, item.title))}
+                accessibilityLabel={`${t(S.chapterA11y(item.number, item.title))}${current ? `, ${t(S.readingNowA11y)}` : ''}`}
+                accessibilityHint={offline ? undefined : t(S.opensOnWebsite)}
                 onPress={() => open(item.number)}>
                 <Text style={[styles.num, { color: current ? palette.accent : palette.gold, fontWeight: current ? '800' : '600' }]}>
                   {toDevanagari(item.number)}

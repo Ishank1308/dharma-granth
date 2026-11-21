@@ -24,7 +24,7 @@ import { useScrollY } from '@/motion/parallax';
 import { TitleBar } from '@/motion/title-bar';
 import { useAppState } from '@/state/app-state';
 import { addWidgetToHomeScreen } from '@/widget/pin';
-import { barClearance, huesFor, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
 
 /** Icon tiles keep the deep spectrum hues in every theme, so their white glyphs stay readable. */
 const TILE = huesFor({ dark: false });
@@ -102,7 +102,7 @@ function DailyVerseSettings() {
           <Switch
             value={settings.dailyReminder}
             onValueChange={(v) => void toggle(v)}
-            trackColor={{ true: palette.accent, false: palette.dark ? '#48484a' : palette.border }}
+            trackColor={{ true: palette.accent, false: switchOffTrack(palette) }}
             thumbColor="#fff"
             {...({ activeThumbColor: '#fff' } as object)}
             accessibilityLabel={t(S.dailyVerseNotification)}
@@ -129,8 +129,9 @@ function DailyVerseSettings() {
         ) : null}
       </GroupCard>
       {blocked ? (
-        <Pressable accessibilityRole="button" onPress={openSystemSettings} style={{ marginTop: SPACE.sm }}>
-          <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.notificationsBlocked)}</Text>
+        <Pressable accessibilityRole="button" onPress={openSystemSettings} style={[styles.linkBtn, glass(palette, true)]}>
+          <Ionicons name="alert-circle-outline" size={20} color={palette.accent} />
+          <Text style={[styles.linkText, { color: palette.accent }]}>{t(S.notificationsBlocked)}</Text>
         </Pressable>
       ) : (
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.dailyVerseNote)}</Muted>
@@ -143,8 +144,9 @@ function DailyVerseSettings() {
               if (!pinned) Alert.alert(t(S.widgetHowTitle), t(S.widgetHowBody));
             })
           }
-          style={{ marginTop: SPACE.md }}>
-          <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.widgetAdd)}</Text>
+          style={[styles.linkBtn, glass(palette, true)]}>
+          <Ionicons name="apps-outline" size={20} color={palette.accent} />
+          <Text style={[styles.linkText, { color: palette.accent }]}>{t(S.widgetAdd)}</Text>
         </Pressable>
       ) : null}
     </>
@@ -223,7 +225,7 @@ export default function SettingsScreen() {
         <LargeHeader title={S.settingsTitle} eyebrow={S.settingsEyebrow} scrollY={scrollY} />
 
         <SectionTitle {...S.language} />
-        <View style={styles.chips}>
+        <View style={styles.chips} accessibilityRole="radiogroup">
           {LANGUAGE_SETTINGS.map((l) => (
             <Chip
               key={l}
@@ -236,15 +238,15 @@ export default function SettingsScreen() {
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.languageNote)}</Muted>
 
         <SectionTitle {...S.theme} />
-        <View style={styles.themes}>
+        <View style={styles.themes} accessibilityRole="radiogroup">
           {THEME_ORDER.map((name) => {
             const theme = THEMES[name];
             const active = settings.theme === name;
             return (
               <Pressable
                 key={name}
-                accessibilityRole="button"
-                accessibilityState={{ selected: active }}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: active }}
                 accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
                 onPress={() => updateSettings({ theme: name })}
                 style={[styles.theme, themesInTwoRows && styles.themeHalf]}>
@@ -268,14 +270,14 @@ export default function SettingsScreen() {
         </View>
 
         <SectionTitle {...S.textSize} />
-        <View style={styles.scales}>
+        <View style={styles.scales} accessibilityRole="radiogroup">
           {TEXT_SCALES.map((s) => {
             const active = Math.abs(settings.textScale - s) < 0.01;
             return (
               <Pressable
                 key={s}
-                accessibilityRole="button"
-                accessibilityState={{ selected: active }}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: active }}
                 accessibilityLabel={t(S.textSizeA11y(Math.round(s * 100)))}
                 onPress={() => updateSettings({ textScale: s })}
                 style={[styles.scale, active ? accentFill(palette) : glass(palette)]}>
@@ -286,7 +288,7 @@ export default function SettingsScreen() {
         </View>
 
         <SectionTitle {...S.effects} />
-        <View style={styles.chips}>
+        <View style={styles.chips} accessibilityRole="radiogroup">
           {EFFECTS_SETTINGS.map((e) => (
             <Chip key={e} label={t(EFFECTS_LABELS[e])} active={settings.effects === e} onPress={() => updateSettings({ effects: e })} />
           ))}
@@ -302,7 +304,7 @@ export default function SettingsScreen() {
               <Switch
                 value={settings[row.key]}
                 onValueChange={(v) => updateSettings({ [row.key]: v })}
-                trackColor={{ true: palette.accent, false: palette.dark ? '#48484a' : palette.border }}
+                trackColor={{ true: palette.accent, false: switchOffTrack(palette) }}
                 thumbColor="#fff"
               {...({ activeThumbColor: '#fff' } as object)}
                 accessibilityLabel={t(row.label)}
@@ -360,9 +362,21 @@ const styles = StyleSheet.create({
   previewDot: { position: 'absolute', right: 8, bottom: 8, width: 10, height: 10, borderRadius: 5 },
   scales: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
   // Minimum sizes, not fixed ones: the अ preview grows with the system font size and must not spill out.
-  scale: { minWidth: 52, minHeight: 46, paddingHorizontal: SPACE.xs, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },
+  scale: { minWidth: 52, minHeight: TOUCH, paddingHorizontal: SPACE.xs, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },
   toggle: { flexDirection: 'row', alignItems: 'center', paddingVertical: SPACE.md, columnGap: SPACE.md },
   btn: { flex: 1, borderRadius: RADIUS.pill, minHeight: TOUCH, justifyContent: 'center', alignItems: 'center' },
   btnText: { color: '#fff', fontWeight: '700' },
-  timeBtn: { borderRadius: RADIUS.pill, minHeight: TOUCH - 8, justifyContent: 'center', paddingHorizontal: SPACE.lg },
+  timeBtn: { borderRadius: RADIUS.pill, minHeight: TOUCH, justifyContent: 'center', paddingHorizontal: SPACE.lg },
+  // Text actions get a full-height glass capsule: a 48 dp target, and the accent text sits on glass, not on the aurora.
+  linkBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    columnGap: SPACE.sm,
+    minHeight: TOUCH,
+    marginTop: SPACE.md,
+    paddingHorizontal: SPACE.lg,
+    paddingVertical: SPACE.sm,
+    borderRadius: RADIUS.row,
+  },
+  linkText: { flexShrink: 1, fontWeight: '600', fontSize: TYPE.subhead },
 });

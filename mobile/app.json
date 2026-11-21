@@ -92,7 +92,13 @@
           ]
         }
       ],
-      "./plugins/with-optional-portrait"
+      "./plugins/with-optional-portrait",
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/TiroDevanagariSanskrit.ttf"]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

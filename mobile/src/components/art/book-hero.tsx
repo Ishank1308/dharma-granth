@@ -22,17 +22,15 @@ import { DURATION, SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
 import { useAppState } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
+import { SANSKRIT_FONT } from '@/theme/fonts';
 import { RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 import { Book3D } from './book-3d';
 import { artFor } from './cover-art';
 import { Mandala } from './mandala';
 
-/**
- * Tiro Devanagari Sanskrit, embedded by the typography work (#429, src/theme/fonts.ts). Until that font is in
- * the build the phone's own Devanagari face is used, so nothing breaks without it.
- */
-const TITLE_FACE = 'TiroDevanagariSanskrit';
+/** Tiro Devanagari Sanskrit, the website's shloka face, embedded in the build (src/theme/fonts.ts). */
+const TITLE_FACE = SANSKRIT_FONT;
 
 export function BookHero({
   cover,

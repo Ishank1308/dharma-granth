@@ -18,7 +18,7 @@ import { toDevanagari } from '@/lib/verse-format';
 import { useToast } from '@/motion/toast';
 import { useAppState } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
-import { BAR_GAP, barClearance, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { BAR_GAP, barClearance, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 const VIEWABILITY = { itemVisiblePercentThreshold: 40 };
 
@@ -267,7 +267,7 @@ export default function ChapterScreen() {
                 {meta.titleSanskrit ?? meta.title}
               </Text>
               {meta.titleSanskrit ? (
-                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>
+                <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>
                   {meta.title}
                 </Text>
               ) : null}
@@ -289,13 +289,13 @@ export default function ChapterScreen() {
                 onPress={() => go(next.number)}
                 style={({ pressed }) => [styles.nextCard, glass(palette, true), pressed && { transform: [{ scale: 0.985 }] }]}>
                 <View style={{ flex: 1 }}>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
                     {t(S.nextChapterLabel)}
                   </Text>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600', marginTop: 2 }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600', marginTop: 2 }}>
                     {next.titleSanskrit ?? next.title}
                   </Text>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
                     {t(S.chapterN(next.number))}
                   </Text>
                 </View>
