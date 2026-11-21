@@ -205,5 +205,15 @@ export const S = {
     hi: `यह अध्याय बिना इंटरनेट पढ़ने के लिए ${title} डाउनलोड करें।`,
   }),
   goToDownload: { en: 'Go to download', hi: 'डाउनलोड पर जाएँ' },
+
+  // Verse search over downloaded texts (src/content/download-index.ts)
+  searchIntro: (texts: number, downloaded: number) => ({
+    en: `Sanskrit, Hindi, transliteration or English, across ${n(texts)} texts${downloaded ? `, including the ${n(downloaded)} you downloaded` : ''}. Works offline.`,
+    hi: `संस्कृत, हिन्दी, लिप्यन्तरण या अंग्रेज़ी में, ${n(texts)} ग्रन्थों में${downloaded ? `, जिनमें आपके डाउनलोड किए ${n(downloaded)} भी हैं` : ''}। बिना इंटरनेट चलता है।`,
+  }),
+  searchPreparingDownloads: (titles: string) => ({
+    en: `Getting ${titles} ready for search. Their verses will show up here in a moment.`,
+    hi: `${titles} को खोज के लिए तैयार कर रहे हैं। इनके श्लोक थोड़ी देर में यहाँ दिखेंगे।`,
+  }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 

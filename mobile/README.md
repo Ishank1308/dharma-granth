@@ -14,8 +14,8 @@ and English, readable offline, no account.
 - **Downloads** for the 22 large texts (Ramayana, Mahabharata, Puranas, Rig and Atharva Veda): tap Download on the
   text's page to read it offline. The card shows the size and progress; Settings → Downloaded texts lists what is on the
   phone and deletes it. Until downloaded, chapters open on dharmagranth.dev.
-- **Verse search** inside the 44 offline texts, in Sanskrit, Hindi, transliteration or English
-  (Library → Search inside verses). It runs on the phone from a prebuilt index, no network needed.
+- **Verse search** inside the 44 offline texts and any large texts you have downloaded, in Sanskrit,
+  Hindi, transliteration or English (Library → Search inside verses). It runs on the phone from a prebuilt index, no network needed.
 - **Saved verses**, share a verse, four reading themes (Day, Sunset, Paper, Dark) and text size.
 - **Hindi or English interface**: Settings → Language switches menus, buttons and messages between
   English and Hindi, and starts on the phone's language. Verse text is unaffected.
@@ -105,3 +105,12 @@ Sanskrit compound finds it. Spelling variants meet: शांति / शान�
 loads until the first search, and each book's index is then kept for later queries. The index adds
 about 10 MB to the Hermes bundle (about 4 MB compressed). Logic and tests: `src/lib/verse-search.ts`,
 `scripts/search.test.mjs`.
+
+Downloaded texts are searched too. While a large text downloads, the app folds its verses with the
+same code (`verseToCorpusLine`) into `downloads/<id>/search/`: chunks of about 1.5 MB of index plus a
+`manifest.json` (`src/content/download-index.ts`). A search reads one chunk at a time and keeps only a
+few in a small cache, so memory stays flat even with the Mahabharata (37 MB of index, 25 chunks)
+downloaded. The index lives inside the book's folder, so deleting the book deletes it, and it adds about
+a third to the size on the phone. A text downloaded before this existed gets its index built in the
+background the first time the search screen opens. Bump `INDEX_FORMAT` when the fold changes, so old
+indexes are built again.
