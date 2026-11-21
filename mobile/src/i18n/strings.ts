@@ -471,6 +471,8 @@ export const S = {
     hi: `${n(total)} में से श्लोक ${verse}। किसी और श्लोक पर जाएँ`,
   }),
   verseOf: (verse: string, total: number) => ({ en: `Verse ${verse} of ${n(total)}`, hi: `श्लोक ${verse} / ${n(total)}` }),
+  /** While a recitation plays the pill also holds a notes icon, so it drops the word to fit a 360 dp phone. */
+  verseOfShort: (verse: string, total: number) => ({ en: `${verse} / ${n(total)}`, hi: `${verse} / ${n(total)}` }),
   nextChapterLabel: { en: 'Next chapter', hi: 'अगला अध्याय' },
   firstChapter: { en: 'This is the first chapter', hi: 'यह पहला अध्याय है' },
   lastChapter: { en: 'This is the last chapter', hi: 'यह आख़िरी अध्याय है' },
