@@ -271,4 +271,19 @@ export const S = {
   }),
   savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
   startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+
+  // Accessibility (TalkBack labels, hints and announcements)
+  verseOfTheDayFullA11y: (ref: string, text: string) => ({ en: `Verse of the day, ${ref}. ${text}`, hi: `आज का श्लोक, ${ref}। ${text}` }),
+  verseSavedAnnounce: { en: 'Verse saved', hi: 'श्लोक सहेजा गया' },
+  verseRemovedAnnounce: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
+  readingNowA11y: { en: 'reading now', hi: 'अभी पढ़ रहे हैं' },
+  searchVersesTitle: { en: 'Search verses', hi: 'श्लोक खोजें' },
+  searchVersesPlaceholder: { en: 'Sanskrit, Hindi or English', hi: 'संस्कृत, हिन्दी या अंग्रेज़ी में' },
+  clearSearch: { en: 'Clear search', hi: 'खोज साफ़ करें' },
+  searchForA11y: (text: string) => ({ en: `Search for ${text}`, hi: `${text} खोजें` }),
+  searchIntroTitle: { en: 'Search inside the verses', hi: 'श्लोकों में खोजें' },
+  searchNoVerse: (query: string, inSection: boolean) => ({
+    en: `No verse matches “${query}”${inSection ? ' in this section' : ''}. Try fewer words or another spelling.`,
+    hi: `${inSection ? 'इस भाग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
+  }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;

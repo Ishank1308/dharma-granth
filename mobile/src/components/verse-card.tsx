@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { memo, useState } from 'react';
-import { Pressable, Share, StyleSheet, Text, View } from 'react-native';
+import { AccessibilityInfo, Pressable, Share, StyleSheet, Text, View } from 'react-native';
 
 import type { Verse } from '@/content/types';
 import {
@@ -86,7 +86,8 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
       <View pointerEvents="none" style={[styles.edge, coverFill(cover, palette)]} />
       <View style={styles.header}>
         <View style={[styles.refPill, coverFill(cover, palette, true)]}>
-          <Text style={styles.ref} accessibilityLabel={t(S.verseA11y(ref))}>
+          {/* A heading, so TalkBack's heading navigation steps from verse to verse. */}
+          <Text style={styles.ref} accessibilityRole="header" accessibilityLabel={t(S.verseA11y(ref))}>
             {ref}
           </Text>
         </View>
@@ -99,7 +100,10 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             <Ionicons name="share-outline" size={20} color={palette.muted} />
           </Pressable>
           <Pressable
-            onPress={() => onToggleBookmark(String(verse.number))}
+            onPress={() => {
+              onToggleBookmark(String(verse.number));
+              AccessibilityInfo.announceForAccessibility(t(bookmarked ? S.verseRemovedAnnounce : S.verseSavedAnnounce));
+            }}
             style={({ pressed }) => [
               styles.iconBtn,
               bookmarked && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
@@ -114,7 +118,11 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
       </View>
 
       {lines.length > 0 ? (
+        // One TalkBack stop for the whole shloka, read line after line, rather than one stop per line and the
+        // ॥ marks read out as symbols.
         <View
+          accessible
+          accessibilityLabel={lines.join('\n')}
           style={[
             styles.sanskrit,
             {
@@ -267,7 +275,7 @@ const styles = StyleSheet.create({
   label: { fontSize: TYPE.caption, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
   // Devanagari has no case, and letter-spacing breaks its conjuncts apart.
   labelHi: { fontSize: TYPE.footnote, letterSpacing: 0 },
-  badge: { fontSize: 10, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4 },
+  badge: { fontSize: TYPE.caption - 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4 },
   body: {},
-  notesToggle: { flexDirection: 'row', alignItems: 'center', columnGap: 6, minHeight: TOUCH - 4 },
+  notesToggle: { flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', columnGap: 6, minHeight: TOUCH, paddingRight: SPACE.md },
 });

@@ -22,7 +22,7 @@ import { S, useI18n } from '@/i18n';
 import { formatVerseRef } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import type { Palette } from '@/theme/themes';
-import { fontCap, RADIUS, SPACE, TYPE } from '@/theme/themes';
+import { fontCap, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 const EXAMPLES = ['कर्मण्येवाधिकारस्ते', 'शान्ति', 'आत्मा', 'krishna', 'karma yoga', 'fruits of action'];
 
@@ -71,10 +71,13 @@ const ResultCard = memo(function ResultCard({
       style={({ pressed }) => ({ opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.985 : 1 }] })}>
       <Card style={{ marginBottom: SPACE.md }}>
         <View style={styles.cardHead}>
-          <Text style={{ color: palette.gold, fontWeight: '700', fontSize: TYPE.footnote, flexShrink: 1 }} numberOfLines={1}>
+          {/* Wraps rather than truncates: at large font sizes a long book name must not lose the verse number. */}
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.gold, fontWeight: '700', fontSize: TYPE.footnote, flexShrink: 1 }}>
             {ref}
           </Text>
-          <Text style={{ color: palette.muted, fontSize: TYPE.caption }}>{FIELD_LABEL[snippet.field]}</Text>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption + 1 }}>
+            {FIELD_LABEL[snippet.field]}
+          </Text>
         </View>
         <Text maxFontSizeMultiplier={fontCap(textScale)} style={{ color: palette.text, fontSize: size, lineHeight: size * 1.6 }}>
           {runs.map((r, i) =>
@@ -153,7 +156,7 @@ export default function SearchScreen() {
   return (
     <Backdrop>
       <>
-        <Stack.Screen options={{ title: 'Search verses' }} />
+        <Stack.Screen options={{ title: t(S.searchVersesTitle) }} />
         <FlatList
           style={{ backgroundColor: 'transparent' }}
           contentContainerStyle={{ padding: SPACE.lg, paddingBottom: SPACE.xxl * 3 }}
@@ -171,33 +174,38 @@ export default function SearchScreen() {
                   value={query}
                   onChangeText={setQuery}
                   autoFocus={!params.q}
-                  placeholder="Search verses / श्लोक खोजें"
+                  placeholder={t(S.searchVersesPlaceholder)}
                   placeholderTextColor={palette.muted}
-                  style={{ flex: 1, color: palette.text, fontSize: TYPE.callout, paddingVertical: SPACE.sm }}
-                  accessibilityLabel="Search inside verses"
+                  style={{ flex: 1, color: palette.text, fontSize: TYPE.callout, minHeight: TOUCH, paddingVertical: SPACE.sm }}
+                  accessibilityLabel={t(S.searchInsideVerses)}
                   autoCorrect={false}
                   autoCapitalize="none"
                   returnKeyType="search"
                 />
-                {busy ? <ActivityIndicator size="small" color={palette.accent} /> : null}
+                {busy ? <ActivityIndicator size="small" color={palette.accent} style={{ marginHorizontal: SPACE.md }} /> : null}
                 {query && !busy ? (
-                  <Pressable hitSlop={10} accessibilityRole="button" accessibilityLabel="Clear search" onPress={() => setQuery('')}>
-                    <Ionicons name="close-circle" size={18} color={palette.muted} />
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityLabel={t(S.clearSearch)}
+                    onPress={() => setQuery('')}
+                    style={styles.clear}>
+                    <Ionicons name="close-circle" size={20} color={palette.muted} />
                   </Pressable>
                 ) : null}
               </View>
-              <View style={styles.chips}>
-                <Chip label="All · सभी" active={!section} onPress={() => setSection(null)} />
+              <View style={styles.chips} accessibilityRole="radiogroup">
+                <Chip label={t(S.filterAll)} active={!section} onPress={() => setSection(null)} />
                 {sections.map((c) => (
                   <Chip
                     key={c.key}
-                    label={`${c.en} · ${c.hi}`}
+                    label={t(c)}
                     active={section === c.key}
                     onPress={() => setSection(section === c.key ? null : c.key)}
                   />
                 ))}
               </View>
-              {status ? <Muted>{status}</Muted> : null}
+              {/* Announced by TalkBack as results arrive, so a blind reader knows the search finished. */}
+              <View accessibilityLiveRegion="polite">{status ? <Muted>{status}</Muted> : null}</View>
               {indexing.pending.length > 0 ? (
                 <Muted>{t(S.searchPreparingDownloads(indexing.pending.map((id) => getEntry(id)?.title ?? id).join(', ')))}</Muted>
               ) : null}
@@ -209,20 +217,20 @@ export default function SearchScreen() {
           ListEmptyComponent={
             !query.trim() ? (
               <Card>
-                <Bilingual en="Search inside the verses" hi="श्लोकों में खोजें" color={palette.accent} />
+                <Bilingual {...S.searchIntroTitle} color={palette.accent} />
                 <Muted style={{ marginTop: SPACE.sm }}>
                   {t(S.searchIntro(BUNDLED_SEARCHABLE_COUNT + downloaded.length, downloaded.length))}
                 </Muted>
                 <View style={[styles.chips, { marginTop: SPACE.md }]}>
                   {EXAMPLES.map((ex) => (
-                    <Chip key={ex} label={ex} onPress={() => setQuery(ex)} accessibilityLabel={`Search for ${ex}`} />
+                    <Chip key={ex} label={ex} onPress={() => setQuery(ex)} accessibilityLabel={t(S.searchForA11y(ex))} />
                   ))}
                 </View>
               </Card>
             ) : result && !busy && result.tokens.length > 0 ? (
-              <Muted style={{ textAlign: 'center', marginTop: SPACE.xl }}>
-                No verse matches “{q}”{section ? ' in this section' : ''}. Try fewer words or another spelling.
-              </Muted>
+              <View accessibilityLiveRegion="polite">
+                <Muted style={{ textAlign: 'center', marginTop: SPACE.xl }}>{t(S.searchNoVerse(q, !!section))}</Muted>
+              </View>
             ) : undefined
           }
         />
@@ -237,9 +245,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     columnGap: SPACE.sm,
     borderRadius: RADIUS.pill,
-    paddingHorizontal: SPACE.lg,
+    paddingLeft: SPACE.lg,
+    paddingRight: SPACE.xs,
     paddingVertical: 2,
   },
+  clear: { width: TOUCH, height: TOUCH, alignItems: 'center', justifyContent: 'center' },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
   cardHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', columnGap: SPACE.sm, marginBottom: SPACE.sm },
 });
