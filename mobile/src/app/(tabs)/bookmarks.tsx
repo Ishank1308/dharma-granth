@@ -6,13 +6,15 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Backdrop, Card, Eyebrow, Muted, PageTitle } from '@/components/ui';
 import { getEntry, loadChapter } from '@/content/catalog';
 import { S, useI18n } from '@/i18n';
-import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
+import { cleanVerseField, formatVerseRef, meaningState, MEANING_COPY, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
-import { SPACE, TYPE } from '@/theme/themes';
+import { fontCap, SPACE, TYPE } from '@/theme/themes';
 
 export default function BookmarksScreen() {
   const insets = useSafeAreaInsets();
-  const { palette, bookmarks, removeBookmark } = useAppState();
+  const { palette, settings, bookmarks, removeBookmark } = useAppState();
+  const scale = settings.textScale;
+  const cap = fontCap(scale);
   const { t } = useI18n();
 
   return (
@@ -37,6 +39,24 @@ export default function BookmarksScreen() {
           const entry = getEntry(item.id);
           const verse = loadChapter(item.id, item.chapter)?.verses.find((v) => String(v.number) === item.verse);
           const lines = sanskritLines(verse?.sanskrit);
+          // The meaning follows the reader's "Show in verses" choices, as in the chapter reader.
+          const state = verse ? meaningState(verse) : null;
+          const hindi =
+            !verse || !state || !settings.showHindi
+              ? ''
+              : state.hi === 'text'
+                ? cleanVerseField(verse.hindi)
+                : state.hi === 'with'
+                  ? MEANING_COPY.hiWith(verse.hindiSeeVerse!)
+                  : '';
+          const english =
+            !verse || !state || !settings.showEnglish
+              ? ''
+              : state.en === 'text'
+                ? cleanVerseField(verse.translation)
+                : state.en === 'with'
+                  ? MEANING_COPY.enWith(verse.translationSeeVerse!)
+                  : '';
           const ref = `${entry?.title ?? item.id} ${formatVerseRef(item.id, item.chapter, item.verse)}`;
           return (
             <Card style={styles.card}>
@@ -55,10 +75,37 @@ export default function BookmarksScreen() {
                 <Text style={{ color: palette.gold, fontWeight: '700', fontSize: TYPE.footnote, marginBottom: SPACE.sm }}>{ref}</Text>
                 {/* The full verse, every line, as saved. */}
                 {lines.map((l, i) => (
-                  <Text key={i} style={{ color: palette.text, fontSize: TYPE.callout, lineHeight: TYPE.callout * 1.6 }}>
+                  <Text
+                    key={i}
+                    maxFontSizeMultiplier={cap}
+                    style={{ color: palette.text, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.6 }}>
                     {l}
                   </Text>
                 ))}
+                {hindi ? (
+                  <Text
+                    maxFontSizeMultiplier={cap}
+                    style={{
+                      color: state?.hi === 'text' ? palette.textSecondary : palette.muted,
+                      fontSize: TYPE.subhead * scale,
+                      lineHeight: TYPE.subhead * scale * 1.55,
+                      marginTop: SPACE.sm,
+                    }}>
+                    {hindi}
+                  </Text>
+                ) : null}
+                {english ? (
+                  <Text
+                    maxFontSizeMultiplier={cap}
+                    style={{
+                      color: state?.en === 'text' ? palette.textSecondary : palette.muted,
+                      fontSize: TYPE.subhead * scale,
+                      lineHeight: TYPE.subhead * scale * 1.5,
+                      marginTop: SPACE.sm,
+                    }}>
+                    {english}
+                  </Text>
+                ) : null}
               </Pressable>
               <Pressable
                 style={styles.remove}

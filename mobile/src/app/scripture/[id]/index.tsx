@@ -9,7 +9,7 @@ import { useDownloads } from '@/content/downloads';
 import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
-import { SPACE, TYPE } from '@/theme/themes';
+import { SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -53,7 +53,7 @@ export default function ScriptureScreen() {
           ListHeaderComponent={
             <View style={{ marginBottom: SPACE.lg, rowGap: SPACE.md }}>
               <View>
-                <Text style={{ color: palette.text, fontSize: TYPE.title1, fontWeight: '800' }}>{entry.titleSanskrit ?? entry.title}</Text>
+                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title1, fontWeight: '800' }}>{entry.titleSanskrit ?? entry.title}</Text>
                 <Text style={{ color: palette.muted, fontSize: TYPE.subhead, marginTop: 2 }}>
                   {entry.title}
                   {cat ? ` · ${t(cat)}` : ''} · {t(S.chaptersVerses(entry.chapters.length, entry.totalVerses))}
@@ -86,5 +86,6 @@ export default function ScriptureScreen() {
 
 const styles = StyleSheet.create({
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  num: { width: 32, fontSize: TYPE.title3, fontWeight: '700', textAlign: 'center' },
+  // minWidth, not width: chapter numbers like १२० grow past 32 dp at large font sizes.
+  num: { minWidth: 32, fontSize: TYPE.title3, fontWeight: '700', textAlign: 'center' },
 });

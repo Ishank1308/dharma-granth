@@ -15,10 +15,11 @@ import {
   type SearchResult,
   type VerseHit,
 } from '@/content/search';
+import { S, useI18n } from '@/i18n';
 import { formatVerseRef } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import type { Palette } from '@/theme/themes';
-import { RADIUS, SPACE, TYPE } from '@/theme/themes';
+import { fontCap, RADIUS, SPACE, TYPE } from '@/theme/themes';
 
 const EXAMPLES = ['कर्मण्येवाधिकारस्ते', 'शान्ति', 'आत्मा', 'krishna', 'karma yoga', 'fruits of action'];
 
@@ -72,7 +73,7 @@ const ResultCard = memo(function ResultCard({
           </Text>
           <Text style={{ color: palette.muted, fontSize: TYPE.caption }}>{FIELD_LABEL[snippet.field]}</Text>
         </View>
-        <Text style={{ color: palette.text, fontSize: size, lineHeight: size * 1.6 }}>
+        <Text maxFontSizeMultiplier={fontCap(textScale)} style={{ color: palette.text, fontSize: size, lineHeight: size * 1.6 }}>
           {runs.map((r, i) =>
             r.mark ? (
               <Text
@@ -97,6 +98,7 @@ const ResultCard = memo(function ResultCard({
 export default function SearchScreen() {
   const params = useLocalSearchParams<{ q?: string }>();
   const { palette, settings } = useAppState();
+  const { t } = useI18n();
   const [query, setQuery] = useState(typeof params.q === 'string' ? params.q : '');
   const [section, setSection] = useState<string | null>(null);
   // The last finished search, tagged with what it searched for, so a newer query shows as busy.
@@ -127,15 +129,15 @@ export default function SearchScreen() {
   const status = !query.trim()
     ? null
     : busy && !result
-      ? 'Searching…'
+      ? t(S.searching)
       : result
         ? result.tokens.length === 0
-          ? 'Type at least two letters.'
+          ? t(S.searchTooShort)
           : result.total === 0
             ? null
             : result.total > MAX_RESULTS
-              ? `Best ${MAX_RESULTS} of ${result.total.toLocaleString('en-IN')} verses`
-              : `${result.total.toLocaleString('en-IN')} ${result.total === 1 ? 'verse' : 'verses'}`
+              ? t(S.searchResultBest(MAX_RESULTS, result.total))
+              : t(S.searchResultCount(result.total))
         : null;
 
   return (

@@ -142,5 +142,21 @@ export const TYPE = {
   title1: 26,
 } as const;
 
-export const RADIUS = { card: 22, row: 16, pill: 999, control: 14 } as const;
+/**
+ * Android's font size setting goes up to 200%, and the reader's own text size (up to 150%) multiplies
+ * on top, which would make verse text 3× its size and break long Sanskrit compounds mid-word on a
+ * phone. Text that follows the reader's text size passes `maxFontSizeMultiplier={fontCap(textScale)}`,
+ * so the two together stop at MAX_TEXT_ZOOM. At the app's default size the system setting is honoured
+ * in full up to that point.
+ */
+export const MAX_TEXT_ZOOM = 2.4;
+
+export function fontCap(textScale: number): number {
+  return Math.max(1, MAX_TEXT_ZOOM / textScale);
+}
+
+/** Large titles are already big; they follow the system font size only this far. */
+export const TITLE_FONT_CAP = 1.5;
+
+export const RADIUS ={ card: 22, row: 16, pill: 999, control: 14 } as const;
 export const SPACE = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 } as const;

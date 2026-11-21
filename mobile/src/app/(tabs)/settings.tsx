@@ -3,7 +3,7 @@ import { File, Paths } from 'expo-file-system';
 import { useFocusEffect } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useState } from 'react';
-import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DownloadsSection } from '@/components/download-card';
@@ -132,6 +132,9 @@ function DailyVerseSettings() {
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { palette, settings, updateSettings, exportData, importData, bookmarks } = useAppState();
+  // At large system font sizes the four theme names no longer fit in one row; show them two by two.
+  const { fontScale } = useWindowDimensions();
+  const themesInTwoRows = fontScale > 1.3;
   const { t, lang } = useI18n();
   const [busy, setBusy] = useState(false);
   const bundled = CATALOG.filter((b) => b.bundled).length;
@@ -216,7 +219,7 @@ export default function SettingsScreen() {
                 accessibilityState={{ selected: active }}
                 accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
                 onPress={() => updateSettings({ theme: name })}
-                style={[styles.theme, glass(theme, true), active && { borderColor: palette.accent, borderWidth: 2 }]}>
+                style={[styles.theme, themesInTwoRows && styles.themeHalf, glass(theme, true), active && { borderColor: palette.accent, borderWidth: 2 }]}>
                 <View style={[styles.swatch, { backgroundColor: theme.accent }]} />
                 <Text style={{ color: theme.text, fontWeight: '700', fontSize: TYPE.footnote }}>{lang === 'hi' ? theme.labelHi : theme.label}</Text>
               </Pressable>
@@ -295,11 +298,13 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
-  themes: { flexDirection: 'row', gap: SPACE.sm },
+  themes: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
+  themeHalf: { flexBasis: '45%' },
   theme: { flex: 1, borderRadius: RADIUS.control, padding: SPACE.sm, alignItems: 'center', rowGap: 2 },
   swatch: { width: 18, height: 18, borderRadius: 9, marginBottom: 2 },
-  scales: { flexDirection: 'row', gap: SPACE.sm },
-  scale: { width: 52, height: 46, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },
+  scales: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
+  // Minimum sizes, not fixed ones: the अ preview grows with the system font size and must not spill out.
+  scale: { minWidth: 52, minHeight: 46, paddingHorizontal: SPACE.xs, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },
   toggle: { flexDirection: 'row', alignItems: 'center', paddingVertical: SPACE.md, columnGap: SPACE.md },
   btn: { flex: 1, borderRadius: RADIUS.pill, paddingVertical: SPACE.md, alignItems: 'center' },
   btnText: { color: '#fff', fontWeight: '700' },
