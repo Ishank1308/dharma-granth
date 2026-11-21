@@ -8,4 +8,7 @@ import dynamic from 'next/dynamic';
  * none shows it until a tap; loading it here keeps that library out of the first download.
  * Closed dialogs render nothing, so there is no server HTML to lose.
  */
-export const ReaderDialog = dynamic(() => import('./ReaderDialogImpl').then((m) => m.ReaderDialog), { ssr: false });
+// One import() site, shared with the chapter page's warm-up (FullChapterVerses): webpack gives each
+// site its own chunk, and the warm-up must fetch the very file the dialog asks for later.
+export const loadReaderDialogImpl = () => import('./ReaderDialogImpl');
+export const ReaderDialog = dynamic(() => loadReaderDialogImpl().then((m) => m.ReaderDialog), { ssr: false });

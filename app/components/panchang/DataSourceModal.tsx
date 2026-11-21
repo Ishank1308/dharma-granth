@@ -44,7 +44,7 @@ export function DataSourceModal({ isOpen, onClose }: DataSourceModalProps) {
             </div>
             <div>
               <h2 id="datasource-modal-title" className="font-serif text-lg font-bold text-dharma-text">
-                डेटा स्रोत व पंचांग विज्ञान · Data Sources & Methodology
+                <span lang="hi" data-bi="hi">डेटा स्रोत व पंचांग विज्ञान</span><span data-bi="sep"> · </span><span data-bi="en">Data Sources & Methodology</span>
               </h2>
               <p className="text-xs text-dharma-muted">
                 Mathematical ephemeris, regional traditions, and educational framing

@@ -117,7 +117,7 @@ export function PackClient() {
       `}</style>
 
       <div className="no-print">
-        <h1 className="font-serif text-3xl font-bold text-dharma-text">Study Pack <span lang="hi" className="font-devanagari text-xl font-normal text-dharma-muted">· अध्ययन-पत्र</span></h1>
+        <h1 className="font-serif text-3xl font-bold text-dharma-text"><span data-bi="en">Study Pack</span> <span data-bi="sep" className="font-devanagari text-xl font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-xl font-normal text-dharma-muted">अध्ययन-पत्र</span></h1>
         <p className="mt-2 text-sm text-dharma-muted">Choose verses and layers, then print or save as PDF from your browser’s print dialog. Everything is prepared on your device. Your private notes are included only if you tick that box.</p>
 
         <section aria-labelledby="pk-add" className="mt-5 rounded-2xl border border-dharma-border bg-dharma-card p-4">

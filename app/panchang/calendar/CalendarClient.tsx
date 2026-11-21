@@ -658,7 +658,7 @@ export function CalendarClient() {
       {monthFestivals.length > 0 && (
         <div>
           <h3 className="px-1 text-footnote font-semibold text-label-secondary">
-            <span lang="hi">इस मास के पर्व</span> · <span>Festivals this month</span>
+            <span lang="hi" data-bi="hi">इस मास के पर्व</span><span data-bi="sep"> · </span><span data-bi="en">Festivals this month</span>
           </h3>
           <ul className="apple-group mt-2">
             {monthFestivals.map((d) =>

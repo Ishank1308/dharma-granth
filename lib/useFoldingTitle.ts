@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /** Height of the site's glass bar (SiteNav, h-[52px]). */
 const BAR = 52;
@@ -18,9 +18,10 @@ const MAX_TOP_SCREENS = 1.2;
  * (app/styles/title-fold.css) driven by `--title-fold` (0 to 1) on the heading, so reduced
  * motion and the quiet modes turn it off there while the bar title still swaps.
  */
-export function useFoldingTitle(pathname: string | null, enabled: boolean) {
+export function useFoldingTitle(pathname: string | null, enabled: boolean, lang?: string) {
   const [title, setTitle] = useState('');
   const [folded, setFolded] = useState(false);
+  const found = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setFolded(false);
@@ -62,6 +63,7 @@ export function useFoldingTitle(pathname: string | null, enabled: boolean) {
       const text = shortTitle(h1);
       if (!text) return;
       heading = h1;
+      found.current = h1;
       heading.setAttribute('data-title-folding', '');
       // A centred title shrinks toward its middle, a left-aligned one toward its start.
       if (getComputedStyle(h1).textAlign === 'center') heading.style.transformOrigin = 'center bottom';
@@ -77,6 +79,7 @@ export function useFoldingTitle(pathname: string | null, enabled: boolean) {
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      found.current = null;
       if (heading) {
         heading.removeAttribute('data-title-folding');
         heading.style.removeProperty('--title-fold');
@@ -85,18 +88,29 @@ export function useFoldingTitle(pathname: string | null, enabled: boolean) {
     };
   }, [pathname, enabled]);
 
+  // A language chosen later on the same page: the bar's title follows it.
+  useEffect(() => {
+    const text = found.current?.isConnected ? shortTitle(found.current) : '';
+    if (text) setTitle(text);
+  }, [lang]);
+
   return { title, folded };
 }
 
 /**
  * The heading's main line for the bar: a `data-fold-text` part if the page marks one, else the
- * heading without its Hindi or Sanskrit second line (those are separate elements, see CLAUDE.md).
+ * heading without its Hindi or Sanskrit second line (those are separate elements, see CLAUDE.md)
+ * and without the dot or brackets that joined the two (data-bi="sep"). A reader who chose हिन्दी
+ * or संस्कृत gets the Hindi half of a two-language title (data-bi) instead, as on the page.
  */
 function shortTitle(h1: HTMLElement): string {
   const marked = h1.querySelector('[data-fold-text]');
   if (marked?.textContent?.trim()) return clean(marked.textContent);
   const copy = h1.cloneNode(true) as HTMLElement;
-  copy.querySelectorAll('[lang="hi"], [lang="sa"], [aria-hidden="true"], .sr-only').forEach((el) => el.remove());
+  const hindi = /hindi|sanskrit/.test(document.documentElement.dataset.uiLang ?? '') && copy.querySelector('[data-bi="hi"]');
+  copy
+    .querySelectorAll(`${hindi ? '[data-bi="en"]' : '[lang="hi"], [lang="sa"]'}, [data-bi="sep"], [aria-hidden="true"], .sr-only`)
+    .forEach((el) => el.remove());
   return clean(copy.textContent) || clean(h1.textContent);
 }
 

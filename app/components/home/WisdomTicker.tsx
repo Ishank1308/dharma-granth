@@ -52,7 +52,7 @@ export function WisdomTicker() {
   return (
     <section aria-labelledby="wisdom-band-heading" className="border-y border-[color:var(--separator)] bg-dharma-card/50">
       <h2 id="wisdom-band-heading" className="sr-only">
-        <span>Sayings of the Upaniṣads</span> <span lang="hi">उपनिषद् के महावाक्य</span>
+        <span data-bi="en">Sayings of the Upaniṣads</span> <span lang="hi" data-bi="hi">उपनिषद् के महावाक्य</span>
       </h2>
       <div className="ticker" data-testid="wisdom-ticker">
         <div className="ticker-track">
