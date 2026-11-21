@@ -1,5 +1,8 @@
 /**
  * Publish curated-only hi-commentary JSON for the web/mobile fetch layer.
+ * Output: public/data/hi-commentary/<scripture>/<chapter>-<unit>.json, one small file per section
+ * (lib/commentary-units.mjs, docs/commentary-storage.md), so a book of any size publishes in files the
+ * reader can load a page at a time and Cloudflare Pages accepts.
  * Bulk machine-generated explanations are excluded (same policy as hi-analysis.json).
  * AI drafts from data/ai-commentary/ are included only once a reviewer has
  * set them to "approved", never over hand-written entries, and marked `ai`.
@@ -16,26 +19,17 @@ import { aiCommentaryReviewHolds } from "../data/hi-commentary/_ai-holds";
 import type { HiCommentaryFragment } from "../data/hi-commentary/_types";
 import { findTemplateFields } from "./lib/template-text";
 import { commentaryEntry, loadPilotOverlay } from "./pilot/overlay";
+import { legacyPublishedFiles, publishedCommentaryIds, readRecord, removeRecord, writeRecord } from "./lib/commentary-store.mjs";
 
 // Editorial pilot records (data/pilot/records) are published through this file, one entry per verse.
 const PILOT = loadPilotOverlay();
 
 const SRC = path.resolve("data/hi-commentary");
 const OUT = path.resolve("public/data/hi-commentary");
-const MAX_TOTAL_MB = 60; // sanity cap on the sum of all files; each file is far below Cloudflare's 25 MiB limit
-
-async function safeWrite(filePath: string, data: string) {
-  let tries = 0;
-  while (true) {
-    try {
-      fs.writeFileSync(filePath, data, { flag: 'w' });
-      return;
-    } catch (e: any) {
-      if (++tries >= 10) throw e;
-      await new Promise((resolve) => setTimeout(resolve, 100));
-    }
-  }
-}
+// The published folder goes up as its own Cloudflare Pages deployment (docs/commentary-storage.md),
+// which takes at most 20,000 files. Warn well before that; fail just below it.
+const WARN_FILES = 15_000;
+const MAX_FILES = 19_500;
 
 /** Each verse's Hindi translation, keyed "chapter:verse", from the published book. */
 function verseHindiByKey(scriptureId: string): Map<string, string> {
@@ -55,6 +49,11 @@ function verseHindiByKey(scriptureId: string): Map<string, string> {
 
 async function main(): Promise<void> {
   fs.mkdirSync(OUT, { recursive: true });
+  // Per-book files from before the split into sections.
+  for (const f of legacyPublishedFiles()) {
+    fs.unlinkSync(path.join(OUT, f));
+    console.log(`removed ${f} (now published by section in ${path.basename(f, ".json")}/)`);
+  }
 
   const files = fs
     .readdirSync(SRC)
@@ -68,6 +67,8 @@ async function main(): Promise<void> {
 
   let totalEntries = 0;
   let totalBytes = 0;
+  let totalFiles = 0;
+  let largest = { file: "", bytes: 0 };
   let skipped = 0;
   let aiPublished = 0;
 
@@ -110,9 +111,9 @@ async function main(): Promise<void> {
     }
 
     const held = aiCommentaryReviewHolds(name);
-    const restPath = path.join(SRC, `${name}-rest.json`);
-    if (fs.existsSync(restPath)) {
-      const rest = JSON.parse(fs.readFileSync(restPath, "utf8")) as HiCommentaryFragment;
+    // One file, or a folder of sections for a big book (scripts/lib/commentary-store.mjs).
+    const rest = readRecord(path.join(SRC, `${name}-rest`)) as HiCommentaryFragment;
+    {
       for (const [restKey, entry] of Object.entries(rest)) {
         // Do not publish modern context coupled to an interpretation on editorial hold.
         if (held.has(restKey)) continue;
@@ -202,14 +203,13 @@ async function main(): Promise<void> {
 
     // Approved rewrites of research notes (शोध व आधुनिक संदर्भ). An empty note withdraws the stored one;
     // it is published as "" so the shard's own note does not show through.
-    const researchPath = path.resolve("data/ai-commentary", `${name}-research.json`);
-    if (fs.existsSync(researchPath)) {
-      // `science` is the research note (labelled when rewritten); `explanation` and `lifeLesson` are register
-      // corrections of existing text. An empty string withdraws the stored field.
-      const research = JSON.parse(fs.readFileSync(researchPath, "utf8")) as Record<
+    const research = readRecord(path.resolve("data/ai-commentary", `${name}-research`)) as Record<
         string,
         { science?: string; explanation?: string | [string, string][]; lifeLesson?: string | [string, string][]; status: string }
       >;
+    if (Object.keys(research).length) {
+      // `science` is the research note (labelled when rewritten); `explanation` and `lifeLesson` are register
+      // corrections of existing text. An empty string withdraws the stored field.
       let rewritten = 0;
       let withdrawn = 0;
       for (const [key, r] of Object.entries(research)) {
@@ -266,31 +266,37 @@ async function main(): Promise<void> {
     const entryCount = Object.keys(curated).length;
     if (entryCount === 0) {
       skipped++;
-      const stale = path.join(OUT, `${name}.json`);
-      if (fs.existsSync(stale)) fs.unlinkSync(stale);
+      removeRecord(path.join(OUT, name));
       continue;
     }
 
-    const json = JSON.stringify(curated);
-    const dest = path.join(OUT, `${name}.json`);
-    if (!fs.existsSync(dest) || fs.readFileSync(dest, "utf8") !== json) {
-      await safeWrite(dest, json);
-    }
+    // Compact JSON, one file per section; unchanged sections are not rewritten.
+    const stats = writeRecord(path.join(OUT, name), curated, { split: "always", stringify: (v) => JSON.stringify(v) });
     totalEntries += entryCount;
-    totalBytes += Buffer.byteLength(json);
-    console.log(`${name}: ${entryCount} curated entries (${(json.length / 1024).toFixed(1)}KB)`);
+    totalBytes += stats.bytes;
+    totalFiles += stats.files;
+    if (stats.largest.bytes > largest.bytes) largest = stats.largest;
+    const changes = stats.written || stats.removed ? `, ${stats.written} written, ${stats.removed} removed` : "";
+    console.log(`${name}: ${entryCount} curated entries in ${stats.files} files (${(stats.bytes / 1024).toFixed(1)}KB${changes})`);
   }
 
-  const totalMB = totalBytes / (1024 * 1024);
+  // A scripture whose sources are gone leaves no published folder behind.
+  for (const id of publishedCommentaryIds()) {
+    if (!names.includes(id)) console.log(`removed ${id}/ (${removeRecord(path.join(OUT, id))} files): no commentary sources left`);
+  }
+
   console.log(
-    `\nPublished ${totalEntries} entries across ${names.length - skipped} files ` +
-      `(${(totalBytes / 1024).toFixed(0)}KB total, ${skipped} empty scriptures skipped, ` +
-      `${aiPublished} approved AI drafts)`,
+    `\nPublished ${totalEntries} entries in ${totalFiles} files across ${names.length - skipped} scriptures ` +
+      `(${(totalBytes / 1048576).toFixed(1)} MB total, largest ${path.relative(OUT, largest.file)} ${(largest.bytes / 1024).toFixed(0)} KB, ` +
+      `${skipped} empty scriptures skipped, ${aiPublished} approved AI drafts)`,
   );
 
-  if (totalMB > MAX_TOTAL_MB) {
-    console.error(`Published commentary exceeds ${MAX_TOTAL_MB}MB — check curated filter.`);
+  if (totalFiles > MAX_FILES) {
+    console.error(`Published commentary is ${totalFiles} files; its Cloudflare deployment takes 20,000 (limit here ${MAX_FILES}). See docs/commentary-storage.md.`);
     process.exit(1);
+  }
+  if (totalFiles > WARN_FILES) {
+    console.warn(`⚠ Published commentary is ${totalFiles} files, nearing the 20,000-file deployment limit (docs/commentary-storage.md).`);
   }
 }
 

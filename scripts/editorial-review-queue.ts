@@ -1,7 +1,8 @@
 /** Build a read-only, evidence-linked editorial review queue. */
-import { existsSync, readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import type { ReviewQueueItem, ReviewReason } from '../lib/editorial-audit/types';
+import { readPublishedCommentary } from './lib/commentary-store.mjs';
 
 type Row = Record<string, unknown>;
 type CommentaryMap = Record<string, Row>;
@@ -25,12 +26,12 @@ function main(): void {
   const root = resolve(arg('--root') ?? process.cwd());
   const out = arg('--out');
   const full = join(root, 'public', 'data', 'scriptures-full');
-  const hi = join(root, 'public', 'data', 'hi-commentary');
   const items: ReviewQueueItem[] = [];
   for (const scriptureId of readdirSync(full).sort()) {
     const dir = join(full, scriptureId);
     if (!statSync(dir).isDirectory()) continue;
-    const commentary: CommentaryMap = existsSync(join(hi, `${scriptureId}.json`)) ? load(join(hi, `${scriptureId}.json`)) : {};
+    // One folder of section files per scripture (docs/commentary-storage.md).
+    const commentary: CommentaryMap = readPublishedCommentary(scriptureId, root) as CommentaryMap;
     for (const name of readdirSync(dir).filter((x) => /^ch-\d+\.json$/.test(x)).sort()) {
       const file = load(join(dir, name));
       for (const verse of (file.chapter?.verses ?? []) as Row[]) {

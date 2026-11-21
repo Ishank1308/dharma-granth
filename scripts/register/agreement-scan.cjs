@@ -1,6 +1,8 @@
 // Finds gender-agreement slips left by word swaps (दुनिया→संसार, नुकसान→हानि, याद→स्मरण, वजह→कारण,
 // कोशिश→प्रयास, कीमत→मूल्य, शुरुआत→आरम्भ, बस→केवल). usage: node agree.cjs [--json out.json]
 const fs = require('fs');
+// Published commentary is one folder of section files per scripture (docs/commentary-storage.md).
+const { publishedCommentaryIds, readPublishedCommentary } = require('../lib/commentary-store.mjs');
 const D = 'ऀ-ॿ';
 const B = (s) => new RegExp(`(?<![${D}])(?:${s})(?![${D}])`, 'gu');
 const FEM = 'की|पूरी|सारी|इसकी|उसकी|अपनी|बड़ी|छोटी|नई|असली|सच्ची|गहरी|पहली|भारी|कोई बड़ी|सबसे बड़ी';
@@ -16,8 +18,8 @@ const R = [
   ['dots', /केवल\.\.\./gu],
 ];
 const hits = [];
-for (const f of fs.readdirSync('public/data/hi-commentary')) {
-  const d = JSON.parse(fs.readFileSync('public/data/hi-commentary/' + f, 'utf8'));
+for (const f of publishedCommentaryIds().map((id) => id + '.json')) {
+  const d = readPublishedCommentary(f.replace('.json', ''));
   for (const [k, e] of Object.entries(d))
     for (const x of ['explanation', 'science', 'lifeLesson']) {
       const t = e[x];

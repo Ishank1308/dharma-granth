@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { scriptureLastChanged } from '@/lib/content-dates';
+import { hasPublishedCommentary } from '@/lib/read-seeded-chapters';
 import type { LibraryFacts } from '@/lib/library';
 
 /** Build-time facts measured from the complete published chapter set. */
@@ -84,7 +85,7 @@ export function getLibraryFacts(id: string): LibraryFacts {
   const facts: LibraryFacts = {
     languages: { sa: coverage.sa > 0, hi: coverage.hi > 0, en: coverage.en > 0 },
     languageCoverage: coverage,
-    hindiCommentary: existsSync(join(DATA_DIR, 'hi-commentary', `${id}.json`)),
+    hindiCommentary: hasPublishedCommentary(id),
     sourceHost: hostOf(manifest?.source?.repo),
     sourceFetched: manifest?.source?.fetchedAt,
     lastUpdated: updated ? updated.toISOString() : undefined,

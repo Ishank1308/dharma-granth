@@ -1,6 +1,7 @@
 /** Read-only coverage matrix for verse-level editorial layers. */
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { readPublishedCommentary } from './lib/commentary-store.mjs';
 
 type RawVerse = Record<string, unknown>;
 type RawCommentary = Record<string, Record<string, unknown>>;
@@ -61,14 +62,13 @@ function add(counts: Counts, row: RawVerse, sourcePresent: boolean, commentary?:
 function main(): void {
   const root = resolve(arg('--root') ?? process.cwd());
   const full = join(root, 'public', 'data', 'scriptures-full');
-  const hi = join(root, 'public', 'data', 'hi-commentary');
   const byScripture = new Map<string, Counts>();
   const totals = empty();
   for (const scriptureId of readdirSync(full).sort()) {
     const dir = join(full, scriptureId);
     if (!statSync(dir).isDirectory()) continue;
-    const commentaryPath = join(hi, `${scriptureId}.json`);
-    const commentary = existsSync(commentaryPath) ? loadJson(commentaryPath) as RawCommentary : {};
+    // One folder of section files per scripture (docs/commentary-storage.md).
+    const commentary = readPublishedCommentary(scriptureId, root) as RawCommentary;
     const counts = empty();
     for (const name of readdirSync(dir).filter((x) => /^ch-\d+\.json$/.test(x)).sort()) {
       const file = loadJson(join(dir, name)) as { chapter?: { number?: number | string; verses?: RawVerse[] }; source?: unknown };
