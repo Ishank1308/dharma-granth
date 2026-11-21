@@ -720,7 +720,7 @@ export function DailyDharmaJourneySession({
             <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 space-y-4">
               <div className="flex items-center justify-between pb-2 border-b border-dharma-border">
                 <h3 className="font-serif text-sm font-bold text-dharma-text">
-                  Classical Traditional Commentary (पारंपरिक भाष्य)
+                  <span data-bi="en">Classical Traditional Commentary</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">पारंपरिक भाष्य</span><span data-bi="sep">)</span>
                 </h3>
                 <span className="text-[10px] text-dharma-muted bg-dharma-bg px-2.5 py-0.5 rounded-full border border-dharma-border">
                   Canonical Editions

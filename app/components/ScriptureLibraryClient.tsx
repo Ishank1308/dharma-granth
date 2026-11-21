@@ -398,7 +398,7 @@ export function ScriptureLibraryClient({
           <div className="sticky top-[136px] max-h-[calc(100dvh-160px)] overflow-y-auto rounded-[18px] bg-dharma-card p-3">
             <div className="flex items-center justify-between px-2 pb-2">
               <h2 className="text-body font-semibold text-dharma-text">
-                Filters <span lang="hi" className="ml-1 font-devanagari text-sm font-normal text-dharma-muted">फ़िल्टर</span>
+                <span data-bi="en">Filters</span> <span lang="hi" data-bi="hi" data-bi-lead className="ml-1 font-devanagari text-sm font-normal text-dharma-muted">फ़िल्टर</span>
               </h2>
               {activeCount > 0 && (
                 <button type="button" onClick={clearFilters} className="focus-ring min-h-[36px] rounded px-2 text-footnote text-dharma-saffron hover:underline">
@@ -484,7 +484,7 @@ export function ScriptureLibraryClient({
               भाषा प्रतिशत केवल यहाँ उपलब्ध श्लोकों में भाषा-पाठ की उपलब्धता दिखाते हैं; ये सम्पूर्ण ग्रंथ के प्रकाशन या विद्वत्-सत्यापन का प्रमाण नहीं हैं।
             </p>
             {/* Parent heading for the cards' h3s (the visible Filters h2 is desktop-only). */}
-            <h2 className="sr-only">ग्रंथ · Texts</h2>
+            <h2 className="sr-only"><span lang="hi" data-bi="hi">ग्रंथ</span><span data-bi="sep"> · </span><span data-bi="en">Texts</span></h2>
             {results.length === 0 ? (
               activeCount > 0 ? (
                 <FilteredEmpty

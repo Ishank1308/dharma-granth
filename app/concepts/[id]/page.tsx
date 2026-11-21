@@ -325,7 +325,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
                 Interactive Visual Learning Layer · चरण 10
               </p>
               <h2 id="visual-model-heading" className="text-2xl sm:text-3xl font-serif font-bold text-dharma-text">
-                दृश्य ज्ञान दर्शन (Sacred Visual Model)
+                <span lang="hi" data-bi="hi">दृश्य ज्ञान दर्शन</span><span data-bi="sep"> (</span><span data-bi="en">Sacred Visual Model</span><span data-bi="sep">)</span>
               </h2>
             </div>
             <Link
@@ -558,7 +558,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
         {concept.relatedConceptIds.some(hasConceptPage) && (
           <section aria-labelledby="related-heading" className="space-y-4">
             <h2 id="related-heading" className="text-xl font-serif font-bold text-dharma-text">
-              संबंधित अन्य अवधारणाएँ (Related Concepts)
+              <span lang="hi" data-bi="hi">संबंधित अन्य अवधारणाएँ</span><span data-bi="sep"> (</span><span data-bi="en">Related Concepts</span><span data-bi="sep">)</span>
             </h2>
             <div className="flex flex-wrap gap-2.5">
               {/* Only concepts that have a page: a link to a missing one is a 404 for readers and crawlers. */}
@@ -590,7 +590,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
         <section aria-labelledby="sources-heading" className="p-6 rounded-2xl bg-dharma-card/50 border border-dharma-border space-y-3">
           <h2 id="sources-heading" className="text-sm font-bold uppercase tracking-wider text-dharma-muted flex items-center gap-2">
             <Layers className="w-4 h-4" />
-            <span>शास्त्रीय संदर्भ व आधार (Canonical Sources)</span>
+            <span><span lang="hi" data-bi="hi">शास्त्रीय संदर्भ व आधार</span><span data-bi="sep"> (</span><span data-bi="en">Canonical Sources</span><span data-bi="sep">)</span></span>
           </h2>
           <ul className="text-xs sm:text-sm text-dharma-muted space-y-1 list-disc pl-5">
             {concept.sources.map((s, idx) => (

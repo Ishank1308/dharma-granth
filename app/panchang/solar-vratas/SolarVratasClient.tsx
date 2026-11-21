@@ -231,7 +231,7 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
               <div className="space-y-4 pt-2">
                 <h4 className="font-serif text-lg font-bold text-dharma-text flex items-center gap-2">
                   <Calendar className="w-4 h-4 text-saffron-600" />
-                  <span>The 4-Day Sacred Chronology (चार दिवसीय अनुष्ठान क्रम)</span>
+                  <span><span data-bi="en">The 4-Day Sacred Chronology</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">चार दिवसीय अनुष्ठान क्रम</span><span data-bi="sep">)</span></span>
                 </h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -284,7 +284,7 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
             <div className="space-y-4 pt-2">
               <h4 className="font-serif text-lg font-bold text-dharma-text flex items-center gap-2">
                 <Sun className="w-4 h-4 text-amber-600" />
-                <span>Sacred Arghya &amp; Dhyana Mantras (अर्घ्य एवं ध्यान मन्त्र)</span>
+                <span><span data-bi="en">Sacred Arghya &amp; Dhyana Mantras</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">अर्घ्य एवं ध्यान मन्त्र</span><span data-bi="sep">)</span></span>
               </h4>
 
               <div className="space-y-3">

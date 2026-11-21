@@ -202,7 +202,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
           <div className="flex items-center gap-2 mb-4">
             <BookOpen className="w-5 h-5 text-saffron-600" />
             <h2 id="word-meanings-heading" className="font-serif text-xl sm:text-2xl font-bold">
-              पदच्छेद, अन्वय एवं शब्दार्थ (Word-by-Word Meaning)
+              <span lang="hi" data-bi="hi">पदच्छेद, अन्वय एवं शब्दार्थ</span><span data-bi="sep"> (</span><span data-bi="en">Word-by-Word Meaning</span><span data-bi="sep">)</span>
             </h2>
           </div>
 
@@ -246,7 +246,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-amber-600" />
             <h2 id="significance-heading" className="font-serif text-xl sm:text-2xl font-bold">
-              दार्शनिक रहस्य एवं साधना-महत्त्व (Spiritual Significance)
+              <span lang="hi" data-bi="hi">दार्शनिक रहस्य एवं साधना-महत्त्व</span><span data-bi="sep"> (</span><span data-bi="en">Spiritual Significance</span><span data-bi="sep">)</span>
             </h2>
           </div>
           <p lang="hi" className="font-devanagari text-sm sm:text-base leading-relaxed text-dharma-text">
@@ -273,7 +273,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
         {mantra.faqs.length > 0 && (
           <section aria-labelledby="faq-heading" className="my-10 space-y-4">
             <h2 id="faq-heading" className="font-serif text-xl sm:text-2xl font-bold">
-              Frequently Asked Questions (जिज्ञासा समाधान)
+              <span data-bi="en">Frequently Asked Questions</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">जिज्ञासा समाधान</span><span data-bi="sep">)</span>
             </h2>
             <div className="space-y-3">
               {mantra.faqs.map((f, idx) => (

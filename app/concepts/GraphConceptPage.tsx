@@ -51,8 +51,8 @@ export function GraphConceptSections({ model }: { model: GraphPageModel }) {
     <div className="space-y-10">
       <section aria-labelledby="kg-overview">
         <h2 id="kg-overview" className="font-serif text-2xl font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">परिचय</span>
-          <span className="ml-2 text-base font-medium text-dharma-muted">Overview</span>
+          <span lang="hi" data-bi="hi" className="font-devanagari">परिचय</span>
+          <span data-bi="en" data-bi-lead className="ml-2 text-base font-medium text-dharma-muted">Overview</span>
         </h2>
         <p lang="hi" className="mt-3 font-devanagari text-base leading-relaxed text-dharma-text">{model.overviewHi}</p>
         {model.overviewEn ? <p className="mt-2 text-sm leading-relaxed text-dharma-muted">{model.overviewEn}</p> : null}
@@ -66,29 +66,29 @@ export function GraphConceptSections({ model }: { model: GraphPageModel }) {
       </section>
       <section aria-labelledby="kg-verses">
         <h2 id="kg-verses" className="font-serif text-2xl font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">संबंधित श्लोक</span>
-          <span className="ml-2 text-base font-medium text-dharma-muted">Related verses</span>
+          <span lang="hi" data-bi="hi" className="font-devanagari">संबंधित श्लोक</span>
+          <span data-bi="en" data-bi-lead className="ml-2 text-base font-medium text-dharma-muted">Related verses</span>
         </h2>
         <div className="mt-3"><VerseList items={model.verses} /></div>
       </section>
       <section aria-labelledby="kg-teachings">
         <h2 id="kg-teachings" className="font-serif text-2xl font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">संबंधित उपदेश</span>
-          <span className="ml-2 text-base font-medium text-dharma-muted">Related teachings</span>
+          <span lang="hi" data-bi="hi" className="font-devanagari">संबंधित उपदेश</span>
+          <span data-bi="en" data-bi-lead className="ml-2 text-base font-medium text-dharma-muted">Related teachings</span>
         </h2>
         <div className="mt-3"><LinkList items={model.teachings} /></div>
       </section>
       <section aria-labelledby="kg-applications">
         <h2 id="kg-applications" className="font-serif text-2xl font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">आधुनिक प्रयोग</span>
-          <span className="ml-2 text-base font-medium text-dharma-muted">Modern applications</span>
+          <span lang="hi" data-bi="hi" className="font-devanagari">आधुनिक प्रयोग</span>
+          <span data-bi="en" data-bi-lead className="ml-2 text-base font-medium text-dharma-muted">Modern applications</span>
         </h2>
         <div className="mt-3"><LinkList items={model.applications} /></div>
       </section>
       <section aria-labelledby="kg-concepts">
         <h2 id="kg-concepts" className="font-serif text-2xl font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">संबंधित अवधारणाएँ</span>
-          <span className="ml-2 text-base font-medium text-dharma-muted">Related concepts</span>
+          <span lang="hi" data-bi="hi" className="font-devanagari">संबंधित अवधारणाएँ</span>
+          <span data-bi="en" data-bi-lead className="ml-2 text-base font-medium text-dharma-muted">Related concepts</span>
         </h2>
         <div className="mt-3"><LinkList items={model.concepts} /></div>
       </section>

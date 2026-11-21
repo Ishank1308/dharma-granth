@@ -35,7 +35,7 @@ export function InteractiveChapterMap({ scriptureId, chapterId, nodes, chapterCo
               <Compass className="h-4 w-4" />
             </span>
             <h3 id="chapter-map-heading" className="font-serif text-lg font-bold text-dharma-text">
-              Interactive Chapter Map <span lang="hi" className="font-devanagari text-base font-normal text-dharma-muted">· अध्याय मानचित्र</span>
+              <span data-bi="en">Interactive Chapter Map</span> <span data-bi="sep" className="font-devanagari text-base font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-base font-normal text-dharma-muted">अध्याय मानचित्र</span>
             </h3>
           </div>
           <p className="mt-1 text-xs text-dharma-muted">

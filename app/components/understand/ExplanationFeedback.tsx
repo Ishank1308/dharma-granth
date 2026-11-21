@@ -113,7 +113,7 @@ export function ExplanationFeedback({ refKey, reference }: { refKey: string; ref
   return (
     <section aria-labelledby={`fb-${refKey}`} className="rounded-2xl border border-dharma-border/70 bg-dharma-card/50 p-4 text-sm">
       <h3 id={`fb-${refKey}`} className="font-semibold text-dharma-text">
-        Was this explanation clear? <span lang="hi" className="font-devanagari font-normal text-dharma-muted">· क्या यह स्पष्ट था?</span>
+        <span data-bi="en">Was this explanation clear?</span> <span data-bi="sep" className="font-devanagari font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari font-normal text-dharma-muted">क्या यह स्पष्ट था?</span>
       </h3>
       <div role="radiogroup" aria-labelledby={`fb-${refKey}`} className="mt-2 flex flex-wrap gap-2">
         {options.map((o) => (

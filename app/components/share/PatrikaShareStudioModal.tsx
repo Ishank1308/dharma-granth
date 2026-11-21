@@ -316,7 +316,7 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
           <div className="flex shrink-0 items-center justify-between border-b border-stone-800 bg-stone-900/95 px-4 py-2.5 sm:px-6">
             <h3 className="font-serif font-bold text-sm sm:text-base text-white flex items-center gap-2">
               <Palette className="w-4 h-4 text-saffron-500 shrink-0" />
-              <span>पत्रिका कोट स्टूडियो · Share Card Studio</span>
+              <span><span lang="hi" data-bi="hi">पत्रिका कोट स्टूडियो</span><span data-bi="sep"> · </span><span data-bi="en">Share Card Studio</span></span>
             </h3>
             <button
               type="button"

@@ -188,7 +188,7 @@ export function UpakarmaClient() {
           {/* Action Guidelines */}
           <div className="mb-6 space-y-3">
             <h4 className="text-xs uppercase tracking-wider font-semibold text-dharma-muted">
-              अनुष्ठान विधि एवं नियम (Ritual Actions):
+              <span lang="hi" data-bi="hi">अनुष्ठान विधि एवं नियम</span><span data-bi="sep"> (</span><span data-bi="en">Ritual Actions</span><span data-bi="sep">)</span>:
             </h4>
             <div className="grid sm:grid-cols-2 gap-3">
               {currentStep.ritualsHi.map((rit, idx) => (
@@ -325,7 +325,7 @@ export function UpakarmaClient() {
         <div className="grid sm:grid-cols-3 gap-4">
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">1. देव-ऋण (Deva Rina)</h4>
+              <h4 className="font-serif font-bold text-sm text-dharma-text">1. <span lang="hi" data-bi="hi">देव-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Deva Rina</span><span data-bi="sep">)</span></h4>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 font-semibold">
                 सत्त्व गुण
               </span>
@@ -337,7 +337,7 @@ export function UpakarmaClient() {
 
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">2. ऋषि-ऋण (Rishi Rina)</h4>
+              <h4 className="font-serif font-bold text-sm text-dharma-text">2. <span lang="hi" data-bi="hi">ऋषि-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Rishi Rina</span><span data-bi="sep">)</span></h4>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-800 dark:text-blue-300 font-semibold">
                 रजस् गुण
               </span>
@@ -349,7 +349,7 @@ export function UpakarmaClient() {
 
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">3. पितृ-ऋण (Pitru Rina)</h4>
+              <h4 className="font-serif font-bold text-sm text-dharma-text">3. <span lang="hi" data-bi="hi">पितृ-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Pitru Rina</span><span data-bi="sep">)</span></h4>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 font-semibold">
                 तमस् गुण
               </span>

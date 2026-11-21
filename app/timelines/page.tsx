@@ -41,7 +41,7 @@ export default function TimelinesPage() {
               कालरेखा — शास्त्रीय कालखंड (Scriptural Timelines)
             </p>
             <h1 className="text-5xl font-serif font-bold mb-4">
-              कालखंड एवं परंपरा (Timelines & Traditions)
+              <span lang="hi" data-bi="hi">कालखंड एवं परंपरा</span><span data-bi="sep"> (</span><span data-bi="en">Timelines & Traditions</span><span data-bi="sep">)</span>
             </h1>
             <p className="text-xl opacity-90 max-w-2xl">
               कथा-क्रम, पारंपरिक कालगणना, ऐतिहासिक-शैक्षणिक दिनांक, टीका-परंपरा का विकास, प्रमुख आचार्यों और संतों का काल, और पांडुलिपियों का इतिहास — सभी अलग-अलग कालखंडों में। पारंपरिक पवित्र कालगणना और ऐतिहासिक-शैक्षणिक दिनांक अलग-अलग प्रस्तुत किए गए हैं, एकाकृत नहीं।
