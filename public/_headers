@@ -10,6 +10,14 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(self)
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; media-src 'self' data: blob:; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
 
+# The verse-of-the-day widget (public/embed.js, /daily-verse/) is an iframe on other people's sites.
+# Only this path may be framed by any origin; every other page keeps SAMEORIGIN and frame-ancestors 'self'.
+# The two headers are detached first so they replace the /* values instead of merging with them.
+/embed/*
+  ! X-Frame-Options
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; media-src 'self' data: blob:; worker-src 'self' blob:; frame-ancestors *; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+
 # Fingerprinted build assets never change.
 /_next/static/*
   ! Cache-Control

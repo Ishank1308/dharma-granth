@@ -53,6 +53,13 @@ function hasSavedShape(key: string, value: string): boolean {
   return Boolean(body) && typeof body === 'object' && !Array.isArray(body);
 }
 
+/**
+ * Keys that hold a credential, not study data. A backup is a file the reader may email or keep in a
+ * shared drive, so these are never exported, and an older backup that carries one restores without it.
+ * (`dharma_muse_spark_key` held the API key of the removed AI study helper.)
+ */
+export const CREDENTIAL_KEYS: readonly string[] = ['dharma_muse_spark_key'];
+
 const isOwnKey = (key: string) =>
   key.startsWith('dharma.') ||
   key.startsWith('dharma_') ||
@@ -76,7 +83,7 @@ export function createBackup(storage: Storage = window.localStorage): BackupFile
     schemaVersion: BACKUP_SCHEMA_VERSION,
     version: 1,
     exportedAt: new Date().toISOString(),
-    data: readOwnData(storage),
+    data: Object.fromEntries(Object.entries(readOwnData(storage)).filter(([key]) => !CREDENTIAL_KEYS.includes(key))),
   };
 }
 
@@ -108,6 +115,7 @@ function validateBackup(raw: string): Record<string, string> {
 
   const data: Record<string, string> = {};
   for (const [key, value] of entries) {
+    if (CREDENTIAL_KEYS.includes(key)) continue;
     if (!isOwnKey(key) || key.length > 256 || typeof value !== 'string' || value.length > MAX_BACKUP_VALUE_LENGTH) {
       throw new Error('Backup contains an unsupported or invalid storage entry');
     }

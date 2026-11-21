@@ -47,4 +47,13 @@ assert.throws(() => restoreBackup('{"format":"foreign","version":1,"data":{}}', 
 assert.equal(storage.getItem('dharma.japa.count'), beforeInvalid);
 assert.throws(() => restoreBackup(JSON.stringify({ ...imported, data: { 'other-site-secret': 'x' } }), 'merge', storage));
 
-console.log('✓ Backup export, schema validation, merge, replace and invalid-file safety passed.');
+// A stored credential is never exported, and an older backup that carries one restores without it.
+storage.setItem('dharma_muse_spark_key', 'sk-not-a-real-key');
+assert.equal('dharma_muse_spark_key' in createBackup(storage).data, false);
+storage.removeItem('dharma_muse_spark_key');
+const withCredential = { ...imported, data: { 'dharma.japa.count': '21', dharma_muse_spark_key: 'sk-not-a-real-key' } };
+assert.equal(restoreBackup(JSON.stringify(withCredential), 'merge', storage), 1);
+assert.equal(storage.getItem('dharma.japa.count'), '21');
+assert.equal(storage.getItem('dharma_muse_spark_key'), null);
+
+console.log('✓ Backup export, schema validation, merge, replace, credential exclusion and invalid-file safety passed.');
