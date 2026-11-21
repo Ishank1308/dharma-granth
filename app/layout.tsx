@@ -29,6 +29,8 @@ import "./styles/title-fold.css";
 import "./styles/colour.css";
 import "./styles/scene-photos.css";
 import "./styles/scene-photos.generated.css";
+// The same photos at the top of festival, character, mantra and section pages (lib/page-photos.ts).
+import "./styles/page-photos.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
 import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";
