@@ -7,7 +7,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Backdrop, Card, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
 import { CATALOG, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
-import { FEATURED, LIFE_GUIDES, PRACTICE_GUIDES, SAYINGS, SHELF, type Guide, type Passage } from '@/content/home-picks';
+import { FEATURED, LIFE_GUIDES, PRACTICE_GUIDES, SAYINGS, SHELF, WISDOM_PICKS, type Guide, type Passage } from '@/content/home-picks';
+import { knowledge } from '@/content/knowledge';
 import { S, useI18n, type Msg } from '@/i18n';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
@@ -24,7 +25,11 @@ import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CA
  * (Explore) and Wisdom for life (knowledge pages).
  */
 
-function open(p: Passage) {
+function open(p: Passage | string) {
+  if (typeof p === 'string') {
+    router.push(p as never);
+    return;
+  }
   if (p.chapter == null) {
     router.push({ pathname: '/scripture/[id]', params: { id: p.id } });
     return;
@@ -351,8 +356,8 @@ function Shelf() {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ marginHorizontal: -SPACE.lg, marginVertical: -SPACE.lg + 4 }}
-        contentContainerStyle={{ paddingHorizontal: SPACE.lg, columnGap: SPACE.md, paddingVertical: SPACE.lg }}>
+        style={{ flexGrow: 0, marginHorizontal: -SPACE.lg, marginVertical: -SPACE.lg + 4 }}
+        contentContainerStyle={{ paddingHorizontal: SPACE.lg, columnGap: SPACE.md, paddingVertical: SPACE.lg, alignItems: 'flex-start' }}>
         {books.map((b) => {
           const cover = coverFor(b.id, b.category);
           const sa = b.titleSanskrit ?? b.title;
@@ -430,6 +435,67 @@ function Guides() {
   );
 }
 
+/**
+ * Wisdom for life, as the website's "Living sanctuary" doorway: a few topics as tiles in their own accent
+ * colours, then the way into every topic and the knowledge pages (src/app/wisdom, src/app/knowledge).
+ */
+function Wisdom() {
+  const { palette } = useAppState();
+  const { t } = useI18n();
+  const pressed = usePressed();
+  const hues = huesFor(palette);
+  const data = knowledge('wisdom');
+  const topics = WISDOM_PICKS.map((id) => data.items.find((x) => x.id === id)).filter((x): x is NonNullable<typeof x> => !!x);
+  return (
+    <View style={{ rowGap: SPACE.md }}>
+      <SectionHead title={t(S.wisdomTitle)} detail={t(S.homeWisdomDetail)} />
+      <View style={styles.wisdomGrid}>
+        {topics.map((w) => (
+          <Pressable
+            key={w.id}
+            accessibilityRole="button"
+            accessibilityLabel={t(S.homeTopicA11y(t(w.title), w.minutes))}
+            onPress={() => open(`/wisdom/${w.id}`)}
+            style={({ pressed: p }) => [styles.wisdomTile, glass(palette), pressed(p)]}>
+            <View pointerEvents="none" style={[styles.wisdomStripe, { backgroundColor: w.accent }]} />
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
+              {t(w.title)}
+            </Text>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.muted, fontSize: TYPE.caption, lineHeight: TYPE.caption * 1.5 }}>
+              {t(w.short)}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
+      <GroupCard>
+        <GroupRow standalone inset={56} accessibilityLabel={t(S.homeAllTopics(data.items.length))} onPress={() => open('/wisdom')}>
+          <View style={[styles.guideIcon, { backgroundColor: hues.lotus }]}>
+            <Ionicons name="flower-outline" size={18} color="#ffffff" />
+          </View>
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flex: 1, color: palette.text, fontSize: TYPE.callout }}>
+            {t(S.homeAllTopics(data.items.length))}
+          </Text>
+          <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+        </GroupRow>
+        <GroupRow inset={56} accessibilityLabel={`${t(S.knowledgeTitle)}, ${t(S.knowledgeEntryDetail)}`} onPress={() => open('/knowledge')}>
+          <View style={[styles.guideIcon, { backgroundColor: hues.indigo }]}>
+            <Ionicons name="compass-outline" size={18} color="#ffffff" />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.callout }}>
+              {t(S.knowledgeTitle)}
+            </Text>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, marginTop: 1 }}>
+              {t(S.knowledgeEntryDetail)}
+            </Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+        </GroupRow>
+      </GroupCard>
+    </View>
+  );
+}
+
 /** The website's band of Upanishadic sayings, as cards that scroll sideways under the reader's thumb. */
 function Sayings() {
   const { palette, settings } = useAppState();
@@ -444,8 +510,8 @@ function Sayings() {
         showsHorizontalScrollIndicator={false}
         snapToInterval={260 + SPACE.md}
         decelerationRate="fast"
-        style={{ marginHorizontal: -SPACE.lg, marginVertical: -SPACE.lg + 4 }}
-        contentContainerStyle={{ paddingHorizontal: SPACE.lg, columnGap: SPACE.md, paddingVertical: SPACE.lg }}>
+        style={{ flexGrow: 0, marginHorizontal: -SPACE.lg, marginVertical: -SPACE.lg + 4 }}
+        contentContainerStyle={{ paddingHorizontal: SPACE.lg, columnGap: SPACE.md, paddingVertical: SPACE.lg, alignItems: 'flex-start' }}>
         {SAYINGS.map((s) => (
           <Pressable
             key={s.sa}
@@ -508,6 +574,7 @@ export default function HomeScreen() {
         <VerseOfTheDay />
         <Shelf />
         <Guides />
+        <Wisdom />
         <Sayings />
         <TrustStrip />
       </ScrollView>
@@ -586,5 +653,8 @@ const styles = StyleSheet.create({
   bookFrame: { position: 'absolute', top: 6, left: 6, right: 6, bottom: 6, borderWidth: 1, borderRadius: RADIUS.row - 6 },
   guideHead: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md, paddingHorizontal: SPACE.lg, paddingTop: SPACE.lg, paddingBottom: SPACE.sm },
   guideIcon: { width: 32, height: 32, borderRadius: 9, alignItems: 'center', justifyContent: 'center' },
+  wisdomGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.md },
+  wisdomTile: { width: '47.5%', flexGrow: 1, minHeight: 104, borderRadius: RADIUS.card, padding: SPACE.lg, paddingLeft: SPACE.lg + 4, rowGap: SPACE.xs, overflow: 'hidden' },
+  wisdomStripe: { position: 'absolute', left: 0, top: 0, bottom: 0, width: 4 },
   saying: { width: 260, minHeight: 150, borderRadius: RADIUS.card, padding: SPACE.lg, justifyContent: 'space-between', rowGap: SPACE.md },
 });

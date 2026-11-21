@@ -66,6 +66,9 @@ export const S = {
   homeTopicYoga: { en: 'Yoga Sutra', hi: 'योगसूत्र' },
   homeSayings: { en: 'Sayings of the Upanishads', hi: 'उपनिषद् के महावाक्य' },
   homeSayingA11y: (gloss: string, cite: string) => ({ en: `${gloss}, ${cite}. Open the passage`, hi: `${cite}। पूरा पाठ खोलें` }),
+  homeWisdomDetail: { en: 'Start from what you are facing, and find the verses that speak to it', hi: 'जो सामने है, वहीं से शुरू करें और उससे जुड़े श्लोक पाएँ' },
+  homeAllTopics: (count: number) => ({ en: `All ${n(count)} topics`, hi: `सभी ${n(count)} विषय` }),
+  homeTopicA11y: (title: string, minutes: number) => ({ en: `${title}, ${n(minutes)} minute read`, hi: `${title}, ${n(minutes)} मिनट` }),
   homeTrust: { en: 'Open access · No ads · No account', hi: 'निःशुल्क · कोई विज्ञापन नहीं · कोई खाता नहीं' },
   homeStats: (books: number, verses: number) => ({
     en: `${n(books)} texts and ${n(verses)} verses work without internet`,

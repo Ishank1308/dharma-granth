@@ -53,19 +53,23 @@ export const SAYINGS: Saying[] = [
 export interface Guide {
   icon: 'leaf-outline' | 'scale-outline' | 'flower-outline' | 'sparkles-outline' | 'sunny-outline' | 'flame-outline' | 'musical-notes-outline' | 'body-outline';
   label: Msg;
-  to: Passage;
+  /** A passage in a bundled book, or an app route such as a Wisdom for life topic. */
+  to: Passage | string;
 }
 
 /**
- * "Find your way in", after the website's home guides (HomeInquiryChips.tsx). On the website the life
- * questions open Wisdom pathways; the app opens the Gita and Upanishad verses those pathways start from.
+ * "Find your way in", after the website's home guides (HomeInquiryChips.tsx). The life questions open the
+ * same Wisdom for life topics as on the website (src/app/wisdom), which lead into their verses.
  */
 export const LIFE_GUIDES: Guide[] = [
-  { icon: 'leaf-outline', label: S.homeTopicWorry, to: { id: 'bhagavadgita', chapter: 2, verse: '14' } },
-  { icon: 'scale-outline', label: S.homeTopicDuty, to: { id: 'bhagavadgita', chapter: 2, verse: '47' } },
-  { icon: 'flower-outline', label: S.homeTopicGrief, to: { id: 'bhagavadgita', chapter: 2, verse: '11' } },
-  { icon: 'sparkles-outline', label: S.homeTopicSelf, to: { id: 'mandukya', chapter: 1, verse: '2' } },
+  { icon: 'leaf-outline', label: S.homeTopicWorry, to: '/wisdom/stress-and-worry' },
+  { icon: 'scale-outline', label: S.homeTopicDuty, to: '/wisdom/duty-and-decision-making' },
+  { icon: 'flower-outline', label: S.homeTopicGrief, to: '/wisdom/grief-and-loss' },
+  { icon: 'sparkles-outline', label: S.homeTopicSelf, to: '/wisdom/self-knowledge' },
 ];
+
+/** Wisdom for life topics shown as tiles on Home, by the website's slugs. Missing ids are skipped. */
+export const WISDOM_PICKS = ['fear-and-courage', 'anger', 'discipline', 'relationships', 'concentration', 'devotion'];
 
 export const PRACTICE_GUIDES: Guide[] = [
   { icon: 'sunny-outline', label: S.homeTopicNitya, to: { id: 'nityakarmakriya', chapter: 1 } },
