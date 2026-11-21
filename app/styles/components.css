@@ -282,7 +282,9 @@ a.apple-row:active,
     letter-spacing: var(--tracking-headline);
 }
 :where(#main-content) h1.font-serif:not([lang='sa'], .shloka-text) {
-    font-size: var(--text-large-title);
+    /* Capped by the screen's width: with text enlarged to 200% the token alone reaches 68px on a
+       phone, and a long word in the title ("Bhagavad") splits across two lines. */
+    font-size: min(var(--text-large-title), 11vw);
     font-weight: 600;
     line-height: 1.12;
 }
