@@ -7,7 +7,7 @@ This note goes with the pull requests that add modern-context notes (`lifeLesson
 - **Coverage:** all 1,886 Samaveda entries now have a modern-context note. 20 had one before this work (1:1 to 1:3, 1:9 to 1:12, 2:1, 2:2, 3:1, 3:2, 4:1 to 4:3, 4:9 to 4:12, 4:660, 4:661); these were not changed. The other 1,866 notes were written on 21 November 2026.
 - **Pull requests:** the first 228 went in with #413, then #416 (228), #427 (608, with Vinaya Patrika), #439 (304, with Vinaya Patrika) and the last 498 (4:1378 to 4:1875) with this note.
 - **Source file:** `data/hi-commentary/samaveda-rest.json` holds only the `lifeLesson` field. The existing व्याख्या (`explanation`) is unchanged for every entry; this was verified after each publish against master.
-- **Size cap:** `MAX_TOTAL_MB` in `scripts/convert-commentary-to-json.ts` was raised from 62 to 70 for Samaveda and Vinaya Patrika (in #413). After this book the published commentary is about 68.8 MB.
+- **Size cap:** `MAX_TOTAL_MB` in `scripts/convert-commentary-to-json.ts` was raised from 62 to 70 for Samaveda and Vinaya Patrika (in #413). After this book the published commentary is 68,847 KB of the 71,680 KB cap.
 
 ## How the notes were made and checked
 
