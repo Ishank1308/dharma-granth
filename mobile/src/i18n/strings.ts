@@ -139,6 +139,12 @@ export const S = {
     en: 'One Bhagavad Gita verse each day, in full, at the time you pick. Scheduled on this phone; nothing is sent anywhere.',
     hi: 'हर दिन भगवद्गीता का एक पूरा श्लोक, आपके चुने समय पर। सूचना इसी फ़ोन पर तय होती है, कहीं कुछ नहीं भेजा जाता।',
   },
+  dailyChannelName: { en: 'Verse of the day', hi: 'आज का श्लोक' },
+  dailyChannelDescription: {
+    en: 'One Bhagavad Gita verse a day, at the time you choose.',
+    hi: 'हर दिन भगवद्गीता का एक श्लोक, आपके चुने समय पर।',
+  },
+  bhagavadGita: { en: 'Bhagavad Gita', hi: 'श्रीमद्भगवद्गीता' },
   notificationsOffTitle: { en: 'Notifications are off', hi: 'सूचनाएँ बंद हैं' },
   notificationsOffBody: {
     en: 'Allow notifications for Dharma Granth in your phone settings to get the daily verse.',

@@ -8,6 +8,8 @@ import { AndroidImportance } from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import { dailyVerse, getEntry, loadChapter } from '@/content/catalog';
+import type { Lang } from '@/i18n/language';
+import { S } from '@/i18n/strings';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { upcomingReminderTimes } from '@/lib/reminder';
 
@@ -34,11 +36,15 @@ export function initNotifications() {
   });
 }
 
-async function ensureChannel() {
+/**
+ * Creates the channel, or renames it in the reader's language. Android lets an app change a channel's
+ * name and description at any time (the reader's own sound and importance choices are kept).
+ */
+async function ensureChannel(lang: Lang) {
   if (Platform.OS !== 'android') return;
   await Notifications.setNotificationChannelAsync(DAILY_CHANNEL_ID, {
-    name: 'Verse of the day · आज का श्लोक',
-    description: 'One Bhagavad Gita verse a day, at the time you choose.',
+    name: S.dailyChannelName[lang],
+    description: S.dailyChannelDescription[lang],
     importance: AndroidImportance.DEFAULT,
     showBadge: false,
   });
@@ -52,9 +58,9 @@ export async function getReminderPermission(): Promise<ReminderPermission> {
 }
 
 /** Asks Android 13+ for POST_NOTIFICATIONS. The channel must exist first or the prompt does not show. */
-export async function requestReminderPermission(): Promise<ReminderPermission> {
+export async function requestReminderPermission(lang: Lang): Promise<ReminderPermission> {
   if (!remindersSupported) return 'denied';
-  await ensureChannel();
+  await ensureChannel(lang);
   const current = await Notifications.getPermissionsAsync();
   if (current.granted) return 'granted';
   if (!current.canAskAgain) return 'denied';
@@ -62,30 +68,43 @@ export async function requestReminderPermission(): Promise<ReminderPermission> {
   return asked.granted ? 'granted' : 'denied';
 }
 
-/** The notification text for one day: the whole shloka (never cut mid-verse) and its reference. */
-export function verseNotificationFor(date: Date): Notifications.NotificationContentInput | undefined {
+/**
+ * The notification text for one day: the whole shloka (never cut mid-verse) and its reference. The title
+ * and book name follow the interface language; the verse itself is always Sanskrit.
+ */
+export function verseNotificationFor(date: Date, lang: Lang): Notifications.NotificationContentInput | undefined {
   const pick = dailyVerse(date);
   if (!pick) return undefined;
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
   if (!verse) return undefined;
   const lines = sanskritLines(verse.sanskrit);
   if (lines.length === 0) return undefined;
-  const title = getEntry(pick.id)?.title ?? 'Bhagavad Gita';
+  const entry = getEntry(pick.id);
+  const book = (lang === 'hi' ? entry?.titleSanskrit : undefined) ?? entry?.title ?? S.bhagavadGita[lang];
   return {
-    title: 'आज का श्लोक · Verse of the day',
-    body: `${lines.join('\n')}\n${title} ${formatVerseRef(pick.id, pick.chapter, verse.number)}`,
+    title: S.verseOfTheDay[lang],
+    body: `${lines.join('\n')}\n${book} ${formatVerseRef(pick.id, pick.chapter, verse.number)}`,
     data: { id: pick.id, chapter: pick.chapter, verse: String(verse.number) },
   };
 }
 
+export interface ReminderOptions {
+  enabled: boolean;
+  hour: number;
+  minute: number;
+  /** Interface language: the notification text is written in it when scheduled. */
+  lang: Lang;
+}
+
 /**
  * Replaces the queue with one notification per day for the next 30 days. Safe to call often: it runs on
- * every app start and whenever the reader changes the switch or the time. When the reminder is off, or
+ * every app start and whenever the reader changes the switch, the time or the interface language (the
+ * text is fixed when a notification is scheduled, so a language change has to re-plan the queue). When the reminder is off, or
  * the permission was taken away in Android settings, the queue is simply emptied.
  */
 let queue: Promise<void> = Promise.resolve();
 
-export function syncDailyReminder(opts: { enabled: boolean; hour: number; minute: number }): Promise<void> {
+export function syncDailyReminder(opts: ReminderOptions): Promise<void> {
   // Run one sync at a time, so flicking the switch quickly cannot interleave cancel and schedule calls.
   queue = queue.then(() => runSync(opts)).catch(() => {
     // Scheduling failed (for example the alarm limit); the reader still has the in-app verse of the day.
@@ -93,14 +112,14 @@ export function syncDailyReminder(opts: { enabled: boolean; hour: number; minute
   return queue;
 }
 
-async function runSync(opts: { enabled: boolean; hour: number; minute: number }): Promise<void> {
+async function runSync(opts: ReminderOptions): Promise<void> {
   if (!remindersSupported) return;
   await Notifications.cancelAllScheduledNotificationsAsync();
   if (!opts.enabled) return;
   if ((await getReminderPermission()) !== 'granted') return;
-  await ensureChannel();
+  await ensureChannel(opts.lang);
   for (const when of upcomingReminderTimes(new Date(), opts.hour, opts.minute)) {
-    const content = verseNotificationFor(when);
+    const content = verseNotificationFor(when, opts.lang);
     if (!content) continue;
     await Notifications.scheduleNotificationAsync({
       content,
