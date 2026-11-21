@@ -380,6 +380,25 @@ export const S = {
     hi: `${titles} को खोज के लिए तैयार कर रहे हैं। इनके श्लोक थोड़ी देर में यहाँ दिखेंगे।`,
   }),
 
+  // Chapter summaries (सार)
+  summaryHeading: (unit: { en: string; hi: string }) => ({
+    en: `${unit.en.charAt(0).toUpperCase()}${unit.en.slice(1)} summary`,
+    hi: `${unit.hi} सार`,
+  }),
+  /** Switches the summary to the other language, so each label is written in the language it opens. */
+  summaryReadOther: { en: 'हिन्दी में पढ़ें', hi: 'Read in English' },
+  summaryMore: { en: 'Read more', hi: 'पूरा पढ़ें' },
+  summaryLess: { en: 'Show less', hi: 'कम दिखाएँ' },
+  summaryKeyVerses: (sutras: boolean) => (sutras ? { en: 'Key sutras', hi: 'मुख्य सूत्र' } : { en: 'Key verses', hi: 'मुख्य श्लोक' }),
+  summaryDraft: {
+    en: 'Editorial summary, not scripture. Awaiting editorial review.',
+    hi: 'संपादकीय सार, मूल ग्रन्थ का पाठ नहीं। संपादकीय जाँच बाकी है।',
+  },
+  summaryReviewed: { en: 'Editorial summary, not scripture.', hi: 'संपादकीय सार, मूल ग्रन्थ का पाठ नहीं।' },
+  summaryAllSub: { en: 'What each chapter covers, at a glance', hi: 'हर अध्याय में क्या है, एक नज़र में' },
+  summaryReadChapter: (unit: { en: string; hi: string }) => ({ en: `Read this ${unit.en}`, hi: `यह ${unit.hi} पढ़ें` }),
+  keyVerseA11y: (verse: number, note: string) => ({ en: `Verse ${verse}: ${note}. Go to the verse`, hi: `श्लोक ${verse}: ${note}। श्लोक पर जाएँ` }),
+
   // Redesign: floating tab bar, large headers, reader toolbar and sheets
   tabA11y: (label: string, position: number, count: number) => ({
     en: `${label}, tab ${position} of ${count}`,

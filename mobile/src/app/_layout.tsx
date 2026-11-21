@@ -60,6 +60,7 @@ function Navigator() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="scripture/[id]/index" options={{ title: '' }} />
           <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '' }} />
+          <Stack.Screen name="summary/[id]" options={{ title: '' }} />
         </Stack>
     </ThemeProvider>
   );
