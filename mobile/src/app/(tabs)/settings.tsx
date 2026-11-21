@@ -20,6 +20,7 @@ import {
 } from '@/lib/daily-notification';
 import { formatReminderTime } from '@/lib/reminder';
 import { useAppState } from '@/state/app-state';
+import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
 
 /** Icon tiles keep the deep spectrum hues in every theme, so their white glyphs stay readable. */
@@ -131,6 +132,18 @@ function DailyVerseSettings() {
       ) : (
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.dailyVerseNote)}</Muted>
       )}
+      {Platform.OS === 'android' ? (
+        <Pressable
+          accessibilityRole="button"
+          onPress={() =>
+            void addWidgetToHomeScreen().then((pinned) => {
+              if (!pinned) Alert.alert(t(S.widgetHowTitle), t(S.widgetHowBody));
+            })
+          }
+          style={{ marginTop: SPACE.md }}>
+          <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.widgetAdd)}</Text>
+        </Pressable>
+      ) : null}
     </>
   );
 }
