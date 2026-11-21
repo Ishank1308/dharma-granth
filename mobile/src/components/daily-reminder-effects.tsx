@@ -15,17 +15,17 @@ initNotifications();
  * Renders nothing.
  */
 export function DailyReminderEffects() {
-  const { ready, settings } = useAppState();
+  const { ready, settings, lang } = useAppState();
   const { dailyReminder, reminderHour, reminderMinute } = settings;
   const lastSync = useRef(0);
   const handled = useRef(new Set<string>());
 
-  // Re-plan the next 30 days on start and whenever the switch or the time changes.
+  // Re-plan the next 30 days on start and whenever the switch, the time or the interface language changes.
   useEffect(() => {
     if (!ready || !remindersSupported) return;
     lastSync.current = Date.now();
-    void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute });
-  }, [ready, dailyReminder, reminderHour, reminderMinute]);
+    void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, lang });
+  }, [ready, dailyReminder, reminderHour, reminderMinute, lang]);
 
   // Top the queue up when the app comes back after a long time in the background.
   useEffect(() => {
@@ -33,10 +33,10 @@ export function DailyReminderEffects() {
     const sub = AppState.addEventListener('change', (state) => {
       if (state !== 'active' || Date.now() - lastSync.current < RESYNC_MS) return;
       lastSync.current = Date.now();
-      void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute });
+      void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, lang });
     });
     return () => sub.remove();
-  }, [ready, dailyReminder, reminderHour, reminderMinute]);
+  }, [ready, dailyReminder, reminderHour, reminderMinute, lang]);
 
   // A tap on the notification opens that day's verse, both from a cold start and while running.
   useEffect(() => {
