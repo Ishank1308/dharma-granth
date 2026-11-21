@@ -10,7 +10,7 @@
 //     and kept for the few giant chapters that still load client-side.
 // The copies in public/ stay: the build and the data scripts read them.
 import { appendFileSync, existsSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join, resolve, sep } from 'node:path';
 
 const DIST = resolve(process.cwd(), process.env.NEXT_DIST_DIR || 'dist');
 const DATA = join(DIST, 'data/scriptures-full');
@@ -78,10 +78,17 @@ if (existsSync(PINTEREST_DIR)) {
 // Cloudflare Pages limits (free plan): 20,000 files per deployment and
 // 25 MiB per file. Fail the build here rather than at upload.
 const MAX_FILES = 20_000;
+// Warn while there is still room to act. A new page costs two files (index.html and its
+// index.txt payload), and a verse page a third (its share image), so 1,000 files is about
+// 330 to 500 pages.
+const WARN_FILES = 19_000;
 const MAX_FILE_BYTES = 25 * 1024 * 1024;
 let files = 0;
 let total = 0;
 const oversized = [];
+// What the files are, so the build log shows which kind is growing.
+const kinds = { 'Pages (index.html)': 0, 'Page payloads (index.txt)': 0, 'Verse share images (og/verse)': 0, 'Everything else': 0 };
+const VERSE_IMAGES = join(DIST, 'og', 'verse') + sep;
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
@@ -92,6 +99,10 @@ const oversized = [];
     }
     files++;
     total += st.size;
+    if (name === 'index.html') kinds['Pages (index.html)']++;
+    else if (name === 'index.txt') kinds['Page payloads (index.txt)']++;
+    else if (path.startsWith(VERSE_IMAGES)) kinds['Verse share images (og/verse)']++;
+    else kinds['Everything else']++;
     if (st.size > MAX_FILE_BYTES) oversized.push(`${path.slice(DIST.length + 1)} (${(st.size / 1024 / 1024).toFixed(1)} MB)`);
   }
 })(DIST);
@@ -100,6 +111,7 @@ console.log(
   `✓ Export pruned: freed ${(freed / 1024 / 1024).toFixed(0)} MB, kept ${kept} shard(s) for client-loaded chapters; ` +
     `dist is ${(total / 1024 / 1024).toFixed(0)} MB in ${files} files.`,
 );
+console.log(`  ${Object.entries(kinds).map(([kind, count]) => `${kind}: ${count}`).join(' · ')}`);
 
 if (process.env.GITHUB_STEP_SUMMARY) {
   try {
@@ -112,6 +124,10 @@ if (process.env.GITHUB_STEP_SUMMARY) {
       `| **Export Size** | \`${(total / 1024 / 1024 / 1024).toFixed(2)} GB\` (\`${(total / 1024 / 1024).toFixed(0)} MB\`) | — | — |`,
       `| **Pruned / Freed** | \`${(freed / 1024 / 1024).toFixed(0)} MB\` | — | — |`,
       '',
+      '| Kind of file | Count |',
+      '|---|---|',
+      ...Object.entries(kinds).map(([kind, count]) => `| ${kind} | \`${count.toLocaleString()}\` |`),
+      '',
     ].join('\n');
     appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary, 'utf8');
   } catch {}
@@ -120,6 +136,11 @@ let ok = true;
 if (files > MAX_FILES) {
   console.error(`✗ ${files} files — Cloudflare Pages allows ${MAX_FILES} per deployment.`);
   ok = false;
+} else if (files >= WARN_FILES) {
+  const message = `The export has ${files} files; Cloudflare Pages allows ${MAX_FILES} per deployment, so ${MAX_FILES - files} are left.`;
+  // An annotation on the workflow run, where it is seen without opening the log.
+  if (process.env.GITHUB_ACTIONS) console.log(`::warning title=Export is close to the Cloudflare Pages file limit::${message}`);
+  else console.warn(`⚠ ${message}`);
 }
 if (oversized.length > 0) {
   console.error(`✗ ${oversized.length} file(s) over Cloudflare Pages' 25 MiB limit: ${oversized.slice(0, 5).join(', ')}`);
