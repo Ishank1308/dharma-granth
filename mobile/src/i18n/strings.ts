@@ -256,7 +256,7 @@ export const S = {
     hi: `${titles} को खोज के लिए तैयार कर रहे हैं। इनके श्लोक थोड़ी देर में यहाँ दिखेंगे।`,
   }),
 
-  // Chapter summaries (सार) and quizzes
+  // Chapter summaries (सार)
   summaryHeading: (unit: { en: string; hi: string }) => ({
     en: `${unit.en.charAt(0).toUpperCase()}${unit.en.slice(1)} summary`,
     hi: `${unit.hi} सार`,
@@ -274,54 +274,6 @@ export const S = {
   summaryAllSub: { en: 'What each chapter covers, at a glance', hi: 'हर अध्याय में क्या है, एक नज़र में' },
   summaryReadChapter: (unit: { en: string; hi: string }) => ({ en: `Read this ${unit.en}`, hi: `यह ${unit.hi} पढ़ें` }),
   keyVerseA11y: (verse: number, note: string) => ({ en: `Verse ${verse}: ${note}. Go to the verse`, hi: `श्लोक ${verse}: ${note}। श्लोक पर जाएँ` }),
-  quizzesTitle: { en: 'Quizzes', hi: 'प्रश्नोत्तरी' },
-  quizzesEyebrow: { en: 'Test your understanding', hi: 'अपनी समझ परखें' },
-  quizzesIntro: (count: number) => ({
-    en: `${n(count)} short knowledge checks from dharmagranth.dev. Scores stay on this phone.`,
-    hi: `dharmagranth.dev की ${n(count)} छोटी प्रश्नोत्तरी। अंक केवल इसी फ़ोन में रहते हैं।`,
-  }),
-  quizzesRowSub: (count: number) => ({ en: `${n(count)} short knowledge checks`, hi: `${n(count)} छोटी प्रश्नोत्तरी` }),
-  quizzesForBook: { en: 'Test yourself', hi: 'अपनी समझ परखें' },
-  quizEnglishNote: { en: 'Questions are in English for now.', hi: 'प्रश्न अभी केवल अंग्रेज़ी में हैं।' },
-  quizCourseSection: { en: 'Course knowledge checks', hi: 'पाठ्यक्रम की प्रश्नोत्तरी' },
-  quizMoreSection: { en: 'More quizzes', hi: 'और प्रश्नोत्तरी' },
-  quizDifficulty: (d: 'beginner' | 'intermediate' | 'advanced') =>
-    ({
-      beginner: { en: 'Beginner', hi: 'आरम्भिक' },
-      intermediate: { en: 'Intermediate', hi: 'मध्यम' },
-      advanced: { en: 'Advanced', hi: 'उन्नत' },
-    })[d] ?? { en: d, hi: d },
-  quizQuestions: (count: number) => ({ en: `${n(count)} ${count === 1 ? 'question' : 'questions'}`, hi: `${n(count)} प्रश्न` }),
-  quizBest: (best: number, total: number) => ({ en: `Best ${best}/${total}`, hi: `सर्वश्रेष्ठ ${best}/${total}` }),
-  quizQuestionOf: (i: number, total: number) => ({ en: `Question ${i} of ${total}`, hi: `प्रश्न ${i} / ${total}` }),
-  quizStreak: (count: number) => ({ en: `${count} in a row`, hi: `लगातार ${count} सही` }),
-  quizCheer: (i: number) =>
-    [
-      { en: 'Correct!', hi: 'सही उत्तर!' },
-      { en: 'Well done!', hi: 'बहुत ख़ूब!' },
-      { en: 'Exactly right', hi: 'बिल्कुल सही' },
-      { en: 'Shabash!', hi: 'शाबाश!' },
-    ][i % 4],
-  quizNotQuite: { en: 'Not quite', hi: 'सही उत्तर यह है' },
-  quizRightAnswer: (answer: string) => ({ en: `The answer is: ${answer}`, hi: `सही उत्तर: ${answer}` }),
-  quizNext: { en: 'Next question', hi: 'अगला प्रश्न' },
-  quizSeeScore: { en: 'See your score', hi: 'अपने अंक देखें' },
-  quizOptionA11y: (letter: string, text: string) => ({ en: `Option ${letter}: ${text}`, hi: `विकल्प ${letter}: ${text}` }),
-  quizOptionRight: { en: 'correct answer', hi: 'सही उत्तर' },
-  quizOptionPicked: { en: 'your answer', hi: 'आपका उत्तर' },
-  quizScore: (score: number, total: number) => ({ en: `${score} of ${total} correct`, hi: `${total} में से ${score} सही` }),
-  quizPerfect: { en: 'Perfect score!', hi: 'पूरे अंक!' },
-  quizPassed: { en: 'Well done!', hi: 'बहुत बढ़िया!' },
-  quizKeepGoing: { en: 'Keep studying', hi: 'पढ़ते रहिए' },
-  quizPerfectLine: { en: 'Every answer right. The teaching has taken root.', hi: 'हर उत्तर सही। सीख मन में बैठ गई है।' },
-  quizPassedLine: { en: 'You know this ground well. Review the ones you missed.', hi: 'आपकी समझ अच्छी है। छूटे प्रश्न एक बार फिर देख लें।' },
-  quizKeepGoingLine: { en: 'Every reading makes the next try easier.', hi: 'हर बार पढ़ने से अगली बार आसान होगी।' },
-  quizNewBest: { en: 'New best', hi: 'नया सर्वश्रेष्ठ' },
-  quizRetry: { en: 'Try again', hi: 'फिर से करें' },
-  quizReview: { en: 'Your answers', hi: 'आपके उत्तर' },
-  quizAllQuizzes: { en: 'All quizzes', hi: 'सभी प्रश्नोत्तरी' },
-  quizNotFound: { en: 'This quiz is not in the app.', hi: 'यह प्रश्नोत्तरी ऐप में नहीं है।' },
-  quizStart: { en: 'Start', hi: 'शुरू करें' },
 
   // Redesign: floating tab bar, large headers, reader toolbar and sheets
   tabA11y: (label: string, position: number, count: number) => ({

@@ -53,8 +53,6 @@ function Navigator() {
           <Stack.Screen name="scripture/[id]/index" options={{ title: '' }} />
           <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '' }} />
           <Stack.Screen name="summary/[id]" options={{ title: '' }} />
-          <Stack.Screen name="quiz/index" options={{ title: '' }} />
-          <Stack.Screen name="quiz/[id]" options={{ title: '' }} />
         </Stack>
     </ThemeProvider>
   );

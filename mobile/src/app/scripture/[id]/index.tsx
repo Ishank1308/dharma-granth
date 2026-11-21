@@ -4,12 +4,10 @@ import { FlatList, Linking, Pressable, StyleSheet, Text, View } from 'react-nati
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DownloadCard } from '@/components/download-card';
-import { QuizRow } from '@/components/quiz';
-import { accentFill, Backdrop, coverFill, GroupRow, GroupTitle, IconTile, Muted } from '@/components/ui';
+import { accentFill, Backdrop, coverFill, GroupRow, IconTile, Muted } from '@/components/ui';
 import { CATEGORIES, getEntry, webUrl } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
-import { quizzesForBook, summaryCollection } from '@/content/study';
-import { useQuizResults } from '@/state/quiz-scores';
+import { summaryCollection } from '@/content/study';
 import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
@@ -23,7 +21,6 @@ export default function ScriptureScreen() {
   const { t, lang } = useI18n();
   const entry = getEntry(String(id));
   const { installed } = useDownloads();
-  const quizResults = useQuizResults();
 
   if (!entry) {
     return (
@@ -51,9 +48,8 @@ export default function ScriptureScreen() {
   };
 
   const last = entry.chapters.length - 1;
-  // Study aids from the website: every chapter's summary, and the quizzes on this book.
+  // Every chapter's summary, where the website has them.
   const summaries = summaryCollection(entry.id);
-  const quizzes = quizzesForBook(entry.id);
 
   return (
     <Backdrop>
@@ -143,14 +139,6 @@ export default function ScriptureScreen() {
                   </View>
                   <Ionicons name="chevron-forward" size={18} color={palette.muted} />
                 </GroupRow>
-              ) : null}
-              {quizzes.length > 0 ? (
-                <View style={{ marginBottom: -SPACE.lg }}>
-                  <GroupTitle title={t(S.quizzesForBook)} detail={String(quizzes.length)} />
-                  {quizzes.map((q, i) => (
-                    <QuizRow key={q.id} quiz={q} result={quizResults[q.id]} first={i === 0} last={i === quizzes.length - 1} />
-                  ))}
-                </View>
               ) : null}
             </View>
           }

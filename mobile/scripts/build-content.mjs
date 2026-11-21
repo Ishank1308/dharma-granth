@@ -17,7 +17,7 @@
 //   src/content/generated/loaders.ts     lazy require() map per chapter, so opening a chapter parses only
 //                                        that chapter (Ramcharitmanas is 5 MB; one kanda is under 1 MB)
 //   src/content/generated/search/…       offline verse search index (scripts/build-search-index.mjs)
-//   src/content/generated/study/…        chapter summaries and quizzes (scripts/build-study.mjs)
+//   src/content/generated/study/…        chapter summaries (scripts/build-study.mjs)
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -45,7 +45,7 @@ if (
   existsSync(join(OUT, 'search-loaders.ts'))
 ) {
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
-  // A checkout built before summaries and quizzes existed gets just those, not a full rebuild.
+  // A checkout built before chapter summaries existed gets just those, not a full rebuild.
   if (!STUDY_FILES.every((f) => existsSync(f))) await buildStudy();
   process.exit(0);
 }
