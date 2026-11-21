@@ -1,0 +1,566 @@
+# Modern-context notes: Vidura Niti, Durga Saptashati, Chandogya (review note, 21 November 2026)
+
+This note goes with the pull request that restores the Vidura Niti and Durga Saptashati modern-context notes and adds them for the whole Chandogya Upanishad. It lists how the notes were checked, the verses a reviewer should read first, and the facts to spot-check. The notes are AI drafts and have not had a human editorial review.
+
+## Provenance and review status
+
+Each note is an AI-drafted modern-context section with three parts:
+
+- **आधुनिक संदर्भ:** a real-world fact linked to the verse's theme.
+- **आज के जीवन में प्रयोग:** three practical applications.
+- **चिंतन प्रश्न:** one reflection question.
+
+The notes were checked as follows:
+
+- **Register:** every note passed `scripts/check-hindi-register.mjs`. The words are tatsam with no Urdu or English, and there is no first person.
+- **Facts used once (corrected on 21 Nov):** an earlier version of the pull request description said each fact was used only once across all books. That was not fully true. The first check searched by keyword and missed repeats where a name was spelled differently. A stricter cross-check that compares every note with every other note found 10 facts used in two of this PR's books. A further check that pairs notes by shared year found one more (the 1952 Apgar score, used at Chandogya 1.11.5 and 5.1.1). All 11 are now replaced:
+  - Chandogya 1.1.10, 1.8.7, 1.10.7, 1.11.5, 3.4.3, 4.1.3 and 4.17.5.
+  - Durga Saptashati 5:91, 12:21, 12:24 and 12:34.
+  - Both checks now run on every new batch before it is published.
+  - Same event, different fact: three pairs of notes draw on one event but state different facts about it, and were left as they are. They are the Montgomery bus boycott of 1955 (Vidura Niti 1:55 on King, 3:58 on Rosa Parks), the Cuban crisis of 1962 (Durga Saptashati 5:102 on the hotline, Vidura Niti 5:43 on the leaders' restraint) and the Crimean War of 1854 (Durga Saptashati 2:37 on the Light Brigade, 12:28 on Nightingale).
+  - Still overlapping: a few notes here share a person or event with the quarantined Yajurveda notes, which are not published (for example Dunning and Kruger at Durga Saptashati 1:95, Ebbinghaus at 1:104, and the 1953 Everest climb at Chandogya 3.13.5). These need a decision only if the Yajurveda notes are later released.
+- **Battle verses:** these carry an explicit line saying the tradition reads them as victory over inner vices.
+
+These notes are modern ethical readings, kept separate from the verse meaning. They do not replace the Sanskrit sense. They are not an editorial imprimatur, and individual facts should be spot-checked before this leaves draft.
+
+## Durga Saptashati review note
+
+Please look at these places first:
+
+- **Phalashruti (12:1–12:30):** each note carries a caveat that recitation gives inner strength but does not replace practical care or medical treatment. The eclipse verse (12:17) frames eclipses as natural events.
+- **Rakshasa, bhuta and pishacha (12:18, 12:19, 12:23):** these are also read as inner and outer obstacles.
+- **Blood offering (13:12):** the note reads the bali as complete surrender, meaning offering the ego, not harming the body.
+- **Facts to spot-check:**
+  - Vishaka guidelines 1997 (5:91).
+  - Borlaug 1970 (12:13).
+  - Krakow 2001 (12:16).
+  - The Sikh practice of dasvandh (12:21).
+  - Ping-pong diplomacy, April 1971 (12:24).
+  - Mayday 1927 (12:27).
+  - Brosnan and de Waal 2003 on capuchin monkeys (12:34).
+  - Keizer 2008 (12:40).
+  - Pargiter 1904 (13:2).
+  - Kerala fishermen 2018 (13:4).
+  - Modhera solar village 2022 (13:22).
+  - Hammurabi about 1750 BCE (13:23).
+
+## Chandogya review note
+
+- **Complete:** every verse from 1.1.1 to 8.15.1 now has a modern-context note. This PR added 614 of them.
+- **Anchoring:** each note is tied to the existing व्याख्या for that verse.
+- **Deva and asura verses (1.2.x):** these carry a line saying the Upanishad shows them as the good and bad tendencies within a person.
+- **"Your head will fall" (1.8.6, 1.8.8, 1.10.9–1.10.11, 5.12.2–5.17.2):** the notes gloss this as the traditional warning of formal debate, meaning that a claim resting on incomplete knowledge does not stand. It is not a bodily punishment.
+- **Ushasti's leftover food (1.10.3, 1.10.4):** read as the distinction between necessity and wish in a time of distress.
+- **The udgitha of the dogs (1.12.x):** each note says that some teachers read it as gods or sages taking that form, and some scholars as satire on those who chant only for food. This matches the existing व्याख्या.
+- **Embryos held by the sun (2.9.6):** the note links to maternal care and the Janani Suraksha Yojana.
+- **Vamadevya saman and married life (2.13.1, 2.13.2):** the notes stress dialogue, free consent and mutual respect, in line with the existing व्याख्या.
+- **"Do not revile the Brahmins" (2.20.2):** the note reads the vow as respect for learning and the learned, not as a birth-based ranking.
+- **Lines spoken in the first person in the source (2.22.3–2.22.5, 2.24.5–2.24.15, 3.11.2, 3.15.3–3.15.7, 6.2.3–6.3.3):** these are paraphrased in the third person.
+- **Science parallels (3.5.3, 3.13.7, 3.19.1–3.19.3, 6.2.x–6.4.x):** where a note sets a modern finding beside the image in the verse (the sun's oscillation, faint light from the body, the cosmic egg, the order of creation, the three colours), it says plainly that the likeness is only a metaphor and that the Upanishad's description is for meditation, not a claim of physics or chemistry.
+- **The sun rising in the west and other directions (3.6.4–3.10.4):** the notes say this passage shows the growing span of the fruit of meditation. The facts used (Venus, Uranus, magnetic reversal) only show that such directions are not unimaginable.
+- **Teaching only the eldest son or a worthy student (3.11.5):** the note says this limit is read today as a test of readiness and commitment, not of birth or gender.
+- **"A heroic son" (3.13.6):** the note says this is read today for sons and daughters alike.
+- **Not weeping for a son (3.15.2):** the note says that for those who have lost a child the verse is a prayer of consolation, not a sign of fault. It pairs prayer with practical care such as vaccination.
+- **Prayers in illness (3.16.2, 3.16.4, 3.16.6):** each note carries the line that prayer and resolve give strength but do not replace treatment by a qualified doctor. This matches the caution in the existing व्याख्या.
+- **Living 116 years (3.16.7):** the note says the verse is not a promise of a fixed lifespan.
+- **Krishna, son of Devaki (3.17.6):** the note says scholars differ on whether this is the Krishna of the Gita.
+- **Raikva calls the king "shudra" (4.2.3, 4.2.5):** the notes say the tradition takes the word here as "overcome by grief", and that every seeker has an equal right to knowledge.
+- **The king offers his daughter (4.2.3–4.2.5):** the notes say no person can be given as a gift, that the story belongs to its time and is not a model, and that marriage is right only with the person's own free consent.
+- **Satyakama's parentage (4.4.1–4.4.5):** the notes read the story as truthfulness, not lineage, deciding a person's worth.
+- **Upakosala stops eating in grief (4.10.3):** the note treats this as distress that calls for support, and encourages asking for help.
+- **Fruit statements of the three fires (4.11.x–4.13.x):** each note says these praise the upasana and that long life and health still need ordinary care.
+- **The path of the gods and the time of death (4.15.5), rebirth and the two paths (5.10.x), returning as the same creature (6.9.3):** each note says these are the Upanishad's faith and symbolic language, read as matters of reverence and reflection, not as established fact.
+- **Similes of the blind, the deaf, the mute and the infant (5.1.8–5.1.11):** each note carries a line that the simile does not mark anyone as lacking; it only shows that life continues without one faculty.
+- **The mantha rite and the dream verse (5.2.4–5.2.8):** the notes say the rite is not a medicine recipe, and that a dream as an omen is the tradition's belief, not a prediction.
+- **"This knowledge stayed with the kshatriyas" (5.3.7):** read as knowledge not being the property of any one group.
+- **Woman as the fire of the fifth offering (5.8.1):** read as a meditation on birth as sacred, paired with maternal health and consent.
+- **"Chandala" and other birth terms (5.10.7, 5.24.4):** the notes say ranking people by birth is rejected today, and cite Article 17 and the Vaikom satyagraha.
+- **The five great sins, including "killing a Brahmin" (5.10.9), and the knower untouched by them (5.10.10):** the second note says the verse praises the knowledge and gives no licence for wrongdoing.
+- **Ashvapati's claim about his kingdom (5.11.5):** read as an ideal of rule, not as history.
+- **A female servant in a list of gifts (5.13.2):** the note says no person can be owned or given, and cites the Bonded Labour Act.
+- **Food becoming mind, water becoming breath (6.5.x, 6.6.x):** each note says this is an ancient symbolic view of the body, not modern nutrition science or a substitute for medical advice.
+- **Shvetaketu's fifteen-day fast (6.7.1–6.7.6):** each note says the episode is a teaching story, not a method, that so long a fast can be fatal, and that any fasting needs a doctor's advice.
+- **"Tat tvam asi" (6.9.4):** the note states the Advaita, Vishishtadvaita and Dvaita readings without choosing one.
+- **Rebirth as the same creature and the dying person (6.10.2, 6.15.x):** each note carries the line that these are faith and symbolic language, not medical description, and that treatment, care and the company of family are all needed at the end of life.
+- **"The body dies, the self does not" (6.11.3):** the note says the teaching does not deny grief.
+- **The heated-axe ordeal (6.16.x):** each note says the ordeal was a cruel practice of its time that could prove nothing, that the Upanishad uses it only as an image of the inner force of truth, and that justice today rests on evidence and a fair hearing.
+- **"Tat tvam asi" (6.10.3–6.16.3):** every note carries the line that the schools of Vedanta read the sentence differently.
+- **Narada's sorrow (7.1.3):** read as learning without self-knowledge, with no blame on learning.
+- **"One strong man shakes a hundred learned ones" (7.8.1):** the note says the verse counts strength as the capacity to rise, serve and learn, not as praise of force over others.
+- **Ten nights without food (7.9.1):** the note says this shows the worth of food and is not a fasting method, and that any fast needs a doctor's advice.
+- **Fruit statements of the ladder (7.8.2–7.14.2, 7.25.2):** each note says the fruit is praise of the upasana, not a promise of material gain. The note on hope (7.14.2) adds that no prayer is certain to bear the wished-for fruit.
+- **Harsh words and cremation (7.15.2, 7.15.3):** the first note says calling someone a "slayer" is the picture of public censure, not a rule of punishment. The second says cremation is a rite of reverence and that the verse only shows that worth lies in life.
+- **"Ativadi" (7.15.4, 7.16.1):** glossed as one who speaks beyond what others say, on the ground of truth. The note says this is not praise of obstinacy.
+- **Lines spoken in the first person in the source (7.15.4–7.23.1, 7.25.1, 8.9.1–8.11.2, 8.12.4, 8.12.5, 8.13.1, 8.14.1):** these are paraphrased in the third person. The "aham" teaching (7.25.1) carries a line that it is not about personal pride.
+- **"Slaves and wives" in a list of possessions (7.24.2):** the note says the list pictures the society of its time, that Sanatkumara himself rejects such "greatness", and that no person is anyone's property.
+- **"The knower sees no death, illness or sorrow" (7.26.2):** the note says this describes an inner state, that the body still ages and falls ill, and that treatment is still needed.
+- **Wishes fulfilled by resolve (8.2.1–8.2.10):** each note says this is faith and symbolic language about the fullness of the knower, not a promise of material gain.
+- **"The world of women" (8.2.9) and women named beside vehicles (8.12.3):** the notes say this is the male-centred language of the time, that women are free and equal persons and not objects, and that every relationship rests on consent and respect. This matches the existing व्याख्या.
+- **The departed loved one (8.3.1):** the note says grief is natural and the teaching does not deny it.
+- **"The blind is no longer blind" (8.4.2):** the note says the verse promises no bodily cure and does not mark a blind or injured person as incomplete, and that treatment and care remain necessary.
+- **Brahmacharya (8.4.3–8.5.4, 8.7.3, 8.9.3–8.11.3):** glossed as restraint of the senses, study with a teacher and a mind turned to Brahman, taken up by choice and open to householders. The fasting verse (8.5.3) carries the doctor's-advice line.
+- **The channels of the heart and the path at death (8.6.x):** each note says this is symbolic language, not anatomy or a medical account, and repeats the line on care at the end of life.
+- **Devas and asuras (8.7.x–8.8.x):** each note says these are not names of any people or community but two tendencies within a person. The note on 8.8.5 adds that "asura" names a tendency and should not be used to insult anyone, and that every culture's funeral rites deserve respect; the verse says only that adorning the body is not a means to liberation.
+- **Indra's argument from bodily defects (8.9.x–8.10.x):** the notes say the defects are named only to show that a reflection depends on the body, and that no disability is a mark of inferiority.
+- **The closing prayers (8.13.1, 8.14.1):** paraphrased in the third person. The note on 8.14.1 says the last part of the prayer is obscure and that commentators read it as a prayer not to return to birth.
+- **Non-violence "except at holy places" (8.15.1):** the note says the exception is taken to refer to the animal sacrifice of that time, and that non-violence without exception is in keeping with the spirit of the teaching today.
+- **Facts to spot-check, 1.1.1–4.2.4:**
+  - ISO A440 standard 1975 (1.1.1).
+  - Anders Ericsson 1993 on deliberate practice (1.1.10).
+  - Lindeman 1942 (1.1.2).
+  - Lijjat's origin 1959 (1.1.7).
+  - Lundberg 1995 on nasal nitric oxide (1.2.12).
+  - Wallace Sabine about 1898 (1.4.4).
+  - Barthlott 1997 on the lotus leaf (1.6.7).
+  - Kobayashi and Kohshima 1997 on the white of the eye (1.7.4).
+  - Thanjavur veena's GI recognition (1.7.6).
+  - Kesarbai Kerkar on the Voyager record (1.7.7).
+  - A cumulus cloud holding about 500,000 kg of water (1.8.5).
+  - "Ancora imparo", attributed to Michelangelo in old age (1.8.7).
+  - Bubka's 35 world records (1.9.2).
+  - Dagar tradition of about twenty generations (1.9.3).
+  - Mizoram's "buhfai tham", a handful of rice set aside at each meal (1.10.7).
+  - Kisan Call Centre 2004 (1.11.4).
+  - A newborn's first cry filling the lungs with air (1.11.5).
+  - Huang 2017 on follow-up questions (1.11.6).
+  - Bonn-Oberkassel dog burial, about 14,000 years old (1.12.2).
+  - Nome serum run 1925 (1.12.4).
+  - Rizzolatti's mirror neurons 1992 (2.1.4).
+  - Everest descent deaths, 2008 study (2.2.3).
+  - Petrichor named 1964 (2.3.1).
+  - 20th Livestock Census 2019, about 53.6 crore (2.6.1).
+  - Mirabai Chanu, Rio 2016 and Tokyo (2.7.2).
+  - Common swift airborne ten months, 2016 (2.9.4).
+  - Gaynor 2018 on wildlife turning nocturnal (2.9.7).
+  - Pacioli's 1494 book on double-entry accounts (2.10.2).
+  - Gregorian calendar reform 1582 (2.10.3).
+  - Earthrise photograph, Apollo 8, 1968 (2.10.5).
+  - Wonderwerk cave evidence of early fire (2.12.1).
+  - Udvada fire burning there since 1742 (2.12.2).
+  - Saptapadi in the Hindu Marriage Act 1955 (2.13.1).
+  - Arthur Aron's 1997 closeness study (2.13.2).
+  - Shirdi solar steam kitchen 2009 (2.14.2).
+  - Luke Howard's cloud names 1802 (2.15.1).
+  - Vivaldi's Four Seasons 1725 (2.16.1).
+  - World Animal Day 1925 (2.18.1).
+  - E. Donnall Thomas, first marrow transplant 1956 (2.19.2).
+  - AstroSat 2015 (2.20.1).
+  - Burbidge, Burbidge, Fowler and Hoyle 1957 (2.21.2).
+  - Frank White's "overview effect" 1987 (2.21.4).
+  - Kluger and DeNisi 1996 on feedback (2.22.4).
+  - Bhoodan movement 1951 (2.23.1).
+  - Flexner report 1910 (2.24.2).
+  - All India Radio signature tune, Walter Kaufmann, 1936 (2.24.3).
+  - Sayajirao Gaekwad's free public libraries, 1910 (2.24.4).
+  - First official airmail, Henri Pequet, 18 February 1911, about 6,500 letters (2.24.8).
+  - Jung's 1930 essay on the afternoon of life (2.24.10).
+  - Tilak on swarajya as a birthright, 1916 (2.24.12).
+  - Universal Postal Union 1874 (2.24.13).
+  - Metre Convention, 20 May 1875, seventeen nations (2.24.16).
+  - A bee making about one-twelfth of a teaspoon of honey in its life (3.1.1).
+  - Karl von Frisch, Nobel 1973 (3.1.2).
+  - Aundh's Bhawanrao Pant Pratinidhi and Surya Namaskar, book 1928 (3.1.4).
+  - KVIC Honey Mission 2017 (3.2.2).
+  - Kodaikanal Solar Observatory 1899 and Evershed 1909 (3.3.3).
+  - Gita Press founded 1923 (3.4.1).
+  - BORI critical edition of the Mahabharata, 1919–1966, nineteen volumes (3.4.2).
+  - Trieste's dive to the Mariana Trench, 23 January 1960 (3.4.3).
+  - Dara Shikoh's Persian translation of fifty Upanishads, 1657 (3.5.1).
+  - Sacred Books of the East, fifty volumes, 1879–1910 (3.5.2).
+  - Robert Leighton's five-minute solar oscillations, 1960 (3.5.3).
+  - Kashmir saffron GI 2020, about 1.5 lakh flowers per kilogram (3.5.4).
+  - Valley of Flowers, national park 1982, World Heritage 2005 (3.6.1).
+  - Salim Ali's Book of Indian Birds 1941 (3.6.3).
+  - Slow Art Day since 2010 (3.7.3).
+  - Last full magnetic reversal about 780,000 years ago (3.7.4).
+  - Pench Tiger Reserve as India's first Dark Sky Park, January 2024 (3.8.1).
+  - Nedergaard 2012 on the brain's clearing system in sleep (3.8.2).
+  - Beaufort wind scale 1805 (3.9.1).
+  - Chandrasekhar's 1930 calculation, Nobel 1983 (3.9.2).
+  - Raman's 1921 sea voyage and the 1928 discovery (3.9.3).
+  - Uranus's 98-degree tilt and 42-year polar day (3.9.4).
+  - Jocelyn Bell's pulsar 1967 (3.10.1).
+  - Keith and Flack 1907 on the heart's pacemaker cells (3.10.2).
+  - Einthoven 1903, Nobel 1924 (3.10.3).
+  - Aitareya Brahmana on the sun neither setting nor rising (3.11.2).
+  - Zuckerman 1977 on Nobel laureates and their teachers (3.11.4).
+  - Gurukul Kangri 1902 (3.11.5).
+  - Perelman declining the million-dollar prize, 2010 (3.11.6).
+  - People's Linguistic Survey of India, about 780 languages (3.12.1).
+  - Pale Blue Dot, 14 February 1990, about six billion kilometres (3.12.8).
+  - Brahmagupta's rules for zero, 628 CE (3.12.9).
+  - About 15,000 hair cells in each inner ear (3.13.2).
+  - The rain gauge in Kautilya's Arthashastra (3.13.4).
+  - Sanchi's gateways and World Heritage listing 1989 (3.13.6).
+  - Faint visible light from the human body, 2009 study (3.13.7).
+  - Wunderlich 1868 on body temperature (3.13.8).
+  - Schrödinger's "What is Life?" 1944 (3.14.2).
+  - Dwarka matha and "tat tvam asi" (3.14.4).
+  - National Gene Bank, New Delhi, 1996 (3.15.1).
+  - Mission Indradhanush, December 2014 (3.15.2).
+  - Bar-On 2018 on the biomass of life (3.15.4).
+  - Priestley's 1774 experiment (3.15.6).
+  - Yuvraj Singh's return in 2012 (3.16.2).
+  - Dorothy Miller 1981 on the "sandwich generation" (3.16.3).
+  - Norman Cousins 1964 (3.16.4).
+  - Fauja Singh's run at age 100, 2011 (3.16.5).
+  - 2023 study on hearing aids and memory decline (3.16.6).
+  - Jeanne Calment, 1875–1997 (3.16.7).
+  - International Day of Non-Violence, declared 2007 (3.17.4).
+  - Charles Wilkins's Gita translation 1785 (3.17.6).
+  - Helium found during the 18 August 1868 eclipse (3.17.7).
+  - McGurk effect 1976 (3.18.2).
+  - Polly Wiessner 2014 on firelight talk (3.18.3).
+  - Snellen chart 1862 (3.18.5).
+  - Lemaître's "primeval atom" 1931 (3.19.1).
+  - Newgrange, over five thousand years old (3.19.3).
+  - 2022 London study on birdsong and mood (3.19.4).
+  - Emlen 1967 on birds and the stars (4.1.2).
+  - Agmark grading under the 1937 Act (4.1.3).
+  - Pareto 1896 (4.1.4).
+  - The Milindapanha and King Menander (4.1.5).
+  - Lok Sabha debates recorded verbatim since 1952 (4.1.6).
+  - Abraham Kaplan 1964 (4.1.7).
+  - Rani Rashmoni and Dakshineswar 1855 (4.2.1).
+  - Narendranath meeting Sri Ramakrishna, 1881 (4.2.2).
+  - Narayana Guru at Aruvippuram 1888 (4.2.3).
+  - Child Marriage Restraint Act 1929 (4.2.4).
+- **Facts to spot-check, 4.2.5–5.11.2:**
+  - Rammohan Roy's Upanishad translations 1816–19 (4.2.5).
+  - Refraction lifting the setting sun (4.3.1).
+  - About 13,000 cubic km of water vapour in the atmosphere (4.3.2).
+  - Aserinsky and Kleitman 1953 (4.3.3).
+  - Torricelli 1643 (4.3.4).
+  - Luang Prabang morning alms (4.3.5).
+  - Robin Hood Army 2014 (4.3.6).
+  - Yaksha-prashna in the Vana Parva (4.3.7).
+  - Rigveda's dice hymn and vibhitaka nuts (4.3.8).
+  - Passport rule change of December 2016 (4.4.1).
+  - Meghalaya's matrilineal societies (4.4.2).
+  - Krishna and Balarama at Sandipani's ashram (4.4.3).
+  - "Satyameva Jayate" adopted 26 January 1950 (4.4.4).
+  - Vechur cow conservation (4.4.5).
+  - Kaziranga rhino numbers (4.5.1).
+  - Shen Kuo 1088 on the magnetic needle (4.5.2).
+  - The four dhams (4.5.3).
+  - Baden-Powell's Brownsea camp 1907 (4.6.1).
+  - Colin Cherry 1953 (4.6.2).
+  - Horizon about 5 km away from the shore (4.6.3).
+  - Cantor 1874 (4.6.4).
+  - Gaddi and Bakarwal seasonal migration (4.7.1).
+  - Arctic tern migration (4.7.2).
+  - Catatumbo lightning (4.7.3).
+  - Blue LED Nobel 2014 (4.7.4).
+  - The cormorant's diving (4.8.1).
+  - Keoladeo, World Heritage 1985 (4.8.2).
+  - Sherrington 1906 (4.8.3).
+  - Baya weaver's nest (4.8.4).
+  - Guru Purnima (4.9.1).
+  - Dattatreya's twenty-four gurus in the Bhagavata (4.9.2).
+  - Ravi Shankar at Maihar from 1938 (4.9.3).
+  - Neelakurinji bloom (4.10.1).
+  - Sarada Devi after Sri Ramakrishna's passing (4.10.2).
+  - World Mental Health Day, 1992 (4.10.3).
+  - Gwalior zero inscription 876 (4.10.4).
+  - Meyers-Levy and Zhu 2007 on ceiling height (4.10.5).
+  - Chhath (4.11.1).
+  - Baku Ateshgah inscriptions (4.11.2).
+  - Bay of Fundy tides (4.12.1).
+  - Sharad Purnima kheer (4.12.2).
+  - Lightning fixing nitrogen (4.13.1).
+  - Jwalaji, Kangra (4.13.2).
+  - Dronacharya Award 1985 (4.14.1).
+  - Gandhi's confession letter to his father (4.14.2).
+  - Gita 5.10 (4.14.3).
+  - Mariotte's blind spot 1660 (4.15.1).
+  - Bhamashah and Maharana Pratap (4.15.2).
+  - Ganga–Brahmaputra silt and delta (4.15.3).
+  - Fireflies' cold light (4.15.4).
+  - Gita 8.24 (4.15.5).
+  - Muppandal wind farm (4.16.1).
+  - The anaesthetist's watch during surgery (4.16.2).
+  - Ophir, Nass and Wagner 2009 (4.16.3).
+  - Meher Baba's silence from 1925 (4.16.4).
+  - Drais's two-wheeler 1817 (4.16.5).
+  - Mysore sandal oil factory 1916 (4.17.1).
+  - Samaveda's three surviving shakhas (4.17.2).
+  - Vyahritis in sandhya and Gayatri japa (4.17.3).
+  - Hamming codes 1950 (4.17.4).
+  - Shigeo Shingo's poka-yoke, 1960s (4.17.5).
+  - Miraj's tanpura makers (4.17.6).
+  - Borax as flux in goldsmithing (4.17.7).
+  - Outer skin renewed in about a month (4.17.8).
+  - Railway track patrol over about 68,000 km (4.17.9).
+  - Chetak at Haldighati 1576 (4.17.10).
+  - Apgar score 1952 (5.1.1).
+  - Mehl 2007, about 16,000 words a day (5.1.2).
+  - Romberg 1846 (5.1.3).
+  - Fetal hearing from about the sixth month (5.1.4).
+  - Simonides and the memory palace (5.1.5).
+  - Livy's fable of Menenius Agrippa (5.1.6).
+  - Streptomycin trial 1948 (5.1.7).
+  - Indian Sign Language Research and Training Centre 2015 (5.1.8).
+  - Srikanth Bolla (5.1.9).
+  - Evelyn Glennie (5.1.10).
+  - Piaget on object permanence (5.1.11).
+  - The "death zone" above 8,000 m (5.1.12).
+  - Hockey golds 1928–56 (5.1.13).
+  - Aoyagi's pulse oximeter 1974 (5.1.14).
+  - Latin "anima" beside Sanskrit "prani" (5.1.15).
+  - Bhuta-yajna among the five daily yajnas (5.2.1).
+  - Parishechana before meals (5.2.2).
+  - Masada date seed sprouted in 2005 (5.2.3).
+  - Chyawanprash in the Charaka Samhita (5.2.4).
+  - Panchamrita (5.2.5).
+  - Gollwitzer 1999 (5.2.6).
+  - The Gita chapter 4 verse recited before meals (5.2.7).
+  - Hobson and McCarley 1977 (5.2.8).
+  - Uttaramerur inscriptions (5.3.1).
+  - Rozenblit and Keil 2002 (5.3.2).
+  - Nachiketa's third boon (5.3.3).
+  - ASER 2018 (5.3.4).
+  - Confucius on knowing what one does not know (5.3.5).
+  - Karthyayani Amma 2018 (5.3.6).
+  - Krishnamacharya teaching Indra Devi, 1937 (5.3.7).
+  - The sun converting about 60 crore tonnes of hydrogen each second (5.4.1).
+  - Mizoram's unattended roadside shops (5.4.2).
+  - Cherrapunji's 1860–61 rainfall record (5.5.1).
+  - About ten lakh cloud droplets in one raindrop (5.5.2).
+  - Temperature of the earth's core (5.6.1).
+  - Foodgrain output 2022-23, about 33 crore tonnes (5.6.2).
+  - Body heat of about 100 watts at rest (5.7.1).
+  - Small intestine about 6 m long (5.7.2).
+  - Cairo conference 1994 (5.8.1).
+  - Subhash Mukhopadhyay, 3 October 1978 (5.8.2).
+  - Institutional deliveries rising from 39% to 89% (5.9.1).
+  - Manikarnika's fire (5.9.2).
+  - The Aranyakas (5.10.1).
+  - Brahma Sutra chapter 4 on the archiradi path (5.10.2).
+  - Kallanai dam (5.10.3).
+  - Somvar named after Soma (5.10.4).
+  - Gita 9.21 (5.10.5).
+  - Debal Deb's rice seed bank (5.10.6).
+  - Article 17 (5.10.7).
+  - The mayfly's one-day adult life (5.10.8).
+  - Sacerdote 2001 on roommates (5.10.9).
+  - Gandhi nursing Parchure Shastri, 1939 (5.10.10).
+  - Indian Science Congress 1914 (5.11.1).
+  - Paul Erdős's collaborations (5.11.2).
+- **Facts to spot-check, 5.11.3–6.9.4:**
+  - William Mayo 1910 (5.11.3).
+  - Ashvapati of Kekaya in the Ramayana (5.11.4).
+  - Megasthenes on the rarity of theft (5.11.5).
+  - Telegram service ending on 14 July 2013 after 163 years (5.11.6).
+  - IGNOU 1985 (5.11.7).
+  - The aurora (5.12.1).
+  - Anekantavada (5.12.2).
+  - Fraunhofer 1814 (5.13.1).
+  - Bonded Labour Act 1976 (5.13.2).
+  - Muziris and the monsoon winds (5.14.1).
+  - Odisha cyclones of 1999 and 2013 (5.14.2).
+  - GMRT at Khodad (5.15.1).
+  - Mars orbiter lost in 1999 over a unit mismatch (5.15.2).
+  - Hiware Bazar (5.16.1).
+  - Thirst at 1–2% water loss (5.16.2).
+  - 52 bones in the two feet (5.17.1).
+  - Darwin's 1881 book on earthworms (5.18.1).
+  - Purusha Sukta (5.18.2).
+  - The custom of pranahuti (5.19.1).
+  - Vitamin A programme 1970 (5.19.2).
+  - About one lakh km of blood vessels (5.20.1).
+  - Semicircular canals of the inner ear (5.20.2).
+  - Bindeshwar Pathak 1970 (5.21.1).
+  - Howard's Indore method 1924–31 (5.21.2).
+  - Stomach acid and the stomach lining (5.22.1).
+  - About 90% of serotonin made in the gut (5.22.2).
+  - About 100 muscles used in speech (5.23.1).
+  - 20–40 lakh sweat glands (5.23.2).
+  - Kabir on books and "dhai akshar" (5.24.1).
+  - Tirumala's annaprasadam from 1985 (5.24.2).
+  - Gita 4.37 (5.24.3).
+  - Vaikom satyagraha 1924–25 (5.24.4).
+  - Human milk bank, Mumbai 1989 (5.24.5).
+  - The Bernoulli family (6.1.1).
+  - Hitopadesha, "vidya dadati vinayam" (6.1.2).
+  - Maxwell 1865 (6.1.3).
+  - Bishnupur terracotta (6.1.4).
+  - All gold ever mined, about two lakh tonnes (6.1.5).
+  - About 4 g of iron in the body (6.1.6).
+  - The Braggs' Nobel 1915 (6.1.7).
+  - Nasadiya Sukta and the Taittiriya line on asat (6.2.1).
+  - Joule's experiments of the 1840s (6.2.2).
+  - Water condensing on a cold vessel held over a flame (6.2.3).
+  - Herodotus on Egypt and the Nile (6.2.4).
+  - Linnaeus 1735 (6.3.1).
+  - The star "Bibha" and planet "Santamasa" named in 2019 (6.3.2).
+  - Thomas Young 1802 (6.3.3).
+  - Triphala (6.3.4).
+  - Faraday's candle lectures, about 1860 (6.4.1).
+  - Galileo's sunspots (6.4.2).
+  - The red moon of a total lunar eclipse (6.4.3).
+  - Franklin 1752 (6.4.4).
+  - Le Verrier and Neptune 1846 (6.4.5).
+  - Bunsen and Kirchhoff 1860–61 (6.4.6).
+  - Wöhler's urea 1828 (6.4.7).
+  - Goitre control programme 1962 (6.5.1).
+  - Thomas Latta's saline infusion 1832 (6.5.2).
+  - Huldschinsky 1919 on light and rickets (6.5.3).
+  - The body being about 60% water (6.5.4).
+  - De Laval's cream separator 1878 (6.6.1).
+  - NFHS 2019-21 on anaemia in young children (6.6.2).
+  - Plasma being about 90% water (6.6.3).
+  - Paniniya Shiksha on how speech arises (6.6.4).
+  - Bloom 1984 (6.6.6).
+  - Fifteen tithis and sixteen kalas (6.7.1).
+  - Minnesota starvation study 1944–45 (6.7.2).
+  - A hibernating bear's heart rate (6.7.3).
+  - Tamil Nadu's school breakfast scheme, September 2022 (6.7.4).
+  - Keeping an ember under ash overnight (6.7.5).
+  - Revival of Hebrew from 1881 (6.7.6).
+  - Mandukya Upanishad on deep sleep (6.8.1).
+  - Odisha Police pigeon service 1946 (6.8.2).
+  - Yaska's Nirukta (6.8.3).
+  - Pando grove, about 47,000 stems (6.8.4).
+  - Cooling by evaporation in an earthen pot (6.8.5).
+  - Devprayag confluence (6.8.6).
+  - Bees foraging up to about 5 km (6.9.1).
+  - Ashtadhatu (6.9.2).
+  - Olive ridley turtles at Gahirmatha and Rushikulya (6.9.3).
+  - "Tat tvam asi" occurring nine times in chapter 6 (6.9.4).
+- **Facts to spot-check, 6.10.1–7.7.2:**
+  - Ocean circulation taking about a thousand years (6.10.1).
+  - Childhood amnesia (6.10.2).
+  - Gangasagar mela (6.10.3).
+  - Ginkgo trees that survived at Hiroshima (6.11.1).
+  - Trees drawing nutrients back before leaf fall (6.11.2).
+  - India's first heart transplant, AIIMS, 3 August 1994 (6.11.3).
+  - Thimmamma Marrimanu banyan, recorded in 1989 (6.12.1).
+  - Van Helmont's five-year tree experiment (6.12.2).
+  - The banyan as national tree and Vat Savitri (6.12.3).
+  - About 35 g of salt in a litre of seawater (6.13.1).
+  - Taste buds and their receptor cells (6.13.2).
+  - Sri Ramakrishna's parable of the salt doll (6.13.3).
+  - Jan Souman 2009 on walking in circles (6.14.1).
+  - The "Bhule-Bhatke Shivir" at Prayag from 1946 (6.14.2).
+  - About 95 lakh school teachers, 2021-22 (6.14.3).
+  - University of British Columbia study, 2020, on hearing at the end of life (6.15.1).
+  - Kübler-Ross 1969 (6.15.2).
+  - Ramana Maharshi's experience at Madurai, 1896 (6.15.3).
+  - Selvi v. State of Karnataka, 2010 (6.16.1).
+  - Calcutta fingerprint bureau 1897, Azizul Haque and Hem Chandra Bose (6.16.2).
+  - Gandhi and the play "Harishchandra" (6.16.3).
+  - Ausubel 1968 (7.1.1).
+  - Library of Congress, over 17 crore items (7.1.2).
+  - Tolstoy's "A Confession" (7.1.3).
+  - Amarakosha (7.1.4).
+  - Hubble and Andromeda, 1924 (7.1.5).
+  - Prinsep reading Brahmi, 1837 (7.2.1).
+  - Constituent Assembly, eleven sessions and 165 days (7.2.2).
+  - George Miller 1956 (7.3.1).
+  - Shakuntala Devi, 18 June 1980 (7.3.2).
+  - Pulse Polio from 1995 (7.4.1).
+  - The sankalpa spoken before a puja (7.4.2).
+  - Norcross 2002 on New Year resolutions (7.4.3).
+  - "Shisa kanko" on Japan's railways (7.5.1).
+  - The "suniai" stanzas of Japji Sahib (7.5.2).
+  - Gloria Mark on attention at the screen (7.5.3).
+  - World Meditation Day, declared December 2024 (7.6.1).
+  - Sara Lazar 2005 (7.6.2).
+  - Article 51A on scientific temper, 1976 (7.7.1).
+  - Thumba's first rocket, 21 November 1963 (7.7.2).
+- **Facts to spot-check, 7.8.1–8.2.2:**
+  - Fit India Movement, 29 August 2019 (7.8.1).
+  - Karnam Malleswari, Sydney 2000, 240 kg total (7.8.2).
+  - Amma Unavagam canteens, Chennai, February 2013 (7.9.1).
+  - The food vows of the Taittiriya Upanishad's Bhriguvalli (7.9.2).
+  - Blanford's first monsoon forecast, 4 June 1886 (7.10.1).
+  - UN resolution on the right to water, 28 July 2010 (7.10.2).
+  - The summer heat low over north-west India drawing in the monsoon (7.11.1).
+  - Leisang, Manipur, 28 April 2018 (7.11.2).
+  - J. C. Bose's wireless demonstration, Kolkata, 1895 (7.12.1).
+  - Outer Space Treaty 1967 (7.12.2).
+  - Henry Molaison's surgery, 1953 (7.13.1).
+  - Eric Kandel, Nobel 2000 (7.13.2).
+  - Snyder's hope theory 1991 (7.14.1).
+  - Chile miners, 2010: 33 men, 69 days (7.14.2).
+  - Brain cells beginning to die within about four to six minutes without blood flow (7.15.1).
+  - The Taittiriya convocation address (7.15.2).
+  - Dadhichi Deh Dan Samiti, from 1997 (7.15.3).
+  - Wegener 1912 (7.15.4).
+  - Popper 1934 (7.16.1).
+  - Archie Cochrane 1972 (7.17.1).
+  - Shravana, manana and nididhyasana (7.18.1).
+  - Bandura 1977 on self-efficacy (7.19.1).
+  - Chewang Norphel's artificial glaciers from 1987 (7.20.1).
+  - The Wardha education conference, October 1937 (7.21.1).
+  - Thorndike 1898 and the law of effect (7.22.1).
+  - Dunn, Aknin and Norton 2008 (7.23.1).
+  - Yajnavalkya to Maitreyi on duality, Brihadaranyaka (7.24.1).
+  - Janaka's saying about Mithila burning, Mahabharata (7.24.2).
+  - Every direction being south at the North Pole (7.25.1).
+  - Vinoba's Gita talks in Dhule jail, 1932 (7.25.2).
+  - Shannon 1948 (7.26.1).
+  - WHO guidance of April 2019 on screen time for young children, and Shankara's reading of "ahara" (7.26.2).
+  - The Chidambaram "rahasya" (8.1.1).
+  - Chouinard 2007 on children's questions (8.1.2).
+  - About 86 billion neurons, 2009 (8.1.3).
+  - Hayflick 1961 (8.1.4).
+  - Plutarch's ship of Theseus (8.1.5).
+  - Dholavira, World Heritage 2021 (8.1.6).
+  - 1,024 ancestors ten generations back (8.2.1).
+  - Mitochondrial DNA inherited from the mother (8.2.2).
+- **Facts to spot-check, 8.2.3–8.15.1:**
+  - Tagore's rakhi call, 16 October 1905 (8.2.3).
+  - Caroline Herschel's eight comets and her 1787 salary (8.2.4).
+  - C. F. Andrews meeting Gandhi in South Africa, 1914 (8.2.5).
+  - Smell and memory, and Proust (8.2.6).
+  - Dharmasthala's free meals (8.2.7).
+  - Tansen Samaroh from 1924 (8.2.8).
+  - Ardhanarishvara at Elephanta (8.2.9).
+  - Pascual-Leone 1995 on mental practice (8.2.10).
+  - Stars hidden by scattered sunlight in the day (8.3.1).
+  - Staffordshire Hoard, July 2009 (8.3.2).
+  - "Hridayangam" and "learning by heart" (8.3.3).
+  - Gandhi's "Truth is God", about 1931 (8.3.4).
+  - The triplet genetic code, 1961 (8.3.5).
+  - Thanneermukkom bund, 1970s (8.4.1).
+  - Euler's work after losing his sight, about 1766 (8.4.2).
+  - Bhimsen Joshi with Sawai Gandharva from 1936 (8.4.3).
+  - Basavanna's "kayakave kailasa" (8.5.1).
+  - Mauni Amavasya (8.5.2).
+  - Vanaprastha as the third ashrama (8.5.3).
+  - Gopichand keeping Sindhu's phone before Rio 2016 (8.5.4).
+  - Haemoglobin and why veins look blue (8.6.1).
+  - Sher Shah and the Grand Trunk Road (8.6.2).
+  - Growth hormone released in deep sleep (8.6.3).
+  - Kanwisher 1997 on the brain's face area (8.6.4).
+  - Kabir at Maghar, 1518 (8.6.5).
+  - The fontanelle closing by about eighteen months, and "brahmarandhra" (8.6.6).
+  - Nirvana Shatkam (8.7.1).
+  - Arjuna and Duryodhana before Krishna, Udyoga Parva (8.7.2).
+  - Kerala Kalamandalam 1930 and Kathakali training (8.7.3).
+  - Kepler 1604 on the inverted image in the eye (8.7.4).
+  - Mirror reversal (8.8.1).
+  - "Selfie" as Oxford's word of the year 2013 (8.8.2).
+  - Narcissus (8.8.3).
+  - Bhartrihari's verse on enjoyments, Vairagya Shataka (8.8.4).
+  - Tutankhamun's tomb, 1922 (8.8.5).
+  - "Neti neti", Brihadaranyaka (8.9.1).
+  - Andrew Wiles, 1993–94 (8.9.2).
+  - Sagrada Família from 1882 and Gaudí's 43 years (8.9.3).
+  - LaBerge, about 1980, on lucid dreaming (8.10.1).
+  - The body's response to a frightening dream (8.10.2).
+  - SLV-3, 10 August 1979 and 18 July 1980 (8.10.3).
+  - LIGO's first detection, 14 September 2015 (8.10.4).
+  - Morton's ether demonstration, 16 October 1846 (8.11.1).
+  - Gargi's questions in Janaka's court, Brihadaranyaka (8.11.2).
+  - Hokusai's words at seventy-five (8.11.3).
+  - Congenital insensitivity to pain (8.12.1).
+  - Guericke's hemispheres, about 1654 (8.12.2).
+  - The Puri chariots built anew each year (8.12.3).
+  - Graeme Clark's multi-channel cochlear implant, 1978 (8.12.4).
+  - Shepard and Metzler 1971 (8.12.5).
+  - Gita 18.63 (8.12.6).
+  - Varahamihira on eclipses, Brihat Samhita (8.13.1).
+  - The pot's emptiness in the Tao Te Ching (8.14.1).
+  - The Tirukkural's chapter on not killing (8.15.1).

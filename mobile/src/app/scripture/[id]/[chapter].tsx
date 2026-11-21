@@ -15,12 +15,13 @@ export default function ChapterScreen() {
   const params = useLocalSearchParams<{ id: string; chapter: string; verse?: string }>();
   const id = String(params.id);
   const chapterNo = Number(params.chapter);
-  const { palette, settings, isBookmarked, toggleBookmark, setLastRead } = useAppState();
+  const { palette, settings, bookmarks, toggleBookmark, setLastRead } = useAppState();
   const entry = getEntry(id);
   const meta = entry?.chapters.find((c) => c.number === chapterNo);
   const chapter = useMemo(() => loadChapter(id, chapterNo), [id, chapterNo]);
   const listRef = useRef<FlatList<Verse>>(null);
   const jumped = useRef(false);
+  const jumpTries = useRef(0);
 
   useEffect(() => {
     if (chapter) setLastRead(id, chapterNo);
@@ -34,6 +35,14 @@ export default function ChapterScreen() {
 
   const go = (n: number) => router.replace({ pathname: '/scripture/[id]/[chapter]', params: { id, chapter: String(n) } });
 
+  // Bookmarked verse numbers in this chapter only. With a stable toggle callback, saving one verse
+  // re-renders that one card instead of every card on screen (VerseCard is memoised).
+  const saved = useMemo(
+    () => new Set(bookmarks.filter((b) => b.id === id && b.chapter === chapterNo).map((b) => b.verse)),
+    [bookmarks, id, chapterNo],
+  );
+  const onToggleBookmark = useCallback((verse: string) => toggleBookmark(id, chapterNo, verse), [toggleBookmark, id, chapterNo]);
+
   const renderItem = useCallback(
     ({ item }: { item: Verse }) => (
       <VerseCard
@@ -43,11 +52,11 @@ export default function ChapterScreen() {
         verse={item}
         palette={palette}
         settings={settings}
-        bookmarked={isBookmarked(id, chapterNo, String(item.number))}
-        onToggleBookmark={() => toggleBookmark(id, chapterNo, String(item.number))}
+        bookmarked={saved.has(String(item.number))}
+        onToggleBookmark={onToggleBookmark}
       />
     ),
-    [id, chapterNo, entry?.title, palette, settings, isBookmarked, toggleBookmark],
+    [id, chapterNo, entry?.title, palette, settings, saved, onToggleBookmark],
   );
 
   if (!entry || !meta || !chapter) {
@@ -70,16 +79,22 @@ export default function ChapterScreen() {
           data={chapter.verses}
           keyExtractor={(v, i) => `${v.number}-${i}`}
           renderItem={renderItem}
-          initialNumToRender={target > 0 ? target + 3 : 6}
-          windowSize={9}
+          // Never render up to the target verse in one go: a bookmark deep in Bala Kand (1,958 verses)
+          // would mount ~1,500 cards on the JS thread and freeze the phone. Jump instead (below).
+          initialNumToRender={6}
+          maxToRenderPerBatch={6}
+          windowSize={7}
           onLayout={() => {
             if (target <= 0 || jumped.current) return;
             jumped.current = true;
             listRef.current?.scrollToIndex({ index: target, animated: false, viewPosition: 0 });
           }}
           onScrollToIndexFailed={(info) => {
+            // Verse heights vary, so jump to an estimate, let that window render, then retry a few times.
+            if (jumpTries.current >= 8) return;
+            jumpTries.current += 1;
             listRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: false });
-            setTimeout(() => listRef.current?.scrollToIndex({ index: info.index, animated: false }), 100);
+            setTimeout(() => listRef.current?.scrollToIndex({ index: info.index, animated: false }), 120);
           }}
           ListHeaderComponent={
             <View style={{ marginBottom: SPACE.lg, alignItems: 'center', rowGap: SPACE.xs }}>
