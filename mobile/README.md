@@ -67,3 +67,5 @@ npm run typecheck
 npm run lint
 npm test          # unit tests, plus a check that every bundled verse keeps all its Sanskrit lines
 ```
+
+To publish on Google Play, follow [RELEASE.md](RELEASE.md).

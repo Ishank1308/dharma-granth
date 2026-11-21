@@ -44,3 +44,6 @@ example
 
 # Scripture content built from ../public/data by scripts/build-content.mjs
 /src/content/generated/
+
+# Play Console service account key (used by eas submit), never commit
+play-service-account.json

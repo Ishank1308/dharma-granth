@@ -3,10 +3,18 @@ import { memo, useState } from 'react';
 import { Pressable, Share, StyleSheet, Text, View } from 'react-native';
 
 import type { Verse } from '@/content/types';
-import { cleanVerseField, formatVerseRef, meaningState, MEANING_COPY, sanskritLines, toDevanagari, verseMarkNumber } from '@/lib/verse-format';
+import {
+  cleanVerseField,
+  formatVerseRef,
+  meaningState,
+  MEANING_COPY,
+  sanskritLines,
+  toDevanagari,
+  verseMarkNumber,
+} from '@/lib/verse-format';
 import type { Settings } from '@/lib/backup';
 import { SPACE, TYPE, type Palette } from '@/theme/themes';
-import { Card } from './ui';
+import { Card, glass } from './ui';
 
 interface Props {
   scriptureId: string;
@@ -23,9 +31,7 @@ function Label({ en, hi, palette, extra }: { en: string; hi: string; palette: Pa
   return (
     <View style={styles.labelRow}>
       <Text style={[styles.label, { color: palette.accent }]}>{en}</Text>
-      <Text style={[styles.label, { color: palette.muted }]}>
-        {hi}
-      </Text>
+      <Text style={[styles.label, { color: palette.muted }]}>{hi}</Text>
       {extra ? <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{extra}</Text> : null}
     </View>
   );
@@ -61,32 +67,47 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
   };
 
   return (
-    <Card style={styles.card}>
+    <Card style={styles.card} strong>
       <View style={styles.header}>
-        <Text style={[styles.ref, { color: palette.gold }]} accessibilityLabel={`Verse ${ref}`}>
-          {ref}
-        </Text>
+        <View
+          style={[
+            styles.refPill,
+            {
+              backgroundColor: palette.dark ? 'rgba(229,193,88,0.14)' : 'rgba(198,146,52,0.12)',
+              borderColor: palette.dark ? 'rgba(229,193,88,0.3)' : 'rgba(198,146,52,0.3)',
+            },
+          ]}>
+          <Text style={[styles.ref, { color: palette.gold }]} accessibilityLabel={`Verse ${ref}`}>
+            {ref}
+          </Text>
+        </View>
         <View style={styles.actions}>
           <Pressable
             onPress={share}
-            hitSlop={10}
+            hitSlop={6}
+            style={[styles.iconBtn, glass(palette)]}
             accessibilityRole="button"
             accessibilityLabel={`Share verse ${ref}`}>
-            <Ionicons name="share-outline" size={20} color={palette.muted} />
+            <Ionicons name="share-outline" size={18} color={palette.muted} />
           </Pressable>
           <Pressable
             onPress={onToggleBookmark}
-            hitSlop={10}
+            hitSlop={6}
+            style={[styles.iconBtn, glass(palette)]}
             accessibilityRole="button"
             accessibilityState={{ selected: bookmarked }}
             accessibilityLabel={bookmarked ? `Remove bookmark ${ref}` : `Bookmark verse ${ref}`}>
-            <Ionicons name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={bookmarked ? palette.accent : palette.muted} />
+            <Ionicons name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={18} color={bookmarked ? palette.accent : palette.muted} />
           </Pressable>
         </View>
       </View>
 
       {lines.length > 0 ? (
-        <View style={styles.sanskrit}>
+        <View
+          style={[
+            styles.sanskrit,
+            { backgroundColor: palette.dark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.45)', borderColor: palette.rim },
+          ]}>
           {lines.map((line, i) => (
             <Text
               key={i}
@@ -102,7 +123,14 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
       {settings.showTransliteration && translit ? (
         <Text
           selectable
-          style={{ color: palette.textSecondary, fontSize: TYPE.subhead * scale, lineHeight: TYPE.subhead * scale * 1.5, fontStyle: 'italic', textAlign: 'center', marginTop: SPACE.sm }}>
+          style={{
+            color: palette.textSecondary,
+            fontSize: TYPE.subhead * scale,
+            lineHeight: TYPE.subhead * scale * 1.5,
+            fontStyle: 'italic',
+            textAlign: 'center',
+            marginTop: SPACE.sm,
+          }}>
           {translit}
         </Text>
       ) : null}
@@ -115,7 +143,16 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             palette={palette}
             extra={verse.hindiSource === 'ai' ? MEANING_COPY.aiLabelHi : undefined}
           />
-          <Text selectable style={[styles.body, { color: state.hi === 'text' ? palette.text : palette.muted, fontSize: TYPE.body * scale, lineHeight: TYPE.body * scale * 1.55 }]}>
+          <Text
+            selectable
+            style={[
+              styles.body,
+              {
+                color: state.hi === 'text' ? palette.text : palette.muted,
+                fontSize: TYPE.body * scale,
+                lineHeight: TYPE.body * scale * 1.55,
+              },
+            ]}>
             {state.hi === 'text'
               ? hindi
               : state.hi === 'review'
@@ -135,7 +172,16 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             palette={palette}
             extra={verse.translationSource === 'ai' ? MEANING_COPY.aiLabelEn : undefined}
           />
-          <Text selectable style={[styles.body, { color: state.en === 'text' ? palette.text : palette.muted, fontSize: TYPE.body * scale, lineHeight: TYPE.body * scale * 1.5 }]}>
+          <Text
+            selectable
+            style={[
+              styles.body,
+              {
+                color: state.en === 'text' ? palette.text : palette.muted,
+                fontSize: TYPE.body * scale,
+                lineHeight: TYPE.body * scale * 1.5,
+              },
+            ]}>
             {state.en === 'text' ? english : state.en === 'with' ? MEANING_COPY.enWith(verse.translationSeeVerse!) : MEANING_COPY.enPending}
           </Text>
         </View>
@@ -156,7 +202,12 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             ? notes.map((n) => (
                 <View key={n.en} style={{ marginTop: SPACE.sm }}>
                   <Label en={n.en} hi={n.hi} palette={palette} />
-                  <Text selectable style={[styles.body, { color: palette.textSecondary, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.5 }]}>
+                  <Text
+                    selectable
+                    style={[
+                      styles.body,
+                      { color: palette.textSecondary, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.5 },
+                    ]}>
                     {n.text}
                   </Text>
                 </View>
@@ -174,8 +225,10 @@ const styles = StyleSheet.create({
   card: { marginBottom: SPACE.md },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: SPACE.sm },
   ref: { fontSize: TYPE.footnote, fontWeight: '700', letterSpacing: 0.5 },
-  actions: { flexDirection: 'row', columnGap: SPACE.lg },
-  sanskrit: { rowGap: 2, paddingVertical: SPACE.xs },
+  actions: { flexDirection: 'row', columnGap: SPACE.sm },
+  iconBtn: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
+  refPill: { borderRadius: 999, borderWidth: 1, paddingHorizontal: 10, paddingVertical: 3 },
+  sanskrit: { rowGap: 2, paddingVertical: SPACE.md, paddingHorizontal: SPACE.sm, borderRadius: 16, borderWidth: 1 },
   block: { marginTop: SPACE.md },
   labelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: SPACE.sm, marginBottom: 2 },
   label: { fontSize: TYPE.caption, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
