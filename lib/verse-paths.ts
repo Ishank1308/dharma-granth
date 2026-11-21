@@ -59,6 +59,14 @@ export function versePageHref(
   return `/scripture/${scriptureId}/chapter/${chapterId}/verse/${slug}/`;
 }
 
+/**
+ * Where verse share images are served from. Empty means this site, which is what a local build
+ * uses. The workflows set it to the Pages project's `share` branch deployment: one image per verse
+ * page would otherwise take the site past Cloudflare's 20,000 files per deployment
+ * (docs/deploy-cloudflare.md, "Verse share images").
+ */
+const SHARE_IMAGE_ORIGIN = (process.env.NEXT_PUBLIC_SHARE_IMAGE_ORIGIN || '').replace(/\/+$/, '');
+
 /** Share image for one verse, written by `npm run og:verses`. */
 export function verseOgPath(
   scriptureId: string,
@@ -67,7 +75,7 @@ export function verseOgPath(
 ): string | undefined {
   const slug = verseSlug(verseNumber);
   if (!slug || !hasVersePage(scriptureId, chapterId, slug)) return undefined;
-  return `/og/verse/${scriptureId}/${chapterId}-${slug.replace(/\./g, '-')}.jpg`;
+  return `${SHARE_IMAGE_ORIGIN}/og/verse/${scriptureId}/${chapterId}-${slug.replace(/\./g, '-')}.jpg`;
 }
 
 /**

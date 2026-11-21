@@ -8,17 +8,17 @@
     "briefDefinitionHi": "जो सम्पूर्ण सृष्टि, समाज और अंतरात्मा को धारण करे, संतुलित रखे और आत्म-कल्याण की ओर ले जाए, वह धर्म है।",
     "briefDefinitionEn": "Cosmic law, innate righteous order, sacred duty, and purpose that upholds and sustains individual and universal life.",
     "categoryCounts": {
-      "veda": 271,
-      "upanishad": 50,
-      "itihasa": 5856,
-      "purana": 1502,
-      "smriti": 290,
+      "veda": 278,
+      "upanishad": 51,
+      "itihasa": 7985,
+      "purana": 1965,
+      "smriti": 335,
       "other": 0,
-      "total": 8050,
-      "sutra": 19,
+      "total": 10693,
+      "sutra": 22,
       "vedanta": 26,
-      "shakta": 16,
-      "tantra": 17,
+      "shakta": 10,
+      "tantra": 18,
       "stotra": 3
     },
     "canonicalVerses": [
@@ -81,17 +81,17 @@
     "briefDefinitionHi": "शरीर, मन और बुद्धि से परे जो शाश्वत, अजर, अमर और सर्वव्यापी साक्षी चेतना है, वही आत्मा है।",
     "briefDefinitionEn": "The immortal, unconditioned, pure consciousness and witnessing Self within every living being.",
     "categoryCounts": {
-      "veda": 114,
-      "upanishad": 292,
-      "itihasa": 2269,
-      "purana": 355,
-      "smriti": 40,
+      "veda": 115,
+      "upanishad": 389,
+      "itihasa": 1823,
+      "purana": 393,
+      "smriti": 59,
       "other": 0,
-      "total": 3329,
-      "sutra": 86,
+      "total": 3093,
+      "sutra": 93,
       "vedanta": 154,
       "shakta": 11,
-      "tantra": 8
+      "tantra": 56
     },
     "canonicalVerses": [
       {
@@ -150,18 +150,18 @@
     "briefDefinitionHi": "नाम और रूप से परे, सम्पूर्ण ब्रह्मांड का अधिष्ठान, सच्चिदानन्द (सत्-चित्-आनन्द) स्वरूप परमतत्व ब्रह्म है।",
     "briefDefinitionEn": "The boundless, non-dual, infinite substrate of all existence, pure consciousness and bliss (Sat-Chit-Ananda).",
     "categoryCounts": {
-      "veda": 760,
-      "upanishad": 502,
-      "itihasa": 3324,
-      "purana": 1915,
-      "smriti": 287,
+      "veda": 877,
+      "upanishad": 537,
+      "itihasa": 4511,
+      "purana": 2831,
+      "smriti": 476,
       "other": 0,
-      "total": 7181,
+      "total": 9622,
       "sutra": 132,
       "vedanta": 134,
-      "shakta": 47,
+      "shakta": 36,
       "tantra": 72,
-      "stotra": 8
+      "stotra": 16
     },
     "canonicalVerses": [
       {
@@ -171,6 +171,8 @@
         "verseNum": "2.1.1",
         "sanskrit": "ॐ सह नाववतु । सह नौ भुनक्तु । सह वीर्यं करवावहै । तेजस्विनावधीतमस्तु मा विद्विषावहै । ॐ शान्तिः शान्तिः शान्तिः ॥ ॐ ब्रह्मविदाप्नोति परम् । तदेषाऽभ्युक्ता । सत्यं ज्ञानमनन्तं ब्रह्म । यो वेद निहितं गुहायां परमे व्योमन् । सोऽश्नुते सर्वान् कामान्सह । ब्रह्मणा विपश्चितेति ॥ तस्माद्वा एतस्मादात्मन आकाशः सम्भूतः । आकाशाद्वायुः । वायोरग्निः । अग्नेरापः । अद्भ्यः पृथिवी । पृथिव्या ओषधयः । ओषधीभ्योन्नम् । अन्नात्पुरुषः । स वा एष पुरुषोऽन्नरसमयः । तस्येदमेव शिरः । अयं दक्षिणः पक्षः । अयमुत्तरः पक्षः । अयमात्मा । इदं पुच्छं प्रतिष्ठा । तदप्येष श्लोको भवति ॥ १ ॥ ॥ इति अनुवाकः ॥",
         "transliteration": "oṃ saha nāvavatu | saha nau bhunaktu | saha vīryaṃ karavāvahai | tejasvināvadhītamastu mā vidviṣāvahai | oṃ śāntiḥ śāntiḥ śāntiḥ || oṃ brahmavidāpnoti param | tadeṣā'bhyuktā | satyaṃ jñānamanantaṃ brahma | yo veda nihitaṃ guhāyāṃ parame vyoman | so'śnute sarvān kāmānsaha | brahmaṇā vipaściteti || tasmādvā etasmādātmana ākāśaḥ sambhūtaḥ | ākāśādvāyuḥ | vāyoragniḥ | agnerāpaḥ | adbhyaḥ pṛthivī | pṛthivyā oṣadhayaḥ | oṣadhībhyonnam | annātpuruṣaḥ | sa vā eṣa puruṣo'nnarasamayaḥ | tasyedameva śiraḥ | ayaṃ dakṣiṇaḥ pakṣaḥ | ayamuttaraḥ pakṣaḥ | ayamātmā | idaṃ pucchaṃ pratiṣṭhā | tadapyeṣa śloko bhavati || 1 || || iti anuvākaḥ ||",
+        "hindi": "ॐ। वह (परमात्मा) हम दोनों की साथ-साथ रक्षा करे, हम दोनों का साथ-साथ पालन करे। हम दोनों साथ मिलकर पराक्रम करें। हमारा पढ़ा हुआ तेजस्वी हो। हम आपस में द्वेष न करें। ॐ शान्ति, शान्ति, शान्ति। ब्रह्म को जानने वाला परम को पा लेता है। इस विषय में यह मन्त्र कहा गया है: ब्रह्म सत्य है, ज्ञान है, अनन्त है। जो उसे हृदय की गुफा में, परम आकाश में छिपा हुआ जानता है, वह सर्वज्ञ ब्रह्म के साथ सब कामनाओं को एक साथ भोगता है। उसी इस आत्मा से आकाश उत्पन्न हुआ; आकाश से वायु, वायु से अग्नि, अग्नि से जल, जल से पृथ्वी, पृथ्वी से औषधियाँ (पौधे), औषधियों से अन्न और अन्न से पुरुष। यह पुरुष अन्न के रस से बना है। यही इसका सिर है, यह दाहिना पंख है, यह बायाँ पंख है, यह (धड़) आत्मा है, और यह (नीचे का भाग) पूँछ और आधार है। इसके विषय में भी यह श्लोक है।",
+        "translation": "Om. May he protect us both together; may he nourish us both together. May we work together with vigour. May our study be full of light. May we not hate each other. Om, peace, peace, peace. The knower of Brahman reaches the highest. On this, the verse says: Brahman is truth, knowledge, the infinite. Whoever knows it hidden in the cave of the heart, in the highest space, enjoys all desires at once together with Brahman, the all-knowing. From this very Self space came into being; from space, wind; from wind, fire; from fire, water; from water, earth; from earth, plants; from plants, food; from food, the person. This person is made of the essence of food. This is his head, this his right wing, this his left wing, this his body (the self), and this his tail, the ground he stands on. On this too there is a verse.",
         "contextHi": "सत्यं ज्ञानमनन्तं ब्रह्म",
         "contextEn": "Brahman is Truth, Knowledge, and Infinity"
       },
@@ -218,18 +220,18 @@
     "briefDefinitionHi": "विचार, वाणी और शरीर द्वारा की गई क्रिया और उससे उत्पन्न होने वाला फल व संस्कार का सार्वभौमिक नियम।",
     "briefDefinitionEn": "The universal principle of cause and effect, deliberate action, and the impressions (samskaras) they leave.",
     "categoryCounts": {
-      "veda": 666,
-      "upanishad": 163,
-      "itihasa": 2906,
-      "purana": 924,
-      "smriti": 226,
+      "veda": 1021,
+      "upanishad": 181,
+      "itihasa": 4460,
+      "purana": 1097,
+      "smriti": 272,
       "other": 0,
-      "total": 5100,
-      "sutra": 52,
+      "total": 7278,
+      "sutra": 67,
       "vedanta": 72,
-      "shakta": 14,
-      "tantra": 72,
-      "stotra": 5
+      "shakta": 15,
+      "tantra": 86,
+      "stotra": 7
     },
     "canonicalVerses": [
       {
@@ -279,18 +281,18 @@
     "briefDefinitionHi": "संसार और आत्मा के सत्य का प्रत्यक्ष अपरोक्षानुभूति मूलक बोध, जिससे अज्ञान का संपूर्ण नाश होता है।",
     "briefDefinitionEn": "Direct spiritual realization and insight that dissolves the illusion of duality and ignorance.",
     "categoryCounts": {
-      "veda": 953,
-      "upanishad": 274,
-      "itihasa": 2042,
-      "purana": 715,
-      "smriti": 130,
+      "veda": 667,
+      "upanishad": 314,
+      "itihasa": 2413,
+      "purana": 829,
+      "smriti": 91,
       "other": 0,
-      "total": 4790,
-      "sutra": 70,
+      "total": 4673,
+      "sutra": 95,
       "vedanta": 125,
-      "shakta": 27,
-      "tantra": 447,
-      "stotra": 7
+      "shakta": 26,
+      "tantra": 104,
+      "stotra": 9
     },
     "canonicalVerses": [
       {
@@ -340,18 +342,18 @@
     "briefDefinitionHi": "परमात्मा के प्रति निष्काम, अनन्य और उत्कट प्रेम तथा समर्पण की वह धारा जो साधक को अहं-शून्य कर दे।",
     "briefDefinitionEn": "Selfless, all-encompassing love and loving surrender to the Supreme Divine.",
     "categoryCounts": {
-      "veda": 244,
-      "upanishad": 20,
-      "itihasa": 381,
-      "purana": 719,
+      "veda": 63,
+      "upanishad": 22,
+      "itihasa": 529,
+      "purana": 547,
       "smriti": 5,
       "other": 0,
-      "total": 1422,
-      "sutra": 18,
+      "total": 1283,
+      "sutra": 76,
       "vedanta": 9,
-      "shakta": 15,
-      "tantra": 9,
-      "stotra": 2
+      "shakta": 13,
+      "tantra": 12,
+      "stotra": 7
     },
     "canonicalVerses": [
       {
@@ -401,18 +403,18 @@
     "briefDefinitionHi": "चित्त की वृत्तियों का निरोध तथा सुख-दुःख में समत्व का भाव योग कहलाता है।",
     "briefDefinitionEn": "The state of complete inner harmony, mental stillness, and conscious union with the Divine.",
     "categoryCounts": {
-      "veda": 754,
-      "upanishad": 144,
-      "itihasa": 1211,
-      "purana": 893,
-      "smriti": 90,
+      "veda": 693,
+      "upanishad": 167,
+      "itihasa": 3481,
+      "purana": 1333,
+      "smriti": 185,
       "other": 0,
-      "total": 3717,
-      "sutra": 47,
+      "total": 6355,
+      "sutra": 73,
       "vedanta": 38,
-      "shakta": 29,
-      "tantra": 509,
-      "stotra": 2
+      "shakta": 25,
+      "tantra": 355,
+      "stotra": 5
     },
     "canonicalVerses": [
       {
@@ -462,17 +464,17 @@
     "briefDefinitionHi": "ईश्वर की वह अचिन्त्य शक्ति जो सत्य को छिपाकर विविध रूपात्मक संसार की प्रतीति कराती है।",
     "briefDefinitionEn": "The enigmatic cosmic creative power that veils non-dual reality and projects the empirical world of forms.",
     "categoryCounts": {
-      "veda": 38,
-      "upanishad": 39,
-      "itihasa": 359,
-      "purana": 286,
-      "smriti": 10,
+      "veda": 143,
+      "upanishad": 40,
+      "itihasa": 791,
+      "purana": 427,
+      "smriti": 8,
       "other": 0,
-      "total": 827,
+      "total": 1494,
       "sutra": 7,
       "vedanta": 16,
-      "shakta": 40,
-      "tantra": 27,
+      "shakta": 25,
+      "tantra": 32,
       "stotra": 5
     },
     "canonicalVerses": [
@@ -511,18 +513,18 @@
     "briefDefinitionHi": "इंद्रिय-संयम, सत्य-निष्ठा और आत्म-शोधन के लिए किया जाने वाला पावन संकल्प और तितिक्षा।",
     "briefDefinitionEn": "Purifying spiritual discipline, patient endurance, and intense focused determination that burns impurities.",
     "categoryCounts": {
-      "veda": 468,
-      "upanishad": 126,
-      "itihasa": 3025,
-      "purana": 1108,
-      "smriti": 84,
+      "veda": 446,
+      "upanishad": 138,
+      "itihasa": 6360,
+      "purana": 1777,
+      "smriti": 102,
       "other": 0,
-      "total": 4881,
+      "total": 8899,
       "sutra": 8,
       "vedanta": 15,
       "shakta": 15,
-      "tantra": 30,
-      "stotra": 2
+      "tantra": 34,
+      "stotra": 4
     },
     "canonicalVerses": [
       {
@@ -572,17 +574,18 @@
     "briefDefinitionHi": "शरीर और ब्रह्मांड में संचरण करने वाली वह सूक्ष्म जीवन-ऊर्जा जो श्वास-प्रश्वास और चेतना का संवहन करती है।",
     "briefDefinitionEn": "The primary life-force, vital breath, and bio-energy that sustains physical and subtle existence.",
     "categoryCounts": {
-      "veda": 709,
-      "upanishad": 317,
-      "itihasa": 924,
-      "purana": 490,
-      "smriti": 110,
+      "veda": 656,
+      "upanishad": 370,
+      "itihasa": 3576,
+      "purana": 666,
+      "smriti": 121,
       "other": 0,
-      "total": 3358,
-      "sutra": 29,
+      "total": 5802,
+      "sutra": 37,
       "vedanta": 26,
       "shakta": 19,
-      "tantra": 734
+      "tantra": 330,
+      "stotra": 1
     },
     "canonicalVerses": [
       {
@@ -620,18 +623,18 @@
     "briefDefinitionHi": "अविद्या, काम और कर्म के बंधनों से मुक्त होकर अपने शुद्ध सच्चिदानन्द स्वरूप में नित्य स्थित होना।",
     "briefDefinitionEn": "Supreme liberation from the cycle of rebirth and worldly bondage, realization of oneness with the Absolute.",
     "categoryCounts": {
-      "veda": 121,
-      "upanishad": 125,
-      "itihasa": 585,
-      "purana": 536,
+      "veda": 45,
+      "upanishad": 132,
+      "itihasa": 818,
+      "purana": 517,
       "smriti": 21,
       "other": 0,
-      "total": 1545,
-      "sutra": 11,
+      "total": 1705,
+      "sutra": 20,
       "vedanta": 84,
-      "shakta": 15,
-      "tantra": 45,
-      "stotra": 2
+      "shakta": 14,
+      "tantra": 51,
+      "stotra": 3
     },
     "canonicalVerses": [
       {
@@ -669,13 +672,13 @@
     "briefDefinitionHi": "जो सम्पूर्ण कामनाओं का त्याग कर अपनी आत्मा में ही संतुष्ट रहता है और सुख-दुःख में निर्विकार रहता है।",
     "briefDefinitionEn": "The awakened sage whose intellect is steadfast, untouched by desire, fear, or worldly perturbation.",
     "categoryCounts": {
-      "veda": 4,
+      "veda": 0,
       "upanishad": 0,
-      "itihasa": 4,
+      "itihasa": 11,
       "purana": 0,
       "smriti": 0,
       "other": 0,
-      "total": 10,
+      "total": 13,
       "vedanta": 2
     },
     "canonicalVerses": [
@@ -726,14 +729,16 @@
     "briefDefinitionHi": "व्यक्तिगत फल की लालसा और स्वार्थ से रहित होकर केवल कर्तव्य और लोक-कल्याण की भावना से कर्म करना।",
     "briefDefinitionEn": "Selfless action performed without clinging to outcomes or personal egoic rewards.",
     "categoryCounts": {
-      "veda": 12,
-      "upanishad": 9,
-      "itihasa": 35,
-      "purana": 17,
-      "smriti": 3,
+      "veda": 1,
+      "upanishad": 12,
+      "itihasa": 53,
+      "purana": 40,
+      "smriti": 4,
       "other": 0,
-      "total": 78,
-      "vedanta": 2
+      "total": 116,
+      "sutra": 2,
+      "vedanta": 2,
+      "tantra": 2
     },
     "canonicalVerses": [
       {
@@ -771,17 +776,17 @@
     "briefDefinitionHi": "प्रकृति का वह गुण जो निर्मल, प्रकाशक, शान्तिदायक और ज्ञान को उत्पन्न करने वाला है।",
     "briefDefinitionEn": "The mode of illumination, equilibrium, purity, and clarity among the three gunas.",
     "categoryCounts": {
-      "veda": 17,
-      "upanishad": 25,
-      "itihasa": 632,
-      "purana": 296,
-      "smriti": 37,
+      "veda": 11,
+      "upanishad": 31,
+      "itihasa": 787,
+      "purana": 225,
+      "smriti": 44,
       "other": 0,
-      "total": 1043,
-      "sutra": 7,
+      "total": 1146,
+      "sutra": 13,
       "vedanta": 22,
       "shakta": 1,
-      "tantra": 6
+      "tantra": 12
     },
     "canonicalVerses": [
       {
@@ -819,17 +824,17 @@
     "briefDefinitionHi": "प्रकृति का वह गुण जो तृष्णा, आसक्ति और तीव्र कर्म-प्रवृत्ति को जन्म देता है।",
     "briefDefinitionEn": "The mode of passion, agitation, ambition, and burning attachment that fuels ceaseless activity.",
     "categoryCounts": {
-      "veda": 79,
-      "upanishad": 41,
-      "itihasa": 812,
-      "purana": 238,
-      "smriti": 28,
+      "veda": 34,
+      "upanishad": 43,
+      "itihasa": 595,
+      "purana": 165,
+      "smriti": 25,
       "other": 0,
-      "total": 1245,
-      "sutra": 1,
+      "total": 915,
+      "sutra": 4,
       "vedanta": 37,
       "shakta": 6,
-      "tantra": 2,
+      "tantra": 5,
       "stotra": 1
     },
     "canonicalVerses": [
@@ -869,16 +874,16 @@
     "briefDefinitionEn": "The mode of darkness, inertia, delusion, and dullness that obscures perception and understanding.",
     "categoryCounts": {
       "veda": 210,
-      "upanishad": 64,
-      "itihasa": 912,
-      "purana": 181,
-      "smriti": 21,
+      "upanishad": 66,
+      "itihasa": 752,
+      "purana": 355,
+      "smriti": 37,
       "other": 0,
-      "total": 1441,
-      "sutra": 2,
+      "total": 1479,
+      "sutra": 3,
       "vedanta": 31,
-      "shakta": 11,
-      "tantra": 9
+      "shakta": 9,
+      "tantra": 16
     },
     "canonicalVerses": [
       {
@@ -916,17 +921,18 @@
     "briefDefinitionHi": "वैदिक दृष्टि में सम्पूर्ण सृष्टि को संचालित करने वाला शाश्वत प्राकृतिक और नैतिक नियम।",
     "briefDefinitionEn": "The supreme Vedic principle of eternal cosmic harmony, natural law, and inviolable rhythm governing the universe.",
     "categoryCounts": {
-      "veda": 629,
-      "upanishad": 228,
-      "itihasa": 1680,
-      "purana": 454,
-      "smriti": 99,
+      "veda": 1364,
+      "upanishad": 261,
+      "itihasa": 1532,
+      "purana": 325,
+      "smriti": 138,
       "other": 0,
-      "total": 3137,
-      "sutra": 8,
+      "total": 3705,
+      "sutra": 13,
       "vedanta": 12,
       "shakta": 18,
-      "tantra": 9
+      "tantra": 41,
+      "stotra": 1
     },
     "canonicalVerses": [
       {

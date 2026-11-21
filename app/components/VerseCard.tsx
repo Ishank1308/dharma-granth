@@ -34,7 +34,7 @@ import { ContentLabelBadge } from './ContentLabels';
 import { ModernContextBody, ReflectionBody, parseModernContext } from './ModernContextBlock';
 import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
 import { detectChandas } from '@/lib/chandas-detector';
-import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';

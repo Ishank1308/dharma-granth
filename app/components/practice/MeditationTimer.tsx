@@ -18,7 +18,7 @@ import { useLocalStorage } from '@/lib/useLocalStorage';
 import { ToolCard, localISODate } from './shared';
 import { DiyaPullCord } from './DiyaPullCord';
 import { triggerHaptic } from '@/lib/haptics';
-import { strikeTempleBell, startMeditationDrone, stopMeditationDrone } from '@/lib/sacred-soundscape';
+import { strikeTempleBell, startMeditationDrone, stopMeditationDrone } from '@/lib/soundscape-lazy';
 import { updateSadhanaSession } from '@/lib/prana-capsule-store';
 
 interface MeditationStats {

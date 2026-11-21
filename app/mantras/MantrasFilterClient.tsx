@@ -16,7 +16,7 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import { SITE_URL } from '@/lib/jsonld';
-import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 import { NavagrahaMandalam } from './NavagrahaMandalam';
 
 type CategoryKey = 'all' | 'vedic' | 'shanti' | 'stotra';

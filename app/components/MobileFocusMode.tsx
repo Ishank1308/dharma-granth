@@ -27,7 +27,7 @@ import {
   setCurrentVerseContext,
   subscribeSoundscape,
   type SoundscapeState,
-} from '@/lib/sacred-soundscape';
+} from '@/lib/soundscape-lazy';
 import { splitVerseLines, toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { useReaderSettings } from '@/lib/useReaderSettings';
@@ -364,11 +364,10 @@ export function MobileFocusMode({
                     startSoundscape('recitation');
                   }
                 }}
-                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold border transition ${
-                  recitationActive
-                    ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
-                    : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
-                }`}
+                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold border transition ${recitationActive
+                  ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
+                  : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
+                  }`}
                 title={recitationActive ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें (Listen to Recitation)'}
                 aria-pressed={recitationActive}
                 aria-label="श्लोक उच्चारण"
@@ -385,11 +384,10 @@ export function MobileFocusMode({
                 triggerTactileFeedback('celestial', 'omBowl');
                 toggleTanpura();
               }}
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold border transition ${
-                tanpuraActive
-                  ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
-                  : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
-              }`}
+              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold border transition ${tanpuraActive
+                ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
+                : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
+                }`}
               title={tanpuraActive ? 'तन्पूरा सक्रिय (Tanpura Active ॐ)' : 'तन्पूरा ध्यान नाद चालू करें (Tanpura Ambience)'}
               aria-pressed={tanpuraActive}
             >
@@ -401,11 +399,10 @@ export function MobileFocusMode({
             <button
               type="button"
               onClick={() => onToggleBookmark(currentVerse)}
-              className={`inline-flex h-8 w-8 items-center justify-center rounded-full border transition ${
-                isBookmarked
-                  ? 'border-saffron-400 bg-saffron-500/20 text-saffron-300'
-                  : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
-              }`}
+              className={`inline-flex h-8 w-8 items-center justify-center rounded-full border transition ${isBookmarked
+                ? 'border-saffron-400 bg-saffron-500/20 text-saffron-300'
+                : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
+                }`}
               aria-label={isBookmarked ? 'बुकमार्क हटाएं' : 'बुकमार्क करें'}
               title={isBookmarked ? 'बुकमार्क हटाएं' : 'बुकमार्क करें'}
             >
@@ -421,9 +418,8 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'sm')}
-                className={`rounded-full px-2 py-0.5 transition ${
-                  sanskritSize === 'sm' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
-                }`}
+                className={`rounded-full px-2 py-0.5 transition ${sanskritSize === 'sm' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                  }`}
                 title="छोटे अक्षर"
                 aria-pressed={sanskritSize === 'sm'}
               >
@@ -432,9 +428,8 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'md')}
-                className={`rounded-full px-2 py-0.5 transition ${
-                  sanskritSize === 'md' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
-                }`}
+                className={`rounded-full px-2 py-0.5 transition ${sanskritSize === 'md' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                  }`}
                 title="सामान्य अक्षर"
                 aria-pressed={sanskritSize === 'md'}
               >
@@ -443,9 +438,8 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'lg')}
-                className={`rounded-full px-2 py-0.5 transition ${
-                  sanskritSize === 'lg' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
-                }`}
+                className={`rounded-full px-2 py-0.5 transition ${sanskritSize === 'lg' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                  }`}
                 title="बड़े अक्षर"
                 aria-pressed={sanskritSize === 'lg'}
               >
@@ -454,9 +448,8 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'xl')}
-                className={`rounded-full px-2 py-0.5 transition ${
-                  sanskritSize === 'xl' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
-                }`}
+                className={`rounded-full px-2 py-0.5 transition ${sanskritSize === 'xl' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                  }`}
                 title="विशाल अक्षर"
                 aria-pressed={sanskritSize === 'xl'}
               >
@@ -469,9 +462,8 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => setShowMenu((o) => !o)}
-                className={`inline-flex h-8 w-8 items-center justify-center rounded-full border transition ${
-                  showMenu ? 'border-saffron-400 bg-saffron-500/20 text-saffron-300' : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
-                }`}
+                className={`inline-flex h-8 w-8 items-center justify-center rounded-full border transition ${showMenu ? 'border-saffron-400 bg-saffron-500/20 text-saffron-300' : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
+                  }`}
                 aria-label="दृश्य विकल्प"
                 title="विकल्प"
                 aria-expanded={showMenu}
@@ -626,11 +618,10 @@ export function MobileFocusMode({
                         return (
                           <p
                             key={i}
-                            className={`rounded-xl px-3 py-1 transition-all duration-300 ${
-                              isLineSpeaking
-                                ? 'bg-gradient-to-r from-saffron-500/30 via-amber-500/25 to-saffron-500/30 text-amber-200 font-bold shadow-md ring-1 ring-saffron-400/70 scale-[1.02]'
-                                : ''
-                            }`}
+                            className={`rounded-xl px-3 py-1 transition-all duration-300 ${isLineSpeaking
+                              ? 'bg-gradient-to-r from-saffron-500/30 via-amber-500/25 to-saffron-500/30 text-amber-200 font-bold shadow-md ring-1 ring-saffron-400/70 scale-[1.02]'
+                              : ''
+                              }`}
                           >
                             {line}
                           </p>
@@ -655,9 +646,8 @@ export function MobileFocusMode({
 
                 {/* ── Meanings ── */}
                 <div
-                  className={`rounded-2xl border border-stone-800/80 bg-stone-900/60 p-5 space-y-4 transition-all duration-300 ${
-                    ''
-                  }`}
+                  className={`rounded-2xl border border-stone-800/80 bg-stone-900/60 p-5 space-y-4 transition-all duration-300 ${''
+                    }`}
                 >
                   {showHindi && currentVerse.hindi && (
                     <div>
@@ -726,11 +716,10 @@ export function MobileFocusMode({
             type="button"
             onClick={prev}
             disabled={currentIndex === 0}
-            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition ${
-              currentIndex === 0
-                ? 'border-stone-800 text-stone-600 cursor-not-allowed opacity-50'
-                : 'border-stone-800 bg-stone-900 text-stone-200 hover:border-stone-700 hover:bg-stone-850 active:scale-95'
-            }`}
+            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition ${currentIndex === 0
+              ? 'border-stone-800 text-stone-600 cursor-not-allowed opacity-50'
+              : 'border-stone-800 bg-stone-900 text-stone-200 hover:border-stone-700 hover:bg-stone-850 active:scale-95'
+              }`}
             aria-label="पिछला श्लोक"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -741,11 +730,10 @@ export function MobileFocusMode({
             type="button"
             onClick={next}
             disabled={currentIndex === verses.length - 1}
-            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition ${
-              currentIndex === verses.length - 1
-                ? 'border-stone-800 text-stone-600 cursor-not-allowed opacity-50'
-                : 'border-stone-800 bg-stone-900 text-stone-200 hover:border-stone-700 hover:bg-stone-850 active:scale-95'
-            }`}
+            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition ${currentIndex === verses.length - 1
+              ? 'border-stone-800 text-stone-600 cursor-not-allowed opacity-50'
+              : 'border-stone-800 bg-stone-900 text-stone-200 hover:border-stone-700 hover:bg-stone-850 active:scale-95'
+              }`}
             aria-label="अगला श्लोक"
           >
             <span className="hidden md:inline">अगला</span>

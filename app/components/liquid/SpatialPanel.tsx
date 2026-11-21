@@ -1,9 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { parseWordMeanings } from '@/lib/word-gloss';
-import { SPRING } from './motion';
 import type { BhashyaSource, ReaderMode } from './SpatialShloka';
 
 /** The panel under a verse in spatial focus (see SpatialShloka), in its own chunk. */
@@ -29,16 +27,14 @@ function AnvayaGrid({ wordMeaning }: { wordMeaning?: string }) {
       </p>
       <ul className="flex flex-wrap gap-2">
         {words.map((w, i) => (
-          <motion.li
+          <li
             key={`${w.pada}-${i}`}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ ...SPRING, delay: Math.min(i * 0.025, 0.4) }}
-            className="anvaya-pill rounded-2xl border px-3 py-2"
+            style={{ animationDelay: `${Math.min(i * 25, 400)}ms` }}
+            className="anvaya-pill chrome-rise rounded-2xl border px-3 py-2"
           >
             <span className="block font-serif text-subhead italic text-dharma-text">{w.pada}</span>
             <span className="block text-xs text-dharma-muted">{w.meaning}</span>
-          </motion.li>
+          </li>
         ))}
       </ul>
     </section>
@@ -48,7 +44,7 @@ function AnvayaGrid({ wordMeaning }: { wordMeaning?: string }) {
 /** Switches between the commentaries this verse carries, with a liquid indicator. */
 function BhashyaSwitcher({ sources }: { sources: BhashyaSource[] }) {
   const [active, setActive] = useState(sources[0]?.id);
-  const group = useId();
+  const _group = useId();
   if (sources.length === 0) {
     return (
       <p className="text-sm text-dharma-muted">
@@ -71,7 +67,7 @@ function BhashyaSwitcher({ sources }: { sources: BhashyaSource[] }) {
             className="relative min-h-[36px] rounded-full px-3.5 text-xs font-medium text-dharma-muted transition-colors aria-selected:text-dharma-text"
           >
             {s.id === current.id && (
-              <motion.span layoutId={`bhashya-pill-${group}`} transition={SPRING} className="bhashya-active absolute inset-0 rounded-full" />
+              <span className="bhashya-active absolute inset-0 rounded-full bg-dharma-border/40" />
             )}
             <span className="relative">
               <span lang="hi" className="font-devanagari">{s.labelHi}</span> · <span lang="en">{s.labelEn}</span>
@@ -79,28 +75,23 @@ function BhashyaSwitcher({ sources }: { sources: BhashyaSource[] }) {
           </button>
         ))}
       </div>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={current.id}
-          role="tabpanel"
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={SPRING}
-        >
-          {current.draft && (
-            <p className="mb-2 text-[11px] font-medium text-violet-700/80 dark:text-violet-300/80">
-              संपादकीय प्रारूप · समीक्षा बाकी · Editor draft, review pending
-            </p>
-          )}
-          <p
-            lang={current.lang}
-            className={`whitespace-pre-line leading-[1.85] text-dharma-text ${current.lang === 'hi' ? 'font-devanagari text-base' : 'font-serif text-body'}`}
-          >
-            {current.text}
+      <div
+        key={current.id}
+        role="tabpanel"
+        className="chrome-fade"
+      >
+        {current.draft && (
+          <p className="mb-2 text-[11px] font-medium text-violet-700/80 dark:text-violet-300/80">
+            संपादकीय प्रारूप · समीक्षा बाकी · Editor draft, review pending
           </p>
-        </motion.div>
-      </AnimatePresence>
+        )}
+        <p
+          lang={current.lang}
+          className={`whitespace-pre-line leading-[1.85] text-dharma-text ${current.lang === 'hi' ? 'font-devanagari text-base' : 'font-serif text-body'}`}
+        >
+          {current.text}
+        </p>
+      </div>
     </section>
   );
 }

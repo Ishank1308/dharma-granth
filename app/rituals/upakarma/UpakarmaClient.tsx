@@ -28,7 +28,7 @@ import {
   type UpakarmaStep,
   type UpakarmaMantra,
 } from '@/data/upakarma-data';
-import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 
 export function UpakarmaClient() {
   const [activeStepIndex, setActiveStepIndex] = useState<number>(0);

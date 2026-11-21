@@ -103,39 +103,69 @@ jobs:
             ];
             for (const target of targets) {
               const url = target.url;
-              try {
-                const response = await fetch(url, {
-                  redirect: 'follow',
-                  signal: AbortSignal.timeout(15000),
-                  headers: {
-                    // Match the default Node fetch identity used by the production RSC parity verifier.
-                    // Cloudflare rejects the self-identified health-bot UA even while browser traffic is healthy.
-                    'Accept': 'text/html,application/xhtml+xml',
-                  },
-                });
-                const cfRay = response.headers.get('cf-ray') || 'not supplied';
-                const server = response.headers.get('server') || 'not supplied';
-                const contentType = response.headers.get('content-type') || 'not supplied';
-                report.push(`- ${url}: HTTP ${response.status}; server=${server}; content-type=${contentType}; cf-ray=${cfRay}`);
-                if (!response.ok) {
-                  failures.push(`${target.public ? 'Public website' : 'Pages alias'} HTTP ${response.status}: ${url} (cf-ray: ${cfRay})`);
-                  // Capture only a bounded text excerpt of the error response.
-                  // Cloudflare challenge markers help diagnose bot/WAF blocks
-                  // without logging cookies, authorization, or page contents.
-                  if (response.status === 403) {
-                    const body = (await response.text()).slice(0, 12000);
-                    const signals = ['Just a moment', 'Attention Required', 'cf-chl', 'error code: 1020', 'Access denied'];
-                    const hits = signals.filter(marker => body.toLowerCase().includes(marker.toLowerCase()));
-                    report.push(`  - 403 markers: ${hits.length ? hits.join(', ') : 'none of the known challenge markers'}`);
+              let attempt = 0;
+              const maxAttempts = target.public ? 2 : 1;
+              let response = null;
+              let firstRay = null;
+              let retried = false;
+
+              while (attempt < maxAttempts) {
+                attempt++;
+                try {
+                  response = await fetch(url, {
+                    redirect: 'follow',
+                    signal: AbortSignal.timeout(15000),
+                    headers: {
+                      // Match the default Node fetch identity used by the production RSC parity verifier.
+                      // Cloudflare rejects the self-identified health-bot UA even while browser traffic is healthy.
+                      'Accept': 'text/html,application/xhtml+xml',
+                    },
+                  });
+                  const cfRay = response.headers.get('cf-ray') || 'not supplied';
+                  const server = response.headers.get('server') || 'not supplied';
+                  const contentType = response.headers.get('content-type') || 'not supplied';
+
+                  if (response.status === 403 && attempt < maxAttempts) {
+                    firstRay = cfRay;
+                    retried = true;
+                    await response.body?.cancel();
+                    // Intermittent Azure-to-Cloudflare edge 403 backoff (Issue #323)
+                    await new Promise(r => setTimeout(r, 5000));
+                    continue;
+                  }
+
+                  if (retried && response.ok) {
+                    report.push(`- ${url}: HTTP ${response.status} (resolved after retry; initial cf-ray: ${firstRay}, retry cf-ray: ${cfRay}); server=${server}; content-type=${contentType}`);
+                  } else {
+                    report.push(`- ${url}: HTTP ${response.status}; server=${server}; content-type=${contentType}; cf-ray=${cfRay}`);
+                  }
+
+                  if (!response.ok) {
+                    failures.push(`${target.public ? 'Public website' : 'Pages alias'} HTTP ${response.status}: ${url} (cf-ray: ${cfRay}${retried ? `; initial cf-ray: ${firstRay}` : ''})`);
+                    // Capture only a bounded text excerpt of the error response.
+                    // Cloudflare challenge markers help diagnose bot/WAF blocks
+                    // without logging cookies, authorization, or page contents.
+                    if (response.status === 403) {
+                      const body = (await response.text()).slice(0, 12000);
+                      const signals = ['Just a moment', 'Attention Required', 'cf-chl', 'error code: 1020', 'Access denied'];
+                      const hits = signals.filter(marker => body.toLowerCase().includes(marker.toLowerCase()));
+                      report.push(`  - 403 markers: ${hits.length ? hits.join(', ') : 'none of the known challenge markers'}`);
+                    } else {
+                      await response.body?.cancel();
+                    }
                   } else {
                     await response.body?.cancel();
                   }
-                } else {
-                  await response.body?.cancel();
+                  break;
+                } catch (error) {
+                  if (attempt < maxAttempts) {
+                    await new Promise(r => setTimeout(r, 5000));
+                    continue;
+                  }
+                  report.push(`- ${url}: request failed (${String(error)})`);
+                  failures.push(`Website unreachable: ${url} (${String(error)})`);
+                  break;
                 }
-              } catch (error) {
-                report.push(`- ${url}: request failed (${String(error)})`);
-                failures.push(`Website unreachable: ${url} (${String(error)})`);
               }
             }
 

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import type { SacredMantra } from '@/data/mantras';
 import { Copy, Check, MessageCircle, Volume2 } from 'lucide-react';
-import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 
 export function MantraDetailClient({ mantra, pageUrl }: { mantra: SacredMantra; pageUrl: string }) {
   const [copied, setCopied] = useState(false);

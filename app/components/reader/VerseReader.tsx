@@ -57,7 +57,8 @@ import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from './MobileSwipeIndicator';
 import { MobileReadingProgress } from './MobileReadingProgress';
 const MobileVerseCarousel = dynamic(() => import('./MobileVerseCarousel').then((m) => m.MobileVerseCarousel), { ssr: false });
-import { loadSoundscape, withSoundscape } from '@/lib/soundscape-lazy';
+import { setCurrentVerseContext, withSoundscape } from '@/lib/soundscape-lazy';
+import { useEverTrue } from '@/lib/use-ever-true';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
 import { logActivity } from '@/lib/activity-log';
@@ -146,6 +147,11 @@ export function VerseReader(props: VerseReaderProps) {
   /* ── Dialog state ── */
   const [dialog, setDialog] = useState<null | 'settings' | 'chapters' | 'verses' | 'embed' | 'site'>(null);
   const close = useCallback(() => setDialog(null), []);
+  const settingsLoaded = useEverTrue(dialog === 'settings');
+  const siteDialogLoaded = useEverTrue(dialog === 'site');
+  const chaptersDialogLoaded = useEverTrue(dialog === 'chapters');
+  const versesDialogLoaded = useEverTrue(dialog === 'verses');
+  const embedLoaded = useEverTrue(dialog === 'embed');
 
   /* ── Toast ── */
   const [toast, setToast] = useState<string | null>(null);
@@ -165,14 +171,13 @@ export function VerseReader(props: VerseReaderProps) {
 
   /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
   useEffect(() => {
-    let live = true;
-    void loadSoundscape().then((m) => {
-      if (live) m.setCurrentVerseContext(verse.sanskrit, `${scriptureTitle} ${formatVerseRef(scriptureId, chapterId, verse.number)}`);
-    });
-    return () => {
-      live = false;
-    };
-  }, [verse.sanskrit, scriptureId, scriptureTitle, chapterId, verse.number]);
+    setCurrentVerseContext(
+      verse.sanskrit,
+      `${scriptureTitle} ${formatVerseRef(scriptureId, chapterId, verse.number)}`,
+      verse.hindi,
+      verse.translation,
+    );
+  }, [verse.sanskrit, verse.hindi, verse.translation, scriptureId, scriptureTitle, chapterId, verse.number]);
 
   /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
   useEffect(() => {
@@ -225,6 +230,7 @@ export function VerseReader(props: VerseReaderProps) {
 
   /* ── Sacred Share Card Modal ── */
   const [showShareModal, setShowShareModal] = useState(false);
+  const shareLoaded = useEverTrue(showShareModal);
   const shareData: SacredShareData = useMemo(
     () => ({
       title: scriptureTitle,
@@ -762,6 +768,7 @@ export function VerseReader(props: VerseReaderProps) {
         </div>
 
         {/* Dialogs */}
+        {settingsLoaded && (
         <ReaderSettingsPanel
           open={dialog === 'settings'}
           onClose={close}
@@ -774,7 +781,9 @@ export function VerseReader(props: VerseReaderProps) {
             }
           }}
           reset={reset} reducedMotion={reducedMotion} theme={theme} setTheme={setTheme} />
+        )}
 
+        {siteDialogLoaded && (
         <ReaderDialog open={dialog === 'site'} onClose={close} title="Menu" titleHi="मेनू" variant="modal">
           <nav aria-label="Site pages">
             <ul className="space-y-1">
@@ -824,7 +833,9 @@ export function VerseReader(props: VerseReaderProps) {
             </div>
           </div>
         </ReaderDialog>
+        )}
 
+        {chaptersDialogLoaded && (
         <ReaderDialog open={dialog === 'chapters'} onClose={close} title="Chapters" titleHi="अध्याय" variant="modal">
           <ul className="space-y-1">
             {chapters.map((c) => (
@@ -845,7 +856,9 @@ export function VerseReader(props: VerseReaderProps) {
             ))}
           </ul>
         </ReaderDialog>
+        )}
 
+        {versesDialogLoaded && (
         <ReaderDialog open={dialog === 'verses'} onClose={() => { close(); setPick(''); }} title="Go to verse" titleHi="श्लोक चुनें" variant="modal">
           <form
             onSubmit={(e) => {
@@ -882,7 +895,9 @@ export function VerseReader(props: VerseReaderProps) {
           </ul>
           {visibleVerses.length === 0 && <p className="mt-3 text-sm text-dharma-muted">No verse starts with “{pick}”.</p>}
         </ReaderDialog>
+        )}
 
+        {embedLoaded && (
         <EmbedVerseDialog
           open={dialog === 'embed'}
           onClose={close}
@@ -893,13 +908,16 @@ export function VerseReader(props: VerseReaderProps) {
           english={verse.translation}
           onNotice={say}
         />
+        )}
 
         {/* Sacred Share Card Modal (9:16 Story / 1:1 Post / WhatsApp Card) */}
+        {shareLoaded && (
         <SacredShareModal
           isOpen={showShareModal}
           onClose={() => setShowShareModal(false)}
           data={shareData}
         />
+        )}
 
         {/* Mobile Tactile Verse Carousel Drawer */}
         {carouselOpen && <MobileVerseCarousel

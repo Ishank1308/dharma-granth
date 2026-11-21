@@ -151,3 +151,31 @@ archives). Test the production build locally, with `_headers` applied:
 npm run build
 npm run serve:dist
 ```
+
+The build warns from 19,000 files, and its log lists how many files are
+pages, page payloads, verse share images and everything else.
+
+## Verse share images
+
+Every verse page has its own share image (`/og/verse/<scripture>/<chapter>-<verse>.jpg`,
+drawn by `npm run og:verses`). With a page and a page payload per verse as
+well, that is three files per verse page, and the export reached 19,922 of
+Cloudflare's 20,000 files per deployment in November 2026.
+
+The limit is per deployment, so the images go up as a second deployment of the
+same project: its `share` branch, served at
+`https://share.dharma-granth.pages.dev`. Nothing new to create or pay for.
+
+- `NEXT_PUBLIC_SHARE_IMAGE_ORIGIN` (set in `ci.yml` and `deploy-cloudflare.yml`)
+  is where `verseOgPath()` in `lib/verse-paths.ts` points `og:image`. Unset, as
+  in a local build, the images are linked on the site itself.
+- `deploy-cloudflare.yml` moves `dist/og/verse` out of the export, deploys it
+  with `--branch=share`, checks that one image answers, and only then deploys
+  the site. It also adds a redirect so addresses shared before the split
+  (`dharmagranth.dev/og/verse/...`) still reach the image.
+- Pull request previews link to the live images and do not upload their own.
+- `scripts/prune-export.mjs` counts the two deployments separately, each
+  against 20,000.
+
+To go back to one deployment, remove `NEXT_PUBLIC_SHARE_IMAGE_ORIGIN` from both
+workflows and the share-image steps from `deploy-cloudflare.yml` and `ci.yml`.
