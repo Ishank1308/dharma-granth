@@ -20,8 +20,10 @@ import {
 } from 'lucide-react';
 import { SOLAR_VRATAS, type SolarVrata } from '@/data/solar-vratas-data';
 import { speakSanskritTerm } from '@/lib/soundscape-lazy';
+import { useTodayPanchang } from '@/lib/useTodayPanchang';
 
 interface SolarClientProps {
+  /** Times for the day the site was built: shown only until the browser has today's. */
   initialSolarTimes: {
     sunrise: string;
     sunset: string;
@@ -31,6 +33,7 @@ interface SolarClientProps {
 }
 
 export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
+  const solarTimes = useTodayPanchang()?.solarTimes ?? initialSolarTimes;
   const [selectedVrataId, setSelectedVrataId] = useState<string>('all');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [playingKey, setPlayingKey] = useState<string | null>(null);
@@ -89,7 +92,7 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
               <span>सूर्योदय (Sunrise)</span>
             </div>
             <p className="font-serif text-xl sm:text-2xl font-extrabold text-dharma-text">
-              {initialSolarTimes.sunrise}
+              {solarTimes.sunrise}
             </p>
             <p className="text-[11px] text-dharma-muted">Udaya Arghya window</p>
           </div>
@@ -100,7 +103,7 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
               <span>सूर्यास्त (Sunset)</span>
             </div>
             <p className="font-serif text-xl sm:text-2xl font-extrabold text-dharma-text">
-              {initialSolarTimes.sunset}
+              {solarTimes.sunset}
             </p>
             <p className="text-[11px] text-dharma-muted">Sandhya Arghya window</p>
           </div>
@@ -111,7 +114,7 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
               <span>मध्याह्न (Solar Noon)</span>
             </div>
             <p className="font-serif text-xl sm:text-2xl font-extrabold text-dharma-text">
-              {initialSolarTimes.solarNoon}
+              {solarTimes.solarNoon}
             </p>
             <p className="text-[11px] text-dharma-muted">Maximum solar altitude</p>
           </div>
@@ -122,7 +125,7 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
               <span>दिनमान (Day Length)</span>
             </div>
             <p className="font-serif text-xl sm:text-2xl font-extrabold text-dharma-text">
-              {initialSolarTimes.dayLength}
+              {solarTimes.dayLength}
             </p>
             <p className="text-[11px] text-dharma-muted">Surya active radiation</p>
           </div>

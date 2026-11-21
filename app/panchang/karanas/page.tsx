@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { getAllKaranas, calculateEducationalPanchang, PRESET_LOCATIONS, todayForLocation, type KaranaMeta } from '@/lib/panchang';
+import { getAllKaranas, type KaranaMeta } from '@/lib/panchang';
+import { TodayBadge, TodayCard } from '@/app/panchang/components/TodayMarkers';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Sparkles, Moon, Sun, ArrowRight, BookOpen, Layers, ShieldCheck, Compass, HelpCircle, AlertCircle } from 'lucide-react';
@@ -111,23 +112,22 @@ const JSON_LD = {
 function KaranaCard({
   karana,
   index,
-  isToday,
   variant,
 }: {
   karana: KaranaMeta;
   index: number;
-  isToday: boolean;
   variant: 'chara' | 'sthira';
 }) {
   const isChara = variant === 'chara';
+  // Today's karana is marked in the browser: this page is built once per deploy.
+  const todayValues = [karana.name];
   return (
-    <Link
+    <TodayCard
+      limb="karana"
+      values={todayValues}
       href={`/panchang/karanas/${karana.slug}/`}
-      className={`group card-sacred sheen-sweep relative p-5 rounded-2xl border flex flex-col justify-between ${
-        isToday
-          ? 'border-saffron-500 bg-saffron-500/[0.04] shadow-md ring-2 ring-saffron-500/50 animate-prana-pulse'
-          : `bg-surface border-dharma-border/80 ${isChara ? 'hover:border-amber-500/50' : 'hover:border-indigo-500/50'}`
-      }`}
+      className="group card-sacred sheen-sweep relative p-5 rounded-2xl border flex flex-col justify-between"
+      otherClassName={`bg-surface border-dharma-border/80 ${isChara ? 'hover:border-amber-500/50' : 'hover:border-indigo-500/50'}`}
     >
       <div>
         <div className="flex items-center justify-between gap-2 mb-3 flex-wrap">
@@ -135,12 +135,7 @@ function KaranaCard({
             <span className="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-dharma-bg text-dharma-muted border border-dharma-border/60">
               {isChara ? 'Chara' : 'Fixed'} #{index + 1}
             </span>
-            {isToday && (
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-saffron-500/15 border border-saffron-500/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200">
-                <span className="size-1.5 rounded-full bg-saffron-600 animate-pulse" />
-                आज का करण · Active Today
-              </span>
-            )}
+            <TodayBadge limb="karana" values={todayValues} />
           </div>
           <span
             className={`text-xs font-sans px-2.5 py-0.5 rounded-full font-medium border ${
@@ -189,15 +184,13 @@ function KaranaCard({
           <ArrowRight className="w-3.5 h-3.5" />
         </span>
       </div>
-    </Link>
+    </TodayCard>
   );
 }
 
 export default function KaranasPage() {
   const charaKaranas = allKaranas.filter((k) => k.nature.startsWith('Chara'));
   const sthiraKaranas = allKaranas.filter((k) => k.nature.startsWith('Sthira'));
-  const todayPanchang = calculateEducationalPanchang(todayForLocation(PRESET_LOCATIONS[0]), PRESET_LOCATIONS[0]);
-  const todayKaranaName = todayPanchang.karana.name;
 
   return (
     <main className="apple-scope panchang-scope panchang-limb min-h-screen bg-dharma-bg text-dharma-text font-serif relative overflow-hidden" data-limb="karanas">
@@ -308,7 +301,6 @@ export default function KaranasPage() {
                 key={k.slug}
                 karana={k}
                 index={idx}
-                isToday={k.name === todayKaranaName}
                 variant="chara"
               />
             ))}
@@ -335,7 +327,6 @@ export default function KaranasPage() {
                 key={k.slug}
                 karana={k}
                 index={idx}
-                isToday={k.name === todayKaranaName}
                 variant="sthira"
               />
             ))}
