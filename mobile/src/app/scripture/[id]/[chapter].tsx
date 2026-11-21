@@ -6,12 +6,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useRecitation } from '@/audio/player';
 import { recitedVerses } from '@/audio/recitation';
+import { ChapterSummaryCard } from '@/components/chapter-summary';
 import { ReadingSheet } from '@/components/reading-sheet';
 import { Backdrop, Eyebrow, FloatingBar, glass, IconButton, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
 import { VerseJumpSheet } from '@/components/verse-jump-sheet';
 import { getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
+import { chapterSummary, summaryCollection } from '@/content/study';
 import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
@@ -197,6 +199,9 @@ export default function ChapterScreen() {
   }
 
   const total = chapter.verses.length;
+  // The chapter's summary (सार), where the website has one: the Gita and the Yoga Sutra.
+  const summaries = summaryCollection(id);
+  const summary = chapterSummary(id, chapterNo);
   const shownVerse = numbers[Math.min(visibleIndex, Math.max(total - 1, 0))] ?? '';
 
   return (
@@ -271,6 +276,17 @@ export default function ChapterScreen() {
                 <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
                   {t(S.recitationCredit)}
                 </Text>
+              ) : null}
+              {summaries && summary ? (
+                <ChapterSummaryCard
+                  scriptureId={id}
+                  collection={summaries}
+                  summary={summary}
+                  onJumpToVerse={(verse) => {
+                    const index = numbers.indexOf(String(verse));
+                    if (index >= 0) jumpTo(index);
+                  }}
+                />
               ) : null}
             </View>
           }

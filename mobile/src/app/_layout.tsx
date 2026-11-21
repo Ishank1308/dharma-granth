@@ -72,6 +72,7 @@ function Navigator() {
           <Stack.Screen name="journal/edit" options={{ title: '' }} />
           <Stack.Screen name="journal/collections" options={{ title: '' }} />
           <Stack.Screen name="share" options={{ title: '', presentation: 'modal' }} />
+          <Stack.Screen name="summary/[id]" options={{ title: '' }} />
         </Stack>
     </ThemeProvider>
   );
