@@ -2,7 +2,8 @@
 //
 //   node scripts/build-content.mjs               rebuild everything
 //   node scripts/build-content.mjs --if-missing  skip when the generated files already exist
-//   node scripts/build-content.mjs --max-mb=4    bundle books up to 4 MB of chapter data (default 2.6)
+//   node scripts/build-content.mjs --max-mb=4    bundle books up to 4 MB of chapter data (default 2.6;
+//                                                ALWAYS_BUNDLE below lists larger books that ship anyway)
 //
 // Source of truth is the same published data the website reads:
 //   ../public/data/scriptures-full/<id>/manifest.json + ch-N.json   (chapter shards, preferred)
@@ -30,6 +31,9 @@ const args = process.argv.slice(2);
 const ifMissing = args.includes('--if-missing');
 const maxMbArg = args.find((a) => a.startsWith('--max-mb='));
 const MAX_BYTES = Math.round(Number(maxMbArg ? maxMbArg.split('=')[1] : 2.6) * 1024 * 1024);
+
+/** Bundled whatever their size: texts readers ask for offline even though they are larger than the cut-off. */
+const ALWAYS_BUNDLE = new Set(['ramcharitmanas']);
 
 /** Alias ids redirect to a canonical book on the website (data/scripture-aliases.ts); never list them twice. */
 const ALIASES = new Set(['yogavasistha']);
@@ -138,7 +142,7 @@ for (const id of [...ids].sort()) {
   } else if (hasFull) {
     size = statSync(fullPath).size;
   }
-  const bundled = size > 0 && size <= MAX_BYTES;
+  const bundled = size > 0 && (size <= MAX_BYTES || ALWAYS_BUNDLE.has(id));
 
   if (bundled) {
     const book = { id, chapters: [] };
