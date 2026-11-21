@@ -34,6 +34,10 @@ env:
   NEXT_PUBLIC_BASE_PATH: ""
   NEXT_PUBLIC_SITE_URL: https://dharmagranth.dev
   CLOUDFLARE_PROJECT: dharma-granth
+  # Verse share images are uploaded as the project's `share` branch deployment and
+  # linked from here (docs/deploy-cloudflare.md, "Verse share images"). Keep the
+  # same value in ci.yml: the export CI builds is the one that goes live.
+  NEXT_PUBLIC_SHARE_IMAGE_ORIGIN: https://share.dharma-granth.pages.dev
 
 jobs:
   build-deploy:
@@ -237,6 +241,64 @@ jobs:
       - name: Unpack the CI export
         if: steps.prebuilt.outputs.run-id != ''
         run: zstd -d -q -c dist.tar.zst | tar -xf - && rm dist.tar.zst
+
+      # One image per verse page would take the site past Cloudflare's 20,000
+      # files per deployment, so they go up as their own deployment: the `share`
+      # branch of the same project, with its own 20,000 files. Pages link to them
+      # at NEXT_PUBLIC_SHARE_IMAGE_ORIGIN; addresses shared before the split
+      # (dharmagranth.dev/og/verse/...) redirect there.
+      - name: Split verse share images from the site export
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p share-images/og
+          mv dist/og/verse share-images/og/verse
+          printf '/*\n  Cache-Control: public, max-age=86400\n  X-Content-Type-Options: nosniff\n' > share-images/_headers
+          printf '\n/og/verse/* %s/og/verse/:splat 301\n' "$NEXT_PUBLIC_SHARE_IMAGE_ORIGIN" >> dist/_redirects
+          sample="$(cd share-images && find og/verse -name '*.jpg' | sort | head -n 1)"
+          echo "SHARE_IMAGE_SAMPLE=$sample" >> "$GITHUB_ENV"
+          echo "Share images: $(find share-images/og -type f | wc -l). Site files: $(find dist -type f | wc -l)."
+
+      # Runs inside share-images/, which has no functions/ folder, so this
+      # deployment is images only. Unchanged images are not uploaded again.
+      - name: Deploy verse share images
+        id: share
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.2"
+          workingDirectory: share-images
+          command: pages deploy . --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=share --commit-dirty=true
+
+      - name: Retry deploy of verse share images
+        if: steps.share.outcome == 'failure'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.2"
+          workingDirectory: share-images
+          command: pages deploy . --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=share --commit-dirty=true
+
+      # The site must not go live pointing at images that are not there.
+      - name: Check a verse share image is being served
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="${NEXT_PUBLIC_SHARE_IMAGE_ORIGIN}/${SHARE_IMAGE_SAMPLE}"
+          for attempt in 1 2 3 4 5 6; do
+            type="$(curl --silent --show-error --max-time 20 --output /dev/null --write-out '%{http_code} %{content_type}' "$url" || true)"
+            echo "Attempt ${attempt}: ${url} -> ${type}"
+            if [[ "$type" == "200 image/jpeg"* ]]; then exit 0; fi
+            sleep 10
+          done
+          echo "::error::Verse share images are not being served at ${NEXT_PUBLIC_SHARE_IMAGE_ORIGIN}; the site was not deployed."
+          exit 1
 
       - name: Deploy to Cloudflare Pages
         id: deploy

@@ -10,7 +10,7 @@
 //     and kept for the few giant chapters that still load client-side.
 // The copies in public/ stay: the build and the data scripts read them.
 import { appendFileSync, existsSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join, resolve, sep } from 'node:path';
 
 const DIST = resolve(process.cwd(), process.env.NEXT_DIST_DIR || 'dist');
 const DATA = join(DIST, 'data/scriptures-full');
@@ -78,10 +78,21 @@ if (existsSync(PINTEREST_DIR)) {
 // Cloudflare Pages limits (free plan): 20,000 files per deployment and
 // 25 MiB per file. Fail the build here rather than at upload.
 const MAX_FILES = 20_000;
+// Warn while there is still room to act. A new page costs two files (index.html and its
+// index.txt payload), and a verse page a third (its share image), so 1,000 files is about
+// 330 to 500 pages.
+const WARN_FILES = 19_000;
 const MAX_FILE_BYTES = 25 * 1024 * 1024;
 let files = 0;
 let total = 0;
 const oversized = [];
+// What the files are, so the build log shows which kind is growing.
+const kinds = { 'Pages (index.html)': 0, 'Page payloads (index.txt)': 0, 'Verse share images (og/verse)': 0, 'Everything else': 0 };
+const VERSE_IMAGES = join(DIST, 'og', 'verse') + sep;
+// With NEXT_PUBLIC_SHARE_IMAGE_ORIGIN set, the deploy uploads the verse share images as their own
+// deployment (the Pages project's `share` branch), so they count toward that deployment's limit
+// and not the site's. See docs/deploy-cloudflare.md, "Verse share images".
+const SHARE_IMAGES_SPLIT = Boolean(process.env.NEXT_PUBLIC_SHARE_IMAGE_ORIGIN);
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
@@ -92,6 +103,10 @@ const oversized = [];
     }
     files++;
     total += st.size;
+    if (name === 'index.html') kinds['Pages (index.html)']++;
+    else if (name === 'index.txt') kinds['Page payloads (index.txt)']++;
+    else if (path.startsWith(VERSE_IMAGES)) kinds['Verse share images (og/verse)']++;
+    else kinds['Everything else']++;
     if (st.size > MAX_FILE_BYTES) oversized.push(`${path.slice(DIST.length + 1)} (${(st.size / 1024 / 1024).toFixed(1)} MB)`);
   }
 })(DIST);
@@ -100,6 +115,10 @@ console.log(
   `✓ Export pruned: freed ${(freed / 1024 / 1024).toFixed(0)} MB, kept ${kept} shard(s) for client-loaded chapters; ` +
     `dist is ${(total / 1024 / 1024).toFixed(0)} MB in ${files} files.`,
 );
+console.log(`  ${Object.entries(kinds).map(([kind, count]) => `${kind}: ${count}`).join(' · ')}`);
+const shareImages = kinds['Verse share images (og/verse)'];
+const siteFiles = SHARE_IMAGES_SPLIT ? files - shareImages : files;
+if (SHARE_IMAGES_SPLIT) console.log(`  The site deployment is ${siteFiles} files; the ${shareImages} verse share images deploy separately.`);
 
 if (process.env.GITHUB_STEP_SUMMARY) {
   try {
@@ -108,18 +127,39 @@ if (process.env.GITHUB_STEP_SUMMARY) {
       '',
       '| Metric | Value | Limit | Headroom |',
       '|---|---|---|---|',
-      `| **Total Files** | \`${files.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | **\`${(MAX_FILES - files).toLocaleString()} files remaining\`** |`,
+      `| **${SHARE_IMAGES_SPLIT ? 'Site Files' : 'Total Files'}** | \`${siteFiles.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | **\`${(MAX_FILES - siteFiles).toLocaleString()} files remaining\`** |`,
+      ...(SHARE_IMAGES_SPLIT
+        ? [`| **Share Images (own deployment)** | \`${shareImages.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | \`${(MAX_FILES - shareImages).toLocaleString()} files remaining\` |`]
+        : []),
       `| **Export Size** | \`${(total / 1024 / 1024 / 1024).toFixed(2)} GB\` (\`${(total / 1024 / 1024).toFixed(0)} MB\`) | — | — |`,
       `| **Pruned / Freed** | \`${(freed / 1024 / 1024).toFixed(0)} MB\` | — | — |`,
+      '',
+      '| Kind of file | Count |',
+      '|---|---|',
+      ...Object.entries(kinds).map(([kind, count]) => `| ${kind} | \`${count.toLocaleString()}\` |`),
       '',
     ].join('\n');
     appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary, 'utf8');
   } catch {}
 }
 let ok = true;
-if (files > MAX_FILES) {
-  console.error(`✗ ${files} files — Cloudflare Pages allows ${MAX_FILES} per deployment.`);
-  ok = false;
+// Each deployment has its own limit: the site, and the share images when they are split off.
+const deployments = SHARE_IMAGES_SPLIT
+  ? [
+      ['The site', siteFiles],
+      ['The verse share images', shareImages],
+    ]
+  : [['The export', files]];
+for (const [what, count] of deployments) {
+  if (count > MAX_FILES) {
+    console.error(`✗ ${what}: ${count} files — Cloudflare Pages allows ${MAX_FILES} per deployment.`);
+    ok = false;
+  } else if (count >= WARN_FILES) {
+    const message = `${what}: ${count} files; Cloudflare Pages allows ${MAX_FILES} per deployment, so ${MAX_FILES - count} are left.`;
+    // An annotation on the workflow run, where it is seen without opening the log.
+    if (process.env.GITHUB_ACTIONS) console.log(`::warning title=Close to the Cloudflare Pages file limit::${message}`);
+    else console.warn(`⚠ ${message}`);
+  }
 }
 if (oversized.length > 0) {
   console.error(`✗ ${oversized.length} file(s) over Cloudflare Pages' 25 MiB limit: ${oversized.slice(0, 5).join(', ')}`);
