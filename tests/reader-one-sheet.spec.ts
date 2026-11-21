@@ -129,38 +129,45 @@ test('the first Listen press after a page load speaks the shloka, then the meani
   await expect(sheet.getByRole('group', { name: /Read aloud/ }).getByRole('radio', { name: /हिन्दी/ })).toBeChecked();
 });
 
-test('a pause pressed while the audio is still loading keeps the shloka silent', async ({ page }) => {
-  const heard = await standInVoice(page);
-  await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto(gitaChapter);
-  await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
-  await page.waitForLoadState('networkidle');
+// The service worker serves /_next/static/ cache-first, and page.route() does not see requests
+// a service worker answers. Once it has claimed the page, the late audio engine below would
+// arrive instantly (or never be counted), so this test runs without it.
+test.describe('with the audio engine arriving late', () => {
+  test.use({ serviceWorkers: 'block' });
 
-  // From here on, code the page fetches arrives late: the audio engine loads on the first press.
-  let late = 0;
-  let inFlight = 0;
-  await page.route('**/_next/static/chunks/**', async (route) => {
-    late++;
-    inFlight++;
-    await new Promise((resolve) => setTimeout(resolve, 2500));
-    await route.continue().finally(() => inFlight--);
+  test('a pause pressed while the audio is still loading keeps the shloka silent', async ({ page }) => {
+    const heard = await standInVoice(page);
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(gitaChapter);
+    await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+    await page.waitForLoadState('networkidle');
+
+    // From here on, code the page fetches arrives late: the audio engine loads on the first press.
+    let late = 0;
+    let inFlight = 0;
+    await page.route('**/_next/static/chunks/**', async (route) => {
+      late++;
+      inFlight++;
+      await new Promise((resolve) => setTimeout(resolve, 2500));
+      await route.continue().finally(() => inFlight--);
+    });
+
+    const dock = page.locator('[aria-label*="Reader dock"]');
+    await dock.getByRole('button', { name: /Listen/ }).click();
+    await dock.getByRole('button', { name: /Pause chanting/ }).click();
+    await expect(dock.getByRole('button', { name: /Listen/ })).toHaveAttribute('aria-pressed', 'false');
+
+    // Once the engine has arrived and run, nothing was spoken and the dock still says stopped.
+    await expect.poll(() => late > 0 && inFlight === 0, { timeout: 15_000 }).toBe(true);
+    await page.waitForTimeout(1000);
+    expect((await heard()).lines).toEqual([]);
+    await expect(dock.getByRole('button', { name: /Listen/ })).toHaveAttribute('aria-pressed', 'false');
+
+    // The engine works: the next press speaks.
+    await page.unroute('**/_next/static/chunks/**');
+    await dock.getByRole('button', { name: /Listen/ }).click();
+    await expect.poll(async () => (await heard()).lines.length).toBeGreaterThan(0);
   });
-
-  const dock = page.locator('[aria-label*="Reader dock"]');
-  await dock.getByRole('button', { name: /Listen/ }).click();
-  await dock.getByRole('button', { name: /Pause chanting/ }).click();
-  await expect(dock.getByRole('button', { name: /Listen/ })).toHaveAttribute('aria-pressed', 'false');
-
-  // Once the engine has arrived and run, nothing was spoken and the dock still says stopped.
-  await expect.poll(() => late > 0 && inFlight === 0, { timeout: 15_000 }).toBe(true);
-  await page.waitForTimeout(1000);
-  expect((await heard()).lines).toEqual([]);
-  await expect(dock.getByRole('button', { name: /Listen/ })).toHaveAttribute('aria-pressed', 'false');
-
-  // The engine works: the next press speaks.
-  await page.unroute('**/_next/static/chunks/**');
-  await dock.getByRole('button', { name: /Listen/ }).click();
-  await expect.poll(async () => (await heard()).lines.length).toBeGreaterThan(0);
 });
 
 test('the reading depth choices fit the sheet on a 320px phone', async ({ page }) => {
