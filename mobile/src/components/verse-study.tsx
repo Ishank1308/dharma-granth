@@ -78,39 +78,24 @@ export function PillButton({ msg, icon, onPress, palette, color }: { msg: Msg; i
   );
 }
 
-/** पदच्छेद एवं शब्दार्थ: one chip per word, "pada · meaning"; prose that is not a gloss shows as it is. */
+/** पदच्छेद एवं शब्दार्थ: small, inline and wrapping like a line of text ("pada · meaning; pada · meaning"), not a showcase of boxes. */
 export function WordByWord({ glosses, raw, palette, cap }: { glosses: WordGloss[]; raw: string; palette: Palette; cap: number }) {
   const hues = huesFor(palette);
+  const small: TextStyle = { fontSize: TYPE.caption, lineHeight: TYPE.caption * 1.7 };
   return (
-    <View
-      style={[
-        styles.words,
-        {
-          borderColor: palette.dark ? 'rgba(251,191,36,0.22)' : 'rgba(217,119,6,0.25)',
-          backgroundColor: palette.dark ? 'rgba(251,191,36,0.06)' : 'rgba(251,191,36,0.07)',
-        },
-      ]}>
-      <View style={styles.wordsHead}>
-        <Ionicons name="document-text-outline" size={12} color={hues.gold} />
-        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: hues.gold, fontSize: TYPE.caption, fontWeight: '700' }}>{S.wordByWord.hi}</Text>
-        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption - 1 }}>· {S.wordByWord.en}</Text>
-      </View>
-      {glosses.length > 0 ? (
-        <View style={styles.chips}>
-          {glosses.map((g, i) => (
-            <View key={i} style={[styles.chip, { borderColor: palette.dark ? 'rgba(251,191,36,0.25)' : 'rgba(217,119,6,0.22)' }]}>
-              <Text selectable maxFontSizeMultiplier={cap} style={{ fontSize: TYPE.footnote }}>
-                <Text style={{ color: palette.text, fontWeight: '700' }}>{g.pada}</Text>
-                <Text style={{ color: palette.muted }}>{`  ·  ${g.meaning}`}</Text>
+    <View style={styles.words}>
+      <Text selectable maxFontSizeMultiplier={cap} style={[small, { color: palette.muted }]}>
+        <Text style={{ color: hues.gold, fontWeight: '700' }}>{`${S.wordByWord.hi}: `}</Text>
+        {glosses.length > 0
+          ? glosses.map((g, i) => (
+              <Text key={i}>
+                <Text style={{ color: palette.textSecondary, fontWeight: '600' }}>{g.pada}</Text>
+                {` ${g.meaning}`}
+                {i < glosses.length - 1 ? '; ' : ''}
               </Text>
-            </View>
-          ))}
-        </View>
-      ) : (
-        <Text selectable maxFontSizeMultiplier={cap} style={{ color: palette.text, fontSize: TYPE.footnote, lineHeight: TYPE.footnote * 1.6 }}>
-          {raw}
-        </Text>
-      )}
+            ))
+          : raw}
+      </Text>
     </View>
   );
 }
@@ -213,10 +198,7 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
   },
-  words: { borderWidth: StyleSheet.hairlineWidth, borderRadius: 12, padding: SPACE.sm + 2, marginTop: SPACE.md },
-  wordsHead: { flexDirection: 'row', alignItems: 'center', columnGap: 4, marginBottom: SPACE.sm },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
-  chip: { borderWidth: StyleSheet.hairlineWidth, borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3, maxWidth: '100%' },
+  words: { marginTop: SPACE.md },
   li: { flexDirection: 'row', columnGap: 8 },
   reflection: { borderLeftWidth: 2, paddingLeft: SPACE.md },
 });
