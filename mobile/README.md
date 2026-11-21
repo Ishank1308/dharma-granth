@@ -119,4 +119,6 @@ draws it (`src/widget/task-handler.tsx`), so it works while the app is closed.
 - Tapping opens `dharmagranth://scripture/<id>/<chapter>?verse=<n>` in the reader, with the library behind it.
 - Android redraws it hourly, so the verse changes within an hour of midnight; the app also redraws it when it
   comes to the front or the language or theme changes. Settings → Daily verse has a button to place it.
-- No extra permissions. `assets/images/widget-preview.png` is the picker preview.
+- No runtime permission prompts. The library schedules its redraws with AndroidX WorkManager, which adds the
+  install-time `WAKE_LOCK` and `ACCESS_NETWORK_STATE`; `FOREGROUND_SERVICE` is blocked in `app.json` because
+  nothing starts a foreground service. `assets/images/widget-preview.png` is the picker preview.
