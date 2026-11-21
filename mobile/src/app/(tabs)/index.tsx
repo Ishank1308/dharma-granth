@@ -11,6 +11,8 @@ import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
+import { PressableScale } from '@/motion/pressable-scale';
+import { Reveal } from '@/motion/reveal';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
 import { barClearance, fontCap, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
@@ -32,7 +34,7 @@ function DailyVerseCard() {
   if (!verse) return null;
   const lines = sanskritLines(verse.sanskrit);
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       accessibilityLabel={t(S.verseOfTheDayA11y)}
       onPress={() =>
@@ -41,7 +43,7 @@ function DailyVerseCard() {
           params: { id: pick.id, chapter: String(pick.chapter), verse: String(verse.number) },
         })
       }
-      style={({ pressed }) => pressed && { transform: [{ scale: 0.985 }] }}>
+      haptic>
       <Card style={{ borderRadius: RADIUS.panel - 2 }}>
         <View style={styles.cardHead}>
           <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
@@ -67,7 +69,7 @@ function DailyVerseCard() {
           ))}
         </View>
       </Card>
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -82,11 +84,11 @@ function ContinueCard() {
   const cover = coverFor(entry.id, entry.category);
   const progress = (idx + 1) / entry.chapters.length;
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       accessibilityLabel={t(S.continueReadingA11y(entry.title, ch.number))}
       onPress={() => router.push({ pathname: '/scripture/[id]/[chapter]', params: { id: entry.id, chapter: String(ch.number) } })}
-      style={({ pressed }) => pressed && { transform: [{ scale: 0.985 }] }}>
+      haptic>
       <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
           <CoverTile cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} size={TOUCH} />
@@ -112,7 +114,7 @@ function ContinueCard() {
           <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(progress * 100))}%` }]} />
         </View>
       </Card>
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -157,8 +159,12 @@ export default function LibraryScreen() {
                 {lang === 'hi' ? S.appName.en : S.appName.hi}
               </Text>
             </LargeHeader>
-            <ContinueCard />
-            <DailyVerseCard />
+            <Reveal index={0}>
+              <ContinueCard />
+            </Reveal>
+            <Reveal index={1}>
+              <DailyVerseCard />
+            </Reveal>
             <View style={[styles.search, glass(palette, true)]}>
               <Ionicons name="search" size={18} color={palette.muted} />
               <TextInput

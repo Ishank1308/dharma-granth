@@ -2,6 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ComponentProps, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, useWindowDimensions, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 
+import { hapticSelect } from '@/motion/haptics';
 import { useAppState } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 import { BAR_HEIGHT, fontCap, RADIUS, separator, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, type Palette } from '@/theme/themes';
@@ -181,7 +182,11 @@ export function Chip({
   const { palette } = useAppState();
   return (
     <Pressable
-      onPress={onPress}
+      onPress={() => {
+        // A tick as the choice changes, like a segmented control; plain buttons stay silent.
+        if (active === false) hapticSelect();
+        onPress();
+      }}
       accessibilityRole="button"
       accessibilityState={{ selected: !!active }}
       accessibilityLabel={accessibilityLabel ?? label}
