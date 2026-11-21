@@ -31,6 +31,11 @@ export interface Palette {
   accentGradient: [string, string];
   /** Text on the accent gradient. */
   onAccent: string;
+  /**
+   * Light effects (Settings → Visual effects, or a budget phone on Automatic): glass() and accentFill()
+   * skip blurred shadows and gradients. Set by the app state on the palette it hands out, never in THEMES.
+   */
+  lite?: boolean;
 }
 
 export const THEMES: Record<ThemeName, Palette> = {

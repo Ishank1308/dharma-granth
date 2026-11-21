@@ -133,6 +133,14 @@ export const S = {
   showHindi: { en: 'Hindi meaning', hi: 'हिन्दी अर्थ' },
   showEnglish: { en: 'English translation', hi: 'अंग्रेज़ी अनुवाद' },
   showNotes: { en: 'Open notes by default', hi: 'टिप्पणी पहले से खुली रखें' },
+  effects: { en: 'Visual effects', hi: 'दृश्य प्रभाव' },
+  effectsAuto: { en: 'Automatic', hi: 'अपने-आप' },
+  effectsFull: { en: 'Full glass', hi: 'पूरा ग्लास' },
+  effectsLight: { en: 'Light', hi: 'हल्का' },
+  effectsNote: (lightNow: boolean) => ({
+    en: `Light keeps the colours but drops the shadows and sheen on cards, so long lists scroll smoothly on budget phones. Automatic picks it on older or entry-level phones and when animations are turned off. In use now: ${lightNow ? 'Light' : 'Full glass'}.`,
+    hi: `हल्का प्रभाव रंग वैसे ही रखता है, पर कार्ड की छाया और चमक हटा देता है, ताकि सस्ते फ़ोन पर भी लम्बी सूचियाँ आराम से स्क्रॉल हों। 'अपने-आप' पुराने या कम क्षमता वाले फ़ोन पर, और ऐनिमेशन बंद होने पर, इसे चुन लेता है। अभी: ${lightNow ? 'हल्का' : 'पूरा ग्लास'}।`,
+  }),
   sanskritAlwaysFull: { en: 'The Sanskrit text is always shown in full.', hi: 'संस्कृत मूल पाठ हमेशा पूरा दिखाया जाता है।' },
   backup: { en: 'Backup', hi: 'बैकअप' },
   backupBody: (saved: number) => ({
