@@ -22,6 +22,8 @@ export function toAsciiDigits(value: number | string): string {
  */
 export function verseLines(sanskrit: string): string[] {
   const cleaned = sanskrit.replace(/[\s|।॥0-9०-९.]+$/, '').trim();
+  const glued = splitGluedSpeaker(cleaned);
+  if (glued) return [glued.speaker, ...verseLines(glued.verse)];
   const byNewline = cleaned.split(/\n+/).map((l) => l.trim()).filter(Boolean);
   if (byNewline.length > 1) return byNewline;
 
@@ -36,6 +38,27 @@ export function verseLines(sanskrit: string): string[] {
   }
   if (current.trim()) lines.push(current.trim());
   return lines.length ? lines : [cleaned];
+}
+
+// Speaker phrase at the very start, run straight into the next word: "अर्जुन उवाचनष्टो मोहः".
+// उवाच is a finite verb and never compounds, so a consonant or an independent vowel directly
+// after it means the source row lost its line break. A sandhi that continues with a vowel
+// sign (उवाचेदम्) does not match. Joined forms other than भगवानुवाच are left out on purpose:
+// "भूगोवाचस्त्विडा" (Agni Purana 360.8) is भू-गो-वाचः, not a speaker.
+const GLUED_SPEAKER = /^((?:श्री\s*)?(?:[\u0900-\u097F]+\s+उवाच|भगवानुवाच))(?=[\u0904-\u0939\u0958-\u095F])/u;
+
+/**
+ * A few source rows hold the speaker line and the verse as one unbroken string
+ * ("अर्जुन उवाचनष्टो मोहः स्मृतिर्लब्धा…"). Returns the two parts so every reader can set
+ * the speaker on its own line; null when the text has no such join. The stored text is
+ * not changed.
+ */
+export function splitGluedSpeaker(sanskrit: string): { speaker: string; verse: string } | null {
+  const text = sanskrit.trimStart();
+  const match = GLUED_SPEAKER.exec(text);
+  if (!match || !isSpeakerLine(match[1])) return null;
+  const verse = text.slice(match[1].length).trim();
+  return verse ? { speaker: match[1].trim(), verse } : null;
 }
 
 /**
@@ -153,6 +176,8 @@ export function splitVerseLines(sanskrit?: string): string[] {
   if (!sanskrit || typeof sanskrit !== 'string') return [];
   const cleaned = sanskrit.replace(/[\s|।॥0-9०-९.]+$/, '').trim();
   if (!cleaned) return [];
+  const glued = splitGluedSpeaker(cleaned);
+  if (glued) return [glued.speaker, ...splitVerseLines(glued.verse)];
   const byNewline = cleaned.split(/\n+/).map((l) => l.trim()).filter(Boolean);
   if (byNewline.length > 1) return byNewline;
 

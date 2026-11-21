@@ -13,6 +13,8 @@
  * - गद्य मन्त्र (Prose) · Upanishadic / Vedic prose
  */
 
+import { splitGluedSpeaker } from './verse-format';
+
 export interface ChandasInfo {
   name: string;
   nameEn: string;
@@ -60,12 +62,54 @@ export function countSanskritAksharas(text: string): number {
   return iastVowels ? iastVowels.length : 0;
 }
 
+// A speaker line ends in उवाच / ऊचुः / ऊचतुः, standing alone (सञ्जय उवाच) or joined
+// by sandhi (श्रीभगवानुवाच, ब्रह्मोवाच).
+const SPEAKER_LINE_END = /(?:उवाच|ुवाच|ोवाच|ऊचुः|ऊचु:|ूचुः|ूचु:|ऊचतुः|ूचतुः)$/;
+const SPEAKER_LINE_MAX_SYLLABLES = 10;
+const SPEAKER_LINE_MAX_WORDS = 3;
+
+/**
+ * Remove speaker lines ("सञ्जय उवाच", "श्री भगवानुवाच", "ऋषय ऊचुः") from a verse.
+ * They introduce who is speaking and are not part of the metre, so counting them
+ * turns a 32-syllable अनुष्टुप् into a false 38-syllable बृहती.
+ *
+ * A segment is treated as a speaker line only when it stands on its own (set off by
+ * a line break or a danda), is short, and at least one other segment remains. A
+ * phrase inside the verse such as "वाक्यमुवाच मधुसूदनः" is never touched.
+ */
+export function stripSpeakerLines(sanskritText: string): string {
+  if (!sanskritText) return sanskritText;
+  const glued = splitGluedSpeaker(sanskritText);
+  if (glued) return stripSpeakerLines(glued.verse);
+  const parts = sanskritText.split(/([।॥\n]+)/);
+  const segments: number[] = [];
+  for (let i = 0; i < parts.length; i += 2) {
+    if (parts[i].trim()) segments.push(i);
+  }
+  if (segments.length < 2) return sanskritText;
+
+  let removed = 0;
+  for (const i of segments) {
+    if (removed >= segments.length - 1) break;
+    const core = parts[i].trim().replace(/[\s0-9०-९.:|]+$/, '');
+    if (!SPEAKER_LINE_END.test(core)) continue;
+    // Narrative prose ("तस्मै स होवाच", "तं प्रत्युवाच"), not an attribution: same rule as isSpeakerLine.
+    if (/(?:प्रत्युवाच|होवाच)$/.test(core)) continue;
+    if (core.split(/\s+/).length > SPEAKER_LINE_MAX_WORDS) continue;
+    if (countSanskritAksharas(core) > SPEAKER_LINE_MAX_SYLLABLES) continue;
+    parts[i] = '';
+    removed++;
+  }
+  return removed ? parts.join('') : sanskritText;
+}
+
 /**
  * Detect metrical classification (Chandas) based on Sanskrit shloka text.
  */
-export function detectChandas(sanskritText?: string): ChandasInfo | null {
-  if (!sanskritText || sanskritText.trim().length === 0) return null;
+export function detectChandas(rawSanskritText?: string): ChandasInfo | null {
+  if (!rawSanskritText || rawSanskritText.trim().length === 0) return null;
 
+  const sanskritText = stripSpeakerLines(rawSanskritText);
   const totalSyllables = countSanskritAksharas(sanskritText);
   if (totalSyllables < 12) return null;
 
