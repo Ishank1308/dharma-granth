@@ -361,7 +361,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
       <section aria-labelledby="mobile-concepts-heading" className="mb-5 lg:hidden">
         <div className="mb-3">
           <h2 id="mobile-concepts-heading" className="font-serif text-lg font-bold text-dharma-text">
-            अवधारणाएँ · Browse concepts
+            <span lang="hi" data-bi="hi">अवधारणाएँ</span><span data-bi="sep"> · </span><span data-bi="en">Browse concepts</span>
           </h2>
           <p className="mt-1 text-sm text-dharma-muted">
             Expand a concept to read its summary and see its connections.
@@ -397,7 +397,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                       {connections.length > 0 && (
                         <div>
                           <h3 className="text-xs font-bold uppercase tracking-wide text-dharma-muted">
-                            Related concepts · संबंधित अवधारणाएँ
+                            <span data-bi="en">Related concepts</span><span data-bi="sep"> · </span><span lang="hi" data-bi="hi">संबंधित अवधारणाएँ</span>
                           </h3>
                           <ul className="mt-2 flex flex-wrap gap-2">
                             {connections.map((connection) => (

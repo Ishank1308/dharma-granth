@@ -25,6 +25,10 @@
 /fonts/*
   ! Cache-Control
   Cache-Control: public, max-age=31536000, immutable
+# Android app downloads (scripts/build-app-data.mjs): part names carry a content hash.
+/app-data/v1/parts/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable
 # This Next export has no files here. The rules keep a later framework from inheriting the HTML cache.
 /assets/*
   ! Cache-Control

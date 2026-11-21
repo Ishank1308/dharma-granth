@@ -88,7 +88,7 @@ export function RecommendationCards() {
 
   return (
     <section aria-labelledby="rec-h" className="rounded-2xl border border-dharma-border bg-dharma-card p-5">
-      <h2 id="rec-h" className="font-serif text-xl font-bold text-dharma-text">Suggested next <span lang="hi" className="font-devanagari text-base font-normal text-dharma-muted">· आगे क्या पढ़ें</span></h2>
+      <h2 id="rec-h" className="font-serif text-xl font-bold text-dharma-text"><span data-bi="en">Suggested next</span> <span data-bi="sep" className="font-devanagari text-base font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-base font-normal text-dharma-muted">आगे क्या पढ़ें</span></h2>
 
       {prefs.off ? (
         <p className="mt-2 text-sm text-dharma-muted">Suggestions are turned off. Nothing is being used to suggest anything.</p>

@@ -40,7 +40,14 @@ export function RecitationProvider({ children }: { children: ReactNode }) {
   const [queue, setQueue] = useState<Queue | null>(null);
   const queueRef = useRef<Queue | null>(null);
   const [wanted, setWanted] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [failed, setFailedState] = useState(false);
+  // Mirrors of state for callbacks, so toggleVerse stays one stable function and verse cards
+  // (memoised) do not all re-render when the playing verse changes.
+  const failedRef = useRef(false);
+  const setFailed = useCallback((v: boolean) => {
+    failedRef.current = v;
+    setFailedState(v);
+  }, []);
   const startedAt = useRef(0);
 
   useEffect(() => {
@@ -60,7 +67,7 @@ export function RecitationProvider({ children }: { children: ReactNode }) {
       player.replace(recitationSource(recitationKey(q.id, q.chapter, q.verses[q.index])));
       player.play();
     },
-    [player],
+    [player, setFailed],
   );
 
   // Move on (or stop) when a verse ends. A listener, not an effect on status, so a
@@ -90,12 +97,13 @@ export function RecitationProvider({ children }: { children: ReactNode }) {
       }
     }, 15000);
     return () => clearTimeout(t);
-  }, [wanted, status.isLoaded, player, currentKey]);
+  }, [wanted, status.isLoaded, player, currentKey, setFailed]);
 
   const toggleVerse = useCallback(
     (id: string, chapter: number, verse: string) => {
+      const q = queueRef.current;
       const key = recitationKey(id, chapter, verse);
-      if (key === currentKey && !failed) {
+      if (q && key === recitationKey(q.id, q.chapter, q.verses[q.index]) && !failedRef.current) {
         if (player.playing) {
           setWanted(false);
           player.pause();
@@ -107,7 +115,7 @@ export function RecitationProvider({ children }: { children: ReactNode }) {
       }
       load({ id, chapter, verses: [verse], index: 0 });
     },
-    [currentKey, failed, player, load],
+    [player, load],
   );
 
   const playChapter = useCallback(
@@ -140,7 +148,7 @@ export function RecitationProvider({ children }: { children: ReactNode }) {
     queueRef.current = null;
     setQueue(null);
     setFailed(false);
-  }, [player]);
+  }, [player, setFailed]);
 
   const phase: RecitationPhase = !queue
     ? 'idle'

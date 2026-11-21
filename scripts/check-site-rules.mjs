@@ -84,6 +84,7 @@ for (const file of ['public/_headers', join(DIST.slice(ROOT.length + 1), '_heade
   expect('/*', 'public, max-age=0, must-revalidate');
   expect('/_next/static/*', 'public, max-age=31536000, immutable');
   expect('/fonts/*', 'public, max-age=31536000, immutable');
+  expect('/app-data/v1/parts/*', 'public, max-age=31536000, immutable');
   expect('/search/*', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800');
   // Rule 6: the RSC payloads repeat each page's text without a canonical, so they must stay out of the index.
   for (const pattern of ['/index.txt', '/*/index.txt']) {

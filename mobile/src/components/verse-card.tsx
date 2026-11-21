@@ -3,6 +3,7 @@ import { memo, useState } from 'react';
 import { ActivityIndicator, Pressable, Share, StyleSheet, Text, View } from 'react-native';
 
 import type { RecitationPhase } from '@/audio/player';
+
 import type { Verse } from '@/content/types';
 import {
   cleanVerseField,
@@ -13,9 +14,11 @@ import {
   toDevanagari,
   verseMarkNumber,
 } from '@/lib/verse-format';
+import { S, type Lang, type Msg } from '@/i18n';
 import type { Settings } from '@/lib/backup';
-import { SPACE, TYPE, type Palette } from '@/theme/themes';
-import { Card, glass } from './ui';
+import type { Cover } from '@/theme/covers';
+import { fontCap, huesFor, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
+import { Card, coverFill } from './ui';
 
 interface Props {
   scriptureId: string;
@@ -24,18 +27,25 @@ interface Props {
   verse: Verse;
   palette: Palette;
   settings: Settings;
+  /** Interface language, for labels and screen-reader text. The verse text itself is never translated. */
+  lang: Lang;
+  /** The book's cover colours (src/theme/covers.ts): the verse number capsule and the card's top edge wear them. */
+  cover: Cover;
   bookmarked: boolean;
-  onToggleBookmark: () => void;
-  /** Present only when this verse has recitation audio. 'idle' when it is not the verse that is loaded. */
+  /** Called with the verse number; keep it stable (useCallback) so memo skips unchanged cards. */
+  onToggleBookmark: (verse: string) => void;
+  /** Set only when this verse has recitation audio: 'idle' unless it is the verse that is loaded. */
   audio?: RecitationPhase;
-  onToggleAudio?: () => void;
+  /** Called with the verse number; keep it stable like onToggleBookmark. */
+  onToggleAudio?: (verse: string) => void;
 }
 
-function Label({ en, hi, palette, extra }: { en: string; hi: string; palette: Palette; extra?: string }) {
+/** A study layer's label, led by a dot in the layer's own hue, as on the website. */
+function Label({ msg, lang, palette, extra, hue }: { msg: Msg; lang: Lang; palette: Palette; extra?: string; hue?: string }) {
   return (
     <View style={styles.labelRow}>
-      <Text style={[styles.label, { color: palette.accent }]}>{en}</Text>
-      <Text style={[styles.label, { color: palette.muted }]}>{hi}</Text>
+      {hue ? <View style={[styles.layerDot, { backgroundColor: hue }]} /> : null}
+      <Text style={[styles.label, { color: hue ?? palette.accent }, lang === 'hi' && styles.labelHi]}>{msg[lang]}</Text>
       {extra ? <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{extra}</Text> : null}
     </View>
   );
@@ -48,13 +58,21 @@ function VerseCardImpl({
   verse,
   palette,
   settings,
+  lang,
+  cover,
   bookmarked,
   onToggleBookmark,
   audio,
   onToggleAudio,
 }: Props) {
-  const [notesOpen, setNotesOpen] = useState(settings.showNotes);
+  const hues = huesFor(palette);
+  const t = (m: Msg) => m[lang];
+  // A tap on Notes overrides the "Open notes by default" setting until that setting changes again.
+  const [override, setOverride] = useState<{ when: boolean; open: boolean } | null>(null);
+  const notesOpen = override && override.when === settings.showNotes ? override.open : settings.showNotes;
+  const setNotesOpen = (f: (open: boolean) => boolean) => setOverride({ when: settings.showNotes, open: f(notesOpen) });
   const scale = settings.textScale;
+  const cap = fontCap(scale);
   const ref = formatVerseRef(scriptureId, chapter, verse.number);
   const lines = sanskritLines(verse.sanskrit);
   const state = meaningState(verse);
@@ -62,9 +80,9 @@ function VerseCardImpl({
   const english = cleanVerseField(verse.translation);
   const translit = cleanVerseField(verse.transliteration);
   const notes = [
-    { en: 'Word meaning', hi: 'शब्दार्थ', text: cleanVerseField(verse.wordMeaning) },
-    { en: 'Commentary', hi: 'व्याख्या', text: cleanVerseField(verse.commentary) },
-    { en: 'Explanation', hi: 'विवेचन', text: cleanVerseField(verse.explanation) },
+    { key: 'word', label: S.labelWordMeaning, text: cleanVerseField(verse.wordMeaning) },
+    { key: 'commentary', label: S.labelCommentary, text: cleanVerseField(verse.commentary) },
+    { key: 'explanation', label: S.labelExplanation, text: cleanVerseField(verse.explanation) },
   ].filter((n) => n.text);
 
   const share = () => {
@@ -83,40 +101,34 @@ function VerseCardImpl({
 
   return (
     <Card style={styles.card} strong>
+      {/* The book's cover colours along the top edge, as the website's verse cards. */}
+      <View pointerEvents="none" style={[styles.edge, coverFill(cover, palette)]} />
       <View style={styles.header}>
-        <View
-          style={[
-            styles.refPill,
-            {
-              backgroundColor: palette.dark ? 'rgba(229,193,88,0.14)' : 'rgba(198,146,52,0.12)',
-              borderColor: palette.dark ? 'rgba(229,193,88,0.3)' : 'rgba(198,146,52,0.3)',
-            },
-          ]}>
-          <Text style={[styles.ref, { color: palette.gold }]} accessibilityLabel={`Verse ${ref}`}>
+        <View style={[styles.refPill, coverFill(cover, palette, true)]}>
+          <Text style={styles.ref} accessibilityLabel={t(S.verseA11y(ref))}>
             {ref}
           </Text>
         </View>
         <View style={styles.actions}>
           {audio && onToggleAudio ? (
             <Pressable
-              onPress={onToggleAudio}
-              hitSlop={6}
-              style={[
+              onPress={() => onToggleAudio(String(verse.number))}
+              style={({ pressed }) => [
                 styles.iconBtn,
-                glass(palette),
-                audio !== 'idle' && audio !== 'error' ? { borderColor: palette.accent, borderWidth: 1 } : null,
+                audio !== 'idle' && audio !== 'error' && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
+                pressed && { opacity: 0.6 },
               ]}
               accessibilityRole="button"
               accessibilityState={{ busy: audio === 'loading', selected: audio === 'playing' }}
-              accessibilityLabel={
-                audio === 'playing' ? `Pause recitation of verse ${ref}` : audio === 'error' ? `Recitation of verse ${ref} could not load, try again` : `Listen to verse ${ref}`
-              }>
+              accessibilityLabel={t(
+                audio === 'playing' ? S.pauseVerseA11y(ref) : audio === 'error' ? S.retryVerseA11y(ref) : S.listenVerseA11y(ref),
+              )}>
               {audio === 'loading' ? (
                 <ActivityIndicator size="small" color={palette.accent} />
               ) : (
                 <Ionicons
-                  name={audio === 'playing' ? 'pause' : audio === 'error' ? 'refresh' : 'play'}
-                  size={17}
+                  name={audio === 'playing' ? 'pause' : audio === 'error' ? 'refresh' : 'play-outline'}
+                  size={20}
                   color={audio === 'idle' ? palette.muted : palette.accent}
                 />
               )}
@@ -124,20 +136,22 @@ function VerseCardImpl({
           ) : null}
           <Pressable
             onPress={share}
-            hitSlop={6}
-            style={[styles.iconBtn, glass(palette)]}
+            style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
             accessibilityRole="button"
-            accessibilityLabel={`Share verse ${ref}`}>
-            <Ionicons name="share-outline" size={18} color={palette.muted} />
+            accessibilityLabel={t(S.shareVerseA11y(ref))}>
+            <Ionicons name="share-outline" size={20} color={palette.muted} />
           </Pressable>
           <Pressable
-            onPress={onToggleBookmark}
-            hitSlop={6}
-            style={[styles.iconBtn, glass(palette)]}
+            onPress={() => onToggleBookmark(String(verse.number))}
+            style={({ pressed }) => [
+              styles.iconBtn,
+              bookmarked && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
+              pressed && { opacity: 0.6 },
+            ]}
             accessibilityRole="button"
             accessibilityState={{ selected: bookmarked }}
-            accessibilityLabel={bookmarked ? `Remove bookmark ${ref}` : `Bookmark verse ${ref}`}>
-            <Ionicons name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={18} color={bookmarked ? palette.accent : palette.muted} />
+            accessibilityLabel={t(bookmarked ? S.unbookmarkVerseA11y(ref) : S.bookmarkVerseA11y(ref))}>
+            <Ionicons name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={bookmarked ? palette.accent : palette.muted} />
           </Pressable>
         </View>
       </View>
@@ -146,15 +160,28 @@ function VerseCardImpl({
         <View
           style={[
             styles.sanskrit,
-            { backgroundColor: palette.dark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.45)', borderColor: palette.rim },
+            {
+              backgroundColor: palette.dark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.55)',
+              borderColor: palette.dark ? 'rgba(246,199,104,0.16)' : 'rgba(180,120,40,0.16)',
+            },
+            // A soft light from above on the shloka, as the website's luminous panel.
+            !palette.lite && {
+              backgroundImage: palette.dark
+                ? 'radial-gradient(90% 80% at 50% 0%, rgba(246,199,104,0.10) 0%, rgba(255,255,255,0) 70%)'
+                : 'radial-gradient(90% 80% at 50% 0%, rgba(255,255,255,0.9) 0%, rgba(246,199,104,0.10) 100%)',
+            },
           ]}>
           {lines.map((line, i) => (
             <Text
               key={i}
               selectable
+              maxFontSizeMultiplier={cap}
               style={{ color: palette.text, fontSize: TYPE.title3 * scale, lineHeight: TYPE.title3 * scale * 1.6, textAlign: 'center' }}>
               {line}
-              {i === lines.length - 1 ? `\u00a0॥\u00a0${toDevanagari(verseMarkNumber(verse.number))}\u00a0॥` : ''}
+              {i === lines.length - 1 ? (
+                // The gilt verse mark.
+                <Text style={{ color: palette.gold }}>{`\u00a0॥\u00a0${toDevanagari(verseMarkNumber(verse.number))}\u00a0॥`}</Text>
+              ) : null}
             </Text>
           ))}
         </View>
@@ -163,6 +190,7 @@ function VerseCardImpl({
       {settings.showTransliteration && translit ? (
         <Text
           selectable
+          maxFontSizeMultiplier={cap}
           style={{
             color: palette.textSecondary,
             fontSize: TYPE.subhead * scale,
@@ -178,13 +206,15 @@ function VerseCardImpl({
       {settings.showHindi ? (
         <View style={styles.block}>
           <Label
-            en="Hindi"
-            hi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'हिन्दी अर्थ'}
+            msg={verse.hindiRange ? S.labelHindiRange(verse.hindiRange) : S.labelHindi}
+            lang={lang}
             palette={palette}
+            hue={hues.peacock}
             extra={verse.hindiSource === 'ai' ? MEANING_COPY.aiLabelHi : undefined}
           />
           <Text
             selectable
+            maxFontSizeMultiplier={cap}
             style={[
               styles.body,
               {
@@ -207,13 +237,15 @@ function VerseCardImpl({
       {settings.showEnglish ? (
         <View style={styles.block}>
           <Label
-            en={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'English'}
-            hi="अंग्रेज़ी अनुवाद"
+            msg={verse.translationRange ? S.labelEnglishRange(verse.translationRange) : S.labelEnglish}
+            lang={lang}
             palette={palette}
+            hue={hues.indigo}
             extra={verse.translationSource === 'ai' ? MEANING_COPY.aiLabelEn : undefined}
           />
           <Text
             selectable
+            maxFontSizeMultiplier={cap}
             style={[
               styles.body,
               {
@@ -234,16 +266,17 @@ function VerseCardImpl({
             accessibilityRole="button"
             accessibilityState={{ expanded: notesOpen }}
             style={styles.notesToggle}>
-            <Text style={[styles.label, { color: palette.accent }]}>Notes</Text>
-            <Text style={[styles.label, { color: palette.muted }]}>टिप्पणी</Text>
+            <View style={[styles.layerDot, { backgroundColor: hues.saffron }]} />
+            <Text style={[styles.label, { color: hues.saffron }, lang === 'hi' && styles.labelHi]}>{t(S.labelNotes)}</Text>
             <Ionicons name={notesOpen ? 'chevron-up' : 'chevron-down'} size={14} color={palette.muted} />
           </Pressable>
           {notesOpen
             ? notes.map((n) => (
-                <View key={n.en} style={{ marginTop: SPACE.sm }}>
-                  <Label en={n.en} hi={n.hi} palette={palette} />
+                <View key={n.key} style={{ marginTop: SPACE.sm }}>
+                  <Label msg={n.label} lang={lang} palette={palette} hue={hues.saffron} />
                   <Text
                     selectable
+                    maxFontSizeMultiplier={cap}
                     style={[
                       styles.body,
                       { color: palette.textSecondary, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.5 },
@@ -263,16 +296,21 @@ export const VerseCard = memo(VerseCardImpl);
 
 const styles = StyleSheet.create({
   card: { marginBottom: SPACE.md },
-  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: SPACE.sm },
-  ref: { fontSize: TYPE.footnote, fontWeight: '700', letterSpacing: 0.5 },
-  actions: { flexDirection: 'row', columnGap: SPACE.sm },
-  iconBtn: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
-  refPill: { borderRadius: 999, borderWidth: 1, paddingHorizontal: 10, paddingVertical: 3 },
-  sanskrit: { rowGap: 2, paddingVertical: SPACE.md, paddingHorizontal: SPACE.sm, borderRadius: 16, borderWidth: 1 },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', columnGap: SPACE.sm, marginBottom: SPACE.sm },
+  ref: { color: '#ffffff', fontSize: TYPE.footnote, fontWeight: '700', letterSpacing: 0.5 },
+  actions: { flexDirection: 'row', columnGap: SPACE.xs, marginRight: -SPACE.sm },
+  iconBtn: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
+  edge: { position: 'absolute', top: 0, left: 0, right: 0, height: 3 },
+  layerDot: { width: 7, height: 7, borderRadius: 4 },
+  // Shrinks and wraps before it can push the share and save buttons off a card at large font sizes.
+  refPill: { flexShrink: 1, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 4 },
+  sanskrit: { rowGap: 2, paddingVertical: SPACE.md + 2, paddingHorizontal: SPACE.sm, borderRadius: 18, borderWidth: 1 },
   block: { marginTop: SPACE.md },
-  labelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: SPACE.sm, marginBottom: 2 },
+  labelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: 6, marginBottom: 2 },
   label: { fontSize: TYPE.caption, fontWeight: '700', textTransform: 'uppercase', letterSpacing: 0.6 },
+  // Devanagari has no case, and letter-spacing breaks its conjuncts apart.
+  labelHi: { fontSize: TYPE.footnote, letterSpacing: 0 },
   badge: { fontSize: 10, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4 },
   body: {},
-  notesToggle: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm, paddingVertical: SPACE.xs },
+  notesToggle: { flexDirection: 'row', alignItems: 'center', columnGap: 6, minHeight: TOUCH - 4 },
 });

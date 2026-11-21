@@ -244,7 +244,7 @@ export default async function TithiDetailPage({ params }: PageProps) {
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-amber-600" />
             <h2 id="explanation-heading" className="font-serif text-xl sm:text-2xl font-bold">
-              शास्त्रीय स्वरूप एवं साधना (Nature & Contemplation)
+              <span lang="hi" data-bi="hi">शास्त्रीय स्वरूप एवं साधना</span><span data-bi="sep"> (</span><span data-bi="en">Nature & Contemplation</span><span data-bi="sep">)</span>
             </h2>
           </div>
 
@@ -314,7 +314,7 @@ export default async function TithiDetailPage({ params }: PageProps) {
         {/* FAQs */}
         <section aria-labelledby="faq-heading" className="my-10 space-y-4">
           <h2 id="faq-heading" className="font-serif text-xl sm:text-2xl font-bold">
-            Frequently Asked Questions (जिज्ञासा समाधान)
+            <span data-bi="en">Frequently Asked Questions</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">जिज्ञासा समाधान</span><span data-bi="sep">)</span>
           </h2>
           <div className="space-y-3">
             {faqs.map((f, idx) => (

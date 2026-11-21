@@ -206,14 +206,14 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
               <div className="grid gap-3.5 sm:grid-cols-2 text-xs sm:text-sm pt-1">
                 <section className="rounded-2xl border border-dharma-border bg-dharma-panel p-4 space-y-1">
                   <h3 className="font-bold uppercase tracking-wider text-2xs text-dharma-muted">
-                    Context (प्रसंग)
+                    <span data-bi="en">Context</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">प्रसंग</span><span data-bi="sep">)</span>
                   </h3>
                   <p className="text-dharma-text leading-relaxed">{l.context}</p>
                 </section>
 
                 <section className="rounded-2xl border border-sky-500/30 bg-sky-50/50 dark:bg-sky-950/20 p-4 space-y-1">
                   <h3 className="font-bold uppercase tracking-wider text-2xs text-sky-800 dark:text-sky-300">
-                    Simple Explanation (सरल अर्थ)
+                    <span data-bi="en">Simple Explanation</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">सरल अर्थ</span><span data-bi="sep">)</span>
                   </h3>
                   <p className="text-dharma-text leading-relaxed">{l.explanation}</p>
                 </section>
@@ -221,7 +221,7 @@ export function JourneyClient({ journey, lessons }: { journey: ReadingJourney; l
                 <section className="rounded-2xl border border-saffron-500/30 bg-saffron-500/5 p-4 space-y-1 sm:col-span-2">
                   <h3 className="font-bold uppercase tracking-wider text-2xs text-saffron-800 dark:text-saffron-300 flex items-center gap-1.5">
                     <Sparkles className="h-3.5 w-3.5" />
-                    <span>Pause and Think (आत्म-चिंतन)</span>
+                    <span><span data-bi="en">Pause and Think</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">आत्म-चिंतन</span><span data-bi="sep">)</span></span>
                   </h3>
                   <p className="font-serif text-sm sm:text-base font-semibold text-dharma-text leading-relaxed">
                     &ldquo;{l.reflection}&rdquo;

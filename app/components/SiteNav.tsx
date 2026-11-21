@@ -177,8 +177,6 @@ export function SiteNav({
 }) {
   const formatCount = (value: number) => new Intl.NumberFormat('en-IN').format(value);
   const pathname = usePathname();
-  // The home page opens on its own hero, so only inner pages fold their title into the bar.
-  const fold = useFoldingTitle(pathname, pathname !== '/');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
@@ -192,6 +190,9 @@ export function SiteNav({
 
   const { theme, setTheme } = useTheme();
   const { preference, setPreference } = useLanguagePreference();
+  // The home page opens on its own hero, so only inner pages fold their title into the bar. Called
+  // after the language hook, whose effect sets <html data-ui-lang> before the bar title reads it.
+  const fold = useFoldingTitle(pathname, pathname !== '/', preference);
 
   const discoverRef = useRef<HTMLDivElement>(null);
   const discoverButtonRef = useRef<HTMLButtonElement>(null);

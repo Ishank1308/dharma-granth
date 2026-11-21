@@ -35,8 +35,8 @@ export function MeaningPendingNotice({
   return (
     <section aria-labelledby="meaning-pending-title" className="mb-8 rounded-2xl border border-dashed border-dharma-border bg-dharma-bg/60 p-4 sm:p-5">
       <h2 id="meaning-pending-title" className="text-sm font-semibold text-dharma-text">
-        <span lang="hi" className="font-devanagari">अर्थ अभी उपलब्ध नहीं है</span>{' '}
-        <span aria-hidden="true">·</span> <span lang="en">Meanings not yet available</span>
+        <span lang="hi" data-bi="hi" className="font-devanagari">अर्थ अभी उपलब्ध नहीं है</span>{' '}
+        <span aria-hidden="true" data-bi="sep">·</span> <span lang="en" data-bi="en">Meanings not yet available</span>
       </h2>
       <p lang="hi" className="mt-2 font-devanagari text-sm leading-relaxed text-dharma-muted">
         {all ? `इस पृष्ठ के सभी ${n} श्लोकों` : `इस पृष्ठ के ${n} श्लोकों`} का अर्थ अभी उपलब्ध नहीं है। आप नीचे उपलब्ध मूल पाठ और लिप्यंतरण पढ़ सकते हैं।

@@ -1,29 +1,23 @@
-import { NativeTabs } from 'expo-router/native-tabs';
+import { Tabs } from 'expo-router/tabs';
 
+import { FloatingTabBar } from '@/components/floating-tab-bar';
+import { S, useI18n } from '@/i18n';
 import { usePalette } from '@/state/app-state';
 
+/**
+ * The three tabs under a floating glass tab bar (src/components/floating-tab-bar.tsx). Each screen draws its
+ * own large header, so the navigator's header is off.
+ */
 export default function TabsLayout() {
   const palette = usePalette();
+  const { t } = useI18n();
   return (
-    <NativeTabs
-      backgroundColor={palette.chrome}
-      indicatorColor={palette.dark ? 'rgba(255,159,10,0.18)' : 'rgba(194,65,12,0.12)'}
-      labelStyle={{
-        default: { color: palette.muted },
-        selected: { color: palette.accent },
-      }}>
-      <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Library</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="books.vertical" md="menu_book" selectedColor={palette.accent} />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="bookmarks">
-        <NativeTabs.Trigger.Label>Saved</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="bookmark" md="bookmark" selectedColor={palette.accent} />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="settings">
-        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="gearshape" md="settings" selectedColor={palette.accent} />
-      </NativeTabs.Trigger>
-    </NativeTabs>
+    <Tabs
+      tabBar={(props) => <FloatingTabBar {...props} />}
+      screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: palette.bg } }}>
+      <Tabs.Screen name="index" options={{ title: t(S.tabLibrary) }} />
+      <Tabs.Screen name="bookmarks" options={{ title: t(S.tabSaved) }} />
+      <Tabs.Screen name="settings" options={{ title: t(S.tabSettings) }} />
+    </Tabs>
   );
 }

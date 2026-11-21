@@ -92,7 +92,7 @@ export function AddToCollectionModal({ open, onClose, verse }: AddToCollectionMo
                   {verse.scriptureTitle}
                 </span>
                 <h3 id="collection-modal-title" className="text-lg font-serif font-bold text-dharma-text mt-0.5">
-                  संग्रह में जोड़ें (Add to Collection)
+                  <span lang="hi" data-bi="hi">संग्रह में जोड़ें</span><span data-bi="sep"> (</span><span data-bi="en">Add to Collection</span><span data-bi="sep">)</span>
                 </h3>
                 <p className="text-xs text-dharma-muted mt-1">
                   अध्याय {verse.chapterId} · श्लोक {verse.verseId}

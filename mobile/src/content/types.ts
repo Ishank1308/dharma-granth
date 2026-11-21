@@ -39,7 +39,21 @@ export interface CatalogEntry {
   titleSanskrit?: string;
   category: string;
   totalVerses: number;
-  /** True when the verse text ships inside the app; otherwise the reader opens dharmagranth.dev. */
+  /** True when the verse text ships inside the app; otherwise it is downloaded on demand (src/content/downloads.ts). */
   bundled: boolean;
   chapters: CatalogChapter[];
+}
+
+/** One bundled book's verse search corpus (scripts/build-search-index.mjs). One line per verse. */
+export interface SearchCorpus {
+  /** Sanskrit | Hindi in the one-byte index alphabet (src/lib/verse-search.ts). */
+  d: string;
+  /** Transliteration, folded for matching. */
+  t: string;
+  /** English translation, ASCII. */
+  e: string;
+  /** [chapter number, verse count] in reading order. */
+  c: [number, number][];
+  /** Verse numbers, newline separated. */
+  n: string;
 }

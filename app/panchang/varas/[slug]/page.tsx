@@ -151,9 +151,9 @@ export default async function VaraDetailPage({ params }: Props) {
       <div className="relative z-10">
         <PageHeader
           eyebrow={`Vedic Weekday ${vara.index + 1} of 7 · ${vara.grahaLord}`}
-          eyebrowHi={`${vara.nameHi} · ${vara.grahaLordHi}`}
-          title={`${vara.name} (${vara.nameHi})`}
-          titleHi={`${vara.grahaLordHi} का वासर · ${vara.natureHi}`}
+          eyebrowHi={`${vara.grahaLordHi} का वासर · ${vara.natureHi}`}
+          title={vara.name}
+          titleHi={vara.nameHi}
           lead={vara.explanation}
           width="wide"
         />
@@ -193,7 +193,7 @@ export default async function VaraDetailPage({ params }: Props) {
         <div className="rounded-2xl border border-dharma-border bg-dharma-card p-6 sm:p-8 space-y-6">
           <div>
             <h2 className="text-title-2 font-bold text-dharma-text">
-              शास्त्रीय नाम व पर्याय (Classical Sanskrit Synonyms)
+              <span lang="hi" data-bi="hi">शास्त्रीय नाम व पर्याय</span><span data-bi="sep"> (</span><span data-bi="en">Classical Sanskrit Synonyms</span><span data-bi="sep">)</span>
             </h2>
             <p className="mt-2 text-footnote text-dharma-muted">
               Classical Jyotisha and Purana texts reference {vara.nameHi} through diverse solar, planetary, and mythological synonyms:
