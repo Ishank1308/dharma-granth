@@ -10,9 +10,13 @@ export type NumberFormatPref = 'indian' | 'international';
 export type ReaderModeTier = 'quick' | 'simple' | 'deep' | 'traditional';
 export type ContrastPref = 'standard' | 'high';
 export type PerspectiveMode = 'beginner' | 'student' | 'practitioner' | 'researcher';
+/** The script the Sanskrit is shown in (ISO 15924 codes, lower case). The text is stored in Devanagari. */
+export type SanskritScript = 'deva' | 'beng' | 'gujr' | 'orya' | 'telu' | 'knda' | 'mlym';
 
 export interface ReaderSettings {
   sanskritSize: SizeStep;
+  /** Devanagari, or the same text shown letter for letter in another Indian script. */
+  sanskritScript: SanskritScript;
   translationSize: SizeStep;
   lineSpacing: LineSpacing;
   readingWidth: ReadingWidth;
@@ -43,6 +47,7 @@ export interface ReaderSettings {
 
 export const DEFAULT_READER_SETTINGS: ReaderSettings = {
   sanskritSize: 'lg',
+  sanskritScript: 'deva',
   translationSize: 'md',
   lineSpacing: 'relaxed',
   readingWidth: 'standard',
@@ -73,6 +78,7 @@ const NUMBER_PREFS: NumberFormatPref[] = ['indian', 'international'];
 const MODE_TIERS: ReaderModeTier[] = ['quick', 'simple', 'deep', 'traditional'];
 const CONTRASTS: ContrastPref[] = ['standard', 'high'];
 const PERSPECTIVES: PerspectiveMode[] = ['beginner', 'student', 'practitioner', 'researcher'];
+const SCRIPTS: SanskritScript[] = ['deva', 'beng', 'gujr', 'orya', 'telu', 'knda', 'mlym'];
 
 /** Same-tab broadcast, so every component using the hook sees a change at once. */
 const CHANGE_EVENT = 'dharma:reader-settings';
@@ -151,6 +157,7 @@ function sanitize(raw: unknown): ReaderSettings {
   const bool = (v: unknown, fallback: boolean) => (typeof v === 'boolean' ? v : fallback);
   return {
     sanskritSize: pick(o.sanskritSize, SIZES, d.sanskritSize),
+    sanskritScript: pick(o.sanskritScript, SCRIPTS, d.sanskritScript),
     translationSize: pick(o.translationSize, SIZES, d.translationSize),
     lineSpacing: pick(o.lineSpacing, SPACINGS, d.lineSpacing),
     readingWidth: pick(o.readingWidth, WIDTHS, d.readingWidth),
@@ -169,6 +176,19 @@ function sanitize(raw: unknown): ReaderSettings {
     perspective: pick(o.perspective, PERSPECTIVES, d.perspective),
     liteMode: bool(o.liteMode, d.liteMode),
   };
+}
+
+/**
+ * Sanskrit in another script is a view over the page (lib/sanskrit-script-view). Its code is
+ * fetched only once a reader has picked a script, so Devanagari readers never load it.
+ */
+let scriptViewLoaded = false;
+function showSanskritScript(script: SanskritScript) {
+  if (script === 'deva' && !scriptViewLoaded) return;
+  scriptViewLoaded = true;
+  import('./sanskrit-script-view').then((m) => m.showSanskritIn(script)).catch(() => {
+    // Offline or a failed fetch: the Devanagari stays.
+  });
 }
 
 /**
@@ -195,6 +215,12 @@ export function useReaderSettings() {
       window.removeEventListener('storage', resync);
     };
   }, []);
+
+  // The defaults object itself means storage has not been read yet (the first render).
+  const hydrated = settings !== DEFAULT_READER_SETTINGS;
+  useEffect(() => {
+    if (hydrated) showSanskritScript(settings.sanskritScript);
+  }, [hydrated, settings.sanskritScript]);
 
   const update = useCallback(<K extends keyof ReaderSettings>(key: K, value: ReaderSettings[K]) => {
     setSettings((prev) => {

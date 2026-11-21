@@ -3,7 +3,7 @@
 import { useId, type ReactNode } from 'react';
 import { RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { THEME_NAMES, type Theme } from '@/app/components/ThemeProvider';
-import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SizeStep } from '@/lib/useReaderSettings';
+import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SanskritScript, SizeStep } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { ReaderControlBar } from './ReaderControlBar';
 import { ReaderDialog } from './ReaderDialog';
@@ -119,6 +119,17 @@ const SIZES: Array<Choice<SizeStep>> = [
   { id: 'md', label: 'M' },
   { id: 'lg', label: 'L' },
   { id: 'xl', label: 'XL' },
+];
+
+// Each script is named in itself, with the English name under it.
+const SCRIPTS: Array<Choice<SanskritScript>> = [
+  { id: 'deva', label: 'देवनागरी', hint: 'Devanagari' },
+  { id: 'beng', label: 'বাংলা', hint: 'Bengali' },
+  { id: 'gujr', label: 'ગુજરાતી', hint: 'Gujarati' },
+  { id: 'orya', label: 'ଓଡ଼ିଆ', hint: 'Odia' },
+  { id: 'telu', label: 'తెలుగు', hint: 'Telugu' },
+  { id: 'knda', label: 'ಕನ್ನಡ', hint: 'Kannada' },
+  { id: 'mlym', label: 'മലയാളം', hint: 'Malayalam' },
 ];
 
 const SPACINGS: Array<Choice<LineSpacing>> = [
@@ -243,6 +254,12 @@ export function ReaderSettingsPanel({
 
         {scope === 'verse' && <Segmented legend="Preferred language" legendHi="भाषा प्राथमिकता" value={settings.preferredLanguage} options={LANGUAGES_PREF} onChange={(v) => update('preferredLanguage', v)} columns="grid-cols-3" />}
         {scope === 'verse' && <Segmented legend="Number format" legendHi="संख्या प्रारूप" value={settings.numberFormat} options={NUMBERS} onChange={(v) => update('numberFormat', v)} columns="grid-cols-2" />}
+        <div>
+          <Segmented legend="Sanskrit script" legendHi="संस्कृत की लिपि" value={settings.sanskritScript} options={SCRIPTS} onChange={(v) => update('sanskritScript', v)} columns="grid-cols-3" />
+          <p className="mt-2 text-caption-1 text-label-secondary">
+            The same verse, letter for letter, in the script you read. Copy and share still give Devanagari.
+          </p>
+        </div>
         <Segmented legend="Sanskrit size" legendHi="संस्कृत आकार" value={settings.sanskritSize} options={SIZES} onChange={(v) => update('sanskritSize', v)} columns="grid-cols-4" />
         <Segmented legend="Translation size" legendHi="अनुवाद आकार" value={settings.translationSize} options={SIZES} onChange={(v) => update('translationSize', v)} columns="grid-cols-4" />
         <Segmented legend="Line spacing" legendHi="पंक्ति अंतराल" value={settings.lineSpacing} options={SPACINGS} onChange={(v) => update('lineSpacing', v)} columns="grid-cols-4" />

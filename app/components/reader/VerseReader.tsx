@@ -557,7 +557,7 @@ export function VerseReader(props: VerseReaderProps) {
         <div className="mx-auto flex justify-center gap-8 xl:px-6" {...handlers}>
         {/* Left sidebar (wide screens): where you are in the chapter */}
         <aside aria-label="Chapter navigation" className="sticky top-20 hidden max-h-[calc(100vh-6rem)] w-60 shrink-0 self-start overflow-y-auto pt-8 xl:block">
-          <p lang="hi" className="font-devanagari text-sm font-semibold text-dharma-text">{sanskritName}</p>
+          <p lang="sa" className="font-devanagari text-sm font-semibold text-dharma-text">{sanskritName}</p>
           <button type="button" onClick={() => setDialog('chapters')} aria-haspopup="dialog" className="focus-ring mt-0.5 min-h-[44px] w-full rounded-lg text-left text-sm text-dharma-muted hover:text-saffron-800 dark:hover:text-saffron-300">
             Chapter {chapterId}: {chapterTitle} <ChevronDown className="inline h-3.5 w-3.5" aria-hidden="true" />
           </button>

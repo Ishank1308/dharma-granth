@@ -69,6 +69,7 @@
     "test:panchang": "tsx scripts/test-panchang-day.ts",
     "test:format": "tsx scripts/test-format.ts",
     "test:chandas": "tsx scripts/test-chandas.ts",
+    "test:sanskrit-script": "tsx scripts/test-sanskrit-script.ts",
     "test:sitemap": "tsx scripts/test-sitemap.ts",
     "test:sanskrit-lexicon": "tsx scripts/test-sanskrit-lexicon.ts",
     "test:embed": "tsx scripts/test-embed.ts",

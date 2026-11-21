@@ -696,7 +696,7 @@ export function VerseCard({
                   }`}
                 >
                   <span className="text-[10px] opacity-75 font-serif" aria-hidden="true">✦</span>
-                  <span className="font-devanagari">{speaker}</span>
+                  <span lang={hasSpeakerInText ? 'sa' : undefined} className="font-devanagari">{speaker}</span>
                   <span className="text-[10px] opacity-75 font-serif" aria-hidden="true">✦</span>
                 </span>
               </div>
