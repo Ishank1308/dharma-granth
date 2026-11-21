@@ -42,10 +42,11 @@ export function verseLines(sanskrit: string): string[] {
 
 // Speaker phrase at the very start, run straight into the next word: "अर्जुन उवाचनष्टो मोहः".
 // उवाच is a finite verb and never compounds, so a consonant or an independent vowel directly
-// after it means the source row lost its line break. A sandhi that continues with a vowel
-// sign (उवाचेदम्) does not match. Joined forms other than भगवानुवाच are left out on purpose:
-// "भूगोवाचस्त्विडा" (Agni Purana 360.8) is भू-गो-वाचः, not a speaker.
-const GLUED_SPEAKER = /^((?:श्री\s*)?(?:[\u0900-\u097F]+\s+उवाच|भगवानुवाच))(?=[\u0904-\u0939\u0958-\u095F])/u;
+// after it (अ to ह) means the source row lost its line break. A sandhi that continues with a
+// vowel sign (उवाचेदम्) does not match. Joined forms other than भगवानुवाच are left out on purpose:
+// "भूगोवाचस्त्विडा" (Agni Purana 360.8) is भू-गो-वाचः, not a speaker. isSpeakerLine then checks
+// that what was matched really is a speaker phrase.
+const GLUED_SPEAKER = /^\s*((?:श्री\s*)?(?:\S+\s+उवाच|भगवानुवाच))(?=[अ-ह])/;
 
 /**
  * A few source rows hold the speaker line and the verse as one unbroken string
@@ -54,11 +55,10 @@ const GLUED_SPEAKER = /^((?:श्री\s*)?(?:[\u0900-\u097F]+\s+उवाच|
  * not changed.
  */
 export function splitGluedSpeaker(sanskrit: string): { speaker: string; verse: string } | null {
-  const text = sanskrit.trimStart();
-  const match = GLUED_SPEAKER.exec(text);
-  if (!match || !isSpeakerLine(match[1])) return null;
-  const verse = text.slice(match[1].length).trim();
-  return verse ? { speaker: match[1].trim(), verse } : null;
+  const match = GLUED_SPEAKER.exec(sanskrit);
+  return match && isSpeakerLine(match[1])
+    ? { speaker: match[1], verse: sanskrit.slice(match[0].length).trim() }
+    : null;
 }
 
 /**

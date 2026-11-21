@@ -784,7 +784,7 @@ export function SiteNav({
               </button>{' '}
 
               {/* Desktop Language Toggle */}
-              <LanguageToggle className="hidden lg:inline-flex" />
+              <LanguageToggle className="hidden lg:inline-flex" preference={preference} setPreference={setPreference} />
 
               {/* Desktop Segmented Theme Toggle: only where the bar has room for it
                   beside the full nav; below that the single cycle button (2. Theme Button) stands in. */}
