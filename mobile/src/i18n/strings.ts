@@ -123,6 +123,12 @@ export const S = {
     hi: 'इस ऐप की सूचनाएँ बंद हैं। उन्हें चालू करने के लिए फ़ोन की सेटिंग्स खोलें।',
   },
   notNow: { en: 'Not now', hi: 'अभी नहीं' },
+  widgetAdd: { en: 'Add the verse to your home screen', hi: 'श्लोक को होम स्क्रीन पर लगाएँ' },
+  widgetHowTitle: { en: 'Add the widget', hi: 'विजेट लगाएँ' },
+  widgetHowBody: {
+    en: 'Touch and hold an empty spot on your home screen, tap Widgets, then pick Dharma Granth.',
+    hi: 'होम स्क्रीन पर किसी खाली जगह को दबाकर रखें, विजेट चुनें, फिर धर्म ग्रन्थ चुनें।',
+  },
   openSettings: { en: 'Open settings', hi: 'सेटिंग्स खोलें' },
   theme: { en: 'Theme', hi: 'रंग-रूप' },
   themeA11y: (name: string) => ({ en: `${name} theme`, hi: `${name} थीम` }),
