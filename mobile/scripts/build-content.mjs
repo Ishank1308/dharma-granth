@@ -17,11 +17,13 @@
 //   src/content/generated/loaders.ts     lazy require() map per chapter, so opening a chapter parses only
 //                                        that chapter (Ramcharitmanas is 5 MB; one kanda is under 1 MB)
 //   src/content/generated/search/…       offline verse search index (scripts/build-search-index.mjs)
+//   src/content/generated/explore/…      the website's Panchang, festival and mantra data (scripts/build-explore.mjs)
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Buffer } from 'node:buffer';
 
+import { buildExplore } from './build-explore.mjs';
 import { buildSearchIndex } from './build-search-index.mjs';
 import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
 
@@ -35,6 +37,9 @@ const args = process.argv.slice(2);
 const ifMissing = args.includes('--if-missing');
 const maxMbArg = args.find((a) => a.startsWith('--max-mb='));
 const MAX_BYTES = Math.round(Number(maxMbArg ? maxMbArg.split('=')[1] : DEFAULT_MAX_MB) * 1024 * 1024);
+
+// Cheap, so it runs even when the scripture content is already built.
+buildExplore();
 
 if (
   ifMissing &&
