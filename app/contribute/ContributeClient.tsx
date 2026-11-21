@@ -233,7 +233,7 @@ export function ContributeClient() {
             <div className="flex items-center justify-between border-b border-dharma-border/60 pb-4">
               <div>
                 <h2 className="text-base font-bold text-dharma-text sm:text-lg">
-                  सहयोग राशि चुनें · Select Amount
+                  <span lang="hi" data-bi="hi">सहयोग राशि चुनें</span><span data-bi="sep"> · </span><span data-bi="en">Select Amount</span>
                 </h2>
                 <p className="text-xs text-dharma-muted">
                   भारतीय राष्ट्रीय भुगतान निगम (NPCI UPI) द्वारा प्रत्यक्ष
@@ -437,7 +437,7 @@ export function ContributeClient() {
             </div>
 
             <h3 className="mt-3 text-base font-bold text-dharma-text">
-              मोबाइल से स्कैन करें · Scan to Pay
+              <span lang="hi" data-bi="hi">मोबाइल से स्कैन करें</span><span data-bi="sep"> · </span><span data-bi="en">Scan to Pay</span>
             </h3>
             <p className="mt-1 text-xs text-dharma-muted">
               Google Pay · PhonePe · Paytm · BHIM · Navi · Any Bank App
@@ -542,7 +542,7 @@ export function ContributeClient() {
           <HelpCircle className="h-5 w-5 text-saffron-600" aria-hidden="true" />
           <div>
             <h2 className="text-base sm:text-lg font-bold text-dharma-text">
-              जिज्ञासा व स्पष्टीकरण · Transparency & Questions
+              <span lang="hi" data-bi="hi">जिज्ञासा व स्पष्टीकरण</span><span data-bi="sep"> · </span><span data-bi="en">Transparency & Questions</span>
             </h2>
             <p className="text-xs text-dharma-muted">
               Frequently asked questions about voluntary contributions

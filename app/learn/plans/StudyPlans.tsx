@@ -48,8 +48,9 @@ export function StudyPlans() {
   return (
     <section id="study-orders" aria-labelledby="study-orders-title" className="scroll-mt-24 pt-4">
       <h2 id="study-orders-title" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
-        <span lang="hi" className="font-devanagari">पढ़ने के क्रम</span>
-        <span className="font-normal text-dharma-text-secondary"> · Study orders</span>
+        <span lang="hi" data-bi="hi" className="font-devanagari">पढ़ने के क्रम</span>
+        <span data-bi="sep" className="font-normal text-dharma-text-secondary"> · </span>
+        <span data-bi="en" data-bi-lead className="font-normal text-dharma-text-secondary">Study orders</span>
       </h2>
       <p lang="hi" className="mt-2 max-w-2xl text-sm leading-relaxed text-dharma-text">
         ग्यारह छोटे क्रम। हर चरण इस साइट का एक मौजूदा पृष्ठ खोलता है। समय अनुमान है। प्रगति इसी ब्राउज़र में रहती है।
@@ -108,8 +109,9 @@ export function StudyPlans() {
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <h3 className="font-serif text-xl font-bold text-dharma-text">
-                    <span lang="hi" className="font-devanagari">{plan.titleHi}</span>
-                    <span className="font-normal text-dharma-text-secondary"> · {plan.titleEn}</span>
+                    <span lang="hi" data-bi="hi" className="font-devanagari">{plan.titleHi}</span>
+                    <span data-bi="sep" className="font-normal text-dharma-text-secondary"> · </span>
+                    <span data-bi="en" data-bi-lead className="font-normal text-dharma-text-secondary">{plan.titleEn}</span>
                   </h3>
                   <p lang="hi" className="mt-1 text-sm leading-relaxed text-dharma-text">{plan.blurbHi}</p>
                   <p className="mt-1 text-sm leading-relaxed text-dharma-text-secondary">{plan.blurbEn}</p>

@@ -212,6 +212,7 @@ export function ReaderSettingsPanel({
   chapter?: ChapterReadingControls;
 }) {
   const themeName = useId();
+  const depthLabel = useId();
   return (
     <ReaderDialog
       open={open}
@@ -242,15 +243,16 @@ export function ReaderSettingsPanel({
         </div>
 
         {chapter && (
-          <fieldset>
-            <legend className="mb-2 text-subhead font-semibold text-label-primary">
+          <div>
+            {/* The radio group below is the group; this line names it, so it is announced once. */}
+            <p id={depthLabel} className="mb-2 text-subhead font-semibold text-label-primary">
               <LegendText en="Reading depth" hi="पठन गहराई" />
-            </legend>
-            <ReadingDepthSwitch fill />
+            </p>
+            <ReadingDepthSwitch fill labelledBy={depthLabel} />
             <p className="mt-2 text-caption-1 text-label-secondary">
               How much explanation opens beside each shloka.
             </p>
-          </fieldset>
+          </div>
         )}
 
         {scope === 'verse' && (

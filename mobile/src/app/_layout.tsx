@@ -4,9 +4,14 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
 import { DailyReminderEffects } from '@/components/daily-reminder-effects';
+import { DailyWidgetEffects } from '@/components/daily-widget-effects';
 import { AppStateProvider, useAppState } from '@/state/app-state';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
+
+// A deep link (the home-screen widget) can open the reader on a cold start; keep the tabs underneath so
+// Back returns to the library instead of closing the app.
+export const unstable_settings = { initialRouteName: '(tabs)' };
 
 function Navigator() {
   const { palette, ready } = useAppState();
@@ -32,6 +37,7 @@ function Navigator() {
     <ThemeProvider value={navTheme}>
         <StatusBar style={palette.dark ? 'light' : 'dark'} />
         <DailyReminderEffects />
+        <DailyWidgetEffects />
         <Stack
           screenOptions={{
             headerStyle: { backgroundColor: palette.chrome },

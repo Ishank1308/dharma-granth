@@ -121,7 +121,7 @@ export function LocationSettingsModal({
             </div>
             <div>
               <h2 id="location-settings-title" className="font-serif text-lg font-bold text-dharma-text">
-                स्थान सेटिंग्स · Location Settings
+                <span lang="hi" data-bi="hi">स्थान सेटिंग्स</span><span data-bi="sep"> · </span><span data-bi="en">Location Settings</span>
               </h2>
               <p className="text-xs text-dharma-muted">
                 Choose your observation point for solar and lunar calculations

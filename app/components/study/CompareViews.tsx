@@ -122,7 +122,7 @@ export function CompareViews({ scriptureId, chapterId, verse, provenance: p }: {
   return (
     <section id="compare-views" aria-labelledby="compare-h" className="rounded-2xl border border-dharma-border bg-dharma-card/60 p-4 sm:p-5">
       <h3 id="compare-h" className="font-serif text-lg font-bold text-dharma-text">
-        Compare views <span lang="hi" className="font-devanagari text-sm font-normal text-dharma-muted">· दो रूपों की तुलना</span>
+        <span data-bi="en">Compare views</span> <span data-bi="sep" className="font-devanagari text-sm font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-sm font-normal text-dharma-muted">दो रूपों की तुलना</span>
       </h3>
       <p className="mt-1 text-sm text-dharma-muted">Choose any two. {aligned ? 'Matching lines are marked when you point at or focus on one.' : 'These two have different line counts, so lines are not paired.'}</p>
       <div className="mt-3 grid gap-3 sm:grid-cols-2">

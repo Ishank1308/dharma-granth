@@ -28,8 +28,8 @@ export function SavedScriptures() {
     <section aria-labelledby="saved-texts-heading" className="mb-10">
       <h2 id="saved-texts-heading" className="mb-4 flex items-center gap-2 font-serif text-xl font-bold text-dharma-text">
         <BookMarked className="h-5 w-5 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
-        Saved texts
-        <span lang="hi" className="font-devanagari text-base font-normal text-dharma-muted">
+        <span data-bi="en">Saved texts</span>
+        <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-base font-normal text-dharma-muted">
           सहेजे ग्रंथ
         </span>
       </h2>

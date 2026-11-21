@@ -205,7 +205,7 @@ export function Experience3DSection({ gitaCountLabel }: { gitaCountLabel: string
               <div className="flex w-full max-w-sm flex-col items-center justify-center rounded-3xl border border-amber-200/80 bg-dharma-card/80 p-6 text-center shadow-sm dark:border-amber-900/60">
                 <StaticDharmachakra size={240} className="mx-auto" />
                 <h3 className="mt-4 font-serif text-lg font-bold text-dharma-text">
-                  Dharmachakra (धर्मचक्र)
+                  <span data-bi="en">Dharmachakra</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">धर्मचक्र</span><span data-bi="sep">)</span>
                 </h3>
                 <p className="mt-1.5 text-xs leading-relaxed text-dharma-muted">
                   The wheel of eternal righteousness, duty, and spiritual order. Accessible vector emblem with 24 sacred spokes.

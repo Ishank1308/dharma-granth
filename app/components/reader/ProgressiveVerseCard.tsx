@@ -221,7 +221,7 @@ export function ProgressiveVerseCard({
             >
               {activeTab === 'arth' && (
                 <div className="space-y-4">
-                  {verse.anvaya && <div><h3 className="mb-1 font-devanagari text-xs font-bold text-[#D97706]">अन्वय · Anvaya</h3><p lang="sa" className="font-devanagari text-base leading-[2] text-[#D8C7AF]">{verse.anvaya}</p></div>}
+                  {verse.anvaya && <div><h3 className="mb-1 font-devanagari text-xs font-bold text-[#D97706]"><span lang="hi" data-bi="hi">अन्वय</span><span data-bi="sep"> · </span><span data-bi="en">Anvaya</span></h3><p lang="sa" className="font-devanagari text-base leading-[2] text-[#D8C7AF]">{verse.anvaya}</p></div>}
                   {verse.arth.hindi && <p lang="hi" className="font-devanagari text-base leading-[2] text-[#F0E2CC] sm:text-lg">{verse.arth.hindi}</p>}
                   {verse.arth.english && <p lang="en" className="font-serif text-sm leading-relaxed text-[#C8B8A4] sm:text-base">{verse.arth.english}</p>}
                 </div>

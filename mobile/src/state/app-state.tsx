@@ -24,6 +24,9 @@ const KEYS = {
   lastRead: 'dg.lastRead.v1',
 } as const;
 
+/** The settings key, for code that runs without React (the home-screen widget's headless task). */
+export const SETTINGS_KEY = KEYS.settings;
+
 interface AppState {
   ready: boolean;
   settings: Settings;
