@@ -64,6 +64,13 @@
   ! Cache-Control
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
+# Verse recitation MP3s for the Android app (public/audio/<scripture>/<chapter>/<verse>.mp3).
+# A retake keeps its file name, so a week in the browser and a month at the edge, then revalidate.
+/audio/*
+  ! Cache-Control
+  Cache-Control: public, max-age=604800, s-maxage=2592000, stale-while-revalidate=604800
+  Content-Type: audio/mpeg
+
 # API discovery (RFC 9727): exact content types so automated scanners pass.
 /.well-known/api-catalog
   ! Cache-Control
