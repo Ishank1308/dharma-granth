@@ -85,6 +85,21 @@ export const S = {
   shareVerseA11y: (ref: string) => ({ en: `Share verse ${ref}`, hi: `श्लोक ${ref} शेयर करें` }),
   bookmarkVerseA11y: (ref: string) => ({ en: `Save verse ${ref}`, hi: `श्लोक ${ref} सहेजें` }),
   unbookmarkVerseA11y: (ref: string) => ({ en: `Remove saved verse ${ref}`, hi: `सहेजा श्लोक ${ref} हटाएँ` }),
+  listenVerseA11y: (ref: string) => ({ en: `Listen to verse ${ref}`, hi: `श्लोक ${ref} सुनें` }),
+  pauseVerseA11y: (ref: string) => ({ en: `Pause verse ${ref}`, hi: `श्लोक ${ref} रोकें` }),
+  retryVerseA11y: (ref: string) => ({ en: `Verse ${ref} could not load. Try again`, hi: `श्लोक ${ref} नहीं चल सका। फिर से कोशिश करें` }),
+
+  // Recitation (reader toolbar)
+  listenChapterA11y: (verse: string) => ({
+    en: `Listen to the Sanskrit recitation from verse ${verse}`,
+    hi: `श्लोक ${verse} से संस्कृत पाठ सुनें`,
+  }),
+  pauseRecitation: { en: 'Pause recitation', hi: 'पाठ रोकें' },
+  resumeRecitation: { en: 'Resume recitation', hi: 'पाठ फिर से चलाएँ' },
+  retryRecitation: { en: 'Recitation could not load. Try again', hi: 'पाठ नहीं चल सका। फिर से कोशिश करें' },
+  stopRecitation: { en: 'Stop recitation', hi: 'पाठ बंद करें' },
+  recitingVerse: (verse: string, total: number) => ({ en: `Reciting ${verse} of ${n(total)}`, hi: `पाठ: श्लोक ${verse} / ${n(total)}` }),
+  recitationCredit: { en: 'Recitation voice made with ElevenLabs', hi: 'पाठ की आवाज़ ElevenLabs से बनी है' },
   labelHindi: { en: 'Hindi', hi: 'हिन्दी अर्थ' },
   labelEnglish: { en: 'English', hi: 'अंग्रेज़ी अनुवाद' },
   labelHindiRange: (range: string) => ({ en: `Hindi for verses ${range.replace('-', '–')}`, hi: `श्लोक ${range.replace('-', '–')} का हिन्दी अर्थ` }),

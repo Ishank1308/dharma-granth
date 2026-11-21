@@ -1,9 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useRecitation } from '@/audio/player';
+import { recitedVerses } from '@/audio/recitation';
 import { ReadingSheet } from '@/components/reading-sheet';
 import { Backdrop, Eyebrow, FloatingBar, glass, IconButton, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
@@ -54,6 +56,17 @@ export default function ChapterScreen() {
   useEffect(() => {
     if (chapter) setLastRead(id, chapterNo);
   }, [id, chapterNo, chapter, setLastRead]);
+
+  // Recitation (src/audio): verses with audio get a play button, and the toolbar gains Play, which
+  // recites the chapter from the verse on screen, then Pause and Stop while it plays.
+  const { currentKey, phase, continuous, toggleVerse, playChapter, pause, resume, stop } = useRecitation();
+  const recited = useMemo(() => recitedVerses(id, chapterNo), [id, chapterNo]);
+  const recitedSet = useMemo(() => new Set(recited), [recited]);
+  const keyPrefix = `${id}/${chapterNo}/`;
+  const playingHere = currentKey?.startsWith(keyPrefix) ? currentKey.slice(keyPrefix.length) : null;
+  const onToggleAudio = useCallback((verse: string) => toggleVerse(id, chapterNo, verse), [toggleVerse, id, chapterNo]);
+  // Recitation belongs to the chapter on screen: leaving it, or turning to another chapter, stops it.
+  useEffect(() => stop, [id, chapterNo, stop]);
 
   const target = params.verse ? (chapter?.verses.findIndex((v) => String(v.number) === String(params.verse)) ?? -1) : -1;
 
@@ -109,6 +122,30 @@ export default function ChapterScreen() {
     jumpToTarget();
   };
 
+  // While a whole chapter is recited, bring each verse to the top as it starts, unless the reader has
+  // scrolled away by hand since pressing Play.
+  useEffect(() => {
+    if (!playingHere || !continuous) return;
+    const index = numbers.indexOf(playingHere);
+    if (index < 0 || userScrolled.current) return;
+    goal.current = index;
+    settled.current = false;
+    highestSeen.current = -1;
+    stalls.current = 0;
+    jumpToTarget();
+  }, [playingHere, continuous]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const onPlay = () => {
+    if (playingHere) {
+      if (phase === 'playing') pause();
+      else resume();
+      return;
+    }
+    userScrolled.current = false;
+    const from = recited.find((v, i) => i >= 0 && numbers.indexOf(v) >= visibleIndex);
+    playChapter(id, chapterNo, recited, from);
+  };
+
   // A plain function: the React Compiler memoizes it on these same inputs. (A manual useCallback here
   // makes the compiler skip this whole component, because the localized labels below read `entry`.)
   const renderItem = ({ item }: { item: Verse }) => (
@@ -123,6 +160,8 @@ export default function ChapterScreen() {
       cover={cover}
       bookmarked={saved.has(String(item.number))}
       onToggleBookmark={onToggleBookmark}
+      audio={recitedSet.has(String(item.number)) ? (playingHere === String(item.number) ? phase : 'idle') : undefined}
+      onToggleAudio={onToggleAudio}
     />
   );
 
@@ -172,6 +211,7 @@ export default function ChapterScreen() {
           data={chapter.verses}
           keyExtractor={(v, i) => `${v.number}-${i}`}
           renderItem={renderItem}
+          extraData={`${playingHere}:${phase}`}
           onViewableItemsChanged={onViewableItemsChanged}
           viewabilityConfig={VIEWABILITY}
           // Never render up to the target verse in one go: a bookmark deep in Bala Kand (1,958 verses)
@@ -215,6 +255,11 @@ export default function ChapterScreen() {
                 </Text>
               ) : null}
               <Muted style={{ marginTop: SPACE.xs }}>{t(S.verseCount(total))}</Muted>
+              {recited.length > 0 ? (
+                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
+                  {t(S.recitationCredit)}
+                </Text>
+              ) : null}
             </View>
           }
           ListEmptyComponent={<Muted style={{ textAlign: 'center' }}>{t(S.noVersesYet)}</Muted>}
@@ -253,9 +298,39 @@ export default function ChapterScreen() {
               accessibilityLabel={prev ? t(S.prevChapterA11y(prev.title)) : t(S.firstChapter)}
               color={prev ? palette.accent : palette.border}
             />
+            {recited.length > 0 ? (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={{ busy: phase === 'loading' && !!playingHere }}
+                accessibilityLabel={t(
+                  !playingHere
+                    ? S.listenChapterA11y(recited.find((v) => numbers.indexOf(v) >= visibleIndex) ?? recited[0])
+                    : phase === 'playing'
+                      ? S.pauseRecitation
+                      : phase === 'error'
+                        ? S.retryRecitation
+                        : S.resumeRecitation,
+                )}
+                onPress={onPlay}
+                style={({ pressed }) => [styles.roundBtn, pressed && { opacity: 0.7, transform: [{ scale: 0.94 }] }]}>
+                {playingHere && phase === 'loading' ? (
+                  <ActivityIndicator size="small" color={palette.accent} />
+                ) : (
+                  <Ionicons
+                    name={playingHere && phase === 'playing' ? 'pause' : playingHere && phase === 'error' ? 'refresh' : 'play'}
+                    size={21}
+                    color={palette.accent}
+                  />
+                )}
+              </Pressable>
+            ) : null}
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel={t(S.jumpToVerseA11y(shownVerse, total))}
+              accessibilityLabel={
+                playingHere
+                  ? `${t(S.recitingVerse(playingHere, total))}. ${t(S.jumpToVerseA11y(playingHere, total))}`
+                  : t(S.jumpToVerseA11y(shownVerse, total))
+              }
               onPress={() => total > 0 && setSheet('jump')}
               style={({ pressed }) => [
                 styles.position,
@@ -263,9 +338,14 @@ export default function ChapterScreen() {
                 pressed && { opacity: 0.75 },
               ]}>
               <Text maxFontSizeMultiplier={1.4} numberOfLines={1} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
-                {t(S.verseOf(shownVerse, total))}
+                {playingHere ? (
+                  <Ionicons name="musical-notes" size={TYPE.subhead} color={palette.accent} accessibilityElementsHidden />
+                ) : null}
+                {playingHere ? ' ' : ''}
+                {t(S.verseOf(playingHere ?? shownVerse, total))}
               </Text>
             </Pressable>
+            {playingHere ? <IconButton icon="stop" onPress={stop} accessibilityLabel={t(S.stopRecitation)} color={palette.muted} /> : null}
             <IconButton
               icon="chevron-forward"
               onPress={() => next && go(next.number)}
@@ -301,6 +381,7 @@ const styles = StyleSheet.create({
     padding: SPACE.lg,
     marginTop: SPACE.sm,
   },
+  roundBtn: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
   toolbarWrap: { position: 'absolute', left: SPACE.lg, right: SPACE.lg },
   toolbar: { justifyContent: 'space-between' },
   position: {
