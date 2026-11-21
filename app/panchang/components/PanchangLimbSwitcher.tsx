@@ -47,7 +47,7 @@ export function PanchangLimbSwitcher({ activeLimb }: { activeLimb?: PanchangLimb
                 onClick={() => triggerTactileFeedback('light', 'softTap')}
                 aria-current={isActive ? 'page' : undefined}
                 data-limb={limb.id}
-                className={`liquid-pill group inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
+                className={`liquid-pill tap-target group inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
                   isActive
                     ? 'border border-saffron-500/60 bg-saffron-500/18 text-saffron-800 dark:text-saffron-200 shadow-xs'
                     : 'border border-dharma-border/70 bg-dharma-card/55 text-dharma-muted backdrop-blur-md hover:border-saffron-300 hover:text-dharma-text'

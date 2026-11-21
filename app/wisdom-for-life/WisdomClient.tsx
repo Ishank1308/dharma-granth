@@ -418,7 +418,7 @@ function WisdomTopicCard({
         </span>
         <Link
           href={`/wisdom-for-life/${topic.slug}`}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors group-hover:translate-x-1 duration-200"
+          className="tap-target inline-flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors group-hover:translate-x-1 duration-200"
           aria-label={`Explore scriptural guidance for ${topic.titleEn}`}
         >
           <span>Explore Teachings</span>

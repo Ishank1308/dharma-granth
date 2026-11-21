@@ -139,7 +139,7 @@ export default function GitaJourneyPage() {
           <div className="pt-2 flex flex-wrap items-center gap-4 text-xs">
             <Link
               href="/scripture/bhagavadgita/"
-              className="inline-flex items-center gap-1.5 font-bold text-saffron-800 dark:text-saffron-300 hover:underline"
+              className="tap-target inline-flex items-center gap-1.5 font-bold text-saffron-800 dark:text-saffron-300 hover:underline"
             >
               <BookOpen className="w-4 h-4" />
               <span>Open Bhagavad Gita Library Recension</span>
@@ -147,7 +147,7 @@ export default function GitaJourneyPage() {
             <span className="text-dharma-border">•</span>
             <Link
               href="/learn/journeys/"
-              className="inline-flex items-center gap-1 text-dharma-muted hover:text-dharma-text"
+              className="tap-target inline-flex items-center gap-1 text-dharma-muted hover:text-dharma-text"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>All Guided Journeys</span>
