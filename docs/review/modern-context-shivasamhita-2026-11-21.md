@@ -1,0 +1,41 @@
+# Modern-context notes: Shiva Samhita (review note, 21 November 2026)
+
+This note goes with the pull request that adds modern-context notes to the Shiva Samhita. It lists how the notes were checked, the verses a reviewer should read first, and the facts to spot-check. The notes are AI drafts and have not had a human editorial review.
+
+## Status
+
+- **Coverage so far:** verses 1:1 to 1:80 (80 notes). The book has 644 verses, and none had a modern-context note before. The remaining 564 follow in batches of 40.
+- **Source file:** `data/hi-commentary/shivasamhita-rest.json` is new and holds only the `lifeLesson` field. The existing व्याख्या (`explanation`) is unchanged for all 644 entries; this is verified after each publish.
+- **Shape:** each note has आधुनिक संदर्भ (one real-world fact linked to the verse), आज के जीवन में प्रयोग (three applications) and चिंतन प्रश्न (one question).
+
+## How the notes were checked
+
+- **Register:** every note passed `scripts/check-hindi-register.mjs` with no sentences to fix. The words are tatsam with no Urdu, Persian or English beyond unavoidable proper names and scientific terms (for example हाइड्रोजन, हीलियम, टेफ्लॉन). There is no first person. Where Shiva speaks in the first person (1:2, 1:3, 1:33, 1:34), the note reports it in the third person.
+- **Facts used once:** each batch was compared with every earlier note in all books by shared rare words and by shared years. Candidate facts that an earlier book had already used were dropped before writing.
+- **Anchoring:** each note says in one sentence what the verse itself teaches, following the existing व्याख्या.
+
+## Please read these places first
+
+- **The list of other views (1:4–1:16):** the text lists many paths and schools and calls them confusing. Every note in this range carries a line that these are respected traditions of Indian thought and that the text lists them as a lead-in to its own path of yoga, not to censure anyone.
+  - 1:11 (those who accept only what is perceived): the note opens with Jayarashi's Tattvopaplavasimha and treats the demand for evidence with respect.
+  - 1:13 (the text calls these thinkers "averse to the highest goal"): the note reports this as the text's own wording.
+  - 1:15 (the text says these sages confuse people): the note says this is the text's own style and that all of them are respected teachers.
+- **Praise of the text's own teaching (1:17–1:18):** each note says such praise is an old textual style (arthavāda) and does not lower other scriptures.
+- **Secrecy (1:19):** the note says secrecy here means fitness and guidance, not keeping any group out. Its first application says prāṇāyāma and difficult practices should be done only under a qualified teacher.
+- **Heaven, hell and rebirth (1:9, 1:23–1:28):** each note says these descriptions are the scripture's faith and symbolic language, not established fact.
+  - 1:26 (merit brings happiness, sin brings sorrow): the note adds that nobody's suffering should be judged as the fruit of their sin, and its third application says to help a suffering person, not lecture them.
+  - 1:28: the printed meaning gives "others' wives" as an example of what is envied in heaven. The note does not repeat this and speaks only of others' splendour and happiness.
+- **Giving up ritual action (1:30–1:31):** each note says giving up means dropping attachment to the fruit, not leaving family or social duty. The note at 1:31 adds that the text speaks to a seeker who already knows the worth of ritual.
+- **Shiva as the mover of the mind in both sin and merit (1:33):** the note adds that responsibility for an act stays with the person who does it.
+- **The world as appearance (1:35–1:49, 1:59, 1:67):** each note says this is the Advaita view and that other schools explain the same point in their own way. The notes at 1:39, 1:59 and 1:67 add that calling the world unreal does not mean giving up everyday duty. The note at 1:49 adds that "imagined" does not mean "useless".
+- **1:41:** the existing व्याख्या says the reading of this verse is unclear. The note says "as far as the reading can be understood".
+- **Gods as impermanent (1:45):** the note says this is the Advaita view in which every name and form falls within māyā, that the devotional schools hold God to be eternal, and that both views deserve respect.
+- **Consciousness as the source of the world (1:50):** the note says neuroscience studies consciousness together with brain activity and that calling consciousness the root of everything is the scripture's view.
+- **Samādhi (1:65–1:66):** the note at 1:66 says samādhi belongs to the experience of practitioners and to scripture, and that research only measures outward signs that go with it. Both notes send the reader to an experienced teacher for meditation practice.
+- **Dispassion toward body, wealth and pleasure (1:68):** the note says dispassion means lessening attachment, not neglecting the body or family duty. Its third application says to give the body proper food and rest.
+- **Creation and the elements (1:74–1:80):** each note says the order of creation and the pairing of elements with qualities are philosophy's own language and classification, not a statement of modern physics.
+
+## Facts to spot-check
+
+- **1:1–1:40:** mantis shrimp photoreceptors (1:1); Kaivalyadhama, 1924 (1:2); the poisoned-arrow parable, Majjhima Nikaya 63 (1:3); Dashalakshana Parva (1:4); Qingming (1:5); Manusmriti 3.77–78, paraphrased (1:6); the Shikoku pilgrimage (1:7); Hick, 1952 (1:8); the length of the Earth's orbit (1:9); the Sally–Anne test, 1985 (1:10); the Tattvopaplavasimha manuscript, Patan, 1926 (1:11); Vasubandhu's Vimshatika (1:12); Eli Pariser, 2011 (1:13); nirīśvara and seśvara Sankhya (1:14); Manimekalai, canto 27 (1:15); the 2010 count of about 13 crore books (1:16); Kepler and Tycho Brahe, 1609 (1:17); the fourteen Maheshvara sutras (1:18); Schedule H medicines (1:19); the medical degree and internship (1:20); the Cleveland traffic signal, 5 August 1914 (1:21); sessions of Parliament and private members' bills (1:22); Bosch's triptych in the Prado (1:23); the Dome C ice core (1:24); Olds and Milner, 1954 (1:25); Okun and colleagues, 2013 (1:26); midnight sun and polar night at Tromsø (1:27); Stouffer, 1949 (1:28); the gold-and-iron-fetter image and Gita 2.50 (1:29); Piplantri, since 2006 (1:30); the placenta (1:31); Halsted's surgical training (1:32); 173,000 terawatts of sunlight (1:33); the Harbin ice festival (1:34); crescent images under trees in a partial eclipse (1:35); the Hall of Mirrors at Versailles, 1684 (1:36); Malgudi, 1935 (1:37); the Kanizsa triangle, 1955 (1:38); the "face on Mars", 1976 and 2001 (1:39); the streak test for pyrite (1:40).
+- **1:41–1:80:** the Pulfrich effect, 1922 (1:41); Monet's cataracts (1:42); phototherapy for newborn jaundice, Rochford, 1958 (1:43); Rayleigh on the blue sky, 1871 (1:44); the changing shape of the Saptarshi stars (1:45); the Draupner wave, 1 January 1995 (1:46); the 1979 Nobel Prize for electroweak unification (1:47); Minkowski's 1908 lecture (1:48); Samoa skipping 30 December 2011 (1:49); Moruzzi and Magoun, 1949 (1:50); the Eustachian tube (1:51); Penzias and Wilson, 1965 (1:52); the Earth's magnetic field (1:53); Teflon, 1938 (1:54); Pinatubo, 1991 (1:55); mass converted in the Sun each second (1:56); the 2022 computation of π (1:57); the Jack Hills zircons (1:58); Virchow, 1855 (1:59); Leknes and colleagues, 2013 (1:60); Goldberger and pellagra (1:61); Brewster's kaleidoscope, 1816 (1:62); the share of species now extinct, and Taittiriya Upanishad 2.4 (1:63); the discovery of argon, 1894 (1:64); Preksha Dhyana, 1975 (1:65); Newberg's imaging study, 2001 (1:66); the Zeiss planetarium projector, Jena, 1923 (1:67); the Varkari story of Tukaram returning Shivaji's gifts, told as a tradition (1:68); the first Non-Aligned summit, Belgrade, 1961 (1:69); the name-letter effect, Nuttin, 1985 (1:70); Dalton's atom, 1808 (1:71); the anechoic chamber in Minneapolis (1:72); Taylor and colleagues on imaginary companions, 2004 (1:73); Guth's inflation proposal, 1981 (1:74); the formation of the solar system (1:75); the triple-alpha process and Hoyle (1:76); the 2021 Nobel Prize in medicine (1:77); vetiver roots (1:78); Alam Ara, 1931, and Kisan Kanya, 1937 (1:79); Spence's crisp experiment, 2004 (1:80).
