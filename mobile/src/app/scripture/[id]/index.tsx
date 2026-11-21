@@ -6,9 +6,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BookHero } from '@/components/art/book-hero';
 import { DownloadCard } from '@/components/download-card';
-import { accentFill, Backdrop, barSurface, GroupRow, Muted } from '@/components/ui';
+import { accentFill, Backdrop, barSurface, GroupRow, IconTile, Muted } from '@/components/ui';
 import { CATEGORIES, getEntry, webUrl } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
+import { summaryCollection } from '@/content/study';
 import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useScrollProgressStyle, useScrollY } from '@/motion/parallax';
@@ -16,7 +17,7 @@ import { PressableScale } from '@/motion/pressable-scale';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
 import { SANSKRIT_FONT } from '@/theme/fonts';
-import { BAR_GAP, BAR_HEIGHT, barClearance, RADIUS, SPACE, TYPE, UI_FONT_CAP } from '@/theme/themes';
+import { BAR_GAP, BAR_HEIGHT, barClearance, huesFor, RADIUS, SPACE, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -56,6 +57,8 @@ export default function ScriptureScreen() {
   };
 
   const last = entry.chapters.length - 1;
+  // Every chapter's summary, where the website has them.
+  const summaries = summaryCollection(entry.id);
 
   return (
     <Backdrop>
@@ -136,6 +139,23 @@ export default function ScriptureScreen() {
                 </View>
               </BookHero>
               {!entry.bundled ? <DownloadCard entry={entry} /> : null}
+              {summaries ? (
+                <GroupRow
+                  first
+                  last
+                  inset={64}
+                  accessibilityRole="link"
+                  accessibilityLabel={`${t(summaries.heading)}. ${t(S.summaryAllSub)}`}
+                  onPress={() => router.push({ pathname: '/summary/[id]', params: { id: entry.id } })}
+                  style={{ marginBottom: 0 }}>
+                  <IconTile icon="reader-outline" color={huesFor(palette).peacock} />
+                  <View style={{ flex: 1 }}>
+                    <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{t(summaries.heading)}</Text>
+                    <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>{t(S.summaryAllSub)}</Text>
+                  </View>
+                  <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+                </GroupRow>
+              ) : null}
             </View>
           }
           renderItem={({ item, index }) => {

@@ -67,6 +67,7 @@ function Navigator() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="scripture/[id]/index" options={{ title: '', animation: push }} />
           <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '', animation: push }} />
+          <Stack.Screen name="summary/[id]" options={{ title: '', animation: push }} />
         </Stack>
     </ThemeProvider>
   );
