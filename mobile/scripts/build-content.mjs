@@ -128,5 +128,6 @@ if (usedShards < bundledIds.length) {
   console.warn('[content] some books came from full-book JSON. Run `npm run shard:scriptures` at the repo root for the cleaned text.');
 }
 
-await buildSearchIndex();
+// The Ashtavakra Gita first: the search index reads its generated chapters.
 await buildAshtavakra();
+await buildSearchIndex();
