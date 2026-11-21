@@ -106,3 +106,9 @@ scripts/*cookies*
 
 # Over GitHub's 100 MB limit: committed as .json.gz, unpacked by scripts/unpack-data.mjs
 /public/data/scriptures-full/mahabharata.json
+
+# Browser sign-in data must never be committed: cookie dumps, session tokens,
+# Chrome key material and copied browser databases.
+*cookies*.json
+temp_*cookies*.db
+temp_history.db
