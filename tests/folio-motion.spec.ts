@@ -49,11 +49,28 @@ test('only the verse panels near the viewport animate their chapter photo', asyn
   expect(animations.filter((a) => a.properties.some((p) => p !== 'transform' && p !== 'opacity'))).toEqual([]);
 });
 
+// On a machine with four cores or fewer and no saved choice, the site switches itself to low-power
+// mode when the footer's toggle hydrates, and the Battery API switches it back a moment later
+// (lib/performance-mode.ts; about 60ms apart on a four-core machine). The quiet-mode rule stops
+// the background for that moment, so one read of the page there finds no animation. The reader's
+// own saved choice skips the detection, so each state below is exact on any machine.
+const fluid = (animations: ReturnType<typeof endlessAnimations>) => animations.filter((a) => a.name.startsWith('fluid-'));
+
 test('the home page background animates on the compositor only', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('dharma.perf.lowPower', 'false'));
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await expect(page.locator('.prana-fluid-stage')).toBeAttached();
-  const blobs = (await page.evaluate(endlessAnimations)).filter((a) => a.name.startsWith('fluid-'));
+  const blobs = fluid(await page.evaluate(endlessAnimations));
   expect(blobs.length).toBeGreaterThan(0);
   expect(blobs.filter((a) => a.properties.some((p) => p !== 'transform' && p !== 'opacity'))).toEqual([]);
+});
+
+test('low-power mode stops the home page background', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('dharma.perf.lowPower', 'true'));
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await expect(page.locator('.prana-fluid-stage')).toBeAttached();
+  await expect(page.locator('html')).toHaveAttribute('data-low-power', 'true');
+  expect(fluid(await page.evaluate(endlessAnimations))).toEqual([]);
 });
