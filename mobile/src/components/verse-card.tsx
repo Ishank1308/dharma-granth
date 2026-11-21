@@ -1,6 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { memo, useState } from 'react';
-import { Pressable, Share, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, Share, StyleSheet, Text, View } from 'react-native';
+
+import type { RecitationPhase } from '@/audio/player';
 
 import type { Verse } from '@/content/types';
 import {
@@ -32,6 +34,10 @@ interface Props {
   bookmarked: boolean;
   /** Called with the verse number; keep it stable (useCallback) so memo skips unchanged cards. */
   onToggleBookmark: (verse: string) => void;
+  /** Set only when this verse has recitation audio: 'idle' unless it is the verse that is loaded. */
+  audio?: RecitationPhase;
+  /** Called with the verse number; keep it stable like onToggleBookmark. */
+  onToggleAudio?: (verse: string) => void;
 }
 
 /** A study layer's label, led by a dot in the layer's own hue, as on the website. */
@@ -45,7 +51,20 @@ function Label({ msg, lang, palette, extra, hue }: { msg: Msg; lang: Lang; palet
   );
 }
 
-function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, settings, lang, cover, bookmarked, onToggleBookmark }: Props) {
+function VerseCardImpl({
+  scriptureId,
+  scriptureTitle,
+  chapter,
+  verse,
+  palette,
+  settings,
+  lang,
+  cover,
+  bookmarked,
+  onToggleBookmark,
+  audio,
+  onToggleAudio,
+}: Props) {
   const hues = huesFor(palette);
   const t = (m: Msg) => m[lang];
   // A tap on Notes overrides the "Open notes by default" setting until that setting changes again.
@@ -91,6 +110,30 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
           </Text>
         </View>
         <View style={styles.actions}>
+          {audio && onToggleAudio ? (
+            <Pressable
+              onPress={() => onToggleAudio(String(verse.number))}
+              style={({ pressed }) => [
+                styles.iconBtn,
+                audio !== 'idle' && audio !== 'error' && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
+                pressed && { opacity: 0.6 },
+              ]}
+              accessibilityRole="button"
+              accessibilityState={{ busy: audio === 'loading', selected: audio === 'playing' }}
+              accessibilityLabel={t(
+                audio === 'playing' ? S.pauseVerseA11y(ref) : audio === 'error' ? S.retryVerseA11y(ref) : S.listenVerseA11y(ref),
+              )}>
+              {audio === 'loading' ? (
+                <ActivityIndicator size="small" color={palette.accent} />
+              ) : (
+                <Ionicons
+                  name={audio === 'playing' ? 'pause' : audio === 'error' ? 'refresh' : 'play-outline'}
+                  size={20}
+                  color={audio === 'idle' ? palette.muted : palette.accent}
+                />
+              )}
+            </Pressable>
+          ) : null}
           <Pressable
             onPress={share}
             style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}

@@ -217,8 +217,9 @@ export default function LibraryScreen() {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              style={{ marginHorizontal: -SPACE.lg }}
-              contentContainerStyle={{ paddingHorizontal: SPACE.lg, columnGap: SPACE.sm }}>
+              // Vertical room so the chips' shadows aren't cut off at the scroller's edge.
+              style={{ marginHorizontal: -SPACE.lg, marginVertical: -SPACE.sm }}
+              contentContainerStyle={{ paddingHorizontal: SPACE.lg, paddingVertical: SPACE.sm, columnGap: SPACE.sm }}>
               <Chip label={t(S.filterAll)} active={!category} onPress={() => setCategory(null)} />
               {CATEGORIES.map((c) => (
                 <Chip key={c.key} label={t(c)} active={category === c.key} onPress={() => setCategory(category === c.key ? null : c.key)} />
