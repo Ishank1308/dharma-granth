@@ -1,29 +1,149 @@
+import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { File, Paths } from 'expo-file-system';
+import { useFocusEffect } from 'expo-router';
 import * as Sharing from 'expo-sharing';
-import { useState } from 'react';
-import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { useCallback, useState } from 'react';
+import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { accentFill, Backdrop, Bilingual, Card, Eyebrow, glass, Muted, SectionTitle } from '@/components/ui';
+import { accentFill, Backdrop, Bilingual, Card, Chip, Eyebrow, glass, Muted, PageTitle, SectionTitle } from '@/components/ui';
 import { CATALOG, SITE } from '@/content/catalog';
-import { makeBackup, parseBackup } from '@/lib/backup';
+import { LANGUAGE_SETTINGS, S, useI18n, type LanguageSetting, type Msg } from '@/i18n';
+import { BackupError, makeBackup, parseBackup } from '@/lib/backup';
+import {
+  getReminderPermission,
+  remindersSupported,
+  requestReminderPermission,
+  type ReminderPermission,
+} from '@/lib/daily-notification';
+import { formatReminderTime } from '@/lib/reminder';
 import { useAppState } from '@/state/app-state';
 import { RADIUS, SPACE, THEME_ORDER, THEMES, TYPE } from '@/theme/themes';
 
 const SCALES = [0.9, 1, 1.15, 1.3, 1.5];
 
+/** Language names are always shown in their own script, whatever the interface language. */
+const LANGUAGE_NAMES: Record<Exclude<LanguageSetting, 'system'>, string> = { en: 'English', hi: 'हिन्दी' };
+
+const BACKUP_ERRORS: Record<BackupError['code'], Msg> = {
+  'not-json': S.backupNotJson,
+  'wrong-file': S.backupWrongFile,
+  'too-new': S.backupTooNew,
+};
+
+/** Opt-in daily verse notification: a switch and a time. Scheduled on the phone, nothing sent anywhere. */
+function DailyVerseSettings() {
+  const { palette, settings, updateSettings } = useAppState();
+  const { t } = useI18n();
+  const [permission, setPermission] = useState<ReminderPermission>('undetermined');
+  const time = new Date(2000, 0, 1, settings.reminderHour, settings.reminderMinute);
+
+  // Re-check on every visit: the reader may have turned notifications off in Android settings.
+  useFocusEffect(
+    useCallback(() => {
+      let alive = true;
+      getReminderPermission()
+        .then((p) => alive && setPermission(p))
+        .catch(() => {});
+      return () => {
+        alive = false;
+      };
+    }, []),
+  );
+
+  const openSystemSettings = () => Linking.openSettings().catch(() => {});
+
+  const toggle = async (on: boolean) => {
+    if (!on) {
+      updateSettings({ dailyReminder: false });
+      return;
+    }
+    const p = await requestReminderPermission().catch((): ReminderPermission => 'denied');
+    setPermission(p);
+    if (p === 'granted') {
+      updateSettings({ dailyReminder: true });
+    } else {
+      Alert.alert(t(S.notificationsOffTitle), t(S.notificationsOffBody), [
+        { text: t(S.notNow), style: 'cancel' },
+        { text: t(S.openSettings), onPress: openSystemSettings },
+      ]);
+    }
+  };
+
+  const setTime = (d: Date) => updateSettings({ reminderHour: d.getHours(), reminderMinute: d.getMinutes() });
+
+  const pickTime = () =>
+    DateTimePickerAndroid.open({
+      mode: 'time',
+      value: time,
+      onValueChange: (_e, d) => setTime(d),
+    });
+
+  const blocked = settings.dailyReminder && permission === 'denied';
+
+  return (
+    <>
+      <SectionTitle {...S.dailyVerse} />
+      <Card style={{ paddingVertical: SPACE.xs }}>
+        <View style={styles.toggle}>
+          <View style={{ flex: 1 }}>
+            <Bilingual {...S.dailyVerseNotification} weight="500" />
+          </View>
+          <Switch
+            value={settings.dailyReminder}
+            onValueChange={(v) => void toggle(v)}
+            trackColor={{ true: palette.accent, false: palette.dark ? '#48484a' : palette.border }}
+            thumbColor="#fff"
+            {...({ activeThumbColor: '#fff' } as object)}
+            accessibilityLabel={t(S.dailyVerseNotification)}
+          />
+        </View>
+        {settings.dailyReminder ? (
+          <View style={[styles.toggle, { borderTopWidth: StyleSheet.hairlineWidth, borderColor: palette.border }]}>
+            <Bilingual {...S.reminderTime} style={{ flex: 1 }} weight="500" />
+            {Platform.OS === 'ios' ? (
+              <DateTimePicker mode="time" display="compact" value={time} onValueChange={(_e, d) => setTime(d)} />
+            ) : (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={t(S.reminderTimeA11y(formatReminderTime(settings.reminderHour, settings.reminderMinute)))}
+                onPress={pickTime}
+                style={[styles.timeBtn, glass(palette, true)]}>
+                <Text style={{ color: palette.accent, fontWeight: '700', fontSize: TYPE.callout }}>
+                  {formatReminderTime(settings.reminderHour, settings.reminderMinute)}
+                </Text>
+              </Pressable>
+            )}
+          </View>
+        ) : null}
+      </Card>
+      {blocked ? (
+        <Pressable accessibilityRole="button" onPress={openSystemSettings} style={{ marginTop: SPACE.sm }}>
+          <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.notificationsBlocked)}</Text>
+        </Pressable>
+      ) : (
+        <Muted style={{ marginTop: SPACE.sm }}>{t(S.dailyVerseNote)}</Muted>
+      )}
+    </>
+  );
+}
+
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { palette, settings, updateSettings, exportData, importData, bookmarks } = useAppState();
+  const { t, lang } = useI18n();
   const [busy, setBusy] = useState(false);
   const bundled = CATALOG.filter((b) => b.bundled).length;
 
-  const toggles: { key: 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes'; en: string; hi: string }[] = [
-    { key: 'showTransliteration', en: 'Transliteration', hi: 'लिप्यन्तरण' },
-    { key: 'showHindi', en: 'Hindi meaning', hi: 'हिन्दी अर्थ' },
-    { key: 'showEnglish', en: 'English translation', hi: 'अंग्रेज़ी अनुवाद' },
-    { key: 'showNotes', en: 'Open notes by default', hi: 'टिप्पणी खुली रखें' },
+  const toggles: { key: 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes'; label: Msg }[] = [
+    { key: 'showTransliteration', label: S.showTransliteration },
+    { key: 'showHindi', label: S.showHindi },
+    { key: 'showEnglish', label: S.showEnglish },
+    { key: 'showNotes', label: S.showNotes },
   ];
+
+  const errorText = (e: unknown) =>
+    e instanceof BackupError ? t(BACKUP_ERRORS[e.code]) : e instanceof Error ? e.message : String(e);
 
   const doExport = async () => {
     setBusy(true);
@@ -34,12 +154,12 @@ export default function SettingsScreen() {
       file.create();
       file.write(JSON.stringify(makeBackup(exportData()), null, 2));
       if (await Sharing.isAvailableAsync()) {
-        await Sharing.shareAsync(file.uri, { mimeType: 'application/json', dialogTitle: 'Save backup' });
+        await Sharing.shareAsync(file.uri, { mimeType: 'application/json', dialogTitle: t(S.saveBackupDialog) });
       } else {
-        Alert.alert('Backup saved', file.uri);
+        Alert.alert(t(S.backupSaved), file.uri);
       }
     } catch (e) {
-      Alert.alert('Could not export', e instanceof Error ? e.message : String(e));
+      Alert.alert(t(S.exportFailed), errorText(e));
     } finally {
       setBusy(false);
     }
@@ -52,9 +172,9 @@ export default function SettingsScreen() {
       if (picked.canceled) return;
       const data = parseBackup(await picked.result.text());
       importData(data);
-      Alert.alert('Backup restored', `${data.bookmarks.length} saved verses added. Settings restored.`);
+      Alert.alert(t(S.backupRestored), t(S.backupRestoredBody(data.bookmarks.length)));
     } catch (e) {
-      Alert.alert('Could not import', e instanceof Error ? e.message : String(e));
+      Alert.alert(t(S.importFailed), errorText(e));
     } finally {
       setBusy(false);
     }
@@ -65,32 +185,45 @@ export default function SettingsScreen() {
       <ScrollView
         style={{ backgroundColor: 'transparent' }}
         contentContainerStyle={{ paddingTop: insets.top + SPACE.lg, paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xxl * 3 }}>
-        <Eyebrow en="Preferences" hi="पसंद" />
-        <Text style={{ color: palette.text, fontSize: 34, fontWeight: '800', letterSpacing: -0.6, marginTop: SPACE.sm }}>Settings</Text>
-        <Text style={{ color: palette.accent, fontSize: TYPE.title2, fontWeight: '600' }}>सेटिंग्स</Text>
+        <Eyebrow {...S.settingsEyebrow} />
+        <View style={{ marginTop: SPACE.sm }}>
+          <PageTitle {...S.settingsTitle} />
+        </View>
 
-        <SectionTitle en="Theme" hi="रंग-रूप" />
+        <SectionTitle {...S.language} />
+        <View style={styles.chips}>
+          {LANGUAGE_SETTINGS.map((l) => (
+            <Chip
+              key={l}
+              label={l === 'system' ? t(S.languageSystem) : LANGUAGE_NAMES[l]}
+              active={settings.language === l}
+              onPress={() => updateSettings({ language: l })}
+            />
+          ))}
+        </View>
+        <Muted style={{ marginTop: SPACE.sm }}>{t(S.languageNote)}</Muted>
+
+        <SectionTitle {...S.theme} />
         <View style={styles.themes}>
           {THEME_ORDER.map((name) => {
-            const t = THEMES[name];
+            const theme = THEMES[name];
             const active = settings.theme === name;
             return (
               <Pressable
                 key={name}
                 accessibilityRole="button"
                 accessibilityState={{ selected: active }}
-                accessibilityLabel={`${t.label} theme`}
+                accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
                 onPress={() => updateSettings({ theme: name })}
-                style={[styles.theme, glass(t, true), active && { borderColor: palette.accent, borderWidth: 2 }]}>
-                <View style={[styles.swatch, { backgroundColor: t.accent }]} />
-                <Text style={{ color: t.text, fontWeight: '700', fontSize: TYPE.footnote }}>{t.label}</Text>
-                <Text style={{ color: t.muted, fontSize: TYPE.caption }}>{t.labelHi}</Text>
+                style={[styles.theme, glass(theme, true), active && { borderColor: palette.accent, borderWidth: 2 }]}>
+                <View style={[styles.swatch, { backgroundColor: theme.accent }]} />
+                <Text style={{ color: theme.text, fontWeight: '700', fontSize: TYPE.footnote }}>{lang === 'hi' ? theme.labelHi : theme.label}</Text>
               </Pressable>
             );
           })}
         </View>
 
-        <SectionTitle en="Text size" hi="अक्षर आकार" />
+        <SectionTitle {...S.textSize} />
         <View style={styles.scales}>
           {SCALES.map((s) => {
             const active = Math.abs(settings.textScale - s) < 0.01;
@@ -99,7 +232,7 @@ export default function SettingsScreen() {
                 key={s}
                 accessibilityRole="button"
                 accessibilityState={{ selected: active }}
-                accessibilityLabel={`Text size ${Math.round(s * 100)} percent`}
+                accessibilityLabel={t(S.textSizeA11y(Math.round(s * 100)))}
                 onPress={() => updateSettings({ textScale: s })}
                 style={[styles.scale, active ? accentFill(palette) : glass(palette)]}>
                 <Text style={{ color: active ? palette.onAccent : palette.text, fontSize: 14 * s, fontWeight: '700' }}>अ</Text>
@@ -108,51 +241,47 @@ export default function SettingsScreen() {
           })}
         </View>
 
-        <SectionTitle en="Show in verses" hi="श्लोक में दिखाएँ" />
+        <SectionTitle {...S.showInVerses} />
         <Card style={{ paddingVertical: SPACE.xs }}>
-          {toggles.map((t, i) => (
-            <View key={t.key} style={[styles.toggle, i > 0 && { borderTopWidth: StyleSheet.hairlineWidth, borderColor: palette.border }]}>
-              <Bilingual en={t.en} hi={t.hi} style={{ flex: 1 }} weight="500" />
+          {toggles.map((row, i) => (
+            <View key={row.key} style={[styles.toggle, i > 0 && { borderTopWidth: StyleSheet.hairlineWidth, borderColor: palette.border }]}>
+              <Bilingual {...row.label} style={{ flex: 1 }} weight="500" />
               <Switch
-                value={settings[t.key]}
-                onValueChange={(v) => updateSettings({ [t.key]: v })}
+                value={settings[row.key]}
+                onValueChange={(v) => updateSettings({ [row.key]: v })}
                 trackColor={{ true: palette.accent, false: palette.dark ? '#48484a' : palette.border }}
                 thumbColor="#fff"
               {...({ activeThumbColor: '#fff' } as object)}
-                accessibilityLabel={t.en}
+                accessibilityLabel={t(row.label)}
               />
             </View>
           ))}
         </Card>
-        <Muted style={{ marginTop: SPACE.sm }}>The Sanskrit text is always shown in full.</Muted>
+        <Muted style={{ marginTop: SPACE.sm }}>{t(S.sanskritAlwaysFull)}</Muted>
 
-        <SectionTitle en="Backup" hi="बैकअप" />
+        {remindersSupported ? <DailyVerseSettings /> : null}
+
+        <SectionTitle {...S.backup} />
         <Card style={{ rowGap: SPACE.md }}>
-          <Muted>
-            No account, nothing uploaded. Your {bookmarks.length} saved verses and settings live only on this phone. Export a JSON file to
-            keep a copy, and import it on a new phone.
-          </Muted>
+          <Muted>{t(S.backupBody(bookmarks.length))}</Muted>
           <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
             <Pressable disabled={busy} onPress={doExport} accessibilityRole="button" style={[styles.btn, accentFill(palette)]}>
-              <Text style={[styles.btnText, { color: palette.onAccent }]}>Export · निर्यात</Text>
+              <Text style={[styles.btnText, { color: palette.onAccent }]}>{t(S.exportBtn)}</Text>
             </Pressable>
             <Pressable disabled={busy} onPress={doImport} accessibilityRole="button" style={[styles.btn, glass(palette, true)]}>
-              <Text style={[styles.btnText, { color: palette.text }]}>Import · आयात</Text>
+              <Text style={[styles.btnText, { color: palette.text }]}>{t(S.importBtn)}</Text>
             </Pressable>
           </View>
         </Card>
 
-        <SectionTitle en="About" hi="परिचय" />
+        <SectionTitle {...S.about} />
         <Card style={{ rowGap: SPACE.sm }}>
-          <Muted>
-            {CATALOG.length} scriptures in the library, {bundled} readable offline. Larger texts (epics, Puranas, Rig Veda) open on the
-            website.
-          </Muted>
+          <Muted>{t(S.aboutBody(CATALOG.length, bundled))}</Muted>
           <Pressable accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
             <Text style={{ color: palette.accent, fontWeight: '600' }}>dharmagranth.dev</Text>
           </Pressable>
           <Pressable accessibilityRole="link" onPress={() => Linking.openURL(`${SITE}/privacy/`).catch(() => {})}>
-            <Text style={{ color: palette.accent, fontWeight: '600' }}>Privacy policy · गोपनीयता नीति</Text>
+            <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.privacyPolicy)}</Text>
           </Pressable>
         </Card>
       </ScrollView>
@@ -161,6 +290,7 @@ export default function SettingsScreen() {
 }
 
 const styles = StyleSheet.create({
+  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
   themes: { flexDirection: 'row', gap: SPACE.sm },
   theme: { flex: 1, borderRadius: RADIUS.control, padding: SPACE.sm, alignItems: 'center', rowGap: 2 },
   swatch: { width: 18, height: 18, borderRadius: 9, marginBottom: 2 },
@@ -169,4 +299,5 @@ const styles = StyleSheet.create({
   toggle: { flexDirection: 'row', alignItems: 'center', paddingVertical: SPACE.md, columnGap: SPACE.md },
   btn: { flex: 1, borderRadius: RADIUS.pill, paddingVertical: SPACE.md, alignItems: 'center' },
   btnText: { color: '#fff', fontWeight: '700' },
+  timeBtn: { borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, paddingHorizontal: SPACE.lg },
 });

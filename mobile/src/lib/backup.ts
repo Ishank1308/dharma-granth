@@ -4,6 +4,10 @@
  */
 import type { ThemeName } from '@/theme/themes';
 
+// Kept in step with LANGUAGE_SETTINGS in @/i18n/language (inlined so the node tests need no path aliases).
+type LanguageSetting = 'system' | 'en' | 'hi';
+const LANGUAGES: LanguageSetting[] = ['system', 'en', 'hi'];
+
 export const BACKUP_FORMAT = 'dharma-granth-mobile-backup';
 export const BACKUP_VERSION = 1;
 
@@ -27,6 +31,12 @@ export interface Settings {
   showHindi: boolean;
   showEnglish: boolean;
   showNotes: boolean;
+  /** Interface language. 'system' follows the phone. Verse text is not affected. */
+  language: LanguageSetting;
+  /** Opt-in daily verse notification, scheduled on the phone (no server, no push token). */
+  dailyReminder: boolean;
+  reminderHour: number;
+  reminderMinute: number;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -36,6 +46,10 @@ export const DEFAULT_SETTINGS: Settings = {
   showHindi: true,
   showEnglish: true,
   showNotes: false,
+  language: 'system',
+  dailyReminder: false,
+  reminderHour: 7,
+  reminderMinute: 0,
 };
 
 export interface AppData {
@@ -56,6 +70,11 @@ export function bookmarkKey(b: Pick<Bookmark, 'id' | 'chapter' | 'verse'>): stri
   return `${b.id}:${b.chapter}:${b.verse}`;
 }
 
+function wholeIn(raw: unknown, min: number, max: number, fallback: number): number {
+  const n = typeof raw === 'number' ? raw : Number.NaN;
+  return Number.isInteger(n) && n >= min && n <= max ? n : fallback;
+}
+
 export function normalizeSettings(raw: unknown): Settings {
   const s = (raw && typeof raw === 'object' ? raw : {}) as Partial<Settings>;
   const scale = Number(s.textScale);
@@ -66,6 +85,10 @@ export function normalizeSettings(raw: unknown): Settings {
     showHindi: typeof s.showHindi === 'boolean' ? s.showHindi : DEFAULT_SETTINGS.showHindi,
     showEnglish: typeof s.showEnglish === 'boolean' ? s.showEnglish : DEFAULT_SETTINGS.showEnglish,
     showNotes: typeof s.showNotes === 'boolean' ? s.showNotes : DEFAULT_SETTINGS.showNotes,
+    language: LANGUAGES.includes(s.language as LanguageSetting) ? (s.language as LanguageSetting) : DEFAULT_SETTINGS.language,
+    dailyReminder: typeof s.dailyReminder === 'boolean' ? s.dailyReminder : DEFAULT_SETTINGS.dailyReminder,
+    reminderHour: wholeIn(s.reminderHour, 0, 23, DEFAULT_SETTINGS.reminderHour),
+    reminderMinute: wholeIn(s.reminderMinute, 0, 59, DEFAULT_SETTINGS.reminderMinute),
   };
 }
 
@@ -104,20 +127,30 @@ export function makeBackup(data: AppData, now = new Date()): BackupFile {
   return { format: BACKUP_FORMAT, version: BACKUP_VERSION, exportedAt: now.toISOString(), ...data };
 }
 
-/** Reads a backup file's text. Throws a readable Error when it is not one of ours. */
+/** Why a backup could not be read. The message is English; the code lets the UI show it in the reader's language. */
+export class BackupError extends Error {
+  readonly code: 'not-json' | 'wrong-file' | 'too-new';
+  constructor(code: BackupError['code'], message: string) {
+    super(message);
+    this.name = 'BackupError';
+    this.code = code;
+  }
+}
+
+/** Reads a backup file's text. Throws a BackupError when it is not one of ours. */
 export function parseBackup(text: string): AppData {
   let parsed: unknown;
   try {
     parsed = JSON.parse(text);
   } catch {
-    throw new Error('This file is not valid JSON.');
+    throw new BackupError('not-json', 'This file is not valid JSON.');
   }
   if (!parsed || typeof parsed !== 'object' || (parsed as BackupFile).format !== BACKUP_FORMAT) {
-    throw new Error('This is not a Dharma Granth backup file.');
+    throw new BackupError('wrong-file', 'This is not a Dharma Granth backup file.');
   }
   const b = parsed as BackupFile;
   if (typeof b.version !== 'number' || b.version > BACKUP_VERSION) {
-    throw new Error('This backup was made by a newer version of the app.');
+    throw new BackupError('too-new', 'This backup was made by a newer version of the app.');
   }
   return {
     settings: normalizeSettings(b.settings),

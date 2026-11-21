@@ -3,6 +3,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
+import { DailyReminderEffects } from '@/components/daily-reminder-effects';
 import { AppStateProvider, useAppState } from '@/state/app-state';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -30,6 +31,7 @@ function Navigator() {
   return (
     <ThemeProvider value={navTheme}>
         <StatusBar style={palette.dark ? 'light' : 'dark'} />
+        <DailyReminderEffects />
         <Stack
           screenOptions={{
             headerStyle: { backgroundColor: palette.chrome },

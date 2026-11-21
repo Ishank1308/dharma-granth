@@ -4,6 +4,7 @@ import { FlatList, Linking, StyleSheet, Text, View } from 'react-native';
 
 import { Backdrop, Card, GlassRow, Muted } from '@/components/ui';
 import { CATEGORIES, getEntry, webUrl } from '@/content/catalog';
+import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { SPACE, TYPE } from '@/theme/themes';
@@ -11,13 +12,14 @@ import { SPACE, TYPE } from '@/theme/themes';
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { palette } = useAppState();
+  const { t } = useI18n();
   const entry = getEntry(String(id));
 
   if (!entry) {
     return (
       <View style={styles.center}>
-        <Stack.Screen options={{ title: 'Not found' }} />
-        <Muted>This scripture is not in the library.</Muted>
+        <Stack.Screen options={{ title: t(S.notFoundTitle) }} />
+        <Muted>{t(S.scriptureNotFound)}</Muted>
       </View>
     );
   }
@@ -48,18 +50,15 @@ export default function ScriptureScreen() {
                 <Text style={{ color: palette.text, fontSize: TYPE.title1, fontWeight: '800' }}>{entry.titleSanskrit ?? entry.title}</Text>
                 <Text style={{ color: palette.muted, fontSize: TYPE.subhead, marginTop: 2 }}>
                   {entry.title}
-                  {cat ? ` · ${cat.en}` : ''} · {entry.chapters.length} chapters · {entry.totalVerses.toLocaleString('en-IN')} verses
+                  {cat ? ` · ${t(cat)}` : ''} · {t(S.chaptersVerses(entry.chapters.length, entry.totalVerses))}
                 </Text>
               </View>
               {!entry.bundled ? (
                 <Card style={{ flexDirection: 'row', columnGap: SPACE.md, alignItems: 'center' }}>
                   <Ionicons name="globe-outline" size={22} color={palette.accent} />
                   <View style={{ flex: 1 }}>
-                    <Text style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '600' }}>Read on dharmagranth.dev</Text>
-                    <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
-                      This text is too large to ship inside the app. Chapters open in your browser.
-                    </Text>
-                    <Text style={{ color: palette.muted, fontSize: TYPE.footnote }}>यह ग्रन्थ वेबसाइट पर खुलेगा।</Text>
+                    <Text style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '600' }}>{t(S.readOnWebsite)}</Text>
+                    <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>{t(S.readOnWebsiteBody)}</Text>
                   </View>
                 </Card>
               ) : null}
@@ -68,14 +67,14 @@ export default function ScriptureScreen() {
           renderItem={({ item }) => (
             <GlassRow
               accessibilityRole={entry.bundled ? 'button' : 'link'}
-              accessibilityLabel={`Chapter ${item.number}, ${item.title}`}
+              accessibilityLabel={t(S.chapterA11y(item.number, item.title))}
               onPress={() => open(item.number)}>
               <Text style={[styles.num, { color: palette.gold }]}>{toDevanagari(item.number)}</Text>
               <View style={{ flex: 1 }}>
                 <Text style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
                 <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
-                  {item.titleSanskrit ? item.title : `Chapter ${item.number}`}
-                  {item.verseCount ? ` · ${item.verseCount} verses` : ''}
+                  {item.titleSanskrit ? item.title : t(S.chapterN(item.number))}
+                  {item.verseCount ? ` · ${t(S.verseCount(item.verseCount))}` : ''}
                 </Text>
               </View>
               <Ionicons name={entry.bundled ? 'chevron-forward' : 'open-outline'} size={18} color={palette.muted} />

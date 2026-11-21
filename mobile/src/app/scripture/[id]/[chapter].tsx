@@ -7,6 +7,7 @@ import { Backdrop, Eyebrow, glass, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
 import { getEntry, loadChapter } from '@/content/catalog';
 import type { Verse } from '@/content/types';
+import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { SPACE, TYPE } from '@/theme/themes';
@@ -15,12 +16,14 @@ export default function ChapterScreen() {
   const params = useLocalSearchParams<{ id: string; chapter: string; verse?: string }>();
   const id = String(params.id);
   const chapterNo = Number(params.chapter);
-  const { palette, settings, isBookmarked, toggleBookmark, setLastRead } = useAppState();
+  const { palette, settings, lang, bookmarks, toggleBookmark, setLastRead } = useAppState();
+  const t = (m: Msg) => m[lang];
   const entry = getEntry(id);
   const meta = entry?.chapters.find((c) => c.number === chapterNo);
   const chapter = useMemo(() => loadChapter(id, chapterNo), [id, chapterNo]);
   const listRef = useRef<FlatList<Verse>>(null);
   const jumped = useRef(false);
+  const jumpTries = useRef(0);
 
   useEffect(() => {
     if (chapter) setLastRead(id, chapterNo);
@@ -34,27 +37,35 @@ export default function ChapterScreen() {
 
   const go = (n: number) => router.replace({ pathname: '/scripture/[id]/[chapter]', params: { id, chapter: String(n) } });
 
-  const renderItem = useCallback(
-    ({ item }: { item: Verse }) => (
-      <VerseCard
-        scriptureId={id}
-        scriptureTitle={entry?.title ?? id}
-        chapter={chapterNo}
-        verse={item}
-        palette={palette}
-        settings={settings}
-        bookmarked={isBookmarked(id, chapterNo, String(item.number))}
-        onToggleBookmark={() => toggleBookmark(id, chapterNo, String(item.number))}
-      />
-    ),
-    [id, chapterNo, entry?.title, palette, settings, isBookmarked, toggleBookmark],
+  // Bookmarked verse numbers in this chapter only. With a stable toggle callback, saving one verse
+  // re-renders that one card instead of every card on screen (VerseCard is memoised).
+  const saved = useMemo(
+    () => new Set(bookmarks.filter((b) => b.id === id && b.chapter === chapterNo).map((b) => b.verse)),
+    [bookmarks, id, chapterNo],
+  );
+  const onToggleBookmark = useCallback((verse: string) => toggleBookmark(id, chapterNo, verse), [toggleBookmark, id, chapterNo]);
+
+  // A plain function: the React Compiler memoizes it on these same inputs. (A manual useCallback here
+  // makes the compiler skip this whole component, because the localized labels below read `entry`.)
+  const renderItem = ({ item }: { item: Verse }) => (
+    <VerseCard
+      scriptureId={id}
+      scriptureTitle={entry?.title ?? id}
+      chapter={chapterNo}
+      verse={item}
+      palette={palette}
+      settings={settings}
+      lang={lang}
+      bookmarked={saved.has(String(item.number))}
+      onToggleBookmark={onToggleBookmark}
+    />
   );
 
   if (!entry || !meta || !chapter) {
     return (
       <View style={styles.center}>
         <Stack.Screen options={{ title: entry?.title ?? '' }} />
-        <Muted>This chapter is not available in the app.</Muted>
+        <Muted>{t(S.chapterUnavailable)}</Muted>
       </View>
     );
   }
@@ -70,16 +81,22 @@ export default function ChapterScreen() {
           data={chapter.verses}
           keyExtractor={(v, i) => `${v.number}-${i}`}
           renderItem={renderItem}
-          initialNumToRender={target > 0 ? target + 3 : 6}
-          windowSize={9}
+          // Never render up to the target verse in one go: a bookmark deep in Bala Kand (1,958 verses)
+          // would mount ~1,500 cards on the JS thread and freeze the phone. Jump instead (below).
+          initialNumToRender={6}
+          maxToRenderPerBatch={6}
+          windowSize={7}
           onLayout={() => {
             if (target <= 0 || jumped.current) return;
             jumped.current = true;
             listRef.current?.scrollToIndex({ index: target, animated: false, viewPosition: 0 });
           }}
           onScrollToIndexFailed={(info) => {
+            // Verse heights vary, so jump to an estimate, let that window render, then retry a few times.
+            if (jumpTries.current >= 8) return;
+            jumpTries.current += 1;
             listRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: false });
-            setTimeout(() => listRef.current?.scrollToIndex({ index: info.index, animated: false }), 100);
+            setTimeout(() => listRef.current?.scrollToIndex({ index: info.index, animated: false }), 120);
           }}
           ListHeaderComponent={
             <View style={{ marginBottom: SPACE.lg, alignItems: 'center', rowGap: SPACE.xs }}>
@@ -88,20 +105,20 @@ export default function ChapterScreen() {
                 {meta.titleSanskrit ?? meta.title}
               </Text>
               {meta.titleSanskrit ? <Text style={{ color: palette.muted, fontSize: TYPE.subhead }}>{meta.title}</Text> : null}
-              <Muted style={{ marginTop: SPACE.xs }}>{chapter.verses.length} verses</Muted>
+              <Muted style={{ marginTop: SPACE.xs }}>{t(S.verseCount(chapter.verses.length))}</Muted>
             </View>
           }
-          ListEmptyComponent={<Muted style={{ textAlign: 'center' }}>No verses in this chapter yet.</Muted>}
+          ListEmptyComponent={<Muted style={{ textAlign: 'center' }}>{t(S.noVersesYet)}</Muted>}
           ListFooterComponent={
             <View style={styles.pager}>
               {prev ? (
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={`Previous chapter, ${prev.title}`}
+                  accessibilityLabel={t(S.prevChapterA11y(prev.title))}
                   onPress={() => go(prev.number)}
                   style={[styles.pageBtn, glass(palette)]}>
                   <Ionicons name="chevron-back" size={18} color={palette.accent} />
-                  <Text style={{ color: palette.accent, fontWeight: '600' }}>Chapter {prev.number}</Text>
+                  <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.chapterN(prev.number))}</Text>
                 </Pressable>
               ) : (
                 <View />
@@ -109,10 +126,10 @@ export default function ChapterScreen() {
               {next ? (
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={`Next chapter, ${next.title}`}
+                  accessibilityLabel={t(S.nextChapterA11y(next.title))}
                   onPress={() => go(next.number)}
                   style={[styles.pageBtn, glass(palette)]}>
-                  <Text style={{ color: palette.accent, fontWeight: '600' }}>Chapter {next.number}</Text>
+                  <Text style={{ color: palette.accent, fontWeight: '600' }}>{t(S.chapterN(next.number))}</Text>
                   <Ionicons name="chevron-forward" size={18} color={palette.accent} />
                 </Pressable>
               ) : (

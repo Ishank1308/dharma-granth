@@ -70,15 +70,14 @@ export function Backdrop({ children, quiet }: { children: ReactNode; quiet?: boo
 }
 
 /**
- * English and Hindi as two separate Text elements, so screen readers and text extraction
- * never run them together ("Homeमुख"), same rule as the website header.
+ * Interface text in the reader's language (Settings → Language). Components take both strings so a
+ * pair from @/i18n/strings can be spread straight in: <SectionTitle {...S.theme} />.
  */
 export function Bilingual({
   en,
   hi,
   size = TYPE.callout,
   color,
-  hiColor,
   weight = '600',
   style,
 }: {
@@ -86,17 +85,26 @@ export function Bilingual({
   hi: string;
   size?: number;
   color?: string;
-  hiColor?: string;
   weight?: TextStyle['fontWeight'];
   style?: StyleProp<ViewStyle>;
 }) {
-  const { palette, settings } = useAppState();
-  const s = size * settings.textScale;
+  const { palette, settings, lang } = useAppState();
   return (
     <View style={[styles.bilingual, style]}>
-      <Text style={{ fontSize: s, fontWeight: weight, color: color ?? palette.text }}>{en}</Text>
-      <Text style={{ fontSize: s * 0.92, color: hiColor ?? palette.muted }}>{hi}</Text>
+      <Text style={{ fontSize: size * settings.textScale, fontWeight: weight, color: color ?? palette.text }}>
+        {lang === 'hi' ? hi : en}
+      </Text>
     </View>
+  );
+}
+
+/** A screen's large title, in the reader's language. */
+export function PageTitle({ en, hi }: { en: string; hi: string }) {
+  const { palette, lang } = useAppState();
+  return (
+    <Text style={{ color: palette.text, fontSize: 34, fontWeight: '800', letterSpacing: lang === 'hi' ? 0 : -0.6 }}>
+      {lang === 'hi' ? hi : en}
+    </Text>
   );
 }
 
@@ -155,22 +163,24 @@ export function Chip({
 
 /** The small frosted capsule over a page title, like the website's eyebrow. */
 export function Eyebrow({ en, hi, style }: { en: string; hi: string; style?: StyleProp<ViewStyle> }) {
-  const { palette } = useAppState();
+  const { palette, lang } = useAppState();
   return (
     <View style={[styles.eyebrow, glass(palette), style]}>
       <View style={[styles.dot, { backgroundColor: palette.accent }]} />
-      <Text style={{ color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: 0.6 }}>{en.toUpperCase()}</Text>
-      <Text style={{ color: palette.muted, fontSize: TYPE.caption }}>{hi}</Text>
+      <Text style={{ color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.6 }}>
+        {lang === 'hi' ? hi : en.toUpperCase()}
+      </Text>
     </View>
   );
 }
 
 export function SectionTitle({ en, hi }: { en: string; hi: string }) {
-  const { palette } = useAppState();
+  const { palette, lang } = useAppState();
   return (
     <View style={styles.sectionTitle}>
-      <Text style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>{en}</Text>
-      <Text style={{ color: palette.accent, fontSize: TYPE.subhead }}>{hi}</Text>
+      <Text style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
+        {lang === 'hi' ? hi : en}
+      </Text>
     </View>
   );
 }
