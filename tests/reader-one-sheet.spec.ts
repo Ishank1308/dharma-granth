@@ -71,9 +71,11 @@ test('the Aa sheet holds reading depth, the chapter views and what read-aloud sp
   await expect(sheet).toBeHidden();
 });
 
-test('the first Listen press after a page load speaks the shloka, then the meaning chosen before it', async ({ page }) => {
-  // A stand-in voice: it notes what it is asked to speak and finishes each line at once. The engine
-  // announces a spoken translation with its own event, which is noted too.
+/**
+ * A stand-in voice: it notes what it is asked to speak and finishes each line at once. The engine
+ * announces a spoken translation with its own event, which is noted too.
+ */
+async function standInVoice(page: Page) {
   await page.addInitScript(() => {
     const heard = { lines: [] as string[], translations: [] as string[] };
     (window as unknown as { __heard: typeof heard }).__heard = heard;
@@ -91,8 +93,11 @@ test('the first Listen press after a page load speaks the shloka, then the meani
       }, 0);
     };
   });
-  const heard = () => page.evaluate(() => (window as unknown as { __heard: { lines: string[]; translations: string[] } }).__heard);
+  return () => page.evaluate(() => (window as unknown as { __heard: { lines: string[]; translations: string[] } }).__heard);
+}
 
+test('the first Listen press after a page load speaks the shloka, then the meaning chosen before it', async ({ page }) => {
+  const heard = await standInVoice(page);
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto(gitaChapter);
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
@@ -122,6 +127,40 @@ test('the first Listen press after a page load speaks the shloka, then the meani
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
   sheet = await openAaSheet(page);
   await expect(sheet.getByRole('group', { name: /Read aloud/ }).getByRole('radio', { name: /हिन्दी/ })).toBeChecked();
+});
+
+test('a pause pressed while the audio is still loading keeps the shloka silent', async ({ page }) => {
+  const heard = await standInVoice(page);
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto(gitaChapter);
+  await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+  await page.waitForLoadState('networkidle');
+
+  // From here on, code the page fetches arrives late: the audio engine loads on the first press.
+  let late = 0;
+  let inFlight = 0;
+  await page.route('**/_next/static/chunks/**', async (route) => {
+    late++;
+    inFlight++;
+    await new Promise((resolve) => setTimeout(resolve, 2500));
+    await route.continue().finally(() => inFlight--);
+  });
+
+  const dock = page.locator('[aria-label*="Reader dock"]');
+  await dock.getByRole('button', { name: /Listen/ }).click();
+  await dock.getByRole('button', { name: /Pause chanting/ }).click();
+  await expect(dock.getByRole('button', { name: /Listen/ })).toHaveAttribute('aria-pressed', 'false');
+
+  // Once the engine has arrived and run, nothing was spoken and the dock still says stopped.
+  await expect.poll(() => late > 0 && inFlight === 0, { timeout: 15_000 }).toBe(true);
+  await page.waitForTimeout(1000);
+  expect((await heard()).lines).toEqual([]);
+  await expect(dock.getByRole('button', { name: /Listen/ })).toHaveAttribute('aria-pressed', 'false');
+
+  // The engine works: the next press speaks.
+  await page.unroute('**/_next/static/chunks/**');
+  await dock.getByRole('button', { name: /Listen/ }).click();
+  await expect.poll(async () => (await heard()).lines.length).toBeGreaterThan(0);
 });
 
 test('the reading depth choices fit the sheet on a 320px phone', async ({ page }) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /** Height of the site's glass bar (SiteNav, h-[52px]). */
 const BAR = 52;
@@ -18,9 +18,10 @@ const MAX_TOP_SCREENS = 1.2;
  * (app/styles/title-fold.css) driven by `--title-fold` (0 to 1) on the heading, so reduced
  * motion and the quiet modes turn it off there while the bar title still swaps.
  */
-export function useFoldingTitle(pathname: string | null, enabled: boolean) {
+export function useFoldingTitle(pathname: string | null, enabled: boolean, lang?: string) {
   const [title, setTitle] = useState('');
   const [folded, setFolded] = useState(false);
+  const found = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     setFolded(false);
@@ -62,6 +63,7 @@ export function useFoldingTitle(pathname: string | null, enabled: boolean) {
       const text = shortTitle(h1);
       if (!text) return;
       heading = h1;
+      found.current = h1;
       heading.setAttribute('data-title-folding', '');
       // A centred title shrinks toward its middle, a left-aligned one toward its start.
       if (getComputedStyle(h1).textAlign === 'center') heading.style.transformOrigin = 'center bottom';
@@ -77,6 +79,7 @@ export function useFoldingTitle(pathname: string | null, enabled: boolean) {
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      found.current = null;
       if (heading) {
         heading.removeAttribute('data-title-folding');
         heading.style.removeProperty('--title-fold');
@@ -84,6 +87,12 @@ export function useFoldingTitle(pathname: string | null, enabled: boolean) {
       }
     };
   }, [pathname, enabled]);
+
+  // A language chosen later on the same page: the bar's title follows it.
+  useEffect(() => {
+    const text = found.current?.isConnected ? shortTitle(found.current) : '';
+    if (text) setTitle(text);
+  }, [lang]);
 
   return { title, folded };
 }

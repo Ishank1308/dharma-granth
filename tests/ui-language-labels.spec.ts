@@ -117,6 +117,7 @@ for (const choice of [
 const handWrittenHeadingRoutes = [
   '/panchang/', '/panchang/karanas/', '/panchang/yogas/', '/panchang/calendar/', '/panchang/muhurta/',
   '/locations/', '/timelines/', '/pathways/', '/rituals/upakarma/', '/practice/', '/wisdom-for-life/',
+  '/concepts/dharma/',
 ];
 
 // Once a page title has scrolled under the bar, the bar shows its short form (lib/useFoldingTitle).
@@ -133,6 +134,14 @@ test('the bar shows a two-language title without the bracket that joined its hal
   // A title that opens with its Hindi half.
   await page.goto('/locations/');
   await expect(await barTitle(page)).toHaveText('Sacred Geography');
+
+  // A language chosen later on the same page (the phone drawer's copy of the setting): the bar
+  // follows it without a reload.
+  await page.locator('button[aria-controls="mobile-navigation-drawer"]').first().click();
+  await page.getByRole('radiogroup', { name: 'भाषा प्राथमिकता' }).getByRole('radio').filter({ hasText: 'प्राथमिक हिन्दी' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'hindi');
+  await page.keyboard.press('Escape');
+  await expect(await barTitle(page)).toHaveText('पवित्र स्थान मानचित्र');
 });
 
 for (const choice of [
@@ -150,11 +159,20 @@ for (const choice of [
       await expect(page.locator('#main-content h1').first()).toBeVisible();
 
       const report = await page.evaluate((hidden) => {
+        // The page's own headings: the site footer (also in #main-content) is checked above, and a
+        // heading inside a closed section has no visible text to read.
         const marked = [...document.querySelectorAll<HTMLElement>('#main-content :is(h1, h2, h3, h4)')]
-          .filter((heading) => heading.querySelector('[data-bi]') && heading.getClientRects().length > 0);
+          .filter((heading) => heading.querySelector('[data-bi]') && heading.getClientRects().length > 0)
+          .filter((heading) => !heading.closest('footer, details:not([open])'));
         const text = (heading: HTMLElement) => heading.innerText.replace(/\s+/g, ' ').trim();
+        const isShown = (el: Element | null) => el instanceof HTMLElement && el.getClientRects().length > 0;
         return {
           count: marked.length,
+          // A half standing alone where the other half was starts flush, without the margin that set it off.
+          indented: marked.flatMap((heading) => [...heading.querySelectorAll<HTMLElement>('[data-bi="en"], [data-bi="hi"]')])
+            .filter((half) => isShown(half) && half.previousElementSibling?.matches('[data-bi]') && !isShown(half.previousElementSibling))
+            .filter((half) => getComputedStyle(half).marginLeft !== '0px')
+            .map((half) => half.textContent),
           // innerText leaves out what the choice hides.
           broken: marked.map(text).filter((t) => t === '' || /^[·|/(]|[·|/(]$|\(\s*\)/.test(t)),
           stillShown: marked.flatMap((heading) => [...heading.querySelectorAll<HTMLElement>(`[data-bi="${hidden}"]`)])
@@ -165,6 +183,7 @@ for (const choice of [
       expect(report.count, `${route} has marked headings`).toBeGreaterThan(0);
       expect(report.broken, `${route} headings read whole`).toEqual([]);
       expect(report.stillShown, `${route} hides the other language`).toBe(0);
+      expect(report.indented, `${route} halves alone start flush`).toEqual([]);
       expect(report.overflow, `${route} fits the phone`).toBeLessThanOrEqual(1);
     }
 

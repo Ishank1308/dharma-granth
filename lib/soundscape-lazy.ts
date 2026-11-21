@@ -21,8 +21,14 @@ let pending: Promise<Soundscape> | null = null;
 
 const pendingListeners = new Set<SoundscapeListener>();
 const activeUnsubs = new Map<SoundscapeListener, () => void>();
-// Calls made before the engine arrived, in the order they were made.
-const queued: Array<(m: Soundscape) => void> = [];
+// Calls made before the engine arrived, in the order they were made. A start is tagged so that a
+// stop pressed while the engine is still on its way can take it back.
+type Queued = { fn: (m: Soundscape) => void; start?: 'soundscape' | 'drone' };
+const queued: Queued[] = [];
+
+function dropQueued(start: NonNullable<Queued['start']>): void {
+  for (let i = queued.length - 1; i >= 0; i--) if (queued[i].start === start) queued.splice(i, 1);
+}
 
 // Default fallback state when the engine is not yet loaded
 const fallbackState: SoundscapeState = {
@@ -78,7 +84,7 @@ export function loadSoundscape(): Promise<Soundscape> {
         // The queued calls run before the page's listeners join. A listener's first word from the
         // engine is then the state after the press that loaded it (playing), not the idle state
         // before it, which a page reads as "stopped".
-        for (const fn of queued.splice(0)) {
+        for (const { fn } of queued.splice(0)) {
           try {
             fn(m);
           } catch (error) {
@@ -106,12 +112,12 @@ export function loadSoundscape(): Promise<Soundscape> {
   return pending;
 }
 
-export function withSoundscape(fn: (m: Soundscape) => void): void {
+export function withSoundscape(fn: (m: Soundscape) => void, start?: Queued['start']): void {
   if (mod) {
     fn(mod);
     return;
   }
-  queued.push(fn);
+  queued.push({ fn, start });
   void loadSoundscape();
 }
 
@@ -136,12 +142,15 @@ export function subscribeSoundscape(listener: SoundscapeListener): () => void {
 }
 
 export function startSoundscape(track?: SoundscapeTrackId): void {
-  withSoundscape((m) => m.startSoundscape(track));
+  withSoundscape((m) => m.startSoundscape(track), 'soundscape');
 }
 
 export function stopSoundscape(): void {
   if (mod) {
     mod.stopSoundscape();
+  } else {
+    // Pressed before the engine arrived: the start waiting for it must not play afterwards.
+    dropQueued('soundscape');
   }
 }
 
@@ -195,11 +204,13 @@ export function speakSanskritTerm(pada: string, speed?: number): void {
 }
 
 export function startMeditationDrone(mode: 'tanpura' | 'om' | 'flute' | 'silent'): void {
-  withSoundscape((m) => m.startMeditationDrone(mode));
+  withSoundscape((m) => m.startMeditationDrone(mode), 'drone');
 }
 
 export function stopMeditationDrone(): void {
   if (mod) {
     mod.stopMeditationDrone();
+  } else {
+    dropQueued('drone');
   }
 }

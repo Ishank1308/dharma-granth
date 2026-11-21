@@ -24,11 +24,14 @@ import { useTheme } from '@/app/components/ThemeProvider';
 import { updateLastVerse } from '@/lib/reading-history';
 import dynamic from 'next/dynamic';
 import { useEverTrue } from '@/lib/use-ever-true';
+import { loadReaderDialogImpl } from '@/app/components/reader/ReaderDialog';
 
 // Dialogs and alternate reading modes load the first time they are used, so they stay out of the chapter's first-load JS.
 const AddToCollectionModal = dynamic(() => import('./AddToCollectionModal').then((m) => m.AddToCollectionModal), { ssr: false });
 const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').then((m) => m.ContributeMeaningModal), { ssr: false });
-const ReaderSettingsPanel = dynamic(() => import('@/app/components/reader/ReaderSettingsPanel').then((m) => m.ReaderSettingsPanel), { ssr: false });
+// One import() site, shared with the idle warm-up below, so both fetch the same chunk.
+const loadReaderSettingsPanel = () => import('@/app/components/reader/ReaderSettingsPanel');
+const ReaderSettingsPanel = dynamic(() => loadReaderSettingsPanel().then((m) => m.ReaderSettingsPanel), { ssr: false });
 import { VerseCard } from './VerseCard';
 import { DEFAULT_DEPTH, useReadingDepth } from '@/lib/reading-depth';
 import { useConnectivity } from '@/lib/useConnectivity';
@@ -269,11 +272,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   // reader or the browser asks to save data; the sheet then loads on first open, as before.
   const chapterReady = state.kind === 'ready';
   useEffect(() => {
-    if (!chapterReady) return;
+    // Waits for the connection too, so a page opened offline warms the sheet once it is back.
+    if (!chapterReady || isOnline !== true) return;
     const warm = () => {
-      if (!navigator.onLine || document.documentElement.hasAttribute('data-data-saver')) return;
-      void import('@/app/components/reader/ReaderSettingsPanel').catch(() => {});
-      void import('@/app/components/reader/ReaderDialogImpl').catch(() => {});
+      if (document.documentElement.hasAttribute('data-data-saver')) return;
+      void loadReaderSettingsPanel().catch(() => {});
+      void loadReaderDialogImpl().catch(() => {});
     };
     if ('requestIdleCallback' in window) {
       const idle = window.requestIdleCallback(warm, { timeout: 10_000 });
@@ -281,7 +285,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     }
     const timer = setTimeout(warm, 4000);
     return () => clearTimeout(timer);
-  }, [chapterReady]);
+  }, [chapterReady, isOnline]);
 
   const getCollectionCount = (verseNum: number | string) => {
     return collections.filter((c) =>
