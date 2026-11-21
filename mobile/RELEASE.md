@@ -58,6 +58,6 @@ roll it out in the Play Console. Use a staged rollout (for example 20%, then 100
 
 ## Permissions
 
-`app.json` asks only for `INTERNET` and blocks microphone, overlay and storage permissions that
+`app.json` asks only for `INTERNET` and blocks microphone, overlay, storage and advertising ID permissions that
 libraries can add by default, so the Data safety answers stay true. Check
 **App bundle explorer → Permissions** in the Play Console after each build that adds a native module.

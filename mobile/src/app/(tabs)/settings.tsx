@@ -146,6 +146,9 @@ export default function SettingsScreen() {
         <Pressable accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
           <Text style={{ color: palette.accent, fontWeight: '600' }}>dharmagranth.dev</Text>
         </Pressable>
+        <Pressable accessibilityRole="link" onPress={() => Linking.openURL(`${SITE}/privacy/`).catch(() => {})}>
+          <Text style={{ color: palette.accent, fontWeight: '600' }}>Privacy policy · गोपनीयता नीति</Text>
+        </Pressable>
       </Card>
     </ScrollView>
   );
