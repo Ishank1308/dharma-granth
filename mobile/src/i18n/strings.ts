@@ -501,6 +501,8 @@ export const S = {
   }),
   savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
   startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+  shelfTitle: { en: 'Good places to begin', hi: 'आरंभ के लिए' },
+  openBookA11y: (title: string) => ({ en: `Open ${title}`, hi: `${title} खोलें` }),
   // Svadhyaya journal (src/app/journal, src/lib/journal.ts)
   journalTitle: { en: 'Svadhyaya journal', hi: 'स्वाध्याय डायरी' },
   journalEyebrow: { en: 'Personal reflections', hi: 'निजी चिन्तन' },
@@ -714,6 +716,17 @@ export const S = {
     hi: `${inSection ? 'इस वर्ग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
   }),
   searchResultA11y: (ref: string, text: string) => ({ en: `${ref}. ${text}. Opens the verse`, hi: `${ref}। ${text}। श्लोक खोलता है` }),
+
+  // Toasts: a short confirmation with Undo, in place of "Are you sure?" dialogs
+  toastSaved: { en: 'Saved to your collection', hi: 'आपके संग्रह में सहेजा गया' },
+  toastRemoved: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
+  undo: { en: 'Undo', hi: 'वापस लें' },
+
+  // A book's title page: its size in plain words, under the English title
+  titlePageFacts: (chapters: number, verses: number) => ({
+    en: `${n(chapters)} ${chapters === 1 ? 'chapter' : 'chapters'} and ${n(verses)} verses`,
+    hi: `${n(chapters)} अध्याय, ${n(verses)} श्लोक`,
+  }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 
 /** Journal moods (@/lib/journal MOODS), as on the website. */

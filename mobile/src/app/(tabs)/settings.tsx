@@ -4,7 +4,8 @@ import { File, Paths } from 'expo-file-system';
 import { useFocusEffect } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useState } from 'react';
-import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Switch, Text, useWindowDimensions, View } from 'react-native';
+import { Alert, Linking, Platform, Pressable, StyleSheet, Switch, Text, useWindowDimensions, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DownloadsSection } from '@/components/download-card';
@@ -19,10 +20,13 @@ import {
   type ReminderPermission,
 } from '@/lib/daily-notification';
 import { formatReminderTime } from '@/lib/reminder';
+import { useScrollY } from '@/motion/parallax';
+import { TitleBar } from '@/motion/title-bar';
 import { useAppState } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
+import { SANSKRIT_FONT } from '@/theme/fonts';
 
 /** Icon tiles keep the deep spectrum hues in every theme, so their white glyphs stay readable. */
 const TILE = huesFor({ dark: false });
@@ -153,6 +157,7 @@ function DailyVerseSettings() {
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
+  const { scrollY, onScroll } = useScrollY();
   const { palette, settings, updateSettings, exportData, importData, bookmarks, lightEffects } = useAppState();
   const { journal, importJournal } = useJournal();
   // At large system font sizes the four theme names no longer fit in one row; show them two by two.
@@ -216,10 +221,12 @@ export default function SettingsScreen() {
 
   return (
     <Backdrop>
-      <ScrollView
+      <Animated.ScrollView
         style={{ backgroundColor: 'transparent' }}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
         contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}>
-        <LargeHeader title={S.settingsTitle} eyebrow={S.settingsEyebrow} />
+        <LargeHeader title={S.settingsTitle} eyebrow={S.settingsEyebrow} scrollY={scrollY} />
 
         <SectionTitle {...S.language} />
         <View style={styles.chips} accessibilityRole="radiogroup">
@@ -247,13 +254,15 @@ export default function SettingsScreen() {
                 accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
                 onPress={() => updateSettings({ theme: name })}
                 style={[styles.theme, themesInTwoRows && styles.themeHalf]}>
-                {/* A small page in the theme's own colours: a title line and two lines of text. */}
+                {/* A small page in the theme's own colours: the Gita's first word in the shloka face, then two lines of text. */}
                 <View
                   style={[
                     styles.preview,
                     { backgroundColor: theme.bg, borderColor: active ? palette.accent : theme.border, borderWidth: active ? 2.5 : 1 },
                   ]}>
-                  <View style={[styles.previewLine, { width: '60%', height: 6, backgroundColor: theme.text }]} />
+                  <Text allowFontScaling={false} numberOfLines={1} style={{ fontFamily: SANSKRIT_FONT, color: theme.dark ? theme.gold : theme.text, fontSize: 15, lineHeight: 24 }}>
+                    धर्मक्षेत्रे
+                  </Text>
                   <View style={[styles.previewLine, { backgroundColor: theme.border }]} />
                   <View style={[styles.previewLine, { width: '80%', backgroundColor: theme.border }]} />
                   <View style={[styles.previewDot, { backgroundColor: theme.accent }]} />
@@ -343,7 +352,8 @@ export default function SettingsScreen() {
             <Ionicons name="open-outline" size={18} color={palette.muted} />
           </GroupRow>
         </GroupCard>
-      </ScrollView>
+      </Animated.ScrollView>
+      <TitleBar scrollY={scrollY} title={S.settingsTitle} />
     </Backdrop>
   );
 }

@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState, type ComponentProps } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { MoonPhase } from '@/components/moon-phase';
+import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { Backdrop, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { S, useI18n, type Msg } from '@/i18n';
@@ -60,7 +60,7 @@ export default function ExploreScreen() {
           onPress={() => router.push('/explore/panchang')}
           style={({ pressed }) => [styles.hero, glass(palette, true), pressed && { transform: [{ scale: 0.985 }] }]}>
           <View style={styles.heroTop}>
-            <MoonPhase illumination={today.paksha.illuminationPercent} waxing={today.paksha.isWaxing} size={60} />
+            <Moon3D phase={phaseFromIllumination(today.paksha.illuminationPercent, today.paksha.isWaxing)} size={60} />
             <View style={{ flex: 1 }}>
               <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.5 }}>
                 {lang === 'hi' ? t(S.todayAt(cityName)) : t(S.todayAt(cityName)).toUpperCase()}
