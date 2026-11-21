@@ -10,6 +10,7 @@ import { Platform } from 'react-native';
 import { dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import type { Lang } from '@/i18n/language';
 import { S } from '@/i18n/strings';
+import { afterStartup } from '@/lib/after-startup';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { upcomingReminderTimes } from '@/lib/reminder';
 
@@ -106,7 +107,8 @@ let queue: Promise<void> = Promise.resolve();
 
 export function syncDailyReminder(opts: ReminderOptions): Promise<void> {
   // Run one sync at a time, so flicking the switch quickly cannot interleave cancel and schedule calls.
-  queue = queue.then(() => runSync(opts)).catch(() => {
+  // On a cold start this waits until the first screen has settled (src/lib/after-startup.ts).
+  queue = queue.then(() => afterStartup()).then(() => runSync(opts)).catch(() => {
     // Scheduling failed (for example the alarm limit); the reader still has the in-app verse of the day.
   });
   return queue;
