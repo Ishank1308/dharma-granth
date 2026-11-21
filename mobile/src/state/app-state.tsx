@@ -36,6 +36,8 @@ interface AppState {
   lang: Lang;
   /** Light effects in use (the reader's choice, or Automatic on a budget phone). Also on palette.lite. */
   lightEffects: boolean;
+  /** Android's "Remove animations" (or the platform's reduce-motion switch) is on: sheets and screens appear without sliding. */
+  reduceMotion: boolean;
   bookmarks: Bookmark[];
   lastRead: LastRead | null;
   updateSettings: (patch: Partial<Settings>) => void;
@@ -169,6 +171,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       settings,
       palette,
       lightEffects,
+      reduceMotion,
       lang: resolveLanguage(settings.language),
       bookmarks,
       lastRead,
@@ -180,7 +183,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       exportData,
       importData,
     }),
-    [ready, settings, palette, lightEffects, bookmarks, lastRead, updateSettings, isBookmarked, toggleBookmark, removeBookmark, setLastRead, exportData, importData],
+    [ready, settings, palette, lightEffects, reduceMotion, bookmarks, lastRead, updateSettings, isBookmarked, toggleBookmark, removeBookmark, setLastRead, exportData, importData],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
