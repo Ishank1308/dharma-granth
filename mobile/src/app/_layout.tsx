@@ -3,6 +3,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 
+import { RecitationProvider } from '@/audio/player';
 import { AppStateProvider, useAppState } from '@/state/app-state';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -49,7 +50,9 @@ function Navigator() {
 export default function RootLayout() {
   return (
     <AppStateProvider>
-      <Navigator />
+      <RecitationProvider>
+        <Navigator />
+      </RecitationProvider>
     </AppStateProvider>
   );
 }

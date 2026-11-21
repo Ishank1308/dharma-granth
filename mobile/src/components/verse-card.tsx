@@ -1,7 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { memo, useState } from 'react';
-import { Pressable, Share, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, Share, StyleSheet, Text, View } from 'react-native';
 
+import type { RecitationPhase } from '@/audio/player';
 import type { Verse } from '@/content/types';
 import {
   cleanVerseField,
@@ -25,6 +26,9 @@ interface Props {
   settings: Settings;
   bookmarked: boolean;
   onToggleBookmark: () => void;
+  /** Present only when this verse has recitation audio. 'idle' when it is not the verse that is loaded. */
+  audio?: RecitationPhase;
+  onToggleAudio?: () => void;
 }
 
 function Label({ en, hi, palette, extra }: { en: string; hi: string; palette: Palette; extra?: string }) {
@@ -37,7 +41,18 @@ function Label({ en, hi, palette, extra }: { en: string; hi: string; palette: Pa
   );
 }
 
-function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, settings, bookmarked, onToggleBookmark }: Props) {
+function VerseCardImpl({
+  scriptureId,
+  scriptureTitle,
+  chapter,
+  verse,
+  palette,
+  settings,
+  bookmarked,
+  onToggleBookmark,
+  audio,
+  onToggleAudio,
+}: Props) {
   const [notesOpen, setNotesOpen] = useState(settings.showNotes);
   const scale = settings.textScale;
   const ref = formatVerseRef(scriptureId, chapter, verse.number);
@@ -82,6 +97,31 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
           </Text>
         </View>
         <View style={styles.actions}>
+          {audio && onToggleAudio ? (
+            <Pressable
+              onPress={onToggleAudio}
+              hitSlop={6}
+              style={[
+                styles.iconBtn,
+                glass(palette),
+                audio !== 'idle' && audio !== 'error' ? { borderColor: palette.accent, borderWidth: 1 } : null,
+              ]}
+              accessibilityRole="button"
+              accessibilityState={{ busy: audio === 'loading', selected: audio === 'playing' }}
+              accessibilityLabel={
+                audio === 'playing' ? `Pause recitation of verse ${ref}` : audio === 'error' ? `Recitation of verse ${ref} could not load, try again` : `Listen to verse ${ref}`
+              }>
+              {audio === 'loading' ? (
+                <ActivityIndicator size="small" color={palette.accent} />
+              ) : (
+                <Ionicons
+                  name={audio === 'playing' ? 'pause' : audio === 'error' ? 'refresh' : 'play'}
+                  size={17}
+                  color={audio === 'idle' ? palette.muted : palette.accent}
+                />
+              )}
+            </Pressable>
+          ) : null}
           <Pressable
             onPress={share}
             hitSlop={6}

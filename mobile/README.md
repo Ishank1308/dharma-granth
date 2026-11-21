@@ -12,6 +12,8 @@ and English, readable offline, no account.
   Vinaya Patrika, Ramcharitmanas and more). Each verse shows the complete Sanskrit, transliteration, Hindi and English,
   with word meanings and commentary under Notes. The other large texts (Ramayana, Mahabharata, Puranas, Rig and Atharva Veda)
   open on dharmagranth.dev.
+- **Recitation** (pilot: Bhagavad Gita chapter 12): a play button on each recited verse, "Listen" to
+  recite the whole chapter, and a mini player. Audio streams from dharmagranth.dev and is cached on the phone.
 - **Saved verses**, share a verse, four reading themes (Day, Sunset, Paper, Dark) and text size.
 - **Privacy**: bookmarks and settings live in on-device storage only. Settings → Backup exports a JSON
   file and imports it on another phone.
@@ -59,6 +61,23 @@ A book is bundled when its chapter data is at most 2.6 MB (`--max-mb=N` changes 
 in `ALWAYS_BUNDLE` (Ramcharitmanas). The bundle is about 24 MB of Hermes bytecode today. Generated files are git-ignored.
 
 Verse formatting (references, meaning notices) mirrors `lib/verse-format.ts` at the repo root.
+
+## Recitation audio
+
+Verse audio is not bundled. Each verse is one MP3 at `public/audio/<scripture>/<chapter>/<verse>.mp3`
+in the website repo, served as `https://dharmagranth.dev/audio/...` (cache rule in `public/_headers`).
+`src/audio/recitations.json` lists which verses have audio, so the play button appears only there; add a
+chapter to it in the same change that adds its files. The first play streams the file and saves it in the
+app's cache folder (`src/audio/recitation.ts`); later plays are offline. `src/audio/player.tsx` holds one
+shared `expo-audio` player, so one verse sounds at a time and "Listen" moves through the chapter.
+
+Playback is foreground only. The `expo-audio` plugin in `app.json` turns off recording and the background
+playback service, so the only permission it adds is `MODIFY_AUDIO_SETTINGS` (a normal, install-time
+permission with no prompt). No data is collected: the app makes plain GET requests for public files.
+
+The pilot was generated with ElevenLabs (`eleven_v4`, voice "Kuber J - Calm, Devotional & Meditative"),
+one generation per verse from the Sanskrit text with `[slowly] [softly]` in front and the verse number
+removed. The app shows the credit line from `recitations.json`.
 
 ## Checks
 
