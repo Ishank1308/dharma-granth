@@ -5,6 +5,7 @@ import { accentFill, Card, glass } from '@/components/ui';
 import { getEntry, webUrl } from '@/content/catalog';
 import { cancelDownload, deleteDownload, formatBytes, startDownload, useDownloads, useRemoteIndex } from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
+import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
 import { RADIUS, SPACE, TYPE } from '@/theme/themes';
 
@@ -12,6 +13,7 @@ import { RADIUS, SPACE, TYPE } from '@/theme/themes';
 export function DownloadCard({ entry }: { entry: CatalogEntry }) {
   useRemoteIndex();
   const { palette } = useAppState();
+  const { t } = useI18n();
   const { installed, jobs, errors, index, indexStatus } = useDownloads();
   const id = entry.id;
   const mine = installed[id];
@@ -24,9 +26,9 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
   const note = { color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 } as const;
 
   const confirmDelete = () =>
-    Alert.alert(`Delete ${entry.title}?`, `This frees ${formatBytes(mine?.bytes ?? 0)}. You can download it again at any time.`, [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Delete', style: 'destructive', onPress: () => deleteDownload(id) },
+    Alert.alert(t(S.deleteDownloadTitle(entry.title)), t(S.deleteDownloadBody(formatBytes(mine?.bytes ?? 0))), [
+      { text: t(S.cancel), style: 'cancel' },
+      { text: t(S.deleteBtn), style: 'destructive', onPress: () => deleteDownload(id) },
     ]);
 
   if (job) {
@@ -36,13 +38,13 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
         <View style={styles.row}>
           <Ionicons name="cloud-download-outline" size={22} color={palette.accent} />
           <View style={{ flex: 1 }}>
-            <Text style={title}>Downloading… {pct}%</Text>
+            <Text style={title}>{t(S.downloading(pct))}</Text>
             <Text style={note}>
-              {job.total > 0 ? `${formatBytes(job.received)} of ${formatBytes(job.total)}` : 'Starting…'} · डाउनलोड हो रहा है
+              {job.total > 0 ? t(S.downloadProgress(formatBytes(job.received), formatBytes(job.total))) : t(S.downloadStarting)}
             </Text>
           </View>
-          <Pressable accessibilityRole="button" accessibilityLabel="Cancel download" onPress={() => cancelDownload(id)} style={[styles.btn, glass(palette, true)]}>
-            <Text style={[styles.btnText, { color: palette.text }]}>Cancel</Text>
+          <Pressable accessibilityRole="button" accessibilityLabel={t(S.cancelDownloadA11y)} onPress={() => cancelDownload(id)} style={[styles.btn, glass(palette, true)]}>
+            <Text style={[styles.btnText, { color: palette.text }]}>{t(S.cancel)}</Text>
           </Pressable>
         </View>
         <View
@@ -60,56 +62,55 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
       <Card style={styles.row}>
         <Ionicons name="checkmark-circle" size={22} color={palette.gold} />
         <View style={{ flex: 1 }}>
-          <Text style={title}>Downloaded · {formatBytes(mine.bytes)}</Text>
-          <Text style={note}>{update ? 'A corrected edition is available.' : 'Readable offline. ऑफ़लाइन पढ़ें।'}</Text>
+          <Text style={title}>{t(S.downloadedSize(formatBytes(mine.bytes)))}</Text>
+          <Text style={note}>{t(update ? S.downloadUpdateAvailable : S.downloadReady)}</Text>
           {error ? <Text style={[note, { color: palette.accent }]}>{error}</Text> : null}
         </View>
         {update ? (
-          <Pressable accessibilityRole="button" accessibilityLabel="Update download" onPress={() => startDownload(id)} style={[styles.btn, accentFill(palette)]}>
-            <Text style={[styles.btnText, { color: palette.onAccent }]}>Update</Text>
+          <Pressable accessibilityRole="button" accessibilityLabel={t(S.updateDownloadA11y)} onPress={() => startDownload(id)} style={[styles.btn, accentFill(palette)]}>
+            <Text style={[styles.btnText, { color: palette.onAccent }]}>{t(S.updateBtn)}</Text>
           </Pressable>
         ) : null}
-        <Pressable accessibilityRole="button" accessibilityLabel={`Delete ${entry.title} from this phone`} onPress={confirmDelete} hitSlop={8}>
+        <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(entry.title))} onPress={confirmDelete} hitSlop={8}>
           <Ionicons name="trash-outline" size={20} color={palette.muted} />
         </Pressable>
       </Card>
     );
   }
 
-  const size = remote ? `About ${formatBytes(remote.gz)} to download, ${formatBytes(remote.bytes)} on your phone.` : null;
+  const size = remote ? t(S.downloadSize(formatBytes(remote.gz), formatBytes(remote.bytes))) : null;
   return (
     <Card style={{ rowGap: SPACE.md }}>
       <View style={styles.row}>
         <Ionicons name="cloud-download-outline" size={22} color={palette.accent} />
         <View style={{ flex: 1 }}>
-          <Text style={title}>Download to read offline</Text>
+          <Text style={title}>{t(S.downloadTitle)}</Text>
           <Text style={note}>
             {size ??
               (indexStatus === 'error'
-                ? 'Could not reach dharmagranth.dev. Check your connection.'
+                ? t(S.downloadOffline)
                 : indexStatus === 'ready'
-                  ? 'This text is not available for download yet.'
-                  : 'Checking size…')}
+                  ? t(S.downloadNotYet)
+                  : t(S.downloadChecking))}
           </Text>
-          <Text style={note}>ऑफ़लाइन पढ़ने के लिए डाउनलोड करें।</Text>
           {error ? <Text style={[note, { color: palette.accent }]}>{error}</Text> : null}
         </View>
       </View>
       <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={`Download ${entry.title}`}
+          accessibilityLabel={t(S.downloadA11y(entry.title))}
           disabled={indexStatus === 'ready' && !remote}
           onPress={() => startDownload(id)}
           style={[styles.wide, accentFill(palette), indexStatus === 'ready' && !remote && { opacity: 0.5 }]}>
-          <Text style={[styles.btnText, { color: palette.onAccent }]}>Download · डाउनलोड</Text>
+          <Text style={[styles.btnText, { color: palette.onAccent }]}>{t(S.downloadBtn)}</Text>
         </Pressable>
         <Pressable
           accessibilityRole="link"
-          accessibilityLabel="Read on dharmagranth.dev"
+          accessibilityLabel={t(S.readOnWebsite)}
           onPress={() => Linking.openURL(webUrl(id)).catch(() => {})}
           style={[styles.wide, glass(palette, true)]}>
-          <Text style={[styles.btnText, { color: palette.text }]}>Read online</Text>
+          <Text style={[styles.btnText, { color: palette.text }]}>{t(S.readOnline)}</Text>
         </Pressable>
       </View>
     </Card>
@@ -128,29 +129,25 @@ const styles = StyleSheet.create({
 /** Settings → Downloaded texts: what is on the phone, how much space it takes, and delete. */
 export function DownloadsSection() {
   const { palette } = useAppState();
+  const { t } = useI18n();
   const { installed, jobs } = useDownloads();
   const ids = Object.keys(installed).sort();
   const total = ids.reduce((sum, id) => sum + installed[id].bytes, 0);
   const active = Object.keys(jobs).length;
 
   const confirmDelete = (id: string, title: string) =>
-    Alert.alert(`Delete ${title}?`, `This frees ${formatBytes(installed[id]?.bytes ?? 0)}.`, [
-      { text: 'Cancel', style: 'cancel' },
-      { text: 'Delete', style: 'destructive', onPress: () => deleteDownload(id) },
+    Alert.alert(t(S.deleteDownloadTitle(title)), t(S.deleteDownloadBody(formatBytes(installed[id]?.bytes ?? 0))), [
+      { text: t(S.cancel), style: 'cancel' },
+      { text: t(S.deleteBtn), style: 'destructive', onPress: () => deleteDownload(id) },
     ]);
 
   return (
     <Card style={{ rowGap: SPACE.sm }}>
       {ids.length === 0 ? (
-        <Text style={{ color: palette.muted, fontSize: TYPE.footnote }}>
-          No texts downloaded yet. Open a large text such as the Mahabharata or a Purana and tap Download to read it offline.
-        </Text>
+        <Text style={{ color: palette.muted, fontSize: TYPE.footnote }}>{t(S.downloadsEmpty)}</Text>
       ) : (
         <>
-          <Text style={{ color: palette.muted, fontSize: TYPE.footnote }}>
-            {ids.length} {ids.length === 1 ? 'text' : 'texts'} on this phone, {formatBytes(total)} in all.
-            {active ? ` ${active} downloading.` : ''}
-          </Text>
+          <Text style={{ color: palette.muted, fontSize: TYPE.footnote }}>{t(S.downloadsSummary(ids.length, formatBytes(total), active))}</Text>
           {ids.map((id, i) => {
             const entry = getEntry(id);
             const title = entry?.title ?? id;
@@ -162,7 +159,7 @@ export function DownloadsSection() {
                     {title} · {formatBytes(installed[id].bytes)}
                   </Text>
                 </View>
-                <Pressable accessibilityRole="button" accessibilityLabel={`Delete ${title} from this phone`} onPress={() => confirmDelete(id, title)} hitSlop={8}>
+                <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(title))} onPress={() => confirmDelete(id, title)} hitSlop={8}>
                   <Ionicons name="trash-outline" size={20} color={palette.muted} />
                 </Pressable>
               </View>

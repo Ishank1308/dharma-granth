@@ -125,7 +125,10 @@ export function openBook(dataDir, id) {
     title: full?.title ?? id,
     titleSanskrit: full?.titleSanskrit,
     category: full?.category ?? 'other',
-    totalVerses: meta?.languageCoverage?.totalVerses ?? full?.totalVerses ?? chapters.reduce((a, c) => a + c.verseCount, 0),
+    // A getter: the fallback sum reads verse counts the caller may correct after reading the chapters.
+    get totalVerses() {
+      return meta?.languageCoverage?.totalVerses ?? full?.totalVerses ?? chapters.reduce((a, c) => a + c.verseCount, 0);
+    },
     chapters,
     size,
     fromShards: hasShards,

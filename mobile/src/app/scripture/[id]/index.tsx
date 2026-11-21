@@ -6,6 +6,7 @@ import { DownloadCard } from '@/components/download-card';
 import { Backdrop, GlassRow, Muted } from '@/components/ui';
 import { CATEGORIES, getEntry, webUrl } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
+import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { SPACE, TYPE } from '@/theme/themes';
@@ -13,14 +14,15 @@ import { SPACE, TYPE } from '@/theme/themes';
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { palette } = useAppState();
+  const { t } = useI18n();
   const entry = getEntry(String(id));
   const { installed } = useDownloads();
 
   if (!entry) {
     return (
       <View style={styles.center}>
-        <Stack.Screen options={{ title: 'Not found' }} />
-        <Muted>This scripture is not in the library.</Muted>
+        <Stack.Screen options={{ title: t(S.notFoundTitle) }} />
+        <Muted>{t(S.scriptureNotFound)}</Muted>
       </View>
     );
   }
@@ -54,7 +56,7 @@ export default function ScriptureScreen() {
                 <Text style={{ color: palette.text, fontSize: TYPE.title1, fontWeight: '800' }}>{entry.titleSanskrit ?? entry.title}</Text>
                 <Text style={{ color: palette.muted, fontSize: TYPE.subhead, marginTop: 2 }}>
                   {entry.title}
-                  {cat ? ` · ${cat.en}` : ''} · {entry.chapters.length} chapters · {entry.totalVerses.toLocaleString('en-IN')} verses
+                  {cat ? ` · ${t(cat)}` : ''} · {t(S.chaptersVerses(entry.chapters.length, entry.totalVerses))}
                 </Text>
               </View>
               {!entry.bundled ? <DownloadCard entry={entry} /> : null}
@@ -63,14 +65,14 @@ export default function ScriptureScreen() {
           renderItem={({ item }) => (
             <GlassRow
               accessibilityRole={offline ? 'button' : 'link'}
-              accessibilityLabel={`Chapter ${item.number}, ${item.title}`}
+              accessibilityLabel={t(S.chapterA11y(item.number, item.title))}
               onPress={() => open(item.number)}>
               <Text style={[styles.num, { color: palette.gold }]}>{toDevanagari(item.number)}</Text>
               <View style={{ flex: 1 }}>
                 <Text style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
                 <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
-                  {item.titleSanskrit ? item.title : `Chapter ${item.number}`}
-                  {item.verseCount ? ` · ${item.verseCount} verses` : ''}
+                  {item.titleSanskrit ? item.title : t(S.chapterN(item.number))}
+                  {item.verseCount ? ` · ${t(S.verseCount(item.verseCount))}` : ''}
                 </Text>
               </View>
               <Ionicons name={offline ? 'chevron-forward' : 'open-outline'} size={18} color={palette.muted} />
