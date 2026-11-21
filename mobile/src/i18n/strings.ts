@@ -167,6 +167,11 @@ export const S = {
   showHindi: { en: 'Hindi meaning', hi: 'हिन्दी अर्थ' },
   showEnglish: { en: 'English translation', hi: 'अंग्रेज़ी अनुवाद' },
   showNotes: { en: 'Open notes by default', hi: 'टिप्पणी पहले से खुली रखें' },
+  sanskritScript: { en: 'Sanskrit script', hi: 'संस्कृत की लिपि' },
+  lineSpacing: { en: 'Line spacing', hi: 'पंक्तियों में दूरी' },
+  spacingCompact: { en: 'Compact', hi: 'सघन' },
+  spacingNormal: { en: 'Normal', hi: 'सामान्य' },
+  spacingRelaxed: { en: 'Relaxed', hi: 'खुली' },
   effects: { en: 'Visual effects', hi: 'दृश्य प्रभाव' },
   effectsAuto: { en: 'Automatic', hi: 'अपने-आप' },
   effectsFull: { en: 'Full glass', hi: 'पूरा ग्लास' },
@@ -383,6 +388,12 @@ export const S = {
   shareFullVerse: { en: 'The whole verse is always on the card, every line.', hi: 'कार्ड पर पूरा श्लोक रहता है, हर पंक्ति।' },
   shareAndMore: { en: 'Share', hi: 'शेयर' },
   backupJournalAdded: (count: number) => ({ en: ` ${n(count)} journal reflections added.`, hi: ` डायरी के ${n(count)} चिन्तन जोड़े गए।` }),
+
+  // Accessibility (TalkBack labels, hints and announcements)
+  verseOfTheDayFullA11y: (ref: string, text: string) => ({ en: `Verse of the day, ${ref}. ${text}`, hi: `आज का श्लोक, ${ref}। ${text}` }),
+  verseSavedAnnounce: { en: 'Verse saved', hi: 'श्लोक सहेजा गया' },
+  verseRemovedAnnounce: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
+  readingNowA11y: { en: 'reading now', hi: 'अभी पढ़ रहे हैं' },
 
   // Verse search screen: large header, the field at the bottom in the thumb zone
   searchTitle: { en: 'Search verses', hi: 'श्लोक खोजें' },

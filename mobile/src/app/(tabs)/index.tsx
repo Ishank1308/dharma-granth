@@ -11,9 +11,11 @@ import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
+import { toScript } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
+import { sanskritFont } from '@/theme/fonts';
 import { coverFor, monogram } from '@/theme/covers';
-import { barClearance, fontCap, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, fontCap, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 function matches(b: CatalogEntry, q: string) {
   if (!q) return true;
@@ -31,10 +33,13 @@ function DailyVerseCard() {
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
   if (!verse) return null;
   const lines = sanskritLines(verse.sanskrit);
+  const ref = t(S.gitaRef(formatVerseRef(pick.id, pick.chapter, verse.number)));
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={t(S.verseOfTheDayA11y)}
+      // The label carries the verse itself: a label made of the action alone would hide the shloka from TalkBack.
+      accessibilityLabel={t(S.verseOfTheDayFullA11y(ref, lines.join('\n')))}
+      accessibilityHint={t(S.verseOfTheDayA11y)}
       onPress={() =>
         router.push({
           pathname: '/scripture/[id]/[chapter]',
@@ -44,11 +49,11 @@ function DailyVerseCard() {
       style={({ pressed }) => pressed && { transform: [{ scale: 0.985 }] }}>
       <Card style={{ borderRadius: RADIUS.panel - 2 }}>
         <View style={styles.cardHead}>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
             {t(S.verseOfTheDay)}
           </Text>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
-            {t(S.gitaRef(formatVerseRef(pick.id, pick.chapter, verse.number)))}
+          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+            {ref}
           </Text>
         </View>
         {/* The whole verse, every line: never cut a shloka to fit the card. */}
@@ -57,12 +62,15 @@ function DailyVerseCard() {
             <Text
               key={i}
               maxFontSizeMultiplier={fontCap(settings.textScale)}
-              style={{
-                color: palette.text,
-                fontSize: TYPE.callout * settings.textScale,
-                lineHeight: TYPE.callout * settings.textScale * 1.65,
-              }}>
-              {l}
+              style={[
+                {
+                  color: palette.text,
+                  fontSize: TYPE.callout * settings.textScale,
+                  lineHeight: TYPE.callout * settings.textScale * 1.75,
+                },
+                sanskritFont(settings.sanskritScript),
+              ]}>
+              {toScript(l, settings.sanskritScript)}
             </Text>
           ))}
         </View>
@@ -91,14 +99,14 @@ function ContinueCard() {
         <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
           <CoverTile cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} size={TOUCH} />
           <View style={{ flex: 1 }}>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
               {t(S.continueReading)}
             </Text>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600', marginTop: 2 }}>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600', marginTop: 2 }}>
               {entry.title} · {t(S.chapterN(ch.number))}
             </Text>
             {ch.titleSanskrit ? (
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
+              <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
                 {ch.titleSanskrit}
               </Text>
             ) : null}
@@ -153,7 +161,7 @@ export default function LibraryScreen() {
               eyebrow={S.libraryEyebrow}
               subtitle={t(S.librarySummary(offline, CATALOG.length - offline))}>
               {/* The name reads in both scripts; the interface language leads. */}
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.title3 + 1, fontWeight: '600', marginTop: -SPACE.xs }}>
+              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.title3 + 1, fontWeight: '700', marginTop: -SPACE.xs }}>
                 {lang === 'hi' ? S.appName.en : S.appName.hi}
               </Text>
             </LargeHeader>
@@ -185,6 +193,7 @@ export default function LibraryScreen() {
             {/* One row that scrolls sideways, rather than ten chips wrapping onto four lines. */}
             <ScrollView
               horizontal
+              accessibilityRole="radiogroup"
               showsHorizontalScrollIndicator={false}
               // Vertical room so the chips' shadows aren't cut off at the scroller's edge.
               style={{ marginHorizontal: -SPACE.lg, marginVertical: -SPACE.sm }}

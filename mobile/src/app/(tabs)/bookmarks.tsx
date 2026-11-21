@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { AccessibilityInfo, FlatList, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CollectionSheet, useCollectionName } from '@/components/collection-sheet';
@@ -10,10 +10,12 @@ import { getEntry, loadChapter } from '@/content/catalog';
 import { S, useI18n } from '@/i18n';
 import { cleanVerseField, formatVerseRef, meaningState, MEANING_COPY, sanskritLines } from '@/lib/verse-format';
 import { allCollections, collectionCounts, collectionOf, type VerseLink } from '@/lib/journal';
+import { toScript } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
+import { sanskritFont } from '@/theme/fonts';
 import { coverFor } from '@/theme/covers';
-import { barClearance, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { barClearance, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export default function BookmarksScreen() {
   const insets = useSafeAreaInsets();
@@ -151,7 +153,7 @@ export default function BookmarksScreen() {
                   })
                 }>
                 <View style={[styles.ref, coverFill(coverFor(item.id, entry?.category ?? 'other'), palette, true)]}>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: '#ffffff', fontWeight: '700', fontSize: TYPE.footnote }}>
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: '#ffffff', fontWeight: '700', fontSize: TYPE.footnote }}>
                     {ref}
                   </Text>
                 </View>
@@ -160,8 +162,8 @@ export default function BookmarksScreen() {
                   <Text
                     key={i}
                     maxFontSizeMultiplier={cap}
-                    style={{ color: palette.text, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.6 }}>
-                    {l}
+                    style={[{ color: palette.text, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.7 }, sanskritFont(settings.sanskritScript)]}>
+                    {toScript(l, settings.sanskritScript)}
                   </Text>
                 ))}
                 {hindi ? (
@@ -196,6 +198,7 @@ export default function BookmarksScreen() {
                 onPress={() => {
                   removeBookmark(item);
                   dropVerse(item);
+                  AccessibilityInfo.announceForAccessibility(t(S.verseRemovedAnnounce));
                 }}>
                 <Ionicons name="trash-outline" size={18} color={palette.muted} />
               </Pressable>
@@ -238,5 +241,5 @@ const styles = StyleSheet.create({
   emptyIcon: { width: 96, height: 96, borderRadius: 48, alignItems: 'center', justifyContent: 'center', marginBottom: SPACE.sm },
   cta: { marginTop: SPACE.md, minHeight: TOUCH + 8, paddingHorizontal: SPACE.xl, borderRadius: RADIUS.pill, alignItems: 'center', justifyContent: 'center' },
   // 48 dp touch target (Android accessibility minimum).
-  remove: { width: 48, height: 48, marginTop: -SPACE.md, marginRight: -SPACE.md, alignItems: 'center', justifyContent: 'center' },
+  remove: { width: TOUCH, height: TOUCH, marginTop: -SPACE.md, marginRight: -SPACE.md, alignItems: 'center', justifyContent: 'center' },
 });
