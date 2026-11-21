@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 import { DailyReminderEffects } from '@/components/daily-reminder-effects';
 import { DailyWidgetEffects } from '@/components/daily-widget-effects';
+import { RecitationProvider } from '@/audio/player';
 import { AppStateProvider, useAppState } from '@/state/app-state';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -59,7 +60,9 @@ function Navigator() {
 export default function RootLayout() {
   return (
     <AppStateProvider>
-      <Navigator />
+      <RecitationProvider>
+        <Navigator />
+      </RecitationProvider>
     </AppStateProvider>
   );
 }

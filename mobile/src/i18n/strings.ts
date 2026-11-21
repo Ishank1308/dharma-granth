@@ -85,6 +85,21 @@ export const S = {
   shareVerseA11y: (ref: string) => ({ en: `Share verse ${ref}`, hi: `श्लोक ${ref} शेयर करें` }),
   bookmarkVerseA11y: (ref: string) => ({ en: `Save verse ${ref}`, hi: `श्लोक ${ref} सहेजें` }),
   unbookmarkVerseA11y: (ref: string) => ({ en: `Remove saved verse ${ref}`, hi: `सहेजा श्लोक ${ref} हटाएँ` }),
+  listenVerseA11y: (ref: string) => ({ en: `Listen to verse ${ref}`, hi: `श्लोक ${ref} सुनें` }),
+  pauseVerseA11y: (ref: string) => ({ en: `Pause verse ${ref}`, hi: `श्लोक ${ref} रोकें` }),
+  retryVerseA11y: (ref: string) => ({ en: `Verse ${ref} could not load. Try again`, hi: `श्लोक ${ref} नहीं चल सका। फिर से कोशिश करें` }),
+
+  // Recitation (reader toolbar)
+  listenChapterA11y: (verse: string) => ({
+    en: `Listen to the Sanskrit recitation from verse ${verse}`,
+    hi: `श्लोक ${verse} से संस्कृत पाठ सुनें`,
+  }),
+  pauseRecitation: { en: 'Pause recitation', hi: 'पाठ रोकें' },
+  resumeRecitation: { en: 'Resume recitation', hi: 'पाठ फिर से चलाएँ' },
+  retryRecitation: { en: 'Recitation could not load. Try again', hi: 'पाठ नहीं चल सका। फिर से कोशिश करें' },
+  stopRecitation: { en: 'Stop recitation', hi: 'पाठ बंद करें' },
+  recitingVerse: (verse: string, total: number) => ({ en: `Reciting ${verse} of ${n(total)}`, hi: `पाठ: श्लोक ${verse} / ${n(total)}` }),
+  recitationCredit: { en: 'Recitation voice made with ElevenLabs', hi: 'पाठ की आवाज़ ElevenLabs से बनी है' },
   labelHindi: { en: 'Hindi', hi: 'हिन्दी अर्थ' },
   labelEnglish: { en: 'English', hi: 'अंग्रेज़ी अनुवाद' },
   labelHindiRange: (range: string) => ({ en: `Hindi for verses ${range.replace('-', '–')}`, hi: `श्लोक ${range.replace('-', '–')} का हिन्दी अर्थ` }),
@@ -277,13 +292,17 @@ export const S = {
   verseSavedAnnounce: { en: 'Verse saved', hi: 'श्लोक सहेजा गया' },
   verseRemovedAnnounce: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
   readingNowA11y: { en: 'reading now', hi: 'अभी पढ़ रहे हैं' },
-  searchVersesTitle: { en: 'Search verses', hi: 'श्लोक खोजें' },
-  searchVersesPlaceholder: { en: 'Sanskrit, Hindi or English', hi: 'संस्कृत, हिन्दी या अंग्रेज़ी में' },
-  clearSearch: { en: 'Clear search', hi: 'खोज साफ़ करें' },
-  searchForA11y: (text: string) => ({ en: `Search for ${text}`, hi: `${text} खोजें` }),
-  searchIntroTitle: { en: 'Search inside the verses', hi: 'श्लोकों में खोजें' },
+
+  // Verse search screen: large header, the field at the bottom in the thumb zone
+  searchTitle: { en: 'Search verses', hi: 'श्लोक खोजें' },
+  searchEyebrow: { en: 'Works offline', hi: 'बिना इंटरनेट' },
+  searchField: { en: 'Words from a verse', hi: 'श्लोक के शब्द' },
+  clearSearch: { en: 'Clear search', hi: 'खोज मिटाएँ' },
+  searchTry: { en: 'Try', hi: 'ऐसे खोजें' },
+  searchForA11y: (example: string) => ({ en: `Search for ${example}`, hi: `${example} खोजें` }),
   searchNoVerse: (query: string, inSection: boolean) => ({
     en: `No verse matches “${query}”${inSection ? ' in this section' : ''}. Try fewer words or another spelling.`,
-    hi: `${inSection ? 'इस भाग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
+    hi: `${inSection ? 'इस वर्ग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
   }),
+  searchResultA11y: (ref: string, text: string) => ({ en: `${ref}. ${text}. Opens the verse`, hi: `${ref}। ${text}। श्लोक खोलता है` }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
