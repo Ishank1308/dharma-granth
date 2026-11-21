@@ -1,4 +1,5 @@
 import catalogJson from './generated/catalog.json';
+import { readDownloadedChapter } from './downloads';
 import { BOOK_LOADERS } from './generated/loaders';
 import type { Book, BookChapter, CatalogEntry } from './types';
 
@@ -25,8 +26,9 @@ export function loadBook(id: string): Book | undefined {
   return book;
 }
 
+/** A chapter's verses: from the app bundle, or from the phone when the reader downloaded the book. */
 export function loadChapter(id: string, chapter: number): BookChapter | undefined {
-  return loadBook(id)?.chapters.find((c) => c.number === chapter);
+  return loadBook(id)?.chapters.find((c) => c.number === chapter) ?? readDownloadedChapter(id, chapter);
 }
 
 export function webUrl(id: string, chapter?: number): string {

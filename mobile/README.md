@@ -10,8 +10,10 @@ and English, readable offline, no account.
 - **Offline reader** for 44 texts whose verse data ships inside the app (Bhagavad Gita, the principal
   Upanishads, Yoga Sutras, Brahma Sutra, Durga Saptashati, Vidura Niti, Manusmriti, Sama and Yajur Veda,
   Vinaya Patrika, Ramcharitmanas and more). Each verse shows the complete Sanskrit, transliteration, Hindi and English,
-  with word meanings and commentary under Notes. The other large texts (Ramayana, Mahabharata, Puranas, Rig and Atharva Veda)
-  open on dharmagranth.dev.
+  with word meanings and commentary under Notes.
+- **Downloads** for the 22 large texts (Ramayana, Mahabharata, Puranas, Rig and Atharva Veda): tap Download on the
+  text's page to read it offline. The card shows the size and progress; Settings → Downloaded texts lists what is on the
+  phone and deletes it. Until downloaded, chapters open on dharmagranth.dev.
 - **Saved verses**, share a verse, four reading themes (Day, Sunset, Paper, Dark) and text size.
 - **Privacy**: bookmarks and settings live in on-device storage only. Settings → Backup exports a JSON
   file and imports it on another phone.
@@ -59,6 +61,17 @@ A book is bundled when its chapter data is at most 2.6 MB (`--max-mb=N` changes 
 in `ALWAYS_BUNDLE` (Ramcharitmanas). The bundle is about 24 MB of Hermes bytecode today. Generated files are git-ignored.
 
 Verse formatting (references, meaning notices) mirrors `lib/verse-format.ts` at the repo root.
+
+### Downloadable texts
+
+The books that are not bundled are published by the website build: `scripts/build-app-data.mjs` (root `postbuild`)
+writes `dist/app-data/v1/index.json` and content-hashed parts under `dist/app-data/v1/parts/`, about 67 files and 73 MB
+compressed. Both builds share `scripts/content-lib.mjs` (verse fields and the bundling rule), so a downloaded book reads
+exactly like a bundled one. A part holds whole verses only; a chapter larger than a part is split by verse and joined again
+on the phone (`src/content/downloads.ts`), which stores one file per chapter under the app's document folder.
+
+The app only makes plain file requests to dharmagranth.dev: no account, no identifiers, and still only the INTERNET permission.
+Bump `FORMAT` in both `scripts/build-app-data.mjs` and `src/content/downloads.ts` (and the `v1` path) if the part layout changes.
 
 ## Checks
 

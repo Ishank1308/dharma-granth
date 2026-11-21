@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { DownloadsSection } from '@/components/download-card';
 import { accentFill, Backdrop, Bilingual, Card, Eyebrow, glass, Muted, SectionTitle } from '@/components/ui';
 import { CATALOG, SITE } from '@/content/catalog';
 import { makeBackup, parseBackup } from '@/lib/backup';
@@ -126,6 +127,9 @@ export default function SettingsScreen() {
         </Card>
         <Muted style={{ marginTop: SPACE.sm }}>The Sanskrit text is always shown in full.</Muted>
 
+        <SectionTitle en="Downloaded texts" hi="डाउनलोड किए ग्रन्थ" />
+        <DownloadsSection />
+
         <SectionTitle en="Backup" hi="बैकअप" />
         <Card style={{ rowGap: SPACE.md }}>
           <Muted>
@@ -145,8 +149,8 @@ export default function SettingsScreen() {
         <SectionTitle en="About" hi="परिचय" />
         <Card style={{ rowGap: SPACE.sm }}>
           <Muted>
-            {CATALOG.length} scriptures in the library, {bundled} readable offline. Larger texts (epics, Puranas, Rig Veda) open on the
-            website.
+            {CATALOG.length} scriptures in the library, {bundled} readable offline out of the box. Larger texts (epics, Puranas, Rig
+            Veda) can be downloaded from dharmagranth.dev to read offline.
           </Muted>
           <Pressable accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
             <Text style={{ color: palette.accent, fontWeight: '600' }}>dharmagranth.dev</Text>

@@ -6,6 +6,7 @@ import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Backdrop, Eyebrow, glass, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
 import { getEntry, loadChapter } from '@/content/catalog';
+import { useDownloads } from '@/content/downloads';
 import type { Verse } from '@/content/types';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
@@ -18,7 +19,9 @@ export default function ChapterScreen() {
   const { palette, settings, isBookmarked, toggleBookmark, setLastRead } = useAppState();
   const entry = getEntry(id);
   const meta = entry?.chapters.find((c) => c.number === chapterNo);
-  const chapter = useMemo(() => loadChapter(id, chapterNo), [id, chapterNo]);
+  const downloaded = useDownloads().installed[id];
+  // Re-read when the book is downloaded, updated or deleted while this screen is open.
+  const chapter = useMemo(() => loadChapter(id, chapterNo), [id, chapterNo, downloaded]); // eslint-disable-line react-hooks/exhaustive-deps
   const listRef = useRef<FlatList<Verse>>(null);
   const jumped = useRef(false);
 
@@ -54,7 +57,19 @@ export default function ChapterScreen() {
     return (
       <View style={styles.center}>
         <Stack.Screen options={{ title: entry?.title ?? '' }} />
-        <Muted>This chapter is not available in the app.</Muted>
+        <Muted style={{ textAlign: 'center' }}>
+          {entry && !entry.bundled && !downloaded
+            ? `Download ${entry.title} to read this chapter offline.`
+            : 'This chapter is not available in the app.'}
+        </Muted>
+        {entry && !entry.bundled && !downloaded ? (
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.replace({ pathname: '/scripture/[id]', params: { id } })}
+            style={[styles.pageBtn, glass(palette), { marginTop: SPACE.lg }]}>
+            <Text style={{ color: palette.accent, fontWeight: '600' }}>Go to download · डाउनलोड</Text>
+          </Pressable>
+        ) : null}
       </View>
     );
   }

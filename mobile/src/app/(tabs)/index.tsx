@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Backdrop, Bilingual, Card, Chip, Eyebrow, glass, GlassRow, Muted, SectionTitle } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
+import { useDownloads } from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
@@ -82,6 +83,7 @@ function ContinueCard() {
 export default function LibraryScreen() {
   const insets = useSafeAreaInsets();
   const { palette } = useAppState();
+  const { installed } = useDownloads();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
 
@@ -154,8 +156,10 @@ export default function LibraryScreen() {
             </View>
             {item.bundled ? (
               <Ionicons name="download-outline" size={16} color={palette.gold} accessibilityLabel="Available offline" />
+            ) : installed[item.id] ? (
+              <Ionicons name="checkmark-circle-outline" size={16} color={palette.gold} accessibilityLabel="Downloaded, available offline" />
             ) : (
-              <Ionicons name="globe-outline" size={16} color={palette.muted} accessibilityLabel="Opens on dharmagranth.dev" />
+              <Ionicons name="cloud-download-outline" size={16} color={palette.muted} accessibilityLabel="Can be downloaded" />
             )}
             <Ionicons name="chevron-forward" size={18} color={palette.muted} />
           </GlassRow>

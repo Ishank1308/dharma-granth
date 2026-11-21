@@ -3,7 +3,7 @@
 //   node scripts/build-content.mjs               rebuild everything
 //   node scripts/build-content.mjs --if-missing  skip when the generated files already exist
 //   node scripts/build-content.mjs --max-mb=4    bundle books up to 4 MB of chapter data (default 2.6;
-//                                                ALWAYS_BUNDLE below lists larger books that ship anyway)
+//                                                ALWAYS_BUNDLE in content-lib.mjs lists larger books that ship anyway)
 //
 // Source of truth is the same published data the website reads:
 //   ../public/data/scriptures-full/<id>/manifest.json + ch-N.json   (chapter shards, preferred)
@@ -15,11 +15,12 @@
 //   src/content/generated/catalog.json   every scripture with its chapter list
 //   src/content/generated/books/<id>.json   verse text of each bundled scripture
 //   src/content/generated/loaders.ts     lazy require() map, so a book is parsed only when opened
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Buffer } from 'node:buffer';
-import { gunzipSync } from 'node:zlib';
+
+import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const MOBILE = resolve(HERE, '..');
@@ -30,32 +31,7 @@ const BOOKS = join(OUT, 'books');
 const args = process.argv.slice(2);
 const ifMissing = args.includes('--if-missing');
 const maxMbArg = args.find((a) => a.startsWith('--max-mb='));
-const MAX_BYTES = Math.round(Number(maxMbArg ? maxMbArg.split('=')[1] : 2.6) * 1024 * 1024);
-
-/** Bundled whatever their size: texts readers ask for offline even though they are larger than the cut-off. */
-const ALWAYS_BUNDLE = new Set(['ramcharitmanas']);
-
-/** Alias ids redirect to a canonical book on the website (data/scripture-aliases.ts); never list them twice. */
-const ALIASES = new Set(['yogavasistha']);
-
-/** Verse fields the reader shows. Everything else (search keywords, generated notes) stays on the website. */
-const VERSE_FIELDS = [
-  'number',
-  'sanskrit',
-  'transliteration',
-  'hindi',
-  'hindiSource',
-  'hindiRange',
-  'hindiSeeVerse',
-  'hindiReviewRequired',
-  'translation',
-  'translationSource',
-  'translationRange',
-  'translationSeeVerse',
-  'wordMeaning',
-  'commentary',
-  'explanation',
-];
+const MAX_BYTES = Math.round(Number(maxMbArg ? maxMbArg.split('=')[1] : DEFAULT_MAX_MB) * 1024 * 1024);
 
 if (ifMissing && existsSync(join(OUT, 'catalog.json')) && existsSync(join(OUT, 'loaders.ts'))) {
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
@@ -67,43 +43,6 @@ if (!existsSync(DATA)) {
   process.exit(1);
 }
 
-function readJson(path) {
-  const buf = path.endsWith('.gz') ? gunzipSync(readFileSync(path)) : readFileSync(path);
-  return JSON.parse(buf.toString('utf8'));
-}
-
-function clean(text) {
-  if (typeof text !== 'string') return undefined;
-  const t = text.replace(/ /g, ' ').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
-  return t || undefined;
-}
-
-function slimVerse(v) {
-  const out = {};
-  for (const key of VERSE_FIELDS) {
-    const value = v[key];
-    if (value == null || value === false) continue;
-    if (typeof value === 'string') {
-      const c = key === 'number' ? value : clean(value);
-      if (c) out[key] = c;
-    } else {
-      out[key] = value;
-    }
-  }
-  return out;
-}
-
-const ids = new Set();
-for (const name of readdirSync(DATA)) {
-  const full = join(DATA, name);
-  if (statSync(full).isDirectory()) {
-    if (existsSync(join(full, 'manifest.json'))) ids.add(name);
-  } else if (name.endsWith('.json') || name.endsWith('.json.gz')) {
-    ids.add(name.replace(/\.json(\.gz)?$/, ''));
-  }
-}
-for (const alias of ALIASES) ids.delete(alias);
-
 rmSync(BOOKS, { recursive: true, force: true });
 mkdirSync(BOOKS, { recursive: true });
 
@@ -111,65 +50,28 @@ const catalog = [];
 let bundledBytes = 0;
 let usedShards = 0;
 
-for (const id of [...ids].sort()) {
-  const shardDir = join(DATA, id);
-  const manifestPath = join(shardDir, 'manifest.json');
-  const fullPath = existsSync(join(DATA, `${id}.json`)) ? join(DATA, `${id}.json`) : join(DATA, `${id}.json.gz`);
-  const hasShards = existsSync(manifestPath);
-  const hasFull = existsSync(fullPath);
-
-  // Title and category live only on the full book; chapter list comes from the shard manifest when present.
-  let full = null;
-  const meta = hasShards ? readJson(manifestPath) : null;
-  if (hasFull) full = readJson(fullPath);
-  if (!meta && !full) continue;
-
-  const chapters = (meta?.chapters ?? full?.chapters ?? []).map((ch) => ({
-    number: Number(ch.number),
-    title: ch.title || `अध्याय ${ch.number}`,
-    titleSanskrit: ch.titleSanskrit || undefined,
-    verseCount: ch.verseCount ?? ch.verses?.length ?? 0,
-  }));
-  if (chapters.length === 0) continue;
-
-  // Size decides what ships inside the app: the epics and Puranas would make the APK hundreds of MB.
-  let size = 0;
-  if (hasShards) {
-    for (const ch of chapters) {
-      const p = join(shardDir, `ch-${ch.number}.json`);
-      if (existsSync(p)) size += statSync(p).size;
-    }
-  } else if (hasFull) {
-    size = statSync(fullPath).size;
-  }
-  const bundled = size > 0 && (size <= MAX_BYTES || ALWAYS_BUNDLE.has(id));
+for (const id of listBookIds(DATA)) {
+  const src = openBook(DATA, id);
+  if (!src) continue;
+  // Books over the cut-off are not bundled; the app downloads them from dharmagranth.dev/app-data/ on demand.
+  const bundled = isBundled(src, MAX_BYTES);
 
   if (bundled) {
-    const book = { id, chapters: [] };
-    for (const ch of chapters) {
-      let verses = [];
-      if (hasShards) {
-        const p = join(shardDir, `ch-${ch.number}.json`);
-        if (existsSync(p)) verses = readJson(p).chapter?.verses ?? [];
-      } else {
-        verses = full.chapters.find((c) => Number(c.number) === ch.number)?.verses ?? [];
-      }
-      book.chapters.push({ number: ch.number, verses: verses.map(slimVerse) });
-    }
+    const book = { id, chapters: src.chapters.map((ch) => ({ number: ch.number, verses: src.readVerses(ch.number) })) };
     const json = JSON.stringify(book);
     bundledBytes += Buffer.byteLength(json);
     writeFileSync(join(BOOKS, `${id}.json`), json);
-    if (hasShards) usedShards++;
+    if (src.fromShards) usedShards++;
   }
 
   catalog.push({
     id,
-    title: full?.title ?? id,
-    titleSanskrit: full?.titleSanskrit,
-    category: full?.category ?? 'other',
-    totalVerses: meta?.languageCoverage?.totalVerses ?? full?.totalVerses ?? chapters.reduce((a, c) => a + c.verseCount, 0),
+    title: src.title,
+    titleSanskrit: src.titleSanskrit,
+    category: src.category,
+    totalVerses: src.totalVerses,
     bundled,
-    chapters,
+    chapters: src.chapters,
   });
 }
 
