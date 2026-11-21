@@ -14,6 +14,8 @@ import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
 import { fontCap, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /**
  * Write or edit one reflection. Opened blank from the journal, or from the pen on a verse with that verse
  * linked. What is typed is saved when the screen closes, so a reflection is never lost to the Back button.

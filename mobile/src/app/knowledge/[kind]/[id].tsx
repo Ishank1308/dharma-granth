@@ -30,6 +30,8 @@ import { S, useI18n } from '@/i18n';
 import { useAppState } from '@/state/app-state';
 import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP, type Hues } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /** One entry of a knowledge collection, laid out in the website's section order for its kind. */
 export default function KnowledgeEntry() {
   const params = useLocalSearchParams<{ kind: string; id: string }>();

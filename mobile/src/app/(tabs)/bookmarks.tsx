@@ -22,6 +22,8 @@ import { SANSKRIT_FONT, sanskritFont } from '@/theme/fonts';
 import { coverFor } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 export default function BookmarksScreen() {
   const insets = useSafeAreaInsets();
   const { palette, settings, bookmarks, removeBookmark, toggleBookmark } = useAppState();
