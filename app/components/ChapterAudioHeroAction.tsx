@@ -6,7 +6,7 @@ import {
   subscribeSoundscape,
   stopSoundscape,
   type SoundscapeState,
-} from '@/lib/sacred-soundscape';
+} from '@/lib/soundscape-lazy';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { getParayanaChapterProgress } from '@/lib/reading-plan-sync';
 import { toAsciiDigits } from '@/lib/verse-format';

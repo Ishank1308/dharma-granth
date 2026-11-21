@@ -19,7 +19,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { SOLAR_VRATAS, type SolarVrata } from '@/data/solar-vratas-data';
-import { speakSanskritTerm } from '@/lib/sacred-soundscape';
+import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 
 interface SolarClientProps {
   initialSolarTimes: {

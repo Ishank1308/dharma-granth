@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useId, useRef, type ReactNode } from 'react';
-import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useSheetGesture } from '@/lib/useSheetGesture';
-import { useReaderSettings } from '@/lib/useReaderSettings';
+import { usePresence } from '@/app/components/motion/usePresence';
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
@@ -15,6 +14,8 @@ const FOCUSABLE =
  * spring and can be pulled down by its title bar to close (lib/useSheetGesture). Modal behaviour is
  * complete: Escape and the backdrop close it, Tab stays inside, the page
  * behind does not scroll, and focus returns to whatever opened it.
+ *
+ * Uses CSS transitions (app/motion.css) and usePresence instead of framer-motion (saving 42 KB gzip).
  */
 export function ReaderDialog({
   open,
@@ -37,8 +38,8 @@ export function ReaderDialog({
 }) {
   const titleId = useId();
   const panelRef = useRef<HTMLDivElement>(null);
-  const { panel, handle } = useSheetGesture(onClose, panelRef);
-  const { reducedMotion } = useReaderSettings();
+  const { handle } = useSheetGesture(onClose, panelRef);
+  const { mounted, closing } = usePresence(open, 200);
 
   useEffect(() => {
     if (!open) return;
@@ -77,65 +78,57 @@ export function ReaderDialog({
     };
   }, [open, onClose]);
 
+  if (!mounted) return null;
+
   const placement =
     variant === 'side'
       ? 'inset-x-0 bottom-0 max-h-[88dvh] rounded-t-3xl sm:inset-y-0 sm:left-auto sm:right-0 sm:max-h-none sm:w-full sm:max-w-md sm:rounded-none sm:rounded-l-3xl'
       : 'inset-x-0 bottom-0 max-h-[88dvh] rounded-t-3xl sm:inset-auto sm:left-1/2 sm:top-1/2 sm:max-h-[calc(100dvh-1.5rem)] sm:w-full sm:max-w-lg sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl';
 
   return (
-    // The reader's own reduce-motion setting, as well as the device's (this dialog loads on its own chunk).
-    <MotionConfig reducedMotion={reducedMotion ? 'always' : 'user'}>
-    <AnimatePresence>
-      {open && (
-        <div className="fixed inset-0 z-[70]">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            onClick={onClose}
-            aria-hidden="true"
-            className="absolute inset-0 bg-stone-950/55 backdrop-blur-[2px]"
-          />
-          <motion.div
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={titleId}
-            tabIndex={-1}
-            {...panel}
-            className={`absolute flex flex-col overflow-hidden border border-dharma-border bg-dharma-card shadow-2xl outline-none ${placement}`}
-          >
-            <div {...handle} className="shrink-0">
-              <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-dharma-border sm:hidden" aria-hidden="true" />
-              <div className="flex items-start justify-between gap-3 border-b border-dharma-border/70 px-5 pb-3 pt-3 sm:pt-5">
-                <h2 id={titleId} className="flex min-w-0 items-center gap-2.5 font-serif text-lg font-bold text-dharma-text">
-                  {icon}
-                  <span className="min-w-0">
-                    {title}
-                    {titleHi && (
-                      <span lang="hi" className="ml-2 inline-block font-devanagari text-base font-normal text-dharma-muted">
-                        {titleHi}
-                      </span>
-                    )}
+    <div className="fixed inset-0 z-[70]">
+      <div
+        onClick={onClose}
+        aria-hidden="true"
+        data-closing={closing || undefined}
+        className="chrome-fade absolute inset-0 bg-stone-950/55 backdrop-blur-[2px]"
+      />
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        data-closing={closing || undefined}
+        className={`chrome-rise absolute flex flex-col overflow-hidden border border-dharma-border bg-dharma-card shadow-2xl outline-none ${placement}`}
+      >
+        <div {...handle} className="shrink-0">
+          <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-dharma-border sm:hidden" aria-hidden="true" />
+          <div className="flex items-start justify-between gap-3 border-b border-dharma-border/70 px-5 pb-3 pt-3 sm:pt-5">
+            <h2 id={titleId} className="flex min-w-0 items-center gap-2.5 font-serif text-lg font-bold text-dharma-text">
+              {icon}
+              <span className="min-w-0">
+                {title}
+                {titleHi && (
+                  <span lang="hi" className="ml-2 inline-block font-devanagari text-base font-normal text-dharma-muted">
+                    {titleHi}
                   </span>
-                </h2>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  aria-label="Close"
-                  className="focus-ring -mr-2 -mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-dharma-muted transition hover:text-dharma-text"
-                >
-                  <X className="h-5 w-5" aria-hidden="true" />
-                </button>
-              </div>
-            </div>
-            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4">{children}</div>
-            {footer && <div className="border-t border-dharma-border/70 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">{footer}</div>}
-          </motion.div>
+                )}
+              </span>
+            </h2>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="focus-ring -mr-2 -mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-dharma-muted transition hover:text-dharma-text"
+            >
+              <X className="h-5 w-5" aria-hidden="true" />
+            </button>
+          </div>
         </div>
-      )}
-    </AnimatePresence>
-    </MotionConfig>
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4">{children}</div>
+        {footer && <div className="border-t border-dharma-border/70 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">{footer}</div>}
+      </div>
+    </div>
   );
 }
