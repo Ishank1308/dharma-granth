@@ -44,7 +44,7 @@ const BACKUP_ERRORS: Record<BackupError['code'], Msg> = {
 /** Opt-in daily verse notification: a switch and a time. Scheduled on the phone, nothing sent anywhere. */
 function DailyVerseSettings() {
   const { palette, settings, updateSettings } = useAppState();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [permission, setPermission] = useState<ReminderPermission>('undetermined');
   const time = new Date(2000, 0, 1, settings.reminderHour, settings.reminderMinute);
 
@@ -68,7 +68,7 @@ function DailyVerseSettings() {
       updateSettings({ dailyReminder: false });
       return;
     }
-    const p = await requestReminderPermission().catch((): ReminderPermission => 'denied');
+    const p = await requestReminderPermission(lang).catch((): ReminderPermission => 'denied');
     setPermission(p);
     if (p === 'granted') {
       updateSettings({ dailyReminder: true });
