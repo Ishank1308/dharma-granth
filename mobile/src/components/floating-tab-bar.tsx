@@ -14,6 +14,7 @@ type IconName = ComponentProps<typeof Ionicons>['name'];
 const TABS: Record<string, { label: Msg; icon: IconName; iconActive: IconName }> = {
   index: { label: S.tabLibrary, icon: 'book-outline', iconActive: 'book' },
   bookmarks: { label: S.tabSaved, icon: 'bookmark-outline', iconActive: 'bookmark' },
+  explore: { label: S.tabExplore, icon: 'compass-outline', iconActive: 'compass' },
   settings: { label: S.tabSettings, icon: 'settings-outline', iconActive: 'settings' },
 };
 
@@ -88,10 +89,12 @@ const styles = StyleSheet.create({
   wrap: { position: 'absolute', left: SPACE.lg, right: SPACE.lg, flexDirection: 'row', alignItems: 'center', columnGap: 10 },
   tabs: { flex: 1, paddingHorizontal: 6 },
   row: { flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
+  // Four tabs share the capsule evenly, so they still fit beside the Search button on a 360 dp phone.
   tab: {
-    minWidth: 72,
+    flex: 1,
+    maxWidth: 96,
     height: BAR_HEIGHT - 12,
-    paddingHorizontal: SPACE.md,
+    paddingHorizontal: SPACE.xs,
     borderRadius: (BAR_HEIGHT - 12) / 2,
     alignItems: 'center',
     justifyContent: 'center',
