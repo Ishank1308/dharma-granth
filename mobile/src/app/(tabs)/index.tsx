@@ -9,9 +9,10 @@ import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/conten
 import { useDownloads } from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
+import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
-import { RADIUS, SPACE, TYPE } from '@/theme/themes';
+import { fontCap, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 function matches(b: CatalogEntry, q: string) {
   if (!q) return true;
@@ -22,7 +23,9 @@ function matches(b: CatalogEntry, q: string) {
 function DailyVerseCard() {
   const { palette, settings } = useAppState();
   const { t } = useI18n();
-  const pick = useMemo(() => dailyVerse(), []);
+  // Re-picked when the date changes, so the card turns over at midnight even if the app stays open.
+  const today = useToday();
+  const pick = useMemo(() => dailyVerse(dateFromDayKey(today)), [today]);
   if (!pick) return null;
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
   if (!verse) return null;
@@ -43,6 +46,7 @@ function DailyVerseCard() {
           {lines.map((l, i) => (
             <Text
               key={i}
+              maxFontSizeMultiplier={fontCap(settings.textScale)}
               style={{
                 color: palette.text,
                 fontSize: TYPE.callout * settings.textScale,
@@ -119,7 +123,7 @@ export default function LibraryScreen() {
               {/* The name reads in both scripts; the interface language leads. */}
               <View>
                 <PageTitle {...S.appName} />
-                <Text style={{ color: palette.accent, fontSize: TYPE.title2, fontWeight: '600' }}>
+                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.title2, fontWeight: '600' }}>
                   {lang === 'hi' ? S.appName.en : S.appName.hi}
                 </Text>
               </View>
@@ -140,13 +144,12 @@ export default function LibraryScreen() {
             </View>
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Search inside verses"
+              accessibilityLabel={t(S.searchInsideVerses)}
               onPress={() => router.push({ pathname: '/search', params: query.trim() ? { q: query.trim() } : {} })}
               style={({ pressed }) => [styles.verseSearch, glass(palette), { opacity: pressed ? 0.8 : 1 }]}>
               <Ionicons name="text-outline" size={18} color={palette.accent} />
               <Bilingual
-                en={query.trim() ? `Search verses for “${query.trim()}”` : 'Search inside verses'}
-                hi="श्लोकों में खोजें"
+                {...(query.trim() ? S.searchVersesFor(query.trim()) : S.searchInsideVerses)}
                 size={TYPE.subhead}
                 style={{ flex: 1 }}
               />

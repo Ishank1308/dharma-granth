@@ -14,7 +14,7 @@ import {
 } from '@/lib/verse-format';
 import { S, type Lang, type Msg } from '@/i18n';
 import type { Settings } from '@/lib/backup';
-import { SPACE, TYPE, type Palette } from '@/theme/themes';
+import { fontCap, SPACE, TYPE, type Palette } from '@/theme/themes';
 import { Card, glass } from './ui';
 
 interface Props {
@@ -47,6 +47,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
   const notesOpen = override && override.when === settings.showNotes ? override.open : settings.showNotes;
   const setNotesOpen = (f: (open: boolean) => boolean) => setOverride({ when: settings.showNotes, open: f(notesOpen) });
   const scale = settings.textScale;
+  const cap = fontCap(scale);
   const ref = formatVerseRef(scriptureId, chapter, verse.number);
   const lines = sanskritLines(verse.sanskrit);
   const state = meaningState(verse);
@@ -119,6 +120,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             <Text
               key={i}
               selectable
+              maxFontSizeMultiplier={cap}
               style={{ color: palette.text, fontSize: TYPE.title3 * scale, lineHeight: TYPE.title3 * scale * 1.6, textAlign: 'center' }}>
               {line}
               {i === lines.length - 1 ? `\u00a0॥\u00a0${toDevanagari(verseMarkNumber(verse.number))}\u00a0॥` : ''}
@@ -130,6 +132,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
       {settings.showTransliteration && translit ? (
         <Text
           selectable
+          maxFontSizeMultiplier={cap}
           style={{
             color: palette.textSecondary,
             fontSize: TYPE.subhead * scale,
@@ -152,6 +155,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
           />
           <Text
             selectable
+            maxFontSizeMultiplier={cap}
             style={[
               styles.body,
               {
@@ -181,6 +185,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
           />
           <Text
             selectable
+            maxFontSizeMultiplier={cap}
             style={[
               styles.body,
               {
@@ -210,6 +215,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
                   <Label msg={n.label} lang={lang} palette={palette} />
                   <Text
                     selectable
+                    maxFontSizeMultiplier={cap}
                     style={[
                       styles.body,
                       { color: palette.textSecondary, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.5 },
@@ -229,11 +235,12 @@ export const VerseCard = memo(VerseCardImpl);
 
 const styles = StyleSheet.create({
   card: { marginBottom: SPACE.md },
-  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: SPACE.sm },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', columnGap: SPACE.sm, marginBottom: SPACE.sm },
   ref: { fontSize: TYPE.footnote, fontWeight: '700', letterSpacing: 0.5 },
   actions: { flexDirection: 'row', columnGap: SPACE.sm },
   iconBtn: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
-  refPill: { borderRadius: 999, borderWidth: 1, paddingHorizontal: 10, paddingVertical: 3 },
+  // Shrinks and wraps before it can push the share and save buttons off a card at large font sizes.
+  refPill: { flexShrink: 1, borderRadius: 999, borderWidth: 1, paddingHorizontal: 10, paddingVertical: 3 },
   sanskrit: { rowGap: 2, paddingVertical: SPACE.md, paddingHorizontal: SPACE.sm, borderRadius: 16, borderWidth: 1 },
   block: { marginTop: SPACE.md },
   labelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: SPACE.sm, marginBottom: 2 },

@@ -46,6 +46,17 @@ export const S = {
   availableOffline: { en: 'Available offline', hi: 'बिना इंटरनेट उपलब्ध' },
   opensOnWebsite: { en: 'Opens on dharmagranth.dev', hi: 'dharmagranth.dev पर खुलेगा' },
   noMatch: (query: string) => ({ en: `No scripture matches “${query}”.`, hi: `“${query}” से मिलता कोई ग्रन्थ नहीं मिला।` }),
+  searchInsideVerses: { en: 'Search inside verses', hi: 'श्लोकों में खोजें' },
+  searchVersesFor: (query: string) => ({ en: `Search verses for “${query}”`, hi: `श्लोकों में “${query}” खोजें` }),
+
+  // Verse search results
+  searchResultCount: (total: number) => ({ en: `${n(total)} ${total === 1 ? 'verse' : 'verses'}`, hi: `${n(total)} श्लोक` }),
+  searchResultBest: (shown: number, total: number) => ({
+    en: `Best ${n(shown)} of ${n(total)} verses`,
+    hi: `${n(total)} श्लोकों में से सबसे मिलते ${n(shown)}`,
+  }),
+  searching: { en: 'Searching…', hi: 'खोज रहे हैं…' },
+  searchTooShort: { en: 'Type at least two letters.', hi: 'कम से कम दो अक्षर लिखें।' },
 
   // Scripture (chapter list)
   notFoundTitle: { en: 'Not found', hi: 'नहीं मिला' },
