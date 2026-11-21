@@ -12,6 +12,8 @@ import { usePanchangCity } from '@/lib/panchang-city';
 import { useAppState } from '@/state/app-state';
 import { barClearance, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
 /**
