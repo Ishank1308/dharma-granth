@@ -97,7 +97,7 @@ export function KalaChakra({ state }: { state: ChakraState | null }) {
         animate={{ rotate: rest }}
         transition={reduce ? { duration: 0 } : { ...SPRING, stiffness: 40, damping: 18 }}
       >
-        <g className={reduce ? undefined : 'cosmos-turn'} style={{ transformOrigin: '260px 260px' }}>
+        <g className="cosmos-turn" style={{ transformOrigin: '260px 260px' }}>
           {/* Nakshatra ring */}
           {NAKSHATRA_DATA.map((n, i) => {
             const a1 = i * nakSpan + 0.6;

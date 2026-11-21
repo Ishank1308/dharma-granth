@@ -70,21 +70,22 @@ export function PanchangCosmos() {
 
   return (
     <section className="cosmos relative isolate overflow-hidden text-[#ece8f5]" aria-labelledby="panchang-title">
-      {/* Night sky */}
+      {/* Night sky. Its loops are stilled in CSS under reduced motion, so the markup is the same
+          for every reader and the page hydrates cleanly. */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="cosmos-sky absolute inset-0" />
         <div className="cosmos-milkyway absolute inset-0" />
-        <svg className={`absolute inset-[-10%] h-[120%] w-[120%] ${reduce ? '' : 'cosmos-drift-far'}`} viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+        <svg className="absolute inset-[-10%] h-[120%] w-[120%] cosmos-drift-far" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
           {FAR.map((s, i) => (
-            <circle key={i} cx={s.x} cy={s.y} r={s.r * 0.09} fill="#fff" opacity={s.o * 0.7} className={s.twinkle !== undefined && !reduce ? 'cosmos-twinkle' : undefined} style={s.twinkle !== undefined ? { animationDelay: `${s.twinkle}s` } : undefined} />
+            <circle key={i} cx={s.x} cy={s.y} r={s.r * 0.09} fill="#fff" opacity={s.o * 0.7} className={s.twinkle !== undefined ? 'cosmos-twinkle' : undefined} style={s.twinkle !== undefined ? { animationDelay: `${s.twinkle}s` } : undefined} />
           ))}
         </svg>
-        <svg className={`absolute inset-[-10%] h-[120%] w-[120%] ${reduce ? '' : 'cosmos-drift-near'}`} viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+        <svg className="absolute inset-[-10%] h-[120%] w-[120%] cosmos-drift-near" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
           {NEAR.map((s, i) => (
-            <circle key={i} cx={s.x} cy={s.y} r={s.r * 0.14} fill="#fdf6e3" opacity={s.o} className={s.twinkle !== undefined && !reduce ? 'cosmos-twinkle' : undefined} style={s.twinkle !== undefined ? { animationDelay: `${s.twinkle}s` } : undefined} />
+            <circle key={i} cx={s.x} cy={s.y} r={s.r * 0.14} fill="#fdf6e3" opacity={s.o} className={s.twinkle !== undefined ? 'cosmos-twinkle' : undefined} style={s.twinkle !== undefined ? { animationDelay: `${s.twinkle}s` } : undefined} />
           ))}
         </svg>
-        {!reduce && <span className="cosmos-meteor" />}
+        <span className="cosmos-meteor" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-dharma-bg to-transparent" />
       </div>
 
