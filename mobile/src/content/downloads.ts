@@ -11,6 +11,7 @@
 import { Directory, File, Paths } from 'expo-file-system';
 import { useEffect, useSyncExternalStore } from 'react';
 
+import { forgetSearchIndex, SEARCH_DIR, SearchIndexWriter } from './download-index';
 import type { BookChapter } from './types';
 
 export const APP_DATA = 'https://dharmagranth.dev/app-data/v1/';
@@ -59,6 +60,8 @@ export interface DownloadsState {
 
 const root = () => new Directory(Paths.document, 'downloads');
 const bookDir = (id: string) => new Directory(root(), id);
+/** The folder a downloaded book lives in (its chapters, meta.json and search index). */
+export const downloadedBookDir = bookDir;
 const partialDir = (id: string) => new Directory(root(), `.${id}.partial`);
 
 function scanInstalled(): Record<string, Installed> {
@@ -155,6 +158,7 @@ export function readDownloadedChapter(id: string, chapter: number): BookChapter 
 }
 
 function forget(id: string) {
+  forgetSearchIndex(id);
   for (const key of [...chapterCache.keys()]) if (key.startsWith(`${id}:`)) chapterCache.delete(key);
 }
 
@@ -178,7 +182,9 @@ export async function startDownload(id: string): Promise<void> {
     const remote = index.books[id];
     if (!remote) throw new Error('This text is not available for download yet.');
     const current = state.installed[id]?.bytes ?? 0;
-    if (Paths.availableDiskSpace > 0 && Paths.availableDiskSpace < remote.bytes - current + 20 * 1024 * 1024) {
+    // The search index built alongside takes about a third as much again.
+    const needed = Math.round(remote.bytes * 1.35);
+    if (Paths.availableDiskSpace > 0 && Paths.availableDiskSpace < needed - current + 20 * 1024 * 1024) {
       throw new Error(`Not enough free space. This text needs ${formatBytes(remote.bytes)}.`);
     }
     set({ jobs: { ...state.jobs, [id]: { received: 0, total: remote.bytes } } });
@@ -191,9 +197,12 @@ export async function startDownload(id: string): Promise<void> {
     let written = 0;
     // A chapter split across parts is held here until its last piece arrives. Verses are never cut.
     let pending: BookChapter | null = null;
-    const writeChapter = (ch: BookChapter) => {
+    // The verse search index is folded chapter by chapter as the book arrives (src/content/download-index.ts).
+    const indexer = new SearchIndexWriter(new Directory(tmp, SEARCH_DIR));
+    const writeChapter = async (ch: BookChapter) => {
       new File(tmp, `ch-${ch.number}.json`).write(JSON.stringify(ch));
       written++;
+      await indexer.addChapter(ch);
     };
 
     for (let n = 0; n < remote.parts.length; n++) {
@@ -219,17 +228,20 @@ export async function startDownload(id: string): Promise<void> {
           pending.verses.push(...piece.verses);
           continue;
         }
-        if (pending) writeChapter(pending);
+        if (pending) await writeChapter(pending);
+        if (controller.signal.aborted) throw new Error('Cancelled');
         pending = { number: piece.number, verses: [...piece.verses] };
       }
       done += part.bytes;
       lastEmit = done;
       set({ jobs: { ...state.jobs, [id]: { received: done, total: remote.bytes } } });
     }
-    if (pending) writeChapter(pending);
+    if (pending) await writeChapter(pending);
+    if (controller.signal.aborted) throw new Error('Cancelled');
     if (written !== remote.chapters) throw new Error('The download was incomplete. Please try again.');
+    const indexBytes = indexer.finish();
 
-    const meta: Installed = { version: remote.version, bytes: remote.bytes, savedAt: new Date().toISOString() };
+    const meta: Installed = { version: remote.version, bytes: remote.bytes + indexBytes, savedAt: new Date().toISOString() };
     new File(tmp, 'meta.json').write(JSON.stringify(meta));
     const final = bookDir(id);
     if (final.exists) final.delete();

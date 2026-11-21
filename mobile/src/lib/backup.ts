@@ -8,6 +8,10 @@ import type { ThemeName } from '@/theme/themes';
 type LanguageSetting = 'system' | 'en' | 'hi';
 const LANGUAGES: LanguageSetting[] = ['system', 'en', 'hi'];
 
+/** How much glass to draw. 'auto' picks 'light' on budget phones (see @/theme/effects). */
+export type EffectsSetting = 'auto' | 'full' | 'light';
+export const EFFECTS_SETTINGS: EffectsSetting[] = ['auto', 'full', 'light'];
+
 export const BACKUP_FORMAT = 'dharma-granth-mobile-backup';
 export const BACKUP_VERSION = 1;
 
@@ -37,6 +41,8 @@ export interface Settings {
   dailyReminder: boolean;
   reminderHour: number;
   reminderMinute: number;
+  /** Shadows and sheen on cards. 'light' keeps the colours but drops what makes long lists stutter. */
+  effects: EffectsSetting;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -50,6 +56,7 @@ export const DEFAULT_SETTINGS: Settings = {
   dailyReminder: false,
   reminderHour: 7,
   reminderMinute: 0,
+  effects: 'auto',
 };
 
 export interface AppData {
@@ -89,6 +96,7 @@ export function normalizeSettings(raw: unknown): Settings {
     dailyReminder: typeof s.dailyReminder === 'boolean' ? s.dailyReminder : DEFAULT_SETTINGS.dailyReminder,
     reminderHour: wholeIn(s.reminderHour, 0, 23, DEFAULT_SETTINGS.reminderHour),
     reminderMinute: wholeIn(s.reminderMinute, 0, 59, DEFAULT_SETTINGS.reminderMinute),
+    effects: EFFECTS_SETTINGS.includes(s.effects as EffectsSetting) ? (s.effects as EffectsSetting) : DEFAULT_SETTINGS.effects,
   };
 }
 

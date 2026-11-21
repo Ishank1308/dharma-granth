@@ -31,6 +31,11 @@ export interface Palette {
   accentGradient: [string, string];
   /** Text on the accent gradient. */
   onAccent: string;
+  /**
+   * Light effects (Settings → Visual effects, or a budget phone on Automatic): glass() and accentFill()
+   * skip blurred shadows and gradients. Set by the app state on the palette it hands out, never in THEMES.
+   */
+  lite?: boolean;
 }
 
 export const THEMES: Record<ThemeName, Palette> = {
@@ -140,7 +145,87 @@ export const TYPE = {
   title3: 19,
   title2: 22,
   title1: 26,
+  /** A screen's large title, as Apple's Large Title and the website's PageHeader. */
+  largeTitle: 34,
 } as const;
 
-export const RADIUS = { card: 22, row: 16, pill: 999, control: 14 } as const;
+/**
+ * Android's font size setting goes up to 200%, and the reader's own text size (up to 150%) multiplies
+ * on top, which would make verse text 3× its size and break long Sanskrit compounds mid-word on a
+ * phone. Text that follows the reader's text size passes `maxFontSizeMultiplier={fontCap(textScale)}`,
+ * so the two together stop at MAX_TEXT_ZOOM. At the app's default size the system setting is honoured
+ * in full up to that point.
+ */
+export const MAX_TEXT_ZOOM = 2.4;
+
+export function fontCap(textScale: number): number {
+  return Math.max(1, MAX_TEXT_ZOOM / textScale);
+}
+
+/** Large titles are already big; they follow the system font size only this far. */
+export const TITLE_FONT_CAP = 1.5;
+
+/**
+ * Corner radii, named by what they round (as the website's tokens.css). Nested shapes stay concentric:
+ * an inner radius is the outer one minus the padding between them.
+ */
+export const RADIUS = { card: 22, row: 16, pill: 999, control: 14, group: 22, panel: 28, tile: 12 } as const;
+
+/** The reader's text sizes (Settings and the Aa sheet). */
+export const TEXT_SCALES = [0.9, 1, 1.15, 1.3, 1.5] as const;
+
+/** The smallest touch target: Android's 48 dp, which also clears Apple's 44 pt. */
+export const TOUCH = 48;
+
+/** Height of the floating tab bar and the reader's toolbar, and the space lists leave below their last row. */
+export const BAR_HEIGHT = 64;
+export const BAR_GAP = 12;
+export function barClearance(bottomInset: number): number {
+  return BAR_HEIGHT + BAR_GAP * 2 + Math.max(bottomInset, 8) + 24;
+}
+
+/**
+ * The website's sacred spectrum (tokens.css --hue-*), deep on light themes and luminous on Dark. Each study
+ * layer has its own hue, in reading order, as on dharmagranth.dev: अर्थ peacock, व्याख्या saffron, then indigo.
+ */
+export interface Hues {
+  saffron: string;
+  vermilion: string;
+  gold: string;
+  lotus: string;
+  indigo: string;
+  peacock: string;
+  tulsi: string;
+}
+
+const HUES_LIGHT: Hues = {
+  saffron: '#c2410c',
+  vermilion: '#be123c',
+  gold: '#b45309',
+  lotus: '#be185d',
+  indigo: '#4338ca',
+  peacock: '#0f766e',
+  tulsi: '#15803d',
+};
+const HUES_DARK: Hues = {
+  saffron: '#fb923c',
+  vermilion: '#fb7185',
+  gold: '#fbbf24',
+  lotus: '#f472b6',
+  indigo: '#818cf8',
+  peacock: '#2dd4bf',
+  tulsi: '#4ade80',
+};
+
+export function huesFor(palette: Pick<Palette, 'dark'>): Hues {
+  return palette.dark ? HUES_DARK : HUES_LIGHT;
+}
+
+/** A hairline divider inside a grouped card, and a faint fill for wells and quiet buttons. */
+export function separator(palette: Pick<Palette, 'dark'>): string {
+  return palette.dark ? 'rgba(255,255,255,0.10)' : 'rgba(60,40,20,0.10)';
+}
+export function quietFill(palette: Pick<Palette, 'dark'>): string {
+  return palette.dark ? 'rgba(255,255,255,0.08)' : 'rgba(60,40,20,0.06)';
+}
 export const SPACE = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 } as const;
