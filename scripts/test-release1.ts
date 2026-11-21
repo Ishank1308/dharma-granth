@@ -199,13 +199,15 @@ async function main() {
   const server = await import('../lib/feedback-server');
   const proto = await import('../lib/feedback-protocol');
   const kvData = new Map<string, string>();
+  const kvTtl = new Map<string, number | undefined>();
   const kv: import('../lib/feedback-server').KV = {
     async get(k) { return kvData.has(k) ? (kvData.get(k) as string) : null; },
-    async put(k, v) { kvData.set(k, v); },
+    async put(k, v, options) { kvData.set(k, v); kvTtl.set(k, options?.expirationTtl); },
     async list({ prefix }) { return { keys: Array.from(kvData.keys()).filter((k) => k.startsWith(prefix ?? '')).map((name) => ({ name })), list_complete: true }; },
   };
   const env = { FEEDBACK: kv, EDITORIAL_TOKEN: 'editor-secret' };
-  const post = (body: unknown, raw?: string) => server.handleFeedback(new Request('https://x.test/api/feedback', { method: 'POST', body: raw ?? JSON.stringify(body), headers: { 'user-agent': 'secret-agent', cookie: 'sid=1' } }), env);
+  const day1 = new Date('2026-03-01T10:00:00Z');
+  const post = (body: unknown, raw?: string, now = day1) => server.handleFeedback(new Request('https://x.test/api/feedback', { method: 'POST', body: raw ?? JSON.stringify(body), headers: { 'user-agent': 'secret-agent', cookie: 'sid=1', 'cf-connecting-ip': '203.0.113.9' } }), env, now);
   assert.equal((await post({ refKey: 'bhagavadgita:2:47', rating: 'partly', reasons: ['language', 'long', 'not-a-reason'], note: 'free text' })).status, 204);
   assert.equal((await post({ refKey: 'bhagavadgita:2:47', rating: 'yes', reasons: ['language'] })).status, 204);
   assert.equal((await post({ refKey: 'bhagavadgita:2:47', rating: 'no' })).status, 204);
@@ -214,8 +216,13 @@ async function main() {
   assert.equal((await post(null, 'not json')).status, 400);
   assert.equal((await post(null, 'x'.repeat(5000))).status, 413, 'oversized body refused');
   assert.equal((await server.handleFeedback(new Request('https://x.test/api/feedback', { method: 'POST', body: '{}' }), {})).status, 503, 'unconfigured collector says so');
-  assert.deepEqual(Array.from(kvData.keys()).sort(), ['fb:bhagavadgita:2:47:r:no', 'fb:bhagavadgita:2:47:r:partly', 'fb:bhagavadgita:2:47:r:yes', 'fb:bhagavadgita:2:47:w:language', 'fb:bhagavadgita:2:47:w:long'], 'only counters are stored; reasons on a Yes are dropped');
+  assert.deepEqual(Array.from(kvData.keys()).sort(), ['fb:bhagavadgita:2:47:r:no', 'fb:bhagavadgita:2:47:r:partly', 'fb:bhagavadgita:2:47:r:yes', 'fb:bhagavadgita:2:47:w:language', 'fb:bhagavadgita:2:47:w:long', 'rl:day:2026-03-01', 'rl:new:2026-03-01'], 'only counters and the two daily budgets are stored; reasons on a Yes are dropped');
   assert.ok(!Array.from(kvData.values()).some((v) => !/^\d+$/.test(v)), 'stored values are plain counts');
+  assert.ok(!JSON.stringify(Array.from(kvData.entries())).match(/203\.0\.113\.9|secret-agent|sid=1/), 'nothing about the caller is stored, budgets included');
+  assert.equal(kvData.get('rl:day:2026-03-01'), '3', 'refused submissions do not use the daily budget');
+  assert.equal(kvData.get('rl:new:2026-03-01'), '3', 'three ratings on one verse started three counters');
+  assert.ok((kvTtl.get('rl:day:2026-03-01') ?? 0) >= 86400 && (kvTtl.get('rl:new:2026-03-01') ?? 0) >= 86400, 'budget counters expire by themselves');
+  assert.equal(kvTtl.get('fb:bhagavadgita:2:47:r:yes'), undefined, 'feedback counters never expire');
   const read = (token?: string, e = env) => server.handleFeedback(new Request('https://x.test/api/feedback', { method: 'GET', headers: token ? { 'x-editorial-token': token } : {} }), e);
   assert.equal((await read()).status, 401);
   assert.equal((await read('wrong')).status, 401);
@@ -224,6 +231,32 @@ async function main() {
   assert.equal(ok.status, 200);
   const data = (await ok.json()) as { verses: Array<{ refKey: string; yes: number; partly: number; no: number; reasons: Record<string, number> }> };
   assert.deepEqual(data.verses[0], { refKey: 'bhagavadgita:2:47', yes: 1, partly: 1, no: 1, reasons: { language: 1, long: 1 } });
+  assert.equal(data.verses.length, 1, 'budget counters are not listed as verses');
+
+  // A reason id with a hyphen is read back.
+  assert.equal((await post({ refKey: 'katha:1:3', rating: 'no', reasons: ['source-concern'] })).status, 204);
+  const withConcern = (await (await read('editor-secret')).json()) as typeof data;
+  assert.deepEqual(withConcern.verses.find((v) => v.refKey === 'katha:1:3')?.reasons, { 'source-concern': 1 });
+
+  // Budget for counters that did not exist before: invented verses stop, known ones still count.
+  kvData.set('rl:new:2026-03-01', String(server.DAILY_NEW_COUNTER_LIMIT));
+  const keysBefore = kvData.size;
+  const refusedNew = await post({ refKey: 'invented:9:9', rating: 'no', reasons: ['other'] });
+  assert.equal(refusedNew.status, 429, 'a new verse is refused once the new-counter budget is spent');
+  assert.equal(refusedNew.headers.get('retry-after'), String(14 * 3600), 'retry-after runs to the next UTC midnight');
+  assert.equal(kvData.size, keysBefore, 'a refused answer stores nothing');
+  assert.equal((await post({ refKey: 'bhagavadgita:2:47', rating: 'yes' })).status, 204, 'a verse that already has this counter is still counted');
+  assert.equal(kvData.get('fb:bhagavadgita:2:47:r:yes'), '2');
+
+  // Whole-day budget: everything stops, and nothing more is counted.
+  kvData.set('rl:day:2026-03-01', String(server.DAILY_SUBMISSION_LIMIT));
+  assert.equal((await post({ refKey: 'bhagavadgita:2:47', rating: 'yes' })).status, 429, 'the daily budget stops every submission');
+  assert.equal(kvData.get('fb:bhagavadgita:2:47:r:yes'), '2', 'nothing is counted once the day is over budget');
+  assert.equal(kvData.get('rl:day:2026-03-01'), String(server.DAILY_SUBMISSION_LIMIT), 'the budget does not grow past its limit');
+
+  // The next UTC day starts with fresh budgets.
+  assert.equal((await post({ refKey: 'invented:9:9', rating: 'no' }, undefined, new Date('2026-03-02T00:00:01Z'))).status, 204, 'budgets reset at UTC midnight');
+  assert.equal(kvData.get('rl:day:2026-03-02'), '1');
   assert.equal(server.sameToken('abc', 'abc'), true);
   assert.equal(server.sameToken('abc', 'abd'), false);
   assert.equal(server.sameToken('abc', 'abcd'), false);

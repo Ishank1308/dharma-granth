@@ -48,6 +48,7 @@
           "204": { "description": "Vote counted (no body)." },
           "400": { "description": "Invalid JSON or submission shape." },
           "413": { "description": "Body exceeds 1024 bytes." },
+          "429": { "description": "A shared daily budget is spent; nothing was counted. Retry-After gives the seconds until it resets (UTC midnight)." },
           "503": { "description": "Feedback collection is not configured on this deployment." }
         }
       },
