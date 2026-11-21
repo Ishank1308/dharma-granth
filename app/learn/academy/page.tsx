@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { ACADEMY_COURSES, ACADEMY_LEVELS, ACADEMY_ORDERS } from '@/data/academy-index';
 
 export const metadata: Metadata = {
@@ -16,59 +17,73 @@ export const metadata: Metadata = {
   },
 };
 
+/** One course or reading order: a row in a grouped list, Hindi first, as on the Learn page. */
+function AcademyRow({ href, hi, en }: { href: string; hi: string; en: string }) {
+  return (
+    <li>
+      <Link href={href} className="apple-row">
+        <span className="min-w-0 flex-1">
+          <span lang="hi" className="block font-devanagari text-body font-medium text-label-primary">{hi}</span>{' '}
+          <span className="block text-footnote text-label-secondary">{en}</span>
+        </span>
+        <span className="apple-chevron" aria-hidden="true">›</span>
+      </Link>
+    </li>
+  );
+}
+
 export default function AcademyPage() {
   return (
-    <main id="main" className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-      <p className="text-sm text-dharma-text-secondary">
-        <Link href="/learn" className="font-semibold text-saffron-600 underline underline-offset-2">सीखें</Link>
-      </p>
-      <h1 className="mt-3 font-serif text-3xl font-bold text-dharma-text">
-        <span lang="hi" className="font-devanagari">धर्म अकादमी</span>
-      </h1>
-      <p className="mt-1 text-dharma-text-secondary">Dharma Academy</p>
-      <p lang="hi" className="mt-3 text-sm leading-relaxed text-dharma-text">
-        ये वही पाठ्यक्रम हैं जो सीखें पृष्ठ पर हैं। पूरा होने का पत्र पाठ्यक्रम पृष्ठ पर तब दिखता है जब हर पाठ चिह्नित हो। यह पद या सार्वजनिक अंक नहीं है।
-      </p>
+    <main id="main" className="pb-section">
+      <PageHeader
+        eyebrow="Learn"
+        eyebrowHi="सीखें"
+        title="Dharma Academy"
+        titleHi="धर्म अकादमी"
+        lead={
+          <p lang="hi" className="font-devanagari">
+            ये वही पाठ्यक्रम हैं जो सीखें पृष्ठ पर हैं। पूरा होने का पत्र पाठ्यक्रम पृष्ठ पर तब दिखता है जब हर पाठ चिह्नित हो। यह पद या सार्वजनिक अंक नहीं है।
+          </p>
+        }
+      >
+        <p className="mt-4 text-footnote">
+          <Link href="/learn/" className="inline-flex min-h-tap items-center font-semibold text-tint underline-offset-4 hover:underline">
+            <span aria-hidden="true">‹&nbsp;</span>
+            <span>All of Learn</span>&nbsp;<span lang="hi" className="font-devanagari">सीखें</span>
+          </Link>
+        </p>
+      </PageHeader>
 
-      <div className="mt-8 space-y-8">
+      <div className="mx-auto mt-8 max-w-content space-y-10 px-gutter">
         {ACADEMY_LEVELS.map((level) => (
           <section key={level.id} aria-labelledby={`level-${level.id}`}>
-            <h2 id={`level-${level.id}`} className="font-serif text-xl font-bold text-dharma-text">
-              <span lang="hi" className="font-devanagari">{level.hi}</span>
-              <span className="font-normal text-dharma-text-secondary"> · {level.en}</span>
-            </h2>
-            <ul className="mt-3 space-y-2">
+            <SectionTitle id={`level-${level.id}`} title={level.en} titleHi={level.hi} />
+            <ul className="apple-group shadow-raised">
               {ACADEMY_COURSES.filter((course) => course.level === level.id).map((course) => (
-                <li key={course.id}>
-                  <Link href={`/learn/${course.id}`} className="font-semibold text-saffron-600 underline underline-offset-2">
-                    <span lang="hi" className="font-devanagari">{course.titleHi}</span>
-                    <span className="font-normal text-dharma-text-secondary"> · {course.titleEn}</span>
-                  </Link>
-                </li>
+                <AcademyRow key={course.id} href={`/learn/${course.id}/`} hi={course.titleHi} en={course.titleEn} />
               ))}
             </ul>
           </section>
         ))}
-      </div>
 
-      <section aria-labelledby="academy-orders" className="mt-10 rounded-2xl border border-dharma-border bg-dharma-card p-5">
-        <h2 id="academy-orders" className="font-serif text-xl font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">पढ़ने के क्रम</span>
-        </h2>
-        <p lang="hi" className="mt-2 text-sm leading-relaxed text-dharma-text">
-          कर्मयोग और ध्यान के अलग पाठ्यक्रम नहीं हैं। ये पढ़ने के क्रम हैं।
-        </p>
-        <ul className="mt-3 space-y-2">
-          {ACADEMY_ORDERS.map((order) => (
-            <li key={order.href}>
-              <Link href={order.href} className="font-semibold text-saffron-600 underline underline-offset-2">
-                <span lang="hi" className="font-devanagari">{order.titleHi}</span>
-                <span className="font-normal text-dharma-text-secondary"> · {order.titleEn}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+        <section aria-labelledby="academy-orders">
+          <SectionTitle
+            id="academy-orders"
+            title="Reading orders"
+            titleHi="पढ़ने के क्रम"
+            sub={
+              <span lang="hi" className="font-devanagari">
+                कर्मयोग और ध्यान के अलग पाठ्यक्रम नहीं हैं। ये पढ़ने के क्रम हैं।
+              </span>
+            }
+          />
+          <ul className="apple-group shadow-raised">
+            {ACADEMY_ORDERS.map((order) => (
+              <AcademyRow key={order.href} href={order.href} hi={order.titleHi} en={order.titleEn} />
+            ))}
+          </ul>
+        </section>
+      </div>
     </main>
   );
 }
