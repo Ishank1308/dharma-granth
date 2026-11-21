@@ -72,6 +72,10 @@ export async function buildSearchIndex() {
     ids.push(entry.id);
   }
 
+  // Book ids end up inside the generated TypeScript as plain string literals, so allow only safe characters.
+  for (const id of ids) {
+    if (!/^[a-z0-9-]+$/.test(id)) throw new Error(`[search] unexpected book id ${JSON.stringify(id)}`);
+  }
   const loaderMap = (entry) => [
     'export const SEARCH_LOADERS: Record<string, () => SearchCorpus> = {',
     ...ids.map((id) => `  ${JSON.stringify(id)}: ${entry(`search/${id}.json`)},`),
@@ -95,7 +99,7 @@ export async function buildSearchIndex() {
       "import { readBundledJson } from '../bundled-assets';",
       "import type { SearchCorpus } from '../types';",
       '',
-      ...loaderMap((path) => `() => readBundledJson<SearchCorpus>(${JSON.stringify(path)})`),
+      ...loaderMap((path) => `() => readBundledJson<SearchCorpus>('${path}')`),
     ].join('\n'),
   );
   console.log(`[search] indexed ${verses.toLocaleString('en-US')} verses in ${ids.length} books (${(bytes / 1024 / 1024).toFixed(1)} MB)`);

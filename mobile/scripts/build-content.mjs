@@ -111,6 +111,10 @@ for (const id of listBookIds(DATA)) {
 writeFileSync(join(OUT, 'catalog.json'), JSON.stringify(catalog));
 
 const bundledIds = catalog.filter((b) => b.bundled).map((b) => b.id);
+// Book ids end up inside the generated TypeScript as plain string literals, so allow only safe characters.
+for (const id of bundledIds) {
+  if (!/^[a-z0-9-]+$/.test(id)) throw new Error(`[content] unexpected book id ${JSON.stringify(id)}`);
+}
 const loaderMap = (entry) => [
   'export const CHAPTER_LOADERS: Record<string, Record<number, () => BookChapter>> = {',
   ...bundledIds.map((id) =>
@@ -142,7 +146,7 @@ writeFileSync(
     "import type { BookChapter } from '../types';",
     '',
     '/** Each chapter is a compressed APK asset, read and parsed only when it is opened. */',
-    ...loaderMap((path) => `() => readBundledJson<BookChapter>(${JSON.stringify(path)})`),
+    ...loaderMap((path) => `() => readBundledJson<BookChapter>('${path}')`),
   ].join('\n'),
 );
 
