@@ -1120,7 +1120,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   <div className="flex items-center justify-between px-1">
                     <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-tint">
                       <Sparkles className="h-3.5 w-3.5" />
-                      <span>पवित्र क्रियाएँ · Sacred Actions</span>
+                      <span><span lang="hi" data-bi="hi">पवित्र क्रियाएँ</span><span data-bi="sep"> · </span><span data-bi="en">Sacred Actions</span></span>
                     </h3>
                     <span className="text-caption font-mono text-label-tertiary">Use ↑↓ and Enter</span>
                   </div>
@@ -1166,7 +1166,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     <div className="mb-2 flex items-center justify-between px-1">
                       <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-tint">
                         <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                        <span lang="hi" className="font-devanagari normal-case tracking-normal">पवित्र क्रियाएँ</span> · Sacred Actions ({'>'})
+                        <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">पवित्र क्रियाएँ</span><span><span data-bi="sep"> · </span><span data-bi="en">Sacred Actions</span> ({'>'})</span>
                       </h3>
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -1190,7 +1190,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       <div className="mb-2 flex items-center justify-between px-1">
                         <h3 id={`${listboxId}-recent`} className="flex items-center gap-1.5 text-footnote font-semibold text-label-secondary">
                           <Clock className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
-                          <span lang="hi" className="font-devanagari normal-case tracking-normal">हाल की खोज</span> · Recent searches
+                          <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">हाल की खोज</span><span><span data-bi="sep"> · </span><span data-bi="en">Recent searches</span></span>
                         </h3>
                         <button
                           type="button"
@@ -1221,7 +1221,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   <section aria-labelledby={`${listboxId}-suggested`}>
                     <h3 id={`${listboxId}-suggested`} className="mb-2 flex items-center gap-1.5 px-1 text-footnote font-semibold text-label-secondary">
                       <Sparkles className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
-                      <span lang="hi" className="font-devanagari normal-case tracking-normal">सुझाई खोज</span> · Try searching
+                      <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">सुझाई खोज</span><span><span data-bi="sep"> · </span><span data-bi="en">Try searching</span></span>
                     </h3>
                     <ul className="flex flex-wrap gap-2">
                       {SUGGESTED_SEARCHES.map((s) => (
@@ -1241,7 +1241,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   <section aria-labelledby={`${listboxId}-topics`}>
                     <h3 id={`${listboxId}-topics`} className="mb-2 flex items-center gap-1.5 px-1 text-footnote font-semibold text-label-secondary">
                       <Flame className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
-                      <span lang="hi" className="font-devanagari normal-case tracking-normal">अध्ययन विषय</span> · Study topics
+                      <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">अध्ययन विषय</span><span><span data-bi="sep"> · </span><span data-bi="en">Study topics</span></span>
                     </h3>
                     <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                       {studyTopics.map((t) => (

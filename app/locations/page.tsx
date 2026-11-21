@@ -41,7 +41,7 @@ export default function LocationsPage() {
               तीर्थमानचित्र — Sacred Geography
             </p>
             <h1 className="font-serif text-[clamp(1.9rem,calc(1.45rem+2.3vw),3rem)] leading-tight font-bold mb-4 [overflow-wrap:anywhere]">
-              पवित्र स्थान मानचित्र (Sacred Geography)
+              <span lang="hi" data-bi="hi">पवित्र स्थान मानचित्र</span><span data-bi="sep"> (</span><span data-bi="en">Sacred Geography</span><span data-bi="sep">)</span>
             </h1>
             <p className="text-base sm:text-lg leading-relaxed opacity-90 max-w-2xl">
               शास्त्रों के पवित्र भौगोलिक स्थानों का अन्वेषण करें — अयोध्या से कैलास तक, गंगा से सरस्वती तक। प्रत्येक स्थान को स्पष्ट रूप से पारंपरिक, वर्तमान, विवादित, और प्रतीकात्मक/ब्रह्मांडीय पहचान के साथ वर्गीकृत किया गया है।

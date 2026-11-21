@@ -362,7 +362,7 @@ export function SvadhyayaSplitDrawer({
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-muted mb-2 flex items-center gap-1.5">
                       <Sparkles className="h-3.5 w-3.5 text-saffron-500" />
-                      प्रामाणिक संदर्भ श्लोक (Canonical Verses)
+                      <span><span lang="hi" data-bi="hi">प्रामाणिक संदर्भ श्लोक</span><span data-bi="sep"> (</span><span data-bi="en">Canonical Verses</span><span data-bi="sep">)</span></span>
                     </h4>
                     <div className="space-y-3">
                       {activeConceptData.canonicalVerses.map((cv, idx) => (

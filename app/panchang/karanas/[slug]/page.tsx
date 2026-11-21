@@ -240,7 +240,7 @@ export default async function KaranaDetailPage({ params }: PageProps) {
               <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <div>
                 <h2 className="text-base font-bold text-dharma-text">
-                  Bhadra Observance &amp; Scriptural Caution (भद्रा नियम)
+                  <span data-bi="en">Bhadra Observance &amp; Scriptural Caution</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">भद्रा नियम</span><span data-bi="sep">)</span>
                 </h2>
                 <p className="text-xs sm:text-sm text-dharma-muted font-sans mt-1.5 leading-relaxed">
                   In the <em>Muhurta Chintamani</em> and <em>Brihat Samhita</em>, Vishti Karana (Bhadra) is governed
@@ -317,7 +317,7 @@ export default async function KaranaDetailPage({ params }: PageProps) {
           <div className="flex items-center gap-2 mb-6">
             <HelpCircle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
             <h2 className="text-2xl font-bold text-dharma-text">
-              Frequently Asked Questions (प्रश्न व उत्तर)
+              <span data-bi="en">Frequently Asked Questions</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">प्रश्न व उत्तर</span><span data-bi="sep">)</span>
             </h2>
           </div>
 

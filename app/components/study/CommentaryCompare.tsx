@@ -58,7 +58,7 @@ export function CommentaryCompare({
   return (
     <section id="commentary-compare" aria-labelledby="cc-h" className="rounded-2xl border border-dharma-border bg-dharma-card/60 p-4 sm:p-5">
       <h3 id="cc-h" className="font-serif text-lg font-bold text-dharma-text">
-        Layers side by side <span lang="hi" className="font-devanagari text-sm font-normal text-dharma-muted">· परतों की तुलना</span>
+        <span data-bi="en">Layers side by side</span> <span data-bi="sep" className="font-devanagari text-sm font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-sm font-normal text-dharma-muted">परतों की तुलना</span>
       </h3>
       <p className="mt-1 text-sm text-dharma-muted">Each layer is labelled by what it is. None is presented as the correct or best reading.</p>
 

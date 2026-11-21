@@ -153,10 +153,10 @@ function KaranaCard({
             isChara ? 'group-hover:text-amber-600 dark:group-hover:text-amber-400' : 'group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
           }`}
         >
-          {karana.name}{' '}
-          <span className="text-base text-dharma-muted font-normal">
-            ({karana.nameHi})
-          </span>
+          <span data-bi="en">{karana.name}</span>{' '}
+          <span data-bi="sep" className="text-base text-dharma-muted font-normal">(</span>
+          <span lang="hi" data-bi="hi" data-bi-lead className="text-base text-dharma-muted font-normal">{karana.nameHi}</span>
+          <span data-bi="sep" className="text-base text-dharma-muted font-normal">)</span>
         </h3>
         <p
           className={`text-xs font-sans font-medium mt-0.5 ${
@@ -226,7 +226,7 @@ export default function KaranasPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-dharma-text mb-4">
-            The 11 Vedic Karanas (11 करण)
+            <span data-bi="en">The 11 Vedic Karanas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">11 करण</span><span data-bi="sep">)</span>
           </h1>
           <p className="text-base sm:text-lg text-dharma-muted font-sans leading-relaxed">
             The micro-rhythm of the lunar month. Each Karana spans half of a Tithi (6° elongation).
@@ -288,7 +288,7 @@ export default function KaranasPage() {
               Part 1 · The Recurring Cycle
             </div>
             <h2 className="text-2xl font-bold text-dharma-text">
-              7 Chara (Movable) Karanas (7 चर करण)
+              <span data-bi="en">7 Chara (Movable) Karanas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">7 चर करण</span><span data-bi="sep">)</span>
             </h2>
             <p className="text-sm text-dharma-muted font-sans mt-1">
               These 7 Karanas repeat in continuous succession 8 times across the 30 lunar days (7 × 8 = 56 half-tithis).
@@ -314,7 +314,7 @@ export default function KaranasPage() {
               Part 2 · The Dark Phase Anchors
             </div>
             <h2 className="text-2xl font-bold text-dharma-text">
-              4 Sthira (Fixed) Karanas (4 स्थिर करण)
+              <span data-bi="en">4 Sthira (Fixed) Karanas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">4 स्थिर करण</span><span data-bi="sep">)</span>
             </h2>
             <p className="text-sm text-dharma-muted font-sans mt-1">
               These 4 Karanas occur exactly once per lunar month, bridging Krishna Chaturdashi, Amavasya, and Shukla Pratipada.
@@ -338,7 +338,7 @@ export default function KaranasPage() {
           <div className="flex items-center gap-2 mb-6">
             <HelpCircle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
             <h2 className="text-2xl font-bold text-dharma-text">
-              Frequently Asked Questions (अक्सर पूछे जाने वाले प्रश्न)
+              <span data-bi="en">Frequently Asked Questions</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">अक्सर पूछे जाने वाले प्रश्न</span><span data-bi="sep">)</span>
             </h2>
           </div>
 

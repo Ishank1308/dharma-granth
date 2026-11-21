@@ -175,7 +175,7 @@ export default async function ChapterPage(props: { params: Promise<{ chapter: st
 
         <section id="verses" aria-labelledby="verses-h" className="grid gap-6 sm:gap-8 scroll-mt-6">
           <div>
-            <h2 id="verses-h" className="font-bold text-xl sm:text-2xl text-dharma-text">श्लोक-दर-श्लोक स्वाध्याय · Sacred Reading</h2>
+            <h2 id="verses-h" className="font-bold text-xl sm:text-2xl text-dharma-text"><span lang="hi" data-bi="hi">श्लोक-दर-श्लोक स्वाध्याय</span><span data-bi="sep"> · </span><span data-bi="en">Sacred Reading</span></h2>
             <p className="ash-meta mt-1">
               {d.verses.length} श्लोक, पुस्तक के क्रम में।{' '}
               {reviewCount > 0 ? `${reviewCount} श्लोकों पर पुस्तक के छपे पाठ में भेद मिला है और उन पर “समीक्षा आवश्यक” दर्शाया गया है।` : 'सभी श्लोक मूल पृष्ठ से मिलान किए गए हैं।'}

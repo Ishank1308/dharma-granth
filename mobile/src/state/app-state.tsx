@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Appearance } from 'react-native';
+import { AccessibilityInfo, Appearance } from 'react-native';
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 import {
@@ -15,6 +15,7 @@ import {
   type Settings,
 } from '@/lib/backup';
 import { resolveLanguage, type Lang } from '@/i18n/language';
+import { isBudgetPhone, resolveLightEffects } from '@/theme/effects';
 import { THEMES, type Palette } from '@/theme/themes';
 
 /** Everything stays on the device, under these keys. */
@@ -24,12 +25,19 @@ const KEYS = {
   lastRead: 'dg.lastRead.v1',
 } as const;
 
+/** The settings key, for code that runs without React (the home-screen widget's headless task). */
+export const SETTINGS_KEY = KEYS.settings;
+
 interface AppState {
   ready: boolean;
   settings: Settings;
   palette: Palette;
   /** The interface language in effect: the reader's choice, or the phone's language. */
   lang: Lang;
+  /** Light effects in use (the reader's choice, or Automatic on a budget phone). Also on palette.lite. */
+  lightEffects: boolean;
+  /** Android's "Remove animations" (or the platform's reduce-motion switch) is on: sheets and screens appear without sliding. */
+  reduceMotion: boolean;
   bookmarks: Bookmark[];
   lastRead: LastRead | null;
   updateSettings: (patch: Partial<Settings>) => void;
@@ -55,6 +63,22 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [lastRead, setLastReadState] = useState<LastRead | null>(null);
   const loaded = useRef(false);
+  const [budgetPhone] = useState(isBudgetPhone);
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    AccessibilityInfo.isReduceMotionEnabled()
+      .then((on) => {
+        if (alive) setReduceMotion(on);
+      })
+      .catch(() => {});
+    const sub = AccessibilityInfo.addEventListener('reduceMotionChanged', setReduceMotion);
+    return () => {
+      alive = false;
+      sub.remove();
+    };
+  }, []);
 
   useEffect(() => {
     let alive = true;
@@ -135,11 +159,19 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     if (data.lastRead) setLastReadState(data.lastRead);
   }, []);
 
+  const lightEffects = resolveLightEffects(settings.effects, budgetPhone, reduceMotion);
+  const palette = useMemo<Palette>(
+    () => (lightEffects ? { ...THEMES[settings.theme], lite: true } : THEMES[settings.theme]),
+    [settings.theme, lightEffects],
+  );
+
   const value = useMemo<AppState>(
     () => ({
       ready,
       settings,
-      palette: THEMES[settings.theme],
+      palette,
+      lightEffects,
+      reduceMotion,
       lang: resolveLanguage(settings.language),
       bookmarks,
       lastRead,
@@ -151,7 +183,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       exportData,
       importData,
     }),
-    [ready, settings, bookmarks, lastRead, updateSettings, isBookmarked, toggleBookmark, removeBookmark, setLastRead, exportData, importData],
+    [ready, settings, palette, lightEffects, reduceMotion, bookmarks, lastRead, updateSettings, isBookmarked, toggleBookmark, removeBookmark, setLastRead, exportData, importData],
   );
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

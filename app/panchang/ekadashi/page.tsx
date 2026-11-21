@@ -193,7 +193,7 @@ export default function EkadashiPage() {
           </div>
           <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">📖</span>
-            <h3 className="font-serif font-bold text-base text-label-primary">शास्त्रीय स्वाध्याय (Scriptural Study)</h3>
+            <h3 className="font-serif font-bold text-base text-label-primary"><span lang="hi" data-bi="hi">शास्त्रीय स्वाध्याय</span><span data-bi="sep"> (</span><span data-bi="en">Scriptural Study</span><span data-bi="sep">)</span></h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
               श्रीमद्भगवद्गीता के 18 अध्यायों का पाठ, विष्णु सहस्रनाम और नारायण सूक्त का जप।
             </p>
@@ -228,7 +228,7 @@ export default function EkadashiPage() {
 
         {/* FAQ Accordion */}
         <section aria-labelledby="faq-heading">
-          <SectionTitle id="faq-heading" title="जिज्ञासा एवं समाधान" titleHi="FAQ" />
+          <SectionTitle id="faq-heading" title="FAQ" titleHi="जिज्ञासा एवं समाधान" />
           <div className="apple-group mt-6">
             {FAQS.map((f) => (
               <details key={f.q} className="apple-row group block !py-0 [&_summary::-webkit-details-marker]:hidden">

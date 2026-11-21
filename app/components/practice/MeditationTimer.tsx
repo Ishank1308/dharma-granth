@@ -388,7 +388,7 @@ export function MeditationTimer() {
 
             <div>
               <h4 className="font-serif text-base font-bold text-dharma-text">
-                सत्र पूर्ण · Session Complete
+                <span lang="hi" data-bi="hi">सत्र पूर्ण</span><span data-bi="sep"> · </span><span data-bi="en">Session Complete</span>
               </h4>
               <p className="text-xs text-dharma-muted mt-0.5">
                 आपने {minutes} मिनट का ध्यान पूर्ण किया।

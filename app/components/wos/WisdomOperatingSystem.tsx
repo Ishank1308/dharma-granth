@@ -354,7 +354,7 @@ export function WisdomOperatingSystem() {
               {/* Primary Canonical Verses */}
               <div className="mb-6 space-y-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
-                  Canonical Verses (मूल श्लोक)
+                  <span data-bi="en">Canonical Verses</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">मूल श्लोक</span><span data-bi="sep">)</span>
                 </h4>
                 {selectedQuestion.primaryVerses.map((v, idx) => (
                   <div
@@ -401,7 +401,7 @@ export function WisdomOperatingSystem() {
               <div className="p-4 rounded-xl bg-amber-100/60 dark:bg-amber-950/40 border border-amber-300/60 dark:border-amber-800">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 mb-1 flex items-center gap-1.5">
                   <Flame className="w-4 h-4 text-amber-600" />
-                  Today&apos;s Contemplative Micro-Action (आज का आचरण)
+                  <span><span data-bi="en">Today&apos;s Contemplative Micro-Action</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">आज का आचरण</span><span data-bi="sep">)</span></span>
                 </h4>
                 <p className="text-sm text-stone-800 dark:text-stone-200">
                   {selectedQuestion.contemplativeActionEn}
@@ -481,7 +481,7 @@ export function WisdomOperatingSystem() {
               {/* Contemplative Breath Anchor Timer */}
               <div className="mb-6 p-5 rounded-2xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-center">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">
-                  {selectedEmotion.pauseExercise.titleEn} ({selectedEmotion.pauseExercise.titleHi})
+                  <span data-bi="en">{selectedEmotion.pauseExercise.titleEn}</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">{selectedEmotion.pauseExercise.titleHi}</span><span data-bi="sep">)</span>
                 </h4>
                 <p className="text-xs text-stone-600 dark:text-stone-300 max-w-lg mx-auto mb-4">
                   {selectedEmotion.pauseExercise.instructionsEn}
@@ -513,7 +513,7 @@ export function WisdomOperatingSystem() {
               {/* Root Insight */}
               <div className="mb-6 p-4 rounded-xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-1">
-                  Root Philosophical Insight (दार्शनिक समाधान)
+                  <span data-bi="en">Root Philosophical Insight</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">दार्शनिक समाधान</span><span data-bi="sep">)</span>
                 </h4>
                 <p className="text-sm sm:text-base text-stone-800 dark:text-stone-200 leading-relaxed font-serif">
                   {selectedEmotion.rootInsightEn}
@@ -586,7 +586,7 @@ export function WisdomOperatingSystem() {
             {/* Verse of the Day */}
             <div className="mb-6">
               <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-1">
-                Verse of the Day (आज का श्लोक)
+                <span data-bi="en">Verse of the Day</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">आज का श्लोक</span><span data-bi="sep">)</span>
               </h3>
               <div className="p-6 rounded-2xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700">
                 <div className="flex justify-between items-center mb-3">
@@ -615,7 +615,7 @@ export function WisdomOperatingSystem() {
             {/* Reflection of the Day */}
             <div className="mb-6 p-5 rounded-2xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700">
               <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-1">
-                Reflection of the Day (आज का मनन)
+                <span data-bi="en">Reflection of the Day</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">आज का मनन</span><span data-bi="sep">)</span>
               </h4>
               <p className="text-sm text-stone-800 dark:text-stone-200 leading-relaxed mb-2 font-serif">
                 {daily.reflectionEn}
@@ -628,7 +628,7 @@ export function WisdomOperatingSystem() {
             {/* Question of the Day */}
             <div className="mb-6 p-5 rounded-2xl bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700">
               <h4 className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-1">
-                Question of the Day (आज का आत्म-प्रश्न)
+                <span data-bi="en">Question of the Day</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">आज का आत्म-प्रश्न</span><span data-bi="sep">)</span>
               </h4>
               <p className="text-base font-serif font-semibold text-stone-900 dark:text-stone-100 mb-1">
                 &ldquo;{daily.questionOfTheDayEn}&rdquo;

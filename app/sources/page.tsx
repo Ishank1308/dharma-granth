@@ -227,8 +227,9 @@ export default function SourcesPage() {
       {Object.keys(PHOTO_CREDITS).length > 0 && (
         <section className="mx-auto max-w-5xl px-5 sm:px-8 mt-14" aria-labelledby="picture-credits">
           <h2 id="picture-credits" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text border-b border-dharma-border pb-4">
-            <span>Pictures behind the verses</span>{' '}
-            <span lang="hi" className="font-devanagari font-normal text-lg text-dharma-muted">· श्लोकों के पीछे के चित्र</span>
+            <span data-bi="en">Pictures behind the verses</span>{' '}
+            <span data-bi="sep" className="font-devanagari font-normal text-lg text-dharma-muted">· </span>
+            <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari font-normal text-lg text-dharma-muted">श्लोकों के पीछे के चित्र</span>
           </h2>
           <p className="mt-4 text-sm text-dharma-muted leading-relaxed">
             The photographs and classical paintings behind each chapter&apos;s verses come from Wikimedia Commons. Each is in the public domain or under a Creative Commons licence, and is listed here with its author and licence.
