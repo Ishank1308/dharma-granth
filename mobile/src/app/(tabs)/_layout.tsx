@@ -6,9 +6,12 @@ export default function TabsLayout() {
   const palette = usePalette();
   return (
     <NativeTabs
-      backgroundColor={palette.card}
-      indicatorColor={palette.cardSoft}
-      labelStyle={{ default: { color: palette.muted }, selected: { color: palette.accent } }}>
+      backgroundColor={palette.chrome}
+      indicatorColor={palette.dark ? 'rgba(255,159,10,0.18)' : 'rgba(194,65,12,0.12)'}
+      labelStyle={{
+        default: { color: palette.muted },
+        selected: { color: palette.accent },
+      }}>
       <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Label>Library</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon sf="books.vertical" md="menu_book" selectedColor={palette.accent} />

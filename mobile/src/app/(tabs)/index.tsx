@@ -4,12 +4,12 @@ import { useMemo, useState } from 'react';
 import { Pressable, SectionList, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Bilingual, Card, Chip, Muted, SectionTitle } from '@/components/ui';
+import { Backdrop, Bilingual, Card, Chip, Eyebrow, glass, GlassRow, Muted, SectionTitle } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import type { CatalogEntry } from '@/content/types';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
-import { SPACE, TYPE, RADIUS } from '@/theme/themes';
+import { RADIUS, SPACE, TYPE } from '@/theme/themes';
 
 function matches(b: CatalogEntry, q: string) {
   if (!q) return true;
@@ -28,12 +28,23 @@ function DailyVerseCard() {
     <Pressable
       accessibilityRole="button"
       accessibilityLabel="Open the verse of the day"
-      onPress={() => router.push({ pathname: '/scripture/[id]/[chapter]', params: { id: pick.id, chapter: String(pick.chapter), verse: String(verse.number) } })}>
+      onPress={() =>
+        router.push({
+          pathname: '/scripture/[id]/[chapter]',
+          params: { id: pick.id, chapter: String(pick.chapter), verse: String(verse.number) },
+        })
+      }>
       <Card>
         <Bilingual en="Verse of the day" hi="आज का श्लोक" size={TYPE.footnote} color={palette.accent} />
         <View style={{ marginTop: SPACE.sm }}>
           {lines.map((l, i) => (
-            <Text key={i} style={{ color: palette.text, fontSize: TYPE.callout * settings.textScale, lineHeight: TYPE.callout * settings.textScale * 1.6 }}>
+            <Text
+              key={i}
+              style={{
+                color: palette.text,
+                fontSize: TYPE.callout * settings.textScale,
+                lineHeight: TYPE.callout * settings.textScale * 1.6,
+              }}>
               {l}
             </Text>
           ))}
@@ -86,64 +97,72 @@ export default function LibraryScreen() {
   }, [query, category]);
 
   return (
-    <SectionList
-      style={{ backgroundColor: palette.bg }}
-      contentContainerStyle={{ paddingTop: insets.top + SPACE.lg, paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xxl * 3 }}
-      sections={sections}
-      keyExtractor={(b) => b.id}
-      stickySectionHeadersEnabled={false}
-      keyboardShouldPersistTaps="handled"
-      ListHeaderComponent={
-        <View style={{ rowGap: SPACE.md }}>
-          <View>
-            <Text style={{ color: palette.text, fontSize: TYPE.title1, fontWeight: '800' }}>Dharma Granth</Text>
-            <Text style={{ color: palette.accent, fontSize: TYPE.title3 }}>धर्म ग्रन्थ</Text>
+    <Backdrop>
+      <SectionList
+        style={{ backgroundColor: 'transparent' }}
+        contentContainerStyle={{ paddingTop: insets.top + SPACE.lg, paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xxl * 3 }}
+        sections={sections}
+        keyExtractor={(b) => b.id}
+        stickySectionHeadersEnabled={false}
+        keyboardShouldPersistTaps="handled"
+        ListHeaderComponent={
+          <View style={{ rowGap: SPACE.md }}>
+            <View style={{ rowGap: SPACE.sm }}>
+              <Eyebrow en="Scripture library" hi="ग्रन्थ संग्रह" />
+              <View>
+                <Text style={{ color: palette.text, fontSize: 34, fontWeight: '800', letterSpacing: -0.6 }}>Dharma Granth</Text>
+                <Text style={{ color: palette.accent, fontSize: TYPE.title2, fontWeight: '600' }}>धर्म ग्रन्थ</Text>
+              </View>
+            </View>
+            <ContinueCard />
+            <DailyVerseCard />
+            <View style={[styles.search, glass(palette, true)]}>
+              <Ionicons name="search" size={18} color={palette.muted} />
+              <TextInput
+                value={query}
+                onChangeText={setQuery}
+                placeholder="Search scriptures / ग्रन्थ खोजें"
+                placeholderTextColor={palette.muted}
+                style={{ flex: 1, color: palette.text, fontSize: TYPE.callout, paddingVertical: SPACE.sm }}
+                accessibilityLabel="Search scriptures"
+                autoCorrect={false}
+              />
+            </View>
+            <View style={styles.chips}>
+              <Chip label="All · सभी" active={!category} onPress={() => setCategory(null)} />
+              {CATEGORIES.map((c) => (
+                <Chip
+                  key={c.key}
+                  label={`${c.en} · ${c.hi}`}
+                  active={category === c.key}
+                  onPress={() => setCategory(category === c.key ? null : c.key)}
+                />
+              ))}
+            </View>
           </View>
-          <ContinueCard />
-          <DailyVerseCard />
-          <View style={[styles.search, { backgroundColor: palette.card, borderColor: palette.border }]}>
-            <Ionicons name="search" size={18} color={palette.muted} />
-            <TextInput
-              value={query}
-              onChangeText={setQuery}
-              placeholder="Search scriptures / ग्रन्थ खोजें"
-              placeholderTextColor={palette.muted}
-              style={{ flex: 1, color: palette.text, fontSize: TYPE.callout, paddingVertical: SPACE.sm }}
-              accessibilityLabel="Search scriptures"
-              autoCorrect={false}
-            />
-          </View>
-          <View style={styles.chips}>
-            <Chip label="All · सभी" active={!category} onPress={() => setCategory(null)} />
-            {CATEGORIES.map((c) => (
-              <Chip key={c.key} label={`${c.en} · ${c.hi}`} active={category === c.key} onPress={() => setCategory(category === c.key ? null : c.key)} />
-            ))}
-          </View>
-        </View>
-      }
-      renderSectionHeader={({ section }) => <SectionTitle en={section.en} hi={section.hi} />}
-      renderItem={({ item }) => (
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={`${item.title}, ${item.chapters.length} chapters`}
-          onPress={() => router.push({ pathname: '/scripture/[id]', params: { id: item.id } })}
-          style={({ pressed }) => [styles.row, { borderColor: palette.border, opacity: pressed ? 0.6 : 1 }]}>
-          <View style={{ flex: 1 }}>
-            <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
-            <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
-              {item.title} · {item.chapters.length} ch · {item.totalVerses.toLocaleString('en-IN')} verses
-            </Text>
-          </View>
-          {item.bundled ? (
-            <Ionicons name="download-outline" size={16} color={palette.gold} accessibilityLabel="Available offline" />
-          ) : (
-            <Ionicons name="globe-outline" size={16} color={palette.muted} accessibilityLabel="Opens on dharmagranth.dev" />
-          )}
-          <Ionicons name="chevron-forward" size={18} color={palette.muted} />
-        </Pressable>
-      )}
-      ListEmptyComponent={<Muted style={{ marginTop: SPACE.xl, textAlign: 'center' }}>No scripture matches “{query}”.</Muted>}
-    />
+        }
+        renderSectionHeader={({ section }) => <SectionTitle en={section.en} hi={section.hi} />}
+        renderItem={({ item }) => (
+          <GlassRow
+            accessibilityLabel={`${item.title}, ${item.chapters.length} chapters`}
+            onPress={() => router.push({ pathname: '/scripture/[id]', params: { id: item.id } })}>
+            <View style={{ flex: 1 }}>
+              <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
+              <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
+                {item.title} · {item.chapters.length} ch · {item.totalVerses.toLocaleString('en-IN')} verses
+              </Text>
+            </View>
+            {item.bundled ? (
+              <Ionicons name="download-outline" size={16} color={palette.gold} accessibilityLabel="Available offline" />
+            ) : (
+              <Ionicons name="globe-outline" size={16} color={palette.muted} accessibilityLabel="Opens on dharmagranth.dev" />
+            )}
+            <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+          </GlassRow>
+        )}
+        ListEmptyComponent={<Muted style={{ marginTop: SPACE.xl, textAlign: 'center' }}>No scripture matches “{query}”.</Muted>}
+      />
+    </Backdrop>
   );
 }
 
@@ -152,16 +171,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     columnGap: SPACE.sm,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: RADIUS.control,
-    paddingHorizontal: SPACE.md,
+    borderRadius: RADIUS.pill,
+    paddingHorizontal: SPACE.lg,
+    paddingVertical: 2,
   },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    columnGap: SPACE.sm,
-    paddingVertical: SPACE.md,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-  },
 });

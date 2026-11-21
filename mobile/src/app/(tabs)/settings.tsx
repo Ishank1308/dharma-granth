@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Bilingual, Card, Muted, SectionTitle } from '@/components/ui';
+import { accentFill, Backdrop, Bilingual, Card, Eyebrow, glass, Muted, SectionTitle } from '@/components/ui';
 import { CATALOG, SITE } from '@/content/catalog';
 import { makeBackup, parseBackup } from '@/lib/backup';
 import { useAppState } from '@/state/app-state';
@@ -61,96 +61,102 @@ export default function SettingsScreen() {
   };
 
   return (
-    <ScrollView
-      style={{ backgroundColor: palette.bg }}
-      contentContainerStyle={{ paddingTop: insets.top + SPACE.lg, paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xxl * 3 }}>
-      <Text style={{ color: palette.text, fontSize: TYPE.title1, fontWeight: '800' }}>Settings</Text>
-      <Text style={{ color: palette.accent, fontSize: TYPE.title3 }}>सेटिंग्स</Text>
+    <Backdrop>
+      <ScrollView
+        style={{ backgroundColor: 'transparent' }}
+        contentContainerStyle={{ paddingTop: insets.top + SPACE.lg, paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xxl * 3 }}>
+        <Eyebrow en="Preferences" hi="पसंद" />
+        <Text style={{ color: palette.text, fontSize: 34, fontWeight: '800', letterSpacing: -0.6, marginTop: SPACE.sm }}>Settings</Text>
+        <Text style={{ color: palette.accent, fontSize: TYPE.title2, fontWeight: '600' }}>सेटिंग्स</Text>
 
-      <SectionTitle en="Theme" hi="रंग-रूप" />
-      <View style={styles.themes}>
-        {THEME_ORDER.map((name) => {
-          const t = THEMES[name];
-          const active = settings.theme === name;
-          return (
-            <Pressable
-              key={name}
-              accessibilityRole="button"
-              accessibilityState={{ selected: active }}
-              accessibilityLabel={`${t.label} theme`}
-              onPress={() => updateSettings({ theme: name })}
-              style={[styles.theme, { backgroundColor: t.card, borderColor: active ? palette.accent : t.border, borderWidth: active ? 2 : 1 }]}>
-              <View style={[styles.swatch, { backgroundColor: t.accent }]} />
-              <Text style={{ color: t.text, fontWeight: '700', fontSize: TYPE.footnote }}>{t.label}</Text>
-              <Text style={{ color: t.muted, fontSize: TYPE.caption }}>{t.labelHi}</Text>
-            </Pressable>
-          );
-        })}
-      </View>
-
-      <SectionTitle en="Text size" hi="अक्षर आकार" />
-      <View style={styles.scales}>
-        {SCALES.map((s) => {
-          const active = Math.abs(settings.textScale - s) < 0.01;
-          return (
-            <Pressable
-              key={s}
-              accessibilityRole="button"
-              accessibilityState={{ selected: active }}
-              accessibilityLabel={`Text size ${Math.round(s * 100)} percent`}
-              onPress={() => updateSettings({ textScale: s })}
-              style={[styles.scale, { backgroundColor: active ? palette.accent : palette.card, borderColor: palette.border }]}>
-              <Text style={{ color: active ? '#fff' : palette.text, fontSize: 14 * s, fontWeight: '700' }}>अ</Text>
-            </Pressable>
-          );
-        })}
-      </View>
-
-      <SectionTitle en="Show in verses" hi="श्लोक में दिखाएँ" />
-      <Card style={{ paddingVertical: SPACE.xs }}>
-        {toggles.map((t, i) => (
-          <View key={t.key} style={[styles.toggle, i > 0 && { borderTopWidth: StyleSheet.hairlineWidth, borderColor: palette.border }]}>
-            <Bilingual en={t.en} hi={t.hi} style={{ flex: 1 }} weight="500" />
-            <Switch
-              value={settings[t.key]}
-              onValueChange={(v) => updateSettings({ [t.key]: v })}
-              trackColor={{ true: palette.accent, false: palette.border }}
-              thumbColor="#fff"
-              accessibilityLabel={t.en}
-            />
-          </View>
-        ))}
-      </Card>
-      <Muted style={{ marginTop: SPACE.sm }}>The Sanskrit text is always shown in full.</Muted>
-
-      <SectionTitle en="Backup" hi="बैकअप" />
-      <Card style={{ rowGap: SPACE.md }}>
-        <Muted>
-          No account, nothing uploaded. Your {bookmarks.length} saved verses and settings live only on this phone. Export a JSON file to keep a copy, and import it on a new phone.
-        </Muted>
-        <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
-          <Pressable disabled={busy} onPress={doExport} accessibilityRole="button" style={[styles.btn, { backgroundColor: palette.accent }]}>
-            <Text style={styles.btnText}>Export · निर्यात</Text>
-          </Pressable>
-          <Pressable disabled={busy} onPress={doImport} accessibilityRole="button" style={[styles.btn, { backgroundColor: palette.cardSoft, borderColor: palette.border, borderWidth: 1 }]}>
-            <Text style={[styles.btnText, { color: palette.text }]}>Import · आयात</Text>
-          </Pressable>
+        <SectionTitle en="Theme" hi="रंग-रूप" />
+        <View style={styles.themes}>
+          {THEME_ORDER.map((name) => {
+            const t = THEMES[name];
+            const active = settings.theme === name;
+            return (
+              <Pressable
+                key={name}
+                accessibilityRole="button"
+                accessibilityState={{ selected: active }}
+                accessibilityLabel={`${t.label} theme`}
+                onPress={() => updateSettings({ theme: name })}
+                style={[styles.theme, glass(t, true), active && { borderColor: palette.accent, borderWidth: 2 }]}>
+                <View style={[styles.swatch, { backgroundColor: t.accent }]} />
+                <Text style={{ color: t.text, fontWeight: '700', fontSize: TYPE.footnote }}>{t.label}</Text>
+                <Text style={{ color: t.muted, fontSize: TYPE.caption }}>{t.labelHi}</Text>
+              </Pressable>
+            );
+          })}
         </View>
-      </Card>
 
-      <SectionTitle en="About" hi="परिचय" />
-      <Card style={{ rowGap: SPACE.sm }}>
-        <Muted>
-          {CATALOG.length} scriptures in the library, {bundled} readable offline. Larger texts (epics, Puranas, Rig Veda) open on the website.
-        </Muted>
-        <Pressable accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
-          <Text style={{ color: palette.accent, fontWeight: '600' }}>dharmagranth.dev</Text>
-        </Pressable>
-        <Pressable accessibilityRole="link" onPress={() => Linking.openURL(`${SITE}/privacy/`).catch(() => {})}>
-          <Text style={{ color: palette.accent, fontWeight: '600' }}>Privacy policy · गोपनीयता नीति</Text>
-        </Pressable>
-      </Card>
-    </ScrollView>
+        <SectionTitle en="Text size" hi="अक्षर आकार" />
+        <View style={styles.scales}>
+          {SCALES.map((s) => {
+            const active = Math.abs(settings.textScale - s) < 0.01;
+            return (
+              <Pressable
+                key={s}
+                accessibilityRole="button"
+                accessibilityState={{ selected: active }}
+                accessibilityLabel={`Text size ${Math.round(s * 100)} percent`}
+                onPress={() => updateSettings({ textScale: s })}
+                style={[styles.scale, active ? accentFill(palette) : glass(palette)]}>
+                <Text style={{ color: active ? palette.onAccent : palette.text, fontSize: 14 * s, fontWeight: '700' }}>अ</Text>
+              </Pressable>
+            );
+          })}
+        </View>
+
+        <SectionTitle en="Show in verses" hi="श्लोक में दिखाएँ" />
+        <Card style={{ paddingVertical: SPACE.xs }}>
+          {toggles.map((t, i) => (
+            <View key={t.key} style={[styles.toggle, i > 0 && { borderTopWidth: StyleSheet.hairlineWidth, borderColor: palette.border }]}>
+              <Bilingual en={t.en} hi={t.hi} style={{ flex: 1 }} weight="500" />
+              <Switch
+                value={settings[t.key]}
+                onValueChange={(v) => updateSettings({ [t.key]: v })}
+                trackColor={{ true: palette.accent, false: palette.dark ? '#48484a' : palette.border }}
+                thumbColor="#fff"
+              {...({ activeThumbColor: '#fff' } as object)}
+                accessibilityLabel={t.en}
+              />
+            </View>
+          ))}
+        </Card>
+        <Muted style={{ marginTop: SPACE.sm }}>The Sanskrit text is always shown in full.</Muted>
+
+        <SectionTitle en="Backup" hi="बैकअप" />
+        <Card style={{ rowGap: SPACE.md }}>
+          <Muted>
+            No account, nothing uploaded. Your {bookmarks.length} saved verses and settings live only on this phone. Export a JSON file to
+            keep a copy, and import it on a new phone.
+          </Muted>
+          <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
+            <Pressable disabled={busy} onPress={doExport} accessibilityRole="button" style={[styles.btn, accentFill(palette)]}>
+              <Text style={[styles.btnText, { color: palette.onAccent }]}>Export · निर्यात</Text>
+            </Pressable>
+            <Pressable disabled={busy} onPress={doImport} accessibilityRole="button" style={[styles.btn, glass(palette, true)]}>
+              <Text style={[styles.btnText, { color: palette.text }]}>Import · आयात</Text>
+            </Pressable>
+          </View>
+        </Card>
+
+        <SectionTitle en="About" hi="परिचय" />
+        <Card style={{ rowGap: SPACE.sm }}>
+          <Muted>
+            {CATALOG.length} scriptures in the library, {bundled} readable offline. Larger texts (epics, Puranas, Rig Veda) open on the
+            website.
+          </Muted>
+          <Pressable accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
+            <Text style={{ color: palette.accent, fontWeight: '600' }}>dharmagranth.dev</Text>
+          </Pressable>
+          <Pressable accessibilityRole="link" onPress={() => Linking.openURL(`${SITE}/privacy/`).catch(() => {})}>
+            <Text style={{ color: palette.accent, fontWeight: '600' }}>Privacy policy · गोपनीयता नीति</Text>
+          </Pressable>
+        </Card>
+      </ScrollView>
+    </Backdrop>
   );
 }
 
@@ -159,8 +165,8 @@ const styles = StyleSheet.create({
   theme: { flex: 1, borderRadius: RADIUS.control, padding: SPACE.sm, alignItems: 'center', rowGap: 2 },
   swatch: { width: 18, height: 18, borderRadius: 9, marginBottom: 2 },
   scales: { flexDirection: 'row', gap: SPACE.sm },
-  scale: { width: 48, height: 44, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center', borderWidth: StyleSheet.hairlineWidth },
+  scale: { width: 52, height: 46, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },
   toggle: { flexDirection: 'row', alignItems: 'center', paddingVertical: SPACE.md, columnGap: SPACE.md },
-  btn: { flex: 1, borderRadius: RADIUS.control, paddingVertical: SPACE.md, alignItems: 'center' },
+  btn: { flex: 1, borderRadius: RADIUS.pill, paddingVertical: SPACE.md, alignItems: 'center' },
   btnText: { color: '#fff', fontWeight: '700' },
 });

@@ -21,7 +21,7 @@ function Navigator() {
       ...base.colors,
       primary: palette.accent,
       background: palette.bg,
-      card: palette.bg,
+      card: palette.chrome,
       text: palette.text,
       border: palette.border,
     },
@@ -29,19 +29,19 @@ function Navigator() {
 
   return (
     <ThemeProvider value={navTheme}>
-      <StatusBar style={palette.dark ? 'light' : 'dark'} />
-      <Stack
-        screenOptions={{
-          headerStyle: { backgroundColor: palette.bg },
-          headerTintColor: palette.accent,
-          headerTitleStyle: { color: palette.text },
-          headerShadowVisible: false,
-          contentStyle: { backgroundColor: palette.bg },
-        }}>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="scripture/[id]/index" options={{ title: '' }} />
-        <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '' }} />
-      </Stack>
+        <StatusBar style={palette.dark ? 'light' : 'dark'} />
+        <Stack
+          screenOptions={{
+            headerStyle: { backgroundColor: palette.chrome },
+            headerTintColor: palette.accent,
+            headerTitleStyle: { color: palette.text },
+            headerShadowVisible: false,
+            contentStyle: { backgroundColor: palette.bg },
+          }}>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="scripture/[id]/index" options={{ title: '' }} />
+          <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '' }} />
+        </Stack>
     </ThemeProvider>
   );
 }
