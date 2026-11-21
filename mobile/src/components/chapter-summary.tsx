@@ -6,7 +6,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { glass } from '@/components/ui';
 import type { ChapterSummary, KeyVerse, SummaryCollection } from '@/content/study';
 import { S, type Lang } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 /**
@@ -14,7 +14,7 @@ import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE
  * language; the website shows both, but on a phone one at a time keeps the chapter's verses close.
  */
 export function SummaryBody({ summary, collapsible = false }: { summary: ChapterSummary; collapsible?: boolean }) {
-  const { palette, settings, lang } = useAppState();
+  const { palette, settings, lang } = usePrefs();
   // Follows the interface language until the reader flips it (settings load after the first render).
   const [flipped, setFlipped] = useState(false);
   const shown: Lang = flipped ? (lang === 'hi' ? 'en' : 'hi') : lang;
@@ -65,7 +65,7 @@ export function SummaryBody({ summary, collapsible = false }: { summary: Chapter
 
 /** The chapter's key verses as tappable rows: the verse number in a gold disc, then what happens there. */
 export function KeyVerseList({ verses, sutras, onPick }: { verses: KeyVerse[]; sutras: boolean; onPick: (verse: number) => void }) {
-  const { palette, lang } = useAppState();
+  const { palette, lang } = usePrefs();
   const hues = huesFor(palette);
   if (verses.length === 0) return null;
   return (
@@ -97,7 +97,7 @@ export function KeyVerseList({ verses, sutras, onPick }: { verses: KeyVerse[]; s
 
 /** The editorial note under every summary, as on the website. */
 export function EditorialNote({ reviewed }: { reviewed: boolean }) {
-  const { palette, lang } = useAppState();
+  const { palette, lang } = usePrefs();
   return (
     <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, lineHeight: TYPE.caption * 1.45 }}>
       {(reviewed ? S.summaryReviewed : S.summaryDraft)[lang]}
@@ -121,7 +121,7 @@ export function ChapterSummaryCard({
   summary: ChapterSummary;
   onJumpToVerse: (verse: number) => void;
 }) {
-  const { palette, lang } = useAppState();
+  const { palette, lang } = usePrefs();
   return (
     <View style={[styles.card, glass(palette, true)]}>
       <View style={styles.head}>

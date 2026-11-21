@@ -22,7 +22,7 @@ import {
 import { formatReminderTime } from '@/lib/reminder';
 import { useScrollY } from '@/motion/parallax';
 import { TitleBar } from '@/motion/title-bar';
-import { useAppState } from '@/state/app-state';
+import { useAppState, usePrefs } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
@@ -44,7 +44,7 @@ const BACKUP_ERRORS: Record<BackupError['code'], Msg> = {
 
 /** Opt-in daily verse notification: a switch and a time. Scheduled on the phone, nothing sent anywhere. */
 function DailyVerseSettings() {
-  const { palette, settings, updateSettings } = useAppState();
+  const { palette, settings, updateSettings } = usePrefs();
   const { t, lang } = useI18n();
   const [permission, setPermission] = useState<ReminderPermission>('undetermined');
   const time = new Date(2000, 0, 1, settings.reminderHour, settings.reminderMinute);

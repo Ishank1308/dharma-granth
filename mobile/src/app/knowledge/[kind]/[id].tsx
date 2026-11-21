@@ -27,7 +27,7 @@ import {
   type Timeline,
 } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP, type Hues } from '@/theme/themes';
 
 /** One entry of a knowledge collection, laid out in the website's section order for its kind. */
@@ -88,7 +88,7 @@ function Hero({
   summary?: string;
   summaryLang?: 'en' | 'hi';
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const color = huesFor(palette)[hue];
   return (
     <View style={{ rowGap: SPACE.md }}>
@@ -132,7 +132,7 @@ function ConceptPage({ c }: { c: Concept }) {
   const hue = hueKey(cat.hue);
   const d = c.detail;
   const hi = lang === 'hi';
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const concepts = knowledge('concepts').items;
   return (
     <>
@@ -199,7 +199,7 @@ function ConceptPage({ c }: { c: Concept }) {
 }
 
 function MythCard({ myth, correction }: { myth: string; correction: string }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   return (
@@ -277,7 +277,7 @@ function TermPage({ x }: { x: Term }) {
 
 function CharacterPage({ x }: { x: Character }) {
   const { t } = useI18n();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const cat = useCategory('characters', x.category);
   const hue = hueKey(x.hue);
   const color = huesFor(palette)[hue];
@@ -365,7 +365,7 @@ function CharacterPage({ x }: { x: Character }) {
 
 function PlacePage({ x }: { x: Place }) {
   const { t } = useI18n();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const cat = useCategory('places', x.category);
   const hue = hueKey(x.hue);
   const id = x.identifications;
@@ -412,7 +412,7 @@ function PlacePage({ x }: { x: Place }) {
 
 function TimelinePage({ x }: { x: Timeline }) {
   const { t } = useI18n();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const cat = useCategory('timelines', x.category);
   const note = knowledge('timelines').categories.find((c) => c.key === x.category)?.note;
   const hue: keyof Hues = (['indigo', 'saffron', 'tulsi', 'lotus', 'vermilion', 'gold'] as const)[

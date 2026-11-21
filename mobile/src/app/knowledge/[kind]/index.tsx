@@ -8,7 +8,7 @@ import { EntryTile, LangNote, openEntry } from '@/components/knowledge-ui';
 import { Backdrop, Chip, glass, GroupRow, LargeHeader, Muted } from '@/components/ui';
 import { entries, hueKey, isKind, KINDS, knowledge } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { barClearance, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 const fold = (s: string) =>
@@ -24,7 +24,7 @@ const CONTENT_LANG: Partial<Record<string, 'en' | 'hi'>> = { dictionary: 'en', c
 export default function KnowledgeList() {
   const { kind: raw } = useLocalSearchParams<{ kind: string }>();
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);

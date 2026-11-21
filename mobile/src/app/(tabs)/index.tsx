@@ -16,7 +16,7 @@ import { AnimatedSectionList, useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
 import { TitleBar } from '@/motion/title-bar';
 import { toScript } from '@/lib/sanskrit-script';
-import { useAppState } from '@/state/app-state';
+import { useAppState, usePrefs } from '@/state/app-state';
 import { sanskritFont } from '@/theme/fonts';
 import { coverFor, monogram } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
@@ -28,7 +28,7 @@ function matches(b: CatalogEntry, q: string) {
 }
 
 function DailyVerseCard() {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t } = useI18n();
   // Re-picked when the date changes, so the card turns over at midnight even if the app stays open.
   const today = useToday();
@@ -95,7 +95,7 @@ function DailyVerseCard() {
 const SHELF = ['bhagavadgita', 'ramcharitmanas', 'katha', 'ishavasya', 'yogasutra', 'vivekchudamani'];
 
 function BookShelf() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const books = SHELF.map((id) => getEntry(id)).filter((b): b is CatalogEntry => !!b);
   if (books.length === 0) return null;
@@ -174,7 +174,7 @@ function ContinueCard() {
 
 /** The way into the knowledge pages and Wisdom for life (src/app/knowledge, src/app/wisdom). */
 function KnowledgeCard() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   // Deep hues in every theme, so the white glyph keeps its contrast on Dark too.
   const hues = huesFor({ dark: false });
@@ -204,7 +204,7 @@ function KnowledgeCard() {
 
 export default function LibraryScreen() {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { installed } = useDownloads();
   const { t, lang } = useI18n();
   const [query, setQuery] = useState('');

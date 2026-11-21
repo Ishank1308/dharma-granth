@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { IconButton } from '@/components/ui';
 import { S, useI18n, type Msg } from '@/i18n';
 import { SANSKRIT_SCRIPTS, SCRIPT_NAMES } from '@/lib/sanskrit-script';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { LINE_SPACINGS, sanskritFont, type LineSpacing } from '@/theme/fonts';
 import { huesFor, quietFill, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
@@ -18,7 +18,7 @@ type ShowKey = 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes'
  */
 export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: () => void }) {
   const insets = useSafeAreaInsets();
-  const { palette, settings, updateSettings, reduceMotion } = useAppState();
+  const { palette, settings, updateSettings, reduceMotion } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const layers: { key: ShowKey; label: Msg; dot?: string }[] = [

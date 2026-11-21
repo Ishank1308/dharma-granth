@@ -10,7 +10,7 @@ import { S, useI18n, type Msg } from '@/i18n';
 import { hapticSelect } from '@/motion/haptics';
 import { SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { BAR_GAP, BAR_HEIGHT, SPACE, TYPE } from '@/theme/themes';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
@@ -44,7 +44,7 @@ function TabIcon({ name, focused, color }: { name: IconName; focused: boolean; c
  * The bar takes no layout space; screens leave barClearance() at the end of their lists.
  */
 export function FloatingTabBar({ state, emitter, navigateToTab, insets }: BottomTabBarProps) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const bottom = Math.max(insets.bottom, SPACE.sm) + BAR_GAP;
   const { animate } = useMotion();

@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Backdrop, Card, GroupTitle, Muted } from '@/components/ui';
 import { mantraBySlug, mantraLines } from '@/content/explore';
 import { S, useI18n, type Msg } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { fontCap, huesFor, quietFill, RADIUS, separator, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 /**
@@ -16,7 +16,7 @@ import { fontCap, huesFor, quietFill, RADIUS, separator, SPACE, TITLE_FONT_CAP, 
 export default function MantraScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const m = mantraBySlug(String(id));
@@ -148,7 +148,7 @@ export default function MantraScreen() {
 }
 
 function Faq({ question, children, first }: { question: string; children: ReactNode; first?: boolean }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const [open, setOpen] = useState(false);
   const scale = settings.textScale;
   return (
