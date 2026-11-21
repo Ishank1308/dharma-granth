@@ -21,6 +21,8 @@ import { sanskritFont } from '@/theme/fonts';
 import { coverFor, monogram } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 function matches(b: CatalogEntry, q: string) {
   if (!q) return true;
   const needle = q.trim().toLowerCase();

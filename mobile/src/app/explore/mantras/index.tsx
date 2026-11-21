@@ -10,6 +10,8 @@ import { S, useI18n, type Msg } from '@/i18n';
 import { usePrefs } from '@/state/app-state';
 import { huesFor, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 const MANTRA_CATEGORY_LABEL: Record<MantraCategory, Msg> = {
   vedic: S.mantraCatVedic,
   shanti: S.mantraCatShanti,

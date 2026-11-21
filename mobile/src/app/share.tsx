@@ -17,6 +17,8 @@ import { usePrefs } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
 import { RADIUS, SPACE, THEMES, TOUCH, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 type Meaning = 'hi' | 'en' | 'both' | 'none';
 const MEANINGS: { key: Meaning; label: Msg }[] = [
   { key: 'hi', label: S.shareMeaningHi },

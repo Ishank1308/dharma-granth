@@ -14,6 +14,8 @@ import { toDevanagari } from '@/lib/verse-format';
 import { usePrefs } from '@/state/app-state';
 import { huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /**
  * Every chapter's summary on one page, as the website's /scripture/{id}/summary/: the chapter name, what
  * it covers, its key verses (each opens the reader at that verse) and a button into the chapter.

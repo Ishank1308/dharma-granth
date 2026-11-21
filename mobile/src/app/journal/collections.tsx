@@ -12,6 +12,8 @@ import { useAppState } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 const BUILTIN_ICONS = {
   'read-later': 'time-outline',
   favourites: 'heart-outline',

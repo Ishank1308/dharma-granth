@@ -26,6 +26,8 @@ import { usePanchangCity } from '@/lib/panchang-city';
 import { usePrefs } from '@/state/app-state';
 import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 const VRATA_LABEL: Record<VrataKind, Msg> = {
   ekadashi: S.vratEkadashi,
   purnima: S.vratPurnima,

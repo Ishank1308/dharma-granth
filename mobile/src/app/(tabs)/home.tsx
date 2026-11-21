@@ -19,6 +19,8 @@ import { useAppState, usePrefs } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /**
  * Home, after the website's home page (app/page.tsx): the promise and a way in (hero, search, a featured
  * passage), the reader's own place (continue reading, verse of the day), the library as book covers,

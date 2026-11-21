@@ -11,6 +11,8 @@ import { S, useI18n } from '@/i18n';
 import { usePrefs } from '@/state/app-state';
 import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /**
  * One Wisdom for life topic, in the website's order: a compassionate opening, the verses (each whole, with
  * its setting and a link into the reader), the traditional context, practical reflections, related

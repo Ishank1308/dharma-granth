@@ -27,6 +27,8 @@ import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
 import { BAR_GAP, barClearance, quietFill, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 const VIEWABILITY = { itemVisiblePercentThreshold: 40 };
 
 export default function ChapterScreen() {

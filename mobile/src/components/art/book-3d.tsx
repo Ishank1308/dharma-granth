@@ -23,6 +23,7 @@ import Animated, {
   type SharedValue,
 } from 'react-native-reanimated';
 
+import { Quiet } from '@/components/error-boundary';
 import { coverFill } from '@/components/ui';
 import { hapticTap } from '@/motion/haptics';
 import { MAX_TILT, SPRING } from '@/motion/tokens';
@@ -147,7 +148,12 @@ export function Book3D({
       onResponderMove={(e) => onMove(e.nativeEvent.locationX, e.nativeEvent.locationY)}
       onResponderRelease={onRelease}
       onResponderTerminate={onRelease}>
-      {rich && Platform.OS !== 'web' ? <GyroTilt x={gyroX} y={gyroY} /> : null}
+      {/* A phone without a rotation sensor (or a sensor that fails) just loses the tilt, never the page. */}
+      {rich && Platform.OS !== 'web' ? (
+        <Quiet>
+          <GyroTilt x={gyroX} y={gyroY} />
+        </Quiet>
+      ) : null}
       {/* Contact shadow on the "table". */}
       <Animated.View
         pointerEvents="none"

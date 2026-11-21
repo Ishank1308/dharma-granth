@@ -14,6 +14,8 @@ import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
 import { fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /** The Svadhyaya journal: every reflection, newest first, with search and the website's mood filter. */
 export default function JournalScreen() {
   const insets = useSafeAreaInsets();

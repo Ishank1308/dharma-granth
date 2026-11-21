@@ -27,6 +27,8 @@ import { coverFor } from '@/theme/covers';
 import type { Palette } from '@/theme/themes';
 import { BAR_GAP, BAR_HEIGHT, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 const EXAMPLES = ['कर्मण्येवाधिकारस्ते', 'शान्ति', 'आत्मा', 'krishna', 'karma yoga', 'fruits of action'];
 
 const NO_HITS: VerseHit[] = [];

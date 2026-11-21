@@ -11,6 +11,8 @@ import { S, useI18n } from '@/i18n';
 import { usePrefs } from '@/state/app-state';
 import { barClearance, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 const fold = (s: string) =>
   s
     .toLowerCase()

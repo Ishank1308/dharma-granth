@@ -9,6 +9,8 @@ import { S, useI18n, type Msg } from '@/i18n';
 import { usePrefs } from '@/state/app-state';
 import { fontCap, huesFor, quietFill, RADIUS, separator, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /**
  * One mantra as on dharmagranth.dev/mantras/<slug>/: the whole text, its ṛṣi, devatā and chandas, the पदच्छेद
  * word by word, the भावार्थ in Hindi and English, why it is recited, and the website's questions and answers.

@@ -28,6 +28,8 @@ import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
 import { SANSKRIT_FONT } from '@/theme/fonts';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /** Icon tiles keep the deep spectrum hues in every theme, so their white glyphs stay readable. */
 const TILE = huesFor({ dark: false });
 

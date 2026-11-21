@@ -10,9 +10,13 @@
  */
 import { Directory, File, Paths } from 'expo-file-system';
 import { useEffect, useSyncExternalStore } from 'react';
+import { AppState } from 'react-native';
 
+import { DownloadError, downloadErrorCode, RETRY_DELAYS_MS, RETRYABLE, type DownloadErrorCode } from './download-errors';
 import { forgetSearchIndex, SEARCH_DIR, SearchIndexWriter } from './download-index';
 import type { BookChapter } from './types';
+
+export { DownloadError, downloadErrorCode, type DownloadErrorCode } from './download-errors';
 
 export const APP_DATA = 'https://dharmagranth.dev/app-data/v1/';
 /** The part layout this app understands. The site bumps it only for a layout older apps cannot read. */
@@ -50,10 +54,21 @@ export interface Job {
   total: number;
 }
 
+function wait(ms: number, signal: AbortSignal): Promise<void> {
+  return new Promise((resolve) => {
+    if (signal.aborted) return resolve();
+    const timer = setTimeout(resolve, ms);
+    signal.addEventListener('abort', () => {
+      clearTimeout(timer);
+      resolve();
+    });
+  });
+}
+
 export interface DownloadsState {
   installed: Record<string, Installed>;
   jobs: Record<string, Job>;
-  errors: Record<string, string>;
+  errors: Record<string, DownloadErrorCode>;
   index: RemoteIndex | null;
   indexStatus: 'idle' | 'loading' | 'ready' | 'error';
 }
@@ -109,10 +124,20 @@ export function useDownloads(): DownloadsState {
   return useSyncExternalStore(subscribe, () => state, () => state);
 }
 
-/** Loads the list of downloadable books once per app session (again after a failure). */
+/**
+ * Loads the list of downloadable books once per app session, and again after a failure: on the next
+ * screen that asks, or when the app comes back to the front (the reader may have turned data on).
+ */
 export function useRemoteIndex(): void {
   useEffect(() => {
-    if (state.indexStatus === 'idle' || state.indexStatus === 'error') fetchIndex().catch(() => {});
+    const retry = () => {
+      if (state.indexStatus === 'idle' || state.indexStatus === 'error') fetchIndex().catch(() => {});
+    };
+    retry();
+    const sub = AppState.addEventListener('change', (s) => {
+      if (s === 'active') retry();
+    });
+    return () => sub.remove();
   }, []);
 }
 
@@ -120,10 +145,20 @@ export async function fetchIndex(): Promise<RemoteIndex> {
   if (state.index) return state.index;
   set({ indexStatus: 'loading' });
   try {
-    const res = await fetch(`${APP_DATA}index.json`, { headers: { 'Cache-Control': 'no-cache' } });
-    if (!res.ok) throw new Error(`The server answered ${res.status}.`);
-    const index = (await res.json()) as RemoteIndex;
-    if (index.format !== FORMAT || !index.books) throw new Error('Please update the app to download this text.');
+    let res: Response;
+    try {
+      res = await fetch(`${APP_DATA}index.json`, { headers: { 'Cache-Control': 'no-cache' } });
+    } catch {
+      throw new DownloadError('offline');
+    }
+    if (!res.ok) throw new DownloadError('server');
+    let index: RemoteIndex;
+    try {
+      index = (await res.json()) as RemoteIndex;
+    } catch {
+      throw new DownloadError('damaged');
+    }
+    if (index.format !== FORMAT || !index.books) throw new DownloadError('update');
     set({ index, indexStatus: 'ready' });
     return index;
   } catch (e) {
@@ -180,12 +215,12 @@ export async function startDownload(id: string): Promise<void> {
   try {
     const index = await fetchIndex();
     const remote = index.books[id];
-    if (!remote) throw new Error('This text is not available for download yet.');
+    if (!remote) throw new DownloadError('unavailable');
     const current = state.installed[id]?.bytes ?? 0;
     // The search index built alongside takes about a third as much again.
     const needed = Math.round(remote.bytes * 1.35);
     if (Paths.availableDiskSpace > 0 && Paths.availableDiskSpace < needed - current + 20 * 1024 * 1024) {
-      throw new Error(`Not enough free space. This text needs ${formatBytes(remote.bytes)}.`);
+      throw new DownloadError('space');
     }
     set({ jobs: { ...state.jobs, [id]: { received: 0, total: remote.bytes } } });
 
@@ -209,20 +244,43 @@ export async function startDownload(id: string): Promise<void> {
       const part = remote.parts[n];
       const target = new File(Paths.cache, `dl-${id}-${n}.json`);
       partFiles.push(target);
-      await File.downloadFileAsync(`${APP_DATA}${part.file}`, target, {
-        idempotent: true,
-        signal: controller.signal,
-        onProgress: ({ bytesWritten }) => {
-          const received = Math.min(remote.bytes, done + bytesWritten);
-          if (received - lastEmit < remote.bytes / 200) return;
-          lastEmit = received;
-          set({ jobs: { ...state.jobs, [id]: { received, total: remote.bytes } } });
-        },
-      });
-      if (controller.signal.aborted) throw new Error('Cancelled');
-      const slice = JSON.parse(await target.text()) as { id: string; chapters: BookChapter[] };
+      // Each part is tried up to three times, so one dropped connection on mobile data does not throw
+      // away the parts already saved. Parts are content-hashed, so a retry can never mix two editions.
+      let slice: { id: string; chapters: BookChapter[] } | undefined;
+      for (let attempt = 0; !slice; attempt++) {
+        try {
+          await File.downloadFileAsync(`${APP_DATA}${part.file}`, target, {
+            idempotent: true,
+            signal: controller.signal,
+            onProgress: ({ bytesWritten }) => {
+              const received = Math.min(remote.bytes, done + bytesWritten);
+              if (received - lastEmit < remote.bytes / 200) return;
+              lastEmit = received;
+              set({ jobs: { ...state.jobs, [id]: { received, total: remote.bytes } } });
+            },
+          });
+          if (controller.signal.aborted) throw new Error('Cancelled');
+          let parsed: { id: string; chapters: BookChapter[] };
+          try {
+            parsed = JSON.parse(await target.text()) as { id: string; chapters: BookChapter[] };
+          } catch {
+            throw new DownloadError('damaged');
+          }
+          if (parsed.id !== id || !Array.isArray(parsed.chapters)) throw new DownloadError('damaged');
+          slice = parsed;
+        } catch (e) {
+          if (controller.signal.aborted) throw e;
+          const code = downloadErrorCode(e);
+          if (!RETRYABLE.has(code) || attempt >= RETRY_DELAYS_MS.length) throw new DownloadError(code);
+          try {
+            if (target.exists) target.delete();
+          } catch {}
+          lastEmit = done;
+          await wait(RETRY_DELAYS_MS[attempt], controller.signal);
+          if (controller.signal.aborted) throw new Error('Cancelled');
+        }
+      }
       target.delete();
-      if (slice.id !== id || !Array.isArray(slice.chapters)) throw new Error('The download was damaged. Please try again.');
       for (const piece of slice.chapters) {
         if (pending && pending.number === piece.number) {
           pending.verses.push(...piece.verses);
@@ -238,7 +296,7 @@ export async function startDownload(id: string): Promise<void> {
     }
     if (pending) await writeChapter(pending);
     if (controller.signal.aborted) throw new Error('Cancelled');
-    if (written !== remote.chapters) throw new Error('The download was incomplete. Please try again.');
+    if (written !== remote.chapters) throw new DownloadError('incomplete');
     const indexBytes = indexer.finish();
 
     const meta: Installed = { version: remote.version, bytes: remote.bytes + indexBytes, savedAt: new Date().toISOString() };
@@ -250,10 +308,7 @@ export async function startDownload(id: string): Promise<void> {
     set({ installed: { ...state.installed, [id]: meta } });
   } catch (e) {
     const cancelled = controller.signal.aborted || (e instanceof Error && e.name === 'AbortError');
-    if (!cancelled) {
-      const message = e instanceof Error && e.message ? e.message : 'The download failed.';
-      set({ errors: { ...state.errors, [id]: message } });
-    }
+    if (!cancelled) set({ errors: { ...state.errors, [id]: downloadErrorCode(e) } });
   } finally {
     for (const f of partFiles) {
       try {
