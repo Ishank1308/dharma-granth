@@ -26,13 +26,42 @@ export default function ChapterScreen() {
   const chapter = useMemo(() => loadChapter(id, chapterNo), [id, chapterNo, downloaded]); // eslint-disable-line react-hooks/exhaustive-deps
   const listRef = useRef<FlatList<Verse>>(null);
   const jumped = useRef(false);
-  const jumpTries = useRef(0);
+  // Jumping to a verse (see jumpToTarget below). userScrolled is set once the reader scrolls by hand,
+  // so the jump never fights their finger.
+  const userScrolled = useRef(false);
+  const jumpFailed = useRef(false);
+  const settled = useRef(false);
+  const highestSeen = useRef(-1);
+  const stalls = useRef(0);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+  const later = (fn: () => void, ms: number) => {
+    timers.current.push(setTimeout(fn, ms));
+  };
 
   useEffect(() => {
     if (chapter) setLastRead(id, chapterNo);
   }, [id, chapterNo, chapter, setLastRead]);
 
   const target = params.verse ? (chapter?.verses.findIndex((v) => String(v.number) === String(params.verse)) ?? -1) : -1;
+
+  /**
+   * Scroll the target verse to the top. Verse heights vary, so FlatList only knows where a card is once
+   * it has rendered, and it keeps the list's scrollable length to the cards measured so far. A far verse
+   * is reached in steps: each failed attempt scrolls to the last measured card, the list renders the
+   * next few, and we try again. Once it lands, two more jumps absorb cards that measured late.
+   */
+  const jumpToTarget = () => {
+    if (target <= 0 || userScrolled.current) return;
+    jumpFailed.current = false;
+    listRef.current?.scrollToIndex({ index: target, animated: false, viewPosition: 0 });
+    // onScrollToIndexFailed runs synchronously inside scrollToIndex, so this tells us if it landed.
+    if (!jumpFailed.current && !settled.current) {
+      settled.current = true;
+      later(jumpToTarget, 300);
+      later(jumpToTarget, 900);
+    }
+  };
 
   const idx = entry ? entry.chapters.findIndex((c) => c.number === chapterNo) : -1;
   const prev = idx > 0 ? entry!.chapters[idx - 1] : undefined;
@@ -102,14 +131,22 @@ export default function ChapterScreen() {
           onLayout={() => {
             if (target <= 0 || jumped.current) return;
             jumped.current = true;
-            listRef.current?.scrollToIndex({ index: target, animated: false, viewPosition: 0 });
+            jumpToTarget();
+          }}
+          onScrollBeginDrag={() => {
+            userScrolled.current = true;
           }}
           onScrollToIndexFailed={(info) => {
-            // Verse heights vary, so jump to an estimate, let that window render, then retry a few times.
-            if (jumpTries.current >= 8) return;
-            jumpTries.current += 1;
-            listRef.current?.scrollToOffset({ offset: info.averageItemLength * info.index, animated: false });
-            setTimeout(() => listRef.current?.scrollToIndex({ index: info.index, animated: false }), 120);
+            jumpFailed.current = true;
+            if (userScrolled.current) return;
+            // Give up only if several steps in a row render nothing new.
+            stalls.current = info.highestMeasuredFrameIndex > highestSeen.current ? 0 : stalls.current + 1;
+            highestSeen.current = Math.max(highestSeen.current, info.highestMeasuredFrameIndex);
+            if (stalls.current > 12) return;
+            if (info.highestMeasuredFrameIndex > 0) {
+              listRef.current?.scrollToIndex({ index: info.highestMeasuredFrameIndex, animated: false, viewPosition: 0 });
+            }
+            later(jumpToTarget, 80);
           }}
           ListHeaderComponent={
             <View style={{ marginBottom: SPACE.lg, alignItems: 'center', rowGap: SPACE.xs }}>
