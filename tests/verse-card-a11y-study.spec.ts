@@ -8,10 +8,9 @@ test('reading-depth radios have one Tab stop and arrow navigation does not chang
   await page.addInitScript(() => localStorage.setItem('dharma.readingDepth', 'read'));
   await page.goto(chapter);
 
+  // Reading depth lives in the Aa sheet with the other reading choices.
+  await page.getByRole('button', { name: /Reader settings/ }).click();
   const group = page.getByRole('radiogroup', { name: /Reading depth/ });
-  if (!(await group.isVisible())) {
-    await page.getByRole('button', { name: /Options/ }).click();
-  }
   await expect(group).toBeVisible();
 
   const radios = group.getByRole('radio');
@@ -86,9 +85,11 @@ test('saved Understand preference opens explanations without automatic motion', 
 test('first-time readers see Sanskrit and meaning, with optional study folded', async ({ page }) => {
   await page.goto(chapter);
 
+  await page.getByRole('button', { name: /Reader settings/ }).click();
   const group = page.getByRole('radiogroup', { name: /Reading depth/ });
-  if (!(await group.isVisible())) await page.getByRole('button', { name: /Options/ }).click();
   await expect(group.getByRole('radio').nth(0)).toHaveAttribute('aria-checked', 'true');
+  await page.keyboard.press('Escape');
+  await expect(group).toBeHidden();
 
   const card = page.locator('article.verse-card:not(.vt)').first();
   await expect(card.locator('.verse-folio > p[lang="sa"]')).toBeVisible();

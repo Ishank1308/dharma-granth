@@ -184,6 +184,8 @@ Present the original Sanskrit first, followed by अर्थ and व्या�
 
 On phones, keep previous and next verse controls reachable and clearly labeled. Reader controls use at least a 44px touch area, a visible keyboard focus state, and a clear selected state. Keep the verse and meaning readable before offering secondary actions.
 
+Every reading choice lives in one place, the Aa sheet (`ReaderSettingsPanel`): type and script, theme, the layers shown, reading depth and, on a chapter, the recitation and conversation views, the one-verse view and what read-aloud speaks (the chapter page passes those as its `chapter` prop). The chapter's running head and the verse page's study path only move the reader through the text (verse count, jump, search, section links). Add a new reading choice to the sheet, not to a bar. `tests/reader-one-sheet.spec.ts` checks this.
+
 React pieces:
 
 - `PageHeader`: eyebrow, large title, Hindi line, lead. Server component. Every primary page uses

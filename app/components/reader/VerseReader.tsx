@@ -384,13 +384,6 @@ export function VerseReader(props: VerseReaderProps) {
   }, [dialog, prev, next, router]);
 
   const total = verses.length;
-  const SIZE_ORDER = ['sm', 'md', 'lg', 'xl'] as const;
-  const stepSize = (d: number) => {
-    const i = SIZE_ORDER.indexOf(settings.sanskritSize);
-    const n = SIZE_ORDER[Math.min(3, Math.max(0, i + d))];
-    update('sanskritSize', n);
-    update('translationSize', n);
-  };
   const toggleFullscreen = () => {
     try {
       if (document.fullscreenElement) void document.exitFullscreen();
@@ -654,7 +647,6 @@ export function VerseReader(props: VerseReaderProps) {
             provenance={provenance}
             settings={settings}
             onUpdateSetting={update}
-             onStepSize={stepSize}
             insight={insight}
             sourceStatus={sourceStatus}
           />

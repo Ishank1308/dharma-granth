@@ -98,21 +98,21 @@ test('reader: ArrowRight goes to the next chapter, ArrowLeft back', async ({ pag
   await expect(page).toHaveURL(/chapter\/2\/?$/);
 });
 
-test('reader: toggle buttons expose their state to keyboard users', async ({ page }) => {
+test('reader: the recitation view switch exposes its state to keyboard users', async ({ page }) => {
   await page.goto('/scripture/bhagavadgita/chapter/2/');
   await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
-  // The reader tools sit behind Options; open it from the keyboard first.
-  const options = page.getByRole('button', { name: /Options/ });
-  await options.focus();
+  // The ways of reading a chapter live in the Aa sheet; open it from the keyboard first.
+  const trigger = page.getByRole('button', { name: /Reader settings/ });
+  await trigger.focus();
   await page.keyboard.press('Enter');
-  await expect(options).toHaveAttribute('aria-expanded', 'true');
-  const chanting = page.getByRole('button', { name: 'स्वाध्याय मोड' });
-  await chanting.focus();
-  await expect(chanting).toHaveAttribute('aria-pressed', 'false');
-  await page.keyboard.press('Enter');
-  await expect(chanting).toHaveAttribute('aria-pressed', 'true');
-  await page.keyboard.press('Enter');
-  await expect(chanting).toHaveAttribute('aria-pressed', 'false');
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  const recitation = page.getByRole('checkbox', { name: /स्वाध्याय मोड/ });
+  await recitation.focus();
+  await expect(recitation).not.toBeChecked();
+  await page.keyboard.press('Space');
+  await expect(recitation).toBeChecked();
+  await page.keyboard.press('Space');
+  await expect(recitation).not.toBeChecked();
 });
 
 test('reader: every button and link that takes focus shows a focus indicator', async ({ page }) => {
