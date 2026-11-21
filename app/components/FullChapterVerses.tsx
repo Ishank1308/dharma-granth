@@ -30,7 +30,7 @@ const AddToCollectionModal = dynamic(() => import('./AddToCollectionModal').then
 const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').then((m) => m.ContributeMeaningModal), { ssr: false });
 const ReaderSettingsPanel = dynamic(() => import('@/app/components/reader/ReaderSettingsPanel').then((m) => m.ReaderSettingsPanel), { ssr: false });
 import { VerseCard } from './VerseCard';
-import { useReadingDepth } from '@/lib/reading-depth';
+import { DEFAULT_DEPTH, useReadingDepth } from '@/lib/reading-depth';
 import { useConnectivity } from '@/lib/useConnectivity';
 import { VerseText } from './VerseText';
 import type { VerseInsight } from '@/lib/verse-insights';
@@ -219,7 +219,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   };
 
   const [chantingMode, setChantingMode] = useState(false);
-  const [readingDepth] = useReadingDepth();
+  const [readingDepth, setReadingDepth] = useReadingDepth();
   const [isConversationMode, setIsConversationMode] = useState(false);
   const showCommentary = readerSettings.showCommentary;
   const [readerSettingsOpen, setReaderSettingsOpen] = useState(false);
@@ -262,6 +262,26 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const collectionLoaded = useEverTrue(Boolean(collectionVerse));
   const focusLoaded = useEverTrue(focusModeOpen);
   const readerSettingsLoaded = useEverTrue(readerSettingsOpen);
+
+  // The Aa sheet holds reading depth, the recitation view and what read-aloud speaks, and its code
+  // is fetched when it first opens. Fetch it once the chapter is at rest as well, so the service
+  // worker has it saved and a reader who then goes offline can still open it. Skipped when the
+  // reader or the browser asks to save data; the sheet then loads on first open, as before.
+  const chapterReady = state.kind === 'ready';
+  useEffect(() => {
+    if (!chapterReady) return;
+    const warm = () => {
+      if (!navigator.onLine || document.documentElement.hasAttribute('data-data-saver')) return;
+      void import('@/app/components/reader/ReaderSettingsPanel').catch(() => {});
+      void import('@/app/components/reader/ReaderDialogImpl').catch(() => {});
+    };
+    if ('requestIdleCallback' in window) {
+      const idle = window.requestIdleCallback(warm, { timeout: 10_000 });
+      return () => window.cancelIdleCallback(idle);
+    }
+    const timer = setTimeout(warm, 4000);
+    return () => clearTimeout(timer);
+  }, [chapterReady]);
 
   const getCollectionCount = (verseNum: number | string) => {
     return collections.filter((c) =>
@@ -1530,7 +1550,14 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           onClose={() => setReaderSettingsOpen(false)}
           settings={readerSettings}
           update={updateReaderSetting}
-          reset={resetReaderSettings}
+          reset={() => {
+            resetReaderSettings();
+            // The sheet holds these chapter choices too, so its reset returns them to how a chapter first opens.
+            setReadingDepth(DEFAULT_DEPTH);
+            setChantingMode(false);
+            setIsConversationMode(false);
+            setParayanaCadenceMode('sanskrit_only');
+          }}
           reducedMotion={reducedMotion}
           theme={theme}
           setTheme={setTheme}
@@ -1554,7 +1581,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         <MobileFocusMode
           isOpen={focusModeOpen}
           onClose={closeFocusMode}
-          verses={filteredVerses}
+          // A chapter search that matches nothing must not leave this full-screen view empty.
+          verses={filteredVerses.length > 0 ? filteredVerses : state.kind === 'ready' ? state.verses : filteredVerses}
           initialVerseIndex={focusVerseIndex}
           scriptureId={scriptureId}
           scriptureTitle={scriptureTitle ?? scriptureId}

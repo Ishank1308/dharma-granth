@@ -5,9 +5,11 @@ import { READING_DEPTHS, useReadingDepth } from '@/lib/reading-depth';
 
 /**
  * Read / Understand / Study: one keyboard-operable radio group for the chapter's reading depth.
- * `fill` is for the Aa sheet, where the three choices share the full width and keep both names.
+ * `fill` is for the Aa sheet, where the three choices share the full width and keep both names
+ * (one above the other on a phone under 360px, where three pairs do not fit side by side).
+ * `labelledBy` names the group from a label already on screen instead of repeating it.
  */
-export function ReadingDepthSwitch({ className = '', fill = false }: { className?: string; fill?: boolean }) {
+export function ReadingDepthSwitch({ className = '', fill = false, labelledBy }: { className?: string; fill?: boolean; labelledBy?: string }) {
   const [depth, setDepth] = useReadingDepth();
   const buttons = useRef<Array<HTMLButtonElement | null>>([]);
 
@@ -40,7 +42,7 @@ export function ReadingDepthSwitch({ className = '', fill = false }: { className
   };
 
   return (
-    <div role="radiogroup" aria-label="Reading depth · पठन गहराई" className={`${fill ? 'flex w-full' : 'inline-flex'} rounded-xl border border-dharma-border bg-dharma-bg p-0.5 ${className}`}>
+    <div role="radiogroup" aria-label={labelledBy ? undefined : 'Reading depth · पठन गहराई'} aria-labelledby={labelledBy} className={`${fill ? 'flex w-full' : 'inline-flex'} rounded-xl border border-dharma-border bg-dharma-bg p-0.5 ${className}`}>
       {READING_DEPTHS.map((d, index) => {
         const on = d.id === depth;
         return (
@@ -54,7 +56,7 @@ export function ReadingDepthSwitch({ className = '', fill = false }: { className
             title={d.hint}
             onClick={() => setDepth(d.id)}
             onKeyDown={(event) => onRadioKeyDown(event, index)}
-            className={`inline-flex min-h-[44px] items-center gap-1.5 rounded-track px-3 text-xs font-semibold transition ${fill ? 'flex-1 justify-center' : ''} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${on ? 'bg-saffron-600 text-white shadow-sm' : 'text-dharma-text hover:bg-saffron-50 dark:hover:bg-saffron-950/30'}`}
+            className={`inline-flex min-h-[44px] items-center gap-1.5 rounded-track px-3 text-xs font-semibold transition ${fill ? 'min-w-0 flex-1 justify-center max-[359px]:flex-col max-[359px]:gap-0 max-[359px]:px-1' : ''} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 ${on ? 'bg-saffron-600 text-white shadow-sm' : 'text-dharma-text hover:bg-saffron-50 dark:hover:bg-saffron-950/30'}`}
           >
             <span lang="hi" className="font-devanagari">{d.hi}</span>
             {/* A flex gap separates the words on screen; this space separates them for screen readers and copy. */}

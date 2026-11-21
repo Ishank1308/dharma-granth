@@ -740,7 +740,7 @@ export function VerseReader(props: VerseReaderProps) {
           <ul className="mt-2 space-y-0.5 text-sm">
             {[
               ['layer-sanskrit', 'Original verse'],
-              ['reader-study-guide', 'Study layers & text size'],
+              ['reader-study-guide', 'Study path'],
               ['layer-sources', 'Sources'],
             ].map(([id, text]) => (
               <li key={id}>

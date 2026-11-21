@@ -151,9 +151,9 @@ export default async function VaraDetailPage({ params }: Props) {
       <div className="relative z-10">
         <PageHeader
           eyebrow={`Vedic Weekday ${vara.index + 1} of 7 · ${vara.grahaLord}`}
-          eyebrowHi={`${vara.nameHi} · ${vara.grahaLordHi}`}
-          title={`${vara.name} (${vara.nameHi})`}
-          titleHi={`${vara.grahaLordHi} का वासर · ${vara.natureHi}`}
+          eyebrowHi={`${vara.grahaLordHi} का वासर · ${vara.natureHi}`}
+          title={vara.name}
+          titleHi={vara.nameHi}
           lead={vara.explanation}
           width="wide"
         />
