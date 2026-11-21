@@ -38,7 +38,9 @@ export default function ExploreScreen() {
   ];
   const study: Row[] = [
     { title: S.mantrasTitle, detail: S.mantrasRow, icon: 'musical-notes', color: hues.indigo, href: '/explore/mantras' },
-    // Knowledge, wisdom, plans and quizzes add their rows here as those screens land.
+    { title: S.knowledgeTitle, detail: S.knowledgeEntryDetail, icon: 'library', color: hues.peacock, href: '/knowledge' },
+    { title: S.wisdomTitle, detail: S.wisdomEntryDetail, icon: 'leaf', color: hues.tulsi, href: '/wisdom' },
+    // Plans, journal and quizzes add their rows here as those screens land.
   ];
 
   const cityName = lang === 'hi' ? today.location.nameHi : today.location.name;
