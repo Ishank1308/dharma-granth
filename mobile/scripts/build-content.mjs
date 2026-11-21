@@ -17,11 +17,13 @@
 //   src/content/generated/loaders.ts     lazy require() map per chapter, so opening a chapter parses only
 //                                        that chapter (Ramcharitmanas is 5 MB; one kanda is under 1 MB)
 //   src/content/generated/search/…       offline verse search index (scripts/build-search-index.mjs)
+//   src/content/generated/ashtavakra/…   the Ashtavakra Gita (scripts/build-ashtavakra.mjs)
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Buffer } from 'node:buffer';
 
+import { buildAshtavakra } from './build-ashtavakra.mjs';
 import { buildSearchIndex } from './build-search-index.mjs';
 import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
 
@@ -40,7 +42,8 @@ if (
   ifMissing &&
   existsSync(join(OUT, 'catalog.json')) &&
   existsSync(join(OUT, 'loaders.ts')) &&
-  existsSync(join(OUT, 'search-loaders.ts'))
+  existsSync(join(OUT, 'search-loaders.ts')) &&
+  existsSync(join(OUT, 'ashtavakra-loaders.ts'))
 ) {
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
   process.exit(0);
@@ -125,4 +128,6 @@ if (usedShards < bundledIds.length) {
   console.warn('[content] some books came from full-book JSON. Run `npm run shard:scriptures` at the repo root for the cleaned text.');
 }
 
+// The Ashtavakra Gita first: the search index reads its generated chapters.
+await buildAshtavakra();
 await buildSearchIndex();
