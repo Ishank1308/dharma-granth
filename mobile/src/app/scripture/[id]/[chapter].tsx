@@ -6,16 +6,19 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useRecitation } from '@/audio/player';
 import { recitedVerses } from '@/audio/recitation';
+import { ChapterSummaryCard } from '@/components/chapter-summary';
 import { ReadingSheet } from '@/components/reading-sheet';
 import { Backdrop, Eyebrow, FloatingBar, glass, IconButton, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
 import { VerseJumpSheet } from '@/components/verse-jump-sheet';
 import { getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
+import { chapterSummary, summaryCollection } from '@/content/study';
 import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
+import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
 import { BAR_GAP, barClearance, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
@@ -64,7 +67,8 @@ export default function ChapterScreen() {
   const recitedSet = useMemo(() => new Set(recited), [recited]);
   const keyPrefix = `${id}/${chapterNo}/`;
   const playingHere = currentKey?.startsWith(keyPrefix) ? currentKey.slice(keyPrefix.length) : null;
-  const onToggleAudio = useCallback((verse: string) => toggleVerse(id, chapterNo, verse), [toggleVerse, id, chapterNo]);
+  // A verse's play button recites on through the rest of the chapter; Pause or Stop ends it.
+  const onToggleAudio = useCallback((verse: string) => toggleVerse(id, chapterNo, verse, recited), [toggleVerse, id, chapterNo, recited]);
   // Recitation belongs to the chapter on screen: leaving it, or turning to another chapter, stops it.
   useEffect(() => stop, [id, chapterNo, stop]);
 
@@ -101,6 +105,16 @@ export default function ChapterScreen() {
     [bookmarks, id, chapterNo],
   );
   const onToggleBookmark = useCallback((verse: string) => toggleBookmark(id, chapterNo, verse), [toggleBookmark, id, chapterNo]);
+
+  // Journal reflections per verse in this chapter, so the pen on a verse fills in once it has one.
+  const { journal } = useJournal();
+  const reflections = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const e of journal.entries) {
+      for (const r of e.refs) if (r.id === id && r.chapter === chapterNo) counts.set(r.verse, (counts.get(r.verse) ?? 0) + 1);
+    }
+    return counts;
+  }, [journal.entries, id, chapterNo]);
 
   // The verse at the top of the screen, for the toolbar's "Verse 12 of 47".
   // FlatList must get the same callback on every render; setVisibleIndex never changes, so no deps.
@@ -162,6 +176,7 @@ export default function ChapterScreen() {
       onToggleBookmark={onToggleBookmark}
       audio={recitedSet.has(String(item.number)) ? (playingHere === String(item.number) ? phase : 'idle') : undefined}
       onToggleAudio={onToggleAudio}
+      reflections={reflections.get(String(item.number)) ?? 0}
     />
   );
 
@@ -185,6 +200,9 @@ export default function ChapterScreen() {
   }
 
   const total = chapter.verses.length;
+  // The chapter's summary (सार), where the website has one: the Gita and the Yoga Sutra.
+  const summaries = summaryCollection(id);
+  const summary = chapterSummary(id, chapterNo);
   const shownVerse = numbers[Math.min(visibleIndex, Math.max(total - 1, 0))] ?? '';
 
   return (
@@ -259,6 +277,17 @@ export default function ChapterScreen() {
                 <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
                   {t(S.recitationCredit)}
                 </Text>
+              ) : null}
+              {summaries && summary ? (
+                <ChapterSummaryCard
+                  scriptureId={id}
+                  collection={summaries}
+                  summary={summary}
+                  onJumpToVerse={(verse) => {
+                    const index = numbers.indexOf(String(verse));
+                    if (index >= 0) jumpTo(index);
+                  }}
+                />
               ) : null}
             </View>
           }
