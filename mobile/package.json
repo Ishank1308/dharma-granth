@@ -42,7 +42,7 @@
     "web": "expo start --web",
     "typecheck": "tsc --noEmit",
     "lint": "expo lint",
-    "test": "node --test scripts/app-logic.test.mjs",
+    "test": "node --test scripts/*.test.mjs",
     "build:apk": "eas build --platform android --profile preview",
     "eas-build-post-install": "node scripts/build-content.mjs"
   },
