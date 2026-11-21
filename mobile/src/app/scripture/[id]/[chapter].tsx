@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { router, Stack, useLocalSearchParams } from 'expo-router';
+import { router, Stack, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,6 +12,7 @@ import { getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
+import { READ_DWELL_MS } from '@/lib/progress';
 import { toDevanagari } from '@/lib/verse-format';
 import { useAppState } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
@@ -24,7 +25,7 @@ export default function ChapterScreen() {
   const id = String(params.id);
   const chapterNo = Number(params.chapter);
   const insets = useSafeAreaInsets();
-  const { palette, settings, lang, bookmarks, toggleBookmark, setLastRead } = useAppState();
+  const { palette, settings, lang, bookmarks, toggleBookmark, setLastRead, markRead } = useAppState();
   const t = (m: Msg) => m[lang];
   const entry = getEntry(id);
   const meta = entry?.chapters.find((c) => c.number === chapterNo);
@@ -52,8 +53,14 @@ export default function ChapterScreen() {
   };
 
   useEffect(() => {
-    if (chapter) setLastRead(id, chapterNo);
-  }, [id, chapterNo, chapter, setLastRead]);
+    if (chapter) setLastRead(id, chapterNo, params.verse ? String(params.verse) : undefined);
+  }, [id, chapterNo, chapter, setLastRead, params.verse]);
+
+  // Reading progress. Each verse on screen is timed from when it appeared; one that stays for
+  // READ_DWELL_MS counts as read, so a fast fling through the chapter does not.
+  const visibleSince = useRef(new Map<number, number>());
+  const marked = useRef(new Set<number>());
+  const lastTop = useRef(-1);
 
   const target = params.verse ? (chapter?.verses.findIndex((v) => String(v.number) === String(params.verse)) ?? -1) : -1;
 
@@ -94,7 +101,45 @@ export default function ChapterScreen() {
   const onViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: { index?: number | null }[] }) => {
     const first = viewableItems.find((v) => v.index != null);
     if (first?.index != null) setVisibleIndex(first.index);
+    const now = Date.now();
+    const onScreen = new Set<number>();
+    for (const v of viewableItems) {
+      if (v.index == null) continue;
+      onScreen.add(v.index);
+      if (!visibleSince.current.has(v.index)) visibleSince.current.set(v.index, now);
+    }
+    for (const i of [...visibleSince.current.keys()]) if (!onScreen.has(i)) visibleSince.current.delete(i);
   }, []);
+
+  // Twice a second while this screen is in front: mark verses that stayed long enough, and remember the
+  // verse at the top so Continue reading lands on it. Paused when another screen covers this one.
+  useFocusEffect(
+    useCallback(() => {
+      if (!chapter) return;
+      const verses = chapter.verses;
+      const start = Date.now();
+      for (const i of visibleSince.current.keys()) visibleSince.current.set(i, start);
+      const timer = setInterval(() => {
+        const now = Date.now();
+        const ready: string[] = [];
+        for (const [i, since] of visibleSince.current) {
+          if (now - since < READ_DWELL_MS || marked.current.has(i) || !verses[i]) continue;
+          marked.current.add(i);
+          ready.push(String(verses[i].number));
+        }
+        if (ready.length) markRead(id, chapterNo, ready);
+        // While a linked verse is still being scrolled to, the top of the list is not where the reader is.
+        if (goal.current >= 0 && !settled.current && !userScrolled.current) return;
+        if (visibleSince.current.size === 0) return;
+        const top = Math.min(...visibleSince.current.keys());
+        if (top !== lastTop.current && verses[top]) {
+          lastTop.current = top;
+          setLastRead(id, chapterNo, String(verses[top].number));
+        }
+      }, 500);
+      return () => clearInterval(timer);
+    }, [chapter, id, chapterNo, markRead, setLastRead]),
+  );
 
   const numbers = useMemo(() => (chapter ? chapter.verses.map((v) => String(v.number)) : []), [chapter]);
 

@@ -1,7 +1,9 @@
 /**
- * Local backup of everything the reader keeps on the phone: bookmarks, reading position and settings.
+ * Local backup of everything the reader keeps on the phone: bookmarks, reading position, reading progress
+ * and settings.
  * Nothing is sent anywhere (zero-account privacy); the reader exports a JSON file and imports it back.
  */
+import type { ReadingProgress } from '@/lib/progress';
 import type { ThemeName } from '@/theme/themes';
 
 // Kept in step with LANGUAGE_SETTINGS in @/i18n/language (inlined so the node tests need no path aliases).
@@ -25,6 +27,8 @@ export interface Bookmark {
 export interface LastRead {
   id: string;
   chapter: number;
+  /** The verse at the top of the screen when the reader left, so Continue lands on it. */
+  verse?: string;
   at: string;
 }
 
@@ -43,6 +47,8 @@ export interface Settings {
   reminderMinute: number;
   /** Shadows and sheen on cards. 'light' keeps the colours but drops what makes long lists stutter. */
   effects: EffectsSetting;
+  /** The gentle daily reading streak on the Library screen and in the daily verse notification. */
+  showStreak: boolean;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -57,12 +63,22 @@ export const DEFAULT_SETTINGS: Settings = {
   reminderHour: 7,
   reminderMinute: 0,
   effects: 'auto',
+  showStreak: true,
 };
 
 export interface AppData {
   settings: Settings;
   bookmarks: Bookmark[];
   lastRead: LastRead | null;
+  progress: ReadingProgress;
+}
+
+/**
+ * What a backup file holds once read. Progress is passed on as found and cleaned up by normalizeProgress
+ * in @/lib/progress when it is merged (kept out of here so this file needs no runtime imports).
+ */
+export interface ImportedData extends Omit<AppData, 'progress'> {
+  progress: unknown;
 }
 
 export interface BackupFile extends AppData {
@@ -97,6 +113,7 @@ export function normalizeSettings(raw: unknown): Settings {
     reminderHour: wholeIn(s.reminderHour, 0, 23, DEFAULT_SETTINGS.reminderHour),
     reminderMinute: wholeIn(s.reminderMinute, 0, 59, DEFAULT_SETTINGS.reminderMinute),
     effects: EFFECTS_SETTINGS.includes(s.effects as EffectsSetting) ? (s.effects as EffectsSetting) : DEFAULT_SETTINGS.effects,
+    showStreak: typeof s.showStreak === 'boolean' ? s.showStreak : DEFAULT_SETTINGS.showStreak,
   };
 }
 
@@ -128,7 +145,8 @@ export function normalizeLastRead(raw: unknown): LastRead | null {
   const r = raw as Partial<LastRead>;
   const chapter = Number(r.chapter);
   if (typeof r.id !== 'string' || !r.id || !Number.isFinite(chapter)) return null;
-  return { id: r.id, chapter, at: typeof r.at === 'string' ? r.at : new Date(0).toISOString() };
+  const at = typeof r.at === 'string' ? r.at : new Date(0).toISOString();
+  return r.verse != null && r.verse !== '' ? { id: r.id, chapter, verse: String(r.verse), at } : { id: r.id, chapter, at };
 }
 
 export function makeBackup(data: AppData, now = new Date()): BackupFile {
@@ -146,7 +164,7 @@ export class BackupError extends Error {
 }
 
 /** Reads a backup file's text. Throws a BackupError when it is not one of ours. */
-export function parseBackup(text: string): AppData {
+export function parseBackup(text: string): ImportedData {
   let parsed: unknown;
   try {
     parsed = JSON.parse(text);
@@ -164,6 +182,7 @@ export function parseBackup(text: string): AppData {
     settings: normalizeSettings(b.settings),
     bookmarks: normalizeBookmarks(b.bookmarks),
     lastRead: normalizeLastRead(b.lastRead),
+    progress: b.progress,
   };
 }
 

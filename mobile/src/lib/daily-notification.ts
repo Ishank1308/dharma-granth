@@ -8,6 +8,9 @@ import { AndroidImportance } from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import { dailyVerse, getEntry, loadChapter } from '@/content/catalog';
+import type { Lang } from '@/i18n/language';
+import { S } from '@/i18n/strings';
+import { dayKey, streakForNotification } from '@/lib/progress';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { upcomingReminderTimes } from '@/lib/reminder';
 
@@ -62,8 +65,11 @@ export async function requestReminderPermission(): Promise<ReminderPermission> {
   return asked.granted ? 'granted' : 'denied';
 }
 
-/** The notification text for one day: the whole shloka (never cut mid-verse) and its reference. */
-export function verseNotificationFor(date: Date): Notifications.NotificationContentInput | undefined {
+/**
+ * The notification text for one day: the whole shloka (never cut mid-verse) and its reference, then an
+ * optional gentle line under it (the reading streak).
+ */
+export function verseNotificationFor(date: Date, note?: string): Notifications.NotificationContentInput | undefined {
   const pick = dailyVerse(date);
   if (!pick) return undefined;
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
@@ -73,7 +79,7 @@ export function verseNotificationFor(date: Date): Notifications.NotificationCont
   const title = getEntry(pick.id)?.title ?? 'Bhagavad Gita';
   return {
     title: 'आज का श्लोक · Verse of the day',
-    body: `${lines.join('\n')}\n${title} ${formatVerseRef(pick.id, pick.chapter, verse.number)}`,
+    body: `${lines.join('\n')}\n${title} ${formatVerseRef(pick.id, pick.chapter, verse.number)}${note ? `\n${note}` : ''}`,
     data: { id: pick.id, chapter: pick.chapter, verse: String(verse.number) },
   };
 }
@@ -85,7 +91,18 @@ export function verseNotificationFor(date: Date): Notifications.NotificationCont
  */
 let queue: Promise<void> = Promise.resolve();
 
-export function syncDailyReminder(opts: { enabled: boolean; hour: number; minute: number }): Promise<void> {
+export interface ReminderOptions {
+  enabled: boolean;
+  hour: number;
+  minute: number;
+  /**
+   * The reading streak, when the reader shows it: the days read on, and the interface language for the
+   * line. Only the next notification can mention it (see streakForNotification); later ones stay plain.
+   */
+  streak?: { days: string[]; lang: Lang } | null;
+}
+
+export function syncDailyReminder(opts: ReminderOptions): Promise<void> {
   // Run one sync at a time, so flicking the switch quickly cannot interleave cancel and schedule calls.
   queue = queue.then(() => runSync(opts)).catch(() => {
     // Scheduling failed (for example the alarm limit); the reader still has the in-app verse of the day.
@@ -93,14 +110,17 @@ export function syncDailyReminder(opts: { enabled: boolean; hour: number; minute
   return queue;
 }
 
-async function runSync(opts: { enabled: boolean; hour: number; minute: number }): Promise<void> {
+async function runSync(opts: ReminderOptions): Promise<void> {
   if (!remindersSupported) return;
   await Notifications.cancelAllScheduledNotificationsAsync();
   if (!opts.enabled) return;
   if ((await getReminderPermission()) !== 'granted') return;
   await ensureChannel();
-  for (const when of upcomingReminderTimes(new Date(), opts.hour, opts.minute)) {
-    const content = verseNotificationFor(when);
+  const now = new Date();
+  const today = dayKey(now);
+  for (const when of upcomingReminderTimes(now, opts.hour, opts.minute)) {
+    const run = opts.streak ? streakForNotification(opts.streak.days, today, dayKey(when)) : 0;
+    const content = verseNotificationFor(when, run > 0 && opts.streak ? S.streakNotification(run)[opts.streak.lang] : undefined);
     if (!content) continue;
     await Notifications.scheduleNotificationAsync({
       content,

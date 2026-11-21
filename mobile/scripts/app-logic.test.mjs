@@ -7,6 +7,19 @@ import test from 'node:test';
 import { BACKUP_FORMAT, BackupError, makeBackup, mergeBookmarks, normalizeSettings, parseBackup } from '../src/lib/backup.ts';
 import { LANGUAGE_SETTINGS, resolveLanguage } from '../src/i18n/language.ts';
 import { formatVerseRef, meaningState, sanskritLines, verseMarkNumber } from '../src/lib/verse-format.ts';
+import {
+  addDays,
+  bookReadCount,
+  chapterReadCount,
+  dayKey,
+  markVersesRead,
+  MAX_DAYS,
+  mergeProgress,
+  normalizeProgress,
+  percentRead,
+  streakForNotification,
+  streakInfo,
+} from '../src/lib/progress.ts';
 
 test('interface language follows the setting, then the phone', () => {
   assert.equal(resolveLanguage('hi', 'en'), 'hi');
@@ -49,11 +62,16 @@ test('backup round-trips and merges without losing bookmarks', () => {
   const data = {
     settings: normalizeSettings({ theme: 'paper', textScale: 1.3 }),
     bookmarks: [{ id: 'bhagavadgita', chapter: 2, verse: '47', savedAt: '2026-11-21T00:00:00.000Z' }],
-    lastRead: { id: 'katha', chapter: 1, at: '2026-11-21T00:00:00.000Z' },
+    lastRead: { id: 'katha', chapter: 1, verse: '3', at: '2026-11-21T00:00:00.000Z' },
+    progress: { verses: { bhagavadgita: { 2: ['1', '2'] } }, days: ['2026-11-20', '2026-11-21'], best: 2 },
   };
   const file = JSON.stringify(makeBackup(data));
   const back = parseBackup(file);
-  assert.deepEqual(back, data);
+  assert.deepEqual({ ...back, progress: normalizeProgress(back.progress) }, data);
+  // A backup from before progress existed still reads, with nothing read yet.
+  const old = JSON.parse(file);
+  delete old.progress;
+  assert.deepEqual(normalizeProgress(parseBackup(JSON.stringify(old)).progress), { verses: {}, days: [], best: 0 });
   const merged = mergeBookmarks([{ id: 'katha', chapter: 1, verse: '1', savedAt: 'x' }, data.bookmarks[0]], back.bookmarks);
   assert.equal(merged.length, 2);
 });
@@ -128,4 +146,88 @@ test('visual effects setting defaults to automatic and rejects unknown values', 
   assert.equal(normalizeSettings({ effects: 'light' }).effects, 'light');
   assert.equal(normalizeSettings({ effects: 'full' }).effects, 'full');
   assert.equal(normalizeSettings({ effects: 'ultra' }).effects, 'auto');
+});
+
+test('day keys are padded and calendar arithmetic crosses months and years', () => {
+  assert.equal(dayKey(new Date(2026, 0, 5, 23, 30)), '2026-01-05');
+  assert.equal(addDays('2026-12-31', 1), '2027-01-01');
+  assert.equal(addDays('2024-03-01', -1), '2024-02-29');
+  assert.equal(addDays('2026-11-21', -7), '2026-11-14');
+});
+
+test('marking verses read records the day and skips repeats without a new object', () => {
+  let p = normalizeProgress(undefined);
+  p = markVersesRead(p, 'bhagavadgita', 2, ['47', '48'], '2026-11-20');
+  assert.deepEqual(p.verses, { bhagavadgita: { 2: ['47', '48'] } });
+  assert.deepEqual(p.days, ['2026-11-20']);
+  const same = markVersesRead(p, 'bhagavadgita', 2, ['48', '47'], '2026-11-20');
+  assert.equal(same, p, 'nothing new returns the same object, so React skips the update');
+  p = markVersesRead(p, 'bhagavadgita', 2, ['48'], '2026-11-21');
+  assert.deepEqual(p.days, ['2026-11-20', '2026-11-21']);
+  assert.equal(p.best, 2);
+  assert.equal(chapterReadCount(p, 'bhagavadgita', 2), 2);
+  assert.equal(chapterReadCount(p, 'bhagavadgita', 2, 1), 1, 'never more than the chapter holds');
+  assert.equal(markVersesRead(p, 'x', 1, [], '2026-11-22'), p, 'an empty batch does not count as a reading day');
+});
+
+test('book progress counts verses against each chapter and percent never overstates', () => {
+  const p = normalizeProgress({ verses: { katha: { 1: ['1', '2', '3'], 2: ['1'], 9: ['1'] } }, days: [] });
+  const chapters = [
+    { number: 1, verseCount: 2 },
+    { number: 2, verseCount: 10 },
+  ];
+  assert.equal(bookReadCount(p, 'katha', chapters), 3);
+  assert.equal(bookReadCount(p, 'nope', chapters), 0);
+  assert.equal(percentRead(0, 700), 0);
+  assert.equal(percentRead(1, 700), 1);
+  assert.equal(percentRead(699, 700), 99);
+  assert.equal(percentRead(700, 700), 100);
+});
+
+test('the streak counts today, or stays alive from yesterday, and resets gently', () => {
+  const days = ['2026-11-15', '2026-11-18', '2026-11-19', '2026-11-20'];
+  const p = normalizeProgress({ days });
+  assert.equal(p.best, 3);
+  let s = streakInfo(p, '2026-11-20');
+  assert.equal(s.current, 3);
+  assert.equal(s.readToday, true);
+  s = streakInfo(p, '2026-11-21');
+  assert.equal(s.current, 3, 'not read yet today: yesterday still carries the streak');
+  assert.equal(s.readToday, false);
+  assert.deepEqual(
+    s.week.map((d) => d.read),
+    [true, false, false, true, true, true, false],
+  );
+  assert.equal(s.week[6].day, '2026-11-21');
+  s = streakInfo(p, '2026-11-23');
+  assert.equal(s.current, 0);
+  assert.equal(s.best, 3);
+});
+
+test('only the next notification mentions the streak, and only when it is already known', () => {
+  const days = ['2026-11-19', '2026-11-20', '2026-11-21'];
+  // Read today: tomorrow's notification can say day 4 begins.
+  assert.equal(streakForNotification(days, '2026-11-21', '2026-11-22'), 3);
+  // Two days ahead is unknown yet.
+  assert.equal(streakForNotification(days, '2026-11-21', '2026-11-23'), 0);
+  // A notification later today, already read today: no nudge.
+  assert.equal(streakForNotification(days, '2026-11-21', '2026-11-21'), 0);
+  // Not read yet today, notification later today: the run up to yesterday.
+  assert.equal(streakForNotification(days.slice(0, 2), '2026-11-21', '2026-11-21'), 2);
+  // A single day is not a streak worth a line.
+  assert.equal(streakForNotification(['2026-11-21'], '2026-11-21', '2026-11-22'), 0);
+});
+
+test('progress from a backup merges with the phone and bad data is dropped', () => {
+  const a = normalizeProgress({ verses: { gita: { 1: ['1'] } }, days: ['2026-11-01'], best: 5 });
+  const b = normalizeProgress({ verses: { gita: { 1: ['2'], 2: ['1'] }, katha: { 1: ['1'] } }, days: ['2026-11-02', 'junk'] });
+  const m = mergeProgress(a, b);
+  assert.deepEqual(m.verses, { gita: { 1: ['1', '2'], 2: ['1'] }, katha: { 1: ['1'] } });
+  assert.deepEqual(m.days, ['2026-11-01', '2026-11-02']);
+  assert.equal(m.best, 5);
+  const junk = normalizeProgress({ verses: { gita: { x: ['1'], 3: 'no' }, '': {} }, days: [1, '2026-1-1'], best: -2 });
+  assert.deepEqual(junk, { verses: {}, days: [], best: 0 });
+  const many = normalizeProgress({ days: Array.from({ length: MAX_DAYS + 50 }, (_, i) => addDays('2020-01-01', i)) });
+  assert.equal(many.days.length, MAX_DAYS);
+  assert.equal(many.best, MAX_DAYS);
 });
