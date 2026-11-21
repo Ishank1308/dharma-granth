@@ -9,7 +9,6 @@ export type ReaderLanguagePref = 'all' | 'hindi' | 'english';
 export type NumberFormatPref = 'indian' | 'international';
 export type ReaderModeTier = 'quick' | 'simple' | 'deep' | 'traditional';
 export type ContrastPref = 'standard' | 'high';
-export type TonePref = 'default' | 'paper' | 'sepia' | 'night';
 export type PerspectiveMode = 'beginner' | 'student' | 'practitioner' | 'researcher';
 
 export interface ReaderSettings {
@@ -33,8 +32,9 @@ export interface ReaderSettings {
   reducedMotion: boolean | null;
   /** Focus mode: verse, translation, explanation and navigation only. */
   focusMode: boolean;
-  /** Background tone while reading. */
-  tone: TonePref;
+  // A separate reading "tone" (paper / sepia / night) used to live here. It recoloured the text
+  // but not the page, so three of its four choices left the verse unreadable in one theme or
+  // the other. The site theme is the one colour choice now; a stored tone is dropped on read.
   /** Learning and engagement perspective (does not hide original scripture). */
   perspective: PerspectiveMode;
   /** Pure text lite mode: strips secondary widgets for rapid, distraction-free reading. */
@@ -59,7 +59,6 @@ export const DEFAULT_READER_SETTINGS: ReaderSettings = {
   hideDecor: false,
   reducedMotion: null,
   focusMode: false,
-  tone: 'default',
   perspective: 'beginner',
   liteMode: false,
 };
@@ -73,7 +72,6 @@ const LANG_PREFS: ReaderLanguagePref[] = ['all', 'hindi', 'english'];
 const NUMBER_PREFS: NumberFormatPref[] = ['indian', 'international'];
 const MODE_TIERS: ReaderModeTier[] = ['quick', 'simple', 'deep', 'traditional'];
 const CONTRASTS: ContrastPref[] = ['standard', 'high'];
-const TONES: TonePref[] = ['default', 'paper', 'sepia', 'night'];
 const PERSPECTIVES: PerspectiveMode[] = ['beginner', 'student', 'practitioner', 'researcher'];
 
 /** Same-tab broadcast, so every component using the hook sees a change at once. */
@@ -168,7 +166,6 @@ function sanitize(raw: unknown): ReaderSettings {
     hideDecor: bool(o.hideDecor, d.hideDecor),
     reducedMotion: typeof o.reducedMotion === 'boolean' ? o.reducedMotion : null,
     focusMode: bool(o.focusMode, d.focusMode),
-    tone: pick(o.tone, TONES, d.tone),
     perspective: pick(o.perspective, PERSPECTIVES, d.perspective),
     liteMode: bool(o.liteMode, d.liteMode),
   };

@@ -454,16 +454,12 @@ export function VerseReader(props: VerseReaderProps) {
         data-hide-decor={settings.hideDecor || settings.focusMode || settings.liteMode ? '' : undefined}
         data-focus={settings.focusMode ? '' : undefined}
         data-lite={settings.liteMode ? '' : undefined}
-        data-tone={settings.tone}
         className="reader-root min-h-screen bg-dharma-bg text-dharma-text selection:bg-saffron-500/25"
       >
         <style>{`
           .reader-root[data-contrast=high]{--dharma-muted:var(--dharma-text);--dharma-border:currentColor}
           .reader-root[data-contrast=high] .understand-fade{border-width:2px}
           .reader-root[data-hide-decor] .understand-fade{animation:none}
-          .reader-root[data-tone=paper]{--dharma-bg:#ffffff;--dharma-text:#1c1917}
-          .reader-root[data-tone=sepia]{--dharma-bg:#f4ecd8;--dharma-text:#3b2f1e}
-          .reader-root[data-tone=night]{--dharma-bg:#101010;--dharma-text:#ece7dd}
           .reader-root[data-focus] aside,.reader-root[data-focus] [data-focus-hide]{display:none!important}
           .reader-root[data-lite] aside,.reader-root[data-lite] [data-focus-hide]{display:none!important}
           .reader-root[data-hide-decor] h3 svg,.reader-root[data-hide-decor] [data-decor]{display:none}
@@ -618,36 +614,17 @@ export function VerseReader(props: VerseReaderProps) {
               <button type="button" onClick={() => update('focusMode', false)} className={actionBtn}>
                 <Minimize2 className="h-4 w-4" aria-hidden="true" /> Exit focus mode
               </button>
-              <div role="group" aria-label="Background tone" className="flex gap-1">
-                {(['default', 'paper', 'sepia', 'night'] as const).map((t) => (
-                  <button key={t} type="button" aria-pressed={settings.tone === t} onClick={() => update('tone', t)} className={`focus-ring min-h-[44px] rounded-xl border px-3 font-semibold capitalize ${settings.tone === t ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text'}`}>
-                    {t === 'default' ? 'Site' : t}
-                  </button>
-                ))}
-              </div>
-              <div role="group" aria-label="Reading width" className="flex gap-1">
-                {(['narrow', 'standard', 'wide'] as const).map((w) => (
-                  <button key={w} type="button" aria-pressed={settings.readingWidth === w} onClick={() => update('readingWidth', w)} className={`focus-ring min-h-[44px] rounded-xl border px-3 font-semibold capitalize ${settings.readingWidth === w ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text'}`}>
-                    {w}
-                  </button>
-                ))}
-              </div>
-              <div role="group" aria-label="Text size" className="flex gap-1">
-                <button type="button" aria-label="Smaller text" onClick={() => stepSize(-1)} className={iconBtn}>A−</button>
-                <button type="button" aria-label="Larger text" onClick={() => stepSize(1)} className={iconBtn}>A+</button>
-              </div>
-              <div role="group" aria-label="Line spacing" className="flex gap-1">
-                {(['normal', 'relaxed', 'loose'] as const).map((l) => (
-                  <button key={l} type="button" aria-pressed={settings.lineSpacing === l} onClick={() => update('lineSpacing', l)} className={`focus-ring min-h-[44px] rounded-xl border px-3 font-semibold capitalize ${settings.lineSpacing === l ? 'border-saffron-700 bg-saffron-700 text-white' : 'border-dharma-border bg-dharma-card text-dharma-text'}`}>
-                    {l}
-                  </button>
-                ))}
-              </div>
-              <button type="button" aria-pressed={settings.reducedMotion === true} onClick={() => update('reducedMotion', settings.reducedMotion === true ? null : true)} className={actionBtn}>
-                Reduce motion
+              {/* Size, spacing, width, theme and motion live in the one Aa sheet, here as everywhere else. */}
+              <button type="button" onClick={() => setDialog('settings')} aria-haspopup="dialog" aria-label="Text and theme · पठन व्यवस्था" className={actionBtn}>
+                <span aria-hidden="true" className="font-serif text-subhead font-semibold">Aa</span>
+                <span className="hidden sm:inline">
+                  <span data-bi="en">Text and theme</span>
+                  <span data-bi="sep"> · </span>
+                  <span lang="hi" data-bi="hi" className="font-devanagari">पठन व्यवस्था</span>
+                </span>
               </button>
-              <button type="button" onClick={toggleFullscreen} className={actionBtn}>
-                <Maximize2 className="h-4 w-4" aria-hidden="true" /> Full screen
+              <button type="button" onClick={toggleFullscreen} aria-label="Full screen" className={actionBtn}>
+                <Maximize2 className="h-4 w-4" aria-hidden="true" /> <span className="hidden sm:inline">Full screen</span>
               </button>
               <span role="status" className="ml-auto px-2 text-dharma-muted">Verse {index + 1} of {total} · {percent}% through the chapter</span>
             </div>
