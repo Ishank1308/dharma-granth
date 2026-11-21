@@ -14,7 +14,7 @@ type ShowKey = 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showVyakhy
  */
 export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: () => void }) {
   const insets = useSafeAreaInsets();
-  const { palette, settings, updateSettings } = useAppState();
+  const { palette, settings, updateSettings, reduceMotion } = useAppState();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const layers: { key: ShowKey; label: Msg; dot?: string }[] = [
@@ -26,7 +26,7 @@ export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: 
   ];
 
   return (
-    <Modal visible={visible} transparent animationType="slide" statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>
+    <Modal visible={visible} transparent animationType={reduceMotion ? 'none' : 'slide'} statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>
       {/* Tapping outside closes the sheet; screen readers use the Close button or Back instead. */}
       <Pressable style={styles.scrim} onPress={onClose} accessible={false} importantForAccessibility="no" />
       <View
@@ -44,15 +44,15 @@ export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: 
         </View>
         <ScrollView contentContainerStyle={{ rowGap: SPACE.lg }}>
           <View>
-            <Text style={[styles.label, { color: palette.muted }]}>{t(S.textSize)}</Text>
-            <View style={[styles.segment, { backgroundColor: quietFill(palette) }]}>
+            <Text accessibilityRole="header" style={[styles.label, { color: palette.muted }]}>{t(S.textSize)}</Text>
+            <View style={[styles.segment, { backgroundColor: quietFill(palette) }]} accessibilityRole="radiogroup">
               {TEXT_SCALES.map((s, i) => {
                 const active = Math.abs(settings.textScale - s) < 0.01;
                 return (
                   <Pressable
                     key={s}
-                    accessibilityRole="button"
-                    accessibilityState={{ selected: active }}
+                    accessibilityRole="radio"
+                    accessibilityState={{ checked: active }}
                     accessibilityLabel={t(S.textSizeA11y(Math.round(s * 100)))}
                     onPress={() => updateSettings({ textScale: s })}
                     style={[styles.segmentItem, active && { backgroundColor: palette.dark ? '#3a3a3c' : '#ffffff' }]}>
@@ -66,8 +66,8 @@ export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: 
           </View>
 
           <View>
-            <Text style={[styles.label, { color: palette.muted }]}>{t(S.theme)}</Text>
-            <View style={styles.themes}>
+            <Text accessibilityRole="header" style={[styles.label, { color: palette.muted }]}>{t(S.theme)}</Text>
+            <View style={styles.themes} accessibilityRole="radiogroup">
               {THEME_ORDER.map((name) => {
                 const theme = THEMES[name];
                 const active = settings.theme === name;
@@ -75,8 +75,8 @@ export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: 
                 return (
                   <Pressable
                     key={name}
-                    accessibilityRole="button"
-                    accessibilityState={{ selected: active }}
+                    accessibilityRole="radio"
+                    accessibilityState={{ checked: active }}
                     accessibilityLabel={t(S.themeA11y(label))}
                     onPress={() => updateSettings({ theme: name })}
                     style={[
@@ -93,7 +93,7 @@ export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: 
           </View>
 
           <View>
-            <Text style={[styles.label, { color: palette.muted }]}>{t(S.showInVerses)}</Text>
+            <Text accessibilityRole="header" style={[styles.label, { color: palette.muted }]}>{t(S.showInVerses)}</Text>
             <View style={styles.layers}>
               {layers.map((l) => {
                 const on = settings[l.key];
@@ -145,6 +145,6 @@ const styles = StyleSheet.create({
   themes: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
   theme: { flexGrow: 1, flexBasis: '22%', minHeight: TOUCH + 8, borderRadius: RADIUS.row, alignItems: 'center', justifyContent: 'center', paddingHorizontal: SPACE.xs },
   layers: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
-  layer: { flexDirection: 'row', alignItems: 'center', columnGap: 6, minHeight: TOUCH - 4, paddingHorizontal: SPACE.md + 2, borderRadius: RADIUS.pill },
+  layer: { flexDirection: 'row', alignItems: 'center', columnGap: 6, minHeight: TOUCH, paddingHorizontal: SPACE.md + 2, borderRadius: RADIUS.pill },
   dot: { width: 8, height: 8, borderRadius: 4 },
 });

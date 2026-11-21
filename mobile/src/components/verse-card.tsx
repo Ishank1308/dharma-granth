@@ -1,6 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { memo, useState } from 'react';
-import { Pressable, Share, StyleSheet, Text, View } from 'react-native';
+import { AccessibilityInfo, ActivityIndicator, Pressable, Share, StyleSheet, Text, View } from 'react-native';
+
+import type { RecitationPhase } from '@/audio/player';
 
 import type { Verse } from '@/content/types';
 import { useChapterVyakhya } from '@/content/vyakhya';
@@ -49,9 +51,26 @@ interface Props {
   bookmarked: boolean;
   /** Called with the verse number; keep it stable (useCallback) so memo skips unchanged cards. */
   onToggleBookmark: (verse: string) => void;
+  /** Set only when this verse has recitation audio: 'idle' unless it is the verse that is loaded. */
+  audio?: RecitationPhase;
+  /** Called with the verse number; keep it stable like onToggleBookmark. */
+  onToggleAudio?: (verse: string) => void;
 }
 
-function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, settings, lang, cover, bookmarked, onToggleBookmark }: Props) {
+function VerseCardImpl({
+  scriptureId,
+  scriptureTitle,
+  chapter,
+  verse,
+  palette,
+  settings,
+  lang,
+  cover,
+  bookmarked,
+  onToggleBookmark,
+  audio,
+  onToggleAudio,
+}: Props) {
   const hues = huesFor(palette);
   const t = (m: Msg) => m[lang];
   // "व्याख्या एवं संदर्भ" opens by default when the setting says so; a tap overrides it for this card until the setting changes.
@@ -125,11 +144,36 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
       <View pointerEvents="none" style={[styles.edge, coverFill(cover, palette)]} />
       <View style={styles.header}>
         <View style={[styles.refPill, coverFill(cover, palette, true)]}>
-          <Text style={styles.ref} accessibilityLabel={t(S.verseA11y(ref))}>
+          {/* A heading, so TalkBack's heading navigation steps from verse to verse. */}
+          <Text style={styles.ref} accessibilityRole="header" accessibilityLabel={t(S.verseA11y(ref))}>
             {ref}
           </Text>
         </View>
         <View style={styles.actions}>
+          {audio && onToggleAudio ? (
+            <Pressable
+              onPress={() => onToggleAudio(String(verse.number))}
+              style={({ pressed }) => [
+                styles.iconBtn,
+                audio !== 'idle' && audio !== 'error' && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
+                pressed && { opacity: 0.6 },
+              ]}
+              accessibilityRole="button"
+              accessibilityState={{ busy: audio === 'loading', selected: audio === 'playing' }}
+              accessibilityLabel={t(
+                audio === 'playing' ? S.pauseVerseA11y(ref) : audio === 'error' ? S.retryVerseA11y(ref) : S.listenVerseA11y(ref),
+              )}>
+              {audio === 'loading' ? (
+                <ActivityIndicator size="small" color={palette.accent} />
+              ) : (
+                <Ionicons
+                  name={audio === 'playing' ? 'pause' : audio === 'error' ? 'refresh' : 'play-outline'}
+                  size={20}
+                  color={audio === 'idle' ? palette.muted : palette.accent}
+                />
+              )}
+            </Pressable>
+          ) : null}
           <Pressable
             onPress={share}
             style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
@@ -138,7 +182,10 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
             <Ionicons name="share-outline" size={20} color={palette.muted} />
           </Pressable>
           <Pressable
-            onPress={() => onToggleBookmark(String(verse.number))}
+            onPress={() => {
+              onToggleBookmark(String(verse.number));
+              AccessibilityInfo.announceForAccessibility(t(bookmarked ? S.verseRemovedAnnounce : S.verseSavedAnnounce));
+            }}
             style={({ pressed }) => [
               styles.iconBtn,
               bookmarked && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
@@ -153,7 +200,11 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
       </View>
 
       {lines.length > 0 ? (
+        // One TalkBack stop for the whole shloka, read line after line, rather than one stop per line and the
+        // ॥ marks read out as symbols.
         <View
+          accessible
+          accessibilityLabel={lines.join('\n')}
           style={[
             styles.sanskrit,
             {
@@ -224,7 +275,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
                     : state.hi === 'with'
                       ? MEANING_COPY.hiWith(verse.hindiSeeVerse!)
                       : MEANING_COPY.hiPending}
-                {state.hi === 'text' && verse.hindiSource === 'ai' ? <Text style={{ color: palette.muted, fontSize: 11 }}>{`  ${MEANING_COPY.aiLabelHi}`}</Text> : null}
+                {state.hi === 'text' && verse.hindiSource === 'ai' ? <Text style={{ color: palette.muted, fontSize: TYPE.caption - 1 }}>{`  ${MEANING_COPY.aiLabelHi}`}</Text> : null}
               </Text>
             </View>
           ) : null}
@@ -244,7 +295,7 @@ function VerseCardImpl({ scriptureId, scriptureTitle, chapter, verse, palette, s
                   lineHeight: TYPE.body * scale * 1.5,
                 }}>
                 {state.en === 'text' ? english : state.en === 'with' ? MEANING_COPY.enWith(verse.translationSeeVerse!) : MEANING_COPY.enPending}
-                {state.en === 'text' && verse.translationSource === 'ai' ? <Text style={{ color: palette.muted, fontSize: 11 }}>{`  ${MEANING_COPY.aiLabelEn}`}</Text> : null}
+                {state.en === 'text' && verse.translationSource === 'ai' ? <Text style={{ color: palette.muted, fontSize: TYPE.caption - 1 }}>{`  ${MEANING_COPY.aiLabelEn}`}</Text> : null}
               </Text>
             </View>
           ) : null}
@@ -335,7 +386,6 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', columnGap: SPACE.xs, marginRight: -SPACE.sm },
   iconBtn: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
   edge: { position: 'absolute', top: 0, left: 0, right: 0, height: 3 },
-  layerDot: { width: 7, height: 7, borderRadius: 4 },
   // Shrinks and wraps before it can push the share and save buttons off a card at large font sizes.
   refPill: { flexShrink: 1, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 4 },
   sanskrit: { rowGap: 2, paddingVertical: SPACE.md + 2, paddingHorizontal: SPACE.sm, borderRadius: 18, borderWidth: 1 },

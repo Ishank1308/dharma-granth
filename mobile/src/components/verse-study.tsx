@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native'
 import { S, type Lang, type Msg } from '@/i18n';
 import { lightMarkdown, type ModernContext } from '@/lib/modern-context';
 import type { WordGloss } from '@/lib/word-gloss';
-import { huesFor, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
+import { huesFor, SPACE, TOUCH, TYPE, UI_FONT_CAP, type Palette } from '@/theme/themes';
 
 /**
  * The website's verse study, in the same order and under the same headings as its chapter reader
@@ -18,21 +18,21 @@ import { huesFor, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
 export function SacredHeading({ msg, palette, badge }: { msg: Msg; palette: Palette; badge?: string }) {
   return (
     <View style={styles.heading} accessibilityRole="header">
-      <Text style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>{msg.hi}</Text>
-      <Text style={{ color: palette.muted, fontSize: 11, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.4 }}>{msg.en}</Text>
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>{msg.hi}</Text>
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption - 1, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.4 }}>{msg.en}</Text>
       {badge ? <Badge text={badge} palette={palette} /> : null}
     </View>
   );
 }
 
 export function Badge({ text, palette }: { text: string; palette: Palette }) {
-  return <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{text}</Text>;
+  return <Text maxFontSizeMultiplier={UI_FONT_CAP} style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{text}</Text>;
 }
 
 /** A small bilingual eyebrow inside a section, such as "भावार्थ · Hindi". */
 export function SubLabel({ msg, palette, color }: { msg: Msg; palette: Palette; color?: string }) {
   return (
-    <Text style={{ color: color ?? palette.muted, fontSize: TYPE.caption, fontWeight: '700', marginBottom: 4 }}>
+    <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: color ?? palette.muted, fontSize: TYPE.caption, fontWeight: '700', marginBottom: 4 }}>
       {msg.hi === msg.en ? msg.en : `${msg.hi} · ${msg.en}`}
     </Text>
   );
@@ -56,7 +56,7 @@ export function StudyToggle({ open, onPress, palette, lang }: { open: boolean; o
         { borderColor: palette.border, backgroundColor: palette.dark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.5)' },
         pressed && { opacity: 0.7 },
       ]}>
-      <Text style={{ color: palette.muted, fontSize: TYPE.footnote, fontWeight: '500', flex: 1 }}>
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, fontWeight: '500', flex: 1 }}>
         {S.verseStudy.hi} · {S.verseStudy.en}
       </Text>
       <Ionicons name={open ? 'chevron-up' : 'chevron-down'} size={16} color={palette.muted} />
@@ -71,7 +71,7 @@ export function PillButton({ msg, icon, onPress, palette, color }: { msg: Msg; i
       accessibilityRole="button"
       style={({ pressed }) => [styles.pill, { borderColor: color ? palette.border : 'transparent' }, pressed && { opacity: 0.6 }]}>
       <Ionicons name={icon} size={14} color={color ?? palette.muted} />
-      <Text style={{ color: color ?? palette.muted, fontSize: TYPE.footnote, fontWeight: '600' }}>
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: color ?? palette.muted, fontSize: TYPE.footnote, fontWeight: '600', flexShrink: 1 }}>
         {msg.hi} · {msg.en}
       </Text>
     </Pressable>
@@ -92,8 +92,8 @@ export function WordByWord({ glosses, raw, palette, cap }: { glosses: WordGloss[
       ]}>
       <View style={styles.wordsHead}>
         <Ionicons name="document-text-outline" size={12} color={hues.gold} />
-        <Text style={{ color: hues.gold, fontSize: TYPE.caption, fontWeight: '700' }}>{S.wordByWord.hi}</Text>
-        <Text style={{ color: palette.muted, fontSize: 10 }}>· {S.wordByWord.en}</Text>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: hues.gold, fontSize: TYPE.caption, fontWeight: '700' }}>{S.wordByWord.hi}</Text>
+        <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption - 1 }}>· {S.wordByWord.en}</Text>
       </View>
       {glosses.length > 0 ? (
         <View style={styles.chips}>
@@ -191,13 +191,13 @@ export function ReflectionBody({ question, style, palette, cap }: { question: st
 
 const styles = StyleSheet.create({
   heading: { flexDirection: 'row', alignItems: 'baseline', flexWrap: 'wrap', columnGap: SPACE.sm, rowGap: 4, marginBottom: SPACE.sm },
-  badge: { fontSize: 10, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4, alignSelf: 'center' },
+  badge: { fontSize: TYPE.caption - 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4, alignSelf: 'center' },
   flow: { borderLeftWidth: 2, paddingLeft: SPACE.md, rowGap: SPACE.lg + 4, marginTop: SPACE.md },
   toggle: {
     flexDirection: 'row',
     alignItems: 'center',
     columnGap: SPACE.sm,
-    minHeight: TOUCH - 4,
+    minHeight: TOUCH,
     borderWidth: StyleSheet.hairlineWidth,
     borderRadius: 12,
     paddingHorizontal: SPACE.md,
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     columnGap: 6,
-    minHeight: TOUCH - 4,
+    minHeight: TOUCH,
     paddingHorizontal: SPACE.md,
     borderRadius: 999,
     borderWidth: StyleSheet.hairlineWidth,
