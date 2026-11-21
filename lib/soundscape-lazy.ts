@@ -127,7 +127,14 @@ export function setParayanaCadenceMode(mode: ParayanaCadenceMode): void {
   fallbackState.parayanaCadenceMode = mode;
   if (mod) {
     mod.setParayanaCadenceMode(mode);
+    return;
   }
+  // The engine loads on first play. Until then the choice is kept here, where the engine reads
+  // it when it starts, and the page is told, so the control shows what was chosen.
+  try {
+    localStorage.setItem('dharma:parayana-mode', mode);
+  } catch { }
+  for (const listener of pendingListeners) listener({ ...fallbackState });
 }
 
 export function strikeTempleBell(repeats?: number): void {

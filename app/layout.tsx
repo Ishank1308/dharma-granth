@@ -57,6 +57,14 @@ const THEME_INIT_SCRIPT = `
       try { localStorage.setItem('dharma-theme', normalized); } catch (e) {}
     }
   } catch (e) {}
+  // The reader's language choice (lib/useLanguagePreference.ts), so two-language labels show
+  // in that language from the first paint. द्विभाषी, the default, sets nothing.
+  try {
+    var lang = JSON.parse(localStorage.getItem('dharma.language_preference') || 'null');
+    if (lang === 'hindi' || lang === 'english' || lang === 'sanskrit') {
+      document.documentElement.setAttribute('data-ui-lang', lang);
+    }
+  } catch (e) {}
   // The home-page splash plays once per browser session; later page loads
   // skip it before first paint. Landing on any other page first also counts
   // as seen. Without storage it simply plays on each home-page load.

@@ -188,10 +188,11 @@ export function WisdomOperatingSystem() {
   return (
     <div className="w-full text-stone-900 dark:text-stone-100 transition-colors duration-200">
       {/* ── Top WOS Navigation Pills ────────────────────────────────────────── */}
-      <nav aria-label="Wisdom Operating System surfaces" className="flex items-center justify-start sm:justify-center overflow-x-auto gap-2 py-4 px-2 border-b border-stone-200 dark:border-stone-800 scrollbar-none">
+      {/* The pills keep their width and the row scrolls sideways on a phone; from 1024px they fit on one line. */}
+      <nav aria-label="Wisdom Operating System surfaces" className="flex items-center justify-start lg:justify-center overflow-x-auto gap-2 py-4 px-gutter border-b border-stone-200 dark:border-stone-800 scrollbar-none">
         <button
           onClick={() => { setActiveSurface('questions'); setSelectedQuestion(null); setSelectedEmotion(null); }}
-          className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+          className={`flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
             activeSurface === 'questions'
               ? 'bg-amber-600 text-white shadow-sm'
               : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
@@ -204,7 +205,7 @@ export function WisdomOperatingSystem() {
 
         <button
           onClick={() => { setActiveSurface('emotions'); setSelectedQuestion(null); setSelectedEmotion(null); }}
-          className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+          className={`flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
             activeSurface === 'emotions'
               ? 'bg-rose-700 text-white shadow-sm'
               : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
@@ -217,7 +218,7 @@ export function WisdomOperatingSystem() {
 
         <button
           onClick={() => { setActiveSurface('daily'); setSelectedQuestion(null); setSelectedEmotion(null); }}
-          className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+          className={`flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
             activeSurface === 'daily'
               ? 'bg-saffron-700 text-white shadow-sm'
               : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
@@ -230,7 +231,7 @@ export function WisdomOperatingSystem() {
 
         <button
           onClick={() => { setActiveSurface('journeys'); setSelectedQuestion(null); setSelectedEmotion(null); }}
-          className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+          className={`flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
             activeSurface === 'journeys'
               ? 'bg-emerald-700 text-white shadow-sm'
               : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
@@ -243,7 +244,7 @@ export function WisdomOperatingSystem() {
 
         <button
           onClick={() => { setActiveSurface('modes'); setSelectedQuestion(null); setSelectedEmotion(null); }}
-          className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+          className={`flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
             activeSurface === 'modes'
               ? 'bg-indigo-700 text-white shadow-sm'
               : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
@@ -256,7 +257,7 @@ export function WisdomOperatingSystem() {
 
         <button
           onClick={() => { setActiveSurface('analytics'); setSelectedQuestion(null); setSelectedEmotion(null); }}
-          className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+          className={`flex shrink-0 items-center gap-1.5 whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
             activeSurface === 'analytics'
               ? 'bg-stone-800 text-white shadow-sm dark:bg-stone-200 dark:text-stone-900'
               : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'

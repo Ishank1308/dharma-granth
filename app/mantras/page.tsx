@@ -108,7 +108,7 @@ const jsonLd = {
 
 export default function MantrasPage() {
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
+    <main data-deva-labels className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -120,7 +120,7 @@ export default function MantrasPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 border border-saffron-500/20 mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>शाश्वत मन्त्र कोश · Eternal Vedic Chants</span>
+            <span><span lang="hi">शाश्वत मन्त्र कोश</span> · Eternal Vedic Chants</span>
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-dharma-text mb-4">
             Sacred Mantras & Shanti Suktas

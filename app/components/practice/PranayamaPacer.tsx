@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Wind, Play, Pause, RotateCcw, Smartphone, AlertTriangle } from 'lucide-react';
-import { useReducedMotion } from 'framer-motion';
+import { useReducedMotionPreference } from '@/lib/useReducedMotionPreference';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { triggerHaptic } from '@/lib/haptics';
 import { ToolCard, localISODate } from './shared';
@@ -66,7 +66,7 @@ function locate(elapsedMs: number, secs: Pattern['secs']) {
 export function PranayamaPacer() {
   const [state, setState] = useLocalStorage<PranayamaState>('dharma.practice.pranayama', INITIAL);
   const [vibrate, setVibrate] = useLocalStorage<boolean>('dharma.practice.pranayama.vibration', false);
-  const reduce = useReducedMotion();
+  const reduce = useReducedMotionPreference();
 
   const pattern = PATTERNS.find((p) => p.id === state.patternId) ?? PATTERNS[1];
   const [running, setRunning] = useState(false);

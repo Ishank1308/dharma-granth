@@ -46,6 +46,12 @@
   isolation: isolate;
 }
 
+/* Light (Sandhya): the theme's gold (#d97706) is 3.06:1 on the cream page, below the 4.5:1
+   needed for the small bold eyebrows. This darker saffron-brown is about 6:1. */
+:root[data-theme='sunset'] .ash {
+  --ash-accent: #9a4e14;
+}
+
 /* The main site's Ratri Night is the only source of dark-mode truth.
    Ignore legacy Ashtavakra data-scheme values left in old local storage. */
 :root[data-theme='night'] .ash,
@@ -100,7 +106,8 @@
 }
 .ash-eyebrow {
   font-size: 0.8125rem;
-  letter-spacing: 0.12em;
+  /* These labels are Devanagari; tracking pulls matras and conjuncts apart. */
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--ash-accent);
   font-weight: 700;
