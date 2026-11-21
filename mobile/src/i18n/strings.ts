@@ -234,5 +234,35 @@ export const S = {
     en: `Getting ${titles} ready for search. Their verses will show up here in a moment.`,
     hi: `${titles} को खोज के लिए तैयार कर रहे हैं। इनके श्लोक थोड़ी देर में यहाँ दिखेंगे।`,
   }),
-} satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 
+  // Redesign: floating tab bar, large headers, reader toolbar and sheets
+  tabA11y: (label: string, position: number, count: number) => ({
+    en: `${label}, tab ${position} of ${count}`,
+    hi: `${label}, ${count} में से टैब ${position}`,
+  }),
+  librarySummary: (offline: number, toDownload: number) => ({
+    en: `${n(offline)} texts on this phone${toDownload ? ` · ${n(toDownload)} to download` : ''}`,
+    hi: `इस फ़ोन में ${n(offline)} ग्रन्थ${toDownload ? ` · ${n(toDownload)} डाउनलोड के लिए` : ''}`,
+  }),
+  onThisPhone: { en: 'On this phone', hi: 'इस फ़ोन में' },
+  savedCount: (count: number) => ({ en: `${n(count)} saved`, hi: `${n(count)} सहेजे गए` }),
+  readingNow: { en: 'Reading now', hi: 'अभी पढ़ रहे हैं' },
+  continueChapter: (num: number) => ({ en: `Continue at chapter ${num}`, hi: `अध्याय ${num} से आगे पढ़ें` }),
+  readingOptions: { en: 'Reading options', hi: 'पढ़ने के विकल्प' },
+  close: { en: 'Close', hi: 'बंद करें' },
+  jumpToVerse: { en: 'Go to verse', hi: 'श्लोक पर जाएँ' },
+  jumpToVerseA11y: (verse: string, total: number) => ({
+    en: `Verse ${verse} of ${n(total)}. Go to another verse`,
+    hi: `${n(total)} में से श्लोक ${verse}। किसी और श्लोक पर जाएँ`,
+  }),
+  verseOf: (verse: string, total: number) => ({ en: `Verse ${verse} of ${n(total)}`, hi: `श्लोक ${verse} / ${n(total)}` }),
+  nextChapterLabel: { en: 'Next chapter', hi: 'अगला अध्याय' },
+  firstChapter: { en: 'This is the first chapter', hi: 'यह पहला अध्याय है' },
+  lastChapter: { en: 'This is the last chapter', hi: 'यह आख़िरी अध्याय है' },
+  savedSummary: (count: number) => ({
+    en: `${n(count)} ${count === 1 ? 'verse' : 'verses'} · kept on this phone only`,
+    hi: `${n(count)} श्लोक · केवल इसी फ़ोन में`,
+  }),
+  savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
+  startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+} satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
