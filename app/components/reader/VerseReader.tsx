@@ -108,7 +108,7 @@ export interface VerseReaderProps {
   children?: ReactNode;
 }
 
-const WIDTH = { narrow: 'max-w-xl', standard: 'max-w-3xl', wide: 'max-w-5xl' } as const;
+const WIDTH = { narrow: 'max-w-xl', standard: 'max-w-4xl', wide: 'max-w-5xl' } as const;
 
 /** The site's primary routes, for the reader's own menu (reader mode hides the site header). */
 const SITE_LINKS = [
@@ -734,8 +734,8 @@ export function VerseReader(props: VerseReaderProps) {
           <div data-focus-hide>{children}</div>
         </main>
 
-        {/* Right rail (extra-wide screens): quick actions and page anchors */}
-        <aside aria-label="On this page" className="sticky top-20 hidden w-56 shrink-0 self-start pt-8 2xl:block">
+        {/* Right rail (wide screens): quick actions and page anchors */}
+        <aside aria-label="On this page" className="sticky top-20 hidden w-56 shrink-0 self-start pt-8 xl:block">
           <h2 className="text-xs font-bold uppercase tracking-wide text-dharma-muted">On this page</h2>
           <ul className="mt-2 space-y-0.5 text-sm">
             {[

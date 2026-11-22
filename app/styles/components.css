@@ -458,12 +458,12 @@ p.verse-folio[lang='sa'] > span {
    Keep all Sanskrit lines complete; long compounds may wrap naturally. */
 .verse-card.book-verse .verse-folio > p[lang='sa'],
 .verse-card.vt .vt-sa {
-    max-inline-size: 36em;
+    max-inline-size: 40em;
     margin-inline: auto;
 }
 .verse-card.book-verse section[id$='-arth'] > div,
 .verse-card.vt > .vt-block {
-    max-inline-size: 68ch;
+    max-inline-size: 92ch;
     margin-inline: auto;
 }
 

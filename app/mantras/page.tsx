@@ -5,8 +5,6 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { PageCover } from '@/app/components/PagePhoto';
 import { Sparkles, BookOpen, Share2, Copy, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { MantrasFilterClient } from './MantrasFilterClient';
-import { EDITORIAL_SCENES } from '@/data/curated-visuals';
-import { EditorialSceneBanner } from '@/app/components/visuals/CuratedVisuals';
 
 export const metadata: Metadata = {
   title: 'Sacred Mantras & Shanti Suktas (वैदिक मन्त्र व शान्ति पाठ) — Meaning & Source',
@@ -135,24 +133,6 @@ export default function MantrasPage() {
           <p className="max-w-2xl mx-auto text-sm sm:text-base text-dharma-muted leading-relaxed">
             Every mantra presented with original Devanagari, IAST transliteration, word-by-word meaning (पदच्छेद), dignified Hindi, English translation, and scriptural source coordinates.
           </p>
-        </div>
-      </section>
-
-      {/* Atmospheric Devotional Sound Showcase */}
-      <section aria-label="नाद-साधना व संकीर्तन झलक" className="max-w-5xl mx-auto px-4 sm:px-6 pt-8">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <EditorialSceneBanner
-            scene={EDITORIAL_SCENES.devotionalVeena}
-            compact
-            eyebrowHi="नाद-योग"
-            eyebrowEn="Sacred Sound"
-          />
-          <EditorialSceneBanner
-            scene={EDITORIAL_SCENES.templeKirtan}
-            compact
-            eyebrowHi="संकीर्तन"
-            eyebrowEn="Living Tradition"
-          />
         </div>
       </section>
 

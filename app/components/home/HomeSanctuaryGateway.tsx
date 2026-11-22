@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import Link from 'next/link';
 import { Compass, Sparkles, Flame } from 'lucide-react';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
@@ -20,24 +18,10 @@ export function HomeSanctuaryGateway() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-12 sm:gap-5">
         {/* 1. Live Panchang & Muhurta */}
-        <article className="apple-card group relative isolate flex min-h-[340px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-saffron/35 bg-dharma-card/75 bg-gradient-to-br from-dharma-saffron/12 via-dharma-card/70 to-dharma-card/80 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-7 sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[295px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-saffron/35 bg-dharma-card/75 bg-gradient-to-br from-dharma-saffron/12 via-dharma-card/70 to-dharma-card/80 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-7 sm:p-7">
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-20 size-72 rounded-full border border-dharma-saffron/15" />
           <div aria-hidden="true" className="pointer-events-none absolute -right-8 -top-12 size-52 rounded-full border border-dharma-saffron/10" />
           <div>
-            <div className="curated-scene-media mb-4 -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 overflow-hidden border-b border-dharma-border/60">
-              <div className="relative h-36 sm:h-40 w-full overflow-hidden">
-                <img
-                  src="/images/curated/scenes/ghat-morning-offering.webp"
-                  alt="Sunrise river ghat flower offering representing daily Vedic time and Panchang"
-                  width={1024}
-                  height={571}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 motion-safe:group-hover:scale-[1.03]"
-                />
-                <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-              </div>
-            </div>
             <HomeLivePanchang />
           </div>
 
@@ -65,23 +49,9 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 2. Wisdom Pathways & Life Guidance */}
-        <article className="apple-card group relative isolate flex min-h-[340px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 via-dharma-card/70 to-dharma-maroon/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-5 sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[295px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 via-dharma-card/70 to-dharma-maroon/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-5 sm:p-7">
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -bottom-16 size-52 rounded-full border border-dharma-maroon/15" />
           <div>
-            <div className="curated-scene-media mb-4 -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 overflow-hidden border-b border-dharma-border/60">
-              <div className="relative h-36 sm:h-40 w-full overflow-hidden">
-                <img
-                  src="/images/curated/scenes/sacred-grove-tapovan.webp"
-                  alt="Sunlit sacred banyan grove path symbolizing Wisdom Pathways"
-                  width={1024}
-                  height={571}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 motion-safe:group-hover:scale-[1.03]"
-                />
-                <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-              </div>
-            </div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
               <Compass className="h-4 w-4" aria-hidden="true" />
               <span>Guided Inquiry</span>
@@ -127,23 +97,9 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 3. Sacred Mantras & Pilgrimage */}
-        <article className="apple-card group relative isolate flex min-h-[285px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-saffron/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[245px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-saffron/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
           <div aria-hidden="true" className="pointer-events-none absolute -right-12 -top-16 size-44 rounded-full border border-dharma-saffron/15" />
           <div>
-            <div className="curated-scene-media mb-4 -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 overflow-hidden border-b border-dharma-border/60">
-              <div className="relative h-36 sm:h-40 w-full overflow-hidden">
-                <img
-                  src="/images/curated/scenes/devotional-veena.webp"
-                  alt="Classical veena strings beside glowing diyas representing Vedic chants and Nada Yoga"
-                  width={1024}
-                  height={571}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 motion-safe:group-hover:scale-[1.03]"
-                />
-                <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-              </div>
-            </div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
               <Sparkles className="h-4 w-4" aria-hidden="true" />
               <span>Vedic Chants</span>
@@ -183,23 +139,9 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 4. Daily Sadhana & Puja Vidhi */}
-        <article className="apple-card group relative isolate flex min-h-[285px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-gold/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
+        <article className="apple-card group relative isolate flex min-h-[245px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-gold/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
           <div aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-14 size-44 rounded-full border border-dharma-gold/15" />
           <div>
-            <div className="curated-scene-media mb-4 -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 overflow-hidden border-b border-dharma-border/60">
-              <div className="relative h-36 sm:h-40 w-full overflow-hidden">
-                <img
-                  src="/images/curated/scenes/temple-darshan-puja.webp"
-                  alt="Lamp-lit stone temple sanctum representing daily sadhana and puja rituals"
-                  width={1024}
-                  height={571}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover object-center transition-transform duration-700 motion-safe:group-hover:scale-[1.03]"
-                />
-                <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-              </div>
-            </div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
               <Flame className="h-4 w-4" aria-hidden="true" />
               <span>Daily Practice</span>
@@ -247,4 +189,3 @@ export function HomeSanctuaryGateway() {
     </section>
   );
 }
-

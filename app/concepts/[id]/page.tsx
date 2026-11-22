@@ -30,8 +30,6 @@ import { SaveConceptButton } from '../SaveConceptButton';
 import { ShareChips } from '@/app/components/ShareChips';
 import { OnThisPage } from '@/app/components/OnThisPage';
 import { InteractiveVisualLayer } from '@/app/components/visuals/InteractiveVisualLayer';
-import { getConceptPosters } from '@/data/curated-visuals';
-import { WisdomPosterCard } from '@/app/components/visuals/CuratedVisuals';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -352,22 +350,6 @@ export default async function ConceptDetailPage({ params }: PageProps) {
             </Link>
           </div>
           <InteractiveVisualLayer conceptId={concept.id} />
-          {(() => {
-            const conceptPosters = getConceptPosters(concept.id);
-            if (conceptPosters.length === 0) return null;
-            return (
-              <div className="pt-4 space-y-3">
-                <p className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  <span lang="hi" className="font-devanagari normal-case">चित्र-दर्शन</span> · Illustrated Scriptural Summary
-                </p>
-                <div className={`grid gap-5 ${conceptPosters.length === 1 ? 'max-w-sm' : 'sm:grid-cols-2'}`}>
-                  {conceptPosters.map((poster) => (
-                    <WisdomPosterCard key={poster.id} poster={poster} />
-                  ))}
-                </div>
-              </div>
-            );
-          })()}
         </section>
 
         {/* ── Section 2: Contextual Meanings (विभिन्न संदर्भ) ───────────────── */}

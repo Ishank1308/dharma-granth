@@ -4,8 +4,6 @@ import { PanchangCalendar } from '@/app/components/PanchangCalendar';
 import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
 import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
-import { EDITORIAL_SCENES } from '@/data/curated-visuals';
-import { EditorialSceneBanner } from '@/app/components/visuals/CuratedVisuals';
 import { Star, ArrowRight, Moon, Sun, Layers, Calendar, Clock, Compass } from 'lucide-react';
 
 const WHY = [
@@ -338,22 +336,6 @@ export default function PanchangPage() {
             </div>
           </div>
         </section>
-
-        {/* ─── ATMOSPHERIC RHYTHM OF TIME VISUALS ────────────────────────── */}
-        <div className="mt-14 grid gap-4 sm:grid-cols-2">
-          <EditorialSceneBanner
-            scene={EDITORIAL_SCENES.ghatMorning}
-            compact
-            eyebrowHi="सूर्योदय व उदया तिथि"
-            eyebrowEn="Sunrise & Udaya Tithi"
-          />
-          <EditorialSceneBanner
-            scene={EDITORIAL_SCENES.guruPurnimaAshram}
-            compact
-            eyebrowHi="पूर्णिमा व चन्द्र-कला"
-            eyebrowEn="Lunar Rhythm"
-          />
-        </div>
 
         {/* ─── WHY THE FIVE LIMBS ─────────────────────────────────────────── */}
         <section aria-labelledby="panchang-why" className="mt-20">

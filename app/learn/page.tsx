@@ -13,8 +13,6 @@ import { JsonLd } from '@/app/components/JsonLd';
 import { courseListLd, pageLd } from '@/lib/jsonld';
 import { ChevronDown, ChevronUp, CheckCircle2, Search } from 'lucide-react';
 import { LearnOpening } from './LearnOpening';
-import { EDITORIAL_SCENES } from '@/data/curated-visuals';
-import { EditorialSceneBanner } from '@/app/components/visuals/CuratedVisuals';
 
 const FORMAT_NAMES: Record<string, string> = {
   flashcards: 'flashcards',
@@ -282,15 +280,6 @@ export default function LearnPage() {
           </div>
         )}
       </section>
-
-      {/* ── Atmospheric Gurukul Study Banner ── */}
-      <div className="mx-auto max-w-content px-gutter pt-16">
-        <EditorialSceneBanner
-          scene={EDITORIAL_SCENES.guruPurnimaAshram}
-          eyebrowHi="गुरुकुल स्वाध्याय"
-          eyebrowEn="Tradition of Study"
-        />
-      </div>
 
       {/* ── The three steps of svādhyāya ── */}
       <section aria-labelledby="pillars-heading" className="mx-auto max-w-content px-gutter pt-20">

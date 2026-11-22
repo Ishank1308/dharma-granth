@@ -688,11 +688,40 @@ export function VerseCard({
 
         {/* ── The canonical verse remains the visual center of the card. ── */}
         {lines.length > 0 && (
-          <div className={`verse-folio relative rounded-2xl px-2 py-4 text-center md:px-8 md:py-6 transition-colors ${
+          <div className={`verse-folio relative rounded-2xl px-2 py-4 text-center md:px-10 md:py-6 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
             {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
             <span className="photo-light" />
+            {/* Left & Right Sacred Manuscript Margin Wings on Wide Screens (fills side space with chandas & coordinate seal) */}
+            <div
+              aria-hidden="true"
+              data-decor
+              className="pointer-events-none absolute inset-y-4 left-3.5 hidden flex-col items-center justify-between text-amber-700/45 dark:text-amber-300/35 lg:flex"
+            >
+              <span className="font-serif text-xs">𑁍</span>
+              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
+              {chandas && (
+                <span className="my-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] px-2 py-0.5 font-devanagari text-[10px] font-semibold text-amber-800/80 dark:text-amber-200/75">
+                  {chandas.name}
+                </span>
+              )}
+              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
+              <span className="font-serif text-xs">✦</span>
+            </div>
+            <div
+              aria-hidden="true"
+              data-decor
+              className="pointer-events-none absolute inset-y-4 right-3.5 hidden flex-col items-center justify-between text-amber-700/45 dark:text-amber-300/35 lg:flex"
+            >
+              <span className="font-serif text-xs">𑁍</span>
+              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
+              <span className="my-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] px-2 py-0.5 font-serif text-[10px] font-semibold tabular-nums text-amber-800/80 dark:text-amber-200/75">
+                {chapterId}.{verseMarkNumber(verseLabel)}
+              </span>
+              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
+              <span className="font-serif text-xs">✦</span>
+            </div>
             {speaker && (
               <div className="mb-3.5 flex justify-center">
                 <span
@@ -790,7 +819,7 @@ export function VerseCard({
             {/* ── Arth: the literal meaning, always first after the verse ── */}
             {showArth && (
               <section id={`verse-${v.number}-arth`} aria-label={`अर्थ · Meaning, ${formatVerseRef(scriptureId, chapterId, verseLabel)}`}>
-              <div className="space-y-4">
+              <div className={ !bothPending && showHindi && showEnglish ? 'grid grid-cols-1 gap-4 lg:grid-cols-2 lg:items-start' : 'space-y-4' }>
                 {bothPending ? (
                   <div className="flex flex-col gap-3">
                     {/* No meaning in either language: why, the transliteration when that layer is off, and the nearest verses with one. */}
@@ -815,7 +844,7 @@ export function VerseCard({
                 ) : (
                 <>
                 {showHindi && (
-                  <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${
+                  <div className={`rounded-2xl border border-dharma-border/50 bg-dharma-card/55 p-3.5 sm:p-4 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'hi'
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''
@@ -871,9 +900,7 @@ export function VerseCard({
                 )}
 
                 {showEnglish && (
-                  <div className={`-mx-2 rounded-xl px-2 py-1 transition-colors duration-200 ${
-                    showHindi ? 'mt-2 pt-2 border-t border-dharma-border/30' : ''
-                  } ${
+                  <div className={`rounded-2xl border border-dharma-border/50 bg-dharma-card/55 p-3.5 sm:p-4 transition-colors duration-200 ${
                     isReciting && activeTranslationLang === 'en'
                       ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
                       : ''

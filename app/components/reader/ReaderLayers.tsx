@@ -348,18 +348,47 @@ export function ReaderLayers({
       >
         {lines.length > 0 ? (
           <>
-          <p id="sanskrit-text" lang="sa" className={`verse-folio min-w-0 rounded-2xl px-2 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-8 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
-            {lines.map((line, i) => (
-              <span key={i} className="block">
-                <PadaLine line={line} />
+          <div className="relative">
+            {/* Left & Right Sacred Manuscript Margin Wings on Wide Screens */}
+            <div
+              aria-hidden="true"
+              data-decor
+              className="pointer-events-none absolute inset-y-4 left-3.5 z-10 hidden flex-col items-center justify-between text-amber-700/45 dark:text-amber-300/35 lg:flex"
+            >
+              <span className="font-serif text-xs">𑁍</span>
+              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
+              <span className="my-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] px-2 py-0.5 font-devanagari text-[10px] font-semibold text-amber-800/80 dark:text-amber-200/75">
+                मूल पाठ
               </span>
-            ))}
-            <span aria-hidden="true" className="verse-mark mt-2 block text-base font-semibold">
-              ॥ {verseMarkNumber(verse.number)} ॥
-            </span>
-            {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
-            <span className="photo-light" />
-          </p>
+              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
+              <span className="font-serif text-xs">✦</span>
+            </div>
+            <div
+              aria-hidden="true"
+              data-decor
+              className="pointer-events-none absolute inset-y-4 right-3.5 z-10 hidden flex-col items-center justify-between text-amber-700/45 dark:text-amber-300/35 lg:flex"
+            >
+              <span className="font-serif text-xs">𑁍</span>
+              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
+              <span className="my-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] px-2 py-0.5 font-serif text-[10px] font-semibold tabular-nums text-amber-800/80 dark:text-amber-200/75">
+                {chapterId}.{verseMarkNumber(verse.number)}
+              </span>
+              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
+              <span className="font-serif text-xs">✦</span>
+            </div>
+            <p id="sanskrit-text" lang="sa" className={`verse-folio min-w-0 rounded-2xl px-2 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-10 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
+              {lines.map((line, i) => (
+                <span key={i} className="block">
+                  <PadaLine line={line} />
+                </span>
+              ))}
+              <span aria-hidden="true" className="verse-mark mt-2 block text-base font-semibold">
+                ॥ {verseMarkNumber(verse.number)} ॥
+              </span>
+              {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
+              <span className="photo-light" />
+            </p>
+          </div>
           {!settings.liteMode && (
             <ExplainLine lines={lines} scopeId="sanskrit-text" verseLabel={formatVerseRef(scriptureId, chapterId, verse.number)} fullTranslation={cleanVerseField(verse.translation)} entries={verse.lineExplanations} />
           )}
