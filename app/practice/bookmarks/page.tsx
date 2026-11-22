@@ -522,9 +522,9 @@ export default function BookmarksAndAnnotationsPage() {
           {filteredHighlights.length === 0 ? (
             <div className="rounded-panel border border-separator bg-surface-raised p-12 text-center shadow-xs max-w-xl mx-auto">
               <Highlighter className="mx-auto h-8 w-8 text-tint mb-3" />
-              <h2 className="text-title-3 font-bold text-label-primary">No highlights found</h2>
+              <h2 className="text-title-3 font-bold text-label-primary">No highlights here yet</h2>
               <p className="mt-1 text-caption text-label-secondary">
-                Highlight verses with thematic colors while reading in chapters.
+                While reading a chapter, you can highlight verses in colours by theme. They will gather here.
               </p>
             </div>
           ) : (

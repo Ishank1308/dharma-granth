@@ -219,11 +219,11 @@ export async function restoreSadhanaFromSyncString(
       message: `सफलतापूर्वक ${restoredCount} साधना रिकॉर्ड पुनर्स्थापित किए गए।`,
     };
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : 'Unknown error';
+    console.warn('[sadhana-sync] sync code restore failed:', err);
     return {
       success: false,
       itemCount: 0,
-      message: `सिंक कोड पढ़ने में त्रुटि: ${msg}`,
+      message: 'क्षमा करें, यह सिंक कोड पढ़ा नहीं जा सका। कृपया देख लें कि पूरा कोड (DG-SYNC-v1- से आरम्भ) कॉपी हुआ है, फिर से प्रयास करें।',
     };
   }
 }
@@ -292,11 +292,11 @@ export async function importDharmaBackupFile(
       message: `सफलतापूर्वक .dharma फ़ाइल से ${restoredCount} रिकॉर्ड आयात किए गए।`,
     };
   } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : 'Unknown error';
+    console.warn('[sadhana-sync] backup file import failed:', err);
     return {
       success: false,
       itemCount: 0,
-      message: `फ़ाइल आयात करने में त्रुटि: ${msg}`,
+      message: 'क्षमा करें, यह फ़ाइल आयात नहीं हो सकी। कृपया Dharma Granth से बनी .dharma बैकअप फ़ाइल चुनें।',
     };
   }
 }

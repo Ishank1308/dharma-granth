@@ -206,7 +206,7 @@ export function ContributeClient() {
         <div className="flex flex-col items-center justify-center rounded-2xl border border-dharma-border/80 bg-dharma-card p-3 shadow-2xs">
           <ShieldCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
           <span className="mt-1 text-xs font-bold text-dharma-text">100% ऐच्छिक</span>
-          <span className="text-[10px] text-dharma-muted">Never Required to Read</span>
+          <span className="text-[10px] text-dharma-muted">Reading Is Always Free</span>
         </div>
         <div className="flex flex-col items-center justify-center rounded-2xl border border-dharma-border/80 bg-dharma-card p-3 shadow-2xs">
           <Sparkles className="h-5 w-5 text-saffron-600 dark:text-saffron-400" aria-hidden="true" />
@@ -466,7 +466,7 @@ export function ContributeClient() {
               ) : (
                 <div className="flex flex-col items-center text-xs text-neutral-500">
                   <QrCode className="h-10 w-10 text-neutral-400 mb-1" />
-                  <span>QR लोड नहीं हो सका</span>
+                  <span>क्षमा करें, QR अभी लोड नहीं हो सका</span>
                 </div>
               )}
             </div>

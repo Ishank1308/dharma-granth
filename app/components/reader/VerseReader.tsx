@@ -248,7 +248,7 @@ export function VerseReader(props: VerseReaderProps) {
   }, [prev, next, router, say]);
   const onBookmark = () => {
     const state = toggleBookmark(ref, verse);
-    if (state === null) return say('Could not save: browser storage is unavailable.');
+    if (state === null) return say('Sorry, this could not be saved because the browser is not allowing storage.');
     setSaved(state);
     if (state) {
       track('verse_saved', { scriptureId });
@@ -389,7 +389,7 @@ export function VerseReader(props: VerseReaderProps) {
       if (document.fullscreenElement) void document.exitFullscreen();
       else void document.documentElement.requestFullscreen();
     } catch {
-      say('Full screen is not available in this browser.');
+      say('Sorry, full screen is not available in this browser.');
     }
   };
   const percent = Math.round(((index + 1) / Math.max(1, total)) * 100);

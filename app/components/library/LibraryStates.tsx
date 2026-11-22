@@ -74,7 +74,7 @@ export function NoResults({ query, onClear }: { query: string; onClear: () => vo
   return (
     <StateFrame icon={<SearchX className="h-6 w-6" aria-hidden="true" />} title="No texts match your search" titleHi="कोई ग्रंथ नहीं मिला" role="status">
       <p>
-        Nothing in the library matches <strong className="font-semibold text-dharma-text">“{query}”</strong>. Try a title, a Sanskrit name,
+        We couldn’t find a text for <strong className="font-semibold text-dharma-text">“{query}”</strong> yet. You could try a title, a Sanskrit name,
         an author, or a topic such as <em>karma</em> or <em>bhakti</em>.
       </p>
       <div className="mt-6 flex justify-center">
@@ -139,7 +139,7 @@ export function FilteredEmpty({
   return (
     <StateFrame icon={<SlidersHorizontal className="h-6 w-6" aria-hidden="true" />} title="No texts match these filters" titleHi="इन फ़िल्टरों से कोई ग्रंथ नहीं मिला" role="status">
       <p>
-        Together, your search and filters rule out all {formatNumber(total)} texts. Remove one to widen the list.
+        None of the {formatNumber(total)} texts fits your search and all of these filters together. Removing one should bring some back.
       </p>
       {suggestion && onApplySuggestion && (
         <p className="mt-4">
@@ -188,7 +188,7 @@ export function OfflineBanner() {
 export function LoadFailure({ onRetry }: { onRetry: () => void }) {
   return (
     <StateFrame icon={<AlertTriangle className="h-6 w-6" aria-hidden="true" />} title="The library could not be loaded" titleHi="ग्रंथालय लोड नहीं हो सका" role="alert">
-      <p>Something went wrong while reading the catalogue. Check your connection and try again.</p>
+      <p>Sorry, the catalogue didn’t load this time. Please check your connection and try again.</p>
       <div className="mt-6 flex justify-center">
         <button type="button" onClick={onRetry} className={primaryButton}>
           <RotateCcw className="h-4 w-4" aria-hidden="true" /> Reload

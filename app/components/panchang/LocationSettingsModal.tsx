@@ -67,15 +67,15 @@ export function LocationSettingsModal({
     const offsetNum = parseFloat(customUtcOffset);
 
     if (isNaN(latNum) || latNum < -90 || latNum > 90) {
-      setCustomError('Latitude must be a valid number between -90 and 90 degrees.');
+      setCustomError('Please enter a latitude between -90 and 90 degrees.');
       return;
     }
     if (isNaN(lonNum) || lonNum < -180 || lonNum > 180) {
-      setCustomError('Longitude must be a valid number between -180 and 180 degrees.');
+      setCustomError('Please enter a longitude between -180 and 180 degrees.');
       return;
     }
     if (isNaN(offsetNum) || offsetNum < -12 || offsetNum > 14) {
-      setCustomError('UTC offset must be between -12 and +14 hours.');
+      setCustomError('Please enter a UTC offset between -12 and +14 hours.');
       return;
     }
 

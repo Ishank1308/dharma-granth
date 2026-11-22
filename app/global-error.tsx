@@ -73,13 +73,13 @@ export default function GlobalError({
               margin: '0 0 1rem',
             }}
           >
-            The site couldn’t load this page.
+            Sorry, this page didn’t load.
           </h1>
           <p lang="hi" style={{ color: '#6b6560', marginBottom: 8 }}>
-            पृष्ठ लोड नहीं हो सका। पुनः प्रयास करें या मुख्य पृष्ठ पर लौटें।
+            पृष्ठ लोड नहीं हो सका। क्षमा करें, कृपया फिर से प्रयास करें या मुख्य पृष्ठ पर लौट आएँ।
           </p>
           <p lang="en" style={{ color: '#6b6560', marginBottom: 24 }}>
-            A temporary error interrupted the page. Try again, or return home.
+            A temporary problem interrupted the page. Please try again, or return home.
           </p>
           <section
             aria-label="Bhagavad Gita 2.47"
