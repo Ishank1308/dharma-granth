@@ -10,6 +10,7 @@ import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { Copy, MessageCircle, ArrowLeft, ArrowRight, BookOpen, Sparkles, Check, ExternalLink } from 'lucide-react';
 import { MantraDetailClient } from './MantraDetailClient';
 import { NavagrahaMandalam } from '../NavagrahaMandalam';
+import { NavadurgaGallery } from '@/app/components/visuals/NavadurgaGallery';
 import '@/app/styles/long-read.css';
 
 interface PageProps {
@@ -245,6 +246,16 @@ export default async function MantraDetailPage({ params }: PageProps) {
 
         {/* Dedicated Navagraha Mandalam breakdown for Navagraha Stotram */}
         {mantra.slug === 'navagraha-stotram' && <NavagrahaMandalam />}
+
+        {/* Complete 9-Day Navadurga Visual Darshan for Devi Kavacham */}
+        {mantra.slug === 'devi-kavacham' && (
+          <div className="my-10">
+            <NavadurgaGallery
+              headingHi="देवी कवच में वर्णित नवदुर्गा के 9 स्वरूप"
+              headingEn="The Nine Forms of Maa Durga Invoked in Devi Kavacham"
+            />
+          </div>
+        )}
 
         {/* Spiritual Significance & Contemplation */}
         <section aria-labelledby="significance-heading" className="fade-up-on-view my-10 rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 space-y-4">

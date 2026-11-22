@@ -30,6 +30,8 @@ import type { VerseLink, VerseQuestionLink } from '@/data/types';
 import { LINE_EXPLANATIONS, verseKey } from '@/data/study-content';
 import { findLexiconEntry, type SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
 import { parseWordMeanings } from '@/lib/word-gloss';
+import { getVersePoster } from '@/data/curated-visuals';
+import { VersePosterSpotlight } from '@/app/components/visuals/CuratedVisuals';
 
 /** The lexicon entries this verse's padas match, so the reader does not ship the whole lexicon. */
 function lexiconFor(wordMeaning?: string): Record<string, SanskritLexiconEntry> | undefined {
@@ -383,6 +385,7 @@ export default async function VersePage(props: PageProps) {
   });
 
   const pedagogical = getPedagogicalVerse(meta.id, chapterId, params.verseId);
+  const curatedPoster = getVersePoster(meta.id, chapterId, params.verseId);
   const sourceMeta = getScriptureSourceMeta(meta.id, meta.title, meta.titleSanskrit);
   const translationReview = latestReview(REVIEW_RECORDS, 'translation', meta.id, chapterId, params.verseId);
 
@@ -473,6 +476,7 @@ export default async function VersePage(props: PageProps) {
         }
         insight={getVerseInsight(meta.id, chapterId, params.verseId)}
       >
+        {curatedPoster && <VersePosterSpotlight poster={curatedPoster} />}
         <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
         {!pedagogical && !explanation && <ReviewRequiredNotice className="mt-8" />}
         <VerseCompletion

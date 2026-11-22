@@ -7,6 +7,8 @@ import { PageCover } from '@/app/components/PagePhoto';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { PracticeOpening } from './PracticeOpening';
 import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
+import { EDITORIAL_SCENES, WISDOM_POSTERS } from '@/data/curated-visuals';
+import { EditorialSceneBanner, WisdomPosterCard } from '@/app/components/visuals/CuratedVisuals';
 
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((m) => m.DailyVerse)));
 const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((m) => m.DailyReflection)));
@@ -151,6 +153,41 @@ export function PracticeDashboard() {
               {on('reflection') && <div id="practice-reflection" className="grid min-w-0 scroll-mt-24"><DailyReflection /></div>}
               {on('reading') && <div id="practice-reading" className="grid min-w-0 scroll-mt-24"><ReadingPlan /></div>}
             </div>
+
+            {/* Visual Contemplation & Bhakti Inspiration */}
+            <section aria-labelledby="practice-visual-heading" className="pt-4 space-y-5">
+              <div>
+                <h2 id="practice-visual-heading" className="text-title-2 font-semibold text-dharma-text">
+                  <span data-bi="en">Visual contemplation</span>{' '}
+                  <span lang="hi" data-bi="hi" data-bi-lead className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">
+                    जप, भक्ति व सत्संग दर्शन
+                  </span>
+                </h2>
+                <p lang="hi" className="mt-1 font-devanagari text-subhead text-dharma-muted">
+                  जप माला, नाम-संकीर्तन और नाद-ध्यान के भाव को जीवन्त करने वाले पावन चित्र।
+                </p>
+              </div>
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,320px)_1fr] items-start">
+                {(() => {
+                  const japaPoster = WISDOM_POSTERS.find((p) => p.id === 'japa-mala-bhakti');
+                  return japaPoster ? <WisdomPosterCard poster={japaPoster} showLink={false} className="min-w-0" /> : null;
+                })()}
+                <div className="grid min-w-0 gap-5">
+                  <EditorialSceneBanner
+                    scene={EDITORIAL_SCENES.templeKirtan}
+                    compact
+                    eyebrowHi="सत्संग व संकीर्तन"
+                    eyebrowEn="Devotional Gathering"
+                  />
+                  <EditorialSceneBanner
+                    scene={EDITORIAL_SCENES.devotionalVeena}
+                    compact
+                    eyebrowHi="नाद ध्यान"
+                    eyebrowEn="Sacred Resonance"
+                  />
+                </div>
+              </div>
+            </section>
       </div>
     </main>
   );

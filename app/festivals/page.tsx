@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable @next/next/no-img-element */
 
 import { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
@@ -8,6 +9,18 @@ import { X, BookOpen, MapPin, Sparkles, Music, Utensils, Leaf, Clock, AlertCircl
 import Link from 'next/link';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
+import { EDITORIAL_SCENES, NAVADURGA_CARDS } from '@/data/curated-visuals';
+
+const FESTIVAL_CARD_VISUALS: Readonly<Record<string, { src: string; alt: string }>> = {
+  diwali: {
+    src: EDITORIAL_SCENES.diwaliGhat.src,
+    alt: EDITORIAL_SCENES.diwaliGhat.alt,
+  },
+  navaratri: {
+    src: EDITORIAL_SCENES.templeDarshan.src,
+    alt: EDITORIAL_SCENES.templeDarshan.alt,
+  },
+};
 import { FestivalsOpening } from './FestivalsOpening';
 
 export default function FestivalsPage() {
@@ -41,6 +54,55 @@ export default function FestivalsPage() {
       {/* The next festival, large, beside the recurring vratas */}
       <FestivalsOpening />
 
+      {/* Featured Navadurga 9-Day Visual Guide */}
+      <section aria-labelledby="navadurga-preview-heading" className="relative z-10 mx-auto max-w-7xl px-gutter pt-10">
+        <div className="rounded-3xl border border-saffron-400/35 bg-dharma-card/85 backdrop-blur-xl p-5 sm:p-6 shadow-soft">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                <span lang="hi" className="font-devanagari normal-case">नवरात्रि विशेष चित्र-माला</span>
+                <span aria-hidden="true">·</span>
+                <span>9-Day Visual Darshan</span>
+              </p>
+              <h2 id="navadurga-preview-heading" className="mt-1 font-serif text-xl font-bold text-dharma-text">
+                <span lang="hi" className="font-devanagari">नवदुर्गा दर्शन — माँ शैलपुत्री से माँ सिद्धिदात्री तक</span>
+              </h2>
+            </div>
+            <Link
+              href="/festivals/navaratri/#navadurga-darshan"
+              className="inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-bold text-dharma-bg transition hover:opacity-90"
+            >
+              <span lang="hi" className="font-devanagari">सभी 9 दिवस देखें</span>
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-2.5 sm:grid-cols-5 lg:grid-cols-9">
+            {NAVADURGA_CARDS.map((card) => (
+              <Link
+                key={card.id}
+                href="/festivals/navaratri/#navadurga-darshan"
+                className="group overflow-hidden rounded-xl border border-dharma-border/70 bg-dharma-bg transition hover:border-saffron-400 hover:-translate-y-0.5"
+                title={`दिन ${card.day} — ${card.nameHi}`}
+              >
+                <img
+                  src={card.src}
+                  alt={card.alt}
+                  width={card.width}
+                  height={card.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[2/3] h-auto w-full object-cover object-top transition-transform duration-500 motion-safe:group-hover:scale-105"
+                />
+                <span lang="hi" className="block truncate px-1.5 py-1 text-center font-devanagari text-[11px] font-semibold text-dharma-text">
+                  {card.day}. {card.nameHi.replace('माँ ', '')}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Festival Grid */}
       <section aria-labelledby="festivals-all-heading" className="relative z-10 mx-auto max-w-7xl px-gutter pb-20 pt-14">
         <SectionTitle
@@ -51,33 +113,49 @@ export default function FestivalsPage() {
         />
         {/* The cards cascade in as they scroll into view (.reveal-grid, motion.css); the HTML is never hidden. */}
         <div className="reveal-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {festivals.map((festival) => (
-            <div key={festival.id}>
-              <Link
-                href={`/festivals/${festival.id}/`}
-                data-vt="open"
-                className="card-sacred group block relative overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 text-left shadow-soft hover:shadow-xl hover:border-saffron-400/50 hover:-translate-y-0.5 transition-all h-full"
-              >
-                <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${festival.gradient}`} />
-                <div className="flex items-start gap-4 mb-3">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${festival.gradient} flex items-center justify-center text-3xl shrink-0 shadow-md`}>
-                    {festival.icon}
+          {festivals.map((festival) => {
+            const visual = FESTIVAL_CARD_VISUALS[festival.id];
+            return (
+              <div key={festival.id}>
+                <Link
+                  href={`/festivals/${festival.id}/`}
+                  data-vt="open"
+                  className="card-sacred group block relative overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 text-left shadow-soft hover:shadow-xl hover:border-saffron-400/50 hover:-translate-y-0.5 transition-all h-full"
+                >
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${festival.gradient}`} />
+                  {visual && (
+                    <div className="-mx-6 -mt-6 mb-4 overflow-hidden border-b border-dharma-border/60">
+                      <img
+                        src={visual.src}
+                        alt={visual.alt}
+                        width={1024}
+                        height={571}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-36 w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
+                      />
+                    </div>
+                  )}
+                  <div className="flex items-start gap-4 mb-3">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${festival.gradient} flex items-center justify-center text-3xl shrink-0 shadow-md`}>
+                      {festival.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-serif font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">{festival.name}</h3>
+                      <p className="text-sm text-saffron-700 dark:text-saffron-400 font-semibold">{festival.sanskrit}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-serif font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">{festival.name}</h3>
-                    <p className="text-sm text-saffron-700 dark:text-saffron-400 font-semibold">{festival.sanskrit}</p>
+                  <p className="text-sm text-dharma-muted leading-relaxed mb-4">{festival.shortDesc}</p>
+                  <div className="flex items-center justify-between text-xs pt-2 border-t border-dharma-border/60">
+                    <span className="text-dharma-muted">{festival.category}</span>
+                    <span className="font-semibold text-saffron-700 dark:text-saffron-400 group-hover:translate-x-1 transition-transform">
+                      पूरा विवरण व मंत्र देखें &rarr;
+                    </span>
                   </div>
-                </div>
-                <p className="text-sm text-dharma-muted leading-relaxed mb-4">{festival.shortDesc}</p>
-                <div className="flex items-center justify-between text-xs pt-2 border-t border-dharma-border/60">
-                  <span className="text-dharma-muted">{festival.category}</span>
-                  <span className="font-semibold text-saffron-700 dark:text-saffron-400 group-hover:translate-x-1 transition-transform">
-                    पूरा विवरण व मंत्र देखें &rarr;
-                  </span>
-                </div>
-              </Link>
-            </div>
-          ))}
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </section>
 

@@ -5,6 +5,8 @@ import { VisualExplorerClient } from './VisualExplorerClient';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { JsonLd } from '@/app/components/JsonLd';
 import { pageLd, articleLd } from '@/lib/jsonld';
+import { WISDOM_POSTERS } from '@/data/curated-visuals';
+import { WisdomPosterCard } from '@/app/components/visuals/CuratedVisuals';
 
 export const metadata: Metadata = {
   title: 'दृश्य ज्ञान दर्शन — 10 वैदिक अवधारणाओं के इंटरैक्टिव आरेख | Dharma Granth',
@@ -102,6 +104,26 @@ export default function VisualConceptsHubPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8">
         <VisualExplorerClient />
       </div>
+
+      {/* ── Curated Scriptural Contemplation Posters ──────────────────────── */}
+      <section aria-labelledby="curated-posters-heading" className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 space-y-6">
+        <div className="border-l-4 border-saffron-600 pl-4 space-y-1">
+          <p className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
+            Scriptural Posters · शास्त्र चित्र-दर्शन
+          </p>
+          <h2 id="curated-posters-heading" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
+            <span lang="hi" className="font-devanagari">प्रमुख श्लोक एवं धर्म-सूत्र चित्र-संग्रह</span>
+          </h2>
+          <p lang="hi" className="font-devanagari text-sm text-dharma-muted max-w-3xl">
+            श्रीमद्भगवद्गीता, ईशावास्य व श्वेताश्वतर उपनिषद् तथा धर्म और भक्ति के प्रमुख सूत्रों को सहज चित्रों और व्याख्या के साथ देखें।
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {WISDOM_POSTERS.map((poster) => (
+            <WisdomPosterCard key={poster.id} poster={poster} />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
