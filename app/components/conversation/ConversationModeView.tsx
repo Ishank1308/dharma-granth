@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, BookOpen, Filter, MessageSquare, Volume2, X } from 'lucide-react';
+import { ArrowRight, BookOpen, Filter, MessageSquare, X } from 'lucide-react';
 import { GITA_SPEAKERS, getGitaDialogueTurn, type GitaSpeakerId } from '@/data/gita-dialogue';
 import { cleanVerseField, toAsciiDigits } from '@/lib/verse-format';
 import { readHref } from '@/lib/verse-paths';

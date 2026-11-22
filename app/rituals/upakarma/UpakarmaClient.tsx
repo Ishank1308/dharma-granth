@@ -9,7 +9,6 @@ import {
   Circle,
   Copy,
   Check,
-  Volume2,
   Layers,
   Flame,
   RotateCcw,
@@ -28,13 +27,11 @@ import {
   type UpakarmaStep,
   type UpakarmaMantra,
 } from '@/data/upakarma-data';
-import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 
 export function UpakarmaClient() {
   const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
   const [completedSteps, setCompletedSteps] = useState<Record<number, boolean>>({});
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  const [playingKey, setPlayingKey] = useState<string | null>(null);
 
   // 108 Japa Counter State
   const [japaCount, setJapaCount] = useState<number>(0);
@@ -57,12 +54,6 @@ export function UpakarmaClient() {
     } catch {
       // ignore
     }
-  };
-
-  const playAudio = (sanskrit: string, key: string) => {
-    setPlayingKey(key);
-    speakSanskritTerm(sanskrit);
-    setTimeout(() => setPlayingKey(null), 3000);
   };
 
   const currentStep = UPAKARMA_STEPS[activeStepIndex];
@@ -215,14 +206,6 @@ export function UpakarmaClient() {
                 </span>
 
                 <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => playAudio(activeMantra.sanskrit, activeMantra.id)}
-                    className="p-1.5 rounded-lg border border-dharma-border bg-dharma-card hover:bg-dharma-bg text-dharma-muted hover:text-saffron-600 transition"
-                    title="उच्चारण सुनें"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
                   <button
                     type="button"
                     onClick={() => copyText(activeMantra.sanskrit, activeMantra.id)}

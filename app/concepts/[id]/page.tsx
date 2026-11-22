@@ -222,43 +222,77 @@ export default async function ConceptDetailPage({ params }: PageProps) {
         </div>
       </header>
 
-      {/* ── Hero Section ─────────────────────────────────────────────────── */}
+      {/* ── Hero Section (Matra-Safe Devanagari Calligraphy + 2-Column Liquid Glass Bento) ── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 sm:pt-14 pb-12 border-b border-dharma-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-          {/* Sanskrit Calligraphy Badge: the page's one H1 (term, then transliteration and English label) */}
-          <h1 className="inline-flex flex-col items-center mb-6 font-normal">
-            <span
-              lang="sa"
-              className="block font-devanagari text-6xl sm:text-7xl md:text-8xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-800 dark:from-saffron-400 dark:via-amber-300 dark:to-saffron-500 leading-tight drop-shadow-sm"
-            >
-              {concept.sanskrit}
-            </span>
-            <span className="block text-base sm:text-lg text-dharma-muted tracking-widest uppercase font-serif mt-1">
-              {concept.transliteration} · {concept.label}
-            </span>
-          </h1>
-
-          {/* Simple Definitions (Dual Language) */}
-          <div className="bg-dharma-card/80 border border-dharma-border rounded-2xl p-6 sm:p-8 shadow-sm text-left max-w-3xl mx-auto space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-              <Sparkles className="w-4 h-4" />
-              <span>सरल परिभाषा · Plain Definition</span>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+          {/* Sanskrit Calligraphy Badge: never use background-clip:text or positive tracking on Devanagari (preserves rephs, matras & shirorekha) */}
+          <div className="mb-7 flex items-center justify-center gap-6">
+            <div aria-hidden="true" data-decor className="hidden md:flex flex-col items-center gap-2 select-none text-dharma-saffron/40">
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+              <span className="text-base">☸</span>
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
             </div>
-            <p className="text-lg sm:text-xl text-dharma-text font-serif leading-relaxed">
-              {concept.simpleDefinition.en}
-            </p>
-            <p
-              lang="hi"
-              className="text-base sm:text-lg text-dharma-muted font-devanagari leading-relaxed border-t border-dharma-border/60 pt-3"
-            >
-              {concept.simpleDefinition.hi}
-            </p>
-            <SaveConceptButton conceptId={concept.id} label={concept.label} />
-            <ShareCardButton
-              reference={concept.label}
-              concept={{ term: concept.sanskrit, transliteration: concept.transliteration, definition: concept.simpleDefinition.en }}
-              url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}`}
-            />
+
+            <h1 className="inline-flex flex-col items-center font-normal">
+              <span
+                lang="sa"
+                className="block font-devanagari text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal leading-[1.45] text-dharma-saffron py-1"
+              >
+                {concept.sanskrit}
+              </span>
+              <span className="mt-1.5 block font-serif text-base sm:text-lg tracking-widest uppercase text-dharma-muted">
+                {concept.transliteration} · {concept.label}
+              </span>
+            </h1>
+
+            <div aria-hidden="true" data-decor className="hidden md:flex flex-col items-center gap-2 select-none text-dharma-saffron/40">
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+              <span className="text-base">❁</span>
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+            </div>
+          </div>
+
+          {/* Simple Definitions (2-Column Side-by-Side Bilingual Liquid Glass Bento) */}
+          <div className="mx-auto max-w-4xl rounded-3xl border border-dharma-border/80 bg-dharma-card/85 p-6 sm:p-8 text-left shadow-raised backdrop-blur-xl shadow-[inset_0_1px_0_var(--glass-specular-top)] space-y-5">
+            <div className="flex items-center justify-between gap-2 border-b border-dharma-border/60 pb-3">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                <Sparkles className="w-4 h-4" aria-hidden="true" />
+                <span lang="hi" className="font-devanagari normal-case">सरल परिभाषा</span>
+                <span aria-hidden="true">·</span>
+                <span>Plain Definition</span>
+              </div>
+              <span className="rounded-full border border-saffron-500/25 bg-saffron-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-saffron-700 dark:text-saffron-300">
+                {cat.hi} · {cat.en}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-dharma-border/70 bg-dharma-bg/65 p-4 sm:p-5">
+                <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-saffron font-devanagari">
+                  हिन्दी भावार्थ · Hindi Definition
+                </p>
+                <p lang="hi" className="font-devanagari text-base sm:text-[17px] leading-[1.85] text-dharma-text">
+                  {concept.simpleDefinition.hi}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-dharma-border/70 bg-dharma-bg/65 p-4 sm:p-5">
+                <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-muted">
+                  English Definition
+                </p>
+                <p lang="en" className="font-serif text-base sm:text-[17.5px] leading-relaxed text-dharma-text">
+                  {concept.simpleDefinition.en}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <SaveConceptButton conceptId={concept.id} label={concept.label} />
+              <ShareCardButton
+                reference={concept.label}
+                concept={{ term: concept.sanskrit, transliteration: concept.transliteration, definition: concept.simpleDefinition.en }}
+                url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}`}
+              />
+            </div>
             <ShareChips
               title={`${concept.label} (${concept.sanskrit})`}
               summary={concept.simpleDefinition.en}

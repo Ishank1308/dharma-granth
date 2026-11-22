@@ -7,19 +7,15 @@ import {
   Play,
   Pause,
   RotateCcw,
-  Volume2,
-  VolumeX,
   Sliders,
   Wind,
   CheckCircle2,
-  Sparkles,
 } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { useReducedMotionPreference } from '@/lib/useReducedMotionPreference';
 import { ToolCard, localISODate } from './shared';
 import { DiyaPullCord } from './DiyaPullCord';
 import { triggerHaptic } from '@/lib/haptics';
-import { strikeTempleBell, startMeditationDrone, stopMeditationDrone } from '@/lib/soundscape-lazy';
 import { updateSadhanaSession } from '@/lib/prana-capsule-store';
 
 interface MeditationStats {
@@ -33,13 +29,6 @@ interface MeditationStats {
 
 const PRESETS = [5, 10, 15, 20, 30];
 
-const AMBIENT_OPTIONS: Array<{ id: 'tanpura' | 'om' | 'flute' | 'silent'; label: string; icon: string }> = [
-  { id: 'tanpura', label: 'तन्पूरा · 432Hz', icon: '🎶' },
-  { id: 'om', label: 'प्रणव ॐ · 108Hz', icon: '🕉️' },
-  { id: 'flute', label: 'वेणु · Flute', icon: '🌊' },
-  { id: 'silent', label: 'मौन · Silent', icon: '🔕' },
-];
-
 const CONTEMPLATION_QUOTES = [
   { sa: 'शान्तं शिवमद्वैतम्', en: 'Peaceful, auspicious, and non-dual is the Self.', src: 'Mandukya Upanishad' },
   { sa: 'प्रशान्तमनसं ह्येनं योगिनं सुखमुत्तमम्', en: 'Supreme joy comes to the yogi whose mind is peaceful.', src: 'Bhagavad Gita 6.27' },
@@ -48,22 +37,14 @@ const CONTEMPLATION_QUOTES = [
 ];
 
 /**
- * Peaceful countdown meditation timer with gentle beginning & ending sounds,
- * custom duration, ambient soundscapes, wake-lock, and session summary.
+ * Peaceful silent countdown meditation timer with Diya flame focus,
+ * custom duration, wake-lock, haptic completion, and session summary.
  */
 export function MeditationTimer() {
   const [stats, setStats] = useLocalStorage<MeditationStats>('dharma.practice.meditation', {
     sessions: 0,
     minutes: 0,
   });
-  const [soundEnabled, setSoundEnabled] = useLocalStorage<boolean>(
-    'dharma.practice.meditation.sound',
-    true,
-  );
-  const [ambientMode, setAmbientMode] = useLocalStorage<'tanpura' | 'om' | 'flute' | 'silent'>(
-    'dharma.practice.meditation.drone',
-    'tanpura',
-  );
   const [reducedMotionManual, setReducedMotionManual] = useLocalStorage<boolean>(
     'dharma.practice.meditation.reduced_motion',
     false,
@@ -146,9 +127,7 @@ export function MeditationTimer() {
           running: false,
         });
         const today = localISODate();
-        stopMeditationDrone();
         releaseWakeLock();
-        if (soundEnabled) strikeTempleBell(3); // 3 resonant completion chimes
         triggerHaptic('success');
         setSummaryQuote(CONTEMPLATION_QUOTES[Math.floor(Math.random() * CONTEMPLATION_QUOTES.length)]);
 
@@ -177,12 +156,11 @@ export function MeditationTimer() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       document.removeEventListener('visibilitychange', handleVisibility);
     };
-  }, [running, minutes, soundEnabled, setStats, releaseWakeLock]);
+  }, [running, minutes, setStats, releaseWakeLock]);
 
-  // Clean up wake lock and audio synthesizer on unmount
+  // Clean up wake lock on unmount
   useEffect(() => {
     return () => {
-      stopMeditationDrone();
       releaseWakeLock();
     };
   }, [releaseWakeLock]);
@@ -194,7 +172,6 @@ export function MeditationTimer() {
     setRunning(false);
     setDone(false);
     setShowCustomInput(false);
-    stopMeditationDrone();
     releaseWakeLock();
   }
 
@@ -207,8 +184,6 @@ export function MeditationTimer() {
 
   function handleStart() {
     triggerHaptic('medium');
-    if (soundEnabled) strikeTempleBell(1); // Single sacred initial strike
-    if (ambientMode !== 'silent') startMeditationDrone(ambientMode);
     requestWakeLock();
     endTimeRef.current = Date.now() + secondsLeft * 1000;
     setRunning(true);
@@ -216,7 +191,6 @@ export function MeditationTimer() {
 
   function handlePause() {
     triggerHaptic('light');
-    stopMeditationDrone();
     releaseWakeLock();
     if (endTimeRef.current) {
       const rem = Math.max(0, Math.round((endTimeRef.current - Date.now()) / 1000));
@@ -227,7 +201,6 @@ export function MeditationTimer() {
   }
 
   function reset() {
-    stopMeditationDrone();
     releaseWakeLock();
     setSecondsLeft(minutes * 60);
     endTimeRef.current = null;
@@ -247,22 +220,11 @@ export function MeditationTimer() {
       accent="indigo"
     >
       <div className="flex flex-col items-center gap-4 h-full">
-        {/* Controls Bar: Sound toggle, Custom duration, Motion */}
-        <div className="flex flex-wrap items-center justify-between gap-1.5 w-full px-2 py-1 bg-dharma-panel-muted rounded-xl border border-dharma-border/60 text-xs">
-          <button
-            type="button"
-            onClick={() => setSoundEnabled(!soundEnabled)}
-            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium transition ${
-              soundEnabled
-                ? 'bg-indigo-100 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300'
-                : 'text-dharma-muted hover:text-dharma-text'
-            }`}
-            title={soundEnabled ? 'घंटी ध्वनि चालू · Bell chime on' : 'मूक ध्यान · Silent mode'}
-            aria-label={soundEnabled ? 'Disable sound' : 'Enable sound'}
-          >
-            {soundEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
-            <span>{soundEnabled ? 'घंटी चालू' : 'मूक ध्यान'}</span>
-          </button>
+        {/* Controls Bar: Custom duration & Motion */}
+        <div className="flex flex-wrap items-center justify-between gap-1.5 w-full px-2.5 py-1.5 bg-dharma-panel-muted rounded-xl border border-dharma-border/60 text-xs">
+          <span lang="hi" className="font-devanagari text-[11px] font-medium text-dharma-muted">
+            मौन ध्यान · Silent Sadhana
+          </span>
 
           <div className="flex flex-wrap items-center gap-1.5">
             <button
@@ -324,35 +286,6 @@ export function MeditationTimer() {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Ambient Drone Mode Selector */}
-        {!running && !done && (
-          <div className="w-full rounded-xl border border-dharma-border/60 bg-dharma-panel-muted/60 p-2.5 text-xs">
-            <span className="block text-[11px] font-semibold text-dharma-muted mb-1.5 text-center">
-              पृष्ठभूमि ध्वनि · Ambient Drone
-            </span>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
-              {AMBIENT_OPTIONS.map((opt) => {
-                const isCur = ambientMode === opt.id;
-                return (
-                  <button
-                    key={opt.id}
-                    type="button"
-                    onClick={() => setAmbientMode(opt.id)}
-                    className={`flex min-w-0 items-center justify-center gap-1 py-1 px-2 rounded-lg text-2xs font-semibold transition ${
-                      isCur
-                        ? 'bg-indigo-600 text-white shadow-xs'
-                        : 'border border-dharma-border/80 text-dharma-muted hover:border-indigo-400 hover:text-dharma-text'
-                    }`}
-                  >
-                    <span>{opt.icon}</span>
-                    <span className="truncate">{opt.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
 
         {/* Presets */}
         {!running && !done && (

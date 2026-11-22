@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useReducedMotion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
-import { ChevronRight, ChevronLeft, RotateCcw, Volume2, Shuffle, Keyboard, BarChart3 } from 'lucide-react';
+import { ChevronRight, ChevronLeft, RotateCcw, Shuffle, Keyboard, BarChart3 } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 export interface FlashCardData {
@@ -189,10 +189,10 @@ export function FlashCard({ data, onNext, onPrevious, onReset, currentIndex, tot
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             />
-            
+
             {/* Decorative pattern */}
             <div className="absolute inset-0 mandala-bg opacity-5 pointer-events-none" />
-            
+
             <div className="h-full flex flex-col justify-center items-center text-center relative z-10">
               {data.front.sanskrit && (
                 <motion.p
@@ -206,7 +206,7 @@ export function FlashCard({ data, onNext, onPrevious, onReset, currentIndex, tot
                 </motion.p>
               )}
               {data.front.transliteration && (
-                <motion.p 
+                <motion.p
                   className="text-base md:text-lg text-dharma-muted italic mb-6 font-medium"
                   initial={reduce ? {} : { y: 10, opacity: 0 }}
                   animate={reduce ? {} : { y: 0, opacity: 1 }}
@@ -215,7 +215,7 @@ export function FlashCard({ data, onNext, onPrevious, onReset, currentIndex, tot
                   {data.front.transliteration}
                 </motion.p>
               )}
-              <motion.p 
+              <motion.p
                 className="text-2xl font-serif font-bold text-dharma-text mb-5"
                 initial={reduce ? {} : { y: 10, opacity: 0 }}
                 animate={reduce ? {} : { y: 0, opacity: 1 }}
@@ -255,7 +255,7 @@ export function FlashCard({ data, onNext, onPrevious, onReset, currentIndex, tot
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             />
-            
+
             <div className="h-full flex flex-col justify-center relative z-10 overflow-y-auto">
               {data.back.hindi && (
                 <motion.p
@@ -268,7 +268,7 @@ export function FlashCard({ data, onNext, onPrevious, onReset, currentIndex, tot
                   {data.back.hindi}
                 </motion.p>
               )}
-              <motion.p 
+              <motion.p
                 className="text-lg md:text-xl text-dharma-text mb-4 leading-relaxed font-medium"
                 initial={reduce ? {} : { y: 10, opacity: 0 }}
                 animate={reduce ? {} : { y: 0, opacity: 1 }}
@@ -328,13 +328,12 @@ export function FlashCard({ data, onNext, onPrevious, onReset, currentIndex, tot
                           setDifficulty(level);
                           handleNext();
                         }}
-                        className={`flex-1 px-4 py-3 rounded-xl text-sm font-bold transition shadow-sm hover:shadow-md ${
-                          level === 'easy'
-                            ? 'bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 border border-emerald-200 hover:from-emerald-200 hover:to-green-200'
-                            : level === 'medium'
+                        className={`flex-1 px-4 py-3 rounded-xl text-sm font-bold transition shadow-sm hover:shadow-md ${level === 'easy'
+                          ? 'bg-gradient-to-r from-emerald-100 to-green-100 text-emerald-800 border border-emerald-200 hover:from-emerald-200 hover:to-green-200'
+                          : level === 'medium'
                             ? 'bg-gradient-to-r from-amber-100 to-yellow-100 text-amber-800 border border-amber-200 hover:from-amber-200 hover:to-yellow-200'
                             : 'bg-gradient-to-r from-rose-100 to-pink-100 text-rose-800 border border-rose-200 hover:from-rose-200 hover:to-pink-200'
-                        }`}
+                          }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >

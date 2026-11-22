@@ -62,7 +62,6 @@ const MobileVerseCarousel = dynamic(() => import('./MobileVerseCarousel').then((
 // The shloka kept beside its commentary: fetched the first time the verse scrolls off screen.
 const PinnedShloka = dynamic(() => import('./PinnedShloka').then((m) => m.PinnedShloka), { ssr: false });
 import { useScrolledPast } from '@/lib/useScrolledPast';
-import { setCurrentVerseContext, withSoundscape } from '@/lib/soundscape-lazy';
 import { useEverTrue } from '@/lib/use-ever-true';
 import { verseCount as fmtVerses } from '@/lib/format';
 import { track } from '@/lib/analytics';
@@ -199,17 +198,7 @@ export function VerseReader(props: VerseReaderProps) {
     [verses, savedInChapter],
   );
 
-  /* ── Sync Active Verse Context to Sacred Soundscape Engine ── */
-  useEffect(() => {
-    setCurrentVerseContext(
-      verse.sanskrit,
-      `${scriptureTitle} ${formatVerseRef(scriptureId, chapterId, verse.number)}`,
-      verse.hindi,
-      verse.translation,
-    );
-  }, [verse.sanskrit, verse.hindi, verse.translation, scriptureId, scriptureTitle, chapterId, verse.number]);
-
-  /* ── MediaSession Lock-Screen Controls & Continuous Pārāyaṇa ── */
+  /* ── Keyboard / External Prev-Next Navigation ── */
   useEffect(() => {
     const handlePrev = () => {
       if (prev?.href) navigateWithTransition(router, prev.href, 'prev');
@@ -217,35 +206,14 @@ export function VerseReader(props: VerseReaderProps) {
     const handleNext = () => {
       if (next?.href) navigateWithTransition(router, next.href, 'next');
     };
-    const handleRecitationEnded = () => {
-      // The ended event comes from the engine, so it is loaded by now.
-      let state: { continuousParayana?: boolean } = {};
-      withSoundscape((m) => {
-        state = m.getSoundscapeState();
-      });
-      if (state.continuousParayana) {
-        if (next?.href) {
-          say('निरंतर पाठ: अगला श्लोक (2.5s)...');
-          const timer = setTimeout(() => {
-            navigateWithTransition(router, next.href, 'next');
-          }, 2500);
-          return () => clearTimeout(timer);
-        } else {
-          withSoundscape((m) => m.stopSoundscape());
-          say('अध्याय सम्पूर्ण · Chapter Recitation Complete');
-        }
-      }
-    };
 
     window.addEventListener('dharma:verse-prev', handlePrev);
     window.addEventListener('dharma:verse-next', handleNext);
-    window.addEventListener('dharma:recitation-ended', handleRecitationEnded);
     return () => {
       window.removeEventListener('dharma:verse-prev', handlePrev);
       window.removeEventListener('dharma:verse-next', handleNext);
-      window.removeEventListener('dharma:recitation-ended', handleRecitationEnded);
     };
-  }, [prev, next, router, say]);
+  }, [prev, next, router]);
   const onBookmark = () => {
     const state = toggleBookmark(ref, verse);
     if (state === null) return say('Sorry, this could not be saved because the browser is not allowing storage.');

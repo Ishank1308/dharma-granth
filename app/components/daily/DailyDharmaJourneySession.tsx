@@ -24,9 +24,6 @@ import {
   PenLine,
   Trash2,
   ExternalLink,
-  Volume2,
-  VolumeX,
-  Radio,
   ChevronLeft,
   ChevronRight,
   Calendar,
@@ -44,12 +41,6 @@ import {
 } from '@/data/daily-wisdom-engine';
 import { readHref, shareVerseUrl } from '@/lib/verse-paths';
 import { SITE_URL } from '@/lib/jsonld';
-import {
-  speakSanskritShloka,
-  stopSanskritSpeech,
-  startTanpuraDrone,
-  stopTanpuraDrone,
-} from '@/lib/sacred-audio';
 import { recordSadhanaActivity, useSadhanaStreak } from '@/lib/sadhana-streak';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
 
@@ -76,9 +67,6 @@ export function DailyDharmaJourneySession({
     ? DAILY_WISDOM_REGISTRY[(dayIndex + 1) % DAILY_WISDOM_REGISTRY.length]
     : undefined;
 
-  // Audio & Drone state
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
-  const [isDroneOn, setIsDroneOn] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isSadhanaCompleted, setIsSadhanaCompleted] = useState(false);
   const { streak } = useSadhanaStreak();
@@ -140,14 +128,6 @@ export function DailyDharmaJourneySession({
     }
   }, [session.id, session.referenceDisplayEn]);
 
-  // Audio cleanup on unmount
-  useEffect(() => {
-    return () => {
-      stopSanskritSpeech();
-      stopTanpuraDrone();
-    };
-  }, []);
-
   // Check if sadhana challenge completed today
   useEffect(() => {
     try {
@@ -159,31 +139,6 @@ export function DailyDharmaJourneySession({
       }
     } catch {}
   }, [session.id]);
-
-  const toggleAudio = () => {
-    if (isPlayingAudio) {
-      stopSanskritSpeech();
-      setIsPlayingAudio(false);
-    } else {
-      setIsPlayingAudio(true);
-      speakSanskritShloka(
-        session.sanskritDevanagari,
-        0.85,
-        () => setIsPlayingAudio(false),
-        () => setIsPlayingAudio(false),
-      );
-    }
-  };
-
-  const toggleTanpura = () => {
-    if (isDroneOn) {
-      stopTanpuraDrone();
-      setIsDroneOn(false);
-    } else {
-      const started = startTanpuraDrone(0.12);
-      if (started) setIsDroneOn(true);
-    }
-  };
 
   const handleCompleteSadhana = () => {
     if (isSadhanaCompleted) return;
@@ -286,8 +241,6 @@ export function DailyDharmaJourneySession({
             type="button"
             onClick={() => {
               setDayIndex((prev) => (prev - 1 + DAILY_WISDOM_REGISTRY.length) % DAILY_WISDOM_REGISTRY.length);
-              stopSanskritSpeech();
-              setIsPlayingAudio(false);
             }}
             className="focus-ring inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-400 text-xs font-semibold text-dharma-text transition"
             title="Previous Day's Wisdom"
@@ -302,8 +255,6 @@ export function DailyDharmaJourneySession({
               const today = getTodayWisdom();
               const idx = DAILY_WISDOM_REGISTRY.findIndex((dw) => dw.id === today.id);
               setDayIndex(idx >= 0 ? idx : 0);
-              stopSanskritSpeech();
-              setIsPlayingAudio(false);
             }}
             className="focus-ring inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 text-white text-xs font-bold transition shadow-2xs"
             title="Return to Today's Wisdom"
@@ -316,8 +267,6 @@ export function DailyDharmaJourneySession({
             type="button"
             onClick={() => {
               setDayIndex((prev) => (prev + 1) % DAILY_WISDOM_REGISTRY.length);
-              stopSanskritSpeech();
-              setIsPlayingAudio(false);
             }}
             className="focus-ring inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-400 text-xs font-semibold text-dharma-text transition"
             title="Next Day's Wisdom"
@@ -336,8 +285,6 @@ export function DailyDharmaJourneySession({
             onClick={() => {
               const rand = Math.floor(Math.random() * DAILY_WISDOM_REGISTRY.length);
               setDayIndex(rand);
-              stopSanskritSpeech();
-              setIsPlayingAudio(false);
             }}
             className="focus-ring inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-400 text-xs font-semibold text-saffron-800 dark:text-saffron-300 transition"
             title="Pick a Random Teaching"
@@ -430,36 +377,6 @@ export function DailyDharmaJourneySession({
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {/* Audio Recitation */}
-            <button
-              type="button"
-              onClick={toggleAudio}
-              className={`focus-ring inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition ${
-                isPlayingAudio
-                  ? 'bg-amber-600 text-white animate-pulse'
-                  : 'bg-white dark:bg-[#262019] border border-[#DDD3C1] dark:border-[#42372A] hover:border-saffron-500 text-stone-700 dark:text-stone-300'
-              }`}
-              title="Listen to Sanskrit Recitation"
-            >
-              {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5 text-saffron-600" />}
-              <span>{isPlayingAudio ? 'रोकें · Pause' : 'सुनें · Listen'}</span>
-            </button>
-
-            {/* Tanpura Drone */}
-            <button
-              type="button"
-              onClick={toggleTanpura}
-              className={`focus-ring inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition ${
-                isDroneOn
-                  ? 'bg-emerald-600 text-white shadow-2xs'
-                  : 'bg-white dark:bg-[#262019] border border-[#DDD3C1] dark:border-[#42372A] hover:border-saffron-500 text-stone-700 dark:text-stone-300'
-              }`}
-              title="Toggle Meditative Tanpura Acoustic Drone"
-            >
-              <Radio className={`w-3.5 h-3.5 ${isDroneOn ? 'animate-pulse text-white' : 'text-stone-500'}`} />
-              <span>तानपुरा</span>
-            </button>
-
             {/* Share Sacred Card */}
             <button
               type="button"

@@ -11,8 +11,6 @@ import {
   FlaskConical,
   Lightbulb,
   SlidersHorizontal,
-  Sparkles,
-  Volume2,
   X,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -20,14 +18,6 @@ import type { ScriptureCategory } from '@/data/types';
 import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
 import { lookupCommentary, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
-import { isTanpuraPlaying, toggleTanpura, subscribeTanpura } from '@/lib/tanpura-audio';
-import {
-  startSoundscape,
-  stopSoundscape,
-  setCurrentVerseContext,
-  subscribeSoundscape,
-  type SoundscapeState,
-} from '@/lib/soundscape-lazy';
 import { splitVerseLines, toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { useReaderSettings } from '@/lib/useReaderSettings';
@@ -127,26 +117,6 @@ export function MobileFocusMode({
   } = settings;
   const [showMenu, setShowMenu] = useState(false);
 
-  const [tanpuraActive, setTanpuraActive] = useState(false);
-  const [recitationActive, setRecitationActive] = useState(false);
-
-  useEffect(() => {
-    setTanpuraActive(isTanpuraPlaying());
-
-    const unsubTanpura = subscribeTanpura((active) => {
-      setTanpuraActive(active);
-    });
-
-    const unsubSoundscape = subscribeSoundscape((st: SoundscapeState) => {
-      setRecitationActive(st.isPlaying && st.activeTrack === 'recitation');
-    });
-
-    return () => {
-      unsubTanpura();
-      unsubSoundscape();
-    };
-  }, []);
-
   const reduce = useReducedMotion();
   const cardScrollRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -198,17 +168,6 @@ export function MobileFocusMode({
   }, [isOpen]);
 
   const currentVerse: FocusVerse | undefined = verses[currentIndex];
-  const verseKey = currentVerse ? currentVerse.sanskrit || currentVerse.hindi || currentVerse.translation || '' : '';
-
-  // Update soundscape context on verse change if recitation is playing
-  useEffect(() => {
-    if (recitationActive && currentVerse?.sanskrit) {
-      setCurrentVerseContext(
-        currentVerse.sanskrit,
-        `${scriptureTitle} ${chapterTitle}, श्लोक ${currentVerse.number}`
-      );
-    }
-  }, [currentIndex, recitationActive, currentVerse, scriptureTitle, chapterTitle]);
 
   // Navigate to previous/next verse
   const goTo = useCallback(
@@ -348,54 +307,6 @@ export function MobileFocusMode({
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {/* Sanskrit Recitation Audio */}
-            {currentVerse.sanskrit && (
-              <button
-                type="button"
-                onClick={() => {
-                  triggerTactileFeedback('selection', 'click');
-                  if (recitationActive) {
-                    stopSoundscape();
-                  } else {
-                    setCurrentVerseContext(
-                      currentVerse.sanskrit,
-                      `${scriptureTitle} ${chapterTitle}, श्लोक ${currentVerse.number}`
-                    );
-                    startSoundscape('recitation');
-                  }
-                }}
-                className={`tap-halo inline-flex min-h-[38px] items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold border transition ${recitationActive
-                  ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
-                  : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
-                  }`}
-                title={recitationActive ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें (Listen to Recitation)'}
-                aria-pressed={recitationActive}
-                aria-label="श्लोक उच्चारण"
-              >
-                <Volume2 className={`h-3.5 w-3.5 ${recitationActive ? 'text-amber-400 animate-pulse' : ''}`} />
-                <span className="hidden sm:inline">उच्चारण</span>
-              </button>
-            )}
-
-            {/* Tanpura Sacred Drone Ambience */}
-            <button
-              type="button"
-              onClick={() => {
-                triggerTactileFeedback('celestial', 'omBowl');
-                toggleTanpura();
-              }}
-              className={`tap-halo inline-flex min-h-[38px] items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold border transition ${tanpuraActive
-                ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
-                : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
-                }`}
-              title={tanpuraActive ? 'तन्पूरा सक्रिय (Tanpura Active ॐ)' : 'तन्पूरा ध्यान नाद चालू करें (Tanpura Ambience)'}
-              aria-pressed={tanpuraActive}
-              aria-label="तन्पूरा ध्यान नाद"
-            >
-              <Sparkles className={`h-3.5 w-3.5 ${tanpuraActive ? 'text-amber-400 animate-pulse' : ''}`} />
-              <span className="hidden sm:inline">तन्पूरा ॐ</span>
-            </button>
-
             {/* Bookmark button */}
             <button
               type="button"

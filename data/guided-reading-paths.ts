@@ -261,7 +261,7 @@ export const GUIDED_READING_PATHS: GuidedReadingPath[] = [
     selfCheckQuestion: 'What transformed Arjuna from a weeping warrior into an aligned student of wisdom?',
     selfCheckQuestionHi: 'अर्जुन को विषाद से शिष्यत्व की ओर किसने मोड़ा?',
     suggestedAnswer: 'The conscious surrender of his ego and the willingness to ask for disciplined teaching rather than self-serving comforting words.',
-    suggestedAnswerHi: 'अपनी सीमाओं को स्वीकार करना और झूठी तसल्ली के बजाय सत्य को सुनने की तत्परता।'
+    suggestedAnswerHi: 'अपनी सीमाओं को स्वीकार करना और झूठी सांत्वना के बजाय सत्य को सुनने की तत्परता।'
   },
 
   {
@@ -287,12 +287,12 @@ export const GUIDED_READING_PATHS: GuidedReadingPath[] = [
       {
         scriptureId: 'bhagavadgita',
         chapter: 18,
-        verse: 47,
+        verse: 48,
         title: 'Nature-Aligned Responsibility',
         titleHi: 'सहजं कर्म कौन्तेय',
         takeaway: 'No duty in this world is entirely free of flaws; act with sincerity and dedication.',
         takeawayHi: 'संसार का कोई भी कर्म पूर्णतः निर्दोष नहीं होता, अतः निष्काम भाव से कार्य करें।',
-        sanskritSnippet: 'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्...',
+        sanskritSnippet: 'सहजं कर्म कौन्तेय सदोषमपि न त्यजेत् । सर्वारम्भा हि दोषेण धूमेनाग्निरिवावृताः ॥',
       },
       {
         scriptureId: 'bhagavadgita',
@@ -301,7 +301,7 @@ export const GUIDED_READING_PATHS: GuidedReadingPath[] = [
         title: 'Autonomous Discernment',
         titleHi: 'यथेच्छसि तथा कुरु',
         takeaway: 'Having reflected on this profound wisdom, deliberate thoroughly and act according to your sovereign conscience.',
-        takeawayHi: 'ज्ञान को भली-भांति समझकर, अपने विवेक से स्वतंत्र निर्णय लो।',
+        takeawayHi: 'ज्ञान को भली-भांति समझकर, अपने विवेक से स्वतंत्र निर्णय लें।',
         sanskritSnippet: 'इति ते ज्ञानमाख्यातं गुह्याद्गुह्यतरं मया...',
       },
     ],
@@ -310,7 +310,7 @@ export const GUIDED_READING_PATHS: GuidedReadingPath[] = [
     practicalReflection: 'Recall a decision where you conformed to external expectations rather than your authentic svadharma. What did that experience teach you?',
     practicalReflectionHi: 'अपने जीवन के किसी ऐसे निर्णय को याद करें जहां आपने दूसरों के दबाव में काम किया था। उससे आपको क्या सीख मिली?',
     selfCheckQuestion: 'Why does Krishna tell Arjuna "यथेच्छसि तथा कुरु" (Act as you choose) in Gita 18.63 instead of giving a compulsory command?',
-    selfCheckQuestionHi: 'गीता १८.६३ में श्रीकृष्ण ने अर्जुन को आदेश देने के बजाय यह क्यों कहा कि "जैसा उचित समझो, वैसा करो"?',
+    selfCheckQuestionHi: 'गीता 18.63 में श्रीकृष्ण ने अर्जुन को आदेश देने के बजाय यह क्यों कहा कि "जैसा उचित समझो, वैसा करो"?',
     suggestedAnswer: 'Because true spiritual maturity and moral integrity cannot be coerced; wisdom must be embraced autonomously with personal responsibility.',
     suggestedAnswerHi: 'क्योंकि सच्चा धर्म स्वतंत्रता और आत्म-विवेक पर आधारित होता है; आदेश थोपने से कभी वास्तविक रूपांतरण नहीं होता।'
   }

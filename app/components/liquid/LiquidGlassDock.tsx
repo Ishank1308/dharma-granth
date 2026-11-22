@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import { BookOpen, Command, Languages, MessageSquareQuote, Pause, Volume2 } from 'lucide-react';
+import { BookOpen, Command, Languages, MessageSquareQuote } from 'lucide-react';
 import { openGlobalSearch } from '@/lib/search-events';
 import { usePerformanceMode } from '@/lib/performance-mode';
 import { useReducedMotionPreference } from '@/lib/useReducedMotionPreference';
@@ -10,23 +10,8 @@ import type { ReaderMode } from './SpatialShloka';
 interface Props {
   mode: ReaderMode;
   onModeChange: (mode: ReaderMode) => void;
-  listening: boolean;
-  recitingVerse?: string;
-  onToggleListening: () => void;
   /** Keep the dock up regardless of scroll direction (a verse is lifted). */
   pinned?: boolean;
-}
-
-/** Four bars that move while the chapter is being chanted. */
-function Waveform({ playing }: { playing: boolean }) {
-  return (
-    <span aria-hidden="true" className={`dock-wave ${playing ? 'is-playing' : ''}`}>
-      <span />
-      <span />
-      <span />
-      <span />
-    </span>
-  );
 }
 
 function DockButton({
@@ -87,18 +72,18 @@ function DockButton({
 }
 
 /**
- * The reader's floating dock: Saṁhitā (plain reading), Anvaya (word by
- * word), Śravaṇa (chanting), Bhāṣya (commentary) and ⌘K. On phones it
- * is a full-width bar in the bottom navigation's place (the header menu still
- * reaches every page), so the chapter has one bar, not two stacked over the
- * text. It hides there while scrolling down through the text and returns on the way back up, like Safari's
- * toolbar; it stays up while a verse is lifted or the chapter is being chanted.
+ * The reader's floating dock: Saṁhitā (plain reading), Anvaya (word by word),
+ * Bhāṣya (commentary) and ⌘K. On phones it is a full-width bar in the bottom
+ * navigation's place (the header menu still reaches every page), so the chapter
+ * has one bar, not two stacked over the text. It hides there while scrolling
+ * down through the text and returns on the way back up, like Safari's toolbar;
+ * it stays up while a verse is lifted.
  *
  * From 1024px it is a vertical rail in the right margin, centred on the viewport (globals.css `.liquid-dock`).
  * The reading column is centred and at most 736px wide, so the rail never covers the text and has no need to
- * hide. As a bar floating at the bottom centre it sat on the first shloka when a chapter opened.
+ * hide.
  */
-export function LiquidGlassDock({ mode, onModeChange, listening, recitingVerse, onToggleListening, pinned = false }: Props) {
+export function LiquidGlassDock({ mode, onModeChange, pinned = false }: Props) {
   const prefersReducedMotion = useReducedMotionPreference();
   const { isLiteMode } = usePerformanceMode();
   const reduce = prefersReducedMotion || isLiteMode;
@@ -128,7 +113,7 @@ export function LiquidGlassDock({ mode, onModeChange, listening, recitingVerse, 
   return (
     <nav
       aria-label="पठन नियंत्रण · Reader dock"
-      style={hidden && !listening && !pinned ? { transform: 'translateY(120px)', opacity: 0 } : undefined}
+      style={hidden && !pinned ? { transform: 'translateY(120px)', opacity: 0 } : undefined}
       className={`${reduce ? '' : 'chrome-rise transition-[transform,opacity] duration-[var(--duration-base)] ease-[var(--ease-out)]'} liquid-dock fixed z-40 flex justify-center max-lg:inset-x-0`}
     >
       <div className="liquid-glass relative flex items-center gap-0.5 p-1.5 max-lg:w-full max-lg:justify-around max-lg:rounded-none max-lg:pb-[calc(0.375rem+env(safe-area-inset-bottom,0px))] lg:flex-col lg:rounded-[2rem]">
@@ -137,20 +122,6 @@ export function LiquidGlassDock({ mode, onModeChange, listening, recitingVerse, 
         </DockButton>
         <DockButton active={mode === 'anvaya'} label="Anvaya" hintHi="शब्दार्थ" sublabel="अन्वय · Word by word" onClick={() => onModeChange('anvaya')}>
           <Languages className="h-[18px] w-[18px]" aria-hidden="true" />
-        </DockButton>
-        <DockButton
-          pressed={listening}
-          label={listening ? 'Pause' : 'Śravaṇa'}
-          hintHi={listening ? (recitingVerse ? `श्लोक ${recitingVerse}` : 'विराम') : 'श्रवण'}
-          sublabel={listening ? (recitingVerse ? `Pause chanting · Verse ${recitingVerse}` : 'Pause chanting') : 'श्रवण · Listen'}
-          onClick={onToggleListening}
-        >
-          {listening ? (
-            <span className="flex items-center gap-1">
-              <Pause className="h-3.5 w-3.5" aria-hidden="true" />
-              <Waveform playing={!reduce} />
-            </span>
-          ) : <Volume2 className="h-[18px] w-[18px]" aria-hidden="true" />}
         </DockButton>
         <DockButton active={mode === 'bhashya'} label="Bhāṣya" hintHi="व्याख्या" sublabel="भाष्य · Commentary" onClick={() => onModeChange('bhashya')}>
           <MessageSquareQuote className="h-[18px] w-[18px]" aria-hidden="true" />

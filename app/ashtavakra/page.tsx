@@ -165,13 +165,7 @@ export default function AshtavakraHome() {
           <DailyVerse items={daily} />
         </div>
 
-        {/* 10. Audio */}
-        <section aria-labelledby="aud" className="ash-card">
-          <h2 id="aud" className="font-bold" style={{ fontSize: '1.25rem' }}>ध्वनि</h2>
-          <p lang="hi" className="ash-hindi mt-2">इस साइट पर अभी कोई ऑडियो नहीं है, न पाठ का और न व्याख्या का; इसलिए ध्वनि-नियंत्रण या पृष्ठभूमि-ध्वनि भी नहीं दी गई। जब प्रमाणित मानव-रिकॉर्डिंग उपलब्ध होंगी, तभी वे और उनके ट्रांसक्रिप्ट जोड़े जाएँगे, और ध्वनि कभी अपने-आप नहीं चलेगी।</p>
-        </section>
-
-        {/* 11. Concepts */}
+        {/* 10. Concepts */}
         <section id="concepts" aria-labelledby="con" className="scroll-mt-6">
           <h2 id="con" className="font-bold" style={{ fontSize: '1.5rem' }}>प्रमुख अवधारणाएँ</h2>
           <p className="ash-meta mt-1">पहले प्रकरण से। पूर्ण शब्दावली और अवधारणा-मानचित्र बाद के चरण में जोड़े जाएँगे।</p>

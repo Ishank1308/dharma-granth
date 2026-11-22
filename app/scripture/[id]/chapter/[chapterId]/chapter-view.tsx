@@ -30,7 +30,6 @@ import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
 import { ShareButton } from '@/app/components/ShareButton';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
-import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { sceneAttrs } from '@/lib/chapter-scenes';
 import { photoAttrs } from '@/lib/scene-photos';
@@ -482,17 +481,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           )}
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-2 sm:mt-5 sm:gap-2.5">
-          {chapter.verseCount > 0 ? (
-            <ChapterAudioHeroAction
-              className={quietAction}
-              tone="quiet"
-              scriptureId={meta.id}
-              chapterId={chapter.id}
-              chapterTitle={chapter.title}
-              firstVerseId={part ? part.first : 1}
-              totalVerses={chapter.verseCount}
-            />
-          ) : (
+          {chapter.verseCount === 0 && (
             <span lang="hi" className="text-footnote text-label-tertiary">श्लोक पाठ अभी प्रकाशित नहीं है</span>
           )}
           <ShareButton title={`${shareHeading} · Dharma Granth`} text={shareLines[0]} url={shareUrl} className={quietAction}>

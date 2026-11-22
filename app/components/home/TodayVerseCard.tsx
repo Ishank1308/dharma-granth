@@ -8,8 +8,6 @@ import {
   Compass,
   Target,
   CheckCircle2,
-  Volume2,
-  VolumeX,
   Languages,
   ChevronLeft,
   ChevronRight,
@@ -24,6 +22,7 @@ import { readHref } from '@/lib/verse-paths';
 import type { vibeAttrs } from '@/lib/scripture-vibes';
 import { cleanVerseField, toAsciiDigits, verseLines } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import { recordSadhanaActivity } from '@/lib/sadhana-streak';
 
 const PatrikaShareStudioModal = dynamic(
   () => import('@/app/components/share/PatrikaShareStudioModal').then((m) => m.PatrikaShareStudioModal),
@@ -52,7 +51,6 @@ export function TodayVerseCard({
   const [showTranslit, setShowTranslit] = useState(false);
   const [activeWordIdx, setActiveWordIdx] = useState<number | null>(0);
   const [activeStep, setActiveStep] = useState<StepTab>('apply');
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const [sadhanaDone, setSadhanaDone] = useState(false);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
 
@@ -67,20 +65,17 @@ export function TodayVerseCard({
   useEffect(() => {
     setActiveWordIdx(item.wordMeaning?.length ? 0 : null);
     try {
-      const key = `dharma.daily.sadhana.${item.id}.${new Date().toISOString().slice(0, 10)}`;
-      setSadhanaDone(Boolean(localStorage.getItem(key)));
+      const todayIso = new Date().toISOString().slice(0, 10);
+      setSadhanaDone(
+        Boolean(
+          localStorage.getItem(`dharma.daily.sadhana.${item.id}.${todayIso}`) ||
+          localStorage.getItem(`dharma.daily.challenge.${item.id}.${todayIso}`)
+        )
+      );
     } catch {
       setSadhanaDone(false);
     }
   }, [item.id, item.wordMeaning]);
-
-  useEffect(() => {
-    return () => {
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, []);
 
   const showNotice = useCallback((msg: string) => {
     setToastMsg(msg);
@@ -88,42 +83,22 @@ export function TodayVerseCard({
     return () => clearTimeout(timer);
   }, []);
 
-  const speakText = useCallback((text: string) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(text.replace(/[।॥|]/g, ' '));
-      utter.lang = 'hi-IN';
-      utter.rate = 0.85;
-      utter.onend = () => setIsSpeaking(false);
-      utter.onerror = () => setIsSpeaking(false);
-      setIsSpeaking(true);
-      window.speechSynthesis.speak(utter);
-    } catch {
-      setIsSpeaking(false);
-    }
-  }, []);
-
-  const toggleRecitation = () => {
-    triggerTactileFeedback('selection', 'softTap');
-    if (isSpeaking) {
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
-      setIsSpeaking(false);
-    } else {
-      speakText(item.sanskrit);
-    }
-  };
-
   const handleCompleteSadhana = () => {
     triggerTactileFeedback('selection', 'softTap');
     const next = !sadhanaDone;
     setSadhanaDone(next);
     try {
-      const key = `dharma.daily.sadhana.${item.id}.${new Date().toISOString().slice(0, 10)}`;
-      if (next) localStorage.setItem(key, '1');
-      else localStorage.removeItem(key);
+      const todayIso = new Date().toISOString().slice(0, 10);
+      const sadhanaKey = `dharma.daily.sadhana.${item.id}.${todayIso}`;
+      const challengeKey = `dharma.daily.challenge.${item.id}.${todayIso}`;
+      if (next) {
+        localStorage.setItem(sadhanaKey, '1');
+        localStorage.setItem(challengeKey, 'true');
+        recordSadhanaActivity();
+      } else {
+        localStorage.removeItem(sadhanaKey);
+        localStorage.removeItem(challengeKey);
+      }
     } catch {}
     if (next) {
       showNotice('आज का स्वाध्याय संकल्प पूर्ण हुआ · Daily Sadhana recorded on this device');
@@ -132,10 +107,6 @@ export function TodayVerseCard({
 
   const cycleItem = (delta: number) => {
     triggerTactileFeedback('selection', 'softTap');
-    if (isSpeaking && typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-    }
     setItemIndex((prev) => (prev + delta + DAILY_WISDOM_REGISTRY.length) % DAILY_WISDOM_REGISTRY.length);
   };
 
@@ -220,27 +191,8 @@ export function TodayVerseCard({
           )}
         </div>
 
-        {/* Interactive Audio, Transliteration & Coordinate Controls */}
+        {/* Transliteration & Coordinate Controls */}
         <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={toggleRecitation}
-            aria-pressed={isSpeaking}
-            className={`focus-ring inline-flex min-h-[38px] items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-all ${
-              isSpeaking
-                ? 'border-dharma-saffron bg-dharma-saffron text-dharma-bg shadow-xs'
-                : 'border-dharma-border/80 bg-dharma-bg/70 text-dharma-text hover:border-dharma-saffron/50'
-            }`}
-          >
-            {isSpeaking ? (
-              <VolumeX className="h-3.5 w-3.5 animate-pulse" aria-hidden="true" />
-            ) : (
-              <Volume2 className="h-3.5 w-3.5 text-dharma-saffron" aria-hidden="true" />
-            )}
-            <span lang="hi" className="font-devanagari">{isSpeaking ? 'रोकें' : 'सुनें'}</span>
-            <span className="hidden sm:inline">· {isSpeaking ? 'Stop' : 'Listen'}</span>
-          </button>
-
           {item.transliteration && (
             <button
               type="button"
@@ -353,14 +305,6 @@ export function TodayVerseCard({
                     <span className="mx-2 text-dharma-muted">→</span>
                     <span className="font-medium text-dharma-text/90">{words[activeWordIdx].meaning}</span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => speakText(words[activeWordIdx].word)}
-                    aria-label={`Pronounce ${words[activeWordIdx].word}`}
-                    className="focus-ring tap-halo inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-dharma-saffron/15 text-dharma-saffron hover:bg-dharma-saffron/25"
-                  >
-                    <Volume2 className="h-4 w-4" aria-hidden="true" />
-                  </button>
                 </div>
               )}
             </div>

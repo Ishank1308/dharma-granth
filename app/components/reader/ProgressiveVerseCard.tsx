@@ -2,7 +2,7 @@
 
 import { useId, useState, type KeyboardEvent } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Bookmark, Check, Copy, Volume2 } from 'lucide-react';
+import { Bookmark, Check, Copy } from 'lucide-react';
 
 /** Content that is fetched only after the reader opens a deeper study tab. */
 export interface VerseDeepLayers {
@@ -37,7 +37,6 @@ export interface ProgressiveVerseCardProps {
   loadDeepLayers?: () => Promise<VerseDeepLayers>;
   bookmarked?: boolean;
   onToggleBookmark?: () => void;
-  onListen?: () => void;
 }
 
 /** Illustrative props for a local preview or Storybook story. */
@@ -88,7 +87,6 @@ export function ProgressiveVerseCard({
   loadDeepLayers,
   bookmarked = false,
   onToggleBookmark,
-  onListen,
 }: ProgressiveVerseCardProps) {
   const reduceMotion = useReducedMotion();
   const tabsId = useId();
@@ -166,9 +164,6 @@ export function ProgressiveVerseCard({
           <div className="flex items-center gap-2" role="toolbar" aria-label="Verse actions">
             <button type="button" onClick={handleCopy} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#514238] text-[#D8C7AF] transition hover:border-[#D97706] hover:text-[#F3A53B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D97706]" aria-label={copied ? 'Copied Sanskrit verse' : 'Copy Sanskrit verse'} title={copied ? 'Copied' : 'Copy Sanskrit'}>
               {copied ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
-            </button>
-            <button type="button" onClick={onListen} disabled={!onListen} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#514238] text-[#D8C7AF] transition hover:border-[#D97706] hover:text-[#F3A53B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D97706] disabled:cursor-not-allowed disabled:opacity-45" aria-label="Listen to verse" title={onListen ? 'Listen to verse' : 'Audio coming soon'}>
-              <Volume2 className="h-4 w-4" aria-hidden="true" />
             </button>
             <button type="button" onClick={onToggleBookmark} disabled={!onToggleBookmark} aria-pressed={bookmarked} className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D97706] disabled:cursor-not-allowed disabled:opacity-45 ${bookmarked ? 'border-[#D97706] bg-[#D97706]/15 text-[#F3A53B]' : 'border-[#514238] text-[#D8C7AF] hover:border-[#D97706] hover:text-[#F3A53B]'}`} aria-label={bookmarked ? 'Remove bookmark' : 'Bookmark verse'} title={bookmarked ? 'Bookmarked' : 'Bookmark'}>
               <Bookmark className={`h-4 w-4 ${bookmarked ? 'fill-current' : ''}`} aria-hidden="true" />

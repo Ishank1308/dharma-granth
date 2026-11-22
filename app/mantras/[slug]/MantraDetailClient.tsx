@@ -2,12 +2,10 @@
 
 import { useState } from 'react';
 import type { SacredMantra } from '@/data/mantras';
-import { Copy, Check, MessageCircle, Volume2 } from 'lucide-react';
-import { speakSanskritTerm } from '@/lib/soundscape-lazy';
+import { Copy, Check, MessageCircle } from 'lucide-react';
 
 export function MantraDetailClient({ mantra, pageUrl }: { mantra: SacredMantra; pageUrl: string }) {
   const [copied, setCopied] = useState(false);
-  const [playing, setPlaying] = useState(false);
 
   const fullShareText = `${mantra.titleHi} (${mantra.title})\n\n${mantra.sanskrit}\n\nभावार्थ: ${mantra.hindiMeaning}\n\nEnglish: ${mantra.englishMeaning}\n\nस्त्रोत: ${mantra.sourceCoordinates}\n${pageUrl}`;
   const whatsappHref = `https://wa.me/?text=${encodeURIComponent(fullShareText)}`;
@@ -20,12 +18,6 @@ export function MantraDetailClient({ mantra, pageUrl }: { mantra: SacredMantra; 
     } catch {
       // ignore
     }
-  };
-
-  const onPlayAudio = () => {
-    setPlaying(true);
-    speakSanskritTerm(mantra.sanskrit);
-    setTimeout(() => setPlaying(false), 4000);
   };
 
   return (
@@ -47,18 +39,6 @@ export function MantraDetailClient({ mantra, pageUrl }: { mantra: SacredMantra; 
 
       {/* Action Toolbar */}
       <div className="mt-4 flex flex-wrap items-center justify-center gap-2 border-b border-dharma-border/60 pb-4">
-        <button
-          type="button"
-          onClick={onPlayAudio}
-          aria-label="Listen to Sanskrit pronunciation"
-          className={`focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-bg px-4 text-xs sm:text-sm font-semibold text-dharma-text transition hover:border-saffron-400 ${
-            playing ? '!border-saffron-500 text-saffron-700' : ''
-          }`}
-        >
-          <Volume2 className={`w-4 h-4 ${playing ? 'animate-pulse text-saffron-600' : ''}`} />
-          <span>{playing ? 'Reciting…' : 'उच्चारण सुनें (Listen)'}</span>
-        </button>
-
         <button
           type="button"
           onClick={onCopy}
