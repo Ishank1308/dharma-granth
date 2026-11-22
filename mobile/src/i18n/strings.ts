@@ -862,6 +862,44 @@ export const S = {
     en: `${n(chapters)} ${chapters === 1 ? 'chapter' : 'chapters'} and ${n(verses)} verses`,
     hi: `${n(chapters)} अध्याय, ${n(verses)} श्लोक`,
   }),
+
+  // The time of day and the calendar, read gently (src/lib/mood.ts): greetings, a quiet word of encouragement
+  moodBrahma: { en: 'Brahma muhurta', hi: 'ब्रह्म मुहूर्त' },
+  moodMorning: { en: 'Shubh prabhat', hi: 'शुभ प्रभात' },
+  moodMidday: { en: 'Namaste', hi: 'नमस्ते' },
+  moodSandhya: { en: 'Shubh sandhya', hi: 'शुभ संध्या' },
+  moodNight: { en: 'Shubh ratri', hi: 'शुभ रात्रि' },
+  moodNoteBrahma: { en: 'Brahma muhurta, the still hour before dawn. A time for svadhyaya.', hi: 'ब्रह्म मुहूर्त, भोर से पहले का शांत समय। स्वाध्याय का समय।' },
+  moodNoteMorning: { en: 'Begin the day with one verse, as with a lamp.', hi: 'दिन की शुरुआत एक श्लोक से करें, जैसे दीपक से।' },
+  moodNoteMidday: { en: 'A moment’s pause in the day. One verse is enough.', hi: 'दिन के बीच एक पल का ठहराव। एक श्लोक काफ़ी है।' },
+  moodNoteSandhya: { en: 'The hour of the evening lamp. Sit with a verse a while.', hi: 'संध्या दीप का समय। कुछ देर एक श्लोक के साथ बैठें।' },
+  moodNoteNight: { en: 'Close the day with something short and calm.', hi: 'दिन को किसी छोटे, शांत श्लोक के साथ विदा करें।' },
+  moodReadToday: { en: 'Today’s reading is done. Let it stay with you.', hi: 'आज का पाठ हो गया। उसे मन में रहने दें।' },
+  moodKeepThread: { en: 'One verse keeps yesterday’s thread going. No hurry.', hi: 'एक श्लोक से कल का सिलसिला बना रहेगा। कोई जल्दी नहीं।' },
+  moodWelcomeBack: { en: 'Welcome back. Your page is where you left it.', hi: 'फिर से स्वागत है। आपका पन्ना वहीं है जहाँ छोड़ा था।' },
+  moodFirstVisit: { en: 'Begin anywhere. One verse is enough.', hi: 'कहीं से भी शुरू करें। एक श्लोक काफ़ी है।' },
+  moodFestival: (name: string) => ({ en: `Happy ${name}`, hi: `${name} की शुभकामनाएँ` }),
+  moodFestivalNote: { en: 'May the day be bright for you and yours.', hi: 'यह दिन आपके और अपनों के लिए मंगलमय हो।' },
+  moodEkadashi: { en: 'Ekadashi today', hi: 'आज एकादशी है' },
+  moodEkadashiNote: { en: 'A day kept light, for prayer and the Gita.', hi: 'हल्का दिन, प्रार्थना और गीता के लिए।' },
+  moodPurnima: { en: 'Purnima tonight', hi: 'आज पूर्णिमा है' },
+  moodPurnimaNote: { en: 'The full moon. A fine night for a longer read.', hi: 'पूरा चाँद। आज थोड़ा अधिक पढ़ने की रात।' },
+  moodAmavasya: { en: 'Amavasya today', hi: 'आज अमावस्या है' },
+  moodAmavasyaNote: { en: 'A quiet day for remembrance.', hi: 'स्मरण का एक शांत दिन।' },
+
+  // Bento tiles on Home and Explore
+  bentoBegin: { en: 'Begin with the Gita', hi: 'गीता से शुरुआत करें' },
+  bentoBeginDetail: (chapters: number, verses: number) => ({
+    en: `${n(chapters)} chapters, ${n(verses)} verses. Start at chapter 1.`,
+    hi: `${n(chapters)} अध्याय, ${n(verses)} श्लोक। अध्याय 1 से शुरू करें।`,
+  }),
+  bentoTithi: { en: 'Tithi', hi: 'तिथि' },
+  bentoNextFestival: { en: 'Next festival', hi: 'अगला पर्व' },
+  bentoStreak: { en: 'Streak', hi: 'सिलसिला' },
+  bentoStreakDays: (count: number) => ({ en: count === 1 ? 'day' : 'days', hi: 'दिन' }),
+  bentoStreakNone: { en: 'A verse a day', hi: 'रोज़ एक श्लोक' },
+  bentoMantras: { en: 'Mantras', hi: 'मन्त्र' },
+  bentoMantrasDetail: { en: 'Vedic, shanti and stotra', hi: 'वैदिक, शान्ति और स्तोत्र' },
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 
 /** Journal moods (@/lib/journal MOODS), as on the website. */

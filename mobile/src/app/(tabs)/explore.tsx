@@ -1,18 +1,21 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect, type Href } from 'expo-router';
 import { useCallback, useMemo, useState, type ComponentProps } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { useTabTop } from '@/lib/use-tab-top';
-import { Backdrop, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
+import { BentoCol, BentoDepth, BentoRow, BentoTile } from '@/components/bento';
+import { Backdrop, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
-import { PressableScale } from '@/motion/pressable-scale';
+import { useScrollY } from '@/motion/parallax';
+import { TitleBar } from '@/motion/title-bar';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
 import { usePrefs } from '@/state/app-state';
-import { barClearance, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+import { barClearance, huesFor, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
 
@@ -20,16 +23,19 @@ type IconName = ComponentProps<typeof Ionicons>['name'];
 
 /**
  * The Explore tab: today's Panchang at a glance, the next festival, and the doors to the website's calendar,
- * festival and mantra pages, as dharmagranth.dev's Panchang and Festivals sections. Other features (knowledge,
- * wisdom, plans) add their rows to the Study group.
+ * festival and mantra pages, as dharmagranth.dev's Panchang and Festivals sections, laid out as an asymmetric
+ * bento of glass tiles (src/components/bento.tsx). Other features add their tiles to the Study group.
  */
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
   const topRef = useTabTop();
+  const { height } = useWindowDimensions();
   const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const [city] = usePanchangCity();
+  const { scrollY, onScroll } = useScrollY();
+  const depth = useMemo(() => ({ scrollY, windowHeight: height }), [scrollY, height]);
 
   // Recompute when the tab comes back into view, so a phone left open overnight shows the new day.
   const [now, setNow] = useState(() => new Date());
@@ -37,91 +43,98 @@ export default function ExploreScreen() {
   const today = useMemo(() => todayPanchang(city, now), [city, now]);
   const next = upcomingFestivals(today.isoDate, 1)[0];
 
-  const calendar: Row[] = [
-    { title: S.panchangTitle, detail: S.panchangRow, icon: 'sunny', color: hues.saffron, href: '/explore/panchang' },
-    { title: S.festivalsTitle, detail: S.festivalsRow, icon: 'sparkles', color: hues.lotus, href: '/explore/festivals' },
-  ];
-  const study: Row[] = [
-    { title: S.mantrasTitle, detail: S.mantrasRow, icon: 'musical-notes', color: hues.indigo, href: '/explore/mantras' },
-    { title: S.knowledgeTitle, detail: S.knowledgeEntryDetail, icon: 'library', color: hues.peacock, href: '/knowledge' },
-    { title: S.wisdomTitle, detail: S.wisdomEntryDetail, icon: 'leaf', color: hues.tulsi, href: '/wisdom' },
-    // Plans, journal and quizzes add their rows here as those screens land.
-  ];
-
   const cityName = lang === 'hi' ? today.location.nameHi : today.location.name;
   const tithiName = lang === 'hi' ? today.tithi.nameHi : today.tithi.transliteration;
+  const paksha = lang === 'hi' ? today.paksha.nameHi : today.paksha.transliteration;
+  const nextName = next ? (lang === 'hi' ? (next.nameHindi ?? next.name) : next.name) : '';
+  const nextIcon = (next?.festivalId && festivalById(next.festivalId)?.icon) || '🪔';
 
   return (
     <Backdrop>
-      <ScrollView
-        ref={topRef as never}
-        style={{ backgroundColor: 'transparent' }}
-        contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}>
-        <LargeHeader title={S.exploreTitle} eyebrow={S.exploreEyebrow} />
+      <BentoDepth.Provider value={depth}>
+        <Animated.ScrollView
+          ref={topRef as never}
+          onScroll={onScroll}
+          scrollEventThrottle={16}
+          style={{ backgroundColor: 'transparent' }}
+          contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom), rowGap: SPACE.md }}>
+          <LargeHeader title={S.exploreTitle} eyebrow={S.exploreEyebrow} scrollY={scrollY} />
 
-        {/* Today, as the website's Panchang hero: the moon, the tithi and the day's limbs. */}
-        <PressableScale
-          accessibilityRole="button"
-          accessibilityLabel={`${t(S.openPanchangA11y)}. ${tithiName}, ${lang === 'hi' ? today.paksha.nameHi : today.paksha.transliteration}`}
-          onPress={() => router.push('/explore/panchang')}
-          style={[styles.hero, glass(palette, true)]}>
-          <View style={styles.heroTop}>
-            <Moon3D phase={phaseFromIllumination(today.paksha.illuminationPercent, today.paksha.isWaxing)} size={60} />
-            <View style={{ flex: 1 }}>
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.5 }}>
-                {lang === 'hi' ? t(S.todayAt(cityName)) : t(S.todayAt(cityName)).toUpperCase()}
-              </Text>
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '800', marginTop: 2 }}>
-                {tithiName}
-              </Text>
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
-                {lang === 'hi' ? today.paksha.nameHi : today.paksha.transliteration} · {lang === 'hi' ? today.fullDateHindi : today.fullDateEnglish}
-              </Text>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color={palette.muted} />
-          </View>
-          <View style={styles.facts}>
-            <Fact label={t(S.limbNakshatra)} value={lang === 'hi' ? today.nakshatra.nameHi : today.nakshatra.transliteration} color={hues.indigo} />
-            <Fact label={t(S.limbYoga)} value={lang === 'hi' ? today.yoga.nameHi : today.yoga.transliteration} color={hues.peacock} />
-            <Fact label={t(S.sunrise)} value={today.solarTimes.sunrise} color={hues.gold} />
-            <Fact label={t(S.sunset)} value={today.solarTimes.sunset} color={hues.vermilion} />
-          </View>
-        </PressableScale>
+          {/* Today, as a bento: the Panchang tall on the left (the website's Panchang hero), the next festival
+              and the festival calendar stacked beside it. */}
+          <BentoRow>
+            <BentoTile
+              flex={1.3}
+              strong
+              minHeight={300}
+              accessibilityLabel={`${t(S.openPanchangA11y)}. ${tithiName}, ${paksha}`}
+              onPress={() => router.push('/explore/panchang')}
+              glow={palette.dark ? 'rgba(129,140,248,0.22)' : 'rgba(79,70,229,0.10)'}
+              style={{ rowGap: SPACE.md, justifyContent: 'space-between' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                <Moon3D phase={phaseFromIllumination(today.paksha.illuminationPercent, today.paksha.isWaxing)} size={64} />
+                <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+              </View>
+              <View>
+                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.5 }}>
+                  {lang === 'hi' ? t(S.todayAt(cityName)) : t(S.todayAt(cityName)).toUpperCase()}
+                </Text>
+                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '800', marginTop: 2 }}>
+                  {tithiName}
+                </Text>
+                <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
+                  {paksha} · {lang === 'hi' ? today.fullDateHindi : today.fullDateEnglish}
+                </Text>
+              </View>
+              <View style={styles.facts}>
+                <Fact label={t(S.limbNakshatra)} value={lang === 'hi' ? today.nakshatra.nameHi : today.nakshatra.transliteration} color={hues.indigo} />
+                <Fact label={t(S.limbYoga)} value={lang === 'hi' ? today.yoga.nameHi : today.yoga.transliteration} color={hues.peacock} />
+                <Fact label={t(S.sunrise)} value={today.solarTimes.sunrise} color={hues.gold} />
+                <Fact label={t(S.sunset)} value={today.solarTimes.sunset} color={hues.vermilion} />
+              </View>
+            </BentoTile>
+            <BentoCol>
+              {next ? (
+                <BentoTile
+                  flex={1}
+                  accessibilityLabel={`${t(S.nextFestival)}: ${t(S.festivalA11y(nextName, formatDay(next.date, lang)))}`}
+                  onPress={() =>
+                    next.festivalId && festivalById(next.festivalId)
+                      ? router.push({ pathname: '/explore/festivals/[id]', params: { id: next.festivalId } })
+                      : router.push('/explore/festivals')
+                  }
+                  glow={palette.dark ? 'rgba(244,114,182,0.20)' : 'rgba(219,39,119,0.10)'}
+                  style={{ rowGap: SPACE.xs, justifyContent: 'space-between' }}>
+                  <Text allowFontScaling={false} style={{ fontSize: 26 }}>
+                    {nextIcon}
+                  </Text>
+                  <View>
+                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
+                      {t(S.inDays(daysBetween(today.isoDate, next.date)))}
+                    </Text>
+                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={3} style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '800' }}>
+                      {nextName}
+                    </Text>
+                    <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', marginTop: 2 }}>
+                      {formatDay(next.date, lang, false)}
+                    </Text>
+                  </View>
+                </BentoTile>
+              ) : null}
+              <Tile row={{ title: S.festivalsTitle, detail: S.festivalsRow, icon: 'sparkles', color: hues.lotus, href: '/explore/festivals' }} />
+            </BentoCol>
+          </BentoRow>
 
-        {next ? (
-          <PressableScale
-            accessibilityRole="button"
-            accessibilityLabel={`${t(S.nextFestival)}: ${t(S.festivalA11y(lang === 'hi' ? (next.nameHindi ?? next.name) : next.name, formatDay(next.date, lang)))}`}
-            onPress={() =>
-              next.festivalId && festivalById(next.festivalId)
-                ? router.push({ pathname: '/explore/festivals/[id]', params: { id: next.festivalId } })
-                : router.push('/explore/festivals')
-            }
-            style={[styles.next, glass(palette)]}>
-            <View style={[styles.nextIcon, { backgroundColor: palette.dark ? 'rgba(244,114,182,0.16)' : 'rgba(190,24,93,0.10)' }]}>
-              <Text allowFontScaling={false} style={{ fontSize: 22 }}>
-                {(next.festivalId && festivalById(next.festivalId)?.icon) || '🪔'}
-              </Text>
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
-                {t(S.nextFestival)} · {t(S.inDays(daysBetween(today.isoDate, next.date)))}
-              </Text>
-              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '700' }}>
-                {lang === 'hi' ? (next.nameHindi ?? next.name) : next.name}
-              </Text>
-            </View>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
-              {formatDay(next.date, lang, false)}
-            </Text>
-          </PressableScale>
-        ) : null}
-
-        <GroupTitle title={t(S.exploreCalendar)} />
-        <Rows rows={calendar} />
-        <GroupTitle title={t(S.exploreStudy)} />
-        <Rows rows={study} />
-      </ScrollView>
+          <GroupTitle title={t(S.exploreStudy)} />
+          <BentoRow>
+            <Tile row={{ title: S.mantrasTitle, detail: S.mantrasRow, icon: 'musical-notes', color: hues.indigo, href: '/explore/mantras' }} />
+            <Tile flex={1.4} row={{ title: S.knowledgeTitle, detail: S.knowledgeEntryDetail, icon: 'library', color: hues.peacock, href: '/knowledge' }} />
+          </BentoRow>
+          <Tile wide row={{ title: S.wisdomTitle, detail: S.wisdomEntryDetail, icon: 'leaf', color: hues.tulsi, href: '/wisdom' }} />
+          {/* Plans and journal add their tiles here as those screens land. */}
+        </Animated.ScrollView>
+      </BentoDepth.Provider>
+      <TitleBar scrollY={scrollY} title={S.exploreTitle} />
     </Backdrop>
   );
 }
@@ -134,26 +147,29 @@ interface Row {
   href: Href;
 }
 
-function Rows({ rows }: { rows: Row[] }) {
+/** A doorway as a bento tile: the hue's icon, title and a line, with that hue pooling at its foot. */
+function Tile({ row, flex = 1, wide }: { row: Row; flex?: number; wide?: boolean }) {
   const { palette } = usePrefs();
   const { t } = useI18n();
   return (
-    <GroupCard>
-      {rows.map((row, i) => (
-        <GroupRow key={t(row.title)} standalone={i === 0} accessibilityLabel={`${t(row.title)}. ${t(row.detail)}`} onPress={() => router.push(row.href)}>
-          <IconTile icon={row.icon} color={row.color} />
-          <View style={{ flex: 1 }}>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
-              {t(row.title)}
-            </Text>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
-              {t(row.detail)}
-            </Text>
-          </View>
-          <Ionicons name="chevron-forward" size={18} color={palette.muted} />
-        </GroupRow>
-      ))}
-    </GroupCard>
+    <BentoTile
+      flex={wide ? undefined : flex}
+      minHeight={wide ? 88 : 132}
+      accessibilityLabel={`${t(row.title)}. ${t(row.detail)}`}
+      onPress={() => router.push(row.href)}
+      glow={`${row.color}2e`}
+      style={wide ? { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md } : { justifyContent: 'space-between', rowGap: SPACE.md }}>
+      <IconTile icon={row.icon} color={row.color} />
+      <View style={wide ? { flex: 1 } : null}>
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '700' }}>
+          {t(row.title)}
+        </Text>
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
+          {t(row.detail)}
+        </Text>
+      </View>
+      {wide ? <Ionicons name="chevron-forward" size={18} color={palette.muted} /> : null}
+    </BentoTile>
   );
 }
 
@@ -175,20 +191,7 @@ function Fact({ label, value, color }: { label: string; value: string; color: st
 }
 
 const styles = StyleSheet.create({
-  hero: { borderRadius: RADIUS.panel, padding: SPACE.lg, rowGap: SPACE.lg },
-  heroTop: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.lg },
-  facts: { flexDirection: 'row', flexWrap: 'wrap', rowGap: SPACE.md },
-  fact: { width: '50%', flexDirection: 'row', alignItems: 'flex-start', columnGap: SPACE.sm, paddingRight: SPACE.sm },
+  facts: { rowGap: SPACE.sm },
+  fact: { flexDirection: 'row', alignItems: 'flex-start', columnGap: SPACE.sm },
   factDot: { width: 8, height: 8, borderRadius: 4, marginTop: 5 },
-  next: {
-    marginTop: SPACE.md,
-    borderRadius: RADIUS.card,
-    paddingVertical: SPACE.md,
-    paddingHorizontal: SPACE.lg,
-    flexDirection: 'row',
-    alignItems: 'center',
-    columnGap: SPACE.md,
-    minHeight: 64,
-  },
-  nextIcon: { width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
 });
