@@ -76,7 +76,7 @@ const OWN: Record<string, { home: readonly PhotoId[]; fits?: readonly PhotoId[] 
   narasimhapuran: { home: ['pillar', 'vishnu', 'lotus'] },
   garudpurana: { home: ['dusk', 'vishnu', 'lamp', 'ganga'] },
   // Tulsidas's petition to Rama: the temple photographs give way to Rama himself.
-  vinayapatrika: { home: ['rama', 'lamp', 'temple'], fits: ['rama', 'lotus', 'lamp', 'ganga', 'dawn'] },
+  vinayapatrika: { home: ['rama', 'lamp', 'rama', 'temple'], fits: ['rama', 'lotus', 'lamp', 'ganga', 'dawn'] },
   // One-chapter Upanishads keep the picture of their own teaching.
   ishavasya: { home: ['dawn'] },
   mandukya: { home: ['stars'] },

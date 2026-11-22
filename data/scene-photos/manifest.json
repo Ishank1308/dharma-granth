@@ -1,5 +1,5 @@
 {
-  "_about": "One real photo or classical painting per scene (lib/scene-photos.ts). `file` is a Wikimedia Commons file title; scripts/build-scene-photos.mjs downloads it, checks the licence, crops and compresses it into app/styles/photos/. Entries with file null keep their drawn painting. `focus` is the CSS object-position to keep in frame; `fx` is the light moving over it: embers, mist, glints, dust, stars or none. `queries` are the Commons searches scripts/find-scene-photos.mjs runs to propose candidates.",
+  "_about": "One real photo or classical painting per scene (lib/scene-photos.ts). `file` is a Wikimedia Commons file title; scripts/build-scene-photos.mjs downloads it, checks the licence, crops and compresses it into app/styles/photos/. Entries with file null keep their drawn painting. `trim` (optional) cuts a mount, frame or caption off the original before it is compressed: percent off the top, right, bottom and left. `focus` is the CSS object-position to keep in frame; `fx` is the light moving over it: embers, mist, glints, dust, stars or none. `queries` are the Commons searches scripts/find-scene-photos.mjs runs to propose candidates.",
   "photos": {
     "kurukshetra": {
       "subject": "A wide plain at first light, dust in the air (Kurukshetra)",
@@ -26,6 +26,7 @@
     "vishvarupa": {
       "subject": "The cosmic form shown to Arjuna (classical painting)",
       "file": "Brooklyn Museum - Vishvarupa The Cosmic Form of Krishna.jpg",
+      "trim": [15, 8, 15, 8],
       "focus": "50% 45%",
       "fx": "none",
       "queries": [
@@ -148,6 +149,7 @@
     "vrindavan": {
       "subject": "The groves of Vrindavan by the Yamuna (Bhagavata Purana folio)",
       "file": "The Gopis Search For Krishna.jpg",
+      "trim": [5, 4, 5, 4],
       "focus": "50% 55%",
       "fx": "mist",
       "queries": [
@@ -291,6 +293,7 @@
     "krishna": {
       "subject": "Krishna with his flute among the cows and gopis (Pahari painting)",
       "file": "Krishna with flute.jpg",
+      "trim": [3, 3, 5, 3],
       "focus": "50% 55%",
       "fx": "none",
       "queries": [
@@ -300,6 +303,7 @@
     "shiva": {
       "subject": "Shiva and Parvati with their family on Kailash (Pahari painting)",
       "file": "Shiva and His Family on Mount Kailash.jpg",
+      "trim": [2, 3, 2, 3],
       "focus": "50% 55%",
       "fx": "none",
       "queries": [
@@ -318,6 +322,7 @@
     "rama": {
       "subject": "Hanuman before Rama, Sita and Lakshmana (19th-century painting)",
       "file": "India del nord, hanuman davanti a sita, rama e lakshmana, xix secolo.jpg",
+      "trim": [5, 4, 4, 4],
       "focus": "50% 38%",
       "fx": "none",
       "queries": [
@@ -336,7 +341,8 @@
     "vyasa": {
       "subject": "Ganesha writing the Mahabharata as Vyasa dictates (Mewar manuscript page)",
       "file": "Ganesa writing the Mahabharat.jpeg",
-      "focus": "50% 62%",
+      "trim": [23, 2, 5, 2],
+      "focus": "50% 52%",
       "fx": "none",
       "queries": [
         "Vyasa Ganesha Mahabharata painting"

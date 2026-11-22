@@ -7,7 +7,7 @@
  *   lib/scene-photos.generated.ts           which photos exist, and their credits
  *   app/styles/scene-photos.generated.css   one rule per photo: the image, its focus, its light
  *
- *   node scripts/build-scene-photos.mjs            fetch what is missing
+ *   node scripts/build-scene-photos.mjs            fetch what is missing or whose file or trim changed
  *   node scripts/build-scene-photos.mjs --force    fetch everything again
  *   node scripts/build-scene-photos.mjs --offline  only rewrite the generated files
  *
@@ -65,6 +65,26 @@ async function commonsInfo(file) {
   };
 }
 
+/** `trim` in the manifest: percent cut off the top, right, bottom and left (a mount, a frame, a caption). */
+function trimOf(id, trim) {
+  if (trim == null) return undefined;
+  const ok = Array.isArray(trim) && trim.length === 4 && trim.every((n) => Number.isFinite(n) && n >= 0 && n < 50);
+  if (!ok) throw new Error(`${id}: trim must be four percentages [top, right, bottom, left], each under 50`);
+  return trim;
+}
+
+/** The upright image with its trim cut away. */
+async function trimmed(input, trim) {
+  if (!trim) return sharp(input).rotate();
+  const { data, info } = await sharp(input).rotate().toBuffer({ resolveWithObject: true });
+  const [t, r, b, l] = trim;
+  const left = Math.round((info.width * l) / 100);
+  const top = Math.round((info.height * t) / 100);
+  const width = info.width - left - Math.round((info.width * r) / 100);
+  const height = info.height - top - Math.round((info.height * b) / 100);
+  return sharp(data).extract({ left, top, width, height });
+}
+
 async function main() {
   const manifest = JSON.parse(await readFile(MANIFEST, 'utf8'));
   const credits = (await exists(CREDITS)) ? JSON.parse(await readFile(CREDITS, 'utf8')) : {};
@@ -77,7 +97,8 @@ async function main() {
       continue;
     }
     const avif = path.join(OUT_DIR, `${id}.avif`);
-    const have = (await exists(avif)) && credits[id]?.file === entry.file;
+    const trim = trimOf(id, entry.trim);
+    const have = (await exists(avif)) && credits[id]?.file === entry.file && JSON.stringify(credits[id]?.trim) === JSON.stringify(trim);
     if (offline || (have && !force)) continue;
 
     const info = await commonsInfo(entry.file);
@@ -88,10 +109,10 @@ async function main() {
     const res = await fetch(info.download, { headers: { 'user-agent': UA } });
     if (!res.ok) throw new Error(`${id}: download ${res.status}`);
     const input = Buffer.from(await res.arrayBuffer());
-    const base = sharp(input).rotate().resize({ width: WIDTH, withoutEnlargement: true });
+    const base = (await trimmed(input, trim)).resize({ width: WIDTH, withoutEnlargement: true });
     await base.clone().avif({ quality: 50, effort: 6 }).toFile(avif);
     await base.clone().webp({ quality: 70 }).toFile(path.join(OUT_DIR, `${id}.webp`));
-    credits[id] = { file: entry.file, title: info.title, author: info.author, license: info.license, source: info.source };
+    credits[id] = { file: entry.file, ...(trim ? { trim } : {}), title: info.title, author: info.author, license: info.license, source: info.source };
     console.log(`${id}: ${info.license}, ${info.author}`);
   }
 

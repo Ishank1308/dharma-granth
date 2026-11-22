@@ -29,4 +29,4 @@
 [data-photo='vishnu'] { --photo: image-set(url('./photos/vishnu.avif') type('image/avif'), url('./photos/vishnu.webp') type('image/webp')); --photo-focus: 50% 50%; --photo-fx: var(--fx-none); }
 [data-photo='rama'] { --photo: image-set(url('./photos/rama.avif') type('image/avif'), url('./photos/rama.webp') type('image/webp')); --photo-focus: 50% 38%; --photo-fx: var(--fx-none); }
 [data-photo='gurukul'] { --photo: image-set(url('./photos/gurukul.avif') type('image/avif'), url('./photos/gurukul.webp') type('image/webp')); --photo-focus: 50% 44%; --photo-fx: var(--fx-none); }
-[data-photo='vyasa'] { --photo: image-set(url('./photos/vyasa.avif') type('image/avif'), url('./photos/vyasa.webp') type('image/webp')); --photo-focus: 50% 62%; --photo-fx: var(--fx-none); }
+[data-photo='vyasa'] { --photo: image-set(url('./photos/vyasa.avif') type('image/avif'), url('./photos/vyasa.webp') type('image/webp')); --photo-focus: 50% 52%; --photo-fx: var(--fx-none); }
