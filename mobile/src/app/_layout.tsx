@@ -8,6 +8,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { DailyReminderEffects } from '@/components/daily-reminder-effects';
 import { DailyWidgetEffects } from '@/components/daily-widget-effects';
+import { ObservanceReminderEffects } from '@/components/observance-reminder-effects';
 import { Welcome } from '@/components/welcome';
 import { RecitationProvider } from '@/audio/player';
 import { ToastProvider } from '@/motion/toast';
@@ -79,6 +80,7 @@ function Navigator() {
         <StatusBar style={palette.dark ? 'light' : 'dark'} />
         <RouterRecovery />
         <DailyReminderEffects />
+        <ObservanceReminderEffects />
         <DailyWidgetEffects />
         <Stack
           screenOptions={{

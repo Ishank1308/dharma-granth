@@ -405,6 +405,34 @@ export const S = {
     en: 'One verse a day for svadhyaya, at the time you choose.',
     hi: 'स्वाध्याय के लिए हर दिन एक श्लोक, आपके चुने समय पर।',
   },
+  // Festival-eve and Ekadashi-eve notes (src/lib/observance-notification.ts): off until turned on, one quiet
+  // note the evening before, and always a word that dates differ by region and tradition. No urgency.
+  observanceSection: { en: 'Festivals and Ekadashi', hi: 'पर्व और एकादशी' },
+  festivalEve: { en: 'Festival eve', hi: 'उत्सव से एक दिन पहले' },
+  ekadashiEve: { en: 'Ekadashi eve', hi: 'एकादशी से एक दिन पहले' },
+  observanceNote: {
+    en: 'A quiet note at 6 PM the evening before. Dates differ by region and between Smarta and Vaishnava reckoning, so each note asks you to confirm with your local panchang. Scheduled on this phone; nothing is sent anywhere.',
+    hi: 'एक दिन पहले शाम 6 बजे एक शांत सूचना। तिथियाँ क्षेत्र और स्मार्त-वैष्णव गणना के अनुसार अलग हो सकती हैं, इसलिए हर सूचना स्थानीय पंचांग से मिलाने को कहती है। सूचना इसी फ़ोन पर तय होती है, कहीं कुछ नहीं भेजा जाता।',
+  },
+  observanceChannelName: { en: 'Festival and Ekadashi eve', hi: 'पर्व और एकादशी से एक दिन पहले' },
+  observanceChannelDescription: {
+    en: 'A quiet note the evening before a festival or Ekadashi, if you turn it on.',
+    hi: 'पर्व या एकादशी से एक दिन पहले शाम को एक शांत सूचना, अगर आप इसे चालू करें।',
+  },
+  festivalTomorrow: (name: string) => ({ en: `${name} tomorrow`, hi: `कल ${name} है` }),
+  festivalTomorrowBody: {
+    en: 'Confirm the date with your local panchang; festivals can fall a day apart by region.',
+    hi: 'तिथि अपने स्थानीय पंचांग से मिला लें; क्षेत्र के अनुसार पर्व एक दिन आगे-पीछे हो सकता है।',
+  },
+  ekadashiTomorrow: { en: 'Ekadashi tomorrow', hi: 'कल एकादशी है' },
+  ekadashiTomorrowBody: (name: string) => ({
+    en: `${name}. Confirm the date with your local panchang; Smarta and Vaishnava reckoning can differ by a day.`,
+    hi: `${name}। तिथि अपने स्थानीय पंचांग से मिला लें; स्मार्त और वैष्णव गणना में एक दिन का अंतर हो सकता है।`,
+  }),
+  notificationsOffObservanceBody: {
+    en: 'Allow notifications for Dharma Granth in your phone settings to get festival and Ekadashi notes.',
+    hi: 'पर्व और एकादशी की सूचना पाने के लिए फ़ोन की सेटिंग्स में धर्म ग्रन्थ की सूचनाएँ चालू करें।',
+  },
   bhagavadGita: { en: 'Bhagavad Gita', hi: 'श्रीमद्भगवद्गीता' },
   notificationsOffTitle: { en: 'Notifications are off', hi: 'सूचनाएँ बंद हैं' },
   notificationsOffBody: {

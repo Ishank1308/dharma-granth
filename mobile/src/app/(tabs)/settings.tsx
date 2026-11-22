@@ -172,6 +172,86 @@ function DailyVerseSettings() {
   );
 }
 
+/**
+ * Opt-in notes the evening before a festival or an Ekadashi, beside the daily verse. Both start off; turning
+ * one on asks for notifications the same way the daily verse does. Scheduled on the phone, nothing sent anywhere.
+ */
+function ObservanceSettings() {
+  const { palette, settings, updateSettings } = useAppState();
+  const { t, lang } = useI18n();
+  const [permission, setPermission] = useState<ReminderPermission>('undetermined');
+
+  useFocusEffect(
+    useCallback(() => {
+      let alive = true;
+      getReminderPermission()
+        .then((p) => alive && setPermission(p))
+        .catch(() => {});
+      return () => {
+        alive = false;
+      };
+    }, []),
+  );
+
+  const openSystemSettings = () => Linking.openSettings().catch(() => {});
+
+  const toggle = async (key: 'festivalReminder' | 'ekadashiReminder', on: boolean) => {
+    if (!on) {
+      updateSettings({ [key]: false });
+      return;
+    }
+    const p = await requestReminderPermission(lang).catch((): ReminderPermission => 'denied');
+    setPermission(p);
+    if (p === 'granted') {
+      updateSettings({ [key]: true });
+    } else {
+      Alert.alert(t(S.notificationsOffTitle), t(S.notificationsOffObservanceBody), [
+        { text: t(S.notNow), style: 'cancel' },
+        { text: t(S.openSettings), onPress: openSystemSettings },
+      ]);
+    }
+  };
+
+  const rows: { key: 'festivalReminder' | 'ekadashiReminder'; label: Msg; icon: 'flame' | 'moon'; color: string }[] = [
+    { key: 'festivalReminder', label: S.festivalEve, icon: 'flame', color: TILE.saffron },
+    { key: 'ekadashiReminder', label: S.ekadashiEve, icon: 'moon', color: TILE.indigo },
+  ];
+  // The daily verse section already shows this warning when its own switch is on.
+  const blocked = (settings.festivalReminder || settings.ekadashiReminder) && !settings.dailyReminder && permission === 'denied';
+
+  return (
+    <>
+      <SectionTitle {...S.observanceSection} />
+      <GroupCard>
+        {rows.map((row, i) => (
+          <GroupRow key={row.key} standalone={i === 0} inset={60}>
+            <IconTile icon={row.icon} color={row.color} />
+            <View style={{ flex: 1 }}>
+              <Bilingual {...row.label} weight="500" />
+            </View>
+            <Switch
+              value={settings[row.key]}
+              onValueChange={(v) => void toggle(row.key, v)}
+              trackColor={{ true: palette.accent, false: switchOffTrack(palette) }}
+              thumbColor="#fff"
+              {...({ activeThumbColor: '#fff' } as object)}
+              accessibilityLabel={t(row.label)}
+            />
+          </GroupRow>
+        ))}
+      </GroupCard>
+      {blocked ? (
+        <Pressable accessibilityRole="button" onPress={openSystemSettings} style={[styles.linkBtn, glass(palette, true)]}>
+          <Ionicons name="alert-circle-outline" size={20} color={palette.accent} />
+          <Text style={[styles.linkText, { color: palette.accent }]}>{t(S.notificationsBlocked)}</Text>
+        </Pressable>
+      ) : (
+        <Muted style={{ marginTop: SPACE.sm }}>{t(S.observanceNote)}</Muted>
+      )}
+    </>
+  );
+}
+
 /** The streak switch and a way to start over. Progress itself is kept on the phone and in the backup. */
 function ReadingProgressSettings() {
   const { palette, settings, updateSettings, clearProgress, progress } = useAppState();
@@ -323,6 +403,7 @@ export default function SettingsScreen() {
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.sanskritAlwaysFull)}</Muted>
 
         {remindersSupported ? <DailyVerseSettings /> : null}
+        {remindersSupported ? <ObservanceSettings /> : null}
 
         {/* Everything below is set once, if ever. Each row says what it holds and opens on a tap. */}
         <SectionTitle {...S.settingsMore} />
