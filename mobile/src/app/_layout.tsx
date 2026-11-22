@@ -10,6 +10,7 @@ import { DailyWidgetEffects } from '@/components/daily-widget-effects';
 import { RecitationProvider } from '@/audio/player';
 import { ToastProvider } from '@/motion/toast';
 import { useMotion } from '@/motion/use-motion';
+import { RouterRecovery } from '@/lib/router-recovery';
 import { AppStateProvider, usePrefs } from '@/state/app-state';
 import { JournalProvider } from '@/state/journal';
 import { SANSKRIT_FONT, SERIF_FONT, SERIF_ITALIC_FONT } from '@/theme/fonts';
@@ -63,6 +64,7 @@ function Navigator() {
   return (
     <ThemeProvider value={navTheme}>
         <StatusBar style={palette.dark ? 'light' : 'dark'} />
+        <RouterRecovery />
         <DailyReminderEffects />
         <DailyWidgetEffects />
         <Stack

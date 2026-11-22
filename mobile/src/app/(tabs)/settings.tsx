@@ -157,6 +157,46 @@ function DailyVerseSettings() {
   );
 }
 
+/** The streak switch and a way to start over. Progress itself is kept on the phone and in the backup. */
+function ReadingProgressSettings() {
+  const { palette, settings, updateSettings, clearProgress, progress } = useAppState();
+  const { t } = useI18n();
+  const hasProgress = progress.days.length > 0 || Object.keys(progress.verses).length > 0;
+
+  const confirmClear = () =>
+    Alert.alert(t(S.clearProgressTitle), t(S.clearProgressBody), [
+      { text: t(S.cancel), style: 'cancel' },
+      { text: t(S.clearBtn), style: 'destructive', onPress: clearProgress },
+    ]);
+
+  return (
+    <>
+      <SectionTitle {...S.readingProgressSection} />
+      <GroupCard>
+        <GroupRow standalone inset={60}>
+          <IconTile icon="flame" color={TILE.saffron} />
+          <Bilingual {...S.showStreak} style={{ flex: 1 }} weight="500" />
+          <Switch
+            value={settings.showStreak}
+            onValueChange={(v) => updateSettings({ showStreak: v })}
+            trackColor={{ true: palette.accent, false: switchOffTrack(palette) }}
+            thumbColor="#fff"
+            {...({ activeThumbColor: '#fff' } as object)}
+            accessibilityLabel={t(S.showStreak)}
+          />
+        </GroupRow>
+        {hasProgress ? (
+          <GroupRow inset={60} onPress={confirmClear} accessibilityLabel={t(S.clearProgress)}>
+            <IconTile icon="refresh" color={TILE.vermilion} />
+            <Bilingual {...S.clearProgress} style={{ flex: 1 }} weight="500" />
+          </GroupRow>
+        ) : null}
+      </GroupCard>
+      <Muted style={{ marginTop: SPACE.sm }}>{t(S.readingProgressNote)}</Muted>
+    </>
+  );
+}
+
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { scrollY, onScroll } = useScrollY();
@@ -323,6 +363,8 @@ export default function SettingsScreen() {
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.sanskritAlwaysFull)}</Muted>
 
         {remindersSupported ? <DailyVerseSettings /> : null}
+
+        <ReadingProgressSettings />
 
         <SectionTitle {...S.downloadsSection} />
         <DownloadsSection />

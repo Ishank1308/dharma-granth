@@ -11,6 +11,7 @@ import { dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import type { Lang } from '@/i18n/language';
 import { S } from '@/i18n/strings';
 import { afterStartup } from '@/lib/after-startup';
+import { dayKey, streakForNotification } from '@/lib/progress';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { upcomingReminderTimes } from '@/lib/reminder';
 
@@ -70,10 +71,11 @@ export async function requestReminderPermission(lang: Lang): Promise<ReminderPer
 }
 
 /**
- * The notification text for one day: the whole shloka (never cut mid-verse) and its reference. The title
- * and book name follow the interface language; the verse itself is always Sanskrit.
+ * The notification text for one day: the whole shloka (never cut mid-verse) and its reference, then an
+ * optional gentle line under it (the reading streak). The title and book name follow the interface
+ * language; the verse itself is always Sanskrit.
  */
-export function verseNotificationFor(date: Date, lang: Lang): Notifications.NotificationContentInput | undefined {
+export function verseNotificationFor(date: Date, lang: Lang, note?: string): Notifications.NotificationContentInput | undefined {
   const pick = dailyVerse(date);
   if (!pick) return undefined;
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
@@ -84,7 +86,7 @@ export function verseNotificationFor(date: Date, lang: Lang): Notifications.Noti
   const book = (lang === 'hi' ? entry?.titleSanskrit : undefined) ?? entry?.title ?? S.bhagavadGita[lang];
   return {
     title: S.verseOfTheDay[lang],
-    body: `${lines.join('\n')}\n${book} ${formatVerseRef(pick.id, pick.chapter, verse.number)}`,
+    body: `${lines.join('\n')}\n${book} ${formatVerseRef(pick.id, pick.chapter, verse.number)}${note ? `\n${note}` : ''}`,
     data: { id: pick.id, chapter: pick.chapter, verse: String(verse.number) },
   };
 }
@@ -95,6 +97,11 @@ export interface ReminderOptions {
   minute: number;
   /** Interface language: the notification text is written in it when scheduled. */
   lang: Lang;
+  /**
+   * Days read on, when the reader shows the reading streak. Only the next notification can mention it
+   * (see streakForNotification); later ones stay plain.
+   */
+  streakDays?: string[] | null;
 }
 
 /**
@@ -120,8 +127,11 @@ async function runSync(opts: ReminderOptions): Promise<void> {
   if (!opts.enabled) return;
   if ((await getReminderPermission()) !== 'granted') return;
   await ensureChannel(opts.lang);
-  for (const when of upcomingReminderTimes(new Date(), opts.hour, opts.minute)) {
-    const content = verseNotificationFor(when, opts.lang);
+  const now = new Date();
+  const today = dayKey(now);
+  for (const when of upcomingReminderTimes(now, opts.hour, opts.minute)) {
+    const run = opts.streakDays ? streakForNotification(opts.streakDays, today, dayKey(when)) : 0;
+    const content = verseNotificationFor(when, opts.lang, run > 0 ? S.streakNotification(run)[opts.lang] : undefined);
     if (!content) continue;
     await Notifications.scheduleNotificationAsync({
       content,
