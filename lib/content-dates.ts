@@ -49,6 +49,8 @@ export function scriptureLastChanged(scriptureId: string): Date | undefined {
   if (!/^[a-z0-9][a-z0-9-]*$/i.test(scriptureId)) return undefined;
   return lastChanged(
     `public/data/scriptures-full/${scriptureId}.json`,
+    // Commentary is published per section in a folder (docs/commentary-storage.md); the .json path keeps the history from before.
+    `public/data/hi-commentary/${scriptureId}`,
     `public/data/hi-commentary/${scriptureId}.json`,
   );
 }

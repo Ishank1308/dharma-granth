@@ -3,6 +3,7 @@ import path from "node:path";
 import type { HiCommentaryFragment } from "./_types";
 import { canonicalVerseId } from "../../lib/canonical-verse-id";
 import { aiCommentaryReviewHolds } from "./_ai-holds";
+import { readRecord, recordExists, unitFiles } from "../../scripts/lib/commentary-store.mjs";
 
 /** Review queue written by scripts/generate-verse-commentary.ts. */
 export const AI_QUEUE_DIR = path.resolve("data/ai-commentary");
@@ -59,13 +60,14 @@ export function approvedAiEntries(scriptureId: string): {
   /** Keys whose approved explanation replaces the hand-written one. */
   replaces: Set<string>;
 } {
-  const file = path.join(AI_QUEUE_DIR, `${scriptureId}.json`);
+  // <id>.json, or a folder of sections for a big book (scripts/lib/commentary-store.mjs).
+  const base = path.join(AI_QUEUE_DIR, scriptureId);
   const entries: HiCommentaryFragment = {};
   const stale: string[] = [];
   const replaces = new Set<string>();
-  if (!fs.existsSync(file)) return { entries, stale, replaces };
+  if (!recordExists(base)) return { entries, stale, replaces };
 
-  const queue = JSON.parse(fs.readFileSync(file, "utf8")) as Record<string, QueuedEntry>;
+  const queue = readRecord(base) as Record<string, QueuedEntry>;
   const sanskritNow = currentSanskrit(scriptureId);
   const held = aiCommentaryReviewHolds(scriptureId);
 
@@ -102,9 +104,15 @@ export function approvedAiEntries(scriptureId: string): {
 
 export function aiQueueScriptureIds(): string[] {
   if (!fs.existsSync(AI_QUEUE_DIR)) return [];
-  return fs
-    .readdirSync(AI_QUEUE_DIR)
-    // <id>-research.json holds rewritten research notes, not a queue.
-    .filter((f) => f.endsWith(".json") && !f.endsWith("-research.json"))
-    .map((f) => path.basename(f, ".json"));
+  const ids = new Set<string>();
+  for (const f of fs.readdirSync(AI_QUEUE_DIR)) {
+    // <id>-research holds rewritten research notes, not a queue; the named folders are not queues either.
+    const name = f.endsWith(".json") ? path.basename(f, ".json") : f;
+    if (name.endsWith("-research") || NOT_QUEUES.has(name) || !/^[a-z0-9-]+$/.test(name)) continue;
+    if (f.endsWith(".json") || unitFiles(path.join(AI_QUEUE_DIR, f)).length > 0) ids.add(name);
+  }
+  return [...ids].sort();
 }
+
+/** Folders under data/ai-commentary that are not a book's queue split by section. */
+const NOT_QUEUES = new Set(["history", "proposals", "quarantine", "review-holds", "staged"]);

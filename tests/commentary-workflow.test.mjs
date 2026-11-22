@@ -5,6 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
+import { readRecord, writeRecord } from "../scripts/lib/commentary-store.mjs";
 
 test("commentary staging protects drafts and approval checks the source", () => {
   const root = process.cwd();
@@ -56,7 +57,7 @@ test("commentary staging protects drafts and approval checks the source", () => 
     run(approve, ["testbook", "2:10", "--replacement"], false);
     fs.writeFileSync(queuePath, previous);
 
-    fs.writeFileSync(path.join(tmp, "public/data/hi-commentary/testbook.json"), JSON.stringify({ "2:2.10": { explanation: "मानवीय" }, "2:10": { explanation: "मानवीय" } }));
+    writeRecord(path.join(tmp, "public/data/hi-commentary/testbook"), { "2:2.10": { explanation: "मानवीय" }, "2:10": { explanation: "मानवीय" } }, { split: "always" });
     run(tsx, [checker, "--scripture", "testbook"]);
     run(approve, ["testbook", "2:10", "--replacement"]);
     assert.equal(read()["2:10"].status, "approved");
@@ -85,7 +86,7 @@ test("commentary staging protects drafts and approval checks the source", () => 
     delete queue["2:10"];
     fs.writeFileSync(queuePath, JSON.stringify(queue));
     const moduleUrl = pathToFileURL(path.join(root, "data/hi-commentary/_ai-queue.ts")).href;
-    const expression = `import(${JSON.stringify(moduleUrl)}).then(m => { const r = m.approvedAiEntries('testbook'); if (!r.entries['2:2.10'] || r.stale.length) process.exit(1); });`;
+    const expression = `import(${JSON.stringify(moduleUrl)}).then(m => { const r = (m.approvedAiEntries ?? m.default.approvedAiEntries)('testbook'); if (!r.entries['2:2.10'] || r.stale.length) process.exit(1); });`;
     run(tsx, ["-e", expression]);
     queue["2:999"] = { status: "pending", sanskrit: "अन्य" };
     fs.writeFileSync(queuePath, JSON.stringify(queue));
@@ -111,7 +112,7 @@ test("key report distinguishes shard differences and shadowed raw keys", () => {
     const book = JSON.stringify({ chapters: [{ number: 2, verses: [{ number: "2.10", sanskrit: "धर्मः" }] }] });
     fs.writeFileSync(path.join(tmp, "public/data/scriptures-full/testbook.json"), book);
     fs.writeFileSync(path.join(tmp, "public/data/scriptures-full/testbook/ch-2.json"), JSON.stringify({ chapter: { verses: [{ number: "2.11", sanskrit: "सत्यम्" }, { number: "3.11", sanskrit: "भिन्नम्" }] } }));
-    fs.writeFileSync(path.join(tmp, "public/data/hi-commentary/testbook.json"), JSON.stringify({ "2:10": {}, "2:11": {}, "2:2.11": {}, "2:99": {} }));
+    writeRecord(path.join(tmp, "public/data/hi-commentary/testbook"), { "2:10": {}, "2:11": {}, "2:2.11": {}, "2:99": {} }, { split: "always" });
     fs.writeFileSync(path.join(tmp, "data/ai-commentary/testbook.json"), JSON.stringify({ "2:10": { status: "pending", sanskrit: "भिन्नः" } }));
     const out = path.join(tmp, "report.json");
     const cli = path.join(root, "node_modules/tsx/dist/cli.mjs");

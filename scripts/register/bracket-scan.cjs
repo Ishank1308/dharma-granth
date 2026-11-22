@@ -1,5 +1,7 @@
 const fs=require('fs');
-for(const f of fs.readdirSync('public/data/hi-commentary')){const d=JSON.parse(fs.readFileSync('public/data/hi-commentary/'+f,'utf8'));
+// Published commentary is one folder of section files per scripture (docs/commentary-storage.md).
+const { publishedCommentaryIds, readPublishedCommentary } = require('../lib/commentary-store.mjs');
+for(const f of publishedCommentaryIds().map((id)=>id+'.json')){const d=readPublishedCommentary(f.replace('.json',''));
 for(const [k,e] of Object.entries(d))for(const x of ['explanation','science','lifeLesson']){const t=e[x];if(!t)continue;
 const o=(t.match(/\(/g)||[]).length,c=(t.match(/\)/g)||[]).length;
 const m=t.match(/\(\s*[से के का की को में]\b|\(\s*\)|\(\s*[^)]{0,3}$/);

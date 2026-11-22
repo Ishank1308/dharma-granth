@@ -5,7 +5,7 @@
 //   • icons, fonts     stale-while-revalidate
 //   • scripture JSON   network-first for files you have opened (capped)
 // Everything else (analytics) goes straight to the network.
-const VERSION = 'dg-v8';
+const VERSION = 'dg-v9';
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
 const SCRIPTURE = `${VERSION}-scripture`;
@@ -16,6 +16,8 @@ const MAX_SCRIPTURE = 40;
 // A chapter page with comprehensive word-by-word padas and multiple commentaries
 // can be up to 1MB. Capping at 1MB ensures all canonical texts are cached reliably.
 const MAX_PAGE_BYTES = 1024 * 1024;
+// Where published commentary is served from (NEXT_PUBLIC_COMMENTARY_ORIGIN in the workflows).
+const COMMENTARY_ORIGINS = ['https://commentary.dharma-granth.pages.dev'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -99,7 +101,10 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  if (url.origin !== self.location.origin) return;
+  // Published commentary comes from the `commentary` deployment (docs/commentary-storage.md); it is kept for offline
+  // reading like the scripture payloads below. Every other request to another origin is left alone.
+  const commentary = COMMENTARY_ORIGINS.includes(url.origin) && url.pathname.startsWith('/data/hi-commentary/');
+  if (url.origin !== self.location.origin && !commentary) return;
 
   if (req.mode === 'navigate') {
     event.respondWith(
