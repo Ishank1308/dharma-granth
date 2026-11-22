@@ -13,7 +13,7 @@
     },
     "android": {
       "package": "dev.dharmagranth.app",
-      "versionCode": 4,
+      "versionCode": 5,
       "adaptiveIcon": {
         "backgroundColor": "#FDF6EA",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
