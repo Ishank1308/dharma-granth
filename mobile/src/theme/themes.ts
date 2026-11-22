@@ -1,8 +1,8 @@
 /**
- * The four reading themes, with the same colours as the website (app/globals.css):
- * Day (Usha), Sunset, Paper and Dark (Ratri).
+ * The two reading themes, with the same colours as the website (app/globals.css): Sunset is the light
+ * theme and Dark (Ratri) the dark one.
  */
-export type ThemeName = 'day' | 'sunset' | 'paper' | 'dark';
+export type ThemeName = 'sunset' | 'dark';
 
 export interface Palette {
   name: ThemeName;
@@ -39,32 +39,6 @@ export interface Palette {
 }
 
 export const THEMES: Record<ThemeName, Palette> = {
-  day: {
-    name: 'day',
-    label: 'Day',
-    labelHi: 'दिवस',
-    dark: false,
-    bg: '#f5f5f7',
-    card: '#ffffff',
-    cardSoft: '#fbfbfd',
-    text: '#1d1d1f',
-    textSecondary: '#424245',
-    // Text colours are tuned to WCAG AA: muted, accent and gold all reach 4.5:1 on the thinnest glass over the
-    // brightest aurora pool (scripts/contrast.test.mjs). Muted also holds 4.5:1 straight on the backdrop.
-    muted: '#58585c',
-    border: '#d2d2d7',
-    accent: '#b83e0b',
-    gold: '#876323',
-    glass: 'rgba(255, 255, 255, 0.62)',
-    glassStrong: 'rgba(255, 255, 255, 0.8)',
-    chrome: 'rgba(245, 245, 247, 0.86)',
-    rim: 'rgba(255, 255, 255, 0.75)',
-    rimTop: 'rgba(255, 255, 255, 0.95)',
-    aurora: ['rgba(234, 88, 12, 0.30)', 'rgba(219, 39, 119, 0.22)', 'rgba(13, 148, 136, 0.22)', 'rgba(79, 70, 229, 0.20)', 'rgba(217, 119, 6, 0.20)'],
-    // White labels sit on both ends of the gradient, so its light end stops at 4.5:1 too.
-    accentGradient: ['#cb4c0a', '#b83e0b'],
-    onAccent: '#ffffff',
-  },
   sunset: {
     name: 'sunset',
     label: 'Sunset',
@@ -86,29 +60,6 @@ export const THEMES: Record<ThemeName, Palette> = {
     rimTop: 'rgba(255, 255, 255, 0.95)',
     aurora: ['rgba(234, 88, 12, 0.32)', 'rgba(219, 39, 119, 0.22)', 'rgba(13, 148, 136, 0.18)', 'rgba(79, 70, 229, 0.16)', 'rgba(217, 119, 6, 0.26)'],
     accentGradient: ['#cb4c0a', '#b83e0b'],
-    onAccent: '#ffffff',
-  },
-  paper: {
-    name: 'paper',
-    label: 'Paper',
-    labelHi: 'पत्र',
-    dark: false,
-    bg: '#f5ede0',
-    card: '#fdf8ee',
-    cardSoft: '#f2e7d3',
-    text: '#2c241c',
-    textSecondary: '#4a3d31',
-    muted: '#605547',
-    border: '#ded1bd',
-    accent: '#a24b08',
-    gold: '#a24b08',
-    glass: 'rgba(253, 248, 238, 0.68)',
-    glassStrong: 'rgba(253, 248, 238, 0.86)',
-    chrome: 'rgba(245, 237, 224, 0.9)',
-    rim: 'rgba(255, 248, 232, 0.66)',
-    rimTop: 'rgba(255, 252, 244, 0.9)',
-    aurora: ['rgba(194, 65, 12, 0.22)', 'rgba(190, 24, 93, 0.14)', 'rgba(15, 118, 110, 0.14)', 'rgba(67, 56, 202, 0.12)', 'rgba(180, 83, 9, 0.2)'],
-    accentGradient: ['#c2410c', '#9c4a0a'],
     onAccent: '#ffffff',
   },
   dark: {
@@ -136,7 +87,7 @@ export const THEMES: Record<ThemeName, Palette> = {
   },
 };
 
-export const THEME_ORDER: ThemeName[] = ['day', 'sunset', 'paper', 'dark'];
+export const THEME_ORDER: ThemeName[] = ['sunset', 'dark'];
 
 /** Type scale from app/styles/tokens.css (caption 12 … title-1 26), multiplied by the reader's text size. */
 export const TYPE = {

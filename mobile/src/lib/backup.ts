@@ -68,7 +68,7 @@ export interface Settings {
 }
 
 export const DEFAULT_SETTINGS: Settings = {
-  theme: 'day',
+  theme: 'sunset',
   textScale: 1,
   showTransliteration: true,
   showHindi: true,
@@ -127,7 +127,16 @@ export interface ParsedBackup extends ImportedData {
   journal?: unknown;
 }
 
-const THEMES: ThemeName[] = ['day', 'sunset', 'paper', 'dark'];
+/**
+ * Theme names a saved setting or backup may hold. Day and Paper were removed (only Sunset and Dark are left),
+ * so those light themes move to Sunset.
+ */
+const THEME_MIGRATION: Record<string, ThemeName> = { day: 'sunset', paper: 'sunset', sunset: 'sunset', dark: 'dark' };
+
+/** The theme a saved name stands for today, or undefined when it names none. */
+export function migrateTheme(raw: unknown): ThemeName | undefined {
+  return typeof raw === 'string' && Object.hasOwn(THEME_MIGRATION, raw) ? THEME_MIGRATION[raw] : undefined;
+}
 
 export function bookmarkKey(b: Pick<Bookmark, 'id' | 'chapter' | 'verse'>): string {
   return `${b.id}:${b.chapter}:${b.verse}`;
@@ -142,7 +151,7 @@ export function normalizeSettings(raw: unknown): Settings {
   const s = (raw && typeof raw === 'object' ? raw : {}) as Partial<Settings>;
   const scale = Number(s.textScale);
   return {
-    theme: THEMES.includes(s.theme as ThemeName) ? (s.theme as ThemeName) : DEFAULT_SETTINGS.theme,
+    theme: migrateTheme(s.theme) ?? DEFAULT_SETTINGS.theme,
     textScale: Number.isFinite(scale) ? Math.min(1.6, Math.max(0.8, scale)) : DEFAULT_SETTINGS.textScale,
     showTransliteration: typeof s.showTransliteration === 'boolean' ? s.showTransliteration : DEFAULT_SETTINGS.showTransliteration,
     showHindi: typeof s.showHindi === 'boolean' ? s.showHindi : DEFAULT_SETTINGS.showHindi,
