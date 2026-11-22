@@ -16,6 +16,10 @@ export const SPRING = {
   gentle: { damping: 20, stiffness: 120, mass: 1 },
   /** A small, lively overshoot for a selection: the tab bar pill, a bookmark filling in. */
   lively: { damping: 13, stiffness: 260, mass: 0.7 },
+  /** A bottom sheet rising into place: quick, with no bounce at the top. */
+  sheet: { damping: 24, stiffness: 260, mass: 0.9 },
+  /** Something flying from where you tapped to its place on the next screen (a cover onto its title page). */
+  fly: { damping: 20, stiffness: 150, mass: 0.9 },
 } satisfies Record<string, WithSpringConfig>;
 
 export const DURATION = {
@@ -27,6 +31,9 @@ export const DURATION = {
   /** Simple feedback and anything leaving (a toast going): exits are quicker than entrances. */
   quick: 180,
 } as const;
+
+/** List rows rising in when a screen first opens: the gap between one row and the next, and how many rise. */
+export const STAGGER = { step: 40, max: 8, rise: 14 } as const;
 
 /** How far a pressed card sinks. */
 export const PRESS_SCALE = 0.97;

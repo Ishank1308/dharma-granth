@@ -18,6 +18,7 @@ import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withSpri
 
 import { coverFill } from '@/components/ui';
 import { useParallax } from '@/motion/parallax';
+import { FlyIn, useWillFly } from '@/motion/shared-origin';
 import { DURATION, SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
 import { usePrefs } from '@/state/app-state';
@@ -27,12 +28,14 @@ import { RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 import { Book3D } from './book-3d';
 import { artFor } from './cover-art';
+import { Emblem, emblemFor } from './emblems';
 import { Mandala } from './mandala';
 
 /** Tiro Devanagari Sanskrit, the website's shloka face, embedded in the build (src/theme/fonts.ts). */
 const TITLE_FACE = SANSKRIT_FONT;
 
 export function BookHero({
+  id,
   cover,
   category,
   kind,
@@ -41,8 +44,11 @@ export function BookHero({
   facts,
   letter,
   scrollY,
+  flyFrom,
   children,
 }: {
+  /** The book's id, for its emblem. */
+  id: string;
   cover: Cover;
   /** Category key, for the painting. */
   category: string;
@@ -55,6 +61,8 @@ export function BookHero({
   facts: string;
   letter: string;
   scrollY?: SharedValue<number>;
+  /** The key a tapped cover recorded (src/motion/shared-origin): the book flies from there instead of turning in. */
+  flyFrom?: string;
   children?: ReactNode;
 }) {
   const { palette } = usePrefs();
@@ -64,16 +72,18 @@ export function BookHero({
   const art = useParallax(y, 0.33, { enabled: rich });
   const stage = useParallax(y, 0.18, { enabled: rich, scaleBy: 0.08 });
 
-  // The opening: 0 → 1 for the book, the mandala and the words, each on its own clock.
-  const book = useSharedValue(animate ? 0 : 1);
+  // The opening: 0 → 1 for the book, the mandala and the words, each on its own clock. A book that flies in
+  // from the shelf is already turned to face you, so it skips its own turn.
+  const flying = useWillFly(flyFrom);
+  const book = useSharedValue(animate && !flying ? 0 : 1);
   const bloom = useSharedValue(animate ? 0 : 1);
   const words = useSharedValue(animate ? 0 : 1);
   useEffect(() => {
     if (!animate) return;
-    book.set(withSpring(1, SPRING.gentle));
+    if (!flying) book.set(withSpring(1, SPRING.gentle));
     bloom.set(withDelay(120, withTiming(1, { duration: 700, easing: Easing.out(Easing.cubic) })));
     words.set(withDelay(260, withTiming(1, { duration: DURATION.enter, easing: Easing.out(Easing.quad) })));
-  }, [animate, book, bloom, words]);
+  }, [animate, flying, book, bloom, words]);
 
   const bookIn = useAnimatedStyle(() => ({
     opacity: Math.min(1, book.value * 1.6),
@@ -85,31 +95,43 @@ export function BookHero({
   const [deep] = cover.colors;
 
   return (
-    <View style={[styles.hero, coverFill(cover, palette, true), !palette.lite && styles.lift]}>
-      {/* The painting, blended into the cover colours. The blend sits on the moving layer itself: a blend inside
-          a transformed wrapper would only blend with the wrapper. */}
-      <Animated.View
-        pointerEvents="none"
-        style={[styles.art, { opacity: palette.lite ? 0.16 : 0.85, mixBlendMode: palette.lite ? undefined : 'soft-light' }, art]}>
-        <Image source={artFor(category)} resizeMode="cover" accessibilityIgnoresInvertColors style={{ width: '100%', height: '100%' }} />
-      </Animated.View>
-      {!palette.lite ? (
-        <>
-          <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundImage: `radial-gradient(60% 40% at 50% 24%, ${cover.colors[2]} 0%, transparent 72%)`, opacity: 0.45 }]} />
-          {/* Deepens toward the foot, so the white title and the gilt line stay readable over any painting. */}
-          <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundImage: `linear-gradient(180deg, transparent 34%, ${deep}d9 72%, ${deep} 100%)` }]} />
-        </>
-      ) : null}
+    <View style={[styles.hero, !palette.lite && styles.lift]}>
+      {/* The cover's colours and painting are clipped to the page's rounded corners; the book itself is not, so a
+          cover flying in from the shelf is seen the whole way (src/motion/shared-origin). */}
+      <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.clip, coverFill(cover, palette, true)]}>
+        {/* The painting, blended into the cover colours. The blend sits on the moving layer itself: a blend inside
+            a transformed wrapper would only blend with the wrapper. */}
+        <Animated.View style={[styles.art, { opacity: palette.lite ? 0.16 : 0.85, mixBlendMode: palette.lite ? undefined : 'soft-light' }, art]}>
+          <Image source={artFor(category)} resizeMode="cover" accessibilityIgnoresInvertColors style={{ width: '100%', height: '100%' }} />
+        </Animated.View>
+        {!palette.lite ? (
+          <>
+            <View style={[StyleSheet.absoluteFill, { backgroundImage: `radial-gradient(60% 40% at 50% 24%, ${cover.colors[2]} 0%, transparent 72%)`, opacity: 0.45 }]} />
+            {/* Deepens toward the foot, so the white title and the gilt line stay readable over any painting. */}
+            <View style={[StyleSheet.absoluteFill, { backgroundImage: `linear-gradient(180deg, transparent 34%, ${deep}d9 72%, ${deep} 100%)` }]} />
+          </>
+        ) : null}
+        {/* Behind the book, a gilt mandala blooms. */}
+        <Animated.View style={[styles.stage, styles.stageBack, stage]}>
+          <Animated.View style={[styles.mandala, bloomIn]}>
+            <Mandala size={250} color={cover.foil} opacity={0.24} spin={rich} petals={16} />
+          </Animated.View>
+        </Animated.View>
+      </View>
 
       <Animated.View style={[styles.stage, stage]}>
-        <Animated.View style={[styles.mandala, bloomIn]}>
-          <Mandala size={250} color={cover.foil} opacity={0.24} spin={rich} petals={16} />
-        </Animated.View>
         <Animated.View style={bookIn}>
-          <Book3D cover={cover} letter={letter} width={112} />
+          <FlyIn from={flyFrom}>
+            <Book3D cover={cover} letter={letter} width={112} />
+          </FlyIn>
         </Animated.View>
       </Animated.View>
 
+      {/* The book's own emblem as a headpiece, traced in gilt by a pen as the page opens: the chariot wheel for
+          the Gita, Rama's bow for the Manas, the lamp of the Upanishads (src/components/art/emblems). */}
+      <View style={styles.headpiece}>
+        <Emblem name={emblemFor(id, category)} size={44} color={cover.foil} strokeWidth={2} delay={flying ? 320 : 220} turn />
+      </View>
       <Animated.View style={[styles.words, wordsIn]}>
         {kind ? (
           <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={[styles.kind, { color: cover.foil }]}>
@@ -145,11 +167,14 @@ export function BookHero({
 }
 
 const styles = StyleSheet.create({
-  hero: { borderRadius: RADIUS.panel, overflow: 'hidden', paddingBottom: SPACE.xl },
+  hero: { borderRadius: RADIUS.panel, paddingBottom: SPACE.xl },
+  clip: { borderRadius: RADIUS.panel, overflow: 'hidden' },
   lift: { boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.28), 0 18px 40px rgba(10,20,50,0.32)' },
   art: { position: 'absolute', left: 0, right: 0, top: -60, bottom: -20 },
   stage: { alignItems: 'center', justifyContent: 'center', paddingTop: SPACE.lg, height: 212 },
+  stageBack: { position: 'absolute', top: 0, left: 0, right: 0 },
   mandala: { position: 'absolute', top: SPACE.lg + 181 / 2 - 125 },
+  headpiece: { alignItems: 'center', marginTop: -SPACE.xs, marginBottom: SPACE.xs },
   // Centred: a title page is the one place in the app where the text sits on the axis of the book.
   words: { alignItems: 'center', paddingHorizontal: SPACE.xl - 2 },
   kind: { fontSize: TYPE.footnote, fontWeight: '600', marginBottom: SPACE.xs },

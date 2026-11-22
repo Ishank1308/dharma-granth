@@ -4,6 +4,7 @@ import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { EmptyArt } from '@/components/art/empty-art';
 import { Backdrop, barSurface, Card, Chip, coverFill, glass, GroupTitle, LargeHeader, Muted } from '@/components/ui';
 import { getEntry } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
@@ -253,7 +254,10 @@ export default function SearchScreen() {
                 </View>
               </View>
             ) : result && !busy && result.tokens.length > 0 ? (
-              <Muted style={{ textAlign: 'center', marginTop: SPACE.xl }}>{t(S.searchNoVerse(q, !!section))}</Muted>
+              <View style={{ alignItems: 'center', marginTop: SPACE.lg, rowGap: SPACE.sm }}>
+                <EmptyArt kind="search" size={112} />
+                <Muted style={{ textAlign: 'center' }}>{t(S.searchNoVerse(q, !!section))}</Muted>
+              </View>
             ) : undefined
           }
         />

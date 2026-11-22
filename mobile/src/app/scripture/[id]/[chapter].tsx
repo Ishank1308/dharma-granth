@@ -1,9 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Stack, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { ActivityIndicator, type FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { GestureDetector, usePanGesture } from 'react-native-gesture-handler';
+import Animated, { Extrapolation, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { scheduleOnRN } from 'react-native-worklets';
 
 import { useRecitation } from '@/audio/player';
 import { recitedVerses } from '@/audio/recitation';
@@ -20,18 +22,24 @@ import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { READ_DWELL_MS } from '@/lib/progress';
 import { toDevanagari } from '@/lib/verse-format';
+import { hapticSelect } from '@/motion/haptics';
 import { PressableScale } from '@/motion/pressable-scale';
-import { DURATION } from '@/motion/tokens';
+import { FlyIn } from '@/motion/shared-origin';
+import { DURATION, SPRING } from '@/motion/tokens';
+import { useScreenReader } from '@/motion/use-screen-reader';
 import { useToast } from '@/motion/toast';
 import { useMotion } from '@/motion/use-motion';
 import { useAppState } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
-import { BAR_GAP, barClearance, quietFill, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
+import { SANSKRIT_FONT } from '@/theme/fonts';
+import { BAR_GAP, BAR_HEIGHT, barClearance, quietFill, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
 
 const VIEWABILITY = { itemVisiblePercentThreshold: 40 };
+/** How far a sideways swipe must travel to turn the chapter. */
+const TURN_AT = 96;
 
 /**
  * A verse this many cards or more past the first one in the list is reached by starting the list a couple
@@ -115,6 +123,7 @@ export default function ChapterScreen() {
   const jumpToTarget = () => {
     if (goal.current < 0 || userScrolled.current) return;
     jumpFailed.current = false;
+    muteBar();
     listRef.current?.scrollToIndex({ index: Math.max(0, goal.current - baseRef.current), animated: false, viewPosition: 0 });
     // onScrollToIndexFailed runs synchronously inside scrollToIndex, so this tells us if it landed.
     if (!jumpFailed.current && !settled.current) {
@@ -128,7 +137,99 @@ export default function ChapterScreen() {
   const prev = idx > 0 ? entry!.chapters[idx - 1] : undefined;
   const next = entry && idx >= 0 && idx < entry.chapters.length - 1 ? entry.chapters[idx + 1] : undefined;
 
-  const go = (n: number) => router.replace({ pathname: '/scripture/[id]/[chapter]', params: { id, chapter: String(n) } });
+  // Turning back slides the page in from the left (src/app/_layout reads `dir`).
+  const go = (n: number, dir?: 'prev') =>
+    router.replace({ pathname: '/scripture/[id]/[chapter]', params: dir ? { id, chapter: String(n), dir } : { id, chapter: String(n) } });
+  const turn = (step: 1 | -1) => {
+    if (step === 1 && next) go(next.number);
+    else if (step === -1 && prev) go(prev.number, 'prev');
+  };
+
+  /**
+   * Swipe sideways to turn the chapter, as a page: the text leans with your finger, the neighbouring
+   * chapter's arrow grows at the edge, and a tick says it will turn when you let go. Vertical scrolling
+   * wins any diagonal, so reading is never interrupted. The toolbar's arrows do the same for TalkBack.
+   */
+  const hasPrev = !!prev;
+  const hasNext = !!next;
+  const dragX = useSharedValue(0);
+  const armed = useSharedValue(0);
+  const swipe = usePanGesture({
+    activeOffsetX: [-24, 24],
+    failOffsetY: [-14, 14],
+    onUpdate: (e) => {
+      'worklet';
+      let x = e.translationX;
+      // Past the first or last chapter the page only gives a little.
+      if ((x > 0 && !hasPrev) || (x < 0 && !hasNext)) x *= 0.15;
+      dragX.set(x);
+      const past = Math.abs(x) > TURN_AT ? 1 : 0;
+      if (past !== armed.get()) {
+        armed.set(past);
+        if (past) scheduleOnRN(hapticSelect);
+      }
+    },
+    onDeactivate: (e) => {
+      'worklet';
+      const x = dragX.get();
+      if (hasNext && (x < -TURN_AT || (e.velocityX < -900 && x < -40))) scheduleOnRN(turn, 1);
+      else if (hasPrev && (x > TURN_AT || (e.velocityX > 900 && x > 40))) scheduleOnRN(turn, -1);
+      dragX.set(animate ? withSpring(0, SPRING.settle) : 0);
+      armed.set(0);
+    },
+  });
+  const pageLean = useAnimatedStyle(() => ({ transform: [{ translateX: dragX.get() * 0.35 }] }));
+  const prevCue = useAnimatedStyle(() => {
+    const p = interpolate(dragX.get(), [0, TURN_AT], [0, 1], Extrapolation.CLAMP);
+    return { opacity: p, transform: [{ translateX: (1 - p) * -24 }, { scale: 0.7 + p * 0.3 }] };
+  });
+  const nextCue = useAnimatedStyle(() => {
+    const p = interpolate(-dragX.get(), [0, TURN_AT], [0, 1], Extrapolation.CLAMP);
+    return { opacity: p, transform: [{ translateX: (1 - p) * 24 }, { scale: 0.7 + p * 0.3 }] };
+  });
+  const prevFill = useAnimatedStyle(() => ({ opacity: dragX.get() > TURN_AT ? 1 : 0 }));
+  const nextFill = useAnimatedStyle(() => ({ opacity: -dragX.get() > TURN_AT ? 1 : 0 }));
+
+  /**
+   * The toolbar steps aside while you read down the chapter and comes back the moment you scroll up, reach
+   * the end, or return to the top, as in Apple Books. It stays put for TalkBack, during a recitation, and
+   * with reduce motion.
+   */
+  const screenReader = useScreenReader();
+  const pinBar = screenReader || !animate;
+  const barAway = useSharedValue(0);
+  const lastY = useSharedValue(0);
+  // Only the reader's own scrolling moves the bar: a jump to a linked or picked verse leaves it in place.
+  // (The web preview scrolls by wheel, which has no drag events, so there any scroll counts.)
+  const fingerScroll = useSharedValue(Platform.OS === 'web' ? 1 : 0);
+  const fingerOn = () => fingerScroll.set(1);
+  const fingerOff = () => {
+    if (Platform.OS !== 'web') fingerScroll.set(0);
+  };
+  // A jump in flight mutes the bar outright, so the web preview's landing keeps it too.
+  const jumping = useSharedValue(0);
+  const jumpSeq = useRef(0);
+  const muteBar = () => {
+    jumping.set(1);
+    const seq = ++jumpSeq.current;
+    later(() => {
+      if (seq === jumpSeq.current) jumping.set(0);
+    }, 400);
+  };
+  const onScroll = useAnimatedScrollHandler((e) => {
+    const yy = e.contentOffset.y;
+    const dy = yy - lastY.get();
+    lastY.set(yy);
+    const nearEnd = yy + e.layoutMeasurement.height > e.contentSize.height - 160;
+    const own = fingerScroll.get() > 0 && jumping.get() === 0;
+    const want = pinBar || yy < 120 || nearEnd || (own && dy < -4) ? 0 : own && dy > 4 ? 1 : barAway.get() > 0.5 ? 1 : 0;
+    const now = barAway.get() > 0.5 ? 1 : 0;
+    if (want !== now) barAway.set(withSpring(want, SPRING.settle));
+  });
+  const barStyle = useAnimatedStyle(() => ({
+    opacity: 1 - barAway.get() * 0.4,
+    transform: [{ translateY: barAway.get() * (BAR_HEIGHT + insets.bottom + BAR_GAP + SPACE.lg) }],
+  }));
 
   // Bookmarked verse numbers in this chapter only. With a stable toggle callback, saving one verse
   // re-renders that one card instead of every card on screen (VerseCard is memoised).
@@ -273,6 +374,10 @@ export default function ChapterScreen() {
     reach(index, false);
   }, [playingHere, continuous]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  useEffect(() => {
+    if (playingHere || pinBar) barAway.set(0);
+  }, [playingHere, pinBar, barAway]);
+
   const onPlay = () => {
     if (playingHere) {
       if (phase === 'playing') pause();
@@ -365,8 +470,12 @@ export default function ChapterScreen() {
             ),
           }}
         />
-        <FlatList
-          ref={listRef}
+        <GestureDetector gesture={swipe}>
+        <Animated.View style={[styles.page, pageLean]}>
+        <Animated.FlatList
+          ref={listRef as never}
+          onScroll={onScroll}
+          scrollEventThrottle={16}
           style={{ backgroundColor: 'transparent' }}
           contentContainerStyle={{ padding: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}
           data={data}
@@ -392,7 +501,11 @@ export default function ChapterScreen() {
           }}
           onScrollBeginDrag={() => {
             userScrolled.current = true;
+            fingerOn();
           }}
+          onScrollEndDrag={fingerOff}
+          onMomentumScrollBegin={fingerOn}
+          onMomentumScrollEnd={fingerOff}
           onScrollToIndexFailed={(info) => {
             jumpFailed.current = true;
             if (userScrolled.current) return;
@@ -401,6 +514,7 @@ export default function ChapterScreen() {
             highestSeen.current = Math.max(highestSeen.current, info.highestMeasuredFrameIndex);
             if (stalls.current > 12) return;
             if (info.highestMeasuredFrameIndex > 0) {
+              muteBar();
               listRef.current?.scrollToIndex({ index: info.highestMeasuredFrameIndex, animated: false, viewPosition: 0 });
             }
             later(jumpToTarget, 80);
@@ -418,6 +532,17 @@ export default function ChapterScreen() {
                   </Text>
                 </Pressable>
               ) : null}
+              {/* The chapter's numeral in the shloka face, as a printed book heads a chapter. Tapped in the
+                  contents, it flies here from the row (src/motion/shared-origin). */}
+              <FlyIn from={`chapter:${id}:${chapterNo}`}>
+                <Text
+                  accessibilityElementsHidden
+                  importantForAccessibility="no"
+                  allowFontScaling={false}
+                  style={{ fontFamily: SANSKRIT_FONT, color: palette.gold, fontSize: 56, lineHeight: 84, textAlign: 'center' }}>
+                  {toDevanagari(chapterNo)}
+                </Text>
+              </FlyIn>
               <Eyebrow en={`Chapter ${chapterNo}`} hi={`अध्याय ${toDevanagari(chapterNo)}`} style={{ alignSelf: 'center' }} />
               <Text
                 accessibilityRole="header"
@@ -479,13 +604,39 @@ export default function ChapterScreen() {
             </View>
           }
         />
+        </Animated.View>
+        </GestureDetector>
+
+        {/* The neighbouring chapters' arrows, growing at the edges as a sideways swipe turns the page. */}
+        {prev ? (
+          <Animated.View pointerEvents="none" style={[styles.cue, { left: SPACE.md }, prevCue]}>
+            <View style={[styles.cueDot, glass(palette, true)]}>
+              <Animated.View style={[StyleSheet.absoluteFill, styles.cueFill, accentFill(palette), prevFill]} />
+              <Ionicons name="chevron-back" size={22} color={palette.text} />
+            </View>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={[styles.cueLabel, { color: palette.muted }]}>
+              {t(S.chapterN(prev.number))}
+            </Text>
+          </Animated.View>
+        ) : null}
+        {next ? (
+          <Animated.View pointerEvents="none" style={[styles.cue, { right: SPACE.md }, nextCue]}>
+            <View style={[styles.cueDot, glass(palette, true)]}>
+              <Animated.View style={[StyleSheet.absoluteFill, styles.cueFill, accentFill(palette), nextFill]} />
+              <Ionicons name="chevron-forward" size={22} color={palette.text} />
+            </View>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={[styles.cueLabel, { color: palette.muted }]}>
+              {t(S.chapterN(next.number))}
+            </Text>
+          </Animated.View>
+        ) : null}
 
         {/* The reader's controls, in the thumb zone: previous chapter, where you are (tap to jump), next chapter. */}
-        <View pointerEvents="box-none" style={[styles.toolbarWrap, { bottom: Math.max(insets.bottom, SPACE.sm) + BAR_GAP }]}>
+        <Animated.View pointerEvents="box-none" style={[styles.toolbarWrap, { bottom: Math.max(insets.bottom, SPACE.sm) + BAR_GAP }, barStyle]}>
           <FloatingBar style={styles.toolbar}>
             <IconButton
               icon="chevron-back"
-              onPress={() => prev && go(prev.number)}
+              onPress={() => prev && go(prev.number, 'prev')}
               disabled={!prev}
               accessibilityLabel={prev ? t(S.prevChapterA11y(prev.title)) : t(S.firstChapter)}
               color={prev ? palette.text : palette.border}
@@ -518,7 +669,8 @@ export default function ChapterScreen() {
                 )}
               </PressableScale>
             ) : null}
-            <Pressable
+            <PressableScale
+              scaleTo={0.94}
               accessibilityRole="button"
               accessibilityLabel={
                 playingHere
@@ -526,11 +678,7 @@ export default function ChapterScreen() {
                   : t(S.jumpToVerseA11y(shownVerse, total))
               }
               onPress={() => total > 0 && setSheet('jump')}
-              style={({ pressed }) => [
-                styles.position,
-                { backgroundColor: quietFill(palette) },
-                pressed && { opacity: 0.75 },
-              ]}>
+              style={[styles.position, { backgroundColor: quietFill(palette) }]}>
               <Text
                 maxFontSizeMultiplier={1.4}
                 numberOfLines={1}
@@ -543,7 +691,7 @@ export default function ChapterScreen() {
                 {playingHere ? ' ' : ''}
                 {playingHere ? t(S.verseOfShort(playingHere, total)) : t(S.verseOf(shownVerse, total))}
               </Text>
-            </Pressable>
+            </PressableScale>
             {playingHere ? <IconButton icon="stop" onPress={stop} accessibilityLabel={t(S.stopRecitation)} color={palette.muted} /> : null}
             <IconButton
               icon="chevron-forward"
@@ -553,7 +701,7 @@ export default function ChapterScreen() {
               color={next ? palette.text : palette.border}
             />
           </FloatingBar>
-        </View>
+        </Animated.View>
 
         <ReadingSheet visible={sheet === 'reading'} onClose={() => setSheet('none')} />
         <VerseJumpSheet visible={sheet === 'jump'} onClose={() => setSheet('none')} numbers={numbers} current={visibleIndex} onPick={jumpTo} />
@@ -584,6 +732,11 @@ const styles = StyleSheet.create({
   progressTrack: { position: 'absolute', left: 0, right: 0, bottom: 0, height: 2 },
   progressFill: { height: 2, transformOrigin: 'left' },
   toolbarWrap: { position: 'absolute', left: SPACE.lg, right: SPACE.lg },
+  page: { flex: 1 },
+  cue: { position: 'absolute', top: '42%', alignItems: 'center', rowGap: SPACE.xs },
+  cueDot: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' },
+  cueFill: { borderRadius: TOUCH / 2 },
+  cueLabel: { fontSize: TYPE.caption, fontWeight: '600' },
   toolbar: { justifyContent: 'space-between' },
   position: {
     flexShrink: 1,

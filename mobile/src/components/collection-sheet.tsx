@@ -1,11 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
-import { KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
-import { accentFill, IconButton } from '@/components/ui';
+import { accentFill } from '@/components/ui';
 import { COLLECTION_LABELS, S, useI18n, type Msg } from '@/i18n';
 import { allCollections, collectionOf, isBuiltin, MAX_COLLECTION_NAME, type CollectionError, type VerseCollection, type VerseLink } from '@/lib/journal';
+import { PressableScale } from '@/motion/pressable-scale';
+import { Sheet as MotionSheet } from '@/motion/sheet';
 import { usePrefs } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { quietFill, RADIUS, separator, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
@@ -23,30 +24,9 @@ export function useCollectionName(): (c: Pick<VerseCollection, 'id' | 'name'>) =
   return (c) => (isBuiltin(c.id) ? t(COLLECTION_LABELS[c.id]) : c.name);
 }
 
-/** The bottom sheet's frame, as the reading sheet. */
-function Sheet({ visible, title, onClose, children }: { visible: boolean; title: string; onClose: () => void; children: React.ReactNode }) {
-  const insets = useSafeAreaInsets();
-  const { palette } = usePrefs();
-  const { t } = useI18n();
-  return (
-    <Modal visible={visible} transparent animationType="slide" statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>
-      <Pressable style={styles.scrim} onPress={onClose} accessible={false} importantForAccessibility="no" />
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.sheetWrap} pointerEvents="box-none">
-        <View
-          accessibilityViewIsModal
-          style={[styles.sheet, { backgroundColor: palette.dark ? '#1c1c1e' : palette.card, paddingBottom: Math.max(insets.bottom, SPACE.lg) + SPACE.sm }]}>
-          <View style={[styles.grabber, { backgroundColor: quietFill(palette) }]} />
-          <View style={styles.head}>
-            <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.title2, fontWeight: '700' }}>
-              {title}
-            </Text>
-            <IconButton icon="close" onPress={onClose} accessibilityLabel={t(S.close)} color={palette.text} tone="quiet" />
-          </View>
-          {children}
-        </View>
-      </KeyboardAvoidingView>
-    </Modal>
-  );
+/** The bottom sheet's frame (src/motion/sheet), lifted over the keyboard for the name field. */
+function Sheet(props: { visible: boolean; title: string; onClose: () => void; children: React.ReactNode }) {
+  return <MotionSheet {...props} keyboard />;
 }
 
 /** A name field with Save, for a new collection or a rename. */
@@ -74,11 +54,11 @@ export function NameField({ initial = '', onSubmit, autoFocus }: { initial?: str
           returnKeyType="done"
           style={[styles.input, { color: palette.text, backgroundColor: quietFill(palette), borderColor: error ? '#dc2626' : 'transparent' }]}
         />
-        <Pressable onPress={submit} accessibilityRole="button" style={({ pressed }) => [styles.save, accentFill(palette), pressed && { opacity: 0.85 }]}>
+        <PressableScale scaleTo={0.94} onPress={submit} accessibilityRole="button" style={[styles.save, accentFill(palette)]}>
           <Text maxFontSizeMultiplier={1.4} style={{ color: palette.onAccent, fontWeight: '700', fontSize: TYPE.callout }}>
             {t(S.saveBtn)}
           </Text>
-        </Pressable>
+        </PressableScale>
       </View>
       {error ? (
         <Text accessibilityLiveRegion="polite" style={{ color: palette.dark ? '#f87171' : '#b91c1c', fontSize: TYPE.footnote }}>
@@ -163,17 +143,6 @@ export function NameSheet({ visible, title, initial, onSubmit, onClose }: { visi
 }
 
 const styles = StyleSheet.create({
-  scrim: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.35)' },
-  sheetWrap: { flex: 1, justifyContent: 'flex-end' },
-  sheet: {
-    maxHeight: '85%',
-    borderTopLeftRadius: RADIUS.panel + 6,
-    borderTopRightRadius: RADIUS.panel + 6,
-    paddingHorizontal: SPACE.xl - 4,
-    paddingTop: SPACE.sm,
-  },
-  grabber: { alignSelf: 'center', width: 40, height: 5, borderRadius: 3, marginBottom: SPACE.sm },
-  head: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: SPACE.xs },
   group: { borderRadius: RADIUS.row, overflow: 'hidden' },
   row: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md, minHeight: TOUCH + 4, paddingHorizontal: SPACE.lg },
   hairline: { position: 'absolute', top: 0, left: 52, right: 0, height: StyleSheet.hairlineWidth * 2 },
