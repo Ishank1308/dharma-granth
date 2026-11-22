@@ -12,6 +12,11 @@ import { expect, test, type Page } from '@playwright/test';
 const PHONE = { width: 390, height: 844 };
 const DESKTOP = { width: 1280, height: 900 };
 
+// The grids rise into view as they scroll in (.reveal-grid), and a tile that is still below the
+// fold is mid-way through that move, so its measured box is a few pixels off. These tests measure
+// the layout at rest, so they ask for Reduce Motion throughout.
+test.use({ reducedMotion: 'reduce' });
+
 const lead = (page: Page) => page.locator('#main-content .bento > [data-tile="lead"]').first();
 
 const overflow = (page: Page) => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
@@ -98,7 +103,7 @@ test('Sadhana opens with today, and each row jumps to its practice', async ({ pa
 test('Sadhana shows what was already done today, and the tile keeps its height', async ({ browser }) => {
   const heights: number[] = [];
   for (const seeded of [false, true]) {
-    const context = await browser.newContext({ viewport: PHONE });
+    const context = await browser.newContext({ viewport: PHONE, reducedMotion: 'reduce' });
     // Saved before the page first loads, the way a returning reader's data is (the same keys the tools write).
     if (seeded) {
       await context.addInitScript(() => {
@@ -213,7 +218,7 @@ test.describe('without script', () => {
 test('the festival tile is the same height before and after it learns the date', async ({ browser }) => {
   const heights: number[] = [];
   for (const javaScriptEnabled of [false, true]) {
-    const context = await browser.newContext({ viewport: PHONE, javaScriptEnabled });
+    const context = await browser.newContext({ viewport: PHONE, javaScriptEnabled, reducedMotion: 'reduce' });
     const page = await context.newPage();
     if (javaScriptEnabled) await page.clock.install({ time: new Date('2026-11-22T06:00:00.000Z') });
     await page.goto('/festivals/');
