@@ -1,6 +1,7 @@
 /**
- * A book you can almost pick up: the scripture's cover in its website colours, with a gilt monogram, a spine,
- * page edges and a soft shadow, drawn in 3D perspective. It tilts toward your finger as you touch it, follows the
+ * A book you can almost pick up: the scripture's cloth binding (src/components/art/cover-face) with its gilt
+ * emblem and title, a banded spine, page edges, a silk marker and a soft shadow, drawn in 3D perspective. The
+ * emblem is traced in gold as the book arrives. It tilts toward your finger as you touch it, follows the
  * phone's tilt (the rotation sensor) like a card in a wallet app, and floats gently at rest. Let go and it settles
  * back on a spring with a light haptic tick.
  *
@@ -8,7 +9,7 @@
  * book still tilts under the finger; with reduce motion it is a still cover.
  */
 import { useEffect } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import Animated, {
   cancelAnimation,
   Easing,
@@ -24,14 +25,14 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { Quiet } from '@/components/error-boundary';
-import { coverFill } from '@/components/ui';
 import { hapticTap } from '@/motion/haptics';
 import { MAX_TILT, SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
 import { usePrefs } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 
-import { Mandala } from './mandala';
+import type { CoverArt } from './cover-art';
+import { CoverFace, COVER_RATIO, Marker } from './cover-face';
 
 const clamp = (v: number, lo: number, hi: number) => {
   'worklet';
@@ -62,21 +63,23 @@ function GyroTilt({ x, y }: { x: SharedValue<number>; y: SharedValue<number> }) 
 
 export function Book3D({
   cover,
-  letter,
+  art,
+  title,
   width = 128,
-  label,
+  drawDelay = 0,
 }: {
   cover: Cover;
-  /** The monogram on the front (भ, रा, ऋ). */
-  letter: string;
+  /** The painting or emblem in the arch (coverArt in src/components/art/cover-art). */
+  art: CoverArt;
+  /** The book's name in Devanagari, stamped under the arch. */
+  title: string;
   width?: number;
-  /** A short line under the monogram, such as the category. */
-  label?: string;
+  /** When the pen starts on the emblem, in ms after the book appears. */
+  drawDelay?: number;
 }) {
   const { palette } = usePrefs();
   const { animate, rich } = useMotion();
-  const height = Math.round(width * 1.42);
-  const spine = Math.round(width * 0.085);
+  const height = Math.round(width * COVER_RATIO);
   const depth = Math.max(5, Math.round(width * 0.06));
 
   // Touch tilt (springs), sensor tilt (smoothed raw values) and the idle float add up.
@@ -134,7 +137,7 @@ export function Book3D({
     hapticTap();
   };
 
-  const [deep, , light] = cover.colors;
+  const [, mid, light] = cover.colors;
 
   return (
     <View
@@ -178,36 +181,11 @@ export function Book3D({
             },
           ]}
         />
+        {/* The silk marker, hanging from the foot. */}
+        <Marker color={light} width={Math.round(width * 0.07)} length={Math.round(width * 0.15)} left={width * 0.7} top={height - 3} />
         {/* The cover. */}
-        <View style={[StyleSheet.absoluteFill, styles.cover, coverFill(cover, palette)]}>
-          {!palette.lite ? (
-            <View pointerEvents="none" style={[StyleSheet.absoluteFill, { backgroundImage: `radial-gradient(70% 50% at 85% 10%, ${light} 0%, transparent 70%)`, opacity: 0.6 }]} />
-          ) : null}
-          <Mandala size={width * 1.1} color={cover.foil} opacity={0.28} spin={rich} style={{ position: 'absolute', left: -width * 0.05 + spine / 2, top: height / 2 - width * 0.55 }} />
-          {/* Gilt frame. */}
-          <View pointerEvents="none" style={[styles.frame, { borderColor: cover.foil, left: spine + 7, right: 7, top: 8, bottom: 8 }]} />
-          <View style={[styles.face, { paddingLeft: spine }]}>
-            <Text allowFontScaling={false} style={{ color: cover.foil, fontSize: Math.round(width * 0.36), lineHeight: Math.round(width * 0.52), textShadowColor: 'rgba(0,0,0,0.35)', textShadowRadius: 6, textShadowOffset: { width: 0, height: 1 } }}>
-              {letter}
-            </Text>
-            {label ? (
-              <Text allowFontScaling={false} numberOfLines={1} style={{ color: cover.foil, fontSize: Math.max(8, Math.round(width * 0.075)), fontWeight: '700', letterSpacing: 1.2, opacity: 0.9, textTransform: 'uppercase' }}>
-                {label}
-              </Text>
-            ) : null}
-          </View>
-          {/* Spine: a darker band with a rounded highlight, and its hinge groove. */}
-          <View
-            style={[
-              styles.spine,
-              {
-                width: spine,
-                backgroundColor: deep,
-                backgroundImage: palette.lite ? undefined : 'linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(255,255,255,0.18) 45%, rgba(0,0,0,0.25) 100%)',
-              },
-            ]}
-          />
-          <View style={[styles.hinge, { left: spine + 2 }]} />
+        <View style={[StyleSheet.absoluteFill, styles.cover, { backgroundColor: mid }]}>
+          <CoverFace cover={cover} emblem={art.emblem} plate={art.plate} title={title} width={width} draw={animate} drawDelay={drawDelay} />
           {/* Moving gloss. */}
           {!palette.lite ? (
             <Animated.View
@@ -233,10 +211,6 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: 'rgba(255,255,255,0.25)',
   },
-  frame: { position: 'absolute', borderWidth: 1, borderRadius: 4, opacity: 0.55 },
-  face: { flex: 1, alignItems: 'center', justifyContent: 'center', rowGap: 2 },
-  spine: { position: 'absolute', left: 0, top: 0, bottom: 0 },
-  hinge: { position: 'absolute', top: 0, bottom: 0, width: 1, backgroundColor: 'rgba(0,0,0,0.22)' },
   sheen: {
     position: 'absolute',
     backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0) 100%)',

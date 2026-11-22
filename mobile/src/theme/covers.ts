@@ -49,16 +49,3 @@ const BY_ID: Record<string, Partial<Cover>> = {
 export function coverFor(id: string, category: string): Cover {
   return { ...(BY_CATEGORY[category] ?? BY_CATEGORY.other), ...(BY_ID[id] ?? {}) };
 }
-
-/** The first letter of a Devanagari title, with its vowel sign, for a book's monogram tile (भ, रा, ऋ). */
-export function monogram(title: string): string {
-  const chars = Array.from(title.replace(/^श्री(मद्)?/, '').trim());
-  if (chars.length === 0) return '';
-  let out = chars[0];
-  // Keep a following vowel sign or nasal mark with the consonant, but not a virama-joined cluster.
-  for (const c of chars.slice(1, 3)) {
-    if (/[ा-ौँ-ः]/.test(c)) out += c;
-    else break;
-  }
-  return out;
-}

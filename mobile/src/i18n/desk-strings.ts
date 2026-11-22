@@ -187,6 +187,11 @@ export const D = {
     en: 'No systematic human review is recorded yet, so the app shows no “verified” badges. Fixes are made in the public project repository, whose history is the record of every change.',
     hi: 'अभी तक व्यवस्थित जाँच दर्ज नहीं है, इसलिए ऐप कोई "सत्यापित" चिह्न नहीं दिखाता। सुधार सार्वजनिक परियोजना-भंडार में होते हैं, जिसका इतिहास हर बदलाव का रिकॉर्ड है।',
   },
+  mArtTitle: { en: 'Cover paintings', hi: 'आवरण के चित्र' },
+  mArt: {
+    en: 'The paintings on the book covers are old works in the public domain, most by Raja Ravi Varma (1848–1906) and the Ravi Varma Press, with a few older Indian paintings by unknown hands. They come from Wikimedia Commons and are cropped to fit the cover.',
+    hi: 'ग्रन्थों के आवरण पर लगे चित्र पुराने, सार्वजनिक डोमेन के चित्र हैं: अधिकतर राजा रवि वर्मा (1848–1906) और रवि वर्मा प्रेस के, और कुछ उनसे पुराने भारतीय चित्र जिनके चित्रकार अज्ञात हैं। ये विकिमीडिया कॉमन्स से लिए गए हैं और आवरण के आकार में काटे गए हैं।',
+  },
   mRightsTitle: { en: 'Rights', hi: 'अधिकार' },
   mRights: {
     en: 'The classical texts are ancient and not under copyright, but a particular edition or translation can be. If you hold rights in material shown here, tell the editors through dharmagranth.dev and it will be reviewed.',

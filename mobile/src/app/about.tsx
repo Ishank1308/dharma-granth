@@ -20,6 +20,7 @@ const METHOD: { title: Msg; body: Msg; hue: keyof Hues }[] = [
   { title: D.mExplainTitle, body: D.mExplain, hue: 'indigo' },
   { title: D.mAiTitle, body: D.mAi, hue: 'lotus' },
   { title: D.mReviewTitle, body: D.mReview, hue: 'gold' },
+  { title: D.mArtTitle, body: D.mArt, hue: 'saffron' },
   { title: D.mRightsTitle, body: D.mRights, hue: 'tulsi' },
 ];
 
