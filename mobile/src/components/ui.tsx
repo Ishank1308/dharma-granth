@@ -454,24 +454,6 @@ export function GroupRow({
   );
 }
 
-/** A book's monogram in its cover colours, with the foil letter, as the website's library tiles. */
-export function CoverTile({ cover, letter, size = 44 }: { cover: Cover; letter: string; size?: number }) {
-  const { palette } = usePrefs();
-  return (
-    <View
-      importantForAccessibility="no-hide-descendants"
-      accessibilityElementsHidden
-      style={[
-        { width: size, height: size, borderRadius: Math.round(size * 0.3), alignItems: 'center', justifyContent: 'center' },
-        coverFill(cover, palette),
-      ]}>
-      <Text allowFontScaling={false} style={{ color: cover.foil, fontSize: Math.round(size * 0.44), lineHeight: Math.round(size * 0.62) }}>
-        {letter}
-      </Text>
-    </View>
-  );
-}
-
 /** A settings row's coloured icon tile, as Apple's Settings and One UI: white glyph on one spectrum hue. */
 export function IconTile({ icon, color }: { icon: ComponentProps<typeof Ionicons>['name']; color: string }) {
   return (

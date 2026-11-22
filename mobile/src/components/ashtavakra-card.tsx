@@ -2,12 +2,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { Text, View } from 'react-native';
 
-import { CoverTile, GroupCard, GroupRow } from '@/components/ui';
+import { CoverBook } from '@/components/art/cover-book';
+import { coverArt } from '@/components/art/cover-art';
+import { GroupCard, GroupRow } from '@/components/ui';
 import { ASHTAVAKRA_CHAPTERS, ASHTAVAKRA_VERSES } from '@/content/ashtavakra';
 import { S, useI18n } from '@/i18n';
 import { usePrefs } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
-import { TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
+import { TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 /** The Ashtavakra Gita lives outside the catalog (its own study edition), so the Library opens it from here. */
 export function AshtavakraCard() {
@@ -19,7 +21,7 @@ export function AshtavakraCard() {
   return (
     <GroupCard>
       <GroupRow standalone inset={60} accessibilityLabel={`${t(S.ashtavakraTitle)}. ${line}`} onPress={() => router.push('/ashtavakra')}>
-        <CoverTile cover={coverFor('ashtavakra', 'vedanta')} letter="अ" size={TOUCH} />
+        <CoverBook cover={coverFor('ashtavakra', 'vedanta')} art={coverArt('ashtavakra', 'vedanta')} width={40} turn={0} />
         <View style={{ flex: 1 }}>
           <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>
             {t(S.ashtavakraTitle)}
