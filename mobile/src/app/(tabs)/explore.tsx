@@ -12,7 +12,7 @@ import { Backdrop, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { useScrollY } from '@/motion/parallax';
 import { TitleBar } from '@/motion/title-bar';
-import { S, useI18n, type Msg } from '@/i18n';
+import { D, S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
 import { usePrefs } from '@/state/app-state';
 import { barClearance, huesFor, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
@@ -137,6 +137,10 @@ export default function ExploreScreen() {
             <Tile row={{ title: S.pathwaysTitle, detail: S.pathwaysEntryDetail, icon: 'trail-sign', color: hues.gold, href: '/pathways' }} />
           </BentoRow>
           <Tile wide row={{ title: S.networkTitle, detail: S.networkEntryDetail, icon: 'git-network', color: hues.indigo, href: '/network' }} />
+          <BentoRow>
+            <Tile flex={1.4} row={{ title: D.deskTitle, detail: D.deskEntry, icon: 'school', color: hues.peacock, href: '/desk' }} />
+            <Tile row={{ title: D.compareTitle, detail: D.compareEntry, icon: 'git-compare', color: hues.lotus, href: '/compare' }} />
+          </BentoRow>
           {/* Plans and journal add their tiles here as those screens land. */}
         </Animated.ScrollView>
       </BentoDepth.Provider>
