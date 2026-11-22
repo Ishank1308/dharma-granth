@@ -394,3 +394,11 @@ export function getLocationScene(locationId: string): EditorialScene | undefined
   const key = LOCATION_SCENE_MAP[locationId];
   return key ? EDITORIAL_SCENES[key] : undefined;
 }
+
+const SITE_ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev').replace(/\/+$/, '');
+
+export function buildPosterWhatsAppHref(poster: WisdomPoster): string {
+  const pageUrl = `${SITE_ORIGIN}${poster.href}`;
+  const text = `🪔 *${poster.titleHi}* (${poster.referenceHi})\n${poster.captionHi}\n\n📖 पूरा श्लोक व व्याख्या पढ़ें:\n${pageUrl}`;
+  return `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+}

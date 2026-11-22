@@ -31,7 +31,7 @@ import { LINE_EXPLANATIONS, verseKey } from '@/data/study-content';
 import { findLexiconEntry, type SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
 import { parseWordMeanings } from '@/lib/word-gloss';
 import { getVersePoster } from '@/data/curated-visuals';
-import { VersePosterSpotlight } from '@/app/components/visuals/CuratedVisuals';
+import { VersePosterSpotlight } from '@/app/components/visuals/VersePosterSpotlight';
 
 /** The lexicon entries this verse's padas match, so the reader does not ship the whole lexicon. */
 function lexiconFor(wordMeaning?: string): Record<string, SanskritLexiconEntry> | undefined {
@@ -321,6 +321,8 @@ export default async function VersePage(props: PageProps) {
     ...(available.english ? ['en'] : []),
   ];
 
+  const curatedPoster = getVersePoster(meta.id, chapterId, params.verseId);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -335,6 +337,17 @@ export default async function VersePage(props: PageProps) {
         isAccessibleForFree: true,
         genre: 'Scriptural study',
         ...(modified ? { dateModified: modified } : {}),
+        ...(curatedPoster
+          ? {
+              image: {
+                '@type': 'ImageObject',
+                url: `${siteUrl}${curatedPoster.src}`,
+                width: curatedPoster.width,
+                height: curatedPoster.height,
+                caption: `${curatedPoster.titleHi} — ${curatedPoster.captionHi}`,
+              },
+            }
+          : {}),
         url: pageUrl,
         mainEntityOfPage: pageUrl,
         publisher: {
@@ -385,7 +398,6 @@ export default async function VersePage(props: PageProps) {
   });
 
   const pedagogical = getPedagogicalVerse(meta.id, chapterId, params.verseId);
-  const curatedPoster = getVersePoster(meta.id, chapterId, params.verseId);
   const sourceMeta = getScriptureSourceMeta(meta.id, meta.title, meta.titleSanskrit);
   const translationReview = latestReview(REVIEW_RECORDS, 'translation', meta.id, chapterId, params.verseId);
 

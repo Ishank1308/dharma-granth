@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import { ExternalLink, Sparkles } from 'lucide-react';
-import type { EditorialScene, WisdomPoster } from '@/data/curated-visuals';
+import { Download, Share2 } from 'lucide-react';
+import { buildPosterWhatsAppHref, type EditorialScene, type WisdomPoster } from '@/data/curated-visuals';
+import { WisdomPosterLightbox } from './WisdomPosterLightbox';
 
 /**
- * Pure server-renderable visual showcase components (0 KB client JS).
- * Respects accessible alt text, explicit width/height for zero CLS, and trailing-slash internal links.
+ * Curated visual showcase components.
+ * - EditorialSceneBanner & VersePosterSpotlight stay 0 KB client JS.
+ * - WisdomPosterCard delegates modal zoom + Download/WhatsApp actions to WisdomPosterLightbox.
+ * - Decorative scene banners carry `.curated-scene-media` so Data Saver & print hide them cleanly.
  */
 
 export function EditorialSceneBanner({
@@ -23,7 +26,7 @@ export function EditorialSceneBanner({
 }) {
   return (
     <figure
-      className={`group relative overflow-hidden rounded-3xl border border-dharma-border/80 bg-dharma-card shadow-soft ${className}`}
+      className={`curated-scene-media group relative overflow-hidden rounded-3xl border border-dharma-border/80 bg-dharma-card shadow-soft ${className}`}
     >
       <div className={`relative w-full overflow-hidden ${compact ? 'aspect-[16/9]' : 'aspect-[16/9] sm:aspect-[21/9]'}`}>
         <img
@@ -69,31 +72,14 @@ export function WisdomPosterCard({
   showLink?: boolean;
   className?: string;
 }) {
+  const downloadName = `dharma-granth-${poster.id}.webp`;
+  const whatsappHref = buildPosterWhatsAppHref(poster);
+
   return (
     <figure
       className={`group flex flex-col overflow-hidden rounded-3xl border border-dharma-border/80 bg-dharma-card shadow-soft transition-all hover:border-saffron-400/60 hover:shadow-raised ${className}`}
     >
-      <a
-        href={poster.src}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative block overflow-hidden bg-stone-950/5"
-        title={`${poster.titleEn} — पूरा चित्र खोलें`}
-      >
-        <img
-          src={poster.src}
-          alt={poster.alt}
-          width={poster.width}
-          height={poster.height}
-          loading="lazy"
-          decoding="async"
-          className="h-auto w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
-        />
-        <span className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/25 bg-black/55 px-2.5 py-1 text-[11px] font-semibold text-white opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100">
-          <ExternalLink className="h-3 w-3" aria-hidden="true" />
-          <span>बड़ा देखें</span>
-        </span>
-      </a>
+      <WisdomPosterLightbox poster={poster} showLink={showLink} />
       <figcaption className="flex flex-1 flex-col justify-between gap-3 p-4 sm:p-5">
         <div className="space-y-1.5">
           <p className="text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
@@ -121,77 +107,30 @@ export function WisdomPosterCard({
           ) : (
             <span className="text-dharma-muted">{poster.titleEn}</span>
           )}
-          <a
-            href={poster.src}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[36px] items-center gap-1 text-dharma-muted hover:text-dharma-text"
-          >
-            <span>Full image</span>
-            <ExternalLink className="h-3 w-3" aria-hidden="true" />
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href={poster.src}
+              download={downloadName}
+              aria-label={`${poster.titleEn} डाउनलोड करें`}
+              className="inline-flex min-h-[36px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-2.5 py-1 text-dharma-text hover:border-saffron-400"
+            >
+              <Download className="h-3 w-3" aria-hidden="true" />
+              <span>Save</span>
+            </a>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${poster.titleEn} WhatsApp पर शेयर करें`}
+              className="inline-flex min-h-[36px] items-center gap-1 rounded-full bg-emerald-700 px-2.5 py-1 font-semibold text-white hover:bg-emerald-800 transition"
+            >
+              <Share2 className="h-3 w-3" aria-hidden="true" />
+              <span>Share</span>
+            </a>
+          </div>
         </div>
       </figcaption>
     </figure>
   );
 }
 
-export function VersePosterSpotlight({ poster }: { poster: WisdomPoster }) {
-  return (
-    <section
-      aria-labelledby={`verse-poster-${poster.id}`}
-      className="mt-8 rounded-3xl border border-saffron-400/35 bg-dharma-card/85 p-5 sm:p-7 shadow-soft"
-    >
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-            <span lang="hi" className="font-devanagari normal-case">चित्र-दर्शन</span>
-            <span aria-hidden="true">·</span>
-            <span>Illustrated Contemplation</span>
-          </p>
-          <h2 id={`verse-poster-${poster.id}`} className="mt-1 font-serif text-xl font-bold text-dharma-text">
-            <span lang="hi" className="font-devanagari">{poster.titleHi}</span>
-          </h2>
-        </div>
-        <a
-          href={poster.src}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-bg px-3.5 py-1.5 text-xs font-semibold text-dharma-text hover:border-saffron-400"
-        >
-          <span lang="hi" className="font-devanagari">पूर्ण चित्र खोलें</span>
-          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-        </a>
-      </div>
-
-      <div className="grid items-center gap-6 md:grid-cols-[minmax(0,280px)_1fr]">
-        <a
-          href={poster.src}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mx-auto block w-full max-w-[280px] overflow-hidden rounded-2xl border border-dharma-border shadow-md transition-transform hover:scale-[1.015]"
-        >
-          <img
-            src={poster.src}
-            alt={poster.alt}
-            width={poster.width}
-            height={poster.height}
-            loading="lazy"
-            decoding="async"
-            className="h-auto w-full object-cover"
-          />
-        </a>
-        <div className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-wider text-dharma-muted">
-            {poster.referenceHi} · {poster.referenceEn}
-          </p>
-          <p lang="hi" className="font-devanagari text-base leading-relaxed text-dharma-text">
-            {poster.captionHi}
-          </p>
-          <p className="text-sm leading-relaxed text-dharma-muted">{poster.captionEn}</p>
-        </div>
-      </div>
-    </section>
-  );
-}

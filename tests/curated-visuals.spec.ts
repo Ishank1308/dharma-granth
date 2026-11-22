@@ -88,6 +88,8 @@ test('Navaratri 9-day Navadurga gallery opens lightbox, supports keyboard naviga
   await expect(dialog).toBeVisible();
   await expect(dialog).toHaveAttribute('aria-modal', 'true');
   await expect(dialog).toContainText('Navratri Day 1 of 9');
+  await expect(dialog.locator('a[download="dharma-granth-navratri-day-1-shailputri.webp"]')).toBeVisible();
+  await expect(dialog.locator('a[href^="https://api.whatsapp.com/send?text="]')).toBeVisible();
   await assertCuratedImagesLoaded(page, '[role="dialog"] img[src^="/images/curated/navratri/"]', 1);
 
   // Keyboard navigation: ArrowRight -> Day 2, ArrowLeft -> Day 1
@@ -125,17 +127,41 @@ test('curated visuals render cleanly across scriptures, mantras, verses, concept
   await open(page, '/mantras/devi-kavacham/');
   await expect(page.locator('#navadurga-darshan')).toBeVisible();
 
-  // Bhagavad Gita 2.48 verse page renders its VersePosterSpotlight
+  // Bhagavad Gita 2.48 verse page renders its VersePosterSpotlight with download, share, and ImageObject JSON-LD
   await open(page, '/scripture/bhagavadgita/chapter/2/verse/48/');
   await assertCuratedImagesLoaded(page, 'img[src="/images/curated/wisdom/gita-2-48.webp"]', 1);
+  await expect(page.locator('a[download="dharma-granth-gita-2-48.webp"]')).toBeVisible();
+  await expect(page.locator('section[aria-labelledby="verse-poster-gita-2-48"] a[href^="https://api.whatsapp.com/send?text="]')).toBeVisible();
+  const jsonLdText = await page.locator('script[type="application/ld+json"]').first().textContent();
+  expect(jsonLdText ?? '').toContain('"ImageObject"');
+  expect(jsonLdText ?? '').toContain('/images/curated/wisdom/gita-2-48.webp');
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
 
-  // Concepts visual hub renders all 7 curated scriptural posters
+  // Concepts visual hub renders all 7 curated scriptural posters and opens an accessible lightbox
   await open(page, '/concepts/visuals/');
   await assertCuratedImagesLoaded(page, 'img[src^="/images/curated/wisdom/"]', 7);
+  await page.locator('section[aria-labelledby="curated-posters-heading"] figure button').first().click();
+  const posterDialog = page.getByRole('dialog');
+  await expect(posterDialog).toBeVisible();
+  await expect(posterDialog.locator('a[download^="dharma-granth-"]')).toBeVisible();
+  await expect(posterDialog.locator('a[href^="https://api.whatsapp.com/send?text="]')).toBeVisible();
+  const posterAxe = await new AxeBuilder({ page })
+    .include('[role="dialog"]')
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+    .analyze();
+  expect(posterAxe.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([]);
+  await page.keyboard.press('Escape');
+  await expect(posterDialog).toHaveCount(0);
 
   // Wisdom pathways renders Tapovan scene + scriptural posters
   await open(page, '/wisdom-pathways/');
   await assertCuratedImagesLoaded(page, 'img[src^="/images/curated/"]', 7);
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
+});
+
+test('Data Saver hides decorative curated editorial scenes cleanly', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('dharma.perf.dataSaver', 'true'));
+  await open(page, '/');
+  await expect(page.locator('html')).toHaveAttribute('data-data-saver', 'true');
+  await expect(page.locator('.curated-scene-media').first()).toBeHidden();
 });
