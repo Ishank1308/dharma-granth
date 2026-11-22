@@ -213,7 +213,7 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
           <div className="flex items-center gap-2">
             <Filter className="w-4 h-4 text-saffron-600" />
             <h2 className="text-sm font-bold uppercase tracking-wider text-dharma-muted">
-              Filter by Life Domain (विषय वर्ग)
+              <span data-bi="en">Filter by Life Domain</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">विषय वर्ग</span><span data-bi="sep">)</span>
             </h2>
           </div>
 
@@ -418,7 +418,7 @@ function WisdomTopicCard({
         </span>
         <Link
           href={`/wisdom-for-life/${topic.slug}`}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors group-hover:translate-x-1 duration-200"
+          className="tap-target inline-flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors group-hover:translate-x-1 duration-200"
           aria-label={`Explore scriptural guidance for ${topic.titleEn}`}
         >
           <span>Explore Teachings</span>

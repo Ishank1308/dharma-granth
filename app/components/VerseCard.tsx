@@ -264,7 +264,7 @@ function PassageText({ lang, label, long, className, children }: { lang: 'hi' | 
 /** A meaning not written yet in one language, said quietly in the slot it will fill. */
 function PendingMeaning({ lang, children }: { lang: 'hi' | 'en'; children: ReactNode }) {
   return (
-    <p lang={lang} className={`text-sm italic text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`}>
+    <p lang={lang} className={`meaning-pending text-sm italic text-dharma-muted ${lang === 'hi' ? 'font-devanagari' : ''}`}>
       {children}
     </p>
   );
@@ -684,6 +684,8 @@ export function VerseCard({
           <div className={`verse-folio relative rounded-2xl px-2 py-4 text-center md:px-8 md:py-6 transition-colors ${
             isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
           }`}>
+            {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
+            <span className="photo-light" />
             {speaker && (
               <div className="mb-3.5 flex justify-center">
                 <span
@@ -694,7 +696,7 @@ export function VerseCard({
                   }`}
                 >
                   <span className="text-[10px] opacity-75 font-serif" aria-hidden="true">✦</span>
-                  <span className="font-devanagari">{speaker}</span>
+                  <span lang={hasSpeakerInText ? 'sa' : undefined} className="font-devanagari">{speaker}</span>
                   <span className="text-[10px] opacity-75 font-serif" aria-hidden="true">✦</span>
                 </span>
               </div>

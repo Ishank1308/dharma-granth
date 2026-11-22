@@ -133,8 +133,8 @@ export function SadhanaPortability() {
             <KeyRound className="h-4 w-4" />
           </span>
           <h2 id="sadhana-portability-heading" className="text-title-3 font-semibold text-dharma-text">
-            <span>Move to another device</span>{' '}
-            <span lang="hi" className="font-devanagari text-subhead font-normal text-dharma-muted">साधना स्थानान्तरण</span>
+            <span data-bi="en">Move to another device</span>{' '}
+            <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-subhead font-normal text-dharma-muted">साधना स्थानान्तरण</span>
           </h2>
         </div>
         <p className="text-xs text-dharma-muted leading-relaxed">
@@ -146,7 +146,7 @@ export function SadhanaPortability() {
       {/* ── Section 1: Compressed Sync Code ── */}
       <div className="space-y-3 rounded-group bg-dharma-text/[0.04] p-4">
         <h3 className="text-subhead font-semibold text-dharma-text">
-          <span>Sync code</span> <span lang="hi" className="font-devanagari font-normal text-dharma-muted">सिंक कोड</span>
+          <span data-bi="en">Sync code</span> <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari font-normal text-dharma-muted">सिंक कोड</span>
         </h3>
         <p className="text-[11px] text-dharma-muted">
           यह कोड आपके अध्ययन व साधना डेटा को GZIP संपीड़न द्वारा छोटा करता है। यह कूटबद्ध नहीं है; जिसे भी कोड मिलेगा, वह इसे पढ़ सकेगा।

@@ -31,7 +31,7 @@ export function ChapterOrientation({ scriptureId, chapterId, verseCount }: Props
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-separator/60 pb-4">
         <div>
           <span className="text-caption-2 font-bold uppercase tracking-wider text-accent">
-            Chapter Orientation · मूल पृष्ठभूमि
+            Chapter Orientation · <span lang="hi">मूल पृष्ठभूमि</span>
           </span>
           <h2 id="orientation-h" className="font-serif text-xl font-bold text-label-primary sm:text-2xl mt-0.5">
             {o.nameEn} <span lang="hi" className="font-devanagari text-lg font-normal text-label-secondary sm:text-xl">· {o.nameHi}</span>

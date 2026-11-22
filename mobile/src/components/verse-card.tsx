@@ -1,0 +1,342 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { memo, useState } from 'react';
+import { router } from 'expo-router';
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+
+import type { RecitationPhase } from '@/audio/player';
+
+import type { Verse } from '@/content/types';
+import {
+  cleanVerseField,
+  formatVerseRef,
+  meaningState,
+  MEANING_COPY,
+  sanskritLines,
+  toDevanagari,
+  verseMarkNumber,
+} from '@/lib/verse-format';
+import { S, type Lang, type Msg } from '@/i18n';
+import { toScript } from '@/lib/sanskrit-script';
+import { LINE_FACTOR, sanskritFont } from '@/theme/fonts';
+import type { Settings } from '@/lib/backup';
+import { hapticOff, hapticOn } from '@/motion/haptics';
+import { PopIcon } from '@/motion/pop-icon';
+import type { Cover } from '@/theme/covers';
+import { fontCap, huesFor, SPACE, TOUCH, TYPE, UI_FONT_CAP, type Palette } from '@/theme/themes';
+import { Card, coverFill } from './ui';
+
+interface Props {
+  scriptureId: string;
+  /** The book's title. The share screen looks it up itself now; kept so callers need not change. */
+  scriptureTitle: string;
+  chapter: number;
+  verse: Verse;
+  palette: Palette;
+  settings: Settings;
+  /** Interface language, for labels and screen-reader text. The verse text itself is never translated. */
+  lang: Lang;
+  /** The book's cover colours (src/theme/covers.ts): the verse number capsule and the card's top edge wear them. */
+  cover: Cover;
+  bookmarked: boolean;
+  /** Called with the verse number; keep it stable (useCallback) so memo skips unchanged cards. */
+  onToggleBookmark: (verse: string) => void;
+  /** Set only when this verse has recitation audio: 'idle' unless it is the verse that is loaded. */
+  audio?: RecitationPhase;
+  /** Called with the verse number; keep it stable like onToggleBookmark. */
+  onToggleAudio?: (verse: string) => void;
+  /** How many journal reflections are linked to this verse; the pen fills in when there are any. */
+  reflections?: number;
+}
+
+/** A study layer's label, in the layer's own hue (the layer's rule carries the colour down the margin). */
+function Label({ msg, lang, palette, extra, hue }: { msg: Msg; lang: Lang; palette: Palette; extra?: string; hue?: string }) {
+  return (
+    <View style={styles.labelRow}>
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={[styles.label, { color: hue ?? palette.accent }, lang === 'hi' && styles.labelHi]}>
+        {msg[lang]}
+      </Text>
+      {extra ? <Text style={[styles.badge, { color: palette.muted, borderColor: palette.border }]}>{extra}</Text> : null}
+    </View>
+  );
+}
+
+function VerseCardImpl({
+  scriptureId,
+  chapter,
+  verse,
+  palette,
+  settings,
+  lang,
+  cover,
+  bookmarked,
+  onToggleBookmark,
+  audio,
+  onToggleAudio,
+  reflections = 0,
+}: Props) {
+  const hues = huesFor(palette);
+  const t = (m: Msg) => m[lang];
+  // A tap on Notes overrides the "Open notes by default" setting until that setting changes again.
+  const [override, setOverride] = useState<{ when: boolean; open: boolean } | null>(null);
+  const notesOpen = override && override.when === settings.showNotes ? override.open : settings.showNotes;
+  const setNotesOpen = (f: (open: boolean) => boolean) => setOverride({ when: settings.showNotes, open: f(notesOpen) });
+  const scale = settings.textScale;
+  const cap = fontCap(scale);
+  const lh = LINE_FACTOR[settings.lineSpacing];
+  const script = settings.sanskritScript;
+  const ref = formatVerseRef(scriptureId, chapter, verse.number);
+  const lines = sanskritLines(verse.sanskrit);
+  const state = meaningState(verse);
+  const hindi = cleanVerseField(verse.hindi);
+  const english = cleanVerseField(verse.translation);
+  const translit = cleanVerseField(verse.transliteration);
+  const notes = [
+    { key: 'word', label: S.labelWordMeaning, text: cleanVerseField(verse.wordMeaning) },
+    { key: 'commentary', label: S.labelCommentary, text: cleanVerseField(verse.commentary) },
+    { key: 'explanation', label: S.labelExplanation, text: cleanVerseField(verse.explanation) },
+  ]
+    // Many sources repeat the word meanings as the commentary (656 of the Gita's verses do). Show each text
+    // once, as the website does (splitVyakhyaCommentary), rather than the same block twice.
+    .filter((n, i, all) => n.text && all.findIndex((m) => m.text === n.text) === i);
+
+  const verseParams = { id: scriptureId, chapter: String(chapter), verse: String(verse.number) };
+  // Share opens the verse card screen (an image in the app's looks, or the whole verse as text).
+  const share = () => router.push({ pathname: '/share', params: verseParams });
+  const reflect = () => router.push({ pathname: '/journal/edit', params: verseParams });
+
+  return (
+    <Card style={styles.card} strong>
+      {/* The book's cover colours along the top edge, as the website's verse cards. */}
+      <View pointerEvents="none" style={[styles.edge, coverFill(cover, palette)]} />
+      <View style={styles.header}>
+        <View style={[styles.refPill, coverFill(cover, palette, true)]}>
+          {/* A heading, so TalkBack's heading navigation steps from verse to verse. */}
+          <Text style={styles.ref} accessibilityRole="header" accessibilityLabel={t(S.verseA11y(ref))}>
+            {ref}
+          </Text>
+        </View>
+        <View style={styles.actions}>
+          {audio && onToggleAudio ? (
+            <Pressable
+              onPress={() => onToggleAudio(String(verse.number))}
+              style={({ pressed }) => [
+                styles.iconBtn,
+                audio !== 'idle' && audio !== 'error' && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
+                pressed && { opacity: 0.6 },
+              ]}
+              accessibilityRole="button"
+              accessibilityState={{ busy: audio === 'loading', selected: audio === 'playing' }}
+              accessibilityLabel={t(
+                audio === 'playing' ? S.pauseVerseA11y(ref) : audio === 'error' ? S.retryVerseA11y(ref) : S.listenVerseA11y(ref),
+              )}>
+              {audio === 'loading' ? (
+                <ActivityIndicator size="small" color={palette.accent} />
+              ) : (
+                <Ionicons
+                  name={audio === 'playing' ? 'pause' : audio === 'error' ? 'refresh' : 'play-outline'}
+                  size={20}
+                  color={audio === 'idle' ? palette.muted : palette.accent}
+                />
+              )}
+            </Pressable>
+          ) : null}
+          <Pressable
+            onPress={reflect}
+            style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
+            accessibilityRole="button"
+            accessibilityLabel={t(reflections ? S.reflectedVerseA11y(ref, reflections) : S.reflectVerseA11y(ref))}>
+            <Ionicons name={reflections ? 'create' : 'create-outline'} size={20} color={reflections ? palette.accent : palette.muted} />
+          </Pressable>
+          <Pressable
+            onPress={share}
+            style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
+            accessibilityRole="button"
+            accessibilityLabel={t(S.shareVerseA11y(ref))}>
+            <Ionicons name="share-outline" size={20} color={palette.muted} />
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              if (bookmarked) hapticOff();
+              else hapticOn();
+              onToggleBookmark(String(verse.number));
+            }}
+            style={({ pressed }) => [
+              styles.iconBtn,
+              bookmarked && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
+              pressed && { opacity: 0.6 },
+            ]}
+            accessibilityRole="button"
+            accessibilityState={{ selected: bookmarked }}
+            accessibilityLabel={t(bookmarked ? S.unbookmarkVerseA11y(ref) : S.bookmarkVerseA11y(ref))}>
+            <PopIcon on={bookmarked} name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={bookmarked ? palette.accent : palette.muted} />
+          </Pressable>
+        </View>
+      </View>
+
+      {lines.length > 0 ? (
+        // One TalkBack stop for the whole shloka, read line after line, rather than one stop per line and the
+        // ॥ marks read out as symbols.
+        <View
+          accessible
+          accessibilityLabel={lines.join('\n')}
+          style={[
+            styles.sanskrit,
+            {
+              backgroundColor: palette.dark ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.55)',
+              borderColor: palette.dark ? 'rgba(246,199,104,0.16)' : 'rgba(180,120,40,0.16)',
+            },
+            // A soft light from above on the shloka, as the website's luminous panel.
+            !palette.lite && {
+              backgroundImage: palette.dark
+                ? 'radial-gradient(90% 80% at 50% 0%, rgba(246,199,104,0.10) 0%, rgba(255,255,255,0) 70%)'
+                : 'radial-gradient(90% 80% at 50% 0%, rgba(255,255,255,0.9) 0%, rgba(246,199,104,0.10) 100%)',
+            },
+          ]}>
+          {lines.map((line, i) => (
+            <Text
+              key={i}
+              selectable
+              maxFontSizeMultiplier={cap}
+              style={[
+                { color: palette.text, fontSize: TYPE.title3 * scale, lineHeight: TYPE.title3 * scale * 1.7 * lh, textAlign: 'center' },
+                sanskritFont(script),
+              ]}>
+              {toScript(line, script)}
+              {i === lines.length - 1 ? (
+                // The gilt verse mark.
+                <Text style={{ color: palette.gold }}>{`\u00a0॥\u00a0${toScript(toDevanagari(verseMarkNumber(verse.number)), script)}\u00a0॥`}</Text>
+              ) : null}
+            </Text>
+          ))}
+        </View>
+      ) : null}
+
+      {settings.showTransliteration && translit ? (
+        <Text
+          selectable
+          maxFontSizeMultiplier={cap}
+          style={{
+            color: palette.textSecondary,
+            fontSize: TYPE.subhead * scale,
+            lineHeight: TYPE.subhead * scale * 1.5 * lh,
+            fontStyle: 'italic',
+            textAlign: 'center',
+            marginTop: SPACE.sm,
+          }}>
+          {translit}
+        </Text>
+      ) : null}
+
+      {settings.showHindi ? (
+        <View style={[styles.block, styles.layer, { borderLeftColor: hues.peacock }]}>
+          <Label
+            msg={verse.hindiRange ? S.labelHindiRange(verse.hindiRange) : S.labelHindi}
+            lang={lang}
+            palette={palette}
+            hue={hues.peacock}
+            extra={verse.hindiSource === 'ai' ? MEANING_COPY.aiLabelHi : undefined}
+          />
+          <Text
+            selectable
+            maxFontSizeMultiplier={cap}
+            style={[
+              styles.body,
+              {
+                color: state.hi === 'text' ? palette.text : palette.muted,
+                fontSize: TYPE.body * scale,
+                lineHeight: TYPE.body * scale * 1.55 * lh,
+              },
+            ]}>
+            {state.hi === 'text'
+              ? hindi
+              : state.hi === 'review'
+                ? MEANING_COPY.hiReview
+                : state.hi === 'with'
+                  ? MEANING_COPY.hiWith(verse.hindiSeeVerse!)
+                  : MEANING_COPY.hiPending}
+          </Text>
+        </View>
+      ) : null}
+
+      {settings.showEnglish ? (
+        <View style={[styles.block, styles.layer, { borderLeftColor: hues.indigo }]}>
+          <Label
+            msg={verse.translationRange ? S.labelEnglishRange(verse.translationRange) : S.labelEnglish}
+            lang={lang}
+            palette={palette}
+            hue={hues.indigo}
+            extra={verse.translationSource === 'ai' ? MEANING_COPY.aiLabelEn : undefined}
+          />
+          <Text
+            selectable
+            maxFontSizeMultiplier={cap}
+            style={[
+              styles.body,
+              {
+                color: state.en === 'text' ? palette.text : palette.muted,
+                fontSize: TYPE.body * scale,
+                lineHeight: TYPE.body * scale * 1.5 * lh,
+              },
+            ]}>
+            {state.en === 'text' ? english : state.en === 'with' ? MEANING_COPY.enWith(verse.translationSeeVerse!) : MEANING_COPY.enPending}
+          </Text>
+        </View>
+      ) : null}
+
+      {notes.length > 0 ? (
+        <View style={[styles.block, styles.layer, { borderLeftColor: hues.saffron }]}>
+          <Pressable
+            onPress={() => setNotesOpen((o) => !o)}
+            accessibilityRole="button"
+            accessibilityState={{ expanded: notesOpen }}
+            style={styles.notesToggle}>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={[styles.label, { color: hues.saffron }, lang === 'hi' && styles.labelHi]}>
+              {t(S.labelNotes)}
+            </Text>
+            <Ionicons name={notesOpen ? 'chevron-up' : 'chevron-down'} size={14} color={palette.muted} />
+          </Pressable>
+          {notesOpen
+            ? notes.map((n) => (
+                <View key={n.key} style={{ marginTop: SPACE.sm }}>
+                  <Label msg={n.label} lang={lang} palette={palette} hue={hues.saffron} />
+                  <Text
+                    selectable
+                    maxFontSizeMultiplier={cap}
+                    style={[
+                      styles.body,
+                      { color: palette.textSecondary, fontSize: TYPE.callout * scale, lineHeight: TYPE.callout * scale * 1.5 },
+                    ]}>
+                    {n.text}
+                  </Text>
+                </View>
+              ))
+            : null}
+        </View>
+      ) : null}
+    </Card>
+  );
+}
+
+export const VerseCard = memo(VerseCardImpl);
+
+const styles = StyleSheet.create({
+  card: { marginBottom: SPACE.md },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', columnGap: SPACE.sm, marginBottom: SPACE.sm },
+  ref: { color: '#ffffff', fontSize: TYPE.footnote, fontWeight: '700', letterSpacing: 0.5 },
+  actions: { flexDirection: 'row', columnGap: SPACE.xs, marginRight: -SPACE.sm },
+  iconBtn: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
+  edge: { position: 'absolute', top: 0, left: 0, right: 0, height: 3 },
+  // Each study layer hangs from a rule in its own hue, in reading order: अर्थ peacock, English indigo, notes saffron.
+  layer: { borderLeftWidth: 3, paddingLeft: SPACE.md + 2 },
+  // Shrinks and wraps before it can push the share and save buttons off a card at large font sizes.
+  refPill: { flexShrink: 1, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 4 },
+  sanskrit: { rowGap: 2, paddingVertical: SPACE.md + 2, paddingHorizontal: SPACE.sm, borderRadius: 18, borderWidth: 1 },
+  block: { marginTop: SPACE.md },
+  labelRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', columnGap: 6, marginBottom: 2 },
+  // Sentence case and untracked, like every label in the app.
+  label: { fontSize: TYPE.footnote, fontWeight: '600' },
+  labelHi: {},
+  badge: { fontSize: TYPE.caption - 1, borderWidth: StyleSheet.hairlineWidth, borderRadius: 6, paddingHorizontal: 4 },
+  body: {},
+  notesToggle: { flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', columnGap: 6, minHeight: TOUCH, paddingRight: SPACE.md },
+});

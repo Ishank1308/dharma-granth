@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { LayoutGrid, LayoutList, Search, SlidersHorizontal, X } from 'lucide-react';
 import type { ScriptureCategory } from '@/data/types';
 import { useLocalStorage } from '@/lib/useLocalStorage';
@@ -107,11 +107,14 @@ export function ScriptureLibraryClient({
   scriptures,
   categories,
   loadError = false,
+  featured,
 }: {
   scriptures: IncomingItem[];
   categories: CategoryOption[];
   /** The page could not read the catalogue. */
   loadError?: boolean;
+  /** A curated block shown under the search bar while no search or filter is on. */
+  featured?: ReactNode;
 }) {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [sortMode, setSortMode] = useState<SortMode>('featured');
@@ -274,9 +277,12 @@ export function ScriptureLibraryClient({
 
   if (loadError || items.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl px-gutter py-12">
-        <LoadFailure onRetry={() => window.location.reload()} />
-      </div>
+      <>
+        <div className="mx-auto max-w-3xl px-gutter py-12">
+          <LoadFailure onRetry={() => window.location.reload()} />
+        </div>
+        {featured && <div className="mx-auto max-w-7xl px-gutter pb-12">{featured}</div>}
+      </>
     );
   }
 
@@ -384,12 +390,15 @@ export function ScriptureLibraryClient({
         </div>
       </div>
 
+      {/* Curated picks sit below the search bar, and step aside once someone is searching or filtering. */}
+      {activeCount === 0 && !hasQuery && featured}
+
       <div className="pt-6 lg:grid lg:grid-cols-[17.5rem_minmax(0,1fr)] lg:gap-10">
         <aside aria-label="Filters" className="hidden lg:block">
           <div className="sticky top-[136px] max-h-[calc(100dvh-160px)] overflow-y-auto rounded-[18px] bg-dharma-card p-3">
             <div className="flex items-center justify-between px-2 pb-2">
               <h2 className="text-body font-semibold text-dharma-text">
-                Filters <span lang="hi" className="ml-1 font-devanagari text-sm font-normal text-dharma-muted">फ़िल्टर</span>
+                <span data-bi="en">Filters</span> <span lang="hi" data-bi="hi" data-bi-lead className="ml-1 font-devanagari text-sm font-normal text-dharma-muted">फ़िल्टर</span>
               </h2>
               {activeCount > 0 && (
                 <button type="button" onClick={clearFilters} className="focus-ring min-h-[36px] rounded px-2 text-footnote text-dharma-saffron hover:underline">
@@ -475,7 +484,7 @@ export function ScriptureLibraryClient({
               भाषा प्रतिशत केवल यहाँ उपलब्ध श्लोकों में भाषा-पाठ की उपलब्धता दिखाते हैं; ये सम्पूर्ण ग्रंथ के प्रकाशन या विद्वत्-सत्यापन का प्रमाण नहीं हैं।
             </p>
             {/* Parent heading for the cards' h3s (the visible Filters h2 is desktop-only). */}
-            <h2 className="sr-only">ग्रंथ · Texts</h2>
+            <h2 className="sr-only"><span lang="hi" data-bi="hi">ग्रंथ</span><span data-bi="sep"> · </span><span data-bi="en">Texts</span></h2>
             {results.length === 0 ? (
               activeCount > 0 ? (
                 <FilteredEmpty
@@ -491,7 +500,7 @@ export function ScriptureLibraryClient({
                 <NoResults query={filters.q.trim()} onClear={() => setQuery('')} />
               )
             ) : (
-              <ul className={`reveal-grid grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'}`}>
+              <ul className={`reveal-grid grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 max-sm:gap-2.5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'}`}>
                 {results.map((item) => (
                   <li key={item.id} className="min-w-0">
                     <LibraryCard

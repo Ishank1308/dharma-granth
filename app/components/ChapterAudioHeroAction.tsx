@@ -116,7 +116,11 @@ export function ChapterAudioHeroAction({
         ) : (
           <Volume2 className={`w-3.5 h-3.5 ${icon}`} aria-hidden="true" />
         )}
-        <span>{isPlaying ? 'पारायण चालू · Pause' : 'अध्याय श्रवण · Listen'}</span>
+        <span>
+          <span lang="hi" data-bi="hi">{isPlaying ? 'पारायण चालू' : 'अध्याय श्रवण'}</span>
+          <span data-bi="sep"> · </span>
+          <span data-bi="en">{isPlaying ? 'Pause' : 'Listen'}</span>
+        </span>
       </button>
 
       {resumeVerse && !isPlaying && (

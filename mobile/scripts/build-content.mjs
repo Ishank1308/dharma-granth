@@ -1,0 +1,142 @@
+// Build the scripture content the Android app bundles.
+//
+//   node scripts/build-content.mjs               rebuild everything
+//   node scripts/build-content.mjs --if-missing  skip when the generated files already exist
+//   node scripts/build-content.mjs --max-mb=4    bundle books up to 4 MB of chapter data (default 2.6;
+//                                                ALWAYS_BUNDLE in content-lib.mjs lists larger books that ship anyway)
+//
+// Source of truth is the same published data the website reads:
+//   ../public/data/scriptures-full/<id>/manifest.json + ch-N.json   (chapter shards, preferred)
+//   ../public/data/scriptures-full/<id>.json                        (full book, fallback)
+// Run `npm run shard:scriptures` at the repo root first so the app gets the cleaned shard text
+// (aligned meanings, review flags, passage ranges) and not the raw full-book JSON.
+//
+// Output (git-ignored, regenerated on every EAS build by the eas-build-post-install hook):
+//   src/content/generated/catalog.json   every scripture with its chapter list
+//   src/content/generated/books/<id>/ch-N.json   verse text of each chapter of a bundled scripture
+//   src/content/generated/loaders.ts     lazy require() map per chapter, so opening a chapter parses only
+//                                        that chapter (Ramcharitmanas is 5 MB; one kanda is under 1 MB)
+//   src/content/generated/search/…       offline verse search index (scripts/build-search-index.mjs)
+//   src/content/generated/explore/…      the website's Panchang, festival and mantra data (scripts/build-explore.mjs)
+//   src/content/generated/study/…        chapter summaries (scripts/build-study.mjs)
+import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { Buffer } from 'node:buffer';
+
+import { buildExplore } from './build-explore.mjs';
+import { buildKnowledge } from './build-knowledge.mjs';
+import { buildSearchIndex } from './build-search-index.mjs';
+import { buildStudy, STUDY_FILES } from './build-study.mjs';
+import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
+
+const HERE = dirname(fileURLToPath(import.meta.url));
+const MOBILE = resolve(HERE, '..');
+const DATA = resolve(MOBILE, '../public/data/scriptures-full');
+const OUT = join(MOBILE, 'src/content/generated');
+const BOOKS = join(OUT, 'books');
+
+const args = process.argv.slice(2);
+const ifMissing = args.includes('--if-missing');
+const maxMbArg = args.find((a) => a.startsWith('--max-mb='));
+const MAX_BYTES = Math.round(Number(maxMbArg ? maxMbArg.split('=')[1] : DEFAULT_MAX_MB) * 1024 * 1024);
+
+// Cheap, so it runs even when the scripture content is already built.
+buildExplore();
+
+if (
+  ifMissing &&
+  existsSync(join(OUT, 'catalog.json')) &&
+  existsSync(join(OUT, 'loaders.ts')) &&
+  existsSync(join(OUT, 'search-loaders.ts'))
+) {
+  // The knowledge pages take under a second, so they are rebuilt even then: an older checkout has none.
+  await buildKnowledge();
+  console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
+  // A checkout built before chapter summaries existed gets just those, not a full rebuild.
+  if (!STUDY_FILES.every((f) => existsSync(f))) await buildStudy();
+  process.exit(0);
+}
+
+if (!existsSync(DATA)) {
+  console.error(`[content] ${DATA} not found. Run this from a full checkout of the dharma-granth repo.`);
+  process.exit(1);
+}
+
+rmSync(BOOKS, { recursive: true, force: true });
+mkdirSync(BOOKS, { recursive: true });
+
+const catalog = [];
+let bundledBytes = 0;
+let usedShards = 0;
+/** Bundled book id -> chapter numbers written, for the loader map. */
+const chapterFiles = new Map();
+
+for (const id of listBookIds(DATA)) {
+  const src = openBook(DATA, id);
+  if (!src) continue;
+  const chapters = src.chapters;
+  // Books over the cut-off are not bundled; the app downloads them from dharmagranth.dev/app-data/ on demand.
+  const bundled = isBundled(src, MAX_BYTES);
+
+  if (bundled) {
+    const dir = join(BOOKS, id);
+    mkdirSync(dir, { recursive: true });
+    const written = [];
+    for (const ch of chapters) {
+      const verses = src.readVerses(ch.number);
+      const json = JSON.stringify({ number: ch.number, verses });
+      bundledBytes += Buffer.byteLength(json);
+      writeFileSync(join(dir, `ch-${ch.number}.json`), json);
+      // The catalog's count must match what the reader shows (the verse of the day picks by index).
+      ch.verseCount = verses.length;
+      written.push(ch.number);
+    }
+    chapterFiles.set(id, written);
+    if (src.fromShards) usedShards++;
+  }
+
+  catalog.push({
+    id,
+    title: src.title,
+    titleSanskrit: src.titleSanskrit,
+    category: src.category,
+    totalVerses: src.totalVerses,
+    bundled,
+    chapters,
+  });
+}
+
+writeFileSync(join(OUT, 'catalog.json'), JSON.stringify(catalog));
+
+const bundledIds = catalog.filter((b) => b.bundled).map((b) => b.id);
+const loaders = [
+  '// Generated by scripts/build-content.mjs. Do not edit.',
+  "import type { BookChapter } from '../types';",
+  '',
+  '/** Each require() runs only when its chapter is opened, so only that chapter is parsed and kept in memory. */',
+  'export const CHAPTER_LOADERS: Record<string, Record<number, () => BookChapter>> = {',
+  ...bundledIds.map((id) =>
+    [
+      `  ${JSON.stringify(id)}: {`,
+      ...chapterFiles.get(id).map((n) => `    ${n}: () => require('./books/${id}/ch-${n}.json') as BookChapter,`),
+      '  },',
+    ].join('\n'),
+  ),
+  '};',
+  '',
+].join('\n');
+writeFileSync(join(OUT, 'loaders.ts'), loaders);
+
+const mb = (n) => (n / 1024 / 1024).toFixed(1);
+console.log(
+  `[content] ${catalog.length} scriptures in catalog, ${bundledIds.length} bundled (${mb(bundledBytes)} MB), ` +
+    `${usedShards}/${bundledIds.length} from published shards`,
+);
+if (usedShards < bundledIds.length) {
+  console.warn('[content] some books came from full-book JSON. Run `npm run shard:scriptures` at the repo root for the cleaned text.');
+}
+
+await buildSearchIndex();
+await buildKnowledge();
+await buildStudy();

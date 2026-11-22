@@ -4,14 +4,26 @@ import { useEffect, useRef, useState } from 'react';
 import { Check, Globe } from 'lucide-react';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import {
+  LANGUAGE_OPTIONS,
   type LanguagePreference,
-  useLanguagePreference,
 } from '@/lib/useLanguagePreference';
 import { usePresence } from '@/app/components/motion/usePresence';
 
-export function LanguageToggle({ className = '' }: { className?: string }) {
-  const { preference, setPreference, currentOption, options } =
-    useLanguagePreference();
+/**
+ * The header's language menu. SiteNav owns the choice and passes it in, so this menu and the
+ * phone drawer's copy of the setting always agree.
+ */
+export function LanguageToggle({
+  className = '',
+  preference,
+  setPreference,
+}: {
+  className?: string;
+  preference: LanguagePreference;
+  setPreference: (next: LanguagePreference) => void;
+}) {
+  const options = LANGUAGE_OPTIONS;
+  const currentOption = options.find((opt) => opt.id === preference) ?? options[0];
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const menu = usePresence(open, 140);

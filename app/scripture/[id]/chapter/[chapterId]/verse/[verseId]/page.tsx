@@ -1,6 +1,7 @@
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { sceneAttrs } from '@/lib/chapter-scenes';
 import { photoAttrs } from '@/lib/scene-photos';
+import { FolioMotion } from '@/app/components/motion/FolioMotion';
 import { chapterPainting } from '@/lib/chapter-paintings';
 import { clipDescription } from '@/lib/meta-text';
 import type { Metadata } from 'next';
@@ -17,7 +18,7 @@ import { verseStaticParams } from '@/lib/verse-pages';
 import { commentaryFor, verseMeaningSummary } from '@/lib/verse-meaning';
 import { verseOgPath, versePageHref, verseSlug } from '@/lib/verse-paths';
 import { scriptureLastChanged } from '@/lib/content-dates';
-import { cleanVerseField, splitVyakhyaCommentary, verseLines, formatVerseRef, withPassageMeaning } from '@/lib/verse-format';
+import { cleanVerseField, splitVyakhyaCommentary, verseLines, formatVerseRef, withPassageMeaning, extractVerseSpeaker } from '@/lib/verse-format';
 import { resolveVerseKnowledge } from '@/lib/knowledge-graph';
 import { TrustBadges } from '@/app/components/TrustBadges';
 import { VerseCompletion } from '@/app/components/understand/VerseCompletion';
@@ -136,7 +137,8 @@ function openingLatin(transliteration: string | undefined): string {
 
 /** The verse's opening words, as people type them into search. */
 function opening(sanskrit: string | undefined, max = 24): string {
-  const first = verseLines(cleanVerseField(sanskrit))[0] ?? '';
+  // The verse's own first line, not the speaker line above it ("सञ्जय उवाच").
+  const first = extractVerseSpeaker(undefined, verseLines(cleanVerseField(sanskrit))).verseLines[0] ?? '';
   const phrase = first.split(/[|।]/)[0]?.trim() ?? '';
   return plain(phrase, max);
 }
@@ -388,6 +390,7 @@ export default async function VersePage(props: PageProps) {
     <>
       {/* The scripture's palette and folio material for everything on the page (display: contents, no box). */}
       <div className="contents" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(scriptureVibe(meta.id, meta.category))} {...sceneAttrs(meta.id, chapterId)} {...photoAttrs(meta.id, chapterId)} data-painting={chapterPainting(meta.id, chapterId)}>
+      <FolioMotion />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

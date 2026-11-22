@@ -315,8 +315,8 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
                 </span>
                 <div>
                   <h2 className="text-base sm:text-lg font-bold text-amber-100 flex items-center gap-2">
-                    Dharma Copilot
-                    <span className="text-xs font-normal text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full">
+                    <span data-bi="en">Dharma Copilot</span>
+                    <span lang="hi" data-bi="hi" data-bi-lead className="text-xs font-normal text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full">
                       धर्म सारथी
                     </span>
                   </h2>
@@ -539,7 +539,7 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
                       </span>
                     </div>
                     <h3 className="mt-1 text-lg font-bold text-amber-100">
-                      {dynamicAnswer.titleHi} <span className="opacity-80 font-normal">· {dynamicAnswer.titleEn}</span>
+                      <span lang="hi" data-bi="hi">{dynamicAnswer.titleHi}</span> <span data-bi="sep" className="opacity-80 font-normal">· </span><span data-bi="en" data-bi-lead className="opacity-80 font-normal">{dynamicAnswer.titleEn}</span>
                     </h3>
                     <p className="mt-1 text-xs text-stone-300 leading-relaxed">
                       {dynamicAnswer.simpleHi || dynamicAnswer.simpleEn}

@@ -414,7 +414,8 @@ export function MobileFocusMode({
             </button>
 
             {/* Font size toggle */}
-            <div className="hidden sm:inline-flex items-center rounded-full border border-stone-800 bg-stone-900 p-0.5 text-xs font-semibold">
+            {/* The same four steps, with the same names, as the Aa sheet (ReaderSettingsPanel). */}
+            <div role="group" aria-label="Sanskrit size · संस्कृत आकार" className="hidden sm:inline-flex items-center rounded-full border border-stone-800 bg-stone-900 p-0.5 text-xs font-semibold">
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'sm')}
@@ -423,7 +424,7 @@ export function MobileFocusMode({
                 title="छोटे अक्षर"
                 aria-pressed={sanskritSize === 'sm'}
               >
-                A
+                S
               </button>
               <button
                 type="button"
@@ -433,7 +434,7 @@ export function MobileFocusMode({
                 title="सामान्य अक्षर"
                 aria-pressed={sanskritSize === 'md'}
               >
-                A+
+                M
               </button>
               <button
                 type="button"
@@ -443,7 +444,7 @@ export function MobileFocusMode({
                 title="बड़े अक्षर"
                 aria-pressed={sanskritSize === 'lg'}
               >
-                A++
+                L
               </button>
               <button
                 type="button"
@@ -453,7 +454,7 @@ export function MobileFocusMode({
                 title="विशाल अक्षर"
                 aria-pressed={sanskritSize === 'xl'}
               >
-                A+++
+                XL
               </button>
             </div>
 
@@ -481,10 +482,10 @@ export function MobileFocusMode({
                     <legend className="px-1 font-semibold text-stone-200">Sanskrit size · संस्कृत आकार</legend>
                     <div className="grid grid-cols-4 gap-1">
                       {([
-                        ['sm', 'A', 'Small'],
-                        ['md', 'A+', 'Default'],
-                        ['lg', 'A++', 'Large'],
-                        ['xl', 'A+++', 'Largest'],
+                        ['sm', 'S', 'Small'],
+                        ['md', 'M', 'Medium'],
+                        ['lg', 'L', 'Large'],
+                        ['xl', 'XL', 'Largest'],
                       ] as const).map(([size, label, name]) => (
                         <button
                           key={size}
@@ -525,10 +526,10 @@ export function MobileFocusMode({
                     <legend className="px-1 font-semibold text-stone-200">Line spacing · पंक्ति अंतराल</legend>
                     <div className="grid grid-cols-2 gap-1">
                       {([
-                        ['compact', 'Compact'],
+                        ['compact', 'Tight'],
                         ['normal', 'Normal'],
-                        ['relaxed', 'Relaxed'],
-                        ['loose', 'Loose'],
+                        ['relaxed', 'Roomy'],
+                        ['loose', 'Airy'],
                       ] as const).map(([spacing, label]) => (
                         <button
                           key={spacing}

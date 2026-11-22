@@ -69,9 +69,11 @@ export function VerseText({ verse: v, chapterId, scriptureId, href, actions }: P
 
       {lines.length > 0 && (
         <div className="vt-leaf verse-folio">
+          {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
+          <span className="photo-light" />
           {speaker && (
             <div className="vt-speaker mb-2 text-center">
-              <span className="vt-speaker-chip">✦ {speaker} ✦</span>
+              <span className="vt-speaker-chip" lang={hasSpeakerInText ? 'sa' : undefined}>✦ {speaker} ✦</span>
             </div>
           )}
           <p lang="sa" className="vt-sa">

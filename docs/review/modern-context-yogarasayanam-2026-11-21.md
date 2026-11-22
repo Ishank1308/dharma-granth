@@ -1,0 +1,316 @@
+# Modern-context notes: Yoga Rasayanam (review note, 21 November 2026)
+
+This note goes with the pull requests that add modern-context notes to the Yoga Rasayanam. It lists how the notes were checked, the verses a reviewer should read first, the caveat each note carries and the facts to spot-check. The notes are AI drafts and have not had a human editorial review.
+
+## Status
+
+- **Coverage:** all 301 verses (1:1 to 3:308; chapter 1 has 100 verses, chapter 2 has 1:101 to 2:200 numbered on, chapter 3 runs from 3:201 to 3:308 with gaps in the source numbering) now have a modern-context note. None had a note before.
+- **Pull requests:** 1:1 to 1:40 went in with #391, 186 more with #402, and the last 75 (3:215 to 3:232 and 3:252 to 3:308) with this note.
+- **Source file:** `data/hi-commentary/yogarasayanam-rest.json` holds only the `lifeLesson` field. The existing व्याख्या (`explanation`) is unchanged for all 301 entries; this is verified after each publish.
+- **Size cap:** `MAX_TOTAL_MB` in `scripts/convert-commentary-to-json.ts` was raised from 61 to 62 for this book (in #391).
+
+## How the notes were made and checked
+
+- **Writers:** after 1:1 to 1:40, the book was written by several writers in parallel on separate verse ranges (Ishank's choice on 21 Nov, to finish faster). Each writer screened its planned facts against every earlier note and recorded them in a shared claims list so two writers could not take the same fact. Every batch was then checked centrally before publishing.
+- **Register:** every batch passed `scripts/check-hindi-register.mjs` with 0 sentences to fix; no nukta letters; no first person; no तुम-forms.
+- **Facts used once:** the stricter check (rare words or numbers shared with any other note in any book, this book included) was run on each batch and again over the whole book at the end. Two repeats were found in 1:1 to 1:40 before publishing and replaced (the Leaning Tower of Pisa at 1:14, already in Yajurveda; Brother Lawrence at 1:27, already in Shiva Samhita). In the later batches the writers ruled out more than a hundred candidate facts at the screening stage. The final whole-book run reports only these shared items, all judged to be different facts: 1:1 (Deogarh) and Shiva Samhita 5:179 (Budhanilkantha), two different reclining-Vishnu images; 1:33 (Vyasa's list of asanas) and Shiva Samhita 3:103 (Gorakhnath); 2:102 (Magendie, 1822) and Chandogya 4:5 (Champollion, 1822). Other pairs share only a year or a number.
+- **Anchoring:** each note says in one sentence what the verse itself teaches, following the existing व्याख्या.
+
+## What kind of book this is, and the standing caveats
+
+The Yoga Rasayanam is a hatha-yoga manual: the four doors and eight limbs, yama and niyama, asanas, pranayama (chandrabhedana, bhastrika), the three bandhas and kundalini (chapter 1); pratyahara, dharana on the elements, Sun and pole star, meditation on Vishnu, Shiva and light, and samadhi by hatha yoga (chapter 2); then the siddhis, khechari, nada yoga, trataka, diet and season rules, and the hamsa mantra (chapter 3). Many verses promise powers, cures or long life. No note presents such a claim as fact. Each note that needs it carries one of these standing sentences:
+
+- **Pranayama: learn only under an experienced teacher; ask a doctor first in heart, breathing or blood-pressure disease.** 1:48, 1:49, 1:50, 1:51, 1:52, 1:53, 1:54, 1:55, 1:56, 1:57, 1:58, 1:59, 1:60, 1:61, 1:63, 1:66, 1:91, 1:92, 1:93, 2:104, 2:106, 2:110, 2:119, 2:195, 3:206, 3:292.
+- **Long breath retention: holding the breath by force can harm; never try the long retentions the text names.** 1:64, 1:65, 1:70, 1:71, 1:72, 1:95, 2:111, 2:112, 2:118, 3:207, 3:208, 3:235, 3:236.
+- **Mudras and bandhas: learn only from an experienced teacher, never from a book; ask a doctor first in illness or pregnancy.** 1:85, 1:86, 1:87, 1:88, 1:89, 1:94, 1:100, 2:105, 2:187, 2:189.
+- **Khechari: never force the tongue back, pull it or cut the tissue under it.** 3:221, 3:222, 3:223, 3:224, 3:225, 3:226, 3:227, 3:228, 3:229, 3:230, 3:231, 3:232, 3:235, 3:237, 3:242, 3:243.
+- **Asanas: stay within the body's limit; ask a doctor or trained teacher first with knee, hip or spine trouble.** 1:33, 1:35, 1:37, 1:39, 1:40, 1:41, 1:42, 1:43, 1:44, 2:117, 2:172, 2:186, 2:188, 3:246, 3:277.
+- **Chakras and kundalini: the language of meditation, not anatomy.** 1:36, 1:62, 1:65, 1:72, 1:73, 1:79, 1:80, 1:81, 1:83, 1:84, 1:90, 1:96, 1:97, 1:98, 1:99, 2:101, 2:108, 2:140, 2:145, 2:159, 2:190, 2:191, 2:192, 2:193, 2:194, 2:197, 2:199.
+- **Nadis: the subtle-body model, not the nerves or vessels of anatomy.** 1:74, 1:75, 1:76, 1:77, 1:78, 2:102, 2:103, 2:116.
+- **Siddhis: the tradition's faith and style, not established fact or the aim of practice.** 1:6, 2:137, 2:145, 2:146, 2:147, 2:148, 2:149, 2:150, 2:151, 2:152, 2:153, 2:171, 2:179, 2:180, 2:181, 2:182, 3:210, 3:211, 3:212, 3:213, 3:214, 3:215, 3:216, 3:217, 3:219, 3:239, 3:244, 3:261, 3:262, 3:263, 3:264, 3:265, 3:266, 3:281, 3:283.
+- **Signs of success: the text's faith and style, not a promised result.** 1:38, 1:46, 1:77, 2:102, 2:107, 2:109, 2:120, 2:135, 2:143, 2:144, 2:154, 2:173, 2:174, 2:175, 2:176, 2:177, 2:178, 2:198, 3:209, 3:220, 3:233, 3:243, 3:245, 3:254, 3:255, 3:258, 3:282, 3:286, 3:293, 3:294, 3:297, 3:306.
+- **Samadhi: research measures only outward signs.** 1:17, 2:112, 2:114, 2:183, 2:184, 2:200, 3:201, 3:202, 3:203, 3:204, 3:205, 3:234, 3:236, 3:238, 3:240, 3:241, 3:257, 3:259, 3:279, 3:280, 3:308.
+- **Inner sound: constant ringing in the ears can be a medical symptom; see a doctor.** 2:113, 3:245, 3:247, 3:248, 3:250, 3:251.
+- **Diet rules: written for solitary practitioners of that time; ask a doctor before a large change of diet.** 1:67, 1:68, 1:69, 2:196, 3:291.
+- **Strict vows and fasting: ask a doctor first in diabetes, heart disease, pregnancy or any illness.** 1:26, 3:294, 3:295.
+- **Cure of disease: take a qualified doctor's treatment.** 1:62, 3:242, 3:244.
+- **Strict celibacy: written for the solitary practitioner; for a householder it means restraint and fidelity, and should cause no fear or guilt.** 1:20, 3:291.
+- **Fruits of yama and niyama: the tradition's faith and style.** 1:22, 1:23, 1:28, 1:29.
+- **Reverence for the guru does not mean giving up judgement; leave a guide who exploits or harms.** 1:2, 3:287, 3:298.
+- **Other single caveats:** AG at 1:95, 3:295; AN at 1:8, 2:156; DV at 1:4, 1:47, 2:115; MJ at 1:6; PF at 2:169; PR at 1:82; PS at 3:307; SN at 2:157; TY at 1:13, 2:131; VG at 2:123, 2:132, 3:299 (see the header constants in the writer files for their exact wording).
+- The sentence ""This comparison is only a metaphor" where a modern finding is set beside a traditional idea." appears in 53 notes.
+
+## Please read these places first
+
+- Strict celibacy and fasting (1:20, 1:26, 3:291, 3:294, 3:295).
+- Breath retention and bhastrika (1:48 to 1:66, 1:70 to 1:72, 1:91 to 1:95, 2:111, 2:112, 2:118, 3:207, 3:208, 3:235, 3:236).
+- Bandhas and kundalini awakening (1:73 to 1:100, 2:101 to 2:108).
+- Dharana on the Sun, the pole star and the elements, with their promised powers (2:144 to 2:155).
+- Samadhi by hatha yoga and the four "movements" of prana (2:184 to 2:200, 3:201 to 3:209), including the strict diet at 2:196.
+- **The siddhi verses (3:210 to 3:219, 3:261 to 3:266, 3:281, 3:283).** Each note says these are the tradition's faith and style.
+- **Khechari (3:221 to 3:232, 3:235, 3:237, 3:242, 3:243).** Every note says never to force, pull or cut the tongue.
+- Nada yoga (3:245 to 3:260): the notes say constant ringing in the ears is a symptom to take to a doctor.
+- Trataka (3:267 to 3:279): the notes say staring strains the eyes and to ask a doctor in eye disease.
+- Freedom from sin through the mantra (3:307) and the guru (1:2, 3:287, 3:298).
+
+## Facts to spot-check
+
+One line per verse where the note names a person, a date, a number or a text reference. Verses not listed carry a general fact without such details.
+
+- 1:1: Deogarh Dashavatara temple, the Sheshashayi Vishnu panel (a different monument from the Budhanilkantha image used in Shiva Samhita 5:179).
+- 1:2: The 2015 paper on the Higgs boson mass with 5,154 authors (33 pages, 24 of them names).
+- 1:3: Panini's two roots युजिर् योगे and युज समाधौ.
+- 1:4: Mundaka Upanishad 1.2.7 and 1.2.12.
+- 1:5: Gilbert Ryle, The Concept of Mind, 1949 (knowing how and knowing that).
+- 1:6: Ramakrishna's parable of the one-paisa ferry.
+- 1:7: Karpicke and Blunt, Science, 2011 (retrieval practice).
+- 1:8: The Khumbu "Icefall Doctors" on Everest.
+- 1:9: Sushruta's practice chapter (training on gourds and leather bags).
+- 1:10: Hemachandra's Yogashastra, written for King Kumarapala.
+- 1:11: Li Shizhen, Bencao Gangmu, 1578.
+- 1:12: Vivekachudamani verse 3.
+- 1:13: Shvetashvatara Upanishad 2.10 (the place for yoga).
+- 1:14: Venice built on wooden piles; Santa Maria della Salute begun 1631, over a million piles by the traditional count.
+- 1:15: Maitrayaniya Upanishad 6.18 (six limbs) against Yogasutra 2.29 (eight).
+- 1:16: Gheranda Samhita's seven means.
+- 1:17: Lutz and Davidson 2004 (gamma activity in long-term meditators).
+- 1:18: Yogasutra 2.31, the mahavrata.
+- 1:19: Abhayarajakumara Sutta (true, beneficial and timely speech).
+- 1:20: Rosalind Franklin's Photo 51, shown to James Watson without her knowledge.
+- 1:21: Messner and Habeler on Everest without bottled oxygen, 8 May 1978.
+- 1:22: Knack and Keefer 1997, trust across 29 countries.
+- 1:23: Kasser and Ryan 1993 (financial aspirations and well-being).
+- 1:24: Yogasutra 2.32 and Vyasa on svadhyaya as japa.
+- 1:25: Manusmriti 5.109.
+- 1:26: The chandrayana vow as described in Manusmriti chapter 11.
+- 1:27: The anonymous Russian "Way of a Pilgrim", first printed in Kazan in 1884 (3,000, 6,000 and 12,000 repetitions).
+- 1:28: Yogasutra 2.40 to 2.44 and the word jugupsa.
+- 1:29: Yogasutra 1.23 and 2.45.
+- 1:30: Charaka Samhita, Vimanasthana 8, the instruction at initiation.
+- 1:31: Rothamsted's Broadbalk wheat experiment, running since 1843.
+- 1:32: Sritattvanidhi's 122 asanas.
+- 1:33: Vyasa's list of asanas on Yogasutra 2.46.
+- 1:34: Alf Nachemson's disc-pressure measurements.
+- 1:35: Arnold Kegel, 1948.
+- 1:36: The Great Buddha of Kamakura, 1252.
+- 1:37: The Gupta-period seated Buddha of Sarnath.
+- 1:38: Alfred Yarbus, 1967 (eye movements).
+- 1:39: स्वस्ति and Rigveda 1.89.6.
+- 1:40: B. K. S. Iyengar, Light on Yoga, 1966, against Gheranda's virasana.
+- 1:41: Yogasutra 1.30; Vyasa's glosses of styana (inactivity of mind) and alasya (non-engagement from heaviness of body and mind).
+- 1:42: Brahmasutra 4.1.7 to 4.1.10; Shankara's three reasons (walking scatters the mind, standing occupies it, lying brings sleep).
+- 1:43: Charaka Sutrasthana 7, about verses 34 to 37; the note lists only four of the six activities in the verse.
+- 1:44: Jain samayika as one of the twelve lay vows, lasting one muhurta of 48 minutes.
+- 1:45: Yogasutra 2.49 "tasmin sati" and Vyasa's "once asana is mastered".
+- 1:46: Shvetashvatara 2.8 and 2.9.
+- 1:47: the rains-retreat rule and its origin story in Vinaya Mahavagga.
+- 1:48: Chandogya 6.8.2.
+- 1:49: Gita 4.29 and Shankara reading the three as puraka, rechaka, kumbhaka.
+- 1:50: Visuddhimagga: forty meditation subjects, two "useful everywhere" (metta, mindfulness of death), with "some add asubha"; Buddhaghosa dated to the fifth century.
+- 1:51: Arthashastra 1.19: day and night in eight parts each, with the duties I named and sandhya worship at day's end.
+- 1:52: Chandogya 1.3.3 to 1.3.5.
+- 1:53: Yoga Yajnavalkya as a Yajnavalkya–Gargi dialogue that includes nadi-shuddhi by alternate nostrils; no chapter number.
+- 1:54: Manusmriti 2.83.
+- 1:55: Manusmriti 6.71.
+- 1:56: Atharvaveda 10.7 (probably verse 42): two maidens weaving the six-pegged web, read as day and night. least certain: this reference; the note cites only "10.7".
+- 1:57: Rigveda 9.112 (verse 2); "feathers used to fan the fire" is a scholarly reading.
+- 1:58: Yogasutra 1.34 and Vyasa's gloss of pracchardana.
+- 1:59: Ashtanga Hridaya Sutrasthana 2 (about verse 11): exercise to half strength, in cold season and spring.
+- 1:60: Virata Parva, Arjuna explaining "Savyasachi" to Uttara.
+- 1:61: Sona Sutta, Anguttara Nikaya (6.55).
+- 1:62: Sushruta Sutrasthana 21 (verse 8).
+- 1:63: Nirukta 1.12, Shakatayana against Gargya.
+- 1:64: Mahasaccaka Sutta (Majjhima 36), the breathless meditation and its effects.
+- 1:65: Yogasutra 3.26 and 3.29; some editions number these 3.27 and 3.30. Vyasa's "three doshas and seven dhatus".
+- 1:66: Surya Siddhanta kapala-yantra, sinking sixty times in a day and night; ghatika of 24 minutes, so three make 72 (the existing explanation says "about an hour and a quarter").
+- 1:67: Charaka Sutrasthana 5.12; the note leaves out the meat item under "आदि".
+- 1:68: Charaka Sutrasthana 13.13; the sentence on modern nutrition and saturated fat is general.
+- 1:69: Charaka Sutrasthana 25.45 to 25.47.
+- 1:70: Markandeya Purana yoga section: 12, 24, 36 matras and sweat, tremor, dejection; no chapter number.
+- 1:71: Paniniya Shiksha bird verse; the note renders चाष as नीलकण्ठ.
+- 1:72: Vinaya: ordination at twenty, five years of dependence on a teacher, ten years before ordaining others.
+- 1:73: Abhimanyu on the thirteenth day, Drona Parva.
+- 1:74: Chandogya 3.19 (silver half earth, gold half sky, veins became rivers).
+- 1:75: Sushruta Sharirasthana 7 (navel as root, up/down/across, wheel hub, garden channels).
+- 1:76: Kabir's "झीनी झीनी बीनी चदरिया", attribution and paraphrase.
+- 1:77: Katha 2.3.16 and Chandogya 8.6.6 as the same mantra; Shankara on Katha naming the nadi sushumna.
+- 1:78: timing of the spinal curves (neck at about three months, lumbar with walking).
+- 1:79: recurrent laryngeal nerve.
+- 1:80: Claude Bernard 1857, glycogen as a "white powder".
+- 1:81: Galvani 1791, Bologna.
+- 1:82: Bayliss and Starling 1899, law of the intestine.
+- 1:83: Neher and Sakmann 1976, first single ion-channel current.
+- 1:84: orexin found in 1998 by two groups; link to narcolepsy the next year.
+- 1:85: Fabricius, Padua, 1603, valves of the veins.
+- 1:86: Kari Bø et al. 1999 (BMJ), four groups, six months, exercise group did best.
+- 1:87: Müller's manoeuvre attributed to Johannes Müller; its use in assessing airway collapse in sleep.
+- 1:88: Corneille Heymans, Nobel 1938, sensor at the carotid fork that reads blood oxygen.
+- 1:89: Carl Wiggers' cardiac-cycle diagram dated only as "early twentieth century"; the phase with both valves closed.
+- 1:90: Paul Flechsig (Leipzig), order of myelination; no year given.
+- 1:91: Kety and Schmidt 1948, over-breathing cut brain blood flow by "about a third".
+- 1:92: Hering–Breuer reflex, 1868, Vienna.
+- 1:93: Aschoff's underground bunker at Andechs, 1960s, free-running rhythm of "about 25 hours".
+- 1:94: Sapsford et al. 2001, co-activation of abdominal and pelvic-floor muscles; "ऑस्ट्रेलिया की रूथ सैप्सफोर्ड".
+- 1:95: Max Rubner 1894, dog in a calorimeter.
+- 1:96: Erb and Westphal 1875, knee jerk, same journal issue.
+- 1:97: Avery and Mead 1959.
+- 1:98: Schandry 1981.
+- 1:99: Capanna Regina Margherita opened 1893 at 4,554 m on Monte Rosa; Mosso of Turin worked there. Place written "मोन्ते रोसा" to avoid the रोज flag.
+- 1:100: Guyton 1955.
+- 2:101: Müller and Pilzecker 1900, Göttingen.
+- 2:102: Magendie 1822.
+- 2:103: T. Graham Brown 1911.
+- 2:104: aspirin sold from 1899; ISIS-2 1988 with "more than seventeen thousand" patients.
+- 2:105: Tabary et al. 1972 (J Physiol), cat muscle held lengthened adds sarcomeres. The note says "फ्रांस के ताबारी और सहयोगियों ने प्राणियों पर प्रयोग से".
+- 2:106: Yue and Cole 1992, four weeks, about 30 percent versus 22 percent.
+- 2:107: Weibel 1963, about 23 generations of airway branching.
+- 2:108: Wolff 1892, Berlin.
+- 2:110: Dallas study 1968, five men, three weeks in bed, capacity down by more than a quarter, eight weeks to recover.
+- 2:111: Ernst Moro 1918, Heidelberg.
+- 2:112: Farrow and Hebert 1982 (Psychosomatic Medicine), spontaneous breath suspension during meditation coinciding with reported deep-calm moments. This is the one least certain:; the first names "जॉन" and "रसेल" are from memory.
+- 2:113: Schaette, Turtle and Munro 2012 (PLoS ONE), earplug in one ear for seven days. the note says "अधिकांश" because I was unsure of the exact count (recalled as 11 or 14 of 18).
+- 2:114: Melzack 1975, 78 adjectives in 20 groups.
+- 2:115: Elizabeth Newton, Stanford dissertation 1990; 120 songs tapped, 3 recognised, tappers predicted about half.
+- 2:116: Zen sitting period measured by one incense stick, "about forty minutes"; kinhin walking between sittings.
+- 2:117: Scott Kelly, 340 days, Soyuz landing in Kazakhstan, March 2016; crews seated in chairs on landing.
+- 2:118: Baddeley and Longman 1978, British postal workers learning to type; the one-hour-a-day group reached the skill in fewer total hours. The study had four groups; the note mentions two.
+- 2:119: Perl, Sobel et al. 2019 (Weizmann Institute, Nature Human Behaviour): task onset tends to coincide with inhalation; visuospatial answers more accurate at inhalation.
+- 2:120: Broadbent, "Perception and Communication", 1958, filter model.
+- 2:121: Pavlov's "what is it" reflex; Sokolov's habituation of the orienting response (no year given).
+- 2:122: Ward et al. 2017, University of Texas, "nearly 800" participants; phone on desk, in bag or in another room.
+- 2:123: Anderson, Laurent, Yantis 2011 (Johns Hopkins, PNAS), value-driven attentional capture.
+- 2:131: Grande Chartreuse founded 1084 by St Bruno, south-eastern France; cell-house with oratory, workshop, garden and food hatch.
+- 2:132: Donald Griffin, Harvard student, 1938, ultrasonic detector (G. W. Pierce's, not named in the note); bats navigate by echoes.
+- 2:133: Solomon and Corbit 1974, opponent-process theory.
+- 2:134: Tangney, Baumeister, Boone 2004 self-control scale; correlates as listed; no harmful upper limit of self-control found.
+- 2:135: Milyavskaya and Inzlicht 2017; N = 159 students; one week of sampling; fewer temptations, not effortful resistance, predicted goal progress. least certain: the number 159.
+- 2:136: Marlatt and Gordon, "Relapse Prevention", 1985, abstinence violation effect.
+- 2:137: Posner 1980, covert orienting with cues.
+- 2:138: William James, "The Principles of Psychology", 1890; both statements are paraphrases, not quotations.
+- 2:139: Zuckerman, Porac, Lathin, Smith, Deci 1978; choice of puzzles and time raised free-time persistence.
+- 2:140: E. H. Weber 1834, two-point threshold; 1 to 2 mm at tongue tip and fingertips, several cm on the back.
+- 2:141: Berman, Jonides, Kaplan 2008 (Michigan); walk of about an hour in an arboretum vs city streets, same participants on different days.
+- 2:142: Hasenkamp et al. 2012 (Emory); 14 meditators; button press; four phases.
+- 2:143: Shiffrin and Schneider 1977; search became automatic after thousands of trials. Task described loosely as "fixed targets among letters".
+- 2:144: Lindahl, Britton et al. 2014 (Brown); 28 meditators interviewed, 9 reported light experiences; comparison with perceptual isolation.
+- 2:145: Head and Holmes 1911, body schema.
+- 2:146: Fechner injured his eyes gazing at the sun for after-image studies "around 1840" and gave up his Leipzig chair.
+- 2:147: Kaufman and Rock 1962, Science; artificial moons; illusion disappears when terrain is masked.
+- 2:148: autokinetic effect; Humboldt 1799 took the apparent swinging of stars for real motion; Sherif 1935.
+- 2:149: Piff et al. 2015; Berkeley eucalyptus grove "over sixty metres" (source says over 200 feet); one minute; dropped pens.
+- 2:150: Tellegen and Atkinson 1974 absorption scale.
+- 2:151: Godden and Baddeley 1975, divers in Scotland, context-dependent recall.
+- 2:152: Kuda Bux fire-walk test organised by Harry Price, Surrey, September 1935; feet unharmed; explanation by low conductivity and brief contact. Name written कुदा बक्स to avoid nukta.
+- 2:153: Ehrsson 2007, Science, out-of-body illusion with head-mounted displays; Ehrsson described as "of Sweden" (the experiment was run in London).
+- 2:154: Aron, Aron, Smollan 1992; seven pairs of overlapping circles.
+- 2:155: Yogasutra 1.39 "यथाभिमतध्यानाद्वा" and Vyasa's gloss that steadiness gained in one place extends to others.
+- 2:156: Van Dongen, Dinges et al. 2003; 48 adults; 14 nights at 4, 6 or 8 hours; deficits reaching the level of one to two nights without sleep; subjects rated themselves only mildly impaired.
+- 2:157: Bhaja Govindam line "पुनरपि जननं पुनरपि मरणं पुनरपि जननीजठरे शयनम्" (quoted in Sanskrit, no verse number given).
+- 2:158: Gita 12.1 (Arjuna's question) and 12.2 to 12.5 (reply, paraphrased in the third person).
+- 2:159: Euclid's Elements IV.15 (hexagon in a circle, side equals radius), cited as "एलिमेंट्स (4.15)".
+- 2:161: Omega Centauri, about ten million stars, about 17,000 light-years.
+- 2:162: de Saussure's cyanometer dated 1789; the note says "more than fifty shades" (usually given as 53).
+- 2:163: Ulf Dimberg 1982, facial muscle responses to happy and angry faces.
+- 2:164: Binnig and Rohrer, STM 1981 at IBM Zurich, Nobel 1986.
+- 2:165: Max Schultze 1866, rods for dim light and cones for bright light and colour.
+- 2:166: Davy isolates potassium from potash in 1807.
+- 2:168: Explorer 1 launch date given as 31 January 1958 (US local date; 1 February UTC).
+- 2:169: Gilbert's De Magnete 1600, iron hammered lying north-south becomes magnetised.
+- 2:170: Roberts-Austen 1896, gold diffusing into solid lead kept warm for days; his post as chemist of the Royal Mint.
+- 2:171: Onnes, 8 April 1911, Leiden, mercury at about 4.2 K.
+- 2:172: Saunderson blind from smallpox at about one year; Lucasian chair 1711; taught optics.
+- 2:173: Franz Boll 1876, frog retina pigment bleaching in light; dark adaptation "about half an hour".
+- 2:174: Benham's top dated 1895.
+- 2:175: Pogson 1856; magnitudes of about +6 (faintest naked-eye star), −13 (full Moon), −27 (Sun).
+- 2:176: Fresnel lens first lit at Cordouan in 1823; "visible from more than thirty kilometres".
+- 2:177: Wedgwood 1802 silver-salt images that could not be fixed; John Herschel's fixer 1839.
+- 2:178: at about 28°N, day length grows a few seconds a day in the first week after the December solstice, over a minute and a half a day near the March equinox, about three and a half hours in total by June. These are my own calculation (1.74 minutes a day at the equinox; 10.18 to 13.82 hours).
+- 2:179: Bessel 1838, 61 Cygni, "about ten light-years" (his value 10.3; the modern value is 11.4).
+- 2:180: Lipperhey's application of 2 October 1608 at The Hague; the purpose is paraphrased from the record, not quoted.
+- 2:181: Bonner Durchmusterung, about 3.25 lakh stars, 1859 to 1862; Gaia about 1.8 billion sources.
+- 2:182: Jansky from 1931 in New Jersey, signal four minutes earlier each day, direction of the galactic centre.
+- 2:183: Wien's law 1893; human body emission peak near ten micrometres.
+- 2:184: Thévenot's spirit level 1661.
+- 2:185: Fizeau 1849 over a little more than eight kilometres; Foucault "some years later" in a room; both "about three lakh km per second" (313,000 and 298,000).
+- 2:186: Lambton's baseline 1802 near St Thomas Mount, about twelve kilometres, steel chain.
+- 2:187: Wilkinson's boring machine 1774 making Watt's cylinders steam-tight.
+- 2:188: Poleni's 1748 book and hanging-chain analysis of St Peter's dome.
+- 2:189: John Ambrose Fleming's valve, 1904.
+- 2:190: Panama Canal 1914; three Gatun chambers; lake about 26 m above sea level.
+- 2:191: Grenelle well, begun 1833, water struck eight years later at 548 m.
+- 2:192: Roda Nilometer built 861 CE; sixteen cubits as the mark of a good year.
+- 2:193: Vernier 1631; ten vernier divisions equal nine main divisions.
+- 2:194: Palomar five-metre disc cast at Corning in 1934 and cooled over "about ten months". The ten-month figure is the one least certain:.
+- 2:195: Hisako Koyama from 1947 at the Tokyo science museum, more than four decades, more than ten thousand drawings.
+- 3:215: Han van Meegeren sold his own paintings as Vermeers; arrested in 1945 for selling Dutch heritage to the enemy (Göring); painted a new "Vermeer" before witnesses; tried in 1947 and convicted.
+- 3:216: Nebra sky disc found in 1999 near Nebra, Germany; about 3600 years old; gold sun or moon, crescent and stars; one star cluster read as the Pleiades; called the oldest known concrete depiction of the sky.
+- 3:217: Horyu-ji's main hall (kondo) and five-storey pagoda are among the oldest surviving wooden buildings; the note says "thirteen centuries", counting from the late-7th-century rebuild; UNESCO World Heritage listing in 1993.
+- 3:218: Cennini, Il Libro dell'Arte, about 1400; apprenticeship of 1 year drawing, 6 years workshop tasks, 6 years colour, about 13 years in all.
+- 3:219: sarangi has three main gut strings and "more than thirty" sympathetic metal strings.
+- 3:220: Venkatamakhin, Chaturdandi Prakashika, 17th century, Thanjavur; 72 melas, 36 with each madhyama.
+- 3:221: Oliveros recorded in 1988 in the Fort Worden cistern, with a reverberation of about 45 seconds; the recording was named "Deep Listening".
+- 3:222: Mozart's letter from Augsburg, October 1777; he played organs built by J. A. Stein and called the organ the king of instruments "in his eyes" (paraphrased, not quoted).
+- 3:223: Venice Charter of 1964, the rule that restoration stops where conjecture begins (Article 9).
+- 3:224: Paniniya Shiksha's eight places of articulation (उरस्, कण्ठ, शिर, जिह्वामूल, दन्त, नासिका, ओष्ठ, तालु).
+- 3:225: Ötzi found in 1991; about 5300 years old; carried two pieces of birch polypore on leather strips; some researchers think it was medicine. the note says "found in Alpine ice" and gave no place name.
+- 3:226: Balanos used iron clamps on the Parthenon in the early 20th century; they rusted and cracked the marble; from 1975 a new committee replaced them with titanium. the note avoids exact years for his work, since sources give 1898 to 1933 and other spans.
+- 3:227: Theophilus, De diversis artibus, 12th century, describes an iron drawplate with holes of decreasing size for drawing wire.
+- 3:228: Vitruvius, De Architectura, Book 5 (chapter 5): bronze sounding vessels tuned to intervals, placed in niches under the theatre seats.
+- 3:229: the violin sound post is spruce, held only by pressure; Italian name "anima"; set by a luthier through the f-hole with a special tool.
+- 3:230: urna, the white soft hair between the brows, is one of the 32 marks in the Lakkhana Sutta (Digha Nikaya 30).
+- 3:231: talamana: one tala is the face length, divided into 12 angulas; a navatala figure is 9 talas tall.
+- 3:232: sandhiprakash ragas: morning Bhairav, evening Marwa and Puriya; they usually use komal re.
+- 3:252: Darwin mentions "El Bramador", a sounding sand hill near Copiapó in Chile, in his account of the Beagle voyage.
+- 3:253: high-speed film showed the ruffed grouse's drumming wings strike neither the log nor its breast; the sound comes from air alone.
+- 3:254: Bernd Heinrich showed pre-flight shivering warm-up in sphinx moths in the early 1970s (Heinrich and Bartholomew 1971).
+- 3:255: gymnemic acids in gudmar (Gymnema sylvestre) leaves block sweet taste for a while.
+- 3:256: two 1998 studies (Andersson et al.; Hunt et al.) found that male blue tits' crown feathers reflect more ultraviolet and that the birds see this.
+- 3:257: the wood frog freezes about two thirds of its body water, its heart stops, and its liver releases glucose.
+- 3:258: trees resorb about half of a leaf's nitrogen and phosphorus before it falls (Aerts 1996 averages).
+- 3:259: a Rüppell's vulture hit an aircraft at about 11,300 m over Abidjan on 29 November 1973.
+- 3:260: olm lifespan estimated at over 100 years; the 2020 study (Balázs et al.) found one olm at the same spot for 2,569 days.
+- 3:261: Lennart von Post presented pollen analysis at a 1916 meeting in Kristiania (Oslo).
+- 3:262: Taboada et al. 2022 in Science: a sleeping glass frog moves about 90% of its red blood cells into the liver and becomes 2 to 3 times more transparent. First author is Carlos Taboada.
+- 3:263: Boris Uvarov's 1921 locust phase theory: two "species" are phases of one.
+- 3:264: Shark Bay Posidonia australis is one plant across about 180 km, at least 4,500 years old (Edgeloe et al. 2022).
+- 3:265: Steno's Prodromus of 1669 and the law of superposition.
+- 3:266: Croxall et al. 2005 in Science: grey-headed albatrosses from South Georgia circled the globe, the fastest in 46 days.
+- 3:268: kaolin is named after Gaoling near Jingdezhen.
+- 3:270: Wiederman and O'Carroll 2013 in Current Biology: a dragonfly neuron selectively responds to one of two targets.
+- 3:271: The Arab kamal is a board on a knotted cord held in the teeth. The lower edge is set on the horizon and the upper edge on the Pole Star, and the knots mark the latitudes of ports.
+- 3:272: Olympic recurve target: 70 m distance, 122 cm face, 10-ring 12.2 cm.
+- 3:273: Ship's watches last four hours, one more bell strike every half hour, eight bells at the end.
+- 3:274: Hubble shows four diffraction spikes from four secondary-mirror vanes. JWST shows eight: six from its hexagonal segments and two from one strut.
+- 3:275: Tombaugh found Pluto on 18 Feb 1930, aged 24, at Lowell Observatory, using plates taken six days apart in January.
+- 3:276: Doolittle's fully blind flight was on 24 Sept 1929 at Mitchel Field, with a safety pilot aboard.
+- 3:277: Arlington Tomb of the Unknown Soldier guarded round the clock since 2 July 1937; 21 steps and 21-second pauses.
+- 3:278: Boat Race since 1829. The claim that coaches teach a slower recovery than drive is general coaching knowledge.
+- 3:279: Ripken played 2,632 consecutive games from 30 May 1982 to 1998, and passed Gehrig's 2,130 on 6 Sept 1995. the note says that Gehrig's record had stood 56 years (1939 to 1995).
+- 3:280: Thames Tunnel begun 1825, opened 1843, with work halted seven years (1828 to 1835).
+- 3:281: The Deep Space Network sites (Goldstone, Madrid, Canberra) are about 120 degrees apart.
+- 3:282: Longitude Act 1714. Maskelyne's Nautical Almanac from 1767.
+- 3:283: Magellan's fleet left in 1519 with five ships. Victoria returned in 1522 with 18 men under Elcano. A day was found missing at Cape Verde.
+- 3:284: The Mountaineers (Seattle) Ten Essentials. I put its origin in the 1930s; the list as given is the classic one.
+- 3:285: Old Weather started in 2010, transcribing WWI-era Royal Navy logbooks.
+- 3:286: Amundsen sailed the Gjoa in 1903 with six companions, spent two winters on King William Island learning from the Netsilik Inuit, and reached the Pacific in 1906.
+- 3:287: Trinity House charter 1514 from Henry VIII. the note says that licensing pilots was one of its old duties.
+- 3:288: Biathlon range 50 m; prone target 45 mm, standing target 115 mm.
+- 3:290: Quetelet, "Sur l'homme" 1835, says adult weight scales roughly with the square of height; the WHO normal BMI range is 18.5 to 24.9.
+- 3:291: Mike Tipton (UK physiologist) studied the cold shock response: a gasp, then about one to two minutes of fast, uncontrolled breathing.
+- 3:292: concrete is protected from frost in winter and kept wet in summer; "तराई" is used as the Hindi term for curing.
+- 3:293: the Shakers trace back to Ann Lee's followers, who came from England in the 18th century; they hung chairs on wall peg rails so the floor could be swept.
+- 3:294: Agostino Levanzin, from Malta, fasted 31 days on water in 1912 at the Carnegie Nutrition Laboratory in Boston. Francis Benedict published "A Study of Prolonged Fasting" in 1915. Also check that daily breath, temperature and weight were measured.
+- 3:295: William Prout reported hydrochloric acid in gastric juice to the Royal Society at the end of 1823 (published 1824).
+- 3:296: Escoffier organised the kitchen into stations (the brigade system) in the late 19th century.
+- 3:297: traditional balsamic vinegar of Modena is made from cooked grape must, aged at least 12 years in a series of smaller and smaller barrels of different woods, each topped up from the next larger one.
+- 3:298: Guigo II (Carthusian, 12th century) wrote the Scala Claustralium as a letter; its four steps are lectio, meditatio, oratio, contemplatio.
+- 3:299: the Abba Moses saying is paraphrased in the third person: go and sit in your cell, and the cell will teach you everything. It is placed in the 4th century in the desert of Scetis.
+- 3:300: Palissy spent about 16 years searching for the glaze, burned his fence palings, furniture and floorboards, and later reached the French court.
+- 3:301: chapter 7 of The Cloud of Unknowing (14th century, anonymous) advises one short word of one syllable, such as God or love.
+- 3:302: Julian of Norwich had sixteen showings in May 1373 and later lived as an anchoress; her book is called the earliest surviving book in English by a woman.
+- 3:303: Shandao (7th century) wrote in his commentary on the Contemplation Sutra about reciting while walking, standing, sitting or lying. Honen read this passage in 1175 and founded the Jodo school.
+- 3:304: least certain. Liuzijue (six exhalation sounds; breath taken in one way and let out six ways) is recorded in the Yangxing yanming lu, attributed to Tao Hongjing (456 to 536). the note says "से जुड़े ग्रन्थ" because the attribution is traditional.
+- 3:305: Warren and Gregory 1958, the verbal transformation effect with a repeated tape loop.
+- 3:306: Tibetan prayer wheels hold printed mantra scrolls and are turned clockwise; large ones are driven by water or wind.
+- 3:307: Konza Prairie in Kansas has been a research site since 1971, with plots burned at set intervals; deep roots regrow within weeks.
+- 3:308: Alfred Maury coined "hypnagogique" in 1848, based on observing his own experience.

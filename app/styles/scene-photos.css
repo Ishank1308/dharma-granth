@@ -11,7 +11,15 @@
    moves on its own: embers rise, mist crosses, glints shimmer on water, dust drifts, stars
    twinkle. A veil of the card's own surface keeps the verse readable in every theme.
    Under Reduce Motion and the quiet modes it holds still; Data Saver keeps the drawings
-   and loads no photo; print and forced colours show no picture. */
+   and loads no photo; print and forced colours show no picture.
+
+   Cost: every moving part is a transform or opacity animation, so the compositor runs it
+   and the page's main thread stays idle while you read. The light is its own element
+   (.photo-light, the last child of the panel) because animating it as a background layer
+   repainted every visible picture 60 times a second. Only panels near the viewport move:
+   FolioMotion (app/components/motion) marks them with data-live, and a panel without it
+   holds still. Before that, a chapter you had scrolled through kept hundreds of endless
+   animations ticking off screen. */
 
 :root {
     /* Each light is one tile (an inline SVG), so the photo's layer list stays three long. */
@@ -31,6 +39,7 @@
         color-mix(in srgb, var(--surface-raised) 66%, transparent) 62%,
         color-mix(in srgb, var(--surface-raised) 56%, transparent) 100%
     );
+    --photo-light-alpha: 0.4;
 }
 :root:is([data-theme='night'], [data-theme='dark']) [data-photo] {
     --photo-veil: linear-gradient(
@@ -39,6 +48,7 @@
         color-mix(in srgb, var(--surface-raised) 60%, transparent) 62%,
         color-mix(in srgb, var(--surface-raised) 44%, transparent) 100%
     );
+    --photo-light-alpha: 0.5;
 }
 
 :root:not([data-data-saver='true']) [data-painting][data-photo] {
@@ -56,13 +66,29 @@
     opacity: 1;
     -webkit-mask: none;
     mask: none;
-    background-image: var(--photo-veil), var(--photo-fx, none), var(--photo);
-    background-size: 100% 100%, var(--photo-fx-size, auto), cover;
-    background-repeat: no-repeat, repeat, no-repeat;
-    background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
+    background-image: var(--photo-veil), var(--photo);
+    background-size: 100% 100%, cover;
+    background-repeat: no-repeat;
+    background-position: 0 0, var(--photo-focus, 50% 50%);
     transform-origin: 50% 60%;
     transform: scale(1.06);
-    will-change: transform;
+}
+
+/* The light over the photo: one tile, repeated, on its own layer above the veil. The box
+   overhangs the panel by one run of its motion (the panel clips it), so sliding it by that
+   run loops without a seam. Its opacity (--photo-light-alpha, set with the veil above) stands
+   in for the veil it used to sit under. */
+.photo-light {
+    display: none;
+}
+:root:not([data-data-saver='true']) [data-photo]:not([data-photo-fx='none']) :is(.verse-folio, .vt-leaf) > .photo-light {
+    display: block;
+    position: absolute;
+    inset: var(--photo-fx-inset, 0);
+    z-index: -1;
+    pointer-events: none;
+    background: var(--photo-fx, none) 0 0 / var(--photo-fx-size, auto) repeat;
+    opacity: var(--photo-light-alpha);
 }
 
 /* The chapter's opening picture uses the photo too. */
@@ -83,47 +109,48 @@
         transform: scale(1.2) translate3d(2.4%, -1.6%, 0);
     }
 }
-/* The light layer moves on its own clock: the first two layers (veil, light) shift, the photo stays put inside the drifting frame. */
+/* The light layer moves on its own clock, by transform, inside the overhang set below. */
 @keyframes photo-rise {
-    from {
-        background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
-    }
     to {
-        background-position: 0 0, 0 -260px, var(--photo-focus, 50% 50%);
+        transform: translate3d(0, -260px, 0);
     }
 }
 @keyframes photo-cross {
-    from {
-        background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
-    }
     to {
-        background-position: 0 0, 640px 0, var(--photo-focus, 50% 50%);
+        transform: translate3d(640px, 0, 0);
+    }
+}
+@keyframes photo-dust {
+    to {
+        transform: translate3d(520px, 0, 0);
     }
 }
 @keyframes photo-shimmer {
-    0%,
-    100% {
-        background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
-    }
     50% {
-        background-position: 0 0, 6% 2px, var(--photo-focus, 50% 50%);
+        transform: translate3d(2px, 2px, 0);
     }
 }
 
 [data-photo] {
     --photo-fx-motion: none;
 }
+/* --photo-fx-inset is the overhang: one tile below for embers, one run to the left for mist
+   and dust (two dust tiles: the old 640px run was not a whole number of 260px tiles and
+   jumped at the loop; 520px in 39s keeps the same speed). */
 [data-photo-fx='embers'] {
     --photo-fx-motion: photo-rise 6s linear infinite;
     --photo-fx-size: 220px 260px;
+    --photo-fx-inset: 0 0 -260px 0;
 }
 [data-photo-fx='mist'] {
     --photo-fx-motion: photo-cross 32s linear infinite;
     --photo-fx-size: 640px 100%;
+    --photo-fx-inset: 0 0 0 -640px;
 }
 [data-photo-fx='dust'] {
-    --photo-fx-motion: photo-cross 48s linear infinite;
+    --photo-fx-motion: photo-dust 39s linear infinite;
     --photo-fx-size: 260px 260px;
+    --photo-fx-inset: 0 0 0 -520px;
 }
 [data-photo-fx='glints'] {
     --photo-fx-size: 300px 180px;
@@ -134,6 +161,7 @@
 [data-photo-fx='glints'],
 [data-photo-fx='stars'] {
     --photo-fx-motion: photo-shimmer 2.6s ease-in-out infinite;
+    --photo-fx-inset: -2px;
 }
 
 /* A sunbeam crosses each picture every few seconds, on a clock rather than the scroll-linked
@@ -166,30 +194,52 @@
     );
 }
 
+/* A photo panel that is not near the viewport holds still: no clock, and no scroll-linked
+   band either (components.css gives ::after one). */
+[data-photo] :is(.verse-folio, .vt-leaf):not([data-live])::after {
+    animation: none !important;
+}
 @media (prefers-reduced-motion: no-preference) {
     :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
         [data-photo]
         :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse)
-        .verse-folio::before,
+        .verse-folio[data-live]::before,
     :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
         [data-photo]
         .verse-card.vt
-        .vt-leaf::before {
-        animation:
-            photo-drift 20s ease-in-out infinite alternate,
-            var(--photo-fx-motion);
+        .vt-leaf[data-live]::before {
+        animation: photo-drift 20s ease-in-out infinite alternate;
+        will-change: transform;
+    }
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        [data-photo]
+        :is(.verse-folio, .vt-leaf)[data-live]
+        > .photo-light {
+        animation: var(--photo-fx-motion);
+        will-change: transform;
     }
     :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
         [data-photo]
         :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse)
-        .verse-folio::after,
+        .verse-folio[data-live]::after,
     :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
         [data-photo]
         .verse-card.vt
-        .vt-leaf::after {
+        .vt-leaf[data-live]::after {
         animation: photo-sweep 9s ease-in-out infinite;
         animation-timeline: auto;
     }
+}
+
+/* The shloka over a photo: a soft halo of the card's own surface behind the letters, so a stroke
+   that lands on a face or a border pattern keeps its edge. It follows the text, so the picture
+   is not dimmed any further than the veil already does. */
+:root:not([data-data-saver='true']) [data-photo] :is(.verse-folio, .vt-leaf) > p[lang='sa'],
+:root:not([data-data-saver='true']) [data-photo] p.verse-folio[lang='sa'] {
+    text-shadow:
+        0 0 2px var(--surface-raised),
+        0 0 8px var(--surface-raised),
+        0 0 18px var(--surface-raised);
 }
 
 /* In the light themes the verse number (॥ 47 ॥) sat in a pale ink on the pale photo wash
@@ -209,8 +259,9 @@
         --photo-fx: none !important;
     }
     [data-photo] :is(.verse-folio, .vt-leaf)::before,
-    [data-photo] :is(.verse-folio, .vt-leaf)::after {
-        display: none;
+    [data-photo] :is(.verse-folio, .vt-leaf)::after,
+    [data-photo] .photo-light {
+        display: none !important;
     }
     [data-photo] .chapter-painting {
         background: none;

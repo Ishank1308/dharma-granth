@@ -222,7 +222,7 @@ export function GlossaryTooltip({ term, children }: GlossaryTooltipProps) {
             role="dialog"
             aria-label={`${term.term} शब्दार्थ`}
             style={dynamicStyle}
-            className={`chrome-fade z-50 rounded-2xl border border-amber-500/30 bg-dharma-card/98 backdrop-blur-xl p-4 shadow-2xl ring-1 ring-amber-500/15 text-left text-dharma-text pointer-events-auto ${
+            className={`chrome-fade z-50 rounded-2xl border border-amber-500/30 bg-dharma-card/95 backdrop-blur-xl p-4 shadow-2xl ring-1 ring-amber-500/15 text-left text-dharma-text pointer-events-auto ${
               placement === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'
             }`}
           >

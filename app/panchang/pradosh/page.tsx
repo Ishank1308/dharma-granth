@@ -84,7 +84,7 @@ const PRADOSH_DATES: VrataDateItem[] = [
   { name: 'श्रावण कृष्ण प्रदोष (सावन प्रदोष 2028)', paksha: 'कृष्ण पक्ष', month: 'श्रावण', date: '19 जुलाई 2028', dateEn: '2028-07-19', highlight: true },
   { name: 'श्रावण शुक्ल प्रदोष (गुरु प्रदोष 2028)', paksha: 'शुक्ल पक्ष', month: 'श्रावण', date: '03 अगस्त 2028', dateEn: '2028-08-03', highlight: true },
   { name: 'भाद्रपद कृष्ण प्रदोष (भृगु प्रदोष 2028)', paksha: 'कृष्ण पक्ष', month: 'भाद्रपद', date: '18 अगस्त 2028', dateEn: '2028-08-18' },
-  { name: 'भाद्रपद शुक्ल प्रदोष (भृगु प्रदोष 2028)', paksha: 'शुक्ल पक्ष', month: 'भाद्रपद', date: '01 सितंबर 2028', dateEn: '2028-01-01' },
+  { name: 'भाद्रपद शुक्ल प्रदोष (भृगु प्रदोष 2028)', paksha: 'शुक्ल पक्ष', month: 'भाद्रपद', date: '01 सितंबर 2028', dateEn: '2028-09-01' },
   { name: 'अश्विन कृष्ण प्रदोष (शनि प्रदोष 2028)', paksha: 'कृष्ण पक्ष', month: 'अश्विन', date: '16 सितंबर 2028', dateEn: '2028-09-16', highlight: true },
   { name: 'अश्विन शुक्ल प्रदोष (रवि प्रदोष 2028)', paksha: 'शुक्ल पक्ष', month: 'अश्विन', date: '01 अक्टूबर 2028', dateEn: '2028-10-01' },
   { name: 'कार्तिक कृष्ण प्रदोष (धनतेरस प्रदोष / सोम प्रदोष)', paksha: 'कृष्ण पक्ष', month: 'कार्तिक', date: '16 अक्टूबर 2028', dateEn: '2028-10-16', highlight: true },
@@ -178,7 +178,7 @@ export default function PradoshPage() {
         <section aria-labelledby="pradosh-meaning" className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">🌙</span>
-            <h3 className="font-serif font-bold text-base text-label-primary">त्रयोदशी तिथि (13th Lunar Day)</h3>
+            <h3 className="font-serif font-bold text-base text-label-primary"><span lang="hi" data-bi="hi">त्रयोदशी तिथि</span><span data-bi="sep"> (</span><span data-bi="en">13th Lunar Day</span><span data-bi="sep">)</span></h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
               पूर्णिमा और अमावस्या से दो दिन पूर्व, जब चित्त की वृत्तियों को शांत और अंतर्मुखी करना अत्यंत सहज होता है।
             </p>
@@ -227,7 +227,7 @@ export default function PradoshPage() {
 
         {/* FAQ Accordion */}
         <section aria-labelledby="faq-heading">
-          <SectionTitle id="faq-heading" title="जिज्ञासा एवं समाधान" titleHi="FAQ" />
+          <SectionTitle id="faq-heading" title="FAQ" titleHi="जिज्ञासा एवं समाधान" />
           <div className="apple-group mt-6">
             {FAQS.map((f) => (
               <details key={f.q} className="apple-row group block !py-0 [&_summary::-webkit-details-marker]:hidden">

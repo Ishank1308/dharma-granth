@@ -1,17 +1,49 @@
 'use client';
 
 import { useId, type ReactNode } from 'react';
-import { RotateCcw, SlidersHorizontal } from 'lucide-react';
+import { Maximize2, RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { THEME_NAMES, type Theme } from '@/app/components/ThemeProvider';
-import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SizeStep } from '@/lib/useReaderSettings';
+import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SanskritScript, SizeStep } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
+import type { ParayanaCadenceMode } from '@/lib/soundscape-lazy';
 import { ReaderControlBar } from './ReaderControlBar';
 import { ReaderDialog } from './ReaderDialog';
+import { ReadingDepthSwitch } from './ReadingDepthSwitch';
+
+/**
+ * The ways of reading a whole chapter. They used to sit behind a separate Options button in the
+ * chapter's running head; the chapter page passes its state here so they live in the one Aa sheet.
+ */
+export interface ChapterReadingControls {
+  /** Sanskrit only, for reciting the chapter (स्वाध्याय मोड). */
+  recitation: boolean;
+  setRecitation: (on: boolean) => void;
+  /** What the chapter's read-aloud (पारायण) speaks after each shloka. */
+  cadence: ParayanaCadenceMode;
+  setCadence: (mode: ParayanaCadenceMode) => void;
+  /** Only for a scripture that is a dialogue (the Gita): the chapter by speaker. */
+  conversation?: boolean;
+  setConversation?: (on: boolean) => void;
+  /** Opens the one-verse-at-a-time view; the sheet closes first. */
+  openFocus: () => void;
+}
 
 interface Choice<T extends string> {
   id: T;
   label: string;
   hint?: string;
+}
+
+/** A group's name in both languages; the reader's language choice shows one of them (data-bi). */
+function LegendText({ en, hi }: { en: string; hi: string }) {
+  return (
+    <>
+      <span data-bi="en" className="mr-1.5">{en}</span>{' '}
+      <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-footnote font-normal text-label-secondary">
+        {hi}
+      </span>
+    </>
+  );
 }
 
 /** A row of mutually exclusive options, as native radios so arrows, labels and announcements just work. */
@@ -34,10 +66,7 @@ function Segmented<T extends string>({
   return (
     <fieldset>
       <legend className="mb-2 text-subhead font-semibold text-label-primary">
-        {legend}
-        <span lang="hi" className="ml-2 font-devanagari text-footnote font-normal text-label-secondary">
-          {legendHi}
-        </span>
+        <LegendText en={legend} hi={legendHi} />
       </legend>
       <div className={`grid gap-2 ${columns}`}>
         {options.map((o) => (
@@ -121,6 +150,23 @@ const SIZES: Array<Choice<SizeStep>> = [
   { id: 'xl', label: 'XL' },
 ];
 
+// Each script is named in itself, with the English name under it.
+const SCRIPTS: Array<Choice<SanskritScript>> = [
+  { id: 'deva', label: 'देवनागरी', hint: 'Devanagari' },
+  { id: 'beng', label: 'বাংলা', hint: 'Bengali' },
+  { id: 'gujr', label: 'ગુજરાતી', hint: 'Gujarati' },
+  { id: 'orya', label: 'ଓଡ଼ିଆ', hint: 'Odia' },
+  { id: 'telu', label: 'తెలుగు', hint: 'Telugu' },
+  { id: 'knda', label: 'ಕನ್ನಡ', hint: 'Kannada' },
+  { id: 'mlym', label: 'മലയാളം', hint: 'Malayalam' },
+];
+
+const CADENCES: Array<Choice<ParayanaCadenceMode>> = [
+  { id: 'sanskrit_only', label: 'संस्कृत', hint: 'Sanskrit only' },
+  { id: 'sanskrit_hindi', label: '+ हिन्दी', hint: 'then Hindi' },
+  { id: 'sanskrit_english', label: '+ English', hint: 'then English' },
+];
+
 const SPACINGS: Array<Choice<LineSpacing>> = [
   { id: 'compact', label: 'Tight' },
   { id: 'normal', label: 'Normal' },
@@ -150,7 +196,7 @@ export function ReaderSettingsPanel({
   theme,
   setTheme,
   scope = 'verse',
-  additionalControls,
+  chapter,
 }: {
   open: boolean;
   onClose: () => void;
@@ -163,9 +209,10 @@ export function ReaderSettingsPanel({
   setTheme: (t: Theme) => void;
   /** Hide controls that do not apply to chapter reading while keeping shared preferences. */
   scope?: 'verse' | 'chapter';
-  additionalControls?: ReactNode;
+  chapter?: ChapterReadingControls;
 }) {
   const themeName = useId();
+  const depthLabel = useId();
   return (
     <ReaderDialog
       open={open}
@@ -195,13 +242,23 @@ export function ReaderSettingsPanel({
           </p>
         </div>
 
+        {chapter && (
+          <div>
+            {/* The radio group below is the group; this line names it, so it is announced once. */}
+            <p id={depthLabel} className="mb-2 text-subhead font-semibold text-label-primary">
+              <LegendText en="Reading depth" hi="पठन गहराई" />
+            </p>
+            <ReadingDepthSwitch fill labelledBy={depthLabel} />
+            <p className="mt-2 text-caption-1 text-label-secondary">
+              How much explanation opens beside each shloka.
+            </p>
+          </div>
+        )}
+
         {scope === 'verse' && (
           <fieldset>
             <legend className="mb-2 text-subhead font-semibold text-label-primary">
-              Reading level
-              <span lang="hi" className="ml-2 font-devanagari text-footnote font-normal text-label-secondary">
-                पठन स्तर व दृष्टि
-              </span>
+              <LegendText en="Reading level" hi="पठन स्तर व दृष्टि" />
             </legend>
             <ReaderControlBar settings={settings} onChange={update} />
           </fieldset>
@@ -209,10 +266,7 @@ export function ReaderSettingsPanel({
 
         <fieldset>
           <legend className="mb-2 text-subhead font-semibold text-label-primary">
-            Theme
-            <span lang="hi" className="ml-2 font-devanagari text-footnote font-normal text-label-secondary">
-              रंग
-            </span>
+            <LegendText en="Theme" hi="रंग" />
           </legend>
           <div className="grid grid-cols-2 gap-2">
             {THEMES.map((t) => (
@@ -243,6 +297,12 @@ export function ReaderSettingsPanel({
 
         {scope === 'verse' && <Segmented legend="Preferred language" legendHi="भाषा प्राथमिकता" value={settings.preferredLanguage} options={LANGUAGES_PREF} onChange={(v) => update('preferredLanguage', v)} columns="grid-cols-3" />}
         {scope === 'verse' && <Segmented legend="Number format" legendHi="संख्या प्रारूप" value={settings.numberFormat} options={NUMBERS} onChange={(v) => update('numberFormat', v)} columns="grid-cols-2" />}
+        <div>
+          <Segmented legend="Sanskrit script" legendHi="संस्कृत की लिपि" value={settings.sanskritScript} options={SCRIPTS} onChange={(v) => update('sanskritScript', v)} columns="grid-cols-3" />
+          <p className="mt-2 text-caption-1 text-label-secondary">
+            The same verse, letter for letter, in the script you read. Copy and share still give Devanagari.
+          </p>
+        </div>
         <Segmented legend="Sanskrit size" legendHi="संस्कृत आकार" value={settings.sanskritSize} options={SIZES} onChange={(v) => update('sanskritSize', v)} columns="grid-cols-4" />
         <Segmented legend="Translation size" legendHi="अनुवाद आकार" value={settings.translationSize} options={SIZES} onChange={(v) => update('translationSize', v)} columns="grid-cols-4" />
         <Segmented legend="Line spacing" legendHi="पंक्ति अंतराल" value={settings.lineSpacing} options={SPACINGS} onChange={(v) => update('lineSpacing', v)} columns="grid-cols-4" />
@@ -271,7 +331,52 @@ export function ReaderSettingsPanel({
           />
         )}
 
-        {additionalControls}
+        {chapter && (
+          <>
+            <fieldset className="rounded-card border border-separator/80 bg-surface-raised/80 p-3 shadow-2xs">
+              <legend className="px-1 text-subhead font-semibold text-label-primary">
+                <LegendText en="This chapter" hi="यह अध्याय" />
+              </legend>
+              <Toggle
+                label={<>Recitation view <span lang="hi" className="font-devanagari">स्वाध्याय मोड</span></>}
+                hint="Sanskrit only, for reciting the chapter"
+                checked={chapter.recitation}
+                onChange={chapter.setRecitation}
+              />
+              {chapter.setConversation && (
+                <Toggle
+                  label={<>Conversation view <span lang="hi" className="font-devanagari">संवाद स्वरूप</span></>}
+                  hint="The chapter as a dialogue, speaker by speaker"
+                  checked={Boolean(chapter.conversation)}
+                  onChange={chapter.setConversation}
+                />
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  triggerTactileFeedback('medium', 'click');
+                  onClose();
+                  chapter.openFocus();
+                }}
+                className="focus-ring mt-1 flex min-h-[48px] w-full items-center justify-between gap-4 rounded-xl px-2.5 py-1.5 text-left transition-colors hover:bg-fill-quaternary/50"
+              >
+                <span className="min-w-0">
+                  <span className="block text-subhead font-medium text-label-primary">
+                    One verse at a time <span lang="hi" className="font-devanagari">एकाग्रता मोड</span>
+                  </span>
+                  <span className="block text-caption-1 text-label-secondary">Opens a full-screen view of this chapter</span>
+                </span>
+                <Maximize2 className="h-4 w-4 shrink-0 text-label-secondary" aria-hidden="true" />
+              </button>
+            </fieldset>
+            <div>
+              <Segmented legend="Read aloud" legendHi="पारायण वाचन" value={chapter.cadence} options={CADENCES} onChange={chapter.setCadence} columns="grid-cols-3" />
+              <p className="mt-2 text-caption-1 text-label-secondary">
+                What is spoken after each shloka when the chapter is read aloud.
+              </p>
+            </div>
+          </>
+        )}
 
         {scope === 'verse' && (
           <>

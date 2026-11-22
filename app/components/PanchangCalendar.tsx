@@ -254,8 +254,8 @@ export function PanchangCalendar() {
           </div>
         </div>
 
-        {/* Date Display and Day Navigation */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        {/* Date Display and Day Navigation. The opening day card links here ("Another day"). */}
+        <div id="panchang-day" className="flex scroll-mt-24 flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               <span>{panchang.dayOfWeek} · {panchang.dayOfWeekHi}</span>
@@ -369,7 +369,7 @@ export function PanchangCalendar() {
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
               <h2 id="week-view-heading" className="font-serif text-xl font-bold text-dharma-text">
-                साप्ताहिक चंद्र प्रवाह · 7-Day Lunar Rhythm
+                <span lang="hi" data-bi="hi">साप्ताहिक चंद्र प्रवाह</span><span data-bi="sep"> · </span><span data-bi="en">7-Day Lunar Rhythm</span>
               </h2>
               <p className="text-xs text-dharma-muted">
                 Select any day to inspect full educational details and scriptural contemplation
@@ -530,7 +530,7 @@ export function PanchangCalendar() {
         <div className="mb-3 flex items-center justify-between">
           <div>
             <h2 id="primary-panchang-angas" className="font-serif text-xl font-bold text-dharma-text">
-              पञ्चाङ्ग मुख्य विवरण · Primary Limbs & Season
+              <span lang="hi" data-bi="hi">पञ्चाङ्ग मुख्य विवरण</span><span data-bi="sep"> · </span><span data-bi="en">Primary Limbs & Season</span>
             </h2>
             <p className="text-xs text-dharma-muted">
               Every anga with Sanskrit name, transliteration, educational explanation, and time range
@@ -747,7 +747,7 @@ export function PanchangCalendar() {
             </div>
             <div>
               <h2 id="solar-timings-heading" className="font-serif text-lg font-bold text-dharma-text">
-                सौर काल एवं सूर्योदय/सूर्यास्त · Solar Day & Horizon Timings
+                <span lang="hi" data-bi="hi">सौर काल एवं सूर्योदय/सूर्यास्त</span><span data-bi="sep"> · </span><span data-bi="en">Solar Day & Horizon Timings</span>
               </h2>
               <p className="text-xs text-dharma-muted">
                 Observed local astronomical transit times for {location.name}
@@ -831,7 +831,7 @@ export function PanchangCalendar() {
               </div>
               <div>
                 <h3 className="font-serif text-base font-bold text-dharma-text">
-                  सूर्योदय व सूर्यास्त समय अनुपलब्ध · Solar Timings Unavailable
+                  <span lang="hi" data-bi="hi">सूर्योदय व सूर्यास्त समय अनुपलब्ध</span><span data-bi="sep"> · </span><span data-bi="en">Solar Timings Unavailable</span>
                 </h3>
                 <p className="mt-1 text-xs text-dharma-muted max-w-xl leading-relaxed">
                   {panchang.solarTimes.unreliableReason ||
@@ -861,7 +861,7 @@ export function PanchangCalendar() {
             </div>
             <div>
               <h2 id="study-suggestion-heading" className="font-serif text-lg font-bold text-dharma-text">
-                आज का स्वाध्याय · Curated Study Suggestion
+                <span lang="hi" data-bi="hi">आज का स्वाध्याय</span><span data-bi="sep"> · </span><span data-bi="en">Curated Study Suggestion</span>
               </h2>
               <p className="text-xs text-dharma-muted">
                 Scriptural reflection paired with today&apos;s lunar quality and seasonal mood
@@ -928,7 +928,7 @@ export function PanchangCalendar() {
             </div>
             <div>
               <h2 id="festival-preview-heading" className="font-serif text-lg font-bold text-dharma-text">
-                आगामी पर्व व उत्सव · Festival Preview
+                <span lang="hi" data-bi="hi">आगामी पर्व व उत्सव</span><span data-bi="sep"> · </span><span data-bi="en">Festival Preview</span>
               </h2>
               <p className="text-xs text-dharma-muted">
                 Upcoming sacred observances and tithi requirements with educational context

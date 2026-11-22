@@ -235,10 +235,10 @@ export default function TithisHubPage() {
                   </div>
 
                   <h3 className="font-serif text-lg font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition-colors">
-                    {t.name}{' '}
-                    <span lang="sa" className="font-devanagari font-normal text-dharma-muted">
-                      ({t.nameHi})
-                    </span>
+                    <span data-bi="en">{t.name}</span>{' '}
+                    <span data-bi="sep" lang="sa" className="font-devanagari font-normal text-dharma-muted">(</span>
+                    <span lang="sa" data-bi="hi" data-bi-lead className="font-devanagari font-normal text-dharma-muted">{t.nameHi}</span>
+                    <span data-bi="sep" lang="sa" className="font-devanagari font-normal text-dharma-muted">)</span>
                   </h3>
                   <p className="font-serif text-xs italic text-dharma-muted mt-0.5">
                     {t.transliteration}
@@ -281,7 +281,7 @@ export default function TithisHubPage() {
       {/* FAQs */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 my-16 space-y-4">
         <h2 className="font-serif text-xl sm:text-2xl font-bold">
-          Frequently Asked Questions (जिज्ञासा समाधान)
+          <span data-bi="en">Frequently Asked Questions</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">जिज्ञासा समाधान</span><span data-bi="sep">)</span>
         </h2>
         <div className="space-y-3">
           {FAQS.map((f, idx) => (

@@ -75,7 +75,7 @@ const EKADASHI_DATES: VrataDateItem[] = [
   { name: 'विजया एकादशी (Vijaya Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'फाल्गुन', date: '21 फरवरी 2028', dateEn: '2028-02-21' },
   { name: 'आमलकी एकादशी (Amalaki Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'फाल्गुन', date: '06 मार्च 2028', dateEn: '2028-03-06', highlight: true },
   { name: 'पापमोचिनी एकादशी (Papmochini 2028)', paksha: 'कृष्ण पक्ष', month: 'चैत्र', date: '21 मार्च 2028', dateEn: '2028-03-21' },
-  { name: 'कामदा एकादशी (Kamada Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'चैत्र', date: '05 अप्रैल 2028', dateEn: '2028-05-05' },
+  { name: 'कामदा एकादशी (Kamada Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'चैत्र', date: '05 अप्रैल 2028', dateEn: '2028-04-05' },
   { name: 'वरूथिनी एकादशी (Varuthini Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'वैशाख', date: '20 अप्रैल 2028', dateEn: '2028-04-20' },
   { name: 'मोहिनी एकादशी (Mohini Ekadashi 2028)', paksha: 'शुक्ल पक्ष', month: 'वैशाख', date: '05 मई 2028', dateEn: '2028-05-05' },
   { name: 'अपरा एकादशी (Apara Ekadashi 2028)', paksha: 'कृष्ण पक्ष', month: 'ज्येष्ठ', date: '20 मई 2028', dateEn: '2028-05-20' },
@@ -193,7 +193,7 @@ export default function EkadashiPage() {
           </div>
           <div className="card-sacred relative rounded-2xl border border-separator/80 bg-surface-elevated/85 p-5 backdrop-blur-xl shadow-xs transition hover:border-tint/40">
             <span className="text-2xl mb-2 block" aria-hidden="true">📖</span>
-            <h3 className="font-serif font-bold text-base text-label-primary">शास्त्रीय स्वाध्याय (Scriptural Study)</h3>
+            <h3 className="font-serif font-bold text-base text-label-primary"><span lang="hi" data-bi="hi">शास्त्रीय स्वाध्याय</span><span data-bi="sep"> (</span><span data-bi="en">Scriptural Study</span><span data-bi="sep">)</span></h3>
             <p className="mt-1.5 text-xs leading-relaxed text-label-secondary">
               श्रीमद्भगवद्गीता के 18 अध्यायों का पाठ, विष्णु सहस्रनाम और नारायण सूक्त का जप।
             </p>
@@ -228,7 +228,7 @@ export default function EkadashiPage() {
 
         {/* FAQ Accordion */}
         <section aria-labelledby="faq-heading">
-          <SectionTitle id="faq-heading" title="जिज्ञासा एवं समाधान" titleHi="FAQ" />
+          <SectionTitle id="faq-heading" title="FAQ" titleHi="जिज्ञासा एवं समाधान" />
           <div className="apple-group mt-6">
             {FAQS.map((f) => (
               <details key={f.q} className="apple-row group block !py-0 [&_summary::-webkit-details-marker]:hidden">

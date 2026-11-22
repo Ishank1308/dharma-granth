@@ -2510,7 +2510,9 @@ svg.lucide {
 }
 
 /* Reader dock: on phones a full-width bar in the bottom navigation's place, so the chapter
-   has one bar, not two stacked over the verse; 24px off the floor on desktop. */
+   has one bar, not two stacked over the verse. From 1024px a vertical rail in the right margin,
+   centred on the viewport: beside the reading column, never over the shloka. `translate` centres
+   it so the entrance animation and the phone bar's hide, which use `transform`, still apply. */
 .liquid-dock {
     bottom: 0;
 }
@@ -2521,7 +2523,10 @@ svg.lucide {
 }
 @media (min-width: 1024px) {
     .liquid-dock {
-        bottom: 1.5rem;
+        top: 50%;
+        right: 1.5rem;
+        bottom: auto;
+        translate: 0 -50%;
     }
 }
 
@@ -2553,7 +2558,9 @@ svg.lucide {
     .text-\[9px\]:not(text),
     .text-\[10px\]:not(text),
     .text-\[10\.5px\]:not(text),
-    .text-\[11px\]:not(text) {
+    .text-\[11px\]:not(text),
+    .text-2xs:not(text),
+    .text-caption-2:not(text) {
         font-size: 0.75rem;
     }
     p.text-xs,
@@ -2568,6 +2575,28 @@ svg.lucide {
     dd.text-xs:not([class*='leading-']),
     p.text-\[11px\]:not([class*='leading-']) {
         line-height: 1.5;
+    }
+}
+
+/* Phones: Devanagari needs a size more than Latin to read as easily, because the headline,
+   the mātrās above and below and the conjuncts all share one body height. So text tagged as
+   Hindi or Sanskrit is never under 13px. The first rule has zero specificity and means
+   "the size I would have inherited, or 13px": a size class on the element itself still
+   wins, and the second rule covers those. SVG text scales with its drawing and is left alone. */
+@media (max-width: 639px) {
+    :where([lang='hi'], [lang='sa'], [lang='mr'], [lang='ne'], .font-devanagari, .font-sanskrit):where(:not(html, text, tspan)) {
+        font-size: max(1em, var(--text-footnote));
+    }
+    :is(.text-xs, .text-2xs, .text-caption, .text-caption-1, .text-caption-2, .text-\[9px\], .text-\[10px\], .text-\[10\.5px\], .text-\[11px\], .text-\[12px\]):is([lang='hi'], [lang='sa'], [lang='mr'], [lang='ne'], .font-devanagari, .font-sanskrit):not(text, p, li, dd) {
+        font-size: var(--text-footnote);
+    }
+    /* Panchang, Sadhana and Mantras label almost everything in Hindi without tagging it, so
+       there every small label takes the same floor. Pills keep their size, because a long one
+       would wrap onto a second line. That exclusion is an attribute selector on purpose:
+       written as a class, Tailwind copies this rule for every component that applies the
+       utility and swaps the class out, and the copies stop excluding pills. */
+    [data-deva-labels] :is(.text-xs, .text-2xs, .text-caption, .text-caption-1, .text-caption-2, .text-\[9px\], .text-\[10px\], .text-\[10\.5px\], .text-\[11px\], .text-\[12px\]):not(text, p, li, dd, [class~='rounded-full']) {
+        font-size: var(--text-footnote);
     }
 }
 
@@ -2913,7 +2942,9 @@ svg.lucide {
 }
 /* Cover materials */
 .sbook-palm-leaf .sbook-cover-front { background-image: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0 2px, transparent 2px 9px), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
-.sbook-silk .sbook-cover-front { background-image: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.16) 48%, transparent 60%), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); background-size: 250% 100%, auto, auto, auto; animation: sbook-silk 7s ease-in-out infinite alternate; }
+/* The sheen crosses the silk once, as the book opens. The cover then faces away (sbook-open ends at
+   -158deg, backface hidden), so looping it only repainted an unseen face on the main thread forever. */
+.sbook-silk .sbook-cover-front { background-image: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.16) 48%, transparent 60%), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); background-size: 250% 100%, auto, auto, auto; animation: sbook-silk 7s ease-in-out; }
 @keyframes sbook-silk { from { background-position: 100% 0, 0 0, 0 0, 0 0; } to { background-position: 0% 0, 0 0, 0 0, 0 0; } }
 .sbook-velvet .sbook-cover-front { background-image: radial-gradient(140% 100% at 50% 0%, rgba(255, 255, 255, 0.1), transparent 60%), linear-gradient(90deg, rgba(0, 0, 0, 0.4), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
 .sbook-bark .sbook-cover-front { background-image: repeating-linear-gradient(95deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 6px), linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent 7%), radial-gradient(120% 80% at 70% 15%, var(--cover-3), transparent 55%), linear-gradient(160deg, var(--cover-2), var(--cover-1)); }
@@ -3240,12 +3271,14 @@ svg.lucide {
 }
 
 /* Letter-spacing pulls Devanagari conjuncts and vowel signs apart ("का ल द र्श न"), so Devanagari
-   text never takes tracking. <html> is lang="hi", hence explicit attributes rather than :lang(). */
-[lang='hi']:not(html),
-[lang='sa'],
-[lang='mr'],
-.font-devanagari,
-.font-sanskrit {
+   text never takes tracking. <html> is lang="hi", hence explicit attributes rather than :lang().
+   The `html` prefix lifts this above single-class tracking utilities (text-title-2, tracking-wider),
+   whatever order the CSS chunks load in. */
+html [lang='hi'],
+html [lang='sa'],
+html [lang='mr'],
+html .font-devanagari,
+html .font-sanskrit {
     letter-spacing: normal;
 }
 

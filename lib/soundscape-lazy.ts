@@ -21,6 +21,14 @@ let pending: Promise<Soundscape> | null = null;
 
 const pendingListeners = new Set<SoundscapeListener>();
 const activeUnsubs = new Map<SoundscapeListener, () => void>();
+// Calls made before the engine arrived, in the order they were made. A start is tagged so that a
+// stop pressed while the engine is still on its way can take it back.
+type Queued = { fn: (m: Soundscape) => void; start?: 'soundscape' | 'drone' };
+const queued: Queued[] = [];
+
+function dropQueued(start: NonNullable<Queued['start']>): void {
+  for (let i = queued.length - 1; i >= 0; i--) if (queued[i].start === start) queued.splice(i, 1);
+}
 
 // Default fallback state when the engine is not yet loaded
 const fallbackState: SoundscapeState = {
@@ -39,9 +47,19 @@ const fallbackState: SoundscapeState = {
   currentVerseEnglish: undefined,
 };
 
+// The engine's own key (STORAGE_PARAYANA_MODE in sacred-soundscape.ts). The engine reads it when it
+// starts, so a choice saved here before the first play is the one it starts with.
+const STORAGE_PARAYANA_MODE = 'dharma_parayana_mode';
+
+// What the page set before the engine arrived. The engine starts from what it saved itself, so
+// only these go across, and they go first: a play call queued behind the load then finds its verse.
+let verseSetBeforeLoad = false;
+let continuousSetBeforeLoad = false;
+let cadenceSetBeforeLoad = false;
+
 if (typeof window !== 'undefined') {
   try {
-    const savedMode = localStorage.getItem('dharma:parayana-mode') as ParayanaCadenceMode | null;
+    const savedMode = localStorage.getItem(STORAGE_PARAYANA_MODE) as ParayanaCadenceMode | null;
     if (savedMode && ['sanskrit_only', 'sanskrit_hindi', 'sanskrit_english'].includes(savedMode)) {
       fallbackState.parayanaCadenceMode = savedMode;
     }
@@ -50,25 +68,57 @@ if (typeof window !== 'undefined') {
 
 export function loadSoundscape(): Promise<Soundscape> {
   if (!pending) {
-    pending = import('./sacred-soundscape').then((m) => {
-      mod = m;
-      for (const listener of pendingListeners) {
-        const unsub = m.subscribeSoundscape(listener);
-        activeUnsubs.set(listener, unsub);
-      }
-      pendingListeners.clear();
-      return m;
-    });
+    pending = import('./sacred-soundscape').then(
+      (m) => {
+        mod = m;
+        if (continuousSetBeforeLoad) m.setContinuousParayana(fallbackState.continuousParayana);
+        if (cadenceSetBeforeLoad) m.setParayanaCadenceMode(fallbackState.parayanaCadenceMode);
+        if (verseSetBeforeLoad) {
+          m.setCurrentVerseContext(
+            fallbackState.currentVerseSanskrit,
+            fallbackState.currentVerseReference,
+            fallbackState.currentVerseHindi,
+            fallbackState.currentVerseEnglish,
+          );
+        }
+        // The queued calls run before the page's listeners join. A listener's first word from the
+        // engine is then the state after the press that loaded it (playing), not the idle state
+        // before it, which a page reads as "stopped".
+        for (const { fn } of queued.splice(0)) {
+          try {
+            fn(m);
+          } catch (error) {
+            setTimeout(() => {
+              throw error;
+            });
+          }
+        }
+        for (const listener of pendingListeners) {
+          const unsub = m.subscribeSoundscape(listener);
+          activeUnsubs.set(listener, unsub);
+        }
+        pendingListeners.clear();
+        return m;
+      },
+      (error) => {
+        // Offline with the engine not saved yet: forget this try so the next press asks again,
+        // and drop the calls that waited on it so they do not play at some later moment.
+        pending = null;
+        queued.length = 0;
+        throw error;
+      },
+    );
   }
   return pending;
 }
 
-export function withSoundscape(fn: (m: Soundscape) => void): void {
+export function withSoundscape(fn: (m: Soundscape) => void, start?: Queued['start']): void {
   if (mod) {
     fn(mod);
-  } else {
-    void loadSoundscape().then(fn);
+    return;
   }
+  queued.push({ fn, start });
+  void loadSoundscape();
 }
 
 export function getSoundscapeState(): SoundscapeState {
@@ -92,12 +142,15 @@ export function subscribeSoundscape(listener: SoundscapeListener): () => void {
 }
 
 export function startSoundscape(track?: SoundscapeTrackId): void {
-  withSoundscape((m) => m.startSoundscape(track));
+  withSoundscape((m) => m.startSoundscape(track), 'soundscape');
 }
 
 export function stopSoundscape(): void {
   if (mod) {
     mod.stopSoundscape();
+  } else {
+    // Pressed before the engine arrived: the start waiting for it must not play afterwards.
+    dropQueued('soundscape');
   }
 }
 
@@ -113,6 +166,8 @@ export function setCurrentVerseContext(
   fallbackState.currentVerseEnglish = english;
   if (mod) {
     mod.setCurrentVerseContext(sanskrit, reference, hindi, english);
+  } else {
+    verseSetBeforeLoad = true;
   }
 }
 
@@ -120,6 +175,8 @@ export function setContinuousParayana(enabled: boolean): void {
   fallbackState.continuousParayana = enabled;
   if (mod) {
     mod.setContinuousParayana(enabled);
+  } else {
+    continuousSetBeforeLoad = true;
   }
 }
 
@@ -127,7 +184,15 @@ export function setParayanaCadenceMode(mode: ParayanaCadenceMode): void {
   fallbackState.parayanaCadenceMode = mode;
   if (mod) {
     mod.setParayanaCadenceMode(mode);
+    return;
   }
+  // The engine loads on first play. Until then the choice is saved under the engine's own key and
+  // the page is told, so the control shows what was chosen.
+  cadenceSetBeforeLoad = true;
+  try {
+    localStorage.setItem(STORAGE_PARAYANA_MODE, mode);
+  } catch { }
+  for (const listener of pendingListeners) listener({ ...fallbackState });
 }
 
 export function strikeTempleBell(repeats?: number): void {
@@ -139,11 +204,13 @@ export function speakSanskritTerm(pada: string, speed?: number): void {
 }
 
 export function startMeditationDrone(mode: 'tanpura' | 'om' | 'flute' | 'silent'): void {
-  withSoundscape((m) => m.startMeditationDrone(mode));
+  withSoundscape((m) => m.startMeditationDrone(mode), 'drone');
 }
 
 export function stopMeditationDrone(): void {
   if (mod) {
     mod.stopMeditationDrone();
+  } else {
+    dropQueued('drone');
   }
 }

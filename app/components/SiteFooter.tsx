@@ -74,8 +74,8 @@ export function SiteFooter() {
           {COLUMNS.map((col) => (
             <div key={col.en}>
               <h3 className="text-xs font-semibold text-dharma-text">
-                <span>{col.en}</span>{' '}
-                <span lang="hi" className="font-devanagari font-normal text-dharma-muted">
+                <span data-bi="en">{col.en}</span>{' '}
+                <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari font-normal text-dharma-muted">
                   {col.hi}
                 </span>
               </h3>
@@ -86,8 +86,8 @@ export function SiteFooter() {
                       href={link.href}
                       className="link-lift inline-block py-3 hover:text-dharma-text hover:underline sm:py-1"
                     >
-                      <span>{link.en}</span>{' '}
-                      <span lang="hi" className="font-devanagari">
+                      <span data-bi="en">{link.en}</span>{' '}
+                      <span lang="hi" data-bi="hi" className="inline-block font-devanagari">
                         {link.hi}
                       </span>
                     </Link>

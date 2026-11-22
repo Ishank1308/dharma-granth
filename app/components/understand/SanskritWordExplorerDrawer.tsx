@@ -46,7 +46,7 @@ export function SanskritWordExplorerDrawer({ entry, isOpen, onClose }: Props) {
         {/* Contextual Meaning */}
         <div className="rounded-xl border border-dharma-border bg-dharma-bg p-4">
           <h4 className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-            Contextual Meaning · संदर्भानुसार अर्थ
+            <span data-bi="en">Contextual Meaning</span><span data-bi="sep"> · </span><span lang="hi" data-bi="hi">संदर्भानुसार अर्थ</span>
           </h4>
           <p className="mt-2 font-serif text-sm leading-relaxed text-dharma-text">
             {entry.contextualMeaning}
@@ -97,7 +97,7 @@ export function SanskritWordExplorerDrawer({ entry, isOpen, onClose }: Props) {
         {entry.relatedVerses && entry.relatedVerses.length > 0 && (
           <div className="rounded-xl border border-dharma-border bg-dharma-card p-4">
             <h4 className="text-xs font-bold uppercase tracking-wide text-dharma-muted">
-              Related Verses · संबंधित श्लोक
+              <span data-bi="en">Related Verses</span><span data-bi="sep"> · </span><span lang="hi" data-bi="hi">संबंधित श्लोक</span>
             </h4>
             <ul className="mt-2.5 space-y-2">
               {entry.relatedVerses.map((v, i) => (

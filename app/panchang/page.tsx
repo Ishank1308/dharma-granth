@@ -37,7 +37,7 @@ const FAQ = [
 
 export default function PanchangPage() {
   return (
-    <main data-cosmos className="apple-scope min-h-screen bg-dharma-bg">
+    <main data-cosmos data-deva-labels className="apple-scope min-h-screen bg-dharma-bg">
       {/* ─── THE NIGHT SKY: Kāla-chakra and the five limbs of time ───────── */}
       <PanchangCosmos />
 
@@ -181,7 +181,7 @@ export default function PanchangPage() {
                   <span>2. वार · 7 Weekdays</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  7 Varas (सप्त वासर)
+                  <span data-bi="en">7 Varas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">सप्त वासर</span><span data-bi="sep">)</span>
                 </h3>
                 <p className="text-xs text-dharma-muted">
                   Ravivara to Shanivara — presiding Graha lords, Hora cycles, elements, and sacred fasts.
@@ -206,7 +206,7 @@ export default function PanchangPage() {
                   <span>3. नक्षत्र · 27 Asterisms</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  27 Nakshatras (27 नक्षत्र)
+                  <span data-bi="en">27 Nakshatras</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">27 नक्षत्र</span><span data-bi="sep">)</span>
                 </h3>
                 <p className="text-xs text-dharma-muted">
                   From Ashwini to Revati — presiding Vedic deities, Sukta citations, and contemplation.
@@ -231,7 +231,7 @@ export default function PanchangPage() {
                   <span>4. योग · 27 Nitya Yogas</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  27 Yogas (27 नित्य योग)
+                  <span data-bi="en">27 Yogas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">27 नित्य योग</span><span data-bi="sep">)</span>
                 </h3>
                 <p className="text-xs text-dharma-muted">
                   Additive solar-lunar arcs (Vishkambha to Vaidhriti) — auspicious and reflective states.
@@ -256,7 +256,7 @@ export default function PanchangPage() {
                   <span>5. करण · 11 Half-Tithis</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  11 Karanas (11 करण)
+                  <span data-bi="en">11 Karanas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">11 करण</span><span data-bi="sep">)</span>
                 </h3>
                 <p className="text-xs text-dharma-muted">
                   7 Movable (Chara) &amp; 4 Fixed (Sthira) half-tithis, including the rules of Vishti (Bhadra).

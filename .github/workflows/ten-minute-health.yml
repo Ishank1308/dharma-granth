@@ -1,10 +1,12 @@
-name: 10-minute repository health
+name: Hourly repository health
 
-# Lightweight monitoring only; scripture writing/repair remains in the
+# Hourly since 21 Nov 2026: the repository is private, so every run counts
+# against the Actions minutes (a run every 10 minutes alone used more than the
+# monthly allowance). Lightweight monitoring only; scripture writing/repair remains in the
 # separate autonomous task. GitHub cron is best-effort and can run late.
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -29,7 +31,7 @@ jobs:
             const { owner, repo } = context.repo;
             const failures = [];
             const report = [
-              '# Dharma Granth · 10-minute health snapshot',
+              '# Dharma Granth · hourly health snapshot',
               '',
               'Lightweight read-only checks; this workflow does **not** merge, deploy, edit scripture, or rerun builds.',
               '',

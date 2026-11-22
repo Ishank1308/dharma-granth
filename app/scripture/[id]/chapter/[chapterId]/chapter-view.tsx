@@ -34,6 +34,7 @@ import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction'
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { sceneAttrs } from '@/lib/chapter-scenes';
 import { photoAttrs } from '@/lib/scene-photos';
+import { FolioMotion } from '@/app/components/motion/FolioMotion';
 import { chapterPainting } from '@/lib/chapter-paintings';
 import { jsonLdGraph } from '@/lib/jsonld-graph';
 import { SourcesAndInterpretation } from '@/app/components/SourcesAndInterpretation';
@@ -342,6 +343,15 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const shareLines = [shareSummary.length > 180 ? `${shareSummary.slice(0, 179).trimEnd()}…` : shareSummary];
   const quietAction =
     'focus-ring inline-flex min-h-[38px] items-center gap-2 rounded-pill border border-separator/80 bg-surface-raised px-4 text-subhead font-medium text-label-primary transition hover:bg-fill-quaternary active:scale-[0.98] shadow-xs';
+  // Previous / next beside the chapter title: within a long chapter they step through its parts first.
+  const stepPrevHref = prevPartHref ?? prevHref;
+  const stepNextHref = nextPartHref ?? nextHref;
+  const stepPrevLabel = prevPartHref ? 'पिछला भाग · Previous part' : 'पिछला अध्याय · Previous chapter';
+  const stepNextLabel = nextPartHref ? 'अगला भाग · Next part' : 'अगला अध्याय · Next chapter';
+  const chapterStep =
+    'focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-separator/80 bg-surface-raised text-label-primary shadow-xs transition hover:bg-fill-quaternary active:scale-[0.98]';
+  const chapterStepOff =
+    'inline-flex h-11 w-11 items-center justify-center rounded-full border border-separator/40 text-label-tertiary opacity-40';
 
   const vibe = scriptureVibe(meta.id, meta.category);
   // A full-colour moving picture for chapters without a hand-drawn scene (lib/chapter-paintings.ts).
@@ -414,6 +424,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
 
   return (
     <main data-chapter-reading data-vt-pane data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} {...photoAttrs(meta.id, chapter.id)} data-painting={painting} className="min-h-screen bg-dharma-bg">
+      <FolioMotion />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -421,7 +432,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       />
       {/* A book's chapter opening, as an Apple large title: the chapter, its Sanskrit name and two quiet actions,
           nothing else between the reader and the first verse. The summary lives in "About this chapter" below. */}
-      <header className="mx-auto max-w-3xl px-4 pb-4 pt-5 sm:px-6 sm:pb-8 sm:pt-12">
+      <header className="mx-auto max-w-3xl px-4 pb-3 pt-4 sm:px-6 sm:pb-6 sm:pt-8">
         {painting && <div className="chapter-painting" aria-hidden="true" />}
         <div className="flex flex-wrap items-center gap-2">
           <Link
@@ -442,11 +453,35 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
             </span>
           )}
         </div>
-        <h1 className="mt-2.5 text-title-1 sm:mt-3 sm:text-large-title font-bold tracking-tight text-label-primary">{chapter.title}</h1>
-        {chapter.titleSanskrit && (
-          <p lang="sa" className="mt-1 font-devanagari text-title-3 sm:mt-2 sm:text-title-2 font-medium text-label-secondary">{chapter.titleSanskrit}</p>
-        )}
-        <div className="mt-4 flex flex-wrap items-center gap-2 sm:mt-6 sm:gap-2.5">
+        {/* Previous and next sit beside the title, not in a bar of their own, so the first shloka starts
+            higher on the page. The contents link is the scripture chip above. */}
+        <div className="mt-2.5 flex items-start justify-between gap-3 sm:mt-3">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-title-1 sm:text-large-title font-bold tracking-tight text-label-primary">{chapter.title}</h1>
+            {chapter.titleSanskrit && (
+              <p lang="sa" className="mt-1 font-devanagari text-title-3 sm:mt-2 sm:text-title-2 font-medium text-label-secondary">{chapter.titleSanskrit}</p>
+            )}
+          </div>
+          {(stepPrevHref || stepNextHref) && (
+            <nav aria-label="अध्याय में आगे-पीछे जाएँ" className="flex shrink-0 items-center gap-1.5 sm:pt-1">
+              {stepPrevHref ? (
+                <Link href={stepPrevHref} rel="prev" aria-label={stepPrevLabel} title={stepPrevLabel} className={chapterStep}>
+                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              ) : (
+                <span aria-hidden="true" className={chapterStepOff}><ArrowLeft className="h-4 w-4" /></span>
+              )}
+              {stepNextHref ? (
+                <Link href={stepNextHref} rel="next" aria-label={stepNextLabel} title={stepNextLabel} className={chapterStep}>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              ) : (
+                <span aria-hidden="true" className={chapterStepOff}><ArrowRight className="h-4 w-4" /></span>
+              )}
+            </nav>
+          )}
+        </div>
+        <div className="mt-3 flex flex-wrap items-center gap-2 sm:mt-5 sm:gap-2.5">
           {chapter.verseCount > 0 ? (
             <ChapterAudioHeroAction
               className={quietAction}
@@ -469,11 +504,12 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       <div className="relative mx-auto w-full max-w-3xl px-4 pb-[calc(11rem+env(safe-area-inset-bottom))] sm:px-6 lg:pb-32">
         <div className="relative">
         {(!part || part.part === 1) && hasChapterContext && (
-          <details className="apple-card group mb-5 overflow-hidden sm:mb-8 rounded-card border border-separator/80 bg-surface-raised/80 shadow-xs">
+          <details className="apple-card group mb-3 overflow-hidden sm:mb-5 rounded-card border border-separator/80 bg-surface-raised/80 shadow-xs">
             <summary className="focus-ring flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 sm:min-h-[52px] sm:px-5 sm:py-3.5 transition hover:bg-fill-quaternary [&::-webkit-details-marker]:hidden">
-              <span className="flex items-center gap-2">
-                <span className="text-subhead font-semibold text-label-primary">About this chapter</span>
-                <span lang="hi" className="font-devanagari text-caption-1 font-normal text-label-secondary">· अध्याय परिचय</span>
+              <span className="flex items-center gap-2 text-subhead font-semibold text-label-primary">
+                <span data-bi="en">About this chapter</span>
+                <span data-bi="sep" aria-hidden="true" className="text-caption-1 font-normal text-label-secondary">·</span>
+                <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-caption-1 font-normal text-label-secondary">अध्याय परिचय</span>
               </span>
               <span aria-hidden="true" className="apple-chevron text-lg transition-transform duration-standard ease-standard group-open:rotate-90">›</span>
             </summary>
@@ -512,25 +548,6 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         {/* With initialChapter, the reader's server render is the plain
             VerseText list (every verse in the HTML); it swaps in the
             interactive cards once hydrated. */}
-        <nav aria-label="अध्याय में आगे-पीछे जाएँ" className="mb-4 flex flex-wrap items-center gap-2 rounded-xl border border-dharma-border/70 bg-dharma-card px-2.5 py-2 sm:px-3">
-          <Link href={`/scripture/${meta.id}`} className="inline-flex min-h-11 items-center rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
-            ग्रंथ सूची
-          </Link>
-          <span aria-hidden="true" className="h-5 w-px bg-dharma-border" />
-          {prevPartHref || prevHref ? (
-            <Link href={prevPartHref ?? prevHref!} rel="prev" className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
-              <ArrowLeft className="h-4 w-4" aria-hidden="true" /> पिछला {prevPartHref ? 'भाग' : 'अध्याय'}
-            </Link>
-          ) : null}
-          <span lang="hi" className="min-w-0 flex-1 text-center font-devanagari text-xs text-dharma-muted">
-            अध्याय {chapter.id}{part ? ` · भाग ${part.part}/${parts?.length ?? 1}` : ''}
-          </span>
-          {nextPartHref || nextHref ? (
-            <Link href={nextPartHref ?? nextHref!} rel="next" className="inline-flex min-h-11 items-center gap-1 rounded-lg px-3 text-xs font-semibold text-dharma-text hover:bg-dharma-card-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500">
-              अगला {nextPartHref ? 'भाग' : 'अध्याय'} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          ) : null}
-        </nav>
         <div id="chapter-text" className="scroll-mt-24">
           {seeded && allVerses.length === 0 ? (
             // The chapter's own text is not in the library yet (scripts/lib/filler-chapters.ts): say so plainly.
@@ -619,7 +636,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               >
                 <ArrowLeft className="h-5 w-5 shrink-0 text-label-secondary transition-transform group-hover:-translate-x-1" aria-hidden="true" />
                 <span className="min-w-0">
-                  <span className="block text-caption-2 uppercase font-semibold tracking-wider text-label-tertiary">Previous · पिछला अध्याय</span>
+                  <span className="block text-caption-2 uppercase font-semibold tracking-wider text-label-tertiary">Previous · <span lang="hi">पिछला अध्याय</span></span>
                   <span lang="hi" className="block text-subhead font-bold text-label-primary">अध्याय {chapterId - 1}</span>
                   {prevLabel && <span className="block truncate text-caption-1 text-label-secondary">{prevLabel}</span>}
                 </span>
@@ -635,7 +652,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
                 className="group flex flex-1 min-w-0 items-center justify-end text-right gap-3 rounded-card border border-separator/80 bg-surface-raised p-4 transition-all hover:bg-fill-quaternary hover:border-separator shadow-xs"
               >
                 <span className="min-w-0">
-                  <span className="block text-caption-2 uppercase font-semibold tracking-wider text-label-tertiary">Next · अगला अध्याय</span>
+                  <span className="block text-caption-2 uppercase font-semibold tracking-wider text-label-tertiary">Next · <span lang="hi">अगला अध्याय</span></span>
                   <span lang="hi" className="block text-subhead font-bold text-label-primary">अध्याय {chapterId + 1}</span>
                   {nextLabel && <span className="block truncate text-caption-1 text-label-secondary">{nextLabel}</span>}
                 </span>

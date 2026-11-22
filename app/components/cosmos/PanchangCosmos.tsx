@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import {
   PRESET_LOCATIONS,
@@ -64,24 +65,27 @@ export function PanchangCosmos() {
     : null;
 
   const limbs = limbsOf(panchang);
+  // Sunrise and sunset are shown only where the calculation says they are dependable (not near the poles).
+  const sun = panchang?.solarTimes.isReliable ? panchang.solarTimes : null;
 
   return (
     <section className="cosmos relative isolate overflow-hidden text-[#ece8f5]" aria-labelledby="panchang-title">
-      {/* Night sky */}
+      {/* Night sky. Its loops are stilled in CSS under reduced motion, so the markup is the same
+          for every reader and the page hydrates cleanly. */}
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="cosmos-sky absolute inset-0" />
         <div className="cosmos-milkyway absolute inset-0" />
-        <svg className={`absolute inset-[-10%] h-[120%] w-[120%] ${reduce ? '' : 'cosmos-drift-far'}`} viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+        <svg className="absolute inset-[-10%] h-[120%] w-[120%] cosmos-drift-far" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
           {FAR.map((s, i) => (
-            <circle key={i} cx={s.x} cy={s.y} r={s.r * 0.09} fill="#fff" opacity={s.o * 0.7} className={s.twinkle !== undefined && !reduce ? 'cosmos-twinkle' : undefined} style={s.twinkle !== undefined ? { animationDelay: `${s.twinkle}s` } : undefined} />
+            <circle key={i} cx={s.x} cy={s.y} r={s.r * 0.09} fill="#fff" opacity={s.o * 0.7} className={s.twinkle !== undefined ? 'cosmos-twinkle' : undefined} style={s.twinkle !== undefined ? { animationDelay: `${s.twinkle}s` } : undefined} />
           ))}
         </svg>
-        <svg className={`absolute inset-[-10%] h-[120%] w-[120%] ${reduce ? '' : 'cosmos-drift-near'}`} viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+        <svg className="absolute inset-[-10%] h-[120%] w-[120%] cosmos-drift-near" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
           {NEAR.map((s, i) => (
-            <circle key={i} cx={s.x} cy={s.y} r={s.r * 0.14} fill="#fdf6e3" opacity={s.o} className={s.twinkle !== undefined && !reduce ? 'cosmos-twinkle' : undefined} style={s.twinkle !== undefined ? { animationDelay: `${s.twinkle}s` } : undefined} />
+            <circle key={i} cx={s.x} cy={s.y} r={s.r * 0.14} fill="#fdf6e3" opacity={s.o} className={s.twinkle !== undefined ? 'cosmos-twinkle' : undefined} style={s.twinkle !== undefined ? { animationDelay: `${s.twinkle}s` } : undefined} />
           ))}
         </svg>
-        {!reduce && <span className="cosmos-meteor" />}
+        <span className="cosmos-meteor" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-dharma-bg to-transparent" />
       </div>
 
@@ -107,33 +111,72 @@ export function PanchangCosmos() {
             )}
           </div>
 
-          <ol className="mt-8 grid gap-2.5 sm:grid-cols-2">
-            {limbs.map((l, i) => (
-              <motion.li
-                key={l.en}
-                initial={reduce ? false : { y: 14 }}
-                animate={{ y: 0 }}
-                transition={{ ...SPRING, delay: 0.15 + i * 0.08 }}
-                className={`cosmos-limb rounded-2xl px-4 py-3 ${i === 4 ? 'sm:col-span-2' : ''}`}
-              >
-                <p className="flex flex-wrap items-baseline gap-x-2 text-[13px] text-[#9d96bd]">
-                  <span className="tabular-nums text-[#f3e3b3]">{i + 1}</span>
-                  <span lang="sa" className="text-[15px] text-[#ece8f5]">{l.sa}</span>
-                  <span>{l.en}</span>
-                  <span className="text-[#8f88b0]">· {l.gloss}</span>
-                </p>
-                <p className="mt-1 min-h-[1.75rem] text-lg text-[#fdf6e3]">
-                  {l.value ? (
-                    <span lang="hi" className="font-devanagari">{l.value}</span>
+          {/* The day at a glance: the five limbs in two columns with the sun's times in the sixth place, so a
+              phone shows the whole day on its first screen. Layout only: the values come from the same
+              calculation as before. */}
+          <div className="mt-5 grid grid-cols-2 gap-2 sm:mt-8 sm:gap-2.5">
+            <ol className="contents">
+              {limbs.map((l, i) => (
+                <motion.li
+                  key={l.en}
+                  initial={reduce ? false : { y: 14 }}
+                  animate={{ y: 0 }}
+                  transition={{ ...SPRING, delay: 0.15 + i * 0.08 }}
+                  className="cosmos-limb min-w-0 rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3"
+                >
+                  <p className="flex flex-wrap items-baseline gap-x-1.5 text-[13px] text-[#9d96bd] sm:gap-x-2">
+                    <span className="tabular-nums text-[#f3e3b3]">{i + 1}</span>
+                    <span lang="sa" className="text-[15px] text-[#ece8f5]">{l.sa}</span>
+                    <span>{l.en}</span>
+                    {/* Two columns on a phone leave no room for the gloss; screen readers still get it. */}
+                    <span className="text-[#8f88b0] max-sm:sr-only">· {l.gloss}</span>
+                  </p>
+                  <p className="mt-1 min-h-[1.75rem] text-lg text-[#fdf6e3]">
+                    {l.value ? (
+                      <span lang="hi" className="font-devanagari">{l.value}</span>
+                    ) : (
+                      <span className="text-sm text-[#7c759c]">…</span>
+                    )}
+                  </p>
+                  {/* Its own reserved line, so the card does not grow when the values arrive. */}
+                  <p className="min-h-[1.25rem] text-sm text-[#b9b2d6]">{l.value ? l.sub : null}</p>
+                </motion.li>
+              ))}
+            </ol>
+            <motion.div
+              initial={reduce ? false : { y: 14 }}
+              animate={{ y: 0 }}
+              transition={{ ...SPRING, delay: 0.15 + limbs.length * 0.08 }}
+              className="cosmos-limb min-w-0 rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3"
+            >
+              <p className="flex flex-wrap items-baseline gap-x-1.5 text-[13px] text-[#9d96bd] sm:gap-x-2">
+                <span aria-hidden="true" className="text-[#f3e3b3]">☼</span>
+                <span lang="hi" className="font-devanagari text-[15px] text-[#ece8f5]">सूर्योदय</span>
+                <span>Sunrise</span>
+              </p>
+              <p className="mt-1 min-h-[1.75rem] text-lg tabular-nums text-[#fdf6e3]">
+                {panchang ? (sun ? sun.sunrise : '—') : <span className="text-sm text-[#7c759c]">…</span>}
+              </p>
+              <p className="min-h-[1.25rem] text-sm text-[#b9b2d6]">
+                {panchang &&
+                  (sun ? (
+                    <>
+                      <span lang="hi" className="font-devanagari">सूर्यास्त</span> <span className="tabular-nums">{sun.sunset}</span>
+                    </>
                   ) : (
-                    <span className="text-sm text-[#7c759c]">…</span>
-                  )}
-                </p>
-                {/* Its own reserved line, so the card does not grow when the values arrive. */}
-                <p className="min-h-[1.25rem] text-sm text-[#b9b2d6]">{l.value ? l.sub : null}</p>
-              </motion.li>
-            ))}
-          </ol>
+                    'Not available at this place'
+                  ))}
+              </p>
+            </motion.div>
+          </div>
+          <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-[#c9c3e0]">
+            <a href="#panchang-day" className="focus-ring inline-flex min-h-11 items-center gap-1 rounded-lg underline decoration-[#6f6890] underline-offset-4 hover:text-[#fdf6e3]">
+              <span lang="hi" className="font-devanagari">दूसरा दिन देखें</span> <span aria-hidden="true">·</span> <span>Another day</span> <span aria-hidden="true">↓</span>
+            </a>
+            <Link href="/panchang/muhurta/" className="focus-ring inline-flex min-h-11 items-center gap-1 rounded-lg underline decoration-[#6f6890] underline-offset-4 hover:text-[#fdf6e3]">
+              <span lang="hi" className="font-devanagari">राहुकाल, अभिजीत</span> <span aria-hidden="true">·</span> <span>Day windows</span> <span aria-hidden="true">→</span>
+            </Link>
+          </p>
         </div>
 
         <motion.div

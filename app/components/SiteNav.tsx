@@ -34,6 +34,7 @@ import {
   Sunset,
   Users,
   FileText,
+  GraduationCap,
   X,
 } from 'lucide-react';
 import { usePresence } from '@/app/components/motion/usePresence';
@@ -78,6 +79,7 @@ const desktopPrimaryItems = [
   { label: 'Home', labelHi: 'मुख', href: '/' },
   { label: 'Scriptures', labelHi: 'ग्रंथालय', href: '/scriptures/' },
   { label: 'Bhagavad Gita', labelHi: 'गीता', href: '/scripture/bhagavadgita/' },
+  { label: 'Learn', labelHi: 'अध्ययन', href: '/learn/' },
   { label: 'Sadhana', labelHi: 'साधना', href: '/practice/' },
   { label: 'Panchang', labelHi: 'पंचांग', href: '/panchang/' },
 ];
@@ -175,8 +177,6 @@ export function SiteNav({
 }) {
   const formatCount = (value: number) => new Intl.NumberFormat('en-IN').format(value);
   const pathname = usePathname();
-  // The home page opens on its own hero, so only inner pages fold their title into the bar.
-  const fold = useFoldingTitle(pathname, pathname !== '/');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [discoverOpen, setDiscoverOpen] = useState(false);
   const [themeMenuOpen, setThemeMenuOpen] = useState(false);
@@ -190,6 +190,9 @@ export function SiteNav({
 
   const { theme, setTheme } = useTheme();
   const { preference, setPreference } = useLanguagePreference();
+  // The home page opens on its own hero, so only inner pages fold their title into the bar. Called
+  // after the language hook, whose effect sets <html data-ui-lang> before the bar title reads it.
+  const fold = useFoldingTitle(pathname, pathname !== '/', preference);
 
   const discoverRef = useRef<HTMLDivElement>(null);
   const discoverButtonRef = useRef<HTMLButtonElement>(null);
@@ -493,6 +496,14 @@ export function SiteNav({
       badgeType: 'accent',
     },
     {
+      id: 'learn',
+      label: 'शास्त्र स्वाध्याय',
+      labelEn: 'Learn',
+      description: 'अध्ययन मार्ग, पाठ, फ्लैशकार्ड व प्रश्नोत्तरी',
+      href: '/learn/',
+      icon: GraduationCap,
+    },
+    {
       id: 'sadhana',
       label: 'दैनिक साधना',
       labelEn: 'Sadhana',
@@ -618,7 +629,7 @@ export function SiteNav({
                   <span lang="hi" className="hidden font-devanagari text-footnote text-dharma-muted sm:inline">
                     धर्म ग्रंथ
                   </span>
-                </div>
+                </div>{' '}
                 {/* The page's large title, once it has folded up under the bar (lib/useFoldingTitle). */}
                 <span className="bar-page-title truncate text-body font-semibold tracking-[-0.022em] text-dharma-text" aria-hidden="true">
                   {fold.title}
@@ -634,15 +645,15 @@ export function SiteNav({
                   key={item.href}
                   href={item.href}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`relative whitespace-nowrap rounded-full px-2.5 xl:px-3.5 py-1.5 text-footnote transition-all duration-200 ${
+                  className={`relative whitespace-nowrap rounded-full px-2.5 2xl:px-3.5 py-1.5 text-footnote transition-all duration-200 ${
                     isActive(item.href)
                       ? 'bg-dharma-saffron/15 font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] ring-1 ring-dharma-saffron/30'
                       : 'text-dharma-text/85 hover:bg-white/50 hover:text-dharma-text dark:hover:bg-white/10'
                   }`}
                 >
                   <span className="inline-flex items-baseline gap-1">
-                    <span>{item.label}</span>{' '}
-                    <span lang="hi" className="hidden text-[12.5px] font-devanagari text-dharma-muted xl:inline">
+                    <span data-bi="en">{item.label}</span>{' '}
+                    <span lang="hi" data-bi="hi" data-bi-lead className="hidden text-[12.5px] font-devanagari text-dharma-muted xl:inline">
                       {item.labelHi}
                     </span>{' '}
                   </span>
@@ -655,7 +666,7 @@ export function SiteNav({
                   ref={discoverButtonRef}
                   type="button"
                   onClick={() => setDiscoverOpen((open) => !open)}
-                  className={`flex items-center gap-1 rounded-full px-2.5 xl:px-3.5 py-1.5 text-footnote transition-all ${
+                  className={`flex items-center gap-1 rounded-full px-2.5 2xl:px-3.5 py-1.5 text-footnote transition-all ${
                     discoveryIsActive || discoverOpen
                       ? 'bg-dharma-saffron/15 font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] ring-1 ring-dharma-saffron/30'
                       : 'text-dharma-text/85 hover:bg-white/50 hover:text-dharma-text dark:hover:bg-white/10'
@@ -664,8 +675,8 @@ export function SiteNav({
                   aria-controls="desktop-discovery-menu"
                   aria-haspopup="true"
                 >
-                  <span>Explore</span>{' '}
-                  <span lang="hi" className="hidden font-devanagari text-[12.5px] text-dharma-muted xl:inline">
+                  <span data-bi="en">Explore</span>{' '}
+                  <span lang="hi" data-bi="hi" data-bi-lead className="hidden font-devanagari text-[12.5px] text-dharma-muted xl:inline">
                     अन्वेषण
                   </span>
                   <ChevronDown
@@ -768,13 +779,13 @@ export function SiteNav({
                 aria-keyshortcuts="Control+K Meta+K /"
               >
                 <Search className="h-4 w-4 text-dharma-text" aria-hidden="true" />
-                <kbd className="kbd-hint hidden xl:inline rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-[11px] text-dharma-text-secondary">
+                <kbd className="kbd-hint hidden 2xl:inline rounded-md bg-dharma-text/[0.07] px-1.5 py-0.5 font-sans text-[11px] text-dharma-text-secondary">
                   {shortcutLabel}
                 </kbd>
               </button>{' '}
 
               {/* Desktop Language Toggle */}
-              <LanguageToggle className="hidden lg:inline-flex" />
+              <LanguageToggle className="hidden lg:inline-flex" preference={preference} setPreference={setPreference} />
 
               {/* Desktop Segmented Theme Toggle: only where the bar has room for it
                   beside the full nav; below that the single cycle button (2. Theme Button) stands in. */}
@@ -922,7 +933,7 @@ export function SiteNav({
               aria-modal="true"
               aria-label="मोबाइल नेविगेशन मेनू"
               data-closing={drawer.closing || undefined}
-              className="chrome-sheet material-thick fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border/80 bg-dharma-card/88 shadow-2xl backdrop-blur-2xl"
+              className="chrome-sheet material-thick fixed inset-y-0 right-0 z-[70] flex w-full max-w-[360px] sm:max-w-md flex-col border-l border-dharma-border/80 bg-dharma-card/90 shadow-2xl backdrop-blur-2xl"
               style={{
                 paddingTop: 'max(0.75rem, env(safe-area-inset-top, 0.75rem))',
                 paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 1rem))',
@@ -1079,14 +1090,14 @@ export function SiteNav({
                       className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-muted"
                     >
                       <Settings2 className="h-3.5 w-3.5 text-saffron-600" aria-hidden="true" />
-                      भाषा व थीम सेटिंग्स · Preferences
+                      <span><span lang="hi" data-bi="hi">भाषा व थीम सेटिंग्स</span><span data-bi="sep"> · </span><span data-bi="en">Preferences</span></span>
                     </h3>
                   </div>
 
                   {/* Language Selector (≥ 44px touch targets) */}
                   <div>
                     <p className="mb-2 block text-xs font-semibold text-dharma-text">
-                      पठन भाषा · Reading Language
+                      <span lang="hi" data-bi="hi">पठन भाषा</span><span data-bi="sep"> · </span><span data-bi="en">Reading Language</span>
                     </p>
                     <div className="grid grid-cols-2 gap-1.5" role="radiogroup" aria-label="भाषा प्राथमिकता">
                       {LANGUAGE_OPTIONS.map((opt) => {
@@ -1125,7 +1136,7 @@ export function SiteNav({
                   {/* Theme Selector (≥ 44px touch targets) */}
                   <div>
                     <p className="mb-2 block text-xs font-semibold text-dharma-text">
-                      थीम मोड · Display Theme
+                      <span lang="hi" data-bi="hi">थीम मोड</span><span data-bi="sep"> · </span><span data-bi="en">Display Theme</span>
                     </p>
                     <div className="grid grid-cols-2 gap-1.5" role="radiogroup" aria-label="थीम मोड">
                       {THEMES.map((opt) => {
@@ -1189,7 +1200,7 @@ export function SiteNav({
                         id="drawer-discover-heading"
                         className="mb-2 px-1 text-[11px] font-bold uppercase tracking-wider text-dharma-muted"
                       >
-                        अतिरिक्त संदर्भ व साधन · More Reference
+                        <span><span lang="hi" data-bi="hi">अतिरिक्त संदर्भ व साधन</span><span data-bi="sep"> · </span><span data-bi="en">More Reference</span></span>
                       </h3>
                       <div className="space-y-3">
                         {groupsWithUniqueItems.map((group) => {

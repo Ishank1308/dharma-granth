@@ -5,6 +5,7 @@ name: CI
 #
 #   checks ──────────────────────────────┐
 #   build ──┬── browser tests (4 shards) ─┴── Validate static export
+#           │   (skipped when a pull request changes only commentary or docs)
 #           └── preview deploy (pr-N.dharma-granth.pages.dev)
 on:
   pull_request:
@@ -105,6 +106,7 @@ jobs:
     outputs:
       tree: ${{ steps.tree.outputs.tree }}
       playwright: ${{ steps.playwright.outputs.version }}
+      content_only: ${{ steps.scope.outputs.content_only }}
 
     steps:
       - name: Checkout
@@ -130,6 +132,25 @@ jobs:
       - name: Record source tree
         id: tree
         run: echo "tree=$(git rev-parse 'HEAD^{tree}')" >> "$GITHUB_OUTPUT"
+
+      # A pull request that changes only commentary text or docs skips the
+      # browser tests (about 20 billed minutes per push on a private repo).
+      # The build, the export checks and the preview still run. HEAD is the
+      # merge commit of the pull request, so HEAD^1 is the base it merges into.
+      - name: Classify changed files
+        id: scope
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "content_only=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          files=$(git diff --name-only HEAD^1 HEAD)
+          echo "$files"
+          if [ -n "$files" ] && ! echo "$files" | grep -qvE '^(data/hi-commentary/|public/data/hi-commentary/|data/ai-commentary/|docs/)'; then
+            echo "content_only=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Only commentary or docs changed: browser tests are skipped."
+          else
+            echo "content_only=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -231,6 +252,7 @@ jobs:
   e2e:
     name: Browser tests (${{ matrix.shard }}/4)
     needs: build
+    if: needs.build.outputs.content_only != 'true'
     runs-on: ubuntu-latest
     # Chromium and its system libraries come with the image, so there is no
     # browser install (which once stalled a shard for ~5 minutes on apt).
@@ -429,7 +451,8 @@ jobs:
         run: echo "::notice::No preview deploy — CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are not available to this workflow."
 
   # Keeps the check name branch protection already knows; passes only when
-  # every check above passed.
+  # every check above passed (browser tests may be skipped on a pull request
+  # that changes only commentary or docs).
   validate:
     name: Validate static export
     needs: [checks, build, e2e]
@@ -438,7 +461,11 @@ jobs:
     steps:
       - name: All checks passed
         run: |
-          echo "checks=${{ needs.checks.result }} build=${{ needs.build.result }} e2e=${{ needs.e2e.result }}"
+          echo "checks=${{ needs.checks.result }} build=${{ needs.build.result }} e2e=${{ needs.e2e.result }} content_only=${{ needs.build.outputs.content_only }}"
           test "${{ needs.checks.result }}" = success
           test "${{ needs.build.result }}" = success
-          test "${{ needs.e2e.result }}" = success
+          if [ "${{ needs.build.outputs.content_only }}" = "true" ]; then
+            test "${{ needs.e2e.result }}" = skipped
+          else
+            test "${{ needs.e2e.result }}" = success
+          fi

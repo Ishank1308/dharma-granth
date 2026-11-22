@@ -35,7 +35,7 @@ export function WordExplorer({ words }: { words: PedagogicalWordGloss[] }) {
       <div className="flex items-center justify-between">
         <div>
           <h3 className="font-serif text-base font-bold text-dharma-text">
-            Sanskrit Word Explorer <span lang="hi" className="font-devanagari text-sm font-semibold text-dharma-muted">मुख्य पद-विभाजन</span>
+            <span data-bi="en">Sanskrit Word Explorer</span> <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-sm font-semibold text-dharma-muted">मुख्य पद-विभाजन</span>
           </h3>
           <p className="mt-1 text-xs sm:text-sm text-dharma-muted">Tap any word to inspect its root (dhatu), grammar, context, and philosophical nuances.</p>
         </div>

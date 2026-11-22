@@ -152,7 +152,7 @@ export function GitaJourneyClient() {
         <div className="flex items-center gap-2 mb-2">
           <Compass className="w-5 h-5 text-saffron-600" />
           <h2 id="dilemma-compass-heading" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
-            The Dilemma Compass (जीवन-संशय समाधान)
+            <span data-bi="en">The Dilemma Compass</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">जीवन-संशय समाधान</span><span data-bi="sep">)</span>
           </h2>
         </div>
         <p className="text-xs sm:text-sm text-dharma-muted mb-6">
@@ -369,7 +369,7 @@ export function GitaJourneyClient() {
 
                   <Link
                     href={`/scripture/bhagavadgita/chapter/${ch.chapter}/`}
-                    className="focus-ring inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-3.5 py-2 text-xs font-bold text-white transition shadow-xs"
+                    className="focus-ring tap-target inline-flex items-center gap-1.5 rounded-xl bg-saffron-600 hover:bg-saffron-700 px-3.5 py-2 text-xs font-bold text-white transition shadow-xs"
                   >
                     <span>Read Chapter</span>
                     <ArrowRight className="w-3.5 h-3.5" />

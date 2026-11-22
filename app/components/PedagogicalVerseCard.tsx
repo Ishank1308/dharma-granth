@@ -494,7 +494,7 @@ export function PedagogicalVerseCard({
                   </span>
                   <div>
                     <h3 className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-                      In One Line (एक पंक्ति में संदेश)
+                      <span data-bi="en">In One Line</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">एक पंक्ति में संदेश</span><span data-bi="sep">)</span>
                     </h3>
                     <p className="mt-1 font-serif text-lg font-bold text-dharma-text sm:text-xl leading-snug">
                       &ldquo;{data.inOneLineEn}&rdquo;
@@ -596,7 +596,7 @@ export function PedagogicalVerseCard({
               {/* 4. Key Words (4 मुख्य शब्द) */}
               <div className="border-t border-dharma-border pt-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-dharma-muted mb-3">
-                  🔑 4 Crucial Words (मुख्य शब्द)
+                  🔑 4 <span data-bi="en">Crucial Words</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">मुख्य शब्द</span><span data-bi="sep">)</span>
                 </h4>
                 <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                   {data.keyWords.map((word, i) => (
@@ -623,7 +623,7 @@ export function PedagogicalVerseCard({
               {/* 5. Why It Matters Today */}
               <div className="border-t border-dharma-border pt-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-3">
-                  🌱 Why It Matters Today (आज के जीवन में इसका महत्व)
+                  🌱 <span data-bi="en">Why It Matters Today</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">आज के जीवन में इसका महत्व</span><span data-bi="sep">)</span>
                 </h4>
                 <div className="space-y-2">
                   {data.whyItMattersToday.map((scenario, i) => (
@@ -666,7 +666,7 @@ export function PedagogicalVerseCard({
               {/* 7. What It Does Not Mean */}
               <div className="border-t border-dharma-border pt-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-3">
-                  🚫 What It Does Not Mean (इसका क्या अर्थ नहीं है)
+                  🚫 <span data-bi="en">What It Does Not Mean</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">इसका क्या अर्थ नहीं है</span><span data-bi="sep">)</span>
                 </h4>
                 <div className="space-y-2">
                   {data.whatItDoesNotMean.map((item, i) => (
@@ -758,7 +758,7 @@ export function PedagogicalVerseCard({
               <div className="space-y-3.5">
                 <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-dharma-text">
                   <Quote className="h-4 w-4 text-amber-600" />
-                  <span>Classical Lineage Perspectives (पारंपरिक भाष्य)</span>
+                  <span><span data-bi="en">Classical Lineage Perspectives</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">पारंपरिक भाष्य</span><span data-bi="sep">)</span></span>
                 </h4>
 
                 {/* Adi Shankara */}

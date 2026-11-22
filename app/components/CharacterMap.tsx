@@ -28,8 +28,9 @@ function simulateLayout(
     const angle = (i / nodeIds.length) * Math.PI * 2;
     nodes.set(id, {
       id,
-      x: cx + Math.cos(angle) * radius,
-      y: cy + Math.sin(angle) * radius,
+      // Rounded, so Node (the exported HTML) and the browser agree to the last digit: cos and sin differ between engines.
+      x: Math.round((cx + Math.cos(angle) * radius) * 100) / 100,
+      y: Math.round((cy + Math.sin(angle) * radius) * 100) / 100,
       vx: 0,
       vy: 0,
     });

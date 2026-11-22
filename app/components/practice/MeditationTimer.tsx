@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Timer,
   Play,
@@ -15,6 +15,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
+import { useReducedMotionPreference } from '@/lib/useReducedMotionPreference';
 import { ToolCard, localISODate } from './shared';
 import { DiyaPullCord } from './DiyaPullCord';
 import { triggerHaptic } from '@/lib/haptics';
@@ -76,7 +77,9 @@ export function MeditationTimer() {
   const [done, setDone] = useState(false);
   const [summaryQuote, setSummaryQuote] = useState(CONTEMPLATION_QUOTES[0]);
 
-  const systemReduced = useReducedMotion();
+  // Read after mount: the exported HTML cannot know the device's setting, and the label below
+  // depends on it, so reading it during the first render would break hydration.
+  const systemReduced = useReducedMotionPreference();
   const isReducedMotion = systemReduced || reducedMotionManual;
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -385,7 +388,7 @@ export function MeditationTimer() {
 
             <div>
               <h4 className="font-serif text-base font-bold text-dharma-text">
-                सत्र पूर्ण · Session Complete
+                <span lang="hi" data-bi="hi">सत्र पूर्ण</span><span data-bi="sep"> · </span><span data-bi="en">Session Complete</span>
               </h4>
               <p className="text-xs text-dharma-muted mt-0.5">
                 आपने {minutes} मिनट का ध्यान पूर्ण किया।

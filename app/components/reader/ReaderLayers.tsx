@@ -234,7 +234,6 @@ export function ReaderLayers({
   provenance: p,
   settings,
   onUpdateSetting,
-  onStepSize,
   insight,
   sourceStatus,
 }: {
@@ -244,8 +243,6 @@ export function ReaderLayers({
   provenance: ReaderProvenance;
   settings: ReaderSettings;
   onUpdateSetting?: <K extends keyof ReaderSettings>(key: K, value: ReaderSettings[K]) => void;
-  /** Use the same font-size settings as the reader's Aa panel. */
-  onStepSize?: (delta: -1 | 1) => void;
   /** Reviewed मर्म line and जीवन प्रसंग chips, when this verse has them. */
   insight?: VerseInsight;
   /** Status chips rendered by the page (TrustBadges), placed at the top of the Sources card. */
@@ -360,6 +357,8 @@ export function ReaderLayers({
             <span aria-hidden="true" className="verse-mark mt-2 block text-base font-semibold">
               ॥ {verseMarkNumber(verse.number)} ॥
             </span>
+            {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
+            <span className="photo-light" />
           </p>
           {!settings.liteMode && (
             <ExplainLine lines={lines} scopeId="sanskrit-text" verseLabel={formatVerseRef(scriptureId, chapterId, verse.number)} fullTranslation={cleanVerseField(verse.translation)} entries={verse.lineExplanations} />
@@ -381,8 +380,8 @@ export function ReaderLayers({
                   className={aidToggle}
                 >
                   <Languages className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>IAST</span>
-                  <span lang="hi" className="font-devanagari">लिप्यन्तरण</span>
+                  <span data-bi="en">IAST</span>
+                  <span lang="hi" data-bi="hi" className="font-devanagari">लिप्यन्तरण</span>
                 </button>
               )}
               {hasPadas && (
@@ -394,8 +393,8 @@ export function ReaderLayers({
                   className={aidToggle}
                 >
                   <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span lang="hi" className="font-devanagari">पदच्छेद</span>
-                  <span>Word by word</span>
+                  <span lang="hi" data-bi="hi" className="font-devanagari">पदच्छेद</span>
+                  <span data-bi="en">Word by word</span>
                 </button>
               )}
             </div>
@@ -516,31 +515,10 @@ export function ReaderLayers({
           aria-label="श्लोक अध्ययन मार्ग · Verse study guide"
           className="scroll-mt-28 rounded-[20px] border border-dharma-border/80 bg-dharma-card/85 px-3 py-3 shadow-sm sm:px-4"
         >
-          <div className="mb-2.5 flex items-center justify-between gap-3">
-            <div className="min-w-0">
-              <p lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">अध्ययन मार्ग</p>
-              <p className="text-[11px] font-medium text-dharma-muted">Explore this verse · अर्थ से चिंतन तक</p>
-            </div>
-            {onStepSize && (
-              <div role="group" aria-label="Verse and translation text size" className="flex shrink-0 items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg/70 p-0.5">
-                <button
-                  type="button"
-                  onClick={() => onStepSize(-1)}
-                  disabled={settings.sanskritSize === 'sm'}
-                  aria-label="Decrease verse and translation text size"
-                  title="अक्षर छोटे करें"
-                  className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full text-sm font-semibold text-dharma-text transition-colors hover:bg-dharma-text/[0.08] disabled:opacity-35"
-                >A−</button>
-                <button
-                  type="button"
-                  onClick={() => onStepSize(1)}
-                  disabled={settings.sanskritSize === 'xl'}
-                  aria-label="Increase verse and translation text size"
-                  title="अक्षर बड़े करें"
-                  className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full text-base font-semibold text-dharma-text transition-colors hover:bg-dharma-text/[0.08] disabled:opacity-35"
-                >A+</button>
-              </div>
-            )}
+          {/* Text size lives in the Aa sheet (ReaderSettingsPanel), with the other reading choices. */}
+          <div className="mb-2.5 min-w-0">
+            <p lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">अध्ययन मार्ग</p>
+            <p className="text-[11px] font-medium text-dharma-muted">Explore this verse · अर्थ से चिंतन तक</p>
           </div>
           <div className="-mx-1 flex min-w-0 snap-x snap-proximity gap-2 overflow-x-auto px-1 pb-1">
             <a href="#layer-sanskrit" aria-label="मूल श्लोक · Original Sanskrit" className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-amber-500/70">
