@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useRecitation } from '@/audio/player';
 import { recitedVerses } from '@/audio/recitation';
+import { ChapterClose } from '@/components/chapter-close';
 import { ChapterSummaryCard } from '@/components/chapter-summary';
 import { ReadingSheet } from '@/components/reading-sheet';
 import { accentFill, Backdrop, Eyebrow, FloatingBar, glass, IconButton, Muted } from '@/components/ui';
@@ -393,7 +394,10 @@ export default function ChapterScreen() {
           }
           ListEmptyComponent={<Muted style={{ textAlign: 'center' }}>{t(S.noVersesYet)}</Muted>}
           ListFooterComponent={
-            next ? (
+            <View>
+              {/* A still moment at the end of the chapter, before the way on. */}
+              {total > 0 ? <ChapterClose chapter={chapterNo} lastOf={next ? undefined : ((lang === 'hi' ? entry?.titleSanskrit : undefined) ?? entry?.title)} /> : null}
+              {next ? (
               // The end of the chapter leads straight on to the next one.
               <PressableScale
                 haptic
@@ -414,7 +418,8 @@ export default function ChapterScreen() {
                 </View>
                 <Ionicons name="arrow-forward" size={22} color={palette.accent} />
               </PressableScale>
-            ) : undefined
+            ) : null}
+            </View>
           }
         />
 

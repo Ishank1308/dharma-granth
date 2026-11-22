@@ -18,7 +18,8 @@ import { LANGUAGE_SETTINGS, S, useI18n, type LanguageSetting } from '@/i18n';
 import { remindersSupported, requestReminderPermission, type ReminderPermission } from '@/lib/daily-notification';
 import { formatReminderTime } from '@/lib/reminder';
 import { usePrefs } from '@/state/app-state';
-import { RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
+import { SANSKRIT_FONT } from '@/theme/fonts';
+import { huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 /** Language names are always shown in their own script, whatever the interface language. */
 const LANGUAGE_NAMES: Record<Exclude<LanguageSetting, 'system'>, string> = { en: 'English', hi: 'हिन्दी' };
@@ -29,6 +30,8 @@ export function Welcome() {
   const { ready, settings, palette, reduceMotion, updateSettings } = usePrefs();
   const { t, lang } = useI18n();
   const insets = useSafeAreaInsets();
+  // Gilt on the dark theme; the deep saffron hue where gold would be too pale to read.
+  const gold = palette.dark ? palette.gold : huesFor(palette).saffron;
   // The web preview has no notification scheduler, so it has two pages.
   const steps: Step[] = remindersSupported ? ['language', 'look', 'verse'] : ['language', 'look'];
   const [index, setIndex] = useState(0);
@@ -88,6 +91,16 @@ export function Welcome() {
         </View>
 
         <ScrollView contentContainerStyle={styles.page} style={{ backgroundColor: 'transparent' }}>
+          {/* The welcome opens as a reading does: ॐ, and the Upanishad's word on svadhyaya. Quiet, and the same on every page. */}
+          <View style={styles.invocation} accessible accessibilityLabel={t(S.welcomeInvocationA11y)}>
+            <Text allowFontScaling={false} style={{ fontFamily: SANSKRIT_FONT, color: gold, fontSize: 64, lineHeight: 92 }}>
+              ॐ
+            </Text>
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ fontFamily: SANSKRIT_FONT, color: palette.text, fontSize: TYPE.title3, lineHeight: TYPE.title3 * 1.7, textAlign: 'center' }}>
+              ॥ स्वाध्यायान्मा प्रमदः ॥
+            </Text>
+            <Muted style={{ textAlign: 'center' }}>{t(S.welcomeInvocationMeaning)}</Muted>
+          </View>
           <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={[styles.title, { color: palette.text, letterSpacing: lang === 'hi' ? 0 : -0.4 }]}>
             {t(title)}
           </Text>
@@ -165,6 +178,8 @@ const styles = StyleSheet.create({
   dot: { height: 8, borderRadius: 4 },
   skip: { minHeight: TOUCH, minWidth: TOUCH, alignItems: 'flex-end', justifyContent: 'center' },
   // Content is pushed to the lower half, where a thumb reaches without shifting grip.
+  // The invocation takes the space above and centres in it; the question and choices stay at the bottom.
+  invocation: { flexGrow: 1, alignItems: 'center', justifyContent: 'center', rowGap: SPACE.xs, paddingVertical: SPACE.xl },
   page: { flexGrow: 1, justifyContent: 'flex-end', paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xl, rowGap: SPACE.md },
   title: { fontSize: TYPE.largeTitle - 4, fontWeight: '800' },
   body: { fontSize: TYPE.callout, lineHeight: TYPE.callout * 1.45, marginBottom: SPACE.md },

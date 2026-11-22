@@ -336,11 +336,13 @@ export const S = {
     en: 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
     hi: 'रविवार,सोमवार,मंगलवार,बुधवार,गुरुवार,शुक्रवार,शनिवार',
   },
-  verseFromBook: (book: string) => ({ en: `Today from ${book}`, hi: `आज ${book} से` }),
+  // The notification opens with ॐ, as a reading is traditionally begun, and stays an invitation, never a demand.
+  dailyNotificationTitle: { en: 'ॐ · Verse of the day', hi: 'ॐ · आज का श्लोक' },
+  verseFromBook: (book: string) => ({ en: `ॐ · Today from ${book}`, hi: `ॐ · आज ${book} से` }),
   turnOffDailyVerse: { en: 'Turn off', hi: 'बंद करें' },
   dailyVerseTurnedOff: {
-    en: 'Daily verse turned off. You can turn it on again in Settings.',
-    hi: 'दैनिक श्लोक बंद कर दिया। इसे सेटिंग्स में फिर चालू कर सकते हैं।',
+    en: 'Daily verse turned off. It waits in Settings whenever you wish.',
+    hi: 'दैनिक श्लोक बंद कर दिया। जब मन हो, सेटिंग्स में फिर चालू कर लें।',
   },
   // Settings, grouped: what most readers change stays open, the rest opens on a tap.
   settingsReading: { en: 'Reading', hi: 'पढ़ना' },
@@ -360,21 +362,36 @@ export const S = {
   },
   welcomeLookTitle: { en: 'Make it easy to read', hi: 'पढ़ना आसान बनाएँ' },
   welcomeLookBody: { en: 'Pick a look and a text size. You can change both any time from the reader.', hi: 'रंग-रूप और अक्षर का आकार चुनें। दोनों पढ़ते समय कभी भी बदले जा सकते हैं।' },
-  welcomeVerseTitle: { en: 'A verse each morning?', hi: 'हर सुबह एक श्लोक?' },
+  welcomeVerseTitle: { en: 'A verse to begin each day?', hi: 'हर दिन की शुरुआत एक श्लोक से?' },
   welcomeVerseBody: {
-    en: 'One whole verse a day at the time you pick. No account, nothing sent anywhere, and one tap turns it off.',
-    hi: 'हर दिन एक पूरा श्लोक, आपके चुने समय पर। न कोई खाता, न कहीं कुछ भेजा जाता है, और एक टैप में बंद।',
+    en: 'A gentle invitation to svadhyaya: one whole verse a day, at the time you pick. Nothing is sent anywhere, and one tap turns it off.',
+    hi: 'स्वाध्याय का एक सहज निमंत्रण: हर दिन एक पूरा श्लोक, आपके चुने समय पर। कहीं कुछ नहीं भेजा जाता, और एक टैप में बंद।',
   },
+  // The welcome opens as a reading does. The line is the teacher's parting word to the student in the
+  // Taittiriya Upanishad (1.11.1), quoted whole.
+  welcomeInvocationMeaning: { en: 'Do not neglect your own study. Taittiriya Upanishad 1.11', hi: 'स्वाध्याय में प्रमाद मत करो। तैत्तिरीय उपनिषद् 1.11' },
+  welcomeInvocationA11y: {
+    en: 'Om. Svadhyayan ma pramadah: do not neglect your own study. Taittiriya Upanishad 1.11.',
+    hi: 'ॐ। स्वाध्यायान्मा प्रमदः: स्वाध्याय में प्रमाद मत करो। तैत्तिरीय उपनिषद् 1.11।',
+  },
+  // The end of a chapter (src/components/chapter-close.tsx): a moment of stillness before moving on.
+  chapterCloseTitle: (num: number) => ({ en: `Chapter ${n(num)} is complete`, hi: `अध्याय ${n(num)} पूरा हुआ` }),
+  chapterCloseNote: { en: 'Stay with it for a breath before you go on.', hi: 'आगे बढ़ने से पहले एक साँस भर इसके साथ ठहरें।' },
+  chapterCloseBookNote: (book: string) => ({
+    en: `This is the last chapter of ${book}. May what you read stay with you.`,
+    hi: `यह ${book} का अंतिम अध्याय है। जो पढ़ा, वह मन में बना रहे।`,
+  }),
+  chapterCloseA11y: { en: 'Om shantih shantih shantih.', hi: 'ॐ शान्तिः शान्तिः शान्तिः।' },
   welcomeVerseYes: { en: 'Yes, send a daily verse', hi: 'हाँ, रोज़ श्लोक भेजें' },
   welcomeVerseOn: (time: string) => ({ en: `Daily verse is on, at ${time}`, hi: `दैनिक श्लोक चालू है, ${time} बजे` }),
   welcomeNext: { en: 'Next', hi: 'आगे' },
   welcomeBack: { en: 'Back', hi: 'पीछे' },
   welcomeSkip: { en: 'Skip', hi: 'छोड़ें' },
-  welcomeDone: { en: 'Start reading', hi: 'पढ़ना शुरू करें' },
+  welcomeDone: { en: 'Begin reading', hi: 'पाठ आरम्भ करें' },
   dailyChannelName: { en: 'Verse of the day', hi: 'आज का श्लोक' },
   dailyChannelDescription: {
-    en: 'One Bhagavad Gita verse a day, at the time you choose.',
-    hi: 'हर दिन भगवद्गीता का एक श्लोक, आपके चुने समय पर।',
+    en: 'One verse a day for svadhyaya, at the time you choose.',
+    hi: 'स्वाध्याय के लिए हर दिन एक श्लोक, आपके चुने समय पर।',
   },
   bhagavadGita: { en: 'Bhagavad Gita', hi: 'श्रीमद्भगवद्गीता' },
   notificationsOffTitle: { en: 'Notifications are off', hi: 'सूचनाएँ बंद हैं' },
@@ -592,8 +609,8 @@ export const S = {
   /** Weekday initials, Sunday first, as Date.getDay() counts. */
   weekdayInitials: { en: 'S,M,T,W,T,F,S', hi: 'र,सो,मं,बु,गु,शु,श' },
   streakNotification: (count: number) => ({
-    en: `Day ${n(count + 1)} of your reading streak starts with this verse.`,
-    hi: `पढ़ने के सिलसिले का ${n(count + 1)}वाँ दिन इसी श्लोक से शुरू होता है।`,
+    en: `Day ${n(count + 1)} of your daily reading. One verse is enough.`,
+    hi: `रोज़ के पाठ का ${n(count + 1)}वाँ दिन। एक श्लोक काफ़ी है।`,
   }),
   readingProgressSection: { en: 'Reading progress', hi: 'पढ़ने की प्रगति' },
   showStreak: { en: 'Show reading streak', hi: 'पढ़ने का सिलसिला दिखाएँ' },

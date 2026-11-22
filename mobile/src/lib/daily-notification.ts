@@ -112,7 +112,7 @@ function notificationVerse(date: Date, lang: Lang, bookId: string) {
   const book = (lang === 'hi' ? entry?.titleSanskrit : undefined) ?? entry?.title ?? S.bhagavadGita[lang];
   return {
     // The Gita keeps the plain "Verse of the day"; another book names itself, so the reader knows why.
-    title: pick.id === 'bhagavadgita' ? S.verseOfTheDay[lang] : S.verseFromBook(book)[lang],
+    title: pick.id === 'bhagavadgita' ? S.dailyNotificationTitle[lang] : S.verseFromBook(book)[lang],
     body: `${lines.join('\n')}\n${book} ${formatVerseRef(pick.id, pick.chapter, verse.number)}`,
     data: { id: pick.id, chapter: pick.chapter, verse: String(verse.number) },
   };
