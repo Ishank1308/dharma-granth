@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Stack, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, type FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, type FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { GestureDetector, usePanGesture } from 'react-native-gesture-handler';
 import Animated, { Extrapolation, interpolate, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -40,6 +40,15 @@ const VIEWABILITY = { itemVisiblePercentThreshold: 40 };
 /** How far a sideways swipe must travel to turn the chapter. */
 const TURN_AT = 96;
 
+/**
+ * A verse this many cards or more past the first one in the list is reached by starting the list a couple
+ * of verses before it, rather than by rendering every card on the way (which took about 30 seconds for
+ * Ramcharitmanas 1.250 on an emulator). "Earlier verses" at the top brings back the ones before.
+ */
+const FAR = 30;
+const LEAD = 2;
+const EARLIER: Msg = { en: 'Show earlier verses', hi: 'पिछले श्लोक दिखाएँ' };
+
 export default function ChapterScreen() {
   const params = useLocalSearchParams<{ id: string; chapter: string; verse?: string }>();
   const id = String(params.id);
@@ -55,6 +64,11 @@ export default function ChapterScreen() {
   const cover = useMemo(() => coverFor(id, entry?.category ?? 'other'), [id, entry?.category]);
   const listRef = useRef<FlatList<Verse>>(null);
   const jumped = useRef(false);
+  const target = params.verse ? (chapter?.verses.findIndex((v) => String(v.number) === String(params.verse)) ?? -1) : -1;
+  // The list shows chapter.verses from `base` on (see FAR). Indexes everywhere else are into the whole chapter.
+  const [base, setBase] = useState(() => (target >= FAR ? target - LEAD : 0));
+  const baseRef = useRef(base);
+  const data = useMemo(() => (chapter ? (base > 0 ? chapter.verses.slice(base) : chapter.verses) : []), [chapter, base]);
   const [sheet, setSheet] = useState<'none' | 'reading' | 'jump'>('none');
   const [visibleIndex, setVisibleIndex] = useState(0);
   // How far through the chapter the verse on screen is, drawn as a hairline under the header.
@@ -98,7 +112,6 @@ export default function ChapterScreen() {
   // Recitation belongs to the chapter on screen: leaving it, or turning to another chapter, stops it.
   useEffect(() => stop, [id, chapterNo, stop]);
 
-  const target = params.verse ? (chapter?.verses.findIndex((v) => String(v.number) === String(params.verse)) ?? -1) : -1;
 
   /**
    * Scroll the target verse to the top. Verse heights vary, so FlatList only knows where a card is once
@@ -109,7 +122,8 @@ export default function ChapterScreen() {
   const jumpToTarget = () => {
     if (goal.current < 0 || userScrolled.current) return;
     jumpFailed.current = false;
-    listRef.current?.scrollToIndex({ index: goal.current, animated: false, viewPosition: 0 });
+    muteBar();
+    listRef.current?.scrollToIndex({ index: Math.max(0, goal.current - baseRef.current), animated: false, viewPosition: 0 });
     // onScrollToIndexFailed runs synchronously inside scrollToIndex, so this tells us if it landed.
     if (!jumpFailed.current && !settled.current) {
       settled.current = true;
@@ -184,12 +198,30 @@ export default function ChapterScreen() {
   const pinBar = screenReader || !animate;
   const barAway = useSharedValue(0);
   const lastY = useSharedValue(0);
+  // Only the reader's own scrolling moves the bar: a jump to a linked or picked verse leaves it in place.
+  // (The web preview scrolls by wheel, which has no drag events, so there any scroll counts.)
+  const fingerScroll = useSharedValue(Platform.OS === 'web' ? 1 : 0);
+  const fingerOn = () => fingerScroll.set(1);
+  const fingerOff = () => {
+    if (Platform.OS !== 'web') fingerScroll.set(0);
+  };
+  // A jump in flight mutes the bar outright, so the web preview's landing keeps it too.
+  const jumping = useSharedValue(0);
+  const jumpSeq = useRef(0);
+  const muteBar = () => {
+    jumping.set(1);
+    const seq = ++jumpSeq.current;
+    later(() => {
+      if (seq === jumpSeq.current) jumping.set(0);
+    }, 400);
+  };
   const onScroll = useAnimatedScrollHandler((e) => {
     const yy = e.contentOffset.y;
     const dy = yy - lastY.get();
     lastY.set(yy);
     const nearEnd = yy + e.layoutMeasurement.height > e.contentSize.height - 160;
-    const want = pinBar || yy < 120 || nearEnd || dy < -4 ? 0 : dy > 4 ? 1 : barAway.get() > 0.5 ? 1 : 0;
+    const own = fingerScroll.get() > 0 && jumping.get() === 0;
+    const want = pinBar || yy < 120 || nearEnd || (own && dy < -4) ? 0 : own && dy > 4 ? 1 : barAway.get() > 0.5 ? 1 : 0;
     const now = barAway.get() > 0.5 ? 1 : 0;
     if (want !== now) barAway.set(withSpring(want, SPRING.settle));
   });
@@ -235,14 +267,16 @@ export default function ChapterScreen() {
   // The verse at the top of the screen, for the toolbar's "Verse 12 of 47".
   // FlatList must get the same callback on every render; setVisibleIndex never changes, so no deps.
   const onViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: { index?: number | null }[] }) => {
+    const offset = baseRef.current;
     const first = viewableItems.find((v) => v.index != null);
-    if (first?.index != null) setVisibleIndex(first.index);
+    if (first?.index != null) setVisibleIndex(first.index + offset);
     const now = Date.now();
     const onScreen = new Set<number>();
     for (const v of viewableItems) {
       if (v.index == null) continue;
-      onScreen.add(v.index);
-      if (!visibleSince.current.has(v.index)) visibleSince.current.set(v.index, now);
+      const i = v.index + offset;
+      onScreen.add(i);
+      if (!visibleSince.current.has(i)) visibleSince.current.set(i, now);
     }
     for (const i of [...visibleSince.current.keys()]) if (!onScreen.has(i)) visibleSince.current.delete(i);
   }, []);
@@ -284,15 +318,50 @@ export default function ChapterScreen() {
     progress.set(animate ? withTiming(fraction, { duration: DURATION.quick }) : fraction);
   }, [fraction, animate, progress]);
 
+  /**
+   * Bring verse `index` of the chapter to the top. A verse far from the cards already in the list, or
+   * before them, restarts the list just above it (see FAR); the jump then runs once the list has the new cards.
+   */
+  const reach = (index: number, byHand = true) => {
+    goal.current = index;
+    if (byHand) userScrolled.current = false;
+    settled.current = false;
+    highestSeen.current = -1;
+    stalls.current = 0;
+    const from = Math.max(visibleIndex, base);
+    const nextBase = index < base || index - from >= FAR ? (index >= FAR ? index - LEAD : 0) : base;
+    if (nextBase !== base) setBase(nextBase);
+    else jumpToTarget();
+  };
+  useEffect(() => {
+    baseRef.current = base;
+    if (goal.current >= 0) jumpToTarget();
+  }, [base]); // eslint-disable-line react-hooks/exhaustive-deps
+
   // A verse picked in the jump sheet is reached the same way as a linked verse.
   const jumpTo = (index: number) => {
     setSheet('none');
-    goal.current = index;
+    reach(index);
+  };
+
+  // A verse link opened while this chapter is already on screen (a widget, a notification or search
+  // reusing the screen) changes only the verse param, so jump to it here.
+  const lastLinked = useRef(params.verse);
+  useEffect(() => {
+    if (params.verse === lastLinked.current) return;
+    lastLinked.current = params.verse;
+    if (target >= 0 && jumped.current) reach(target);
+  }, [params.verse, target]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // "Earlier verses": put back up to FAR cards above the list and land on the one just above where it began.
+  const showEarlier = () => {
+    const nextBase = Math.max(0, base - FAR);
+    goal.current = base - 1;
     userScrolled.current = false;
     settled.current = false;
     highestSeen.current = -1;
     stalls.current = 0;
-    jumpToTarget();
+    setBase(nextBase);
   };
 
   // While a whole chapter is recited, bring each verse to the top as it starts, unless the reader has
@@ -301,11 +370,7 @@ export default function ChapterScreen() {
     if (!playingHere || !continuous) return;
     const index = numbers.indexOf(playingHere);
     if (index < 0 || userScrolled.current) return;
-    goal.current = index;
-    settled.current = false;
-    highestSeen.current = -1;
-    stalls.current = 0;
-    jumpToTarget();
+    reach(index, false);
   }, [playingHere, continuous]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -412,7 +477,7 @@ export default function ChapterScreen() {
           scrollEventThrottle={16}
           style={{ backgroundColor: 'transparent' }}
           contentContainerStyle={{ padding: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}
-          data={chapter.verses}
+          data={data}
           keyExtractor={(v, i) => `${v.number}-${i}`}
           renderItem={renderItem}
           extraData={`${playingHere}:${phase}`}
@@ -435,7 +500,11 @@ export default function ChapterScreen() {
           }}
           onScrollBeginDrag={() => {
             userScrolled.current = true;
+            fingerOn();
           }}
+          onScrollEndDrag={fingerOff}
+          onMomentumScrollBegin={fingerOn}
+          onMomentumScrollEnd={fingerOff}
           onScrollToIndexFailed={(info) => {
             jumpFailed.current = true;
             if (userScrolled.current) return;
@@ -444,12 +513,24 @@ export default function ChapterScreen() {
             highestSeen.current = Math.max(highestSeen.current, info.highestMeasuredFrameIndex);
             if (stalls.current > 12) return;
             if (info.highestMeasuredFrameIndex > 0) {
+              muteBar();
               listRef.current?.scrollToIndex({ index: info.highestMeasuredFrameIndex, animated: false, viewPosition: 0 });
             }
             later(jumpToTarget, 80);
           }}
           ListHeaderComponent={
             <View style={{ marginBottom: SPACE.lg, alignItems: 'center', rowGap: SPACE.xs }}>
+              {base > 0 ? (
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={showEarlier}
+                  style={({ pressed }) => [styles.pageBtn, glass(palette), { marginBottom: SPACE.md }, pressed && { opacity: 0.75 }]}>
+                  <Ionicons name="chevron-up" size={18} color={palette.accent} />
+                  <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontWeight: '600' }}>
+                    {t(EARLIER)}
+                  </Text>
+                </Pressable>
+              ) : null}
               {/* The chapter's numeral in the shloka face, as a printed book heads a chapter. Tapped in the
                   contents, it flies here from the row (src/motion/shared-origin). */}
               <FlyIn from={`chapter:${id}:${chapterNo}`}>

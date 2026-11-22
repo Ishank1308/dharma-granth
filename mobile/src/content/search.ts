@@ -1,9 +1,10 @@
 /**
  * Offline verse search over the bundled books and the large texts the reader has downloaded.
  *
- * Bundled books: each corpus is a lazy require() (generated/search-loaders.ts), prepared on the first
- * search and kept for later queries. Downloaded books: an index built on the phone during the download
- * (src/content/download-index.ts), read a chunk at a time so memory stays flat.
+ * Bundled books: each corpus is read lazily (generated/search-loaders.android.ts: a compressed APK asset;
+ * search-loaders.ts on web), prepared on the first search and kept for later queries. Downloaded books: an
+ * index built on the phone during the download (src/content/download-index.ts), read a chunk at a time so
+ * memory stays flat.
  * The search runs book by book (chunk by chunk) and yields in between, so typing stays smooth.
  */
 import { useSyncExternalStore } from 'react';
@@ -71,7 +72,12 @@ function corpus(id: string): PreparedCorpus | undefined {
   if (cached) return cached;
   const load = SEARCH_LOADERS[id];
   if (!load) return undefined;
-  const book = prepareCorpus(id, load());
+  let book: PreparedCorpus;
+  try {
+    book = prepareCorpus(id, load());
+  } catch {
+    return undefined;
+  }
   prepared.set(id, book);
   return book;
 }
