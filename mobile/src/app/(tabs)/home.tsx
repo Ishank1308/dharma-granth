@@ -1,25 +1,35 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useMemo, useState, type ReactNode } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import Animated, { type SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Mandala } from '@/components/art/mandala';
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
-import { ReadingStreakCard } from '@/components/reading-streak';
-import { accentFill, Backdrop, Card, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
+import { useTabTop } from '@/lib/use-tab-top';
+import { BentoCol, BentoDepth, BentoRow, BentoTile } from '@/components/bento';
+import { Backdrop, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
 import { CATALOG, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import { daysBetween, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { FEATURED, LIFE_GUIDES, PRACTICE_GUIDES, SAYINGS, SHELF, WISDOM_PICKS, type Guide, type Passage } from '@/content/home-picks';
-import { knowledge } from '@/content/knowledge';
+import { knowledge, type WisdomTopic } from '@/content/knowledge';
+import { AnimatedIcon } from '@/motion/animated-icon';
+import { KineticLines, KineticText } from '@/motion/kinetic';
+import { useParallax, useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
-import { S, useI18n, type Msg } from '@/i18n';
+import { TitleBar } from '@/motion/title-bar';
+import { useMotion } from '@/motion/use-motion';
+import { S, useI18n } from '@/i18n';
+import { daysSince, moodFor, type Mood } from '@/lib/mood';
 import { usePanchangCity } from '@/lib/panchang-city';
-import { bookReadCount, percentRead } from '@/lib/progress';
+import { bookReadCount, dayKey, percentRead, streakInfo } from '@/lib/progress';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState, usePrefs } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
+import { SANSKRIT_FONT } from '@/theme/fonts';
 import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
@@ -29,8 +39,11 @@ export { ErrorBoundary } from '@/components/error-boundary';
  * passage), the reader's own place (continue reading, verse of the day), the library as book covers,
  * doorways by question and by practice, and the Upanishads' sayings. The Library tab keeps the full list.
  *
- * Other screens' features join here as they land: the reading streak (progress), today's Panchang
- * (Explore) and Wisdom for life (knowledge pages).
+ * The top is a bento grid (src/components/bento.tsx): asymmetric glass tiles for the reader's own day (where
+ * they left off, the moon and tithi, the streak, the next festival, mantras). The greeting reads the hour,
+ * the lunar day and the reader's rhythm (src/lib/mood.ts), and the hero's light shifts with it. The title
+ * and verses arrive as kinetic type; the hero drifts behind the page as it scrolls, and a compact glass
+ * title bar takes over at the top.
  */
 
 function open(p: Passage | string) {
@@ -49,12 +62,6 @@ function open(p: Passage | string) {
 }
 
 
-function greeting(hour: number): Msg {
-  if (hour >= 4 && hour < 12) return S.homeGreetingMorning;
-  if (hour >= 17 || hour < 4) return S.homeGreetingEvening;
-  return S.homeGreetingDay;
-}
-
 /** The small accent label over a card or section, like the website's uppercase kickers. */
 function Kicker({ children, color }: { children: string; color: string }) {
   const { lang } = useI18n();
@@ -67,9 +74,37 @@ function Kicker({ children, color }: { children: string; color: string }) {
   );
 }
 
-function Hero() {
+/** Today's tone: the hour, the lunar day, a festival, and how the reader has been reading. */
+function useMood(): { mood: Mood; panchang: ReturnType<typeof todayPanchang> } {
+  const { progress } = useAppState();
+  const { lang } = useI18n();
+  const [city] = usePanchangCity();
+  // Recomputed whenever Home comes back into view, so the day (and the hour's greeting) turns over.
+  const [now, setNow] = useState(() => new Date());
+  useFocusEffect(useCallback(() => setNow(new Date()), []));
+  const panchang = useMemo(() => todayPanchang(city, now), [city, now]);
+  const mood = useMemo(() => {
+    const today = dayKey(now);
+    const info = streakInfo(progress, today);
+    const last = progress.days.reduce<string | undefined>((m, d) => (!m || d > m ? d : m), undefined);
+    const fest = upcomingFestivals(panchang.isoDate, 1)[0];
+    const festivalToday = fest && fest.date === panchang.isoDate ? (lang === 'hi' ? (fest.nameHindi ?? fest.name) : fest.name) : undefined;
+    return moodFor({
+      now,
+      tithi: panchang.tithi.name,
+      festivalToday,
+      readToday: info.readToday,
+      streak: info.current,
+      daysAway: last ? daysSince(last, today) : undefined,
+    });
+  }, [now, progress, panchang, lang]);
+  return { mood, panchang };
+}
+
+function Hero({ mood, scrollY }: { mood: Mood; scrollY: SharedValue<number> }) {
   const { palette } = usePrefs();
   const { t, lang } = useI18n();
+  const { rich } = useMotion();
   const today = useToday();
   const date = dateFromDayKey(today);
   const dateLabel = useMemo(() => {
@@ -80,43 +115,84 @@ function Hero() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [today, lang]);
-  const hello = t(greeting(new Date().getHours()));
+  // Immersive scroll: the light behind drifts at half speed, the words lift away a little faster than the page.
+  const light = useParallax(scrollY, 0.5, { enabled: rich });
+  const words = useParallax(scrollY, 0.18, { enabled: rich, fadeOver: 320 });
+  const [warm, cool] = palette.dark ? mood.glow.dark : mood.glow.light;
+  const hues = huesFor(palette);
+  const size = TYPE.largeTitle + 4;
 
   return (
-    <View style={{ paddingTop: SPACE.xl, rowGap: SPACE.md }}>
-      <View style={[styles.eyebrow, glass(palette)]}>
-        <View style={[styles.dot, { backgroundColor: palette.accent }]} />
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flexShrink: 1, color: palette.accent, fontSize: TYPE.caption, fontWeight: '700' }}>
-          {dateLabel ? `${hello} · ${dateLabel}` : hello}
-        </Text>
-      </View>
-      <View accessibilityRole="header" accessible>
+    <View style={{ paddingTop: SPACE.xl }}>
+      {palette.lite ? null : (
+        <Animated.View
+          pointerEvents="none"
+          style={[
+            styles.heroLight,
+            { backgroundImage: `radial-gradient(60% 55% at 18% 30%, ${warm} 0%, transparent 70%), radial-gradient(55% 50% at 92% 62%, ${cool} 0%, transparent 72%)` },
+            light,
+          ]}>
+          {/* A gold mandala behind the words, turning once a minute: the hush of a temple, kept faint. */}
+          <Mandala size={300} color={hues.gold} opacity={palette.dark ? 0.16 : 0.13} petals={16} spin={rich} style={styles.heroMandala} />
+        </Animated.View>
+      )}
+      <Animated.View style={[{ rowGap: SPACE.md }, words]}>
+        <View style={[styles.eyebrow, glass(palette)]}>
+          <AnimatedIcon name={mood.icon} size={14} color={palette.accent} motion={mood.occasion ? 'pop' : 'breathe'} trigger={1} />
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flexShrink: 1, color: palette.accent, fontSize: TYPE.caption, fontWeight: '700' }}>
+            {dateLabel ? `${t(mood.greeting)} · ${dateLabel}` : t(mood.greeting)}
+          </Text>
+        </View>
+        {/* ॥ श्री ॥, the invocation that opens a manuscript, in gilt above the title. */}
         <Text
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+          allowFontScaling={false}
+          style={{ fontFamily: SANSKRIT_FONT, color: hues.gold, fontSize: TYPE.title3, lineHeight: TYPE.title3 * 1.6, letterSpacing: 2, marginBottom: -SPACE.sm }}>
+          ॥ श्री ॥
+        </Text>
+        <KineticText
+          header
+          delay={120}
+          step={90}
+          rise={18}
           maxFontSizeMultiplier={TITLE_FONT_CAP}
-          style={{ color: palette.text, fontSize: TYPE.largeTitle + 4, lineHeight: (TYPE.largeTitle + 4) * (lang === 'hi' ? 1.35 : 1.08), fontWeight: '800', letterSpacing: lang === 'hi' ? 0 : -1 }}>
-          {t(S.homeTitleLead)}
-          {'\n'}
-          <Text style={{ color: palette.accent }}>{t(S.homeTitleAccent)}</Text>
+          style={{ color: palette.text, fontSize: size, lineHeight: size * (lang === 'hi' ? 1.35 : 1.08), fontWeight: '800', letterSpacing: lang === 'hi' ? 0 : -1 }}
+          segments={[{ text: t(S.homeTitleLead) }, '\n', { text: t(S.homeTitleAccent), style: { color: palette.accent } }]}
+        />
+        {/* The Hindi line stays in Hindi in both languages, as on the website. */}
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title3, lineHeight: TYPE.title3 * 1.5, fontWeight: '600' }}>
+          {S.homeTagline.hi}
         </Text>
-      </View>
-      {/* The Hindi line stays in Hindi in both languages, as on the website. */}
-      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title3, lineHeight: TYPE.title3 * 1.5, fontWeight: '600' }}>
-        {S.homeTagline.hi}
-      </Text>
-      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead, lineHeight: TYPE.subhead * 1.5 }}>
-        {t(S.homeIntro)}
-      </Text>
-      <PressableScale
-        accessibilityRole="search"
-        accessibilityLabel={t(S.searchInsideVerses)}
-        onPress={() => router.push('/search')}
-        style={[styles.search, glass(palette, true)]}>
-        <Ionicons name="search" size={20} color={palette.accent} />
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={1} style={{ flex: 1, color: palette.muted, fontSize: TYPE.callout }}>
-          {t(S.homeSearch)}
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead, lineHeight: TYPE.subhead * 1.5 }}>
+          {t(S.homeIntro)}
         </Text>
-      </PressableScale>
+        {/* A gentle word for today: never a demand, at most one verse. */}
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.textSecondary, fontSize: TYPE.subhead, lineHeight: TYPE.subhead * 1.5, fontStyle: lang === 'hi' ? 'normal' : 'italic' }}>
+          {t(mood.note)}
+        </Text>
+        <SearchPill />
+      </Animated.View>
     </View>
+  );
+}
+
+function SearchPill() {
+  const { palette } = usePrefs();
+  const { t } = useI18n();
+  const [taps, setTaps] = useState(0);
+  return (
+    <PressableScale
+      accessibilityRole="search"
+      accessibilityLabel={t(S.searchInsideVerses)}
+      onPressIn={() => setTaps((n) => n + 1)}
+      onPress={() => router.push('/search')}
+      style={[styles.search, glass(palette, true)]}>
+      <AnimatedIcon name="search" size={20} color={palette.accent} motion="wiggle" trigger={taps} />
+      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={1} style={{ flex: 1, color: palette.muted, fontSize: TYPE.callout }}>
+        {t(S.homeSearch)}
+      </Text>
+    </PressableScale>
   );
 }
 
@@ -132,18 +208,22 @@ function FeaturedPassage() {
   if (!verse || lines.length === 0) return null;
   const size = TYPE.title3 * settings.textScale;
   return (
-    <PressableScale accessibilityRole="button" accessibilityLabel={t(S.homeFeaturedA11y)} onPress={() => open(FEATURED)}>
-      <View
-        style={[
-          styles.featured,
-          palette.lite
-            ? null
-            : {
-                backgroundImage:
-                  'radial-gradient(circle at 85% 22%, rgba(245,189,100,0.24) 0%, transparent 46%), linear-gradient(140deg, rgba(181,88,53,0.22) 0%, transparent 65%)',
-                boxShadow: '0 24px 50px -24px rgba(58,29,15,0.6)',
-              },
-        ]}>
+    <BentoTile
+      accessibilityLabel={t(S.homeFeaturedA11y)}
+      onPress={() => open(FEATURED)}
+      radius={RADIUS.panel + 2}
+      padding={SPACE.xl}
+      glow="rgba(246,199,104,0.18)"
+      surface={{
+        ...styles.featured,
+        ...(palette.lite
+          ? null
+          : {
+              backgroundImage:
+                'radial-gradient(circle at 85% 22%, rgba(245,189,100,0.24) 0%, transparent 46%), linear-gradient(140deg, rgba(181,88,53,0.22) 0%, transparent 65%)',
+              boxShadow: 'inset 1px 1px 0 rgba(253,230,138,0.35), 0 24px 50px -24px rgba(58,29,15,0.6)',
+            }),
+      }}>
         <View pointerEvents="none" style={[styles.ring, { width: 300, height: 300, right: -120, top: 20 }]} />
         <View pointerEvents="none" style={[styles.ring, { width: 220, height: 220, right: -70, top: 60, borderColor: 'rgba(253,230,138,0.2)' }]} />
         <View pointerEvents="none" style={[styles.ring, { width: 150, height: 150, right: -30, top: 95 }]} />
@@ -165,16 +245,14 @@ function FeaturedPassage() {
             <Ionicons name="sparkles" size={14} color="#f4d39a" />
             <Kicker color="#f4d39a">{t(S.homeFeaturedTheme)}</Kicker>
           </View>
-          {/* Every line of the verse: a shloka is never cut to fit a card. */}
-          {lines.map((l, i) => (
-            <Text
-              key={i}
-              maxFontSizeMultiplier={fontCap(settings.textScale)}
-              style={{ color: '#fffaf0', fontSize: size, lineHeight: size * 1.7, fontWeight: '600' }}>
-              {l}
-              {i === lines.length - 1 ? <Text style={{ color: '#f6c768' }}> ॥</Text> : null}
-            </Text>
-          ))}
+          {/* Every line of the verse, revealed one after another: a shloka is never cut to fit a card. */}
+          <KineticLines
+            lines={lines}
+            delay={500}
+            seal={{ text: '॥', color: '#f6c768' }}
+            maxFontSizeMultiplier={fontCap(settings.textScale)}
+            style={{ fontFamily: SANSKRIT_FONT, color: '#fffaf0', fontSize: size, lineHeight: size * 1.8 }}
+          />
         </View>
 
         <View style={styles.featuredFoot}>
@@ -185,57 +263,205 @@ function FeaturedPassage() {
             {t(S.homeReadVerse)} →
           </Text>
         </View>
-      </View>
-    </PressableScale>
+    </BentoTile>
   );
 }
 
-/** Two doorways under the featured card, as on the website: the Gita, and the Upanishads. */
+/** Two doorways under the featured card, as on the website: the Gita (the wider tile), and the Upanishads. */
 function QuickTiles() {
   const { palette } = usePrefs();
   const { t } = useI18n();
   const upanishads = CATALOG.filter((b) => b.category === 'upanishad' && b.bundled).length;
-  const tile = (key: string, icon: 'book' | 'compass', title: string, detail: string, onPress: () => void, tinted: boolean) => (
-    <PressableScale
-      key={key}
-      accessibilityRole="button"
-      accessibilityLabel={`${title}, ${detail}`}
-      onPress={onPress}
-      style={[
-        styles.quick,
-        glass(palette, !tinted),
-        tinted && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.14)' : 'rgba(194,65,12,0.08)' }
-      ]}>
-      <View style={styles.quickTop}>
-        <Ionicons name={icon} size={22} color={palette.accent} />
-        <Ionicons name="arrow-forward" size={16} color={palette.accent} />
-      </View>
-      <View>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '700' }}>
-          {title}
-        </Text>
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, marginTop: 2 }}>
-          {detail}
-        </Text>
-      </View>
-    </PressableScale>
-  );
+  const wash = palette.dark ? 'rgba(255,159,10,0.14)' : 'rgba(255,237,213,0.72)';
   return (
-    <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
-      {tile('gita', 'book', t(S.homeStartGita), t(S.homeStartGitaDetail), () => open({ id: 'bhagavadgita' }), true)}
-      {tile('upanishads', 'compass', t(S.homeUpanishads), t(S.homeUpanishadsDetail(upanishads)), () => router.navigate('/'), false)}
+    <BentoRow>
+      <BentoTile
+        flex={1.45}
+        minHeight={128}
+        tint={palette.lite ? undefined : wash}
+        glow={palette.dark ? 'rgba(255,159,10,0.18)' : 'rgba(234,88,12,0.14)'}
+        accessibilityLabel={`${t(S.homeStartGita)}, ${t(S.homeStartGitaDetail)}`}
+        onPress={() => open({ id: 'bhagavadgita' })}
+        style={styles.quick}>
+        <View style={styles.quickTop}>
+          <Ionicons name="book" size={24} color={palette.accent} />
+          <Ionicons name="arrow-forward" size={16} color={palette.accent} />
+        </View>
+        <View>
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '800' }}>
+            {t(S.homeStartGita)}
+          </Text>
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, marginTop: 2 }}>
+            {t(S.homeStartGitaDetail)}
+          </Text>
+        </View>
+      </BentoTile>
+      <BentoTile
+        flex={1}
+        minHeight={128}
+        accessibilityLabel={`${t(S.homeUpanishads)}, ${t(S.homeUpanishadsDetail(upanishads))}`}
+        onPress={() => router.navigate('/')}
+        style={styles.quick}>
+        <View style={styles.quickTop}>
+          <Ionicons name="compass" size={22} color={palette.accent} />
+        </View>
+        <View>
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '700' }}>
+            {t(S.homeUpanishads)}
+          </Text>
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, marginTop: 2 }}>
+            {t(S.homeUpanishadsDetail(upanishads))}
+          </Text>
+        </View>
+      </BentoTile>
+    </BentoRow>
+  );
+}
+
+/**
+ * The reader's own day as a bento: a tall tile for where they left off (or a first step into the Gita), the
+ * moon and tithi and the reading streak stacked beside it, then the next festival (wider) and the mantras.
+ */
+function TodayBento({ panchang }: { panchang: ReturnType<typeof todayPanchang> }) {
+  const { palette, progress, settings } = useAppState();
+  const { t, lang } = useI18n();
+  const hues = huesFor(palette);
+  const showStreak = settings.showStreak && progress.days.length > 0;
+  const next = upcomingFestivals(panchang.isoDate, 1)[0];
+  const tithi = lang === 'hi' ? panchang.tithi.nameHi : panchang.tithi.transliteration;
+  const paksha = lang === 'hi' ? panchang.paksha.nameHi : panchang.paksha.transliteration;
+  const cityName = lang === 'hi' ? panchang.location.nameHi : panchang.location.name;
+  const nakshatra = lang === 'hi' ? panchang.nakshatra.nameHi : panchang.nakshatra.transliteration;
+
+  return (
+    <View style={{ rowGap: SPACE.md }}>
+      <BentoRow>
+        <BentoCol flex={1.25}>
+          <ContinueTile />
+        </BentoCol>
+        <BentoCol flex={1}>
+          <BentoTile
+            flex={1}
+            accessibilityLabel={`${t(S.openPanchangA11y)}. ${tithi}, ${paksha}, ${nakshatra}`}
+            onPress={() => open('/explore/panchang')}
+            glow={palette.dark ? 'rgba(129,140,248,0.20)' : 'rgba(79,70,229,0.10)'}
+            style={{ rowGap: SPACE.sm }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Moon3D phase={phaseFromIllumination(panchang.paksha.illuminationPercent, panchang.paksha.isWaxing)} size={40} />
+              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
+                {Math.round(panchang.paksha.illuminationPercent)}%
+              </Text>
+            </View>
+            <View>
+              <Kicker color={palette.accent}>{t(S.todayAt(cityName))}</Kicker>
+              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '800', marginTop: 2 }}>
+                {tithi}
+              </Text>
+              <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={1} style={{ color: palette.muted, fontSize: TYPE.caption, marginTop: 1 }}>
+                {paksha}
+              </Text>
+              <View style={{ marginTop: 6, rowGap: 2 }}>
+                <View style={styles.sunRow}>
+                  <Ionicons name="sunny-outline" size={12} color={hues.gold} />
+                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.textSecondary, fontSize: TYPE.caption }}>
+                    {panchang.solarTimes.sunrise}
+                  </Text>
+                </View>
+                <View style={styles.sunRow}>
+                  <Ionicons name="moon-outline" size={12} color={hues.vermilion} />
+                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.textSecondary, fontSize: TYPE.caption }}>
+                    {panchang.solarTimes.sunset}
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </BentoTile>
+          {showStreak ? <StreakTile /> : null}
+        </BentoCol>
+      </BentoRow>
+      <BentoRow>
+        {next ? (
+          <BentoTile
+            flex={1.5}
+            accessibilityLabel={`${t(S.nextFestival)}: ${lang === 'hi' ? (next.nameHindi ?? next.name) : next.name}, ${t(S.inDays(daysBetween(panchang.isoDate, next.date)))}`}
+            onPress={() => open('/explore/festivals')}
+            glow={palette.dark ? 'rgba(244,114,182,0.20)' : 'rgba(219,39,119,0.10)'}
+            style={{ rowGap: SPACE.xs, justifyContent: 'space-between', minHeight: 112 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Kicker color={hues.lotus}>{t(S.bentoNextFestival)}</Kicker>
+              <Ionicons name="sparkles" size={16} color={hues.lotus} />
+            </View>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '800' }}>
+              {lang === 'hi' ? (next.nameHindi ?? next.name) : next.name}
+            </Text>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
+              {t(S.inDays(daysBetween(panchang.isoDate, next.date)))}
+            </Text>
+          </BentoTile>
+        ) : null}
+        <BentoTile
+          flex={1}
+          accessibilityLabel={`${t(S.bentoMantras)}, ${t(S.bentoMantrasDetail)}`}
+          onPress={() => open('/explore/mantras')}
+          glow={palette.dark ? 'rgba(45,212,191,0.18)' : 'rgba(13,148,136,0.10)'}
+          style={{ rowGap: SPACE.xs, justifyContent: 'space-between', minHeight: 112 }}>
+          <Text allowFontScaling={false} style={{ color: hues.peacock, fontSize: 30, lineHeight: 40 }}>
+            ॐ
+          </Text>
+          <View>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '700' }}>
+              {t(S.bentoMantras)}
+            </Text>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.muted, fontSize: TYPE.caption, marginTop: 1 }}>
+              {t(S.bentoMantrasDetail)}
+            </Text>
+          </View>
+        </BentoTile>
+      </BentoRow>
     </View>
   );
 }
 
-function ContinueCard() {
+/** Where the reader left off, as the tall tile: cover, place, the book's progress; or a first step into the Gita. */
+function ContinueTile() {
   const { lastRead, palette, progress } = useAppState();
   const { t } = useI18n();
-  if (!lastRead) return null;
-  const entry = getEntry(lastRead.id);
-  const idx = entry ? entry.chapters.findIndex((c) => c.number === lastRead.chapter) : -1;
+  const entry = lastRead ? getEntry(lastRead.id) : undefined;
+  const idx = entry && lastRead ? entry.chapters.findIndex((c) => c.number === lastRead.chapter) : -1;
   const ch = entry && idx >= 0 ? entry.chapters[idx] : undefined;
-  if (!entry || !ch) return null;
+
+  if (!lastRead || !entry || !ch) {
+    const gita = getEntry('bhagavadgita');
+    const cover = coverFor('bhagavadgita', gita?.category ?? 'smriti');
+    return (
+      <BentoTile
+        flex={1}
+        minHeight={236}
+        accessibilityLabel={`${t(S.bentoBegin)}. ${gita ? t(S.bentoBeginDetail(gita.chapters.length, gita.totalVerses)) : ''}`}
+        onPress={() => open({ id: 'bhagavadgita', chapter: 1 })}
+        surface={coverFill(cover, palette)}
+        glow="rgba(0,0,0,0.25)"
+        style={{ justifyContent: 'space-between' }}>
+        <Text allowFontScaling={false} style={{ color: cover.foil, fontSize: 44, lineHeight: 60 }}>
+          {monogram(gita?.titleSanskrit ?? 'गीता')}
+        </Text>
+        <View style={{ rowGap: 4 }}>
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: '#fffaf0', fontSize: TYPE.title3, fontWeight: '800' }}>
+            {t(S.bentoBegin)}
+          </Text>
+          {gita ? (
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: cover.foil, fontSize: TYPE.caption, lineHeight: TYPE.caption * 1.5 }}>
+              {t(S.bentoBeginDetail(gita.chapters.length, gita.totalVerses))}
+            </Text>
+          ) : null}
+          <View style={[styles.play, { marginTop: SPACE.sm, backgroundColor: 'rgba(255,255,255,0.16)' }]}>
+            <AnimatedIcon name="arrow-forward" size={18} color="#fffaf0" motion="nudge" trigger={1} />
+          </View>
+        </View>
+      </BentoTile>
+    );
+  }
+
   const cover = coverFor(entry.id, entry.category);
   // Verse by verse once any verse counts as read; before that, the chapter's place in the book.
   const read = bookReadCount(progress, entry.id, entry.chapters);
@@ -243,42 +469,86 @@ function ContinueCard() {
   const fraction = read > 0 && entry.totalVerses > 0 ? read / entry.totalVerses : (idx + 1) / entry.chapters.length;
   const verse = lastRead.verse;
   return (
-    <PressableScale
-      accessibilityRole="button"
-      accessibilityLabel={
-        verse ? t(S.continueReadingVerseA11y(entry.title, ch.number, verse, pct)) : t(S.continueReadingA11y(entry.title, ch.number))
-      }
+    <BentoTile
+      flex={1}
+      minHeight={236}
+      strong
+      accessibilityLabel={verse ? t(S.continueReadingVerseA11y(entry.title, ch.number, verse, pct)) : t(S.continueReadingA11y(entry.title, ch.number))}
       onPress={() => open({ id: entry.id, chapter: ch.number, verse })}
-     >
-      <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
-          <CoverTile cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} size={52} />
-          <View style={{ flex: 1 }}>
-            <Kicker color={palette.accent}>{t(S.continueReading)}</Kicker>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '700', marginTop: 3 }}>
-              {entry.titleSanskrit ?? entry.title}
-            </Text>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={1} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
-              {verse ? t(S.continueAtVerse(ch.number, verse)) : t(S.chapterN(ch.number))}
-              {ch.titleSanskrit ? ` · ${ch.titleSanskrit}` : ch.title ? ` · ${ch.title}` : ''}
-            </Text>
-          </View>
-          <View style={[styles.play, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' }]}>
-            <Ionicons name="play" size={18} color={palette.accent} />
-          </View>
+      glow={palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(234,88,12,0.10)'}
+      style={{ justifyContent: 'space-between', rowGap: SPACE.md }}>
+      <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+        <CoverTile cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} size={56} />
+        <View style={[styles.play, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' }]}>
+          <AnimatedIcon name="play" size={18} color={palette.accent} motion="breathe" trigger={1} />
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm }}>
-          <View style={[styles.track, { flex: 1, backgroundColor: quietFill(palette) }]}>
-            <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(fraction * 100))}%` }]} />
-          </View>
-          {pct > 0 ? (
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
-              {pct === 100 ? t(S.bookFinished) : t(S.percentRead(pct))}
-            </Text>
-          ) : null}
+      </View>
+      <View style={{ rowGap: 3 }}>
+        <Kicker color={palette.accent}>{t(S.continueReading)}</Kicker>
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '800' }}>
+          {entry.titleSanskrit ?? entry.title}
+        </Text>
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
+          {verse ? t(S.continueAtVerse(ch.number, verse)) : t(S.chapterN(ch.number))}
+          {ch.titleSanskrit ? ` · ${ch.titleSanskrit}` : ch.title ? ` · ${ch.title}` : ''}
+        </Text>
+      </View>
+      <View style={{ rowGap: 6 }}>
+        <View style={[styles.track, { backgroundColor: quietFill(palette) }]}>
+          <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(fraction * 100))}%` }]} />
         </View>
-      </Card>
-    </PressableScale>
+        {pct > 0 ? (
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
+            {pct === 100 ? t(S.bookFinished) : t(S.percentRead(pct))}
+          </Text>
+        ) : null}
+      </View>
+    </BentoTile>
+  );
+}
+
+/**
+ * The gentle streak as a small tile: the days in a row as a big numeral, the week as seven dots. A missed
+ * day reads "A verse a day", never zero. One sentence for TalkBack, as the full streak card.
+ */
+function StreakTile() {
+  const { palette, progress } = useAppState();
+  const { t } = useI18n();
+  const today = dayKey(dateFromDayKey(useToday()));
+  const info = useMemo(() => streakInfo(progress, today), [progress, today]);
+  const alive = info.current > 0;
+  const readThisWeek = info.week.filter((d) => d.read).length;
+  return (
+    <BentoTile
+      accessibilityLabel={t(S.streakA11y(info.current, info.best, info.readToday, readThisWeek))}
+      glow={alive ? (palette.dark ? 'rgba(255,159,10,0.22)' : 'rgba(234,88,12,0.12)') : undefined}
+      style={{ rowGap: SPACE.sm }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: 6 }}>
+        <AnimatedIcon name={alive ? 'flame' : 'flame-outline'} size={20} color={palette.accent} motion="breathe" trigger={alive ? 1 : 0} />
+        {alive ? (
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '800' }}>
+            {info.current}
+            <Text style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}> {t(S.bentoStreakDays(info.current))}</Text>
+          </Text>
+        ) : (
+          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.footnote, fontWeight: '700' }}>
+            {t(S.bentoStreakNone)}
+          </Text>
+        )}
+      </View>
+      <View style={styles.weekDots}>
+        {info.week.map((d) => (
+          <View
+            key={d.day}
+            style={[
+              styles.weekDot,
+              { backgroundColor: d.read ? palette.accent : quietFill(palette) },
+              d.day === today && !d.read && { borderWidth: 1.5, borderColor: palette.accent, backgroundColor: 'transparent' },
+            ]}
+          />
+        ))}
+      </View>
+    </BentoTile>
   );
 }
 
@@ -294,12 +564,12 @@ function VerseOfTheDay() {
   const hues = huesFor(palette);
   const size = TYPE.callout * settings.textScale;
   return (
-    <PressableScale
-      accessibilityRole="button"
+    <BentoTile
       accessibilityLabel={t(S.verseOfTheDayA11y)}
       onPress={() => open({ id: pick.id, chapter: pick.chapter, verse: String(verse.number) })}
-     >
-      <Card style={{ borderRadius: RADIUS.panel - 2, paddingLeft: SPACE.lg + 6 }}>
+      radius={RADIUS.panel - 2}
+      glow={palette.dark ? 'rgba(250,204,21,0.12)' : 'rgba(217,119,6,0.08)'}
+      style={{ paddingLeft: SPACE.lg + 6 }}>
         <View pointerEvents="none" style={[styles.goldBar, { backgroundColor: hues.gold }]} />
         <View style={styles.cardHead}>
           <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: 6 }}>
@@ -310,97 +580,17 @@ function VerseOfTheDay() {
             {t(S.gitaRef(formatVerseRef(pick.id, pick.chapter, verse.number)))}
           </Text>
         </View>
-        {/* The whole verse, every line: never cut a shloka to fit the card. */}
+        {/* The whole verse, every line, arriving line by line: never cut a shloka to fit the card. */}
         <View style={{ marginTop: SPACE.sm }}>
-          {lines.map((l, i) => (
-            <Text key={i} maxFontSizeMultiplier={fontCap(settings.textScale)} style={{ color: palette.text, fontSize: size, lineHeight: size * 1.65 }}>
-              {l}
-              {i === lines.length - 1 ? <Text style={{ color: hues.gold }}> ॥</Text> : null}
-            </Text>
-          ))}
+          <KineticLines
+            lines={lines}
+            delay={700}
+            seal={{ text: '॥', color: hues.gold }}
+            maxFontSizeMultiplier={fontCap(settings.textScale)}
+            style={{ fontFamily: SANSKRIT_FONT, color: palette.text, fontSize: size, lineHeight: size * 1.8 }}
+          />
         </View>
-      </Card>
-    </PressableScale>
-  );
-}
-
-/**
- * Today's Panchang, as the website home's "Kāla-Darśana" card: the moon, the tithi and paksha, nakshatra,
- * sunrise and sunset for the city saved on the Panchang screen, the next festival, and the way into
- * Panchang, Festivals and Mantras (src/app/explore).
- */
-function PanchangCard() {
-  const { palette } = usePrefs();
-  const { t, lang } = useI18n();
-  const hues = huesFor(palette);
-  const [city] = usePanchangCity();
-  // Recomputed whenever Home comes back into view, so the day turns over even if the app stays open.
-  const [now, setNow] = useState(() => new Date());
-  useFocusEffect(useCallback(() => setNow(new Date()), []));
-  const today = useMemo(() => todayPanchang(city, now), [city, now]);
-  const next = upcomingFestivals(today.isoDate, 1)[0];
-  const tithi = lang === 'hi' ? today.tithi.nameHi : today.tithi.transliteration;
-  const paksha = lang === 'hi' ? today.paksha.nameHi : today.paksha.transliteration;
-  const nakshatra = lang === 'hi' ? today.nakshatra.nameHi : today.nakshatra.transliteration;
-  const cityName = lang === 'hi' ? today.location.nameHi : today.location.name;
-  const fact = (icon: 'sunny-outline' | 'moon-outline' | 'star-outline', label: string, value: string, color: string) => (
-    <View style={[styles.fact, { backgroundColor: quietFill(palette) }]}>
-      <Ionicons name={icon} size={14} color={color} />
-      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption }}>
-        {label}
-      </Text>
-      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.caption, fontWeight: '700' }}>
-        {value}
-      </Text>
-    </View>
-  );
-  const pill = (label: string, href: string, primary = false) => (
-    <PressableScale
-      key={href}
-      accessibilityRole="link"
-      accessibilityLabel={label}
-      onPress={() => open(href)}
-      style={[styles.pill, primary ? accentFill(palette) : glass(palette)]}>
-      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: primary ? palette.onAccent : palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
-        {label}
-      </Text>
-    </PressableScale>
-  );
-  return (
-    <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
-      <PressableScale
-        accessibilityRole="button"
-        accessibilityLabel={`${t(S.openPanchangA11y)}. ${tithi}, ${paksha}, ${nakshatra}`}
-        onPress={() => open('/explore/panchang')}
-        style={[{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }]}>
-        <Moon3D phase={phaseFromIllumination(today.paksha.illuminationPercent, today.paksha.isWaxing)} size={56} />
-        <View style={{ flex: 1 }}>
-          <Kicker color={palette.accent}>{t(S.todayAt(cityName))}</Kicker>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title3, fontWeight: '800', marginTop: 2 }}>
-            {tithi}
-          </Text>
-          <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
-            {paksha} · {Math.round(today.paksha.illuminationPercent)}%
-          </Text>
-        </View>
-        <Ionicons name="chevron-forward" size={20} color={palette.muted} />
-      </PressableScale>
-      <View style={styles.facts}>
-        {fact('star-outline', t(S.limbNakshatra), nakshatra, hues.indigo)}
-        {fact('sunny-outline', t(S.sunrise), today.solarTimes.sunrise, hues.gold)}
-        {fact('moon-outline', t(S.sunset), today.solarTimes.sunset, hues.vermilion)}
-      </View>
-      {next ? (
-        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.textSecondary, fontSize: TYPE.footnote }}>
-          {t(S.nextFestival)}: <Text style={{ fontWeight: '700' }}>{lang === 'hi' ? (next.nameHindi ?? next.name) : next.name}</Text> · {t(S.inDays(daysBetween(today.isoDate, next.date)))}
-        </Text>
-      ) : null}
-      <View style={styles.pills}>
-        {pill(t(S.panchangTitle), '/explore/panchang', true)}
-        {pill(t(S.festivalsTitle), '/explore/festivals')}
-        {pill(t(S.mantrasTitle), '/explore/mantras')}
-      </View>
-    </Card>
+    </BentoTile>
   );
 }
 
@@ -538,24 +728,22 @@ function Wisdom() {
   return (
     <View style={{ rowGap: SPACE.md }}>
       <SectionHead title={t(S.wisdomTitle)} detail={t(S.homeWisdomDetail)} />
-      <View style={styles.wisdomGrid}>
-        {topics.map((w) => (
-          <PressableScale
-            key={w.id}
-            accessibilityRole="button"
-            accessibilityLabel={t(S.homeTopicA11y(t(w.title), w.minutes))}
-            onPress={() => open(`/wisdom/${w.id}`)}
-            style={[styles.wisdomTile, glass(palette)]}>
-            <View pointerEvents="none" style={[styles.wisdomStripe, { backgroundColor: w.accent }]} />
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
-              {t(w.title)}
-            </Text>
-            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.muted, fontSize: TYPE.caption, lineHeight: TYPE.caption * 1.5 }}>
-              {t(w.short)}
-            </Text>
-          </PressableScale>
-        ))}
-      </View>
+      {/* An asymmetric bento: the first topic tall, the next two stacked beside it, then a narrow-wide pair. */}
+      <BentoRow>
+        {topics[0] ? <WisdomTile topic={topics[0]} flex={1.15} tall /> : null}
+        <BentoCol>
+          {topics.slice(1, 3).map((w) => (
+            <WisdomTile key={w.id} topic={w} />
+          ))}
+        </BentoCol>
+      </BentoRow>
+      {topics.length > 3 ? (
+        <BentoRow>
+          {topics.slice(3, 5).map((w, i) => (
+            <WisdomTile key={w.id} topic={w} flex={i === 0 ? 1 : 1.35} />
+          ))}
+        </BentoRow>
+      ) : null}
       <GroupCard>
         <GroupRow standalone inset={56} accessibilityLabel={t(S.homeAllTopics(data.items.length))} onPress={() => open('/wisdom')}>
           <View style={[styles.guideIcon, { backgroundColor: hues.lotus }]}>
@@ -582,6 +770,33 @@ function Wisdom() {
         </GroupRow>
       </GroupCard>
     </View>
+  );
+}
+
+function WisdomTile({ topic, flex = 1, tall }: { topic: WisdomTopic; flex?: number; tall?: boolean }) {
+  const { palette } = usePrefs();
+  const { t } = useI18n();
+  return (
+    <BentoTile
+      flex={flex}
+      minHeight={tall ? 220 : 104}
+      accessibilityLabel={t(S.homeTopicA11y(t(topic.title), topic.minutes))}
+      onPress={() => open(`/wisdom/${topic.id}`)}
+      glow={`${topic.accent}33`}
+      style={{ rowGap: SPACE.xs, paddingLeft: SPACE.lg + 4 }}>
+      <View pointerEvents="none" style={[styles.wisdomStripe, { backgroundColor: topic.accent }]} />
+      {tall ? (
+        <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: topic.accent, fontSize: TYPE.callout, lineHeight: TYPE.callout * 1.55, fontWeight: '700', marginBottom: 'auto' }}>
+          {topic.sanskrit}
+        </Text>
+      ) : null}
+      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: tall ? TYPE.title3 : TYPE.subhead, fontWeight: '700' }}>
+        {t(topic.title)}
+      </Text>
+      <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={tall ? 4 : 2} style={{ color: palette.muted, fontSize: TYPE.caption, lineHeight: TYPE.caption * 1.5 }}>
+        {t(topic.short)}
+      </Text>
+    </BentoTile>
   );
 }
 
@@ -650,24 +865,33 @@ function TrustStrip() {
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
+  const topRef = useTabTop();
+  const { height } = useWindowDimensions();
+  const { scrollY, onScroll } = useScrollY();
+  const { mood, panchang } = useMood();
+  const depth = useMemo(() => ({ scrollY, windowHeight: height }), [scrollY, height]);
   return (
     <Backdrop>
-      <ScrollView
-        style={{ backgroundColor: 'transparent' }}
-        contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom), rowGap: SPACE.lg }}>
-        <Hero />
-        <FeaturedPassage />
-        <QuickTiles />
-        <ContinueCard />
-        <ReadingStreakCard />
-        <VerseOfTheDay />
-        <PanchangCard />
-        <Shelf />
-        <Guides />
-        <Wisdom />
-        <Sayings />
-        <TrustStrip />
-      </ScrollView>
+      <BentoDepth.Provider value={depth}>
+        <Animated.ScrollView
+          ref={topRef as never}
+          onScroll={onScroll}
+          scrollEventThrottle={16}
+          style={{ backgroundColor: 'transparent' }}
+          contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom), rowGap: SPACE.lg }}>
+          <Hero mood={mood} scrollY={scrollY} />
+          <TodayBento panchang={panchang} />
+          <FeaturedPassage />
+          <QuickTiles />
+          <VerseOfTheDay />
+          <Shelf />
+          <Guides />
+          <Wisdom />
+          <Sayings />
+          <TrustStrip />
+        </Animated.ScrollView>
+      </BentoDepth.Provider>
+      <TitleBar scrollY={scrollY} title={mood.greeting} />
     </Backdrop>
   );
 }
@@ -682,7 +906,11 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     borderRadius: RADIUS.pill,
   },
-  dot: { width: 6, height: 6, borderRadius: 3 },
+  heroLight: { position: 'absolute', left: -SPACE.lg, right: -SPACE.lg, top: -120, height: 520 },
+  heroMandala: { position: 'absolute', right: -90, top: 70 },
+  sunRow: { flexDirection: 'row', alignItems: 'center', columnGap: 5 },
+  weekDots: { flexDirection: 'row', justifyContent: 'space-between' },
+  weekDot: { width: 10, height: 10, borderRadius: 5 },
   search: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -722,7 +950,7 @@ const styles = StyleSheet.create({
     borderTopColor: 'rgba(255,247,233,0.2)',
     paddingTop: SPACE.lg,
   },
-  quick: { flex: 1, minHeight: 128, borderRadius: RADIUS.card, padding: SPACE.lg, justifyContent: 'space-between' },
+  quick: { justifyContent: 'space-between' },
   quickTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   play: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
   track: { height: 4, borderRadius: 2, overflow: 'hidden' },
@@ -747,8 +975,6 @@ const styles = StyleSheet.create({
   facts: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
   pills: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: 'rgba(128,128,128,0.25)', paddingTop: SPACE.md },
   pill: { minHeight: TOUCH - 4, paddingHorizontal: SPACE.lg, borderRadius: RADIUS.pill, justifyContent: 'center' },
-  wisdomGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.md },
-  wisdomTile: { width: '47.5%', flexGrow: 1, minHeight: 104, borderRadius: RADIUS.card, padding: SPACE.lg, paddingLeft: SPACE.lg + 4, rowGap: SPACE.xs, overflow: 'hidden' },
   wisdomStripe: { position: 'absolute', left: 0, top: 0, bottom: 0, width: 4 },
   saying: { width: 260, minHeight: 150, borderRadius: RADIUS.card, padding: SPACE.lg, justifyContent: 'space-between', rowGap: SPACE.md },
 });

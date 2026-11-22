@@ -3,10 +3,12 @@ import { router } from 'expo-router';
 import type { BottomTabBarProps } from 'expo-router/tabs';
 import { useEffect, useState, type ComponentProps } from 'react';
 import { StyleSheet, Text, View, type LayoutRectangle } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withSequence, withSpring } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
+import { GlassLayers } from '@/components/bento';
 import { barSurface, FloatingBar, glass } from '@/components/ui';
 import { S, useI18n, type Msg } from '@/i18n';
+import { AnimatedIcon, playIconMotion, useIconMotion, type IconMotion } from '@/motion/animated-icon';
 import { hapticSelect } from '@/motion/haptics';
 import { PressableScale } from '@/motion/pressable-scale';
 import { SPRING } from '@/motion/tokens';
@@ -16,28 +18,14 @@ import { BAR_GAP, BAR_HEIGHT, SPACE, TYPE } from '@/theme/themes';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
-const TABS: Record<string, { label: Msg; icon: IconName; iconActive: IconName }> = {
-  home: { label: S.tabHome, icon: 'home-outline', iconActive: 'home' },
-  index: { label: S.tabLibrary, icon: 'book-outline', iconActive: 'book' },
-  bookmarks: { label: S.tabSaved, icon: 'bookmark-outline', iconActive: 'bookmark' },
-  explore: { label: S.tabExplore, icon: 'compass-outline', iconActive: 'compass' },
-  settings: { label: S.tabSettings, icon: 'settings-outline', iconActive: 'settings' },
+// Each tab's icon acts out its meaning as it becomes current (src/motion/animated-icon.tsx).
+const TABS: Record<string, { label: Msg; icon: IconName; iconActive: IconName; motion: IconMotion }> = {
+  home: { label: S.tabHome, icon: 'home-outline', iconActive: 'home', motion: 'hop' },
+  index: { label: S.tabLibrary, icon: 'book-outline', iconActive: 'book', motion: 'flip' },
+  bookmarks: { label: S.tabSaved, icon: 'bookmark-outline', iconActive: 'bookmark', motion: 'drop' },
+  explore: { label: S.tabExplore, icon: 'compass-outline', iconActive: 'compass', motion: 'spin' },
+  settings: { label: S.tabSettings, icon: 'settings-outline', iconActive: 'settings', motion: 'turn' },
 };
-
-/** A tab's icon gives a small spring bounce as it becomes the current tab. */
-function TabIcon({ name, focused, color }: { name: IconName; focused: boolean; color: string }) {
-  const { animate } = useMotion();
-  const scale = useSharedValue(1);
-  useEffect(() => {
-    if (focused && animate) scale.value = withSequence(withSpring(1.18, SPRING.press), withSpring(1, SPRING.lively));
-  }, [focused, animate, scale]);
-  const style = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
-  return (
-    <Animated.View style={style}>
-      <Ionicons name={name} size={22} color={color} />
-    </Animated.View>
-  );
-}
 
 /**
  * The tab bar: a floating glass capsule over the content, after Apple's Liquid Glass tab bar, with Search as
@@ -49,37 +37,62 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
   const { t, lang } = useI18n();
   const bottom = Math.max(insets.bottom, SPACE.sm) + BAR_GAP;
   const { animate } = useMotion();
+  const lens = useIconMotion();
 
-  // The highlight is one pill that glides between tabs on a spring, like the selection in a segmented control.
+  // The highlight is one drop of liquid glass that flows between tabs: its leading edge springs ahead and its
+  // trailing edge follows a beat later, so it stretches as it travels and gathers itself on arrival.
   const [layouts, setLayouts] = useState<Record<number, LayoutRectangle>>({});
-  const pillX = useSharedValue(0);
-  const pillW = useSharedValue(0);
+  const pillL = useSharedValue(0);
+  const pillR = useSharedValue(0);
   const pillY = useSharedValue(0);
   const pillH = useSharedValue(0);
   const current = layouts[state.index];
   useEffect(() => {
     if (!current) return;
-    const first = pillW.value === 0;
+    const first = pillR.value === 0;
     pillY.value = current.y;
     pillH.value = current.height;
-    pillX.value = animate && !first ? withSpring(current.x, SPRING.lively) : current.x;
-    pillW.value = animate && !first ? withSpring(current.width, SPRING.lively) : current.width;
-  }, [current, animate, pillX, pillW, pillY, pillH]);
-  const pill = useAnimatedStyle(() => ({
-    opacity: pillW.value > 0 ? 1 : 0,
-    left: pillX.value,
-    width: pillW.value,
-    top: pillY.value,
-    height: pillH.value,
-  }));
+    const left = current.x;
+    const right = current.x + current.width;
+    if (!animate || first) {
+      pillL.value = left;
+      pillR.value = right;
+      return;
+    }
+    const goingRight = left > pillL.value;
+    pillL.value = withSpring(left, goingRight ? SPRING.gentle : SPRING.lively);
+    pillR.value = withSpring(right, goingRight ? SPRING.lively : SPRING.gentle);
+  }, [current, animate, pillL, pillR, pillY, pillH]);
+  const pill = useAnimatedStyle(() => {
+    const width = Math.max(0, pillR.value - pillL.value);
+    // A little thinner while stretched, as a drop is.
+    const stretch = current ? Math.min(1, Math.max(0, width / current.width - 1)) : 0;
+    return {
+      opacity: pillR.value > 0 ? 1 : 0,
+      left: pillL.value,
+      width,
+      top: pillY.value + stretch * 4,
+      height: pillH.value - stretch * 8,
+    };
+  });
 
   return (
     <View pointerEvents="box-none" style={[styles.wrap, { bottom }]}>
       <FloatingBar style={styles.tabs}>
+        <GlassLayers radius={BAR_HEIGHT / 2} />
         <View accessibilityRole="tablist" style={styles.row}>
           <Animated.View
             pointerEvents="none"
-            style={[styles.pill, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.18)' : 'rgba(194,65,12,0.12)' }, pill]}
+            style={[
+              styles.pill,
+              { backgroundColor: palette.dark ? 'rgba(255,159,10,0.18)' : 'rgba(194,65,12,0.12)' },
+              !palette.lite && {
+                boxShadow: palette.dark
+                  ? 'inset 1px 1px 0 rgba(255,255,255,0.18), inset -1px -1px 0 rgba(255,159,10,0.18)'
+                  : 'inset 1px 1px 0 rgba(255,255,255,0.9), inset -1px -1px 0 rgba(194,65,12,0.12)',
+              },
+              pill,
+            ]}
           />
           {state.routes.map((route, index) => {
             const tab = TABS[route.name];
@@ -107,7 +120,15 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
                 accessibilityState={{ selected: focused }}
                 accessibilityLabel={t(S.tabA11y(label, index + 1, state.routes.length))}
                 style={styles.tab}>
-                <TabIcon name={focused ? tab.iconActive : tab.icon} focused={focused} color={focused ? palette.accent : palette.muted} />
+                <AnimatedIcon
+                  name={tab.icon}
+                  activeName={tab.iconActive}
+                  active={focused}
+                  size={22}
+                  color={palette.muted}
+                  activeColor={palette.accent}
+                  motion={tab.motion}
+                />
                 <Text
                   numberOfLines={1}
                   // Five tabs beside Search leave about 50 dp per label on a 390 dp phone; shrink a long one
@@ -127,7 +148,10 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
       </FloatingBar>
       <PressableScale
         scaleTo={0.9}
-        onPress={() => router.push('/search')}
+        onPress={() => {
+          if (animate) playIconMotion('wiggle', lens.values);
+          router.push('/search');
+        }}
         accessibilityRole="button"
         accessibilityLabel={t(S.searchInsideVerses)}
         style={[
@@ -136,7 +160,9 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
           { backgroundColor: barSurface(palette) },
           !palette.lite && { boxShadow: palette.dark ? '0 12px 30px rgba(0,0,0,0.5)' : '0 12px 32px rgba(60,30,10,0.16)' },
         ]}>
-        <Ionicons name="search" size={24} color={palette.text} />
+        <Animated.View style={lens.style}>
+          <Ionicons name="search" size={24} color={palette.text} />
+        </Animated.View>
       </PressableScale>
     </View>
   );

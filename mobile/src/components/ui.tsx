@@ -6,6 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { hapticSelect } from '@/motion/haptics';
 import { PressableScale } from '@/motion/pressable-scale';
+import { KineticText } from '@/motion/kinetic';
 import { useLargeTitleStyle } from '@/motion/parallax';
 import { usePrefs } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
@@ -308,14 +309,21 @@ export function LargeHeader({
   /** The list's scroll position: the title hands over to the compact TitleBar (src/motion/title-bar) as it scrolls away. */
   scrollY?: SharedValue<number>;
 }) {
-  const { palette } = usePrefs();
+  const { palette, lang } = usePrefs();
   const { height } = useWindowDimensions();
   const titleStyle = useLargeTitleStyle(scrollY, height);
   return (
     <View style={[styles.largeHeader, { minHeight: Math.round(height * 0.28) }]}>
       {eyebrow ? <Eyebrow {...eyebrow} /> : null}
-      <Animated.View accessibilityRole="header" style={[{ transformOrigin: 'left bottom' }, titleStyle]}>
-        <PageTitle {...title} />
+      <Animated.View style={[{ transformOrigin: 'left bottom' }, titleStyle]}>
+        {/* The title arrives word by word (kinetic type); TalkBack reads it once, as the screen's heading. */}
+        <KineticText
+          header
+          delay={80}
+          segments={[{ text: lang === 'hi' ? title.hi : title.en }]}
+          maxFontSizeMultiplier={TITLE_FONT_CAP}
+          style={{ color: palette.text, fontSize: TYPE.largeTitle, fontWeight: '800', letterSpacing: lang === 'hi' ? 0 : -0.6 }}
+        />
       </Animated.View>
       {children}
       {subtitle ? (

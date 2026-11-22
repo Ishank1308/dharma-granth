@@ -5,6 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, { LinearTransition } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useTabTop } from '@/lib/use-tab-top';
 import { EmptyArt } from '@/components/art/empty-art';
 import { CollectionSheet, useCollectionName } from '@/components/collection-sheet';
 import { accentFill, Backdrop, Card, Chip, coverFill, GroupRow, groupSurface, IconButton, IconTile, LargeHeader, Muted } from '@/components/ui';
@@ -33,6 +34,7 @@ export default function BookmarksScreen() {
   const { palette, settings, bookmarks, removeBookmark, toggleBookmark } = useAppState();
   const { journal, dropVerse } = useJournal();
   const { scrollY, onScroll } = useScrollY();
+  const topRef = useTabTop();
   const toast = useToast();
   // Saved verses rise in as the tab opens; swiping one away closes the gap on a spring.
   const { animate } = useMotion();
@@ -53,6 +55,7 @@ export default function BookmarksScreen() {
   return (
     <Backdrop>
       <Animated.FlatList
+        ref={topRef as never}
         style={{ backgroundColor: 'transparent' }}
         onScroll={onScroll}
         scrollEventThrottle={16}

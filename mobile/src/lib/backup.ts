@@ -53,6 +53,12 @@ export interface Settings {
   dailyReminder: boolean;
   reminderHour: number;
   reminderMinute: number;
+  /** Which book the daily verse comes from: the Gita, or the book the reader last opened (Gita if not bundled). */
+  reminderBook: ReminderBook;
+  /** Weekdays the daily verse may arrive on, as Date.getDay() counts (0 is Sunday). Never empty. */
+  reminderDays: number[];
+  /** The short first-run welcome has been seen (or skipped). Readers from before it existed count as seen. */
+  onboarded: boolean;
   /** Shadows and sheen on cards. 'light' keeps the colours but drops what makes long lists stutter. */
   effects: EffectsSetting;
   /** Sanskrit shown in another Indian script, letter for letter (src/lib/sanskrit-script.ts). */
@@ -75,11 +81,23 @@ export const DEFAULT_SETTINGS: Settings = {
   dailyReminder: false,
   reminderHour: 7,
   reminderMinute: 0,
+  reminderBook: 'gita',
+  reminderDays: [0, 1, 2, 3, 4, 5, 6],
+  onboarded: false,
   effects: 'auto',
   sanskritScript: 'deva',
   lineSpacing: 'normal',
   showStreak: true,
 };
+
+export const REMINDER_BOOKS = ['gita', 'reading'] as const;
+export type ReminderBook = (typeof REMINDER_BOOKS)[number];
+
+function weekdays(raw: unknown): number[] {
+  if (!Array.isArray(raw)) return DEFAULT_SETTINGS.reminderDays;
+  const days = [...new Set(raw.filter((d): d is number => Number.isInteger(d) && d >= 0 && d <= 6))].sort((a, b) => a - b);
+  return days.length > 0 ? days : DEFAULT_SETTINGS.reminderDays;
+}
 
 export interface AppData {
   settings: Settings;
@@ -138,6 +156,10 @@ export function normalizeSettings(raw: unknown): Settings {
     dailyReminder: typeof s.dailyReminder === 'boolean' ? s.dailyReminder : DEFAULT_SETTINGS.dailyReminder,
     reminderHour: wholeIn(s.reminderHour, 0, 23, DEFAULT_SETTINGS.reminderHour),
     reminderMinute: wholeIn(s.reminderMinute, 0, 59, DEFAULT_SETTINGS.reminderMinute),
+    reminderBook: REMINDER_BOOKS.includes(s.reminderBook as ReminderBook) ? (s.reminderBook as ReminderBook) : DEFAULT_SETTINGS.reminderBook,
+    reminderDays: weekdays(s.reminderDays),
+    // Saved settings from before the welcome existed belong to someone who already knows the app.
+    onboarded: typeof s.onboarded === 'boolean' ? s.onboarded : raw != null,
     effects: EFFECTS_SETTINGS.includes(s.effects as EffectsSetting) ? (s.effects as EffectsSetting) : DEFAULT_SETTINGS.effects,
     sanskritScript: SCRIPTS.includes(s.sanskritScript as SanskritScript) ? (s.sanskritScript as SanskritScript) : DEFAULT_SETTINGS.sanskritScript,
     lineSpacing: SPACINGS.includes(s.lineSpacing as LineSpacing) ? (s.lineSpacing as LineSpacing) : DEFAULT_SETTINGS.lineSpacing,

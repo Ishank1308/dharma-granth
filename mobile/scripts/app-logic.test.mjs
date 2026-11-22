@@ -141,6 +141,45 @@ test('reminder settings are optional, validated and survive a backup', () => {
   assert.deepEqual([back.settings.dailyReminder, back.settings.reminderHour, back.settings.reminderMinute], [true, 21, 45]);
 });
 
+test('daily verse schedule: no nagging (skips a day already read, tapers after a week, stops after two)', async () => {
+  const { reminderSchedule, DAILY_DAYS, QUIET_AFTER_DAYS } = await import('../src/lib/reminder.ts');
+  const morning = new Date(2026, 10, 21, 6, 0); // a Saturday
+  const plain = reminderSchedule(morning, 7, 30);
+  // Daily for the first week, then every other day, and nothing from two weeks out.
+  assert.deepEqual(plain.map((d) => d.getDate()), [21, 22, 23, 24, 25, 26, 27, 28, 30, 2, 4]);
+  assert.ok(plain.every((d) => d.getHours() === 7 && d.getMinutes() === 30));
+  const last = plain[plain.length - 1];
+  assert.ok((last - morning) / 86_400_000 < QUIET_AFTER_DAYS);
+  assert.equal(plain.filter((d) => (d - morning) / 86_400_000 < DAILY_DAYS).length, DAILY_DAYS);
+  // Already read today: today's reminder is dropped, tomorrow's stays.
+  assert.equal(reminderSchedule(morning, 7, 30, { readToday: true })[0].getDate(), 22);
+  // The time has passed (or is under a minute away): start tomorrow.
+  assert.equal(reminderSchedule(new Date(2026, 10, 21, 20, 0), 7, 30)[0].getDate(), 22);
+  assert.equal(reminderSchedule(new Date(2026, 10, 21, 7, 29, 30), 7, 30)[0].getDate(), 22);
+  // Only the chosen weekdays (here Monday to Friday).
+  const weekdays = reminderSchedule(morning, 7, 30, { days: [1, 2, 3, 4, 5] });
+  assert.ok(weekdays.length > 0 && weekdays.every((d) => d.getDay() >= 1 && d.getDay() <= 5));
+  // An empty list cannot silence the reminder by accident; that is what the switch is for.
+  assert.equal(reminderSchedule(morning, 7, 30, { days: [] }).length, plain.length);
+});
+
+test('daily verse choices: book and weekdays are validated, and only a first install sees the welcome', () => {
+  const s = normalizeSettings({});
+  assert.equal(s.reminderBook, 'gita');
+  assert.deepEqual(s.reminderDays, [0, 1, 2, 3, 4, 5, 6]);
+  const picked = normalizeSettings({ reminderBook: 'reading', reminderDays: [5, 1, 1, 9, 'x', 3] });
+  assert.equal(picked.reminderBook, 'reading');
+  assert.deepEqual(picked.reminderDays, [1, 3, 5]);
+  assert.equal(normalizeSettings({ reminderBook: 'bible' }).reminderBook, 'gita');
+  assert.deepEqual(normalizeSettings({ reminderDays: [] }).reminderDays, [0, 1, 2, 3, 4, 5, 6]);
+  // Settings saved before the welcome existed belong to an existing reader; nothing saved is a new one.
+  assert.equal(normalizeSettings({ theme: 'dark' }).onboarded, true);
+  assert.equal(normalizeSettings(undefined).onboarded, false);
+  assert.equal(normalizeSettings({ onboarded: false }).onboarded, false);
+  const back = parseBackup(JSON.stringify(makeBackup({ settings: picked, bookmarks: [], lastRead: null })));
+  assert.deepEqual([back.settings.reminderBook, back.settings.reminderDays], ['reading', [1, 3, 5]]);
+});
+
 test('visual effects setting defaults to automatic and rejects unknown values', () => {
   assert.equal(normalizeSettings({}).effects, 'auto');
   assert.equal(normalizeSettings({ effects: 'light' }).effects, 'light');
