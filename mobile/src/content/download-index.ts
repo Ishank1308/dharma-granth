@@ -59,7 +59,7 @@ export class SearchIndexWriter {
     this.chunker = new CorpusChunker(CHUNK_CHARS, ({ corpus, start, lines, firstIndex }) => {
       const file = `s-${this.chunks.length}.json`;
       const json = JSON.stringify(corpus);
-      new File(this.dir, file).write(json);
+      new File(this.dir, file).writeSync(json);
       // The index is ASCII apart from the odd verse number, so characters are close to bytes.
       this.bytes += json.length;
       this.chunks.push({ file, start, lines, firstIndex });
@@ -78,7 +78,7 @@ export class SearchIndexWriter {
   finish(): number {
     this.chunker.flush();
     const manifest: IndexManifest = { format: INDEX_FORMAT, verses: this.chunker.lines, bytes: this.bytes, chunks: this.chunks };
-    new File(this.dir, 'manifest.json').write(JSON.stringify(manifest));
+    new File(this.dir, 'manifest.json').writeSync(JSON.stringify(manifest));
     return this.bytes;
   }
 }

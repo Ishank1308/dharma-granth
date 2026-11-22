@@ -250,7 +250,7 @@ export default function SettingsScreen() {
       const file = new File(Paths.cache, `dharma-granth-backup-${date}.json`);
       if (file.exists) file.delete();
       file.create();
-      file.write(JSON.stringify(makeBackup(exportData(), new Date(), { journal, desk, practice: await exportPractice(), learn: await learnForBackup() }), null, 2));
+      await file.write(JSON.stringify(makeBackup(exportData(), new Date(), { journal, desk, practice: await exportPractice(), learn: await learnForBackup() }), null, 2));
       if (await Sharing.isAvailableAsync()) {
         await Sharing.shareAsync(file.uri, { mimeType: 'application/json', dialogTitle: t(S.saveBackupDialog) });
       } else {

@@ -248,7 +248,7 @@ export async function startDownload(id: string): Promise<void> {
     // The verse search index is folded chapter by chapter as the book arrives (src/content/download-index.ts).
     const indexer = new SearchIndexWriter(new Directory(tmp, SEARCH_DIR));
     const writeChapter = async (ch: BookChapter) => {
-      new File(tmp, `ch-${ch.number}.json`).write(JSON.stringify(ch));
+      await new File(tmp, `ch-${ch.number}.json`).write(JSON.stringify(ch));
       written++;
       await indexer.addChapter(ch);
     };
@@ -313,7 +313,7 @@ export async function startDownload(id: string): Promise<void> {
     const indexBytes = indexer.finish();
 
     const meta: Installed = { version: remote.version, bytes: remote.bytes + indexBytes, savedAt: new Date().toISOString() };
-    new File(tmp, 'meta.json').write(JSON.stringify(meta));
+    await new File(tmp, 'meta.json').write(JSON.stringify(meta));
     const final = bookDir(id);
     if (final.exists) final.delete();
     tmp.rename(id);
