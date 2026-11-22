@@ -138,5 +138,8 @@ export function appHref(webPath: string): Href | null {
   if (head === 'mantras') return '/explore/mantras';
   if (head === 'practice') return b === undefined && a === 'gita-sankalpa' ? '/plans/sankalpa' : '/journal';
   if (head === 'ashtavakra') return '/ashtavakra';
+  if (head === 'story') return '/story';
+  if (head === 'network') return '/network';
+  if (head === 'wisdom-pathways') return '/pathways';
   return null;
 }
