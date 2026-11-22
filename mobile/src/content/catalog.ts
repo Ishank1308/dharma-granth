@@ -13,16 +13,36 @@ export function getEntry(id: string): CatalogEntry | undefined {
   return byId.get(id);
 }
 
+/** Recently opened bundled chapters, so going back and forth does not read and parse them again. */
+const bundledCache = new Map<string, BookChapter>();
+const BUNDLED_CACHE_SIZE = 8;
+
 /**
- * Loads one bundled chapter. Each chapter is its own module, so opening a chapter parses only that
- * chapter, not the whole book (Ramcharitmanas alone is 5 MB). Metro keeps a required module for the
- * rest of the session, so memory grows only with the chapters the reader has actually opened.
+ * Loads one bundled chapter. Each chapter is its own file (an APK asset on Android, see
+ * generated/loaders.android.ts), so opening a chapter parses only that chapter, not the whole book
+ * (Ramcharitmanas alone is 5 MB). The last few chapters stay in memory.
  * Books too large to bundle are read from the phone once the reader has downloaded them
  * (src/content/downloads.ts); otherwise this returns undefined.
  */
 export function loadChapter(id: string, chapter: number): BookChapter | undefined {
   const loader = CHAPTER_LOADERS[id]?.[chapter];
-  return loader ? loader() : readDownloadedChapter(id, chapter);
+  if (!loader) return readDownloadedChapter(id, chapter);
+  const key = `${id}:${chapter}`;
+  const hit = bundledCache.get(key);
+  if (hit) {
+    // Move to the back, so the oldest entry is the one dropped.
+    bundledCache.delete(key);
+    bundledCache.set(key, hit);
+    return hit;
+  }
+  try {
+    const parsed = loader();
+    bundledCache.set(key, parsed);
+    if (bundledCache.size > BUNDLED_CACHE_SIZE) bundledCache.delete(bundledCache.keys().next().value!);
+    return parsed;
+  } catch {
+    return undefined;
+  }
 }
 
 export function webUrl(id: string, chapter?: number): string {

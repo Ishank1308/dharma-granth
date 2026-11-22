@@ -45,7 +45,7 @@ test('Wisdom for life verse links land on a real verse in bundled books', { skip
     for (const v of topic.verses) {
       const book = catalog.get(v.scriptureId);
       if (!book?.bundled) continue;
-      const file = join(GEN, 'books', v.scriptureId, `ch-${v.chapter}.json`);
+      const file = join(GEN, 'assets/content/books', v.scriptureId, `ch-${v.chapter}.json`);
       assert.ok(existsSync(file), `${topic.id}: ${v.scriptureId} chapter ${v.chapter} is bundled`);
       const numbers = new Set(read(file).verses.map((x) => String(x.number)));
       assert.ok(numbers.has(String(v.verse)), `${topic.id}: ${v.ref.en} -> ${v.scriptureId} ${v.chapter}.${v.verse}`);
