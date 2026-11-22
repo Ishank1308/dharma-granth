@@ -60,7 +60,7 @@ test('meaningState reports pointers and review notices', () => {
 
 test('backup round-trips and merges without losing bookmarks', () => {
   const data = {
-    settings: normalizeSettings({ theme: 'paper', textScale: 1.3 }),
+    settings: normalizeSettings({ theme: 'dark', textScale: 1.3 }),
     bookmarks: [{ id: 'bhagavadgita', chapter: 2, verse: '47', savedAt: '2026-11-21T00:00:00.000Z' }],
     lastRead: { id: 'katha', chapter: 1, verse: '3', at: '2026-11-21T00:00:00.000Z' },
     progress: { verses: { bhagavadgita: { 2: ['1', '2'] } }, days: ['2026-11-20', '2026-11-21'], best: 2 },
@@ -84,9 +84,17 @@ test('backup rejects foreign or future files', () => {
 
 test('settings are clamped to safe values', () => {
   const s = normalizeSettings({ theme: 'neon', textScale: 9, showHindi: 'yes' });
-  assert.equal(s.theme, 'day');
+  assert.equal(s.theme, 'sunset');
   assert.equal(s.textScale, 1.6);
   assert.equal(s.showHindi, true);
+});
+
+test('removed themes move to the theme of the same brightness', () => {
+  assert.equal(normalizeSettings({ theme: 'day' }).theme, 'sunset');
+  assert.equal(normalizeSettings({ theme: 'paper' }).theme, 'sunset');
+  assert.equal(normalizeSettings({ theme: 'sunset' }).theme, 'sunset');
+  assert.equal(normalizeSettings({ theme: 'dark' }).theme, 'dark');
+  assert.equal(normalizeSettings({ theme: 'toString' }).theme, 'sunset');
 });
 
 // Philological integrity (CLAUDE.md rule 4): the reader shows every verse's complete Sanskrit.

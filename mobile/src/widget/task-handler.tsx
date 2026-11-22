@@ -24,7 +24,7 @@ async function readSettings(): Promise<Settings> {
 
 function render(settings: Pick<Settings, 'theme' | 'language'>, width: number, height: number) {
   const data = dailyVerseWidgetData(resolveLanguage(settings.language));
-  return DailyVerseWidget({ data, theme: settings.theme, width, height });
+  return DailyVerseWidget({ data, width, height });
 }
 
 export const widgetTaskHandler: WidgetTaskHandler = async ({ widgetInfo, widgetAction, renderWidget }) => {
