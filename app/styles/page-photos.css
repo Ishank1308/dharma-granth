@@ -1,0 +1,123 @@
+/* Pictures on pages outside the reader (app/components/PagePhoto.tsx, lib/page-photos.ts).
+   They reuse the chapter photos: scene-photos.generated.css sets --photo and --photo-focus on
+   [data-photo='id']. Data Saver loads none; print and forced colours show none. They hold still,
+   so Reduce Motion and the quiet modes need nothing here. */
+
+.page-cover,
+.hero-photo,
+.hero-photo-credit {
+    display: none;
+}
+
+/* ── The cover: a wide picture above a page's title ─────────────────────────────── */
+:root:not([data-data-saver='true']) .page-cover {
+    display: block;
+    margin-bottom: var(--space-5);
+}
+.page-cover-art {
+    display: block;
+    height: clamp(6.5rem, 3rem + 16vw, 12rem);
+    border-radius: var(--radius-card);
+    background: var(--photo) var(--cover-focus, var(--photo-focus, 50% 50%)) / cover no-repeat;
+    box-shadow:
+        var(--raised-under),
+        inset 0 0 0 1px color-mix(in srgb, var(--dharma-gold) 30%, transparent),
+        0 22px 48px -28px color-mix(in srgb, var(--tint, var(--dharma-saffron)) 65%, transparent);
+}
+:root:is([data-theme='night'], [data-theme='dark']) .page-cover-art {
+    filter: saturate(1.05) brightness(0.92);
+}
+:root[data-theme='paper'] .page-cover-art {
+    filter: sepia(0.3) saturate(0.85);
+}
+
+/* A cover is wider than the chapter panels the photos were framed for, so some keep a
+   different part of the picture in frame. */
+.page-cover[data-photo='manuscript'] { --cover-focus: 62% 22%; }
+.page-cover[data-photo='temple'] { --cover-focus: 50% 72%; }
+.page-cover[data-photo='lamp'] { --cover-focus: 66% 64%; }
+.page-cover[data-photo='yajna'] { --cover-focus: 50% 42%; }
+.page-cover[data-photo='vrindavan'] { --cover-focus: 50% 64%; }
+.page-cover[data-photo='kailash'] { --cover-focus: 40% 34%; }
+.page-cover[data-photo='devi'] { --cover-focus: 44% 56%; }
+
+/* The credit link: small, under the picture's right edge, still 24px tall to tap (WCAG 2.2). */
+.page-photo-credit {
+    align-items: center;
+    min-height: 1.5rem;
+    border-radius: var(--radius-pill);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+    text-underline-offset: 2px;
+}
+.page-cover-credit {
+    display: flex;
+    width: fit-content;
+    margin: var(--space-1) 0 0 auto;
+    padding: 0.125rem 0.25rem;
+    color: var(--dharma-muted);
+}
+.page-cover-credit:hover {
+    color: var(--dharma-text);
+}
+
+/* ── The hero picture: under the coloured band of a festival or character page ───── */
+:root:not([data-data-saver='true']) .hero-photo {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+/* The picture lets the hero's own colour show through, so each page keeps its tint; a shade over
+   it keeps the white text readable on any photo. */
+.hero-photo::before,
+.hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+.hero-photo::before {
+    background: var(--photo) var(--photo-focus, 50% 50%) / cover no-repeat;
+    opacity: 0.72;
+}
+.hero-photo::after {
+    background: linear-gradient(180deg, rgb(0 0 0 / 0.56) 0%, rgb(0 0 0 / 0.46) 60%, rgb(0 0 0 / 0.26) 100%);
+}
+:root[data-theme='paper'] .hero-photo::before {
+    filter: sepia(0.3) saturate(0.85);
+}
+
+/* Its credit sits in the hero's top right corner, in the hero's white text. */
+:root:not([data-data-saver='true']) .hero-photo-credit {
+    display: flex;
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    z-index: 1;
+    padding: 0.25rem 0.625rem;
+    color: rgb(255 255 255 / 0.92);
+    background: rgb(0 0 0 / 0.35);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+.hero-photo-credit:hover {
+    background: rgb(0 0 0 / 0.5);
+}
+
+/* ── The illustrated entry cards on a scripture's page ───────────────────────────
+   They show the chapter's own photo; Data Saver keeps the drawing (colour.css). */
+:root:not([data-data-saver='true']) .chapter-highlight-art[data-photo] {
+    background-image: var(--photo);
+    background-position: var(--photo-focus, 50% 50%);
+}
+:root[data-theme='paper'] .chapter-highlight-art[data-photo] {
+    filter: sepia(0.3) saturate(0.85);
+}
+
+@media (forced-colors: active), print {
+    .page-cover,
+    .hero-photo,
+    .hero-photo-credit {
+        display: none !important;
+    }
+}

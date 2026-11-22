@@ -108,7 +108,7 @@ export function VerseDiagrams({ scriptureId, chapter, verse }: { scriptureId: st
   if (list.length === 0) return null;
   return (
     <section aria-labelledby="vd-h" className="mt-8">
-      <h2 id="vd-h" className="font-serif text-xl font-bold text-dharma-text">Visual demonstration <span lang="hi" className="font-devanagari text-base font-normal text-dharma-muted">· चित्र द्वारा समझें</span></h2>
+      <h2 id="vd-h" className="font-serif text-xl font-bold text-dharma-text"><span data-bi="en">Visual demonstration</span> <span data-bi="sep" className="font-devanagari text-base font-normal text-dharma-muted">· </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-base font-normal text-dharma-muted">चित्र द्वारा समझें</span></h2>
       <div className="mt-3 space-y-4">{list.map((d) => <Diagram key={d.id} d={d} />)}</div>
     </section>
   );

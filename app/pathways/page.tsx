@@ -20,7 +20,7 @@ export default function PathwaysRedirectPage() {
       />
 
       <div className="card-sacred relative z-10 max-w-md space-y-4 rounded-3xl border border-separator/80 bg-surface-elevated/85 backdrop-blur-xl p-8 shadow-soft">
-        <h1 className="font-serif text-2xl sm:text-3xl font-bold text-label-primary">ज्ञान मार्ग · Wisdom Pathways</h1>
+        <h1 className="font-serif text-2xl sm:text-3xl font-bold text-label-primary"><span lang="hi" data-bi="hi">ज्ञान मार्ग</span><span data-bi="sep"> · </span><span data-bi="en">Wisdom Pathways</span></h1>
         <p className="text-sm text-label-secondary">
           पुनः प्रेषित किया जा रहा है… Redirecting to Wisdom Pathways…
         </p>

@@ -16,6 +16,7 @@ import { FESTIVAL_DATES } from '../data/festival-dates';
 import { getContentItems } from '../data/content-status';
 import { getAllScriptures } from '../data/scriptures';
 import { getScriptureSourceMeta } from '../data/sources-registry';
+import { publishedCommentaryIds, readPublishedCommentary } from './lib/commentary-store.mjs';
 
 const ROOT = process.cwd();
 const FULL = path.join(ROOT, 'public', 'data', 'scriptures-full');
@@ -73,11 +74,10 @@ add('numbering', 'Inconsistent verse numbering (duplicates, unreadable files)', 
 // no reviewer, review date or AI flag is recorded for any of them.
 const unreviewed: string[] = [];
 let explanationTotal = 0;
-const hiDir = path.join(ROOT, 'public', 'data', 'hi-commentary');
-for (const f of fs.existsSync(hiDir) ? fs.readdirSync(hiDir) : []) {
-  if (!f.endsWith('.json')) continue;
+// One folder of section files per scripture (docs/commentary-storage.md).
+for (const f of publishedCommentaryIds(ROOT).map((id) => `${id}.json`)) {
   try {
-    const d = JSON.parse(fs.readFileSync(path.join(hiDir, f), 'utf8')) as Record<string, { explanation?: string; review?: unknown; reviewedOn?: unknown }>;
+    const d = readPublishedCommentary(f.replace('.json', ''), ROOT) as Record<string, { explanation?: string; review?: unknown; reviewedOn?: unknown }>;
     const n = Object.values(d).filter((e) => e?.explanation && !e.review && !e.reviewedOn).length;
     explanationTotal += n;
     if (n) unreviewed.push(`${f.replace('.json', '')}: ${n} explanations`);

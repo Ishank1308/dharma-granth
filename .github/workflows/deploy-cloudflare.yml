@@ -41,6 +41,10 @@ env:
   # linked from here (docs/deploy-cloudflare.md, "Verse share images"). Keep the
   # same value in ci.yml: the export CI builds is the one that goes live.
   NEXT_PUBLIC_SHARE_IMAGE_ORIGIN: https://share.dharma-granth.pages.dev
+  # Published commentary goes up as the project's `commentary` branch deployment and the reader loads it
+  # from there (docs/commentary-storage.md). Keep the same value in ci.yml and in public/_headers
+  # (connect-src).
+  NEXT_PUBLIC_COMMENTARY_ORIGIN: https://commentary.dharma-granth.pages.dev
 
 jobs:
   build-deploy:
@@ -292,6 +296,66 @@ jobs:
           wranglerVersion: "4.151.2"
           workingDirectory: share-images
           command: pages deploy . --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=share --commit-dirty=true
+
+      # Published commentary is one small JSON file per section of every book: about 10,000 files
+      # once every verse is explained, so it goes up as its own deployment (the `commentary` branch,
+      # with its own 20,000 files). The reader fetches it from another origin, hence the CORS header.
+      - name: Split published commentary from the site export
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p commentary-files/data
+          mv dist/data/hi-commentary commentary-files/data/hi-commentary
+          printf '/*\n  Access-Control-Allow-Origin: *\n  Cache-Control: public, max-age=0, must-revalidate\n  X-Content-Type-Options: nosniff\n  X-Robots-Tag: noindex\n' > commentary-files/_headers
+          sample="$(cd commentary-files && find data/hi-commentary -type f -name '*.json' -print -quit)"
+          if [[ -z "$sample" ]]; then
+            echo "::error::No published commentary in the export; the site was not deployed."
+            exit 1
+          fi
+          echo "COMMENTARY_SAMPLE=$sample" >> "$GITHUB_ENV"
+          echo "Commentary files: $(find commentary-files/data -type f | wc -l). Site files: $(find dist -type f | wc -l)."
+
+      # Runs inside commentary-files/, which has no functions/ folder. Unchanged files are not uploaded again.
+      - name: Deploy published commentary
+        id: commentary
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.2"
+          workingDirectory: commentary-files
+          command: pages deploy . --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=commentary --commit-dirty=true
+
+      - name: Retry deploy of published commentary
+        if: steps.commentary.outcome == 'failure'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.2"
+          workingDirectory: commentary-files
+          command: pages deploy . --project-name=${{ env.CLOUDFLARE_PROJECT }} --branch=commentary --commit-dirty=true
+
+      # The site must not go live with a reader that cannot load its commentary.
+      - name: Check published commentary is being served
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="${NEXT_PUBLIC_COMMENTARY_ORIGIN}/${COMMENTARY_SAMPLE}"
+          for attempt in 1 2 3 4 5 6; do
+            got="$(curl --silent --show-error --max-time 20 --output /dev/null --dump-header - --header "Origin: ${NEXT_PUBLIC_SITE_URL}" "$url" | tr -d '\r' || true)"
+            status="$(printf '%s\n' "$got" | awk 'NR==1 {print $2}')"
+            cors="$(printf '%s\n' "$got" | awk -F': ' 'tolower($1)=="access-control-allow-origin" {print $2}')"
+            echo "Attempt ${attempt}: ${url} -> ${status:-no answer}, Access-Control-Allow-Origin: ${cors:-missing}"
+            if [[ "$status" == "200" && "$cors" == "*" ]]; then exit 0; fi
+            sleep 10
+          done
+          echo "::error::Published commentary is not being served at ${NEXT_PUBLIC_COMMENTARY_ORIGIN}; the site was not deployed."
+          exit 1
 
       # The site must not go live pointing at images that are not there.
       - name: Check a verse share image is being served

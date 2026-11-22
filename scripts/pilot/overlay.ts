@@ -1,7 +1,7 @@
 /**
  * Turns the pilot editorial records into what the reader publishes. Used by the publish scripts only.
  *
- * - Commentary entry: written into public/data/hi-commentary/<scripture>.json under "<chapter>:<verse>".
+ * - Commentary entry: written into the published commentary (public/data/hi-commentary/<scripture>/<chapter>-<unit>.json) under "<chapter>:<verse>".
  *   Vyakhya becomes the explanation, Vijnana the science field (omitted when empty), and the life lesson.
  * - Chapter patch: the Artha replaces the stored Hindi and English when the record revises or adds one, and the
  *   old explanation, science and lesson fields are removed from the published chapter so they cannot show beside

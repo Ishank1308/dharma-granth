@@ -4,6 +4,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import test from 'node:test';
 
 import {
+  CorpusChunker,
   devSearchForm,
   devToIndex,
   englishToIndex,
@@ -15,6 +16,9 @@ import {
   prepareCorpus,
   rankHits,
   searchCorpus,
+  shiftChunkHits,
+  snapToClusters,
+  verseToCorpusLine,
 } from '../src/lib/verse-search.ts';
 
 function corpusOf(verses) {
@@ -121,7 +125,7 @@ test('snippets mark the match and never cut the Sanskrit', () => {
   assert.equal(en.text.slice(...en.marks[0]), 'dharma');
 });
 
-const SEARCH = new URL('../src/content/generated/search/', import.meta.url).pathname;
+const SEARCH = new URL('../src/content/generated/assets/content/search/', import.meta.url).pathname;
 test('the built index finds the Gita verse 2.47', { skip: !existsSync(SEARCH) && 'run `npm run content` first' }, () => {
   const files = readdirSync(SEARCH);
   assert.ok(files.length > 0);
@@ -139,6 +143,15 @@ test('the built index finds the Gita verse 2.47', { skip: !existsSync(SEARCH) &&
   }
 });
 
+test('the built index finds the Ashtavakra Gita verse 1.11', { skip: !existsSync(SEARCH + 'ashtavakra.json') && 'run `npm run content` first' }, () => {
+  const corpus = JSON.parse(readFileSync(SEARCH + 'ashtavakra.json', 'utf8'));
+  assert.equal(corpus.c.length, 20);
+  const book = prepareCorpus('ashtavakra', corpus);
+  const first = (q) => searchCorpus(book, parseQuery(q)).map((h) => [h.chapter, h.number])[0];
+  assert.deepEqual(first('मुक्ताभिमानी'), [1, '11']);
+  assert.deepEqual(first('considers oneself free'), [1, '11']);
+});
+
 test('little words need not match, but count towards the phrase', () => {
   assert.deepEqual(find('fruits of action'), ['47']); // "of" is not required
   assert.deepEqual(find('fruits nothing'), []);
@@ -147,4 +160,73 @@ test('little words need not match, but count towards the phrase', () => {
   assert.equal(parseQuery('of the').every((t) => !t.stop), true);
   const s = makeSnippet(GITA, 0, parseQuery('to action alone'));
   assert.deepEqual(s.marks.map(([a, b]) => s.text.slice(a, b)), ['to action alone']);
+});
+
+// Downloaded books are indexed on the phone in chunks (src/content/download-index.ts) and searched one
+// chunk at a time. That must find exactly what one whole-book corpus finds, with the same verse places.
+function chunkedSearch(chapters, chunkChars, queries) {
+  const whole = { d: [], t: [], e: [], n: [], c: [] };
+  for (const ch of chapters) {
+    whole.c.push([ch.number, ch.verses.length]);
+    for (const v of ch.verses) {
+      const line = verseToCorpusLine(v);
+      for (const k of ['d', 't', 'e', 'n']) whole[k].push(line[k]);
+    }
+  }
+  const book = prepareCorpus('x', { d: whole.d.join('\n'), t: whole.t.join('\n'), e: whole.e.join('\n'), n: whole.n.join('\n'), c: whole.c });
+  const chunks = [];
+  const chunker = new CorpusChunker(chunkChars, (chunk) => chunks.push(chunk));
+  for (const ch of chapters) ch.verses.forEach((v, i) => chunker.addVerse(ch.number, i, v));
+  chunker.flush();
+  assert.equal(chunks.reduce((a, c) => a + c.lines, 0), whole.n.length);
+  const prepared = chunks.map((c) => ({ ...c, book: prepareCorpus('x', c.corpus) }));
+  for (const q of queries) {
+    const tokens = parseQuery(q);
+    const expected = searchCorpus(book, tokens);
+    const got = prepared.flatMap((c) => shiftChunkHits(searchCorpus(c.book, tokens), c.book, c));
+    assert.deepEqual(got, expected, q);
+    for (const h of got) {
+      const c = prepared.find((p) => h.line >= p.start && h.line < p.start + p.lines);
+      assert.deepEqual(makeSnippet(c.book, h.line - c.start, tokens), makeSnippet(book, h.line, tokens), q);
+    }
+  }
+  return chunks;
+}
+
+test('a book searched chunk by chunk finds the same verses in the same places', () => {
+  const words = ['धर्म', 'कर्म', 'शान्ति', 'योग'];
+  const chapters = [1, 2, 3].map((number) => ({
+    number,
+    verses: Array.from({ length: number === 2 ? 40 : 7 }, (_, i) => ({
+      number: `${number}.${i + 1}`,
+      sanskrit: `${words[i % 4]} श्लोक ${number} पद ${words[(i + number) % 4]}`,
+      hindi: 'अर्थ',
+      transliteration: `dharma shloka ${i}`,
+      translation: `Verse ${i} of chapter ${number} about ${['duty', 'action', 'peace', 'union'][i % 4]}.`,
+    })),
+  }));
+  const chunks = chunkedSearch(chapters, 300, ['धर्म', 'शांति', 'kshetra', 'dharma', 'peace', 'action duty', 'chapter 2']);
+  assert.ok(chunks.length > 5, 'small chunks split the long chapter');
+  assert.ok(chunks.some((c) => c.firstIndex > 0), 'a chapter continues across chunks');
+});
+
+const DATA = new URL('../../public/data/scriptures-full/', import.meta.url).pathname;
+test('the Mahabharata searched in chunks matches the whole book', { skip: !existsSync(DATA + 'mahabharata') && !existsSync(DATA + 'mahabharata.json.gz') && 'no published data' }, async () => {
+  const { openBook } = await import('./content-lib.mjs');
+  const book = openBook(DATA, 'mahabharata');
+  const chapters = book.chapters.map((c) => ({ number: c.number, verses: book.readVerses(c.number) }));
+  const chunks = chunkedSearch(chapters, 1_500_000, ['धर्म', 'krishna', 'arjuna', 'नारायणं नमस्कृत्य', 'king']);
+  assert.ok(chunks.length > 1);
+});
+
+test('a highlight never ends inside a conjunct', () => {
+  const text = devToIndex('एतच्छ्रुत्वा धर्म्यमणुमेतमाप्य');
+  const at = text.indexOf(devToIndex('धर्म'));
+  const [a, b] = snapToClusters(text, at, at + devToIndex('धर्म').length);
+  assert.equal(indexToDev(text.slice(a, b)), 'धर्म्य');
+  const mid = text.indexOf(devToIndex('य'));
+  // ध is its own akshara; र्म्य is one conjunct.
+  assert.equal(indexToDev(text.slice(...snapToClusters(text, mid, mid + 1))), 'र्म्य');
+  const plain = devToIndex('धर्म का');
+  assert.deepEqual(snapToClusters(plain, 0, devToIndex('धर्म').length), [0, devToIndex('धर्म').length]);
 });

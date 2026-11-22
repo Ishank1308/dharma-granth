@@ -46,8 +46,9 @@ export function GuidedReadings() {
   return (
     <section id="guided-readings" aria-labelledby="guided-readings-title" className="scroll-mt-24 space-y-8 pt-4">
       <h2 id="guided-readings-title" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
-        <span lang="hi" className="font-devanagari">निर्देशित स्वाध्याय</span>
-        <span className="font-normal text-dharma-text-secondary"> · Guided readings</span>
+        <span lang="hi" data-bi="hi" className="font-devanagari">निर्देशित स्वाध्याय</span>
+        <span data-bi="sep" className="font-normal text-dharma-text-secondary"> · </span>
+        <span data-bi="en" data-bi-lead className="font-normal text-dharma-text-secondary">Guided readings</span>
       </h2>
       <div
         role="tablist"
@@ -94,9 +95,10 @@ export function GuidedReadings() {
                   {path.category.replace('-', ' ')}
                 </span>
                 <h3 className="mt-2 font-serif text-2xl font-bold text-dharma-text">
-                  {path.title}{' '}
-                  <span lang="hi" className="font-devanagari font-normal text-xl text-dharma-muted">
-                    · {path.titleHi}
+                  <span data-bi="en">{path.title}</span>{' '}
+                  <span data-bi="sep" className="font-devanagari font-normal text-xl text-dharma-muted">· </span>
+                  <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari font-normal text-xl text-dharma-muted">
+                    {path.titleHi}
                   </span>
                 </h3>
               </div>

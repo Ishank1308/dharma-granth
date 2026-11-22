@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { SACRED_MANTRAS, getMantraBySlug } from '@/data/mantras';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
+import { MANTRA_PHOTOS } from '@/lib/page-photos';
+import { PageCover } from '@/app/components/PagePhoto';
 import { clipDescription } from '@/lib/meta-text';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { Copy, MessageCircle, ArrowLeft, ArrowRight, BookOpen, Sparkles, Check, ExternalLink } from 'lucide-react';
@@ -70,6 +72,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
   const resolved = await params;
   const mantra = getMantraBySlug(resolved.slug);
   if (!mantra) notFound();
+  const photo = MANTRA_PHOTOS[mantra.slug];
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const pageUrl = `${siteUrl}/mantras/${mantra.slug}/`;
@@ -171,6 +174,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
       <article className="max-w-4xl mx-auto px-4 sm:px-6 pt-6">
         {/* Header */}
         <header className="text-center pb-8 border-b border-dharma-border">
+          {photo && <PageCover photo={photo} />}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
             <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/30 bg-saffron-500/10 px-3 py-1 text-xs font-semibold text-saffron-800 dark:text-saffron-300">
               {mantra.categoryLabelHi} · {mantra.categoryLabel}
@@ -202,7 +206,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
           <div className="flex items-center gap-2 mb-4">
             <BookOpen className="w-5 h-5 text-saffron-600" />
             <h2 id="word-meanings-heading" className="font-serif text-xl sm:text-2xl font-bold">
-              पदच्छेद, अन्वय एवं शब्दार्थ (Word-by-Word Meaning)
+              <span lang="hi" data-bi="hi">पदच्छेद, अन्वय एवं शब्दार्थ</span><span data-bi="sep"> (</span><span data-bi="en">Word-by-Word Meaning</span><span data-bi="sep">)</span>
             </h2>
           </div>
 
@@ -246,7 +250,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-amber-600" />
             <h2 id="significance-heading" className="font-serif text-xl sm:text-2xl font-bold">
-              दार्शनिक रहस्य एवं साधना-महत्त्व (Spiritual Significance)
+              <span lang="hi" data-bi="hi">दार्शनिक रहस्य एवं साधना-महत्त्व</span><span data-bi="sep"> (</span><span data-bi="en">Spiritual Significance</span><span data-bi="sep">)</span>
             </h2>
           </div>
           <p lang="hi" className="font-devanagari text-sm sm:text-base leading-relaxed text-dharma-text">
@@ -273,7 +277,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
         {mantra.faqs.length > 0 && (
           <section aria-labelledby="faq-heading" className="my-10 space-y-4">
             <h2 id="faq-heading" className="font-serif text-xl sm:text-2xl font-bold">
-              Frequently Asked Questions (जिज्ञासा समाधान)
+              <span data-bi="en">Frequently Asked Questions</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">जिज्ञासा समाधान</span><span data-bi="sep">)</span>
             </h2>
             <div className="space-y-3">
               {mantra.faqs.map((f, idx) => (

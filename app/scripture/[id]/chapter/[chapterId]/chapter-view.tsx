@@ -18,6 +18,7 @@ import { ResumeVersePrompt } from '@/app/components/ResumeVersePrompt';
 import { getScriptureMeta, getScriptureChapters } from '@/data/scriptures';
 import {
   readChapterCommentary,
+  chapterCommentaryUnits,
   readSeededChapter,
   readSeededChapterNumbers,
   readSeededChapterPreviews,
@@ -42,27 +43,8 @@ import { CONNECTIONS, type Connection } from '@/data/study-content';
 import { getLiteraryVerseMeta, type LiteraryVerseMeta } from '@/lib/literary-commentary';
 import { MeaningPendingNotice } from '@/app/components/MeaningPending';
 import { commentaryOf, verseHasMeaning } from '@/lib/verse-has-meaning';
-import { commentaryAmbiguities, commentaryLookupKey, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
-
-/**
- * A split chapter's page carries only its own verses' commentary. The whole
- * chapter's commentary on every part made each part of Vivekachudamani ch. 1
- * (580 verses, each with a long व्याख्या and modern context) carry ~2.9 MB.
- */
-function commentaryForVerses(
-  all: Record<string, HiCommentaryEntry> | undefined,
-  chapterId: number,
-  numbers: Array<number | string>,
-  ambiguity: CommentaryAmbiguities,
-): Record<string, HiCommentaryEntry> | undefined {
-  if (!all) return undefined;
-  const slice: Record<string, HiCommentaryEntry> = {};
-  for (const n of numbers) {
-    const key = commentaryLookupKey(all, chapterId, n, ambiguity);
-    if (key !== undefined) slice[key] = all[key];
-  }
-  return Object.keys(slice).length > 0 ? slice : undefined;
-}
+import { commentaryAmbiguities } from '@/lib/commentary-lookup';
+import { budgetPageCommentary } from '@/lib/commentary-budget';
 
 export interface ChapterParams {
   id: string;
@@ -272,20 +254,22 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const allVerses = (seeded?.chapter.verses ?? []) as InitialChapter['verses'];
   const ambiguity = commentaryAmbiguities(chapterId, allVerses.map(v => v.number));
   const pageVerses = part ? allVerses.slice(part.start, part.end) : allVerses;
+  // The page's commentary goes into the HTML up to a byte budget; the reader loads the rest from the
+  // published section files (lib/commentary-budget.ts, docs/commentary-storage.md).
+  const pageBudget = budgetPageCommentary(
+    readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId),
+    chapterId,
+    pageVerses.map((v) => v.number),
+    ambiguity,
+  );
   const initialChapter: InitialChapter | undefined =
     seeded &&
     pageVerses.length > 0 &&
     (part || Buffer.byteLength(JSON.stringify(pageVerses)) <= INLINE_CHAPTER_MAX_BYTES)
       ? {
           verses: pageVerses,
-          commentary: part
-            ? commentaryForVerses(
-                readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId),
-                chapterId,
-                pageVerses.map((v) => v.number),
-                ambiguity,
-              )
-            : readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId),
+          commentary: pageBudget.inline,
+          commentaryUnits: pageBudget.deferredUnits.length > 0 ? pageBudget.deferredUnits : undefined,
           commentaryAmbiguity: { normalized: [...ambiguity.normalized], raw: [...ambiguity.raw] },
           source: seeded.source as InitialChapter['source'],
           insights: getChapterInsights(
@@ -299,7 +283,8 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   const chapterSummary = getChapterSummary(meta.id, chapter.id);
 
   // Verses on this page whose meaning is not published yet (see MeaningPending): counted once, in the HTML.
-  const pageCommentary = initialChapter?.commentary ?? readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId);
+  // The whole chapter's commentary, not just the part carried in the HTML: verses whose commentary loads in the browser have a meaning too.
+  const pageCommentary = readChapterCommentary<HiCommentaryEntry>(meta.id, chapterId);
   const pageHasMeaning = pageVerses.map((v) => verseHasMeaning(v, commentaryOf(pageCommentary, chapterId, v.number, ambiguity)));
   const pendingCount = pageHasMeaning.filter((h) => !h).length;
   const pendingSummary = (chapterSummary?.summaryHi || (seeded ? chapter.summary : undefined) || '').trim() || undefined;
@@ -452,7 +437,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={`/scripture/${meta.id}`}
-            className="focus-ring inline-flex items-center gap-1.5 rounded-pill border border-separator/80 bg-surface-raised px-3 py-1 text-caption-1 font-semibold text-label-secondary transition hover:bg-fill-quaternary hover:text-label-primary shadow-xs"
+            className="focus-ring tap-halo inline-flex items-center gap-1.5 rounded-pill border border-separator/80 bg-surface-raised px-3 py-1 text-caption-1 font-semibold text-label-secondary transition hover:bg-fill-quaternary hover:text-label-primary shadow-xs"
           >
             <span>{meta.title}</span>
             <span aria-hidden="true" className="opacity-40">›</span>
@@ -590,6 +575,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
               basePath={process.env.NEXT_PUBLIC_BASE_PATH || ''}
               autoLoad
               initialChapter={initialChapter}
+              commentaryUnits={initialChapter ? undefined : chapterCommentaryUnits(meta.id, chapterId)}
               relatedTeachingsByVerse={relatedTeachingsByVerse}
               literaryByVerse={literaryByVerse}
               />

@@ -16,6 +16,7 @@ import { canonicalVerseId } from '@/lib/canonical-verse-id';
 import { versePageHref } from '@/lib/verse-paths';
 import { commentaryOf, nearestWithMeaning, verseHasMeaning, type NearbyMeaning } from '@/lib/verse-has-meaning';
 import { commentaryAmbiguities, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
+import { commentaryUnitUrl } from '@/lib/commentary-units.mjs';
 import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-search';
 import { splitVyakhyaCommentary, toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
@@ -24,11 +25,14 @@ import { useTheme } from '@/app/components/ThemeProvider';
 import { updateLastVerse } from '@/lib/reading-history';
 import dynamic from 'next/dynamic';
 import { useEverTrue } from '@/lib/use-ever-true';
+import { loadReaderDialogImpl } from '@/app/components/reader/ReaderDialog';
 
 // Dialogs and alternate reading modes load the first time they are used, so they stay out of the chapter's first-load JS.
 const AddToCollectionModal = dynamic(() => import('./AddToCollectionModal').then((m) => m.AddToCollectionModal), { ssr: false });
 const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').then((m) => m.ContributeMeaningModal), { ssr: false });
-const ReaderSettingsPanel = dynamic(() => import('@/app/components/reader/ReaderSettingsPanel').then((m) => m.ReaderSettingsPanel), { ssr: false });
+// One import() site, shared with the idle warm-up below, so both fetch the same chunk.
+const loadReaderSettingsPanel = () => import('@/app/components/reader/ReaderSettingsPanel');
+const ReaderSettingsPanel = dynamic(() => loadReaderSettingsPanel().then((m) => m.ReaderSettingsPanel), { ssr: false });
 import { VerseCard } from './VerseCard';
 import { useReadingDepth } from '@/lib/reading-depth';
 import { useConnectivity } from '@/lib/useConnectivity';
@@ -134,11 +138,19 @@ interface Props {
   relatedTeachingsByVerse?: Record<string, Connection[]>;
   /** Curated editorial layers (lib/literary-commentary) for this part's verses, resolved on the server. */
   literaryByVerse?: Record<string, LiteraryVerseMeta>;
+  /**
+   * Without initialChapter: the chapter's published commentary files (lib/commentary-units.mjs),
+   * loaded with the chapter's verses.
+   */
+  commentaryUnits?: string[];
 }
 
 export interface InitialChapter {
   verses: FullVerse[];
+  /** The commentary that fits the page's HTML budget (lib/commentary-budget.ts). */
   commentary?: HiCommentaryFragment;
+  /** Section files holding the rest of this page's commentary, loaded once the page has rendered. */
+  commentaryUnits?: string[];
   commentaryAmbiguity?: { normalized: string[]; raw: string[] };
   source?: FullScripture['source'];
   /** मर्म and जीवन प्रसंग for the verses that have them (lib/verse-insights). */
@@ -164,7 +176,36 @@ function withRich(prev: Set<string>, numbers: Array<string | number>): Set<strin
   return next;
 }
 
-export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {}, literaryByVerse = {} }: Props) {
+/**
+ * Where published commentary is served from: the Pages project's `commentary` deployment on the live
+ * site (docs/commentary-storage.md), this site for a local build.
+ */
+const COMMENTARY_ORIGIN = process.env.NEXT_PUBLIC_COMMENTARY_ORIGIN || '';
+
+/** Load and merge published commentary section files. A file that fails to load is left out. */
+async function fetchCommentaryUnits(
+  scriptureId: string,
+  units: string[],
+  basePath: string,
+  signal: AbortSignal,
+): Promise<HiCommentaryFragment | undefined> {
+  const parts = await Promise.all(
+    units.map(async (unit) => {
+      try {
+        const res = await fetch(commentaryUnitUrl(COMMENTARY_ORIGIN, basePath, scriptureId, unit), { signal });
+        return res.ok ? ((await res.json()) as HiCommentaryFragment) : undefined;
+      } catch (err) {
+        if (signal.aborted) throw err;
+        return undefined;
+      }
+    }),
+  );
+  const merged: HiCommentaryFragment = {};
+  for (const part of parts) if (part) Object.assign(merged, part);
+  return Object.keys(merged).length > 0 ? merged : undefined;
+}
+
+export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {}, literaryByVerse = {}, commentaryUnits }: Props) {
   const isOnline = useConnectivity();
   const { settings: readerSettings, update: updateReaderSetting, reset: resetReaderSettings, reducedMotion } = useReaderSettings();
   const { theme, setTheme } = useTheme();
@@ -262,6 +303,27 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const collectionLoaded = useEverTrue(Boolean(collectionVerse));
   const focusLoaded = useEverTrue(focusModeOpen);
   const readerSettingsLoaded = useEverTrue(readerSettingsOpen);
+
+  // The Aa sheet holds reading depth, the recitation view and what read-aloud speaks, and its code
+  // is fetched when it first opens. Fetch it once the chapter is at rest as well, so the service
+  // worker has it saved and a reader who then goes offline can still open it. Skipped when the
+  // reader or the browser asks to save data; the sheet then loads on first open, as before.
+  const chapterReady = state.kind === 'ready';
+  useEffect(() => {
+    // Waits for the connection too, so a page opened offline warms the sheet once it is back.
+    if (!chapterReady || isOnline !== true) return;
+    const warm = () => {
+      if (document.documentElement.hasAttribute('data-data-saver')) return;
+      void loadReaderSettingsPanel().catch(() => {});
+      void loadReaderDialogImpl().catch(() => {});
+    };
+    if ('requestIdleCallback' in window) {
+      const idle = window.requestIdleCallback(warm, { timeout: 10_000 });
+      return () => window.cancelIdleCallback(idle);
+    }
+    const timer = setTimeout(warm, 4000);
+    return () => clearTimeout(timer);
+  }, [chapterReady, isOnline]);
 
   const getCollectionCount = (verseNum: number | string) => {
     return collections.filter((c) =>
@@ -904,14 +966,11 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           return;
         }
 
-        const commentaryRes = await fetch(`${basePath}/data/hi-commentary/${scriptureId}.json`, {
-          signal: controller.signal,
-        });
         const extras = chapter.verses.filter(
           (v) => !curatedVerseSet.has(canonicalVerseId(chapterId, v.number)),
         );
-        const commentary: HiCommentaryFragment | undefined = commentaryRes.ok
-          ? await commentaryRes.json()
+        const commentary = commentaryUnits?.length
+          ? await fetchCommentaryUnits(scriptureId, commentaryUnits, basePath, controller.signal)
           : undefined;
         setState({ kind: 'ready', verses: extras, commentary, commentaryAmbiguity: commentaryAmbiguities(chapterId, chapter.verses.map(v => v.number)), source });
       } catch (err) {
@@ -920,7 +979,24 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       }
     })();
     return () => controller.abort();
-  }, [state.kind, scriptureId, chapterId, curatedVerseSet, basePath]);
+  }, [state.kind, scriptureId, chapterId, curatedVerseSet, basePath, commentaryUnits]);
+
+  // Commentary past the page's HTML budget (lib/commentary-budget.ts): load its section files once,
+  // after the page has rendered, and merge them in. What the page carried stays as it is.
+  const deferredUnits = initialChapter?.commentaryUnits;
+  useEffect(() => {
+    if (!deferredUnits?.length) return;
+    const controller = new AbortController();
+    fetchCommentaryUnits(scriptureId, deferredUnits, basePath, controller.signal)
+      .then((loaded) => {
+        if (!loaded) return;
+        setState((prev) =>
+          prev.kind === 'ready' ? { ...prev, commentary: { ...loaded, ...(prev.commentary ?? {}) } } : prev,
+        );
+      })
+      .catch(() => {});
+    return () => controller.abort();
+  }, [deferredUnits, scriptureId, basePath]);
 
   // Warm the cache for the next chapter so prev/next navigation feels
   // instant. Failure-silent: a missing shard just means there is no next
@@ -1282,7 +1358,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         </div>
 
         {/* Gives each verse's h3 a parent heading (h1 chapter → h2 verses → h3 verse). */}
-        <h2 className="sr-only">श्लोक · Verses</h2>
+        <h2 className="sr-only"><span lang="hi" data-bi="hi">श्लोक</span><span data-bi="sep"> · </span><span data-bi="en">Verses</span></h2>
         {isConversationMode && scriptureId === 'bhagavadgita' ? (
           <ConversationModeView
             scriptureId={scriptureId}
@@ -1530,7 +1606,14 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           onClose={() => setReaderSettingsOpen(false)}
           settings={readerSettings}
           update={updateReaderSetting}
-          reset={resetReaderSettings}
+          reset={() => {
+            // Also forgets the shared depth choice, so the chapter opens at its first depth again.
+            resetReaderSettings();
+            // The sheet holds these chapter choices too, so its reset returns them to how a chapter first opens.
+            setChantingMode(false);
+            setIsConversationMode(false);
+            setParayanaCadenceMode('sanskrit_only');
+          }}
           reducedMotion={reducedMotion}
           theme={theme}
           setTheme={setTheme}
@@ -1554,7 +1637,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
         <MobileFocusMode
           isOpen={focusModeOpen}
           onClose={closeFocusMode}
-          verses={filteredVerses}
+          // A chapter search that matches nothing must not leave this full-screen view empty.
+          verses={filteredVerses.length > 0 ? filteredVerses : state.kind === 'ready' ? state.verses : filteredVerses}
           initialVerseIndex={focusVerseIndex}
           scriptureId={scriptureId}
           scriptureTitle={scriptureTitle ?? scriptureId}

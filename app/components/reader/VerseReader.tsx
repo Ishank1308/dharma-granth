@@ -637,7 +637,7 @@ export function VerseReader(props: VerseReaderProps) {
           )}
 
 
-          {/* 3 · Reading level and perspective now live in the Aa sheet (ReaderSettingsPanel). */}
+          {/* 3 · Reading depth (one choice with chapter pages) and perspective live in the Aa sheet (ReaderSettingsPanel). */}
 
           {/* 4 · The layers */}
           <ReaderLayers
@@ -716,7 +716,7 @@ export function VerseReader(props: VerseReaderProps) {
           {/* A deliberate stopping point: the reader may continue, note, or simply stop. */}
           <section aria-labelledby="verse-pause-h" data-focus-hide className="mt-8 rounded-[18px] bg-dharma-card p-5 text-subhead">
             <h2 id="verse-pause-h" className="text-base font-semibold text-dharma-text">
-              <span>Pause here</span> <span lang="hi" className="font-devanagari text-dharma-muted">विराम</span>
+              <span data-bi="en">Pause here</span> <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-dharma-muted">विराम</span>
             </h2>
             <p className="mt-1 text-dharma-text-secondary">You can stop at this verse. Your place in this chapter is kept on this device, so Continue reading brings you back here.</p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -740,7 +740,7 @@ export function VerseReader(props: VerseReaderProps) {
           <ul className="mt-2 space-y-0.5 text-sm">
             {[
               ['layer-sanskrit', 'Original verse'],
-              ['reader-study-guide', 'Study layers & text size'],
+              ['reader-study-guide', 'Study path'],
               ['layer-sources', 'Sources'],
             ].map(([id, text]) => (
               <li key={id}>

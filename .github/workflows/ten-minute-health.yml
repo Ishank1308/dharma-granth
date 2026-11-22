@@ -1,13 +1,12 @@
 name: Hourly repository health
 
-# Lightweight monitoring only; scripture writing/repair remains in the
+# Hourly since 21 Nov 2026: the repository is private, so every run counts
+# against the Actions minutes (a run every 10 minutes alone used more than the
+# monthly allowance). Lightweight monitoring only; scripture writing/repair remains in the
 # separate autonomous task. GitHub cron is best-effort and can run late.
-# Hourly, not every 10 minutes: each run bills at least a full minute, so the
-# 10-minute schedule alone used about 4,300 Actions minutes a month.
-# (The file keeps its old name so links to its run history still work.)
 on:
   schedule:
-    - cron: "23 * * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:

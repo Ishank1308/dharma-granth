@@ -29,8 +29,8 @@ export function VerseAnswers({ scriptureId, chapterId, verseId }: { scriptureId:
   return (
     <section aria-labelledby="verse-answers" className="mt-8 rounded-3xl border border-dharma-border bg-dharma-card p-5 sm:p-6">
       <h2 id="verse-answers" className="text-lg font-semibold">
-        <span lang="hi" className="font-devanagari">यह श्लोक इन प्रश्नों का उत्तर देता है</span>{' '}
-        <span className="text-sm font-semibold text-dharma-muted">Questions this verse answers</span>
+        <span lang="hi" data-bi="hi" className="font-devanagari">यह श्लोक इन प्रश्नों का उत्तर देता है</span>{' '}
+        <span data-bi="en" data-bi-lead className="text-sm font-semibold text-dharma-muted">Questions this verse answers</span>
       </h2>
       <ul className="mt-3 grid gap-2">{answers.slice(0, SHOWN).map(item)}</ul>
       {answers.length > SHOWN && (

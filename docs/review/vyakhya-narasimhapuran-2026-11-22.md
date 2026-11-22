@@ -1,0 +1,853 @@
+# Narasimha Purana व्याख्या: review note (22 Nov 2026)
+
+## Status
+
+- 1926 new व्याख्या entries, one for every Narasimha Purana verse that had none (chapters 5 to 66). The 1,411 verses that already carry an explanation in the scripture data are untouched.
+- Confidence after independent verification: 1903 high, 23 low, none medium. The low ones are verses whose Sanskrit is itself corrupt, cut short or ambiguous; each says plainly what is uncertain.
+- 808 entries carry a reviewNote for the editor.
+
+## How checked
+
+- **Drafting.** Parallel writers worked from one brief (the voice of docs/vyakhya-guide.md, 200 to 280 words, three movements). Each file was checked until clean.
+- **Independent verification.** A second set of readers, who had not written the drafts, compared every entry with the Sanskrit on six points: meaning (speaker, subject, names, numbers, negations); quoted key words really in the verse and correctly glossed; outside quotations kept only when certain, with source; outside story details marked as the well-known story; no invented events, names or etymologies; sensitive content carrying its caveat. They corrected several hundred points (wrong construals, glosses, invented details, removed attributions) and set each entry to high or low. Their reports are in the writer and verifier report files kept with the drafts.
+- **Mechanical checks, all 130 files, after verification:** keys match the verse list exactly; 170 to 290 words without caveats; no nukta letters other than ड़ and ढ़; no first person or तुम outside quotations; no repeated openings or sentences inside a file; loan-word list; `scripts/check-hindi-register.mjs` reports `sentences to fix 0`.
+- **Not done:** review by a human Sanskrit reader. Verification was by AI readers; the lists below say where a human should look first.
+
+## Data problems found in the source (not fixed here)
+
+- **Chapter 53: the printed Hindi does not belong to the Sanskrit** (it is OCR text from other chapters). The व्याख्या follows the Sanskrit and each reviewNote says so. The printed Hindi needs re-aligning at the source.
+- Several keys start with the previous chapter's colophon, and a few hold one and a half or two verses; each has a reviewNote.
+- Chapters 1 to 4 have no verses in the published data.
+
+## Standing caveats and where they are used
+
+- **HINSA** (war and killing), 161 entries: 5:53, 7:56, 7:57, 7:60, 8:4, 8:5, 8:38, 8:39, 10:13, 10:33, 30:30, 33:39, 33:40, 33:41, 33:46, 33:70, 38:5, 38:12, 38:42, 40:15, 40:23, 40:59, 40:61, 41:55, 41:59, 43:28, 43:29, 43:30, 43:32, 43:33, 43:85, 44:8, 44:9, 44:11, 44:17, 44:18, 44:19, 44:20, 44:21, 44:22, 44:23, 44:26, 44:27, 44:28, 44:29, 44:31, 44:32, 44:34, 44:43, 45:1, 45:40, 49:24, 49:44, 49:47, 49:56, 49:57, 49:58, 49:74, 49:75, 49:93, 49:94, 49:95, 49:96, 49:97, 49:99, 49:111, 49:123, 49:127, 49:129, 50:21, 50:24, 50:25, 50:40, 50:53, 50:104, 51:9, 51:24, 51:26, 51:28, 51:29, 51:30, 51:32, 51:37, 51:44, 51:45, 51:46, 52:20, 52:32, 52:36, 52:37, 52:38, 52:39, 52:40, 52:41, 52:42, 52:43, 52:44, 52:52, 52:53, 52:56, 52:57, 52:58, 52:59, 52:60, 52:61, 52:62, 52:63, 52:64, 52:65, 52:66, 52:67, 52:68, 52:69, 52:70, 52:71, 52:72, 52:75, 52:76, 52:78, 52:84, 52:85, 52:87, 52:88, 52:95, 52:106, 53:16, 53:17, 53:19, 53:20, 53:22, 53:23, 53:32, 53:38, 53:39, 53:40, 53:41, 53:44, 53:47, 53:48, 53:49, 53:50, 53:51, 53:52, 53:54, 53:56, 53:60, 53:63, 53:64, 53:65, 53:66, 55:10, 58:55, 63:90, 63:91, 63:92, 63:93, 63:94, 63:95, 63:96, 63:103, 63:105
+
+- **PHAL** (promises of merit (phala-shruti)), 159 entries: 5:67, 7:38, 7:44, 7:73, 7:74, 8:18, 8:22, 8:27, 8:28, 8:29, 8:32, 8:40, 8:44, 10:18, 10:19, 10:20, 12:1, 12:36, 12:38, 12:39, 12:40, 13:63, 16:39, 17:21, 17:22, 17:23, 17:24, 17:25, 17:26, 17:27, 17:28, 17:29, 17:35, 17:36, 25:17, 25:19, 25:20, 25:21, 28:2, 28:35, 28:41, 30:30, 30:34, 30:35, 30:36, 30:38, 30:39, 30:40, 30:43, 30:44, 31:59, 31:60, 31:63, 31:68, 31:70, 31:99, 31:119, 33:13, 33:14, 33:15, 33:27, 33:71, 33:83, 34:2, 34:3, 34:4, 34:5, 34:6, 34:7, 34:8, 34:10, 34:11, 34:12, 34:13, 34:14, 34:15, 34:16, 34:17, 34:18, 34:20, 34:22, 34:23, 34:24, 34:25, 34:26, 34:28, 34:30, 34:31, 34:35, 34:36, 34:37, 34:38, 34:41, 34:43, 34:44, 34:46, 34:49, 34:52, 34:55, 34:56, 38:44, 41:44, 41:46, 44:40, 44:41, 44:42, 45:45, 52:98, 52:123, 52:125, 53:9, 53:27, 56:2, 56:46, 56:47, 56:50, 58:10, 58:15, 58:62, 58:63, 58:83, 58:84, 58:86, 58:100, 58:112, 58:113, 58:114, 58:115, 59:9, 59:10, 63:5, 63:6, 63:8, 63:118, 63:120, 63:123, 64:81, 64:83, 64:90, 64:94, 64:96, 64:116, 64:121, 66:8, 66:22, 66:23, 66:25, 66:26, 66:27, 66:31, 66:32, 66:33, 66:34, 66:35, 66:36, 66:38, 66:39, 66:43, 66:44
+
+- **VARNA** (varna duties), 28 entries: 17:22, 28:30, 28:35, 28:41, 30:9, 30:44, 33:63, 58:2, 58:3, 58:4, 58:5, 58:6, 58:7, 58:8, 58:9, 58:10, 58:11, 58:12, 58:13, 58:15, 58:36, 58:44, 58:56, 58:85, 58:107, 58:112, 58:114, 64:45
+
+- **STRI** (statements about women), 31 entries: 13:6, 13:7, 13:10, 13:27, 13:28, 13:36, 13:37, 13:38, 13:63, 30:35, 30:43, 44:41, 50:27, 58:28, 58:29, 58:40, 58:41, 58:42, 58:43, 63:10, 63:46, 63:50, 63:62, 63:78, 63:95, 63:98, 63:103, 63:113, 63:114, 63:116, 63:118
+
+- **NARAK** (hells and punishments), 14 entries: 8:19, 8:21, 8:27, 8:30, 8:32, 8:39, 8:40, 8:46, 12:39, 30:11, 30:43, 33:29, 58:35, 58:57
+
+
+## Low confidence (read these first)
+
+- 10:13: Sanskrit 'हिरण्यकं' looks corrupt; printed Hindi reads it as slayer of Hiranyakashipu. Mentions slaying of asuras; HINSA caveat added.
+- 10:18: First half of the Sanskrit is garbled (says he bathed, then asks how; 'कृत्वा कृत्वा' probably for 'किं कृत्वा'); explanation follows the printed Hindi and says so. Tirtha-phala request; PHAL caveat added.
+- 12:32: Sense of this verse in the dialogue is uncertain (who is praised and why); read as Yama pointing Yami to a rite-sanctioned marriage. Printed Hindi is misaligned OCR.
+- 12:33: Syntax truly uncertain: 'dushanam' (fault or blame), the referent of 'tatkrite' and 'paritapam na karishye' (no remorse-bringing act, or no distress) are open; the explanation says so. Printed Hindi is misaligned OCR.
+- 30:23: The measure 'sahasrani niyutani caturdasha' is ambiguous and runs into the next verse; the printed Hindi itself hedges.
+- 30:25: First line's construction is unclear (it names a 'north' peak not listed elsewhere); verses 30:31 and 30:33 name Trivishtapa, Nakaprishtha, Nirvriti and Apsarasa as heavens, so this verse may originally be a list of heavens. Reading follows the printed Hindi.
+- 30:43: Last word of the Sanskrit (jayavahana-dohanat) is corrupt, possibly for japa-vapana-dohanat of the well-known smriti verse on the atidanas; explanation says it is uncertain; kanyadana counted among gifts; STRI, NARAK and PHAL added.
+- 31:107: Sanskrit has no verb and the role of ब्रह्मणा is unclear; it probably continues into 31:108 (the sun heats these worlds), while the printed Hindi makes Dhruva the subject. Both readings are stated.
+- 33:17: The Narada line is abrupt and seems to depend on context not in this chapter; sense partly guessed.
+- 33:32: The phrase विधायाग्निं च तं मुनिम् is obscure; व्याख्या follows the printed Hindi's reading and says so.
+- 34:19: The word sanukumbakaih is unclear (the printed Hindi omits it); flower identifications are traditional.
+- 43:37: The syntax of 'kleshat kleshan ivoddhuya' is uncertain (simile completed by 'guruktaya iva' in 43:38); the printed Hindi's rendering is tentative.
+- 43:89: Sanskrit phrase हरिमनुजगतिं त्व् अलं च पश्यन् is obscure (possibly 'hari-manuja' = Narasimha) and is not rendered in the printed Hindi; explanation follows the printed sense and flags the uncertainty.
+- 44:13: Sanskrit 'khadgajo yah pratishthitah' is obscure; it seems to place the form in the sword's reflection, while the printed Hindi places it in the pillar. Sense guessed.
+- 44:39: Sanskrit 'अभक्तानां क्षमाय च' is doubtful: 'क्षमाय' is not a regular dative of 'क्षमा' and the original may have read differently (possibly 'क्षयाय'); the explanation says the sense is uncertain and reports the printed Hindi's reading.
+- 45:44: Sanskrit is corrupt ('समागतास्' plural against singular 'देवसमन्वितः'); 'शुक्रो' may be a slip for 'शक्रो' (Indra), which fits the sense better; printed Hindi adds that Shukra was healed and worshipped, which the Sanskrit does not state.
+- 50:15: Sanskrit corrupt (*धनूमान्); अव्यञ्जितात्मा is unclear and the printed Hindi reads it as Hanuman revealing his true form.
+- 52:70: Violence: list of rakshasas slain; the names 'श्वपति' (omitted by the printed Hindi) and the vanara 'भीम' look corrupt, so who slew whom is uncertain; the explanation says so. Caveat added.
+- 56:38: Sanskrit is partly corrupt (आज्यप्रणुन्नकम्, निषवेति); the western mantra cannot be identified with certainty and the explanation says so. The printed Hindi adds 'हे राजन्' not in this verse.
+- 58:37: The last pada 'tena bhuyah prajayeta' is unclear and possibly corrupt; the printed Hindi gives an interpretive sense.
+- 66:18: Sanskrit is visibly corrupt (आराधयाम्_अस) and the relation of tree and feet is unclear; followed the printed Hindi.
+- 66:19: The phrase द्वादशभिः सप्तभिस् संख्याभिः is obscure and the Sanskrit has typos; sense of the numbers left open.
+- 66:21: First half (द्वादश प्रति चतुर्मुखम्) is obscure: the Sanskrit does not say twelve of what; printed Hindi supplies tirthas. Explanation states the uncertainty.
+
+## Sensitive entries
+
+- 7:49: Mentions year-long fasting; a note against imitating extreme fasts is included.
+- 7:56: Vishnu's messengers strike Yama's servants; HINSA caveat added.
+- 8:32: Claim that chanting the name instantly quenches hell-fire; PHAL and NARAK caveats added.
+- 8:38: Violence: Parashurama's slaying of wicked kshatriyas; text stresses 'dushta', HINSA caveat added.
+- 8:46: Describes hell-fire and torture devices stilled; NARAK caveat added. Verse is in a longer metre.
+- 10:6: Describes extreme fasting (living on air); text adds that it is not a health practice to imitate.
+- 12:38: Phala-shruti for reciting at ancestral rites; names a brahmin reciter (ritual context, noted neutrally); PHAL added. Printed Hindi is misaligned OCR.
+- 13:2: Printed Hindi names Suta as speaker; the frame (Shuka asking Vyasa in 13:1) makes Vyasa the speaker, which the explanation follows. Introduces a pativrata story.
+- 13:6: Introduces the pativrata ideal; STRI caveat added.
+- 13:7: Links a wife's service to her husband with spiritual power; STRI caveat added.
+- 13:10: Describes a wife as devoted to serving her husband; STRI caveat added.
+- 13:27: Wife puts service to her husband before the guest; STRI caveat added.
+- 13:28: Wife washes her husband's feet before giving alms; STRI caveat added. Sanskrit 'वारिना' is an OCR slip for वारिणा.
+- 13:36: Statement on women's dharma as service to husband; caveat added.
+- 13:38: Completes the statement that far-sight arose from serving her husband; STRI caveat added.
+- 13:63: Chapter-closing summary praising pativrata power and promising Vishnu's abode; STRI and PHAL caveats added.
+- 17:22: Promises nirvana for eight lakh japa and addresses the dvija; PHAL and VARNA caveats added.
+- 25:20: Phala-shruti (no adversity, no defeat, rebirth as jatismara); PHAL added.
+- 28:30: Penance consists of clearing Brahmins' leftovers; varna caveat added.
+- 28:35: Says nothing surpasses Brahmins as remover of all sins (printed Hindi adds 'service'); varna and phala caveats added.
+- 28:41: Phala-shruti (heaven, merit of cow-gift) for cleaning up after brahmins; VARNA and PHAL caveats added.
+- 30:9: Mentions chaturvarnya as a mark of Bharatavarsha; VARNA caveat added.
+- 30:30: Sensitive: verse links heaven to drowning, entering fire and leaping from heights; explanation states it does not endorse suicide and points to help; HINSA and PHAL added.
+- 30:35: Kanyadana listed among gifts beside silver and horses; framed as the wedding rite with the bride's dignity and consent; STRI and PHAL added.
+- 30:36: Phala-shruti for feeding brahmins and giving clothes; PHAL added.
+- 30:40: Phala-shruti for fasting vows; PHAL added.
+- 30:44: Promises a heaven of no return for giving all gifts to brahmins; VARNA and PHAL added.
+- 33:20: A demon plots to abduct Draupadi; handled briefly and non-graphically.
+- 33:27: Phala-shruti on protecting the distressed, spoken by a disguised demon who calls himself the best of brahmins; PHAL caveat added.
+- 33:28: Lists brahmin, cow, woman and child as those to be protected; framed as protection of the vulnerable, not a ranking. Sanskrit has the misspelling पिड्यमानं.
+- 33:39: Violence: Bhima strikes the exposed demon; HINSA caveat added.
+- 33:43: Abduction of Draupadi; described plainly as the demon's wrongdoing, no caveat constant fits.
+- 33:63: Lists sins incl. officiating for 'ayajya' (ritually ineligible) people; neutral reading given, VARNA caveat added.
+- 33:66: Sexual context (seizing of brahmin women; Sanskrit ब्राह्मणस्त्रियः is plural, printed Hindi says one woman and omits 'brahmin'); पपरतो is a plain OCR slip for पापरतो. Kept short and non-graphic.
+- 33:67: Context is the sinner's sexual purpose in the temple; mentioned only briefly.
+- 34:51: Mentions feeding and paying brahmins who perform the koti-homa; harmony of Vishnu and Shiva worship.
+- 41:52: The king blames brahmins for his son's devotion; presented as the character's suspicion.
+- 41:53: Hiranyakashipu disparages brahmins and Vishnu-devotees; framed as the antagonist's speech.
+- 41:63: Hiranyakashipu insults the brahmin teacher ('द्विजपशो'); presented as the villain's arrogance.
+- 41:64: Narrator criticises the brahmin teacher for serving the tyrant out of need; framed as one person's conduct.
+- 43:4: Lists 'तरुणीविलास' among worldly attachments; text notes this is not a judgment on women. Printed Hindi takes सुबुधैः with विमृशत; explanation follows the Sanskrit (with सेव्यः).
+- 43:19: Sensitive: Indra abducts Prahlada's pregnant mother out of lust; treated briefly and non-graphically.
+- 43:20: Continues the abduction episode; 'pativrata' explained as dignity, not as a rule for women.
+- 43:30: Violence: order to bind Prahlada with snakes and drown him; caveat added.
+- 44:41: Phala-shruti; names widowhood (vaidhavya) among misfortunes removed, handled without implying fault; PHAL and STRI caveats added.
+- 49:4: Sensitive: the crow wounds Sita's breast; handled with restraint, the act is condemned and no blame falls on her.
+- 49:22: Rakshasa described as dark-bodied; the vyakhya clarifies this is not a comment on skin colour.
+- 49:38: Shurpanakha's claim that rejecting a woman who desires one is a sin is her own argument, not presented as scripture.
+- 49:40: Sexual proposal by Shurpanakha; handled briefly and non-graphically.
+- 49:47: Violence: Lakshmana cuts off Shurpanakha's ears and nose; plain disclaimer and caveat added.
+- 49:60: Ravana resolves to abduct Sita.
+- 49:94: Violence: Jatayu strikes Ravana; caveat added.
+- 49:96: Violence: Ravana strikes Jatayu down; caveat added.
+- 50:76: Epithets of Sita including 'पतिव्रता'; explanation frames it as her own steadfastness. No caveat added.
+- 50:77: Praise of Sita's chastity; framed as inner steadfastness without a general claim about women. No caveat added.
+- 50:94: Sita's guarding of her 'वृत्त' (chastity) framed as her own steadfastness; no general claim about women, no caveat added.
+- 50:123: Sentence runs into 50:124, where Sugriva threatens to cut ears and noses; only alluded to here.
+- 50:156: Sampati leaves his body through yoga (this telling differs from Valmiki, where his wings regrow); framed as yogic departure, not a model for self-harm.
+- 51:16: Mentions Ravana among thousands of women; kept brief and non-descriptive. The Sanskrit 'नानाभरणभूषितम्' qualifies Ravana; the printed Hindi applies it to the women; explanation follows the Sanskrit.
+- 51:53: Praise of Sita as pativrata; framed as steadfast integrity, no general claim about women.
+- 52:60: Violence and mutilation (Sugriva cuts off Kumbhakarna's ears and nose); Sanskrit has a corrupt marker and 'वक्रेण' (likely 'वक्त्रेण'); caveat added.
+- 52:75: Violence: Lanka is set on fire with its people and animals; the verse's subject (Hanuman, from 52:74) is implicit; caveat added.
+- 52:119: Shiva's declaration of Sita's purity; framed as divine testimony, not as endorsing any test of a woman.
+- 53:3: Printed Hindi is misaligned; the verse says slain asuras were reborn as kshatriyas, explained here as marking no community.
+- 53:22: Sensitive: Parashurama's slaughter of Kartavirya and kshatriya princes twenty-one times; framed as not licensing hostility to any group; HINSA caveat added; printed Hindi misaligned.
+- 53:44: Krishna slays Kamsa's washerman for insulting speech; caveat and a note against any occupational reading added; 'brahmane' is taken as 'to a brahmin'; printed Hindi is misaligned.
+- 53:58: Marriages of Balarama and Krishna; Rukmini won 'by kshatriya valour', explained via her own wish from the well-known story; printed Hindi is misaligned.
+- 58:2: Varna duties (kshatriya); VARNA caveat added.
+- 58:3: Varna duties (gifts to brahmins); VARNA caveat added.
+- 58:4: Varna duties (kshatriya, devotion to brahmins); VARNA caveat added.
+- 58:5: Varna duties (kshatriya, victory only by dharma); VARNA caveat added.
+- 58:6: Varna duties (vaishya); VARNA caveat added.
+- 58:7: Varna duties (vaishya conduct); VARNA caveat added.
+- 58:8: Varna duties (vaishya, honouring brahmins); VARNA caveat added.
+- 58:9: Varna-specific duties (vaishya); VARNA caveat added.
+- 58:10: Varna duties: heaven for the vaishya, service by the shudra begins here; VARNA and PHAL caveats added.
+- 58:11: Sensitive: Sanskrit 'dasavat' (like a servant) toward brahmins; the printed Hindi softens it to humble service; VARNA caveat added.
+- 58:12: Sensitive: the shudra is to wear worn clothes and clean a vipra's leftovers; the printed Hindi renders 'jirna-vastra' as simple clothing; VARNA caveat added.
+- 58:13: Shudra duties (hearing the Puranas from vipras, worship of Narasimha); VARNA caveat added.
+- 58:15: Varna-specific promise of Indra's realm for the shudra; VARNA and PHAL caveats added.
+- 58:28: Women are listed among things a celibate student avoids; STRI caveat added.
+- 58:29: Sexual restraint and looking at women; kept brief and non-graphic; STRI caveat added.
+- 58:36: Direct renunciation without marriage is allowed here for a brahmana; VARNA caveat added.
+- 58:40: Criteria for choosing a bride (gotra, having brothers, physical wholeness); STRI caveat added.
+- 58:41: Bride-selection by physical traits, illness and disability; STRI caveat and explicit non-discrimination note added.
+- 58:43: Ideal bride described by physical beauty; printed Hindi renders मृद्वङ्गी as gentle temperament; STRI caveat added.
+- 58:44: Marriage by varna-dharma; VARNA caveat added.
+- 58:56: Sandhya enjoined on dvijas; VARNA caveat added.
+- 58:85: Japa enjoined on the dvija; VARNA caveat added. 'ऋक्षादिकं' explained as printed (nakshatra etc.); other editions may read 'ऋष्यादिकं' (rishi, metre, deity of the mantra).
+- 58:107: Meal rule stated for dvijas; VARNA caveat added; practice line defers to medical advice.
+- 58:112: Merit and heaven promised for gifts to shrotriya brahmanas; PHAL and VARNA caveats added.
+- 58:114: Promise of higher birth and krama-mukti; 'जातौ उत्कर्षम्' refers to birth/status; PHAL and VARNA caveats added.
+- 59:5: Severe fasting austerities of the vanaprastha; added a note against imitating them without guidance.
+- 59:6: Graded fasts up to living on air; Sanskrit repeats अथवा (possible corruption); note against imitation added.
+- 59:8: Describes the final northward journey (mahaprasthana); added that this does not endorse self-harm.
+- 63:10: Womanhood presented as the result of a curse; STRI caveat added and the text says this is not a judgement on women.
+- 63:18: Start of the episode of Indra's desire for Kubera's wife; the व्याख्या places the fault on Indra's gaze, not on the woman.
+- 63:19: Sensual description of a woman's appearance (fine garment); kept brief and non-graphic.
+- 63:32: Woman's will overpowered by Kama's arrow at Indra's request; व्याख्या places responsibility on Indra. Sensual content kept brief.
+- 63:40: Sexual content: Indra's adultery and his claim that it surpasses moksha; kept brief and non-graphic.
+- 63:46: First line defines youth by dalliance with young women; STRI caveat added.
+- 63:47: Kubera speaks of entering fire (suicide); text says the Purana does not endorse it and points to help.
+- 63:50: Minister consoles Kubera by noting he has many wives; STRI caveat added.
+- 63:62: Kubera calls his grief 'born of a woman'; STRI caveat added.
+- 63:78: Indra's harem described as a 'collection of beloveds' (kantaparigraha); STRI caveat added.
+- 63:80: Indra's pursuit of a woman continues; non-graphic, but the editor may wish to check the tone.
+- 63:81: Refers to Indra hiding Kubera's abducted wife; non-graphic.
+- 63:82: Verse runs on into 63:83; Indra hides the abducted Chitrasena.
+- 63:95: Curse turning Indra into a woman as punishment for killing a woman: gender-sensitive; HINSA and STRI caveats added.
+- 63:98: Indra's transformation into a woman framed as loss of power: gender-sensitive; STRI caveat added.
+- 63:99: 'हरि' here names Indra, not Vishnu. Indra's withdrawal after becoming a woman; handled neutrally.
+- 63:103: Half-verse only. Womanhood as karmic result of killing a woman: gender-sensitive; HINSA and STRI caveats added.
+- 63:104: Refers to Indra's abduction of Kubera's wife; non-graphic.
+- 63:113: Three lines merged (Kubera returns; simile garland). Simile of a woman without husband: STRI caveat added.
+- 63:114: Asks for release from the curse of womanhood: STRI caveat added.
+- 63:116: Indra's change into a woman is presented as the curse to be removed; STRI caveat added.
+- 63:118: Release from womanhood framed as release from a curse, and a promised result of two lakh japa; STRI and PHAL caveats added. Sanskrit 'hari' here means Indra.
+- 64:45: Names the chandala as the lowest by birth in order to say devotion overrides it; VARNA caveat added.
+- 66:26: Phala-shruti: siddhi from bathing and fasting; caveat added; fasting note includes a health caution.
+- 66:28: त्रिरात्रम् उषितः literally means having stayed three nights; the printed Hindi renders it as fasting.
+
+## Printed Hindi differs from the Sanskrit
+
+- 5:20: Dual 'mahabhagau ... udgatau' in the Sanskrit continues 5:19 (Agni and the Pitaras); the printed Hindi reads it as the appearance of Svayambhuva Manu. The explanation follows the Sanskrit.
+- 5:51: Sanskrit reads 'भर्गो' where the standard list of Adityas has Bhaga; the printed Hindi gives both.
+- 5:60: Sanskrit 'सव्रताः' (observant of vows) is rendered 'पतिव्रता' in the printed Hindi; explanation follows the Sanskrit.
+- 5:62: Sanskrit 'प्रत्यङ्गिरस्सुताः ... ऋषयः' is plural; the printed Hindi names a single rishi Pratyangira. The explanation follows the Sanskrit.
+- 8:16: Sanskrit says यक्षैः (yakshas) where the printed Hindi says पार्षद; explanation notes this.
+- 10:7: Sanskrit 'agre vyagramanah' may be 'agre 'vyagramanah' (calm mind) with avagraha lost; printed Hindi reads 'vyagra'; both readings mentioned. Rest of the verse is clear.
+- 10:24: Sanskrit repeats 'जय योगप्रवर्त्तक' and appears to merge two verses (10:25 missing); printed Hindi condenses it. All names are readable, so the sense is certain.
+- 12:1: Sanskrit begins with the colophon of chapter 11; printed Hindi for 12:1-12:8 belongs to another passage (Savitri and the brahmachari), so the explanation follows the Sanskrit; PHAL added for 'sarvapapapranashini'.
+- 17:24: Promises protection from thieves and afflictions; printed Hindi renders आधि as रोग; PHAL caveat added.
+- 17:36: Phala-shruti for reciting the stava; printed Hindi splits the cloth/swan simile into two, Sanskrit reads as one image.
+- 23:6: 'Vandyah' may be an adjective (venerable) rather than a rishi's name as the printed Hindi takes it; both readings noted.
+- 23:11: Sanskrit names only six of the seven sages; the printed Hindi adds 'adi'.
+- 23:12: Sanskrit says five groups of eight gods but the printed Hindi lists six names; 'sushantah' is probably an adjective (parallel Purana lists also give five groups without it).
+- 23:17: Sanskrit of this line is tangled (the two Manus born of Sanjna and Chhaya); the printed Hindi smooths it.
+- 23:33: The Sanskrit lists eight sage names; the printed Hindi merges 'Nahusha Bhavya' into one to keep seven.
+- 25:21: Phala-shruti (boon in six months, siddhi in a year); printed Hindi adds 'नित्य', not in the Sanskrit; PHAL added.
+- 25:43: Sanskrit makes Ananta the radiant one (anantam ... diptimattaram); the printed Hindi seems to attribute the radiance to Hari.
+- 25:50: Sanskrit reads 'pratibhaniyatam'; the printed Hindi takes it as pratima (image), which fits the context; possibly an OCR or textual variant.
+- 25:51: Sanskrit 'tyaktva taptam' is presumably 'tapah'; 'anukshanam' (literally 'every moment') is taken by the printed Hindi as 'at once'; both readings noted, main sense certain.
+- 25:56: The printed Hindi adds Ayodhya; the Sanskrit says only 'his own city'.
+- 28:29: Sanskrit 'कर्मास्मान्' looks corrupt; the change of speaker mid-verse and the identification of Rama as Parashurama follow the printed Hindi.
+- 30:5: Sanskrit has bhadra and ketuman; the printed Hindi gives the usual names Bhadrashva and Ketumala.
+- 30:6: Sanskrit prose here is terse and partly corrupt; the identification of Himahvaya with Bharatavarsha comes from the printed Hindi.
+- 30:11: Hells in patala for sinners; NARAK caveat added. In the Sanskrit 'crores' qualifies the sinners; the printed Hindi takes it as crores of hells.
+- 30:24: The word apra-bhantaritam is unclear; the printed Hindi renders it as 'radiant'.
+- 30:50: Sanskrit says the sun 'stands' (tishthati) in Amaravati; the printed Hindi renders it as appearing to rise there, which fits the next verse.
+- 31:33: Two speakers in one verse: Dhruva asks leave, then Suniti refuses; the change is marked only in the printed Hindi.
+- 31:46: Text prints 'saptasaptati-tejasah'; read as saptasapti (the sun), as the printed Hindi does.
+- 31:63: Sanskrit reads भूनर्तन, printed Hindi implies भ्रूनर्तन (eyebrow); a one-letter OCR/print slip, sense certain. Phala-shruti caveat added.
+- 31:84: Sanskrit has संश्रुतम् (heard, renowned); printed Hindi renders it as kirtan (as if संस्तुतम्). Both senses are stated.
+- 31:90: Long prose hymn merged with a closing verse; a few compounds are corrupt, so the explanation cites only the epithets whose sense is certain, and says so; the printed Hindi paraphrases freely (e.g. खरकदनकरः as 'खर-दूषण के संहारक'); Krishna-lila epithets in Dhruva's mouth are explained as the Purana's timeless view.
+- 31:109: Calls the sun सर्वपापहरः; presented as traditional faith, no caveat constant added. Second half follows the Sanskrit (mandalas seen one above another like parasols, cf. 31:116), not the printed Hindi (the sun surveys the mandalas).
+- 33:31: The word खाटो is irregular (perhaps for खट्वा); व्याख्या follows the printed Hindi 'खाट'.
+- 33:46: Violence: Arjuna brings down the fleeing asura (the blow is implied, not stated, in the Sanskrit; printed Hindi adds it), who then turns four-armed; HINSA caveat added. Sanskrit चार्जुनो is irregular.
+- 33:61: Half-verse only in the Sanskrit; the speaker frame (Jayadhvaja answering Vitihotra) is supplied by the printed Hindi.
+- 34:14: Sanskrit snatva (having bathed) is rendered by the printed Hindi as bathing the deity; phala-shruti caveat added.
+- 34:25: Phala-shruti for offering incense; caveat added. Sanskrit धूपितैः is grammatically odd (probably धूपितः); the sense follows the printed Hindi.
+- 34:28: Sanskrit reads saharaditya, a plain misprint for sahasraditya (the printed Hindi confirms); phala-shruti caveat added.
+- 34:36: Sanskrit mandiram likely means Vishnu's abode; the printed Hindi reads it both as temple and abode. Phala-shruti caveat added.
+- 34:42: Sanskrit reads 'दग्धम्' (burnt), probably a corruption of 'दुग्धम्' (milk); printed Hindi has only 'उत्तम पदार्थ'.
+- 34:57: Sanskrit has 'नरेन्द्रैः' (by kings) where the printed Hindi says 'मनुष्यों के लिए'.
+- 38:23: Six padas with जनार्दनः twice; possibly two readings merged, sense clear. Sanskrit has सुरैर् अदृश्यरूपेण (a form unseen by the devas), which the printed Hindi leaves out.
+- 38:32: हताः read as struck/afflicted by Vasuki's poisonous breath, not slain (the daityas act again in 38:37); printed Hindi has झुलसकर. No battle in the verse, so the violence caveat was dropped.
+- 40:22: Sanskrit places 'हिरण्यकशिपोर् अस्य विनाशं' in this verse; the printed Hindi moves it to 40:23.
+- 40:27: 'परस्परम्' is ambiguous (the printed Hindi reads it as 'say to one another'); both readings mentioned.
+- 40:45: Sanskrit reads 'दमो वासः' (split); printed Hindi takes it as one name दमवास.
+- 41:3: Speaker changes mid-verse (king, then Markandeya); printed Hindi adds 'पुनः', absent from the Sanskrit.
+- 41:4: Sanskrit calls the daitya 'महात्मनः'; printed Hindi renders it simply as 'that daitya'.
+- 41:28: Sanskrit (वीर्यद्रावः) refers to the act of conception during the conversation; kept non-graphic, following the printed Hindi.
+- 41:33: First line is one compound split across the pada break (आप्तधर्म-कामार्थमोक्षम्, qualifying चतुर्थं युगम्); printed Hindi gives only a brief sense, explanation follows the Sanskrit.
+- 41:36: Sanskrit गृहीत्वा तु करे पुत्रं is ambiguous (father taking the son's hand vs the tablet in the boy's hand); printed Hindi takes the latter.
+- 41:47: The Sanskrit 'सुमध्यमाम्' looks out of place (possibly corrupt); the printed Hindi leaves it out.
+- 41:59: Sanskrit 'हनिष्यन्ति' is a threat that others will kill him; the printed Hindi softens it. HINSA caveat added.
+- 43:6: The Sanskrit is the embryo's own lament in the first person; the printed Hindi renders it as a third-person description.
+- 43:22: Here 'hari' denotes Indra, not Vishnu; the printed Hindi agrees.
+- 43:38: The guru-simile turns on 'aplavambhodhi' (raftless ocean); the printed Hindi reads it as the ocean of samsara.
+- 44:42: Phala-shruti; 'दुष्प्रज' literally means 'having bad offspring', printed Hindi renders it 'childless'; caveat added.
+- 45:1: Sanskrit begins with the colophon of chapter 44; 'हताः' (slain) is rendered 'दमन' in the printed Hindi; caveat added.
+- 49:23: The Sanskrit does not name the rakshasa; the printed Hindi adds Viradha from tradition.
+- 49:26: Sanskrit reads तीक्ष्णाश्रमम्; taken as Sutikshna, as the printed Hindi does.
+- 49:35: Desire-driven approach of Shurpanakha; printed Hindi folds in part of verse 34 and adds her name.
+- 49:44: Violence against Shurpanakha ordered by letter; the Sanskrit मोक्तव्या ('to be released') is followed, against the printed Hindi 'do not let her go'; caveat added.
+- 49:57: Slaying of the army, Khara and Dushana; printed Hindi moves Khara and Dushana to 49:58; caveat added.
+- 49:58: Slaying of Trishiras and the rakshasas; caveat added. 'महारोषात्' may refer to Trishiras (as printed Hindi) or to the battle; the explanation says so.
+- 49:79: Sanskrit भाविकर्मबलाद् भृतम् agrees grammatically with Lakshmana, while the printed Hindi applies it to Sita; both readings are mentioned.
+- 49:109: 'चतुरः' may mean 'four' rather than 'clever' as the printed Hindi takes it; both readings are mentioned.
+- 49:134: Sanskrit 'स पर्याहतकल्मषाम्' is a wrong word split of 'सपर्याहतकल्मषाम्' (sins destroyed by service); explanation reads it so, agreeing with the printed Hindi.
+- 50:24: Violence: Rama sends Sugriva to fight Vali; the mark is unspecified in the Sanskrit (printed Hindi: garland).
+- 50:25: Violence: Vali is shot; printed Hindi adds 'hiding' (छिपकर), which is not in the Sanskrit. Sentence continues into 50:26.
+- 50:50: Sanskrit 'न तं पश्यामि' (I do not see anyone who repays) is softened in the printed Hindi to 'rarely found'.
+- 50:55: Sanskrit 'मन्त्रिणा' is singular; the printed Hindi has plural 'ministers'.
+- 50:62: Sanskrit 'प्रीतिम् अबह्येति' is an OCR slip (likely अभ्येति); sense confirmed from context and the printed Hindi.
+- 50:73: The printed Hindi reads 'तज्जनः' as the people of Ayodhya; the Sanskrit says only 'their people'.
+- 50:79: Sanskrit 'महाबलपराक्रमः' is singular (Sugriva); the printed Hindi applies it to the vanaras.
+- 50:139: The edition's Sanskrit names her Suprabha; the printed Hindi adds Svayamprabha in brackets.
+- 50:154: Sanskrit calls Sampati shyena (hawk); the printed Hindi says gridhraraja (king of vultures).
+- 50:158: The printed Hindi of 50:158 and 50:159 swaps the order of the two clauses relative to the Sanskrit.
+- 51:15: Sanskrit 'विशिद्भिर्' appears corrupt; sense taken from the printed Hindi.
+- 52:5: Rama is addressed with Vishnu names (Narasimha, Shridhara, Mahadeva); printed Hindi reads them as epithets of Rama.
+- 52:14: By grammar (उक्त्वा and धृतवान् share one agent) Lakshmana holds the arrow back; the printed Hindi makes Rama keep it aimed. Explanation follows the Sanskrit and says so.
+- 52:24: Word division slip in the Sanskrit: 'पटिम् आनमेतु' is read as 'पटिमानम् एतु'; 'त्रैलोक्यमूलविभुज' = uprooting the three worlds. Sense agrees with the printed Hindi.
+- 52:26: Rama praises Vali, whom he slew; the printed Hindi paraphrases 'तिलकयति सृष्टार्थपदवीम्' loosely.
+- 52:32: 'दशाननी' is read as the dvigu 'set of ten heads' (Ravana's heads); the printed Hindi also offers Lanka. Threat of war, caveat added.
+- 52:36: Accusatives 'धूम्राक्षं धूम्रपानं च' depend on 'आह' of 52:35; 'यात मे पुरीम्' is elliptical (printed Hindi supplies 'protect') and 'प्रबोधितः' is a participle, not a command. Explanation follows the Sanskrit. Orders for war; caveat added.
+- 52:93: The Sanskrit does not say what Hanuman tied and brought; the printed Hindi reads it as the herb.
+- 52:117: 'तदाश्रु' is most likely a slip for 'तदाशु' (quickly); the printed Hindi reads it as tears. The explanation states both; the verse's sense is otherwise certain.
+- 53:1: Sanskrit begins with the colophon of chapter 52; printed Hindi is misaligned (Kali-yuga text from another chapter), so the explanation follows the Sanskrit.
+- 53:27: Phala-shruti for the hymn, caveat added; printed Hindi is misaligned (Shukracharya episode of a later chapter), explanation follows the Sanskrit.
+- 53:32: Foretells the slaying of Kamsa, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:38: Slaying of Dhenuka, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:39: Slaying of Pralamba, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:40: Felling of the asura Arishta, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:41: Slaying of Keshi, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:47: Bow-breaking and slaying of guards and the elephant, violence caveat added; six padas; printed Hindi is misaligned.
+- 53:48: Wrestling bout and slaying of Mushtika, violence caveat added; printed Hindi is misaligned (image-installation chapter), explanation follows the Sanskrit.
+- 53:49: Slaying of Chanura, violence caveat added; 'janasamsadishah' can be read as one compound or as 'janasamsadi ishah', both noted; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:50: Slaying of Pushkaraka, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:51: Slaying of Kamsa, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:52: Slaying of Kamsa's brother Sunabha, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:54: Slaying of Panchajana for the guru, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:56: Slayings of Shrigala and the Yavana, violence caveat added; identifications (Kalayavana, Muchukunda) are from the well-known story, not named in the verse; printed Hindi is misaligned.
+- 53:60: Slaying of Naraka and others, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:63: Battle with Bana, violence caveat added; printed Hindi is misaligned, explanation follows the Sanskrit.
+- 53:64: Slaying of the monkey (Dvivida in the well-known story, not named here), violence caveat added; sentence continues into verse 65; printed Hindi is misaligned.
+- 58:24: Explains the order of resort in 'purvam purvam varjayet' more fully than the printed Hindi does.
+- 58:26: The Sanskrit forbids daily tooth-cleaning for the vrati; the printed Hindi adds 'perfumed or luxurious', which is interpretive.
+- 58:39: 'गुरोर् दत्तवरः' can mean 'granted leave by the guru' (as the printed Hindi takes it) or 'having given the guru his chosen gift'; the explanation names both.
+- 58:42: Marriage rule by the bride's name; the Sanskrit 'नान्तपर्वत' may hide 'अन्त्य' (as in the Manusmriti parallel), which the printed Hindi omits.
+- 58:61: 'ईश्वरं' taken as king or patron, as in the printed Hindi.
+- 58:84: Protective phala of japa; 'ग्रहाः सूर्यादिदूषणाः' read as afflicting grahas, the Sun and the rest (printed Hindi: प्रतिकूल ग्रह); PHAL caveat added.
+- 58:110: The form 'रथ्याम्' is irregular, but the tithi (Magha saptami) is explicit; read as Ratha-saptami with the printed Hindi.
+- 63:16: Compound मैत्र्यादिसंयोगपराङ्मुखानाम् is ambiguous; व्याख्या follows the printed Hindi.
+- 63:51: Last pada 'paribhavam bahyakritam sahante' has no explicit negation; printed Hindi reads 'do not tolerate'; both readings noted.
+- 63:92: Sanskrit 'मा मां रक्षति' looks corrupt; printed Hindi reads it as a question. HINSA caveat for the threatened killing.
+- 63:97: The sage's speech is not marked in the Sanskrit; the printed Hindi supplies 'मुनि बोले'.
+- 63:101: First pada 'ब्रह्मा भग्नसमाधिश् च' is terse; printed Hindi reads it as waiting until Brahma's samadhi ended.
+- 63:106: 'शंभोः दुर्नयं' is read by the printed Hindi as wrong done at Shiva's place; the context explanation is inferred from the chapter.
+- 63:122: Speaker taken as Suta from the vocative to Bharadvaja (the Purana's frame); the printed Hindi does not name him.
+- 64:5: 'पदभेदेन' can mean difference of wording or of path; the printed Hindi takes path, and the text notes both.
+- 64:44: Sanskrit's last quarter runs on into 64:45; printed Hindi completes it here with 'सदा पूजनीय हैं'.
+- 64:73: The word संसर्गे is of uncertain division (printed Hindi: at creation); the Vasudeva etymology itself is clear.
+- 64:88: 'Tyaktatrayah' is ambiguous (three gunas or three eshanas); both readings given, as in the printed Hindi.
+- 64:108: Sanskrit राजतेन means silver; printed Hindi says श्वेत (white); noted without altering it.
+- 64:124: Closing hymn of the chapter; the speaker is not named in this verse or the printed Hindi, so the explanation leaves it unspecified.
+- 66:40: Sentence runs on into 66:41 (Gita and daya); the printed Hindi adds 'फलदायी', which the Sanskrit only implies.
+- 66:43: Phala-shruti (equal to 1000 ashvamedhas, no rebirth); 'अम्भोयुगम्' is obscure and the printed Hindi glosses it only as 'that water'.
+- 66:44: Phala-shruti for padodaka; Sanskrit 'गमनैमिष' appears corrupt (Gaya read by the printed Hindi).
+
+## All other reviewNotes
+
+- 5:1: Sanskrit for this key begins with the colophon of chapter 4; the verse proper is the question about Rudra-sarga.
+- 5:8: Cites Brihadaranyaka Upanishad 3.9.4 on the eleven Rudras as ten pranas plus the self.
+- 5:9: Verses 9 and 10 together hold twelve name-words though the text counts eleven Rudras; the explanation says so and treats 'rudra eva ca' as probably the generic name.
+- 5:10: Verses 9 and 10 together hold twelve name-words though this verse counts eleven; the explanation states this plainly.
+- 5:27: Second half names two sons, Matarishva and Satyavan, without saying whose; the explanation reads them from context ('tadvat') as sons of Daksha and says the verse states no more.
+- 5:48: Six-pada verse: the third line (names of Kashyapa's wives) runs on into 5:49.
+- 5:53: Violence: Hiranyaksha and Hiranyakashipu slain by Varaha and Narasimha; caveat added.
+- 5:55: Sanskrit has the digitisation artefact 'जनयाम्_अस' for जनयामास.
+- 5:58: 'दुष्टजातयः' means kinds of creatures (predatory animals); the explanation states it does not refer to any human community.
+- 5:61: Budha is here counted among the sons of Soma's nakshatra wives; other Puranic accounts give a different birth story.
+- 5:67: Phala-shruti: reciters devoted to Vishnu become pure; caveat added. Last verse of chapter 5.
+- 7:1: Sanskrit for this key begins with the colophon of chapter 6 (पुंसवनाख्यान); the verse proper is the question about Markandeya.
+- 7:10: Genealogical verse (Bhrigu, Khyati, Mrikandu, Sumitra).
+- 7:11: Praises Sumitra's devotion to her husband; framed as her personal virtue with a note on mutual care, no general caveat added.
+- 7:21: Sanskrit has an OCR break in 'कथयाम्_अस' (कथयामास); sense is clear.
+- 7:35: Printed Hindi renders 'वर्धते सुखम्' as 'विचरण करते हैं'; the vyakhya follows the Sanskrit and notes this.
+- 7:38: Promise that constant Narasimha worship conquers death; PHAL caveat added.
+- 7:41: Sentence runs on into 7:42; the explanation covers only the place named here.
+- 7:44: Promise that the mantra removes death; PHAL caveat added.
+- 7:47: Sentence continues from 7:46 and into 7:48.
+- 7:57: Yama's servants struck with spears; HINSA caveat added.
+- 7:60: Vishnu's servants threaten to slay Death; HINSA caveat added.
+- 7:71: Death driven off by blows of Vishnu's messengers; described without a caveat.
+- 7:73: Calls the hymn death-pacifying; PHAL caveat added.
+- 7:74: Phala-shruti promising freedom from untimely death; PHAL caveat added. Sanskrit has OCR typo पठेते for पठते.
+- 8:1: Sanskrit for this key begins with the colophon of chapter 7; the verse proper is the messengers' return to Yama.
+- 8:2: Sentence runs on into 8:3.
+- 8:4: Vishnu's attendants beat Yama's messengers with clubs; HINSA caveat added.
+- 8:5: Mrityu is beaten with clubs by Vishnu's attendants; HINSA caveat added.
+- 8:14: Printed Hindi says 'touch' where the Sanskrit has पश्यन् (seeing); explanation follows the Sanskrit.
+- 8:15: Instruction not to go where Vaishnavas reside; framed as protection of devotion, not sectarian superiority.
+- 8:17: Yama calls his messengers महापापैः; read as a rebuke within the narrative.
+- 8:18: Promise that Yama's messengers do not approach worshippers of Narasimha; PHAL caveat added.
+- 8:19: Yama looks upon beings suffering in hell; NARAK caveat added.
+- 8:21: Yama questions a being suffering in hell; NARAK caveat added.
+- 8:22: Promise that the Lord grants his own world for worship with mere water; PHAL caveat added.
+- 8:27: Promise of deliverance from hell by daily remembrance of the name; PHAL and NARAK caveats added.
+- 8:28: Promise of deliverance for one who takes refuge with these names; PHAL caveat added.
+- 8:29: Promise of release from affliction for one who surrenders; PHAL caveat added.
+- 8:30: Beings in hell cry out the divine names; NARAK caveat added.
+- 8:39: Mentions Ravana's slaying and the foul state of beings in hell; HINSA and NARAK caveats added.
+- 8:40: Phala-shruti style claim that kirtan ends hell's pain; PHAL and NARAK caveats added.
+- 8:44: Promise that name-kirtan takes beings to Vishnu's abode; PHAL caveat added.
+- 10:1: Sanskrit for this key begins with the colophon of chapter 9; the verse proper is Markandeya's return home.
+- 10:15: Printed Hindi omits 'वृन्दालयं'; its sense is uncertain and the text says so.
+- 10:19: Promises fruit of all tirthas through a stotra; PHAL caveat added.
+- 10:20: Asks for a stotra granting the fruit of all tirthas; PHAL caveat added.
+- 10:33: Epithet 'crusher of the daityas' bodies' (slaying of asuras); HINSA caveat added.
+- 10:37: Trisuparna and tridanda glosses drawn from Vedic/Manu usage; editor may wish to confirm.
+- 12:2: Printed Hindi for this key belongs to another passage (Savitri and the brahmachari); explanation follows the Sanskrit.
+- 12:3: Printed Hindi for this key belongs to another passage (Savitri and the brahmachari); explanation follows the Sanskrit.
+- 12:5: Printed Hindi for this key belongs to another passage (Savitri and the brahmachari); explanation follows the Sanskrit.
+- 12:6: Introduces the Yama-Yami dialogue (Yami's proposal to her brother, refused by Yama); described briefly and non-graphically. Printed Hindi here belongs to another passage.
+- 12:7: Printed Hindi for this key belongs to another passage (Savitri and the brahmachari); explanation follows the Sanskrit.
+- 12:8: Printed Hindi for this key belongs to another passage (Savitri and the brahmachari); explanation follows the Sanskrit. Precedes the sensitive Yama-Yami exchange.
+- 12:9: Printed Hindi here is misaligned OCR from the next chapter's Savitri story; explanation follows the Sanskrit. Opens the Yama-Yami (incest proposal) dialogue.
+- 12:10: Yami's incest proposal (Yama-Yami dialogue); kept non-graphic. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:11: Yami's incest proposal continues; kept non-graphic. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:12: Yami's incest proposal; the nominative 'munisattamah' inside Yami's speech looks like a textual slip. Printed Hindi is misaligned OCR; explanation follows the Sanskrit.
+- 12:13: Yami's incest proposal; kept non-graphic. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:14: Yami threatens to die if refused (emotional coercion within the incest proposal); ending points to seeking help. Printed Hindi is misaligned OCR; explanation follows the Sanskrit.
+- 12:15: Yami's incest proposal; kept non-graphic. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:16: Most explicit verse of Yami's incest proposal; deliberately kept brief and non-graphic. Printed Hindi is misaligned OCR; explanation follows the Sanskrit.
+- 12:17: Yama begins refusing Yami's incest proposal. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:18: Yama refuses Yami's incest proposal; kept non-graphic. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:20: Yami's incest proposal (argument from shared womb). Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:22: 'svayambhuvapi nindyeta' read as 'would be censured even by Brahma' (instrumental agent). Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:23: Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:24: Near-verbatim parallel of Bhagavad Gita 3.21. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:25: Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:26: Yama refuses Yami's incest proposal and redirects her. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:27: Yama refuses Yami's incest proposal; kept non-graphic. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:28: Yami's incest proposal continues (flattery); kept non-graphic. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit. Whose beauty is meant (Yama's or her own) is left open, as in the verse.
+- 12:30: Yami's incest proposal (embrace image); kept non-graphic. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:31: Yama redirects Yami toward a proper marriage. Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:34: Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:35: Printed Hindi is misaligned OCR from another passage; explanation follows the Sanskrit.
+- 12:36: Phala-shruti (heaven for self-restraint); PHAL caveat added. Printed Hindi is misaligned OCR; explanation follows the Sanskrit.
+- 12:39: Phala-shruti with release from Yama's torments; PHAL and NARAK added. Printed Hindi is misaligned OCR; explanation follows the Sanskrit.
+- 12:40: Closing of the Yama-Yami episode with a sin-removing claim; PHAL added. Printed Hindi is misaligned OCR; explanation follows the Sanskrit.
+- 13:1: Sanskrit for this key begins with the colophon of chapter 12 (Yami-Yama-samvada); the verse proper is Shuka's request for more stories.
+- 13:4: Mentions marital restraint (ṛtukālābhigāmī); kept to a brief non-graphic note.
+- 13:5: Sanskrit reads 'पुजयत्' (OCR slip for पूजयत्).
+- 13:22: Sanskrit has 'भर्त्सयाम्_अस' (OCR form of भर्त्सयामास).
+- 13:24: Two birds are burned by the brahmachari's anger; the chapter itself condemns the act (v.44, v.49), so the HINSA caveat, which frames killing as dharma's victory, was not added.
+- 13:29: Six-pada verse; the brahmachari tries to burn Savitri with his gaze. Attempted harm only, no caveat added.
+- 13:37: Continues the pativrata teaching (service to husband as sole dharma); caveat added.
+- 13:40: Sanskrit reads स्वोदरपोसकः, apparently for स्वोदरपोषकः.
+- 13:44: Savitri's harsh address (पापात्मन्) to the brahmachari for killing the birds; rendered in the verse's own terms.
+- 16:39: Last verse of chapter 16; phala-shruti for meditation and kirtan, PHAL caveat added.
+- 17:21: Graded fruits of japa by lakhs (phala-shruti); PHAL caveat added.
+- 17:23: Protective phala-shruti (bad dreams, demons, serpents); PHAL caveat added.
+- 17:25: Praise of the mantra as remover of fear of death; PHAL caveat added.
+- 17:26: Phala-shruti (long life, wealth, sons, cattle) for mantra japa; PHAL caveat added.
+- 17:27: Phala-shruti (all four purusharthas) for mantra japa; PHAL caveat added.
+- 17:28: Promise of siddhi through japa; PHAL caveat added.
+- 17:29: Promise of Vishnu's supreme abode for japa at death; PHAL caveat added.
+- 17:30: Exclusive claim for one mantra; presented as devotional emphasis without disparaging other paths.
+- 17:31: Exclusive claim for the ashtakshara mantra; framed as devotional emphasis, not disparagement.
+- 17:32: Supremacy claim for Keshava; framed neutrally as Vaishnava devotion, no disparagement of other deities.
+- 17:35: Promise that the mantra destroys all sorrow and grants siddhi; PHAL caveat added.
+- 21:8: Printed Hindi adds 'chakravarti' not in the Sanskrit; Sagara legend referenced only in widely known terms.
+- 21:10: Order differs from the better-known solar lists (Anshuman as Sagara's grandson, Rohitashva as Harishchandra's son); noted in text.
+- 21:13: Line continues through Lava rather than Kusha, unlike better-known lists; noted in text.
+- 21:15: Printed Hindi glosses Budha as Buddha (not in the Sanskrit); handled respectfully. Stray visarga-like marks in the Sanskrit look like OCR noise.
+- 23:4: Stray visarga-like marks in the Sanskrit look like OCR noise; sense unaffected. 'Vamshavartinah' is glossed literally as printed; other Puranas read 'Vashavartinah'.
+- 23:8: Printed Hindi adds '(Shibi)' after Bhrishundi, not in the Sanskrit; noted in text.
+- 23:10: Stray visarga-like marks in the Sanskrit look like OCR noise; sense unaffected.
+- 23:19: Ashvatthama listed among future sages; only six names in the Sanskrit; chiranjivi verse quoted from tradition.
+- 23:22: Count of seven sages unclear: 'vasumedhatithih' may be one name or two.
+- 23:27: The sage name 'Nirutsaha' is read here as freedom from worldly eagerness; only six sages named.
+- 25:1: Sanskrit for this key begins with the colophon of chapter 24 (Ikshvaku-charitra); the verse proper is Bharadvaja's question.
+- 25:17: Phala-shruti promising influence over rulers ('vasham kuryat'); framed as traditional faith, not a licence to manipulate; PHAL added.
+- 25:19: Phala-shruti equating the hymn with all tirthas and yajnas; PHAL added.
+- 25:24: Printed Hindi adds rudraksha; the Sanskrit names only a rosary of lotus seeds.
+- 25:27: Describes extreme austerities (panchagni, standing in cold water); explanation discourages imitation, citing Gita 17.5-6.
+- 25:29: Mentions living on air alone; framed as an image of resolve, not an instruction.
+- 25:35: Sanskrit reads 'दृष्टुम्', probably a misprint for 'द्रष्टुम्'.
+- 25:45: Opening 'tato nv avataram' is 'tato nu avataram' (emphatic particle nu, 'then indeed I descended'); sense is clear.
+- 25:64: Sanskrit has an OCR artifact ('aradhayam_asa' for aradhayamasa).
+- 28:1: Sanskrit for this key begins with the colophon of chapter 27; the verse proper is Bharadvaja's question about Shantanu's chariot.
+- 28:2: Phala-shruti: the story is said to remove all sins; caveat added.
+- 28:4: Printed Hindi adds 'unknowingly' (अनजाने में), which is not in the Sanskrit.
+- 30:1: Sanskrit for this key begins with the colophon of chapter 29; the verse proper opens the description of the earth.
+- 30:8: Long prose passage listing the cities of the directional guardians around Meru; the text names seven directions (no north-east).
+- 30:13: Sanskrit reads पपघ्न्यः, evidently a misprint for पापघ्न्यः (destroyers of sin).
+- 30:27: Verse runs into the next; the four names are placed on the eastern peak by 30:28.
+- 30:34: Phala-shruti for gifts of gold, cows and land; PHAL added.
+- 30:38: Phala-shruti for Magha bathing and gifts; PHAL added.
+- 30:39: Phala-shruti for temple building, service and pilgrimage; PHAL added.
+- 30:48: Sanskrit is longer than a normal shloka (two lines merged).
+- 31:1: Sanskrit for this key begins with the colophon of chapter 30; the verse proper is Bharadvaja's question about Dhruva.
+- 31:7: Harsh, insulting speech by Suruchi to a child and about his mother; framed as the story's negative example.
+- 31:8: Half-verse only in the Sanskrit.
+- 31:9: Suruchi uses karma to shame a child; explanation shows the story itself refutes her inference.
+- 31:12: Last pada reads nocivan = na + ucivan (perfect participle of vac, 'did not speak'); the text is sound and the sense is clear.
+- 31:18: Two speakers in one verse: the first half ends Suniti's question, the second half is Dhruva's; the Sanskrit does not mark the change.
+- 31:25: Suniti affirms the co-wife's taunt as fact, in the frame of past merit; explained neutrally, with the story's own reversal noted.
+- 31:26: Verse ties royal birth to merit; the explanation states it does not license ranking people by birth.
+- 31:30: Printed Hindi of the second half is garbled (double negative); the Sanskrit is clear ('there is none other than Uttanapada, such is my thought') and the explanation gives it literally, then reads it with 31:31 as his belief until now.
+- 31:35: Verse has three lines; OCR 'कष्ठैर्' for 'कष्टैर्' in the Sanskrit.
+- 31:39: The link between the blue lotus and Vishnu's colour is offered as a suggestion and marked as not stated in the verse.
+- 31:50: Third pada 'anarghya-nayane pathyam' may be 'anarghya-naya-nepathyam' (conduct and attire); both readings are stated.
+- 31:59: Phala-shruti: promise of wealth for serving Vishnu's feet; caveat added.
+- 31:60: Phala-shruti: destruction of great sins by mere remembrance; caveat added.
+- 31:68: Names the dvadashakshara mantra (om namo bhagavate vasudevaya) from tradition; the verse itself does not spell it. Phala-shruti caveat added.
+- 31:70: Phala-shruti: promise of quick prosperity through the mantra; caveat added.
+- 31:74: Describes ascetic absorption beyond bodily needs; entry notes it is not a prescription to neglect the body.
+- 31:86: Printed Hindi has 'कोमल भुजाओं' where the Sanskrit says कराभ्यां (hands); the explanation follows the Sanskrit.
+- 31:94: Half-verse that bridges Dhruva's hymn and Vishnu's reply.
+- 31:99: Phala-shruti (recital and sight of Dhruva increase life, fame, prosperity); PHAL caveat added.
+- 31:101: Cosmographic verse (yojana distances); explained as the Purana's own cosmology without modern comparison.
+- 31:102: Cosmographic verse; explanation stays within Puranic tradition (Budha son of Soma, Ushanas as Shukracharya).
+- 31:103: Cosmographic verse with yojana distances.
+- 31:104: Cosmographic verse; links to the Saptarshis who taught Dhruva earlier in this chapter (31:66-70).
+- 31:106: Cosmographic verse on the sun as measurer of time.
+- 31:108: Cosmographic verse on the sun's upward and downward rays.
+- 31:112: Patala is described as a radiant realm, not a hell; no NARAK caveat needed.
+- 31:114: Sentence runs on into 31:115; 'dviguno mandalena' may mean double distance or double extent, and the explanation says so.
+- 31:117: Vaishnava ranking of Vishnuloka above Brahmaloka; the cross-reference names only 'Varaha'.
+- 31:119: Phala-shruti: supreme state promised for knowing the cosmography; caveat added.
+- 31:120: Closing verse of chapter 31, in a different metre.
+- 33:1: Sanskrit for this key begins with the colophon of chapter 32; the verse proper is Sahasranika's question.
+- 33:13: Phala-shruti: freedom from all sins and Vishnuloka for sweeping the temple; caveat added.
+- 33:14: Phala-shruti: imperishable merit for plastering the temple floor; caveat added.
+- 33:15: Phala-shruti: freedom from sins for hearing the story; caveat added.
+- 33:16: Sanskrit 'pañcabhir bhrātṛbhir yutaḥ' is read as the five brothers together.
+- 33:19: Sentence runs on into 33:20.
+- 33:21: Printed Hindi renders 'darbhasūcī' as pavitrī; explanation notes the Sanskrit.
+- 33:22: Printed Hindi reads 'akṣamālā' as a rudraksha rosary; the explanation keeps the Sanskrit word.
+- 33:24: Yudhishthira addresses the disguised demon; 33:23 is not in this batch.
+- 33:29: Raurava hell named as the result of neglecting the oppressed, in a demon's deceptive appeal; NARAK caveat added.
+- 33:37: Sanskrit 'भूपाशरीरिणी' joins the vocative भूप (to Sahasranika) with अशरीरिणी; read accordingly.
+- 33:40: Violence: the demon reveals his form and fights Bhima; HINSA caveat added.
+- 33:41: Violence: Bhima crushes the demon's head; HINSA caveat added.
+- 33:65: Printed Hindi renders ब्रह्मद्वेषरतः as धर्मद्रोही; the व्याख्या follows the Sanskrit.
+- 33:70: Violence: Raivata is beheaded by city guards on suspicion; व्याख्या notes the killing is not presented as justice; HINSA caveat added.
+- 33:71: Heaven as the fruit of an unintended act of temple service; PHAL caveat added.
+- 33:78: Printed Hindi adds 'Arjuna will defeat you', which the Sanskrit of this verse does not state; context supports it.
+- 33:83: Liberation promised for worship, even unknowing; PHAL caveat added. Speaker identified as Suta from the frame (address to विप्रेन्द्राः).
+- 34:2: Phala-shruti (freedom from all sins for removing nirmalya and bathing the image); PHAL caveat added.
+- 34:3: Phala-shruti (fruit of all tirthas, heaven, Vishnu's abode); PHAL caveat added.
+- 34:4: Phala-shruti (freedom from all sins for the invocation alone); PHAL caveat added.
+- 34:5: Phala-shruti (freedom from all sins for offering asana, arghya, padya, achamaniya); PHAL caveat added.
+- 34:6: Phala-shruti (freedom from sin and honour in Vishnuloka for bathing the image with water and milk); PHAL caveat added.
+- 34:7: Phala-shruti for bathing the image with curd; caveat added.
+- 34:8: Phala-shruti for bathing with honey; caveat added.
+- 34:10: Phala-shruti (release from sin, Vishnuloka) for ghee-bathing; caveat added.
+- 34:11: Phala-shruti for panchagavya abhisheka; caveat added.
+- 34:12: Phala-shruti (Varunaloka) for the wheat-flour ubtan; caveat added.
+- 34:13: Phala-shruti for cleaning the pedestal; caveat added.
+- 34:15: Phala-shruti for camphor-aguru water and tirtha water; caveat added.
+- 34:16: Phala-shruti for tirtha-water bathing and offering garments; caveat added.
+- 34:17: Phala-shruti (Somaloka) for garments; caveat added.
+- 34:18: Phala-shruti for sandal paste (a crore of kalpas in heaven); caveat added.
+- 34:20: Phala-shruti (merit of ten gold coins per flower); caveat added.
+- 34:22: Phala-shruti for garlands (crores of kalpas in Vishnuloka); caveat added.
+- 34:23: Phala-shruti for bilva and tulasi worship; caveat added.
+- 34:24: Printed Hindi reads mahishaksha for Sanskrit mahishakhya guggulu; phala-shruti caveat added.
+- 34:26: Phala-shruti (Vayuloka, vimana with apsaras); caveat added.
+- 34:29: One word, 'divan', is an OCR slip (divyam or vidvan); the list of offerings and the sense of the verse are unaffected, and the text says so.
+- 34:30: Phala-shruti (years in Vishnuloka equal to grains of rice); caveat added.
+- 34:31: Bali here means a food offering (no animal sacrifice), stated explicitly; phala-shruti caveat added.
+- 34:35: Phala-shruti for hymns and japa; caveat added.
+- 34:37: Phala-shruti (vimana served by apsaras); caveat added.
+- 34:38: Phala-shruti (heaven to heaven, Vishnuloka); caveat added.
+- 34:41: Phala-shruti (Indraloka for fourteen Indras) for offering ornaments; caveat added.
+- 34:43: Phala-shruti for gifting a cow and offerings; caveat added.
+- 34:44: Phala-shruti promising heaven and liberation; caveat added.
+- 34:46: Phala-shruti promising heavenly enjoyment and freedom from rebirth; caveat added.
+- 34:49: Promise that a lakh-homa removes all fear from a village; phala caveat added.
+- 34:52: Promise that the rite ends epidemics and untimely death; phala caveat added.
+- 34:55: Promise of peace for residents through the homa; phala caveat added.
+- 34:56: Promise of heaven and liberation through Narasimha worship; caveat added.
+- 38:1: Sanskrit for this key begins with the colophon of chapter 37 (Matsya-pradurbhava); the verse proper opens the churning of the ocean.
+- 38:3: The phrase 'लोकनाथाय शार्ङ्गिणे' is repeated in both halves, possibly a scribal repetition.
+- 38:5: Refers to the slaying of Madhu and Kaitabha; caveat added.
+- 38:12: Promise of victory over the danavas in war; caveat added.
+- 38:38: Vishnu takes the enchanting female form (Mohini episode begins); worth an editor's glance.
+- 38:40: Asuras overcome by desire on seeing Mohini; kept to a brief, non-graphic note.
+- 38:42: Devas go to battle against the asuras; violence caveat added.
+- 38:44: Phala-shruti for hearing the Kurma story; second half is in a longer metre (possibly a closing verse merged in); caveat added.
+- 40:15: Battle: Hiranyakashipu defeats the devas and seizes heaven; caveat added.
+- 40:23: The devas ask for the means to slay Hiranyakashipu; caveat added.
+- 40:24: Printed Hindi adds 'आप सब शोक त्यागिए', which is not in the Sanskrit; the vyakhya follows the Sanskrit.
+- 40:26: The vocative 'नृप' sits oddly in Brihaspati's speech to the devas; possibly the narrator's address or a textual variant.
+- 40:28: Omens (शकुन) presented as traditional belief.
+- 40:40: Sanskrit reads 'वज्रदंस्त्रो', an evident slip for 'वज्रदंष्ट्रो'; noted in the text.
+- 40:49: The sense of 'सावन' in this list is unclear; left unexplained.
+- 40:53: Sentence runs on into 40:54 (the Lord appears and speaks).
+- 40:57: Printed Hindi folds the repeated clause 'संस्तुतो ऽहं भवेन च' into one sentence.
+- 40:59: Violence: Vishnu promises to slay Hiranyakashipu; HINSA caveat added.
+- 40:61: Violence: Vishnu foretells slaying Hiranyakashipu; HINSA caveat added. 'सुरांस् तदा' looks corrupt.
+- 41:1: Sanskrit for this key begins with the colophon of chapter 40; the verse proper is the king's request to Markandeya.
+- 41:20: Mentions menstruation and ritual bath as the setting for conception; kept factual and non-graphic.
+- 41:23: Two speakers in one verse: Kayadhu's question ends and Hiranyakashipu's reply begins.
+- 41:42: Hiranyakashipu speaks of punishing those who chant Vishnu's names; framed as tyranny, not endorsed.
+- 41:44: Phala-shruti: the name is said to grant all prosperity and fearlessness; PHAL added.
+- 41:45: Says the sin of reviling Krishna is endless; framed as traditional language, not a licence for harshness toward others.
+- 41:46: Promises destruction of all sins through refuge; PHAL added.
+- 41:48: Hiranyakashipu's abuse of his son; described in the verse's own terms.
+- 41:55: The king calls the destruction of Vishnu's devotees fitting for his son; HINSA caveat added. Sentence runs on into 41:56.
+- 41:56: Printed Hindi 'विश्वनाथ मेरे पुत्र होकर' compresses the Sanskrit 'being the son of me, the lord of the world'.
+- 41:62: Printed Hindi renders 'असदृशस्य' as 'असमर्थ'; the Sanskrit means 'unequal, incomparable'.
+- 43:1: Sanskrit for this key begins with the colophon of chapter 42; the verse proper describes Prahlada at the guru's house.
+- 43:7: Six padas under one key; probably two verses merged. The 'संसार दुःखमय' stance is presented as vairagya teaching.
+- 43:17: Verse combines the end of the boys' question and the start of Prahlada's answer.
+- 43:24: Verse closes Prahlada's narration and resumes the main narration (Hiranyakashipu's night round).
+- 43:28: Violence: Hiranyakashipu resolves to kill his son; caveat added.
+- 43:29: Violence: secret order to kill the sleeping Prahlada; caveat added.
+- 43:32: Violence: Prahlada is bound with serpents; caveat added.
+- 43:33: Violence: Prahlada thrown into the ocean with rocks on him; caveat added.
+- 43:36: OCR splits the compound with a comma (brahmamritambhodhi, maye); read as one word.
+- 43:85: Foreshadows the slaying of Hiranyakashipu (dushta-vadha, continued from 43:84); HINSA caveat added.
+- 43:88: Half-verse only in the edition; explanation covers just this line.
+- 44:1: Sanskrit for this key begins with the colophon of chapter 43; the verse proper is the daityas reporting Prahlada's safe return.
+- 44:8: Violence: Hiranyakashipu draws his sword to kill Prahlada; caveat added.
+- 44:9: Violence: threat to kill Prahlada with the sword; caveat added.
+- 44:11: Violence: explicit threat to cut Prahlada in two; caveat added.
+- 44:17: Violence: Narasimha slays the daityas surrounding him; caveat added.
+- 44:18: Violence: destruction of the assembly hall and the daityas' resistance; caveat added.
+- 44:19: Violence: Narasimha slays the warriors and is showered with weapons; caveat added.
+- 44:20: Violence: Narasimha destroys the daitya army; caveat added.
+- 44:21: Violence: Hiranyakashipu sends 88,000 more warriors into battle; caveat added.
+- 44:22: Violence: Narasimha slays the besieging daityas; caveat added.
+- 44:23: Violence: the hall is destroyed again after the slaughter; caveat added.
+- 44:26: Violence: Narasimha slays the asuras and the survivors flee; caveat added.
+- 44:27: Violence: mass slaying of daityas until dusk; boon tradition referred to in general terms; caveat added.
+- 44:28: Violence: Narasimha seizes Hiranyakashipu; caveat added.
+- 44:29: Violence: Narasimha tears Hiranyakashipu with his nails; boon tradition referred to in general terms; caveat added.
+- 44:31: Violence: Narasimha tears open Hiranyakashipu's heart; caveat added.
+- 44:32: Violence: the two halves of Hiranyakashipu's body vanish in the nails; the Lord's surprise is read as lila; caveat added.
+- 44:34: Violence: the remains of Hiranyakashipu fall to the ground; caveat added.
+- 44:40: Phala-shruti (freedom from all sins for reading or hearing); caveat added.
+- 44:43: Violence: summary of the slaying of Hiranyakashipu with nails; caveat added.
+- 45:12: Sanskrit has an OCR asterisk in '*धविर्भागं' (read हविर्भागम्); sense is clear.
+- 45:17: Second half of the Sanskrit is loose ('ऋत्विजश् च न भासन्ते होममन्त्रो'; possibly 'भाषन्ते'); overall sense is clear from 45:11 and 45:13, and the explanation says so.
+- 45:22: Sanskrit has OCR 'शंशयः' for 'संशयः'; sense is clear.
+- 45:31: OCR artefact in the Sanskrit: 'याचयाम्_अस' for 'याचयामास'.
+- 45:40: Violence: Vamana slays many danavas; HINSA caveat added.
+- 45:43: Half-verse only in the Sanskrit (one line).
+- 45:45: Phala-shruti (freedom from sin, honour in Vishnuloka); PHAL caveat added.
+- 49:1: Sanskrit for this key begins with the colophon of chapter 48; the verse proper begins chapter 49.
+- 49:3: Printed Hindi adds the name Jayanta in brackets; the Sanskrit of this verse does not name him.
+- 49:13: Sensitive: Rama demands a limb (the crow gives an eye) as the price of the unfailing weapon; framed as story-language, not an endorsement of bodily punishment.
+- 49:24: Violence: Rama and Lakshmana slay the rakshasa; caveat added.
+- 49:37: Shurpanakha's proposal to Rama; kept brief and non-graphic.
+- 49:39: Rama directing Shurpanakha to Lakshmana; traditionally read as jest, noted as such.
+- 49:42: Rama sends Shurpanakha to Lakshmana; the vyakhya notes the traditional 'jest' reading and leaves the ethical question open.
+- 49:45: Part of the Shurpanakha disfigurement episode; read with 49:44.
+- 49:46: Opens the Shurpanakha disfigurement episode; read with 49:47.
+- 49:49: Sanskrit 'कुम्भकर्णाद्या-याता' is an OCR join for 'कुम्भकर्ण अद्य आयाता'; sense is clear.
+- 49:51: Sanskrit has OCR artefacts (प्रेषयाम्_असुर्); sense is clear.
+- 49:56: Battle with the fourteen thousand rakshasas; caveat added.
+- 49:64: Printed Hindi adds 'in Rama's voice'; the Sanskrit only says a cry is to be uttered.
+- 49:65: Ravana states his desire for Sita as the real motive.
+- 49:68: Ravana threatens to kill Maricha.
+- 49:72: Sanskrit has a typo (अयोधायां for अयोध्यायां).
+- 49:74: Rama shoots the deer (Maricha); caveat added.
+- 49:75: Death of Maricha; caveat added.
+- 49:80: Sensitive: Sita's accusation against Lakshmana; framed, as the text itself does, as words driven by fear and destiny.
+- 49:81: Ravana's ascetic disguise; the explanation stresses that the deceit does not reflect on genuine sannyasa.
+- 49:86: The Sanskrit calls Ravana महात्मना here; read as referring to his ascetic guise.
+- 49:93: Violence: Jatayu engages Ravana in battle; caveat added.
+- 49:95: Violence: Ravana draws the sword Chandrahasa against Jatayu; caveat added.
+- 49:97: Violence: Jatayu, mortally wounded, rebukes Ravana; caveat added.
+- 49:99: Jatayu foretells Ravana's death at Rama's hands; caveat added.
+- 49:100: Sita promises Vishnuloka to Jatayu; presented as the tradition's faith.
+- 49:111: Sanskrit reads 'लक्षणं' (typo for लक्ष्मणं); slaying of Maricha mentioned, HINSA added.
+- 49:123: Jatayu urges Rama to slay Ravana and his host; HINSA added.
+- 49:125: Heavenly reward (vimana, apsaras) for Jatayu presented as the tradition's faith.
+- 49:126: Printed Hindi adds the name Ayomukhi in brackets; the Sanskrit only says 'राक्षसी'.
+- 49:127: Rama fells a rakshasi; HINSA added. Printed Hindi softens 'पातयित्वा' to 'परास्त कर'.
+- 49:129: Rama burns Kabandha, who is released from a curse; HINSA added.
+- 49:133: Sanskrit reads 'उक्वा' (typo for उक्त्वा).
+- 50:1: Sanskrit for this key begins with the colophon of chapter 49; the verse proper introduces Sugriva and Hanuman.
+- 50:7: Sanskrit reads बिक्षुरूपी, an evident misprint for भिक्षुरूपी.
+- 50:21: Violence: Sugriva asks Rama to slay Vali and calls him lustful; caveat added.
+- 50:22: Printed Hindi adds 'with one arrow'; the Sanskrit says only 'at once' (युगपत्).
+- 50:27: Sensitive: Tara is 'given' to Sugriva; caveat added. Printed Hindi adds the kingdom, not in this verse's Sanskrit.
+- 50:32: Mentions Sugriva's indulgence with Tara (रेमे); kept brief and non-graphic.
+- 50:33: Printed Hindi identifies Nilakantha with Prasravana; not stated in the Sanskrit.
+- 50:36: Rama calls Sugriva दुष्ट; explained as anger at a broken promise, not a final judgment.
+- 50:40: Threat of killing (the arrow that slew Vali) addressed to Sugriva; HINSA caveat added.
+- 50:51: Statement that ingratitude has no expiation; presented as hyperbole stressing gravity, with the story's own reconciliation noted.
+- 50:53: Threat to send Sugriva to the abode of death like Vali; HINSA caveat added. Sanskrit 'नयिषे' is an irregular form (expected नयिष्ये).
+- 50:81: Sanskrit 'सुभारान्वेषणाय' is an OCR slip for 'सुभार्यान्वेषणाय'; the explanation says so.
+- 50:90: Mentions Jatayu's fight with Ravana in passing; no caveat added as there is no description of violence.
+- 50:92: Printed Hindi adds 'दुष्ट' for Ravana, not in the Sanskrit; noted in the explanation.
+- 50:104: Mentions the slaying of Vali; HINSA caveat added.
+- 50:105: Sanskrit has the OCR slip 'पर्तिज्ञातम्' for 'प्रतिज्ञातम्'.
+- 50:121: Printed Hindi says Sugriva 'saw' the monkeys; the Sanskrit has श्रुत्वा ('heard'), followed here.
+- 50:122: Printed Hindi adds 'कठोर' (harsh) to the order; the Sanskrit only says आज्ञापयति.
+- 50:135: Printed Hindi says Lakshmana 'saw' an omen; the Sanskrit has शकुनं वाक्यम् (an auspicious statement), followed here.
+- 51:1: Sanskrit for this key begins with the colophon of chapter 50; the verse proper nearly matches the opening verse of Valmiki's Sundarakanda.
+- 51:9: Sanskrit 'वने' is unclear (possibly 'over the water'); the rest of the verse is certain. Printed Hindi adds 'विदीर्ण कर' (tearing Simhika), not explicit in the Sanskrit; violence caveat added.
+- 51:22: Ravana's coercive proposition to Sita; presented as condemned adharma.
+- 51:24: Sita's curse that Rama's arrows will drink Ravana's blood; violence caveat added.
+- 51:25: Ravana orders the rakshasis to coerce Sita within two months; framed as condemned coercion.
+- 51:26: Ravana threatens that Sita be eaten if she refuses; violence caveat added.
+- 51:28: Sita foretells Rama killing Ravana; violence caveat added.
+- 51:29: Sita declares Rama will slay Ravana; violence caveat added.
+- 51:30: Rakshasis cry for Sita to be killed and eaten; 'ददृशुर् भयम्' is unclear (felt fear, or showed terror to Sita); the cries that follow are certain; violence caveat added.
+- 51:31: Sanskrit spells the name 'त्रिजता' (for त्रिजटा).
+- 51:32: Trijata's dream foretells the death of Ravana and all rakshasas; violence caveat added.
+- 51:37: Promise of slaying Ravana and his host; caveat added.
+- 51:42: Printed Hindi adds the name Jayanta in brackets; the Sanskrit says only kaka.
+- 51:43: Sanskrit has small OCR slips (भुङ्क्त्वा for भङ्क्त्वा, कृईडावनम् for क्रीडावनम्); the sense is certain.
+- 51:44: Violence: Hanuman slays rakshasas and Akshakumara; caveat added.
+- 51:45: Printed Hindi adds the brahmastra; Sanskrit only says Indrajit seized him. Killing of Aksha's horses and charioteer; caveat added.
+- 51:46: Burning of Lanka and rebuke of Ravana; caveat added.
+- 51:51: Sanskrit has an OCR artifact (कथयाम्_अस for कथयामास); sense is clear.
+- 51:57: Sita recalls Rama's severe punishment of the crow; read as protection, not endorsement of punishment.
+- 51:58: Six-pada verse: Sita's words, narration and Hanuman's plea are merged in one key.
+- 52:1: Sanskrit for this key begins with the colophon of chapter 51; the verse proper is Rama reaching the seashore.
+- 52:12: Sanskrit 'प्राहः' is an OCR slip for 'प्राह'.
+- 52:13: Sanskrit 'महमते' is an OCR slip for 'महामते'.
+- 52:20: Violence: Angada kicks Ravana's head; read as symbolic, caveat added.
+- 52:25: Prose passage; 'तद्बक्ति' is an OCR slip for 'तद्भक्ति'. Mentions Vali's slaying; the embassy told in 52:19-21 is narrated again from here.
+- 52:31: Key holds only the speaker label 'अङ्गदः'; explanation bridges 52:30 and 52:32.
+- 52:37: Battle begins; caveat added.
+- 52:38: Mass slaughter in battle; caveat added.
+- 52:39: Battle and killing; caveat added.
+- 52:40: Battle and killing; caveat added.
+- 52:41: Printed Hindi renders 'अतिगर्वितैः' as 'अत्यंत तेजस्वी'; battle and killing, caveat added.
+- 52:42: Violence: rakshasas slain at the north gate; caveat added.
+- 52:43: Violence: monkeys storm Lanka's walls; sentence continues into 52:44; caveat added.
+- 52:44: Violence: slaughter inside Lanka; the verse closes one sentence and opens the next; caveat added.
+- 52:52: Violence: allies advance on Ravana's army; sentence continues into 52:53; caveat added.
+- 52:53: Violence: Rama's allies slaughter Ravana's army; caveat added.
+- 52:56: Violence: Rama pierces Ravana's head; mentions a well-known Valmiki episode in general terms; caveat added.
+- 52:57: Violence: Ravana wounded and carried back into Lanka; caveat added.
+- 52:58: Kumbhakarna is roused for battle; violence implied; caveat added.
+- 52:59: Violence: Kumbhakarna devours monkeys; caveat added.
+- 52:61: Violence: rakshasa leaders slain by the monkeys; sentence continues into 52:62; caveat added.
+- 52:62: Violence: Rama beheads Kumbhakarna; the Hindi's reference to the naga-pasha is an interpretation of a terse Sanskrit phrase; caveat added.
+- 52:63: Mentions the fall of Kumbhakarna; caveat added.
+- 52:64: Violence: Ravana summons his sons for battle; caveat added.
+- 52:65: Violence: Ravana orders the killing of Rama and Lakshmana; Sanskrit grammar irregular ('पुत्राद्या', 'निघ्नत'); caveat added.
+- 52:66: Violence: Ravana sends Mahodara and Mahaparshva to kill; caveat added.
+- 52:67: Violence: Lakshmana slays Ravana's sons and commanders; the six inner enemies are offered explicitly as a reflection, not as the verse's meaning; caveat added.
+- 52:68: Violence: monkeys and Sugriva slay rakshasas; caveat added.
+- 52:69: Violence: Hanuman and Vibhishana slay rakshasas; Sanskrit has a minor error ('युध्यमानां'); caveat added.
+- 52:71: Violence: Rama slays the rakshasa named here 'महालक्ष' (in Valmiki the comparable figure is Makaraksha; the name may be a variant or OCR error); caveat added.
+- 52:72: Violence: Indrajit's arrow-storm; 'सरेषु' in the Sanskrit is probably corrupt (the Hindi reads it as 'all'); caveat added.
+- 52:74: Hanuman brings the healing herb; the Hindi's name 'Sanjivani' is not in the Sanskrit.
+- 52:76: Violence: Lakshmana slays Meghanada (Indrajit); caveat added.
+- 52:78: Ravana comes out to fight again, mocking Rama; violence implied; caveat added.
+- 52:81: Sanskrit has 'राक्षसा' where 'राक्षसेन' is expected; sense is clear.
+- 52:84: Violence: Lakshmana kills Ravana's charioteer and horses; caveat added.
+- 52:85: Violence: Lakshmana pierces Ravana's chest; caveat added.
+- 52:87: Violence: Ravana hurls the shakti at Lakshmana's chest; caveat added.
+- 52:88: Violence: Lakshmana is struck down by Ravana's shakti; caveat added.
+- 52:95: Violence: Rama destroys Ravana's remaining army and riddles his body with arrows; caveat added.
+- 52:97: Sanskrit reads 'कले' for 'काले'; sense is clear.
+- 52:98: Promise of victory through the Aditya-hridaya mantra; PHAL caveat added.
+- 52:105: Sanskrit spells the charioteer 'मातुलि' (for Matali); the content of his advice is not stated.
+- 52:106: Violence: Rama slays Ravana with the Brahmastra; caveat added.
+- 52:114: Long verse: flower-rain and Brahma's arrival with the 'Amogha' hymn are merged in one key.
+- 52:123: Phala-shruti: darshan of Rameshwara said to destroy sins such as killing; PHAL caveat added.
+- 52:125: Chapter-closing phala-shruti (reciters attain Rama's abode); PHAL caveat added.
+- 53:2: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:4: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:5: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:6: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:7: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:8: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:9: Printed Hindi is misaligned; phala-shruti (stotra removes all sins); PHAL caveat added.
+- 53:10: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:11: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:12: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:13: Printed Hindi is misaligned; Sanskrit has the minor slip अतीवं for अतीव.
+- 53:15: Printed Hindi is misaligned; the sense of ऋग्ध्वनिम् is ambiguous and given two ways.
+- 53:16: Printed Hindi is misaligned; slaying of asuras; HINSA caveat added.
+- 53:17: Printed Hindi is misaligned; slaying of Madhu and Kaitabha; HINSA caveat added.
+- 53:19: Printed Hindi is misaligned; slaying of Hiranyaksha; HINSA caveat added; minor slip अतीवं.
+- 53:20: Printed Hindi is misaligned; slaying of Hiranyakashipu; HINSA caveat added.
+- 53:21: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:23: Printed Hindi is misaligned; slaying of Ravana; HINSA caveat added.
+- 53:24: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:25: Printed Hindi is misaligned (text from another chapter); explanation follows the Sanskrit.
+- 53:28: Printed Hindi is misaligned (Shukracharya episode of a later chapter); explanation follows the Sanskrit.
+- 53:33: Printed Hindi is misaligned (Shukracharya episode of a later chapter); explanation follows the Sanskrit.
+- 53:34: Printed Hindi is misaligned (later chapter); explanation follows the Sanskrit; cites Gita 4.8 as a parallel.
+- 53:35: Printed Hindi is misaligned (later chapter); explanation follows the Sanskrit and notes the Devaki/Rohini detail against verse 32.
+- 53:36: Printed Hindi is misaligned (it carries the colophon of a later chapter); explanation follows the Sanskrit.
+- 53:45: Printed Hindi is misaligned (image-installation chapter); explanation follows the Sanskrit.
+- 53:46: Printed Hindi is misaligned (image-installation chapter); explanation follows the Sanskrit; the last pada runs into verse 47.
+- 53:53: Printed Hindi is misaligned (image-installation chapter); explanation follows the Sanskrit.
+- 53:57: Printed Hindi is misaligned (image-installation chapter); explanation follows the Sanskrit.
+- 53:61: Printed Hindi is misaligned (image-installation chapter); explanation follows the Sanskrit; the verse has no finite verb, 'returned to Dvaraka' is supplied from context.
+- 53:62: Printed Hindi is misaligned (image-installation chapter); explanation follows the Sanskrit.
+- 53:65: Printed Hindi for this key is misaligned (it describes the image from ch. 56); explanation follows the Sanskrit. Violence caveat added.
+- 53:66: Printed Hindi for this key is misaligned (ch. 56 image installation); explanation follows the Sanskrit ('nihita' read as 'nihata', an OCR slip). Violence caveat added.
+- 53:68: Printed Hindi for this key is misaligned (ch. 56 consecration rite); explanation follows the Sanskrit. Verse sits after 53:67's announcement of Kalki, possibly a displaced summary.
+- 55:10: Mentions protection of the world by slaying the wicked; violence caveat added.
+- 56:1: Sanskrit for this key begins with the colophon of chapter 55 (Shukra-vara-pradana); the verse proper is Sahasranika's question on pratishtha.
+- 56:2: Calls the rite merit-giving (punyada); phala caveat added.
+- 56:5: 'buddhva' is taken as 'considering (the filled ground) the base', as the printed edition also does; stone/brick/clay is construed with the temple (cf. 56:6-7); 'pashanoshtaka' is an OCR slip for 'pashaneshtaka'.
+- 56:9: Excludes very old and very young artisans from making the image (and 56:10 adds the chronically ill); framed as a craft requirement, not a judgment of worth.
+- 56:11: Prescribes a healthy-bodied artisan; read with 56:9-10 as a craft requirement.
+- 56:17: Printed Hindi adds 'or mace' (gada) in brackets; the Sanskrit names only the hand resting on the hip.
+- 56:30: Bali here is an offering of flowers, akshata and food, not an animal; the explanation says so. Sanskrit reads पूष्प (typo).
+- 56:39: Sanskrit has a transliteration slip ('साउम्यां' for सौम्यायां) but the sense is certain; the mantra openings (या ते रुद्र, परो मात्रया) are recognisable.
+- 56:46: Phala-shruti (release from sin, heavenly vimana with 21 generations); PHAL caveat added.
+- 56:47: Phala-shruti (heavenly worlds, Vishnu's abode); PHAL caveat added. Verse is longer than one shloka and includes the closing line of the rite.
+- 56:50: Phala-shruti (attaining Hari's abode of no return); PHAL caveat added.
+- 58:27: Lists celibacy among a student's restraints; kept brief and non-graphic.
+- 58:30: Involuntary nocturnal emission and its expiation; kept brief and non-graphic.
+- 58:35: Warns that renouncing while still attached leads to hell; NARAK caveat added.
+- 58:47: List of trees for tooth-cleaning twigs; sentence continues into 58:48.
+- 58:51: Hyperbolic threat (tooth-twig on certain tithis burns seven generations) presented as arthavada; editor may check tone.
+- 58:53: Introduces the Mandeha rakshasas who fight the sun; story continues in 58:54-55.
+- 58:55: Mandeha rakshasas slain by the Gayatri-charged water offering; brahmanas said to protect the sun; HINSA caveat added.
+- 58:57: Hell promised for neglecting sandhya; NARAK caveat added.
+- 58:62: Bathing called sin-destroying; PHAL caveat added.
+- 58:63: Sanskrit 'सुक्लां' is a spelling slip for 'शुक्लां' (white/clean clay; clay is named in 58:65); immediate freedom from sin promised (PHAL).
+- 58:76: Verse addresses the brahmana; text notes the goal of inner purity is open to all.
+- 58:83: Phala-shruti for daily japa (bhoga and moksha); PHAL caveat added.
+- 58:86: Promise of freedom from sin for daily Gayatri japa; PHAL caveat added.
+- 58:87: Mantra pratikas (RV 1.50.1 'udu tyam', 1.115.1 'citram devanam', 7.66.16 'tac cakshuh') glossed generally; glosses checked against the mantras.
+- 58:90: Sentence continues into 58:91.
+- 58:91: Sentence continues from 58:90 and into 58:92.
+- 58:100: Phala of almsgiving (ladder to heaven); PHAL caveat added.
+- 58:102: Lists suvasinis and kumaris among those fed first; read as care, no caveat added.
+- 58:103: Sentence continues into 58:104.
+- 58:113: Promise of Brahma's realm for shraddha; PHAL caveat added.
+- 58:115: Phala-shruti: liberation and attaining Hari promised for householder dharma; caveat added.
+- 59:7: Panchagni and other bodily austerities; note against imitation added.
+- 59:9: Promise of honour in Brahmaloka for lifelong ascetic silence; caveat added.
+- 59:10: Promise of Vishnu's abode for the ascetic; caveat added.
+- 63:1: Sanskrit for this key begins with the colophon of chapter 62; the verse proper is King Sahasranika's opening words.
+- 63:5: Phala-shruti: the deity pleased instantly by the eight-syllable mantra; caveat added.
+- 63:6: Phala-shruti and comparative praise of one mantra over many; caveat added and framed as non-exclusive.
+- 63:8: Phala-shruti: worship equals the fruit of all tirthas and sacrifices; caveat added.
+- 63:14: Printed Hindi renders विषमस्वभावः as 'detached'; the व्याख्या also notes its sense 'unsteady'.
+- 63:23: Indra's rationalisation against moksha; framed as deluded speech, not the Purana's teaching.
+- 63:24: Indra disparages seekers of moksha; व्याख्या frames it as a deluded character's view.
+- 63:29: Indra's flattery reads Ardhanarishvara as Kama's victory; व्याख्या notes the traditional reading of the form.
+- 63:33: Indra's approach to another's wife; non-graphic.
+- 63:34: Physical signs of induced desire; kept non-graphic, framed as caused by Indra's request.
+- 63:36: Indra's proposal to Kubera's wife; non-graphic.
+- 63:39: Indra's union with Kubera's wife; described briefly and non-graphically.
+- 63:54: Verse joins the end of Kubera's reply with the opening of Kanthakubja's answer.
+- 63:61: OCR artifact 'kathayam_asa' (for kathayamasa) in the Sanskrit.
+- 63:63: Kubera threatens to give up his life; the verse also joins the start of Vibhishana's reply.
+- 63:65: OCR artifact 'sanjalpayam_asa' in the Sanskrit; sentence continues into 63:66.
+- 63:72: OCR artifact 'samprerayam_asa' in the Sanskrit.
+- 63:74: Sentence continues into the next verse (63:75).
+- 63:83: Verse continues from 63:82 and runs on into 63:84.
+- 63:87: Printed Hindi 'आपका भाई' follows Sanskrit 'ते भ्राता' addressed to Nadijangha; fine.
+- 63:90: Violence: Indra seizes the rakshasi by the hair intending to kill her; HINSA caveat added.
+- 63:91: Violence context: the rakshasi held by Indra cries out; HINSA caveat added. The name Trinabindu is glossed only by its two component words.
+- 63:93: Violence: the killing begins as the sage speaks; HINSA caveat added.
+- 63:94: Violence: Indra kills the rakshasi with the vajra; HINSA caveat added.
+- 63:96: Indra justifies the killing by his rank; HINSA caveat added.
+- 63:105: Recalls the killing in the hermitage; HINSA caveat added.
+- 63:108: Prescribes Indra's worship of yakshas and rakshasas as expiation; the link to Kubera and Nadijangha is drawn from the chapter.
+- 63:115: Brahma says neither he nor Shankara can lift the curse; framed as Vaishnava emphasis, not a slight on Shiva.
+- 63:120: Phala-shruti promising release even for those who go to others' wives; the text states it is no licence. PHAL caveat added.
+- 63:123: Closing phala-shruti of the Sahasranika story; PHAL caveat added.
+- 64:1: Sanskrit for this key begins with the colophon of chapter 63; the verse proper opens chapter 64.
+- 64:8: Printed Hindi names the speaker as Suta; vocatives elsewhere in this chapter vary (maharaja, mune).
+- 64:15: Sanskrit for this key holds about one and a half verses (64:14 is missing) and runs on into 64:16; the wording is clear. The print renders 'सर्वार्थभूतस्य' as 'सर्वार्थदर्शी'.
+- 64:16: Pundarika renounces parents and kin; the text clarifies this is not a general teaching to neglect family duties.
+- 64:26: Printed Hindi moves the first half of this verse (creatures roaming at will) into 64:25; explanation follows the Sanskrit.
+- 64:37: Address shifts from 'राजेन्द्र' (64:36) to 'मुने' here; frame narrator left unnamed.
+- 64:48: Sanskrit has OCR slips (संप्रातं, जन्मणः for संप्राप्तं, जन्मनः); sense is clear.
+- 64:50: Sanskrit has an OCR slip (सरवलोकानां for सर्वलोकानां).
+- 64:66: Rhetorical 'what use are charity, pilgrimage, tapas and yajna' is explained as praise of the mantra, not as rejection of those practices.
+- 64:68: 'What use are contradictory shastra-expansions' is explained as a caution against endless elaboration, not a dismissal of scriptures or other traditions.
+- 64:79: Instruction to abandon 'confusing shastra-expansions' is explained as holding to the essence, not rejecting scriptures or traditions.
+- 64:81: Promise of sayujya 'without doubt'; PHAL caveat added.
+- 64:83: Promise that chanting at death leads to Vishnu's supreme abode; PHAL caveat added.
+- 64:90: Promise that even casual kirtan grants the Lord's own abode; PHAL caveat added.
+- 64:94: Promises the supreme abode even to the cruel who take refuge in Narayana; explained as repentance, not licence; PHAL added. Sanskrit नृसंशा is a typo for नृशंसा.
+- 64:95: Sanskrit has a stray danda inside दासो ऽह।म् (OCR); sentence continues into 64:96.
+- 64:96: Promises salokya with Vishnu for the servant-attitude; PHAL added.
+- 64:98: Sentence continues into 64:99.
+- 64:102: Sentence continues into 64:103.
+- 64:116: Promises sarupya and eternal attendance on Vishnu; PHAL added.
+- 64:120: Sentence continues into 64:121. Printed Hindi attributes this to Suta.
+- 64:121: Says the stories destroy all sins; PHAL added.
+- 66:2: List of sacred rivers spoken by Bhagavan to Brahma (per 66:1); river identifications (Chenab, Chambal) are the common traditional ones.
+- 66:8: Phala-shruti: freedom from sin by bathing and drinking at the tirthas; caveat added.
+- 66:22: Phala-shruti: bathing at Chakratirtha frees from all sins; caveat added.
+- 66:23: Phala-shruti: Brahmaloka for thousands of years and Vajapeya merit; caveat added.
+- 66:25: Phala-shruti: the Kundika tirtha removes inauspiciousness; caveat added.
+- 66:27: Phala-shruti: freedom from sins and Brahmaloka; caveat added.
+- 66:31: Phala-shruti: destruction of all sins and joy in Vishnuloka; caveat added.
+- 66:32: Phala-shruti: merit of all sacrifices and heaven; caveat added.
+- 66:33: Phala-shruti: long life, enjoyment and heaven; caveat added.
+- 66:34: Phala-shruti: reaching Indra's city by bathing; caveat added.
+- 66:35: Phala-shruti: Vishnuloka after a day-and-night observance; caveat added.
+- 66:36: Phala-shruti: bathing in the white clay with devotion (fruit in next verse); caveat added.
+- 66:38: Phala-shruti: freedom from sin by bathing; caveat added; the phrase स्नात्वा पापात् प्रमुच्यते repeats within the verse.
+- 66:39: Phala-shruti for worship at the Sahyadri tirthas; caveat added.
+- 66:42: Line 1 completes the sentence of 66:41; Sanskrit has the typo 'निनिःसृतम्' (read निःसृतम्).

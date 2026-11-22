@@ -153,7 +153,7 @@ npm run serve:dist
 ```
 
 The build warns from 19,000 files, and its log lists how many files are
-pages, page payloads, verse share images and everything else.
+pages, page payloads, verse share images, published commentary and everything else.
 
 ## Verse share images
 
@@ -179,3 +179,32 @@ same project: its `share` branch, served at
 
 To go back to one deployment, remove `NEXT_PUBLIC_SHARE_IMAGE_ORIGIN` from both
 workflows and the share-image steps from `deploy-cloudflare.yml` and `ci.yml`.
+
+## Published commentary
+
+Commentary (व्याख्या, research notes, modern context) is published as one
+small JSON file per section of each book
+(`/data/hi-commentary/<scripture>/<chapter>-<unit>.json`; see
+`docs/commentary-storage.md`). With every verse explained that is about
+10,000 files, so it is a third deployment of the same project: its
+`commentary` branch, served at `https://commentary.dharma-granth.pages.dev`.
+
+- `NEXT_PUBLIC_COMMENTARY_ORIGIN` (set in `ci.yml` and `deploy-cloudflare.yml`)
+  is where the chapter reader loads the files from. Unset, as in a local build,
+  they are loaded from the site itself. The origin is also in the
+  `connect-src` of `public/_headers` and in `COMMENTARY_ORIGINS` in
+  `public/sw.js`; change all four together.
+- `deploy-cloudflare.yml` moves `dist/data/hi-commentary` out of the export,
+  deploys it with `--branch=commentary` and an `Access-Control-Allow-Origin: *`
+  header, checks that one file answers with that header, and only then deploys
+  the site.
+- Chapter pages carry most of their commentary in the HTML
+  (`lib/commentary-budget.ts`), so crawlers do not depend on this deployment.
+- Pull request previews load the live commentary for anything past a page's
+  budget and do not upload their own.
+- `scripts/prune-export.mjs` counts this deployment separately against 20,000;
+  `npm run publish:commentary` fails above 19,500 commentary files.
+
+To go back to one deployment, remove `NEXT_PUBLIC_COMMENTARY_ORIGIN` from both
+workflows and the commentary steps from `deploy-cloudflare.yml` and `ci.yml`
+(only while the site stays under 20,000 files with the commentary in it).

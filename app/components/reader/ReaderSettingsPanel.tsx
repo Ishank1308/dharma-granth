@@ -6,7 +6,8 @@ import { THEME_NAMES, type Theme } from '@/app/components/ThemeProvider';
 import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SanskritScript, SizeStep } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import type { ParayanaCadenceMode } from '@/lib/soundscape-lazy';
-import { ReaderControlBar } from './ReaderControlBar';
+import { depthForMode, modeForDepth } from '@/lib/reading-depth';
+import { ReaderControlBar, VERSE_DEPTH_HINTS } from './ReaderControlBar';
 import { ReaderDialog } from './ReaderDialog';
 import { ReadingDepthSwitch } from './ReadingDepthSwitch';
 
@@ -212,6 +213,7 @@ export function ReaderSettingsPanel({
   chapter?: ChapterReadingControls;
 }) {
   const themeName = useId();
+  const depthLabel = useId();
   return (
     <ReaderDialog
       open={open}
@@ -241,22 +243,41 @@ export function ReaderSettingsPanel({
           </p>
         </div>
 
-        {chapter && (
-          <fieldset>
-            <legend className="mb-2 text-subhead font-semibold text-label-primary">
+        {(chapter || scope === 'verse') && (
+          <div>
+            {/* The radio group below is the group; this line names it, so it is announced once. */}
+            <p id={depthLabel} className="mb-2 text-subhead font-semibold text-label-primary">
               <LegendText en="Reading depth" hi="पठन गहराई" />
-            </legend>
-            <ReadingDepthSwitch fill />
-            <p className="mt-2 text-caption-1 text-label-secondary">
-              How much explanation opens beside each shloka.
             </p>
-          </fieldset>
+            {/* One choice for chapter and verse pages (lib/reading-depth). The verse page shows its own view until it is made. */}
+            {scope === 'verse' ? (
+              <ReadingDepthSwitch
+                fill
+                labelledBy={depthLabel}
+                value={depthForMode(settings.readerMode)}
+                onChange={(d) => update('readerMode', modeForDepth(d, settings.readerMode))}
+              />
+            ) : (
+              <ReadingDepthSwitch fill labelledBy={depthLabel} />
+            )}
+            {scope === 'verse' ? (
+              <p className="mt-2 text-caption-1 text-label-secondary">
+                <span data-bi="en">{VERSE_DEPTH_HINTS[settings.readerMode].en}</span>{' '}
+                <span data-bi="sep" aria-hidden="true">·</span>{' '}
+                <span lang="hi" data-bi="hi" className="font-devanagari">{VERSE_DEPTH_HINTS[settings.readerMode].hi}</span>
+              </p>
+            ) : (
+              <p className="mt-2 text-caption-1 text-label-secondary">
+                How much explanation opens beside each shloka.
+              </p>
+            )}
+          </div>
         )}
 
-        {scope === 'verse' && (
+        {scope === 'verse' && !settings.liteMode && (
           <fieldset>
             <legend className="mb-2 text-subhead font-semibold text-label-primary">
-              <LegendText en="Reading level" hi="पठन स्तर व दृष्टि" />
+              <LegendText en="Perspective" hi="अध्ययन दृष्टि" />
             </legend>
             <ReaderControlBar settings={settings} onChange={update} />
           </fieldset>

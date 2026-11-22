@@ -395,10 +395,25 @@ a.apple-row:active,
     letter-spacing: 0;
     text-decoration: none;
 }
-/* The plain verse's link keeps its 44px tap target around the capsule. */
+/* The plain verse's link keeps 8px of room above and below the 28px capsule. */
 .verse-card .vt-title a {
     min-width: 0;
     margin-block: 8px;
+}
+/* A small link or pill that keeps its look but answers a finger across at least 44 x 44px. Opt in
+   with .tap-halo where the room around it holds no other target; the plain verse's number link uses
+   it, so the whole 44px row is the target while the 28px capsule keeps its size. */
+@media (pointer: coarse) {
+    .tap-halo,
+    .verse-card .vt-title a {
+        position: relative;
+    }
+    .tap-halo::before,
+    .verse-card .vt-title a::before {
+        content: '';
+        position: absolute;
+        inset: min(0px, calc(50% - 22px));
+    }
 }
 .verse-card .vt-head {
     margin-bottom: 0;
@@ -790,6 +805,14 @@ html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='hi'][data-b
 html[data-ui-lang='english'] [data-bi='en'][data-bi-lead] {
     font-size: inherit;
     font-weight: inherit;
+}
+/* The second half often carries a small margin that sets it off from the first (ml-1, ml-2).
+   Standing alone, it starts where the label starts. */
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='en'] + [data-bi='hi'],
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) [data-bi='en'] + [data-bi='sep'] + [data-bi='hi'],
+html[data-ui-lang='english'] [data-bi='hi'] + [data-bi='en'],
+html[data-ui-lang='english'] [data-bi='hi'] + [data-bi='sep'] + [data-bi='en'] {
+    margin-left: 0;
 }
 /* A page title (PageHeader) standing in Hindi alone sits one step under the large title: the
    Hindi line is usually the longer of the two, and Devanagari reads larger at the same size. */

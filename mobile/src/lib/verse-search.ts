@@ -161,6 +161,102 @@ export function foldLatin(text: string): string {
     .trim();
 }
 
+/** The verse fields the index reads. */
+export interface IndexableVerse {
+  number: number | string;
+  sanskrit?: string;
+  hindi?: string;
+  transliteration?: string;
+  translation?: string;
+}
+
+const flat = (s: string | undefined) => (s ?? '').replace(/\s+/g, ' ');
+
+/**
+ * One verse as a corpus line: the build script folds the bundled books with this and the app folds
+ * downloaded books with it on the phone, so both indexes match the same queries.
+ */
+export function verseToCorpusLine(v: IndexableVerse): { d: string; t: string; e: string; n: string } {
+  return {
+    d: devToIndex(flat(v.sanskrit)) + FIELD_SEP + devToIndex(flat(v.hindi)),
+    t: foldLatin(flat(v.transliteration)),
+    e: englishToIndex(flat(v.translation)),
+    n: String(v.number).replace(/\n/g, ' '),
+  };
+}
+
+/** A chunk of a book's corpus, as CorpusChunker emits it. */
+export interface CorpusChunk {
+  corpus: SearchCorpus;
+  /** Book-wide line of the chunk's first verse. */
+  start: number;
+  /** Verses in the chunk. */
+  lines: number;
+  /** Index, within its chapter, of the chunk's first verse (non-zero when a long chapter was split). */
+  firstIndex: number;
+}
+
+/**
+ * Folds a book chapter by chapter into corpus chunks of about `chunkChars` characters, cut between
+ * whole verses. The app indexes downloaded books with it (src/content/download-index.ts), so a large
+ * book can be searched one chunk at a time.
+ */
+export class CorpusChunker {
+  private d: string[] = [];
+  private t: string[] = [];
+  private e: string[] = [];
+  private n: string[] = [];
+  private c: [number, number][] = [];
+  private chars = 0;
+  private firstIndex = 0;
+  private start = 0;
+  // Plain fields, not constructor parameter properties: Node runs this file with type stripping only.
+  private readonly chunkChars: number;
+  private readonly emit: (chunk: CorpusChunk) => void;
+
+  constructor(chunkChars: number, emit: (chunk: CorpusChunk) => void) {
+    this.chunkChars = chunkChars;
+    this.emit = emit;
+  }
+
+  /** Lines (verses) emitted or pending so far. */
+  get lines(): number {
+    return this.start + this.n.length;
+  }
+
+  addVerse(chapter: number, index: number, v: IndexableVerse): void {
+    const line = verseToCorpusLine(v);
+    if (this.n.length === 0) {
+      this.firstIndex = index;
+      this.c = [[chapter, 0]];
+    } else if (this.c[this.c.length - 1][0] !== chapter) {
+      this.c.push([chapter, 0]);
+    }
+    this.c[this.c.length - 1][1]++;
+    this.d.push(line.d);
+    this.t.push(line.t);
+    this.e.push(line.e);
+    this.n.push(line.n);
+    this.chars += line.d.length + line.t.length + line.e.length + 3;
+    if (this.chars >= this.chunkChars) this.flush();
+  }
+
+  /** Emits whatever is pending as a final, shorter chunk. */
+  flush(): void {
+    if (this.n.length === 0) return;
+    const corpus: SearchCorpus = { d: this.d.join('\n'), t: this.t.join('\n'), e: this.e.join('\n'), c: this.c, n: this.n.join('\n') };
+    const chunk = { corpus, start: this.start, lines: this.n.length, firstIndex: this.firstIndex };
+    this.start += this.n.length;
+    this.d = [];
+    this.t = [];
+    this.e = [];
+    this.n = [];
+    this.c = [];
+    this.chars = 0;
+    this.emit(chunk);
+  }
+}
+
 export interface QueryToken {
   /** What the person typed, for display. */
   raw: string;
@@ -427,6 +523,19 @@ export function verseAt(book: PreparedCorpus, line: number): { chapter: number; 
   return { chapter: book.chapters[c], index: line - book.chapterStart[c], number: book.numbers[line] };
 }
 
+/**
+ * Hits from one chunk (CorpusChunker) → book-wide hits: lines shift by the chunk's start, and the
+ * verse index of a chapter split across chunks continues from where the previous chunk stopped.
+ */
+export function shiftChunkHits(hits: VerseHit[], book: PreparedCorpus, chunk: { start: number; firstIndex: number }): VerseHit[] {
+  const firstChapter = book.chapters[0];
+  for (const h of hits) {
+    if (h.chapter === firstChapter && h.line < (book.chapterStart[1] ?? Infinity)) h.index += chunk.firstIndex;
+    h.line += chunk.start;
+  }
+  return hits;
+}
+
 /** Best hits first; ties go to the order given (the app puts the Gita and Upanishads first), then reading order. */
 export function rankHits(hits: VerseHit[], order: Map<string, number>): VerseHit[] {
   return hits.sort(
@@ -448,6 +557,20 @@ function lineText(text: string, starts: Int32Array, line: number): string {
 }
 
 /** The piece of the verse to show under a result, with the query words marked. */
+const SIGNS = new Set([0x0902, 0x0903, ...range(0x093e, 0x094c), 0x094d, 0x0962, 0x0963].map((c) => DEV_TO_ASCII.get(String.fromCharCode(c))!));
+const CONSONANT_SET = new Set(CONSONANTS);
+
+/**
+ * Widens a highlight in index-alphabet text to whole aksharas. A match that ends inside a conjunct
+ * (धर्म in धर्म्यम्) would otherwise leave the next run starting with a bare virama or vowel sign,
+ * which Android draws on a dotted circle.
+ */
+export function snapToClusters(text: string, a: number, b: number): [number, number] {
+  while (a > 0 && (SIGNS.has(text[a]) || text[a - 1] === VIRAMA)) a--;
+  while (b < text.length && (SIGNS.has(text[b]) || (text[b - 1] === VIRAMA && CONSONANT_SET.has(text[b])))) b++;
+  return [a, b];
+}
+
 export function makeSnippet(book: PreparedCorpus, line: number, tokens: QueryToken[]): Snippet {
   const dLine = lineText(book.d, book.dShowLines, line);
   const sep = dLine.indexOf(FIELD_SEP);
@@ -461,7 +584,7 @@ export function makeSnippet(book: PreparedCorpus, line: number, tokens: QueryTok
     for (const tok of tokens) {
       if (tok.script !== 'dev' || tok.stop) continue;
       const re = devDisplayPattern(tok.form);
-      for (const m of field.matchAll(re)) if (m[0].length) out.push([m.index!, m.index! + m[0].length]);
+      for (const m of field.matchAll(re)) if (m[0].length) out.push(snapToClusters(field, m.index!, m.index! + m[0].length));
     }
     return out;
   };

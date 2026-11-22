@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
 import Link from 'next/link';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { Bookmark, NotebookPen, ScrollText } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 
@@ -77,6 +78,7 @@ export function PracticeDashboard() {
         eyebrow="Sadhana"
         eyebrowHi="साधना"
         title="Daily practice"
+        cover={<PageCover photo="dawn" />}
         titleHi="शान्त मन, पवित्र अभ्यास"
         lead={
           <p>
@@ -112,8 +114,8 @@ export function PracticeDashboard() {
             {/* Streamlined Tool Picker */}
             <section aria-labelledby="practice-tools-heading">
               <h2 id="practice-tools-heading" className="text-title-2 font-semibold text-dharma-text">
-                <span>Core practices</span>{' '}
-                <span lang="hi" className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">दैनिक साधन</span>
+                <span data-bi="en">Core practices</span>{' '}
+                <span lang="hi" data-bi="hi" data-bi-lead className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">दैनिक साधन</span>
               </h2>
               <p className="mt-1 text-subhead text-dharma-muted">
                 <span>Choose which practices to keep active.</span>{' '}
@@ -155,7 +157,7 @@ export function PracticeDashboard() {
             </section>
 
             {/* Parent heading for the tool cards' h3s. */}
-            <h2 className="sr-only">साधन · Practice tools</h2>
+            <h2 className="sr-only"><span lang="hi" data-bi="hi">साधन</span><span data-bi="sep"> · </span><span data-bi="en">Practice tools</span></h2>
 
             {/* Daily verse (if enabled) */}
             {on('verse') && <DailyVerse />}
