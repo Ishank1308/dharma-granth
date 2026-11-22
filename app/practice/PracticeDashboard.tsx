@@ -7,6 +7,7 @@ import { PageHeader } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
 import { Bookmark, NotebookPen, ScrollText } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
+import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
 
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((m) => m.DailyVerse)));
 const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((m) => m.DailyReflection)));
@@ -90,6 +91,7 @@ export function PracticeDashboard() {
       </PageHeader>
 
       <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
+        <ObservanceNotice className="-mb-4" />
         {/* Focused personal spaces: Gita Sankalpa, Saved Verses, and Journal */}
         <nav aria-label="Personal practice spaces" className="reveal-grid grid grid-cols-1 gap-3 sm:grid-cols-3">
           {MY_SPACE.map(({ href, hi, en, Icon }) => (

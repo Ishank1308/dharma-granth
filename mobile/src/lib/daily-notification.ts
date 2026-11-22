@@ -11,6 +11,7 @@ import { dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import type { Lang } from '@/i18n/language';
 import { S } from '@/i18n/strings';
 import { afterStartup } from '@/lib/after-startup';
+import { OBSERVANCE_ID_PREFIX } from '@/lib/observance-reminders';
 import { dayKey, streakForNotification } from '@/lib/progress';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { reminderSchedule } from '@/lib/reminder';
@@ -157,7 +158,8 @@ export function syncDailyReminder(opts: ReminderOptions): Promise<void> {
 
 async function runSync(opts: ReminderOptions): Promise<void> {
   if (!remindersSupported) return;
-  await Notifications.cancelAllScheduledNotificationsAsync();
+  // Everything queued except the festival and Ekadashi notes, which plan their own queue.
+  await cancelScheduled((id) => !id.startsWith(OBSERVANCE_ID_PREFIX));
   if (!opts.enabled) return;
   if ((await getReminderPermission()) !== 'granted') return;
   await ensureChannel(opts.lang);
@@ -173,6 +175,14 @@ async function runSync(opts: ReminderOptions): Promise<void> {
       content,
       trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: when, channelId: DAILY_CHANNEL_ID },
     });
+  }
+}
+
+/** Cancels the scheduled notifications whose identifier matches, leaving the rest of the queue as it is. */
+export async function cancelScheduled(match: (identifier: string) => boolean): Promise<void> {
+  const queued = await Notifications.getAllScheduledNotificationsAsync();
+  for (const request of queued) {
+    if (match(request.identifier)) await Notifications.cancelScheduledNotificationAsync(request.identifier);
   }
 }
 

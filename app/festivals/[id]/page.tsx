@@ -23,8 +23,11 @@ import {
   AlertCircle,
   CheckCircle2,
   ChevronRight,
+  ListChecks,
 } from 'lucide-react';
 import { ShareCardButton } from '@/app/components/understand/ShareCard';
+import { PujaModeLauncher } from '@/app/components/puja/PujaModeLauncher';
+import { splitStep } from '@/app/components/puja/steps';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -324,6 +327,56 @@ export default async function FestivalDetailPage(props: PageProps) {
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {/* 4b. Step-by-step home observance, with Puja mode */}
+        {festival.observanceSteps && festival.observanceSteps.length > 0 && (
+          <div
+            id="steps"
+            className="card-sacred scroll-mt-24 rounded-3xl border border-saffron-300/70 dark:border-saffron-900/60 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-5"
+          >
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+              <ListChecks className="h-4 w-4" />
+              <span><span lang="hi" data-bi="hi">घर पर पूजा, चरण-दर-चरण</span><span data-bi="sep"> (</span><span data-bi="en">Step by step at home</span><span data-bi="sep">)</span></span>
+            </div>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+                {festival.sanskrit} की पूजा कैसे करें?
+              </h2>
+              <PujaModeLauncher
+                title={festival.sanskrit}
+                titleEn={festival.name}
+                steps={festival.observanceSteps}
+                storageKey={`festival:${festival.id}`}
+                className="self-start sm:self-auto"
+              />
+            </div>
+            <ol className="space-y-3">
+              {festival.observanceSteps.map((raw, i) => {
+                const step = splitStep(raw);
+                return (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-saffron-500/15 text-xs font-bold text-saffron-800 dark:text-saffron-300">
+                      {i + 1}
+                    </span>
+                    <p lang="hi" className="font-devanagari text-sm sm:text-base text-dharma-text leading-relaxed">
+                      <strong className="font-semibold">{step.title}</strong>
+                      {step.detail && <> — {step.detail}</>}
+                    </p>
+                  </li>
+                );
+              })}
+            </ol>
+            <p className="text-xs text-dharma-muted leading-relaxed border-t border-dharma-border/60 pt-3">
+              <span lang="hi" data-bi="hi" className="font-devanagari">
+                ये चरण सामान्य गृह-परम्परा का सार हैं और AI की सहायता से तैयार किए गए हैं। विधि परिवार, क्षेत्र और सम्प्रदाय के अनुसार बदलती है; अपनी कुल-परम्परा या आचार्य के निर्देश को प्राथमिकता दें।
+              </span>
+              <span data-bi="sep"> </span>
+              <span data-bi="en">
+                A summary of common household practice, drafted with AI help. Practice differs by family, region and sampradaya; follow your own tradition or acharya first.
+              </span>
+            </p>
           </div>
         )}
 
