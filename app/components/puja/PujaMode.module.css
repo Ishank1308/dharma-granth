@@ -1,0 +1,59 @@
+/* Puja mode: one step at a time. The step slides in from the side it came from and the
+   progress bar fills. Only transform and opacity move. Reduce Motion and the low-power,
+   Data Saver and Lite modes get the same screen with nothing moving. */
+
+@keyframes step-in-next {
+  from { opacity: 0; transform: translate3d(28px, 0, 0); }
+}
+@keyframes step-in-prev {
+  from { opacity: 0; transform: translate3d(-28px, 0, 0); }
+}
+@keyframes screen-in {
+  from { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.985); }
+}
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
+}
+
+.screen {
+  animation: screen-in var(--duration-base, 240ms) var(--motion-out, ease-out) both;
+}
+
+.stepNext {
+  animation: step-in-next var(--duration-base, 240ms) var(--motion-spring, ease-out) both;
+}
+.stepPrev {
+  animation: step-in-prev var(--duration-base, 240ms) var(--motion-spring, ease-out) both;
+}
+
+.glow {
+  animation: glow-breathe 6s ease-in-out infinite;
+}
+
+.fill {
+  transform-origin: 0 50%;
+  transition: transform var(--duration-standard, 200ms) var(--motion-out, ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen,
+  .stepNext,
+  .stepPrev,
+  .glow {
+    animation: none;
+  }
+  .fill {
+    transition: none;
+  }
+}
+
+:global(:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'])) .screen,
+:global(:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'])) .stepNext,
+:global(:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'])) .stepPrev,
+:global(:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'])) .glow {
+  animation: none;
+}
+:global(:root:is([data-low-power='true'], [data-data-saver='true'], [data-lite-mode='true'])) .fill {
+  transition: none;
+}

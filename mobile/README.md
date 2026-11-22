@@ -7,6 +7,10 @@ and English, readable offline, no account.
 
 - **Library** of all 66 scriptures, grouped like the website (Vedas, Upanishads, Itihasa, Puranas…),
   with search, a verse of the day (with an opt-in daily notification and a home-screen widget) and "continue reading".
+- **Festival and Ekadashi eve**: two opt-in switches in Settings, beside the daily verse. Each schedules one local
+  notification at 6 PM the evening before the next dates (at most 20 queued, re-planned whenever the app opens), with a
+  reminder to confirm the date with the local panchang. Dates come from the website's `data/festival-dates.ts` and
+  `data/ekadashi-dates.ts` via `scripts/build-explore.mjs`; logic in `src/lib/observance-reminders.ts`.
 - **Offline reader** for 44 texts whose verse data ships inside the app (Bhagavad Gita, the principal
   Upanishads, Yoga Sutras, Brahma Sutra, Durga Saptashati, Vidura Niti, Manusmriti, Sama and Yajur Veda,
   Vinaya Patrika, Ramcharitmanas and more). Each verse shows the complete Sanskrit, transliteration, Hindi and English,

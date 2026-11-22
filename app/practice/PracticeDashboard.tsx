@@ -6,6 +6,7 @@ import { PageHeader } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { PracticeOpening } from './PracticeOpening';
+import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
 
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((m) => m.DailyVerse)));
 const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((m) => m.DailyReflection)));
@@ -83,6 +84,7 @@ export function PracticeDashboard() {
       </PageHeader>
 
       <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
+        <ObservanceNotice className="-mb-4" />
         {/* Today's sadhana, large, beside the reader's own spaces: Gita Sankalpa, Saved verses, Journal */}
         <nav aria-label="Today and your practice spaces">
           <PracticeOpening active={on} />

@@ -6,6 +6,8 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { PageHeader } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
 import { useAccessibleModal } from '@/lib/useAccessibleModal';
+import { PujaMode } from '@/app/components/puja/PujaMode';
+import { PujaModeButton } from '@/app/components/puja/PujaModeLauncher';
 import { rituals, type Ritual } from '@/data/rituals';
 import {
   X,
@@ -49,6 +51,12 @@ const CATEGORIES: Array<{ id: RitualCategory; labelHi: string; labelEn: string }
 
 export default function RitualsPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  // Puja mode opens over the page, not inside the detail dialog, so the two dialogs never
+  // compete for Escape and focus. Closing it brings the ritual's detail back.
+  // It opens only after the dialog has finished closing, so the dialog's scroll lock and focus
+  // return are undone before Puja mode takes its own.
+  const [pujaId, setPujaId] = useState<string | null>(null);
+  const pendingPuja = useRef<string | null>(null);
   const [category, setCategory] = useState<RitualCategory>('all');
   const [query, setQuery] = useState('');
 
@@ -98,6 +106,7 @@ export default function RitualsPage() {
   }, [category, query]);
 
   const selected = rituals.find((r) => r.id === selectedId) ?? null;
+  const pujaRitual = rituals.find((r) => r.id === pujaId) ?? null;
 
   return (
     <main className="min-h-screen bg-dharma-bg text-dharma-text">
@@ -247,6 +256,12 @@ export default function RitualsPage() {
                 </div>
 
                 <div className="space-y-2.5 pt-2 border-t border-dharma-border/60">
+                  {ritual.steps && ritual.steps.length > 0 && !ritual.requiresInitiation && (
+                    <div className="inline-flex items-center gap-1.5 text-xs text-saffron-800 dark:text-saffron-200 bg-saffron-500/10 border border-saffron-500/30 rounded-lg px-2.5 py-1 mr-2">
+                      <ListChecks className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                      <span lang="hi" className="font-devanagari font-semibold">पूजा मोड · {ritual.steps.length} चरण</span>
+                    </div>
+                  )}
                   {ritual.requiresInitiation && (
                     <div className="inline-flex items-center gap-1.5 text-xs text-amber-800 dark:text-amber-200 bg-amber-500/10 border border-amber-500/30 rounded-lg px-2.5 py-1">
                       <AlertTriangle className="w-3.5 h-3.5 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden="true" />
@@ -267,14 +282,43 @@ export default function RitualsPage() {
       </section>
 
       {/* Accessible Detail Modal */}
-      <AnimatePresence>
-        {selected && <RitualDetail ritual={selected} onClose={() => handleSelectRitual(null)} />}
+      <AnimatePresence
+        onExitComplete={() => {
+          if (pendingPuja.current) {
+            setPujaId(pendingPuja.current);
+            pendingPuja.current = null;
+          }
+        }}
+      >
+        {selected && (
+          <RitualDetail
+            ritual={selected}
+            onClose={() => handleSelectRitual(null)}
+            onStartPuja={() => {
+              pendingPuja.current = selected.id;
+              setSelectedId(null);
+            }}
+          />
+        )}
       </AnimatePresence>
+
+      {pujaRitual?.steps && pujaRitual.steps.length > 0 && (
+        <PujaMode
+          title={pujaRitual.sanskrit}
+          titleEn={pujaRitual.name}
+          steps={pujaRitual.steps}
+          storageKey={`ritual:${pujaRitual.id}`}
+          onClose={() => {
+            setPujaId(null);
+            setSelectedId(pujaRitual.id);
+          }}
+        />
+      )}
     </main>
   );
 }
 
-function RitualDetail({ ritual, onClose }: { ritual: Ritual; onClose: () => void }) {
+function RitualDetail({ ritual, onClose, onStartPuja }: { ritual: Ritual; onClose: () => void; onStartPuja: () => void }) {
   const reduce = useReducedMotion();
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -424,6 +468,7 @@ function RitualDetail({ ritual, onClose }: { ritual: Ritual; onClose: () => void
 
           {ritual.steps && ritual.steps.length > 0 && (
             <Section icon={ListChecks} title="विधि चरण (Steps)">
+              <PujaModeButton count={ritual.steps.length} onClick={onStartPuja} className="mb-4" />
               <ol className="space-y-2.5">
                 {ritual.steps.map((step, i) => (
                   <li key={i} lang="hi" className="font-devanagari text-sm text-dharma-text flex items-start gap-3">
@@ -434,6 +479,10 @@ function RitualDetail({ ritual, onClose }: { ritual: Ritual; onClose: () => void
                   </li>
                 ))}
               </ol>
+              <p lang="hi" className="mt-3 border-t border-dharma-border/60 pt-3 font-devanagari text-xs leading-relaxed text-dharma-muted">
+                {ritual.stepsAiDrafted ? 'ये चरण सामान्य गृह-परम्परा का सार हैं और AI की सहायता से तैयार किए गए हैं। ' : ''}
+                विधि परिवार, क्षेत्र और सम्प्रदाय के अनुसार बदलती है; अपनी कुल-परम्परा या आचार्य के निर्देश को प्राथमिकता दें।
+              </p>
             </Section>
           )}
         </div>

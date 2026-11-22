@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PanchangCalendar } from '@/app/components/PanchangCalendar';
 import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
+import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
 import { Star, ArrowRight, Moon, Sun, Layers, Calendar, Clock, Compass } from 'lucide-react';
 
 const WHY = [
@@ -43,6 +44,7 @@ export default function PanchangPage() {
 
       {/* ─── MAIN CALENDAR INTERFACE ──────────────────────────────────────── */}
       <section className="relative mx-auto max-w-6xl px-gutter -mt-6 sm:-mt-8 pb-10 sm:pb-16 z-10">
+        <ObservanceNotice className="mb-4 bg-dharma-bg/90 backdrop-blur-md" />
         <PanchangCalendar />
 
         {/* ─── FULL MONTHLY FESTIVAL CALENDAR BANNER ─────────────────────── */}
