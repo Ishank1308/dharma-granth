@@ -4,13 +4,15 @@ import { useCallback, useMemo, useState, type ComponentProps } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { MoonPhase } from '@/components/moon-phase';
+import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { Backdrop, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { barClearance, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -21,7 +23,7 @@ type IconName = ComponentProps<typeof Ionicons>['name'];
  */
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const [city] = usePanchangCity();
@@ -60,7 +62,7 @@ export default function ExploreScreen() {
           onPress={() => router.push('/explore/panchang')}
           style={({ pressed }) => [styles.hero, glass(palette, true), pressed && { transform: [{ scale: 0.985 }] }]}>
           <View style={styles.heroTop}>
-            <MoonPhase illumination={today.paksha.illuminationPercent} waxing={today.paksha.isWaxing} size={60} />
+            <Moon3D phase={phaseFromIllumination(today.paksha.illuminationPercent, today.paksha.isWaxing)} size={60} />
             <View style={{ flex: 1 }}>
               <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.caption, fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.5 }}>
                 {lang === 'hi' ? t(S.todayAt(cityName)) : t(S.todayAt(cityName)).toUpperCase()}
@@ -129,7 +131,7 @@ interface Row {
 }
 
 function Rows({ rows }: { rows: Row[] }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   return (
     <GroupCard>
@@ -152,7 +154,7 @@ function Rows({ rows }: { rows: Row[] }) {
 }
 
 function Fact({ label, value, color }: { label: string; value: string; color: string }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <View style={styles.fact}>
       <View style={[styles.factDot, { backgroundColor: color }]} />

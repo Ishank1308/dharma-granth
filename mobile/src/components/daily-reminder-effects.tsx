@@ -5,7 +5,7 @@ import { AppState } from 'react-native';
 
 import { initNotifications, remindersSupported, syncDailyReminder, verseFromResponse } from '@/lib/daily-notification';
 import { useToday } from '@/lib/use-today';
-import { useAppState } from '@/state/app-state';
+import { useAppState, usePrefs } from '@/state/app-state';
 
 const RESYNC_MS = 12 * 60 * 60 * 1000;
 
@@ -16,8 +16,10 @@ initNotifications();
  * Renders nothing.
  */
 export function DailyReminderEffects() {
-  const { ready, settings, progress, lang } = useAppState();
+  const { ready, settings, lang } = usePrefs();
   const { dailyReminder, reminderHour, reminderMinute, showStreak } = settings;
+  // Only the days read on matter here (see streakKey), so this re-renders once per new verse at most.
+  const { progress } = useAppState();
   const lastSync = useRef(0);
   const handled = useRef(new Set<string>());
   const todayKey = useToday();

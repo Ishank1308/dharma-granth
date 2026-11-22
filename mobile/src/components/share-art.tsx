@@ -119,8 +119,11 @@ export function Stars({ width, height, color, count = 46 }: { width: number; hei
       {stars.map((s, i) => (
         <Circle key={i} cx={s.x} cy={s.y} r={s.r} fill={color} opacity={s.o} />
       ))}
-      {/* A few four-pointed glints. */}
-      {stars.slice(0, 5).map((s, i) => (
+      {/* A few four-pointed glints, kept to the card's side and top margins so none lands on the verse or the footer. */}
+      {stars
+        .filter((s) => s.x < width * 0.1 || s.x > width * 0.9 || s.y < height * 0.08)
+        .slice(0, 5)
+        .map((s, i) => (
         <Path
           key={`g${i}`}
           d={`M${s.x} ${s.y - 5} L${s.x + 1} ${s.y - 1} L${s.x + 5} ${s.y} L${s.x + 1} ${s.y + 1} L${s.x} ${s.y + 5} L${s.x - 1} ${s.y + 1} L${s.x - 5} ${s.y} L${s.x - 1} ${s.y - 1} Z`}

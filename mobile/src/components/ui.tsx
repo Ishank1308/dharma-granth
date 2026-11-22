@@ -1,9 +1,13 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ComponentProps, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Text, useWindowDimensions, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import Animated, { type SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { useAppState } from '@/state/app-state';
+import { hapticSelect } from '@/motion/haptics';
+import { PressableScale } from '@/motion/pressable-scale';
+import { useLargeTitleStyle } from '@/motion/parallax';
+import { usePrefs } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 import { BAR_HEIGHT, fontCap, RADIUS, scriptSize, separator, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP, type Palette } from '@/theme/themes';
 
@@ -68,7 +72,7 @@ export function accentFill(palette: Palette): ViewStyle {
  * full-screen gradients each frame. It looks the same; it only costs one screen-sized texture of memory.
  */
 export function Aurora({ quiet = false }: { quiet?: boolean }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const [saffron, lotus, peacock, indigo, gold] = palette.aurora;
   const pools = [
     `radial-gradient(70% 45% at 10% 6%, ${saffron} 0%, transparent 70%)`,
@@ -102,7 +106,7 @@ export function Backdrop({ children, quiet }: { children: ReactNode; quiet?: boo
  * it a scrolled heading ("Itihasa") runs into the clock and the battery icons.
  */
 function StatusBarScrim() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { top } = useSafeAreaInsets();
   if (!top) return null;
   return (
@@ -134,7 +138,7 @@ export function Bilingual({
   weight?: TextStyle['fontWeight'];
   style?: StyleProp<ViewStyle>;
 }) {
-  const { palette, settings, lang } = useAppState();
+  const { palette, settings, lang } = usePrefs();
   return (
     <View style={[styles.bilingual, style]}>
       <Text
@@ -148,7 +152,7 @@ export function Bilingual({
 
 /** A screen's large title, in the reader's language. */
 export function PageTitle({ en, hi }: { en: string; hi: string }) {
-  const { palette, lang } = useAppState();
+  const { palette, lang } = usePrefs();
   return (
     <Text
       maxFontSizeMultiplier={TITLE_FONT_CAP}
@@ -159,7 +163,7 @@ export function PageTitle({ en, hi }: { en: string; hi: string }) {
 }
 
 export function Card({ children, style, strong }: { children: ReactNode; style?: StyleProp<ViewStyle>; strong?: boolean }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return <View style={[styles.card, glass(palette, strong), style]}>{children}</View>;
 }
 
@@ -175,15 +179,15 @@ export function GlassRow({
   accessibilityLabel?: string;
   accessibilityRole?: 'button' | 'link';
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
-    <Pressable
+    <PressableScale
       onPress={onPress}
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
-      style={({ pressed }) => [styles.row, glass(palette), pressed && { transform: [{ scale: 0.985 }], opacity: 0.85 }]}>
+      style={[styles.row, glass(palette)]}>
       {children}
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -205,19 +209,24 @@ export function Chip({
   onPress: () => void;
   accessibilityLabel?: string;
 }) {
-  const { palette, lang } = useAppState();
+  const { palette, lang } = usePrefs();
   const choice = active !== undefined;
   return (
     <Pressable
-      onPress={onPress}
+      onPress={() => {
+        // A tick as the choice changes, like a segmented control; plain buttons stay silent.
+        if (active === false) hapticSelect();
+        onPress();
+      }}
       accessibilityRole={choice ? 'radio' : 'button'}
       accessibilityState={choice ? { checked: active } : undefined}
       accessibilityLabel={accessibilityLabel ?? label}
       hitSlop={(TOUCH - CHIP_HEIGHT) / 2}
-      style={({ pressed }) => [styles.chip, active ? accentFill(palette) : glass(palette), { opacity: pressed ? 0.75 : 1 }]}>
+      // The chosen chip is ink, not saffron: the one saffron thing on a screen stays the action to take.
+      style={({ pressed }) => [styles.chip, active ? { backgroundColor: palette.text } : glass(palette), { opacity: pressed ? 0.75 : 1 }]}>
       <Text
         maxFontSizeMultiplier={UI_FONT_CAP}
-        style={{ color: active ? palette.onAccent : palette.text, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
+        style={{ color: active ? palette.bg : palette.text, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
         {label}
       </Text>
     </Pressable>
@@ -228,21 +237,20 @@ const CHIP_HEIGHT = 40;
 
 /** The small frosted capsule over a page title, like the website's eyebrow. */
 export function Eyebrow({ en, hi, style }: { en: string; hi: string; style?: StyleProp<ViewStyle> }) {
-  const { palette, lang } = useAppState();
+  const { palette, lang } = usePrefs();
   return (
     <View style={[styles.eyebrow, glass(palette), style]}>
       <View style={[styles.dot, { backgroundColor: palette.accent }]} />
-      <Text
-        maxFontSizeMultiplier={UI_FONT_CAP}
-        style={{ flexShrink: 1, color: palette.accent, fontSize: scriptSize(TYPE.caption, lang), fontWeight: '700', letterSpacing: lang === 'hi' ? 0 : 0.6 }}>
-        {lang === 'hi' ? hi : en.toUpperCase()}
+      {/* Sentence case, untracked: a quiet label, not a shouted one. */}
+      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ flexShrink: 1, color: palette.accent, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
+        {lang === 'hi' ? hi : en}
       </Text>
     </View>
   );
 }
 
 export function SectionTitle({ en, hi }: { en: string; hi: string }) {
-  const { palette, lang } = useAppState();
+  const { palette, lang } = usePrefs();
   return (
     <View style={styles.sectionTitle} accessibilityRole="header">
       <Text style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.title3, fontWeight: '700' }}>
@@ -253,7 +261,7 @@ export function SectionTitle({ en, hi }: { en: string; hi: string }) {
 }
 
 export function Muted({ children, style }: { children: ReactNode; style?: StyleProp<TextStyle> }) {
-  const { palette, settings, lang } = useAppState();
+  const { palette, settings, lang } = usePrefs();
   return (
     <Text
       maxFontSizeMultiplier={fontCap(settings.textScale)}
@@ -290,20 +298,24 @@ export function LargeHeader({
   eyebrow,
   subtitle,
   children,
+  scrollY,
 }: {
   title: { en: string; hi: string };
   eyebrow?: { en: string; hi: string };
   subtitle?: string;
   children?: ReactNode;
+  /** The list's scroll position: the title hands over to the compact TitleBar (src/motion/title-bar) as it scrolls away. */
+  scrollY?: SharedValue<number>;
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { height } = useWindowDimensions();
+  const titleStyle = useLargeTitleStyle(scrollY, height);
   return (
     <View style={[styles.largeHeader, { minHeight: Math.round(height * 0.28) }]}>
       {eyebrow ? <Eyebrow {...eyebrow} /> : null}
-      <View accessibilityRole="header">
+      <Animated.View accessibilityRole="header" style={[{ transformOrigin: 'left bottom' }, titleStyle]}>
         <PageTitle {...title} />
-      </View>
+      </Animated.View>
       {children}
       {subtitle ? (
         <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead }}>
@@ -316,7 +328,7 @@ export function LargeHeader({
 
 /** A section heading over a grouped card, with an optional count or note on the right. */
 export function GroupTitle({ title, detail }: { title: string; detail?: string }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <View style={styles.groupTitle} accessibilityRole="header">
       <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.title2 - 2, fontWeight: '700' }}>
@@ -336,7 +348,7 @@ export function GroupTitle({ title, detail }: { title: string; detail?: string }
  * between the rows, in place of a stack of separately shadowed tiles. Rows are GroupRow children.
  */
 export function GroupCard({ children, style }: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return <View style={[styles.group, groupSurface(palette), style]}>{children}</View>;
 }
 
@@ -383,7 +395,7 @@ export function GroupRow({
   highlight?: boolean;
   style?: StyleProp<ViewStyle>;
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const own = first !== undefined || last !== undefined;
   const surface: ViewStyle | null = own
     ? {
@@ -435,7 +447,7 @@ export function GroupRow({
 
 /** A book's monogram in its cover colours, with the foil letter, as the website's library tiles. */
 export function CoverTile({ cover, letter, size = 44 }: { cover: Cover; letter: string; size?: number }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <View
       importantForAccessibility="no-hide-descendants"
@@ -483,7 +495,7 @@ export function IconButton({
   color?: string;
   size?: number;
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const fill: ViewStyle | null =
     tone === 'accent'
       ? accentFill(palette)
@@ -494,19 +506,16 @@ export function IconButton({
           : null;
   const tint = color ?? (tone === 'accent' ? palette.onAccent : selected ? palette.accent : palette.muted);
   return (
-    <Pressable
+    <PressableScale
       onPress={onPress}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
       disabled={disabled}
       accessibilityState={{ selected, disabled }}
-      style={({ pressed }) => [
-        { width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center' },
-        fill,
-        pressed && { opacity: 0.7, transform: [{ scale: 0.94 }] },
-      ]}>
+      scaleTo={0.9}
+      style={[{ width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center' }, fill]}>
       <Ionicons name={icon} size={Math.round(size * 0.44)} color={tint} />
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -526,7 +535,7 @@ export function barSurface(palette: Palette): string {
  * every control in the thumb zone, as One UI asks, and floats over the content like Apple's Liquid Glass.
  */
 export function FloatingBar({ children, style }: { children: ReactNode; style?: StyleProp<ViewStyle> }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <View
       style={[

@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 import { Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { MoonPhase } from '@/components/moon-phase';
+import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { Backdrop, Card, Chip, glass, GroupCard, GroupRow, GroupTitle, IconButton, LargeHeader, Muted } from '@/components/ui';
 import {
   addDays,
@@ -23,8 +23,10 @@ import {
 } from '@/content/explore';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 const VRATA_LABEL: Record<VrataKind, Msg> = {
   ekadashi: S.vratEkadashi,
@@ -40,7 +42,7 @@ const VRATA_LABEL: Record<VrataKind, Msg> = {
  */
 export default function PanchangScreen() {
   const insets = useSafeAreaInsets();
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const [city, setCity] = usePanchangCity();
@@ -247,14 +249,14 @@ export default function PanchangScreen() {
 }
 
 function MoonCard({ p }: { p: PanchangDayData }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const cap = fontCap(settings.textScale);
   return (
     <Card strong style={{ marginTop: SPACE.md, rowGap: SPACE.md }}>
       <View style={styles.moonRow}>
-        <MoonPhase illumination={p.paksha.illuminationPercent} waxing={p.paksha.isWaxing} size={72} />
+        <Moon3D phase={phaseFromIllumination(p.paksha.illuminationPercent, p.paksha.isWaxing)} size={72} />
         <View style={{ flex: 1 }}>
           <View style={styles.pillRow}>
             <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: hues.saffron, fontSize: TYPE.caption, fontWeight: '700' }}>
@@ -322,7 +324,7 @@ function Limb({
   meaning: string;
   first?: boolean;
 }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t, lang } = useI18n();
   const [open, setOpen] = useState(false);
   const cap = fontCap(settings.textScale);
@@ -370,7 +372,7 @@ function Limb({
 }
 
 function Tile({ icon, color, label, value }: { icon: 'sunny' | 'moon' | 'time' | 'compass'; color: string; label: string; value: string }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <View accessible accessibilityLabel={`${label}: ${value}`} style={[styles.tile, glass(palette)]}>
       <View style={styles.tileHead}>
@@ -387,7 +389,7 @@ function Tile({ icon, color, label, value }: { icon: 'sunny' | 'moon' | 'time' |
 }
 
 function Window({ color, label, value, note }: { color: string; label: string; value: string; note?: string }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <View accessible accessibilityLabel={`${label}: ${value}${note ? `. ${note}` : ''}`} style={styles.window}>
       <View style={[styles.windowDot, { backgroundColor: color }]} />
@@ -405,7 +407,7 @@ function Window({ color, label, value, note }: { color: string; label: string; v
 }
 
 function VratList({ kind, fromIso }: { kind: VrataKind; fromIso: string }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const items = upcomingVrats(kind, fromIso);
   if (!items.length) {
@@ -436,7 +438,7 @@ function VratList({ kind, fromIso }: { kind: VrataKind; fromIso: string }) {
 
 function CitySheet({ visible, selected, onClose, onPick }: { visible: boolean; selected: string; onClose: () => void; onPick: (id: string) => void }) {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   return (
     <Modal visible={visible} transparent animationType="slide" statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>

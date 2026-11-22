@@ -2,13 +2,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Stack, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useRecitation } from '@/audio/player';
 import { recitedVerses } from '@/audio/recitation';
 import { ChapterSummaryCard } from '@/components/chapter-summary';
 import { ReadingSheet } from '@/components/reading-sheet';
-import { Backdrop, Eyebrow, FloatingBar, glass, IconButton, Muted } from '@/components/ui';
+import { accentFill, Backdrop, Eyebrow, FloatingBar, glass, IconButton, Muted } from '@/components/ui';
 import { VerseCard } from '@/components/verse-card';
 import { VerseJumpSheet } from '@/components/verse-jump-sheet';
 import { getEntry, loadChapter } from '@/content/catalog';
@@ -18,10 +19,16 @@ import type { Verse } from '@/content/types';
 import { S, type Msg } from '@/i18n';
 import { READ_DWELL_MS } from '@/lib/progress';
 import { toDevanagari } from '@/lib/verse-format';
+import { PressableScale } from '@/motion/pressable-scale';
+import { DURATION } from '@/motion/tokens';
+import { useToast } from '@/motion/toast';
+import { useMotion } from '@/motion/use-motion';
 import { useAppState } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
-import { BAR_GAP, barClearance, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
+import { BAR_GAP, barClearance, quietFill, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 const VIEWABILITY = { itemVisiblePercentThreshold: 40 };
 
@@ -30,7 +37,7 @@ export default function ChapterScreen() {
   const id = String(params.id);
   const chapterNo = Number(params.chapter);
   const insets = useSafeAreaInsets();
-  const { palette, settings, lang, bookmarks, toggleBookmark, setLastRead, markRead } = useAppState();
+  const { palette, settings, lang, bookmarks, toggleBookmark, setLastRead, markRead, lightEffects } = useAppState();
   const t = (m: Msg) => m[lang];
   const entry = getEntry(id);
   const meta = entry?.chapters.find((c) => c.number === chapterNo);
@@ -42,6 +49,10 @@ export default function ChapterScreen() {
   const jumped = useRef(false);
   const [sheet, setSheet] = useState<'none' | 'reading' | 'jump'>('none');
   const [visibleIndex, setVisibleIndex] = useState(0);
+  // How far through the chapter the verse on screen is, drawn as a hairline under the header.
+  const { animate } = useMotion();
+  const progress = useSharedValue(0);
+  const progressStyle = useAnimatedStyle(() => ({ transform: [{ scaleX: progress.value }] }));
   // Jumping to a verse (see jumpToTarget below). userScrolled is set once the reader scrolls by hand,
   // so the jump never fights their finger.
   const userScrolled = useRef(false);
@@ -111,7 +122,23 @@ export default function ChapterScreen() {
     () => new Set(bookmarks.filter((b) => b.id === id && b.chapter === chapterNo).map((b) => b.verse)),
     [bookmarks, id, chapterNo],
   );
-  const onToggleBookmark = useCallback((verse: string) => toggleBookmark(id, chapterNo, verse), [toggleBookmark, id, chapterNo]);
+  // Saving or removing confirms itself with a toast and Undo, so the reader never meets a dialog mid-chapter.
+  const toast = useToast();
+  const savedRef = useRef(saved);
+  useEffect(() => {
+    savedRef.current = saved;
+  }, [saved]);
+  const onToggleBookmark = useCallback(
+    (verse: string) => {
+      const wasSaved = savedRef.current.has(verse);
+      toggleBookmark(id, chapterNo, verse);
+      toast.show((wasSaved ? S.toastRemoved : S.toastSaved)[lang], {
+        icon: wasSaved ? 'bookmark-outline' : 'bookmark',
+        action: { label: S.undo[lang], onPress: () => toggleBookmark(id, chapterNo, verse) },
+      });
+    },
+    [toggleBookmark, id, chapterNo, toast, lang],
+  );
 
   // Journal reflections per verse in this chapter, so the pen on a verse fills in once it has one.
   const { journal } = useJournal();
@@ -169,6 +196,11 @@ export default function ChapterScreen() {
   );
 
   const numbers = useMemo(() => (chapter ? chapter.verses.map((v) => String(v.number)) : []), [chapter]);
+
+  const fraction = numbers.length > 0 ? Math.min(1, (visibleIndex + 1) / numbers.length) : 0;
+  useEffect(() => {
+    progress.set(animate ? withTiming(fraction, { duration: DURATION.quick }) : fraction);
+  }, [fraction, animate, progress]);
 
   // A verse picked in the jump sheet is reached the same way as a linked verse.
   const jumpTo = (index: number) => {
@@ -255,7 +287,26 @@ export default function ChapterScreen() {
       <>
         <Stack.Screen
           options={{
-            title: `${entry.title} · ${chapterNo}`,
+            title: t(S.chapterN(chapterNo)),
+            // Where you are, in two lines rather than a dot-joined string: the chapter, then its name.
+            headerTitle: () => (
+              <View style={{ alignItems: 'center' }} accessible accessibilityRole="header">
+                <Text numberOfLines={1} maxFontSizeMultiplier={1.3} style={{ color: palette.text, fontSize: TYPE.callout, fontWeight: '700' }}>
+                  {t(S.chapterN(chapterNo))}
+                </Text>
+                <Text numberOfLines={1} maxFontSizeMultiplier={1.3} style={{ color: palette.muted, fontSize: TYPE.caption }}>
+                  {meta.titleSanskrit ?? meta.title}
+                </Text>
+              </View>
+            ),
+            headerTitleAlign: 'center',
+            headerBackground: () => (
+              <View style={[StyleSheet.absoluteFill, { backgroundColor: palette.chrome }]}>
+                <View style={[styles.progressTrack, { backgroundColor: quietFill(palette) }]}>
+                  <Animated.View style={[styles.progressFill, { backgroundColor: palette.accent }, progressStyle]} />
+                </View>
+              </View>
+            ),
             headerRight: () => (
               <IconButton
                 icon="text"
@@ -279,9 +330,13 @@ export default function ChapterScreen() {
           viewabilityConfig={VIEWABILITY}
           // Never render up to the target verse in one go: a bookmark deep in Bala Kand (1,958 verses)
           // would mount ~1,500 cards on the JS thread and freeze the phone. Jump instead (below).
-          initialNumToRender={6}
-          maxToRenderPerBatch={6}
-          windowSize={7}
+          // A verse card with its translation fills most of a phone screen, so a few cards cover the first
+          // paint. Under Light effects (budget phones on Automatic) the list keeps fewer screens mounted
+          // around the one in view: less JS work per scroll and less memory, at the cost of a blank flash
+          // only on a very hard fling.
+          initialNumToRender={lightEffects ? 3 : 6}
+          maxToRenderPerBatch={lightEffects ? 4 : 6}
+          windowSize={lightEffects ? 5 : 7}
           onLayout={() => {
             if (target <= 0 || jumped.current) return;
             jumped.current = true;
@@ -340,11 +395,12 @@ export default function ChapterScreen() {
           ListFooterComponent={
             next ? (
               // The end of the chapter leads straight on to the next one.
-              <Pressable
+              <PressableScale
+                haptic
                 accessibilityRole="button"
                 accessibilityLabel={t(S.nextChapterA11y(next.title))}
                 onPress={() => go(next.number)}
-                style={({ pressed }) => [styles.nextCard, glass(palette, true), pressed && { transform: [{ scale: 0.985 }] }]}>
+                style={[styles.nextCard, glass(palette, true)]}>
                 <View style={{ flex: 1 }}>
                   <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
                     {t(S.nextChapterLabel)}
@@ -357,7 +413,7 @@ export default function ChapterScreen() {
                   </Text>
                 </View>
                 <Ionicons name="arrow-forward" size={22} color={palette.accent} />
-              </Pressable>
+              </PressableScale>
             ) : undefined
           }
         />
@@ -370,10 +426,12 @@ export default function ChapterScreen() {
               onPress={() => prev && go(prev.number)}
               disabled={!prev}
               accessibilityLabel={prev ? t(S.prevChapterA11y(prev.title)) : t(S.firstChapter)}
-              color={prev ? palette.accent : palette.border}
+              color={prev ? palette.text : palette.border}
             />
             {recited.length > 0 ? (
-              <Pressable
+              // The toolbar's one filled control: listening is the thing this bar offers beyond turning pages.
+              <PressableScale
+                scaleTo={0.9}
                 accessibilityRole="button"
                 accessibilityState={{ busy: phase === 'loading' && !!playingHere }}
                 accessibilityLabel={t(
@@ -386,17 +444,17 @@ export default function ChapterScreen() {
                         : S.resumeRecitation,
                 )}
                 onPress={onPlay}
-                style={({ pressed }) => [styles.roundBtn, pressed && { opacity: 0.7, transform: [{ scale: 0.94 }] }]}>
+                style={[styles.roundBtn, accentFill(palette)]}>
                 {playingHere && phase === 'loading' ? (
-                  <ActivityIndicator size="small" color={palette.accent} />
+                  <ActivityIndicator size="small" color={palette.onAccent} />
                 ) : (
                   <Ionicons
                     name={playingHere && phase === 'playing' ? 'pause' : playingHere && phase === 'error' ? 'refresh' : 'play'}
                     size={21}
-                    color={palette.accent}
+                    color={palette.onAccent}
                   />
                 )}
-              </Pressable>
+              </PressableScale>
             ) : null}
             <Pressable
               accessibilityRole="button"
@@ -408,15 +466,20 @@ export default function ChapterScreen() {
               onPress={() => total > 0 && setSheet('jump')}
               style={({ pressed }) => [
                 styles.position,
-                { backgroundColor: palette.dark ? 'rgba(255,159,10,0.14)' : 'rgba(194,65,12,0.08)' },
+                { backgroundColor: quietFill(palette) },
                 pressed && { opacity: 0.75 },
               ]}>
-              <Text maxFontSizeMultiplier={1.4} numberOfLines={1} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
+              <Text
+                maxFontSizeMultiplier={1.4}
+                numberOfLines={1}
+                adjustsFontSizeToFit
+                minimumFontScale={0.8}
+                style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
                 {playingHere ? (
                   <Ionicons name="musical-notes" size={TYPE.subhead} color={palette.accent} accessibilityElementsHidden />
                 ) : null}
                 {playingHere ? ' ' : ''}
-                {t(S.verseOf(playingHere ?? shownVerse, total))}
+                {playingHere ? t(S.verseOfShort(playingHere, total)) : t(S.verseOf(shownVerse, total))}
               </Text>
             </Pressable>
             {playingHere ? <IconButton icon="stop" onPress={stop} accessibilityLabel={t(S.stopRecitation)} color={palette.muted} /> : null}
@@ -425,7 +488,7 @@ export default function ChapterScreen() {
               onPress={() => next && go(next.number)}
               disabled={!next}
               accessibilityLabel={next ? t(S.nextChapterA11y(next.title)) : t(S.lastChapter)}
-              color={next ? palette.accent : palette.border}
+              color={next ? palette.text : palette.border}
             />
           </FloatingBar>
         </View>
@@ -456,6 +519,8 @@ const styles = StyleSheet.create({
     marginTop: SPACE.sm,
   },
   roundBtn: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
+  progressTrack: { position: 'absolute', left: 0, right: 0, bottom: 0, height: 2 },
+  progressFill: { height: 2, transformOrigin: 'left' },
   toolbarWrap: { position: 'absolute', left: SPACE.lg, right: SPACE.lg },
   toolbar: { justifyContent: 'space-between' },
   position: {

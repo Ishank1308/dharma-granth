@@ -3,7 +3,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { IconButton } from '@/components/ui';
 import { S, useI18n } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 /** A grid of the chapter's verse numbers, so a reader can jump to any verse with one tap. */
@@ -21,7 +21,7 @@ export function VerseJumpSheet({
   onPick: (index: number) => void;
 }) {
   const insets = useSafeAreaInsets();
-  const { palette, reduceMotion } = useAppState();
+  const { palette, reduceMotion } = usePrefs();
   const { t } = useI18n();
   return (
     <Modal visible={visible} transparent animationType={reduceMotion ? 'none' : 'slide'} statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>

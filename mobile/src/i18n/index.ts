@@ -10,7 +10,7 @@
  */
 import { useCallback } from 'react';
 
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import type { Lang } from './language';
 import type { Msg } from './strings';
 
@@ -18,7 +18,7 @@ export * from './language';
 export { COLLECTION_LABELS, MOOD_LABELS, S, type Msg } from './strings';
 
 export function useI18n(): { lang: Lang; t: (m: Msg) => string } {
-  const { lang } = useAppState();
+  const { lang } = usePrefs();
   const t = useCallback((m: Msg) => m[lang], [lang]);
   return { lang, t };
 }

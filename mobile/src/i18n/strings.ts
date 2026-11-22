@@ -22,6 +22,16 @@ export interface Msg {
 const n = (value: number) => value.toLocaleString('en-IN');
 
 export const S = {
+  // When a screen fails to draw (src/components/error-boundary.tsx). Shown in both languages: the
+  // settings that pick one may be what failed.
+  crashTitle: { en: 'This page could not open', hi: 'यह पेज खुल नहीं पाया' },
+  crashBody: {
+    en: 'Something went wrong while drawing it. Your saved verses and settings are safe.',
+    hi: 'इसे दिखाते समय कुछ गड़बड़ हुई। आपके सहेजे श्लोक और सेटिंग्स सुरक्षित हैं।',
+  },
+  crashRetry: { en: 'Try again', hi: 'फिर से कोशिश करें' },
+  crashHome: { en: 'Go to Library', hi: 'ग्रन्थ पर जाएँ' },
+
   // App and tabs
   appName: { en: 'Dharma Granth', hi: 'धर्म ग्रन्थ' },
   tabLibrary: { en: 'Library', hi: 'ग्रन्थ' },
@@ -386,6 +396,17 @@ export const S = {
   downloadChecking: { en: 'Checking size…', hi: 'साइज़ देख रहे हैं…' },
   downloadOffline: { en: 'Could not reach dharmagranth.dev. Check your connection.', hi: 'dharmagranth.dev से जुड़ नहीं पाए। इंटरनेट कनेक्शन देखें।' },
   downloadNotYet: { en: 'This text is not available for download yet.', hi: 'यह ग्रन्थ अभी डाउनलोड के लिए उपलब्ध नहीं है।' },
+  // Why a download stopped (DownloadErrorCode in src/content/downloads.ts). Parts already saved are kept only for the try in progress.
+  downloadErrOffline: { en: 'No internet connection. Connect and tap Download again.', hi: 'इंटरनेट नहीं है। कनेक्ट करके फिर से डाउनलोड दबाएँ।' },
+  downloadErrServer: { en: 'dharmagranth.dev is not answering right now. Please try again in a little while.', hi: 'dharmagranth.dev अभी जवाब नहीं दे रहा। थोड़ी देर बाद फिर कोशिश करें।' },
+  downloadErrSpace: (size: string) => ({
+    en: `Not enough free space. This text needs about ${size}.`,
+    hi: `फ़ोन में जगह कम है। इस ग्रन्थ के लिए लगभग ${size} चाहिए।`,
+  }),
+  downloadErrDamaged: { en: 'The download arrived damaged. Please try again.', hi: 'डाउनलोड ख़राब होकर आया। फिर से कोशिश करें।' },
+  downloadErrIncomplete: { en: 'The download was incomplete. Please try again.', hi: 'डाउनलोड पूरा नहीं हुआ। फिर से कोशिश करें।' },
+  downloadErrUpdate: { en: 'Please update the app from the Play Store to download this text.', hi: 'यह ग्रन्थ डाउनलोड करने के लिए Play Store से ऐप अपडेट करें।' },
+  downloadErrFailed: { en: 'The download stopped. Please try again.', hi: 'डाउनलोड रुक गया। फिर से कोशिश करें।' },
   downloadBtn: { en: 'Download', hi: 'डाउनलोड' },
   downloadA11y: (title: string) => ({ en: `Download ${title}`, hi: `${title} डाउनलोड करें` }),
   readOnline: { en: 'Read online', hi: 'ऑनलाइन पढ़ें' },
@@ -471,6 +492,8 @@ export const S = {
     hi: `${n(total)} में से श्लोक ${verse}। किसी और श्लोक पर जाएँ`,
   }),
   verseOf: (verse: string, total: number) => ({ en: `Verse ${verse} of ${n(total)}`, hi: `श्लोक ${verse} / ${n(total)}` }),
+  /** While a recitation plays the pill also holds a notes icon, so it drops the word to fit a 360 dp phone. */
+  verseOfShort: (verse: string, total: number) => ({ en: `${verse} / ${n(total)}`, hi: `${verse} / ${n(total)}` }),
   nextChapterLabel: { en: 'Next chapter', hi: 'अगला अध्याय' },
   firstChapter: { en: 'This is the first chapter', hi: 'यह पहला अध्याय है' },
   lastChapter: { en: 'This is the last chapter', hi: 'यह आख़िरी अध्याय है' },
@@ -480,6 +503,9 @@ export const S = {
   }),
   savedEmptyTitle: { en: 'Keep the verses that speak to you', hi: 'जो श्लोक मन को छुएँ, उन्हें सहेजें' },
   startWithGita: { en: 'Start with the Bhagavad Gita', hi: 'भगवद्गीता से शुरू करें' },
+  shelfTitle: { en: 'Good places to begin', hi: 'आरंभ के लिए' },
+  openBookA11y: (title: string) => ({ en: `Open ${title}`, hi: `${title} खोलें` }),
+
 
   // Reading progress and the daily reading streak
   percentRead: (pct: number) => ({ en: `${pct}% read`, hi: `${pct}% पढ़ा` }),
@@ -737,6 +763,17 @@ export const S = {
     hi: `${inSection ? 'इस वर्ग में ' : ''}“${query}” से मिलता कोई श्लोक नहीं मिला। कम शब्द या दूसरी वर्तनी आज़माएँ।`,
   }),
   searchResultA11y: (ref: string, text: string) => ({ en: `${ref}. ${text}. Opens the verse`, hi: `${ref}। ${text}। श्लोक खोलता है` }),
+
+  // Toasts: a short confirmation with Undo, in place of "Are you sure?" dialogs
+  toastSaved: { en: 'Saved to your collection', hi: 'आपके संग्रह में सहेजा गया' },
+  toastRemoved: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
+  undo: { en: 'Undo', hi: 'वापस लें' },
+
+  // A book's title page: its size in plain words, under the English title
+  titlePageFacts: (chapters: number, verses: number) => ({
+    en: `${n(chapters)} ${chapters === 1 ? 'chapter' : 'chapters'} and ${n(verses)} verses`,
+    hi: `${n(chapters)} अध्याय, ${n(verses)} श्लोक`,
+  }),
 } satisfies Record<string, Msg | ((...args: never[]) => Msg)>;
 
 /** Journal moods (@/lib/journal MOODS), as on the website. */

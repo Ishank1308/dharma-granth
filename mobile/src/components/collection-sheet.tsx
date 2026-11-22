@@ -6,7 +6,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { accentFill, IconButton } from '@/components/ui';
 import { COLLECTION_LABELS, S, useI18n, type Msg } from '@/i18n';
 import { allCollections, collectionOf, isBuiltin, MAX_COLLECTION_NAME, type CollectionError, type VerseCollection, type VerseLink } from '@/lib/journal';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { quietFill, RADIUS, separator, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
@@ -26,7 +26,7 @@ export function useCollectionName(): (c: Pick<VerseCollection, 'id' | 'name'>) =
 /** The bottom sheet's frame, as the reading sheet. */
 function Sheet({ visible, title, onClose, children }: { visible: boolean; title: string; onClose: () => void; children: React.ReactNode }) {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   return (
     <Modal visible={visible} transparent animationType="slide" statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>
@@ -51,7 +51,7 @@ function Sheet({ visible, title, onClose, children }: { visible: boolean; title:
 
 /** A name field with Save, for a new collection or a rename. */
 export function NameField({ initial = '', onSubmit, autoFocus }: { initial?: string; onSubmit: (name: string) => CollectionError | undefined; autoFocus?: boolean }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const [name, setName] = useState(initial);
   const [error, setError] = useState<CollectionError | undefined>();
@@ -91,7 +91,7 @@ export function NameField({ initial = '', onSubmit, autoFocus }: { initial?: str
 
 /** Move one saved verse to a collection, or make a new one for it. */
 export function CollectionSheet({ verse, verseLabel, onClose }: { verse: VerseLink | null; verseLabel: string; onClose: () => void }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { journal, moveVerse, createCollection } = useJournal();
   const { t } = useI18n();
   const nameOf = useCollectionName();
