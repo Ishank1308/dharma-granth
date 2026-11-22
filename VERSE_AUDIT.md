@@ -10,7 +10,7 @@ _Per-verse field completeness across the published scripture JSON corpus._
 | Declared verses | 319,212 |
 | Loaded verses | 319,205 |
 | Not-yet-loaded verses | 7 |
-| Empty commentary / explanation | 140,887 |
+| Empty commentary / explanation | 140,869 |
 | Empty word meaning | 302,637 |
 | Empty Hindi | 0 |
 | Critical gaps (core text) | 144366 |
@@ -70,10 +70,10 @@ _Per-verse field completeness across the published scripture JSON corpus._
 | nityakarmakriya | Nitya Karma Kriya | 16 | 16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | padmapuran | Padma Purana | 18 | 18 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | prashna | Prashna Upanishad | 67 | 67 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| ramayana | Valmiki Ramayana | 23595 | 23595 | 0 | 0 | 0 | 23595 | 23595 | 0 | 23591 | 23595 |
+| ramayana | Valmiki Ramayana | 23595 | 23595 | 0 | 0 | 0 | 23595 | 23595 | 0 | 23581 | 23595 |
 | ramcharitmanas | Shri Ramcharitmanas | 6172 | 6172 | 0 | 0 | 0 | 6083 | 6083 | 0 | 6137 | 6172 |
 | ravanasamhita | Ravana Samhita | 43 | 43 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| rigveda | Rig Veda | 10531 | 10531 | 0 | 0 | 0 | 10524 | 10524 | 0 | 10524 | 10531 |
+| rigveda | Rig Veda | 10531 | 10531 | 0 | 0 | 0 | 10524 | 10524 | 0 | 10516 | 10531 |
 | samaveda | Sama Veda | 1875 | 1875 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1872 |
 | shandilyabhaktisutra | Shandilya Bhakti Sutras | 100 | 100 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 98 |
 | shivasamhita | Shiva Samhita | 644 | 644 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 644 |
@@ -103,11 +103,11 @@ These are the scriptures that have verse records but are missing explanatory con
 | Scripture | Title | Loaded | ∅ Commentary | ∅ Word Meaning |
 | --- | --- | --- | --- | --- |
 | mahabharata | Mahabharata | 73816 | 41342 | 71632 |
-| ramayana | Valmiki Ramayana | 23595 | 23591 | 23595 |
+| ramayana | Valmiki Ramayana | 23595 | 23581 | 23595 |
 | devibhagavat | Devi Bhagavata Purana | 18385 | 18203 | 18376 |
 | bhagavatapurana | Bhagavata Purana | 14408 | 14401 | 14401 |
 | harivanshpuran | Harivamsha Purana | 16005 | 14005 | 15614 |
-| rigveda | Rig Veda | 10531 | 10524 | 10531 |
+| rigveda | Rig Veda | 10531 | 10516 | 10531 |
 | ramcharitmanas | Shri Ramcharitmanas | 6172 | 6137 | 6172 |
 | atharvaveda | Atharva Veda | 5985 | 5980 | 5985 |
 | shivpurana | Shiva Purana | 15591 | 2984 | 15005 |
@@ -155,11 +155,11 @@ These are the scriptures that have verse records but are missing explanatory con
 ### Sample verse references with missing commentary
 
 - **mahabharata** (Mahabharata): mahabharata:1:1.0, mahabharata:1:1.1, mahabharata:1:1.2
-- **ramayana** (Valmiki Ramayana): ramayana:1:1.1, ramayana:1:1.3, ramayana:1:1.4
+- **ramayana** (Valmiki Ramayana): ramayana:1:1.13, ramayana:1:1.14, ramayana:1:1.15
 - **devibhagavat** (Devi Bhagavata Purana): devibhagavat:5:1, devibhagavat:5:2, devibhagavat:5:3
 - **bhagavatapurana** (Bhagavata Purana): bhagavatapurana:1:1, bhagavatapurana:1:3, bhagavatapurana:1:4
 - **harivanshpuran** (Harivamsha Purana): harivanshpuran:1:2, harivanshpuran:1:3, harivanshpuran:1:4
-- **rigveda** (Rig Veda): rigveda:1:1.2, rigveda:1:1.3, rigveda:1:1.4
+- **rigveda** (Rig Veda): rigveda:1:2.1, rigveda:1:2.2, rigveda:1:2.3
 - **ramcharitmanas** (Shri Ramcharitmanas): ramcharitmanas:1:0.3, ramcharitmanas:1:0.4, ramcharitmanas:1:0.5
 - **atharvaveda** (Atharva Veda): atharvaveda:1:1.1, atharvaveda:1:1.2, atharvaveda:1:1.3
 - **shivpurana** (Shiva Purana): shivpurana:1:0.1, shivpurana:1:0.2, shivpurana:1:1.1
@@ -191,9 +191,9 @@ These are the scriptures that have verse records but are missing explanatory con
 | matsyapuran | Matsya Purana | 8330 | 8330 | 0 | 0 | 0 | 0 | 1569 | 0 | 0 | 5945 |
 | naradapuran | Narada Purana | 15203 | 15203 | 0 | 0 | 0 | 5 | 140 | 0 | 5 | 14480 |
 | narasimhapuran | Narasimha Purana | 3361 | 3361 | 0 | 0 | 0 | 0 | 190 | 0 | 0 | 2590 |
-| ramayana | Valmiki Ramayana | 23595 | 23595 | 0 | 0 | 0 | 23595 | 23595 | 0 | 23591 | 23595 |
+| ramayana | Valmiki Ramayana | 23595 | 23595 | 0 | 0 | 0 | 23595 | 23595 | 0 | 23581 | 23595 |
 | ramcharitmanas | Shri Ramcharitmanas | 6172 | 6172 | 0 | 0 | 0 | 6083 | 6083 | 0 | 6137 | 6172 |
-| rigveda | Rig Veda | 10531 | 10531 | 0 | 0 | 0 | 10524 | 10524 | 0 | 10524 | 10531 |
+| rigveda | Rig Veda | 10531 | 10531 | 0 | 0 | 0 | 10524 | 10524 | 0 | 10516 | 10531 |
 | shivpurana | Shiva Purana | 15591 | 15591 | 0 | 0 | 0 | 2622 | 2681 | 0 | 2984 | 15005 |
 | skandapuran | Skanda Purana | 6464 | 6464 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 6275 |
 | vamanpuran | Vamana Purana | 5594 | 5594 | 0 | 0 | 0 | 36 | 194 | 0 | 36 | 3873 |

@@ -54,10 +54,10 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | nityakarmakriya | 16 | 16 | 16 | 0 | 16 | 0 | 16 | 13 |
 | padmapuran | 18 | 18 | 18 | 0 | 18 | 0 | 18 | 2 |
 | prashna | 67 | 67 | 67 | 0 | 67 | 0 | 67 | 67 |
-| ramayana | 23595 | 23595 | 23595 | 0 | 0 | 0 | 4 | 4 |
+| ramayana | 23595 | 23595 | 23595 | 0 | 0 | 0 | 14 | 4 |
 | ramcharitmanas | 6172 | 6172 | 6172 | 0 | 89 | 0 | 35 | 35 |
 | ravanasamhita | 43 | 43 | 43 | 0 | 43 | 0 | 43 | 43 |
-| rigveda | 10531 | 10531 | 10531 | 0 | 7 | 0 | 7 | 6 |
+| rigveda | 10531 | 10531 | 10531 | 0 | 7 | 0 | 15 | 6 |
 | samaveda | 1875 | 1875 | 1875 | 0 | 1875 | 0 | 1875 | 7 |
 | shandilyabhaktisutra | 100 | 100 | 100 | 0 | 100 | 0 | 100 | 0 |
 | shivasamhita | 644 | 644 | 644 | 0 | 644 | 0 | 644 | 0 |
@@ -75,6 +75,6 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | yogasutra | 195 | 195 | 195 | 0 | 195 | 0 | 195 | 3 |
 | yogavasishtha | 13 | 13 | 13 | 0 | 13 | 0 | 13 | 13 |
 | yogavasistha | 13 | 13 | 13 | 0 | 13 | 0 | 13 | 13 |
-| **Total** | 318932 | 318932 | 198712 | 7199 | 87563 | 5293 | 21310 | 731 |
+| **Total** | 318932 | 318932 | 198712 | 7199 | 87563 | 5293 | 21328 | 731 |
 
 Measured 67/67 catalogued scripture files.
