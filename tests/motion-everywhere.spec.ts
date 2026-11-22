@@ -143,7 +143,8 @@ test('a tapped festival card grows into the festival page', async ({ page }) => 
   await page.goto('/festivals/');
   // Record every element that carries a transition name while the page changes.
   await page.evaluate(() => {
-    const seen = ((window as unknown as { __vt: string[] }).__vt = []);
+    const seen: string[] = [];
+    (window as unknown as { __vt: string[] }).__vt = seen;
     new MutationObserver(() => {
       const kind = document.documentElement.getAttribute('data-vt');
       if (kind) seen.push(`kind:${kind}`);
