@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { CharacterMap } from '@/app/components/CharacterMap';
 import { characters } from '@/data/characters';
-import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { CharacterGroups } from './CharacterGroups';
 
 export const metadata: Metadata = {
   title: 'Hindu Scriptural Characters & Lineages (पात्र ज्ञान ग्राफ)',
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function CharactersPage() {
   return (
-    <main className="min-h-screen bg-dharma-bg">
+    <main className="apple-scope min-h-screen bg-dharma-bg">
       <PageHeader
         width="wide"
         eyebrow="Characters"
@@ -43,8 +44,17 @@ export default function CharactersPage() {
         }
       />
 
+      {/* ── The characters by epic: every character's page, one tap away ── */}
+      <CharacterGroups />
+
       {/* ── Interactive Map ──────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 pt-6 relative z-10 pb-20">
+      <section id="characters-map" aria-labelledby="characters-map-heading" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-gutter pb-20 pt-14">
+        <SectionTitle
+          id="characters-map-heading"
+          title="Relationship map"
+          titleHi="संबंध मानचित्र"
+          sub={<span lang="hi" className="font-devanagari">कौन किससे कैसे जुड़ा है: पात्र चुनें और संबंध देखें।</span>}
+        />
         <div className="bg-dharma-card/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-dharma-border p-4 sm:p-6 md:p-8">
           <CharacterMap />
         </div>

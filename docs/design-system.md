@@ -15,6 +15,7 @@ from the same tokens, with two public reading themes: Light (the existing warm S
 | `app/styles/colour.css` | Colour and life: the page aurora, dawn titles, coloured cards and icon tiles, gradient buttons, spectrum rules. Loaded last. |
 | `tailwind.config.ts` | Tailwind names for the same tokens. |
 | `app/components/apple/PageHeader.tsx` | `PageHeader`, `SectionTitle` and `Eyebrow`. |
+| `app/styles/bento.css`, `app/components/bento/Bento.tsx` | The bento opening of a hub page. Loaded only by the pages that use it. |
 
 Theme colours stay in `globals.css`. Everything in `tokens.css` is mixed from them, so a new
 token never needs four copies.
@@ -199,6 +200,24 @@ React pieces:
   and the footer mark theirs already; a Sanskrit phrase beside an English title is not its
   translation and stays unmarked. Both halves stay in the HTML. The rules are under
   "Two-language labels" in `components.css`.
+- `Bento`, `BentoCell` and `Bi` (`app/components/bento/Bento.tsx`): the opening of a hub page, one
+  large tile for the reader's next step beside two or three smaller ones, then the full list
+  (Learn, Sadhana, Festivals, Characters). The grid is 2 columns on a phone and 4 from 768px; a
+  cell is `lead` (2 × 2), `wide` (2 × 1), `tall` (1 × 2) or plain (1 × 1), and `lead="end"` puts the
+  large tile on the right so stacked groups alternate. A tile is an `.apple-card` with `.bento-tile`
+  on it, so it takes the card's hue, lit edge and lift. Rules:
+  - The lead tile says what to do next, in the reader's own terms (the path they are on, today's
+    practices, the next festival). What it shows without saved data or a date is already in the
+    exported HTML; the personal state is read after the page loads.
+  - The lead tile keeps one height in both states (`--bento-lead-min` on the tile), so the page
+    below it never moves. `tests/bento-hubs.spec.ts` measures this.
+  - A tile with one destination is a link card (`<a class="apple-card bento-tile">`). A tile that
+    holds other links too gives its title link `.bento-link`, which stretches over the tile, and
+    its other links `.bento-aside`. The filled pill in such a tile is `aria-hidden`: it is the
+    visible sign of the title link, not a second link.
+  - Fill the last row: count cells so nothing hangs alone (see `widesFor` in
+    `app/characters/CharacterGroups.tsx`).
+  - No script of its own, and nothing loops. The ornament on the lead tile is drawn in CSS.
 - `CountUp` (`app/components/motion/CountUp.tsx`): a number that counts up once when it scrolls
   into view. The HTML always has the true value.
 - `WisdomTicker` (`app/components/home/WisdomTicker.tsx`): the slow band of mahāvākyas on home.
