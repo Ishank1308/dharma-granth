@@ -14,7 +14,7 @@ import { dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import type { Lang } from '@/i18n/language';
 import { S } from '@/i18n/strings';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
-import { THEMES, type Palette, type ThemeName } from '@/theme/themes';
+import { THEMES, type Palette } from '@/theme/themes';
 
 /** Must match the widget `name` in app.json (the react-native-android-widget plugin). */
 export const DAILY_VERSE_WIDGET = 'DailyVerse';
@@ -117,23 +117,12 @@ function Card({
 }
 
 /**
- * Light and dark versions; the launcher picks one from the phone's dark mode. The light version keeps
- * the reader's light theme (Day, Sunset or Paper), the dark one is always Dark.
+ * Light and dark versions; the launcher picks one from the phone's dark mode: Sunset when it is light,
+ * Dark when it is dark (the app's only two themes).
  */
-export function DailyVerseWidget({
-  data,
-  theme,
-  width,
-  height,
-}: {
-  data: DailyVerseWidgetData | undefined;
-  theme: ThemeName;
-  width: number;
-  height: number;
-}) {
-  const light = THEMES[theme].dark ? THEMES.day : THEMES[theme];
+export function DailyVerseWidget({ data, width, height }: { data: DailyVerseWidgetData | undefined; width: number; height: number }) {
   return {
-    light: <Card data={data} palette={light} width={width} height={height} />,
+    light: <Card data={data} palette={THEMES.sunset} width={width} height={height} />,
     dark: <Card data={data} palette={THEMES.dark} width={width} height={height} />,
   };
 }

@@ -17,7 +17,7 @@ import { S } from '@/i18n/strings';
 import { RADIUS, SPACE, THEMES, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
-  const p = THEMES[useColorScheme() === 'dark' ? 'dark' : 'day'];
+  const p = THEMES[useColorScheme() === 'dark' ? 'dark' : 'sunset'];
   const [busy, setBusy] = useState(false);
   useEffect(() => {
     if (__DEV__) console.error('[ErrorBoundary]', error);
