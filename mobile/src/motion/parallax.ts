@@ -23,12 +23,15 @@ export function useScrollY() {
  */
 export function useParallax(scrollY: SharedValue<number>, speed: number, { enabled = true, fadeOver = 0, scaleBy = 0 } = {}) {
   return useAnimatedStyle(() => {
-    if (!enabled) return {};
+    // Turned off while the layer is on screen (light effects switched on in Settings), it goes back to rest
+    // rather than staying where the last frame left it. Opacity is only ours to set when the layer fades.
+    if (!enabled) {
+      const rest = [{ translateY: 0 }, { scale: 1 }];
+      return fadeOver > 0 ? { opacity: 1, transform: rest } : { transform: rest };
+    }
     const y = Math.max(0, scrollY.value);
-    return {
-      opacity: fadeOver > 0 ? interpolate(y, [0, fadeOver], [1, 0], Extrapolation.CLAMP) : 1,
-      transform: [{ translateY: y * speed }, { scale: scaleBy ? interpolate(y, [0, 300], [1, 1 - scaleBy], Extrapolation.CLAMP) : 1 }],
-    };
+    const transform = [{ translateY: y * speed }, { scale: scaleBy ? interpolate(y, [0, 300], [1, 1 - scaleBy], Extrapolation.CLAMP) : 1 }];
+    return fadeOver > 0 ? { opacity: interpolate(y, [0, fadeOver], [1, 0], Extrapolation.CLAMP), transform } : { transform };
   });
 }
 
