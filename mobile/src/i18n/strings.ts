@@ -1020,7 +1020,7 @@ export const S = {
   analogy: { en: 'An example', hi: 'उदाहरण से समझें' },
   misunderstanding: { en: 'A common misunderstanding', hi: 'एक आम भ्रम' },
   messageForToday: { en: 'A message for today', hi: 'आज की पीढ़ी के लिए संदेश' },
-  practicalApplication: { en: 'In practice', hi: 'व्यवहार में' },
+  ashtavakraPractice: { en: 'In practice', hi: 'व्यवहार में' },
   shortPractice: { en: 'A short practice', hi: 'छोटा अभ्यास' },
   needsReview: { en: 'Being checked against the book', hi: 'पुस्तक से मिलान जारी' },
   chapterSummary: { en: 'Summary', hi: 'सार' },
