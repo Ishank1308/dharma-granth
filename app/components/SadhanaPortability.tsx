@@ -34,7 +34,7 @@ export function SadhanaPortability() {
       triggerTactileFeedback('success', 'success');
       setMessage('साधना सिंक कोड तैयार है। इसे कॉपी करके दूसरे उपकरण पर पेस्ट करें।');
     } catch {
-      setMessage('सिंक कोड बनाने में त्रुटि हुई।');
+      setMessage('क्षमा करें, सिंक कोड अभी नहीं बन सका। कृपया फिर से प्रयास करें।');
     } finally {
       setGeneratingCode(false);
     }
@@ -63,7 +63,7 @@ export function SadhanaPortability() {
         setTimeout(() => window.location.reload(), 1200);
       }
     } catch {
-      setMessage('सिंक कोड अमान्य है।');
+      setMessage('यह सिंक कोड पढ़ा नहीं जा सका। कृपया देख लें कि पूरा कोड कॉपी हुआ है।');
     } finally {
       setRestoringCode(false);
     }
@@ -84,7 +84,7 @@ export function SadhanaPortability() {
       triggerTactileFeedback('success', 'softTap');
       setMessage('.dharma साधना बैकअप फ़ाइल डाउनलोड हो गई।');
     } catch {
-      setMessage('बैकअप फ़ाइल नहीं बन सकी।');
+      setMessage('क्षमा करें, बैकअप फ़ाइल अभी नहीं बन सकी। कृपया फिर से प्रयास करें।');
     }
   }
 
@@ -95,7 +95,7 @@ export function SadhanaPortability() {
       if (fileInput.current) fileInput.current.value = '';
     };
     if (file.size > MAX_BYTES) {
-      setMessage('यह फ़ाइल बहुत बड़ी है।');
+      setMessage('यह फ़ाइल बैकअप के लिए बहुत बड़ी है। कृपया Dharma Granth से बनी बैकअप फ़ाइल चुनें।');
       reset();
       return;
     }
@@ -117,7 +117,7 @@ export function SadhanaPortability() {
         setTimeout(() => window.location.reload(), 1200);
       }
     } catch {
-      setMessage('फ़ाइल पढ़ने में त्रुटि हुई।');
+      setMessage('क्षमा करें, यह फ़ाइल पढ़ी नहीं जा सकी। कृपया कोई दूसरी बैकअप फ़ाइल चुनें।');
     }
     reset();
   }

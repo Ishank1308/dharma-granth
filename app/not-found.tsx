@@ -2,8 +2,8 @@ import { BookOpen, Home, Search } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Path Not Found',
-  description: 'The page you are looking for is not part of the library yet.',
+  title: 'Page Not Found',
+  description: 'Sorry, the page you are looking for is not in the library yet.',
   robots: { index: false, follow: true },
 };
 
@@ -25,8 +25,8 @@ export default function NotFound() {
         </h1>
         <p className="mb-3 text-base font-semibold text-dharma-text" lang="en">This path is not in the library.</p>
         <p className="text-base text-dharma-muted mb-10 max-w-lg mx-auto leading-relaxed">
-          आपके द्वारा खोजा गया पृष्ठ उपलब्ध नहीं है, अथवा यह श्लोक अभी संकलित नहीं हुआ है। ग्रंथालय पर लौटें या भगवद्गीता से आरम्भ करें।
-          <span className="mt-2 block" lang="en">The page you requested does not exist, or its text is not available yet. Return to the library or begin with the Bhagavad Gita.</span>
+          क्षमा करें, यह पृष्ठ हमें नहीं मिला। हो सकता है यह कहीं और चला गया हो, या यह श्लोक अभी संकलित न हुआ हो। आप ग्रंथालय में लौट सकते हैं या भगवद्गीता से आरम्भ कर सकते हैं।
+          <span className="mt-2 block" lang="en">Sorry, we couldn’t find this page. It may have moved, or its text isn’t in the library yet. You’re welcome to browse the library or begin with the Bhagavad Gita.</span>
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <a

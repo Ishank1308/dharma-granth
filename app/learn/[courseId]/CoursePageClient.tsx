@@ -735,7 +735,7 @@ export function CoursePageClient({ course }: CoursePageClientProps) {
                 />
               </div>
             ) : (
-              <p className="text-center py-12 text-dharma-muted">No flashcards found for this path.</p>
+              <p className="text-center py-12 text-dharma-muted">Flashcards for this path are not ready yet.</p>
             )}
           </div>
         )}

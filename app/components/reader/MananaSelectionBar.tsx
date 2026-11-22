@@ -109,7 +109,7 @@ export function MananaSelectionBar() {
       localStorage.setItem('dharma_manana_collection', JSON.stringify(list));
       triggerPranaToast({ message: '🪷 मनन संग्रह में सहेजा गया' });
     } catch {
-      triggerPranaToast({ message: 'त्रुटि: सहेज नहीं सके' });
+      triggerPranaToast({ message: 'क्षमा करें, अभी सहेजा नहीं जा सका' });
     }
     window.getSelection()?.removeAllRanges();
     setCoords(null);
@@ -127,7 +127,7 @@ export function MananaSelectionBar() {
       window.getSelection()?.removeAllRanges();
       setCoords(null);
     } catch {
-      triggerPranaToast({ message: 'कॉपी विफल रहा' });
+      triggerPranaToast({ message: 'क्षमा करें, कॉपी नहीं हो सका' });
     }
   };
 

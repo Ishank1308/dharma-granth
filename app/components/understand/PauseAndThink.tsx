@@ -71,7 +71,7 @@ export function PauseAndThink({
     const ok = write(store);
     setStorageOk(ok);
     setSaved(Boolean(text.trim()) && ok);
-    setStatus(ok ? (text.trim() ? 'Saved on this device only.' : 'Entry removed.') : 'Could not save: browser storage is unavailable. Your text is still on screen.');
+    setStatus(ok ? (text.trim() ? 'Saved on this device only.' : 'Entry removed.') : 'Sorry, this could not be saved because the browser is not allowing storage. Your words are still on screen.');
   };
 
   const remove = () => {

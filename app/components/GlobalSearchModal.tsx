@@ -941,7 +941,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
             )}
             {isOnline && verseState === 'error' && (
               <div role="alert" className="flex items-center justify-between gap-3 border-b border-rose-600/20 bg-rose-500/10 px-4 py-2.5 text-footnote text-rose-950 dark:text-rose-100">
-                <p>Verse text could not be loaded, so results show titles, topics and references only.</p>
+                <p>Sorry, the verse text didn’t load, so for now results show titles, topics and references only.</p>
                 <button
                   type="button"
                   onClick={() => setVerseState('idle')}
@@ -1126,7 +1126,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   </div>
                   {matchingActions.length === 0 ? (
                     <p className="p-4 text-center text-subhead text-label-secondary">
-                      No matching actions found for &ldquo;{actionFilter}&rdquo;. Try <code className="text-tint">&gt; tanpura</code>, <code className="text-tint">&gt; bell</code>, or <code className="text-tint">&gt; meditation</code>.
+                      No actions match &ldquo;{actionFilter}&rdquo; yet. You could try <code className="text-tint">&gt; tanpura</code>, <code className="text-tint">&gt; bell</code>, or <code className="text-tint">&gt; meditation</code>.
                     </p>
                   ) : (
                     <ul className="grid gap-2">
@@ -1291,10 +1291,10 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   )}
                   <HelpCircle className="mx-auto mb-3 h-10 w-10 text-label-tertiary" aria-hidden="true" />
                   <h3 className="text-title-3 font-semibold text-label-primary">
-                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं</span> · {selectedGroup ? 'No results in this category' : 'No results'} for “{trimmed}”
+                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं मिला</span> · {selectedGroup ? 'Nothing in this category' : 'Nothing found'} for “{trimmed}”
                   </h3>
                   <ul className="mx-auto mt-3 max-w-md space-y-1 text-left text-footnote text-label-secondary">
-                    <li>• Try part of the verse in Devanagari or Roman letters (“karmanye vadhikaraste”).</li>
+                    <li>• You could try part of the verse in Devanagari or Roman letters (“karmanye vadhikaraste”).</li>
                     <li>• Try a reference such as “Gita 2.47” or “Katha 1.2”.</li>
                     <li>• Try one idea: “fear”, “anger”, “meaning of life”, “भय”.</li>
                   </ul>

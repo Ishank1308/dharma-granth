@@ -35,7 +35,7 @@ export function OfflineLibraryManager() {
         </p>
       )}
       <h2 id="offline-heading" className="font-serif text-xl font-bold text-dharma-text">
-        {ids.length === 0 ? 'Nothing saved yet' : `${ids.length} saved · ${formatBytes(totalBytes(manifest))}`}
+        {ids.length === 0 ? 'No scriptures saved yet' : `${ids.length} saved · ${formatBytes(totalBytes(manifest))}`}
       </h2>
       {quota ? <p className="mt-1 text-xs text-dharma-muted">{quota}</p> : null}
 

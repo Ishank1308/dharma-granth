@@ -25,7 +25,7 @@ export function BackupRestore() {
       window.setTimeout(() => URL.revokeObjectURL(url), 10_000);
       setMessage('बैकअप डाउनलोड हो गया · JSON backup downloaded.');
     } catch {
-      setMessage('बैकअप नहीं बन सका · Could not create a backup; browser storage may be blocked.');
+      setMessage('क्षमा करें, बैकअप नहीं बन सका · Sorry, the backup could not be made; the browser may be blocking storage.');
     }
   }
 
@@ -35,7 +35,7 @@ export function BackupRestore() {
       if (fileInput.current) fileInput.current.value = '';
     };
     if (file.size > MAX_BACKUP_BYTES) {
-      setMessage('यह फ़ाइल बहुत बड़ी है · This file is too large to be a backup.');
+      setMessage('यह फ़ाइल बैकअप के लिए बहुत बड़ी है · This file is too large to be a backup. Please choose a Dharma Granth backup file.');
       reset();
       return;
     }
@@ -55,8 +55,8 @@ export function BackupRestore() {
     } catch (error) {
       const reason = error instanceof Error ? error.message : '';
       setMessage(reason.includes('unsupported') || reason.includes('supported')
-        ? 'यह बैकअप संस्करण समर्थित नहीं है · This backup version is not supported.'
-        : 'यह फ़ाइल मान्य बैकअप नहीं है · This is not a valid backup file.');
+        ? 'क्षमा करें, यह बैकअप संस्करण अभी समर्थित नहीं है। आपका डेटा जस का तस है · Sorry, this backup version isn’t supported yet. Nothing was changed.'
+        : 'यह फ़ाइल बैकअप के रूप में पढ़ी नहीं जा सकी। आपका डेटा जस का तस है · This file doesn’t look like a Dharma Granth backup. Nothing was changed.');
     } finally {
       reset();
     }

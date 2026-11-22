@@ -143,7 +143,7 @@ for (const route of KEY_PAGES) {
     if (uiScript !== 'Devanagari,Latin') fail(route, `unexpected UI script declaration: ${uiScript}`);
     if (!/[\u0900-\u097F]/.test(html) || !/[A-Za-z]/.test(html) || html.includes('�')) badEncoding++;
     if (/[\u{11080}-\u{110CF}]/u.test(html)) kaithiPages++;
-    if (/त्रुटि निवारण · Error Recovery|This page could not load|Part of the page failed to download/.test(html)) errorFallbacks++;
+    if (/त्रुटि निवारण · Error Recovery|This page could not load|Part of the page failed to download|part of this page didn’t arrive/.test(html)) errorFallbacks++;
   }
   if (pages.length === 0) fail('shell', 'no exported HTML pages found');
   if (observedCounts.size !== 1) fail('shell', `header verse counts vary across pages: ${[...observedCounts].join(', ') || 'none'}`);

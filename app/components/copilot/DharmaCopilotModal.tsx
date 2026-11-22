@@ -52,7 +52,7 @@ export const CURATED_KNOWLEDGE_BASE: CuratedQnA[] = [
     sanskrit: 'दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः । वीतरागभयक्रोधः स्थितधीर्मुनिरुच्यते ॥',
     hindi: 'दुःखों की प्राप्ति होने पर जिसके मन में उद्वेग नहीं होता, सुखों की प्राप्ति में जो सर्वथा निस्पृह है तथा जिसके राग, भय और क्रोध नष्ट हो गये हैं, वह मुनि स्थिरबुद्धि कहा जाता है।',
     english: 'One whose mind is undisturbed amidst sorrow, indifferent in pleasure, and liberated from attachment, fear, and anger, is a person of settled contemplation.',
-    genZSimplified: 'Stop letting external uncertainty rent free space in your mind. Anxiety comes from attaching your worth to outcomes you cannot control. Anchor yourself in the present effort.',
+    genZSimplified: 'Uncertainty outside your control does not deserve a home in your mind. Anxiety grows when we tie our worth to outcomes we cannot control. Gently return to the effort in front of you.',
     modernApplication: '1. Take 3 deep diaphragmatic breaths and separate your effort from the outcome. 2. Write down what you control today vs what belongs to time/circumstance. 3. Practice detachment from results.',
     href: '/scripture/bhagavadgita/chapter/2/verse/56/',
   },
@@ -66,8 +66,8 @@ export const CURATED_KNOWLEDGE_BASE: CuratedQnA[] = [
     sanskrit: 'क्रोधाद्भवति संमोहः संमोहात्स्मृतिविभ्रमः । स्मृतिभ्रंशाद् बुद्धिनाशो बुद्धिनाशात्प्रणश्यति ॥',
     hindi: 'क्रोध से अत्यंत मूढ़भाव उत्पन्न होता है, मूढ़भाव से स्मृति भ्रमित होती है; स्मृति भ्रम से बुद्धि का नाश होता है और बुद्धि नष्ट होने से मनुष्य का पतन हो जाता है।',
     english: 'From anger arises utter delusion; from delusion comes loss of memory; from loss of memory is ruined the intellect; and by destruction of intellect, a person is utterly ruined.',
-    genZSimplified: 'Anger is a temporary blinding fog. The second you act or speak in rage, your rational intellect is hijacked. The highest power move is taking a 90-second pause before replying.',
-    modernApplication: '1. When provoked, institute an unconditional 90-second vow of silence. 2. Step outside or splash cold water on your face. 3. Address the problem rationally after the somatic surge passes.',
+    genZSimplified: 'Anger is a temporary blinding fog. The second you act or speak in rage, your rational intellect is hijacked. The kindest and strongest response is a 90-second pause before replying.',
+    modernApplication: '1. When provoked, give yourself 90 seconds of silence. 2. Step outside or splash cold water on your face. 3. Address the problem rationally after the somatic surge passes.',
     href: '/scripture/bhagavadgita/chapter/2/verse/63/',
   },
   {
@@ -81,7 +81,7 @@ export const CURATED_KNOWLEDGE_BASE: CuratedQnA[] = [
     hindi: 'तेरा कर्म करने में ही अधिकार है, उसके फलों में कभी नहीं। इसलिए तू कर्मों के फल का हेतु मत बन और तेरी कर्म न करने में भी प्रीति न हो।',
     english: 'You have a right to your prescribed duty alone, never to its fruits. Let not the fruits of action be your motive, nor let your attachment be to inaction.',
     genZSimplified: 'Burnout isn’t caused by hard work; it is caused by obsessive mental fixation on validation and rewards. Give 100% devotion to the craft today, and surrender the outcome to the universe.',
-    modernApplication: '1. Treat work as an offering (Yajna) rather than an ego transaction. 2. Celebrate deep focus sessions instead of obsessing over immediate metrics. 3. Protect non-work rest windows ruthlessly.',
+    modernApplication: '1. Treat work as an offering (Yajna) rather than an ego transaction. 2. Celebrate deep focus sessions instead of obsessing over immediate metrics. 3. Protect your rest time with care.',
     href: '/scripture/bhagavadgita/chapter/2/verse/47/',
   },
   {
@@ -95,7 +95,7 @@ export const CURATED_KNOWLEDGE_BASE: CuratedQnA[] = [
     hindi: 'श्रेष्ठ पुरुष जो-जो आचरण करता है, अन्य पुरुष भी वैसा ही आचरण करते हैं। वह जो कुछ प्रमाण कर देता है, समस्त संसार उसी के अनुसार बरतने लगता है।',
     english: 'Whatever standard a great person sets by their own action, common people follow. Whatever standard they establish, the world pursues.',
     genZSimplified: 'Leadership isn’t about titles or corporate dominance—it is 100% leading by personal example. If you want a disciplined, honest, empathetic team, embody it first yourself.',
-    modernApplication: 'Never ask a colleague to do something you wouldn’t do yourself. Your daily punctuality, calm tone under crisis, and selfless credit-sharing set the culture.',
+    modernApplication: 'Ask of colleagues only what you would gladly do yourself. Your daily punctuality, calm tone under crisis, and selfless credit-sharing set the culture.',
     href: '/scripture/bhagavadgita/chapter/3/verse/21/',
   },
   {
@@ -136,7 +136,7 @@ export const CURATED_KNOWLEDGE_BASE: CuratedQnA[] = [
     sanskrit: 'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात् । स्वधर्मे निधनं श्रेयः परधर्मो भयावहः ॥',
     hindi: 'अच्छी प्रकार आचरण किए हुए दूसरे के धर्म से गुणरहित भी अपना धर्म श्रेष्ठ है। अपने धर्म में तो मरना भी कल्याणकारक है और दूसरे का धर्म भय को देने वाला है।',
     english: 'Better is one’s own duty, though devoid of merit, than the duty of another well performed. Death in the discharge of one’s own duty is better; the duty of another brings fear.',
-    genZSimplified: 'Stop copying someone else’s highlight reel. Your Svadharma is your unique authentic path where your natural inclinations, developed skills, and selfless duty converge.',
+    genZSimplified: 'You don’t need to follow someone else’s highlight reel. Your Svadharma is your unique authentic path where your natural inclinations, developed skills, and selfless duty converge.',
     modernApplication: 'Ask yourself: What difficult responsibility feels deeply meaningful to me? Lean into your authentic strengths and serve the world through that lens.',
     href: '/scripture/bhagavadgita/chapter/3/verse/35/',
   },
@@ -165,7 +165,7 @@ export const CURATED_KNOWLEDGE_BASE: CuratedQnA[] = [
     hindi: 'सम्पूर्ण कर्म सब प्रकार से प्रकृति के गुणों द्वारा ही किए जाते हैं, तो भी जिसका अंतःकरण अहंकार से मोहित हो रहा है, ऐसा अज्ञानी मनुष्य "मैं कर्ता हूँ"—ऐसा मान लेता है।',
     english: 'All actions are in all respects performed by the Gunas (modes) of nature. He whose mind is deluded by ego thinks: "I am the doer."',
     genZSimplified: 'Ego tells you that you are the sole center of the universe. Humility frees you: you are simply a conscious instrument in a magnificent cosmic tapestry.',
-    modernApplication: 'Whenever you achieve something great, say inwardly: "Krishnarpanam" (Dedicated to the Divine). Whenever criticized, examine the feedback calmly without defensive fragility.',
+    modernApplication: 'Whenever you achieve something great, say inwardly: "Krishnarpanam" (Dedicated to the Divine). Whenever criticized, receive the feedback calmly and with an open heart.',
     href: '/scripture/bhagavadgita/chapter/3/verse/27/',
   },
 ];
@@ -198,7 +198,7 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
       const res = await askMuseSparkAgent(target);
       setMuseResponse(res);
     } catch (err: any) {
-      setMuseError(err?.message || 'Error communicating with Muse Spark 1.3');
+      setMuseError(err?.message || 'Sorry, an answer could not be fetched just now. Please try again.');
     } finally {
       setMuseLoading(false);
     }
