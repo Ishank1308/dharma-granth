@@ -40,6 +40,9 @@
         color-mix(in srgb, var(--surface-raised) 56%, transparent) 100%
     );
     --photo-light-alpha: 0.4;
+    /* No bhāva: nothing is blended in. Always two layers, so the lists below stay in step. */
+    --photo-mood: linear-gradient(transparent, transparent), linear-gradient(transparent, transparent);
+    --photo-mood-blend: normal, normal;
 }
 :root:is([data-theme='night'], [data-theme='dark']) [data-photo] {
     --photo-veil: linear-gradient(
@@ -66,10 +69,12 @@
     opacity: 1;
     -webkit-mask: none;
     mask: none;
-    background-image: var(--photo-veil), var(--photo);
-    background-size: 100% 100%, cover;
+    background-image: var(--photo-veil), var(--photo-mood), var(--photo);
+    background-size: 100% 100%, 100% 100%, 100% 100%, cover;
     background-repeat: no-repeat;
-    background-position: 0 0, var(--photo-focus, 50% 50%);
+    background-position: 0 0, 0 0, 0 0, var(--photo-focus, 50% 50%);
+    /* The bhāva's colour is blended into the picture, under the veil. */
+    background-blend-mode: normal, var(--photo-mood-blend), normal;
     transform-origin: 50% 60%;
     transform: scale(1.06);
 }
@@ -93,7 +98,12 @@
 
 /* The chapter's opening picture uses the photo too. */
 :root:not([data-data-saver='true']) [data-photo] .chapter-painting {
-    background: var(--photo) var(--photo-focus, 50% 50%) / cover no-repeat;
+    background-color: transparent;
+    background-image: var(--photo-mood), var(--photo);
+    background-size: 100% 100%, 100% 100%, cover;
+    background-repeat: no-repeat;
+    background-position: 0 0, 0 0, var(--photo-focus, 50% 50%);
+    background-blend-mode: var(--photo-mood-blend), normal;
 }
 
 :root[data-theme='paper'] [data-photo] :is(.verse-folio, .vt-leaf, .chapter-painting)::before,
@@ -257,6 +267,7 @@
         --photo: none !important;
         --painting: none !important;
         --photo-fx: none !important;
+        --photo-mood: none, none !important;
     }
     [data-photo] :is(.verse-folio, .vt-leaf)::before,
     [data-photo] :is(.verse-folio, .vt-leaf)::after,
@@ -267,3 +278,33 @@
         background: none;
     }
 }
+
+/* ── The scripture's bhāva colours its pictures (lib/scripture-bhava.ts) ──
+   Each feeling has a light (--mood-a, from above) and a depth (--mood-b, from below), blended
+   into the picture with soft-light so its own forms stay: the same dawn photo is cool and still
+   behind an Upanishad, fire-warm behind a Veda. A warm or cool glow at the top sits over that.
+   A classical painting of the text's own story (--mood-k lower) keeps its colours and takes only
+   a breath of the feeling. Static: one more layer in a background that is already painted once. */
+[data-bhava] {
+    --mood-k: 1;
+    --photo-mood-blend: soft-light, soft-light;
+    --photo-mood:
+        radial-gradient(90% 70% at 50% 0%, color-mix(in srgb, var(--mood-a) calc(42% * var(--mood-k)), transparent), transparent 75%),
+        linear-gradient(180deg, color-mix(in srgb, var(--mood-a) calc(38% * var(--mood-k)), transparent), color-mix(in srgb, var(--mood-b) calc(72% * var(--mood-k)), transparent));
+}
+[data-bhava]:is(
+    [data-photo='gita-chariot'], [data-photo='kurukshetra'], [data-photo='vishvarupa'], [data-photo='ashram'], [data-photo='lanka'],
+    [data-photo='devi'], [data-photo='vrindavan'], [data-photo='krishna'], [data-photo='shiva'], [data-photo='vishnu'],
+    [data-photo='rama'], [data-photo='gurukul'], [data-photo='vyasa']
+) {
+    --mood-k: 0.45;
+}
+[data-bhava='shanta'] { --mood-a: #bfe9df; --mood-b: #17365c; }
+[data-bhava='vira'] { --mood-a: #ffd98a; --mood-b: #141f52; }
+[data-bhava='karuna'] { --mood-a: #ffd2b0; --mood-b: #7a2f3d; }
+[data-bhava='bhakti'] { --mood-a: #ffd3e2; --mood-b: #0f3f6e; }
+[data-bhava='shakti'] { --mood-a: #ffb65c; --mood-b: #7d0f20; }
+[data-bhava='shaiva'] { --mood-a: #d4def0; --mood-b: #18223f; }
+[data-bhava='tejas'] { --mood-a: #ffd27a; --mood-b: #8c2d08; }
+[data-bhava='vairagya'] { --mood-a: #e9cdfb; --mood-b: #2b1b40; }
+[data-bhava='dharma'] { --mood-a: #f6e6b8; --mood-b: #4a3418; }

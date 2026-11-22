@@ -438,7 +438,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
   } : undefined;
 
   return (
-    <main data-chapter-reading data-vt-pane data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} {...photoAttrs(meta.id, chapter.id)} data-painting={painting} className="min-h-screen bg-dharma-bg">
+    <main data-chapter-reading data-vt-pane data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} {...photoAttrs(meta.id, chapter.id, meta.category)} data-painting={painting} className="min-h-screen bg-dharma-bg">
       <FolioMotion />
       <script
         type="application/ld+json"
