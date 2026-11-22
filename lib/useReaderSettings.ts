@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { READING_DEPTH_EVENT, depthForMode, modeForDepth, readStoredDepth, saveReadingDepth } from '@/lib/reading-depth';
 
 export type SizeStep = 'sm' | 'md' | 'lg' | 'xl';
 export type LineSpacing = 'compact' | 'normal' | 'relaxed' | 'loose';
@@ -83,6 +84,12 @@ const SCRIPTS: SanskritScript[] = ['deva', 'beng', 'gujr', 'orya', 'telu', 'knda
 /** Same-tab broadcast, so every component using the hook sees a change at once. */
 const CHANGE_EVENT = 'dharma:reader-settings';
 
+/** One depth choice serves chapter and verse pages (lib/reading-depth); once made, it sets the verse view. */
+function withDepthChoice(settings: ReaderSettings): ReaderSettings {
+  const depth = readStoredDepth();
+  return depth ? { ...settings, readerMode: modeForDepth(depth, settings.readerMode) } : settings;
+}
+
 /** Import the chapter reader's older controls once, without replacing any newer setting. */
 function readStoredSettings(): ReaderSettings {
   const values: Record<string, unknown> = {};
@@ -132,7 +139,7 @@ function readStoredSettings(): ReaderSettings {
     // The legacy values above can still be used if the current record is invalid.
   }
 
-  const settings = sanitize(values);
+  const settings = withDepthChoice(sanitize(values));
   if (migrationNeeded) {
     try {
       // Persist the migration before removing its source so a reset cannot
@@ -204,6 +211,7 @@ export function useReaderSettings() {
     setSettings(readStoredSettings());
     const resync = () => setSettings(readStoredSettings());
     window.addEventListener(CHANGE_EVENT, resync);
+    window.addEventListener(READING_DEPTH_EVENT, resync);
     window.addEventListener('storage', resync);
     const query = window.matchMedia('(prefers-reduced-motion: reduce)');
     setDeviceReducedMotion(query.matches);
@@ -212,6 +220,7 @@ export function useReaderSettings() {
     return () => {
       query.removeEventListener('change', onChange);
       window.removeEventListener(CHANGE_EVENT, resync);
+      window.removeEventListener(READING_DEPTH_EVENT, resync);
       window.removeEventListener('storage', resync);
     };
   }, []);
@@ -227,7 +236,7 @@ export function useReaderSettings() {
       let latest = prev;
       try {
         const stored = localStorage.getItem(KEY);
-        if (stored) latest = { ...prev, ...sanitize(JSON.parse(stored)) };
+        if (stored) latest = withDepthChoice({ ...prev, ...sanitize(JSON.parse(stored)) });
       } catch {
         // Retain this component's state if storage is unavailable or malformed.
       }
@@ -237,7 +246,11 @@ export function useReaderSettings() {
       } catch {
         // The change still applies for this visit.
       }
-      queueMicrotask(() => window.dispatchEvent(new Event(CHANGE_EVENT)));
+      queueMicrotask(() => {
+        // The verse page's view is the shared depth choice too, so a chapter opened next follows it.
+        if (key === 'readerMode') saveReadingDepth(depthForMode(value as ReaderModeTier));
+        window.dispatchEvent(new Event(CHANGE_EVENT));
+      });
       return next;
     });
   }, []);
@@ -252,6 +265,8 @@ export function useReaderSettings() {
     } catch {
       // ignore
     }
+    // Forget the depth choice too, so chapter and verse pages each open as they do at first.
+    saveReadingDepth(null);
     window.dispatchEvent(new Event(CHANGE_EVENT));
   }, []);
 

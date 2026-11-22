@@ -29,6 +29,8 @@ import "./styles/title-fold.css";
 import "./styles/colour.css";
 import "./styles/scene-photos.css";
 import "./styles/scene-photos.generated.css";
+// The same photos at the top of festival, character, mantra and section pages (lib/page-photos.ts).
+import "./styles/page-photos.css";
 import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { PwaInstallBanner } from "./components/PwaInstallBanner";
 import { StoragePersistenceRequest } from "@/app/components/StoragePersistenceRequest";
@@ -55,6 +57,15 @@ const THEME_INIT_SCRIPT = `
     document.documentElement.setAttribute('data-theme', normalized);
     if (saved !== normalized) {
       try { localStorage.setItem('dharma-theme', normalized); } catch (e) {}
+    }
+  } catch (e) {}
+  // Data Saver (lib/performance-mode.ts decides it the same way at hydration), so no chapter or
+  // page photo starts downloading before then.
+  try {
+    var ds = localStorage.getItem('dharma.perf.dataSaver');
+    var conn = navigator.connection;
+    if (ds === 'true' || (ds === null && conn && (conn.saveData || conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g'))) {
+      document.documentElement.setAttribute('data-data-saver', 'true');
     }
   } catch (e) {}
   // The reader's language choice (lib/useLanguagePreference.ts), so two-language labels show
