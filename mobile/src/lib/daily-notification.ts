@@ -13,9 +13,12 @@ import { S } from '@/i18n/strings';
 import { afterStartup } from '@/lib/after-startup';
 import { dayKey, streakForNotification } from '@/lib/progress';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
-import { upcomingReminderTimes } from '@/lib/reminder';
+import { reminderSchedule } from '@/lib/reminder';
 
 export const DAILY_CHANNEL_ID = 'daily-verse';
+/** The notification's button row: one "Turn off" action, so opting out never needs a trip to Settings. */
+export const DAILY_CATEGORY_ID = 'daily-verse';
+export const STOP_ACTION_ID = 'stop-daily-verse';
 
 /** Notifications work on Android and iOS builds; the web preview has no scheduler. */
 export const remindersSupported = Platform.OS === 'android' || Platform.OS === 'ios';
@@ -43,6 +46,9 @@ export function initNotifications() {
  * name and description at any time (the reader's own sound and importance choices are kept).
  */
 async function ensureChannel(lang: Lang) {
+  await Notifications.setNotificationCategoryAsync(DAILY_CATEGORY_ID, [
+    { identifier: STOP_ACTION_ID, buttonTitle: S.turnOffDailyVerse[lang], options: { opensAppToForeground: true } },
+  ]).catch(() => {});
   if (Platform.OS !== 'android') return;
   await Notifications.setNotificationChannelAsync(DAILY_CHANNEL_ID, {
     name: S.dailyChannelName[lang],
@@ -74,9 +80,29 @@ export async function requestReminderPermission(lang: Lang): Promise<ReminderPer
  * The notification text for one day: the whole shloka (never cut mid-verse) and its reference, then an
  * optional gentle line under it (the reading streak). The title and book name follow the interface
  * language; the verse itself is always Sanskrit.
+ *
+ * `bookId` is the book to pick from (the one the reader is in); any day it has no Sanskrit line to show,
+ * or it is not bundled, the Gita's verse of the day is used.
  */
-export function verseNotificationFor(date: Date, lang: Lang, note?: string): Notifications.NotificationContentInput | undefined {
-  const pick = dailyVerse(date);
+export function verseNotificationFor(
+  date: Date,
+  lang: Lang,
+  note?: string,
+  bookId?: string,
+): Notifications.NotificationContentInput | undefined {
+  const fromBook = bookId && bookId !== 'bhagavadgita' ? notificationVerse(date, lang, bookId) : undefined;
+  const found = fromBook ?? notificationVerse(date, lang, 'bhagavadgita');
+  if (!found) return undefined;
+  return {
+    title: found.title,
+    body: `${found.body}${note ? `\n${note}` : ''}`,
+    data: found.data,
+    categoryIdentifier: DAILY_CATEGORY_ID,
+  };
+}
+
+function notificationVerse(date: Date, lang: Lang, bookId: string) {
+  const pick = dailyVerse(date, bookId);
   if (!pick) return undefined;
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
   if (!verse) return undefined;
@@ -85,8 +111,9 @@ export function verseNotificationFor(date: Date, lang: Lang, note?: string): Not
   const entry = getEntry(pick.id);
   const book = (lang === 'hi' ? entry?.titleSanskrit : undefined) ?? entry?.title ?? S.bhagavadGita[lang];
   return {
-    title: S.verseOfTheDay[lang],
-    body: `${lines.join('\n')}\n${book} ${formatVerseRef(pick.id, pick.chapter, verse.number)}${note ? `\n${note}` : ''}`,
+    // The Gita keeps the plain "Verse of the day"; another book names itself, so the reader knows why.
+    title: pick.id === 'bhagavadgita' ? S.verseOfTheDay[lang] : S.verseFromBook(book)[lang],
+    body: `${lines.join('\n')}\n${book} ${formatVerseRef(pick.id, pick.chapter, verse.number)}`,
     data: { id: pick.id, chapter: pick.chapter, verse: String(verse.number) },
   };
 }
@@ -97,15 +124,22 @@ export interface ReminderOptions {
   minute: number;
   /** Interface language: the notification text is written in it when scheduled. */
   lang: Lang;
+  /** Days read on (dayKey strings). A day already read gets no reminder. */
+  daysRead?: string[];
   /**
-   * Days read on, when the reader shows the reading streak. Only the next notification can mention it
-   * (see streakForNotification); later ones stay plain.
+   * The reader shows the reading streak. Only the next notification can mention it (see
+   * streakForNotification); later ones stay plain.
    */
-  streakDays?: string[] | null;
+  showStreak?: boolean;
+  /** Weekdays allowed, as Date.getDay() counts. */
+  days?: number[];
+  /** A bundled book to take the verse from instead of the Gita (the book the reader last opened). */
+  bookId?: string;
 }
 
 /**
- * Replaces the queue with one notification per day for the next 30 days. Safe to call often: it runs on
+ * Replaces the queue with the next two weeks of daily verses (see reminderSchedule: daily for a week, then
+ * tapering off, and skipping today once the reader has read). Safe to call often: it runs on
  * every app start and whenever the reader changes the switch, the time or the interface language (the
  * text is fixed when a notification is scheduled, so a language change has to re-plan the queue). When the reminder is off, or
  * the permission was taken away in Android settings, the queue is simply emptied.
@@ -129,9 +163,11 @@ async function runSync(opts: ReminderOptions): Promise<void> {
   await ensureChannel(opts.lang);
   const now = new Date();
   const today = dayKey(now);
-  for (const when of upcomingReminderTimes(now, opts.hour, opts.minute)) {
-    const run = opts.streakDays ? streakForNotification(opts.streakDays, today, dayKey(when)) : 0;
-    const content = verseNotificationFor(when, opts.lang, run > 0 ? S.streakNotification(run)[opts.lang] : undefined);
+  const daysRead = opts.daysRead ?? [];
+  const times = reminderSchedule(now, opts.hour, opts.minute, { days: opts.days, readToday: daysRead.includes(today) });
+  for (const when of times) {
+    const run = opts.showStreak ? streakForNotification(daysRead, today, dayKey(when)) : 0;
+    const content = verseNotificationFor(when, opts.lang, run > 0 ? S.streakNotification(run)[opts.lang] : undefined, opts.bookId);
     if (!content) continue;
     await Notifications.scheduleNotificationAsync({
       content,

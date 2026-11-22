@@ -7,6 +7,7 @@ import { Platform } from 'react-native';
 
 import { DailyReminderEffects } from '@/components/daily-reminder-effects';
 import { DailyWidgetEffects } from '@/components/daily-widget-effects';
+import { Welcome } from '@/components/welcome';
 import { RecitationProvider } from '@/audio/player';
 import { ToastProvider } from '@/motion/toast';
 import { useMotion } from '@/motion/use-motion';
@@ -86,6 +87,7 @@ function Navigator() {
           <Stack.Screen name="share" options={{ title: '', presentation: 'modal' }} />
           <Stack.Screen name="summary/[id]" options={{ title: '', animation: push }} />
         </Stack>
+        <Welcome />
     </ThemeProvider>
   );
 }

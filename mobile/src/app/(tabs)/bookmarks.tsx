@@ -5,6 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useTabTop } from '@/lib/use-tab-top';
 import { CollectionSheet, useCollectionName } from '@/components/collection-sheet';
 import { accentFill, Backdrop, Card, Chip, coverFill, GroupRow, groupSurface, IconButton, IconTile, LargeHeader, Muted } from '@/components/ui';
 import { getEntry, loadChapter } from '@/content/catalog';
@@ -29,6 +30,7 @@ export default function BookmarksScreen() {
   const { palette, settings, bookmarks, removeBookmark, toggleBookmark } = useAppState();
   const { journal, dropVerse } = useJournal();
   const { scrollY, onScroll } = useScrollY();
+  const topRef = useTabTop();
   const toast = useToast();
   const scale = settings.textScale;
   const cap = fontCap(scale);
@@ -46,6 +48,7 @@ export default function BookmarksScreen() {
   return (
     <Backdrop>
       <Animated.FlatList
+        ref={topRef as never}
         style={{ backgroundColor: 'transparent' }}
         onScroll={onScroll}
         scrollEventThrottle={16}

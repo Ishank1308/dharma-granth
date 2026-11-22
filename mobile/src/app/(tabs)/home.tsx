@@ -5,6 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'r
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
+import { useTabTop } from '@/lib/use-tab-top';
 import { ReadingStreakCard } from '@/components/reading-streak';
 import { accentFill, Backdrop, Card, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
 import { CATALOG, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
@@ -663,9 +664,11 @@ function TrustStrip() {
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
+  const topRef = useTabTop();
   return (
     <Backdrop>
       <ScrollView
+        ref={topRef as never}
         style={{ backgroundColor: 'transparent' }}
         contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom), rowGap: SPACE.lg }}>
         <Hero />

@@ -1,32 +1,32 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { File, Paths } from 'expo-file-system';
 import { useFocusEffect } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useState } from 'react';
-import { Alert, Linking, Platform, Pressable, StyleSheet, Switch, Text, useWindowDimensions, View } from 'react-native';
+import { Alert, Linking, Platform, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DownloadsSection } from '@/components/download-card';
+import { Disclosure, ReminderTimeButton, TextSizePicker, ThemePicker, WeekdayPicker } from '@/components/settings-ui';
 import { accentFill, Backdrop, Bilingual, Card, Chip, glass, GroupCard, GroupRow, IconTile, LargeHeader, Muted, SectionTitle } from '@/components/ui';
-import { CATALOG, SITE } from '@/content/catalog';
+import { CATALOG, getEntry, SITE } from '@/content/catalog';
+import { useDownloads } from '@/content/downloads';
 import { LANGUAGE_SETTINGS, S, useI18n, type LanguageSetting, type Msg } from '@/i18n';
-import { BackupError, EFFECTS_SETTINGS, makeBackup, parseBackup, type EffectsSetting } from '@/lib/backup';
+import { BackupError, EFFECTS_SETTINGS, makeBackup, parseBackup, REMINDER_BOOKS, type EffectsSetting, type ReminderBook } from '@/lib/backup';
 import {
   getReminderPermission,
   remindersSupported,
   requestReminderPermission,
   type ReminderPermission,
 } from '@/lib/daily-notification';
-import { formatReminderTime } from '@/lib/reminder';
+import { useTabTop } from '@/lib/use-tab-top';
 import { useScrollY } from '@/motion/parallax';
 import { TitleBar } from '@/motion/title-bar';
-import { useAppState, usePrefs } from '@/state/app-state';
+import { useAppState } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { addWidgetToHomeScreen } from '@/widget/pin';
-import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
-import { SANSKRIT_FONT } from '@/theme/fonts';
+import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TOUCH, TYPE } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
 
@@ -38,18 +38,22 @@ const LANGUAGE_NAMES: Record<Exclude<LanguageSetting, 'system'>, string> = { en:
 
 const EFFECTS_LABELS: Record<EffectsSetting, Msg> = { auto: S.effectsAuto, full: S.effectsFull, light: S.effectsLight };
 
+const REMINDER_BOOK_LABELS: Record<ReminderBook, Msg> = { gita: S.reminderBookGita, reading: S.reminderBookReading };
+
 const BACKUP_ERRORS: Record<BackupError['code'], Msg> = {
   'not-json': S.backupNotJson,
   'wrong-file': S.backupWrongFile,
   'too-new': S.backupTooNew,
 };
 
-/** Opt-in daily verse notification: a switch and a time. Scheduled on the phone, nothing sent anywhere. */
+/**
+ * Opt-in daily verse notification. The switch and the time are all most readers need; which book it comes
+ * from and which days it arrives on open under "Book and days". Scheduled on the phone, nothing sent anywhere.
+ */
 function DailyVerseSettings() {
-  const { palette, settings, updateSettings } = usePrefs();
+  const { palette, settings, updateSettings, lastRead } = useAppState();
   const { t, lang } = useI18n();
   const [permission, setPermission] = useState<ReminderPermission>('undetermined');
-  const time = new Date(2000, 0, 1, settings.reminderHour, settings.reminderMinute);
 
   // Re-check on every visit: the reader may have turned notifications off in Android settings.
   useFocusEffect(
@@ -83,16 +87,12 @@ function DailyVerseSettings() {
     }
   };
 
-  const setTime = (d: Date) => updateSettings({ reminderHour: d.getHours(), reminderMinute: d.getMinutes() });
-
-  const pickTime = () =>
-    DateTimePickerAndroid.open({
-      mode: 'time',
-      value: time,
-      onValueChange: (_e, d) => setTime(d),
-    });
-
   const blocked = settings.dailyReminder && permission === 'denied';
+
+  const reading = lastRead ? getEntry(lastRead.id) : undefined;
+  const readingTitle = reading?.bundled ? ((lang === 'hi' ? reading.titleSanskrit : undefined) ?? reading.title) : undefined;
+  const everyDay = settings.reminderDays.length === 7;
+  const moreSummary = `${t(REMINDER_BOOK_LABELS[settings.reminderBook])} · ${t(everyDay ? S.reminderEveryDay : S.reminderDaysCount(settings.reminderDays.length))}`;
 
   return (
     <>
@@ -116,19 +116,7 @@ function DailyVerseSettings() {
           <GroupRow inset={60}>
             <IconTile icon="time" color={TILE.indigo} />
             <Bilingual {...S.reminderTime} style={{ flex: 1 }} weight="500" />
-            {Platform.OS === 'ios' ? (
-              <DateTimePicker mode="time" display="compact" value={time} onValueChange={(_e, d) => setTime(d)} />
-            ) : (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel={t(S.reminderTimeA11y(formatReminderTime(settings.reminderHour, settings.reminderMinute)))}
-                onPress={pickTime}
-                style={[styles.timeBtn, glass(palette, true)]}>
-                <Text style={{ color: palette.accent, fontWeight: '700', fontSize: TYPE.callout }}>
-                  {formatReminderTime(settings.reminderHour, settings.reminderMinute)}
-                </Text>
-              </Pressable>
-            )}
+            <ReminderTimeButton />
           </GroupRow>
         ) : null}
       </GroupCard>
@@ -138,8 +126,35 @@ function DailyVerseSettings() {
           <Text style={[styles.linkText, { color: palette.accent }]}>{t(S.notificationsBlocked)}</Text>
         </Pressable>
       ) : (
-        <Muted style={{ marginTop: SPACE.sm }}>{t(S.dailyVerseNote)}</Muted>
+        <Muted style={{ marginTop: SPACE.sm }}>{t(settings.dailyReminder ? S.dailyVerseQuietNote : S.dailyVerseNote)}</Muted>
       )}
+      {settings.dailyReminder ? (
+        <Disclosure title={S.reminderMore} summary={moreSummary} icon="options" color={TILE.peacock}>
+          <Card style={{ rowGap: SPACE.md }}>
+            <Bilingual {...S.reminderBook} weight="600" size={TYPE.subhead} />
+            <View style={styles.chips} accessibilityRole="radiogroup">
+              {REMINDER_BOOKS.map((b) => (
+                <Chip
+                  key={b}
+                  label={t(REMINDER_BOOK_LABELS[b])}
+                  active={settings.reminderBook === b}
+                  onPress={() => updateSettings({ reminderBook: b })}
+                />
+              ))}
+            </View>
+            {settings.reminderBook === 'reading' ? (
+              <Muted>{t(readingTitle ? S.reminderBookReadingNote(readingTitle) : S.reminderBookFallbackNote)}</Muted>
+            ) : null}
+            <Bilingual {...S.reminderDays} weight="600" size={TYPE.subhead} />
+            <WeekdayPicker
+              days={settings.reminderDays}
+              onChange={(days) => updateSettings({ reminderDays: days })}
+              initials={t(S.weekdayInitials)}
+              names={t(S.weekdayNames)}
+            />
+          </Card>
+        </Disclosure>
+      ) : null}
       {Platform.OS === 'android' ? (
         <Pressable
           accessibilityRole="button"
@@ -171,7 +186,6 @@ function ReadingProgressSettings() {
 
   return (
     <>
-      <SectionTitle {...S.readingProgressSection} />
       <GroupCard>
         <GroupRow standalone inset={60}>
           <IconTile icon="flame" color={TILE.saffron} />
@@ -200,12 +214,11 @@ function ReadingProgressSettings() {
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const { scrollY, onScroll } = useScrollY();
+  const topRef = useTabTop();
+  const { installed } = useDownloads();
   const { palette, settings, updateSettings, exportData, importData, bookmarks, lightEffects } = useAppState();
   const { journal, importJournal } = useJournal();
-  // At large system font sizes the four theme names no longer fit in one row; show them two by two.
-  const { fontScale } = useWindowDimensions();
-  const themesInTwoRows = fontScale > 1.3;
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   const [busy, setBusy] = useState(false);
   const bundled = CATALOG.filter((b) => b.bundled).length;
 
@@ -264,6 +277,7 @@ export default function SettingsScreen() {
   return (
     <Backdrop>
       <Animated.ScrollView
+        ref={topRef as never}
         style={{ backgroundColor: 'transparent' }}
         onScroll={onScroll}
         scrollEventThrottle={16}
@@ -284,64 +298,10 @@ export default function SettingsScreen() {
         <Muted style={{ marginTop: SPACE.sm }}>{t(S.languageNote)}</Muted>
 
         <SectionTitle {...S.theme} />
-        <View style={styles.themes} accessibilityRole="radiogroup">
-          {THEME_ORDER.map((name) => {
-            const theme = THEMES[name];
-            const active = settings.theme === name;
-            return (
-              <Pressable
-                key={name}
-                accessibilityRole="radio"
-                accessibilityState={{ checked: active }}
-                accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
-                onPress={() => updateSettings({ theme: name })}
-                style={[styles.theme, themesInTwoRows && styles.themeHalf]}>
-                {/* A small page in the theme's own colours: the Gita's first word in the shloka face, then two lines of text. */}
-                <View
-                  style={[
-                    styles.preview,
-                    { backgroundColor: theme.bg, borderColor: active ? palette.accent : theme.border, borderWidth: active ? 2.5 : 1 },
-                  ]}>
-                  <Text allowFontScaling={false} numberOfLines={1} style={{ fontFamily: SANSKRIT_FONT, color: theme.dark ? theme.gold : theme.text, fontSize: 15, lineHeight: 24 }}>
-                    धर्मक्षेत्रे
-                  </Text>
-                  <View style={[styles.previewLine, { backgroundColor: theme.border }]} />
-                  <View style={[styles.previewLine, { width: '80%', backgroundColor: theme.border }]} />
-                  <View style={[styles.previewDot, { backgroundColor: theme.accent }]} />
-                </View>
-                <Text style={{ color: active ? palette.accent : palette.text, fontWeight: active ? '700' : '500', fontSize: TYPE.footnote }}>
-                  {lang === 'hi' ? theme.labelHi : theme.label}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </View>
+        <ThemePicker />
 
         <SectionTitle {...S.textSize} />
-        <View style={styles.scales} accessibilityRole="radiogroup">
-          {TEXT_SCALES.map((s) => {
-            const active = Math.abs(settings.textScale - s) < 0.01;
-            return (
-              <Pressable
-                key={s}
-                accessibilityRole="radio"
-                accessibilityState={{ checked: active }}
-                accessibilityLabel={t(S.textSizeA11y(Math.round(s * 100)))}
-                onPress={() => updateSettings({ textScale: s })}
-                style={[styles.scale, active ? accentFill(palette) : glass(palette)]}>
-                <Text style={{ color: active ? palette.onAccent : palette.text, fontSize: 14 * s, fontWeight: '700' }}>अ</Text>
-              </Pressable>
-            );
-          })}
-        </View>
-
-        <SectionTitle {...S.effects} />
-        <View style={styles.chips} accessibilityRole="radiogroup">
-          {EFFECTS_SETTINGS.map((e) => (
-            <Chip key={e} label={t(EFFECTS_LABELS[e])} active={settings.effects === e} onPress={() => updateSettings({ effects: e })} />
-          ))}
-        </View>
-        <Muted style={{ marginTop: SPACE.sm }}>{t(S.effectsNote(lightEffects))}</Muted>
+        <TextSizePicker />
 
         <SectionTitle {...S.showInVerses} />
         <GroupCard>
@@ -364,38 +324,63 @@ export default function SettingsScreen() {
 
         {remindersSupported ? <DailyVerseSettings /> : null}
 
-        <ReadingProgressSettings />
-
-        <SectionTitle {...S.downloadsSection} />
-        <DownloadsSection />
-
-        <SectionTitle {...S.backup} />
-        <Card style={{ rowGap: SPACE.md }}>
-          <Muted>{t(S.backupBody(bookmarks.length))}</Muted>
-          <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
-            <Pressable disabled={busy} onPress={doExport} accessibilityRole="button" style={[styles.btn, accentFill(palette)]}>
-              <Text style={[styles.btnText, { color: palette.onAccent }]}>{t(S.exportBtn)}</Text>
-            </Pressable>
-            <Pressable disabled={busy} onPress={doImport} accessibilityRole="button" style={[styles.btn, glass(palette, true)]}>
-              <Text style={[styles.btnText, { color: palette.text }]}>{t(S.importBtn)}</Text>
-            </Pressable>
+        {/* Everything below is set once, if ever. Each row says what it holds and opens on a tap. */}
+        <SectionTitle {...S.settingsMore} />
+        <Disclosure title={S.effects} summary={t(EFFECTS_LABELS[settings.effects])} icon="sparkles" color={TILE.indigo}>
+          <View style={styles.chips} accessibilityRole="radiogroup">
+            {EFFECTS_SETTINGS.map((e) => (
+              <Chip key={e} label={t(EFFECTS_LABELS[e])} active={settings.effects === e} onPress={() => updateSettings({ effects: e })} />
+            ))}
           </View>
-        </Card>
+          <Muted style={{ marginTop: SPACE.sm }}>{t(S.effectsNote(lightEffects))}</Muted>
+        </Disclosure>
 
-        <SectionTitle {...S.about} />
-        <Muted style={{ marginBottom: SPACE.sm, paddingHorizontal: SPACE.xs }}>{t(S.aboutBody(CATALOG.length, bundled))}</Muted>
-        <GroupCard>
-          <GroupRow standalone inset={60} accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
-            <IconTile icon="globe" color={TILE.saffron} />
-            <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>dharmagranth.dev</Text>
-            <Ionicons name="open-outline" size={18} color={palette.muted} />
-          </GroupRow>
-          <GroupRow inset={60} accessibilityRole="link" onPress={() => Linking.openURL(`${SITE}/privacy/`).catch(() => {})}>
-            <IconTile icon="shield-checkmark" color={TILE.tulsi} />
-            <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>{t(S.privacyPolicy)}</Text>
-            <Ionicons name="open-outline" size={18} color={palette.muted} />
-          </GroupRow>
-        </GroupCard>
+        <Disclosure
+          title={S.readingProgressSection}
+          summary={t(settings.showStreak ? S.streakOn : S.streakOff)}
+          icon="flame"
+          color={TILE.saffron}>
+          <ReadingProgressSettings />
+        </Disclosure>
+
+        <Disclosure title={S.downloadsSection} summary={t(S.onPhoneCount(Object.keys(installed).length))} icon="cloud-download" color={TILE.peacock}>
+          <DownloadsSection />
+        </Disclosure>
+
+        <Disclosure title={S.backup} summary={t(S.backupSummary(bookmarks.length))} icon="save" color={TILE.tulsi}>
+          <Card style={{ rowGap: SPACE.md }}>
+            <Muted>{t(S.backupBody(bookmarks.length))}</Muted>
+            <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
+              <Pressable disabled={busy} onPress={doExport} accessibilityRole="button" style={[styles.btn, accentFill(palette)]}>
+                <Text style={[styles.btnText, { color: palette.onAccent }]}>{t(S.exportBtn)}</Text>
+              </Pressable>
+              <Pressable disabled={busy} onPress={doImport} accessibilityRole="button" style={[styles.btn, glass(palette, true)]}>
+                <Text style={[styles.btnText, { color: palette.text }]}>{t(S.importBtn)}</Text>
+              </Pressable>
+            </View>
+          </Card>
+        </Disclosure>
+
+        <Disclosure title={S.about} summary={t(S.aboutSummary(CATALOG.length, bundled))} icon="information-circle" color={TILE.gold}>
+          <Muted style={{ marginBottom: SPACE.sm, paddingHorizontal: SPACE.xs }}>{t(S.aboutBody(CATALOG.length, bundled))}</Muted>
+          <GroupCard>
+            <GroupRow standalone inset={60} accessibilityRole="link" onPress={() => Linking.openURL(SITE).catch(() => {})}>
+              <IconTile icon="globe" color={TILE.saffron} />
+              <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>dharmagranth.dev</Text>
+              <Ionicons name="open-outline" size={18} color={palette.muted} />
+            </GroupRow>
+            <GroupRow inset={60} accessibilityRole="link" onPress={() => Linking.openURL(`${SITE}/privacy/`).catch(() => {})}>
+              <IconTile icon="shield-checkmark" color={TILE.tulsi} />
+              <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>{t(S.privacyPolicy)}</Text>
+              <Ionicons name="open-outline" size={18} color={palette.muted} />
+            </GroupRow>
+            <GroupRow inset={60} onPress={() => updateSettings({ onboarded: false })}>
+              <IconTile icon="hand-left" color={TILE.indigo} />
+              <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>{t(S.showWelcomeAgain)}</Text>
+              <Ionicons name="chevron-forward" size={18} color={palette.muted} />
+            </GroupRow>
+          </GroupCard>
+        </Disclosure>
       </Animated.ScrollView>
       <TitleBar scrollY={scrollY} title={S.settingsTitle} />
     </Backdrop>
@@ -404,19 +389,8 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
-  themes: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
-  themeHalf: { flexBasis: '45%' },
-  theme: { flex: 1, alignItems: 'center', rowGap: 6, minHeight: TOUCH },
-  preview: { alignSelf: 'stretch', height: 72, borderRadius: RADIUS.row, padding: 10, rowGap: 5 },
-  previewLine: { height: 5, borderRadius: 3 },
-  previewDot: { position: 'absolute', right: 8, bottom: 8, width: 10, height: 10, borderRadius: 5 },
-  scales: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
-  // Minimum sizes, not fixed ones: the अ preview grows with the system font size and must not spill out.
-  scale: { minWidth: 52, minHeight: TOUCH, paddingHorizontal: SPACE.xs, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },
-  toggle: { flexDirection: 'row', alignItems: 'center', paddingVertical: SPACE.md, columnGap: SPACE.md },
   btn: { flex: 1, borderRadius: RADIUS.pill, minHeight: TOUCH, justifyContent: 'center', alignItems: 'center' },
   btnText: { color: '#fff', fontWeight: '700' },
-  timeBtn: { borderRadius: RADIUS.pill, minHeight: TOUCH, justifyContent: 'center', paddingHorizontal: SPACE.lg },
   // Text actions get a full-height glass capsule: a 48 dp target, and the accent text sits on glass, not on the aurora.
   linkBtn: {
     flexDirection: 'row',
