@@ -6,6 +6,9 @@
 //   /app-data/v1/index.json              which books can be downloaded, their parts and sizes
 //                                        (bytes: JSON size on the phone; gz: about what is transferred)
 //   /app-data/v1/parts/<id>.<n>.<hash>.json   a slice of a book's chapters, whole verses only
+//   /app-data/v1/parts/<id>.vyakhya.<hash>.json   the book's Hindi व्याख्या, research notes and जीवन सूत्र
+//                                        (public/data/hi-commentary), for bundled and downloaded books
+//                                        alike; listed under `commentary` in index.json
 // Parts are named by a hash of their content, so they are cached as immutable (public/_headers) and
 // a changed text gets new names. index.json keeps the HTML rule and is revalidated on every fetch.
 //
@@ -20,7 +23,7 @@ import { join, resolve } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { Buffer } from 'node:buffer';
 
-import { isBundled, listBookIds, openBook } from '../mobile/scripts/content-lib.mjs';
+import { isBundled, listBookIds, openBook, readCommentary } from '../mobile/scripts/content-lib.mjs';
 
 const ROOT = process.cwd();
 const DIST = resolve(ROOT, process.env.NEXT_DIST_DIR || 'dist');
@@ -45,13 +48,30 @@ mkdirSync(PARTS, { recursive: true });
 
 const hash = (text) => createHash('sha256').update(text).digest('hex');
 const books = {};
+const commentary = {};
 let files = 0;
 let totalBytes = 0;
 let totalGz = 0;
 
 for (const id of listBookIds(DATA)) {
   const book = openBook(DATA, id);
-  if (!book || isBundled(book)) continue;
+  if (!book) continue;
+
+  // The व्याख्या is too large to ship inside the app, so every book that has one gets a download.
+  const notes = readCommentary(DATA, book);
+  if (notes) {
+    const json = JSON.stringify({ id, chapters: notes.chapters });
+    const name = `${id}.vyakhya.${hash(json).slice(0, 12)}.json`;
+    writeFileSync(join(PARTS, name), json);
+    files++;
+    const bytes = Buffer.byteLength(json);
+    const gz = gzipSync(json).length;
+    totalBytes += bytes;
+    totalGz += gz;
+    commentary[id] = { file: `parts/${name}`, version: hash(json).slice(0, 16), bytes, gz, verses: notes.verses };
+  }
+
+  if (isBundled(book)) continue;
 
   // Pack verses into parts of at most PART_BYTES. A part is { id, chapters: [{ number, verses }] };
   // the same chapter number appears in two parts only when it is split, always in reading order.
@@ -111,9 +131,9 @@ for (const id of listBookIds(DATA)) {
   };
 }
 
-writeFileSync(join(OUT, 'index.json'), JSON.stringify({ format: FORMAT, books }));
+writeFileSync(join(OUT, 'index.json'), JSON.stringify({ format: FORMAT, books, commentary }));
 files++;
 console.log(
-  `✓ App data: ${Object.keys(books).length} downloadable books in ${files} files, ` +
+  `✓ App data: ${Object.keys(books).length} downloadable books and ${Object.keys(commentary).length} व्याख्या files, ${files} files in all, ` +
     `${(totalBytes / 1024 / 1024).toFixed(0)} MB on device, about ${(totalGz / 1024 / 1024).toFixed(0)} MB to download (dist/app-data/v1/).`,
 );
