@@ -122,6 +122,7 @@ export default function ChapterScreen() {
   const jumpToTarget = () => {
     if (goal.current < 0 || userScrolled.current) return;
     jumpFailed.current = false;
+    muteBar();
     listRef.current?.scrollToIndex({ index: Math.max(0, goal.current - baseRef.current), animated: false, viewPosition: 0 });
     // onScrollToIndexFailed runs synchronously inside scrollToIndex, so this tells us if it landed.
     if (!jumpFailed.current && !settled.current) {
@@ -204,12 +205,22 @@ export default function ChapterScreen() {
   const fingerOff = () => {
     if (Platform.OS !== 'web') fingerScroll.set(0);
   };
+  // A jump in flight mutes the bar outright, so the web preview's landing keeps it too.
+  const jumping = useSharedValue(0);
+  const jumpSeq = useRef(0);
+  const muteBar = () => {
+    jumping.set(1);
+    const seq = ++jumpSeq.current;
+    later(() => {
+      if (seq === jumpSeq.current) jumping.set(0);
+    }, 400);
+  };
   const onScroll = useAnimatedScrollHandler((e) => {
     const yy = e.contentOffset.y;
     const dy = yy - lastY.get();
     lastY.set(yy);
     const nearEnd = yy + e.layoutMeasurement.height > e.contentSize.height - 160;
-    const own = fingerScroll.get() > 0;
+    const own = fingerScroll.get() > 0 && jumping.get() === 0;
     const want = pinBar || yy < 120 || nearEnd || (own && dy < -4) ? 0 : own && dy > 4 ? 1 : barAway.get() > 0.5 ? 1 : 0;
     const now = barAway.get() > 0.5 ? 1 : 0;
     if (want !== now) barAway.set(withSpring(want, SPRING.settle));
@@ -502,6 +513,7 @@ export default function ChapterScreen() {
             highestSeen.current = Math.max(highestSeen.current, info.highestMeasuredFrameIndex);
             if (stalls.current > 12) return;
             if (info.highestMeasuredFrameIndex > 0) {
+              muteBar();
               listRef.current?.scrollToIndex({ index: info.highestMeasuredFrameIndex, animated: false, viewPosition: 0 });
             }
             later(jumpToTarget, 80);
