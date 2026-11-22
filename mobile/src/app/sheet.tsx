@@ -1,7 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { File, Paths } from 'expo-file-system';
-import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import { useMemo, useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
@@ -111,9 +110,14 @@ export default function SheetScreen() {
       footer: t(D.sheetFooter),
     });
 
+  // expo-print is loaded only when a sheet is made, never at startup: a native module that misbehaves
+  // can then only fail this button (with a message), not the app's launch.
+  const loadPrint = () => import('expo-print');
+
   const share = async () => {
     setBusy(true);
     try {
+      const Print = await loadPrint();
       const { uri } = await Print.printToFileAsync({ html: html(), ...A4 });
       let target = uri;
       try {
@@ -139,6 +143,7 @@ export default function SheetScreen() {
   const print = async () => {
     setBusy(true);
     try {
+      const Print = await loadPrint();
       await Print.printAsync({ html: html(), ...A4 });
     } catch (e) {
       // Closing the print dialog is not an error worth a message.
