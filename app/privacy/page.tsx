@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Privacy · गोपनीयता',
-  description: 'How Dharma Granth handles browser storage, privacy and reader data.',
+  description:
+    'How Dharma Granth protects reader privacy: zero accounts, no ad trackers, and local browser storage for bookmarks, notes, and JSON backups.',
   alternates: { canonical: '/privacy/' },
 };
 

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { festivals, type Festival } from '@/data/festivals';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { FESTIVAL_PHOTOS } from '@/lib/page-photos';
 import { HeroPhoto } from '@/app/components/PagePhoto';
@@ -43,12 +44,18 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const festival = festivals.find((f) => f.id === params.id);
   if (!festival) return { title: 'उत्सव नहीं मिला (Festival Not Found)' };
 
-  const title = `${festival.name} (${festival.sanskrit}) — अर्थ, कथा, शास्त्रीय स्रोत व पूजा विधि`;
-  const description = `${festival.shortDesc} ${festival.meaning}`.slice(0, 160);
+  const ogTitle = `${festival.name} (${festival.sanskrit}) — अर्थ, कथा, शास्त्रीय स्रोत व पूजा विधि`;
+  const title = pickTitle([
+    `${festival.name} (${festival.sanskrit}) — अर्थ, कथा व पूजा विधि | Dharma Granth`,
+    `${festival.name} (${festival.sanskrit}) — अर्थ, कथा व पूजा विधि`,
+    `${festival.name} — अर्थ, कथा व पूजा विधि | Dharma Granth`,
+    `${festival.name} (${festival.sanskrit}) — कथा व पूजा विधि`,
+  ]);
+  const description = clipDescription(`${festival.shortDesc} ${festival.meaning}`, 158);
   const canonical = `/festivals/${festival.id}/`;
 
   return {
-    title: { absolute: `${title} | Dharma Granth` },
+    title: { absolute: title },
     description,
     keywords: [
       festival.name,
@@ -68,14 +75,14 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title: `${title} | Dharma Granth`,
+      title: `${ogTitle} | Dharma Granth`,
       description,
       url: `https://dharmagranth.dev${canonical}`,
       images: [DEFAULT_OG_IMAGE],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | Dharma Granth`,
+      title: `${ogTitle} | Dharma Granth`,
       description,
       images: [DEFAULT_OG_IMAGE.url],
     },

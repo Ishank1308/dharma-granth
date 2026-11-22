@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 export const metadata: Metadata = {
-  title: 'Hindu Temple Rituals & Practices (पूजा, आरती, अभिषेक, होम) — Meaning & Scriptural Basis',
+  title: { absolute: 'Hindu Rituals & Practices (पूजा, आरती, होम) | Dharma Granth' },
   description:
     'Complete guide to Hindu temple and daily rituals: authentic scriptural meaning, symbolism, and step-by-step methods for Puja, Aarti, Abhisheka, Homa, and Sandhyavandana.',
   keywords: [

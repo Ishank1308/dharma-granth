@@ -8,9 +8,9 @@ import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwit
 import { Sparkles, Sun, Moon, ArrowRight, BookOpen, Layers, ShieldCheck, Compass, HelpCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '27 Nitya Yogas (27 नित्य योग) — Meaning, Deities & Vedic Calculation',
+  title: { absolute: '27 Nitya Yogas (27 नित्य योग) — Meaning & Deities | Dharma Granth' },
   description:
-    'Complete guide to the 27 Nitya Yogas of Vedic astronomy and Surya-Siddhanta — Vishkambha to Vaidhriti. Presiding Vedic deities, combined solar-lunar arc calculations, auspicious and reflective classifications, and spiritual contemplation themes.',
+    'Guide to the 27 Nitya Yogas of Vedic astronomy and Surya-Siddhanta (Vishkambha to Vaidhriti), presiding deities, solar-lunar arc math, and study themes.',
   keywords: [
     '27 yogas in vedic astrology',
     'nitya yoga panchang',

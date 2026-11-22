@@ -1,5 +1,8 @@
 /** Run: npm run test:daily-verse */
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { DAILY_WISDOM_REGISTRY } from '../data/daily-wisdom-engine';
+import { SAMPLE_DAILY_JOURNEYS } from '../data/daily-dharma-data';
 import { channelMessage, channelUrl, dailyVersePool, dayNumber, verseForDay } from '../lib/daily-verse';
 
 const pool = dailyVersePool();
@@ -35,4 +38,21 @@ assert.ok(msg.startsWith('🕉️ *दैनिक श्लोक · Verse of t
 assert.ok(msg.includes(verse.sanskrit) && msg.includes(verse.hindi) && msg.includes(`_${verse.english}_`));
 assert.ok(msg.endsWith(`📖 ${url}\n— Dharma Granth`));
 
-console.log(`daily-verse: all assertions passed (${pool.length} verses)`);
+// Every item in DAILY_WISDOM_REGISTRY and SAMPLE_DAILY_JOURNEYS must resolve to a real published verse and trailing-slash href.
+for (const item of DAILY_WISDOM_REGISTRY) {
+  const book = JSON.parse(fs.readFileSync(`public/data/scriptures-full/${item.scriptureId}.json`, 'utf8'));
+  const ch = book.chapters?.find((c: { number: number | string }) => Number(c.number) === item.chapterId);
+  assert.ok(ch, `${item.id}: missing chapter ${item.chapterId} in ${item.scriptureId}`);
+  const foundVerse = ch.verses?.find((x: { number: number | string }) => String(x.number) === String(item.verseId));
+  assert.ok(foundVerse, `${item.id}: missing verse ${item.verseId} in ${item.scriptureId} ch ${item.chapterId}`);
+  const [pathname] = item.href.split('#', 2);
+  assert.ok(pathname.endsWith('/'), `${item.id}: href missing trailing slash (${item.href})`);
+}
+for (const session of Object.values(SAMPLE_DAILY_JOURNEYS)) {
+  for (const rec of session.recommendations) {
+    const [pathname] = rec.href.split('#', 2);
+    assert.ok(pathname.endsWith('/'), `${session.id} rec ${rec.id}: href missing trailing slash (${rec.href})`);
+  }
+}
+
+console.log(`daily-verse: all assertions passed (${pool.length} verses, ${DAILY_WISDOM_REGISTRY.length} daily journey items)`);

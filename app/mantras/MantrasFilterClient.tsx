@@ -10,13 +10,11 @@ import {
   Sparkles,
   ChevronDown,
   ChevronUp,
-  Volume2,
   Search,
   X,
   HelpCircle,
 } from 'lucide-react';
 import { SITE_URL } from '@/lib/jsonld';
-import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 import { NavagrahaMandalam } from './NavagrahaMandalam';
 import { OnThisPage } from '@/app/components/OnThisPage';
 
@@ -30,7 +28,6 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>('all');
   const [query, setQuery] = useState('');
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [playingKey, setPlayingKey] = useState<string | null>(null);
   const [expandedSlugs, setExpandedSlugs] = useState<Set<string>>(() => new Set());
 
   const cardRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -138,14 +135,6 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
     }
   };
 
-  const onPlayAudio = (text: string, key: string, rate?: number) => {
-    setPlayingKey(key);
-    speakSanskritTerm(text, rate);
-    setTimeout(() => {
-      setPlayingKey((curr) => (curr === key ? null : curr));
-    }, 3500);
-  };
-
   const categories: Array<{ key: CategoryKey; label: string }> = [
     { key: 'all', label: `All Mantras · सभी मन्त्र (${counts.all})` },
     { key: 'vedic', label: `Vedic Mahamantras · वैदिक मन्त्र (${counts.vedic})` },
@@ -243,7 +232,6 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
             const whatsappText = `${m.titleHi} (${m.title})\n\n${m.sanskrit}\n\nभावार्थ: ${m.hindiMeaning}\n\nEnglish: ${m.englishMeaning}\n\nस्रोत: ${m.sourceCoordinates}\n${SITE_URL}/mantras/#${m.slug}`;
             const whatsappHref = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
             const isCopied = copiedId === m.id;
-            const isPlaying = playingKey === `full-${m.id}`;
             const isExpanded = expandedSlugs.has(m.slug);
             const detailId = `mantra-detail-${m.slug}`;
             const headingId = `mantra-heading-${m.slug}`;
@@ -285,19 +273,6 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                   </div>
 
                   <div className="flex flex-wrap items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => onPlayAudio(m.sanskrit, `full-${m.id}`)}
-                      aria-label={`उच्चारण सुनें: ${m.title}`}
-                      className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-500 transition ${
-                        isPlaying ? '!border-saffron-500 text-saffron-800 dark:text-saffron-300' : ''
-                      }`}
-                    >
-                      <Volume2 className={`h-3.5 w-3.5 ${isPlaying ? 'animate-pulse text-saffron-600' : ''}`} />
-                      <span lang="hi" className="font-devanagari">
-                        {isPlaying ? 'पाठ जारी…' : 'उच्चारण'}
-                      </span>
-                    </button>
                     <button
                       type="button"
                       onClick={() => onCopy(m)}
@@ -420,32 +395,23 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
 
                         {/* Compact mobile padaccheda: short rows, optional IAST/English on demand. */}
                         <div className="grid gap-1.5 sm:hidden">
-                          {m.wordMeanings.map((w, idx) => {
-                            const wordKey = `word-${m.id}-${idx}`;
-                            const wordPlaying = playingKey === wordKey;
-                            return (
-                              <details key={idx} className="group rounded-xl border border-dharma-border/80 bg-dharma-bg/60 px-3 py-2">
-                                <summary className="focus-ring flex cursor-pointer list-none items-center gap-2 rounded-md [&::-webkit-details-marker]:hidden">
-                                  <span lang="sa" className="min-w-0 flex-[0_1_42%] font-devanagari text-sm font-semibold leading-snug text-saffron-900 dark:text-saffron-200">
-                                    {w.sanskrit}
-                                  </span>
-                                  <span lang="hi" className="min-w-0 flex-1 font-devanagari text-xs leading-snug text-dharma-text">
-                                    {w.hindi}
-                                  </span>
-                                  <ChevronDown className="h-3.5 w-3.5 shrink-0 text-dharma-muted transition-transform group-open:rotate-180" aria-hidden="true" />
-                                </summary>
-                                <div className="mt-2 flex items-start gap-2 border-t border-dharma-border/60 pt-2">
-                                  <div className="min-w-0 flex-1 space-y-1">
-                                    <p className="font-serif text-xs italic text-dharma-muted">{w.iast}</p>
-                                    <p className="font-serif text-xs leading-relaxed text-dharma-muted">{w.english}</p>
-                                  </div>
-                                  <button type="button" onClick={() => onPlayAudio(w.sanskrit, wordKey, 0.85)} aria-label={`उच्चारण सुनें: ${w.sanskrit}`} className="focus-ring inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-dharma-border bg-dharma-card text-dharma-muted hover:text-dharma-text">
-                                    <Volume2 className={`h-3.5 w-3.5 ${wordPlaying ? 'animate-pulse text-saffron-600' : ''}`} />
-                                  </button>
-                                </div>
-                              </details>
-                            );
-                          })}
+                          {m.wordMeanings.map((w, idx) => (
+                            <details key={idx} className="group rounded-xl border border-dharma-border/80 bg-dharma-bg/60 px-3 py-2">
+                              <summary className="focus-ring flex cursor-pointer list-none items-center gap-2 rounded-md [&::-webkit-details-marker]:hidden">
+                                <span lang="sa" className="min-w-0 flex-[0_1_42%] font-devanagari text-sm font-semibold leading-snug text-saffron-900 dark:text-saffron-200">
+                                  {w.sanskrit}
+                                </span>
+                                <span lang="hi" className="min-w-0 flex-1 font-devanagari text-xs leading-snug text-dharma-text">
+                                  {w.hindi}
+                                </span>
+                                <ChevronDown className="h-3.5 w-3.5 shrink-0 text-dharma-muted transition-transform group-open:rotate-180" aria-hidden="true" />
+                              </summary>
+                              <div className="mt-2 border-t border-dharma-border/60 pt-2 space-y-1">
+                                <p className="font-serif text-xs italic text-dharma-muted">{w.iast}</p>
+                                <p className="font-serif text-xs leading-relaxed text-dharma-muted">{w.english}</p>
+                              </div>
+                            </details>
+                          ))}
                         </div>
 
                         {/* Tablet & Desktop 4-column table */}
@@ -460,44 +426,27 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                               </tr>
                             </thead>
                             <tbody className="divide-y divide-dharma-border/60 bg-dharma-bg/30">
-                              {m.wordMeanings.map((w, idx) => {
-                                const wordKey = `word-${m.id}-${idx}`;
-                                const wordPlaying = playingKey === wordKey;
-                                return (
-                                  <tr key={idx} className="hover:bg-dharma-bg/70 transition-colors">
-                                    <td className="p-3.5 sm:px-4 whitespace-nowrap">
-                                      <div className="flex items-center gap-2">
-                                        <span
-                                          lang="sa"
-                                          className="font-devanagari font-bold text-saffron-900 dark:text-saffron-200"
-                                        >
-                                          {w.sanskrit}
-                                        </span>
-                                        <button
-                                          type="button"
-                                          onClick={() => onPlayAudio(w.sanskrit, wordKey, 0.85)}
-                                          aria-label={`उच्चारण सुनें: ${w.sanskrit}`}
-                                          title="उच्चारण सुनें (Pronounce)"
-                                          className="focus-ring inline-flex h-7 w-7 items-center justify-center rounded-md border border-dharma-border/70 bg-dharma-card text-dharma-muted hover:border-saffron-400 hover:text-dharma-text transition"
-                                        >
-                                          <Volume2
-                                            className={`h-3 w-3 ${wordPlaying ? 'animate-pulse text-saffron-600' : ''}`}
-                                          />
-                                        </button>
-                                      </div>
-                                    </td>
-                                    <td className="p-3.5 sm:px-4 font-serif text-xs italic text-dharma-muted">
-                                      {w.iast}
-                                    </td>
-                                    <td lang="hi" className="p-3.5 sm:px-4 font-devanagari text-dharma-text">
-                                      {w.hindi}
-                                    </td>
-                                    <td className="p-3.5 sm:px-4 font-serif text-xs text-dharma-muted">
-                                      {w.english}
-                                    </td>
-                                  </tr>
-                                );
-                              })}
+                              {m.wordMeanings.map((w, idx) => (
+                                <tr key={idx} className="hover:bg-dharma-bg/70 transition-colors">
+                                  <td className="p-3.5 sm:px-4 whitespace-nowrap">
+                                    <span
+                                      lang="sa"
+                                      className="font-devanagari font-bold text-saffron-900 dark:text-saffron-200"
+                                    >
+                                      {w.sanskrit}
+                                    </span>
+                                  </td>
+                                  <td className="p-3.5 sm:px-4 font-serif text-xs italic text-dharma-muted">
+                                    {w.iast}
+                                  </td>
+                                  <td lang="hi" className="p-3.5 sm:px-4 font-devanagari text-dharma-text">
+                                    {w.hindi}
+                                  </td>
+                                  <td className="p-3.5 sm:px-4 font-serif text-xs text-dharma-muted">
+                                    {w.english}
+                                  </td>
+                                </tr>
+                              ))}
                             </tbody>
                           </table>
                         </div>

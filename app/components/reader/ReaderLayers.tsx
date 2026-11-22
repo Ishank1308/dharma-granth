@@ -14,7 +14,6 @@ import {
   ScrollText,
   Sparkles,
   Search,
-  Volume2,
 } from 'lucide-react';
 import { cleanVerseField, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
 import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
@@ -26,7 +25,6 @@ import { COMMENTARIES, verseKey } from '@/data/study-review';
 const SanskritWordExplorerDrawer = dynamic(() => import('@/app/components/understand/SanskritWordExplorerDrawer').then((m) => m.SanskritWordExplorerDrawer), { ssr: false });
 import { ReaderDialog } from '@/app/components/reader/ReaderDialog';
 import type { SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
-import { withSoundscape } from '@/lib/soundscape-lazy';
 import type { ReaderProvenance, ReaderVerseText } from '@/lib/reader-actions';
 import type { ReaderSettings } from '@/lib/useReaderSettings';
 import type { VerseInsight } from '@/lib/verse-insights';
@@ -453,17 +451,16 @@ export function ReaderLayers({
           titleHi="पदच्छेद"
         >
           <div className="mb-2.5 flex items-center justify-between text-xs text-dharma-muted">
-            <span>किसी पद को चुनें — उसका अर्थ, व्याकरण और उच्चारण सुनें:</span>
+            <span>किसी पद को चुनें — उसका अर्थ और व्याकरण देखें:</span>
           </div>
           {glosses.length > 1 ? (
             <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
               {glosses.map((g, i) => {
                 const lexiconMatch = verse.lexicon?.[g.pada] ?? null;
-                const displayTerm = lexiconMatch?.termDevanagari || g.pada;
                 return (
                   <li key={i} className="list-none">
                     {/* The card is a plain container: the word is the button, and its ::after stretches over the
-                        whole card, so a click anywhere still opens the gloss. Pronounce and धातु sit above it
+                        whole card, so a click anywhere still opens the gloss. धातु sits above it
                         (relative z-10) instead of being nested inside an interactive element. */}
                     <div
                       className={`group relative h-full rounded-xl border p-2.5 transition active:scale-[0.99] ${
@@ -495,33 +492,21 @@ export function ReaderLayers({
                             {g.pada}
                           </span>
                         </button>
-                        <div className="relative z-10 flex items-center gap-1">
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              withSoundscape((m) => m.speakSanskritTerm(displayTerm, 0.85));
-                            }}
-                            className="focus-ring inline-flex h-7 w-7 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-700 hover:bg-amber-500/20 dark:text-amber-300 transition"
-                            aria-label={`उच्चारण सुनें: ${g.pada}`}
-                            title="उच्चारण सुनें (Pronounce)"
-                          >
-                            <Volume2 className="h-3.5 w-3.5" />
-                          </button>
-                          {lexiconMatch && (
+                        {lexiconMatch && (
+                          <div className="relative z-10 flex items-center gap-1.5">
                             <button
                               type="button"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleInspectPada(g.pada);
                               }}
-                              className="focus-ring inline-flex min-h-[28px] items-center gap-1 rounded-md border border-saffron-500/40 bg-saffron-100/70 dark:bg-saffron-900/40 px-2 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
+                              className="focus-ring tap-halo inline-flex min-h-[32px] items-center gap-1 rounded-md border border-saffron-500/40 bg-saffron-100/70 dark:bg-saffron-900/40 px-2.5 py-1 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
                             >
                               <Search className="h-3 w-3" />
                               <span>धातु</span>
                             </button>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
                       <p className={`mt-1 text-sm text-dharma-text ${latinLeading}`}>{g.meaning}</p>
                     </div>
@@ -608,44 +593,54 @@ export function ReaderLayers({
                     {meaningNow.hi === 'review' ? MEANING_COPY.hiReview : MEANING_COPY.hiPending}
                   </p>
                 )}
-                {showHindiTrans && meaningNow.hi === 'text' && (
-                  <Layer
-                    id="layer-hindi"
-                    kind="translation"
-                    title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Literal Hindi Translation'}
-                    titleHi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
-                    badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                        मूलानुवाद · Literal
-                      </span>
+                {((showHindiTrans && meaningNow.hi === 'text') || (showEnglishTrans && meaningNow.en === 'text')) && (
+                  <div
+                    className={
+                      showHindiTrans && meaningNow.hi === 'text' && showEnglishTrans && meaningNow.en === 'text'
+                        ? 'grid grid-cols-1 gap-4 lg:grid-cols-2 lg:items-stretch [&>section]:h-full'
+                        : 'space-y-4'
                     }
                   >
-                    <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
-                      {cleanVerseField(verse.hindi)}
-                    </p>
-                    <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
-                      अक्षरशः अनुवाद — मूल संस्कृत श्लोक के प्रत्येक पद का प्रत्यक्ष अर्थ।
-                    </p>
-                  </Layer>
-                )}
-                {showEnglishTrans && meaningNow.en === 'text' && (
-                  <Layer
-                    id="layer-english"
-                    kind="translation"
-                    title={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'Literal English Translation'}
-                    badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                        Literal Text
-                      </span>
-                    }
-                  >
-                    <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
-                      {cleanVerseField(verse.translation)}
-                    </p>
-                    <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
-                      Direct literal rendering preserving Sanskrit philosophical terminology.
-                    </p>
-                  </Layer>
+                    {showHindiTrans && meaningNow.hi === 'text' && (
+                      <Layer
+                        id="layer-hindi"
+                        kind="translation"
+                        title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Literal Hindi Translation'}
+                        titleHi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
+                        badge={
+                          <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                            मूलानुवाद · Literal
+                          </span>
+                        }
+                      >
+                        <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
+                          {cleanVerseField(verse.hindi)}
+                        </p>
+                        <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
+                          अक्षरशः अनुवाद — मूल संस्कृत श्लोक के प्रत्येक पद का प्रत्यक्ष अर्थ।
+                        </p>
+                      </Layer>
+                    )}
+                    {showEnglishTrans && meaningNow.en === 'text' && (
+                      <Layer
+                        id="layer-english"
+                        kind="translation"
+                        title={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'Literal English Translation'}
+                        badge={
+                          <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                            Literal Text
+                          </span>
+                        }
+                      >
+                        <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
+                          {cleanVerseField(verse.translation)}
+                        </p>
+                        <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
+                          Direct literal rendering preserving Sanskrit philosophical terminology.
+                        </p>
+                      </Layer>
+                    )}
+                  </div>
                 )}
                 {showEnglishTrans && !bothPending && meaningNow.en === 'with' && (
                   <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm text-dharma-muted">
@@ -882,7 +877,7 @@ export function ReaderLayers({
         <SanskritWordExplorerDrawer entry={activeLexiconEntry} isOpen onClose={() => setActiveLexiconEntry(null)} />
       )}
 
-      {/* Word-by-Word (पदच्छेद) Audio & Meaning Popover */}
+      {/* Word-by-Word (पदच्छेद) Meaning Popover */}
       {selectedWordGloss && (
         <ReaderDialog
           open={selectedWordGloss !== null}
@@ -892,7 +887,7 @@ export function ReaderLayers({
           variant="modal"
         >
           <div className="space-y-4 text-sm">
-            {/* Word Pronunciation & Heading Card */}
+            {/* Word Heading Card */}
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-500/30 bg-amber-50/60 dark:bg-amber-950/30 p-4">
               <div>
                 <span lang="sa" className="block font-devanagari text-2xl font-bold text-dharma-text">
@@ -902,17 +897,6 @@ export function ReaderLayers({
                   {selectedWordGloss.lexicon?.termIast || selectedWordGloss.pada}
                 </span>
               </div>
-              <button
-                type="button"
-                onClick={() => {
-                  const term = selectedWordGloss.lexicon?.termDevanagari || selectedWordGloss.pada;
-                  withSoundscape((m) => m.speakSanskritTerm(term, 0.85));
-                }}
-                className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-amber-500/20 px-3.5 py-2 font-semibold text-amber-900 hover:bg-amber-500/30 dark:text-amber-200 transition active:scale-95 border border-amber-500/40"
-              >
-                <Volume2 className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-                <span>उच्चारण · Hear Word</span>
-              </button>
             </div>
 
             {/* Contextual Hindi & English Meanings */}

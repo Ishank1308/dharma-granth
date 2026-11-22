@@ -59,7 +59,7 @@ export const chapterSummaryCollections: ChapterSummaryCollection[] = [
     unitEn: 'chapter',
     keyVersesHi: 'मुख्य श्लोक',
     anchor: 'adhyay',
-    title: 'भगवद्गीता सार: 18 अध्यायों का सारांश · Bhagavad Gita Chapter Summaries',
+    title: 'भगवद्गीता सार: 18 अध्यायों का सारांश · Gita Summary',
     description:
       'श्रीमद्भगवद्गीता के सभी 18 अध्यायों का सरल हिंदी सार, मुख्य श्लोकों के साथ। Bhagavad Gita summary, chapter by chapter, in Hindi and English.',
     keywords: [
@@ -86,9 +86,9 @@ export const chapterSummaryCollections: ChapterSummaryCollection[] = [
     unitEn: 'pada',
     keyVersesHi: 'मुख्य सूत्र',
     anchor: 'pada',
-    title: 'योगसूत्र सार: चारों पादों का सारांश · Patanjali Yoga Sutras Summary',
+    title: 'योगसूत्र सार: चारों पादों का सारांश · Yoga Sutras',
     description:
-      'पातञ्जल योगसूत्र के चारों पादों (समाधि, साधन, विभूति, कैवल्य) का सरल हिंदी सार, मुख्य सूत्रों के साथ। Yoga Sutras of Patanjali summary, pada by pada, in Hindi and English.',
+      'पातञ्जल योगसूत्र के चारों पादों (समाधि, साधन, विभूति, कैवल्य) का सरल हिंदी व English सार, मुख्य सूत्रों सहित। Patanjali Yoga Sutras summary.',
     keywords: [
       'yoga sutra summary',
       'patanjali yoga sutras summary',

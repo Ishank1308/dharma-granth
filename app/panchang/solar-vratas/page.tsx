@@ -8,9 +8,9 @@ import { PRESET_LOCATIONS, calculateEducationalPanchang, todayForLocation } from
 import { Sun, Compass, ExternalLink, BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Solar Vratas & Observances: Chhath Puja, Ratha Saptami, Makar Sankranti · सौर व्रत एवं अर्घ्य विधि — Dharma Granth',
+  title: { absolute: 'सौर व्रत व अर्घ्य विधि · Chhath, Ratha Saptami & Sankranti' },
   description:
-    'Comprehensive guide to sacred Sauramana solar observances: 4-day Chhath Puja sequence, Ratha Saptami (Surya Jayanti), Makar Sankranti, and Bhanu Saptami with Vedic Arghya mantras and astronomical timings.',
+    'Guide to Sauramana solar observances: 4-day Chhath Puja, Ratha Saptami, Makar Sankranti, and Bhanu Saptami with Vedic Arghya mantras and timings.',
   keywords: [
     'chhath puja vidhi',
     'chhath puja 4 days sequence nahay khay kharna arghya',

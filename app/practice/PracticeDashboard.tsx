@@ -8,7 +8,7 @@ import { useLocalStorage } from '@/lib/useLocalStorage';
 import { PracticeOpening } from './PracticeOpening';
 import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
 
-const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((m) => m.DailyVerse)));
+const TodayVerseCard = dynamic(() => retryImport(() => import('@/app/components/home/TodayVerseCard').then((m) => m.TodayVerseCard)));
 const DailyReflection = dynamic(() => retryImport(() => import('@/app/components/practice/DailyReflection').then((m) => m.DailyReflection)));
 const ReadingPlan = dynamic(() => retryImport(() => import('@/app/components/practice/ReadingPlan').then((m) => m.ReadingPlan)));
 const JapaMala = dynamic(() => retryImport(() => import('@/app/components/practice/JapaMala').then((m) => m.JapaMala)));
@@ -139,8 +139,12 @@ export function PracticeDashboard() {
             {/* Parent heading for the tool cards' h3s. */}
             <h2 className="sr-only"><span lang="hi" data-bi="hi">साधन</span><span data-bi="sep"> · </span><span data-bi="en">Practice tools</span></h2>
 
-            {/* Daily verse (if enabled) */}
-            {on('verse') && <DailyVerse />}
+            {/* Daily verse (if enabled) — unified with Homepage 3-step Sankalpa Bento */}
+            {on('verse') && (
+              <div id="practice-verse" className="scroll-mt-24">
+                <TodayVerseCard />
+              </div>
+            )}
 
             {/* Core Practice Grid: Japa, Meditation, Pranayama, Reflection, Reading */}
             <div className="reveal-grid grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">

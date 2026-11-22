@@ -9,7 +9,7 @@ import { pageLd, readingListLd } from '@/lib/jsonld';
 const TITLE = 'Scripture Reading Plans · स्वाध्याय योजनाएँ';
 // /learn/paths/ (study orders and guided readings) was merged into this page.
 const DESCRIPTION =
-  'Calm scripture reading plans: the 18-Day Bhagavad Gita Immersion and 7-Day Sanatana Foundation, eleven short study orders, and guided readings by life question, theme and dilemma. Progress stays in this browser.';
+  'Calm scripture reading plans: 18-Day Bhagavad Gita Immersion, 7-Day Sanatana Foundation, eleven study orders, and guided readings by life question.';
 
 export const metadata: Metadata = {
   title: TITLE,

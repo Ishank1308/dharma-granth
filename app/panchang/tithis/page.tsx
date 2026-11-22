@@ -9,9 +9,9 @@ import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwit
 import { Moon, Sun, ArrowRight, BookOpen, Sparkles, Calendar, Layers, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '16 Vedic Tithis (16 तिथियाँ) — Meaning, Deities & Pancha Tithi Categories',
+  title: { absolute: '16 Vedic Tithis (16 तिथियाँ) — Deities, Pancha Tithi | Dharma Granth' },
   description:
-    'Complete guide to the 16 lunar day archetypes of Vedic astronomy and Muhurta tradition — Pratipada to Purnima and Amavasya. Presiding deities, Nanda-Bhadra-Jaya-Rikta-Poorna classes, and spiritual significance.',
+    'Guide to the 16 lunar day archetypes of Vedic Panchang (Pratipada to Purnima and Amavasya), presiding deities, and Nanda-Bhadra-Jaya-Rikta-Poorna classes.',
   keywords: [
     '16 tithis in vedic astrology',
     'tithi meaning in hindi',

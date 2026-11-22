@@ -12,7 +12,7 @@ import { PageCover } from '@/app/components/PagePhoto';
 import { OnThisPage } from '@/app/components/OnThisPage';
 
 export const metadata: Metadata = {
-  title: 'Dharmic Concepts & Philosophy Explained (शास्त्रीय अवधारणा ज्ञान ग्राफ)',
+  title: { absolute: 'Dharmic Concepts · अवधारणा ज्ञान ग्राफ | Dharma Granth' },
   description:
     'Classical meanings, Sanskrit etymology and scriptural citations for core Hindu concepts — Dharma, Karma, Moksha, Atman, Brahman, Maya, Ahimsa, and Yajna.',
   keywords: [

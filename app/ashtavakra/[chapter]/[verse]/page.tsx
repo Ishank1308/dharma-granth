@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { getChapterData, getChapterMeta, getVerse, publishedChapterNumbers, verseHref, verseNeighbours } from '@/lib/ashtavakra';
 import { VerseFull, VerificationBadge } from '../../VerseView';
 import { ReadMark } from '../../VerseBits';
@@ -17,13 +17,20 @@ export async function generateMetadata(props: { params: Promise<{ chapter: strin
   const params = await props.params;
   const v = getVerse(Number(params.chapter), Number(params.verse));
   if (!v) return {};
-  const firstWord = (v.sanskrit || '').split(/[|।\n]/)[0].trim().slice(0, 20);
-  const title = `अष्टावक्र गीता ${v.verseNumber}${firstWord ? ` (${firstWord})` : ''} — श्लोक व अर्थ`;
+  const firstPhrase = (v.sanskrit || '').split(/[|।\n]/)[0].trim();
+  const firstWord = firstPhrase.split(/\s+/).slice(0, 2).join(' ');
+  const title = pickTitle([
+    firstWord && `अष्टावक्र गीता ${v.verseNumber} (${firstWord}) — श्लोक व अर्थ | Dharma Granth`,
+    firstWord && `अष्टावक्र गीता ${v.verseNumber} (${firstWord}) — श्लोक व हिंदी अर्थ`,
+    firstWord && `अष्टावक्र गीता ${v.verseNumber} (${firstWord}) — श्लोक व अर्थ`,
+    `अष्टावक्र गीता ${v.verseNumber} — श्लोक व हिंदी अर्थ | Dharma Granth`,
+    `अष्टावक्र गीता ${v.verseNumber} — श्लोक व हिंदी अर्थ`,
+  ]);
   const canonical = `/ashtavakra/${params.chapter}/${params.verse}/`;
-  const description = clipDescription(`${v.sanskrit} — ${v.literalHindiMeaning || v.oneLineSummaryHindi}`);
+  const description = clipDescription(`${v.sanskrit} — ${v.literalHindiMeaning || v.oneLineSummaryHindi}`, 158);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: [
       `अष्टावक्र गीता ${v.verseNumber}`,
@@ -80,30 +87,6 @@ export default async function VersePage(props: { params: Promise<{ chapter: stri
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const pageUrl = `${siteUrl}/ashtavakra/${c}/${n}/`;
   const hindiMeaning = v.literalHindiMeaning || v.oneLineSummaryHindi || '';
-  const firstPhrase = (v.sanskrit || '').split(/[|।\n]/)[0].trim().slice(0, 24);
-
-  const questions = [
-    hindiMeaning && {
-      '@type': 'Question',
-      name: `अष्टावक्र गीता ${v.verseNumber} का हिन्दी अर्थ क्या है?`,
-      acceptedAnswer: { '@type': 'Answer', text: hindiMeaning },
-    },
-    firstPhrase && hindiMeaning && {
-      '@type': 'Question',
-      name: `${firstPhrase} श्लोक का अर्थ क्या है?`,
-      acceptedAnswer: { '@type': 'Answer', text: hindiMeaning },
-    },
-    hindiMeaning && {
-      '@type': 'Question',
-      name: `Ashtavakra Gita ${v.verseNumber} Meaning in Hindi`,
-      acceptedAnswer: { '@type': 'Answer', text: `अष्टावक्र गीता ${v.verseNumber} का हिन्दी भावार्थ: ${hindiMeaning}` },
-    },
-    v.englishTranslation && {
-      '@type': 'Question',
-      name: `What is the meaning of Ashtavakra Gita ${v.verseNumber}?`,
-      acceptedAnswer: { '@type': 'Answer', text: v.englishTranslation },
-    },
-  ].filter(Boolean);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -112,7 +95,7 @@ export default async function VersePage(props: { params: Promise<{ chapter: stri
         '@type': 'Article',
         '@id': `${pageUrl}#article`,
         headline: `अष्टावक्र गीता ${v.verseNumber} — श्लोक व अर्थ (Hindi & English Meaning)`,
-        description: clipDescription(`${v.sanskrit} — ${hindiMeaning}`),
+        description: clipDescription(`${v.sanskrit} — ${hindiMeaning}`, 158),
         abstract: hindiMeaning || v.englishTranslation,
         text: [v.sanskrit, v.iast, hindiMeaning, v.englishTranslation].filter(Boolean).join('\n\n'),
         inLanguage: ['sa', 'hi', 'en'],
@@ -132,7 +115,6 @@ export default async function VersePage(props: { params: Promise<{ chapter: stri
           url: `${siteUrl}/ashtavakra/`,
         },
       },
-      ...(questions.length > 0 ? [{ '@type': 'FAQPage', '@id': `${pageUrl}#faq`, mainEntity: questions }] : []),
       {
         '@type': 'BreadcrumbList',
         itemListElement: [

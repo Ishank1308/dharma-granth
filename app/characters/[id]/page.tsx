@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { characters, getCharacter, characterCategories, type Character } from '@/data/characters';
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { ShareChips } from '@/app/components/ShareChips';
 import { OnThisPage } from '@/app/components/OnThisPage';
 
@@ -32,8 +32,18 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
 
   const catMeta = characterCategories.find((c) => c.key === character.category);
   const catLabel = catMeta ? catMeta.label : 'Scriptures';
-  const title = `${character.name} (${character.sanskrit}) — Story & Role in ${catLabel}`;
-  const description = clipDescription(`${character.name} (${character.sanskrit}): ${character.shortDesc}`);
+  const ogTitle = `${character.name} (${character.sanskrit}) — Story & Role in ${catLabel}`;
+  const title = pickTitle([
+    `${character.name} (${character.sanskrit}) — Story & Role in ${catLabel} | Dharma Granth`,
+    `${character.name} (${character.sanskrit}) — Story & Role in ${catLabel}`,
+    `${character.name} (${character.sanskrit}) — Story & Teachings | Dharma Granth`,
+    `${character.name} (${character.sanskrit}) — जीवन व शिक्षाएँ`,
+    `${character.name} — Story & Role | Dharma Granth`,
+  ]);
+  const description = clipDescription(
+    `${character.name} (${character.sanskrit}): ${character.shortDesc} ${character.biography || ''}`,
+    158,
+  );
   const keywords = [
     character.name,
     character.sanskrit,
@@ -46,18 +56,18 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
   ];
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords,
     alternates: { canonical: `/characters/${character.id}/` },
     openGraph: {
       type: 'profile',
       images: [DEFAULT_OG_IMAGE],
-      title: `${title} — Dharma Granth`,
+      title: `${ogTitle} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev/characters/${character.id}/`,
     },
-    twitter: { card: 'summary_large_image', title, description, images: [DEFAULT_OG_IMAGE.url] },
+    twitter: { card: 'summary_large_image', title: ogTitle, description, images: [DEFAULT_OG_IMAGE.url] },
   };
 }
 

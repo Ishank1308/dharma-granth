@@ -3,14 +3,13 @@
 import { useState, useCallback, type ReactNode } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Grid, Disc, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Grid, Sparkles } from 'lucide-react';
 import { toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
 import { MobileSwipeIndicator } from '@/app/components/reader/MobileSwipeIndicator';
 import { MobileReadingProgress } from '@/app/components/reader/MobileReadingProgress';
 import { MobileVerseCarousel, type CarouselVerseItem } from '@/app/components/reader/MobileVerseCarousel';
-import { MobileAudioPill } from '@/app/components/reader/MobileAudioPill';
 import type { AshtavakraVerse } from '@/lib/ashtavakra';
 
 interface AshtavakraVerseReaderProps {
@@ -154,8 +153,6 @@ export function AshtavakraVerseReader({
         chapterTitle={`प्रकरण ${chapterNumber} · ${bookTitle}`}
         scriptureTitle="अष्टावक्र गीता"
       />
-
-      <MobileAudioPill />
     </div>
   );
 }

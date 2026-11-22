@@ -5,7 +5,6 @@ import { Maximize2, RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { THEME_NAMES, type Theme } from '@/app/components/ThemeProvider';
 import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SanskritScript, SizeStep } from '@/lib/useReaderSettings';
 import { triggerTactileFeedback } from '@/lib/haptics';
-import type { ParayanaCadenceMode } from '@/lib/soundscape-lazy';
 import { depthForMode, modeForDepth } from '@/lib/reading-depth';
 import { ReaderControlBar, VERSE_DEPTH_HINTS } from './ReaderControlBar';
 import { ReaderDialog } from './ReaderDialog';
@@ -16,12 +15,9 @@ import { ReadingDepthSwitch } from './ReadingDepthSwitch';
  * chapter's running head; the chapter page passes its state here so they live in the one Aa sheet.
  */
 export interface ChapterReadingControls {
-  /** Sanskrit only, for reciting the chapter (स्वाध्याय मोड). */
+  /** Sanskrit only, for focused Sanskrit self-study (स्वाध्याय मोड). */
   recitation: boolean;
   setRecitation: (on: boolean) => void;
-  /** What the chapter's read-aloud (पारायण) speaks after each shloka. */
-  cadence: ParayanaCadenceMode;
-  setCadence: (mode: ParayanaCadenceMode) => void;
   /** Only for a scripture that is a dialogue (the Gita): the chapter by speaker. */
   conversation?: boolean;
   setConversation?: (on: boolean) => void;
@@ -160,12 +156,6 @@ const SCRIPTS: Array<Choice<SanskritScript>> = [
   { id: 'telu', label: 'తెలుగు', hint: 'Telugu' },
   { id: 'knda', label: 'ಕನ್ನಡ', hint: 'Kannada' },
   { id: 'mlym', label: 'മലയാളം', hint: 'Malayalam' },
-];
-
-const CADENCES: Array<Choice<ParayanaCadenceMode>> = [
-  { id: 'sanskrit_only', label: 'संस्कृत', hint: 'Sanskrit only' },
-  { id: 'sanskrit_hindi', label: '+ हिन्दी', hint: 'then Hindi' },
-  { id: 'sanskrit_english', label: '+ English', hint: 'then English' },
 ];
 
 const SPACINGS: Array<Choice<LineSpacing>> = [
@@ -358,7 +348,7 @@ export function ReaderSettingsPanel({
               </legend>
               <Toggle
                 label={<>Recitation view <span lang="hi" className="font-devanagari">स्वाध्याय मोड</span></>}
-                hint="Sanskrit only, for reciting the chapter"
+                hint="Sanskrit text only, for focused self-study"
                 checked={chapter.recitation}
                 onChange={chapter.setRecitation}
               />
@@ -388,12 +378,6 @@ export function ReaderSettingsPanel({
                 <Maximize2 className="h-4 w-4 shrink-0 text-label-secondary" aria-hidden="true" />
               </button>
             </fieldset>
-            <div>
-              <Segmented legend="Read aloud" legendHi="पारायण वाचन" value={chapter.cadence} options={CADENCES} onChange={chapter.setCadence} columns="grid-cols-3" />
-              <p className="mt-2 text-caption-1 text-label-secondary">
-                What is spoken after each shloka when the chapter is read aloud.
-              </p>
-            </div>
           </>
         )}
 

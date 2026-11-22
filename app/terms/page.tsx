@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms of Use · उपयोग की शर्तें',
-  description: 'Terms for using the Dharma Granth scripture library and study tools.',
+  description:
+    'Terms for using the Dharma Granth scripture library: source editions, attribution standards, local browser backups, and educational study scope.',
   alternates: { canonical: '/terms/' },
 };
 

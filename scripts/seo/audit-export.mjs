@@ -61,16 +61,19 @@ const textLen = (html) =>
     .replace(/\s+/g, ' ')
     .trim().length;
 
+// Detach V8 SlicedStrings from multi-MB HTML buffers so 8,600+ pages stay well under 150 MB heap.
+const own = (s) => (s == null ? s : Buffer.from(s).toString('utf8'));
+
 const rows = [];
 for (const file of pages) {
   const html = read(file);
   const url = urlFor(file);
-  const canonical = (html.match(/<link[^>]+rel="canonical"[^>]+href="([^"]+)"/i) || [])[1] ?? null;
-  const robots = meta(html, 'robots');
-  const title = (html.match(/<title>([^<]*)<\/title>/i) || [])[1] ?? '';
-  const desc = meta(html, 'description') ?? '';
+  const canonical = own((html.match(/<link[^>]+rel="canonical"[^>]+href="([^"]+)"/i) || [])[1] ?? null);
+  const robots = own(meta(html, 'robots'));
+  const title = own((html.match(/<title>([^<]*)<\/title>/i) || [])[1] ?? '');
+  const desc = own(meta(html, 'description') ?? '');
   const h1 = (html.match(/<h1[\s>]/gi) || []).length;
-  const lang = (html.match(/<html[^>]+lang="([^"]+)"/i) || [])[1] ?? null;
+  const lang = own((html.match(/<html[^>]+lang="([^"]+)"/i) || [])[1] ?? null);
   const jsonld = (html.match(/application\/ld\+json/gi) || []).length;
   const hreflang = (html.match(/hreflang=/gi) || []).length;
   rows.push({ url, file, canonical, robots, title, desc, h1, lang, jsonld, hreflang, text: textLen(html), inSitemap: sitemapUrls.has(url) || sitemapUrls.has(encodeURI(url)) });

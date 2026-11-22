@@ -9,9 +9,9 @@ import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwit
 import { Sparkles, Compass, Moon, Sun, ArrowRight, BookOpen, Star, Calendar } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '27 Vedic Nakshatras (27 नक्षत्र) — Deities, Symbols & Spiritual Significance',
+  title: { absolute: '27 Vedic Nakshatras (27 नक्षत्र) — Deities, Meaning | Dharma Granth' },
   description:
-    'Complete guide to the 27 lunar asterisms of Vedic astronomy and Taittiriya Brahmana — Ashwini to Revati. Presiding Vedic deities, ruling planets, symbols, and spiritual contemplation themes.',
+    'Guide to the 27 lunar asterisms of Vedic astronomy and Taittiriya Brahmana (Ashwini to Revati) with presiding deities, symbols, and contemplation themes.',
   keywords: [
     '27 nakshatras names and deities',
     'Vedic nakshatras list',

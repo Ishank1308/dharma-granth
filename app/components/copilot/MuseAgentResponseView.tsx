@@ -6,7 +6,6 @@ import {
   Bot,
   Copy,
   Check,
-  Volume2,
   AlertCircle,
   RefreshCw,
   Key,
@@ -31,7 +30,6 @@ export function MuseAgentResponseView({
   onRetry,
 }: MuseAgentResponseViewProps) {
   const [copied, setCopied] = useState(false);
-  const [speaking, setSpeaking] = useState(false);
   const [showKeyInput, setShowKeyInput] = useState(false);
   const [apiKeyInput, setApiKeyInput] = useState(getMuseApiKey());
 
@@ -41,30 +39,6 @@ export function MuseAgentResponseView({
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }, []);
-
-  const handleSpeak = useCallback((text: string) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-    triggerTactileFeedback('selection', 'softTap');
-    window.speechSynthesis.cancel();
-
-    if (speaking) {
-      setSpeaking(false);
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'hi-IN';
-    utterance.rate = 0.88;
-    const voices = window.speechSynthesis.getVoices();
-    const hiVoice = voices.find((v) => v.lang.includes('hi') || v.lang.includes('IN'));
-    if (hiVoice) utterance.voice = hiVoice;
-
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
-
-    setSpeaking(true);
-    window.speechSynthesis.speak(utterance);
-  }, [speaking]);
 
   const handleSaveKey = () => {
     setMuseApiKey(apiKeyInput);
@@ -184,15 +158,6 @@ export function MuseAgentResponseView({
         </div>
 
         <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={() => handleSpeak(response)}
-            className="flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs text-stone-400 hover:text-amber-300 transition"
-            title="उत्तर सुनें"
-          >
-            <Volume2 className="h-3.5 w-3.5" />
-            <span className="text-2xs">{speaking ? 'विराम' : 'सुनें'}</span>
-          </button>
           <button
             type="button"
             onClick={() => handleCopy(response)}

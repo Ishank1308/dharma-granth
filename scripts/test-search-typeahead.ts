@@ -21,10 +21,10 @@ assert(gitaCh2?.directHref === '/scripture/bhagavadgita/chapter/2/', 'gita chapt
 assert(gitaCh2?.category === 'अध्याय', 'gita chapter 2 category');
 
 // 2. Action Commands
-const tan = getTypeaheadSuggestion('> tan');
-assert(!!tan, '> tan should return action match');
-assert(tan?.completion === '> tanpura', '> tan completion');
-assert(tan?.suffix === 'pura', '> tan suffix');
+const gitaCmd = getTypeaheadSuggestion('> gi');
+assert(!!gitaCmd, '> gi should return action match');
+assert(gitaCmd?.completion === '> gita', '> gi completion');
+assert(gitaCmd?.suffix === 'ta', '> gi suffix');
 
 const med = getTypeaheadSuggestion('> med');
 assert(!!med, '> med should return action match');

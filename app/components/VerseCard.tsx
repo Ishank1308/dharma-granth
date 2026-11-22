@@ -15,7 +15,6 @@ import {
   Quote,
   ScrollText,
   Sparkles,
-  Volume2,
   X,
   Zap,
 } from 'lucide-react';
@@ -33,7 +32,6 @@ import { ContentLabelBadge } from './ContentLabels';
 import { ModernContextBody, ReflectionBody, parseModernContext } from './ModernContextBlock';
 import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
 import { detectChandas } from '@/lib/chandas-detector';
-import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
@@ -175,10 +173,6 @@ interface Props {
   versePageHref?: string;
   /** The reader asked for this verse's study (tapped its number in the chapter): open it, full study included. */
   studyRequested?: boolean;
-  /** Whether this verse is currently being recited */
-  isReciting?: boolean;
-  /** Callback to trigger recitation of this verse */
-  onPlayRecitation?: () => void;
   /** Reviewed मर्म line and जीवन प्रसंग chips, when this verse has them. */
   insight?: VerseInsight;
   /** Opens the desktop split-pane Svādhyāya workbench */
@@ -319,8 +313,6 @@ export function VerseCard({
   onToggleSpatial,
   versePageHref,
   studyRequested = false,
-  isReciting,
-  onPlayRecitation,
   insight,
   onOpenSvadhyaya,
   isActive,
@@ -357,57 +349,7 @@ export function VerseCard({
     [v.transliteration, hasSpeakerInText]
   );
 
-  // Recitation line-by-line / translation live highlighting
-  const [activeLineIndex, setActiveLineIndex] = useState<number | null>(null);
-  const [activeTranslationLang, setActiveTranslationLang] = useState<'hi' | 'en' | null>(null);
   const [activeWordIndex, setActiveWordIndex] = useState<number | null>(null);
-
-  const [activeWordBoundary, setActiveWordBoundary] = useState<{ chunkIndex: number; charIndex: number; length: number } | null>(null);
-
-  useEffect(() => {
-    if (!isReciting) {
-      setActiveLineIndex(null);
-      setActiveTranslationLang(null);
-      setActiveWordBoundary(null);
-      return;
-    }
-
-    const handleChunk = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (detail?.isTranslation) {
-        setActiveLineIndex(null);
-        setActiveTranslationLang(detail.language);
-        setActiveWordBoundary(null);
-      } else if (typeof detail?.chunkIndex === 'number') {
-        setActiveLineIndex(detail.chunkIndex);
-        setActiveTranslationLang(null);
-      } else {
-        setActiveLineIndex(null);
-        setActiveTranslationLang(null);
-        setActiveWordBoundary(null);
-      }
-    };
-
-    const handleWord = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (typeof detail?.chunkIndex === 'number' && typeof detail?.charIndex === 'number') {
-        setActiveWordBoundary({
-          chunkIndex: detail.chunkIndex,
-          charIndex: detail.charIndex,
-          length: detail.charLength || 0,
-        });
-      } else {
-        setActiveWordBoundary(null);
-      }
-    };
-
-    window.addEventListener('dharma:recitation-chunk', handleChunk);
-    window.addEventListener('dharma:recitation-word', handleWord);
-    return () => {
-      window.removeEventListener('dharma:recitation-chunk', handleChunk);
-      window.removeEventListener('dharma:recitation-word', handleWord);
-    };
-  }, [isReciting]);
 
   // ── Scholarly Citation Modal ──
   const [citationModalOpen, setCitationModalOpen] = useState(false);
@@ -477,17 +419,13 @@ export function VerseCard({
     <article
       id={`verse-${v.number}`}
       className={`verse-card book-verse ${REVEAL_SEQUENCE} group relative scroll-mt-24 transition-all duration-300 ${
-        isReciting
-          ? 'book-verse-ringed bg-amber-500/5 ring-2 ring-amber-400/50 animate-prana-pulse motion-reduce:animate-none'
-          : highlight
-          ? `book-verse-ringed ${HIGHLIGHTS[highlight].ring}`
-          : ''
+        highlight ? `book-verse-ringed ${HIGHLIGHTS[highlight].ring}` : ''
       }`}
       style={{
-        contentVisibility: isActive || isReciting || studyRequested ? 'visible' : 'auto',
+        contentVisibility: isActive || studyRequested ? 'visible' : 'auto',
         containIntrinsicSize: 'auto 300px',
       }}
-      aria-label={`श्लोक ${verseLabel}${isReciting ? ' · श्लोक उच्चारण चालू' : ''}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
+      aria-label={`श्लोक ${verseLabel}${highlight ? ` · ${HIGHLIGHTS[highlight].label} हाइलाइट` : ''}`}
     >
       <div className="relative px-1 py-2 sm:px-2">
         {/* ── Header ─────────────────────────────────────────── */}
@@ -516,32 +454,6 @@ export function VerseCard({
             role="group"
             aria-label="श्लोक विकल्प (Verse actions)"
           >
-            {/* Audio Recitation */}
-            {onPlayRecitation && v.sanskrit && (
-              <button
-                type="button"
-                onClick={onPlayRecitation}
-                className={`${iconButton} ${isReciting ? '!border-amber-400 !bg-amber-500/20 !text-amber-700 dark:!text-amber-300 ring-2 ring-amber-400/50' : ''}`}
-                aria-pressed={isReciting}
-                aria-label={isReciting ? 'श्लोक उच्चारण रोकें (Pause recitation)' : 'श्लोक उच्चारण सुनें (Listen to verse recitation)'}
-                title={isReciting ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें'}
-              >
-                {isReciting ? (
-                  <span
-                    aria-hidden="true"
-                    className="dock-wave dock-wave-sm dock-wave-current is-playing text-amber-700 dark:text-amber-300"
-                  >
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </span>
-                ) : (
-                  <Volume2 className="h-4 w-4" />
-                )}
-              </button>
-            )}
-
             {/* Bookmark */}
             <button
               type="button"
@@ -688,9 +600,7 @@ export function VerseCard({
 
         {/* ── The canonical verse remains the visual center of the card. ── */}
         {lines.length > 0 && (
-          <div className={`verse-folio relative rounded-2xl px-2 py-4 text-center md:px-10 md:py-6 transition-colors ${
-            isReciting ? '!border-amber-400/60 !bg-amber-500/10 dark:!bg-amber-950/40 ring-1 ring-amber-400/40' : ''
-          }`}>
+          <div className="verse-folio relative rounded-2xl px-2 py-4 text-center md:px-10 md:py-6 transition-colors">
             {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
             <span className="photo-light" />
             {/* Left & Right Sacred Manuscript Margin Wings on Wide Screens (fills side space with chandas & coordinate seal) */}
@@ -724,13 +634,7 @@ export function VerseCard({
             </div>
             {speaker && (
               <div className="mb-3.5 flex justify-center">
-                <span
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-0.5 text-xs font-semibold tracking-wide transition-all ${
-                    isReciting && activeLineIndex === 0 && hasSpeakerInText
-                      ? 'bg-amber-500/20 text-amber-900 dark:text-amber-200 ring-1 ring-amber-400/50'
-                      : 'bg-amber-100/70 text-amber-900/90 dark:bg-amber-950/40 dark:text-amber-200/90 border border-amber-300/40 dark:border-amber-800/30'
-                  }`}
-                >
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300/40 bg-amber-100/70 px-3 py-0.5 text-xs font-semibold tracking-wide text-amber-900/90 transition-all dark:border-amber-800/30 dark:bg-amber-950/40 dark:text-amber-200/90">
                   <span className="text-[10px] opacity-75 font-serif" aria-hidden="true">✦</span>
                   <span lang={hasSpeakerInText ? 'sa' : undefined} className="font-devanagari">{speaker}</span>
                   <span className="text-[10px] opacity-75 font-serif" aria-hidden="true">✦</span>
@@ -738,22 +642,11 @@ export function VerseCard({
               </div>
             )}
               <p data-reveal="1" lang="sa" className={`font-devanagari ${sanskritFontSizeClass} text-dharma-text`}>
-                {lines.map((line, i) => {
-                  const recitationLineIdx = hasSpeakerInText ? i + 1 : i;
-                  const isLineActive = isReciting && activeLineIndex === recitationLineIdx;
-                  return (
-                    <span
-                      key={i}
-                      className={`block rounded-xl px-3 py-1.5 -mx-3 transition-all duration-300 ${
-                        isLineActive
-                          ? 'bg-amber-500/15 text-amber-950 dark:text-amber-100 ring-1 ring-amber-400/50 font-medium'
-                          : ''
-                      }`}
-                    >
-                      <GlossaryText text={line} />
-                    </span>
-                  );
-                })}
+                {lines.map((line, i) => (
+                  <span key={i} className="block rounded-xl px-3 py-1.5 -mx-3 transition-all duration-300">
+                    <GlossaryText text={line} />
+                  </span>
+                ))}
                 <span
                   aria-hidden="true"
                   className="verse-mark mt-2 block text-base font-semibold text-saffron-700/90 dark:text-amber-300/90"
@@ -844,11 +737,7 @@ export function VerseCard({
                 ) : (
                 <>
                 {showHindi && (
-                  <div className={`rounded-2xl border border-dharma-border/50 bg-dharma-card/55 p-3.5 sm:p-4 transition-colors duration-200 ${
-                    isReciting && activeTranslationLang === 'hi'
-                      ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
-                      : ''
-                  }`}>
+                  <div className="rounded-2xl border border-dharma-border/50 bg-dharma-card/55 p-3.5 sm:p-4 transition-colors duration-200">
                     {showEnglish && state.hi === 'text' && !v.hindiRange && (
                       <p className="mb-1 text-[11px] font-semibold tracking-wide text-saffron-800/80 dark:text-saffron-300/80 font-devanagari">
                         भावार्थ · Hindi
@@ -900,11 +789,7 @@ export function VerseCard({
                 )}
 
                 {showEnglish && (
-                  <div className={`rounded-2xl border border-dharma-border/50 bg-dharma-card/55 p-3.5 sm:p-4 transition-colors duration-200 ${
-                    isReciting && activeTranslationLang === 'en'
-                      ? 'bg-amber-500/10 ring-2 ring-inset ring-amber-400/35'
-                      : ''
-                  }`}>
+                  <div className="rounded-2xl border border-dharma-border/50 bg-dharma-card/55 p-3.5 sm:p-4 transition-colors duration-200">
                     {showHindi && state.en === 'text' && !v.translationRange && (
                       <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-saffron-800/80 dark:text-saffron-300/80 font-serif">
                         Translation · English
@@ -999,14 +884,14 @@ export function VerseCard({
                               <button
                                 type="button"
                                 onClick={() => setIsSandhiSplit(!isSandhiSplit)}
-                                className="text-[10px] font-medium text-saffron-700 hover:underline dark:text-saffron-300"
+                                className="tap-halo inline-flex min-h-[32px] items-center rounded-md px-2 text-[11px] font-medium text-saffron-700 hover:underline dark:text-saffron-300"
                               >
                                 {isSandhiSplit ? 'संयुक्त श्लोक देखें' : 'विच्छेद दृश्य (Split View)'}
                               </button>
                             )}
                           </div>
                           {parsedGloss.length > 0 ? (
-                            <div className="flex flex-wrap gap-1.5">
+                            <div className="flex flex-wrap gap-2">
                               {parsedGloss.map((g, gIdx) => {
                                 const isHighlighted = hoveredWordIndex === gIdx;
                                 const isSpoken = activeWordIndex === gIdx;
@@ -1019,7 +904,6 @@ export function VerseCard({
                                     onClick={() => {
                                       triggerTactileFeedback('selection', 'softTap');
                                       setActiveWordIndex(gIdx);
-                                      speakSanskritTerm(g.pada, 0.85);
                                       showSabdaPeek({
                                         word: g.pada,
                                         wordDevanagari: g.pada,
@@ -1028,13 +912,13 @@ export function VerseCard({
                                       });
                                       setTimeout(() => setActiveWordIndex((cur) => (cur === gIdx ? null : cur)), 1800);
                                     }}
-                                    className={`inline-flex min-h-[26px] items-center gap-1 rounded-lg border px-2 py-0.5 text-[11px] transition active:scale-95 text-left ${
+                                    className={`tap-halo inline-flex min-h-[34px] sm:min-h-[30px] items-center gap-1.5 rounded-lg border px-2.5 py-1 text-[11px] transition active:scale-95 text-left ${
                                       isSpoken || isHighlighted
                                         ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-2xs'
                                         : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'
                                     }`}
-                                    aria-label={`उच्चारण सुनें: ${g.pada}`}
-                                    title={`${g.pada}: क्लिक करके उच्चारण सुनें`}
+                                    aria-label={`शब्दार्थ देखें: ${g.pada}`}
+                                    title={`${g.pada}: शब्दार्थ देखें`}
                                   >
                                     <span className="font-devanagari text-xs font-semibold text-amber-900 dark:text-amber-200">{g.pada}</span>
                                     {g.meaning && (

@@ -6,9 +6,9 @@ import { GITA_CHAPTER_JOURNEYS } from '@/data/gita-journey-data';
 import { Compass, BookOpen, Sparkles, ArrowLeft } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Bhagavad Gita 18 Adhyayas Journey: The Dilemma Compass · गीता यात्रा — Dharma Granth',
+  title: { absolute: 'Bhagavad Gita 18 Chapters Journey · गीता यात्रा | Dharma Granth' },
   description:
-    'Master the 18 chapters of Srimad Bhagavad Gita across the 3 classical Shatkas (Karma, Bhakti, Jnana). Map Arjuna’s inner crises to Sri Krishna’s counsel, centerpiece Mahavakyas, and daily dilemma resolutions.',
+    'Study the 18 chapters of Srimad Bhagavad Gita across Karma, Bhakti, and Jnana Shatkas: Arjuna’s dilemmas, Krishna’s counsel, and key Mahavakyas.',
   keywords: [
     'bhagavad gita 18 chapters summary',
     'gita dilemma compass',

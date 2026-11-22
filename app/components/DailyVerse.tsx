@@ -4,10 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight,
-  Volume2,
-  VolumeX,
   Share2,
-  Radio,
   CheckCircle2,
   Target,
   Compass,
@@ -18,14 +15,6 @@ import { Realistic3DCard } from '@/app/components/motion/Realistic3DCard';
 import { MagneticButton } from '@/app/components/motion/MagneticButton';
 import { getTodayWisdom, type DailyWisdomItem } from '@/data/daily-wisdom-engine';
 import { toAsciiDigits } from '@/lib/verse-format';
-import {
-  speakSanskritShloka,
-  stopSanskritSpeech,
-  isSpeakingSanskrit,
-  startTanpuraDrone,
-  stopTanpuraDrone,
-  isTanpuraActive,
-} from '@/lib/sacred-audio';
 import { recordSadhanaActivity, useSadhanaStreak } from '@/lib/sadhana-streak';
 import { istDate } from '@/lib/ist';
 import { SacredShareModal } from '@/app/components/share/SacredShareModal';
@@ -33,8 +22,6 @@ import { SacredShareModal } from '@/app/components/share/SacredShareModal';
 export function DailyVerse() {
   const [wisdom, setWisdom] = useState<DailyWisdomItem | null>(null);
   const [dateStr, setDateStr] = useState<string>('');
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
-  const [isDroneOn, setIsDroneOn] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isCompletedToday, setIsCompletedToday] = useState(false);
   const { streak } = useSadhanaStreak();
@@ -52,53 +39,26 @@ export function DailyVerse() {
 
     // Check if challenge completed today
     try {
-      const todayKey = `dharma.daily.challenge.${today.id}.${istDate().iso}`;
-      if (localStorage.getItem(todayKey)) {
+      const todayIso = istDate().iso;
+      if (
+        localStorage.getItem(`dharma.daily.challenge.${today.id}.${todayIso}`) ||
+        localStorage.getItem(`dharma.daily.sadhana.${today.id}.${todayIso}`)
+      ) {
         setIsCompletedToday(true);
       }
     } catch {}
-
-    return () => {
-      stopSanskritSpeech();
-      stopTanpuraDrone();
-    };
   }, []);
 
   if (!wisdom) return null;
-
-  function toggleAudio() {
-    if (!wisdom) return;
-    if (isPlayingAudio) {
-      stopSanskritSpeech();
-      setIsPlayingAudio(false);
-    } else {
-      setIsPlayingAudio(true);
-      speakSanskritShloka(
-        wisdom.sanskrit,
-        0.85,
-        () => setIsPlayingAudio(false),
-        () => setIsPlayingAudio(false)
-      );
-    }
-  }
-
-  function toggleTanpura() {
-    if (isDroneOn) {
-      stopTanpuraDrone();
-      setIsDroneOn(false);
-    } else {
-      const started = startTanpuraDrone(0.12);
-      if (started) setIsDroneOn(true);
-    }
-  }
 
   function handleCompleteChallenge() {
     if (!wisdom || isCompletedToday) return;
     setIsCompletedToday(true);
     recordSadhanaActivity();
     try {
-      const todayKey = `dharma.daily.challenge.${wisdom.id}.${new Date().toISOString().slice(0, 10)}`;
-      localStorage.setItem(todayKey, 'true');
+      const todayIso = new Date().toISOString().slice(0, 10);
+      localStorage.setItem(`dharma.daily.challenge.${wisdom.id}.${todayIso}`, 'true');
+      localStorage.setItem(`dharma.daily.sadhana.${wisdom.id}.${todayIso}`, '1');
     } catch {}
   }
 
@@ -114,7 +74,7 @@ export function DailyVerse() {
         >
 
           <div className="relative z-10 space-y-5">
-            {/* Top Bar: Badge, Date & Audio Controls */}
+            {/* Top Bar: Badge, Date & Share */}
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <span className="text-footnote font-semibold text-dharma-saffron">
@@ -126,36 +86,7 @@ export function DailyVerse() {
                 </span>
               </div>
 
-              {/* Audio Controls */}
               <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={toggleAudio}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition shadow-2xs ${
-                    isPlayingAudio
-                      ? 'bg-amber-600 text-white animate-pulse'
-                      : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
-                  }`}
-                  title="Listen to Sanskrit Recitation"
-                >
-                  {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
-                  <span>{isPlayingAudio ? 'रोकें · Pause' : 'सुनें · Listen'}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={toggleTanpura}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold transition ${
-                    isDroneOn
-                      ? 'bg-emerald-600 text-white shadow-2xs'
-                      : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
-                  }`}
-                  title="Toggle Meditative Tanpura Acoustic Drone"
-                >
-                  <Radio className={`w-3.5 h-3.5 ${isDroneOn ? 'animate-pulse' : ''}`} />
-                  <span className="hidden sm:inline">तानपुरा</span>
-                </button>
-
                 <button
                   type="button"
                   onClick={() => setIsShareModalOpen(true)}

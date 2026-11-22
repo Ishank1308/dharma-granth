@@ -142,10 +142,29 @@ export function isBundled(book, maxBytes = DEFAULT_MAX_MB * 1024 * 1024) {
 }
 
 // ── Hindi व्याख्या (the website's verse commentary) ─────────────────────────────────────────────────
-// public/data/hi-commentary/<id>.json is keyed `${chapter}:${verse}` and holds the व्याख्या (explanation),
-// the research note (science) and जीवन सूत्र (lifeLesson). The app downloads it per book from the
-// website (scripts/build-app-data.mjs), already resolved to the verse numbers the reader shows, so the
-// app never needs the website's key-matching rules. Too large to bundle (about 64 MB for the bundled books).
+// public/data/hi-commentary/<id>/<chapter>-<unit>.json (or legacy <id>.json) is keyed `${chapter}:${verse}`
+// and holds the व्याख्या (explanation), the research note (science) and जीवन सूत्र (lifeLesson).
+// The app downloads it per book from the website (scripts/build-app-data.mjs), already resolved to the
+// verse numbers the reader shows, so the app never needs the website's key-matching rules.
+const COMMENTARY_UNIT_FILE = /^\d+-[a-z][A-Za-z0-9_]*\.json$/;
+
+function readRawCommentary(dataDir, bookId) {
+  const base = join(dataDir, '..', 'hi-commentary', bookId);
+  const single = `${base}.json`;
+  const sources = [];
+  if (existsSync(single)) sources.push(single);
+  if (existsSync(base) && statSync(base).isDirectory()) {
+    for (const name of readdirSync(base).sort()) {
+      if (COMMENTARY_UNIT_FILE.test(name)) sources.push(join(base, name));
+    }
+  }
+  if (sources.length === 0) return null;
+  const out = {};
+  for (const file of sources) {
+    Object.assign(out, readJson(file));
+  }
+  return Object.keys(out).length ? out : null;
+}
 
 /** Within-chapter verse id from a seeded `number` (ch 2 + "2.10" → "10"). Mirrors lib/canonical-verse-id.ts. */
 export function canonicalVerseId(chapterNumber, verseNumber) {
@@ -194,9 +213,8 @@ function ambiguities(chapter, numbers) {
  * reviewed AI draft, labelled as on the website }. Null when the book has none.
  */
 export function readCommentary(dataDir, book) {
-  const path = join(dataDir, '..', 'hi-commentary', `${book.id}.json`);
-  if (!existsSync(path)) return null;
-  const all = readJson(path);
+  const all = readRawCommentary(dataDir, book.id);
+  if (!all) return null;
   const chapters = {};
   let verses = 0;
   for (const ch of book.chapters) {

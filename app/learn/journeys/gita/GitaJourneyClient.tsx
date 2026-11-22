@@ -11,7 +11,6 @@ import {
   ExternalLink,
   Copy,
   Check,
-  Volume2,
   Sparkles,
   Flame,
   Heart,
@@ -25,7 +24,6 @@ import {
   type GitaChapterJourney,
   type GitaShatkaId,
 } from '@/data/gita-journey-data';
-import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 import { parseStored } from '@/lib/safe-stored';
 
 const STORAGE_KEY = 'dharma-gita-journey-studied';
@@ -35,7 +33,6 @@ export function GitaJourneyClient() {
   const [studiedChapters, setStudiedChapters] = useState<number[]>([]);
   const [highlightedChapter, setHighlightedChapter] = useState<number | null>(null);
   const [copiedVerseRef, setCopiedVerseRef] = useState<string | null>(null);
-  const [playingRef, setPlayingRef] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -70,12 +67,6 @@ export function GitaJourneyClient() {
     } catch {
       // ignore
     }
-  };
-
-  const playVerse = (sanskrit: string, ref: string) => {
-    setPlayingRef(ref);
-    speakSanskritTerm(sanskrit);
-    setTimeout(() => setPlayingRef(null), 4000);
   };
 
   const scrollToChapter = (chNum: number) => {
@@ -416,16 +407,6 @@ export function GitaJourneyClient() {
                   </span>
 
                   <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => playVerse(ch.keyVerse.sanskrit, ch.keyVerse.ref)}
-                      className="inline-flex items-center gap-1 rounded-lg border border-amber-300/60 bg-amber-100/50 dark:bg-amber-900/40 px-2.5 py-1 text-[11px] font-semibold text-amber-900 dark:text-amber-200 hover:bg-amber-200/50"
-                      aria-label="Listen to Sanskrit recitation"
-                    >
-                      <Volume2 className={`w-3.5 h-3.5 ${playingRef === ch.keyVerse.ref ? 'animate-pulse text-saffron-600' : ''}`} />
-                      <span>{playingRef === ch.keyVerse.ref ? 'Reciting…' : 'उच्चारण'}</span>
-                    </button>
-
                     <button
                       type="button"
                       onClick={() => copyVerse(fullVerseShareText, ch.keyVerse.ref)}

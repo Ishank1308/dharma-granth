@@ -17,6 +17,7 @@ import { ChevronRight } from 'lucide-react';
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
 import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -33,7 +34,14 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   if (!meta) return {};
 
   // Hindi first, as people search ("भगवद गीता हिंदी अर्थ"); English name kept.
-  const title = `${meta.titleSanskrit} (${meta.title}) — हिंदी अर्थ सहित श्लोक | Hindi & English Meaning`;
+  const title = pickTitle([
+    `${meta.titleSanskrit} (${meta.title}) — श्लोक व हिंदी अर्थ | Dharma Granth`,
+    `${meta.titleSanskrit} (${meta.title}) — हिंदी व English अर्थ`,
+    `${meta.titleSanskrit} (${meta.title}) — श्लोक व हिंदी अर्थ`,
+    `${meta.titleSanskrit} (${meta.title}) — हिंदी अर्थ`,
+    `${meta.title} (${meta.titleSanskrit}) — Meaning`,
+    `${meta.title} — श्लोक व हिंदी अर्थ`,
+  ]);
   const held = readSeededChapterPreviews(params.id).filter((chapter) => chapter.verseCount > 0);
   const heldVerses = held.reduce((sum, chapter) => sum + chapter.verseCount, 0);
   const counts =
@@ -44,10 +52,11 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     ? `${meta.titleSanskrit} (${meta.title}): ${counts}संस्कृत मूल, हिंदी अर्थ और English translation, श्लोक-दर-श्लोक।`
     : `${meta.titleSanskrit} (${meta.title}) — हमारे बढ़ते ग्रंथालय में।`;
   const room = 158 - lead.length - 1;
-  const description =
+  const rawDescription =
     room > 30
       ? `${lead} ${meta.description.length > room ? `${meta.description.slice(0, room - 1).trimEnd()}…` : meta.description}`
       : lead;
+  const description = clipDescription(rawDescription, 158);
 
   const ogImage = {
     url: `/og/${meta.id}.png`,
@@ -57,7 +66,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   };
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: [
       `${meta.title} verses`,

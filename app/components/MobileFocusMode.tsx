@@ -3,16 +3,14 @@
 import { useEffect, useRef, useState, useCallback, type KeyboardEvent } from 'react';
 import { motion, AnimatePresence, useReducedMotion, type PanInfo } from 'framer-motion';
 import {
+  BookOpen,
   Bookmark,
   BookmarkCheck,
   ChevronLeft,
   ChevronRight,
-  Maximize2,
-  Minimize2,
-  RotateCcw,
+  FlaskConical,
+  Lightbulb,
   SlidersHorizontal,
-  Sparkles,
-  Volume2,
   X,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -20,14 +18,6 @@ import type { ScriptureCategory } from '@/data/types';
 import type { HiCommentaryFragment } from '@/data/hi-commentary/_types';
 import { lookupCommentary, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
 import { resolveKeywordTarget } from '@/lib/keyword-links';
-import { isTanpuraPlaying, toggleTanpura, subscribeTanpura } from '@/lib/tanpura-audio';
-import {
-  startSoundscape,
-  stopSoundscape,
-  setCurrentVerseContext,
-  subscribeSoundscape,
-  type SoundscapeState,
-} from '@/lib/soundscape-lazy';
 import { splitVerseLines, toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { useReaderSettings } from '@/lib/useReaderSettings';
@@ -127,26 +117,6 @@ export function MobileFocusMode({
   } = settings;
   const [showMenu, setShowMenu] = useState(false);
 
-  const [tanpuraActive, setTanpuraActive] = useState(false);
-  const [recitationActive, setRecitationActive] = useState(false);
-
-  useEffect(() => {
-    setTanpuraActive(isTanpuraPlaying());
-
-    const unsubTanpura = subscribeTanpura((active) => {
-      setTanpuraActive(active);
-    });
-
-    const unsubSoundscape = subscribeSoundscape((st: SoundscapeState) => {
-      setRecitationActive(st.isPlaying && st.activeTrack === 'recitation');
-    });
-
-    return () => {
-      unsubTanpura();
-      unsubSoundscape();
-    };
-  }, []);
-
   const reduce = useReducedMotion();
   const cardScrollRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -198,17 +168,6 @@ export function MobileFocusMode({
   }, [isOpen]);
 
   const currentVerse: FocusVerse | undefined = verses[currentIndex];
-  const verseKey = currentVerse ? currentVerse.sanskrit || currentVerse.hindi || currentVerse.translation || '' : '';
-
-  // Update soundscape context on verse change if recitation is playing
-  useEffect(() => {
-    if (recitationActive && currentVerse?.sanskrit) {
-      setCurrentVerseContext(
-        currentVerse.sanskrit,
-        `${scriptureTitle} ${chapterTitle}, श्लोक ${currentVerse.number}`
-      );
-    }
-  }, [currentIndex, recitationActive, currentVerse, scriptureTitle, chapterTitle]);
 
   // Navigate to previous/next verse
   const goTo = useCallback(
@@ -319,8 +278,8 @@ export function MobileFocusMode({
         </div>
 
         {/* ── Top Bar ────────────────────────────────────────── */}
-        <header className="relative flex shrink-0 items-center justify-between border-b border-stone-800/80 px-4 py-3 sm:px-6">
-          <div className="flex items-center gap-3">
+        <header className="relative flex shrink-0 items-center justify-between border-b border-stone-800/80 px-3 py-2.5 sm:px-6 sm:py-3">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <button
               ref={closeButtonRef}
               type="button"
@@ -328,7 +287,7 @@ export function MobileFocusMode({
                 triggerTactileFeedback('light', 'softTap');
                 onClose();
               }}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-stone-700 transition"
+              className="tap-halo inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-900 border border-stone-800 text-stone-300 hover:text-white hover:border-stone-700 transition"
               aria-label="एकाग्रता मोड बंद करें"
               title="बंद करें (Esc)"
             >
@@ -340,66 +299,19 @@ export function MobileFocusMode({
               </p>
               <p className="text-sm font-serif font-bold text-stone-200">
                 श्लोक {toAsciiDigits(verseLabel)}{' '}
-                <span className="text-xs font-sans text-stone-400 font-normal">
+                <span className="text-xs font-sans text-stone-400 font-normal tabular-nums">
                   ({currentIndex + 1} / {totalVerses})
                 </span>
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {/* Sanskrit Recitation Audio */}
-            {currentVerse.sanskrit && (
-              <button
-                type="button"
-                onClick={() => {
-                  triggerTactileFeedback('selection', 'click');
-                  if (recitationActive) {
-                    stopSoundscape();
-                  } else {
-                    setCurrentVerseContext(
-                      currentVerse.sanskrit,
-                      `${scriptureTitle} ${chapterTitle}, श्लोक ${currentVerse.number}`
-                    );
-                    startSoundscape('recitation');
-                  }
-                }}
-                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold border transition ${recitationActive
-                  ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
-                  : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
-                  }`}
-                title={recitationActive ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें (Listen to Recitation)'}
-                aria-pressed={recitationActive}
-                aria-label="श्लोक उच्चारण"
-              >
-                <Volume2 className={`h-3 w-3 ${recitationActive ? 'text-amber-400 animate-pulse' : ''}`} />
-                <span className="hidden sm:inline">उच्चारण</span>
-              </button>
-            )}
-
-            {/* Tanpura Sacred Drone Ambience */}
-            <button
-              type="button"
-              onClick={() => {
-                triggerTactileFeedback('celestial', 'omBowl');
-                toggleTanpura();
-              }}
-              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold border transition ${tanpuraActive
-                ? 'border-amber-400/80 bg-amber-500/20 text-amber-300 shadow-sm ring-1 ring-amber-400/40'
-                : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
-                }`}
-              title={tanpuraActive ? 'तन्पूरा सक्रिय (Tanpura Active ॐ)' : 'तन्पूरा ध्यान नाद चालू करें (Tanpura Ambience)'}
-              aria-pressed={tanpuraActive}
-            >
-              <Sparkles className={`h-3 w-3 ${tanpuraActive ? 'text-amber-400 animate-pulse' : ''}`} />
-              <span className="hidden sm:inline">तन्पूरा ॐ</span>
-            </button>
-
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Bookmark button */}
             <button
               type="button"
               onClick={() => onToggleBookmark(currentVerse)}
-              className={`inline-flex h-8 w-8 items-center justify-center rounded-full border transition ${isBookmarked
+              className={`tap-halo inline-flex h-10 w-10 items-center justify-center rounded-full border transition ${isBookmarked
                 ? 'border-saffron-400 bg-saffron-500/20 text-saffron-300'
                 : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
                 }`}
@@ -407,9 +319,9 @@ export function MobileFocusMode({
               title={isBookmarked ? 'बुकमार्क हटाएं' : 'बुकमार्क करें'}
             >
               {isBookmarked ? (
-                <BookmarkCheck className="h-3.5 w-3.5 fill-current" />
+                <BookmarkCheck className="h-4 w-4 fill-current" />
               ) : (
-                <Bookmark className="h-3.5 w-3.5" />
+                <Bookmark className="h-4 w-4" />
               )}
             </button>
 
@@ -419,7 +331,7 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'sm')}
-                className={`rounded-full px-2 py-0.5 transition ${sanskritSize === 'sm' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                className={`tap-halo min-h-[32px] rounded-full px-2.5 py-0.5 transition ${sanskritSize === 'sm' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
                   }`}
                 title="छोटे अक्षर"
                 aria-pressed={sanskritSize === 'sm'}
@@ -429,7 +341,7 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'md')}
-                className={`rounded-full px-2 py-0.5 transition ${sanskritSize === 'md' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                className={`tap-halo min-h-[32px] rounded-full px-2.5 py-0.5 transition ${sanskritSize === 'md' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
                   }`}
                 title="सामान्य अक्षर"
                 aria-pressed={sanskritSize === 'md'}
@@ -439,7 +351,7 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'lg')}
-                className={`rounded-full px-2 py-0.5 transition ${sanskritSize === 'lg' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                className={`tap-halo min-h-[32px] rounded-full px-2.5 py-0.5 transition ${sanskritSize === 'lg' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
                   }`}
                 title="बड़े अक्षर"
                 aria-pressed={sanskritSize === 'lg'}
@@ -449,7 +361,7 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => update('sanskritSize', 'xl')}
-                className={`rounded-full px-2 py-0.5 transition ${sanskritSize === 'xl' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
+                className={`tap-halo min-h-[32px] rounded-full px-2.5 py-0.5 transition ${sanskritSize === 'xl' ? 'bg-saffron-600 text-white font-bold' : 'text-stone-400 hover:text-stone-200'
                   }`}
                 title="विशाल अक्षर"
                 aria-pressed={sanskritSize === 'xl'}
@@ -463,14 +375,14 @@ export function MobileFocusMode({
               <button
                 type="button"
                 onClick={() => setShowMenu((o) => !o)}
-                className={`inline-flex h-8 w-8 items-center justify-center rounded-full border transition ${showMenu ? 'border-saffron-400 bg-saffron-500/20 text-saffron-300' : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
+                className={`tap-halo inline-flex h-10 w-10 items-center justify-center rounded-full border transition ${showMenu ? 'border-saffron-400 bg-saffron-500/20 text-saffron-300' : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
                   }`}
                 aria-label="दृश्य विकल्प"
                 title="विकल्प"
                 aria-expanded={showMenu}
                 aria-controls="focus-reader-settings"
               >
-                <SlidersHorizontal className="h-3.5 w-3.5" />
+                <SlidersHorizontal className="h-4 w-4" />
               </button>
 
               {showMenu && (
@@ -493,7 +405,7 @@ export function MobileFocusMode({
                           aria-label={`${name} Sanskrit text`}
                           aria-pressed={sanskritSize === size}
                           onClick={() => update('sanskritSize', size)}
-                          className={`min-h-9 rounded-lg border px-1 font-semibold ${sanskritSize === size ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
+                          className={`min-h-10 rounded-lg border px-1 font-semibold ${sanskritSize === size ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
                         >
                           {label}
                         </button>
@@ -515,7 +427,7 @@ export function MobileFocusMode({
                           aria-label={`${label} translation text`}
                           aria-pressed={translationSize === size}
                           onClick={() => update('translationSize', size)}
-                          className={`min-h-9 rounded-lg border px-1 font-semibold ${translationSize === size ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
+                          className={`min-h-10 rounded-lg border px-1 font-semibold ${translationSize === size ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
                         >
                           {label}
                         </button>
@@ -536,46 +448,46 @@ export function MobileFocusMode({
                           type="button"
                           aria-pressed={lineSpacing === spacing}
                           onClick={() => update('lineSpacing', spacing)}
-                          className={`min-h-9 rounded-lg border px-2 font-medium ${lineSpacing === spacing ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
+                          className={`min-h-10 rounded-lg border px-2 font-medium ${lineSpacing === spacing ? 'border-amber-400 bg-amber-500 text-stone-950' : 'border-stone-700 text-stone-300 hover:border-stone-500'}`}
                         >
                           {label}
                         </button>
                       ))}
                     </div>
                   </fieldset>
-                  <label className="flex items-center gap-2 rounded-lg px-2 py-1 text-stone-200 hover:bg-stone-800 cursor-pointer">
+                  <label className="flex min-h-[40px] items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-stone-200 hover:bg-stone-800 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={showTranslit}
                       onChange={(e) => update('showTransliteration', e.target.checked)}
-                      className="rounded text-saffron-600 focus:ring-0"
+                      className="h-4 w-4 rounded text-saffron-600 focus:ring-0"
                     />
                     <span>लिप्यंतरण (Translit)</span>
                   </label>
-                  <label className="flex items-center gap-2 rounded-lg px-2 py-1 text-stone-200 hover:bg-stone-800 cursor-pointer">
+                  <label className="flex min-h-[40px] items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-stone-200 hover:bg-stone-800 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={showHindi}
                       onChange={(e) => update('showHindi', e.target.checked)}
-                      className="rounded text-saffron-600 focus:ring-0"
+                      className="h-4 w-4 rounded text-saffron-600 focus:ring-0"
                     />
                     <span>हिन्दी अर्थ</span>
                   </label>
-                  <label className="flex items-center gap-2 rounded-lg px-2 py-1 text-stone-200 hover:bg-stone-800 cursor-pointer">
+                  <label className="flex min-h-[40px] items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-stone-200 hover:bg-stone-800 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={showEnglish}
                       onChange={(e) => update('showEnglish', e.target.checked)}
-                      className="rounded text-saffron-600 focus:ring-0"
+                      className="h-4 w-4 rounded text-saffron-600 focus:ring-0"
                     />
                     <span>English Meaning</span>
                   </label>
-                  <label className="flex items-center gap-2 rounded-lg px-2 py-1 text-stone-200 hover:bg-stone-800 cursor-pointer">
+                  <label className="flex min-h-[40px] items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-stone-200 hover:bg-stone-800 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={showCommentary}
                       onChange={(e) => update('showCommentary', e.target.checked)}
-                      className="rounded text-saffron-600 focus:ring-0"
+                      className="h-4 w-4 rounded text-saffron-600 focus:ring-0"
                     />
                     <span>व्याख्या व सीख</span>
                   </label>
@@ -599,38 +511,45 @@ export function MobileFocusMode({
               animate="center"
               exit="exit"
               onPanEnd={handlePanEnd}
-              className="absolute inset-0 flex flex-col justify-start overflow-y-auto px-4 py-6 sm:px-8 md:px-16"
+              className="absolute inset-0 flex flex-col justify-start overflow-y-auto px-4 py-6 sm:px-8 md:px-12"
             >
-              <div className="mx-auto w-full max-w-3xl space-y-6 pb-20">
-                {/* ── Sanskrit Manuscript Leaf Card ── */}
-                <div className="relative rounded-3xl border border-amber-500/20 bg-gradient-to-b from-stone-900 via-stone-900/90 to-stone-950 p-6 md:p-10 shadow-2xl text-center">
+              <div className="mx-auto w-full max-w-4xl space-y-5 pb-20">
+                {/* ── Sanskrit Manuscript Leaf Card with Sacred Margin Wings ── */}
+                <div className="relative rounded-3xl border border-amber-500/25 bg-gradient-to-b from-stone-900 via-stone-900/92 to-stone-950 p-6 md:p-10 shadow-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] text-center">
                   {/* Subtle lotus corner motifs */}
-                  <span aria-hidden="true" className="absolute left-4 top-3 text-amber-500/20 text-lg">❁</span>
-                  <span aria-hidden="true" className="absolute right-4 top-3 text-amber-500/20 text-lg">❁</span>
+                  <span aria-hidden="true" className="absolute left-4 top-3 text-amber-500/25 text-lg">❁</span>
+                  <span aria-hidden="true" className="absolute right-4 top-3 text-amber-500/25 text-lg">❁</span>
 
-                  <div lang="hi" className="mb-4 inline-flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-br from-amber-500/20 to-saffron-500/30 text-amber-300 font-devanagari font-bold border border-amber-500/30">
+                  <div lang="hi" className="mb-4 inline-flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-br from-amber-500/20 to-saffron-500/30 text-amber-300 font-devanagari font-bold border border-amber-500/30 tabular-nums">
                     {toAsciiDigits(verseLabel)}
                   </div>
 
                   {lines.length > 0 && (
-                    <div lang="sa" className={`font-devanagari ${sanskritSizeClass} text-amber-50 space-y-2`}>
-                      {lines.map((line, i) => {
-                        const isLineSpeaking = false;
-                        return (
-                          <p
-                            key={i}
-                            className={`rounded-xl px-3 py-1 transition-all duration-300 ${isLineSpeaking
-                              ? 'bg-gradient-to-r from-saffron-500/30 via-amber-500/25 to-saffron-500/30 text-amber-200 font-bold shadow-md ring-1 ring-saffron-400/70 scale-[1.02]'
-                              : ''
-                              }`}
-                          >
+                    <div className="relative flex items-center justify-between gap-4">
+                      {/* Left Sacred Manuscript Wing (desktop) */}
+                      <div aria-hidden="true" data-decor className="hidden lg:flex w-10 shrink-0 flex-col items-center gap-2 select-none text-amber-400/35">
+                        <span className="h-8 w-px bg-gradient-to-b from-transparent via-amber-400/40 to-transparent" />
+                        <span className="text-sm">☸</span>
+                        <span className="h-8 w-px bg-gradient-to-b from-transparent via-amber-400/40 to-transparent" />
+                      </div>
+
+                      <div lang="sa" className={`flex-1 font-devanagari ${sanskritSizeClass} text-amber-50 space-y-2`}>
+                        {lines.map((line, i) => (
+                          <p key={i} className="rounded-xl px-3 py-1">
                             {line}
                           </p>
-                        );
-                      })}
-                      <p className="mt-3 font-bold text-saffron-400">
-                        ॥ {toAsciiDigits(verseLabel)} ॥
-                      </p>
+                        ))}
+                        <p className="mt-3 font-bold text-saffron-400 tabular-nums">
+                          ॥ {toAsciiDigits(verseLabel)} ॥
+                        </p>
+                      </div>
+
+                      {/* Right Sacred Manuscript Wing (desktop) */}
+                      <div aria-hidden="true" data-decor className="hidden lg:flex w-10 shrink-0 flex-col items-center gap-2 select-none text-amber-400/35">
+                        <span className="h-8 w-px bg-gradient-to-b from-transparent via-amber-400/40 to-transparent" />
+                        <span className="text-sm">❁</span>
+                        <span className="h-8 w-px bg-gradient-to-b from-transparent via-amber-400/40 to-transparent" />
+                      </div>
                     </div>
                   )}
 
@@ -638,56 +557,94 @@ export function MobileFocusMode({
                   {showTranslit && currentVerse.transliteration && (
                     <p
                       lang="sa-Latn"
-                      className="mx-auto mt-5 max-w-xl border-t border-stone-800/80 pt-4 text-sm md:text-base italic leading-relaxed text-stone-400 whitespace-pre-line"
+                      className="mx-auto mt-5 max-w-2xl border-t border-stone-800/80 pt-4 text-sm md:text-base italic leading-relaxed text-stone-300/90 whitespace-pre-line"
                     >
                       {currentVerse.transliteration.replace(/[\s|।॥0-9.]+$/, '')}
                     </p>
                   )}
                 </div>
 
-                {/* ── Meanings ── */}
-                <div
-                  className={`rounded-2xl border border-stone-800/80 bg-stone-900/60 p-5 space-y-4 transition-all duration-300 ${''
-                    }`}
-                >
-                  {showHindi && currentVerse.hindi && (
-                    <div>
-                      <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-saffron-400">
-                        हिन्दी अर्थ
-                      </p>
-                      <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-200`}>
-                        {currentVerse.hindi}
-                      </p>
-                    </div>
-                  )}
+                {/* ── Side-by-Side Bilingual Meanings (Hindi & English) ── */}
+                {((showHindi && currentVerse.hindi) || (showEnglish && currentVerse.translation)) && (
+                  <div
+                    className={
+                      showHindi && currentVerse.hindi && showEnglish && currentVerse.translation
+                        ? 'grid grid-cols-1 md:grid-cols-2 gap-4'
+                        : 'space-y-4'
+                    }
+                  >
+                    {showHindi && currentVerse.hindi && (
+                      <div className="rounded-2xl border border-stone-800/85 bg-stone-900/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                        <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-saffron-400 font-devanagari">
+                          हिन्दी भावार्थ · Hindi Meaning
+                        </p>
+                        <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-100`}>
+                          {currentVerse.hindi}
+                        </p>
+                      </div>
+                    )}
 
-                  {showEnglish && currentVerse.translation && (
-                    <div className={showHindi && currentVerse.hindi ? 'border-t border-stone-800/60 pt-3' : ''}>
-                      <p className="mb-1 text-[11px] font-bold uppercase tracking-wider text-stone-400">
-                        English Meaning
-                      </p>
-                      <p lang="en" className={`${translationSizeClass} text-stone-300`}>
-                        {currentVerse.translation}
-                      </p>
-                    </div>
-                  )}
-                </div>
+                    {showEnglish && currentVerse.translation && (
+                      <div className="rounded-2xl border border-stone-800/85 bg-stone-900/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+                        <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-stone-400">
+                          English Meaning
+                        </p>
+                        <p lang="en" className={`font-serif ${translationSizeClass} text-stone-200`}>
+                          {currentVerse.translation}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
 
-                {/* ── Life Lesson / Commentary ── */}
-                {showCommentary && lesson && (
-                  <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-br from-amber-500/10 via-stone-900/70 to-transparent p-4">
-                    <p lang="hi" className="mb-1 text-xs font-bold text-amber-300 flex items-center gap-1.5 font-devanagari">
-                      <span>✨</span> आज की सीख (Life Insight)
-                    </p>
-                    <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-200`}>
-                      {lesson}
-                    </p>
+                {/* ── Complete Study Layers: Commentary (व्याख्या), Life Lesson (सीख) & Science (दृष्टि) ── */}
+                {showCommentary && (explanation || lesson || science) && (
+                  <div className="space-y-4">
+                    {explanation && (
+                      <div className="rounded-2xl border border-stone-800/85 bg-stone-900/65 p-5">
+                        <p lang="hi" className="mb-2 text-xs font-bold text-saffron-300 flex items-center gap-1.5 font-devanagari">
+                          <BookOpen className="h-3.5 w-3.5 shrink-0 text-saffron-400" aria-hidden="true" />
+                          <span>व्याख्या · Scriptural Commentary</span>
+                        </p>
+                        <p lang="hi" className={`whitespace-pre-line font-devanagari ${translationSizeClass} text-stone-200`}>
+                          {explanation}
+                        </p>
+                      </div>
+                    )}
+
+                    {(lesson || science) && (
+                      <div className={lesson && science ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'space-y-4'}>
+                        {lesson && (
+                          <div className="rounded-2xl border border-amber-400/25 bg-gradient-to-br from-amber-500/12 via-stone-900/75 to-transparent p-4 sm:p-5">
+                            <p lang="hi" className="mb-1.5 text-xs font-bold text-amber-300 flex items-center gap-1.5 font-devanagari">
+                              <Lightbulb className="h-3.5 w-3.5 shrink-0 text-amber-400" aria-hidden="true" />
+                              <span>आज की सीख · Life Insight</span>
+                            </p>
+                            <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-100`}>
+                              {lesson}
+                            </p>
+                          </div>
+                        )}
+
+                        {science && (
+                          <div className="rounded-2xl border border-teal-400/25 bg-gradient-to-br from-teal-500/10 via-stone-900/75 to-transparent p-4 sm:p-5">
+                            <p lang="hi" className="mb-1.5 text-xs font-bold text-teal-300 flex items-center gap-1.5 font-devanagari">
+                              <FlaskConical className="h-3.5 w-3.5 shrink-0 text-teal-400" aria-hidden="true" />
+                              <span>दृष्टि व मनोविज्ञान · Context &amp; Science</span>
+                            </p>
+                            <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-200`}>
+                              {science}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )}
 
                 {/* ── Keywords ── */}
                 {currentVerse.keywords && currentVerse.keywords.length > 0 && (
-                  <div className="flex flex-wrap items-center gap-1.5 pt-2">
+                  <div className="flex flex-wrap items-center gap-2 pt-2">
                     <span className="text-[11px] font-medium text-stone-400 mr-1">संबंधित:</span>
                     {currentVerse.keywords.map((k) => {
                       const target = resolveKeywordTarget(k);
@@ -698,7 +655,7 @@ export function MobileFocusMode({
                           onClick={() => {
                             onClose();
                           }}
-                          className="inline-flex items-center gap-1 rounded-full border border-saffron-500/30 bg-saffron-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-saffron-300 hover:bg-saffron-500/20 hover:border-saffron-400 transition"
+                          className="tap-halo inline-flex min-h-[34px] items-center gap-1 rounded-full border border-saffron-500/30 bg-saffron-500/10 px-3 py-1 text-[11px] font-semibold text-saffron-300 hover:bg-saffron-500/20 hover:border-saffron-400 transition"
                         >
                           #{k.replace(/^#+/, '')}
                         </Link>
@@ -711,34 +668,44 @@ export function MobileFocusMode({
           </AnimatePresence>
         </div>
 
-        {/* ── Bottom Navigation Controls Bar ──────────────────── */}
-        <footer className="relative flex shrink-0 items-center justify-between border-t border-stone-800/80 bg-stone-950/90 px-3 py-3 sm:px-8 backdrop-blur-md gap-2">
+        {/* ── Bottom Navigation Controls Bar (WCAG 44px Touch Targets + Center Progress) ── */}
+        <footer className="relative flex shrink-0 items-center justify-between border-t border-stone-800/80 bg-stone-950/92 px-3 py-2.5 sm:px-8 sm:py-3 backdrop-blur-md gap-2">
           <button
             type="button"
             onClick={prev}
             disabled={currentIndex === 0}
-            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition ${currentIndex === 0
+            className={`inline-flex min-h-[44px] min-w-[44px] items-center gap-1.5 rounded-xl border px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold transition ${currentIndex === 0
               ? 'border-stone-800 text-stone-600 cursor-not-allowed opacity-50'
-              : 'border-stone-800 bg-stone-900 text-stone-200 hover:border-stone-700 hover:bg-stone-850 active:scale-95'
+              : 'border-stone-700/90 bg-stone-900 text-stone-100 hover:border-stone-600 hover:bg-stone-800 active:scale-95'
               }`}
             aria-label="पिछला श्लोक"
           >
-            <ChevronLeft className="h-4 w-4" />
-            <span className="hidden md:inline">पिछला</span>
+            <ChevronLeft className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <span lang="hi" className="font-devanagari">पिछला</span>
           </button>
+
+          <div className="flex flex-col items-center text-center min-w-0 px-1">
+            <span className="tabular-nums text-xs font-semibold text-stone-200">
+              श्लोक {toAsciiDigits(verseLabel)}{' '}
+              <span className="text-stone-400 font-normal">· {currentIndex + 1} / {totalVerses}</span>
+            </span>
+            <span className="text-[10px] text-stone-400 sm:hidden" aria-hidden="true">
+              स्वाइप करें · Swipe
+            </span>
+          </div>
 
           <button
             type="button"
             onClick={next}
             disabled={currentIndex === verses.length - 1}
-            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition ${currentIndex === verses.length - 1
+            className={`inline-flex min-h-[44px] min-w-[44px] items-center gap-1.5 rounded-xl border px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold transition ${currentIndex === verses.length - 1
               ? 'border-stone-800 text-stone-600 cursor-not-allowed opacity-50'
-              : 'border-stone-800 bg-stone-900 text-stone-200 hover:border-stone-700 hover:bg-stone-850 active:scale-95'
+              : 'border-stone-700/90 bg-stone-900 text-stone-100 hover:border-stone-600 hover:bg-stone-800 active:scale-95'
               }`}
             aria-label="अगला श्लोक"
           >
-            <span className="hidden md:inline">अगला</span>
-            <ChevronRight className="h-4 w-4" />
+            <span lang="hi" className="font-devanagari">अगला</span>
+            <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true" />
           </button>
         </footer>
       </div>

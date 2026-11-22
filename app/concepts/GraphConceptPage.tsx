@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import type { GraphLink, GraphPageModel, GraphVerseLink } from '@/lib/knowledge-graph';
 
 function LinkList({ items }: { items: GraphLink[] }) {
@@ -98,25 +99,46 @@ export function GraphConceptSections({ model }: { model: GraphPageModel }) {
 
 export function GraphConceptPage({ model }: { model: GraphPageModel }) {
   return (
-    <main className="min-h-screen bg-dharma-bg pb-24 text-dharma-text">
-      <header className="border-b border-dharma-border bg-dharma-card/60">
-        <div className="mx-auto flex max-w-3xl items-center px-4 py-3 text-sm text-dharma-muted sm:px-6">
-          <Link href="/concepts/" className="inline-flex min-h-[44px] items-center font-medium hover:text-saffron-800 dark:hover:text-saffron-300">
-            ज्ञान ग्राफ
+    <main className="long-read min-h-screen bg-dharma-bg pb-24 text-dharma-text">
+      <header className="sticky top-[52px] z-20 border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md">
+        <div className="mx-auto flex max-w-4xl items-center gap-2 px-4 py-3 text-xs sm:text-sm text-dharma-muted sm:px-6">
+          <Link href="/concepts/" className="inline-flex min-h-[44px] items-center gap-1.5 font-medium hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors">
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            <span>ज्ञान ग्राफ (All Concepts)</span>
           </Link>
-          <span className="mx-2 opacity-40" aria-hidden="true">/</span>
+          <span className="opacity-40" aria-hidden="true">/</span>
           <span className="font-semibold text-dharma-text">{model.label}</span>
         </div>
       </header>
-      <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-        <h1 className="text-center">
-          <span lang="sa" className="block font-devanagari text-5xl font-bold text-dharma-text sm:text-6xl">{model.sanskrit}</span>
-          <span className="mt-2 block text-sm uppercase tracking-widest text-dharma-muted">{model.transliteration} · {model.label}</span>
-        </h1>
-        <p className="mx-auto mt-4 max-w-xl text-center text-xs leading-relaxed text-dharma-muted">
-          यह पृष्ठ पहले से दर्ज लेख, श्लोक और विषय-पृष्ठों को जोड़ता है। नया भाष्य नहीं लिखा गया।
-        </p>
-        <div className="mt-10">
+      <section className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 pb-10 sm:pt-14">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <div className="mb-4 flex items-center justify-center gap-6">
+            <div aria-hidden="true" data-decor className="hidden md:flex flex-col items-center gap-2 select-none text-dharma-saffron/40">
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+              <span className="text-base">☸</span>
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+            </div>
+            <h1 className="inline-flex flex-col items-center font-normal">
+              <span lang="sa" className="block py-1 font-devanagari text-5xl font-bold tracking-normal leading-[1.45] text-dharma-saffron sm:text-6xl">
+                {model.sanskrit}
+              </span>
+              <span className="mt-1.5 block font-serif text-sm sm:text-base uppercase tracking-widest text-dharma-muted">
+                {model.transliteration} · {model.label}
+              </span>
+            </h1>
+            <div aria-hidden="true" data-decor className="hidden md:flex flex-col items-center gap-2 select-none text-dharma-saffron/40">
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+              <span className="text-base">❁</span>
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+            </div>
+          </div>
+          <p className="mx-auto max-w-xl text-center text-xs leading-relaxed text-dharma-muted">
+            यह पृष्ठ पहले से दर्ज लेख, श्लोक और विषय-पृष्ठों को जोड़ता है। नया भाष्य नहीं लिखा गया।
+          </p>
+        </div>
+      </section>
+      <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+        <div className="rounded-3xl border border-dharma-border/80 bg-dharma-card/85 p-6 sm:p-8 shadow-raised backdrop-blur-xl shadow-[inset_0_1px_0_var(--glass-specular-top)]">
           <GraphConceptSections model={model} />
         </div>
       </article>

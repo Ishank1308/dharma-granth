@@ -237,7 +237,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     command: '> gita',
     title: 'Open Bhagavad Gita (श्रीमद्भगवद्गीता)',
     titleHi: 'श्रीमद्भगवद्गीता खोलें',
-    subtitle: '18 Chapters · 700 Verses with Hindi & English',
+    subtitle: '18 Chapters · 701 Verses with Hindi & English',
     icon: '📖',
     run: (onClose, router) => {
       router.push('/scripture/bhagavadgita/');
@@ -273,7 +273,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     command: '> meditation',
     title: 'Start 10-Minute Meditation Timer',
     titleHi: '10 मिनट ध्यान साधना प्रारंभ करें',
-    subtitle: 'Timed Silent Meditation with Bells & Wake-Lock',
+    subtitle: 'Timed Silent Meditation with Diya & Wake-Lock',
     icon: '🧘',
     run: (onClose, router) => {
       router.push('/practice#meditation');
@@ -284,9 +284,9 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
   {
     id: 'theme',
     command: '> theme',
-    title: 'Switch Theme: Day / Sunset / Paper / Dark / Follow Sun (सौर चक्र)',
-    titleHi: 'पठन शैली / सौर चक्र बदलें',
-    subtitle: 'Cycle through sacred reading themes',
+    title: 'Switch Theme: Sunset (Light) / Night (Dark)',
+    titleHi: 'पठन शैली बदलें · दिव्य सन्ध्या / रात्रि',
+    subtitle: 'Toggle between luminous Sunset and Ratri Dark mode',
     icon: '🌓',
     run: (onClose, _r, cycleTheme) => {
       if (cycleTheme) cycleTheme();
@@ -1126,7 +1126,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   </div>
                   {matchingActions.length === 0 ? (
                     <p className="p-4 text-center text-subhead text-label-secondary">
-                      No actions match &ldquo;{actionFilter}&rdquo; yet. You could try <code className="text-tint">&gt; tanpura</code>, <code className="text-tint">&gt; bell</code>, or <code className="text-tint">&gt; meditation</code>.
+                      No actions match &ldquo;{actionFilter}&rdquo; yet. You could try <code className="text-tint">&gt; gita</code>, <code className="text-tint">&gt; panchang</code>, or <code className="text-tint">&gt; meditation</code>.
                     </p>
                   ) : (
                     <ul className="grid gap-2">

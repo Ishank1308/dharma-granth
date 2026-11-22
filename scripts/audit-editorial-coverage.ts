@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { findTemplateFields } from './lib/template-text';
+import { chapterCommentaryAmbiguities, lookupPublishedCommentary, readPublishedCommentary } from './lib/commentary-store.mjs';
 
 const ROOT = path.resolve(__dirname, '..');
 const DIR = path.join(ROOT, 'public/data/scriptures-full');
@@ -74,8 +75,23 @@ const rows: Row[] = [];
 for (const f of fs.readdirSync(DIR).sort()) {
   if (!f.endsWith('.json')) continue;
   const id = f.replace(/\.json$/, '');
-  const j = JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8')) as { chapters?: { verses?: Verse[] }[] };
-  const verses = (j.chapters ?? []).flatMap((c) => (c.verses ?? []).map((v, i) => ({ ...v, __key: `${c.number}:${i}` })));
+  const j = JSON.parse(fs.readFileSync(path.join(DIR, f), 'utf8')) as { chapters?: { number?: number | string; verses?: Verse[] }[] };
+  const overlay = readPublishedCommentary(id, ROOT) as Record<string, { explanation?: string; science?: string; lifeLesson?: string }>;
+  const verses = (j.chapters ?? []).flatMap((c) => {
+    const chNum = Number(c.number);
+    const chVerses = c.verses ?? [];
+    const amb = chapterCommentaryAmbiguities(chNum, chVerses.map((v) => v.number ?? ''));
+    return chVerses.map((v, i) => {
+      const pub = lookupPublishedCommentary(overlay, chNum, v.number ?? '', amb);
+      return {
+        ...v,
+        __key: `${c.number}:${i}`,
+        explanation: pub?.explanation || v.explanation,
+        science: pub?.science || v.science,
+        lifeLesson: pub?.lifeLesson || v.lifeLesson,
+      };
+    });
+  });
   const hidden = findTemplateFields(
     verses.map((v) => ({ key: v.__key, sanskrit: v.sanskrit ?? '', fields: { explanation: v.explanation, commentary: v.commentary, science: v.science, lifeLesson: v.lifeLesson } })),
   );

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 export const metadata: Metadata = {
-  title: 'Learn Hindu Scriptures — Flashcards, Timelines & Mind Maps',
+  title: { absolute: 'Learn Hindu Scriptures — Flashcards & Mind Maps | Dharma Granth' },
   description:
     'Study Hindu scriptures with flashcards, slide decks, mind maps, quizzes and timelines covering the Vedas, Upanishads, Bhagavad Gita and the epics.',
   alternates: { canonical: '/learn/' },

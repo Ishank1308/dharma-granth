@@ -5,7 +5,6 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Volume2,
   Sparkles,
   BookOpen,
   Bookmark,
@@ -18,7 +17,6 @@ import {
 } from 'lucide-react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { triggerTactileFeedback } from '@/lib/haptics';
-import { speakSanskritShloka, stopSanskritSpeech } from '@/lib/sacred-audio';
 import type { VerseEditorialLayer } from '@/lib/literary-commentary';
 import { saveJournalEntry } from '@/lib/study/storage';
 import type { JournalEntry } from '@/lib/study/types';
@@ -57,7 +55,6 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
   const order = data.meta.isCurated ? CURATED_ORDER : PLAIN_ORDER;
   const TOTAL_CARDS = order.length;
   const logical = order[currentCard] ?? order[0];
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [savedToJournal, setSavedToJournal] = useState(false);
   const reduce = useReducedMotion();
   const modalRef = useRef<HTMLDivElement>(null);
@@ -165,23 +162,6 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
     touchStartY.current = null;
   };
 
-  const playAudio = () => {
-    if (!data.sanskrit || isPlayingAudio) return;
-    setIsPlayingAudio(true);
-    triggerTactileFeedback('light', 'softTap');
-    try {
-      const ok = speakSanskritShloka(
-        data.sanskrit,
-        0.85,
-        () => setIsPlayingAudio(false),
-        () => setIsPlayingAudio(false)
-      );
-      if (!ok) setIsPlayingAudio(false);
-    } catch {
-      setIsPlayingAudio(false);
-    }
-  };
-
   const handleSaveToJournal = () => {
     triggerTactileFeedback('selection', 'softTap');
     try {
@@ -251,13 +231,12 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   type="button"
                   onClick={() => setCurrentCard(idx)}
                   aria-label={`कार्ड ${idx + 1} पर जाएँ`}
-                  className={`h-full rounded-full transition-all duration-300 ${
-                    idx === currentCard
-                      ? 'bg-saffron-500 shadow-sm'
-                      : idx < currentCard
+                  className={`h-full rounded-full transition-all duration-300 ${idx === currentCard
+                    ? 'bg-saffron-500 shadow-sm'
+                    : idx < currentCard
                       ? 'bg-amber-400/60'
                       : 'bg-white/15'
-                  }`}
+                    }`}
                 />
               ))}
             </div>
@@ -325,18 +304,6 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                         {data.transliteration}
                       </p>
                     )}
-                  </div>
-
-                  <div className="flex justify-center pt-2">
-                    <button
-                      type="button"
-                      onClick={playAudio}
-                      disabled={isPlayingAudio}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-saffron-600 hover:bg-saffron-500 text-white font-semibold text-xs transition shadow-lg cursor-pointer"
-                    >
-                      <Volume2 className={`w-4 h-4 ${isPlayingAudio ? 'animate-pulse' : ''}`} />
-                      <span>{isPlayingAudio ? 'उच्चारण हो रहा है...' : 'शुद्ध उच्चारण सुनें (Play Audio)'}</span>
-                    </button>
                   </div>
                 </motion.div>
               )}

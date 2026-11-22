@@ -11,7 +11,7 @@ import {
   type MotionValue,
   type PanInfo,
 } from 'framer-motion';
-import { CircleDot, Eye, RotateCcw, Smartphone, Undo2, Volume2, VolumeX } from 'lucide-react';
+import { CircleDot, Eye, RotateCcw, Smartphone, Undo2 } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { ToolCard, localISODate } from './shared';
 import { RudrakshaBead, RudrakshaDefs, SilkTassel } from './Rudraksha';
@@ -189,7 +189,6 @@ const THREAD_PATH = (() => {
 
 export function JapaMala() {
   const [state, setState] = useLocalStorage<JapaState>('dharma.practice.japa', INITIAL);
-  const [soundEnabled, setSoundEnabled] = useLocalStorage<boolean>('dharma.practice.japa.sound', true);
   const [vibrationEnabled, setVibrationEnabled] = useLocalStorage<boolean>('dharma.practice.japa.vibration', true);
   const reduce = useReducedMotion();
 
@@ -244,13 +243,13 @@ export function JapaMala() {
 
   useEffect(() => () => void wakeLock?.release().catch(() => {}), [wakeLock]);
 
-  /** The audio context is created on the first gesture (browsers require one) and resumed if suspended. */
+  /** Silence-first japa: audio is disabled across the UX; tactile haptics provide bead feedback. */
   const audio = useCallback((): MalaAudio | null => {
-    if (!soundEnabled) return null;
-    if (!audioRef.current) audioRef.current = createMalaAudio();
-    if (audioRef.current?.ctx.state === 'suspended') audioRef.current.ctx.resume().catch(() => {});
-    return audioRef.current;
-  }, [soundEnabled]);
+    void createMalaAudio;
+    void playClack;
+    void playBowl;
+    return null;
+  }, []);
 
   const glideTo = useCallback(
     (target: number, onComplete?: () => void) => {
@@ -432,16 +431,6 @@ export function JapaMala() {
         {/* Preferences */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              className={pill}
-              aria-pressed={!soundEnabled}
-              onClick={() => setSoundEnabled(!soundEnabled)}
-              title={soundEnabled ? 'ध्वनि चालू · Sound on' : 'ध्वनि बंद · Sound muted'}
-            >
-              {soundEnabled ? <Volume2 className="h-3.5 w-3.5" aria-hidden="true" /> : <VolumeX className="h-3.5 w-3.5" aria-hidden="true" />}
-              <span>{soundEnabled ? 'Mute sound' : 'Sound off'}</span>
-            </button>
             <button
               type="button"
               className={pill}

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { Volume2, Sparkles, Copy, Check } from 'lucide-react';
+import { Sparkles, Copy, Check } from 'lucide-react';
 import { triggerPranaToast } from '@/lib/prana-capsule-store';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
@@ -81,20 +81,6 @@ export function MananaSelectionBar() {
 
   if (!coords || !selectedText) return null;
 
-  const handleSpeak = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    triggerTactileFeedback('selection');
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(selectedText);
-      const isSanskrit = /[\u0900-\u097F]/.test(selectedText);
-      utterance.lang = isSanskrit ? 'hi-IN' : 'en-US';
-      utterance.rate = 0.88;
-      window.speechSynthesis.speak(utterance);
-    }
-    triggerPranaToast({ message: '🔊 उच्चारण प्रारंभ' });
-  };
-
   const handleAddToManana = (e: React.MouseEvent) => {
     e.stopPropagation();
     triggerTactileFeedback('success');
@@ -144,18 +130,6 @@ export function MananaSelectionBar() {
       }}
       className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-stone-950/95 dark:bg-stone-900/95 text-stone-100 border border-amber-500/35 backdrop-blur-md shadow-2xl shadow-stone-950/50 animate-fade-in text-xs font-medium select-none"
     >
-      <button
-        type="button"
-        onClick={handleSpeak}
-        title="उच्चारण सुनें"
-        className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-stone-300 hover:text-amber-400 hover:bg-stone-800/80 transition-colors"
-      >
-        <Volume2 className="w-3.5 h-3.5 text-amber-400" />
-        <span className="text-[11px]">उच्चारण</span>
-      </button>
-
-      <div className="w-px h-3.5 bg-stone-700/60" />
-
       <button
         type="button"
         onClick={handleAddToManana}

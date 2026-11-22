@@ -7,9 +7,9 @@ import { Sparkles, BookOpen, Share2, Copy, ArrowRight, ShieldCheck, Heart } from
 import { MantrasFilterClient } from './MantrasFilterClient';
 
 export const metadata: Metadata = {
-  title: 'Sacred Mantras & Shanti Suktas (वैदिक मन्त्र व शान्ति पाठ) — Meaning & Source',
+  title: { absolute: 'Sacred Mantras & Shanti Suktas (वैदिक मन्त्र) | Dharma Granth' },
   description:
-    'Complete collection of classical Vedic and Upanishadic mantras with original Sanskrit, IAST, padaccheda, Hindi meaning, English translation, and scriptural coordinates — Gayatri, Mahamrityunjaya, Asato Ma Sadgamaya, Purnamadah, and more.',
+    'Classical Vedic and Upanishadic mantras with Sanskrit text, IAST, padaccheda, Hindi and English meaning — Gayatri, Mahamrityunjaya, Shanti Mantras, and more.',
   keywords: [
     'Gayatri Mantra lyrics and meaning in hindi',
     'Maha Mrityunjaya Mantra meaning',

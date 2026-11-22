@@ -131,6 +131,13 @@ for (const id of listBookIds(DATA)) {
   };
 }
 
+if (!commentary.bhagavadgita || commentary.bhagavadgita.verses < 700) {
+  console.error(
+    `✗ build-app-data: expected Bhagavad Gita व्याख्या in app-data index.json (≥700 verses), got ${commentary.bhagavadgita?.verses ?? 0}.`,
+  );
+  process.exit(1);
+}
+
 writeFileSync(join(OUT, 'index.json'), JSON.stringify({ format: FORMAT, books, commentary }));
 files++;
 console.log(

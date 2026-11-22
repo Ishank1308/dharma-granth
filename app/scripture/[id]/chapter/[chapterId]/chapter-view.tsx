@@ -30,7 +30,6 @@ import type { HiCommentaryEntry } from '@/data/hi-commentary/_types';
 import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
 import { ShareButton } from '@/app/components/ShareButton';
 import { ChapterPartRedirect } from '@/app/components/ChapterPartRedirect';
-import { ChapterAudioHeroAction } from '@/app/components/ChapterAudioHeroAction';
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { sceneAttrs } from '@/lib/chapter-scenes';
 import { photoAttrs } from '@/lib/scene-photos';
@@ -45,6 +44,7 @@ import { MeaningPendingNotice } from '@/app/components/MeaningPending';
 import { commentaryOf, verseHasMeaning } from '@/lib/verse-has-meaning';
 import { commentaryAmbiguities } from '@/lib/commentary-lookup';
 import { budgetPageCommentary } from '@/lib/commentary-budget';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 
 export interface ChapterParams {
   id: string;
@@ -153,10 +153,23 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
   // Hindi, and fall back to just the book's English name.
   // Split chapters: each part names its place and verse range.
   const partLabel = part && parts ? ` — भाग ${part.part}/${parts.length} (श्लोक ${partRange(part)})` : '';
-  const title =
-    Array.from(`${hindiPart}${englishPart}${partLabel}`).length <= 48
-      ? `${hindiPart}${englishPart}${partLabel} — हिंदी अर्थ`
-      : `${hindiPart}${partLabel} — हिंदी अर्थ`;
+  const seoTitle = part && parts
+    ? pickTitle([
+        `${hindiPart}${partLabel} — हिंदी अर्थ | Dharma Granth`,
+        `${hindiPart}${partLabel} — हिंदी अर्थ`,
+        `${meta.titleSanskrit} अध्याय ${chapter.id} भाग ${part.part}/${parts.length} (श्लोक ${partRange(part)}) — अर्थ`,
+        `${meta.titleSanskrit} अध्याय ${chapter.id} — भाग ${part.part}/${parts.length} — हिंदी अर्थ`,
+        `${meta.title} ${chapter.id} भाग ${part.part}/${parts.length} — हिंदी अर्थ`,
+      ])
+    : pickTitle([
+        `${hindiPart}${englishPart} — हिंदी अर्थ | Dharma Granth`,
+        `${hindiPart}${englishPart} — हिंदी अर्थ`,
+        `${meta.titleSanskrit} अध्याय ${chapter.id}${englishPart} — हिंदी अर्थ`,
+        `${hindiPart} — हिंदी अर्थ`,
+        `${meta.titleSanskrit} अध्याय ${chapter.id} (${meta.title}) — अर्थ`,
+        `${meta.titleSanskrit} अध्याय ${chapter.id} — हिंदी अर्थ`,
+        `${meta.title} Chapter ${chapter.id} — हिंदी अर्थ`,
+      ]);
   const firstVerse = readSeededChapter(meta.id, chapterId)?.chapter.verses[part?.start ?? 0] as
     | { hindi?: string; translation?: string }
     | undefined;
@@ -171,8 +184,9 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
   const rawHref = chapterPartHref(meta.id, chapter.id, part?.part ?? 1);
   const canonical = rawHref.endsWith('/') ? rawHref : `${rawHref}/`;
   const room = 158 - lead.length - 1;
-  const description =
+  const rawDescription =
     opening && room > 30 ? `${lead} ${opening.length > room ? `${opening.slice(0, room - 1).trimEnd()}…` : opening}` : lead;
+  const description = clipDescription(rawDescription, 158);
 
   const ogImage = {
     url: `/og/${meta.id}.png`,
@@ -182,7 +196,7 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
   };
 
   return {
-    title,
+    title: { absolute: seoTitle },
     description,
     // A chapter whose own text is not in the library yet (its filler verses are not published) is not indexed.
     ...(chapter.verseCount === 0 ? { robots: { index: false, follow: true } } : {}),
@@ -198,7 +212,7 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title,
+      title: seoTitle,
       description,
       url: canonical,
       tags: meta.tags,
@@ -206,7 +220,7 @@ export function chapterMetadata(params: ChapterParams, partNumber = 1): Metadata
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: seoTitle,
       description,
       images: [ogImage.url],
     },
@@ -389,46 +403,13 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
     ],
   };
 
-  const chapterFaq = [
-    chapter.summary && {
-      '@type': 'Question',
-      name: `${meta.title} अध्याय ${chapter.id}${chapter.title ? ` (${chapter.title})` : ''} का मुख्य विषय क्या है?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: chapter.summary,
-      },
-    },
-    chapter.verseCount > 0 && {
-      '@type': 'Question',
-      name: `How many verses are in ${meta.title} Chapter ${chapter.id}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `There are ${chapter.verseCount} verses in ${meta.title} Chapter ${chapter.id}${chapter.title ? ` (${chapter.title})` : ''}.`,
-      },
-    },
-    chapter.summary && {
-      '@type': 'Question',
-      name: `What is the summary of ${meta.title} Chapter ${chapter.id}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: chapter.summary,
-      },
-    },
-  ].filter(Boolean);
-
-  const faqJsonLd = chapterFaq.length > 0 ? {
-    '@type': 'FAQPage',
-    '@id': `${shareUrl}#faq`,
-    mainEntity: chapterFaq,
-  } : undefined;
-
   return (
     <main data-chapter-reading data-vt-pane data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(vibe)} {...sceneAttrs(meta.id, chapter.id)} {...photoAttrs(meta.id, chapter.id, meta.category)} data-painting={painting} className="min-h-screen bg-dharma-bg">
       <FolioMotion />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : []))) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(chapterJsonLd, breadcrumbJsonLd)) }}
       />
       {/* A book's chapter opening, as an Apple large title: the chapter, its Sanskrit name and two quiet actions,
           nothing else between the reader and the first verse. The summary lives in "About this chapter" below. */}
@@ -482,17 +463,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
           )}
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-2 sm:mt-5 sm:gap-2.5">
-          {chapter.verseCount > 0 ? (
-            <ChapterAudioHeroAction
-              className={quietAction}
-              tone="quiet"
-              scriptureId={meta.id}
-              chapterId={chapter.id}
-              chapterTitle={chapter.title}
-              firstVerseId={part ? part.first : 1}
-              totalVerses={chapter.verseCount}
-            />
-          ) : (
+          {chapter.verseCount === 0 && (
             <span lang="hi" className="text-footnote text-label-tertiary">श्लोक पाठ अभी प्रकाशित नहीं है</span>
           )}
           <ShareButton title={`${shareHeading} · Dharma Granth`} text={shareLines[0]} url={shareUrl} className={quietAction}>

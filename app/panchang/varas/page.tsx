@@ -22,9 +22,9 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '7 Vedic Varas (सप्त वासर) — Planetary Weekdays, Lords & Observances',
+  title: { absolute: '7 Vedic Varas (सप्त वासर) — Weekdays & Graha Lords | Dharma Granth' },
   description:
-    'Comprehensive guide to the 7 Vedic planetary weekdays (Varas) of Panchang — Ravivara to Shanivara. Ruling Graha lords, Maha-Bhoota elements, Hora sequence, sacred fasts, and spiritual study.',
+    'Guide to the 7 Vedic planetary weekdays (Ravivara to Shanivara): ruling Graha lords, elements, Hora sequence, sacred fasts, and daily contemplation.',
   keywords: [
     '7 varas in vedic astrology',
     'vedic weekdays',

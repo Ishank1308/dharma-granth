@@ -11,7 +11,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { readPublishedCommentary } from './lib/commentary-store.mjs';
+import { chapterCommentaryAmbiguities, lookupPublishedCommentary, readPublishedCommentary } from './lib/commentary-store.mjs';
 
 const ROOT = process.cwd();
 const ROOT_DIR = path.join(ROOT, 'public', 'data', 'scriptures-full');
@@ -80,14 +80,18 @@ for (const id of ids) {
     }
     const shard = readJson(shardFile);
     const verses = shard.chapter?.verses ?? [];
+    const ambiguities = chapterCommentaryAmbiguities(
+      chapterNumber,
+      verses.map((v) => v.number ?? v.id ?? ''),
+    );
     row.chapters += 1;
     if (typeof chapterMeta.verseCount === 'number' && verses.length !== chapterMeta.verseCount) {
       inconsistent.push(id + ':' + chapterNumber + ': manifest=' + chapterMeta.verseCount + ', shard=' + verses.length);
     }
     for (const verse of verses) {
       row.published += 1;
-      const key = String(chapterNumber) + ':' + String(verse.number ?? verse.id ?? '');
-      const commentary = overlay[key] ?? {};
+      const verseNum = verse.number ?? verse.id ?? '';
+      const commentary = lookupPublishedCommentary(overlay, chapterNumber, verseNum, ambiguities) ?? {};
       if (hasText(verse.sanskrit)) row.sanskrit += 1;
       if (hasText(verse.hindi)) row.hindi += 1;
       else if (hasRef(verse.hindiSeeVerse)) row.hindiLinked += 1;

@@ -83,10 +83,10 @@ const DAILY_PRACTICES = [
   {
     id: 'practice-meditation',
     title: 'ध्यान साधना · Meditation Timer',
-    subtitle: 'Silent Meditation with Tanpura & Chimes',
-    description: 'Timed meditation intervals with sacred intervals, tanpura drone in A/C#, and closing bell.',
-    href: '/practice#meditation',
-    keywords: ['meditation', 'dhyana', 'timer', 'tanpura', 'stillness', 'calm', 'peace', 'ध्यान', 'साधना', 'शांति', 'मौन'],
+    subtitle: 'Silent Meditation with Diya & Wake-Lock',
+    description: 'Timed silent meditation intervals with sacred diya focus, haptic completion, and screen wake-lock.',
+    href: '/practice/#meditation',
+    keywords: ['meditation', 'dhyana', 'timer', 'stillness', 'calm', 'peace', 'ध्यान', 'साधना', 'शांति', 'मौन'],
     actionLabel: 'Start Meditation →',
   },
   {

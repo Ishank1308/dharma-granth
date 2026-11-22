@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     absolute: 'धर्म सहायक — पुस्तकालय से जीवन के प्रश्न | Dharma Granth',
   },
   description:
-    'Ask about worry, anger, grief, duty or God in your own words. Fifty answer pages give a one-line answer, verses from the Gita and Upanishads, a story and one step for today.',
+    'Ask about worry, anger, grief, duty or God in your own words. Fifty answer pages give a clear summary, Gita and Upanishad verses, and one step for today.',
   keywords: [
     'Dharma guide',
     'Bhagavad Gita on anxiety',

@@ -149,6 +149,26 @@ const allDone = todayStep(
 );
 assert.equal(allDone.kind, 'done');
 
+for (const guidedPath of GUIDED_READING_PATHS) {
+  assert.equal(/[०-९]/.test(JSON.stringify(guidedPath)), false, `${guidedPath.id} contains Devanagari digits`);
+  for (const v of guidedPath.verses) {
+    const file = path.join('public', 'data', 'scriptures-full', v.scriptureId, `ch-${v.chapter}.json`);
+    const data = JSON.parse(fs.readFileSync(file, 'utf8')) as {
+      chapter: { verses: Array<{ number: number | string; sanskrit: string }> };
+    };
+    const canonical = data.chapter.verses.find((verse) => String(verse.number) === String(v.verse));
+    assert.ok(canonical, `${guidedPath.id} missing ${v.scriptureId} ${v.chapter}.${v.verse}`);
+    const normSa = (s: string) => s.replace(/ऽ/g, '').replace(/ं/g, 'म्');
+    const snippetPrefix = v.sanskritSnippet.replace(/(?:\.{3}|…)\s*$/, '').split(/[।\s]+/)[0] ?? '';
+    if (snippetPrefix) {
+      assert.ok(
+        normSa(canonical.sanskrit).includes(normSa(snippetPrefix)),
+        `${guidedPath.id} ${v.scriptureId} ${v.chapter}.${v.verse} snippet mismatch: ${snippetPrefix}`,
+      );
+    }
+  }
+}
+
 console.log('study plan tests passed');
 
 function assertHref(plan: StudyPlan, kind: string, href: string, minutes: number): void {

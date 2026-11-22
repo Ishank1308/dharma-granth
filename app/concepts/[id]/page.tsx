@@ -1,4 +1,4 @@
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -47,9 +47,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const graph = buildGraphPage(resolved.id);
   if (!concept) {
     if (!graph) return { title: 'अवधारणा नहीं मिली (Concept Not Found)' };
-    const title = `${graph.label} (${graph.sanskrit}) Meaning in Hindi & English — शास्त्रीय दर्शन`;
+    const title = pickTitle([
+      `${graph.label} (${graph.sanskrit}) — Hindi & English Meaning | Dharma Granth`,
+      `${graph.label} (${graph.sanskrit}) — शास्त्रीय अर्थ व Meaning`,
+      `${graph.label} (${graph.sanskrit}) — Meaning & Philosophy`,
+      `${graph.label} — शास्त्रीय अर्थ | Dharma Granth`,
+    ]);
     const description = clipDescription(
       [graph.overviewHi, graph.overviewEn].filter(Boolean).join(' — ') || graph.label,
+      158,
     );
     const keywords = [
       graph.label,
@@ -60,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       'dharma granth',
     ];
     return {
-      title,
+      title: { absolute: title },
       description,
       keywords,
       alternates: { canonical: `/concepts/${graph.id}/` },
@@ -68,7 +74,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         type: 'article',
         locale: 'hi_IN',
         alternateLocale: ['en_US'],
-        title: `${title} — Dharma Granth`,
+        title,
         description,
         url: `https://dharmagranth.dev/concepts/${graph.id}/`,
         images: [DEFAULT_OG_IMAGE],
@@ -77,9 +83,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `${concept.label} (${concept.sanskrit}) Meaning in Hindi & English — शास्त्रीय अर्थ`;
+  const title = pickTitle([
+    `${concept.label} (${concept.sanskrit}) — Hindi & English Meaning | Dharma Granth`,
+    `${concept.label} (${concept.sanskrit}) — शास्त्रीय अर्थ व Meaning`,
+    `${concept.label} (${concept.sanskrit}) — Meaning & Philosophy`,
+    `${concept.label} — शास्त्रीय अर्थ | Dharma Granth`,
+  ]);
   const description = clipDescription(
     `${concept.sanskrit} (${concept.label}): ${concept.simpleDefinition.hi} ${concept.simpleDefinition.en}`,
+    158,
   );
   const keywords = [
     concept.label,
@@ -96,7 +108,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   ];
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords,
     alternates: { canonical: `/concepts/${concept.id}/` },
@@ -104,7 +116,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title: `${title} — Dharma Granth`,
+      title,
       description,
       url: `https://dharmagranth.dev/concepts/${concept.id}/`,
       images: [DEFAULT_OG_IMAGE],
@@ -133,78 +145,30 @@ export default async function ConceptDetailPage({ params }: PageProps) {
 
   const cat = categoryLabels[concept.category] || { en: 'Philosophy', hi: 'दर्शन' };
 
-  const faqQuestions = [
-    {
-      '@type': 'Question',
-      name: `What is ${concept.label} (${concept.sanskrit}) in Hindu philosophy?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: concept.simpleDefinition.en,
-      },
-    },
-    {
-      '@type': 'Question',
-      name: `${concept.sanskrit} (${concept.label}) का वास्तविक शास्त्रीय अर्थ क्या है?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: concept.simpleDefinition.hi,
-      },
-    },
-    concept.derivation && {
-      '@type': 'Question',
-      name: `What is the Sanskrit etymology and root of the word ${concept.label}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `Root: ${concept.derivation.root} (${concept.derivation.rootMeaning} / ${concept.derivation.rootMeaningHi}). ${concept.derivation.etymologyEn || concept.derivation.etymologyHi}`,
-      },
-    },
-    concept.misunderstandings?.length > 0 && {
-      '@type': 'Question',
-      name: `What is a common misconception about ${concept.label}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `Misconception: ${concept.misunderstandings[0].myth}\nClassical Clarification: ${concept.misunderstandings[0].correction}`,
-      },
-    },
-  ].filter(Boolean);
-
-  const jsonLdFaq = faqQuestions.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqQuestions,
-  } : null;
-
   return (
     <main className="long-read min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <JsonLd
         data={pageLd(
           [
-            { name: 'Concepts', path: '/concepts' },
-            { name: concept.label, path: `/concepts/${concept.id}` },
+            { name: 'Concepts', path: '/concepts/' },
+            { name: concept.label, path: `/concepts/${concept.id}/` },
           ],
           definedTermLd({
-            path: `/concepts/${concept.id}`,
+            path: `/concepts/${concept.id}/`,
             name: concept.label,
             alt: [concept.sanskrit].filter(Boolean),
             description: `${concept.simpleDefinition.en} ${concept.simpleDefinition.hi}`,
-            setPath: '/concepts',
+            setPath: '/concepts/',
             setName: 'Dharma Granth Concepts',
           }),
         )}
       />
-      {jsonLdFaq && (
-        <script
-          type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
-        />
-      )}
       {/* ── Breadcrumb & Navigation Header ─────────────────────────────────── */}
-      <header className="border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md sticky top-16 z-20">
+      <header className="border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md sticky top-[52px] z-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between text-xs sm:text-sm text-dharma-muted">
           <div className="flex items-center gap-2">
             <Link
-              href="/concepts"
+              href="/concepts/"
               className="inline-flex items-center gap-1.5 hover:text-saffron-700 dark:hover:text-saffron-300 transition-colors font-medium min-h-[44px] items-center"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -222,47 +186,81 @@ export default async function ConceptDetailPage({ params }: PageProps) {
         </div>
       </header>
 
-      {/* ── Hero Section ─────────────────────────────────────────────────── */}
+      {/* ── Hero Section (Matra-Safe Devanagari Calligraphy + 2-Column Liquid Glass Bento) ── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 sm:pt-14 pb-12 border-b border-dharma-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
-          {/* Sanskrit Calligraphy Badge: the page's one H1 (term, then transliteration and English label) */}
-          <h1 className="inline-flex flex-col items-center mb-6 font-normal">
-            <span
-              lang="sa"
-              className="block font-devanagari text-6xl sm:text-7xl md:text-8xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-saffron-600 via-amber-600 to-saffron-800 dark:from-saffron-400 dark:via-amber-300 dark:to-saffron-500 leading-tight drop-shadow-sm"
-            >
-              {concept.sanskrit}
-            </span>
-            <span className="block text-base sm:text-lg text-dharma-muted tracking-widest uppercase font-serif mt-1">
-              {concept.transliteration} · {concept.label}
-            </span>
-          </h1>
-
-          {/* Simple Definitions (Dual Language) */}
-          <div className="bg-dharma-card/80 border border-dharma-border rounded-2xl p-6 sm:p-8 shadow-sm text-left max-w-3xl mx-auto space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-              <Sparkles className="w-4 h-4" />
-              <span>सरल परिभाषा · Plain Definition</span>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+          {/* Sanskrit Calligraphy Badge: never use background-clip:text or positive tracking on Devanagari (preserves rephs, matras & shirorekha) */}
+          <div className="mb-7 flex items-center justify-center gap-6">
+            <div aria-hidden="true" data-decor className="hidden md:flex flex-col items-center gap-2 select-none text-dharma-saffron/40">
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+              <span className="text-base">☸</span>
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
             </div>
-            <p className="text-lg sm:text-xl text-dharma-text font-serif leading-relaxed">
-              {concept.simpleDefinition.en}
-            </p>
-            <p
-              lang="hi"
-              className="text-base sm:text-lg text-dharma-muted font-devanagari leading-relaxed border-t border-dharma-border/60 pt-3"
-            >
-              {concept.simpleDefinition.hi}
-            </p>
-            <SaveConceptButton conceptId={concept.id} label={concept.label} />
-            <ShareCardButton
-              reference={concept.label}
-              concept={{ term: concept.sanskrit, transliteration: concept.transliteration, definition: concept.simpleDefinition.en }}
-              url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}`}
-            />
+
+            <h1 className="inline-flex flex-col items-center font-normal">
+              <span
+                lang="sa"
+                className="block font-devanagari text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal leading-[1.45] text-dharma-saffron py-1"
+              >
+                {concept.sanskrit}
+              </span>
+              <span className="mt-1.5 block font-serif text-base sm:text-lg tracking-widest uppercase text-dharma-muted">
+                {concept.transliteration} · {concept.label}
+              </span>
+            </h1>
+
+            <div aria-hidden="true" data-decor className="hidden md:flex flex-col items-center gap-2 select-none text-dharma-saffron/40">
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+              <span className="text-base">❁</span>
+              <span className="h-9 w-px bg-gradient-to-b from-transparent via-dharma-saffron/45 to-transparent" />
+            </div>
+          </div>
+
+          {/* Simple Definitions (2-Column Side-by-Side Bilingual Liquid Glass Bento) */}
+          <div className="mx-auto max-w-4xl rounded-3xl border border-dharma-border/80 bg-dharma-card/85 p-6 sm:p-8 text-left shadow-raised backdrop-blur-xl shadow-[inset_0_1px_0_var(--glass-specular-top)] space-y-5">
+            <div className="flex items-center justify-between gap-2 border-b border-dharma-border/60 pb-3">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                <Sparkles className="w-4 h-4" aria-hidden="true" />
+                <span lang="hi" className="font-devanagari normal-case">सरल परिभाषा</span>
+                <span aria-hidden="true">·</span>
+                <span>Plain Definition</span>
+              </div>
+              <span className="rounded-full border border-saffron-500/25 bg-saffron-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-saffron-700 dark:text-saffron-300">
+                {cat.hi} · {cat.en}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-dharma-border/70 bg-dharma-bg/65 p-4 sm:p-5">
+                <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-saffron font-devanagari">
+                  हिन्दी भावार्थ · Hindi Definition
+                </p>
+                <p lang="hi" className="font-devanagari text-base sm:text-[17px] leading-[1.85] text-dharma-text">
+                  {concept.simpleDefinition.hi}
+                </p>
+              </div>
+              <div className="rounded-2xl border border-dharma-border/70 bg-dharma-bg/65 p-4 sm:p-5">
+                <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-muted">
+                  English Definition
+                </p>
+                <p lang="en" className="font-serif text-base sm:text-[17.5px] leading-relaxed text-dharma-text">
+                  {concept.simpleDefinition.en}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              <SaveConceptButton conceptId={concept.id} label={concept.label} />
+              <ShareCardButton
+                reference={concept.label}
+                concept={{ term: concept.sanskrit, transliteration: concept.transliteration, definition: concept.simpleDefinition.en }}
+                url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}/`}
+              />
+            </div>
             <ShareChips
               title={`${concept.label} (${concept.sanskrit})`}
               summary={concept.simpleDefinition.en}
-              path={`/concepts/${concept.id}`}
+              path={`/concepts/${concept.id}/`}
             />
           </div>
         </div>
@@ -342,7 +340,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
               </h2>
             </div>
             <Link
-              href="/concepts/visuals"
+              href="/concepts/visuals/"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline min-h-[44px]"
             >
               <span>10 मूल तत्त्वों का सम्पूर्ण दृश्य अन्वेषक</span>
@@ -552,20 +550,6 @@ export default async function ConceptDetailPage({ params }: PageProps) {
         </section>
 
         <ConceptRelations conceptId={concept.id} />
-
-        <section aria-labelledby="faq-heading" className="space-y-3">
-          <h2 id="faq-heading" className="text-xl font-serif font-bold text-dharma-text">
-            <span lang="hi" className="font-devanagari">प्रश्न</span>
-          </h2>
-          <h3 lang="hi" className="font-devanagari text-lg font-semibold text-dharma-text">
-            {concept.sanskrit} क्या है?
-          </h3>
-          <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-text">{concept.simpleDefinition.hi}</p>
-          <p className="text-sm leading-relaxed text-dharma-text-secondary">{concept.simpleDefinition.en}</p>
-          <p lang="hi" className="text-sm text-dharma-text-secondary">
-            यह वही परिभाषा है जो इस पृष्ठ के आरंभ में है। अलग प्रश्न-लेख नहीं लिखा गया।
-          </p>
-        </section>
 
         {/* ── Section 6: Related Concepts (संबंधित अवधारणाएँ) ──────────────── */}
         {concept.relatedConceptIds.some(hasConceptPage) && (

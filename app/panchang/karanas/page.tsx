@@ -8,9 +8,9 @@ import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwit
 import { Sparkles, Moon, Sun, ArrowRight, BookOpen, Layers, ShieldCheck, Compass, HelpCircle, AlertCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: '11 Vedic Karanas (11 करण) — Chara & Sthira Half-Tithi Classification',
+  title: { absolute: '11 Vedic Karanas (11 करण) — Chara & Sthira Guide | Dharma Granth' },
   description:
-    'Comprehensive guide to the 11 Karanas of Vedic astronomy and Muhurta science — 7 Chara (Movable: Bava, Balava, Kaulava, Taitila, Garaja, Vanija, Vishti/Bhadra) and 4 Sthira (Fixed: Shakuni, Chatushpada, Naga, Kimstughna). Presiding deities, Bhadra rules, and spiritual contemplation.',
+    'Guide to the 11 Karanas of Vedic Panchang — 7 Chara (Bava to Vishti/Bhadra) and 4 Sthira (Shakuni to Kimstughna), presiding deities, and Bhadra rules.',
   keywords: [
     '11 karanas in astrology',
     'bhadra karana rules',

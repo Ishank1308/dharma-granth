@@ -8,6 +8,7 @@ import {
   type VaraMeta,
 } from '@/lib/panchang';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { JsonLd } from '@/app/components/JsonLd';
@@ -41,11 +42,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const vara = getVaraBySlug(slug);
   if (!vara) return {};
 
-  const title = `${vara.nameHi} (${vara.name}) — Vedic Weekday, Ruling Graha & Observances`;
-  const description = `Complete Vedic guide to ${vara.name} (${vara.nameHi}) in Panchang. Ruling Graha lord ${vara.grahaLord}, ${vara.element} element, gemstone, sacred fasts, and spiritual study guidelines.`;
+  const ogTitle = `${vara.nameHi} (${vara.name}) — Vedic Weekday, Ruling Graha & Observances`;
+  const title = pickTitle([
+    `${vara.nameHi} (${vara.name}) — Graha Lord & Vrata | Dharma Granth`,
+    `${vara.nameHi} (${vara.name}) — Vedic Weekday & Observances`,
+  ]);
+  const description = clipDescription(
+    `Vedic guide to ${vara.name} (${vara.nameHi}) in Panchang: ruling Graha lord ${vara.grahaLord}, ${vara.element} element, Hora sequence, fasts, and study focus.`,
+    158,
+  );
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: [
       `${vara.name} vedic astrology`,
@@ -66,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           alt: `${vara.nameHi} (${vara.name}) — Vedic Weekday`,
         },
       ],
-      title: `${title} — Dharma Granth`,
+      title: `${ogTitle} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev/panchang/varas/${vara.slug}/`,
     },

@@ -174,6 +174,48 @@ export function readPublishedCommentary(id, root = process.cwd()) {
   return readRecord(path.join(publishedDir(root), id));
 }
 
+/** Within-chapter verse id from a seeded `number` (mirrors lib/canonical-verse-id.ts). */
+export function canonicalVerseId(chapterNumber, verseNumber) {
+  const s = String(verseNumber);
+  if (!s.includes(".")) return s;
+  const parts = s.split(".");
+  if (parts.length >= 2 && Number(parts[0]) === chapterNumber) {
+    return parts.slice(1).join(".");
+  }
+  return parts[parts.length - 1] ?? s;
+}
+
+/** Build ambiguity sets once from the entire chapter (mirrors lib/commentary-lookup.ts). */
+export function chapterCommentaryAmbiguities(chapterId, numbers) {
+  const normalized = new Set();
+  const raw = new Set();
+  const seenNormalized = new Set();
+  const seenRaw = new Set();
+  for (const number of numbers) {
+    const rawKey = `${chapterId}:${number}`;
+    if (seenRaw.has(rawKey)) raw.add(rawKey);
+    seenRaw.add(rawKey);
+    const value = Number(canonicalVerseId(chapterId, number));
+    if (!Number.isFinite(value)) continue;
+    const key = `${chapterId}:${value}`;
+    if (seenNormalized.has(key)) normalized.add(key);
+    seenNormalized.add(key);
+  }
+  return { normalized, raw };
+}
+
+/** Resolve a verse's published commentary entry using the exact reader lookup rules (lib/commentary-lookup.ts). */
+export function lookupPublishedCommentary(all, chapterId, number, ambiguity) {
+  if (!all) return undefined;
+  const rawKey = `${chapterId}:${number}`;
+  if (all[rawKey] != null) return ambiguity?.raw.has(rawKey) ? undefined : all[rawKey];
+  const value = Number(canonicalVerseId(chapterId, number));
+  if (!Number.isFinite(value)) return undefined;
+  const normalizedKey = `${chapterId}:${value}`;
+  if (normalizedKey !== rawKey && (!ambiguity || ambiguity.normalized.has(normalizedKey))) return undefined;
+  return all[normalizedKey];
+}
+
 /** Per-book files from before the split; publishing removes them, and the build refuses them. */
 export function legacyPublishedFiles(root = process.cwd()) {
   const dir = publishedDir(root);

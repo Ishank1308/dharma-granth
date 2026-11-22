@@ -7,7 +7,7 @@ import { ChapterPath, type PathChapter } from './ChapterPath';
 import { ContinueReading, DailyVerse, SkipAnimation, type DailyItem } from './VerseBits';
 
 export const metadata: Metadata = {
-  title: 'अष्टावक्र गीता: मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या',
+  title: { absolute: 'अष्टावक्र गीता: संस्कृत श्लोक, हिंदी अर्थ व व्याख्या | Dharma Granth' },
   description: 'अष्टावक्र गीता के श्लोक: मूल संस्कृत, पुस्तकानुसार हिन्दी भावार्थ, सरल हिन्दी व्याख्या, आधुनिक उदाहरण और English। हर श्लोक पर स्रोत-सत्यापन की स्थिति।',
   alternates: { canonical: '/ashtavakra/' },
   openGraph: {
@@ -165,13 +165,7 @@ export default function AshtavakraHome() {
           <DailyVerse items={daily} />
         </div>
 
-        {/* 10. Audio */}
-        <section aria-labelledby="aud" className="ash-card">
-          <h2 id="aud" className="font-bold" style={{ fontSize: '1.25rem' }}>ध्वनि</h2>
-          <p lang="hi" className="ash-hindi mt-2">इस साइट पर अभी कोई ऑडियो नहीं है, न पाठ का और न व्याख्या का; इसलिए ध्वनि-नियंत्रण या पृष्ठभूमि-ध्वनि भी नहीं दी गई। जब प्रमाणित मानव-रिकॉर्डिंग उपलब्ध होंगी, तभी वे और उनके ट्रांसक्रिप्ट जोड़े जाएँगे, और ध्वनि कभी अपने-आप नहीं चलेगी।</p>
-        </section>
-
-        {/* 11. Concepts */}
+        {/* 10. Concepts */}
         <section id="concepts" aria-labelledby="con" className="scroll-mt-6">
           <h2 id="con" className="font-bold" style={{ fontSize: '1.5rem' }}>प्रमुख अवधारणाएँ</h2>
           <p className="ash-meta mt-1">पहले प्रकरण से। पूर्ण शब्दावली और अवधारणा-मानचित्र बाद के चरण में जोड़े जाएँगे।</p>

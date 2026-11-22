@@ -16,7 +16,6 @@ import {
   Check,
   Flame,
   Quote,
-  Volume2,
   ExternalLink,
   ShieldCheck,
 } from 'lucide-react';
@@ -180,7 +179,6 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
   const [query, setQuery] = useState(initialQuery);
   const [selectedCuratedId, setSelectedCuratedId] = useState<string>(CURATED_KNOWLEDGE_BASE[0].id);
   const [copied, setCopied] = useState(false);
-  const [speaking, setSpeaking] = useState(false);
   const [activeTab, setActiveTab] = useState<'curated' | 'muse'>('curated');
   const [museResponse, setMuseResponse] = useState<string | null>(null);
   const [museLoading, setMuseLoading] = useState(false);
@@ -257,34 +255,6 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }, []);
-
-  const speakSanskrit = useCallback((text: string) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-    triggerTactileFeedback('selection', 'softTap');
-    window.speechSynthesis.cancel();
-
-    if (speaking) {
-      setSpeaking(false);
-      return;
-    }
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'hi-IN';
-    utterance.rate = 0.85;
-    utterance.pitch = 0.95;
-
-    const voices = window.speechSynthesis.getVoices();
-    const sanskritVoice =
-      voices.find((v) => v.lang.includes('hi') || v.lang.includes('sa')) ||
-      voices.find((v) => v.lang.includes('IN'));
-    if (sanskritVoice) utterance.voice = sanskritVoice;
-
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
-
-    setSpeaking(true);
-    window.speechSynthesis.speak(utterance);
-  }, [speaking]);
 
   return (
     <AnimatePresence>
@@ -558,15 +528,6 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
                           <div className="flex items-center gap-2">
                             <button
                               type="button"
-                              onClick={() => speakSanskrit(verse.sanskrit)}
-                              className="flex items-center gap-1 text-xs text-stone-400 hover:text-amber-300 transition"
-                              title="श्लोक का उच्चारण सुनें"
-                            >
-                              <Volume2 className="h-3.5 w-3.5" />
-                              <span className="text-2xs">उच्चारण</span>
-                            </button>
-                            <button
-                              type="button"
                               onClick={() =>
                                 handleCopy(
                                   `« ${verse.sanskrit} »\n\n${verse.refHi}\n\n${verse.hindi}\n\n${verse.english}\n\nRead more at DharmaGranth.dev`
@@ -676,15 +637,6 @@ export function DharmaCopilotModal({ isOpen, onClose, initialQuery = '' }: Dharm
                         {activeCurated.shlokaRef}
                       </span>
                       <div className="flex items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() => speakSanskrit(activeCurated.sanskrit)}
-                          className="flex items-center gap-1 text-xs text-stone-400 hover:text-amber-300 transition"
-                          title="श्लोक का उच्चारण सुनें"
-                        >
-                          <Volume2 className="h-3.5 w-3.5" />
-                          <span className="text-2xs">उच्चारण</span>
-                        </button>
                         <button
                           type="button"
                           onClick={() =>

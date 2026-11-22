@@ -3,7 +3,7 @@
  *
  * Provides real-time ghost text completion (Tab / ArrowRight), trilingual transliteration
  * alignment (Devanagari, IAST, Hinglish), and 1-tap Direct Jump shortcuts for:
- *   1. Action commands (> tanpura, > om, > bell, > meditation, > theme)
+ *   1. Action commands (> gita, > panchang, > sadhana, > meditation, > theme, > resume)
  *   2. Scripture & Chapter & Verse citations (Gita 2.47, Katha 1.3.3, etc.)
  *   3. Famous verses & Mahavakyas (कर्मण्येवाधिकारस्ते, तत्त्वमसि, अहं ब्रह्मास्मि, etc.)
  *   4. Core scriptures across the library (Bhagavad Gita, Ramayana, Upanishads, etc.)
@@ -54,48 +54,60 @@ interface TypeaheadEntry {
 const STATIC_ENTRIES: TypeaheadEntry[] = [
   // ── Actions ────────────────────────────────────────────────────────
   {
-    patterns: ['> tan', '> tanpura', '> soun', '> music'],
-    completion: '> tanpura',
-    label: 'Play Vedic Tanpura Drone (432Hz)',
-    subtitle: 'प्रक्रियात्मक 432Hz तन्पूरा नाद',
+    patterns: ['> gita', '> bg', '> bhagavad'],
+    completion: '> gita',
+    label: 'Open Bhagavad Gita (श्रीमद्भगवद्गीता)',
+    subtitle: '18 अध्याय · 701 श्लोक हिन्दी व अंग्रेजी अर्थ सहित',
     category: 'कमांड',
-    badge: '🎶',
+    directHref: '/scripture/bhagavadgita/',
+    badge: '📖',
+    weight: 22,
+  },
+  {
+    patterns: ['> pan', '> panchang', '> tithi'],
+    completion: '> panchang',
+    label: "Open Today's Vedic Panchang (पंचांग)",
+    subtitle: 'आज की तिथि, वार, नक्षत्र, योग, करण व शुभ मुहूर्त',
+    category: 'कमांड',
+    directHref: '/panchang/',
+    badge: '📅',
     weight: 20,
   },
   {
-    patterns: ['> om', '> pranav', '> 108'],
-    completion: '> om',
-    label: 'Play Om Resonance (108Hz)',
-    subtitle: 'प्रणव ॐ नाद ध्यान',
+    patterns: ['> sad', '> sadhana', '> practice', '> japa'],
+    completion: '> sadhana',
+    label: 'Open Daily Sadhana (दैनिक साधना)',
+    subtitle: '108 जप माला, मौन ध्यान साधना व स्वाध्याय डायरी',
     category: 'कमांड',
-    badge: '🕉️',
-    weight: 20,
-  },
-  {
-    patterns: ['> bell', '> ghanta', '> bowl'],
-    completion: '> bell',
-    label: 'Ring Mindfulness Singing Bowl',
-    subtitle: 'शांति घंटा नाद · Pause & Breathe',
-    category: 'कमांड',
-    badge: '🔔',
+    directHref: '/practice/',
+    badge: '✨',
     weight: 20,
   },
   {
     patterns: ['> med', '> meditation', '> dhyan'],
     completion: '> meditation',
     label: 'Start 10-Minute Meditation Timer',
-    subtitle: '10 मिनट शांत ध्यान साधना',
+    subtitle: '10 मिनट मौन ध्यान साधना · Silent Sadhana',
     category: 'कमांड',
     badge: '🧘',
     weight: 20,
   },
   {
-    patterns: ['> theme', '> dark', '> night', '> light'],
+    patterns: ['> theme', '> dark', '> night', '> light', '> sunset'],
     completion: '> theme',
-    label: 'Cycle Visual Theme',
-    subtitle: 'दिव्य, ताड़पत्र, निशा व कस्तूरी रंग रूप',
+    label: 'Switch Theme: Sunset (Light) / Night (Dark)',
+    subtitle: 'दिव्य सन्ध्या व रात्रि पठन मोड बदलें',
     category: 'कमांड',
-    badge: '🎨',
+    badge: '🌓',
+    weight: 20,
+  },
+  {
+    patterns: ['> res', '> resume', '> continue'],
+    completion: '> resume',
+    label: 'Resume Last Read Verse',
+    subtitle: 'अंतिम पठित श्लोक से पुनः पठन प्रारंभ करें',
+    category: 'कमांड',
+    badge: '📖',
     weight: 20,
   },
 

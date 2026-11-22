@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Maximize2, Minimize2, Volume2, Clock, FileText, Play, Pause } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, Minimize2, Clock, FileText, Play, Pause } from 'lucide-react';
 
 export interface SlideData {
   id: string;

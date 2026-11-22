@@ -12,14 +12,12 @@ import {
   ExternalLink,
   Copy,
   Check,
-  Volume2,
   Calendar,
   Layers,
   ArrowRight,
   ShieldCheck,
 } from 'lucide-react';
 import { SOLAR_VRATAS, type SolarVrata } from '@/data/solar-vratas-data';
-import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 import { useTodayPanchang } from '@/lib/useTodayPanchang';
 
 interface SolarClientProps {
@@ -36,7 +34,6 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
   const solarTimes = useTodayPanchang()?.solarTimes ?? initialSolarTimes;
   const [selectedVrataId, setSelectedVrataId] = useState<string>('all');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  const [playingKey, setPlayingKey] = useState<string | null>(null);
 
   const copyText = async (text: string, key: string) => {
     try {
@@ -46,12 +43,6 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
     } catch {
       // ignore
     }
-  };
-
-  const playAudio = (sanskrit: string, key: string) => {
-    setPlayingKey(key);
-    speakSanskritTerm(sanskrit);
-    setTimeout(() => setPlayingKey(null), 4000);
   };
 
   const displayedVratas = selectedVrataId === 'all'
@@ -303,16 +294,6 @@ export function SolarVratasClient({ initialSolarTimes }: SolarClientProps) {
                         </span>
 
                         <div className="flex items-center gap-2">
-                          <button
-                            type="button"
-                            onClick={() => playAudio(m.sanskrit, mantraKey)}
-                            className="inline-flex items-center gap-1 rounded-lg border border-amber-300/60 bg-amber-100/50 dark:bg-amber-900/40 px-2.5 py-1 text-[11px] font-semibold text-amber-900 dark:text-amber-200 hover:bg-amber-200/50"
-                            aria-label={`Listen to ${m.title}`}
-                          >
-                            <Volume2 className={`w-3.5 h-3.5 ${playingKey === mantraKey ? 'animate-pulse text-saffron-600' : ''}`} />
-                            <span>{playingKey === mantraKey ? 'Reciting…' : 'उच्चारण'}</span>
-                          </button>
-
                           <button
                             type="button"
                             onClick={() => copyText(shareText, mantraKey)}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { getChapterData, getChapterMeta, publishedChapterNumbers, verseHref } from '@/lib/ashtavakra';
 import { ChapterEnvironment, ChapterFigureCaption } from '../visuals';
 import { VerseCompact, Paras } from '../VerseView';
@@ -19,9 +20,17 @@ export async function generateMetadata(props: { params: Promise<{ chapter: strin
   if (!d || !m) return {};
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const canonical = `/ashtavakra/${n}/`;
+  const cleanChapterTitle = (d.end.seo.title || '').replace(/\s*[|—-]\s*(Dharma Granth|Ashtavakra Gita.*)$/i, '').trim();
+  const title = pickTitle([
+    cleanChapterTitle && `${cleanChapterTitle} | Dharma Granth`,
+    cleanChapterTitle,
+    `अष्टावक्र गीता अध्याय ${n}: ${m.title} — श्लोक व हिंदी अर्थ`,
+    `अष्टावक्र गीता अध्याय ${n} — श्लोक व हिंदी अर्थ`,
+  ]);
+  const description = clipDescription(d.end.seo.metaDescription || d.hero.oneLineSummary, 158);
   return {
-    title: d.end.seo.title,
-    description: d.end.seo.metaDescription,
+    title: { absolute: title },
+    description,
     keywords: [
       `अष्टावक्र गीता अध्याय ${n}`,
       `Ashtavakra Gita Chapter ${n}`,
@@ -37,15 +46,15 @@ export async function generateMetadata(props: { params: Promise<{ chapter: strin
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title: d.end.seo.title,
-      description: d.end.seo.metaDescription,
+      title,
+      description,
       url: canonical,
-      images: [{ url: `${siteUrl}/og/library.png`, width: 1200, height: 630, alt: d.end.seo.title }],
+      images: [{ url: `${siteUrl}/og/library.png`, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: d.end.seo.title,
-      description: d.end.seo.metaDescription,
+      title,
+      description,
       images: [`${siteUrl}/og/library.png`],
     },
   };

@@ -92,7 +92,7 @@ console.log('priority 5-17 tests passed');
 
 function assertHref(href: string): void {
   if (href.startsWith('/concepts/')) {
-    const id = href.slice('/concepts/'.length);
+    const id = href.slice('/concepts/'.length).replace(/\/$/, '');
     assert.ok(CONCEPT_DETAILS[id], href);
     return;
   }
@@ -101,7 +101,7 @@ function assertHref(href: string): void {
     assert.ok(wisdomSlugs.has(slug), href);
     return;
   }
-  const verse = href.match(/^\/scripture\/([a-z0-9]+)\/chapter\/(\d+)\/verse\/(\d+)$/);
+  const verse = href.match(/^\/scripture\/([a-z0-9]+)\/chapter\/(\d+)\/verse\/(\d+)\/?$/);
   if (verse) {
     const scriptureId = verse[1] as string;
     const chapter = verse[2] as string;
@@ -114,19 +114,19 @@ function assertHref(href: string): void {
     assert.equal(data.chapter.verses.some((item) => String(item.number) === verseNumber), true, href);
     return;
   }
-  const chapter = href.match(/^\/scripture\/([a-z0-9]+)\/chapter\/(\d+)$/);
+  const chapter = href.match(/^\/scripture\/([a-z0-9]+)\/chapter\/(\d+)\/?$/);
   if (chapter) {
     const file = path.join('public', 'data', 'scriptures-full', chapter[1] as string, `ch-${chapter[2]}.json`);
     assert.equal(fs.existsSync(file), true, href);
     return;
   }
-  const scripture = href.match(/^\/scripture\/([a-z0-9]+)$/);
+  const scripture = href.match(/^\/scripture\/([a-z0-9]+)\/?$/);
   if (scripture) {
     const file = path.join('public', 'data', 'scriptures-full', `${scripture[1]}.json`);
     assert.equal(fs.existsSync(file), true, href);
     return;
   }
-  const plan = href.match(/^\/learn\/paths\/#([a-z0-9-]+)$/);
+  const plan = href.match(/^\/learn\/(?:paths|plans)\/#([a-z0-9-]+)$/);
   if (plan) {
     assert.ok(planIds.has(plan[1] as string), href);
     return;
@@ -136,8 +136,9 @@ function assertHref(href: string): void {
     assert.ok(timelineIds.has(timeline[1] as string), href);
     return;
   }
-  if (href === '/practice/bookmarks/' || href === '/daily' || href === '/practice') {
-    assert.equal(fs.existsSync(path.join('app', href.slice(1), 'page.tsx')), true, href);
+  const cleanStatic = href.replace(/\/$/, '');
+  if (cleanStatic === '/practice/bookmarks' || cleanStatic === '/daily' || cleanStatic === '/practice') {
+    assert.equal(fs.existsSync(path.join('app', cleanStatic.slice(1), 'page.tsx')), true, href);
     return;
   }
   assert.fail(href);

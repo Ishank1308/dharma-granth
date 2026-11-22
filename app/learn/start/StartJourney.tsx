@@ -100,7 +100,6 @@ const DISCOVERY_QUESTIONS: QuestionDef[] = [
     hi: '5. आपको किस रूप में अध्ययन प्रिय है?',
     options: [
       { value: 'reading', en: 'Reading text with simple explanations', hi: 'पढ़ना (सरल भावार्थ सहित)' },
-      { value: 'audio', en: 'Listening to chanted pronunciation', hi: 'सुनना (मंत्र उच्चारण सहित)' },
       { value: 'visual', en: 'Visual diagrams and teaching flows', hi: 'चित्र व दृश्य प्रवाह' },
       { value: 'mixed', en: 'A balanced mixed format', hi: 'मिश्रित रूप' },
     ],
@@ -127,7 +126,7 @@ export function StartJourney() {
         const suite = buildRecommendations(parsed);
         setSavedSuite(suite);
       }
-    } catch {}
+    } catch { }
     setLoaded(true);
   }, []);
 
@@ -140,7 +139,7 @@ export function StartJourney() {
     const answers = draft as unknown as DiscoverAnswers;
     try {
       localStorage.setItem(JOURNEY_KEY, JSON.stringify(answers));
-    } catch {}
+    } catch { }
 
     // Apply gentle reader settings without taking over the screen
     update(
@@ -157,7 +156,7 @@ export function StartJourney() {
   const handleResetPreferences = () => {
     try {
       localStorage.removeItem(JOURNEY_KEY);
-    } catch {}
+    } catch { }
     setSavedSuite(null);
     setDraft({});
     setDismissedCategories([]);
@@ -261,9 +260,8 @@ export function StartJourney() {
               .map((rec, i) => (
                 <article
                   key={rec.id}
-                  className={`rounded-3xl border border-dharma-border bg-dharma-card p-6 flex flex-col justify-between shadow-sm hover:border-saffron-400 transition-all ${
-                    rec.category === 'Primary Reading Journey' ? 'md:col-span-2 bg-gradient-to-br from-dharma-card to-dharma-bg' : ''
-                  }`}
+                  className={`rounded-3xl border border-dharma-border bg-dharma-card p-6 flex flex-col justify-between shadow-sm hover:border-saffron-400 transition-all ${rec.category === 'Primary Reading Journey' ? 'md:col-span-2 bg-gradient-to-br from-dharma-card to-dharma-bg' : ''
+                    }`}
                 >
                   <div>
                     <div className="flex items-center justify-between text-xs mb-2">
@@ -359,11 +357,10 @@ export function StartJourney() {
                   return (
                     <label
                       key={o.value}
-                      className={`flex min-h-[48px] cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-xs sm:text-sm transition-all focus-within:ring-2 focus-within:ring-saffron-500 ${
-                        isChecked
-                          ? 'border-saffron-600 bg-saffron-50/80 dark:bg-saffron-950/40 text-saffron-950 dark:text-saffron-100 font-semibold shadow-2xs'
-                          : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-dharma-border-hover'
-                      }`}
+                      className={`flex min-h-[48px] cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-xs sm:text-sm transition-all focus-within:ring-2 focus-within:ring-saffron-500 ${isChecked
+                        ? 'border-saffron-600 bg-saffron-50/80 dark:bg-saffron-950/40 text-saffron-950 dark:text-saffron-100 font-semibold shadow-2xs'
+                        : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-dharma-border-hover'
+                        }`}
                     >
                       <input
                         type="radio"

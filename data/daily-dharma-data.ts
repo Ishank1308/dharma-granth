@@ -7,6 +7,7 @@
  * - Zero hallucination: Every verse points directly to an existing canonical text
  *   in the Dharma Granth library.
  */
+import { formatVerseRef } from '@/lib/verse-format';
 
 export interface SanskritWordAnalysis {
   pada: string;
@@ -260,7 +261,7 @@ export const SAMPLE_DAILY_JOURNEYS: Record<string, DailyDharmaSession> = {
         id: 'rec-bg-2-48',
         title: 'Continue with Bhagavad Gita 2.48',
         scriptureRef: 'Bhagavad Gita 2.48',
-        href: '/scripture/bhagavadgita/chapter/2/verse/48',
+        href: '/scripture/bhagavadgita/chapter/2/verse/48/',
         type: 'next_verse',
         reason: 'This verse directly develops the definition of balanced action (Samatvam) introduced in 2.47.',
         basis: 'Next verse in canonical sequence',
@@ -269,7 +270,7 @@ export const SAMPLE_DAILY_JOURNEYS: Record<string, DailyDharmaSession> = {
         id: 'rec-isha-2',
         title: 'Compare: Isha Upanishad Mantra 2',
         scriptureRef: 'Isha Upanishad 2',
-        href: '/scripture/ishavasya/chapter/1/verse/2',
+        href: '/scripture/ishavasya/chapter/1/verse/2/',
         type: 'related_concept',
         reason: 'The ancient Upanishadic root of selfless lifelong action (Kurvanneveha karmani).',
         basis: 'Canonical Upanishadic cross-reference',
@@ -278,7 +279,7 @@ export const SAMPLE_DAILY_JOURNEYS: Record<string, DailyDharmaSession> = {
         id: 'rec-journey-karma',
         title: 'Next Lesson: The Three Gunas of Action',
         scriptureRef: 'Understanding Karma Yoga · Lesson 3',
-        href: '/learn/journeys/understanding-karma-yoga#lesson-3',
+        href: '/learn/journeys/understanding-karma-yoga/#lesson-3',
         type: 'guided_journey',
         reason: 'Explore how different mental temperaments shape how we work.',
         basis: 'Active reading journey continuation',
@@ -303,6 +304,7 @@ export function buildDailySessionFromWisdom(
   lessonIndex: number = 1,
   totalLessons: number = 10
 ): DailyDharmaSession {
+  const formattedRef = formatVerseRef(dw.scriptureId, dw.chapterId, dw.verseId);
   return {
     id: dw.id,
     journeyId: 'daily-dharma-wisdom',
@@ -314,8 +316,8 @@ export function buildDailySessionFromWisdom(
     scriptureId: dw.scriptureId,
     chapterNumber: dw.chapterId,
     verseNumber: dw.verseId,
-    referenceDisplayEn: `${dw.scriptureTitle} ${dw.chapterId}.${dw.verseId}`,
-    referenceDisplayHi: `${dw.scriptureTitleSanskrit} ${dw.chapterId}.${dw.verseId}`,
+    referenceDisplayEn: `${dw.scriptureTitle} ${formattedRef}`,
+    referenceDisplayHi: `${dw.scriptureTitleSanskrit} ${formattedRef}`,
     sanskritDevanagari: dw.sanskrit,
     sanskritTransliteration: dw.transliteration,
     meter: dw.meter || 'Anuṣṭubh (32 syllables)',
@@ -341,7 +343,7 @@ export function buildDailySessionFromWisdom(
       {
         author: 'Classical Commentary Tradition (भाष्य परम्परा)',
         tradition: 'Sanatana Dharma',
-        citation: `${dw.scriptureTitle} ${dw.chapterId}.${dw.verseId}`,
+        citation: `${dw.scriptureTitle} ${formattedRef}`,
         excerptEn: dw.practicalTeaching,
         excerptHi: dw.practicalTeachingHi,
       },

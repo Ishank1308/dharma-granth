@@ -10,7 +10,7 @@ _Per-verse field completeness across the published scripture JSON corpus._
 | Declared verses | 319,212 |
 | Loaded verses | 319,205 |
 | Not-yet-loaded verses | 7 |
-| Empty commentary / explanation | 149,691 |
+| Empty commentary / explanation | 140,869 |
 | Empty word meaning | 302,637 |
 | Empty Hindi | 0 |
 | Critical gaps (core text) | 144366 |
@@ -31,68 +31,68 @@ _Per-verse field completeness across the published scripture JSON corpus._
 | agnipuran | Agni Purana | 11043 | 11043 | 0 | 0 | 0 | 0 | 85 | 0 | 0 | 10773 |
 | aitareya | Aitareya Upanishad | 33 | 33 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | amritabindu | Amritabindu Upanishad | 22 | 22 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| atharvaveda | Atharva Veda | 5985 | 5985 | 0 | 0 | 0 | 5206 | 5347 | 0 | 5985 | 5985 |
+| atharvaveda | Atharva Veda | 5985 | 5985 | 0 | 0 | 0 | 5206 | 5347 | 0 | 5980 | 5985 |
 | bhagavadgita | Bhagavad Gita | 701 | 701 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | bhagavatapurana | Bhagavata Purana | 14408 | 14408 | 0 | 0 | 0 | 14401 | 14401 | 0 | 14401 | 14401 |
 | brahmandpuran | Brahmanda Purana | 13498 | 13498 | 0 | 0 | 1 | 2 | 168 | 0 | 2 | 13124 |
 | brahmapuran | Brahma Purana | 13444 | 13444 | 0 | 0 | 0 | 2 | 24 | 0 | 2 | 13177 |
-| brahmasutra | Brahma Sutra | 564 | 564 | 0 | 0 | 0 | 0 | 0 | 0 | 557 | 557 |
+| brahmasutra | Brahma Sutra | 564 | 564 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 557 |
 | brahmavaivartapuran | Brahmavaivarta Purana | 10 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| brihadaranyaka | Brihadaranyaka Upanishad | 435 | 435 | 0 | 0 | 0 | 0 | 0 | 0 | 435 | 435 |
+| brihadaranyaka | Brihadaranyaka Upanishad | 435 | 435 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 435 |
 | chandogya | Chandogya Upanishad | 628 | 628 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| devibhagavat | Devi Bhagavata Purana | 18385 | 18385 | 0 | 0 | 0 | 18376 | 18376 | 0 | 18376 | 18376 |
-| durgasaptashati | Durga Saptashati | 634 | 634 | 0 | 0 | 0 | 0 | 0 | 0 | 36 | 615 |
+| devibhagavat | Devi Bhagavata Purana | 18385 | 18385 | 0 | 0 | 0 | 18376 | 18376 | 0 | 18203 | 18376 |
+| durgasaptashati | Durga Saptashati | 634 | 634 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 615 |
 | garudpurana | Garuda Purana | 11877 | 11877 | 0 | 0 | 0 | 0 | 630 | 0 | 0 | 11402 |
 | harivanshpuran | Harivamsha Purana | 16005 | 16005 | 0 | 0 | 0 | 14005 | 14702 | 0 | 14005 | 15614 |
 | ishavasya | Isha Upanishad | 18 | 18 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | jabala | Jabala Upanishad | 6 | 6 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 6 |
-| kaivalya | Kaivalya Upanishad | 24 | 24 | 0 | 0 | 0 | 0 | 0 | 0 | 18 | 18 |
+| kaivalya | Kaivalya Upanishad | 24 | 24 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 18 |
 | kalkipuran | Kalki Purana | 10 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | katha | Katha Upanishad | 119 | 119 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| kaushitaki | Kaushitaki Upanishad | 50 | 50 | 0 | 0 | 0 | 0 | 0 | 0 | 49 | 49 |
+| kaushitaki | Kaushitaki Upanishad | 50 | 50 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 49 |
 | kena | Kena Upanishad | 35 | 35 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | kurmapuran | Kurma Purana | 5573 | 5573 | 0 | 0 | 0 | 1 | 22 | 0 | 1 | 5442 |
 | lingapuran | Linga Purana | 6726 | 6726 | 0 | 0 | 0 | 0 | 74 | 0 | 0 | 5764 |
-| mahabharata | Mahabharata | 73816 | 73816 | 0 | 0 | 0 | 41408 | 42665 | 0 | 41348 | 71632 |
-| mahanarayana | Mahanarayana Upanishad | 263 | 263 | 0 | 0 | 0 | 0 | 0 | 0 | 261 | 261 |
-| mahaupanishad | Maha Upanishad | 553 | 553 | 0 | 0 | 0 | 0 | 0 | 0 | 553 | 553 |
-| maitri | Maitri Upanishad | 99 | 99 | 0 | 0 | 0 | 0 | 0 | 0 | 98 | 98 |
+| mahabharata | Mahabharata | 73816 | 73816 | 0 | 0 | 0 | 41408 | 42665 | 0 | 41342 | 71632 |
+| mahanarayana | Mahanarayana Upanishad | 263 | 263 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 261 |
+| mahaupanishad | Maha Upanishad | 553 | 553 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 553 |
+| maitri | Maitri Upanishad | 99 | 99 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 98 |
 | mandukya | Mandukya Upanishad | 12 | 12 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| manusmriti | Manusmriti | 2684 | 2684 | 0 | 0 | 0 | 0 | 0 | 0 | 2684 | 2681 |
+| manusmriti | Manusmriti | 2684 | 2684 | 0 | 0 | 0 | 0 | 0 | 0 | 2680 | 2681 |
 | markandeypuran | Markandeya Purana | 4339 | 4339 | 0 | 0 | 1 | 6 | 81 | 0 | 6 | 4257 |
 | matsyapuran | Matsya Purana | 8330 | 8330 | 0 | 0 | 0 | 0 | 1569 | 0 | 0 | 5945 |
-| muktika | Muktika Upanishad | 137 | 137 | 0 | 0 | 0 | 0 | 0 | 0 | 137 | 137 |
+| muktika | Muktika Upanishad | 137 | 137 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 137 |
 | mundaka | Mundaka Upanishad | 64 | 64 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| naradabhaktisutra | Narada Bhakti Sutras | 84 | 84 | 0 | 0 | 0 | 0 | 0 | 0 | 77 | 77 |
+| naradabhaktisutra | Narada Bhakti Sutras | 84 | 84 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 77 |
 | naradapuran | Narada Purana | 15203 | 15203 | 0 | 0 | 0 | 5 | 140 | 0 | 5 | 14480 |
 | narasimhapuran | Narasimha Purana | 3361 | 3361 | 0 | 0 | 0 | 0 | 190 | 0 | 0 | 2590 |
-| niralamba | Niralamba Upanishad | 21 | 21 | 0 | 0 | 0 | 0 | 0 | 0 | 21 | 21 |
+| niralamba | Niralamba Upanishad | 21 | 21 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 21 |
 | nityakarmakriya | Nitya Karma Kriya | 16 | 16 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | padmapuran | Padma Purana | 18 | 18 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | prashna | Prashna Upanishad | 67 | 67 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| ramayana | Valmiki Ramayana | 23595 | 23595 | 0 | 0 | 0 | 23595 | 23595 | 0 | 23595 | 23595 |
-| ramcharitmanas | Shri Ramcharitmanas | 6172 | 6172 | 0 | 0 | 0 | 6083 | 6083 | 0 | 6172 | 6172 |
+| ramayana | Valmiki Ramayana | 23595 | 23595 | 0 | 0 | 0 | 23595 | 23595 | 0 | 23581 | 23595 |
+| ramcharitmanas | Shri Ramcharitmanas | 6172 | 6172 | 0 | 0 | 0 | 6083 | 6083 | 0 | 6137 | 6172 |
 | ravanasamhita | Ravana Samhita | 43 | 43 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| rigveda | Rig Veda | 10531 | 10531 | 0 | 0 | 0 | 10524 | 10524 | 0 | 10524 | 10531 |
-| samaveda | Sama Veda | 1875 | 1875 | 0 | 0 | 0 | 0 | 0 | 0 | 1872 | 1872 |
-| shandilyabhaktisutra | Shandilya Bhakti Sutras | 100 | 100 | 0 | 0 | 0 | 0 | 0 | 0 | 98 | 98 |
-| shivasamhita | Shiva Samhita | 644 | 644 | 0 | 0 | 0 | 0 | 0 | 0 | 644 | 644 |
+| rigveda | Rig Veda | 10531 | 10531 | 0 | 0 | 0 | 10524 | 10524 | 0 | 10516 | 10531 |
+| samaveda | Sama Veda | 1875 | 1875 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1872 |
+| shandilyabhaktisutra | Shandilya Bhakti Sutras | 100 | 100 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 98 |
+| shivasamhita | Shiva Samhita | 644 | 644 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 644 |
 | shivaswarodaya | Shiva Swarodaya | 395 | 395 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 395 |
 | shivpurana | Shiva Purana | 15591 | 15591 | 0 | 0 | 0 | 2622 | 2681 | 0 | 2984 | 15005 |
 | shvetashvatara | Shvetashvatara Upanishad | 113 | 113 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 106 |
 | skandapuran | Skanda Purana | 6464 | 6464 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 6275 |
-| taittiriya | Taittiriya Upanishad | 31 | 31 | 0 | 0 | 0 | 0 | 0 | 0 | 12 | 12 |
-| tejobindu | Tejobindu Upanishad | 464 | 464 | 0 | 0 | 0 | 0 | 0 | 0 | 464 | 464 |
+| taittiriya | Taittiriya Upanishad | 31 | 31 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 12 |
+| tejobindu | Tejobindu Upanishad | 464 | 464 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 464 |
 | vamanpuran | Vamana Purana | 5594 | 5594 | 0 | 0 | 0 | 36 | 194 | 0 | 36 | 3873 |
 | varahapuran | Varaha Purana | 10 | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | vayupuran | Vayu Purana | 7641 | 7641 | 0 | 0 | 0 | 0 | 269 | 0 | 0 | 5906 |
-| viduraniti | Vidura Niti | 594 | 594 | 0 | 0 | 0 | 0 | 0 | 0 | 3 | 3 |
-| vinayapatrika | Vinaya Patrika | 1483 | 1483 | 0 | 0 | 0 | 1482 | 1482 | 0 | 1482 | 1482 |
+| viduraniti | Vidura Niti | 594 | 594 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |
+| vinayapatrika | Vinaya Patrika | 1483 | 1483 | 0 | 0 | 0 | 1482 | 1482 | 0 | 0 | 1482 |
 | vishnupurana | Vishnu Purana | 5488 | 5488 | 0 | 0 | 0 | 0 | 925 | 0 | 0 | 4685 |
-| vivekchudamani | Vivekachudamani | 580 | 580 | 0 | 0 | 0 | 0 | 0 | 0 | 578 | 578 |
-| yajurveda | Yajur Veda | 1975 | 1975 | 0 | 0 | 0 | 12 | 14 | 0 | 1975 | 1975 |
+| vivekchudamani | Vivekachudamani | 580 | 580 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 578 |
+| yajurveda | Yajur Veda | 1975 | 1975 | 0 | 0 | 0 | 12 | 14 | 0 | 988 | 1975 |
 | yogarasayanam | Yoga Rasayanam | 308 | 301 | 7 | 0 | 0 | 0 | 0 | 0 | 0 | 301 |
-| yogasutra | Patanjali Yoga Sutras | 195 | 195 | 0 | 0 | 0 | 0 | 0 | 0 | 195 | 195 |
+| yogasutra | Patanjali Yoga Sutras | 195 | 195 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 195 |
 | yogavasishtha | Yoga Vasishtha | 13 | 13 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | yogavasistha | Yoga Vasishtha | 13 | 13 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
@@ -102,108 +102,105 @@ These are the scriptures that have verse records but are missing explanatory con
 
 | Scripture | Title | Loaded | ∅ Commentary | ∅ Word Meaning |
 | --- | --- | --- | --- | --- |
-| mahabharata | Mahabharata | 73816 | 41348 | 71632 |
-| ramayana | Valmiki Ramayana | 23595 | 23595 | 23595 |
-| devibhagavat | Devi Bhagavata Purana | 18385 | 18376 | 18376 |
+| mahabharata | Mahabharata | 73816 | 41342 | 71632 |
+| ramayana | Valmiki Ramayana | 23595 | 23581 | 23595 |
+| devibhagavat | Devi Bhagavata Purana | 18385 | 18203 | 18376 |
 | bhagavatapurana | Bhagavata Purana | 14408 | 14401 | 14401 |
 | harivanshpuran | Harivamsha Purana | 16005 | 14005 | 15614 |
-| rigveda | Rig Veda | 10531 | 10524 | 10531 |
-| ramcharitmanas | Shri Ramcharitmanas | 6172 | 6172 | 6172 |
-| atharvaveda | Atharva Veda | 5985 | 5985 | 5985 |
+| rigveda | Rig Veda | 10531 | 10516 | 10531 |
+| ramcharitmanas | Shri Ramcharitmanas | 6172 | 6137 | 6172 |
+| atharvaveda | Atharva Veda | 5985 | 5980 | 5985 |
 | shivpurana | Shiva Purana | 15591 | 2984 | 15005 |
-| manusmriti | Manusmriti | 2684 | 2684 | 2681 |
-| yajurveda | Yajur Veda | 1975 | 1975 | 1975 |
-| samaveda | Sama Veda | 1875 | 1872 | 1872 |
-| vinayapatrika | Vinaya Patrika | 1483 | 1482 | 1482 |
-| shivasamhita | Shiva Samhita | 644 | 644 | 644 |
-| vivekchudamani | Vivekachudamani | 580 | 578 | 578 |
-| brahmasutra | Brahma Sutra | 564 | 557 | 557 |
-| mahaupanishad | Maha Upanishad | 553 | 553 | 553 |
-| tejobindu | Tejobindu Upanishad | 464 | 464 | 464 |
-| brihadaranyaka | Brihadaranyaka Upanishad | 435 | 435 | 435 |
-| mahanarayana | Mahanarayana Upanishad | 263 | 261 | 261 |
-| yogasutra | Patanjali Yoga Sutras | 195 | 195 | 195 |
-| muktika | Muktika Upanishad | 137 | 137 | 137 |
-| maitri | Maitri Upanishad | 99 | 98 | 98 |
-| shandilyabhaktisutra | Shandilya Bhakti Sutras | 100 | 98 | 98 |
-| naradabhaktisutra | Narada Bhakti Sutras | 84 | 77 | 77 |
-| kaushitaki | Kaushitaki Upanishad | 50 | 49 | 49 |
-| durgasaptashati | Durga Saptashati | 634 | 36 | 615 |
+| manusmriti | Manusmriti | 2684 | 2680 | 2681 |
+| yajurveda | Yajur Veda | 1975 | 988 | 1975 |
 | vamanpuran | Vamana Purana | 5594 | 36 | 3873 |
-| niralamba | Niralamba Upanishad | 21 | 21 | 21 |
-| kaivalya | Kaivalya Upanishad | 24 | 18 | 18 |
-| taittiriya | Taittiriya Upanishad | 31 | 12 | 12 |
 | markandeypuran | Markandeya Purana | 4339 | 6 | 4257 |
 | naradapuran | Narada Purana | 15203 | 5 | 14480 |
-| viduraniti | Vidura Niti | 594 | 3 | 3 |
 | brahmandpuran | Brahmanda Purana | 13498 | 2 | 13124 |
 | brahmapuran | Brahma Purana | 13444 | 2 | 13177 |
 | kurmapuran | Kurma Purana | 5573 | 1 | 5442 |
 | agnipuran | Agni Purana | 11043 | 0 | 10773 |
+| brahmasutra | Brahma Sutra | 564 | 0 | 557 |
+| brihadaranyaka | Brihadaranyaka Upanishad | 435 | 0 | 435 |
+| durgasaptashati | Durga Saptashati | 634 | 0 | 615 |
 | garudpurana | Garuda Purana | 11877 | 0 | 11402 |
 | jabala | Jabala Upanishad | 6 | 0 | 6 |
+| kaivalya | Kaivalya Upanishad | 24 | 0 | 18 |
+| kaushitaki | Kaushitaki Upanishad | 50 | 0 | 49 |
 | lingapuran | Linga Purana | 6726 | 0 | 5764 |
+| mahanarayana | Mahanarayana Upanishad | 263 | 0 | 261 |
+| mahaupanishad | Maha Upanishad | 553 | 0 | 553 |
+| maitri | Maitri Upanishad | 99 | 0 | 98 |
 | matsyapuran | Matsya Purana | 8330 | 0 | 5945 |
+| muktika | Muktika Upanishad | 137 | 0 | 137 |
+| naradabhaktisutra | Narada Bhakti Sutras | 84 | 0 | 77 |
 | narasimhapuran | Narasimha Purana | 3361 | 0 | 2590 |
+| niralamba | Niralamba Upanishad | 21 | 0 | 21 |
+| samaveda | Sama Veda | 1875 | 0 | 1872 |
+| shandilyabhaktisutra | Shandilya Bhakti Sutras | 100 | 0 | 98 |
+| shivasamhita | Shiva Samhita | 644 | 0 | 644 |
 | shivaswarodaya | Shiva Swarodaya | 395 | 0 | 395 |
 | shvetashvatara | Shvetashvatara Upanishad | 113 | 0 | 106 |
 | skandapuran | Skanda Purana | 6464 | 0 | 6275 |
+| taittiriya | Taittiriya Upanishad | 31 | 0 | 12 |
+| tejobindu | Tejobindu Upanishad | 464 | 0 | 464 |
 | vayupuran | Vayu Purana | 7641 | 0 | 5906 |
+| viduraniti | Vidura Niti | 594 | 0 | 3 |
+| vinayapatrika | Vinaya Patrika | 1483 | 0 | 1482 |
 | vishnupurana | Vishnu Purana | 5488 | 0 | 4685 |
+| vivekchudamani | Vivekachudamani | 580 | 0 | 578 |
 | yogarasayanam | Yoga Rasayanam | 301 | 0 | 301 |
+| yogasutra | Patanjali Yoga Sutras | 195 | 0 | 195 |
 
 ### Sample verse references with missing commentary
 
 - **mahabharata** (Mahabharata): mahabharata:1:1.0, mahabharata:1:1.1, mahabharata:1:1.2
-- **ramayana** (Valmiki Ramayana): ramayana:1:1.1, ramayana:1:1.2, ramayana:1:1.3
-- **devibhagavat** (Devi Bhagavata Purana): devibhagavat:1:1, devibhagavat:1:2, devibhagavat:1:3
+- **ramayana** (Valmiki Ramayana): ramayana:1:1.13, ramayana:1:1.14, ramayana:1:1.15
+- **devibhagavat** (Devi Bhagavata Purana): devibhagavat:5:1, devibhagavat:5:2, devibhagavat:5:3
 - **bhagavatapurana** (Bhagavata Purana): bhagavatapurana:1:1, bhagavatapurana:1:3, bhagavatapurana:1:4
 - **harivanshpuran** (Harivamsha Purana): harivanshpuran:1:2, harivanshpuran:1:3, harivanshpuran:1:4
-- **rigveda** (Rig Veda): rigveda:1:1.2, rigveda:1:1.3, rigveda:1:1.4
-- **ramcharitmanas** (Shri Ramcharitmanas): ramcharitmanas:1:0.1, ramcharitmanas:1:0.2, ramcharitmanas:1:0.3
+- **rigveda** (Rig Veda): rigveda:1:2.1, rigveda:1:2.2, rigveda:1:2.3
+- **ramcharitmanas** (Shri Ramcharitmanas): ramcharitmanas:1:0.3, ramcharitmanas:1:0.4, ramcharitmanas:1:0.5
 - **atharvaveda** (Atharva Veda): atharvaveda:1:1.1, atharvaveda:1:1.2, atharvaveda:1:1.3
 - **shivpurana** (Shiva Purana): shivpurana:1:0.1, shivpurana:1:0.2, shivpurana:1:1.1
 - **manusmriti** (Manusmriti): manusmriti:1:1.1, manusmriti:1:1.2, manusmriti:1:1.3
-- **yajurveda** (Yajur Veda): yajurveda:1:1, yajurveda:1:2, yajurveda:1:3
-- **samaveda** (Sama Veda): samaveda:1:2, samaveda:1:3, samaveda:1:4
-- **vinayapatrika** (Vinaya Patrika): vinayapatrika:1:1, vinayapatrika:1:2, vinayapatrika:1:3
-- **shivasamhita** (Shiva Samhita): shivasamhita:1:1, shivasamhita:1:2, shivasamhita:1:3
-- **vivekchudamani** (Vivekachudamani): vivekchudamani:1:1, vivekchudamani:1:4, vivekchudamani:1:5
-- **brahmasutra** (Brahma Sutra): brahmasutra:1:1.1.6, brahmasutra:1:1.1.7, brahmasutra:1:1.1.8
-- **mahaupanishad** (Maha Upanishad): mahaupanishad:1:1, mahaupanishad:1:2, mahaupanishad:1:3
-- **tejobindu** (Tejobindu Upanishad): tejobindu:1:1, tejobindu:1:2, tejobindu:1:3
-- **brihadaranyaka** (Brihadaranyaka Upanishad): brihadaranyaka:1:1.1.1, brihadaranyaka:1:1.1.2, brihadaranyaka:2:1.2.1
-- **mahanarayana** (Mahanarayana Upanishad): mahanarayana:1:1, mahanarayana:1:2, mahanarayana:1:3
+- **yajurveda** (Yajur Veda): yajurveda:18:37, yajurveda:18:38, yajurveda:18:39
+- **vamanpuran** (Vamana Purana): vamanpuran:4:30, vamanpuran:5:21, vamanpuran:5:34
+- **markandeypuran** (Markandeya Purana): markandeypuran:8:48, markandeypuran:50:32, markandeypuran:51:83
+- **naradapuran** (Narada Purana): naradapuran:9:34, naradapuran:14:160, naradapuran:54:313
+- **brahmandpuran** (Brahmanda Purana): brahmandpuran:47:52, brahmandpuran:49:30
+- **brahmapuran** (Brahma Purana): brahmapuran:61:35, brahmapuran:77:3
+- **kurmapuran** (Kurma Purana): kurmapuran:36:6
 
 ## Scriptures with critical text gaps
 
 | Scripture | Title | Declared | Loaded | Missing | ∅ Sanskrit | ∅ Transliteration | ∅ Translation | Unusable Translation | ∅ Hindi | ∅ Commentary | ∅ Word Meaning |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | agnipuran | Agni Purana | 11043 | 11043 | 0 | 0 | 0 | 0 | 85 | 0 | 0 | 10773 |
-| atharvaveda | Atharva Veda | 5985 | 5985 | 0 | 0 | 0 | 5206 | 5347 | 0 | 5985 | 5985 |
+| atharvaveda | Atharva Veda | 5985 | 5985 | 0 | 0 | 0 | 5206 | 5347 | 0 | 5980 | 5985 |
 | bhagavatapurana | Bhagavata Purana | 14408 | 14408 | 0 | 0 | 0 | 14401 | 14401 | 0 | 14401 | 14401 |
 | brahmandpuran | Brahmanda Purana | 13498 | 13498 | 0 | 0 | 1 | 2 | 168 | 0 | 2 | 13124 |
 | brahmapuran | Brahma Purana | 13444 | 13444 | 0 | 0 | 0 | 2 | 24 | 0 | 2 | 13177 |
-| devibhagavat | Devi Bhagavata Purana | 18385 | 18385 | 0 | 0 | 0 | 18376 | 18376 | 0 | 18376 | 18376 |
+| devibhagavat | Devi Bhagavata Purana | 18385 | 18385 | 0 | 0 | 0 | 18376 | 18376 | 0 | 18203 | 18376 |
 | garudpurana | Garuda Purana | 11877 | 11877 | 0 | 0 | 0 | 0 | 630 | 0 | 0 | 11402 |
 | harivanshpuran | Harivamsha Purana | 16005 | 16005 | 0 | 0 | 0 | 14005 | 14702 | 0 | 14005 | 15614 |
 | kurmapuran | Kurma Purana | 5573 | 5573 | 0 | 0 | 0 | 1 | 22 | 0 | 1 | 5442 |
 | lingapuran | Linga Purana | 6726 | 6726 | 0 | 0 | 0 | 0 | 74 | 0 | 0 | 5764 |
-| mahabharata | Mahabharata | 73816 | 73816 | 0 | 0 | 0 | 41408 | 42665 | 0 | 41348 | 71632 |
+| mahabharata | Mahabharata | 73816 | 73816 | 0 | 0 | 0 | 41408 | 42665 | 0 | 41342 | 71632 |
 | markandeypuran | Markandeya Purana | 4339 | 4339 | 0 | 0 | 1 | 6 | 81 | 0 | 6 | 4257 |
 | matsyapuran | Matsya Purana | 8330 | 8330 | 0 | 0 | 0 | 0 | 1569 | 0 | 0 | 5945 |
 | naradapuran | Narada Purana | 15203 | 15203 | 0 | 0 | 0 | 5 | 140 | 0 | 5 | 14480 |
 | narasimhapuran | Narasimha Purana | 3361 | 3361 | 0 | 0 | 0 | 0 | 190 | 0 | 0 | 2590 |
-| ramayana | Valmiki Ramayana | 23595 | 23595 | 0 | 0 | 0 | 23595 | 23595 | 0 | 23595 | 23595 |
-| ramcharitmanas | Shri Ramcharitmanas | 6172 | 6172 | 0 | 0 | 0 | 6083 | 6083 | 0 | 6172 | 6172 |
-| rigveda | Rig Veda | 10531 | 10531 | 0 | 0 | 0 | 10524 | 10524 | 0 | 10524 | 10531 |
+| ramayana | Valmiki Ramayana | 23595 | 23595 | 0 | 0 | 0 | 23595 | 23595 | 0 | 23581 | 23595 |
+| ramcharitmanas | Shri Ramcharitmanas | 6172 | 6172 | 0 | 0 | 0 | 6083 | 6083 | 0 | 6137 | 6172 |
+| rigveda | Rig Veda | 10531 | 10531 | 0 | 0 | 0 | 10524 | 10524 | 0 | 10516 | 10531 |
 | shivpurana | Shiva Purana | 15591 | 15591 | 0 | 0 | 0 | 2622 | 2681 | 0 | 2984 | 15005 |
 | skandapuran | Skanda Purana | 6464 | 6464 | 0 | 0 | 0 | 0 | 125 | 0 | 0 | 6275 |
 | vamanpuran | Vamana Purana | 5594 | 5594 | 0 | 0 | 0 | 36 | 194 | 0 | 36 | 3873 |
 | vayupuran | Vayu Purana | 7641 | 7641 | 0 | 0 | 0 | 0 | 269 | 0 | 0 | 5906 |
-| vinayapatrika | Vinaya Patrika | 1483 | 1483 | 0 | 0 | 0 | 1482 | 1482 | 0 | 1482 | 1482 |
+| vinayapatrika | Vinaya Patrika | 1483 | 1483 | 0 | 0 | 0 | 1482 | 1482 | 0 | 0 | 1482 |
 | vishnupurana | Vishnu Purana | 5488 | 5488 | 0 | 0 | 0 | 0 | 925 | 0 | 0 | 4685 |
-| yajurveda | Yajur Veda | 1975 | 1975 | 0 | 0 | 0 | 12 | 14 | 0 | 1975 | 1975 |
+| yajurveda | Yajur Veda | 1975 | 1975 | 0 | 0 | 0 | 12 | 14 | 0 | 988 | 1975 |
 
 ### Critical gap references
 
@@ -272,4 +269,4 @@ No duplicate `chapter:verse` references found within any scripture.
 
 ---
 
-_Generated by `scripts/verse-audit.js` on 2026-11-20._
+_Generated by `scripts/verse-audit.js` on 2026-11-22._
