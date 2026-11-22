@@ -135,7 +135,7 @@ export default function LearnPage() {
       {/* ── Where to begin: one hub for starting points, journeys, plans and courses ── */}
       <section aria-labelledby="learn-start-heading" className="mx-auto max-w-content px-gutter pt-10">
         <h2 id="learn-start-heading" className="sr-only">Where to begin</h2>
-        <ul className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+        <ul className="reveal-grid grid grid-cols-2 gap-3 lg:grid-cols-3">
           {PORTALS.map(({ href, en, hi, sub, Icon, chip }) => (
             <li key={href}>
               <Link href={href} style={{ '--chip': chip } as CSSProperties} className="apple-card flex h-full flex-col items-start gap-2 p-4 sm:flex-row sm:gap-3 sm:p-5">
@@ -326,7 +326,7 @@ export default function LearnPage() {
           titleHi="स्वाध्याय त्रिपदी"
           sub="Progress here is measured in clarity and calm, not certificates."
         />
-        <ol className="mt-8 grid gap-8 md:grid-cols-3">
+        <ol className="reveal-grid mt-8 grid gap-8 md:grid-cols-3">
           {PILLARS.map((p, i) => (
             <li key={p.iast}>
               <p className="text-footnote tabular-nums text-dharma-muted">{i + 1}</p>

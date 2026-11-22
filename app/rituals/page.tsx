@@ -215,14 +215,13 @@ export default function RitualsPage() {
             </button>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredRituals.map((ritual, i) => (
+          <div className="reveal-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filteredRituals.map((ritual) => (
               <button
                 type="button"
                 key={ritual.id}
                 onClick={() => handleSelectRitual(ritual.id)}
-                style={{ animationDelay: `${Math.min(i, 12) * 35}ms` }}
-                className="fade-up-in apple-card group relative flex flex-col justify-between overflow-hidden rounded-card border border-dharma-border bg-dharma-card p-6 text-left hover:border-saffron-500/50 hover:shadow-raised transition-all"
+                className="apple-card group relative flex flex-col justify-between overflow-hidden rounded-card border border-dharma-border bg-dharma-card p-6 text-left hover:border-saffron-500/50 hover:shadow-raised transition-all"
               >
                 <div>
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${ritual.gradient}`} />

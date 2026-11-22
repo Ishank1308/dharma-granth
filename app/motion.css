@@ -948,3 +948,66 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
 @media print, (prefers-reduced-motion: reduce) {
     .concept-geometry-rotor { animation: none !important; transform: none !important; }
 }
+
+/* 13. Icons that answer ────────────────────────────────────────────────
+   A small spring when an icon's state changes, in CSS on the state the markup already
+   carries: the phone tab bar's icon when its tab becomes the current page, and a bookmark,
+   heart or star when its toggle is switched on. The animation runs once when the selector
+   starts to match, so nothing loops. */
+@keyframes icon-answer {
+    from {
+        transform: scale(0.78);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-lite-mode='true']) nav[aria-label='Mobile quick navigation'] a[aria-current='page'] > svg,
+    :root:not([data-low-power='true']):not([data-lite-mode='true']) button[aria-pressed='true'] > :is(svg.lucide-bookmark, svg.lucide-heart, svg.lucide-star),
+    /* A saved verse swaps its icon for the ticked bookmark, which arrives with the same spring. */
+    :root:not([data-low-power='true']):not([data-lite-mode='true']) svg.lucide-bookmark-check {
+        animation: icon-answer var(--duration-base) var(--motion-spring);
+    }
+}
+
+/* 14. Headings with a little life ─────────────────────────────────────
+   A page title (PageHeader) comes into focus, its English line and then its Hindi line,
+   with the same focus pull as the home headline; it is painted from the first frame.
+   A section heading (SectionTitle) rises as it scrolls into view, ahead of its rule.
+   Whole lines move, never single letters, so Devanagari conjuncts stay whole. Scripture
+   text is not touched. */
+@keyframes heading-arrive {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 0.5em, 0);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .title-kinetic > span {
+        animation: hero-focus 0.9s var(--motion-out) both;
+        animation-delay: 40ms;
+    }
+    :root:not([data-low-power='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .title-kinetic > span + span {
+        animation-delay: 170ms;
+    }
+    :root:not([data-splash='seen']):not([data-low-power='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .title-kinetic > span {
+        animation-delay: 1.45s;
+    }
+    :root:not([data-splash='seen']):not([data-low-power='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .title-kinetic > span + span {
+        animation-delay: 1.58s;
+    }
+    @supports (animation-timeline: view()) {
+        .heading-arrive {
+            animation: heading-arrive linear both;
+            animation-timeline: view();
+            animation-range: entry 0px entry 140px;
+        }
+    }
+}
+@media print {
+    .title-kinetic > span,
+    .heading-arrive {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}

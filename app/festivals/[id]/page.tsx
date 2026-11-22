@@ -157,7 +157,7 @@ export default async function FestivalDetailPage(props: PageProps) {
   );
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg pb-20 relative overflow-hidden">
+    <main className="apple-scope min-h-screen bg-dharma-bg pb-20 relative overflow-clip">
       {/* Sacred Festival Halo Backdrop */}
       <div
         aria-hidden="true"
@@ -170,7 +170,7 @@ export default async function FestivalDetailPage(props: PageProps) {
       />
 
       {/* Hero Header */}
-      <section className={`relative isolate overflow-hidden bg-gradient-to-br ${festival.gradient} text-white py-14 sm:py-20`}>
+      <section data-vt-hero className={`relative isolate overflow-hidden bg-gradient-to-br ${festival.gradient} text-white py-14 sm:py-20`}>
         {photo && <HeroPhoto photo={photo} />}
         <div className="absolute inset-0 mandala-bg opacity-15 pointer-events-none" />
         {/* Only the hero's foot fades into the page, so the timing card's white text stays on the hero's colour. */}
@@ -245,7 +245,7 @@ export default async function FestivalDetailPage(props: PageProps) {
       {/* Main Content Layout */}
       <section className="relative mx-auto max-w-5xl px-gutter -mt-6 sm:-mt-8 space-y-8 z-10">
         {/* 1. Meaning & Core Philosophy */}
-        <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
+        <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             <Sparkles className="h-4 w-4" />
             <span>दार्शनिक अर्थ व महत्व (Spiritual Significance)</span>
@@ -259,7 +259,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         </div>
 
         {/* 2. Scriptural Authority & Sources */}
-        <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
+        <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             <BookOpen className="h-4 w-4" />
             <span>शास्त्रीय स्रोत व प्रमाण (Scriptural References)</span>
@@ -281,7 +281,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         </div>
 
         {/* 3. Sacred Narrative & Deities */}
-        <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
+        <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             <Heart className="h-4 w-4" />
             <span>संबंधित देवता व पावन कथा (Deity & Narrative)</span>
@@ -298,7 +298,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
         {/* 4. Common Chants & Mantras */}
         {festival.commonChants.length > 0 && (
-          <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
+          <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               <Music className="h-4 w-4" />
               <span>जप और प्रार्थना (Chants & Prayers)</span>
@@ -329,7 +329,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
         {/* 5. Scriptural vs Cultural Distinction */}
         {festival.scripturalVsCustom.length > 0 && (
-          <div className="card-sacred rounded-3xl border border-amber-300/80 dark:border-amber-900/60 bg-amber-500/5 backdrop-blur-xl p-6 sm:p-8 space-y-4 shadow-soft">
+          <div className="fade-up-on-view card-sacred rounded-3xl border border-amber-300/80 dark:border-amber-900/60 bg-amber-500/5 backdrop-blur-xl p-6 sm:p-8 space-y-4 shadow-soft">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
               <AlertCircle className="h-4 w-4" />
               <span>विवेक दर्शन: शास्त्रीय बनाम सांस्कृतिक रिवाज़</span>
@@ -364,7 +364,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
         {/* 6. Regional Diversity & Traditions */}
         {festival.regionalTraditions.length > 0 && (
-          <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
+          <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
               <MapPin className="h-4 w-4" />
               <span>क्षेत्रीय विविधता (Regional Traditions Across Bharat)</span>
@@ -393,7 +393,7 @@ export default async function FestivalDetailPage(props: PageProps) {
         {/* 7. Traditional Practices & Food Traditions */}
         <div className="grid gap-6 md:grid-cols-2">
           {festival.traditionalPractices.length > 0 && (
-            <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
+            <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                 <CheckCircle2 className="h-4 w-4" />
                 <span>पारंपरिक अनुष्ठान (Ritual Practices)</span>
@@ -411,7 +411,7 @@ export default async function FestivalDetailPage(props: PageProps) {
           )}
 
           {festival.foodTraditions.length > 0 && (
-            <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
+            <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
                 <Utensils className="h-4 w-4" />
                 <span>नैवेद्य व भोजन परंपरा (Sacred Food Offerings)</span>
@@ -431,7 +431,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
         {/* 8. Environmental Considerations */}
         {festival.environmentalConsiderations && (
-          <div className="card-sacred rounded-3xl border border-emerald-300/80 dark:border-emerald-900/80 bg-emerald-500/5 backdrop-blur-xl p-6 sm:p-8 space-y-3 shadow-soft">
+          <div className="fade-up-on-view card-sacred rounded-3xl border border-emerald-300/80 dark:border-emerald-900/80 bg-emerald-500/5 backdrop-blur-xl p-6 sm:p-8 space-y-3 shadow-soft">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
               <Leaf className="h-4 w-4" />
               <span>प्रकृति व पर्यावरण संचेतना (Ecological Mindfulness)</span>
