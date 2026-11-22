@@ -141,12 +141,25 @@ try {
     // Compute initial upfront <script src> gzipped weight from HTML (excluding viewport <Link> prefetches & SW precache)
     const htmlPath = path.join(DIST, route.path, 'index.html');
     const htmlText = fs.readFileSync(htmlPath, 'utf8');
+    const scriptAttrs = [];
+    const lowerHtml = htmlText.toLowerCase();
+    let pos = 0;
+    while ((pos = lowerHtml.indexOf('<script', pos)) !== -1) {
+      const next = lowerHtml[pos + 7];
+      if (next && !/[\s/>]/.test(next)) {
+        pos += 7;
+        continue;
+      }
+      const close = htmlText.indexOf('>', pos + 7);
+      if (close === -1) break;
+      scriptAttrs.push(htmlText.slice(pos + 7, close));
+      pos = close + 1;
+    }
     const initialSrcs = [
       ...new Set(
-        [...htmlText.matchAll(/<script\b([^>]*)>/g)]
-          .map((m) => m[1])
+        scriptAttrs
           .filter((a) => !/\bnomodule\b/i.test(a))
-          .map((a) => a.match(/\bsrc="([^"]+)"/)?.[1])
+          .map((a) => a.match(/\bsrc=["']([^"']+)["']/i)?.[1])
           .filter(Boolean),
       ),
     ];
