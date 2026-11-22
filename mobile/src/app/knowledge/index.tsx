@@ -6,8 +6,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Backdrop, Card, GroupCard, GroupRow, LargeHeader } from '@/components/ui';
 import { KINDS, knowledge } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { barClearance, huesFor, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 /**
  * The knowledge hub, after the website's Learn and knowledge pages: Wisdom for life first (the way in for
@@ -15,7 +17,7 @@ import { barClearance, huesFor, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '
  */
 export default function KnowledgeHub() {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const hues = huesFor(palette);
   const tileHues = huesFor({ dark: false });

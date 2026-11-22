@@ -7,9 +7,11 @@ import { Backdrop, GroupCard, GroupRow, GroupTitle, LargeHeader, Muted } from '@
 import { daysBetween, festivalById, FESTIVALS, formatDay, isoDate, nextDateOf, todayForLocation, upcomingFestivals } from '@/content/explore';
 import { S, useI18n } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { festivalColors } from '@/theme/festival-colors';
 import { SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 /**
  * Festivals, as dharmagranth.dev/festivals/: the dated calendar of the coming months, then a guide to each
@@ -17,7 +19,7 @@ import { SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
  */
 export default function FestivalsScreen() {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const [city] = usePanchangCity();
   const today = isoDate(todayForLocation(city));

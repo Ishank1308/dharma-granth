@@ -13,7 +13,7 @@ import { StyleSheet, View, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { cancelAnimation, Easing, useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated';
 
 import { useMotion } from '@/motion/use-motion';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 
 const LIT = '#f4ecd8';
 const SHADOW = '#1d2233';
@@ -34,7 +34,7 @@ export function phaseFromIllumination(percent: number, waxing: boolean): number 
 }
 
 export function Moon3D({ phase, size = 120, style }: { phase: number; size?: number; style?: StyleProp<ViewStyle> }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { rich } = useMotion();
   const p = ((phase % 1) + 1) % 1;
   const waxing = p < 0.5;

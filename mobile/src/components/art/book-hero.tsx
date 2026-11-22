@@ -20,7 +20,7 @@ import { coverFill } from '@/components/ui';
 import { useParallax } from '@/motion/parallax';
 import { DURATION, SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 import { SANSKRIT_FONT } from '@/theme/fonts';
 import { RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
@@ -57,7 +57,7 @@ export function BookHero({
   scrollY?: SharedValue<number>;
   children?: ReactNode;
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { animate, rich } = useMotion();
   const fallback = useSharedValue(0);
   const y = scrollY ?? fallback;

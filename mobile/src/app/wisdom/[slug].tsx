@@ -8,8 +8,10 @@ import { Backdrop, Card, Muted } from '@/components/ui';
 import { getEntry } from '@/content/catalog';
 import { knowledge } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 /**
  * One Wisdom for life topic, in the website's order: a compassionate opening, the verses (each whole, with
@@ -19,7 +21,7 @@ import { barClearance, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH,
 export default function WisdomTopicScreen() {
   const { slug } = useLocalSearchParams<{ slug: string }>();
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const items = knowledge('wisdom').items;
@@ -235,7 +237,7 @@ function PagerButton({
   end?: boolean;
   onPress: () => void;
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <Pressable
       accessibilityRole="link"

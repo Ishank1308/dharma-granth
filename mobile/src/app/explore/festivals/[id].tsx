@@ -7,15 +7,17 @@ import { Backdrop, Card, GroupTitle, Muted } from '@/components/ui';
 import { festivalById, formatDay, isoDate, nextDateOf, todayForLocation } from '@/content/explore';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { festivalColors } from '@/theme/festival-colors';
 import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 /** One festival's guide, with the same sections as its card on dharmagranth.dev/festivals/. */
 export default function FestivalScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const [city] = usePanchangCity();
@@ -166,7 +168,7 @@ function Section({ title, children }: { title: Msg; children: ReactNode }) {
 }
 
 function Bullets({ items }: { items: string[] }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const scale = settings.textScale;
   return (
     <View style={{ rowGap: SPACE.sm }}>
@@ -183,7 +185,7 @@ function Bullets({ items }: { items: string[] }) {
 }
 
 function Labelled({ label, color, text }: { label: string; color: string; text: string }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const scale = settings.textScale;
   return (
     <Text maxFontSizeMultiplier={fontCap(scale)} style={{ color: palette.textSecondary, fontSize: TYPE.subhead * scale, lineHeight: TYPE.subhead * scale * 1.5 }}>

@@ -27,6 +27,8 @@ import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
 import { BAR_GAP, barClearance, quietFill, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 const VIEWABILITY = { itemVisiblePercentThreshold: 40 };
 
 export default function ChapterScreen() {
@@ -34,7 +36,7 @@ export default function ChapterScreen() {
   const id = String(params.id);
   const chapterNo = Number(params.chapter);
   const insets = useSafeAreaInsets();
-  const { palette, settings, lang, bookmarks, toggleBookmark, setLastRead } = useAppState();
+  const { palette, settings, lang, bookmarks, toggleBookmark, setLastRead, lightEffects } = useAppState();
   const t = (m: Msg) => m[lang];
   const entry = getEntry(id);
   const meta = entry?.chapters.find((c) => c.number === chapterNo);
@@ -283,9 +285,13 @@ export default function ChapterScreen() {
           viewabilityConfig={VIEWABILITY}
           // Never render up to the target verse in one go: a bookmark deep in Bala Kand (1,958 verses)
           // would mount ~1,500 cards on the JS thread and freeze the phone. Jump instead (below).
-          initialNumToRender={6}
-          maxToRenderPerBatch={6}
-          windowSize={7}
+          // A verse card with its translation fills most of a phone screen, so a few cards cover the first
+          // paint. Under Light effects (budget phones on Automatic) the list keeps fewer screens mounted
+          // around the one in view: less JS work per scroll and less memory, at the cost of a blank flash
+          // only on a very hard fling.
+          initialNumToRender={lightEffects ? 3 : 6}
+          maxToRenderPerBatch={lightEffects ? 4 : 6}
+          windowSize={lightEffects ? 5 : 7}
           onLayout={() => {
             if (target <= 0 || jumped.current) return;
             jumped.current = true;
@@ -418,12 +424,17 @@ export default function ChapterScreen() {
                 { backgroundColor: quietFill(palette) },
                 pressed && { opacity: 0.75 },
               ]}>
-              <Text maxFontSizeMultiplier={1.4} numberOfLines={1} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
+              <Text
+                maxFontSizeMultiplier={1.4}
+                numberOfLines={1}
+                adjustsFontSizeToFit
+                minimumFontScale={0.8}
+                style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
                 {playingHere ? (
                   <Ionicons name="musical-notes" size={TYPE.subhead} color={palette.accent} accessibilityElementsHidden />
                 ) : null}
                 {playingHere ? ' ' : ''}
-                {t(S.verseOf(playingHere ?? shownVerse, total))}
+                {playingHere ? t(S.verseOfShort(playingHere, total)) : t(S.verseOf(shownVerse, total))}
               </Text>
             </Pressable>
             {playingHere ? <IconButton icon="stop" onPress={stop} accessibilityLabel={t(S.stopRecitation)} color={palette.muted} /> : null}

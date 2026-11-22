@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { AppState } from 'react-native';
 
 import { initNotifications, remindersSupported, syncDailyReminder, verseFromResponse } from '@/lib/daily-notification';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 
 const RESYNC_MS = 12 * 60 * 60 * 1000;
 
@@ -15,7 +15,7 @@ initNotifications();
  * Renders nothing.
  */
 export function DailyReminderEffects() {
-  const { ready, settings, lang } = useAppState();
+  const { ready, settings, lang } = usePrefs();
   const { dailyReminder, reminderHour, reminderMinute } = settings;
   const lastSync = useRef(0);
   const handled = useRef(new Set<string>());

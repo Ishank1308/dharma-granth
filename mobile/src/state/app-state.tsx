@@ -51,6 +51,16 @@ interface AppState {
 
 const Ctx = createContext<AppState | null>(null);
 
+/**
+ * The slice of the app state that only changes when the reader changes a setting: theme, text size,
+ * language, effects. Leaf components (cards, rows, chips, art) read this through usePrefs() or
+ * usePalette(), so saving a verse or opening a chapter (which changes bookmarks and lastRead) no
+ * longer re-renders every card on screen. On a budget phone that was most of the work after a tap.
+ */
+export type Prefs = Pick<AppState, 'ready' | 'settings' | 'palette' | 'lang' | 'lightEffects' | 'reduceMotion' | 'updateSettings'>;
+
+const PrefsCtx = createContext<Prefs | null>(null);
+
 function save(key: string, value: unknown) {
   AsyncStorage.setItem(key, JSON.stringify(value)).catch(() => {
     // Storage full or unavailable: the app keeps working for this session.
@@ -186,7 +196,24 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     [ready, settings, palette, lightEffects, reduceMotion, bookmarks, lastRead, updateSettings, isBookmarked, toggleBookmark, removeBookmark, setLastRead, exportData, importData],
   );
 
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+  const lang = value.lang;
+  const prefs = useMemo<Prefs>(
+    () => ({ ready, settings, palette, lang, lightEffects, reduceMotion, updateSettings }),
+    [ready, settings, palette, lang, lightEffects, reduceMotion, updateSettings],
+  );
+
+  return (
+    <PrefsCtx.Provider value={prefs}>
+      <Ctx.Provider value={value}>{children}</Ctx.Provider>
+    </PrefsCtx.Provider>
+  );
+}
+
+/** Settings, palette and language only: re-renders when a setting changes, not when bookmarks or progress do. */
+export function usePrefs(): Prefs {
+  const v = useContext(PrefsCtx);
+  if (!v) throw new Error('usePrefs must be used inside AppStateProvider');
+  return v;
 }
 
 export function useAppState(): AppState {
@@ -196,5 +223,5 @@ export function useAppState(): AppState {
 }
 
 export function usePalette(): Palette {
-  return useAppState().palette;
+  return usePrefs().palette;
 }

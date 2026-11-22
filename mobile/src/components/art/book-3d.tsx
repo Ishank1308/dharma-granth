@@ -23,11 +23,12 @@ import Animated, {
   type SharedValue,
 } from 'react-native-reanimated';
 
+import { Quiet } from '@/components/error-boundary';
 import { coverFill } from '@/components/ui';
 import { hapticTap } from '@/motion/haptics';
 import { MAX_TILT, SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 
 import { Mandala } from './mandala';
@@ -72,7 +73,7 @@ export function Book3D({
   /** A short line under the monogram, such as the category. */
   label?: string;
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { animate, rich } = useMotion();
   const height = Math.round(width * 1.42);
   const spine = Math.round(width * 0.085);
@@ -147,7 +148,12 @@ export function Book3D({
       onResponderMove={(e) => onMove(e.nativeEvent.locationX, e.nativeEvent.locationY)}
       onResponderRelease={onRelease}
       onResponderTerminate={onRelease}>
-      {rich && Platform.OS !== 'web' ? <GyroTilt x={gyroX} y={gyroY} /> : null}
+      {/* A phone without a rotation sensor (or a sensor that fails) just loses the tilt, never the page. */}
+      {rich && Platform.OS !== 'web' ? (
+        <Quiet>
+          <GyroTilt x={gyroX} y={gyroY} />
+        </Quiet>
+      ) : null}
       {/* Contact shadow on the "table". */}
       <Animated.View
         pointerEvents="none"

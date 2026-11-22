@@ -10,9 +10,12 @@ import { DailyWidgetEffects } from '@/components/daily-widget-effects';
 import { RecitationProvider } from '@/audio/player';
 import { ToastProvider } from '@/motion/toast';
 import { useMotion } from '@/motion/use-motion';
-import { AppStateProvider, useAppState } from '@/state/app-state';
+import { AppStateProvider, usePrefs } from '@/state/app-state';
 import { JournalProvider } from '@/state/journal';
 import { SANSKRIT_FONT, SERIF_FONT, SERIF_ITALIC_FONT } from '@/theme/fonts';
+
+// A render error on this screen shows a Try again page instead of closing the app.
+export { ErrorBoundary } from '@/components/error-boundary';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -32,7 +35,7 @@ const WEB_FONTS: Record<string, FontSource> =
     : {};
 
 function Navigator() {
-  const { palette, ready, reduceMotion } = useAppState();
+  const { palette, ready, reduceMotion } = usePrefs();
   useFonts(WEB_FONTS);
 
   // Books and chapters slide in over the page they came from, which drifts back a little behind them (a

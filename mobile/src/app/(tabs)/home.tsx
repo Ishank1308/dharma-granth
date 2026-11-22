@@ -15,9 +15,11 @@ import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
-import { useAppState } from '@/state/app-state';
+import { useAppState, usePrefs } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 /**
  * Home, after the website's home page (app/page.tsx): the promise and a way in (hero, search, a featured
@@ -67,7 +69,7 @@ function Kicker({ children, color }: { children: string; color: string }) {
 }
 
 function Hero() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const today = useToday();
   const date = dateFromDayKey(today);
@@ -124,7 +126,7 @@ function Hero() {
  * lines, never cut short) and a quiet note. The colours are the website's own and stay in every theme.
  */
 function FeaturedPassage() {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t } = useI18n();
   const pressed = usePressed();
   const verse = loadChapter(FEATURED.id, FEATURED.chapter!)?.verses.find((v) => String(v.number) === FEATURED.verse);
@@ -192,7 +194,7 @@ function FeaturedPassage() {
 
 /** Two doorways under the featured card, as on the website: the Gita, and the Upanishads. */
 function QuickTiles() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const pressed = usePressed();
   const upanishads = CATALOG.filter((b) => b.category === 'upanishad' && b.bundled).length;
@@ -273,7 +275,7 @@ function ContinueCard() {
 }
 
 function VerseOfTheDay() {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t } = useI18n();
   const pressed = usePressed();
   const today = useToday();
@@ -321,7 +323,7 @@ function VerseOfTheDay() {
  * Panchang, Festivals and Mantras (src/app/explore).
  */
 function PanchangCard() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const pressed = usePressed();
   const hues = huesFor(palette);
@@ -397,7 +399,7 @@ function PanchangCard() {
 }
 
 function SectionHead({ title, detail, action }: { title: string; detail?: string; action?: ReactNode }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <View style={styles.sectionHead}>
       <View style={{ flex: 1 }}>
@@ -415,7 +417,7 @@ function SectionHead({ title, detail, action }: { title: string; detail?: string
 
 /** The library as book covers, after the website's HomeLibrary tiles, in each book's own colours. */
 function Shelf() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const pressed = usePressed();
   const books = SHELF.map(getEntry).filter((b): b is NonNullable<typeof b> => !!b && b.bundled);
@@ -481,7 +483,7 @@ function Shelf() {
 }
 
 function GuideCard({ title, icon, guides, tint }: { title: string; icon: 'compass' | 'sunny'; guides: Guide[]; tint: string }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   return (
     <GroupCard>
@@ -507,7 +509,7 @@ function GuideCard({ title, icon, guides, tint }: { title: string; icon: 'compas
 }
 
 function Guides() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const hues = huesFor(palette);
   return (
@@ -524,7 +526,7 @@ function Guides() {
  * colours, then the way into every topic and the knowledge pages (src/app/wisdom, src/app/knowledge).
  */
 function Wisdom() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const pressed = usePressed();
   const hues = huesFor(palette);
@@ -582,7 +584,7 @@ function Wisdom() {
 
 /** The website's band of Upanishadic sayings, as cards that scroll sideways under the reader's thumb. */
 function Sayings() {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t } = useI18n();
   const pressed = usePressed();
   const size = TYPE.title2 * settings.textScale;
@@ -624,7 +626,7 @@ function Sayings() {
 
 /** The website's trust strip, in one quiet line: what the app is, and what works offline. */
 function TrustStrip() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const { installed } = useDownloads();
   const offline = CATALOG.filter((b) => b.bundled || installed[b.id]);

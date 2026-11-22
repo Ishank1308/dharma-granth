@@ -9,15 +9,17 @@ import { getEntry } from '@/content/catalog';
 import { MOOD_LABELS, S, useI18n } from '@/i18n';
 import { allTags, filterEntries, formatDay, MOODS, type JournalEntry, type JournalMood } from '@/lib/journal';
 import { formatVerseRef } from '@/lib/verse-format';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
 import { fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /** The Svadhyaya journal: every reflection, newest first, with search and the website's mood filter. */
 export default function JournalScreen() {
   const insets = useSafeAreaInsets();
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { journal } = useJournal();
   const { t } = useI18n();
   const [query, setQuery] = useState('');
@@ -128,7 +130,7 @@ export default function JournalScreen() {
 }
 
 function EntryCard({ entry }: { entry: JournalEntry }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t, lang } = useI18n();
   const cap = fontCap(settings.textScale);
   const scale = settings.textScale;

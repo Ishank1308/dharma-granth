@@ -10,7 +10,7 @@ import { S, useI18n, type Msg } from '@/i18n';
 import { hapticSelect } from '@/motion/haptics';
 import { SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { BAR_GAP, BAR_HEIGHT, SPACE, TYPE } from '@/theme/themes';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
@@ -44,7 +44,7 @@ function TabIcon({ name, focused, color }: { name: IconName; focused: boolean; c
  * The bar takes no layout space; screens leave barClearance() at the end of their lists.
  */
 export function FloatingTabBar({ state, emitter, navigateToTab, insets }: BottomTabBarProps) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const bottom = Math.max(insets.bottom, SPACE.sm) + BAR_GAP;
   const { animate } = useMotion();
@@ -111,6 +111,10 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
                 <TabIcon name={focused ? tab.iconActive : tab.icon} focused={focused} color={focused ? palette.accent : palette.muted} />
                 <Text
                   numberOfLines={1}
+                  // Five tabs beside Search leave about 50 dp per label on a 390 dp phone; shrink a long one
+                  // ("Settings", "सहेजे गए") a little rather than cut it to "Settin…".
+                  adjustsFontSizeToFit
+                  minimumFontScale={0.8}
                   // The label grows with the system font size only this far, so it stays inside the capsule;
                   // TalkBack reads the full name either way. Devanagari is set a size larger to stay legible.
                   maxFontSizeMultiplier={1.3}
@@ -140,15 +144,15 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
 }
 
 const styles = StyleSheet.create({
-  wrap: { position: 'absolute', left: SPACE.lg, right: SPACE.lg, flexDirection: 'row', alignItems: 'center', columnGap: 10 },
-  tabs: { flex: 1, paddingHorizontal: 6 },
+  wrap: { position: 'absolute', left: SPACE.lg, right: SPACE.lg, flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm },
+  tabs: { flex: 1, paddingHorizontal: SPACE.xs },
   row: { flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
   // Tabs share the bar evenly (up to 96 wide), so four or five fit beside Search on a 360 dp phone.
   tab: {
     flex: 1,
     maxWidth: 96,
     height: BAR_HEIGHT - 12,
-    paddingHorizontal: SPACE.xs,
+    paddingHorizontal: 2,
     borderRadius: (BAR_HEIGHT - 12) / 2,
     alignItems: 'center',
     justifyContent: 'center',
