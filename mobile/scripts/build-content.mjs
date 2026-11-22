@@ -26,6 +26,7 @@
 // phone; as deflated assets they cost about a third of that, and the download is smaller too.
 //   src/content/generated/explore/…      the website's Panchang, festival and mantra data (scripts/build-explore.mjs)
 //   src/content/generated/study/…        chapter summaries (scripts/build-study.mjs)
+//   src/content/generated/learn/…        courses, reading journeys, Gita journey, daily journey, FAQ (scripts/build-learn.mjs)
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -33,6 +34,7 @@ import { Buffer } from 'node:buffer';
 
 import { buildExplore } from './build-explore.mjs';
 import { buildKnowledge } from './build-knowledge.mjs';
+import { buildLearn } from './build-learn.mjs';
 import { buildSearchIndex } from './build-search-index.mjs';
 import { buildStudy, STUDY_FILES } from './build-study.mjs';
 import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
@@ -63,6 +65,7 @@ if (
 ) {
   // The knowledge pages take under a second, so they are rebuilt even then: an older checkout has none.
   await buildKnowledge();
+  await buildLearn();
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
   // A checkout built before chapter summaries existed gets just those, not a full rebuild.
   if (!STUDY_FILES.every((f) => existsSync(f))) await buildStudy();
@@ -174,3 +177,4 @@ if (usedShards < bundledIds.length) {
 await buildSearchIndex();
 await buildKnowledge();
 await buildStudy();
+await buildLearn();
