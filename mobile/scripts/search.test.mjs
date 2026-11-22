@@ -125,7 +125,7 @@ test('snippets mark the match and never cut the Sanskrit', () => {
   assert.equal(en.text.slice(...en.marks[0]), 'dharma');
 });
 
-const SEARCH = new URL('../src/content/generated/search/', import.meta.url).pathname;
+const SEARCH = new URL('../src/content/generated/assets/content/search/', import.meta.url).pathname;
 test('the built index finds the Gita verse 2.47', { skip: !existsSync(SEARCH) && 'run `npm run content` first' }, () => {
   const files = readdirSync(SEARCH);
   assert.ok(files.length > 0);

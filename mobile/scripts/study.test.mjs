@@ -30,7 +30,7 @@ test('every summary has text in both languages and key verses that exist', { ski
       assert.ok(s.nameHi || s.nameEn || book.chapters.some((ch) => ch.number === s.chapter), `${id} ${s.chapter} has a name`);
       assert.ok(s.keyVerses.length > 0, `${id} ${s.chapter} has key verses`);
       if (!book.bundled) continue;
-      const verses = read(`books/${id}/ch-${s.chapter}.json`).verses.map((v) => String(v.number));
+      const verses = read(`assets/content/books/${id}/ch-${s.chapter}.json`).verses.map((v) => String(v.number));
       for (const k of s.keyVerses) assert.ok(verses.includes(String(k.verse)), `${id} ${s.chapter}.${k.verse} is a real verse`);
     }
   }
