@@ -1,8 +1,9 @@
 /**
- * Local backup of everything the reader keeps on the phone: bookmarks, reading position, settings, and the
- * journal with its verse collections.
+ * Local backup of everything the reader keeps on the phone: bookmarks, reading position, reading progress,
+ * settings, and the journal with its verse collections.
  * Nothing is sent anywhere (zero-account privacy); the reader exports a JSON file and imports it back.
  */
+import type { ReadingProgress } from '@/lib/progress';
 import type { SanskritScript } from '@/lib/sanskrit-script';
 import type { LineSpacing } from '@/theme/fonts';
 import type { ThemeName } from '@/theme/themes';
@@ -32,6 +33,8 @@ export interface Bookmark {
 export interface LastRead {
   id: string;
   chapter: number;
+  /** The verse at the top of the screen when the reader left, so Continue lands on it. */
+  verse?: string;
   at: string;
 }
 
@@ -54,6 +57,8 @@ export interface Settings {
   sanskritScript: SanskritScript;
   /** Line height of the reading text. */
   lineSpacing: LineSpacing;
+  /** The gentle daily reading streak on the Library screen and in the daily verse notification. */
+  showStreak: boolean;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -70,12 +75,22 @@ export const DEFAULT_SETTINGS: Settings = {
   effects: 'auto',
   sanskritScript: 'deva',
   lineSpacing: 'normal',
+  showStreak: true,
 };
 
 export interface AppData {
   settings: Settings;
   bookmarks: Bookmark[];
   lastRead: LastRead | null;
+  progress: ReadingProgress;
+}
+
+/**
+ * What a backup file holds once read. Progress is passed on as found and cleaned up by normalizeProgress
+ * in @/lib/progress when it is merged (kept out of here so this file needs no runtime imports).
+ */
+export interface ImportedData extends Omit<AppData, 'progress'> {
+  progress: unknown;
 }
 
 export interface BackupFile extends AppData {
@@ -90,7 +105,7 @@ export interface BackupFile extends AppData {
 }
 
 /** What a backup file holds: the app data, plus the raw sections that other stores normalise themselves. */
-export interface ParsedBackup extends AppData {
+export interface ParsedBackup extends ImportedData {
   journal?: unknown;
 }
 
@@ -122,6 +137,7 @@ export function normalizeSettings(raw: unknown): Settings {
     effects: EFFECTS_SETTINGS.includes(s.effects as EffectsSetting) ? (s.effects as EffectsSetting) : DEFAULT_SETTINGS.effects,
     sanskritScript: SCRIPTS.includes(s.sanskritScript as SanskritScript) ? (s.sanskritScript as SanskritScript) : DEFAULT_SETTINGS.sanskritScript,
     lineSpacing: SPACINGS.includes(s.lineSpacing as LineSpacing) ? (s.lineSpacing as LineSpacing) : DEFAULT_SETTINGS.lineSpacing,
+    showStreak: typeof s.showStreak === 'boolean' ? s.showStreak : DEFAULT_SETTINGS.showStreak,
   };
 }
 
@@ -153,7 +169,8 @@ export function normalizeLastRead(raw: unknown): LastRead | null {
   const r = raw as Partial<LastRead>;
   const chapter = Number(r.chapter);
   if (typeof r.id !== 'string' || !r.id || !Number.isFinite(chapter)) return null;
-  return { id: r.id, chapter, at: typeof r.at === 'string' ? r.at : new Date(0).toISOString() };
+  const at = typeof r.at === 'string' ? r.at : new Date(0).toISOString();
+  return r.verse != null && r.verse !== '' ? { id: r.id, chapter, verse: String(r.verse), at } : { id: r.id, chapter, at };
 }
 
 export function makeBackup(data: AppData, now = new Date(), extra: { journal?: unknown } = {}): BackupFile {
@@ -190,6 +207,7 @@ export function parseBackup(text: string): ParsedBackup {
     bookmarks: normalizeBookmarks(b.bookmarks),
     lastRead: normalizeLastRead(b.lastRead),
     ...(b.journal !== undefined ? { journal: b.journal } : {}),
+    progress: b.progress,
   };
 }
 

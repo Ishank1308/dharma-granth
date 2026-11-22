@@ -11,6 +11,7 @@ import { CATEGORIES, getEntry, webUrl } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import { summaryCollection } from '@/content/study';
 import { S, useI18n } from '@/i18n';
+import { bookReadCount, chapterReadCount, percentRead } from '@/lib/progress';
 import { toDevanagari } from '@/lib/verse-format';
 import { useScrollProgressStyle, useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
@@ -24,7 +25,7 @@ export { ErrorBoundary } from '@/components/error-boundary';
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
-  const { palette, lastRead, bookmarks } = useAppState();
+  const { palette, lastRead, bookmarks, progress } = useAppState();
   const { t } = useI18n();
   const entry = getEntry(String(id));
   const { installed } = useDownloads();
@@ -49,10 +50,14 @@ export default function ScriptureScreen() {
   const offline = entry.bundled || Boolean(installed[entry.id]);
   const resume = offline && lastRead?.id === entry.id ? entry.chapters.find((c) => c.number === lastRead.chapter) : undefined;
   const saved = bookmarks.filter((b) => b.id === entry.id).length;
+  const bookPct = percentRead(bookReadCount(progress, entry.id, entry.chapters), entry.totalVerses);
 
-  const open = (chapter: number) => {
+  const open = (chapter: number, verse?: string) => {
     if (offline) {
-      router.push({ pathname: '/scripture/[id]/[chapter]', params: { id: entry.id, chapter: String(chapter) } });
+      router.push({
+        pathname: '/scripture/[id]/[chapter]',
+        params: verse ? { id: entry.id, chapter: String(chapter), verse } : { id: entry.id, chapter: String(chapter) },
+      });
     } else {
       Linking.openURL(webUrl(entry.id, chapter)).catch(() => {});
     }
@@ -130,6 +135,14 @@ export default function ScriptureScreen() {
                       {t(offline ? S.onThisPhone : S.canDownload)}
                     </Text>
                   </View>
+                  {bookPct > 0 ? (
+                    <View style={styles.badge}>
+                      <Ionicons name={bookPct === 100 ? 'checkmark-done' : 'book-outline'} size={14} color={cover.foil} />
+                      <Text maxFontSizeMultiplier={UI_FONT_CAP} style={styles.badgeText}>
+                        {t(bookPct === 100 ? S.bookFinished : S.percentRead(bookPct))}
+                      </Text>
+                    </View>
+                  ) : null}
                   {saved > 0 ? (
                     <View style={styles.badge}>
                       <Ionicons name="bookmark-outline" size={14} color={cover.foil} />
@@ -162,6 +175,9 @@ export default function ScriptureScreen() {
           }
           renderItem={({ item, index }) => {
             const current = resume?.number === item.number;
+            const read = chapterReadCount(progress, entry.id, item.number, item.verseCount);
+            const done = item.verseCount > 0 && read >= item.verseCount;
+            const readText = done ? t(S.chapterRead) : read > 0 && item.verseCount > 0 ? t(S.chapterReadOf(read, item.verseCount)) : '';
             return (
               <GroupRow
                 first={index === 0}
@@ -169,7 +185,7 @@ export default function ScriptureScreen() {
                 inset={64}
                 highlight={current}
                 accessibilityRole={offline ? 'button' : 'link'}
-                accessibilityLabel={`${t(S.chapterA11y(item.number, item.title))}${current ? `, ${t(S.readingNowA11y)}` : ''}`}
+                accessibilityLabel={`${t(S.chapterA11y(item.number, item.title))}${current ? `, ${t(S.readingNowA11y)}` : ''}${readText ? `, ${readText}` : ''}`}
                 accessibilityHint={offline ? undefined : t(S.opensOnWebsite)}
                 onPress={() => open(item.number)}>
                 <Text style={[styles.num, { color: current ? palette.accent : palette.gold }]}>
@@ -179,10 +195,13 @@ export default function ScriptureScreen() {
                   <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
                   <Text style={{ color: current ? palette.accent : palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
                     {current
-                      ? t(S.readingNow)
-                      : `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}${item.verseCount ? `, ${t(S.verseCount(item.verseCount))}` : ''}`}
+                      ? `${t(S.readingNow)}${readText && !done ? `, ${readText}` : ''}`
+                      : readText && !done
+                        ? `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}, ${readText}`
+                        : `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}${item.verseCount ? `, ${t(S.verseCount(item.verseCount))}` : ''}`}
                   </Text>
                 </View>
+                {done ? <Ionicons name="checkmark-circle" size={20} color={palette.accent} /> : null}
                 <Ionicons name={offline ? 'chevron-forward' : 'open-outline'} size={18} color={palette.muted} />
               </GroupRow>
             );
@@ -201,7 +220,8 @@ export default function ScriptureScreen() {
             haptic
             accessibilityRole="button"
             accessibilityLabel={t(S.continueReadingA11y(entry.title, resume.number))}
-            onPress={() => open(resume.number)}
+            // Lands on the verse the reader left at, as the Library's Continue card does.
+            onPress={() => open(resume.number, lastRead?.verse)}
             style={[styles.resume, accentFill(palette), { bottom: Math.max(insets.bottom, SPACE.sm) + BAR_GAP }]}>
             <Ionicons name="play" size={18} color={palette.onAccent} />
             <Text maxFontSizeMultiplier={1.4} style={{ color: palette.onAccent, fontSize: TYPE.body, fontWeight: '700' }}>

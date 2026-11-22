@@ -1,10 +1,11 @@
 import * as Notifications from 'expo-notifications';
 import { router } from 'expo-router';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { AppState } from 'react-native';
 
 import { initNotifications, remindersSupported, syncDailyReminder, verseFromResponse } from '@/lib/daily-notification';
-import { usePrefs } from '@/state/app-state';
+import { useToday } from '@/lib/use-today';
+import { useAppState, usePrefs } from '@/state/app-state';
 
 const RESYNC_MS = 12 * 60 * 60 * 1000;
 
@@ -16,16 +17,28 @@ initNotifications();
  */
 export function DailyReminderEffects() {
   const { ready, settings, lang } = usePrefs();
-  const { dailyReminder, reminderHour, reminderMinute } = settings;
+  const { dailyReminder, reminderHour, reminderMinute, showStreak } = settings;
+  // Only the days read on matter here (see streakKey), so this re-renders once per new verse at most.
+  const { progress } = useAppState();
   const lastSync = useRef(0);
   const handled = useRef(new Set<string>());
+  const todayKey = useToday();
 
-  // Re-plan the next 30 days on start and whenever the switch, the time or the interface language changes.
+  // The streak line only changes when a day is added (the first verse read each day), the days are
+  // cleared or restored, or the date turns over. Re-plan then, not on every verse marked.
+  const streakKey = showStreak ? `${todayKey}|${progress.days.length}|${progress.days[progress.days.length - 1] ?? ''}` : '';
+  const streakDays = useMemo(
+    () => (streakKey ? progress.days.slice(-400) : null),
+    [streakKey], // eslint-disable-line react-hooks/exhaustive-deps
+  );
+
+  // Re-plan the next 30 days on start and whenever the switch, the time, the interface language or the
+  // streak changes.
   useEffect(() => {
     if (!ready || !remindersSupported) return;
     lastSync.current = Date.now();
-    void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, lang });
-  }, [ready, dailyReminder, reminderHour, reminderMinute, lang]);
+    void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, lang, streakDays });
+  }, [ready, dailyReminder, reminderHour, reminderMinute, lang, streakDays]);
 
   // Top the queue up when the app comes back after a long time in the background.
   useEffect(() => {
@@ -33,10 +46,10 @@ export function DailyReminderEffects() {
     const sub = AppState.addEventListener('change', (state) => {
       if (state !== 'active' || Date.now() - lastSync.current < RESYNC_MS) return;
       lastSync.current = Date.now();
-      void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, lang });
+      void syncDailyReminder({ enabled: dailyReminder, hour: reminderHour, minute: reminderMinute, lang, streakDays });
     });
     return () => sub.remove();
-  }, [ready, dailyReminder, reminderHour, reminderMinute, lang]);
+  }, [ready, dailyReminder, reminderHour, reminderMinute, lang, streakDays]);
 
   // A tap on the notification opens that day's verse, both from a cold start and while running.
   useEffect(() => {

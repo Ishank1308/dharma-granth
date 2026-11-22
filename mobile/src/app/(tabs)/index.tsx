@@ -5,11 +5,13 @@ import { Pressable, ScrollView, SectionList, StyleSheet, Text, TextInput, View }
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { CoverBook } from '@/components/art/cover-book';
+import { ReadingStreakCard } from '@/components/reading-streak';
 import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader, Muted } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
 import { S, useI18n } from '@/i18n';
+import { bookReadCount, isVerseRead, percentRead } from '@/lib/progress';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { AnimatedSectionList, useScrollY } from '@/motion/parallax';
@@ -31,6 +33,7 @@ function matches(b: CatalogEntry, q: string) {
 
 function DailyVerseCard() {
   const { palette, settings } = usePrefs();
+  const { progress } = useAppState();
   const { t } = useI18n();
   // Re-picked when the date changes, so the card turns over at midnight even if the app stays open.
   const today = useToday();
@@ -39,6 +42,7 @@ function DailyVerseCard() {
   const verse = loadChapter(pick.id, pick.chapter)?.verses[pick.index];
   if (!verse) return null;
   const lines = sanskritLines(verse.sanskrit);
+  const read = isVerseRead(progress, pick.id, pick.chapter, verse.number);
   const ref = t(S.gitaRef(formatVerseRef(pick.id, pick.chapter, verse.number)));
   // A verse is a page of a book, so the card wears that book's cover: one of the few places colour is lavish.
   const cover = coverFor(pick.id, getEntry(pick.id)?.category ?? 'other');
@@ -46,7 +50,7 @@ function DailyVerseCard() {
     <PressableScale
       accessibilityRole="button"
       // The label carries the verse itself: a label made of the action alone would hide the shloka from TalkBack.
-      accessibilityLabel={t(S.verseOfTheDayFullA11y(ref, lines.join('\n')))}
+      accessibilityLabel={`${t(S.verseOfTheDayFullA11y(ref, lines.join('\n')))}${read ? `. ${t(S.verseReadToday)}` : ''}`}
       accessibilityHint={t(S.verseOfTheDayA11y)}
       onPress={() =>
         router.push({
@@ -66,9 +70,12 @@ function DailyVerseCard() {
           <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: cover.foil, fontSize: TYPE.footnote, fontWeight: '600' }}>
             {t(S.verseOfTheDay)}
           </Text>
-          <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: 'rgba(255,255,255,0.78)', fontSize: TYPE.footnote }}>
-            {ref}
-          </Text>
+          <View style={styles.refRow}>
+            {read ? <Ionicons name="checkmark-circle" size={14} color="rgba(255,255,255,0.9)" /> : null}
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: 'rgba(255,255,255,0.78)', fontSize: TYPE.footnote }}>
+              {ref}
+            </Text>
+          </View>
         </View>
         {/* The whole verse, every line: never cut a shloka to fit the card. */}
         <View style={{ marginTop: SPACE.sm }}>
@@ -132,7 +139,7 @@ function BookShelf() {
 }
 
 function ContinueCard() {
-  const { lastRead, palette } = useAppState();
+  const { lastRead, palette, progress } = useAppState();
   const { t } = useI18n();
   if (!lastRead) return null;
   const entry = getEntry(lastRead.id);
@@ -140,12 +147,24 @@ function ContinueCard() {
   const ch = entry && idx >= 0 ? entry.chapters[idx] : undefined;
   if (!entry || !ch) return null;
   const cover = coverFor(entry.id, entry.category);
-  const progress = (idx + 1) / entry.chapters.length;
+  // How much of the book has been read, verse by verse. Before any verse counts, fall back to the
+  // chapter's place in the book, as before.
+  const read = bookReadCount(progress, entry.id, entry.chapters);
+  const pct = percentRead(read, entry.totalVerses);
+  const fraction = read > 0 && entry.totalVerses > 0 ? read / entry.totalVerses : (idx + 1) / entry.chapters.length;
+  const verse = lastRead.verse;
   return (
     <PressableScale
       accessibilityRole="button"
-      accessibilityLabel={t(S.continueReadingA11y(entry.title, ch.number))}
-      onPress={() => router.push({ pathname: '/scripture/[id]/[chapter]', params: { id: entry.id, chapter: String(ch.number) } })}
+      accessibilityLabel={
+        verse ? t(S.continueReadingVerseA11y(entry.title, ch.number, verse, pct)) : t(S.continueReadingA11y(entry.title, ch.number))
+      }
+      onPress={() =>
+        router.push({
+          pathname: '/scripture/[id]/[chapter]',
+          params: verse ? { id: entry.id, chapter: String(ch.number), verse } : { id: entry.id, chapter: String(ch.number) },
+        })
+      }
       haptic>
       <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
@@ -158,16 +177,24 @@ function ContinueCard() {
               {entry.title}
             </Text>
             <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
-              {ch.titleSanskrit ? `${t(S.chapterN(ch.number))}, ${ch.titleSanskrit}` : t(S.chapterN(ch.number))}
+              {verse ? t(S.continueAtVerse(ch.number, verse)) : t(S.chapterN(ch.number))}
+              {ch.titleSanskrit ? `, ${ch.titleSanskrit}` : ''}
             </Text>
           </View>
           <View style={[styles.play, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' }]}>
             <Ionicons name="play" size={18} color={palette.accent} />
           </View>
         </View>
-        {/* How far through the book: chapter by chapter, in the book's own cover colours. */}
-        <View style={[styles.track, { backgroundColor: quietFill(palette) }]}>
-          <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(progress * 100))}%` }]} />
+        {/* How far through the book, in the book's own cover colours. */}
+        <View style={styles.trackRow}>
+          <View style={[styles.track, { flex: 1, backgroundColor: quietFill(palette) }]}>
+            <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(fraction * 100))}%` }]} />
+          </View>
+          {pct > 0 ? (
+            <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
+              {pct === 100 ? t(S.bookFinished) : t(S.percentRead(pct))}
+            </Text>
+          ) : null}
         </View>
       </Card>
     </PressableScale>
@@ -207,6 +234,7 @@ function KnowledgeCard() {
 export default function LibraryScreen() {
   const insets = useSafeAreaInsets();
   const { palette } = usePrefs();
+  const { progress } = useAppState();
   const { installed } = useDownloads();
   const { t, lang } = useI18n();
   const [query, setQuery] = useState('');
@@ -256,6 +284,7 @@ export default function LibraryScreen() {
               </Text>
             </LargeHeader>
             <ContinueCard />
+            <ReadingStreakCard />
             <DailyVerseCard />
             <BookShelf />
             <KnowledgeCard />
@@ -301,18 +330,21 @@ export default function LibraryScreen() {
         renderItem={({ item, index, section }) => {
           const cover = coverFor(item.id, item.category);
           const status = item.bundled ? S.availableOffline : installed[item.id] ? S.downloadedOffline : S.canDownload;
+          const pct = percentRead(bookReadCount(progress, item.id, item.chapters), item.totalVerses);
+          const readLabel = pct === 100 ? S.bookFinished : pct > 0 ? S.percentRead(pct) : undefined;
           return (
             <GroupRow
               first={index === 0}
               last={index === section.data.length - 1}
               inset={72}
-              accessibilityLabel={`${t(S.bookA11y(item.title, item.chapters.length))}, ${t(status)}`}
+              accessibilityLabel={`${t(S.bookA11y(item.title, item.chapters.length))}, ${t(status)}${readLabel ? `, ${t(readLabel)}` : ''}`}
               onPress={() => router.push({ pathname: '/scripture/[id]', params: { id: item.id } })}>
               <CoverTile cover={cover} letter={monogram(item.titleSanskrit ?? item.title)} />
               <View style={{ flex: 1 }}>
                 <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
                 <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
                   {item.title} · {t(S.bookSummary(item.chapters.length, item.totalVerses))}
+                  {readLabel ? <Text style={{ color: palette.accent, fontWeight: '600' }}>{` · ${t(readLabel)}`}</Text> : null}
                 </Text>
               </View>
               {item.bundled || installed[item.id] ? null : <Ionicons name="cloud-download-outline" size={18} color={palette.muted} />}
@@ -332,6 +364,8 @@ const styles = StyleSheet.create({
   dailyLift: { boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.22), 0 14px 32px rgba(10,20,50,0.28)' },
   cardHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline', columnGap: SPACE.sm, flexWrap: 'wrap' },
   play: { width: TOUCH, height: TOUCH, borderRadius: TOUCH / 2, alignItems: 'center', justifyContent: 'center' },
+  refRow: { flexDirection: 'row', alignItems: 'center', columnGap: 4 },
+  trackRow: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm },
   track: { height: 4, borderRadius: 2, overflow: 'hidden' },
   fill: { height: 4, borderRadius: 2 },
   search: {

@@ -5,6 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'r
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
+import { ReadingStreakCard } from '@/components/reading-streak';
 import { accentFill, Backdrop, Card, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
 import { CATALOG, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
@@ -13,6 +14,7 @@ import { FEATURED, LIFE_GUIDES, PRACTICE_GUIDES, SAYINGS, SHELF, WISDOM_PICKS, t
 import { knowledge } from '@/content/knowledge';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
+import { bookReadCount, percentRead } from '@/lib/progress';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState, usePrefs } from '@/state/app-state';
@@ -233,7 +235,7 @@ function QuickTiles() {
 }
 
 function ContinueCard() {
-  const { lastRead, palette } = useAppState();
+  const { lastRead, palette, progress } = useAppState();
   const { t } = useI18n();
   const pressed = usePressed();
   if (!lastRead) return null;
@@ -242,12 +244,18 @@ function ContinueCard() {
   const ch = entry && idx >= 0 ? entry.chapters[idx] : undefined;
   if (!entry || !ch) return null;
   const cover = coverFor(entry.id, entry.category);
-  const progress = (idx + 1) / entry.chapters.length;
+  // Verse by verse once any verse counts as read; before that, the chapter's place in the book.
+  const read = bookReadCount(progress, entry.id, entry.chapters);
+  const pct = percentRead(read, entry.totalVerses);
+  const fraction = read > 0 && entry.totalVerses > 0 ? read / entry.totalVerses : (idx + 1) / entry.chapters.length;
+  const verse = lastRead.verse;
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={t(S.continueReadingA11y(entry.title, ch.number))}
-      onPress={() => open({ id: entry.id, chapter: ch.number })}
+      accessibilityLabel={
+        verse ? t(S.continueReadingVerseA11y(entry.title, ch.number, verse, pct)) : t(S.continueReadingA11y(entry.title, ch.number))
+      }
+      onPress={() => open({ id: entry.id, chapter: ch.number, verse })}
       style={({ pressed: p }) => pressed(p)}>
       <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
@@ -258,7 +266,7 @@ function ContinueCard() {
               {entry.titleSanskrit ?? entry.title}
             </Text>
             <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={1} style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: 1 }}>
-              {t(S.chapterN(ch.number))}
+              {verse ? t(S.continueAtVerse(ch.number, verse)) : t(S.chapterN(ch.number))}
               {ch.titleSanskrit ? ` · ${ch.titleSanskrit}` : ch.title ? ` · ${ch.title}` : ''}
             </Text>
           </View>
@@ -266,8 +274,15 @@ function ContinueCard() {
             <Ionicons name="play" size={18} color={palette.accent} />
           </View>
         </View>
-        <View style={[styles.track, { backgroundColor: quietFill(palette) }]}>
-          <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(progress * 100))}%` }]} />
+        <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm }}>
+          <View style={[styles.track, { flex: 1, backgroundColor: quietFill(palette) }]}>
+            <View style={[styles.fill, coverFill(cover, palette), { width: `${Math.max(4, Math.round(fraction * 100))}%` }]} />
+          </View>
+          {pct > 0 ? (
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.caption, fontWeight: '600' }}>
+              {pct === 100 ? t(S.bookFinished) : t(S.percentRead(pct))}
+            </Text>
+          ) : null}
         </View>
       </Card>
     </Pressable>
@@ -657,6 +672,7 @@ export default function HomeScreen() {
         <FeaturedPassage />
         <QuickTiles />
         <ContinueCard />
+        <ReadingStreakCard />
         <VerseOfTheDay />
         <PanchangCard />
         <Shelf />
