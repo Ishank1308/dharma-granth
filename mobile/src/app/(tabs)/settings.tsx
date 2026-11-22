@@ -222,17 +222,18 @@ export default function SettingsScreen() {
   const [busy, setBusy] = useState(false);
   const bundled = CATALOG.filter((b) => b.bundled).length;
 
-  // Each layer keeps its website hue: अर्थ peacock, English indigo, notes saffron.
+  // Each layer keeps its website hue: अर्थ peacock, English indigo, व्याख्या saffron.
   const toggles: {
-    key: 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes';
+    key: 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showVyakhya' | 'showNotes';
     label: Msg;
-    icon: 'text' | 'language' | 'globe-outline' | 'reader';
+    icon: 'text' | 'language' | 'globe-outline' | 'sparkles' | 'reader';
     color: string;
   }[] = [
     { key: 'showTransliteration', label: S.showTransliteration, icon: 'text', color: TILE.gold },
     { key: 'showHindi', label: S.showHindi, icon: 'language', color: TILE.peacock },
     { key: 'showEnglish', label: S.showEnglish, icon: 'globe-outline', color: TILE.indigo },
-    { key: 'showNotes', label: S.showNotes, icon: 'reader', color: TILE.saffron },
+    { key: 'showVyakhya', label: S.showVyakhya, icon: 'sparkles', color: TILE.saffron },
+    { key: 'showNotes', label: S.showNotes, icon: 'reader', color: TILE.gold },
   ];
 
   const errorText = (e: unknown) =>

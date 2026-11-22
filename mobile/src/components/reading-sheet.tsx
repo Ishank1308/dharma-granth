@@ -9,7 +9,7 @@ import { huesFor, quietFill, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TO
 
 const SPACING_LABELS: Record<LineSpacing, Msg> = { compact: S.spacingCompact, normal: S.spacingNormal, relaxed: S.spacingRelaxed };
 
-type ShowKey = 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes';
+type ShowKey = 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showVyakhya' | 'showNotes';
 
 /**
  * Every reading choice in one place, as the website's Aa sheet: text size, theme and what each verse shows.
@@ -23,7 +23,8 @@ export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: 
     { key: 'showTransliteration', label: S.showTransliteration },
     { key: 'showHindi', label: S.showHindi, dot: hues.peacock },
     { key: 'showEnglish', label: S.showEnglish, dot: hues.indigo },
-    { key: 'showNotes', label: S.showNotes, dot: hues.saffron },
+    { key: 'showVyakhya', label: S.showVyakhya, dot: hues.saffron },
+    { key: 'showNotes', label: S.showNotes },
   ];
 
   return (
