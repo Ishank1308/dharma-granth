@@ -19,6 +19,8 @@ import { coverFor, monogram } from '@/theme/covers';
 import { SANSKRIT_FONT } from '@/theme/fonts';
 import { BAR_GAP, BAR_HEIGHT, barClearance, huesFor, RADIUS, SPACE, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 export default function ScriptureScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();

@@ -11,6 +11,8 @@ import { useAppState } from '@/state/app-state';
 import { festivalColors } from '@/theme/festival-colors';
 import { SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /**
  * Festivals, as dharmagranth.dev/festivals/: the dated calendar of the coming months, then a guide to each
  * major festival (meaning, story, practices, chants and regional customs) from the website's data/festivals.ts.

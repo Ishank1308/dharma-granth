@@ -8,6 +8,7 @@ import { requestWidgetUpdate, type WidgetTaskHandler } from 'react-native-androi
 import { Platform } from 'react-native';
 
 import { resolveLanguage } from '@/i18n/language';
+import { afterStartup } from '@/lib/after-startup';
 import { DEFAULT_SETTINGS, normalizeSettings, type Settings } from '@/lib/backup';
 import { SETTINGS_KEY } from '@/state/app-state';
 import { DAILY_VERSE_WIDGET, DailyVerseWidget, dailyVerseWidgetData } from './daily-verse-widget';
@@ -46,10 +47,16 @@ export const widgetTaskHandler: WidgetTaskHandler = async ({ widgetInfo, widgetA
  */
 export function refreshDailyVerseWidget(settings: Pick<Settings, 'theme' | 'language'>): Promise<void> {
   if (Platform.OS !== 'android') return Promise.resolve();
-  return requestWidgetUpdate({
-    widgetName: DAILY_VERSE_WIDGET,
-    renderWidget: (info) => render(settings, info.width, info.height),
-  }).catch(() => {
-    // The widget module is missing (for example in a dev client built before this change).
-  });
+  // From the app only: on a cold start, wait until the first screen has settled. (Android's own widget
+  // updates go through widgetTaskHandler above and are never delayed.)
+  return afterStartup()
+    .then(() =>
+      requestWidgetUpdate({
+        widgetName: DAILY_VERSE_WIDGET,
+        renderWidget: (info) => render(settings, info.width, info.height),
+      }),
+    )
+    .catch(() => {
+      // The widget module is missing (for example in a dev client built before this change).
+    });
 }

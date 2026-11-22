@@ -11,6 +11,8 @@ import { useAppState } from '@/state/app-state';
 import { festivalColors } from '@/theme/festival-colors';
 import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
+export { ErrorBoundary } from '@/components/error-boundary';
+
 /** One festival's guide, with the same sections as its card on dharmagranth.dev/festivals/. */
 export default function FestivalScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();

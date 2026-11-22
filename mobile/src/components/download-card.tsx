@@ -3,11 +3,41 @@ import { Alert, Linking, Pressable, StyleSheet, Text, View } from 'react-native'
 
 import { accentFill, Card, glass } from '@/components/ui';
 import { getEntry, webUrl } from '@/content/catalog';
-import { cancelDownload, deleteDownload, formatBytes, startDownload, useDownloads, useRemoteIndex } from '@/content/downloads';
+import {
+  cancelDownload,
+  deleteDownload,
+  formatBytes,
+  startDownload,
+  useDownloads,
+  useRemoteIndex,
+  type DownloadErrorCode,
+} from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
-import { S, useI18n } from '@/i18n';
+import { S, useI18n, type Msg } from '@/i18n';
 import { useAppState } from '@/state/app-state';
 import { RADIUS, SPACE, TOUCH, TYPE } from '@/theme/themes';
+
+/** The sentence for a failed download. `bytes` is the text's size on the phone, for the free-space message. */
+export function downloadErrorText(code: DownloadErrorCode, bytes: number): Msg {
+  switch (code) {
+    case 'offline':
+      return S.downloadErrOffline;
+    case 'server':
+      return S.downloadErrServer;
+    case 'space':
+      return S.downloadErrSpace(formatBytes(Math.round(bytes * 1.35)));
+    case 'damaged':
+      return S.downloadErrDamaged;
+    case 'incomplete':
+      return S.downloadErrIncomplete;
+    case 'unavailable':
+      return S.downloadNotYet;
+    case 'update':
+      return S.downloadErrUpdate;
+    default:
+      return S.downloadErrFailed;
+  }
+}
 
 /** Download, progress, update and delete for one large text, shown at the top of its chapter list. */
 export function DownloadCard({ entry }: { entry: CatalogEntry }) {
@@ -18,8 +48,8 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
   const id = entry.id;
   const mine = installed[id];
   const job = jobs[id];
-  const error = errors[id];
   const remote = index?.books[id];
+  const error = errors[id] ? t(downloadErrorText(errors[id], remote?.bytes ?? 0)) : undefined;
   const update = Boolean(mine && remote && remote.version !== mine.version);
 
   const title = { color: palette.text, fontSize: TYPE.callout, fontWeight: '600' } as const;
@@ -64,7 +94,11 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
         <View style={{ flex: 1 }}>
           <Text style={title}>{t(S.downloadedSize(formatBytes(mine.bytes)))}</Text>
           <Text style={note}>{t(update ? S.downloadUpdateAvailable : S.downloadReady)}</Text>
-          {error ? <Text style={[note, { color: palette.accent }]}>{error}</Text> : null}
+          {error ? (
+            <Text accessibilityLiveRegion="polite" style={[note, { color: palette.accent }]}>
+              {error}
+            </Text>
+          ) : null}
         </View>
         {update ? (
           <Pressable accessibilityRole="button" accessibilityLabel={t(S.updateDownloadA11y)} onPress={() => startDownload(id)} style={[styles.btn, accentFill(palette)]}>
@@ -93,7 +127,11 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
                   ? t(S.downloadNotYet)
                   : t(S.downloadChecking))}
           </Text>
-          {error ? <Text style={[note, { color: palette.accent }]}>{error}</Text> : null}
+          {error ? (
+            <Text accessibilityLiveRegion="polite" style={[note, { color: palette.accent }]}>
+              {error}
+            </Text>
+          ) : null}
         </View>
       </View>
       <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
