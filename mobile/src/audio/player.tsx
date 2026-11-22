@@ -23,8 +23,11 @@ interface RecitationState {
   phase: RecitationPhase;
   /** True while a whole chapter is queued (the player moves on to the next verse). */
   continuous: boolean;
-  /** Play one verse, or toggle pause when it is the current one. */
-  toggleVerse: (id: string, chapter: number, verse: string) => void;
+  /**
+   * Play a verse, or toggle pause when it is the current one. With `verses` (the chapter's recited verses in
+   * order), playback carries on into the following verses, as a reader expects from a verse's play button.
+   */
+  toggleVerse: (id: string, chapter: number, verse: string, verses?: string[]) => void;
   /** Play the listed verses in order, starting at `from` (default: the first). */
   playChapter: (id: string, chapter: number, verses: string[], from?: string) => void;
   pause: () => void;
@@ -100,7 +103,7 @@ export function RecitationProvider({ children }: { children: ReactNode }) {
   }, [wanted, status.isLoaded, player, currentKey, setFailed]);
 
   const toggleVerse = useCallback(
-    (id: string, chapter: number, verse: string) => {
+    (id: string, chapter: number, verse: string, verses?: string[]) => {
       const q = queueRef.current;
       const key = recitationKey(id, chapter, verse);
       if (q && key === recitationKey(q.id, q.chapter, q.verses[q.index]) && !failedRef.current) {
@@ -113,7 +116,8 @@ export function RecitationProvider({ children }: { children: ReactNode }) {
         }
         return;
       }
-      load({ id, chapter, verses: [verse], index: 0 });
+      const list = verses && verses.includes(verse) ? verses : [verse];
+      load({ id, chapter, verses: list, index: list.indexOf(verse) });
     },
     [player, load],
   );

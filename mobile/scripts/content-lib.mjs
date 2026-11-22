@@ -140,3 +140,94 @@ export function openBook(dataDir, id) {
 export function isBundled(book, maxBytes = DEFAULT_MAX_MB * 1024 * 1024) {
   return book.size > 0 && (book.size <= maxBytes || ALWAYS_BUNDLE.has(book.id));
 }
+
+// ── Hindi व्याख्या (the website's verse commentary) ─────────────────────────────────────────────────
+// public/data/hi-commentary/<id>.json is keyed `${chapter}:${verse}` and holds the व्याख्या (explanation),
+// the research note (science) and जीवन सूत्र (lifeLesson). The app downloads it per book from the
+// website (scripts/build-app-data.mjs), already resolved to the verse numbers the reader shows, so the
+// app never needs the website's key-matching rules. Too large to bundle (about 64 MB for the bundled books).
+
+/** Within-chapter verse id from a seeded `number` (ch 2 + "2.10" → "10"). Mirrors lib/canonical-verse-id.ts. */
+export function canonicalVerseId(chapterNumber, verseNumber) {
+  const s = String(verseNumber);
+  if (!s.includes('.')) return s;
+  const parts = s.split('.');
+  if (parts.length >= 2 && Number(parts[0]) === chapterNumber) return parts.slice(1).join('.');
+  return parts[parts.length - 1] ?? s;
+}
+
+/**
+ * The commentary entry for one verse, as lib/commentary-lookup.ts resolves it: an exact key first, a
+ * shortened numeric key only when no other verse of the chapter shares it.
+ */
+export function lookupCommentary(all, chapter, number, ambiguity) {
+  const rawKey = `${chapter}:${number}`;
+  if (all[rawKey] != null) return ambiguity.raw.has(rawKey) ? undefined : all[rawKey];
+  const value = Number(canonicalVerseId(chapter, number));
+  if (!Number.isFinite(value)) return undefined;
+  const key = `${chapter}:${value}`;
+  if (key !== rawKey && ambiguity.normalized.has(key)) return undefined;
+  return all[key] ?? undefined;
+}
+
+function ambiguities(chapter, numbers) {
+  const normalized = new Set();
+  const raw = new Set();
+  const seenN = new Set();
+  const seenR = new Set();
+  for (const number of numbers) {
+    const rawKey = `${chapter}:${number}`;
+    if (seenR.has(rawKey)) raw.add(rawKey);
+    seenR.add(rawKey);
+    const value = Number(canonicalVerseId(chapter, number));
+    if (!Number.isFinite(value)) continue;
+    const key = `${chapter}:${value}`;
+    if (seenN.has(key)) normalized.add(key);
+    seenN.add(key);
+  }
+  return { normalized, raw };
+}
+
+/**
+ * A book's Hindi commentary for the app: { chapters: { [chapter]: { [verse number]: entry } }, verses }.
+ * An entry is { v: व्याख्या, r: research note, l: जीवन सूत्र, vd/rd/ld: true when that note is a
+ * reviewed AI draft, labelled as on the website }. Null when the book has none.
+ */
+export function readCommentary(dataDir, book) {
+  const path = join(dataDir, '..', 'hi-commentary', `${book.id}.json`);
+  if (!existsSync(path)) return null;
+  const all = readJson(path);
+  const chapters = {};
+  let verses = 0;
+  for (const ch of book.chapters) {
+    const list = book.readVerses(ch.number);
+    const amb = ambiguities(ch.number, list.map((v) => v.number));
+    const out = {};
+    for (const verse of list) {
+      const c = lookupCommentary(all, ch.number, verse.number, amb);
+      if (!c) continue;
+      const entry = {};
+      const v = clean(c.explanation);
+      const r = clean(c.science);
+      const l = clean(c.lifeLesson);
+      if (v) {
+        entry.v = v;
+        if (c.ai || c.explanationAi || c.editorial) entry.vd = true;
+      }
+      if (r) {
+        entry.r = r;
+        if (c.ai || c.scienceAi) entry.rd = true;
+      }
+      if (l) {
+        entry.l = l;
+        if (c.ai) entry.ld = true;
+      }
+      if (entry.v || entry.r || entry.l) {
+        out[String(verse.number)] = entry;
+        verses++;
+      }
+    }
+    if (Object.keys(out).length) chapters[ch.number] = out;
+  }
+  return verses ? { chapters, verses } : null;
+}

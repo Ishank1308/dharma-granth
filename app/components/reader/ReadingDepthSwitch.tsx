@@ -1,16 +1,31 @@
 'use client';
 
 import { useRef, type KeyboardEvent } from 'react';
-import { READING_DEPTHS, useReadingDepth } from '@/lib/reading-depth';
+import { READING_DEPTHS, useReadingDepth, type ReadingDepth } from '@/lib/reading-depth';
 
 /**
- * Read / Understand / Study: one keyboard-operable radio group for the chapter's reading depth.
- * `fill` is for the Aa sheet, where the three choices share the full width and keep both names
- * (one above the other on a phone under 360px, where three pairs do not fit side by side).
- * `labelledBy` names the group from a label already on screen instead of repeating it.
+ * Read / Understand / Study: one keyboard-operable radio group for the reading depth, the same on
+ * chapter and verse pages. `fill` is for the Aa sheet, where the three choices share the full width
+ * and keep both names (one above the other on a phone under 360px, where three pairs do not fit side
+ * by side). `labelledBy` names the group from a label already on screen instead of repeating it.
+ * The verse page passes `value` and `onChange`: before a first choice it shows its own default view.
  */
-export function ReadingDepthSwitch({ className = '', fill = false, labelledBy }: { className?: string; fill?: boolean; labelledBy?: string }) {
-  const [depth, setDepth] = useReadingDepth();
+export function ReadingDepthSwitch({
+  className = '',
+  fill = false,
+  labelledBy,
+  value,
+  onChange,
+}: {
+  className?: string;
+  fill?: boolean;
+  labelledBy?: string;
+  value?: ReadingDepth;
+  onChange?: (d: ReadingDepth) => void;
+}) {
+  const [storedDepth, setStoredDepth] = useReadingDepth();
+  const depth = value ?? storedDepth;
+  const setDepth = onChange ?? setStoredDepth;
   const buttons = useRef<Array<HTMLButtonElement | null>>([]);
 
   const onRadioKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {

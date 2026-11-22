@@ -13,16 +13,36 @@ export function getEntry(id: string): CatalogEntry | undefined {
   return byId.get(id);
 }
 
+/** Recently opened bundled chapters, so going back and forth does not read and parse them again. */
+const bundledCache = new Map<string, BookChapter>();
+const BUNDLED_CACHE_SIZE = 8;
+
 /**
- * Loads one bundled chapter. Each chapter is its own module, so opening a chapter parses only that
- * chapter, not the whole book (Ramcharitmanas alone is 5 MB). Metro keeps a required module for the
- * rest of the session, so memory grows only with the chapters the reader has actually opened.
+ * Loads one bundled chapter. Each chapter is its own file (an APK asset on Android, see
+ * generated/loaders.android.ts), so opening a chapter parses only that chapter, not the whole book
+ * (Ramcharitmanas alone is 5 MB). The last few chapters stay in memory.
  * Books too large to bundle are read from the phone once the reader has downloaded them
  * (src/content/downloads.ts); otherwise this returns undefined.
  */
 export function loadChapter(id: string, chapter: number): BookChapter | undefined {
   const loader = CHAPTER_LOADERS[id]?.[chapter];
-  return loader ? loader() : readDownloadedChapter(id, chapter);
+  if (!loader) return readDownloadedChapter(id, chapter);
+  const key = `${id}:${chapter}`;
+  const hit = bundledCache.get(key);
+  if (hit) {
+    // Move to the back, so the oldest entry is the one dropped.
+    bundledCache.delete(key);
+    bundledCache.set(key, hit);
+    return hit;
+  }
+  try {
+    const parsed = loader();
+    bundledCache.set(key, parsed);
+    if (bundledCache.size > BUNDLED_CACHE_SIZE) bundledCache.delete(bundledCache.keys().next().value!);
+    return parsed;
+  } catch {
+    return undefined;
+  }
 }
 
 export function webUrl(id: string, chapter?: number): string {
@@ -44,9 +64,12 @@ export const CATEGORIES: { key: string; en: string; hi: string }[] = [
 /**
  * The verse of the day: the same Gita verse for everyone on a given date. Picked from the catalog's
  * verse counts, so only the one chapter that holds the verse is loaded at startup.
+ *
+ * `bookId` picks from another bundled book instead (the daily notification can follow the book the reader
+ * is in). A book that is not bundled gives undefined, and the caller falls back to the Gita.
  */
-export function dailyVerse(date = new Date()): { id: string; chapter: number; index: number } | undefined {
-  const entry = getEntry('bhagavadgita');
+export function dailyVerse(date = new Date(), bookId = 'bhagavadgita'): { id: string; chapter: number; index: number } | undefined {
+  const entry = getEntry(bookId);
   if (!entry?.bundled) return undefined;
   const total = entry.chapters.reduce((n, c) => n + c.verseCount, 0);
   if (total === 0) return undefined;

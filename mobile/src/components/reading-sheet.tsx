@@ -1,50 +1,34 @@
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { IconButton } from '@/components/ui';
 import { S, useI18n, type Msg } from '@/i18n';
 import { SANSKRIT_SCRIPTS, SCRIPT_NAMES } from '@/lib/sanskrit-script';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
+import { Sheet } from '@/motion/sheet';
 import { LINE_SPACINGS, sanskritFont, type LineSpacing } from '@/theme/fonts';
-import { huesFor, quietFill, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { huesFor, quietFill, RADIUS, SPACE, TEXT_SCALES, THEME_ORDER, THEMES, TOUCH, TYPE } from '@/theme/themes';
 
 const SPACING_LABELS: Record<LineSpacing, Msg> = { compact: S.spacingCompact, normal: S.spacingNormal, relaxed: S.spacingRelaxed };
 
-type ShowKey = 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes';
+type ShowKey = 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showVyakhya' | 'showNotes';
 
 /**
  * Every reading choice in one place, as the website's Aa sheet: text size, theme and what each verse shows.
  * It writes the same settings as the Settings tab, so the two always agree.
  */
 export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: () => void }) {
-  const insets = useSafeAreaInsets();
-  const { palette, settings, updateSettings, reduceMotion } = useAppState();
+  const { palette, settings, updateSettings } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const layers: { key: ShowKey; label: Msg; dot?: string }[] = [
     { key: 'showTransliteration', label: S.showTransliteration },
     { key: 'showHindi', label: S.showHindi, dot: hues.peacock },
     { key: 'showEnglish', label: S.showEnglish, dot: hues.indigo },
-    { key: 'showNotes', label: S.showNotes, dot: hues.saffron },
+    { key: 'showVyakhya', label: S.showVyakhya, dot: hues.saffron },
+    { key: 'showNotes', label: S.showNotes },
   ];
 
   return (
-    <Modal visible={visible} transparent animationType={reduceMotion ? 'none' : 'slide'} statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>
-      {/* Tapping outside closes the sheet; screen readers use the Close button or Back instead. */}
-      <Pressable style={styles.scrim} onPress={onClose} accessible={false} importantForAccessibility="no" />
-      <View
-        accessibilityViewIsModal
-        style={[
-          styles.sheet,
-          { backgroundColor: palette.dark ? '#1c1c1e' : palette.card, paddingBottom: Math.max(insets.bottom, SPACE.lg) + SPACE.sm },
-        ]}>
-        <View style={[styles.grabber, { backgroundColor: quietFill(palette) }]} />
-        <View style={styles.head}>
-          <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '700' }}>
-            {t(S.readingOptions)}
-          </Text>
-          <IconButton icon="close" onPress={onClose} accessibilityLabel={t(S.close)} color={palette.text} tone="quiet" />
-        </View>
+    <Sheet visible={visible} title={t(S.readingOptions)} onClose={onClose}>
         <ScrollView contentContainerStyle={{ rowGap: SPACE.lg }}>
           <View>
             <Text accessibilityRole="header" style={[styles.label, { color: palette.muted }]}>{t(S.textSize)}</Text>
@@ -167,26 +151,11 @@ export function ReadingSheet({ visible, onClose }: { visible: boolean; onClose: 
             <Text style={{ color: palette.muted, fontSize: TYPE.footnote, marginTop: SPACE.sm }}>{t(S.sanskritAlwaysFull)}</Text>
           </View>
         </ScrollView>
-      </View>
-    </Modal>
+    </Sheet>
   );
 }
 
 const styles = StyleSheet.create({
-  scrim: { flex: 1, backgroundColor: 'rgba(0,0,0,0.35)' },
-  sheet: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    maxHeight: '85%',
-    borderTopLeftRadius: RADIUS.panel + 6,
-    borderTopRightRadius: RADIUS.panel + 6,
-    paddingHorizontal: SPACE.xl - 4,
-    paddingTop: SPACE.sm,
-  },
-  grabber: { alignSelf: 'center', width: 40, height: 5, borderRadius: 3, marginBottom: SPACE.sm },
-  head: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: SPACE.sm },
   label: { fontSize: TYPE.footnote, fontWeight: '600', marginBottom: SPACE.sm, paddingHorizontal: SPACE.xs },
   segment: { flexDirection: 'row', borderRadius: RADIUS.control + 4, padding: 4 },
   segmentItem: { flex: 1, minHeight: TOUCH, borderRadius: RADIUS.control, alignItems: 'center', justifyContent: 'center' },

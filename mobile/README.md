@@ -42,7 +42,7 @@ npm run shard:scriptures
 cd mobile
 npm install
 npm run content        # copies scripture text from ../public/data into src/content/generated/
-npm start              # then press "a" for an Android emulator, or scan the QR code with Expo Go
+npm run android        # builds a development build and installs it on an emulator or phone
 ```
 
 `npm start` and `npm run android` build the content automatically if it is missing. Run
@@ -68,13 +68,15 @@ script reads `../public/data`. With a local Android SDK, `npm run android` build
 (falling back to the full-book JSON when shards are missing) and writes:
 
 - `src/content/generated/catalog.json`: every scripture and its chapters
-- `src/content/generated/books/<id>/ch-N.json`: verse text for each chapter of a bundled scripture
-- `src/content/generated/loaders.ts`: lazy `require()` map per chapter, so opening a chapter parses only that chapter
-- `src/content/generated/search/<id>.json` and `search-loaders.ts`: the verse search index, built by
-  `scripts/build-search-index.mjs` (needs Node 22.18+, which runs the shared TypeScript fold code directly)
+- `src/content/generated/assets/content/books/<id>/ch-N.json`: verse text for each chapter of a bundled scripture
+- `src/content/generated/loaders.android.ts`: per-chapter loader map that reads those files from the APK's assets,
+  so opening a chapter parses only that chapter (`loaders.ts` is the same map as `require()`s, for web and iOS)
+- `src/content/generated/assets/content/search/<id>.json` and `search-loaders(.android).ts`: the verse search index,
+  built by `scripts/build-search-index.mjs` (needs Node 22.18+, which runs the shared TypeScript fold code directly)
 
 A book is bundled when its chapter data is at most 2.6 MB (`--max-mb=N` changes this), plus the books
-in `ALWAYS_BUNDLE` (Ramcharitmanas). The bundle is about 24 MB of Hermes bytecode today. Generated files are git-ignored.
+in `ALWAYS_BUNDLE` (Ramcharitmanas). That is about 35 MB of JSON, which ships as compressed APK assets (see
+[App size](#app-size)). Generated files are git-ignored.
 
 Verse formatting (references, meaning notices) mirrors `lib/verse-format.ts` at the repo root.
 
@@ -106,6 +108,27 @@ The pilot was generated with ElevenLabs (`eleven_v4`, voice "Kuber J - Calm, Dev
 one generation per verse from the Sanskrit text with `[slowly] [softly]` in front and the verse number
 removed. The reader shows a credit line (`S.recitationCredit`) on chapters with audio.
 
+## App size
+
+`plugins/with-smaller-android.js` keeps the Android build small:
+
+- Scripture text and the search index ship as deflated APK assets under `assets/content/`, read with
+  `src/content/bundled-assets.ts`. They used to be `require()`d into the Hermes bundle, which the APK stores
+  uncompressed, so 35 MB of verses took 35 MB on the phone. Expo Go cannot read them; use `npm run android`.
+- `armeabi-v7a`, `arm64-v8a` and `x86_64`; no 32-bit x86. Keep x86_64: a Chromebook or emulator given ARM-only libs crashes at launch ("couldn't find DSO libreactnative.so"). Play serves each device only its own ABI.
+- Android resource shrinking on top of R8, and no Fresco GIF or WebP decoders (no GIFs; Android decodes static WebP).
+
+Measured with `bundletool get-size total` on 2026-11-21, arm64 phone:
+
+| | Before | After |
+|---|---|---|
+| .aab uploaded to Play | 76.6 MB | 48.0 MB |
+| APKs installed on the phone | 63.1 MB | 40.5 MB |
+| Play download (estimate) | 23.6 MB | 23.3 MB |
+
+The download is now mostly native libraries (about 7 MB), bundled verses (6.5 MB), the search index (3.9 MB)
+and Java code (3.1 MB). Cutting it much further means shipping fewer texts or building the search index on the phone.
+
 ## Checks
 
 ```bash
@@ -122,8 +145,8 @@ The index keeps one line per verse: Sanskrit and Hindi, folded transliteration, 
 translation (commentary and word meanings stay out). Devanagari is stored one ASCII character per
 letter, so Hermes holds it at one byte per character, and matching is by substring, so any part of a
 Sanskrit compound finds it. Spelling variants meet: शांति / शान्ति, krishna / kṛṣṇa / krsna. Nothing
-loads until the first search, and each book's index is then kept for later queries. The index adds
-about 10 MB to the Hermes bundle (about 4 MB compressed). Logic and tests: `src/lib/verse-search.ts`,
+loads until the first search, and each book's index is then kept for later queries. The index is
+about 11 MB of JSON (about 4 MB compressed in the APK). Logic and tests: `src/lib/verse-search.ts`,
 `scripts/search.test.mjs`.
 
 Downloaded texts are searched too. While a large text downloads, the app folds its verses with the

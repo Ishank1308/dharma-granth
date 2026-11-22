@@ -4,13 +4,15 @@ import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { EmptyArt } from '@/components/art/empty-art';
 import { Backdrop, barSurface, Card, Chip, coverFill, glass, GroupTitle, LargeHeader, Muted } from '@/components/ui';
-import { getEntry } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import {
+  ASHTAVAKRA_ID,
   BUNDLED_SEARCHABLE_COUNT,
   MAX_RESULTS,
   prepareSearchIndexes,
+  searchEntry,
   searchSections,
   searchVerses,
   snippetFor,
@@ -22,10 +24,12 @@ import {
 import { S, useI18n } from '@/i18n';
 import { useKeyboardHeight } from '@/lib/use-keyboard-height';
 import { formatVerseRef } from '@/lib/verse-format';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
 import type { Palette } from '@/theme/themes';
 import { BAR_GAP, BAR_HEIGHT, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
+
+export { ErrorBoundary } from '@/components/error-boundary';
 
 const EXAMPLES = ['कर्मण्येवाधिकारस्ते', 'शान्ति', 'आत्मा', 'krishna', 'karma yoga', 'fruits of action'];
 
@@ -48,7 +52,7 @@ const ResultCard = memo(function ResultCard({
   a11y: (ref: string, text: string) => string;
 }) {
   const snippet = useMemo(() => snippetFor(hit, tokens), [hit, tokens]);
-  const entry = getEntry(hit.id);
+  const entry = searchEntry(hit.id);
   const ref = `${entry?.title ?? hit.id} ${formatVerseRef(hit.id, hit.chapter, hit.number)}`;
   if (!snippet) return null;
 
@@ -71,10 +75,15 @@ const ResultCard = memo(function ResultCard({
       accessibilityRole="button"
       accessibilityLabel={a11y(ref, snippet.text)}
       onPress={() =>
-        router.push({
-          pathname: '/scripture/[id]/[chapter]',
-          params: { id: hit.id, chapter: String(hit.chapter), verse: hit.number },
-        })
+        hit.id === ASHTAVAKRA_ID
+          ? router.push({
+              pathname: '/ashtavakra/[chapter]/[verse]',
+              params: { chapter: String(hit.chapter), verse: hit.number },
+            })
+          : router.push({
+              pathname: '/scripture/[id]/[chapter]',
+              params: { id: hit.id, chapter: String(hit.chapter), verse: hit.number },
+            })
       }
       style={({ pressed }) => ({ opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.985 : 1 }] })}>
       <Card style={{ marginBottom: SPACE.md }}>
@@ -123,7 +132,7 @@ export default function SearchScreen() {
   const params = useLocalSearchParams<{ q?: string }>();
   const insets = useSafeAreaInsets();
   const keyboard = useKeyboardHeight();
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t } = useI18n();
   const [query, setQuery] = useState(typeof params.q === 'string' ? params.q : '');
   const [section, setSection] = useState<string | null>(null);
@@ -233,7 +242,7 @@ export default function SearchScreen() {
                 </Text>
               ) : null}
               {indexing.pending.length > 0 ? (
-                <Muted>{t(S.searchPreparingDownloads(indexing.pending.map((id) => getEntry(id)?.title ?? id).join(', ')))}</Muted>
+                <Muted>{t(S.searchPreparingDownloads(indexing.pending.map((id) => searchEntry(id)?.title ?? id).join(', ')))}</Muted>
               ) : null}
             </View>
           }
@@ -251,7 +260,10 @@ export default function SearchScreen() {
                 </View>
               </View>
             ) : result && !busy && result.tokens.length > 0 ? (
-              <Muted style={{ textAlign: 'center', marginTop: SPACE.xl }}>{t(S.searchNoVerse(q, !!section))}</Muted>
+              <View style={{ alignItems: 'center', marginTop: SPACE.lg, rowGap: SPACE.sm }}>
+                <EmptyArt kind="search" size={112} />
+                <Muted style={{ textAlign: 'center' }}>{t(S.searchNoVerse(q, !!section))}</Muted>
+              </View>
             ) : undefined
           }
         />
