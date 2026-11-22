@@ -55,6 +55,8 @@ const pages = sitemapSection('pages').map((e) => e.url);
 assert.ok(pages.includes(`${SITE_URL}/`), 'homepage missing');
 assert.ok(pages.includes(`${SITE_URL}/sources/`), '/sources/ missing');
 assert.ok(pages.includes(`${SITE_URL}/methodology/`), '/methodology/ missing');
+assert.ok(pages.includes(`${SITE_URL}/how-dharma-granth-works/`), '/how-dharma-granth-works/ missing');
+assert.ok(!pages.includes(`${SITE_URL}/embed/verse-of-the-day/`), 'noindex embed widget should not be in sitemap');
 assert.ok(sitemapSection('scriptures').some((e) => e.url === `${SITE_URL}/scripture/bhagavadgita/`));
 assert.ok(sitemapSection('chapters').some((e) => e.url === `${SITE_URL}/scripture/bhagavadgita/chapter/2/`));
 assert.ok(sitemapSection('verses').some((e) => e.url === `${SITE_URL}/scripture/bhagavadgita/chapter/2/verse/47/`));

@@ -1,6 +1,6 @@
 # Published Scripture Field Coverage
 
-Generated 2026-11-20 by scripts/report-published-scripture-coverage.mjs.
+Generated 2026-11-22 by scripts/report-published-scripture-coverage.mjs.
 Based on post-filter chapter shards and published Hindi commentary overlays.
 A linked passage meaning is counted separately from a verse-owned meaning.
 Field presence does NOT prove verse alignment, accuracy, source completeness, or editorial review.
@@ -19,9 +19,9 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | lingapuran | 6712 | 6712 | 223 | 0 | 150 | 0 | 168 | 0 |
 | skandapuran | 6444 | 6444 | 0 | 0 | 4261 | 0 | 4 | 0 |
 | vamanpuran | 5584 | 5584 | 56 | 0 | 288 | 0 | 1739 | 0 |
-| devibhagavat | 18385 | 18385 | 10076 | 6121 | 9 | 0 | 152 | 0 |
+| devibhagavat | 18385 | 18385 | 10081 | 6116 | 9 | 0 | 182 | 0 |
 | harivanshpuran | 16005 | 16005 | 15606 | 0 | 0 | 0 | 1 | 1 |
-| narasimhapuran | 3337 | 3337 | 3336 | 0 | 1115 | 11 | 1411 | 0 |
+| narasimhapuran | 3337 | 3337 | 3336 | 0 | 1115 | 11 | 3337 | 0 |
 | aitareya | 33 | 33 | 33 | 0 | 33 | 0 | 33 | 30 |
 | amritabindu | 22 | 22 | 22 | 0 | 22 | 0 | 22 | 6 |
 | atharvaveda | 5985 | 5985 | 5985 | 0 | 779 | 5206 | 5 | 5 |
@@ -75,6 +75,6 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | yogasutra | 195 | 195 | 195 | 0 | 195 | 0 | 195 | 3 |
 | yogavasishtha | 13 | 13 | 13 | 0 | 13 | 0 | 13 | 13 |
 | yogavasistha | 13 | 13 | 13 | 0 | 13 | 0 | 13 | 13 |
-| **Total** | 318932 | 318932 | 198707 | 7204 | 87563 | 5293 | 18877 | 664 |
+| **Total** | 318932 | 318932 | 198712 | 7199 | 87563 | 5293 | 20833 | 664 |
 
 Measured 67/67 catalogued scripture files.

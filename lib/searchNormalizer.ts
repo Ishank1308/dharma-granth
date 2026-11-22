@@ -115,6 +115,8 @@ function mapIast(value: string): string {
 function foldLatin(value: string): string {
   let out = value.toLowerCase();
   out = out.replace(/aa/g, 'a').replace(/ee|ii/g, 'i').replace(/oo|uu/g, 'u');
+  // Casual Hinglish: "gyan"/"gyaan" → "jnan" (ज्ञान / jñāna), "laxmi" → "laksmi" (लक्ष्मी / lakṣmī).
+  out = out.replace(/gy/g, 'jn').replace(/x/g, 'ks');
   out = out.replace(/chh/g, 'c').replace(/shh/g, 's').replace(/ksh/g, 'ks');
   out = out.replace(/ch/g, 'c').replace(/sh/g, 's');
   out = out.replace(/bh/g, 'b').replace(/dh/g, 'd').replace(/th/g, 't').replace(/ph/g, 'p').replace(/kh/g, 'k').replace(/gh/g, 'g').replace(/jh/g, 'j');
@@ -122,6 +124,22 @@ function foldLatin(value: string): string {
   out = out.replace(/[^a-z0-9]/g, '');
   // A nasal before a stop or sibilant is the same sound however it is written (saṃsāra, sansar, संसार).
   return out.replace(/[nm](?=[kgcjtdpbsvly])/g, 'n');
+}
+
+/**
+ * Strip common search-engine suffix noise ("samsara meaning in hindi", "gita 2.47 sloka meaning",
+ * "धर्म का अर्थ", "कर्म क्या है") when preceded by a real search term.
+ */
+export function stripSearchSuffixes(raw: string): string {
+  if (!raw) return '';
+  let q = raw.trim().replace(/[?।॥.!]+$/g, '').trim();
+  const stripped = q
+    .replace(
+      /\s+(?:full\s+)?(?:(?:shloka|sloka|shlok|slok|verse|mantra|श्लोक|मन्त्र|मंत्र)\s+)?(?:meaning\s+in\s+hindi(?:\s+and\s+english)?|meaning\s+in\s+english(?:\s+and\s+hindi)?|in\s+hindi(?:\s+and\s+english)?|in\s+english(?:\s+and\s+hindi)?|meaning|arth|artha|kya\s+hai|ka\s+arth|ka\s+matlab|का\s+अर्थ|का\s+भावार्थ|का\s+मतलब|क्या\s+है|हिन्दी\s+अर्थ|हिंदी\s+अर्थ|अर्थ)$/i,
+      '',
+    )
+    .trim();
+  return stripped.length >= 2 ? stripped : q;
 }
 
 /** One phonetic key for Devanagari, IAST, and Hinglish. */

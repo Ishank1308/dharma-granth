@@ -153,4 +153,18 @@ assert.ok(upakarma, 'searching upakarma should direct to /rituals/upakarma/');
 const avani = searchCoreIndex('avani avittam').find(({ item }) => item.href.includes('/rituals/upakarma/'));
 assert.ok(avani, 'searching avani avittam should direct to /rituals/upakarma/#regional');
 
+// Search Console real query families (Issue #259: Devanagari, IAST, Romanized Hindi, "meaning in hindi")
+for (const [query, expectedHref] of [
+  ['samsara meaning in hindi', '/concepts/samsara/'],
+  ['ahimsa meaning in hindi and english', '/concepts/ahimsa/'],
+  ['yajna meaning in hindi', '/concepts/yajna/'],
+  ['karma का अर्थ', '/concepts/karma/'],
+  ['gyan', '/concepts/jnana/'],
+  ['gyaan', '/concepts/jnana/'],
+  ['jñāna', '/concepts/jnana/'],
+] as const) {
+  const hit = searchCoreIndex(query).find(({ item }) => item.href === expectedHref);
+  assert.ok(hit, `query "${query}" should surface ${expectedHref}`);
+}
+
 console.log('search query checks passed');

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, BookOpen, FlaskConical, HeartHandshake } from 'lucide-react';
 import { JsonLd } from '@/app/components/JsonLd';
+import { clipDescription } from '@/lib/meta-text';
 import { ANSWER_THEMES, GRANTH_ANSWERS, getGranthAnswer } from '@/data/granth-answers';
 import { faqLd, pageLd } from '@/lib/jsonld';
 import { groupAnswerVerses, resolveAnswerVerse, type AnswerVerseGroup, type ResolvedAnswerVerse } from '@/lib/granth-answers-server';
@@ -20,11 +21,12 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   const a = getGranthAnswer(params.slug);
   if (!a) return {};
   const title = `${a.questionHi} · ${a.questionEn}`;
+  const description = clipDescription(`${a.sarEn} ${a.sarHi}`);
   return {
     title: { absolute: `${title} | Dharma Granth` },
-    description: `${a.sarEn} ${a.sarHi}`,
+    description,
     alternates: { canonical: pathFor(a.slug) },
-    openGraph: { type: 'article', locale: 'hi_IN', alternateLocale: ['en_US'], title, description: a.sarEn, url: pathFor(a.slug) },
+    openGraph: { type: 'article', locale: 'hi_IN', alternateLocale: ['en_US'], title, description, url: pathFor(a.slug) },
   };
 }
 

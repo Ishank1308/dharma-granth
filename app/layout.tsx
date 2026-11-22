@@ -200,6 +200,7 @@ const siteJsonLd = {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
+      alternateName: ["Dharm Granth", "Dharam Granth", "Dharmagranth", "DharmaGranth", "धर्म ग्रंथ", "धर्मग्रंथ"],
       url: `${SITE_URL}/`,
       // Square, per Google's logo guidelines (min 112×112). Built by
       // scripts/build-logo.mjs from assets/logo-source.webp.
@@ -212,8 +213,8 @@ const siteJsonLd = {
       "@id": `${SITE_URL}/#website`,
       url: `${SITE_URL}/`,
       name: SITE_NAME,
-      // Spellings readers search with (Search Console, 2026-10): "dharm granth", "dharmgranth", "धर्म ग्रंथ".
-      alternateName: ["Dharm Granth", "Dharmagranth", "DharmaGranth", "धर्म ग्रंथ", "धर्मग्रंथ"],
+      // Spellings readers search with (Search Console, 2026-10): "dharm granth", "dharam granth", "dharmgranth", "धर्म ग्रंथ".
+      alternateName: ["Dharm Granth", "Dharam Granth", "Dharmagranth", "DharmaGranth", "धर्म ग्रंथ", "धर्मग्रंथ"],
       description: DEFAULT_DESCRIPTION,
       publisher: { "@id": `${SITE_URL}/#organization` },
       inLanguage: ["hi", "sa", "en"],

@@ -1,7 +1,7 @@
 // Tier-1 search index (/search/core-index.json) and one lazy scripture shard.
 // The browser fetches these. They are not part of the first-load bundle.
 
-import { phoneticIndex } from '@/lib/searchNormalizer';
+import { phoneticIndex, stripSearchSuffixes } from '@/lib/searchNormalizer';
 import { citationScriptureHint } from '@/lib/search-citation';
 import type { SearchResultItem, SearchResultGroup } from '@/lib/search-types';
 
@@ -249,16 +249,17 @@ function scorePrepared(p: string, rowP: string): number {
 
 /** Results from the Tier-1 index, plus the open scripture shard when the query names that book. */
 export function searchCoreIndex(query: string): Array<{ item: SearchResultItem; score: number }> {
-  const p = phoneticIndex(query);
+  const cleanedQuery = stripSearchSuffixes(query);
+  const p = phoneticIndex(cleanedQuery);
   // "2.47" is chapter 2, verse 47: the folded "247" must not match every book's chapter 247.
-  const chapterDotVerse = /\d\s*[.:]\s*\d/.test(query);
+  const chapterDotVerse = /\d\s*[.:]\s*\d/.test(cleanedQuery);
   const out: Array<{ item: SearchResultItem; score: number }> = [];
   for (const entry of ensurePrepared()) {
     if (chapterDotVerse && entry.item.group === 'chapter') continue;
     const score = scorePrepared(p, entry.p);
     if (score > 0) out.push({ item: entry.item, score });
   }
-  const hint = citationScriptureHint(query);
+  const hint = citationScriptureHint(cleanedQuery);
   if (shard && hint === shard.id) {
     for (const entry of ensureShard()) {
       const score = scorePrepared(p, entry.p);

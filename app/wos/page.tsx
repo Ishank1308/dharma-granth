@@ -1,19 +1,22 @@
 import type { Metadata } from 'next';
+import { clipDescription } from '@/lib/meta-text';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { WisdomOperatingSystem } from '@/app/components/wos/WisdomOperatingSystem';
 import { PageHeader } from '@/app/components/apple/PageHeader';
 
+const WOS_DESC = clipDescription(
+  'Contemplative scripture study turning sacred verses into reflection, understanding, and daily ethical action with local-first privacy.',
+);
+
 export const metadata: Metadata = {
-  title: 'Wisdom Operating System (WOS) — प्रज्ञा व्यवस्था — Dharma Granth',
-  description:
-    'A contemplative digital wisdom ecosystem transforming sacred information into reflection, reflection into understanding, and understanding into practical action. Zero gamification, local-first privacy, and attention restoration.',
+  title: 'Wisdom Operating System (WOS) · प्रज्ञा व्यवस्था',
+  description: WOS_DESC,
   alternates: { canonical: '/wos/' },
   openGraph: {
     images: [DEFAULT_OG_IMAGE],
     title: 'Wisdom Operating System (WOS) — Dharma Granth',
-    description:
-      'Transform scripture into reflection, reflection into understanding, and understanding into action with question-first inquiry, emotional resonance, and mindful contemplation.',
-    url: 'https://dharmagranth.dev/wos',
+    description: WOS_DESC,
+    url: 'https://dharmagranth.dev/wos/',
   },
 };
 

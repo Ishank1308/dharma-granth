@@ -5,6 +5,7 @@
 import { chapterVerseHref, versePageHref } from '@/lib/verse-paths';
 import { CITATION_SCHEMES, type CitationScheme } from '@/lib/citation-schemes';
 import { CITATION_MAP, type CitationChapterEntry } from '@/lib/citation-map.generated';
+import { stripSearchSuffixes } from '@/lib/searchNormalizer';
 import RIGVEDA_COUNTS from '@/data/rigveda-hymn-verses.json';
 
 export interface DirectCitation {
@@ -106,11 +107,21 @@ function ashtavakra(chapter: number, verse: number): DirectCitation | null {
  * Returns null when the reference is not a published verse.
  */
 export function parseDirectCitation(raw: string): DirectCitation | null {
-  const q = clean(raw);
-  if (!q) return null;
+  const qFull = clean(raw);
+  if (!qFull) return null;
+  const q = clean(stripSearchSuffixes(qFull));
 
-  const gitaMatch = /^(?:bg|gita|geeta|bhagavad gita|bhagavadgita|गीता|भगवद्गीता|श्रीमद्भगवद्गीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
+  const gitaMatch = /^(?:bg|gita|geeta|bhagavad gita|bhagavadgita|bhagwat gita|bhagvat gita|गीता|भगवद्गीता|श्रीमद्भगवद्गीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|sloka|shlok|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
   if (gitaMatch) return gita(Number(gitaMatch[1]), Number(gitaMatch[2]));
+
+  // Search-Console queries like "11.15 in hindi" or "2.47 shloka" where suffix implies a verse lookup.
+  if (q !== qFull) {
+    const bareGitaWithSuffix = /^(\d{1,2})\s*[.:]\s*(\d{1,2})$/.exec(q);
+    if (bareGitaWithSuffix) {
+      const hit = gita(Number(bareGitaWithSuffix[1]), Number(bareGitaWithSuffix[2]));
+      if (hit) return hit;
+    }
+  }
 
   const avMatch = /^(?:av|ashtavakra|ashtavakragita|अष्टावक्र|अष्टावक्रगीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
   if (avMatch) return ashtavakra(Number(avMatch[1]), Number(avMatch[2]));

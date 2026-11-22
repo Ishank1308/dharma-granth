@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'Embeddable Daily Verse widget featuring Sanskrit shloka, Hindi meaning, English translation and authentic scriptural citation.',
   alternates: { canonical: '/embed/verse-of-the-day/' },
+  robots: { index: false, follow: true },
 };
 
 export default function VerseEmbedPage() {

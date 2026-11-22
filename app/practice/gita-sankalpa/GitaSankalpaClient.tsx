@@ -16,7 +16,6 @@ import {
   Loader2,
   HardDriveDownload,
   ScrollText,
-  Volume2,
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
@@ -25,6 +24,7 @@ import {
   type GitaChapterMeta,
   type GitaSankalpaState,
   type SankalpaMode,
+  getDefaultSankalpaState,
   loadSankalpaState,
   saveSankalpaState,
   activateSankalpa,
@@ -46,7 +46,7 @@ import {
 } from '@/lib/offline-scriptures';
 
 export function GitaSankalpaClient() {
-  const [state, setState] = useState<GitaSankalpaState | null>(null);
+  const [state, setState] = useState<GitaSankalpaState>(() => getDefaultSankalpaState());
   const [showInvocation, setShowInvocation] = useState(false);
   const [selectedMode, setSelectedMode] = useState<SankalpaMode>('18-days');
   const [targetChapter, setTargetChapter] = useState(12); // default Ch 12 Bhakti Yoga
@@ -83,14 +83,6 @@ export function GitaSankalpaClient() {
     window.addEventListener('dharma-offline-changed', refreshOffline);
     return () => window.removeEventListener('dharma-offline-changed', refreshOffline);
   }, []);
-
-  if (!state) {
-    return (
-      <div className="flex min-h-[400px] items-center justify-center p-8 text-dharma-muted">
-        <Loader2 className="h-6 w-6 animate-spin text-saffron-600" />
-      </div>
-    );
-  }
 
   const { chapters: todayChapters, isFulfilledToday, dayIndexInCycle } = getTodayAssignment(state, todayStr);
   const activeChapter = todayChapters[0] ?? GITA_CHAPTERS[0];

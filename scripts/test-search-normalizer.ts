@@ -16,6 +16,8 @@ const GROUPS: string[][] = [
   ['एकादशी', 'ekādaśī', 'ekadashi', 'ekadasi'],
   ['पूर्णिमा', 'pūrṇimā', 'purnima', 'poornima'],
   ['प्रदोष', 'pradoṣa', 'pradosha'],
+  ['ज्ञान', 'jñāna', 'gyana', 'gyaana'],
+  ['लक्ष्मी', 'lakṣmī', 'lakshmi', 'laxmi'],
 ];
 
 for (const group of GROUPS) {
@@ -48,9 +50,21 @@ const gita3 = parseDirectCitation('Bhagavad Gita 2.47');
 assert.ok(gita3, 'Bhagavad Gita 2.47 should parse');
 assert.equal(gita3.href, gitaCitationExpected);
 
-// Intent parsing: "verses about stress"
+// Intent parsing: English, Hindi & Romanized Hindi query families
 const intent = parseIntent('verses about stress');
 assert.ok(intent && intent.kind === 'about', 'Intent should recognize "about" pattern');
 assert.equal(intent.term, 'stress');
+
+const hiDef = parseIntent('धर्म क्या है');
+assert.ok(hiDef && hiDef.kind === 'define' && hiDef.term === 'धर्म', 'Hindi define intent');
+
+const romDef = parseIntent('samsara meaning in hindi');
+assert.ok(romDef && romDef.kind === 'define' && romDef.term === 'samsara', 'meaning in hindi define intent');
+
+const hiCmp = parseIntent('आत्मा और ब्रह्म में अंतर');
+assert.ok(hiCmp && hiCmp.kind === 'compare', 'Hindi compare intent');
+
+assert.equal(parseDirectCitation('Gita 2.47 meaning in hindi')?.href, gitaCitationExpected);
+assert.equal(parseDirectCitation('11.15 in hindi')?.href, '/scripture/bhagavadgita/chapter/11/verse/15/');
 
 console.log('normalizePhonetic & citation parser tests: ALL PASSED');
