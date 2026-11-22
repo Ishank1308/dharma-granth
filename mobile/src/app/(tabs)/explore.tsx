@@ -132,6 +132,12 @@ export default function ExploreScreen() {
           </BentoRow>
           <Tile wide row={{ title: S.learnTitle, detail: S.learnEntryDetail, icon: 'school', color: hues.saffron, href: '/learn' }} />
           <Tile wide row={{ title: S.wisdomTitle, detail: S.wisdomEntryDetail, icon: 'leaf', color: hues.tulsi, href: '/wisdom' }} />
+          {/* The website's story mode, wisdom pathways and verse network. */}
+          <BentoRow>
+            <Tile flex={1.3} row={{ title: S.storyTitle, detail: S.storyEntryDetail, icon: 'people', color: hues.saffron, href: '/story' }} />
+            <Tile row={{ title: S.pathwaysTitle, detail: S.pathwaysEntryDetail, icon: 'trail-sign', color: hues.gold, href: '/pathways' }} />
+          </BentoRow>
+          <Tile wide row={{ title: S.networkTitle, detail: S.networkEntryDetail, icon: 'git-network', color: hues.indigo, href: '/network' }} />
           {/* Plans and journal add their tiles here as those screens land. */}
         </Animated.ScrollView>
       </BentoDepth.Provider>
