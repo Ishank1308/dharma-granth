@@ -55,7 +55,7 @@ export function totalBytes(m: OfflineManifest): number {
 
 /** Saves a scripture. Throws a readable Error when it is too large or the network fails part-way (nothing half-saved stays listed). */
 export async function saveScripture(id: string, title: string, onProgress?: (done: number, total: number) => void): Promise<OfflineEntry> {
-  if (!offlineSupported()) throw new Error('This browser cannot store offline copies.');
+  if (!offlineSupported()) throw new Error('Sorry, this browser can’t keep offline copies.');
   const mres = await fetch(`${BASE}/data/scriptures-full/${id}/manifest.json`);
   if (!mres.ok) throw new Error('This text has no chapter files to save.');
   const manifest = (await mres.json()) as { chapters?: { number: number }[] };
@@ -92,7 +92,7 @@ export async function saveScripture(id: string, title: string, onProgress?: (don
     await Promise.all([worker(), worker(), worker(), worker()]);
   } catch (error) {
     await Promise.all(urls.map((u) => cache.delete(u)));
-    throw error instanceof Error ? error : new Error('Saving failed.');
+    throw error instanceof Error ? error : new Error('Sorry, this could not be saved for offline reading. Please try again.');
   }
 
   const entry: OfflineEntry = { title, savedAt: new Date().toISOString(), bytes, chapters: chapters.length };

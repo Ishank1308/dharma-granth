@@ -49,7 +49,7 @@ export function VerseCompletion({
 
   const save = () => {
     const state = toggleBookmark(readerRef, verse);
-    if (state === null) return setNote('Could not save: browser storage is unavailable.');
+    if (state === null) return setNote('Sorry, this could not be saved because the browser is not allowing storage.');
     setSaved(state);
     setNote(state ? 'Saved for later.' : 'Removed from saved verses.');
   };

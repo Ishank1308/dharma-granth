@@ -8,7 +8,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: camera=(), microphone=(), geolocation=(self)
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; media-src 'self' data: blob:; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://commentary.dharma-granth.pages.dev; media-src 'self' data: blob:; worker-src 'self' blob:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
 
 # The verse-of-the-day widget (public/embed.js, /daily-verse/) is an iframe on other people's sites.
 # Only this path may be framed by any origin; every other page keeps SAMEORIGIN and frame-ancestors 'self'.
@@ -16,7 +16,7 @@
 /embed/*
   ! X-Frame-Options
   ! Content-Security-Policy
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; media-src 'self' data: blob:; worker-src 'self' blob:; frame-ancestors *; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://commentary.dharma-granth.pages.dev; media-src 'self' data: blob:; worker-src 'self' blob:; frame-ancestors *; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
 
 # Fingerprinted build assets never change.
 /_next/static/*
@@ -86,6 +86,8 @@
 # - /assets/* and /_astro/* from other frameworks do not exist in this Next export.
 # - 'unsafe-inline' for scripts is required: the static Next export injects
 #   inline bootstrap scripts and cannot use per-request nonces.
+# - commentary.dharma-granth.pages.dev serves published commentary, which the chapter reader loads
+#   (docs/commentary-storage.md; NEXT_PUBLIC_COMMENTARY_ORIGIN in the workflows).
 # - cloudflareinsights.com is allowed so Cloudflare Web Analytics can be
 #   switched on without editing this file.
 # - HSTS has no `preload`: submitting the domain to browsers' preload lists is

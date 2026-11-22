@@ -289,7 +289,7 @@ export default function LearnPage() {
           titleHi="स्वाध्याय त्रिपदी"
           sub="Progress here is measured in clarity and calm, not certificates."
         />
-        <ol className="mt-8 grid gap-8 md:grid-cols-3">
+        <ol className="reveal-grid mt-8 grid gap-8 md:grid-cols-3">
           {PILLARS.map((p, i) => (
             <li key={p.iast}>
               <p className="text-footnote tabular-nums text-dharma-muted">{i + 1}</p>

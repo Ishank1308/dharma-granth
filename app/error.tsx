@@ -64,7 +64,7 @@ export default function Error({
           <AlertTriangle className="w-8 h-8" />
         </div>
         <p className="text-xs uppercase tracking-[0.3em] text-saffron-700 dark:text-saffron-400 font-semibold mb-3">
-          त्रुटि निवारण · Error Recovery
+          एक छोटा विराम · A quiet pause
         </p>
         <h1 className="text-3xl md:text-5xl font-serif font-bold text-dharma-text mb-2">
           पृष्ठ लोड नहीं हो सका
@@ -72,13 +72,13 @@ export default function Error({
         <p className="mb-4 text-sm text-dharma-muted" lang="en">This page could not load.</p>
         <p className="text-base text-dharma-muted mb-2 max-w-lg mx-auto leading-relaxed">
           {isChunkError
-            ? 'नेटवर्क रुकावट या नए अपडेट के कारण पृष्ठ का कुछ भाग लोड नहीं हो सका। कृपया पुनः प्रयास करें।'
-            : 'तकनीकी समस्या के कारण यह पृष्ठ बाधित हुआ है। कृपया पुनः प्रयास करें अथवा मुख्य पुस्तकालय पर लौटें।'}
+            ? 'क्षमा करें, नेटवर्क में रुकावट या नए अपडेट के कारण पृष्ठ का कुछ भाग नहीं पहुँच सका। पृष्ठ फिर से खोलने पर प्रायः यह ठीक हो जाता है।'
+            : 'क्षमा करें, एक तकनीकी अड़चन के कारण यह पृष्ठ रुक गया। कृपया एक बार फिर प्रयास करें, या मुख्य पृष्ठ पर लौट आएँ।'}
         </p>
         <p className="text-xs text-dharma-muted/70 mb-8 max-w-lg mx-auto" lang="en">
           {isChunkError
-            ? 'Part of the page failed to download (likely a dropped connection). Please reload.'
-            : 'A temporary error occurred while rendering this page.'}
+            ? 'Sorry, part of this page didn’t arrive, probably because the connection dropped. Reloading usually fixes it.'
+            : 'Sorry, a temporary problem stopped this page. Please try again, or return home.'}
         </p>
         <ErrorRecoveryVerse />
         {error.digest && (

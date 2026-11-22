@@ -4,15 +4,15 @@
 // Output: src/content/generated/plans.json (git-ignored, rebuilt with the rest of the content).
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '../..');
 const OUT = resolve(HERE, '../src/content/generated/plans.json');
 
 export async function buildPlans() {
-  const { READING_PLANS } = await import(resolve(ROOT, 'data/reading-plans.ts'));
-  const { GITA_CHAPTERS } = await import(resolve(ROOT, 'lib/gita-sankalpa.ts'));
+  const { READING_PLANS } = await import(pathToFileURL(resolve(ROOT, 'data/reading-plans.ts')).href);
+  const { GITA_CHAPTERS } = await import(pathToFileURL(resolve(ROOT, 'lib/gita-sankalpa.ts')).href);
   const plans = READING_PLANS.map((p) => ({
     id: p.id,
     title: p.title,

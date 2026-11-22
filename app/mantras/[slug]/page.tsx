@@ -203,7 +203,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
         <MantraDetailClient mantra={mantra} pageUrl={pageUrl} />
 
         {/* Padaccheda & Word-by-word meaning table */}
-        <section aria-labelledby="word-meanings-heading" className="my-10">
+        <section aria-labelledby="word-meanings-heading" className="fade-up-on-view my-10">
           <div className="flex items-center gap-2 mb-4">
             <BookOpen className="w-5 h-5 text-saffron-600" />
             <h2 id="word-meanings-heading" className="font-serif text-xl sm:text-2xl font-bold">
@@ -247,7 +247,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
         {mantra.slug === 'navagraha-stotram' && <NavagrahaMandalam />}
 
         {/* Spiritual Significance & Contemplation */}
-        <section aria-labelledby="significance-heading" className="my-10 rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 space-y-4">
+        <section aria-labelledby="significance-heading" className="fade-up-on-view my-10 rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 space-y-4">
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-amber-600" />
             <h2 id="significance-heading" className="font-serif text-xl sm:text-2xl font-bold">
@@ -276,7 +276,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
 
         {/* FAQs */}
         {mantra.faqs.length > 0 && (
-          <section aria-labelledby="faq-heading" className="my-10 space-y-4">
+          <section aria-labelledby="faq-heading" className="fade-up-on-view my-10 space-y-4">
             <h2 id="faq-heading" className="font-serif text-xl sm:text-2xl font-bold">
               <span data-bi="en">Frequently Asked Questions</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">जिज्ञासा समाधान</span><span data-bi="sep">)</span>
             </h2>

@@ -101,16 +101,16 @@ export function MuseAgentResponseView({
           <div className="space-y-1 text-sm flex-1">
             <h4 className="font-bold text-rose-200">
               {error === 'BILLING_REQUIRED'
-                ? 'बिलिंग सत्यापन आवश्यक (Billing Required)'
+                ? 'उत्तर अभी उपलब्ध नहीं (Billing needs attention)'
                 : error === 'MUSE_KEY_MISSING' || error === 'INVALID_API_KEY'
-                ? 'API कुंजी आवश्यक (API Key Missing or Invalid)'
-                : 'उत्तर प्राप्त करने में त्रुटि'}
+                ? 'API कुंजी की आवश्यकता है (API key missing or not accepted)'
+                : 'क्षमा करें, अभी उत्तर नहीं मिल सका'}
             </h4>
             <p className="text-xs text-rose-300/80">
               {error === 'BILLING_REQUIRED'
                 ? 'Meta AI प्रोजेक्ट पर बिलिंग सक्रिय करें: dev.meta.ai/billing'
                 : error === 'MUSE_KEY_MISSING' || error === 'INVALID_API_KEY'
-                ? 'कृपया मान्य Muse Spark API कुंजी दर्ज करें।'
+                ? 'कृपया एक मान्य Muse Spark API कुंजी दर्ज करें, फिर से पूछें।'
                 : error}
             </p>
           </div>

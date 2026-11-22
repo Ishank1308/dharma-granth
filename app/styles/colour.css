@@ -1246,3 +1246,41 @@ nav a[data-limb][aria-current='page'] {
 @media print {
     .chapter-highlight-art { display: none; }
 }
+
+/* ── The time of day (home hero) ──────────────────────────────────────────────────
+   The early script in app/layout.tsx sets <html data-daypart> from the reader's own clock:
+   brahma (4 to 6), morning, day, sandhya (16 to 19), night. The hero's halo and light take
+   the hour's colour and a short greeting appears above the headline. Nothing is fetched
+   and nothing moves; midday and a browser without the script look as before. */
+:root[data-daypart='brahma'] { --daypart-hue: var(--hue-gold); --greeting-hi: 'ब्राह्म मुहूर्त'; --greeting-en: 'The hour before dawn'; }
+:root[data-daypart='morning'] { --daypart-hue: var(--hue-saffron); --greeting-hi: 'सुप्रभात'; --greeting-en: 'Good morning'; }
+:root[data-daypart='sandhya'] { --daypart-hue: var(--hue-vermilion); --greeting-hi: 'शुभ सन्ध्या'; --greeting-en: 'Evening sandhya'; }
+:root[data-daypart='night'] { --daypart-hue: var(--hue-indigo); --greeting-hi: 'शुभ रात्रि'; --greeting-en: 'A quiet night'; }
+
+:root:is([data-daypart='brahma'], [data-daypart='sandhya'], [data-daypart='night']) .hero-halo {
+    color: var(--daypart-hue);
+}
+:root:is([data-daypart='brahma'], [data-daypart='sandhya'], [data-daypart='night']) .hero-daylight {
+    background-image: radial-gradient(ellipse at 78% 24%, color-mix(in srgb, var(--daypart-hue) 14%, transparent), transparent 48%);
+}
+
+.daypart-greeting {
+    display: none;
+}
+:root:is([data-daypart='brahma'], [data-daypart='morning'], [data-daypart='sandhya'], [data-daypart='night']) .daypart-greeting {
+    display: block;
+}
+.daypart-greeting::before {
+    content: var(--greeting-hi) ' · ' var(--greeting-en);
+}
+html[data-ui-lang='english'] .daypart-greeting::before {
+    content: var(--greeting-en);
+}
+html:is([data-ui-lang='hindi'], [data-ui-lang='sanskrit']) .daypart-greeting::before {
+    content: var(--greeting-hi);
+}
+@media print {
+    .daypart-greeting {
+        display: none !important;
+    }
+}

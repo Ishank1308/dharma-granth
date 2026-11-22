@@ -7,9 +7,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AshtavakraCard } from '@/components/ashtavakra-card';
 import { CoverBook } from '@/components/art/cover-book';
+import { coverArt } from '@/components/art/cover-art';
 import { EmptyArt } from '@/components/art/empty-art';
 import { ReadingStreakCard } from '@/components/reading-streak';
-import { Backdrop, Card, Chip, CoverTile, coverFill, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader, Muted } from '@/components/ui';
+import { Backdrop, Card, Chip, coverFill, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader, Muted } from '@/components/ui';
 import { CATALOG, CATEGORIES, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
@@ -26,7 +27,7 @@ import { TitleBar } from '@/motion/title-bar';
 import { toScript } from '@/lib/sanskrit-script';
 import { useAppState, usePrefs } from '@/state/app-state';
 import { sanskritFont } from '@/theme/fonts';
-import { coverFor, monogram } from '@/theme/covers';
+import { coverFor } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
@@ -167,7 +168,7 @@ function ShelfBook({ book, index, scrollX, viewport, turning }: { book: CatalogE
       style={{ width: SHELF_ITEM, rowGap: SPACE.sm }}>
       <Animated.View style={turn}>
         <View ref={ref} collapsable={false}>
-          <CoverBook cover={coverFor(book.id, book.category)} letter={monogram(book.titleSanskrit ?? book.title)} width={84} turn={turning ? 0 : -10} />
+          <CoverBook cover={coverFor(book.id, book.category)} art={coverArt(book.id, book.category)} title={book.titleSanskrit ?? book.title} width={84} turn={turning ? 0 : -10} />
         </View>
       </Animated.View>
       <Text numberOfLines={2} maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.footnote, fontWeight: '500' }}>
@@ -207,7 +208,7 @@ function ContinueCard() {
       haptic>
       <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
-          <CoverBook cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} width={52} turn={0} />
+          <CoverBook cover={cover} art={coverArt(entry.id, entry.category)} width={52} turn={0} />
           <View style={{ flex: 1 }}>
             <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
               {t(S.continueReading)}
@@ -258,7 +259,7 @@ function BookRow({ item, first, last, downloaded }: { item: CatalogEntry; first:
       accessibilityLabel={`${t(S.bookA11y(item.title, item.chapters.length))}, ${t(status)}${readLabel ? `, ${t(readLabel)}` : ''}`}
       onPress={() => press(() => router.push({ pathname: '/scripture/[id]', params: { id: item.id, via: 'cover' } }))}>
       <View ref={ref} collapsable={false}>
-        <CoverTile cover={cover} letter={monogram(item.titleSanskrit ?? item.title)} />
+        <CoverBook cover={cover} art={coverArt(item.id, item.category)} width={40} turn={0} />
       </View>
       <View style={{ flex: 1 }}>
         <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>

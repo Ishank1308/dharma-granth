@@ -38,6 +38,10 @@ Every व्याख्या has three movements, in one flowing piece of abou
 - Honorifics and plural verbs for the divine and revered figures: भगवान श्रीकृष्ण कहते हैं, संजय बताते हैं, ईश्वर विराजमान हैं, व्यास जी.
 - Address the reader as **आप** (करें, स्मरण कीजिए), never तुम. When the verse itself has Bhagavan addressing Arjuna as तू/तुम, keep that inside the quoted teaching.
 - Describe flawed conduct in the verse's own terms, without insulting words. Never belittle any community, tradition or practice.
+- **Speak to the reader with warmth.** The practice and the चिंतन प्रश्न are an invitation, not a test. Ask open questions (कौन-सा, कैसे, किन क्षणों में) and suggest gently (प्रतिदिन कुछ समय दीजिए, not अनिवार्य रूप से). Never set up a loaded either/or where one side labels the reader (गुलाम, भिखारी, कायर, लाचार, कीड़ा, झूठा मुखौटा, घमंड), and never presume a fault ("क्या आप अब भी … रहेंगे?").
+  - Avoid: क्या आप अपनी इच्छाओं के गुलाम बनकर जी रहे हैं, अथवा …?
+  - Use: आपकी कौन-सी कामना छूट जाए तो मन को थोड़ी अधिक स्वतन्त्रता मिल सकती है?
+- Warmth never softens the verse. What the verse teaches, including its warnings and hard sayings, is stated faithfully in the व्याख्या; kindness lies in how the reader is addressed, not in changing the meaning.
 
 ## Faithfulness
 

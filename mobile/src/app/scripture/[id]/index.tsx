@@ -19,7 +19,7 @@ import { PressableScale } from '@/motion/pressable-scale';
 import { useOriginPress } from '@/motion/shared-origin';
 import { useStagger } from '@/motion/stagger';
 import { useAppState } from '@/state/app-state';
-import { coverFor, monogram } from '@/theme/covers';
+import { coverFor } from '@/theme/covers';
 import { SANSKRIT_FONT } from '@/theme/fonts';
 import { BAR_GAP, BAR_HEIGHT, barClearance, huesFor, RADIUS, SPACE, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
@@ -132,7 +132,6 @@ export default function ScriptureScreen() {
                 title={entry.titleSanskrit ?? entry.title}
                 englishTitle={entry.titleSanskrit ? entry.title : undefined}
                 facts={t(S.titlePageFacts(entry.chapters.length, entry.totalVerses))}
-                letter={monogram(entry.titleSanskrit ?? entry.title)}
                 scrollY={scrollY}
                 flyFrom={`book:${entry.id}`}>
                 <View style={styles.badges}>

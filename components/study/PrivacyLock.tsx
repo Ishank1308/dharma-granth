@@ -68,11 +68,11 @@ export function PrivacyLockModal({ isOpen, onClose, onSuccess, mode, title, subt
         }, 500);
       } else {
         triggerTactileFeedback('heavy', 'softTap');
-        setError('गलत पिन (Incorrect PIN). पुनः प्रयास करें।');
+        setError('यह पिन मेल नहीं खाया (That PIN didn’t match). कृपया फिर से प्रयास करें।');
         setPin('');
       }
     } catch {
-      setError('पिन सत्यापन में त्रुटि हुई');
+      setError('क्षमा करें, पिन जाँचा नहीं जा सका। कृपया फिर से प्रयास करें।');
       setPin('');
     }
   };
@@ -80,7 +80,7 @@ export function PrivacyLockModal({ isOpen, onClose, onSuccess, mode, title, subt
   const verifyAndSave = async (firstPin: string, secondPin: string) => {
     if (firstPin !== secondPin) {
       triggerTactileFeedback('heavy', 'softTap');
-      setError('पिन मेल नहीं खाया (PINs do not match). पुनः दर्ज करें।');
+      setError('दोनों पिन एक जैसे नहीं थे (The PINs didn’t match). कृपया फिर से दर्ज करें।');
       setConfirmPin('');
       setStep('initial');
       setPin('');
@@ -98,7 +98,7 @@ export function PrivacyLockModal({ isOpen, onClose, onSuccess, mode, title, subt
         onClose();
       }, 600);
     } catch {
-      setError('पिन सुरक्षित करने में त्रुटि');
+      setError('क्षमा करें, पिन सहेजा नहीं जा सका। कृपया फिर से प्रयास करें।');
     }
   };
 

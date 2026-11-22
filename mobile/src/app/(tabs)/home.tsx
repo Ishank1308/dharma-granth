@@ -5,11 +5,13 @@ import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-n
 import Animated, { type SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { CoverBook } from '@/components/art/cover-book';
+import { coverArt } from '@/components/art/cover-art';
 import { Mandala } from '@/components/art/mandala';
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { useTabTop } from '@/lib/use-tab-top';
 import { BentoCol, BentoDepth, BentoRow, BentoTile } from '@/components/bento';
-import { Backdrop, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
+import { Backdrop, coverFill, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
 import { CATALOG, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import { daysBetween, todayPanchang, upcomingFestivals } from '@/content/explore';
@@ -28,7 +30,7 @@ import { bookReadCount, dayKey, percentRead, streakInfo } from '@/lib/progress';
 import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState, usePrefs } from '@/state/app-state';
-import { coverFor, monogram } from '@/theme/covers';
+import { coverFor } from '@/theme/covers';
 import { SANSKRIT_FONT } from '@/theme/fonts';
 import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
@@ -442,9 +444,7 @@ function ContinueTile() {
         surface={coverFill(cover, palette)}
         glow="rgba(0,0,0,0.25)"
         style={{ justifyContent: 'space-between' }}>
-        <Text allowFontScaling={false} style={{ color: cover.foil, fontSize: 44, lineHeight: 60 }}>
-          {monogram(gita?.titleSanskrit ?? 'गीता')}
-        </Text>
+        <CoverBook cover={cover} art={coverArt('bhagavadgita', gita?.category ?? 'itihasa')} title={gita?.titleSanskrit ?? 'श्रीमद्भगवद्गीता'} width={76} turn={-8} />
         <View style={{ rowGap: 4 }}>
           <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: '#fffaf0', fontSize: TYPE.title3, fontWeight: '800' }}>
             {t(S.bentoBegin)}
@@ -478,7 +478,7 @@ function ContinueTile() {
       glow={palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(234,88,12,0.10)'}
       style={{ justifyContent: 'space-between', rowGap: SPACE.md }}>
       <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-        <CoverTile cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} size={56} />
+        <CoverBook cover={cover} art={coverArt(entry.id, entry.category)} width={46} turn={0} />
         <View style={[styles.play, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' }]}>
           <AnimatedIcon name="play" size={18} color={palette.accent} motion="breathe" trigger={1} />
         </View>
@@ -611,10 +611,13 @@ function SectionHead({ title, detail, action }: { title: string; detail?: string
   );
 }
 
-/** The library as book covers, after the website's HomeLibrary tiles, in each book's own colours. */
+/** The width of a book standing on the Home shelf. */
+const SHELF_COVER = 112;
+
+/** The library as standing books in their cloth bindings (src/components/art/cover-book), each in its own colours. */
 function Shelf() {
   const { palette } = usePrefs();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const books = SHELF.map(getEntry).filter((b): b is NonNullable<typeof b> => !!b && b.bundled);
   return (
     <View>
@@ -640,7 +643,6 @@ function Shelf() {
         style={{ flexGrow: 0, marginHorizontal: -SPACE.lg, marginVertical: -SPACE.lg + 4 }}
         contentContainerStyle={{ paddingHorizontal: SPACE.lg, columnGap: SPACE.md, paddingVertical: SPACE.lg, alignItems: 'flex-start' }}>
         {books.map((b) => {
-          const cover = coverFor(b.id, b.category);
           const sa = b.titleSanskrit ?? b.title;
           return (
             <PressableScale
@@ -648,26 +650,11 @@ function Shelf() {
               accessibilityRole="button"
               accessibilityLabel={t(S.bookA11y(b.title, b.chapters.length))}
               onPress={() => open({ id: b.id })}
-              style={[
-                styles.book,
-                coverFill(cover, palette),
-                !palette.lite && { boxShadow: palette.dark ? '0 10px 24px rgba(0,0,0,0.5)' : '0 10px 22px rgba(60,30,10,0.18)' }
-              ]}>
-              {/* Gilt frame, like a cloth-bound cover. */}
-              {/* A soft dark scrim under the titles, so they read on every cover's light end. */}
-              <View pointerEvents="none" style={[styles.bookScrim, palette.lite ? null : { backgroundImage: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 100%)' }]} />
-              <View pointerEvents="none" style={[styles.bookFrame, { borderColor: `${cover.foil}55` }]} />
-              <Text allowFontScaling={false} style={{ color: cover.foil, fontSize: 40, lineHeight: 56, textAlign: 'center' }}>
-                {monogram(sa)}
+              style={styles.book}>
+              <CoverBook cover={coverFor(b.id, b.category)} art={coverArt(b.id, b.category)} title={sa} width={SHELF_COVER} turn={-8} />
+              <Text maxFontSizeMultiplier={1.3} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
+                {lang === 'hi' ? sa : b.title}
               </Text>
-              <View>
-                <Text maxFontSizeMultiplier={1.3} numberOfLines={2} style={{ color: '#fffaf0', fontSize: TYPE.subhead, fontWeight: '700', textAlign: 'center' }}>
-                  {sa}
-                </Text>
-                <Text maxFontSizeMultiplier={1.3} numberOfLines={1} style={{ color: cover.foil, fontSize: TYPE.caption, textAlign: 'center', marginTop: 2 }}>
-                  {b.title}
-                </Text>
-              </View>
             </PressableScale>
           );
         })}
@@ -959,16 +946,7 @@ const styles = StyleSheet.create({
   goldBar: { position: 'absolute', left: 0, top: SPACE.lg, bottom: SPACE.lg, width: 3, borderTopRightRadius: 2, borderBottomRightRadius: 2 },
   sectionHead: { flexDirection: 'row', alignItems: 'flex-end', columnGap: SPACE.md, marginBottom: SPACE.sm },
   seeAll: { flexDirection: 'row', alignItems: 'center', minHeight: TOUCH, columnGap: 2 },
-  book: {
-    width: 132,
-    height: 184,
-    borderRadius: RADIUS.row,
-    padding: SPACE.md,
-    justifyContent: 'space-between',
-    overflow: 'hidden',
-  },
-  bookScrim: { position: 'absolute', left: 0, right: 0, bottom: 0, height: 96 },
-  bookFrame: { position: 'absolute', top: 6, left: 6, right: 6, bottom: 6, borderWidth: 1, borderRadius: RADIUS.row - 6 },
+  book: { width: SHELF_COVER + 8, rowGap: SPACE.sm },
   guideHead: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md, paddingHorizontal: SPACE.lg, paddingTop: SPACE.lg, paddingBottom: SPACE.sm },
   guideIcon: { width: 32, height: 32, borderRadius: 9, alignItems: 'center', justifyContent: 'center' },
   fact: { flexDirection: 'row', alignItems: 'center', columnGap: 5, paddingHorizontal: SPACE.sm + 2, paddingVertical: 6, borderRadius: RADIUS.pill },

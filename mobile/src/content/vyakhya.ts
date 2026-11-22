@@ -106,6 +106,8 @@ async function update(id: string): Promise<void> {
 
   const target = new File(Paths.cache, `vyakhya-${id}.json`);
   const tmp = new Directory(root(), `.${id}.partial`);
+  // rename() repoints `tmp` at the finished folder, so the clean-up below must not touch it once it is in place.
+  let saved = false;
   try {
     await File.downloadFileAsync(`${APP_DATA}${remote.file}`, target, { idempotent: true });
     const data = JSON.parse(await target.text()) as { id?: string; chapters?: Record<string, ChapterVyakhya> };
@@ -113,12 +115,16 @@ async function update(id: string): Promise<void> {
     if (tmp.exists) tmp.delete();
     tmp.create({ intermediates: true });
     for (const [chapter, notes] of Object.entries(data.chapters)) {
-      new File(tmp, `ch-${chapter}.json`).write(JSON.stringify(notes));
+      await new File(tmp, `ch-${chapter}.json`).write(JSON.stringify(notes));
     }
-    new File(tmp, 'meta.json').write(JSON.stringify({ version: remote.version, savedAt: new Date().toISOString() }));
+    await new File(tmp, 'meta.json').write(JSON.stringify({ version: remote.version, savedAt: new Date().toISOString() }));
     const final = bookDir(id);
     if (final.exists) final.delete();
     tmp.rename(id);
+    saved = true;
+    // Count the notes as on the phone only when they can really be read from their folder.
+    // Throwing leaves the book unchecked, so the next chapter opened tries again.
+    if (!new File(bookDir(id), 'meta.json').exists) throw new Error('vyakhya: saved notes are not readable');
     for (const key of [...cache.keys()]) if (key.startsWith(`${id}:`)) cache.delete(key);
     installed = { ...installed, [id]: remote.version };
     listeners.forEach((l) => l());
@@ -127,7 +133,7 @@ async function update(id: string): Promise<void> {
       if (target.exists) target.delete();
     } catch {}
     try {
-      if (tmp.exists) tmp.delete();
+      if (!saved && tmp.exists) tmp.delete();
     } catch {}
   }
 }
@@ -139,8 +145,9 @@ export function ensureVyakhya(id: string): void {
     .then(() => {
       checked.add(id);
     })
-    .catch(() => {
+    .catch((e) => {
       // Offline or the site is unreachable: try again the next time a chapter of this book opens.
+      console.warn('[vyakhya]', id, e instanceof Error ? e.message : e);
     })
     .finally(() => inFlight.delete(id));
   inFlight.set(id, job);

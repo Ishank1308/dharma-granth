@@ -32,7 +32,7 @@ export function OfflineScriptureToggle({ scriptureId, title }: { scriptureId: st
         await saveScripture(scriptureId, title, (done, total) => setBusy({ done, total }));
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Saving failed.');
+      setError(e instanceof Error ? e.message : 'Sorry, this could not be saved for offline reading. Please try again.');
     } finally {
       setBusy(null);
       refresh();

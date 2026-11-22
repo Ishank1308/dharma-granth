@@ -86,7 +86,7 @@ export function PedagogicalVerseCard({
         fileName: `dharmagranth-${data.scriptureId}-${data.chapterId}-${data.verseId}.png`,
       });
     } catch {
-      showToast('Could not draw the image');
+      showToast('Sorry, the image could not be made. Please try again.');
     }
   }
 
@@ -180,7 +180,7 @@ export function PedagogicalVerseCard({
         showToast('Verse saved to your bookmarks (संग्रह में सहेजा गया)');
       }
     } catch {
-      showToast('Could not update bookmarks');
+      showToast('Sorry, your bookmarks could not be updated');
     }
   }
 
@@ -210,7 +210,7 @@ export function PedagogicalVerseCard({
       await navigator.clipboard.writeText(url);
       showToast('Link copied to clipboard');
     } catch {
-      showToast('Could not copy link');
+      showToast('Sorry, the link could not be copied');
     }
   }
 
@@ -234,7 +234,7 @@ export function PedagogicalVerseCard({
       showToast('Verse and explanation copied to clipboard');
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      showToast('Could not copy to clipboard');
+      showToast('Sorry, it could not be copied');
     }
   }
 

@@ -1,7 +1,7 @@
 /* Pictures on pages outside the reader (app/components/PagePhoto.tsx, lib/page-photos.ts).
    They reuse the chapter photos: scene-photos.generated.css sets --photo and --photo-focus on
-   [data-photo='id']. Data Saver loads none; print and forced colours show none. They hold still,
-   so Reduce Motion and the quiet modes need nothing here. */
+   [data-photo='id']. Data Saver loads none; print and forced colours show none. Their motion (at the
+   end of this file) stops under Reduce Motion and the quiet modes. */
 
 .page-cover,
 .hero-photo,
@@ -112,6 +112,44 @@
 }
 :root[data-theme='paper'] .chapter-highlight-art[data-photo] {
     filter: sepia(0.3) saturate(0.85);
+}
+
+/* ── Motion ───────────────────────────────────────────────────────────────────────
+   A cover settles out of a slight zoom when the page opens, and a hero picture drifts
+   more slowly than the page as the hero scrolls away (its own view timeline, so nothing
+   runs on the main thread). The drift is never larger than the part of the hero that has
+   already left the screen, so no gap shows. Reduce Motion and the quiet modes keep both
+   still; Data Saver shows no picture at all. */
+@keyframes cover-settle {
+    from {
+        opacity: 0.72;
+        transform: scale(1.035);
+    }
+}
+@keyframes hero-photo-drift {
+    to {
+        transform: translate3d(0, 16%, 0);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    :root:not([data-low-power='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .page-cover-art {
+        animation: cover-settle var(--duration-slow) var(--ease-out) both;
+    }
+    @supports (animation-timeline: view()) {
+        /* The hero clips its picture (overflow: hidden), which makes it the picture's own
+           scroller, so the timeline is the hero's, measured against the page. */
+        :has(> .hero-photo) {
+            view-timeline: --hero-photo block;
+            /* Measured from the top of the screen, not from under the sticky header
+               (the root's scroll padding), so the picture is at rest until the hero leaves. */
+            view-timeline-inset: 0px;
+        }
+        :root:not([data-low-power='true']):not([data-lite-mode='true']):not([data-reading-lite='true']) .hero-photo::before {
+            animation: hero-photo-drift linear both;
+            animation-timeline: --hero-photo;
+            animation-range: exit 0% exit 100%;
+        }
+    }
 }
 
 @media (forced-colors: active), print {

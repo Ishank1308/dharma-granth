@@ -116,10 +116,10 @@ export function DictionaryClient() {
         <div className="rounded-2xl border border-dashed border-dharma-border bg-dharma-card p-12 text-center max-w-lg mx-auto">
           <BookOpen className="w-10 h-10 text-saffron-500 mx-auto mb-3 opacity-60" />
           <h3 className="text-base font-serif font-bold text-dharma-text mb-1">
-            No terms found matching &ldquo;{searchQuery}&rdquo;
+            No terms match &ldquo;{searchQuery}&rdquo; yet
           </h3>
           <p className="text-xs text-dharma-muted mb-4">
-            Try checking for spelling or switch to all categories.
+            You could check the spelling, or look across all categories.
           </p>
           <button
             type="button"

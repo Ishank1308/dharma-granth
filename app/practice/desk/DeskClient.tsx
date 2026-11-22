@@ -137,7 +137,7 @@ export function DeskClient() {
 
   /* ── PIN: a privacy screen on this page, not encryption ── */
   const savePin = async () => {
-    if (!/^\d{4,8}$/.test(newPin)) return setPinMsg('Use 4 to 8 digits.');
+    if (!/^\d{4,8}$/.test(newPin)) return setPinMsg('Please use 4 to 8 digits.');
     try {
       const salt = crypto.getRandomValues(new Uint32Array(2)).join('-');
       const rec = { salt, hash: await hashPin(newPin, salt) };
@@ -147,7 +147,7 @@ export function DeskClient() {
       setPinMsg('PIN set. The desk will ask for it in a new session.');
       try { sessionStorage.setItem(UNLOCK_KEY, '1'); } catch { /* ignore */ }
     } catch {
-      setPinMsg('This browser cannot set a PIN.');
+      setPinMsg('Sorry, this browser can’t set a PIN.');
     }
   };
   const unlock = async () => {
@@ -157,7 +157,7 @@ export function DeskClient() {
       setPinInput('');
       setPinMsg('');
     } else {
-      setPinMsg('That PIN does not match.');
+      setPinMsg('That PIN didn’t match. Please try again.');
     }
   };
   const removePin = () => {
@@ -263,7 +263,7 @@ export function DeskClient() {
           </Section>
 
           <Section id="recent-h" title="Recently viewed" titleHi="हाल में देखा">
-            {recent.length === 0 ? empty('Nothing yet. Chapters you open appear here.') : (
+            {recent.length === 0 ? empty('No chapters yet. The chapters you open will gather here.') : (
               <ul className="space-y-2">
                 {recent.map((r) => (
                   <li key={r.scriptureId} className="flex items-center gap-2 rounded-xl border border-dharma-border p-2">
@@ -310,7 +310,7 @@ export function DeskClient() {
           <Section id="offline-h" title="Offline and downloads" titleHi="ऑफ़लाइन">
             <p className="text-dharma-muted">
               {cached === null
-                ? 'Offline storage is not available in this browser.'
+                ? 'Sorry, this browser doesn’t offer offline storage.'
                 : cached === 0
                   ? 'No pages are saved for offline use yet. Pages appear here only when this browser has stored them for offline use.'
                   : `${cached} files are available offline in this browser.`}

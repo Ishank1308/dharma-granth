@@ -29,7 +29,7 @@ test('Collections modal contains keyboard focus, closes on Escape and returns to
 
 test('Ritual details trap focus and restore the selected ritual', async ({ page }) => {
   await page.goto('/rituals/');
-  const trigger = page.locator('button.fade-up-in.apple-card').first();
+  const trigger = page.locator('.reveal-grid > button.apple-card').first();
   await expect(trigger).toBeVisible();
   await trigger.click();
   const modal = page.getByRole('dialog');

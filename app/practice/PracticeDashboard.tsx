@@ -141,7 +141,7 @@ export function PracticeDashboard() {
             {on('verse') && <DailyVerse />}
 
             {/* Core Practice Grid: Japa, Meditation, Pranayama, Reflection, Reading */}
-            <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
+            <div className="reveal-grid grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
               {/* Each tool sits in a named cell, so a row of today's tile above can jump to it. */}
               {on('japa') && <div id="practice-japa" className="grid min-w-0 scroll-mt-24"><JapaMala /></div>}
               {on('meditation') && <div id="practice-meditation" className="grid min-w-0 scroll-mt-24"><MeditationTimer /></div>}

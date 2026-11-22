@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { canonicalVerseId } from "../lib/canonical-verse-id";
 import { commentaryAmbiguities, commentaryLookupKey } from "../lib/commentary-lookup";
+import { readRecord, recordExists, unitFiles } from "./lib/commentary-store.mjs";
 
 type Verse = { number: number | string; sanskrit?: string };
 type Chapter = { number: number | string; verses?: Verse[] };
@@ -17,7 +18,8 @@ for (let i = 0; i < args.length; i++) {
 }
 if (!out || (only && !/^[a-z0-9-]+$/.test(only))) throw new Error("Provide --out and a valid optional --scripture id");
 const dirs = { queue: "data/ai-commentary", published: "public/data/hi-commentary", proposal: "data/ai-commentary/proposals" } as const;
-const files = (dir: string) => fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => f.endsWith(".json") && !f.endsWith("-research.json")).map(f => f.slice(0, -5)) : [];
+// A record is <id>.json or a folder of section files <id>/<chapter>-<unit>.json (scripts/lib/commentary-store.mjs).
+const files = (dir: string) => fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => (f.endsWith(".json") || unitFiles(path.join(dir, f)).length > 0) && !/-research(\.json)?$/.test(f)).map(f => f.replace(/\.json$/, "")) : [];
 const ids = only ? [only] : [...new Set(Object.values(dirs).flatMap(files))].sort();
 const load = (file: string) => JSON.parse(fs.readFileSync(file, "utf8"));
 const asRecords = (chapter: number, verses: Verse[] = []): RecordVerse[] => verses.map(v => ({ chapter, number: v.number, canonicalKey: `${chapter}:${Number(canonicalVerseId(chapter, v.number))}`, rawKey: `${chapter}:${v.number}`, sanskrit: v.sanskrit }));
@@ -29,8 +31,8 @@ let entriesChecked = 0, filesChecked = 0;
 for (const id of ids) {
   const input: Record<string, Record<string, Entry | null>> = {};
   for (const [kind, dir] of Object.entries(dirs)) {
-    const file = path.join(dir, `${id}.json`);
-    if (fs.existsSync(file)) { input[kind] = load(file); filesChecked++; }
+    const base = path.join(dir, id);
+    if (recordExists(base)) { input[kind] = readRecord(base); filesChecked++; }
   }
   const monolithPath = path.join("public/data/scriptures-full", `${id}.json`);
   const chapters: Chapter[] = fs.existsSync(monolithPath) ? load(monolithPath).chapters ?? [] : [];

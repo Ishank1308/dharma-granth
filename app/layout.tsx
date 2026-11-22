@@ -68,6 +68,12 @@ const THEME_INIT_SCRIPT = `
       document.documentElement.setAttribute('data-data-saver', 'true');
     }
   } catch (e) {}
+  // The time of day, for the home hero's light and greeting (app/styles/colour.css): the
+  // hour before dawn (brahma muhurta), morning, day, the evening sandhya, night.
+  try {
+    var h = new Date().getHours();
+    document.documentElement.setAttribute('data-daypart', h < 4 ? 'night' : h < 6 ? 'brahma' : h < 11 ? 'morning' : h < 16 ? 'day' : h < 19 ? 'sandhya' : 'night');
+  } catch (e) {}
   // The reader's language choice (lib/useLanguagePreference.ts), so two-language labels show
   // in that language from the first paint. द्विभाषी, the default, sets nothing.
   try {

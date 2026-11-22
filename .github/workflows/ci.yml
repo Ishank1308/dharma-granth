@@ -31,10 +31,49 @@ env:
   # Verse share images are served from the project's `share` branch deployment
   # (docs/deploy-cloudflare.md, "Verse share images"). Same value as deploy-cloudflare.yml.
   NEXT_PUBLIC_SHARE_IMAGE_ORIGIN: https://share.dharma-granth.pages.dev
+  # Published commentary (one file per section of each book) is served from the project's `commentary`
+  # branch deployment (docs/commentary-storage.md). Same value as deploy-cloudflare.yml and the
+  # connect-src entry in public/_headers.
+  NEXT_PUBLIC_COMMENTARY_ORIGIN: https://commentary.dharma-granth.pages.dev
 
 jobs:
+  # Pull requests that only touch the Android app (mobile/) skip the website
+  # jobs below to save Actions minutes; "Validate static export" still passes.
+  changes:
+    name: Detect website changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      site: ${{ steps.filter.outputs.site }}
+    steps:
+      - name: Check whether files outside mobile/ changed
+        id: filter
+        uses: actions/github-script@v8
+        with:
+          script: |
+            if (context.eventName !== 'pull_request') {
+              core.setOutput('site', 'true');
+              return;
+            }
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              per_page: 100,
+            });
+            // listFiles stops at 3,000 files; treat a huge PR as a website change.
+            const appOnly = files.length > 0 && files.length < 3000 &&
+              files.every(f => f.filename.startsWith('mobile/') && (!f.previous_filename || f.previous_filename.startsWith('mobile/')));
+            core.info(`${files.length} files changed; app only: ${appOnly}`);
+            core.setOutput('site', appOnly ? 'false' : 'true');
+
   checks:
     name: Lint, type check and sitemap tests
+    needs: changes
+    if: needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
 
     steps:
@@ -98,6 +137,8 @@ jobs:
 
   build:
     name: Build static export
+    needs: changes
+    if: needs.changes.outputs.site == 'true'
     runs-on: ubuntu-latest
     outputs:
       tree: ${{ steps.tree.outputs.tree }}
@@ -380,6 +421,13 @@ jobs:
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
         run: rm -rf dist/og/verse
 
+      # Published commentary is its own deployment too. A preview's chapter pages carry the pull
+      # request's own commentary in their HTML (up to the page budget, lib/commentary-budget.ts); the
+      # rest loads from the live `commentary` deployment.
+      - name: Leave published commentary out of the preview
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        run: rm -rf dist/data/hi-commentary
+
       # A non-production branch: Cloudflare serves it at
       # pr-N.dharma-granth.pages.dev with X-Robots-Tag: noindex. Files it
       # uploads are not uploaded again when the merge goes live.
@@ -444,12 +492,16 @@ jobs:
   # that changes only commentary or docs).
   validate:
     name: Validate static export
-    needs: [checks, build, e2e]
+    needs: [changes, checks, build, e2e]
     if: always()
     runs-on: ubuntu-latest
     steps:
       - name: All checks passed
         run: |
+          if [ "${{ needs.changes.result }}" = success ] && [ "${{ needs.changes.outputs.site }}" = false ]; then
+            echo "Only mobile/ changed: website checks skipped."
+            exit 0
+          fi
           echo "checks=${{ needs.checks.result }} build=${{ needs.build.result }} e2e=${{ needs.e2e.result }} content_only=${{ needs.build.outputs.content_only }}"
           test "${{ needs.checks.result }}" = success
           test "${{ needs.build.result }}" = success

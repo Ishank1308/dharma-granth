@@ -1,6 +1,8 @@
 // Site-wide survey of the Hindi register, using the same word list as scripts/check-hindi-register.mjs.
 // Areas: (1) UI source strings in app/ and lib/, (2) published commentary fields, (3) printed Hindi meanings.
 const fs = require('fs');
+// Published commentary is one folder of section files per scripture (docs/commentary-storage.md).
+const { publishedCommentaryIds, readPublishedCommentary } = require('../lib/commentary-store.mjs');
 const path = require('path');
 const src = fs.readFileSync('scripts/check-hindi-register.mjs', 'utf8');
 const WORDS = JSON.parse('[' + src.match(/const WORDS = \[([\s\S]*?)\];/)[1].replace(/,\s*$/, '') + ']');
@@ -32,8 +34,8 @@ console.log('  top files', uiFiles.sort((a, b) => b[1] - a[1]).slice(0, 15).map(
 console.log('  top words', Object.entries(ui.words).sort((a, b) => b[1] - a[1]).slice(0, 25).map((x) => x.join(':')).join(' '));
 // 2. Published commentary
 const com = {};
-for (const f of fs.readdirSync('public/data/hi-commentary')) {
-  const d = JSON.parse(fs.readFileSync('public/data/hi-commentary/' + f, 'utf8'));
+for (const f of publishedCommentaryIds().map((id) => id + '.json')) {
+  const d = readPublishedCommentary(f.replace('.json', ''));
   const id = f.replace('.json', '');
   const c = (com[id] = { entries: Object.keys(d).length, explanation: 0, science: 0, lifeLesson: 0, aiExpl: 0 });
   for (const e of Object.values(d)) {

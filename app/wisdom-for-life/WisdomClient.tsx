@@ -310,10 +310,10 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
               </p>
               <ul className="text-xs sm:text-sm text-dharma-muted space-y-1 list-disc list-inside pt-1">
                 <li>
-                  <strong className="text-dharma-text">Do not diagnose health conditions:</strong> These insights address spiritual and philosophical discernment, not clinical pathologies.
+                  <strong className="text-dharma-text">Not for diagnosis:</strong> These insights address spiritual and philosophical discernment, not clinical pathologies.
                 </li>
                 <li>
-                  <strong className="text-dharma-text">Not a medical replacement:</strong> Scripture is not a substitute for licensed psychiatric, psychological, or medical treatment. If you are experiencing clinical depression, severe anxiety, trauma, or emotional crisis, please seek immediate help from qualified healthcare professionals.
+                  <strong className="text-dharma-text">Not a medical replacement:</strong> Scripture is not a substitute for licensed psychiatric, psychological, or medical treatment. If you are experiencing clinical depression, severe anxiety, trauma, or emotional crisis, please reach out to a qualified healthcare professional right away. You deserve that care.
                 </li>
                 <li>
                   <strong className="text-dharma-text">Verified citations only:</strong> All reflections are grounded in authentic cited verses from the primary Sanskrit canon, avoiding ungrounded claims.

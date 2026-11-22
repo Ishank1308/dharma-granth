@@ -3,12 +3,12 @@
  * opening a book feels like opening a book.
  *
  * Set like an illuminated manuscript's title page: the book's cover colours, washed with the website's
- * watercolour for that family of texts, a gilt mandala behind the book itself standing in 3D (Book3D), then
- * the title in Tiro Devanagari (the website's shloka face), the English name and the size of the book in plain
+ * watercolour for that family of texts, a gilt mandala behind the book itself standing in 3D (Book3D) in its
+ * cloth binding, then the title in Tiro Devanagari (the website's shloka face), the English name and the size of the book in plain
  * words, and the title-page line set between dandas (॥), the way a verse closes in the text.
  *
  * Motion is one orchestrated moment: as the page opens, the book turns from its spine to face you and settles,
- * the mandala blooms behind it, and the words arrive after it. Nothing else on the page animates on its own
+ * its emblem is traced in gold on the cover, the mandala blooms behind it, and the words arrive after it. Nothing else on the page animates on its own
  * (scroll parallax only follows your finger). With reduce motion the page is simply there; with light effects
  * the painting is a faint static wash and the mandala is still.
  */
@@ -27,12 +27,14 @@ import { SANSKRIT_FONT } from '@/theme/fonts';
 import { RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 import { Book3D } from './book-3d';
-import { artFor } from './cover-art';
-import { Emblem, emblemFor } from './emblems';
+import { artFor, coverArt } from './cover-art';
 import { Mandala } from './mandala';
 
 /** Tiro Devanagari Sanskrit, the website's shloka face, embedded in the build (src/theme/fonts.ts). */
 const TITLE_FACE = SANSKRIT_FONT;
+/** The standing book's width, and the room it takes with its shadow (src/components/art/book-3d). */
+const BOOK = 132;
+const BOOK_ROOM = Math.round(BOOK * 1.4) + 22;
 
 export function BookHero({
   id,
@@ -42,12 +44,11 @@ export function BookHero({
   title,
   englishTitle,
   facts,
-  letter,
   scrollY,
   flyFrom,
   children,
 }: {
-  /** The book's id, for its emblem. */
+  /** The book's id, for the emblem on its cover. */
   id: string;
   cover: Cover;
   /** Category key, for the painting. */
@@ -59,7 +60,6 @@ export function BookHero({
   englishTitle?: string;
   /** The book's size in plain words ("18 chapters and 701 verses"). */
   facts: string;
-  letter: string;
   scrollY?: SharedValue<number>;
   /** The key a tapped cover recorded (src/motion/shared-origin): the book flies from there instead of turning in. */
   flyFrom?: string;
@@ -122,16 +122,11 @@ export function BookHero({
       <Animated.View style={[styles.stage, stage]}>
         <Animated.View style={bookIn}>
           <FlyIn from={flyFrom}>
-            <Book3D cover={cover} letter={letter} width={112} />
+            <Book3D cover={cover} art={coverArt(id, category)} title={title} width={BOOK} drawDelay={flying ? 380 : 320} />
           </FlyIn>
         </Animated.View>
       </Animated.View>
 
-      {/* The book's own emblem as a headpiece, traced in gilt by a pen as the page opens: the chariot wheel for
-          the Gita, Rama's bow for the Manas, the lamp of the Upanishads (src/components/art/emblems). */}
-      <View style={styles.headpiece}>
-        <Emblem name={emblemFor(id, category)} size={44} color={cover.foil} strokeWidth={2} delay={flying ? 320 : 220} turn />
-      </View>
       <Animated.View style={[styles.words, wordsIn]}>
         {kind ? (
           <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={[styles.kind, { color: cover.foil }]}>
@@ -171,12 +166,11 @@ const styles = StyleSheet.create({
   clip: { borderRadius: RADIUS.panel, overflow: 'hidden' },
   lift: { boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.28), 0 18px 40px rgba(10,20,50,0.32)' },
   art: { position: 'absolute', left: 0, right: 0, top: -60, bottom: -20 },
-  stage: { alignItems: 'center', justifyContent: 'center', paddingTop: SPACE.lg, height: 212 },
+  stage: { alignItems: 'center', justifyContent: 'center', paddingTop: SPACE.lg, height: BOOK_ROOM + SPACE.lg + SPACE.md },
   stageBack: { position: 'absolute', top: 0, left: 0, right: 0 },
-  mandala: { position: 'absolute', top: SPACE.lg + 181 / 2 - 125 },
-  headpiece: { alignItems: 'center', marginTop: -SPACE.xs, marginBottom: SPACE.xs },
+  mandala: { position: 'absolute', top: SPACE.lg + SPACE.md / 2 + BOOK_ROOM / 2 - 125 - 11 },
   // Centred: a title page is the one place in the app where the text sits on the axis of the book.
-  words: { alignItems: 'center', paddingHorizontal: SPACE.xl - 2 },
+  words: { alignItems: 'center', paddingHorizontal: SPACE.xl - 2, paddingTop: SPACE.sm },
   kind: { fontSize: TYPE.footnote, fontWeight: '600', marginBottom: SPACE.xs },
   // The largest type in the app, and the only Devanagari display face: the book's name, as on its cover.
   title: { fontFamily: TITLE_FACE, color: '#ffffff', fontSize: 38, lineHeight: 58, textAlign: 'center' },

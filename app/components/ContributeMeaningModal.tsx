@@ -103,7 +103,7 @@ export function ContributeMeaningModal({
       setTimeout(() => setCopied(null), 1800);
     } catch {
       // Fallback: select in a hidden textarea (rare)
-      alert('Copy failed — please select and copy the text manually.');
+      alert('Sorry, copying didn’t work here. Please select the text and copy it by hand.');
     }
   }
 

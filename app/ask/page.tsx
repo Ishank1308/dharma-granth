@@ -144,7 +144,7 @@ export default function AskDharmaPage() {
             </>
           }
         />
-        <div className="grid gap-x-6 gap-y-8 md:grid-cols-2">
+        <div className="reveal-grid grid gap-x-6 gap-y-8 md:grid-cols-2">
           {ANSWER_THEMES.map((theme) => (
             <div key={theme.id}>
               <h3 className="mb-2 px-1 text-footnote text-dharma-muted">

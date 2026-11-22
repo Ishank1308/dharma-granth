@@ -15,7 +15,7 @@ export default function FestivalsPage() {
   const selected = festivals.find((f) => f.id === selectedId);
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg relative overflow-hidden">
+    <main className="apple-scope min-h-screen bg-dharma-bg relative overflow-clip">
       {/* Festive Radiant Halos Backdrop */}
       <div
         aria-hidden="true"
@@ -49,12 +49,13 @@ export default function FestivalsPage() {
           titleHi="प्रमुख पर्व"
           sub={<span lang="hi" className="font-devanagari">हर पर्व का अर्थ, कथा, विधि और मंत्र।</span>}
         />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {festivals.map((festival, i) => (
-            // CSS fade-up (globals.css): plays from the server HTML, so the cards are never shipped hidden.
-            <div key={festival.id} className="fade-up-in" style={{ animationDelay: `${Math.min(i, 12) * 50}ms` }}>
+        {/* The cards cascade in as they scroll into view (.reveal-grid, motion.css); the HTML is never hidden. */}
+        <div className="reveal-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {festivals.map((festival) => (
+            <div key={festival.id}>
               <Link
                 href={`/festivals/${festival.id}/`}
+                data-vt="open"
                 className="card-sacred group block relative overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 text-left shadow-soft hover:shadow-xl hover:border-saffron-400/50 hover:-translate-y-0.5 transition-all h-full"
               >
                 <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${festival.gradient}`} />

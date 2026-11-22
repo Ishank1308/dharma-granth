@@ -220,7 +220,7 @@ export const CONTRIBUTION_FAQS: ContributionFaq[] = [
     answerHi:
       'नहीं। धर्म ग्रंथ का संपूर्ण पुस्तकालय, सभी श्लोक, अनुवाद, भाष्य, पंचांग व साधना उपकरण सदैव पूर्णतः निःशुल्क और विज्ञापन-मुक्त हैं। सहयोग केवल उन पाठकों के लिए एक ऐच्छिक अवसर है जो इस डिजिटल सेवा का संवर्धन करना चाहते हैं।',
     answerEn:
-      'Never. The entire scripture library, every verse, translation, commentary, Panchang, and daily practice tool is 100% free and ad-free. Contribution is strictly voluntary for those who wish to sustain this independent cultural effort.',
+      'No, never. The entire scripture library, every verse, translation, commentary, Panchang, and daily practice tool is 100% free and ad-free. Contribution is entirely voluntary, a kind gesture for those who wish to sustain this independent cultural effort.',
   },
   {
     questionHi: 'मेरा सहयोग सीधे कहाँ पहुँचता है?',

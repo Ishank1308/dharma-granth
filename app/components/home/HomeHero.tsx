@@ -20,11 +20,14 @@ export function HomeHero() {
       <HeroHalo />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[580px] bg-[radial-gradient(ellipse_at_78%_24%,rgba(221,146,68,0.11),transparent_48%)]"
+        className="hero-daylight pointer-events-none absolute inset-x-0 top-0 h-[580px] bg-[radial-gradient(ellipse_at_78%_24%,rgba(221,146,68,0.11),transparent_48%)]"
       />
 
       <div className="relative mx-auto grid w-full max-w-[1180px] items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
         <div className="max-w-[660px]">
+          {/* A greeting for the hour (सुप्रभात, शुभ सन्ध्या…). Its words are CSS content keyed on
+              <html data-daypart>, set before first paint, so the HTML is the same at every hour. */}
+          <p className="daypart-greeting mb-3 font-devanagari text-footnote font-semibold text-dharma-muted" />
           <p className="inline-flex flex-wrap items-center gap-2 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/10 px-3.5 py-2 text-xs font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md">
             <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-dharma-saffron" />
             <span>A living archive of Indian wisdom</span>
