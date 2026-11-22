@@ -11,7 +11,7 @@
 // Output (git-ignored, rebuilt by build-content.mjs on every EAS build):
 //   src/content/generated/knowledge/<kind>.json   one file per page kind, trimmed to what the app shows
 //   src/content/generated/knowledge/loaders.ts    lazy require() per kind, so opening Places never parses Wisdom
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { registerHooks } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -413,16 +413,12 @@ const shortHi = (s) => s.replace(/\s*\(.*\)\s*$/, '').trim();
 /**
  * The verse relationship network (dharmagranth.dev/network/): the website's featured verses, each with the
  * graph lib/verse-relationship-engine.ts builds for it from reviewed links only (canonical echoes, study
- * connections, concept listings). The featured list lives in the page's client component, so it is read
- * from that file as a plain array literal.
+ * connections, concept listings). The featured list lives in app/network/network-seeds.ts.
  */
 async function buildNetwork() {
   const engine = await loadLib('verse-relationship-engine');
   const conceptIds = new Set((await buildConcepts()).items.map((c) => c.id));
-  const src = readFileSync(join(ROOT, 'app/network/VerseNetworkClient.tsx'), 'utf8');
-  const m = /const FEATURED_SEEDS: SeedVerse\[\] = (\[[\s\S]*?\n\]);/.exec(src);
-  if (!m) throw new Error('[knowledge] FEATURED_SEEDS not found in app/network/VerseNetworkClient.tsx');
-  const seeds = new Function(`return ${m[1]};`)();
+  const { FEATURED_SEEDS: seeds } = await import(pathToFileURL(join(ROOT, 'app/network/network-seeds.ts')).href);
 
   const items = seeds.map((s) => {
     const graph = engine.buildVerseGraphData(s.scriptureId, s.chapterId, s.verseId, {

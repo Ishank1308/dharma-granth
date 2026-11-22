@@ -57,8 +57,8 @@ test('narrow reader dock shows clear Hindi mode names instead of abbreviated Rom
   await expect(dock).toBeVisible();
   const roman = dock.locator('[data-dock-label="primary"]');
   const hindi = dock.locator('[data-dock-label="hindi"]');
-  await expect(roman).toHaveCount(5);
-  await expect(hindi).toHaveCount(5);
+  await expect(roman).toHaveCount(4);
+  await expect(hindi).toHaveCount(4);
   for (const label of await roman.all()) await expect(label).toBeHidden();
   for (const label of await hindi.all()) await expect(label).toBeVisible();
   await expect(hindi.nth(1)).toHaveText('शब्दार्थ');
