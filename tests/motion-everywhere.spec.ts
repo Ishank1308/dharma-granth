@@ -51,6 +51,22 @@ test('pictures move: a cover settles and a hero picture drifts with the scroll',
   await expect.poll(shift).toBeGreaterThan(atTop + 10);
 });
 
+test('a page title comes into focus line by line, and section headings rise on scroll', async ({ page }) => {
+  await page.goto('/learn/');
+  const lines = page.locator('h1.title-kinetic > span');
+  await expect(lines).toHaveCount(2);
+  const timing = await lines.evaluateAll((els) =>
+    els.map((el) => [getComputedStyle(el).animationName, parseFloat(getComputedStyle(el).animationDelay)] as const),
+  );
+  expect(timing[0][0]).toBe('hero-focus');
+  expect(timing[1][0]).toBe('hero-focus');
+  expect(timing[1][1]).toBeGreaterThan(timing[0][1]);
+  // The title ends fully painted, and its text is one readable string throughout.
+  await expect.poll(() => lines.first().evaluate((el) => getComputedStyle(el).opacity)).toBe('1');
+  await expect(page.locator('h1')).toHaveText(/^Study the scriptures\s+शास्त्र स्वाध्याय$/);
+  expect(await animationOf(page, '.heading-arrive')).toBe('heading-arrive');
+});
+
 test.describe('with Reduce Motion', () => {
   test.use({ reducedMotion: 'reduce' });
 
@@ -61,6 +77,9 @@ test.describe('with Reduce Motion', () => {
     }
     await page.goto('/scriptures/');
     expect(await animationOf(page, '.page-cover-art')).toBe('none');
+    expect(await animationOf(page, 'h1.title-kinetic > span')).toBe('none');
+    await page.goto('/learn/');
+    expect(await animationOf(page, '.heading-arrive')).toBe('none');
     await page.goto('/festivals/diwali/');
     expect(await animationOf(page, '.hero-photo', '::before')).toBe('none');
   });
@@ -71,4 +90,20 @@ test('low-power mode keeps pictures still', async ({ page }) => {
   await page.goto('/festivals/diwali/');
   await expect(page.locator('html')).toHaveAttribute('data-low-power', 'true');
   expect(await animationOf(page, '.hero-photo', '::before')).toBe('none');
+});
+
+test.describe('on a phone', () => {
+  test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
+
+  test('the tab bar icon of the page you open gives a small spring', async ({ page }) => {
+    await page.goto('/scriptures/');
+    const bar = page.getByRole('navigation', { name: 'Mobile quick navigation' });
+    const icon = (name: RegExp) => bar.getByRole('link', { name }).locator('svg');
+    const animation = (name: RegExp) => icon(name).evaluate((el) => getComputedStyle(el).animationName);
+    expect(await animation(/Library|ग्रंथ/)).toBe('icon-answer');
+    expect(await animation(/Home/)).toBe('none');
+    await bar.getByRole('link', { name: /Home/ }).click();
+    await expect(page).toHaveURL(/\/$/);
+    await expect.poll(() => animation(/Home/)).toBe('icon-answer');
+  });
 });

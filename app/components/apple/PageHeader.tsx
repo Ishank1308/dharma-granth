@@ -44,7 +44,7 @@ export function PageHeader({
       <div className="aura-header pointer-events-none absolute -top-10 left-1/2 -z-10 h-64 w-[90%] -translate-x-1/2 rounded-full opacity-60 blur-3xl transition-opacity duration-700" aria-hidden="true" />
       {cover}
       <Eyebrow text={eyebrow} hi={eyebrowHi} lang={eyebrowLang} className="eyebrow-capsule" />
-      <h1 id={id} className="mt-3 min-w-0 text-large-title leading-tight font-semibold text-dharma-text [overflow-wrap:anywhere]">
+      <h1 id={id} className="title-kinetic mt-3 min-w-0 text-large-title leading-tight font-semibold text-dharma-text [overflow-wrap:anywhere]">
         <span className="ink-dawn" data-bi={bi ? 'en' : undefined}>{title}</span>
         {titleHi && (
           <>
@@ -124,7 +124,7 @@ export function SectionTitle({
 }) {
   return (
     <div className="mb-5 flex min-w-0 flex-wrap items-end justify-between gap-x-6 gap-y-2">
-      <div className="min-w-0 max-w-full">
+      <div className="heading-arrive min-w-0 max-w-full">
         {eyebrow && <Eyebrow text={eyebrow} hi={eyebrowHi} className="mb-1.5" />}
         <h2 id={id} className={`${size === 'title-1' ? 'text-title-1' : 'text-title-2'} min-w-0 font-semibold text-dharma-text [overflow-wrap:anywhere]`}>
           <span data-bi={titleHi ? 'en' : undefined}>{title}</span>
