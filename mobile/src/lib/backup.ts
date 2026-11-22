@@ -120,11 +120,14 @@ export interface BackupFile extends AppData {
    * backups still read; an older app ignores it. Passed through here and normalised by the journal store.
    */
   journal?: unknown;
+  /** The study desk's reading queue and weekly goal (@/lib/desk). Optional in the same way. */
+  desk?: unknown;
 }
 
 /** What a backup file holds: the app data, plus the raw sections that other stores normalise themselves. */
 export interface ParsedBackup extends ImportedData {
   journal?: unknown;
+  desk?: unknown;
 }
 
 const THEMES: ThemeName[] = ['day', 'sunset', 'paper', 'dark'];
@@ -195,7 +198,7 @@ export function normalizeLastRead(raw: unknown): LastRead | null {
   return r.verse != null && r.verse !== '' ? { id: r.id, chapter, verse: String(r.verse), at } : { id: r.id, chapter, at };
 }
 
-export function makeBackup(data: AppData, now = new Date(), extra: { journal?: unknown } = {}): BackupFile {
+export function makeBackup(data: AppData, now = new Date(), extra: { journal?: unknown; desk?: unknown } = {}): BackupFile {
   return { format: BACKUP_FORMAT, version: BACKUP_VERSION, exportedAt: now.toISOString(), ...data, ...extra };
 }
 
@@ -229,6 +232,7 @@ export function parseBackup(text: string): ParsedBackup {
     bookmarks: normalizeBookmarks(b.bookmarks),
     lastRead: normalizeLastRead(b.lastRead),
     ...(b.journal !== undefined ? { journal: b.journal } : {}),
+    ...(b.desk !== undefined ? { desk: b.desk } : {}),
     progress: b.progress,
   };
 }
