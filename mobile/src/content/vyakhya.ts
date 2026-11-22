@@ -106,6 +106,8 @@ async function update(id: string): Promise<void> {
 
   const target = new File(Paths.cache, `vyakhya-${id}.json`);
   const tmp = new Directory(root(), `.${id}.partial`);
+  // rename() repoints `tmp` at the finished folder, so the clean-up below must not touch it once it is in place.
+  let saved = false;
   try {
     await File.downloadFileAsync(`${APP_DATA}${remote.file}`, target, { idempotent: true });
     const data = JSON.parse(await target.text()) as { id?: string; chapters?: Record<string, ChapterVyakhya> };
@@ -119,6 +121,9 @@ async function update(id: string): Promise<void> {
     const final = bookDir(id);
     if (final.exists) final.delete();
     tmp.rename(id);
+    saved = true;
+    // Count the notes as on the phone only when they can really be read from their folder.
+    if (!new File(bookDir(id), 'meta.json').exists) return;
     for (const key of [...cache.keys()]) if (key.startsWith(`${id}:`)) cache.delete(key);
     installed = { ...installed, [id]: remote.version };
     listeners.forEach((l) => l());
@@ -127,7 +132,7 @@ async function update(id: string): Promise<void> {
       if (target.exists) target.delete();
     } catch {}
     try {
-      if (tmp.exists) tmp.delete();
+      if (!saved && tmp.exists) tmp.delete();
     } catch {}
   }
 }
