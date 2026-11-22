@@ -112,7 +112,15 @@ export function ChapterAudioHeroAction({
         title="सम्पूर्ण अध्याय का क्रमिक उच्चारण सुनें"
       >
         {isPlaying ? (
-          <Pause className={`w-3.5 h-3.5 animate-pulse ${icon}`} aria-hidden="true" />
+          <span className="inline-flex items-center gap-1.5" aria-hidden="true">
+            <Pause className={`w-3.5 h-3.5 ${icon}`} />
+            <span className={`dock-wave dock-wave-sm dock-wave-current is-playing ${icon}`}>
+              <span />
+              <span />
+              <span />
+              <span />
+            </span>
+          </span>
         ) : (
           <Volume2 className={`w-3.5 h-3.5 ${icon}`} aria-hidden="true" />
         )}

@@ -6,9 +6,13 @@ import { navigateWithTransition, notifyRouteCommitted, type TransitionKind } fro
 
 const VERSE_PAGE = /^\/scripture\/[^/]+\/chapter\/[^/]+\/verse\/[^/]+\/?$/;
 
-/** The verse panel that belongs to the tapped link, if the link sits on a verse card. */
+/** The verse panel or card container that belongs to the tapped link. */
 function heroFor(anchor: HTMLAnchorElement): HTMLElement | null {
-  // A card link marked data-vt="open" grows as a whole into the page it opens.
+  // A card container marked data-vt-source (e.g. a Library book card) grows as a whole,
+  // even when its link is a nested CTA on desktop. Otherwise a card link marked data-vt="open"
+  // grows into the target page's data-vt-hero element.
+  const source = anchor.closest<HTMLElement>('[data-vt-source]');
+  if (source) return source;
   const own = anchor.closest<HTMLElement>('.verse-folio, a[data-vt]');
   if (own) return own;
   let node: HTMLElement | null = anchor.parentElement;

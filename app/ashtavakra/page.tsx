@@ -47,7 +47,7 @@ export default function AshtavakraHome() {
   return (
     <main id="main">
       {/* 1. Hero */}
-      <header className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 text-dharma-text">
+      <header data-vt-hero className="scripture-vibe-hero relative isolate overflow-hidden border-b border-dharma-border/60 text-dharma-text">
         <HeroEnvironment />
         <div className="relative mx-auto max-w-5xl px-6 pb-10 pt-10 sm:py-14">
           <nav aria-label="Breadcrumb" className="mb-5 text-sm text-dharma-muted">

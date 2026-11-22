@@ -2643,6 +2643,10 @@ svg.lucide {
     align-items: center;
     gap: 2px;
 }
+.dock-wave-sm {
+    height: 14px;
+    gap: 1.5px;
+}
 .dock-wave > span {
     display: block;
     width: 3px;
@@ -2651,6 +2655,12 @@ svg.lucide {
     background: var(--dharma-accent);
     transform: scaleY(0.35);
     transform-origin: center;
+}
+.dock-wave-sm > span {
+    width: 2px;
+}
+.dock-wave-current > span {
+    background: currentColor;
 }
 .dock-wave.is-playing > span {
     animation: dock-wave 1s ease-in-out infinite;
@@ -2708,7 +2718,13 @@ svg.lucide {
         0 18px 40px -30px rgba(28, 28, 30, 0.3);
 }
 
-@media (prefers-reduced-motion: reduce) {
+:root[data-low-power='true'] .dock-wave.is-playing > span,
+:root[data-lite-mode='true'] .dock-wave.is-playing > span,
+:root[data-reading-lite='true'] .dock-wave.is-playing > span {
+    animation: none;
+    transform: scaleY(0.7);
+}
+@media print, (prefers-reduced-motion: reduce) {
     .dock-wave.is-playing > span {
         animation: none;
         transform: scaleY(0.7);

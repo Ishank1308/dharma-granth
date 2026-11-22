@@ -151,7 +151,7 @@ export function LibraryCard({
   const commentary: string[] = [];
   if (item.facts.hindiCommentary) commentary.push('Hindi verse-by-verse commentary');
   if (item.explanation) commentary.push('Book overview (English & Hindi)');
-  const readingHref = item.id === 'ashtavakra' ? '/ashtavakra/' : `/scripture/${item.id}`;
+  const readingHref = item.id === 'ashtavakra' ? '/ashtavakra/' : `/scripture/${item.id}/`;
   const englishTitle = GITA_PRESS_COVER_TITLES[item.id] ?? item.title;
   // A partial text says how much of the traditional whole the library holds.
   const ofAbout = item.canonicalTotalVerses != null && item.canonicalTotalVerses > item.totalVerses
@@ -197,6 +197,7 @@ export function LibraryCard({
     <article
       aria-labelledby={headingId}
       data-tilt
+      data-vt-source
       style={{ '--book': CATEGORY_COLOURS[item.category] ?? CATEGORY_COLOURS.other } as CSSProperties}
       className={`home-book card-sacred sheen-sweep group relative flex h-full flex-col overflow-hidden rounded-card bg-dharma-card p-4 pl-6 shadow-raised sm:p-6 sm:pl-8${row('max-sm:py-3')}`}
     >
@@ -279,6 +280,7 @@ export function LibraryCard({
         {/* On a phone row the link covers the row, so the whole row opens the text. */}
         <Link
           href={readingHref}
+          data-vt="open"
           aria-label={`Start reading ${item.title}`}
           className={`inline-flex min-h-[44px] items-center text-body text-dharma-saffron hover:underline${row('max-sm:absolute max-sm:inset-0 max-sm:z-[1] max-sm:min-h-0 max-sm:rounded-card')}`}
         >
