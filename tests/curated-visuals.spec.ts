@@ -1,11 +1,29 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
-import { EDITORIAL_SCENES, NAVADURGA_CARDS, WISDOM_POSTERS } from '../data/curated-visuals';
 
 const ALL_CURATED_SRCS = [
-  ...NAVADURGA_CARDS.map((c) => c.src),
-  ...WISDOM_POSTERS.map((p) => p.src),
-  ...Object.values(EDITORIAL_SCENES).map((s) => s.src),
+  '/images/curated/navratri/day-1-shailputri.webp',
+  '/images/curated/navratri/day-2-brahmacharini.webp',
+  '/images/curated/navratri/day-3-chandraghanta.webp',
+  '/images/curated/navratri/day-4-kushmanda.webp',
+  '/images/curated/navratri/day-5-skandamata.webp',
+  '/images/curated/navratri/day-6-katyayani.webp',
+  '/images/curated/navratri/day-7-kalaratri.webp',
+  '/images/curated/navratri/day-8-mahagauri.webp',
+  '/images/curated/navratri/day-9-siddhidatri.webp',
+  '/images/curated/wisdom/dharyate-iti-dharmah.webp',
+  '/images/curated/wisdom/gita-2-48.webp',
+  '/images/curated/wisdom/gita-3-9.webp',
+  '/images/curated/wisdom/gita-15-15.webp',
+  '/images/curated/wisdom/isha-upanishad-6.webp',
+  '/images/curated/wisdom/shvetashvatara-grace.webp',
+  '/images/curated/wisdom/japa-mala-bhakti.webp',
+  '/images/curated/scenes/diwali-ghat-celebration.webp',
+  '/images/curated/scenes/temple-darshan-puja.webp',
+  '/images/curated/scenes/temple-kirtan-satsang.webp',
+  '/images/curated/scenes/devotional-veena.webp',
+  '/images/curated/scenes/sacred-grove-tapovan.webp',
+  '/images/curated/scenes/ghat-morning-offering.webp',
 ];
 
 async function open(page: Page, path: string) {
