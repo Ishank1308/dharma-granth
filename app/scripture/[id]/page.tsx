@@ -17,8 +17,8 @@ import { ChevronRight } from 'lucide-react';
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
 import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
-import { getScripturePosters } from '@/data/curated-visuals';
-import { WisdomPosterCard } from '@/app/components/visuals/CuratedVisuals';
+import { getScripturePosters, getScriptureScene } from '@/data/curated-visuals';
+import { EditorialSceneBanner, WisdomPosterCard } from '@/app/components/visuals/CuratedVisuals';
 import { NavadurgaGallery } from '@/app/components/visuals/NavadurgaGallery';
 
 interface PageProps {
@@ -304,6 +304,18 @@ export default async function ScripturePage(props: PageProps) {
 
       <div className="mx-auto max-w-5xl px-6 pb-10 pt-5 sm:pt-7">
         <IllustratedChapterHighlights scriptureId={meta.id} chapters={chapterPreviews} />
+        {(() => {
+          const scriptureScene = getScriptureScene(meta.id);
+          return scriptureScene ? (
+            <div className="mb-8">
+              <EditorialSceneBanner
+                scene={scriptureScene.scene}
+                eyebrowHi={scriptureScene.eyebrowHi}
+                eyebrowEn={scriptureScene.eyebrowEn}
+              />
+            </div>
+          ) : null;
+        })()}
         {(() => {
           const scripturePosters = getScripturePosters(meta.id);
           if (scripturePosters.length === 0) return null;

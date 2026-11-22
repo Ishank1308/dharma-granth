@@ -5,6 +5,8 @@ import { characters } from '@/data/characters';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
 import { CharacterGroups } from './CharacterGroups';
+import { EDITORIAL_SCENES } from '@/data/curated-visuals';
+import { EditorialSceneBanner } from '@/app/components/visuals/CuratedVisuals';
 
 export const metadata: Metadata = {
   title: 'Hindu Scriptural Characters & Lineages (पात्र ज्ञान ग्राफ)',
@@ -48,6 +50,15 @@ export default function CharactersPage() {
 
       {/* ── The characters by epic: every character's page, one tap away ── */}
       <CharacterGroups />
+
+      {/* ── Atmospheric Kurukshetra Dawn Scene ── */}
+      <div className="relative z-10 mx-auto max-w-7xl px-gutter pt-12">
+        <EditorialSceneBanner
+          scene={EDITORIAL_SCENES.gitaJayantiKurukshetra}
+          eyebrowHi="इतिहास व संवाद"
+          eyebrowEn="Sacred Lineages"
+        />
+      </div>
 
       {/* ── Interactive Map ──────────────────────────────────────── */}
       <section id="characters-map" aria-labelledby="characters-map-heading" className="relative z-10 mx-auto max-w-7xl scroll-mt-24 px-gutter pb-20 pt-14">

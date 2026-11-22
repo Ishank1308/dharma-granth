@@ -11,6 +11,8 @@ import { Copy, MessageCircle, ArrowLeft, ArrowRight, BookOpen, Sparkles, Check, 
 import { MantraDetailClient } from './MantraDetailClient';
 import { NavagrahaMandalam } from '../NavagrahaMandalam';
 import { NavadurgaGallery } from '@/app/components/visuals/NavadurgaGallery';
+import { getMantraScene } from '@/data/curated-visuals';
+import { EditorialSceneBanner } from '@/app/components/visuals/CuratedVisuals';
 import '@/app/styles/long-read.css';
 
 interface PageProps {
@@ -256,6 +258,20 @@ export default async function MantraDetailPage({ params }: PageProps) {
             />
           </div>
         )}
+
+        {/* Curated atmospheric devotional banner for selected mantras */}
+        {(() => {
+          const mantraScene = getMantraScene(mantra.slug);
+          return mantraScene ? (
+            <div className="my-10">
+              <EditorialSceneBanner
+                scene={mantraScene.scene}
+                eyebrowHi={mantraScene.eyebrowHi}
+                eyebrowEn={mantraScene.eyebrowEn}
+              />
+            </div>
+          ) : null;
+        })()}
 
         {/* Spiritual Significance & Contemplation */}
         <section aria-labelledby="significance-heading" className="fade-up-on-view my-10 rounded-3xl border border-dharma-border bg-dharma-card p-6 sm:p-8 space-y-4">

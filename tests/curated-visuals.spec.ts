@@ -18,12 +18,24 @@ const ALL_CURATED_SRCS = [
   '/images/curated/wisdom/isha-upanishad-6.webp',
   '/images/curated/wisdom/shvetashvatara-grace.webp',
   '/images/curated/wisdom/japa-mala-bhakti.webp',
+  '/images/curated/wisdom/gita-2-47-nishkama.webp',
+  '/images/curated/wisdom/katha-chariot-self.webp',
+  '/images/curated/wisdom/yogasutra-still-lake.webp',
+  '/images/curated/wisdom/maya-veil-light.webp',
+  '/images/curated/wisdom/devi-adi-shakti-lotus.webp',
   '/images/curated/scenes/diwali-ghat-celebration.webp',
   '/images/curated/scenes/temple-darshan-puja.webp',
   '/images/curated/scenes/temple-kirtan-satsang.webp',
   '/images/curated/scenes/devotional-veena.webp',
   '/images/curated/scenes/sacred-grove-tapovan.webp',
   '/images/curated/scenes/ghat-morning-offering.webp',
+  '/images/curated/scenes/mahashivaratri-kailasha.webp',
+  '/images/curated/scenes/janmashtami-vrindavan.webp',
+  '/images/curated/scenes/ramnavami-ayodhya.webp',
+  '/images/curated/scenes/ganesh-chaturthi-shrine.webp',
+  '/images/curated/scenes/holi-spring-festival.webp',
+  '/images/curated/scenes/gita-jayanti-kurukshetra.webp',
+  '/images/curated/scenes/guru-purnima-ashram.webp',
 ];
 
 async function open(page: Page, path: string) {
@@ -45,8 +57,8 @@ async function assertCuratedImagesLoaded(page: Page, selector = 'img[src^="/imag
   }
 }
 
-test('all 22 curated WebP assets are served with image/webp and cache headers', async ({ request }) => {
-  expect(ALL_CURATED_SRCS.length).toBe(22);
+test('all 34 curated WebP assets are served with image/webp and cache headers', async ({ request }) => {
+  expect(ALL_CURATED_SRCS.length).toBe(34);
   for (const src of ALL_CURATED_SRCS) {
     const res = await request.get(src);
     expect(res.status(), `asset ${src}`).toBe(200);
@@ -127,7 +139,9 @@ test('curated visuals render cleanly across scriptures, mantras, verses, concept
   await open(page, '/mantras/devi-kavacham/');
   await expect(page.locator('#navadurga-darshan')).toBeVisible();
 
-  // Bhagavad Gita 2.48 verse page renders its VersePosterSpotlight with download, share, and ImageObject JSON-LD
+  // Bhagavad Gita 2.47 & 2.48 verse pages render their VersePosterSpotlight with download, share, and ImageObject JSON-LD
+  await open(page, '/scripture/bhagavadgita/chapter/2/verse/47/');
+  await assertCuratedImagesLoaded(page, 'img[src="/images/curated/wisdom/gita-2-47-nishkama.webp"]', 1);
   await open(page, '/scripture/bhagavadgita/chapter/2/verse/48/');
   await assertCuratedImagesLoaded(page, 'img[src="/images/curated/wisdom/gita-2-48.webp"]', 1);
   await expect(page.locator('a[download="dharma-granth-gita-2-48.webp"]')).toBeVisible();
@@ -137,9 +151,21 @@ test('curated visuals render cleanly across scriptures, mantras, verses, concept
   expect(jsonLdText).toContain('/images/curated/wisdom/gita-2-48.webp');
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
 
-  // Concepts visual hub renders all 7 curated scriptural posters and opens an accessible lightbox
+  // Additional festival detail pages render bespoke banners
+  await open(page, '/festivals/shivaratri/');
+  await assertCuratedImagesLoaded(page, 'img[src="/images/curated/scenes/mahashivaratri-kailasha.webp"]', 1);
+  await open(page, '/festivals/janmashtami/');
+  await assertCuratedImagesLoaded(page, 'img[src="/images/curated/scenes/janmashtami-vrindavan.webp"]', 1);
+
+  // Learn and Characters pages render atmospheric editorial banners
+  await open(page, '/learn/');
+  await assertCuratedImagesLoaded(page, 'img[src="/images/curated/scenes/guru-purnima-ashram.webp"]', 1);
+  await open(page, '/characters/');
+  await assertCuratedImagesLoaded(page, 'img[src="/images/curated/scenes/gita-jayanti-kurukshetra.webp"]', 1);
+
+  // Concepts visual hub renders all 12 curated scriptural posters and opens an accessible lightbox
   await open(page, '/concepts/visuals/');
-  await assertCuratedImagesLoaded(page, 'img[src^="/images/curated/wisdom/"]', 7);
+  await assertCuratedImagesLoaded(page, 'img[src^="/images/curated/wisdom/"]', 12);
   await page.locator('section[aria-labelledby="curated-posters-heading"] figure button').first().click();
   const posterDialog = page.getByRole('dialog');
   await expect(posterDialog).toBeVisible();
