@@ -1,5 +1,5 @@
 {
-  "_about": "One real photo or classical painting per scene (lib/scene-photos.ts). `file` is a Wikimedia Commons file title; scripts/build-scene-photos.mjs downloads it, checks the licence, crops and compresses it into app/styles/photos/. Entries with file null keep their drawn painting. `focus` is the CSS object-position to keep in frame; `fx` is the light moving over it: embers, mist, glints, dust, stars or none. `queries` are the Commons searches scripts/find-scene-photos.mjs runs to propose candidates.",
+  "_about": "One real photo or classical painting per scene (lib/scene-photos.ts). `file` is a Wikimedia Commons file title; scripts/build-scene-photos.mjs downloads it, checks the licence, crops and compresses it into app/styles/photos/. Entries with file null keep their drawn painting. `trim` (optional) cuts a mount, frame or caption off the original before it is compressed: percent off the top, right, bottom and left. `focus` is the CSS object-position to keep in frame; `fx` is the light moving over it: embers, mist, glints, dust, stars or none. `queries` are the Commons searches scripts/find-scene-photos.mjs runs to propose candidates.",
   "photos": {
     "kurukshetra": {
       "subject": "A wide plain at first light, dust in the air (Kurukshetra)",
@@ -24,9 +24,10 @@
       ]
     },
     "vishvarupa": {
-      "subject": "The cosmic form (classical painting) or the sun through clouds",
-      "file": "BR Hills sun through clouds.JPG",
-      "focus": "50% 40%",
+      "subject": "The cosmic form shown to Arjuna (classical painting)",
+      "file": "Brooklyn Museum - Vishvarupa The Cosmic Form of Krishna.jpg",
+      "trim": [15, 8, 15, 8],
+      "focus": "50% 45%",
       "fx": "none",
       "queries": [
         "Vishvarupa painting",
@@ -58,8 +59,8 @@
       ]
     },
     "yajna": {
-      "subject": "A havan or yajna fire, flames close up",
-      "file": "Havan kund at Satyanand Yoga Rocklyn Ashram, Australia.jpg",
+      "subject": "The sacred fire of a havan, flames rising",
+      "file": "Havan duing Puja.jpg",
       "focus": "50% 55%",
       "fx": "embers",
       "queries": [
@@ -146,9 +147,10 @@
       ]
     },
     "vrindavan": {
-      "subject": "The Yamuna and groves at Vrindavan",
-      "file": "Ghat at Yamuna river, Vrindavan.jpg",
-      "focus": "50% 60%",
+      "subject": "The groves of Vrindavan by the Yamuna (Bhagavata Purana folio)",
+      "file": "The Gopis Search For Krishna.jpg",
+      "trim": [5, 4, 5, 4],
+      "focus": "50% 55%",
       "fx": "mist",
       "queries": [
         "Vrindavan Yamuna",
@@ -179,10 +181,10 @@
       ]
     },
     "lotus": {
-      "subject": "A lotus pond, leaves on still water",
-      "file": "Lotus leaves in a pond (India, 2016).jpg",
-      "focus": "50% 60%",
-      "fx": "glints",
+      "subject": "A lotus in bloom on a pond",
+      "file": "Beautified.jpg",
+      "focus": "50% 62%",
+      "fx": "none",
       "queries": [
         "lotus pond India",
         "Nelumbo nucifera pond",
@@ -286,6 +288,64 @@
         "diya flame dark",
         "oil lamp diya",
         "deepam flame"
+      ]
+    },
+    "krishna": {
+      "subject": "Krishna with his flute among the cows and gopis (Pahari painting)",
+      "file": "Krishna with flute.jpg",
+      "trim": [3, 3, 5, 3],
+      "focus": "50% 55%",
+      "fx": "none",
+      "queries": [
+        "Krishna flute cows painting Pahari"
+      ]
+    },
+    "shiva": {
+      "subject": "Shiva and Parvati with their family on Kailash (Pahari painting)",
+      "file": "Shiva and His Family on Mount Kailash.jpg",
+      "trim": [2, 3, 2, 3],
+      "focus": "50% 55%",
+      "fx": "none",
+      "queries": [
+        "Shiva Parvati Kailash painting"
+      ]
+    },
+    "vishnu": {
+      "subject": "Vishnu resting on Shesha (Kerala mural)",
+      "file": "Mattancherry Palace-16-17th Century mural paintings-Vishnu Anantashayana-Detail-WUS09331.jpg",
+      "focus": "50% 50%",
+      "fx": "none",
+      "queries": [
+        "Vishnu Anantashayana painting"
+      ]
+    },
+    "rama": {
+      "subject": "Hanuman before Rama, Sita and Lakshmana (19th-century painting)",
+      "file": "India del nord, hanuman davanti a sita, rama e lakshmana, xix secolo.jpg",
+      "trim": [5, 4, 4, 4],
+      "focus": "50% 38%",
+      "fx": "none",
+      "queries": [
+        "Rama Sita Lakshmana Hanuman painting"
+      ]
+    },
+    "gurukul": {
+      "subject": "A teacher with his disciples by the water (Raja Ravi Varma, Adi Shankara)",
+      "file": "Raja Ravi Varma - Sankaracharya.jpg",
+      "focus": "50% 44%",
+      "fx": "none",
+      "queries": [
+        "Ravi Varma Shankaracharya disciples"
+      ]
+    },
+    "vyasa": {
+      "subject": "Ganesha writing the Mahabharata as Vyasa dictates (Mewar manuscript page)",
+      "file": "Ganesa writing the Mahabharat.jpeg",
+      "trim": [23, 2, 5, 2],
+      "focus": "50% 52%",
+      "fx": "none",
+      "queries": [
+        "Vyasa Ganesha Mahabharata painting"
       ]
     }
   }

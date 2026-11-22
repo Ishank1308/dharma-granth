@@ -389,7 +389,7 @@ export default async function VersePage(props: PageProps) {
   return (
     <>
       {/* The scripture's palette and folio material for everything on the page (display: contents, no box). */}
-      <div className="contents" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(scriptureVibe(meta.id, meta.category))} {...sceneAttrs(meta.id, chapterId)} {...photoAttrs(meta.id, chapterId)} data-painting={chapterPainting(meta.id, chapterId)}>
+      <div className="contents" data-scripture={meta.category} data-scripture-id={meta.id} {...vibeAttrs(scriptureVibe(meta.id, meta.category))} {...sceneAttrs(meta.id, chapterId)} {...photoAttrs(meta.id, chapterId, meta.category)} data-painting={chapterPainting(meta.id, chapterId)}>
       <FolioMotion />
       <script
         type="application/ld+json"

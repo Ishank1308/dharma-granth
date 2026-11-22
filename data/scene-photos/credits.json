@@ -14,11 +14,17 @@
     "source": "https://commons.wikimedia.org/wiki/File:Sri_Krishna_preaching_Gita_Upadesh_to_Arjun_-_Unknown,_Kashmir_School_-_Google_Cultural_Institute.jpg"
   },
   "vishvarupa": {
-    "file": "BR Hills sun through clouds.JPG",
-    "title": "BR Hills sun through clouds",
-    "author": "Prashanthns",
-    "license": "CC BY-SA 3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:BR_Hills_sun_through_clouds.JPG"
+    "file": "Brooklyn Museum - Vishvarupa The Cosmic Form of Krishna.jpg",
+    "trim": [
+      15,
+      8,
+      15,
+      8
+    ],
+    "title": "Vishvarupa: The Cosmic Form of Krishna",
+    "author": "Unknown author",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Brooklyn_Museum_-_Vishvarupa_The_Cosmic_Form_of_Krishna.jpg"
   },
   "ashram": {
     "file": "Rama, Sita, and Lakshmana at the Hermitage of Bharadvaja- Folio from a Ramayana Series (IA mma rama sita and lakshmana at the hermitage of bharadvaja folio from a ramay 37955).jpg",
@@ -28,11 +34,11 @@
     "source": "https://commons.wikimedia.org/wiki/File:Rama,_Sita,_and_Lakshmana_at_the_Hermitage_of_Bharadvaja-_Folio_from_a_Ramayana_Series_(IA_mma_rama_sita_and_lakshmana_at_the_hermitage_of_bharadvaja_folio_from_a_ramay_37955).jpg"
   },
   "yajna": {
-    "file": "Havan kund at Satyanand Yoga Rocklyn Ashram, Australia.jpg",
-    "title": "Havan kund at Satyanand Yoga Rocklyn Ashram, Australia",
-    "author": "Ninad Katyare",
-    "license": "CC BY-SA 3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Havan_kund_at_Satyanand_Yoga_Rocklyn_Ashram,_Australia.jpg"
+    "file": "Havan duing Puja.jpg",
+    "title": "Havan duing Puja",
+    "author": "Samir103",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Havan_duing_Puja.jpg"
   },
   "dawn": {
     "file": "Sunrise over paddy fields with palm trees in rural Telangana, India.jpg",
@@ -84,11 +90,17 @@
     "source": "https://commons.wikimedia.org/wiki/File:Battle_at_Lanka,_Ramayana,_Udaipur,_1649-53.jpg"
   },
   "vrindavan": {
-    "file": "Ghat at Yamuna river, Vrindavan.jpg",
-    "title": "Ghat at Yamuna river, Vrindavan",
-    "author": "Ekabhishek",
-    "license": "CC BY-SA 3.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Ghat_at_Yamuna_river,_Vrindavan.jpg"
+    "file": "The Gopis Search For Krishna.jpg",
+    "trim": [
+      5,
+      4,
+      5,
+      4
+    ],
+    "title": "The Gopis Search For Krishna",
+    "author": "Unknown",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Gopis_Search_For_Krishna.jpg"
   },
   "devi": {
     "file": "Unknown (Indian) - Durga, Having Decapitated Bull and Mahishasura Within, Drives off Remaining Demons while Gods in Clouds Applaud - 69.429 - Detroit Institute of Arts.jpg",
@@ -105,11 +117,11 @@
     "source": "https://commons.wikimedia.org/wiki/File:Holy_City_and_the_night_sky.jpg"
   },
   "lotus": {
-    "file": "Lotus leaves in a pond (India, 2016).jpg",
-    "title": "Lotus leaves in a pond (India, 2016)",
-    "author": "Shubham artcollege",
+    "file": "Beautified.jpg",
+    "title": "Beautified",
+    "author": "Swapnil Dattagupta",
     "license": "CC BY-SA 4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Lotus_leaves_in_a_pond_(India,_2016).jpg"
+    "source": "https://commons.wikimedia.org/wiki/File:Beautified.jpg"
   },
   "temple": {
     "file": "Kandariya Mahadeva Temple at Sunset, Khajuraho, Madhya Pradesh.jpg",
@@ -173,5 +185,71 @@
     "author": "Jasan",
     "license": "CC BY-SA 3.0",
     "source": "https://commons.wikimedia.org/wiki/File:Deepam.jpg"
+  },
+  "krishna": {
+    "file": "Krishna with flute.jpg",
+    "trim": [
+      3,
+      3,
+      5,
+      3
+    ],
+    "title": "Sri Krsna with the flute",
+    "author": "Unknown author Unknown author , author of the photo Freer Gallery of Art and Arthur M. Sackler Gallery .",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Krishna_with_flute.jpg"
+  },
+  "shiva": {
+    "file": "Shiva and His Family on Mount Kailash.jpg",
+    "trim": [
+      2,
+      3,
+      2,
+      3
+    ],
+    "title": "Shiva and His Family on Mount Kailash",
+    "author": "Ascribed to a Master of the Second Generation after Nainsukh",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Shiva_and_His_Family_on_Mount_Kailash.jpg"
+  },
+  "vishnu": {
+    "file": "Mattancherry Palace-16-17th Century mural paintings-Vishnu Anantashayana-Detail-WUS09331.jpg",
+    "title": "Mattancherry Palace-16-17th Century mural paintings-Vishnu Anantashayana-Detail-WUS09331",
+    "author": "Rainer Halama",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mattancherry_Palace-16-17th_Century_mural_paintings-Vishnu_Anantashayana-Detail-WUS09331.jpg"
+  },
+  "rama": {
+    "file": "India del nord, hanuman davanti a sita, rama e lakshmana, xix secolo.jpg",
+    "trim": [
+      5,
+      4,
+      4,
+      4
+    ],
+    "title": "India del nord, hanuman davanti a sita, rama e lakshmana, xix secolo",
+    "author": "Sailko",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:India_del_nord,_hanuman_davanti_a_sita,_rama_e_lakshmana,_xix_secolo.jpg"
+  },
+  "gurukul": {
+    "file": "Raja Ravi Varma - Sankaracharya.jpg",
+    "title": "Srimad Guru Adi Shankaracharya",
+    "author": "Raja Ravi Varma",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Raja_Ravi_Varma_-_Sankaracharya.jpg"
+  },
+  "vyasa": {
+    "file": "Ganesa writing the Mahabharat.jpeg",
+    "trim": [
+      23,
+      2,
+      5,
+      2
+    ],
+    "title": "Ganesa writing the Mahabharat",
+    "author": "Indian from Mewar, Rajasthan, Northern India",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Ganesa_writing_the_Mahabharat.jpeg"
   }
 }

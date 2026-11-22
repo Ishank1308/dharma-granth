@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, type ReactNode } from 'react';
+import { useEffect, useId, useLayoutEffect, useRef, type ReactNode } from 'react';
 import { X } from 'lucide-react';
 import { useSheetGesture } from '@/lib/useSheetGesture';
 import { usePresence } from '@/app/components/motion/usePresence';
@@ -47,10 +47,16 @@ export function ReaderDialog({
   useEffect(() => {
     onCloseRef.current = onClose;
   });
+  // Whatever had focus when the panel opened; focus goes back to it on close.
+  const openerRef = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
+  // A layout effect, so focus and the key handler are in place in the same commit that shows the
+  // panel. As a passive effect they arrived a frame or two later (the panel is loaded on demand,
+  // so its first commit is not part of the click), and an Escape pressed in that gap was lost:
+  // the panel stayed open with nothing listening yet.
+  useLayoutEffect(() => {
     if (!open) return;
-    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     // Focus the panel itself first so a screen reader announces the title.
@@ -81,6 +87,16 @@ export function ReaderDialog({
     return () => {
       document.removeEventListener('keydown', onKey, true);
       document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
+  // Focus goes back to the opener after the closing commit, in a passive effect. React puts focus
+  // back where it was at the start of a commit, so a focus() made during it (as a layout effect's
+  // cleanup would) is undone and focus stays inside the closing panel.
+  useEffect(() => {
+    if (!open) return;
+    return () => {
+      const opener = openerRef.current;
       if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
     };
   }, [open]);
