@@ -28,6 +28,8 @@ export function sanskritLines(sanskrit?: string): string[] {
     .replace(/[\s|।॥0-9०-९.]+$/u, '')
     .trim();
   if (!cleaned) return [];
+  const glued = splitGluedSpeaker(cleaned);
+  if (glued) return [glued.speaker, ...sanskritLines(glued.verse)];
   const byNewline = cleaned
     .split(/\n+/)
     .map((l) => l.trim())
@@ -47,6 +49,30 @@ export function sanskritLines(sanskrit?: string): string[] {
   }
   if (current.trim() && !/^[\s|।॥0-9०-९.]+$/u.test(current)) lines.push(current.trim());
   return lines.length ? lines : [cleaned];
+}
+
+// Speaker phrase at the very start, run straight into the next word: "अर्जुन उवाचएवं सततयुक्ता…"
+// (Bhagavad Gita 12 to 18 store most verses this way). Same rule as splitGluedSpeaker in lib/verse-format.ts:
+// उवाच never compounds, so a consonant or independent vowel right after it means the line break was lost.
+const GLUED_SPEAKER = /^\s*((?:श्री\s*)?(?:\S+\s+उवाच|भगवानुवाच))(?=[अ-ह])/;
+
+/** Splits "अर्जुन उवाचएवं…" into the speaker and the verse; null when the text has no such join. */
+export function splitGluedSpeaker(sanskrit: string): { speaker: string; verse: string } | null {
+  const match = GLUED_SPEAKER.exec(sanskrit);
+  return match && isSpeakerLine(match[1]) ? { speaker: match[1], verse: sanskrit.slice(match[0].length).trim() } : null;
+}
+
+/** "श्रीभगवानुवाच", "अर्जुन उवाच", "सञ्जय उवाच", "ऋषय ऊचुः": mirrors isSpeakerLine on the website. */
+export function isSpeakerLine(line: string): boolean {
+  const stripped = line.replace(/[|।॥:;—–-]+$/, '').trim();
+  if (!stripped || stripped.length > 22) return false;
+  if (/[|।॥]/.test(stripped)) return false;
+  const words = stripped.split(/\s+/);
+  const maxWords = words[0] === 'श्री' ? 3 : 2;
+  if (words.length > maxWords) return false;
+  if (/^(?:स|सा|तम्|तं|तत|ततः|तस्मै|तेन|अथ|अथैनं|एवम्|इति|पुनर्)(?:\s|$)/u.test(stripped)) return false;
+  if (/(?:प्रत्युवाच|होवाच)$/u.test(stripped)) return false;
+  return /(?:^|\s)उवाच$|(?:नुवाच|दुवाच|युवाच|ोवाच)$|(?:^|\s)ऊचुः$/u.test(stripped);
 }
 
 export const MEANING_COPY = {
@@ -92,4 +118,46 @@ export function formatVerseRef(scriptureId: string | undefined, chapterId: numbe
 export function verseMarkNumber(verseNumber: number | string): string {
   const parts = toAsciiDigits(String(verseNumber).trim()).split('.');
   return parts[parts.length - 1] || toAsciiDigits(String(verseNumber));
+}
+
+/** More Devanagari than Latin letters means the block should be set as Hindi. Mirrors lib/verse-format.ts. */
+export function isMostlyDevanagari(text: string | undefined): boolean {
+  if (!text) return false;
+  let deva = 0;
+  let latin = 0;
+  for (const ch of text) {
+    if (ch >= 'ऀ' && ch <= 'ॿ') deva++;
+    else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) latin++;
+  }
+  return deva > latin;
+}
+
+/** "pada—meaning; pada—meaning; …": a word gloss, not prose. */
+export function looksLikeWordGloss(text: string): boolean {
+  const parts = text.split(/;\s*/).filter((p) => p.trim());
+  if (parts.length < 4) return false;
+  const pairs = parts.filter((p) => /^[^—–:]{1,40}\s*[—–]\s*\S/.test(p.trim())).length;
+  return pairs / parts.length > 0.7;
+}
+
+/**
+ * As on the website (lib/verse-format.ts): a verse reads श्लोक → अर्थ → व्याख्या → Commentary.
+ * Hindi exposition is the व्याख्या and English the commentary, whichever field it was stored in
+ * (downloaded Hindi commentary, `explanation`, `commentary`). A word gloss stored in a commentary
+ * field is skipped, because the word-meaning note already shows it.
+ */
+export function splitVyakhyaCommentary(
+  candidates: (string | undefined)[],
+  wordMeaning?: string,
+): { vyakhya?: string; commentary?: string } {
+  let vyakhya: string | undefined;
+  let commentary: string | undefined;
+  const gloss = wordMeaning?.trim();
+  for (const text of candidates) {
+    if (!text || !text.trim()) continue;
+    if ((gloss && text.trim() === gloss) || looksLikeWordGloss(text)) continue;
+    if (isMostlyDevanagari(text)) vyakhya ??= text;
+    else commentary ??= text;
+  }
+  return { vyakhya, commentary };
 }

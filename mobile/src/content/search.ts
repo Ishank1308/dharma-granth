@@ -1,14 +1,16 @@
 /**
  * Offline verse search over the bundled books and the large texts the reader has downloaded.
  *
- * Bundled books: each corpus is a lazy require() (generated/search-loaders.ts), prepared on the first
- * search and kept for later queries. Downloaded books: an index built on the phone during the download
- * (src/content/download-index.ts), read a chunk at a time so memory stays flat.
+ * Bundled books: each corpus is read lazily (generated/search-loaders.android.ts: a compressed APK asset;
+ * search-loaders.ts on web), prepared on the first search and kept for later queries. Downloaded books: an
+ * index built on the phone during the download (src/content/download-index.ts), read a chunk at a time so
+ * memory stays flat.
  * The search runs book by book (chunk by chunk) and yields in between, so typing stays smooth.
  */
 import { useSyncExternalStore } from 'react';
 
-import { CATALOG, CATEGORIES } from './catalog';
+import { ASHTAVAKRA_CHAPTERS, ASHTAVAKRA_VERSES } from './ashtavakra';
+import { CATALOG, CATEGORIES, getEntry } from './catalog';
 import {
   buildIndexFromChapters,
   chunkForLine,
@@ -43,8 +45,28 @@ const SECTION_ORDER = ['upanishad', 'smriti', 'stotra', 'other', 'tantra', 'itih
 
 const isBundledSearchable = (b: CatalogEntry) => b.bundled && Boolean(SEARCH_LOADERS[b.id]);
 
+/**
+ * The Ashtavakra Gita has its own reader (src/app/ashtavakra/) outside the catalog; its verses are
+ * indexed under this id and its hits open that reader.
+ */
+export const ASHTAVAKRA_ID = 'ashtavakra';
+const ASHTAVAKRA_ENTRY: CatalogEntry = {
+  id: ASHTAVAKRA_ID,
+  title: 'Ashtavakra Gita',
+  titleSanskrit: 'अष्टावक्र गीता',
+  category: 'other',
+  totalVerses: ASHTAVAKRA_VERSES,
+  bundled: true,
+  chapters: ASHTAVAKRA_CHAPTERS.map((c) => ({ number: c.number, title: c.title, verseCount: c.verseCount })),
+};
+
+/** A searchable book by id: a catalog entry, or the Ashtavakra Gita. */
+export function searchEntry(id: string): CatalogEntry | undefined {
+  return id === ASHTAVAKRA_ID ? ASHTAVAKRA_ENTRY : getEntry(id);
+}
+
 /** Every book that is or can become searchable, in tie order. Downloaded books join when present. */
-const ordered = CATALOG.filter((b) => isBundledSearchable(b) || !b.bundled).sort((a, b) => {
+const ordered = [...CATALOG, ASHTAVAKRA_ENTRY].filter((b) => isBundledSearchable(b) || !b.bundled).sort((a, b) => {
   if (a.id === 'bhagavadgita' || b.id === 'bhagavadgita') return a.id === 'bhagavadgita' ? -1 : 1;
   return SECTION_ORDER.indexOf(a.category) - SECTION_ORDER.indexOf(b.category);
 });
@@ -71,7 +93,12 @@ function corpus(id: string): PreparedCorpus | undefined {
   if (cached) return cached;
   const load = SEARCH_LOADERS[id];
   if (!load) return undefined;
-  const book = prepareCorpus(id, load());
+  let book: PreparedCorpus;
+  try {
+    book = prepareCorpus(id, load());
+  } catch {
+    return undefined;
+  }
   prepared.set(id, book);
   return book;
 }

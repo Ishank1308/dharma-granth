@@ -3,23 +3,53 @@ import { Alert, Linking, Pressable, StyleSheet, Text, View } from 'react-native'
 
 import { accentFill, Card, glass } from '@/components/ui';
 import { getEntry, webUrl } from '@/content/catalog';
-import { cancelDownload, deleteDownload, formatBytes, startDownload, useDownloads, useRemoteIndex } from '@/content/downloads';
+import {
+  cancelDownload,
+  deleteDownload,
+  formatBytes,
+  startDownload,
+  useDownloads,
+  useRemoteIndex,
+  type DownloadErrorCode,
+} from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
-import { S, useI18n } from '@/i18n';
-import { useAppState } from '@/state/app-state';
-import { RADIUS, SPACE, TYPE } from '@/theme/themes';
+import { S, useI18n, type Msg } from '@/i18n';
+import { usePrefs } from '@/state/app-state';
+import { RADIUS, SPACE, TOUCH, TYPE } from '@/theme/themes';
+
+/** The sentence for a failed download. `bytes` is the text's size on the phone, for the free-space message. */
+export function downloadErrorText(code: DownloadErrorCode, bytes: number): Msg {
+  switch (code) {
+    case 'offline':
+      return S.downloadErrOffline;
+    case 'server':
+      return S.downloadErrServer;
+    case 'space':
+      return S.downloadErrSpace(formatBytes(Math.round(bytes * 1.35)));
+    case 'damaged':
+      return S.downloadErrDamaged;
+    case 'incomplete':
+      return S.downloadErrIncomplete;
+    case 'unavailable':
+      return S.downloadNotYet;
+    case 'update':
+      return S.downloadErrUpdate;
+    default:
+      return S.downloadErrFailed;
+  }
+}
 
 /** Download, progress, update and delete for one large text, shown at the top of its chapter list. */
 export function DownloadCard({ entry }: { entry: CatalogEntry }) {
   useRemoteIndex();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const { installed, jobs, errors, index, indexStatus } = useDownloads();
   const id = entry.id;
   const mine = installed[id];
   const job = jobs[id];
-  const error = errors[id];
   const remote = index?.books[id];
+  const error = errors[id] ? t(downloadErrorText(errors[id], remote?.bytes ?? 0)) : undefined;
   const update = Boolean(mine && remote && remote.version !== mine.version);
 
   const title = { color: palette.text, fontSize: TYPE.callout, fontWeight: '600' } as const;
@@ -64,14 +94,18 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
         <View style={{ flex: 1 }}>
           <Text style={title}>{t(S.downloadedSize(formatBytes(mine.bytes)))}</Text>
           <Text style={note}>{t(update ? S.downloadUpdateAvailable : S.downloadReady)}</Text>
-          {error ? <Text style={[note, { color: palette.accent }]}>{error}</Text> : null}
+          {error ? (
+            <Text accessibilityLiveRegion="polite" style={[note, { color: palette.accent }]}>
+              {error}
+            </Text>
+          ) : null}
         </View>
         {update ? (
           <Pressable accessibilityRole="button" accessibilityLabel={t(S.updateDownloadA11y)} onPress={() => startDownload(id)} style={[styles.btn, accentFill(palette)]}>
             <Text style={[styles.btnText, { color: palette.onAccent }]}>{t(S.updateBtn)}</Text>
           </Pressable>
         ) : null}
-        <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(entry.title))} onPress={confirmDelete} hitSlop={8}>
+        <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(entry.title))} onPress={confirmDelete} style={styles.icon}>
           <Ionicons name="trash-outline" size={20} color={palette.muted} />
         </Pressable>
       </Card>
@@ -93,7 +127,11 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
                   ? t(S.downloadNotYet)
                   : t(S.downloadChecking))}
           </Text>
-          {error ? <Text style={[note, { color: palette.accent }]}>{error}</Text> : null}
+          {error ? (
+            <Text accessibilityLiveRegion="polite" style={[note, { color: palette.accent }]}>
+              {error}
+            </Text>
+          ) : null}
         </View>
       </View>
       <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
@@ -119,8 +157,10 @@ export function DownloadCard({ entry }: { entry: CatalogEntry }) {
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', columnGap: SPACE.md, alignItems: 'center' },
-  btn: { borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, paddingHorizontal: SPACE.lg },
-  wide: { flex: 1, borderRadius: RADIUS.pill, paddingVertical: SPACE.md, alignItems: 'center' },
+  // Every control is at least 48 dp tall (Android's minimum touch target).
+  btn: { minHeight: TOUCH, justifyContent: 'center', borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, paddingHorizontal: SPACE.lg },
+  wide: { flex: 1, minHeight: TOUCH, justifyContent: 'center', borderRadius: RADIUS.pill, paddingVertical: SPACE.sm, alignItems: 'center' },
+  icon: { width: TOUCH, height: TOUCH, marginRight: -SPACE.sm, alignItems: 'center', justifyContent: 'center' },
   btnText: { fontWeight: '700', fontSize: TYPE.footnote },
   track: { height: 6, borderRadius: 3, overflow: 'hidden' },
   fill: { height: 6, borderRadius: 3 },
@@ -128,7 +168,7 @@ const styles = StyleSheet.create({
 
 /** Settings → Downloaded texts: what is on the phone, how much space it takes, and delete. */
 export function DownloadsSection() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const { installed, jobs } = useDownloads();
   const ids = Object.keys(installed).sort();
@@ -159,7 +199,7 @@ export function DownloadsSection() {
                     {title} · {formatBytes(installed[id].bytes)}
                   </Text>
                 </View>
-                <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(title))} onPress={() => confirmDelete(id, title)} hitSlop={8}>
+                <Pressable accessibilityRole="button" accessibilityLabel={t(S.deleteFromPhoneA11y(title))} onPress={() => confirmDelete(id, title)} style={styles.icon}>
                   <Ionicons name="trash-outline" size={20} color={palette.muted} />
                 </Pressable>
               </View>

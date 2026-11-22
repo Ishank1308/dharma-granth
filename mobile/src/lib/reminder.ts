@@ -29,3 +29,36 @@ export function formatReminderTime(hour: number, minute: number, use24Hour = fal
   const h12 = hour % 12 === 0 ? 12 : hour % 12;
   return `${h12}:${mm} ${hour < 12 ? 'AM' : 'PM'}`;
 }
+
+/**
+ * How the daily verse avoids nagging. Each time the app opens, the queue is planned again from that day:
+ * every chosen day for the first DAILY_DAYS days, then every other day until QUIET_AFTER_DAYS, then nothing.
+ * Someone who reads keeps getting the verse daily; someone who stopped opening the app hears from it less
+ * and less, and after two weeks not at all, until they come back.
+ */
+export const DAILY_DAYS = 7;
+export const QUIET_AFTER_DAYS = 14;
+
+export interface ScheduleOptions {
+  /** Weekdays allowed, as Date.getDay() counts. Empty or missing means every day. */
+  days?: number[];
+  /** The reader already read today, so today's reminder would only repeat what they did. */
+  readToday?: boolean;
+}
+
+/** The local times the daily verse should arrive at, for a queue planned at `now`. */
+export function reminderSchedule(now: Date, hour: number, minute: number, opts: ScheduleOptions = {}): Date[] {
+  const allowed = opts.days && opts.days.length > 0 ? new Set(opts.days) : null;
+  const first = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour, minute, 0, 0);
+  const todayStillAhead = first.getTime() - now.getTime() > 60_000;
+  const out: Date[] = [];
+  for (let offset = 0; offset < QUIET_AFTER_DAYS; offset += 1) {
+    if (offset === 0 && (!todayStillAhead || opts.readToday)) continue;
+    // Past the first week, only every other day.
+    if (offset >= DAILY_DAYS && (offset - DAILY_DAYS) % 2 === 1) continue;
+    const when = new Date(now.getFullYear(), now.getMonth(), now.getDate() + offset, hour, minute, 0, 0);
+    if (allowed && !allowed.has(when.getDay())) continue;
+    out.push(when);
+  }
+  return out;
+}

@@ -59,12 +59,14 @@ roll it out in the Play Console. Use a staged rollout (for example 20%, then 100
 ## Permissions
 
 `app.json` asks for `INTERNET`, plus `POST_NOTIFICATIONS` and `RECEIVE_BOOT_COMPLETED` for the opt-in daily
-verse notification (off until the reader turns it on in Settings; Android 13+ shows its own prompt then).
+verse notification (off until the reader turns it on in Settings or on the last page of the first-run
+welcome; Android 13+ shows its own prompt then).
 It blocks microphone, overlay, storage, advertising ID and Firebase push (`c2dm.RECEIVE`) permissions that
 libraries can add by default, so the Data safety answers stay true. Check
 **App bundle explorer → Permissions** in the Play Console after each build that adds a native module.
 
-The daily verse uses **local notifications only**: the app schedules the next 30 days on the phone with
-Android's alarm service. There is no server, push token or `google-services.json`, so `expo-notifications`'
+The daily verse uses **local notifications only**: the app schedules the next two weeks on the phone with
+Android's alarm service (daily for a week, then every other day, and nothing after that until the app is opened
+again; a day already read is skipped; `src/lib/reminder.ts`). There is no server, push token or `google-services.json`, so `expo-notifications`'
 bundled Firebase Messaging library never starts and nothing leaves the device. Data safety stays
 "no data collected or shared". No exact-alarm permission is used, so Android may deliver it a few minutes late.

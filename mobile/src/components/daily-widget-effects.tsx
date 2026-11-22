@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { AppState } from 'react-native';
 
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { refreshDailyVerseWidget } from '@/widget/task-handler';
 
 /**
@@ -9,7 +9,7 @@ import { refreshDailyVerseWidget } from '@/widget/task-handler';
  * whenever the app comes to the front (which also catches a new day). Renders nothing.
  */
 export function DailyWidgetEffects() {
-  const { ready, settings } = useAppState();
+  const { ready, settings } = usePrefs();
   const { theme, language } = settings;
 
   useEffect(() => {
