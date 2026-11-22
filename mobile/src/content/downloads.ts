@@ -318,6 +318,8 @@ export async function startDownload(id: string): Promise<void> {
     if (final.exists) final.delete();
     tmp.rename(id);
     saved = true;
+    // Say "Downloaded" only when the book can really be read from its folder.
+    if (!new File(bookDir(id), 'meta.json').exists) throw new DownloadError('incomplete');
     forget(id);
     set({ installed: { ...state.installed, [id]: meta } });
   } catch (e) {

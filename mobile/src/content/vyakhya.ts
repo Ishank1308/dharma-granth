@@ -122,6 +122,8 @@ async function update(id: string): Promise<void> {
     if (final.exists) final.delete();
     tmp.rename(id);
     saved = true;
+    // Count the notes as on the phone only when they can really be read from their folder.
+    if (!new File(bookDir(id), 'meta.json').exists) return;
     for (const key of [...cache.keys()]) if (key.startsWith(`${id}:`)) cache.delete(key);
     installed = { ...installed, [id]: remote.version };
     listeners.forEach((l) => l());
