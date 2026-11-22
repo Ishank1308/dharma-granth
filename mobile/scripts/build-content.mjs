@@ -27,6 +27,7 @@
 //   src/content/generated/explore/…      the website's Panchang, festival and mantra data (scripts/build-explore.mjs)
 //   src/content/generated/study/…        chapter summaries (scripts/build-study.mjs)
 //   src/content/generated/assets/content/ashtavakra/…   the Ashtavakra Gita (scripts/build-ashtavakra.mjs)
+//   src/content/generated/plans.json      reading plans and Gita Sankalpa chapters (scripts/build-plans.mjs)
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -35,6 +36,7 @@ import { Buffer } from 'node:buffer';
 import { buildAshtavakra } from './build-ashtavakra.mjs';
 import { buildExplore } from './build-explore.mjs';
 import { buildKnowledge } from './build-knowledge.mjs';
+import { buildPlans } from './build-plans.mjs';
 import { buildSearchIndex } from './build-search-index.mjs';
 import { buildStudy, STUDY_FILES } from './build-study.mjs';
 import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
@@ -63,7 +65,8 @@ if (
   existsSync(join(OUT, 'search-loaders.ts')) &&
   existsSync(join(OUT, 'search-loaders.android.ts')) &&
   existsSync(join(OUT, 'ashtavakra-loaders.ts')) &&
-  existsSync(join(OUT, 'ashtavakra-loaders.android.ts'))
+  existsSync(join(OUT, 'ashtavakra-loaders.android.ts')) &&
+  existsSync(join(OUT, 'plans.json'))
 ) {
   // The knowledge pages take under a second, so they are rebuilt even then: an older checkout has none.
   await buildKnowledge();
@@ -180,3 +183,4 @@ await buildAshtavakra();
 await buildSearchIndex();
 await buildKnowledge();
 await buildStudy();
+await buildPlans();

@@ -10,7 +10,7 @@ import { EditorialCard } from './share-editorial';
 
 /**
  * A verse drawn as a keepsake card, captured to a PNG (react-native-view-shot) and shared through the
- * Android share sheet. Five looks: the book's own cover colours with gold foil, or one of the four reading
+ * Android share sheet. Looks: editorial keepsakes, the book's own cover colours with gold foil, or one of the two reading
  * themes with its aurora.
  *
  * Philological rule: every line of the Sanskrit is on the card, never an excerpt. The card grows taller
@@ -18,8 +18,8 @@ import { EditorialCard } from './share-editorial';
  */
 export type EditorialStyle = 'arch' | 'midnight' | 'sage' | 'aura' | 'manuscript';
 export type ShareStyle = EditorialStyle | 'cover' | ThemeName;
-/** The editorial looks first (the Pinterest-style keepsakes), then the book cover and the four reading themes. */
-export const SHARE_STYLES: ShareStyle[] = ['arch', 'midnight', 'sage', 'aura', 'manuscript', 'cover', 'day', 'sunset', 'paper', 'dark'];
+/** The editorial looks first (the Pinterest-style keepsakes), then the book cover and the two reading themes. */
+export const SHARE_STYLES: ShareStyle[] = ['arch', 'midnight', 'sage', 'aura', 'manuscript', 'cover', 'sunset', 'dark'];
 export const EDITORIAL_STYLES: EditorialStyle[] = ['arch', 'midnight', 'sage', 'aura', 'manuscript'];
 
 /** A feed post (4:5, the tallest Instagram and Pinterest keep uncropped) or a story / status (9:16). */
