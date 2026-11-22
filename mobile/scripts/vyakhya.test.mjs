@@ -1,7 +1,10 @@
 // Hindi व्याख्या: the build resolves website commentary keys to the verse numbers the reader shows,
 // and the reader splits and formats it as the website does.
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 
 import { lookupCommentary, readCommentary } from './content-lib.mjs';
 import { lightMarkdown, parseModernContext } from '../src/lib/modern-context.ts';
@@ -24,8 +27,11 @@ test('the Gita gets व्याख्या for its famous verse, keyed by the 
     chapters: [{ number: 2 }],
     readVerses: () => [{ number: 47 }],
   };
-  const out = readCommentary(new URL('../../public/data/scriptures-full', import.meta.url).pathname, book);
-  if (!out) return; // checkout without published commentary
+  const dataDir = fileURLToPath(new URL('../../public/data/scriptures-full', import.meta.url));
+  const publishedDir = join(dataDir, '..', 'hi-commentary', 'bhagavadgita');
+  const out = readCommentary(dataDir, book);
+  if (!existsSync(publishedDir) && !out) return; // clean checkout before publish:commentary
+  assert.ok(out, 'expected readCommentary to load published sharded hi-commentary/bhagavadgita/*.json');
   const entry = out.chapters[2]['47'];
   assert.ok(entry.v && /[ऀ-ॿ]/.test(entry.v));
   assert.equal(out.verses, 1);
