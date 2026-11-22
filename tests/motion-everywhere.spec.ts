@@ -8,6 +8,12 @@ import { expect, test, type Page } from '@playwright/test';
 const animationOf = (page: Page, selector: string, pseudo: string | null = null) =>
   page.locator(selector).first().evaluate((el, p) => getComputedStyle(el, p).animationName, pseudo);
 
+// CI runners have few cores, where the site may choose low-power mode and still its motion;
+// these tests are about a device that has not asked for quiet.
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('dharma.perf.lowPower', 'false'));
+});
+
 const HUBS = [
   ['/festivals/', '.reveal-grid > *'],
   ['/concepts/', '.reveal-grid > *'],
@@ -131,4 +137,37 @@ test.describe('the time of day on home', () => {
     await expect(page.locator('html')).toHaveAttribute('data-daypart', 'day');
     await expect(page.locator('.daypart-greeting')).toBeHidden();
   });
+});
+
+test('a tapped festival card grows into the festival page', async ({ page }) => {
+  await page.goto('/festivals/');
+  // Record every element that carries a transition name while the page changes.
+  await page.evaluate(() => {
+    const seen = ((window as unknown as { __vt: string[] }).__vt = []);
+    new MutationObserver(() => {
+      const kind = document.documentElement.getAttribute('data-vt');
+      if (kind) seen.push(`kind:${kind}`);
+      document.querySelectorAll<HTMLElement>('[style*="view-transition-name"]').forEach((el) => {
+        seen.push(`${el.tagName}:${el.style.getPropertyValue('view-transition-name')}`);
+      });
+    }).observe(document.documentElement, { attributes: true, subtree: true, attributeFilter: ['style', 'data-vt'] });
+  });
+  const card = page.locator('a[data-vt="open"][href="/festivals/diwali/"]');
+  // React has taken over the page (its handle is on the link), so the tap is a client navigation.
+  await card.evaluate((el) => new Promise<void>((resolve) => {
+    const hydrated = () => Object.keys(el).some((key) => key.startsWith('__reactFiber'));
+    const check = () => (hydrated() ? requestAnimationFrame(() => resolve()) : setTimeout(check, 50));
+    check();
+  }));
+  await card.click();
+  await expect(page).toHaveURL(/\/festivals\/diwali\/$/);
+  await expect(page.locator('section[data-vt-hero]')).toBeVisible();
+  const seen = await page.evaluate(() => (window as unknown as { __vt: string[] }).__vt);
+  expect(seen).toContain('kind:open');
+  expect(seen).toContain('A:verse-hero');
+  expect(seen).toContain('SECTION:verse-hero');
+  // Nothing is left named once the page has settled, and the page opens at its top.
+  await expect(page.locator('html')).not.toHaveAttribute('data-vt', /./);
+  await expect(page.locator('[style*="view-transition-name"]')).toHaveCount(0);
+  expect(await page.evaluate(() => scrollY)).toBe(0);
 });

@@ -170,7 +170,7 @@ export default async function FestivalDetailPage(props: PageProps) {
       />
 
       {/* Hero Header */}
-      <section className={`relative isolate overflow-hidden bg-gradient-to-br ${festival.gradient} text-white py-14 sm:py-20`}>
+      <section data-vt-hero className={`relative isolate overflow-hidden bg-gradient-to-br ${festival.gradient} text-white py-14 sm:py-20`}>
         {photo && <HeroPhoto photo={photo} />}
         <div className="absolute inset-0 mandala-bg opacity-15 pointer-events-none" />
         {/* Only the hero's foot fades into the page, so the timing card's white text stays on the hero's colour. */}

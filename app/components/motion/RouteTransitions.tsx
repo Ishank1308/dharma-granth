@@ -8,7 +8,8 @@ const VERSE_PAGE = /^\/scripture\/[^/]+\/chapter\/[^/]+\/verse\/[^/]+\/?$/;
 
 /** The verse panel that belongs to the tapped link, if the link sits on a verse card. */
 function heroFor(anchor: HTMLAnchorElement): HTMLElement | null {
-  const own = anchor.closest<HTMLElement>('.verse-folio');
+  // A card link marked data-vt="open" grows as a whole into the page it opens.
+  const own = anchor.closest<HTMLElement>('.verse-folio, a[data-vt]');
   if (own) return own;
   let node: HTMLElement | null = anchor.parentElement;
   for (let depth = 0; node && depth < 6; depth += 1, node = node.parentElement) {
@@ -24,7 +25,9 @@ function heroFor(anchor: HTMLAnchorElement): HTMLElement | null {
  * Mounted once in the root layout. It tells lib/view-transition when a new route has
  * rendered, and turns ordinary link taps into animated page changes:
  * rel="next" / rel="prev" links slide like a turned page, and a link to a verse page
- * grows the tapped verse into it. Everything else navigates as before.
+ * grows the tapped verse into it. A card link marked data-vt="open" grows into the
+ * element marked data-vt-hero on the page it opens (a festival card into the festival's
+ * hero). Everything else navigates as before.
  */
 export function RouteTransitions() {
   const pathname = usePathname();
@@ -47,7 +50,7 @@ export function RouteTransitions() {
       let kind: TransitionKind | null = null;
       if (rel.includes('next')) kind = 'next';
       else if (rel.includes('prev')) kind = 'prev';
-      else if (VERSE_PAGE.test(url.pathname)) kind = 'open';
+      else if (VERSE_PAGE.test(url.pathname) || anchor.dataset.vt) kind = 'open';
       if (!kind) return;
 
       e.preventDefault();
