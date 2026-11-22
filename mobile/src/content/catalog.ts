@@ -64,9 +64,12 @@ export const CATEGORIES: { key: string; en: string; hi: string }[] = [
 /**
  * The verse of the day: the same Gita verse for everyone on a given date. Picked from the catalog's
  * verse counts, so only the one chapter that holds the verse is loaded at startup.
+ *
+ * `bookId` picks from another bundled book instead (the daily notification can follow the book the reader
+ * is in). A book that is not bundled gives undefined, and the caller falls back to the Gita.
  */
-export function dailyVerse(date = new Date()): { id: string; chapter: number; index: number } | undefined {
-  const entry = getEntry('bhagavadgita');
+export function dailyVerse(date = new Date(), bookId = 'bhagavadgita'): { id: string; chapter: number; index: number } | undefined {
+  const entry = getEntry(bookId);
   if (!entry?.bundled) return undefined;
   const total = entry.chapters.reduce((n, c) => n + c.verseCount, 0);
   if (total === 0) return undefined;

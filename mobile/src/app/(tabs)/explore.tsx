@@ -5,6 +5,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
+import { useTabTop } from '@/lib/use-tab-top';
 import { Backdrop, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { PressableScale } from '@/motion/pressable-scale';
@@ -24,6 +25,7 @@ type IconName = ComponentProps<typeof Ionicons>['name'];
  */
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
+  const topRef = useTabTop();
   const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
@@ -52,6 +54,7 @@ export default function ExploreScreen() {
   return (
     <Backdrop>
       <ScrollView
+        ref={topRef as never}
         style={{ backgroundColor: 'transparent' }}
         contentContainerStyle={{ paddingTop: insets.top, paddingHorizontal: SPACE.lg, paddingBottom: barClearance(insets.bottom) }}>
         <LargeHeader title={S.exploreTitle} eyebrow={S.exploreEyebrow} />
