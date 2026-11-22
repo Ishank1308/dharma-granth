@@ -177,6 +177,18 @@ export const S = {
   sunrise: { en: 'Sunrise', hi: 'सूर्योदय' },
   sunset: { en: 'Sunset', hi: 'सूर्यास्त' },
   dayLength: { en: 'Day length', hi: 'दिनमान' },
+  skyNowA11y: (pct: number, rise: string, set: string) => ({
+    en: `The sun's path: sunrise ${rise}, sunset ${set}. ${pct}% of the daylight has passed.`,
+    hi: `सूर्य का पथ: सूर्योदय ${rise}, सूर्यास्त ${set}। दिन का ${pct}% बीत चुका है।`,
+  }),
+  skyNightA11y: (rise: string, set: string) => ({
+    en: `The sun's path: sunrise ${rise}, sunset ${set}. The sun is below the horizon.`,
+    hi: `सूर्य का पथ: सूर्योदय ${rise}, सूर्यास्त ${set}। सूर्य अभी क्षितिज के नीचे है।`,
+  }),
+  skyDayA11y: (rise: string, set: string) => ({
+    en: `The sun's path: sunrise ${rise}, sunset ${set}.`,
+    hi: `सूर्य का पथ: सूर्योदय ${rise}, सूर्यास्त ${set}।`,
+  }),
   solarNoon: { en: 'Solar noon', hi: 'मध्याह्न' },
   brahmaMuhurta: { en: 'Brahma muhurta', hi: 'ब्रह्म मुहूर्त' },
   abhijitMuhurta: { en: 'Abhijit muhurta', hi: 'अभिजित मुहूर्त' },
@@ -768,6 +780,7 @@ export const S = {
   toastSaved: { en: 'Saved to your collection', hi: 'आपके संग्रह में सहेजा गया' },
   toastRemoved: { en: 'Removed from saved verses', hi: 'सहेजे गए श्लोकों से हटाया गया' },
   undo: { en: 'Undo', hi: 'वापस लें' },
+  swipeRemove: { en: 'Remove', hi: 'हटाएँ' },
 
   // A book's title page: its size in plain words, under the English title
   titlePageFacts: (chapters: number, verses: number) => ({

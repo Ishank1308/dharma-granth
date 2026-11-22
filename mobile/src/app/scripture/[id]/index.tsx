@@ -10,11 +10,14 @@ import { accentFill, Backdrop, barSurface, GroupRow, IconTile, Muted } from '@/c
 import { CATEGORIES, getEntry, webUrl } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import { summaryCollection } from '@/content/study';
+import type { CatalogChapter } from '@/content/types';
 import { S, useI18n } from '@/i18n';
 import { bookReadCount, chapterReadCount, percentRead } from '@/lib/progress';
 import { toDevanagari } from '@/lib/verse-format';
 import { useScrollProgressStyle, useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
+import { useOriginPress } from '@/motion/shared-origin';
+import { useStagger } from '@/motion/stagger';
 import { useAppState } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
 import { SANSKRIT_FONT } from '@/theme/fonts';
@@ -33,6 +36,8 @@ export default function ScriptureScreen() {
   const { scrollY, onScroll } = useScrollY();
   const headerGlass = useScrollProgressStyle(scrollY, 260, 340);
   const headerTitle = useScrollProgressStyle(scrollY, 300, 360, 8);
+  // The first chapters rise in under the title page as the book opens.
+  const stagger = useStagger();
 
   if (!entry) {
     return (
@@ -52,12 +57,12 @@ export default function ScriptureScreen() {
   const saved = bookmarks.filter((b) => b.id === entry.id).length;
   const bookPct = percentRead(bookReadCount(progress, entry.id, entry.chapters), entry.totalVerses);
 
-  const open = (chapter: number, verse?: string) => {
+  const open = (chapter: number, verse?: string, via?: string) => {
     if (offline) {
-      router.push({
-        pathname: '/scripture/[id]/[chapter]',
-        params: verse ? { id: entry.id, chapter: String(chapter), verse } : { id: entry.id, chapter: String(chapter) },
-      });
+      const params: Record<string, string> = { id: entry.id, chapter: String(chapter) };
+      if (verse) params.verse = verse;
+      if (via) params.via = via;
+      router.push({ pathname: '/scripture/[id]/[chapter]', params: params as { id: string; chapter: string } });
     } else {
       Linking.openURL(webUrl(entry.id, chapter)).catch(() => {});
     }
@@ -120,6 +125,7 @@ export default function ScriptureScreen() {
               {/* The book's title page: its website cover colours and watercolour, a 3D book you can tilt, and the
                   same title-page line as on dharmagranth.dev. */}
               <BookHero
+                id={entry.id}
                 cover={cover}
                 category={entry.category}
                 kind={cat ? t(cat) : undefined}
@@ -127,7 +133,8 @@ export default function ScriptureScreen() {
                 englishTitle={entry.titleSanskrit ? entry.title : undefined}
                 facts={t(S.titlePageFacts(entry.chapters.length, entry.totalVerses))}
                 letter={monogram(entry.titleSanskrit ?? entry.title)}
-                scrollY={scrollY}>
+                scrollY={scrollY}
+                flyFrom={`book:${entry.id}`}>
                 <View style={styles.badges}>
                   <View style={styles.badge}>
                     <Ionicons name={offline ? 'checkmark' : 'cloud-download-outline'} size={14} color={cover.foil} />
@@ -173,39 +180,19 @@ export default function ScriptureScreen() {
               ) : null}
             </View>
           }
-          renderItem={({ item, index }) => {
-            const current = resume?.number === item.number;
-            const read = chapterReadCount(progress, entry.id, item.number, item.verseCount);
-            const done = item.verseCount > 0 && read >= item.verseCount;
-            const readText = done ? t(S.chapterRead) : read > 0 && item.verseCount > 0 ? t(S.chapterReadOf(read, item.verseCount)) : '';
-            return (
-              <GroupRow
+          renderItem={({ item, index }) => (
+            <Animated.View entering={stagger(index)}>
+              <ChapterRow
+                bookId={entry.id}
+                chapter={item}
                 first={index === 0}
                 last={index === last}
-                inset={64}
-                highlight={current}
-                accessibilityRole={offline ? 'button' : 'link'}
-                accessibilityLabel={`${t(S.chapterA11y(item.number, item.title))}${current ? `, ${t(S.readingNowA11y)}` : ''}${readText ? `, ${readText}` : ''}`}
-                accessibilityHint={offline ? undefined : t(S.opensOnWebsite)}
-                onPress={() => open(item.number)}>
-                <Text style={[styles.num, { color: current ? palette.accent : palette.gold }]}>
-                  {toDevanagari(item.number)}
-                </Text>
-                <View style={{ flex: 1 }}>
-                  <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
-                  <Text style={{ color: current ? palette.accent : palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
-                    {current
-                      ? `${t(S.readingNow)}${readText && !done ? `, ${readText}` : ''}`
-                      : readText && !done
-                        ? `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}, ${readText}`
-                        : `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}${item.verseCount ? `, ${t(S.verseCount(item.verseCount))}` : ''}`}
-                  </Text>
-                </View>
-                {done ? <Ionicons name="checkmark-circle" size={20} color={palette.accent} /> : null}
-                <Ionicons name={offline ? 'chevron-forward' : 'open-outline'} size={18} color={palette.muted} />
-              </GroupRow>
-            );
-          }}
+                current={resume?.number === item.number}
+                offline={offline}
+                onOpen={(via) => open(item.number, undefined, via)}
+              />
+            </Animated.View>
+          )}
         />
         {resume && !palette.lite ? (
           // The list fades into the page behind the button, so rows never look cut off by it.
@@ -231,6 +218,62 @@ export default function ScriptureScreen() {
         ) : null}
       </>
     </Backdrop>
+  );
+}
+
+/**
+ * One chapter in the contents. Its gilt numeral flies into the reader's heading as the chapter opens
+ * (src/motion/shared-origin), so the number you tapped is the number you land on.
+ */
+function ChapterRow({
+  bookId,
+  chapter: item,
+  first,
+  last,
+  current,
+  offline,
+  onOpen,
+}: {
+  bookId: string;
+  chapter: CatalogChapter;
+  first: boolean;
+  last: boolean;
+  current: boolean;
+  offline: boolean;
+  onOpen: (via?: string) => void;
+}) {
+  const { palette, progress } = useAppState();
+  const { t } = useI18n();
+  const { ref, press } = useOriginPress(`chapter:${bookId}:${item.number}`);
+  const read = chapterReadCount(progress, bookId, item.number, item.verseCount);
+  const done = item.verseCount > 0 && read >= item.verseCount;
+  const readText = done ? t(S.chapterRead) : read > 0 && item.verseCount > 0 ? t(S.chapterReadOf(read, item.verseCount)) : '';
+  return (
+    <GroupRow
+      first={first}
+      last={last}
+      inset={64}
+      highlight={current}
+      accessibilityRole={offline ? 'button' : 'link'}
+      accessibilityLabel={`${t(S.chapterA11y(item.number, item.title))}${current ? `, ${t(S.readingNowA11y)}` : ''}${readText ? `, ${readText}` : ''}`}
+      accessibilityHint={offline ? undefined : t(S.opensOnWebsite)}
+      onPress={() => (offline ? press(() => onOpen('row')) : onOpen())}>
+      <View ref={ref} collapsable={false}>
+        <Text style={[styles.num, { color: current ? palette.accent : palette.gold }]}>{toDevanagari(item.number)}</Text>
+      </View>
+      <View style={{ flex: 1 }}>
+        <Text style={{ color: palette.text, fontSize: TYPE.body, fontWeight: '600' }}>{item.titleSanskrit ?? item.title}</Text>
+        <Text style={{ color: current ? palette.accent : palette.muted, fontSize: TYPE.footnote, marginTop: 2 }}>
+          {current
+            ? `${t(S.readingNow)}${readText && !done ? `, ${readText}` : ''}`
+            : readText && !done
+              ? `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}, ${readText}`
+              : `${item.titleSanskrit ? item.title : t(S.chapterN(item.number))}${item.verseCount ? `, ${t(S.verseCount(item.verseCount))}` : ''}`}
+        </Text>
+      </View>
+      {done ? <Ionicons name="checkmark-circle" size={20} color={palette.accent} /> : null}
+      <Ionicons name={offline ? 'chevron-forward' : 'open-outline'} size={18} color={palette.muted} />
+    </GroupRow>
   );
 }
 

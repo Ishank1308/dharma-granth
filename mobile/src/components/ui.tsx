@@ -212,7 +212,8 @@ export function Chip({
   const { palette, lang } = usePrefs();
   const choice = active !== undefined;
   return (
-    <Pressable
+    <PressableScale
+      scaleTo={0.94}
       onPress={() => {
         // A tick as the choice changes, like a segmented control; plain buttons stay silent.
         if (active === false) hapticSelect();
@@ -223,13 +224,13 @@ export function Chip({
       accessibilityLabel={accessibilityLabel ?? label}
       hitSlop={(TOUCH - CHIP_HEIGHT) / 2}
       // The chosen chip is ink, not saffron: the one saffron thing on a screen stays the action to take.
-      style={({ pressed }) => [styles.chip, active ? { backgroundColor: palette.text } : glass(palette), { opacity: pressed ? 0.75 : 1 }]}>
+      style={[styles.chip, active ? { backgroundColor: palette.text } : glass(palette)]}>
       <Text
         maxFontSizeMultiplier={UI_FONT_CAP}
         style={{ color: active ? palette.bg : palette.text, fontSize: scriptSize(TYPE.footnote, lang), fontWeight: '600' }}>
         {label}
       </Text>
-    </Pressable>
+    </PressableScale>
   );
 }
 

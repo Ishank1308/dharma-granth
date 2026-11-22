@@ -2,9 +2,10 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { LinearTransition } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { EmptyArt } from '@/components/art/empty-art';
 import { CollectionSheet, useCollectionName } from '@/components/collection-sheet';
 import { accentFill, Backdrop, Card, Chip, coverFill, GroupRow, groupSurface, IconButton, IconTile, LargeHeader, Muted } from '@/components/ui';
 import { getEntry, loadChapter } from '@/content/catalog';
@@ -13,12 +14,15 @@ import { cleanVerseField, formatVerseRef, meaningState, MEANING_COPY, sanskritLi
 import { allCollections, collectionCounts, collectionOf, type VerseLink } from '@/lib/journal';
 import { useScrollY } from '@/motion/parallax';
 import { PressableScale } from '@/motion/pressable-scale';
+import { useStagger } from '@/motion/stagger';
+import { SwipeToRemove } from '@/motion/swipe-to-remove';
+import { useMotion } from '@/motion/use-motion';
 import { TitleBar } from '@/motion/title-bar';
 import { useToast } from '@/motion/toast';
 import { toScript } from '@/lib/sanskrit-script';
 import { useAppState } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
-import { SANSKRIT_FONT, sanskritFont } from '@/theme/fonts';
+import { sanskritFont } from '@/theme/fonts';
 import { coverFor } from '@/theme/covers';
 import { barClearance, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
@@ -30,6 +34,9 @@ export default function BookmarksScreen() {
   const { journal, dropVerse } = useJournal();
   const { scrollY, onScroll } = useScrollY();
   const toast = useToast();
+  // Saved verses rise in as the tab opens; swiping one away closes the gap on a spring.
+  const { animate } = useMotion();
+  const stagger = useStagger();
   const scale = settings.textScale;
   const cap = fontCap(scale);
   const { t } = useI18n();
@@ -101,23 +108,14 @@ export default function BookmarksScreen() {
         }
         ListEmptyComponent={
           active ? (
-            <Muted style={{ textAlign: 'center', marginTop: SPACE.xl, fontSize: TYPE.callout }}>{t(S.collectionEmpty)}</Muted>
+            <View style={{ alignItems: 'center', marginTop: SPACE.lg, rowGap: SPACE.sm }}>
+              <EmptyArt kind="saved" size={96} />
+              <Muted style={{ textAlign: 'center', fontSize: TYPE.callout }}>{t(S.collectionEmpty)}</Muted>
+            </View>
           ) : (
           <View style={styles.empty}>
-            {/* The double danda that closes every verse, in gilt: the place where kept verses will gather. */}
-            <View
-              importantForAccessibility="no-hide-descendants"
-              accessibilityElementsHidden
-              style={[
-                styles.emptyIcon,
-                palette.lite
-                  ? { backgroundColor: palette.dark ? 'rgba(229,193,88,0.12)' : 'rgba(198,146,52,0.12)' }
-                  : { backgroundImage: `radial-gradient(circle at 50% 40%, ${palette.dark ? 'rgba(229,193,88,0.26)' : 'rgba(198,146,52,0.24)'} 0%, transparent 70%)` },
-              ]}>
-              <Text allowFontScaling={false} style={{ fontFamily: SANSKRIT_FONT, color: palette.gold, fontSize: 44, lineHeight: 70 }}>
-                ॥
-              </Text>
-            </View>
+            {/* An open book, drawn in gilt as the tab opens, and a ribbon that drops into it: where kept verses gather. */}
+            <EmptyArt kind="saved" />
             <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '700', textAlign: 'center' }}>
               {t(S.savedEmptyTitle)}
             </Text>
@@ -136,7 +134,8 @@ export default function BookmarksScreen() {
           </View>
           )
         }
-        renderItem={({ item }) => {
+        itemLayoutAnimation={animate ? LinearTransition.springify().damping(20).stiffness(220) : undefined}
+        renderItem={({ item, index }) => {
           const entry = getEntry(item.id);
           const verse = loadChapter(item.id, item.chapter)?.verses.find((v) => String(v.number) === item.verse);
           const lines = sanskritLines(verse?.sanskrit);
@@ -161,8 +160,19 @@ export default function BookmarksScreen() {
           const ref = `${entry?.title ?? item.id} ${formatVerseRef(item.id, item.chapter, item.verse)}`;
           const inCollection = nameOf({ id: collectionOf(journal, item), name: collections.find((c) => c.id === collectionOf(journal, item))?.name ?? '' });
           const params = { id: item.id, chapter: String(item.chapter), verse: item.verse };
+          // Removing is instant; the toast offers Undo instead of asking first.
+          const remove = () => {
+            removeBookmark(item);
+            dropVerse(item);
+            toast.show(t(S.toastRemoved), {
+              icon: 'trash-outline',
+              action: { label: t(S.undo), onPress: () => toggleBookmark(item.id, item.chapter, item.verse) },
+            });
+          };
           return (
-            <Card style={styles.card}>
+            <Animated.View entering={stagger(index)}>
+            <SwipeToRemove onRemove={remove} label={t(S.swipeRemove)} radius={RADIUS.card} style={styles.card}>
+            <Card>
               <View style={styles.cardTop}>
               {/* The remove button sits beside the open button, not inside it: TalkBack cannot reach a
                   button nested in another button, and nested touch targets misfire. */}
@@ -219,36 +229,31 @@ export default function BookmarksScreen() {
                 style={styles.remove}
                 accessibilityRole="button"
                 accessibilityLabel={t(S.removeSavedA11y(ref))}
-                onPress={() => {
-                  // Removing is instant; the toast offers Undo instead of asking first.
-                  removeBookmark(item);
-                  dropVerse(item);
-                  toast.show(t(S.toastRemoved), {
-                    icon: 'trash-outline',
-                    action: { label: t(S.undo), onPress: () => toggleBookmark(item.id, item.chapter, item.verse) },
-                  });
-                }}>
+                onPress={remove}>
                 <Ionicons name="trash-outline" size={18} color={palette.muted} />
               </Pressable>
               </View>
               <View style={styles.footer}>
-                <Pressable
+                <PressableScale
+                  scaleTo={0.95}
                   onPress={() => setMoving({ link: item, label: ref })}
                   accessibilityRole="button"
                   accessibilityLabel={t(S.inCollectionA11y(ref, inCollection))}
-                  style={({ pressed }) => [styles.collectionBtn, { backgroundColor: palette.dark ? 'rgba(255,255,255,0.08)' : 'rgba(60,40,20,0.06)' }, pressed && { opacity: 0.7 }]}>
+                  style={[styles.collectionBtn, { backgroundColor: palette.dark ? 'rgba(255,255,255,0.08)' : 'rgba(60,40,20,0.06)' }]}>
                   <Ionicons name="folder-open-outline" size={16} color={palette.accent} />
                   <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={1} style={{ flexShrink: 1, color: palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
                     {inCollection}
                   </Text>
                   <Ionicons name="chevron-down" size={14} color={palette.muted} />
-                </Pressable>
+                </PressableScale>
                 <View style={{ flexDirection: 'row' }}>
                   <IconButton icon="create-outline" tone="clear" onPress={() => router.push({ pathname: '/journal/edit', params })} accessibilityLabel={t(S.reflectVerseA11y(ref))} />
                   <IconButton icon="image-outline" tone="clear" onPress={() => router.push({ pathname: '/share', params })} accessibilityLabel={t(S.shareImageA11y(ref))} />
                 </View>
               </View>
             </Card>
+            </SwipeToRemove>
+            </Animated.View>
           );
         }}
       />
@@ -267,7 +272,6 @@ const styles = StyleSheet.create({
   chipRow: { columnGap: SPACE.sm, paddingHorizontal: SPACE.lg },
   ref: { alignSelf: 'flex-start', borderRadius: RADIUS.pill, paddingHorizontal: SPACE.md, paddingVertical: 4, marginBottom: SPACE.sm },
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', rowGap: SPACE.md, paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xxl },
-  emptyIcon: { width: 96, height: 96, borderRadius: 48, alignItems: 'center', justifyContent: 'center', marginBottom: SPACE.sm },
   cta: { marginTop: SPACE.md, minHeight: TOUCH + 8, paddingHorizontal: SPACE.xl, borderRadius: RADIUS.pill, alignItems: 'center', justifyContent: 'center' },
   // 48 dp touch target (Android accessibility minimum).
   remove: { width: TOUCH, height: TOUCH, marginTop: -SPACE.md, marginRight: -SPACE.md, alignItems: 'center', justifyContent: 'center' },

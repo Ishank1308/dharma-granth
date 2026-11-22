@@ -20,6 +20,7 @@ import { toScript } from '@/lib/sanskrit-script';
 import { LINE_FACTOR, sanskritFont } from '@/theme/fonts';
 import type { Settings } from '@/lib/backup';
 import { hapticOff, hapticOn } from '@/motion/haptics';
+import { PressableScale } from '@/motion/pressable-scale';
 import { PopIcon } from '@/motion/pop-icon';
 import type { Cover } from '@/theme/covers';
 import { fontCap, huesFor, SPACE, TOUCH, TYPE, UI_FONT_CAP, type Palette } from '@/theme/themes';
@@ -117,12 +118,12 @@ function VerseCardImpl({
         </View>
         <View style={styles.actions}>
           {audio && onToggleAudio ? (
-            <Pressable
+            <PressableScale
+              scaleTo={0.86}
               onPress={() => onToggleAudio(String(verse.number))}
-              style={({ pressed }) => [
+              style={[
                 styles.iconBtn,
                 audio !== 'idle' && audio !== 'error' && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
-                pressed && { opacity: 0.6 },
               ]}
               accessibilityRole="button"
               accessibilityState={{ busy: audio === 'loading', selected: audio === 'playing' }}
@@ -138,38 +139,37 @@ function VerseCardImpl({
                   color={audio === 'idle' ? palette.muted : palette.accent}
                 />
               )}
-            </Pressable>
+            </PressableScale>
           ) : null}
-          <Pressable
+          <PressableScale
+            scaleTo={0.86}
             onPress={reflect}
-            style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
+            style={styles.iconBtn}
             accessibilityRole="button"
             accessibilityLabel={t(reflections ? S.reflectedVerseA11y(ref, reflections) : S.reflectVerseA11y(ref))}>
             <Ionicons name={reflections ? 'create' : 'create-outline'} size={20} color={reflections ? palette.accent : palette.muted} />
-          </Pressable>
-          <Pressable
+          </PressableScale>
+          <PressableScale
+            scaleTo={0.86}
             onPress={share}
-            style={({ pressed }) => [styles.iconBtn, pressed && { opacity: 0.6 }]}
+            style={styles.iconBtn}
             accessibilityRole="button"
             accessibilityLabel={t(S.shareVerseA11y(ref))}>
             <Ionicons name="share-outline" size={20} color={palette.muted} />
-          </Pressable>
-          <Pressable
+          </PressableScale>
+          <PressableScale
+            scaleTo={0.86}
             onPress={() => {
               if (bookmarked) hapticOff();
               else hapticOn();
               onToggleBookmark(String(verse.number));
             }}
-            style={({ pressed }) => [
-              styles.iconBtn,
-              bookmarked && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' },
-              pressed && { opacity: 0.6 },
-            ]}
+            style={[styles.iconBtn, bookmarked && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.16)' : 'rgba(194,65,12,0.10)' }]}
             accessibilityRole="button"
             accessibilityState={{ selected: bookmarked }}
             accessibilityLabel={t(bookmarked ? S.unbookmarkVerseA11y(ref) : S.bookmarkVerseA11y(ref))}>
             <PopIcon on={bookmarked} name={bookmarked ? 'bookmark' : 'bookmark-outline'} size={20} color={bookmarked ? palette.accent : palette.muted} />
-          </Pressable>
+          </PressableScale>
         </View>
       </View>
 

@@ -1,7 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useMemo, useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
@@ -12,6 +12,7 @@ import { useDownloads } from '@/content/downloads';
 import { daysBetween, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { FEATURED, LIFE_GUIDES, PRACTICE_GUIDES, SAYINGS, SHELF, WISDOM_PICKS, type Guide, type Passage } from '@/content/home-picks';
 import { knowledge } from '@/content/knowledge';
+import { PressableScale } from '@/motion/pressable-scale';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
 import { bookReadCount, percentRead } from '@/lib/progress';
@@ -47,10 +48,6 @@ function open(p: Passage | string) {
   });
 }
 
-/** Press feedback shared by the cards: a slight sink, as the Library's cards. */
-function usePressed() {
-  return (pressed: boolean): ViewStyle | null => (pressed ? { transform: [{ scale: 0.985 }], opacity: 0.95 } : null);
-}
 
 function greeting(hour: number): Msg {
   if (hour >= 4 && hour < 12) return S.homeGreetingMorning;
@@ -109,16 +106,16 @@ function Hero() {
       <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.subhead, lineHeight: TYPE.subhead * 1.5 }}>
         {t(S.homeIntro)}
       </Text>
-      <Pressable
+      <PressableScale
         accessibilityRole="search"
         accessibilityLabel={t(S.searchInsideVerses)}
         onPress={() => router.push('/search')}
-        style={({ pressed }) => [styles.search, glass(palette, true), pressed && { opacity: 0.8 }]}>
+        style={[styles.search, glass(palette, true)]}>
         <Ionicons name="search" size={20} color={palette.accent} />
         <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={1} style={{ flex: 1, color: palette.muted, fontSize: TYPE.callout }}>
           {t(S.homeSearch)}
         </Text>
-      </Pressable>
+      </PressableScale>
     </View>
   );
 }
@@ -130,13 +127,12 @@ function Hero() {
 function FeaturedPassage() {
   const { palette, settings } = usePrefs();
   const { t } = useI18n();
-  const pressed = usePressed();
   const verse = loadChapter(FEATURED.id, FEATURED.chapter!)?.verses.find((v) => String(v.number) === FEATURED.verse);
   const lines = sanskritLines(verse?.sanskrit);
   if (!verse || lines.length === 0) return null;
   const size = TYPE.title3 * settings.textScale;
   return (
-    <Pressable accessibilityRole="button" accessibilityLabel={t(S.homeFeaturedA11y)} onPress={() => open(FEATURED)} style={({ pressed: p }) => pressed(p)}>
+    <PressableScale accessibilityRole="button" accessibilityLabel={t(S.homeFeaturedA11y)} onPress={() => open(FEATURED)}>
       <View
         style={[
           styles.featured,
@@ -190,7 +186,7 @@ function FeaturedPassage() {
           </Text>
         </View>
       </View>
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -198,19 +194,17 @@ function FeaturedPassage() {
 function QuickTiles() {
   const { palette } = usePrefs();
   const { t } = useI18n();
-  const pressed = usePressed();
   const upanishads = CATALOG.filter((b) => b.category === 'upanishad' && b.bundled).length;
   const tile = (key: string, icon: 'book' | 'compass', title: string, detail: string, onPress: () => void, tinted: boolean) => (
-    <Pressable
+    <PressableScale
       key={key}
       accessibilityRole="button"
       accessibilityLabel={`${title}, ${detail}`}
       onPress={onPress}
-      style={({ pressed: p }) => [
+      style={[
         styles.quick,
         glass(palette, !tinted),
-        tinted && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.14)' : 'rgba(194,65,12,0.08)' },
-        pressed(p),
+        tinted && { backgroundColor: palette.dark ? 'rgba(255,159,10,0.14)' : 'rgba(194,65,12,0.08)' }
       ]}>
       <View style={styles.quickTop}>
         <Ionicons name={icon} size={22} color={palette.accent} />
@@ -224,7 +218,7 @@ function QuickTiles() {
           {detail}
         </Text>
       </View>
-    </Pressable>
+    </PressableScale>
   );
   return (
     <View style={{ flexDirection: 'row', columnGap: SPACE.md }}>
@@ -237,7 +231,6 @@ function QuickTiles() {
 function ContinueCard() {
   const { lastRead, palette, progress } = useAppState();
   const { t } = useI18n();
-  const pressed = usePressed();
   if (!lastRead) return null;
   const entry = getEntry(lastRead.id);
   const idx = entry ? entry.chapters.findIndex((c) => c.number === lastRead.chapter) : -1;
@@ -250,13 +243,13 @@ function ContinueCard() {
   const fraction = read > 0 && entry.totalVerses > 0 ? read / entry.totalVerses : (idx + 1) / entry.chapters.length;
   const verse = lastRead.verse;
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       accessibilityLabel={
         verse ? t(S.continueReadingVerseA11y(entry.title, ch.number, verse, pct)) : t(S.continueReadingA11y(entry.title, ch.number))
       }
       onPress={() => open({ id: entry.id, chapter: ch.number, verse })}
-      style={({ pressed: p }) => pressed(p)}>
+     >
       <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }}>
           <CoverTile cover={cover} letter={monogram(entry.titleSanskrit ?? entry.title)} size={52} />
@@ -285,14 +278,13 @@ function ContinueCard() {
           ) : null}
         </View>
       </Card>
-    </Pressable>
+    </PressableScale>
   );
 }
 
 function VerseOfTheDay() {
   const { palette, settings } = usePrefs();
   const { t } = useI18n();
-  const pressed = usePressed();
   const today = useToday();
   const pick = useMemo(() => dailyVerse(dateFromDayKey(today)), [today]);
   if (!pick) return null;
@@ -302,11 +294,11 @@ function VerseOfTheDay() {
   const hues = huesFor(palette);
   const size = TYPE.callout * settings.textScale;
   return (
-    <Pressable
+    <PressableScale
       accessibilityRole="button"
       accessibilityLabel={t(S.verseOfTheDayA11y)}
       onPress={() => open({ id: pick.id, chapter: pick.chapter, verse: String(verse.number) })}
-      style={({ pressed: p }) => pressed(p)}>
+     >
       <Card style={{ borderRadius: RADIUS.panel - 2, paddingLeft: SPACE.lg + 6 }}>
         <View pointerEvents="none" style={[styles.goldBar, { backgroundColor: hues.gold }]} />
         <View style={styles.cardHead}>
@@ -328,7 +320,7 @@ function VerseOfTheDay() {
           ))}
         </View>
       </Card>
-    </Pressable>
+    </PressableScale>
   );
 }
 
@@ -340,7 +332,6 @@ function VerseOfTheDay() {
 function PanchangCard() {
   const { palette } = usePrefs();
   const { t, lang } = useI18n();
-  const pressed = usePressed();
   const hues = huesFor(palette);
   const [city] = usePanchangCity();
   // Recomputed whenever Home comes back into view, so the day turns over even if the app stays open.
@@ -364,24 +355,24 @@ function PanchangCard() {
     </View>
   );
   const pill = (label: string, href: string, primary = false) => (
-    <Pressable
+    <PressableScale
       key={href}
       accessibilityRole="link"
       accessibilityLabel={label}
       onPress={() => open(href)}
-      style={({ pressed: p }) => [styles.pill, primary ? accentFill(palette) : glass(palette), p && { opacity: 0.8 }]}>
+      style={[styles.pill, primary ? accentFill(palette) : glass(palette)]}>
       <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: primary ? palette.onAccent : palette.text, fontSize: TYPE.footnote, fontWeight: '600' }}>
         {label}
       </Text>
-    </Pressable>
+    </PressableScale>
   );
   return (
     <Card strong style={{ borderRadius: RADIUS.panel - 2, rowGap: SPACE.md }}>
-      <Pressable
+      <PressableScale
         accessibilityRole="button"
         accessibilityLabel={`${t(S.openPanchangA11y)}. ${tithi}, ${paksha}, ${nakshatra}`}
         onPress={() => open('/explore/panchang')}
-        style={({ pressed: p }) => [{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }, pressed(p)]}>
+        style={[{ flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md }]}>
         <Moon3D phase={phaseFromIllumination(today.paksha.illuminationPercent, today.paksha.isWaxing)} size={56} />
         <View style={{ flex: 1 }}>
           <Kicker color={palette.accent}>{t(S.todayAt(cityName))}</Kicker>
@@ -393,7 +384,7 @@ function PanchangCard() {
           </Text>
         </View>
         <Ionicons name="chevron-forward" size={20} color={palette.muted} />
-      </Pressable>
+      </PressableScale>
       <View style={styles.facts}>
         {fact('star-outline', t(S.limbNakshatra), nakshatra, hues.indigo)}
         {fact('sunny-outline', t(S.sunrise), today.solarTimes.sunrise, hues.gold)}
@@ -434,24 +425,23 @@ function SectionHead({ title, detail, action }: { title: string; detail?: string
 function Shelf() {
   const { palette } = usePrefs();
   const { t } = useI18n();
-  const pressed = usePressed();
   const books = SHELF.map(getEntry).filter((b): b is NonNullable<typeof b> => !!b && b.bundled);
   return (
     <View>
       <SectionHead
         title={t(S.homeShelf)}
         action={
-          <Pressable
+          <PressableScale
             accessibilityRole="link"
             accessibilityLabel={t(S.homeSeeAllA11y(CATALOG.length))}
             onPress={() => router.navigate('/')}
             hitSlop={8}
-            style={({ pressed: p }) => [styles.seeAll, p && { opacity: 0.6 }]}>
+            style={[styles.seeAll]}>
             <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.subhead, fontWeight: '600' }}>
               {t(S.homeSeeAll)}
             </Text>
             <Ionicons name="chevron-forward" size={16} color={palette.accent} />
-          </Pressable>
+          </PressableScale>
         }
       />
       <ScrollView
@@ -463,16 +453,15 @@ function Shelf() {
           const cover = coverFor(b.id, b.category);
           const sa = b.titleSanskrit ?? b.title;
           return (
-            <Pressable
+            <PressableScale
               key={b.id}
               accessibilityRole="button"
               accessibilityLabel={t(S.bookA11y(b.title, b.chapters.length))}
               onPress={() => open({ id: b.id })}
-              style={({ pressed: p }) => [
+              style={[
                 styles.book,
                 coverFill(cover, palette),
-                !palette.lite && { boxShadow: palette.dark ? '0 10px 24px rgba(0,0,0,0.5)' : '0 10px 22px rgba(60,30,10,0.18)' },
-                pressed(p),
+                !palette.lite && { boxShadow: palette.dark ? '0 10px 24px rgba(0,0,0,0.5)' : '0 10px 22px rgba(60,30,10,0.18)' }
               ]}>
               {/* Gilt frame, like a cloth-bound cover. */}
               {/* A soft dark scrim under the titles, so they read on every cover's light end. */}
@@ -489,7 +478,7 @@ function Shelf() {
                   {b.title}
                 </Text>
               </View>
-            </Pressable>
+            </PressableScale>
           );
         })}
       </ScrollView>
@@ -543,7 +532,6 @@ function Guides() {
 function Wisdom() {
   const { palette } = usePrefs();
   const { t } = useI18n();
-  const pressed = usePressed();
   const hues = huesFor(palette);
   const data = knowledge('wisdom');
   const topics = WISDOM_PICKS.map((id) => data.items.find((x) => x.id === id)).filter((x): x is NonNullable<typeof x> => !!x);
@@ -552,12 +540,12 @@ function Wisdom() {
       <SectionHead title={t(S.wisdomTitle)} detail={t(S.homeWisdomDetail)} />
       <View style={styles.wisdomGrid}>
         {topics.map((w) => (
-          <Pressable
+          <PressableScale
             key={w.id}
             accessibilityRole="button"
             accessibilityLabel={t(S.homeTopicA11y(t(w.title), w.minutes))}
             onPress={() => open(`/wisdom/${w.id}`)}
-            style={({ pressed: p }) => [styles.wisdomTile, glass(palette), pressed(p)]}>
+            style={[styles.wisdomTile, glass(palette)]}>
             <View pointerEvents="none" style={[styles.wisdomStripe, { backgroundColor: w.accent }]} />
             <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.text, fontSize: TYPE.subhead, fontWeight: '700' }}>
               {t(w.title)}
@@ -565,7 +553,7 @@ function Wisdom() {
             <Text maxFontSizeMultiplier={TITLE_FONT_CAP} numberOfLines={2} style={{ color: palette.muted, fontSize: TYPE.caption, lineHeight: TYPE.caption * 1.5 }}>
               {t(w.short)}
             </Text>
-          </Pressable>
+          </PressableScale>
         ))}
       </View>
       <GroupCard>
@@ -601,7 +589,6 @@ function Wisdom() {
 function Sayings() {
   const { palette, settings } = usePrefs();
   const { t } = useI18n();
-  const pressed = usePressed();
   const size = TYPE.title2 * settings.textScale;
   return (
     <View>
@@ -614,12 +601,12 @@ function Sayings() {
         style={{ flexGrow: 0, marginHorizontal: -SPACE.lg, marginVertical: -SPACE.lg + 4 }}
         contentContainerStyle={{ paddingHorizontal: SPACE.lg, columnGap: SPACE.md, paddingVertical: SPACE.lg, alignItems: 'flex-start' }}>
         {SAYINGS.map((s) => (
-          <Pressable
+          <PressableScale
             key={s.sa}
             accessibilityRole="link"
             accessibilityLabel={`${s.sa}. ${t(S.homeSayingA11y(t(s.gloss), t(s.cite)))}`}
             onPress={() => open(s)}
-            style={({ pressed: p }) => [styles.saying, glass(palette), pressed(p)]}>
+            style={[styles.saying, glass(palette)]}>
             <Text maxFontSizeMultiplier={fontCap(settings.textScale)} style={{ color: palette.accent, fontSize: size, lineHeight: size * 1.6, fontWeight: '600' }}>
               {s.sa.replace(/[\s।॥]+$/u, '')}
               <Text style={{ color: huesFor(palette).gold }}> ॥</Text>
@@ -632,7 +619,7 @@ function Sayings() {
                 {t(s.cite)}
               </Text>
             </View>
-          </Pressable>
+          </PressableScale>
         ))}
       </ScrollView>
     </View>

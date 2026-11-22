@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import { FlatList, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { EmptyArt } from '@/components/art/empty-art';
 import { accentFill, Backdrop, Card, Chip, coverFill, glass, LargeHeader, Muted } from '@/components/ui';
 import { getEntry } from '@/content/catalog';
 import { MOOD_LABELS, S, useI18n } from '@/i18n';
@@ -12,7 +13,7 @@ import { formatVerseRef } from '@/lib/verse-format';
 import { usePrefs } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
-import { fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
+import { fontCap, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
 
@@ -29,7 +30,6 @@ export default function JournalScreen() {
   const shown = useMemo(() => filterEntries(journal.entries, { query, mood, tag }), [journal.entries, query, mood, tag]);
   const filtering = !!(query.trim() || mood || tag);
   const cap = fontCap(settings.textScale);
-  const hues = huesFor(palette);
 
   return (
     <Backdrop>
@@ -100,9 +100,8 @@ export default function JournalScreen() {
             <Muted style={{ textAlign: 'center', marginTop: SPACE.xl, fontSize: TYPE.callout }}>{t(S.journalNoMatch)}</Muted>
           ) : (
             <View style={styles.empty}>
-              <View style={[styles.emptyIcon, { backgroundColor: palette.dark ? 'rgba(255,159,10,0.14)' : 'rgba(194,65,12,0.10)' }]}>
-                <Ionicons name="leaf-outline" size={44} color={hues.saffron} />
-              </View>
+              {/* A lamp, drawn in gilt, whose flame lights and breathes: a quiet place to begin writing. */}
+              <EmptyArt kind="journal" />
               <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '700', textAlign: 'center' }}>
                 {t(S.journalEmptyTitle)}
               </Text>
@@ -201,7 +200,6 @@ const styles = StyleSheet.create({
   refs: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.xs, marginTop: SPACE.md },
   refPill: { borderRadius: RADIUS.pill, paddingHorizontal: SPACE.md, paddingVertical: 4 },
   empty: { flex: 1, alignItems: 'center', justifyContent: 'center', rowGap: SPACE.md, paddingHorizontal: SPACE.lg, paddingBottom: SPACE.xxl },
-  emptyIcon: { width: 96, height: 96, borderRadius: 48, alignItems: 'center', justifyContent: 'center', marginBottom: SPACE.sm },
   fabWrap: { position: 'absolute', left: 0, right: 0, alignItems: 'center' },
   fab: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm, minHeight: TOUCH + 8, paddingHorizontal: SPACE.xl, borderRadius: RADIUS.pill },
 });

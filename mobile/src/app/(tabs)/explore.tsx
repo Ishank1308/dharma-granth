@@ -1,12 +1,13 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, useFocusEffect, type Href } from 'expo-router';
 import { useCallback, useMemo, useState, type ComponentProps } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { Backdrop, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
+import { PressableScale } from '@/motion/pressable-scale';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
 import { usePrefs } from '@/state/app-state';
@@ -56,11 +57,11 @@ export default function ExploreScreen() {
         <LargeHeader title={S.exploreTitle} eyebrow={S.exploreEyebrow} />
 
         {/* Today, as the website's Panchang hero: the moon, the tithi and the day's limbs. */}
-        <Pressable
+        <PressableScale
           accessibilityRole="button"
           accessibilityLabel={`${t(S.openPanchangA11y)}. ${tithiName}, ${lang === 'hi' ? today.paksha.nameHi : today.paksha.transliteration}`}
           onPress={() => router.push('/explore/panchang')}
-          style={({ pressed }) => [styles.hero, glass(palette, true), pressed && { transform: [{ scale: 0.985 }] }]}>
+          style={[styles.hero, glass(palette, true)]}>
           <View style={styles.heroTop}>
             <Moon3D phase={phaseFromIllumination(today.paksha.illuminationPercent, today.paksha.isWaxing)} size={60} />
             <View style={{ flex: 1 }}>
@@ -82,10 +83,10 @@ export default function ExploreScreen() {
             <Fact label={t(S.sunrise)} value={today.solarTimes.sunrise} color={hues.gold} />
             <Fact label={t(S.sunset)} value={today.solarTimes.sunset} color={hues.vermilion} />
           </View>
-        </Pressable>
+        </PressableScale>
 
         {next ? (
-          <Pressable
+          <PressableScale
             accessibilityRole="button"
             accessibilityLabel={`${t(S.nextFestival)}: ${t(S.festivalA11y(lang === 'hi' ? (next.nameHindi ?? next.name) : next.name, formatDay(next.date, lang)))}`}
             onPress={() =>
@@ -93,7 +94,7 @@ export default function ExploreScreen() {
                 ? router.push({ pathname: '/explore/festivals/[id]', params: { id: next.festivalId } })
                 : router.push('/explore/festivals')
             }
-            style={({ pressed }) => [styles.next, glass(palette), pressed && { opacity: 0.85 }]}>
+            style={[styles.next, glass(palette)]}>
             <View style={[styles.nextIcon, { backgroundColor: palette.dark ? 'rgba(244,114,182,0.16)' : 'rgba(190,24,93,0.10)' }]}>
               <Text allowFontScaling={false} style={{ fontSize: 22 }}>
                 {(next.festivalId && festivalById(next.festivalId)?.icon) || '🪔'}
@@ -110,7 +111,7 @@ export default function ExploreScreen() {
             <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.accent, fontSize: TYPE.footnote, fontWeight: '700' }}>
               {formatDay(next.date, lang, false)}
             </Text>
-          </Pressable>
+          </PressableScale>
         ) : null}
 
         <GroupTitle title={t(S.exploreCalendar)} />
