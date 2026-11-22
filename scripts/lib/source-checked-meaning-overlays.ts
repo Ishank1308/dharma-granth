@@ -1,12 +1,12 @@
 /**
- * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1 and 2, chapter 3 verses 1–43, and chapter 4 verses 1–40.
+ * Source-checked publication overlays for Devī Bhāgavata Skandha 1 Adhyāyas 1–4 (1:1–25, 2:1–40, 3:1–43, 4:1–65).
  *
  * Unlike the manual apply-written-meanings command, this is an explicit,
  * verse-level allowlist. All other unreviewed drafts remain
  * blocked. Source Sanskrit is never modified.
  *
  * Witness: https://sanskritdocuments.org/doc_purana/devIbhAgavatam01.html
- * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–40). Hindi is an AI-assisted, independently worded
+ * chapters 1.1 (1–25), 1.2 (1–40), 1.3 (1–43), and 1.4 (1–65). Hindi is an AI-assisted, independently worded
  * interpretation of that Sanskrit; it is NOT a Gita Press transcription or
  * scholar-certified translation. The reader displays an editorial study-translation label and provides truthful AI-assistance provenance.
  */
@@ -171,6 +171,31 @@ export const DEVI_CHAPTER_4_WITNESS_OPENINGS = [
   "त्वन्नाभिकमलाज्जातः कर्ताहमखिलस्य ह",
   "जानाम्यहं जगन्नाथ त्वमादिः सर्वकारणम्",
   "इच्छया ते महाराज सृजाम्यहमिदं जगत्",
+  "सूर्यो भ्रमति चाकाशे वायुर्वाति शुभाशुभः",
+  "त्वं तु ध्यायसि कं देवं संशयोऽयं महान्मम",
+  "कृपां कृत्वा वदस्वाद्य भक्तोऽस्मि तव सुव्रत",
+  "तच्छ्रुत्वा वचनं तस्य हरिराह प्रजापतिम्",
+  "यद्यपि त्वां शिवं मां च स्थितिसृष्ट्यन्तकारणम्",
+  "स्रष्टा त्वं पालकश्चाहं हरः संहारकारकः",
+  "जगत्सञ्जनने शक्तिस्त्वयि तिष्ठति राजसी",
+  "तया विरहितस्त्वं न तत्कर्मकरणे प्रभुः",
+  "तदधीना वयं सर्वे वर्तामः सततं विभो",
+  "शेषे स्वपिमि पर्यङ्के परतन्त्रो न संशयः",
+  "तपश्चरामि सततं तदधीनोऽस्म्यहं सदा",
+  "कदाचिद्दानवैः सार्धं सङ्ग्रामं प्रकरोम्यहम्",
+  "प्रत्यक्षं तव धर्मज्ञ तस्मिन्नेकार्णवे पुरा",
+  "तौ कर्णमलजौ दुष्टौ दानवौ मदगर्वितौ",
+  "तदा त्वया न किं ज्ञातं कारणं तु परात्परम्",
+  "यदिच्छः पुरुषो भूत्वा विचरामि महार्णवे",
+  "न कस्यापि प्रियो लोके तिर्यग्योनिषु सम्भवः",
+  "विहाय लक्ष्या सह संविहारं को याति मत्स्यादिषु हीनयोनिषु",
+  "पुरा पुरस्तेऽज शिरो मदीयं गतं धनुर्ज्यास्खलनात्क्व चापि",
+  "हयाननोऽहं परिकीर्तितश्च प्रत्यक्षमेतत्तव लोककर्तः",
+  "तस्मान्नाहं स्वतन्त्रोऽस्मि शक्त्यधीनोऽस्मि सर्वथा",
+  "नातः परतरं किञ्चिज्जानामि कमलोद्भव",
+  "तेन चाप्यहमुक्तोऽस्मि तथैव मुनिपुङ्गव",
+  "असंशयं हृदम्भोजे भज देवीपदाम्बुजम्",
+  "नारदेनैवमुक्तस्तु व्यासः सत्यवतीसुतः",
 ] as const;
 
 type Verse = Record<string, unknown>;
