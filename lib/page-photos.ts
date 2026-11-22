@@ -9,7 +9,8 @@ import type { PhotoId } from './scene-photos';
  * hashed file, so showing it on more pages adds no file to the export.
  *
  * `yogi` has no photo yet, so it is left out of the type: every id here has a file.
- * tests/page-photos.spec.ts checks that each picture loads on its page.
+ * tests/page-photos.spec.ts checks that a festival, a character, a mantra and a section page
+ * each load their picture.
  */
 export type CoverPhoto = Exclude<PhotoId, 'yogi'>;
 

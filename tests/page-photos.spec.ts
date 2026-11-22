@@ -1,11 +1,9 @@
-import { existsSync } from 'node:fs';
-import { resolve } from 'node:path';
 import { expect, test, type Page } from '@playwright/test';
-import { CHARACTER_PHOTOS, FESTIVAL_PHOTOS, MANTRA_PHOTOS } from '../lib/page-photos';
 
 // Pictures on pages outside the reader (lib/page-photos.ts, app/components/PagePhoto.tsx). They
-// reuse the chapter photos in app/styles/photos/, so no page may name a picture that has no file,
-// each one's credit link must land on its entry on /sources/, and Data Saver loads none.
+// reuse the chapter photos in app/styles/photos/; the picture each page shows must load, its credit
+// link must land on its entry on /sources/, and Data Saver loads none. CI runs these specs with
+// only tests/ checked out, so they read the pages, not lib/.
 
 /** The picture a cover or hero shows, as the browser resolved it ('' when hidden). */
 function shownPicture(page: Page, selector: string, pseudo: '::before' | null) {
@@ -15,12 +13,20 @@ function shownPicture(page: Page, selector: string, pseudo: '::before' | null) {
   }, pseudo);
 }
 
-test('every festival, character and mantra picture has a file', () => {
-  const photos = new Set([...Object.values(FESTIVAL_PHOTOS), ...Object.values(CHARACTER_PHOTOS), ...Object.values(MANTRA_PHOTOS)]);
-  for (const id of photos) {
-    for (const ext of ['avif', 'webp']) {
-      expect(existsSync(resolve(__dirname, `../app/styles/photos/${id}.${ext}`)), `${id}.${ext}`).toBe(true);
-    }
+test('the picture each kind of page shows loads', async ({ page, request }) => {
+  for (const [route, selector, pseudo] of [
+    ['/festivals/shivaratri/', '.hero-photo', '::before'],
+    ['/characters/prahlada/', '.hero-photo', '::before'],
+    ['/mantras/hanuman-chalisa/', '.page-cover-art', null],
+    ['/learn/', '.page-cover-art', null],
+  ] as const) {
+    await page.goto(route);
+    const background = await shownPicture(page, selector, pseudo);
+    const url = background.match(/url\(["']?([^"')]+)/)?.[1];
+    expect(url, `${route}: ${background}`).toBeTruthy();
+    const response = await request.get(new URL(url!, page.url()).toString());
+    expect(response.status(), `${route}: ${url}`).toBe(200);
+    expect(response.headers()['content-type'], `${route}: ${url}`).toMatch(/^image\/(avif|webp)/);
   }
 });
 
