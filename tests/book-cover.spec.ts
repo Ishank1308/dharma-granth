@@ -23,8 +23,11 @@ test('the Gita book opens on its frontispiece, with a credit link for the pictur
 });
 
 test('Data Saver shows the emblem in place of the picture and no credit', async ({ page }) => {
+  // The saved choice, read by the early script in app/layout.tsx; setting the attribute by hand
+  // is undone when the app applies its performance mode.
+  await page.addInitScript(() => localStorage.setItem('dharma.perf.dataSaver', 'true'));
   await page.goto('/scripture/katha/');
-  await page.evaluate(() => document.documentElement.setAttribute('data-data-saver', 'true'));
+  await expect(page.locator('html')).toHaveAttribute('data-data-saver', 'true');
   const book = page.locator('.sbook-wrap');
   await expect(book.locator('.sbook-frontis-art')).toBeHidden();
   await expect(book.getByRole('link', { name: /Picture credit/ })).toBeHidden();
