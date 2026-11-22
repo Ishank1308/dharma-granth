@@ -125,6 +125,13 @@ export default function ExploreScreen() {
             </BentoCol>
           </BentoRow>
 
+          {/* The website's month calendar and its five limb guides. */}
+          <GroupTitle title={t(S.exploreCalendar)} />
+          <BentoRow>
+            <Tile flex={1.4} row={{ title: S.calendarTitle, detail: S.calendarRow, icon: 'calendar', color: hues.saffron, href: '/explore/calendar' }} />
+            <Tile row={{ title: S.guidesTitle, detail: S.guidesRow, icon: 'moon', color: hues.indigo, href: { pathname: '/explore/guide/[limb]', params: { limb: 'tithis' } } }} />
+          </BentoRow>
+
           <GroupTitle title={t(S.exploreStudy)} />
           <BentoRow>
             <Tile row={{ title: S.mantrasTitle, detail: S.mantrasRow, icon: 'musical-notes', color: hues.indigo, href: '/explore/mantras' }} />
@@ -141,6 +148,7 @@ export default function ExploreScreen() {
             <Tile flex={1.4} row={{ title: D.deskTitle, detail: D.deskEntry, icon: 'school', color: hues.peacock, href: '/desk' }} />
             <Tile row={{ title: D.compareTitle, detail: D.compareEntry, icon: 'git-compare', color: hues.lotus, href: '/compare' }} />
           </BentoRow>
+          <Tile wide row={{ title: S.ritualsTitle, detail: S.ritualsRow, icon: 'flame', color: hues.gold, href: '/explore/rituals' }} />
           {/* Plans and journal add their tiles here as those screens land. */}
         </Animated.ScrollView>
       </BentoDepth.Provider>

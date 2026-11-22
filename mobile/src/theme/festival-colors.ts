@@ -19,6 +19,16 @@ const TAILWIND: Record<string, string> = {
   'purple-600': '#9333ea',
   'cyan-600': '#0891b2',
   'yellow-600': '#ca8a04',
+  // Ritual tiles (data/rituals.ts). Saffron is the website's own scale; its 500 and 700 match Tailwind orange.
+  'saffron-500': '#f97316',
+  'emerald-500': '#10b981',
+  'green-600': '#16a34a',
+  'teal-500': '#14b8a6',
+  'teal-600': '#0d9488',
+  'indigo-500': '#6366f1',
+  'blue-600': '#2563eb',
+  'purple-500': '#a855f7',
+  'violet-600': '#7c3aed',
   // Two steps deeper, behind white text on a festival's cover (keeps it above 4.5:1).
   'amber-800': '#92400e',
   'amber-900': '#78350f',
@@ -35,6 +45,15 @@ const TAILWIND: Record<string, string> = {
   'purple-800': '#6b21a8',
   'cyan-800': '#155e75',
   'yellow-800': '#854d0e',
+  'saffron-700': '#c2410c',
+  'emerald-700': '#047857',
+  'green-800': '#166534',
+  'teal-700': '#0f766e',
+  'teal-800': '#115e59',
+  'indigo-700': '#4338ca',
+  'blue-800': '#1e40af',
+  'purple-700': '#7e22ce',
+  'violet-800': '#5b21b6',
 };
 
 const deeper = (stop: string) => stop.replace(/-(\d)00$/, (_m, d: string) => `-${Math.min(9, Number(d) + 2)}00`);
