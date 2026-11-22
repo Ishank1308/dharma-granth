@@ -14,6 +14,7 @@ const TYPES = {
   '.json': 'application/json; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
+  '.avif': 'image/avif',
   '.webp': 'image/webp',
   '.jpg': 'image/jpeg',
   '.ico': 'image/x-icon',
@@ -77,7 +78,7 @@ createServer((req, res) => {
   const url = req.url ?? '/';
   // Directory URLs without a slash redirect, as GitHub Pages does.
   const pathOnly = url.split('?')[0];
-  const hasKnownAssetExt = /\.(html|js|css|json|svg|png|webp|jpg|jpeg|ico|woff2|woff|txt|xml|webmanifest|mp3)$/i.test(pathOnly);
+  const hasKnownAssetExt = /\.(html|js|css|json|svg|png|avif|webp|jpg|jpeg|ico|woff2|woff|txt|xml|webmanifest|mp3)$/i.test(pathOnly);
   if (!pathOnly.endsWith('/') && (!extname(pathOnly) || !hasKnownAssetExt) && existsSync(join(ROOT, pathOnly, 'index.html'))) {
     res.writeHead(301, { Location: `${pathOnly}/` });
     res.end();

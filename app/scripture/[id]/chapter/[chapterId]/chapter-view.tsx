@@ -452,7 +452,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={`/scripture/${meta.id}`}
-            className="focus-ring inline-flex items-center gap-1.5 rounded-pill border border-separator/80 bg-surface-raised px-3 py-1 text-caption-1 font-semibold text-label-secondary transition hover:bg-fill-quaternary hover:text-label-primary shadow-xs"
+            className="focus-ring tap-halo inline-flex items-center gap-1.5 rounded-pill border border-separator/80 bg-surface-raised px-3 py-1 text-caption-1 font-semibold text-label-secondary transition hover:bg-fill-quaternary hover:text-label-primary shadow-xs"
           >
             <span>{meta.title}</span>
             <span aria-hidden="true" className="opacity-40">›</span>

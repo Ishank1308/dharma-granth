@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test';
 
+// Each card shows the photo or classical painting its chapter opens with (lib/scene-photos.ts), held
+// still; a chapter without one (Gita 6, whose photo is not fetched yet) keeps its drawing.
 test('Gita chapter highlights use real linked chapters and static local artwork', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -10,6 +12,7 @@ test('Gita chapter highlights use real linked chapters and static local artwork'
   await expect(links).toHaveCount(3);
   const expected = [1, 3, 6];
   const artwork = ['kurukshetra', 'yajna', 'yogi'];
+  const photo = ['kurukshetra', 'yajna', null];
 
   for (let i = 0; i < expected.length; i++) {
     await expect(links.nth(i)).toHaveAttribute('href', `/scripture/bhagavadgita/chapter/${expected[i]}/`);
@@ -20,7 +23,8 @@ test('Gita chapter highlights use real linked chapters and static local artwork'
       const computed = getComputedStyle(el);
       return { backgroundImage: computed.backgroundImage, animationName: computed.animationName, transform: computed.transform };
     });
-    expect(style.backgroundImage).toContain('#still');
+    if (photo[i]) expect(style.backgroundImage).toContain(`/_next/static/media/${photo[i]}.`);
+    else expect(style.backgroundImage).toContain('#still');
     expect(style.animationName).toBe('none');
     expect(style.transform).toBe('none');
   }
@@ -46,7 +50,7 @@ test('Ramayana artwork follows known kanda scenes, while uncurated books remain 
   await expect(page.getByRole('heading', { name: 'Adhyay / Sections' })).toBeVisible();
 });
 
-test('illustrated chapter entry points resolve actual local SVG assets', async ({ page, request }) => {
+test('illustrated chapter entry points resolve actual local image assets', async ({ page, request }) => {
   await page.goto('/scripture/bhagavadgita/');
   const artworks = page.locator('.chapter-highlight-art');
   await expect(artworks).toHaveCount(3);
@@ -61,6 +65,17 @@ test('illustrated chapter entry points resolve actual local SVG assets', async (
     imageUrl.hash = ''; // #still disables animation; it is not part of the HTTP path.
     const response = await request.get(imageUrl.toString());
     expect(response.status(), `Missing artwork ${imageUrl.pathname}`).toBe(200);
-    expect(response.headers()['content-type']).toMatch(/image\/svg\+xml/);
+    expect(response.headers()['content-type']).toMatch(/image\/(svg\+xml|avif|webp)/);
   }
+});
+
+test('with Data Saver the entry cards keep the still drawings and load no photo', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('dharma.perf.dataSaver', 'true'));
+  await page.goto('/scripture/bhagavadgita/');
+  await expect(page.locator('html')).toHaveAttribute('data-data-saver', 'true');
+  const backgrounds = await page.locator('.chapter-highlight-art').evaluateAll((elements) =>
+    elements.map((element) => getComputedStyle(element).backgroundImage),
+  );
+  expect(backgrounds).toHaveLength(3);
+  for (const background of backgrounds) expect(background).toMatch(/\.svg#still/);
 });

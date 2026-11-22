@@ -469,7 +469,7 @@ export const TITHI_DATA: Record<number, TithiMeta> = {
     number: 28,
     name: 'Trayodashi',
     nameHi: 'त्रयोदशी',
-    transliteration: 'Shani / Soma Pradosha',
+    transliteration: 'Trayodaśī',
     paksha: 'Krishna',
     explanation: 'Thirteenth day of the waning moon. Sacred Pradosha period preceding the darkest night.',
     spiritualFocus: 'Meditative stillness and seeking release from karmic bonds.',

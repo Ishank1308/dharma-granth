@@ -26,13 +26,19 @@
 // phone; as deflated assets they cost about a third of that, and the download is smaller too.
 //   src/content/generated/explore/…      the website's Panchang, festival and mantra data (scripts/build-explore.mjs)
 //   src/content/generated/study/…        chapter summaries (scripts/build-study.mjs)
+//   src/content/generated/learn/…        courses, reading journeys, Gita journey, daily journey, FAQ (scripts/build-learn.mjs)
+//   src/content/generated/assets/content/ashtavakra/…   the Ashtavakra Gita (scripts/build-ashtavakra.mjs)
+//   src/content/generated/plans.json      reading plans and Gita Sankalpa chapters (scripts/build-plans.mjs)
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Buffer } from 'node:buffer';
 
+import { buildAshtavakra } from './build-ashtavakra.mjs';
 import { buildExplore } from './build-explore.mjs';
 import { buildKnowledge } from './build-knowledge.mjs';
+import { buildLearn } from './build-learn.mjs';
+import { buildPlans } from './build-plans.mjs';
 import { buildSearchIndex } from './build-search-index.mjs';
 import { buildStudy, STUDY_FILES } from './build-study.mjs';
 import { DEFAULT_MAX_MB, isBundled, listBookIds, openBook } from './content-lib.mjs';
@@ -59,10 +65,14 @@ if (
   existsSync(join(OUT, 'loaders.ts')) &&
   existsSync(join(OUT, 'loaders.android.ts')) &&
   existsSync(join(OUT, 'search-loaders.ts')) &&
-  existsSync(join(OUT, 'search-loaders.android.ts'))
+  existsSync(join(OUT, 'search-loaders.android.ts')) &&
+  existsSync(join(OUT, 'ashtavakra-loaders.ts')) &&
+  existsSync(join(OUT, 'ashtavakra-loaders.android.ts')) &&
+  existsSync(join(OUT, 'plans.json'))
 ) {
   // The knowledge pages take under a second, so they are rebuilt even then: an older checkout has none.
   await buildKnowledge();
+  await buildLearn();
   console.log('[content] generated content present; skipping (run `npm run content` to rebuild)');
   // A checkout built before chapter summaries existed gets just those, not a full rebuild.
   if (!STUDY_FILES.every((f) => existsSync(f))) await buildStudy();
@@ -171,6 +181,10 @@ if (usedShards < bundledIds.length) {
   console.warn('[content] some books came from full-book JSON. Run `npm run shard:scriptures` at the repo root for the cleaned text.');
 }
 
+// The Ashtavakra Gita first: the search index reads its generated chapters.
+await buildAshtavakra();
 await buildSearchIndex();
 await buildKnowledge();
 await buildStudy();
+await buildLearn();
+await buildPlans();

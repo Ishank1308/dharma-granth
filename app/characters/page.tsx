@@ -3,6 +3,7 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { CharacterMap } from '@/app/components/CharacterMap';
 import { characters } from '@/data/characters';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 
 export const metadata: Metadata = {
   title: 'Hindu Scriptural Characters & Lineages (पात्र ज्ञान ग्राफ)',
@@ -35,6 +36,7 @@ export default function CharactersPage() {
         eyebrow="Characters"
         eyebrowHi="पात्र एवं संबंध"
         title="Character Knowledge Graph"
+        cover={<PageCover photo="kurukshetra" />}
         titleHi="पात्र ज्ञान ग्राफ"
         lead={
           <p lang="hi" className="font-devanagari">
