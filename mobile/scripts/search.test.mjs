@@ -143,6 +143,15 @@ test('the built index finds the Gita verse 2.47', { skip: !existsSync(SEARCH) &&
   }
 });
 
+test('the built index finds the Ashtavakra Gita verse 1.11', { skip: !existsSync(SEARCH + 'ashtavakra.json') && 'run `npm run content` first' }, () => {
+  const corpus = JSON.parse(readFileSync(SEARCH + 'ashtavakra.json', 'utf8'));
+  assert.equal(corpus.c.length, 20);
+  const book = prepareCorpus('ashtavakra', corpus);
+  const first = (q) => searchCorpus(book, parseQuery(q)).map((h) => [h.chapter, h.number])[0];
+  assert.deepEqual(first('मुक्ताभिमानी'), [1, '11']);
+  assert.deepEqual(first('considers oneself free'), [1, '11']);
+});
+
 test('little words need not match, but count towards the phrase', () => {
   assert.deepEqual(find('fruits of action'), ['47']); // "of" is not required
   assert.deepEqual(find('fruits nothing'), []);
