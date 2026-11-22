@@ -55,36 +55,35 @@ function initDetection() {
   const browserDataSaver = detectBrowserDataSaver();
   const isDataSaver = savedDataSaver !== null ? savedDataSaver : browserDataSaver;
 
-  // 2. Low power: check battery or low hardware concurrency
-  let isLowPower = savedLowPower !== null ? savedLowPower : false;
-  if (savedLowPower === null && typeof navigator !== 'undefined') {
-    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) {
-      isLowPower = true;
-    }
-  }
+  // 2. Low power, when the reader has not chosen. Where the Battery API exists the battery decides
+  // (on at 20% or less and not charging); without it, or if it fails, four cores or fewer do. It used
+  // to switch on from the core count and off again 55 to 70 ms later when the battery answered, which
+  // stopped and restarted the page-start motion; now it is decided once.
+  const nav = typeof navigator !== 'undefined' ? navigator : undefined;
+  const fewCores = Boolean(nav?.hardwareConcurrency && nav.hardwareConcurrency <= 4);
+  const hasBattery = Boolean(nav && 'getBattery' in nav);
+  const isLowPower = savedLowPower !== null ? savedLowPower : fewCores && !hasBattery;
 
-  // Battery status API
-  if (savedLowPower === null && typeof navigator !== 'undefined' && 'getBattery' in navigator) {
-    (navigator as unknown as { getBattery: () => Promise<{ level: number; charging: boolean; addEventListener: (type: string, cb: () => void) => void }> })
+  if (savedLowPower === null && hasBattery) {
+    const applyAuto = (lowPower: boolean) => {
+      if (lowPower === currentState.isLowPower) return;
+      currentState = {
+        ...currentState,
+        isLowPower: lowPower,
+        isLiteMode: lowPower || currentState.isDataSaver || currentState.isReadingLite,
+      };
+      syncDom(currentState);
+      notify();
+    };
+    (nav as unknown as { getBattery: () => Promise<{ level: number; charging: boolean; addEventListener: (type: string, cb: () => void) => void }> })
       .getBattery()
       .then((battery) => {
-        const updateBattery = () => {
-          const batteryLow = battery.level <= 0.2 && !battery.charging;
-          if (savedLowPower === null && batteryLow !== currentState.isLowPower) {
-            currentState = {
-              ...currentState,
-              isLowPower: batteryLow,
-              isLiteMode: batteryLow || currentState.isDataSaver || currentState.isReadingLite,
-            };
-            syncDom(currentState);
-            notify();
-          }
-        };
+        const updateBattery = () => applyAuto(battery.level <= 0.2 && !battery.charging);
         updateBattery();
         battery.addEventListener('levelchange', updateBattery);
         battery.addEventListener('chargingchange', updateBattery);
       })
-      .catch(() => {});
+      .catch(() => applyAuto(fewCores));
   }
 
   // Network change listener

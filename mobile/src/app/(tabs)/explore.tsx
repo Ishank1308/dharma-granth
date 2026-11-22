@@ -12,7 +12,7 @@ import { Backdrop, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { useScrollY } from '@/motion/parallax';
 import { TitleBar } from '@/motion/title-bar';
-import { S, useI18n, type Msg } from '@/i18n';
+import { D, S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
 import { usePrefs } from '@/state/app-state';
 import { barClearance, huesFor, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
@@ -138,6 +138,16 @@ export default function ExploreScreen() {
             <Tile flex={1.4} row={{ title: S.knowledgeTitle, detail: S.knowledgeEntryDetail, icon: 'library', color: hues.peacock, href: '/knowledge' }} />
           </BentoRow>
           <Tile wide row={{ title: S.wisdomTitle, detail: S.wisdomEntryDetail, icon: 'leaf', color: hues.tulsi, href: '/wisdom' }} />
+          {/* The website's story mode, wisdom pathways and verse network. */}
+          <BentoRow>
+            <Tile flex={1.3} row={{ title: S.storyTitle, detail: S.storyEntryDetail, icon: 'people', color: hues.saffron, href: '/story' }} />
+            <Tile row={{ title: S.pathwaysTitle, detail: S.pathwaysEntryDetail, icon: 'trail-sign', color: hues.gold, href: '/pathways' }} />
+          </BentoRow>
+          <Tile wide row={{ title: S.networkTitle, detail: S.networkEntryDetail, icon: 'git-network', color: hues.indigo, href: '/network' }} />
+          <BentoRow>
+            <Tile flex={1.4} row={{ title: D.deskTitle, detail: D.deskEntry, icon: 'school', color: hues.peacock, href: '/desk' }} />
+            <Tile row={{ title: D.compareTitle, detail: D.compareEntry, icon: 'git-compare', color: hues.lotus, href: '/compare' }} />
+          </BentoRow>
           <Tile wide row={{ title: S.ritualsTitle, detail: S.ritualsRow, icon: 'flame', color: hues.gold, href: '/explore/rituals' }} />
           {/* Plans and journal add their tiles here as those screens land. */}
         </Animated.ScrollView>

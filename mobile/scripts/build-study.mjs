@@ -6,8 +6,13 @@
 //   ../data/chapter-summaries.ts     chapter summaries (सार), Hindi and English, per scripture
 //   ../data/chapter-orientation.ts   chapter names and key verses, where a summary has none of its own
 //
+//   ../data/scripture-comparisons.ts scripture pages side by side (/compare)
+//   ../data/sources-registry.ts      each text's edition and provenance (/sources)
+//
 // Output (git-ignored with the rest of src/content/generated/; build-content.mjs calls this):
 //   src/content/generated/study/summaries.json
+//   src/content/generated/study/compare.json
+//   src/content/generated/study/sources.json
 //
 // It is small (about 55 KB), so it ships whole and loads with the screens that need it.
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
@@ -20,7 +25,7 @@ const MOBILE = resolve(HERE, '..');
 const DATA = resolve(MOBILE, '../data');
 const OUT = join(MOBILE, 'src/content/generated/study');
 
-export const STUDY_FILES = ['summaries.json'].map((f) => join(OUT, f));
+export const STUDY_FILES = ['summaries.json', 'compare.json', 'sources.json'].map((f) => join(OUT, f));
 
 /**
  * The website's data files import each other without extensions (`./gita-chapter-summaries`), as
@@ -40,6 +45,23 @@ export async function resolve(specifier, context, next) {
 let hooked = false;
 
 const clean = (s) => (typeof s === 'string' ? s.trim() : s);
+
+/**
+ * Where a website link on the compare page goes in the app: a verse, chapter or book in the reader, a
+ * knowledge or Wisdom page, or (for pages the app does not have) the website.
+ */
+export function compareTarget(href) {
+  const path = href.split('#')[0].replace(/\/+$/, '');
+  const hash = href.includes('#') ? href.split('#')[1] : '';
+  let m;
+  if ((m = /^\/scripture\/([a-z0-9-]+)\/chapter\/(\d+)\/verse\/([\w.-]+)$/.exec(path))) return { kind: 'verse', id: m[1], chapter: Number(m[2]), verse: m[3] };
+  if ((m = /^\/scripture\/([a-z0-9-]+)\/chapter\/(\d+)$/.exec(path))) return { kind: 'chapter', id: m[1], chapter: Number(m[2]) };
+  if ((m = /^\/scripture\/([a-z0-9-]+)$/.exec(path))) return { kind: 'book', id: m[1] };
+  if ((m = /^\/concepts\/([a-z0-9-]+)$/.exec(path))) return { kind: 'knowledge', section: 'concepts', id: m[1] };
+  if ((m = /^\/wisdom-for-life\/([a-z0-9-]+)$/.exec(path))) return { kind: 'wisdom', id: m[1] };
+  if (path === '/timelines' && hash) return { kind: 'knowledge', section: 'timelines', id: hash };
+  return { kind: 'web', url: `https://dharmagranth.dev${href.startsWith('/') ? href : `/${href}`}` };
+}
 
 export async function buildStudy() {
   if (!existsSync(join(DATA, 'chapter-summaries.ts'))) {
@@ -81,6 +103,26 @@ export async function buildStudy() {
 
   mkdirSync(OUT, { recursive: true });
   writeFileSync(join(OUT, 'summaries.json'), JSON.stringify(summaries));
+
+  const { SCRIPTURE_COMPARISONS } = await import(url('scripture-comparisons.ts'));
+  const compare = SCRIPTURE_COMPARISONS.map((c) => ({
+    id: c.id,
+    title: { en: c.titleEn, hi: c.titleHi },
+    blurb: { en: clean(c.blurbEn), hi: clean(c.blurbHi) },
+    links: c.links.map((l) => ({ title: { en: l.titleEn, hi: l.titleHi }, note: { en: clean(l.noteEn), hi: clean(l.noteHi) }, target: compareTarget(l.href) })),
+  }));
+  writeFileSync(join(OUT, 'compare.json'), JSON.stringify(compare));
+
+  const { SCRIPTURE_SOURCES } = await import(url('sources-registry.ts'));
+  const KEEP = ['sourceScriptureTitle', 'sourceScriptureTitleSanskrit', 'sanskritEdition', 'publisherArchive', 'archiveUrl', 'primaryTranslator', 'traditionalCommentaryAuthor', 'numberingSystemNote'];
+  const sources = {};
+  for (const [id, meta] of Object.entries(SCRIPTURE_SOURCES)) {
+    const row = {};
+    for (const k of KEEP) if (typeof meta[k] === 'string' && meta[k].trim()) row[k] = meta[k].trim();
+    if (row.sanskritEdition) sources[id] = row;
+  }
+  writeFileSync(join(OUT, 'sources.json'), JSON.stringify(sources));
+  console.log(`[study] ${compare.length} comparison sets, ${Object.keys(sources).length} source editions`);
   const chapters = Object.values(summaries).reduce((n, s) => n + s.chapters.length, 0);
   console.log(`[study] ${chapters} chapter summaries in ${Object.keys(summaries).length} texts`);
 }

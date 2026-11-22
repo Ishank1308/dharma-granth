@@ -148,6 +148,96 @@ export interface WisdomTopic {
   care: { headline: Msg; body: Msg; disclaimer: Msg };
 }
 
+/** A verse a pathway reads, from a validated Wisdom for life topic: always the whole shloka. */
+export interface PathwayVerse {
+  scriptureId: string;
+  chapter: number;
+  verse: number | string;
+  ref: Msg;
+  sanskrit: string;
+  translit: string;
+  meaning: Msg;
+}
+
+export interface WisdomPathway {
+  id: string;
+  title: Msg;
+  sanskrit: string;
+  question: Msg;
+  /** Whose teaching the pathway follows (English only on the website). */
+  masters: string;
+  minutes: number;
+  intro: Msg;
+  why: Msg;
+  foundations: Msg;
+  lenses: { topic: string; verse: PathwayVerse; arth: Msg; vyakhya: Msg; modern: Msg; lineage: string[] }[];
+  lineage: string[];
+  sageNote: Msg;
+  reflections: Msg[];
+  contemplations: Msg[];
+  related: string[];
+  /** Concept pages in the app this pathway touches. */
+  concepts: string[];
+}
+
+export interface LineageMaster {
+  id: string;
+  name: Msg;
+  kind: Msg;
+  era: string;
+  tradition: string;
+  teaching: Msg;
+}
+
+/** A life-question entrance; with a pathway it walks that pathway in stages (indexes into its lenses etc.). */
+export interface PathwayStarter {
+  id: string;
+  title: Msg;
+  question: Msg;
+  intro: Msg;
+  pathway: string | null;
+  stages: { title: Msg; focus: Msg; lenses: number[]; reflections: number[]; contemplations: number[] }[];
+  /** Wisdom for life topics to begin from while no pathway exists yet. */
+  topics: string[];
+}
+
+export interface PathwaysData extends KSet<WisdomPathway> {
+  masters: Record<string, LineageMaster>;
+  starters: PathwayStarter[];
+  discovery: { key: string; label: Msg; entries: { label: Msg; pathway: string }[] }[];
+}
+
+export type RelationshipType = 'supporting' | 'parallel' | 'contrasting' | 'cross_scripture' | 'concept_connection';
+
+export interface NetworkNode {
+  id: string;
+  type: RelationshipType;
+  label: string;
+  labelHi: string;
+  scripture: string;
+  scriptureSa: string;
+  sanskrit: string;
+  translation: string;
+  /** Why the two are linked (English on the website). */
+  reason: string;
+  /** Where the verse is in the library, when the link names one verse. */
+  target: { id: string; chapter: number; verse: number | string } | null;
+  /** A concept page in the app. */
+  concept: string | null;
+}
+
+export interface NetworkSeed {
+  id: string;
+  target: { id: string; chapter: number; verse: number | string };
+  scripture: Msg;
+  ref: string;
+  theme: Msg;
+  sanskrit: string;
+  translation: string;
+  description: string;
+  nodes: NetworkNode[];
+}
+
 export interface KSet<T> {
   categories: KCategory[];
   items: T[];
@@ -160,6 +250,8 @@ export interface KnowledgeData {
   places: KSet<Place>;
   timelines: KSet<Timeline>;
   wisdom: KSet<WisdomTopic>;
+  pathways: PathwaysData;
+  network: KSet<NetworkSeed>;
 }
 
-export type KnowledgeKind = Exclude<keyof KnowledgeData, 'wisdom'>;
+export type KnowledgeKind = Exclude<keyof KnowledgeData, 'wisdom' | 'pathways' | 'network'>;

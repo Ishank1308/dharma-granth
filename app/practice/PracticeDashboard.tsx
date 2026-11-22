@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
 import Link from 'next/link';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { Bookmark, NotebookPen, ScrollText } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 
@@ -77,6 +78,7 @@ export function PracticeDashboard() {
         eyebrow="Sadhana"
         eyebrowHi="साधना"
         title="Daily practice"
+        cover={<PageCover photo="dawn" />}
         titleHi="शान्त मन, पवित्र अभ्यास"
         lead={
           <p>
