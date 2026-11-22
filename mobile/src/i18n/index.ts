@@ -16,6 +16,7 @@ import type { Msg } from './strings';
 
 export * from './language';
 export { COLLECTION_LABELS, MOOD_LABELS, S, type Msg } from './strings';
+export { D } from './desk-strings';
 
 export function useI18n(): { lang: Lang; t: (m: Msg) => string } {
   const { lang } = usePrefs();

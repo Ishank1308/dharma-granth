@@ -1,19 +1,20 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
-import { Stack } from 'expo-router';
+import { router, Stack, useLocalSearchParams, type Href } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { SkyArc, useCityMinute } from '@/components/art/sky-arc';
+import { CitySheet } from '@/components/city-sheet';
 import { Backdrop, Card, Chip, glass, GroupCard, GroupRow, GroupTitle, IconButton, LargeHeader, Muted } from '@/components/ui';
 import {
   addDays,
   calculateEducationalPanchang,
-  CITIES,
   formatDay,
   formatPanchangClock,
+  fromIso,
   isoDate,
   rahuAbhijit,
   todayForLocation,
@@ -22,9 +23,9 @@ import {
   type PanchangDayData,
   type VrataKind,
 } from '@/content/explore';
+import { daySlugs, type LimbId } from '@/content/panchang-guides';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
-import { Sheet } from '@/motion/sheet';
 import { usePrefs } from '@/state/app-state';
 import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
@@ -48,15 +49,19 @@ export default function PanchangScreen() {
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const [city, setCity] = usePanchangCity();
-  const [picked, setPicked] = useState<Date | null>(null);
+  // The month calendar and the tithi guides open this screen on a day (?date=YYYY-MM-DD) or a vrat (?vrata=…).
+  const params = useLocalSearchParams<{ date?: string; vrata?: string }>();
+  const [picked, setPicked] = useState<Date | null>(() => (params.date && /^\d{4}-\d{2}-\d{2}$/.test(params.date) ? fromIso(params.date) : null));
   const [cityOpen, setCityOpen] = useState(false);
-  const [vrata, setVrata] = useState<VrataKind>('ekadashi');
+  const [vrata, setVrata] = useState<VrataKind>(() => (VRATA_KINDS as string[]).includes(params.vrata ?? '') ? (params.vrata as VrataKind) : 'ekadashi');
 
   const today = todayForLocation(city);
   const day = picked ?? today;
   const isToday = isoDate(day) === isoDate(today);
   const p = useMemo(() => calculateEducationalPanchang(day, city), [day, city]);
   const muhurta = rahuAbhijit(p);
+  const slugs = daySlugs(p);
+  const guide = (limb: LimbId): Href => ({ pathname: '/explore/guide/[limb]/[slug]', params: { limb, slug: slugs[limb] } });
   const nowMinute = useCityMinute(city.utcOffsetHours);
   const skyLabel = !muhurta
     ? S.skyDayA11y(p.solarTimes.sunrise, p.solarTimes.sunset)
@@ -139,6 +144,7 @@ export default function PanchangScreen() {
             nameHi={p.tithi.nameHi}
             badge={`#${p.tithi.number}`}
             meaning={p.tithi.meta.explanation}
+            href={guide('tithis')}
           />
           <Limb
             label={S.limbPaksha}
@@ -156,6 +162,7 @@ export default function PanchangScreen() {
             badge={t(S.pada(p.nakshatra.pada))}
             extra={t(S.deityLord(p.nakshatra.deity, p.nakshatra.rulingPlanet))}
             meaning={p.nakshatra.explanation}
+            href={guide('nakshatras')}
           />
           <Limb
             label={S.limbYoga}
@@ -165,6 +172,7 @@ export default function PanchangScreen() {
             badge={t(S.yogaNature(p.yoga.nature))}
             badgeTone={p.yoga.nature === 'Auspicious' ? hues.tulsi : p.yoga.nature === 'Neutral' ? hues.indigo : hues.gold}
             meaning={p.yoga.explanation}
+            href={guide('yogas')}
           />
           <Limb
             label={S.limbKarana}
@@ -173,6 +181,7 @@ export default function PanchangScreen() {
             nameHi={p.karana.nameHi}
             badge={p.karana.nature.split(' ')[0]}
             meaning={p.karana.explanation}
+            href={guide('karanas')}
           />
           <Limb
             label={S.limbVara}
@@ -181,6 +190,7 @@ export default function PanchangScreen() {
             nameHi={p.vara.nameHi}
             badge={lang === 'hi' ? p.vara.grahaLordHi : p.vara.grahaLord}
             meaning={p.vara.explanation}
+            href={guide('varas')}
           />
           <Limb
             label={S.limbRitu}
@@ -333,6 +343,7 @@ function Limb({
   extra,
   meaning,
   first,
+  href,
 }: {
   label: Msg;
   color: string;
@@ -343,6 +354,8 @@ function Limb({
   extra?: string;
   meaning: string;
   first?: boolean;
+  /** The limb's reference page, linked under its meaning. */
+  href?: Href;
 }) {
   const { palette, settings } = usePrefs();
   const { t, lang } = useI18n();
@@ -375,6 +388,18 @@ function Limb({
           <Text maxFontSizeMultiplier={cap} style={{ color: palette.textSecondary, fontSize: TYPE.subhead * settings.textScale, lineHeight: TYPE.subhead * settings.textScale * 1.5, marginTop: SPACE.xs }}>
             {meaning}
           </Text>
+        ) : null}
+        {open && href ? (
+          <Pressable
+            accessibilityRole="link"
+            onPress={() => router.push(href)}
+            hitSlop={8}
+            style={({ pressed }) => [styles.guideLink, pressed && { opacity: 0.6 }]}>
+            <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color, fontSize: TYPE.subhead, fontWeight: '700' }}>
+              {t(S.gAbout(primary))}
+            </Text>
+            <Ionicons name="arrow-forward" size={14} color={color} />
+          </Pressable>
         ) : null}
       </View>
       <View style={{ alignItems: 'flex-end', rowGap: SPACE.sm }}>
@@ -456,41 +481,6 @@ function VratList({ kind, fromIso }: { kind: VrataKind; fromIso: string }) {
   );
 }
 
-function CitySheet({ visible, selected, onClose, onPick }: { visible: boolean; selected: string; onClose: () => void; onPick: (id: string) => void }) {
-  const { palette } = usePrefs();
-  const { t, lang } = useI18n();
-  return (
-    <Sheet visible={visible} title={t(S.chooseCity)} onClose={onClose} maxHeight="80%">
-        <ScrollView accessibilityRole="radiogroup">
-          {CITIES.map((c, i) => {
-            const active = c.id === selected;
-            return (
-              <GroupRow
-                key={c.id}
-                first={i === 0}
-                last={i === CITIES.length - 1}
-                inset={SPACE.lg}
-                accessibilityRole="button"
-                accessibilityLabel={lang === 'hi' ? c.nameHi : c.name}
-                onPress={() => onPick(c.id)}
-                highlight={active}>
-                <View style={{ flex: 1 }}>
-                  <Text maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.body, fontWeight: active ? '700' : '500' }}>
-                    {lang === 'hi' ? c.nameHi : c.name}
-                  </Text>
-                  <Muted style={{ fontSize: TYPE.caption }}>
-                    {c.region}, {c.country}
-                  </Muted>
-                </View>
-                {active ? <Ionicons name="checkmark" size={20} color={palette.accent} /> : null}
-              </GroupRow>
-            );
-          })}
-        </ScrollView>
-    </Sheet>
-  );
-}
-
 const styles = StyleSheet.create({
   controls: { borderRadius: RADIUS.card, padding: SPACE.md, rowGap: SPACE.sm },
   cityBtn: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.sm, minHeight: TOUCH, paddingHorizontal: SPACE.md, borderRadius: RADIUS.control },
@@ -512,4 +502,5 @@ const styles = StyleSheet.create({
   window: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md, minHeight: 40 },
   windowDot: { width: 10, height: 10, borderRadius: 5 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm, marginBottom: SPACE.md },
+  guideLink: { flexDirection: 'row', alignItems: 'center', columnGap: 6, minHeight: 40, alignSelf: 'flex-start', marginTop: SPACE.xs },
 });

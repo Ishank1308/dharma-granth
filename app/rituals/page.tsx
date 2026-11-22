@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { useAccessibleModal } from '@/lib/useAccessibleModal';
 import { PujaMode } from '@/app/components/puja/PujaMode';
 import { PujaModeButton } from '@/app/components/puja/PujaModeLauncher';
@@ -113,6 +114,7 @@ export default function RitualsPage() {
         eyebrow="Āgama & Saṃskāra"
         eyebrowHi="आगम एवं संस्कार"
         title="Temple & Ritual Explainer"
+        cover={<PageCover photo="temple" />}
         titleHi="मंदिर एवं अनुष्ठान विवरण"
         width="wide"
         lead={

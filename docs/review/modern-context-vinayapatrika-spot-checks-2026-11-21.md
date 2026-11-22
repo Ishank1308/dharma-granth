@@ -1,0 +1,1231 @@
+# Vinaya Patrika modern-context notes: facts to spot-check (21 November 2026)
+
+Taken from the writers' reports, one line per note. These are the dates, names and numbers a reviewer should check against a source. See `modern-context-vinayapatrika-2026-11-21.md` for how the notes were made.
+
+- **1:3:** Jnaneshwari ovi 1.2 "देवा तूंचि गणेशु … सकलमतिप्रकाशु", and ovi 1.3 "शब्दब्रह्म … मूर्ति".
+- **1:4:** Ramnami Samaj began with Parasuram in the late 19th century in Chhattisgarh; denied temple entry; Ram-name tattoos and Ram-name shawls.
+- **2:1:** Xuanzang (7th c.) on the Multan sun temple: gold image, offerings from many lands, a house of charity giving food and medicine.
+- **2:2:** Mayura at Harsha's court; Suryashataka has 100 verses in sragdhara metre; the leprosy legend.
+- **2:3:** Padmavat's own date of Hijri 947 (about 1540); Nagmati's barahmasa.
+- **2:4:** The Aruna stambha was moved from Konark to the Puri Simhadwara in the 18th century.
+- **2:5:** Annamacharya copper plates found at Tirumala in 1922.
+- **3:1:** Potana refused to dedicate the Bhagavatam to a king and lived by farming (tradition).
+- **3:3:** The Nandi at Tirupunkur is shown shifted to one side.
+- **3:4:** Karaikal holds a mango festival (Mangani) for Karaikkal Ammaiyar.
+- **4:1:** The Virpur Jalaram temple has accepted no donations since 2000; the sadavrat began in the early 19th century.
+- **4:2:** Chaitanya-charitamrita Adi 4.165 gives the kama/prema definition (verse number to verify).
+- **4:4:** The Kumbhandas pada "सन्तन को कहा सीकरी सों काम" (broken sandals, forgot Hari's name), per the Varta literature.
+- **5:2:** Gagron fort was Pipa's capital; one Pipa hymn is in the Guru Granth Sahib; UNESCO listing in 2013.
+- **5:3:** Chokhamela died when a wall fell at Mangalvedha, Namdev brought his bones to Pandharpur, and his samadhi is at the temple's Mahadwar.
+- **5:4:** Narottamdas's Sudama Charit (16th c.), the line about Sudama with no turban and no shoes.
+- **5:5:** Tenali Ramakrishna listed among the Ashtadiggajas; author of Panduranga Mahatmyamu.
+- **6:1:** Changdev Pasashti has 65 ovis.
+- **6:3:** Malukdas of Kara near Prayagraj; the doha's wording.
+- **6:4:** Manikkavasagar dated around the 9th century; the Vandi and cane-blow story.
+- **6:5:** Gopanna's imprisonment by Tana Shah, about 12 years.
+- **7:1:** Sundarar regained one eye at Kanchi and the other at Tiruvarur; 8th century; "pittha".
+- **7:2:** Ramprasad's "blindfolded oil-press bullock" song; Halisahar.
+- **7:4:** Ravidas's Begampura shabad is in Raag Gauri.
+- **8:1:** Sambandar at age three, Sirkazhi, first hymn "Todudaya seviyan".
+- **8:2:** Dhanna's pada asking for dal, atta, ghee, shoes, clothes, cattle and a mare. Dhanna dated to the 15th century.
+- **8:3:** Haridas Thakur beaten in 22 marketplaces.
+- **8:4:** Bir Hambir of Vishnupur seized Srinivas Acharya's manuscripts, late 16th century.
+- **9:1:** Grierson and Barnett, "Lalla-Vakyani", 1920.
+- **9:2:** Vadakalai is markata-nyaya and Tenkalai is marjara-nyaya.
+- **9:3:** The Shunya Sampadane episode in which a sword passes through Allama while Gorakh's body is shown to be like vajra.
+- **9:4:** Sixtus V approved the Litany of Loreto in 1587; its titles include Morning Star, Refuge of sinners and Comforter of the afflicted.
+- **9:5:** Rabia's prayer (fear of hell, hope of paradise) is in Attar's lives of the saints, and Rabia lived in the 8th century.
+- **10:1:** The Great Hymn to the Aten is inscribed in the tomb of Ay at Amarna, 14th century BCE.
+- **10:2:** The "day added to day, a second sun" image is in Dante, Paradiso 1.61-63.
+- **10:3:** Whitman self-published the first Leaves of Grass in 1855; the "contradict myself / contain multitudes" lines are in the last section of Song of Myself.
+- **10:4:** Luther wrote Ein feste Burg by about 1529, based on Psalm 46.
+- **10:5:** Shelley wrote the West Wind ode in 1819 in a wood near Florence.
+- **10:6:** Aratus' Phaenomena (3rd century BCE) has the line "we are his offspring", which Paul quotes in Acts 17:28.
+- **10:7:** Lyrical Ballads appeared in 1798, and Tintern Abbey is its last poem.
+- **10:8:** Herbert's The Temple was published in 1633 after his death; the content of The Pulley is as described.
+- **10:9:** The superscription of Psalm 51 ties it to Nathan's rebuke of David; "Miserere" is its Latin opening word.
+- **11:1:** The Tyger is in Songs of Experience, 1794.
+- **11:2:** Akahito's Fuji poem is no. 4 in the Hyakunin Isshu, compiled by Teika in the 13th century; karuta is played with it at New Year.
+- **11:3:** Hughes was about 18 and crossing the Mississippi by train when he wrote the poem; it was published in The Crisis in 1921; the rivers named are Euphrates, Congo, Nile and Mississippi.
+- **11:4:** Hanshan lived in the Tiantai mountains and wrote on rocks and trees; about 300 poems survive.
+- **11:5:** Hölderlin finished Patmos in 1803 ("where danger is, the saving power grows too"), and Heidegger used these lines in his essay on technology.
+- **11:6:** Burns wrote Tam o' Shanter in 1790 at Grose's request; the setting is Alloway kirk and the Brig o' Doon, with the running-water belief.
+- **11:7:** Dies irae is 13th century and attributed to Thomas of Celano; Mozart and Verdi both set it.
+- **11:8:** Lyte wrote Abide with Me in 1847 at Brixham while ill with tuberculosis and died the same year. The note says only "that year"; I believe he died at Nice.
+- **11:9:** Akdamut was written in Aramaic by Meir ben Isaac of Worms (11th century) and is recited on Shavuot; it contains the parchment, pens, ink and scribes image.
+- **12:1:** The Akathist dates to the 5th-6th century and has 24 stanzas in Greek alphabetical acrostic; it is sung standing.
+- **12:2:** The Te Deum is 4th century and attributed to Ambrose and Augustine by tradition, but to Nicetas of Remesiana by scholars.
+- **12:3:** Bede finished the Ecclesiastical History about 731; Caedmon is in book 4.24; his hymn has nine lines.
+- **12:4:** The "not forever on earth, only a little while" poem is attributed to Nezahualcoyotl of Texcoco (15th century).
+- **12:5:** Enheduanna was Sargon's daughter and priestess of Nanna at Ur; in Nin-me-šara she pleads to Inanna after being expelled. The note adds "about 4,500 years old".
+- **13:1:** Auguries of Innocence was written about 1803 and published in 1863, 36 years after Blake's death in 1827.
+- **13:2:** Newton's 1748 storm conversion came before he left the slave trade some years later; Olney Hymns with Cowper appeared in 1779.
+- **13:3:** Ibn Arabi was born in al-Andalus and wrote Tarjuman al-Ashwaq in Mecca in the early 13th century; it has the "heart capable of every form" poem.
+- **13:4:** Francis composed the Canticle of the Sun about 1225; tradition says he added the pardon stanza to reconcile the bishop and the podestà of Assisi.
+- **13:5:** Ryokan's dates are 1758 to 1831, and the "thief left the moon in the window" haiku is his.
+- **13:6:** The Hafez divination custom is especially kept on Yalda night and at New Year.
+- **13:7:** Prometheus Bound is 5th century BCE and attributed to Aeschylus.
+- **13:8:** Milton was fully blind by 1652; the content of Sonnet 19 is as described.
+- **13:9:** Teresa died in 1582, and "Nada te turbe" was found in her breviary.
+- **14:1:** The content of the General Prologue opening is as described.
+- **14:2:** Saigyo's wish to die under the blossoms at the full moon of the second month; he died in 1190, one day after that date (tradition's Buddha nirvana day, the 15th).
+- **14:3:** Song of Songs 4:1-5 has hair like a flock of goats from Gilead and a neck like David's tower; scholars call the genre "wasf"; Rabbi Akiva called the book holy of holies.
+- **14:4:** Pied Beauty was written in 1877 and published by Bridges in 1918, 29 years after Hopkins died in 1889.
+- **14:5:** Arcimboldo's seasons series is 1563 (Spring made of flowers); Vertumnus about 1590, portraying Rudolf II.
+- **14:6:** Liu, Lee et al., Cortex 2014, face pareidolia; won the 2014 Ig Nobel (neuroscience).
+- **14:7:** Darwin's peacock-feather letter to Asa Gray, April 1860; The Descent of Man 1871.
+- **14:8:** Balcetis and Dunning 2006, ambiguous B/13 figure, orange juice versus unpleasant drink.
+- **14:9:** Adams and Leary 2007, restrictive eaters, doughnut then candy, female participants.
+- **15:1:** Breines and Chen 2012, the hard-vocabulary-test study in which the self-compassion group studied longest.
+- **15:2:** Bani Thani by Nihal Chand, about 1750; patron Sawant Singh (Nagaridas).
+- **15:4:** Mahishasuramardini broadcast from the 1930s; the 1976 replacement, with the original restored the same year.
+- **15:5:** Groopman, The Anatomy of Hope (2004), on false versus true hope.
+- **16:1:** Rosenthal et al. 1984 describing seasonal affective disorder and light therapy.
+- **16:2:** Bandura, Blanchard and Ritter 1969, participant modeling was the most effective of three treatments.
+- **16:3:** Rusbult's 1980 and 1983 investment model.
+- **17:1:** chakor identified as the chukar partridge; national bird of Pakistan.
+- **17:2:** Kumar and Epley 2018 gratitude letters; writers underestimated the recipient's joy and overestimated the awkwardness.
+- **17:3:** Tattvartha Sutra 5.21; Jain emblem adopted in 1974-75.
+- **18:1:** Freedman and Enright 1996, 12 women, hope rose against a waitlist group.
+- **18:2:** Gangotri temple attributed to Amar Singh Thapa; Gaumukh about 18 km upstream.
+- **18:3:** LaBouff et al. 2012, humility predicting helpfulness with agreeableness controlled. I am least sure of the control detail.
+- **18:4:** White et al. 2010, scenes with water rated more restorative.
+- **18:5:** Rudd, Vohs and Aaker 2012, awe expands perceived time.
+- **19:1:** Wildschut, Sedikides et al. 2006, nostalgia raising social connectedness.
+- **19:3:** Bartlett and DeSteno 2006, computer-fix setup.
+- **20:1:** Mandakini rising in the Chorabari glacier area and meeting the Alaknanda at Rudraprayag.
+- **20:2:** Diana Eck's book Darśan, 1981.
+- **20:3:** Tirukkural kural 100 as the last kural of chapter 10.
+- **21:1:** Fredrickson and Levenson 1998 undoing effect.
+- **21:2:** Martin and Lefcourt 1983.
+- **22:1:** Kashi Khanda has 100 chapters.
+- **22:2:** Panchakroshi "about 80 km"; halts at Kardameshwar, Bhimchandi, Rameshwar, Shivpur, Kapildhara; starts at Manikarnika.
+- **22:3:** zebu dewlap helps heat loss.
+- **22:4:** Lolark Shashthi falls on Bhadrapada Shukla Shashthi.
+- **22:5:** Aknin et al. 2013, Gallup data from 136 countries; experiments in Canada and Uganda.
+- **22:6:** Ranjit Singh's gold for the Vishwanath temple spires in 1835.
+- **22:7:** Shri Rudram is Taittiriya Samhita 4.5.8, the 8th anuvaka.
+- **22:8:** Kesebir 2014, five studies.
+- **22:9:** Adi Keshava temple near the Rajghat excavations.
+- **23:1:** Mahatma Gandhi Chitrakoot Gramodaya Vishwavidyalaya founded 1991, "first rural university"; Nanaji Deshmukh's posthumous Bharat Ratna 2019.
+- **23:2:** ITC Sangeet Research Academy, Kolkata, founded 1977, residential scholars on stipend.
+- **23:3:** Grand Ole Opry's first broadcast on WSM Nashville, 28 Nov 1925, said to be the longest-running US radio broadcast.
+- **23:4:** Pannalal Ghosh born in Barisal in 1911; he lengthened the bansuri and brought it to the classical stage.
+- **23:5:** Messiaen's Catalogue d'oiseaux, 1956–58, 13 piano pieces, each named after a French bird.
+- **23:6:** First Prom on 10 Aug 1895 at Queen's Hall, with Robert Newman and Henry Wood; cheap standing tickets.
+- **23:7:** Silk Road project founded by Yo-Yo Ma in 1998; pipa, kamancheh and shakuhachi players.
+- **23:8:** Tanpura usually tuned to one Pa and three Sa.
+- **23:9:** Bach at Leipzig from 1723, a cantata almost every Sunday in the early years, "SDG" at the end of scores.
+- **24:1:** Manache Shlok has 205 verses; "मना सज्जना" is its well-known address (not the first verse).
+- **24:2:** Laetoli footprints found in 1978 by Mary Leakey's team, about 3.6 million years old, in rain-wetted volcanic ash.
+- **24:3:** Garhwal Pandav Nritya held in winter after harvest, with dhol and damau, and the belief that the Pandavas possess the dancers.
+- **24:4:** Halberstadt ASLSP started in 2001 and is due to end in 2640, a span of 639 years.
+- **24:5:** Bodhendra Saraswati and Sridhara Ayyaval in the 17th century; Marudanallur Sadguru shaped the Dakshina Bharata Sampradaya Bhajana.
+- **24:6:** UNESCO declared Baul songs a Masterpiece in 2005; my description of how the ektara is built.
+- **25:1:** TTD declared Anjanadri at Tirumala the birthplace in 2021; the Anjan village claim in Gumla.
+- **25:2:** Mendelssohn's Octet in 1825 at 16; the Midsummer Night's Dream overture in 1826.
+- **25:3:** Bill Millin and Lord Lovat on Sword Beach, 6 June 1944; the ban on pipers in battle.
+- **25:4:** Ali Akbar Khan in the US in 1955 at Menuhin's invitation, the MoMA concert, the first Indian classical LP in the West.
+- **25:5:** Dhamar is a 14-matra tala; Hori-Dhamar songs describe Holi.
+- **25:6:** West-Eastern Divan Orchestra founded in Weimar in 1999 by Barenboim and Said.
+- **25:7:** Alha traced to Jagnik in the 12th century, sung in Bundelkhand in the rainy season.
+- **25:8:** Django Reinhardt, Belgian-born, burned in a 1928 caravan fire and played with two fingers of the left hand.
+- **25:9:** Adnyandas's powada on the Pratapgad episode of 1659, counted among the oldest that survive.
+- **26:1:** Adi Granth compiled in 1604; Guru Granth Sahib arranged in 31 ragas; the five thieves.
+- **26:2:** Phaedo 84e–85b on the swan song; Apollo later identified with the sun; हंस meaning both sun and soul.
+- **26:3:** Cristofori at the Medici court around 1700; hammers replacing the plucked string.
+- **26:4:** The Tansen Deepak and Tana-Riri Malhar story, presented as legend only. I removed the Vadnagar festival claim.
+- **26:5:** Setubandha attributed to Pravarasena II; Bana's verse comparing the poem's fame to the monkey army crossing by the bridge.
+- **26:6:** Araiyar Sevai at Srirangam, Srivilliputhur and Alvar Tirunagari, traced to Nathamuni in the 10th century.
+- **26:7:** De Martino's 1959 study of tarantism in Salento; my phrasing of his interpretation.
+- **26:8:** Brihaddeshi as the first technical definition of raga, and the definition I paraphrased.
+- **26:9:** The seven suladi talas and their spellings (मठ्य, अठ); 7 × 5 = 35.
+- **27:1:** T. N. Rajarathinam Pillai's dates, 1898–1956, his link to Thiruvavaduthurai, and his Todi alapanas.
+- **27:2:** Carousel 1945; Gerry and the Pacemakers 1963; Liverpool anthem.
+- **27:3:** Hanumanmata's six ragas (Bhairav, Kaushik, Hindol, Deepak, Shri, Megh), each with five raginis. This is the one I am least sure of.
+- **27:4:** Naam (1986), Pankaj Udhas, Anand Bakshi, Laxmikant–Pyarelal.
+- **27:5:** Sattriya recognised as a classical dance by the Sangeet Natak Akademi in 2000; origin in Sankardev's sattras.
+- **28:1:** Elam and Safar, 1950s: exhaled air can keep another person alive; Safar compared methods on anaesthetised volunteers and found mouth-to-mouth better than the old manual methods.
+- **28:2:** Finsen's light institute opened in Copenhagen in 1896; Nobel 1903; lupus vulgaris.
+- **28:3:** IOM "To Err Is Human", 1999: 44,000 to 98,000 preventable deaths a year in US hospitals.
+- **28:4:** Plague in Bombay in 1896; Haffkine tested his vaccine on himself in January 1897.
+- **28:5:** Ibn Sina's Canon is in five books, written in the early 11th century; Gerard of Cremona made the Latin translation in the 12th century; Ibn Sina also wrote poetry.
+- **28:6:** McIndoe at East Grinstead; his patients formed their club in 1941.
+- **29:1:** Tarnier, 1880, Paris; the incubator was modelled on a poultry incubator at the zoo.
+- **29:2:** Banting, Best and Collip sold the insulin patent to Toronto for $1 each in January 1923; Banting split his Nobel prize money with Best.
+- **29:3:** Keats got his apothecary licence in 1816 and died at 25.
+- **29:4:** Dix visited a Massachusetts jail in 1841 and saw the mentally ill in unheated cells; her memorial to the legislature was in 1843.
+- **29:5:** Darwin's "Expression of the Emotions" (1872) covers weeping and hair standing on end, and was one of the early science books illustrated with photographs.
+- **30:1:** Ashoka's Rock Edict II (Girnar and other sites): treatment for people and animals, herbs planted, wells dug and trees planted along roads; "23 centuries" is my own rounding.
+- **30:2:** Murray, 23 December 1954, Herrick twins; Richard lived about 8 more years; Nobel 1990.
+- **30:3:** Paris 1851 sanitary conference: 12 states, each sending a diplomat and a physician; its convention was little applied.
+- **31:1:** Metchnikoff, Messina 1882, thorns in starfish larvae, Nobel 1908. I left out the thorn species because accounts disagree.
+- **31:2:** Koch, 24 March 1882, at the Berlin Physiological Society: about one in seven deaths was from TB.
+- **31:3:** Pussin and Pinel unchained patients at Bicêtre in the 1790s, and later at the Salpêtrière.
+- **31:4:** Colton's demonstration was 10 December 1844; Riggs pulled Wells's tooth the next day.
+- **31:5:** Zirm, Olomouc 1905: the patient had lime burns; the donor was an injured living boy whose eye had to be removed; sight returned in one eye.
+- **31:6:** Edward Stone, 1763 letter on willow bark: about 50 patients over about 5 years.
+- **32:1:** About 10 lakh ASHA workers today.
+- **32:2:** Ross, Secunderabad, 20 August 1897; Nobel 1902; World Mosquito Day.
+- **32:3:** Fiatarone et al., JAMA 1990: 10 frail residents aged 86 to 96, 8 weeks of training, strength about 2.7 times higher (+174%).
+- **32:4:** Damien reached Kalaupapa in 1873, got leprosy around 1884 and died in 1889. Note: in the source he says "we lepers"; I paraphrased it in the third person.
+- **32:5:** Bonica, "The Management of Pain", 1953; his 1973 founding of IASP (formal founding may be 1974).
+- **33:1:** Franklin's son Francis died of smallpox in 1736, aged 4; the regret is from the Autobiography.
+- **33:2:** Sommer's vitamin A trial in Aceh, Lancet 1986: child mortality down about a third (34%).
+- **33:3:** Robertson's 1952 film: Laura, aged 2, eight days in hospital; Platt Report 1959.
+- **33:4:** Eijkman in Java in the 1890s: polished rice caused polyneuritis in chickens; Nobel 1929.
+- **33:5:** Pereira Gray et al., BMJ Open 2018: 22 studies, most linking continuity of care with lower mortality.
+- **33:6:** Röntgen, Würzburg, 8 November 1895; the image of his wife's hand on 22 December.
+- **33:7:** Bhore Committee, 1946, recommended primary health centres.
+- **34:1:** Balint, "The Doctor, His Patient and the Illness", 1957; the doctor as a drug.
+- **34:2:** First Famine Commission under Richard Strachey, report in 1880, which led to the Famine Codes.
+- **34:3:** Royal Humane Society founded in 1774 by Hawes and Cogan.
+- **34:4:** 999 started in London on 30 June 1937, after the 1935 Wimpole Street fire in which five women died.
+- **34:5:** Cowasjee's nose, Gentleman's Magazine, October 1794: forehead flap done in Poona, witnessed by two British surgeons.
+- **35:1:** Cavell nursed soldiers of both sides and was executed on 12 October 1915. Her last words are paraphrased in the third person.
+- **35:2:** Ganga basin is about a quarter of India's land; Padma meets Jamuna near Goalundo and Meghna near Chandpur.
+- **35:3:** Farakka Barrage began operating in 1975; Ganga Water Treaty signed December 1996, for 30 years.
+- **35:4:** Vikramshila Gangetic Dolphin Sanctuary declared 1991, Sultanganj to Kahalgaon.
+- **35:5:** Ganga Action Plan launched June 1986 from Varanasi.
+- **35:6:** Guru Hargobind, Gwalior fort, 52 kings freed holding a cloak with 52 tassels (tradition).
+- **36:1:** Veer Bhadra Mishra founded the Sankat Mochan Foundation in 1982, taught hydraulic engineering at BHU, and received UNEP's Global 500 award.
+- **36:3:** Benares Sanskrit College founded 1791 by Jonathan Duncan; it is now Sampurnanand Sanskrit University.
+- **36:4:** Kamadgiri parikrama is about 5 km.
+- **37:1:** Present Lakshman Jhula opened 1930 and was closed to traffic in 2019.
+- **37:3:** An old akhara at Tulsi Ghat that tradition links to Tulsidas.
+- **37:4:** Ain-i-Akbari says the water came from Soron while Akbar was at Agra and from Haridwar while he was in Punjab.
+- **38:1:** Bihar–Nepal earthquake of 15 January 1934, about magnitude 8.
+- **38:2:** Dhanadeva's Ayodhya inscription (1st century BCE) calls him sixth in descent from Pushyamitra and credits Pushyamitra with two ashvamedhas.
+- **38:3:** Buxar as Vishvamitra's Siddhashrama (tradition); Battle of Buxar 1764.
+- **38:4:** Hankin 1896, in the Annales de l'Institut Pasteur: cholera bacteria died within hours in unboiled Ganga and Yamuna water.
+- **38:5:** Dufferin Bridge 1887, rail on the lower deck and road on the upper; renamed Malviya Setu in 1948. The renaming year and the deck order are the least certain.
+- **39:1:** Indian Sundarbans on the UNESCO list in 1987; honey collectors (mouals) who worship Bonbibi.
+- **39:2:** Xuanzang's account of Harsha's five-yearly gift assembly at Prayag, ending with a garment from his sister Rajyashri.
+- **39:5:** Sankat Mochan music festival; the claim that artists of different faiths have performed there.
+- **40:1:** IITM Pune's winter fog study at Delhi airport, from winter 2015–16 (WiFEX).
+- **40:2:** Nati Imli Bharat Milap is held on the day after Vijayadashami, with the Kashi royal family present.
+- **40:3:** Arrian, Indica 8: Sourasenoi, Methora, Cleisobora, river Jobares.
+- **40:4:** Kashi Vishwanath Dham inaugurated 13 December 2021.
+- **41:1:** Kanak Bhawan built in 1891 by Queen Vrishbhanu Kunwari of Tikamgarh.
+- **41:2:** Annapurna statue stolen around 1913, returned from Canada, installed November 2021.
+- **41:3:** Wording of Rahim's doha ("सो आवत यहि देस").
+- **41:4:** Shringverpur excavation 1977–1986 under B. B. Lal; brick tank of about the 1st century BCE, filled by Ganga floodwater through a channel.
+- **42:1:** India Post began selling Gangajal in 2016, from Gangotri and Rishikesh.
+- **42:2:** Nag Nathaiya at Tulsi Ghat in Kartik; Bhagavata 10.16 (Kaliya spared and sent to Ramanaka).
+- **42:3:** Guptar Ghat identified with Gopratara in Valmiki's Uttarakanda.
+- **43:1:** Surya Tilak on 17 April 2024, designed by CSIR-CBRI Roorkee with IIA Bengaluru, using no electricity.
+- **43:2:** Five Jain tirthankaras born in Ayodhya; Saketa as its early name.
+- **43:3:** Dhanushadham in Dhanusha district, Nepal, and its bow-fragment tradition.
+- **43:4:** McComb et al. 2001, Science: Amboseli families with older matriarchs tell familiar from unfamiliar calls better.
+- **43:5:** Marzluff's crow-mask captures began in 2006 at the University of Washington; crows mobbed the mask for years, and crows that never saw a capture learned it.
+- **43:6:** Jatayu Earth's Center at Chadayamangalam, Kollam district, opened 2018; the sculpture is about 200 ft long.
+- **43:7:** Schaller's *The Deer and the Tiger* (1967, Kanha) describes chital feeding under langurs and responding to langur alarm calls.
+- **43:8:** Beaver dam about 850 m long in Wood Buffalo National Park, found in 2007 by Jean Thie on satellite images; built up since the 1970s.
+- **43:9:** The Capistrano swallow festival is on 19 March, St Joseph's Day; the birds winter in South America.
+- **44:1:** Raghuvamsha* canto 4 says the waters cleared at Agastya's rising (I believe this is 4.21).
+- **44:2:** Seymour and Schultze-Motel 1996, Nature: lotus flowers stay at 30 to 35 °C for 2 to 4 days in air as cool as 10 °C.
+- **44:3:** Petrie 1994, Nature, Whipsnade: chicks of peacocks with more elaborate trains grew and survived better.
+- **44:4:** All eight pangolin species went to CITES Appendix I at CoP17, Johannesburg, 2016.
+- **44:5:** Scudder's 1874 piece "In the Laboratory with Agassiz", with three days spent looking at one fish.
+- **44:6:** Lingle and Riede 2014, American Naturalist (University of Winnipeg): deer mothers approached distress calls of seal, bat, cat and human infants.
+- **44:7:** NITI Aayog's 2018 springs report says nearly half of the perennial Himalayan springs have dried or become seasonal (I left out the total number on purpose).
+- **44:8:** Plotnik and de Waal 2014, PeerJ: Asian elephants in Thailand reassure distressed companions with trunk touches and chirps.
+- **44:9:** Aerts 1996, Journal of Ecology: perennials resorb about 50% of leaf nitrogen before leaf fall.
+- **45:2:** Biju and Bossuyt 2003, Nature, describing *Nasikabatrachus sahyadrensis*.
+- **45:3:** Christmas Island red crabs spawn around the last-quarter moon, before dawn, at the turn of high tide.
+- **45:4:** Luuk Tinbergen's search-image work was published after his death, in 1960.
+- **45:5:** Barn-owl nest boxes in Israel from the 1980s, made a national project by Yossi Leshem and extended to Jordan. The 1983 start year was left out because I am unsure of it.
+- **46:1:** Louise de Kiriline Lawrence counted 22,197 songs from one red-eyed vireo in a day.
+- **46:2:** Clarke, Robert et al. 2013, Science (Bristol): bumblebees sense floral electric fields. The note says the cue to other bees is only "possible".
+- **46:3:** Yellowstone 1988 fires burned about a third of the park; lodgepole cones sealed with resin open in heat.
+- **46:5:** Paxton first flowered the giant water lily at Chatsworth in 1849, stood his daughter Annie on a leaf, and the leaf ribs inspired the Crystal Palace (1851).
+- **46:6:** London Great Smog, December 1952, about five days, cleared when the wind came; Clean Air Act 1956.
+- **46:7:** Vander Wall and Balda 1977: one Clark's nutcracker caches more than 20,000 seeds a season.
+- **46:8:** Great white and mako sharks are obligate ram ventilators.
+- **46:9:** Raskhan was of a Pathan family, and his samadhi is at Mahavan near Mathura.
+- **47:1:** Roridomyces phyllostachydis* was found in Meghalaya in 2018 on decaying bamboo and named in 2020. I am least sure of this one.
+- **47:2:** Agarwood resin forms only after wounding and fungal infection; *Aquilaria malaccensis* went onto CITES Appendix II in 1995.
+- **47:3:** Beal's 1879 seed bottles (20 bottles); seeds from the 2021 dig germinated after 142 years.
+- **47:4:** Kukui nuts were strung on a coconut-leaf midrib and burned as candles; kukui became Hawaii's state tree in 1959.
+- **47:5:** Rattenborg, Lima and Amlaner 1999, Nature: mallards at the ends of a row sleep with the outward eye open.
+- **47:6:** Johannes Schmidt named the Sargasso Sea as the eels' breeding ground in a 1922 report.
+- **48:1:** Noble and Beer, University of Western Ontario, 1950s: vinblastine from periwinkle, found while testing a folk diabetes remedy.
+- **48:2:** The shishi-odoshi was first meant to scare deer and wild boar.
+- **48:3:** Stokkan, Jeffery et al. 2013: the reindeer tapetum turns from gold in summer to blue in winter.
+- **48:4:** A *Pseudomonas syringae* protein makes ice form just below 0 °C; the first ice-minus field tests were in California in 1987. Lindow's name was cut for length but is still in the claims line.
+- **48:5:** Denning quoted Thomas Fuller ("be you never so high, the law is above you") in Gouriet v Union of Post Office Workers, Court of Appeal, 1977.
+- **49:1:** Edict of Torda 1568, under John Sigismund; preachers free to preach as they understood, no prison or banishment for their teaching.
+- **49:2:** Bachan Singh 1980, five-judge bench, "rarest of rare" doctrine, life imprisonment the rule.
+- **49:3:** Sunil Batra (II) 1980 began with a prisoner's letter to Justice Krishna Iyer about a fellow prisoner's torture.
+- **49:4:** Brown v Board, 17 May 1954, unanimous, Warren's "inherently unequal".
+- **49:5:** Lieber Code, General Orders No. 100, 24 April 1863; military necessity does not allow cruelty, torture or poison.
+- **49:6:** John Augustus, Boston, 1841; about 2,000 people helped; called the father of probation.
+- **49:7:** Bern Justice Fountain, 1543, credited to Hans Gieng; blindfolded Justitia with pope, emperor, sultan and mayor (Schultheiss) at her feet.
+- **49:8:** first general election Oct 1951 to Feb 1952, about 17 crore voters, Sukumar Sen, party symbols.
+- **49:9:** Family Courts Act 1984, duty to attempt settlement and use counsellors.
+- **50:1:** Hussainara Khatoon 1979, petition filed by Kapila Hingorani on newspaper reports; thousands of undertrials released.
+- **50:2:** UN Basic Principles on the Use of Force and Firearms, Eighth UN Congress, Havana 1990.
+- **50:3:** Article 39A inserted 1976; NALSA working from 1995.
+- **50:4:** Rukhmabai: suit filed 1884, married at 11, said she would accept prison, became one of India's first trained women doctors.
+- **50:5:** Thomas More refused the oath in 1534 and was executed 6 July 1535.
+- **50:6:** Bandhua Mukti Morcha 1984, bonded labourers in stone quarries near Faridabad; court commissioners sent to inquire.
+- **50:7:** SEWA 1972, Ela Bhatt; SEWA cooperative bank 1974.
+- **50:8:** Ramakrishna Mission founded 1 May 1897; famine relief begun the same year.
+- **50:9:** Danish rescue, October 1943, about 7,000 Jews taken by boat to Sweden.
+- **51:1:** Brandeis, Harper's Weekly 1913, sunlight as disinfectant; collected in his 1914 book.
+- **51:2:** Tihar, April 1994, a 10-day Vipassana course for over 1,000 prisoners.
+- **51:4:** Gandhi's trial, 18 March 1922, Ahmedabad, Judge C. N. Broomfield, six years.
+- **51:5:** A. T. Ariyaratne and Sarvodaya Shramadana, 1958.
+- **51:6:** Ramabai Ranade and the Pune Seva Sadan, 1909; nursing training for women.
+- **51:7:** Third Schedule oath wording: "without fear or favour, affection or ill-will", applied to ministers and judges.
+- **51:8:** Samaritans founded 2 November 1953 by Chad Varah at St Stephen Walbrook.
+- **51:9:** Nirmal Hriday opened 22 August 1952 near Kalighat.
+- **52:1:** Kesavananda Bharati, 24 April 1973, 13 judges, 7 to 6.
+- **52:2:** Ecuador's 2008 constitution as the first to recognise rights of nature.
+- **52:3:** Antarctic Treaty, 1 December 1959, Washington, 12 states.
+- **52:4:** Heydon's Case 1584, Court of Exchequer, mischief rule.
+- **52:5:** Motilal Padampat Sugar Mills 1979, promissory estoppel against the state.
+- **52:6:** Nuremberg 1945 to 1946; Robert Jackson's "stay the hand of vengeance" paraphrased.
+- **52:7:** R. D. Upadhyay v State of AP 2006; children up to six may stay with mothers in prison.
+- **52:8:** Bodh Gaya Temple Act 1949; committee of four Buddhists and four Hindus, chaired by the District Magistrate.
+- **52:9:** Bengal Sati Regulation, 4 December 1829, Bentinck.
+- **53:1:** Gandhi read Unto This Last on a train in 1904; Phoenix settlement; Gujarati "Sarvodaya" 1908.
+- **53:3:** Sadashiva Brahmendra wrote "Sarvam Brahmamayam"; his samadhi is at Nerur near Karur.
+- **53:4:** Kuchela Dinam at Guruvayur falls on the first Wednesday of Dhanu, with an offering of avil.
+- **53:5:** Bhagavata 8.24, Satyavrata in the Kritamala river.
+- **53:6:** Akka Mahadevi left King Kaushika and went via Kalyana to Srisailam.
+- **53:9:** Agasthyamala was added to UNESCO biosphere reserves in 2016; TBGRI's Jeevani was made from the Kani tribe's arogyapacha, with a fee share paid to a Kani trust.
+- **54:2:** Sivajnanabodham has 12 sutras and dates to the 13th c.; Saiva Siddhanta counts 36 tattvas.
+- **54:3:** Nammalvar sat under the tamarind tree at Alwarthirunagari; Tiruvaymoli has 1102 verses.
+- **54:4:** Gora Kumbhar tested the saints with his paddle at Ter, at Muktabai's request, and found Namdev "unbaked".
+- **54:6:** Padmanabhaswamy is seen through three doors; the Thrippadidanam was in January 1750.
+- **54:7:** The Tiruvalluvar statue in Bengaluru stayed covered about 18 years and was unveiled in August 2009, with the Sarvajna statue in Chennai unveiled days later.
+- **54:9:** Periyalvar won the debate at the Pandya court; Tirupallandu is the first hymn of the Divya Prabandham.
+- **55:1:** Narayaniyam was completed in 1586 at Guruvayur, in 100 dashakas.
+- **55:2:** Salabega was 17th c., and the chariot halts near his grave on Bada Danda.
+- **55:3:** Tirupalliyezhuchi is 10 verses, sung at dawn in Margazhi.
+- **55:4:** Ratha Saptami at Tirumala has seven vahanas, Surya Prabha to Chandra Prabha, and is called a one-day Brahmotsavam.
+- **55:6:** Panjal Agnicayana, April 1975, 12 days, recorded by Frits Staal; the enclosure was burnt at the end.
+- **55:7:** Bhagavata 12.3.51.
+- **55:8:** Paduka Sahasram has 1008 verses (I wrote "more than a thousand"); the one-night legend.
+- **55:9:** Sharanagati Gadya is linked to Panguni Uttiram at Srirangam.
+- **56:1:** Tiruppugazh is 15th c.; the tradition claims 16,000 songs, of which a little over 1,000 survive.
+- **56:4:** Andal's garland is sent from Srivilliputhur to Tirumala for the Garuda Seva.
+- **56:7:** Kuchipudi tarangam uses Narayana Tirtha's Krishna Leela Tarangini (17th c.).
+- **56:8:** Pattinathar and the eyeless needle (I left out the cow-dung cakes).
+- **56:9:** Poonthanam's infant son died on the day of his annaprasana; this led to Jnanappana.
+- **57:1:** Srirangam Rajagopuram, completed 1987, about 72 m, 13 tiers, Ahobila Mutt; "among Asia's tallest".
+- **57:2:** Kanhopatra is 15th c.; her samadhi is in the Pandharpur temple precinct.
+- **57:5:** Bhima Bhoi was blind and Kandha; the line is from Stuti Chintamani.
+- **57:6:** The "naham vasami vaikunthe" verse is attributed to the Padma Purana.
+- **57:7:** Aathichoodi's first maxim is "aram seyya virumbu".
+- **57:8:** "na lage mukti dhan sampada, santsang dei sada" is in the same abhang as "hechi daan dega deva".
+- **57:9:** Vaitheeswaran Koil, the Siddhamritam tank, and Tevaram hymns on the temple.
+- **58:1:** Molla's preface disclaims scholarship.
+- **58:2:** Madhava Kandali, patron Mahamanikya, 14th c.; Madhavdev added the Adi kanda and Sankardev the Uttara kanda.
+- **58:3:** Bahinabai Chaudhari's songs were written down by her son Sopandev and published after her death.
+- **58:4:** Kamban's "inru poy nalai vaa" comes at the first battle.
+- **58:5:** Krittibas was first printed at the Serampore mission press in 1802–03.
+- **58:7:** Balarama Das, Jagamohana or Dandi Ramayana.
+- **58:8:** The four Nalambalam temples are Triprayar, Irinjalakuda, Moozhikkulam and Payammal.
+- **58:9:** Vontimitta has a single-stone image with no Hanuman; the state Rama Navami celebrations moved there after the 2014 bifurcation (I did not give a year in the note).
+- **59:3:** Vedanthangal villagers protect the birds because the droppings enrich the tank water used on their paddy (I gave no years).
+- **59:4:** Kathakali make-up types: pacha, kathi (Ravana), and red-beard thadi.
+- **59:5:** Pilgrim's Progress 1678; Formalist and Hypocrisy climb over the wall and perish on two side paths at Hill Difficulty.
+- **59:6:** Faerie Queene Book I published 1590; the monster Error lives in a den in the Wandering Wood and hates light.
+- **59:7:** Pensées published 1670; the fly buzzing in the ears of "the sovereign judge of the world".
+- **60:1:** Basil's Basileias founded about 369 or later; Gregory of Nazianzus called it a "new city"; it cared for people with leprosy.
+- **60:2:** Rublev's Trinity, early 15th century, now in the Tretyakov; the 1551 Moscow council named it the model.
+- **60:4:** Athanasius' Life of Antony, about 360.
+- **60:5:** Seraphim of Sarov's thousand nights praying on a rock (given as hagiography); his saying that one who finds inner peace saves thousands around him.
+- **60:6:** Evagrius' eight thoughts in the Praktikos.
+- **60:7:** Chinvat bridge wide for the righteous and razor-thin for the wicked, attributed to Pahlavi texts.
+- **60:8:** Newman wrote "Lead, Kindly Light" on 16 June 1833, becalmed in the Strait of Bonifacio.
+- **61:1:** Psalms 120 to 134 are the Songs of Ascents; Psalm 122.
+- **61:3:** 1 Corinthians 15.54-55 draws on Isaiah and Hosea; it is often read at Christian funerals.
+- **61:4:** the Mandylion was brought to Constantinople in 944.
+- **61:5:** Exodus 34.6-7, the Thirteen Attributes of Mercy recited in Selichot.
+- **61:6:** Exodus 28.33-35, bells and pomegranates on the hem.
+- **61:7:** Psalm 45.9, the queen in gold of Ophir.
+- **61:9:** Numbers 21.8-9 (the bronze serpent) and 2 Kings 18.4 (Hezekiah destroys it).
+- **62:1:** Nicholas of Cusa's De visione Dei sent to the Tegernsee monks in 1453, with the painting whose eyes follow every viewer.
+- **62:2:** the prologue of Jami's Yusuf and Zulaikha, on eternal beauty wishing to be seen. This rests on my memory of the prologue, and the date is left general.
+- **62:3:** Sri Pada about 2,243 m high, footprint about 1.8 m, pilgrimage season December to May.
+- **62:4:** John 14.2, said to be much read in times of grief.
+- **62:5:** Joya no kane, 108 strokes for 108 desires.
+- **62:6:** Corrie ten Boom and the former Ravensbrück guard in Munich, 1947; her sister Betsie died in the camp.
+- **62:7:** misbaha of 33 or 99 beads; the 33/33/34 recitation after prayer.
+- **62:8:** the Sinai Pantocrator, 6th century; the two halves of the face differ.
+- **62:9:** "Schönster Herr Jesu" in the Münster hymnal of 1677.
+- **62:10:** Ezekiel 9.4, the mark (tav) on foreheads.
+- **62:11:** Matthew 17.2; Mount Tabor; the Orthodox feast on 6 August.
+- **62:12:** Ruth 1.16, read at many weddings.
+- **62:13:** Anselm, Proslogion chapter 15.
+- **63:1:** Kierkegaard 1847, Purity of Heart.
+- **63:2:** James 3.3-4.
+- **63:3:** Popol Vuh preserved through Ximénez's copy at Chichicastenango in the early 18th century; the opening creation by word.
+- **63:4:** Genesis 50.20. In my wording Joseph says it at the reconciliation; in Genesis it comes after Jacob's death.
+- **63:5:** Ephesians 6.13-17.
+- **63:6:** Thérèse's Story of a Soul (1898) and the episode of smiling at a disliked sister.
+- **63:7:** Shabistari's Gulshan-i Raz, early 14th century, written in answer to questions sent from Khorasan; the meaning of the tress.
+- **63:8:** Luke 10.38-42 and Eckhart's sermon reading Martha as the more mature sister.
+- **63:9:** Tannisho compiled by Yuien; how I paraphrased Shinran's teaching.
+- **64:1:** 113 of 114 suras begin with the basmala, all except sura 9; rahman and rahim share the root of rahim (womb).
+- **64:2:** Myoe (1173-1232), the winter moon poem, quoted by Kawabata in his 1968 Nobel lecture.
+- **64:3:** Francis Thompson, The Hound of Heaven, 1890; rescued by the Meynells.
+- **64:4:** Suhrawardi's Hikmat al-Ishraq completed 1186; he was executed at Aleppo in 1191.
+- **64:5:** Gregory the Great, Moralia 31.45: pride as queen and root of the vices.
+- **64:6:** Prudentius' Psychomachia about 405; the scene of Wrath against Patience.
+- **64:7:** Whiting, "Eternal Father, Strong to Save", 1860; known as the Navy Hymn in the US.
+- **64:8:** Fénelon's Maxims of the Saints 1697, condemned by Innocent XII in 1699, and his submission.
+- **64:9:** Lekha Dodi by Alkabetz at Safed; the congregation turns toward the door at the last verse.
+- **65:1:** The Way of a Pilgrim published at Kazan in the later 19th century (date left general); the 3,000 / 6,000 / 12,000 repetitions.
+- **65:2:** Psalm 42.1-3.
+- **65:3:** Job 1.21.
+- **65:4:** Wiseman's newspaper test, with a large-print "stop counting, 43 photographs" message, reported in The Luck Factor (2003).
+- **65:5:** Kobasa 1979 studied managers at a large Chicago phone company (Illinois Bell).
+- **66:1:** Dolcos and Albarracín 2014: talking to oneself as "you" led to more anagrams solved than talking as "I".
+- **66:2:** Schleider et al. 2022, Nature Human Behaviour: over 2,000 adolescents, one roughly 30-minute online session, lower hopelessness at 3 months.
+- **66:3:** Antonovsky's study of Israeli women around 1970 (some concentration-camp survivors in good health), and his 1979 book.
+- **66:4:** Schkade and Kahneman 1998: Midwest vs Southern California students.
+- **66:5:** Worchel, Lee and Adewole 1975: a jar of 2 cookies vs a jar of 10.
+- **67:1:** Amabile 1985: creative-writing students primed with outside reasons wrote less creative poems.
+- **67:5:** Harvard study begun 1938, with over 200 men; Vaillant directed it for more than three decades.
+- **68:3:** Wilson et al. 2014: sitting alone for 6 to 15 minutes; many, especially men, gave themselves a mild shock.
+- **68:4:** Bonn and colleagues, Nature 2005: quicksand liquefies, then grips; you cannot sink fully; slow movement frees you.
+- **69:1:** Freud and Dann 1951: six Theresienstadt children brought to England in 1945, about age 3.
+- **69:2:** Edna Ruth Byler, Puerto Rico 1946, the start of Ten Thousand Villages.
+- **69:3:** Eustis's 1927 article, Morris Frank and Buddy, The Seeing Eye founded 1929.
+- **69:4:** Kidd, Palmeri and Aslin 2013: children waited "several times" longer after a reliable experimenter.
+- **69:5:** Harding 1987 Vermont study: more than half much improved or recovered after more than 20 years.
+- **70:2:** Sorce et al. 1985: mother's happy face meant most 1-year-olds crossed; fearful face meant none did.
+- **70:3:** Maier and Seligman 2016 reversal (passivity is the default; a sense of control is what is learned); helplessness first described 1967.
+- **70:4:** Rolls et al. 1981, sensory-specific satiety.
+- **71:1:** Wohl, Pychyl and Bennett 2010, self-forgiveness and procrastination.
+- **71:3:** Dahlsgaard, Peterson and Seligman 2005: six virtues across eight traditions.
+- **71:6:** McCullough, Worthington and Rachal 1997: empathy and a workshop raised forgiveness.
+- **71:7:** Goertzel and Goertzel 1962: about 400 eminent people, most with hard childhoods.
+- **72:1:** Tangney, Stuewig and Martinez 2014: guilt-proneness predicted less reoffending in the year after release; shame did not.
+- **72:2:** Bai et al. 2017: Yosemite visitors drew smaller selves than visitors to a busy city waterfront.
+- **72:3:** Bryan, Walton, Rogers and Dweck 2011: asking about being "a voter" rather than "voting" raised turnout.
+- **73:3:** Keith Hearne and Alan Worsley, April 1975, University of Hull, eye signals from a lucid dream.
+- **73:4:** Teasdale et al. 2000, mindfulness-based cognitive therapy: relapse roughly halved in people with 3 or more episodes, over 8 weeks of practice.
+- **74:2:** Kleitman and Richardson 1938, 32 days in Mammoth Cave trying a 28-hour day; the younger man adapted partly, Kleitman did not.
+- **74:3:** Zhong, Bohns and Gino 2010: dim light and sunglasses increased cheating and selfishness.
+- **74:4:** Batson et al. 1981: empathic participants took the woman's place even when leaving was easy.
+- **75:3:** Bond and DePaulo 2006: lie detection about 54% accurate, from over 200 documents.
+- **76:2:** Bucharest Early Intervention Project, begun 2000.
+- **76:3:** Coan, Schaefer and Davidson 2006: holding a spouse's hand reduced threat activation; a stranger's hand helped less.
+- **77:1:** Severance and Washburn 1907; the term "semantic satiation" from Leon Jakobovits James, 1962.
+- **77:3:** Walton and Cohen 2011, Science: about a one-hour session; students from groups who saw themselves as outsiders got better grades over 3 years.
+- **78:1:** Jordan et al. 2011: students underestimated how much bad feeling their peers had.
+- **78:2:** Awadh annexed February 1856; Wajid Ali Shah exiled to Matiaburj.
+- **78:3:** Ravel's Bolero (1928), one snare rhythm throughout, about 15 minutes.
+- **78:4:** Fuke sect abolished 1871.
+- **78:5:** kantele from a pike's jawbone in Kalevala rune 40; creatures gather in rune 41.
+- **78:6:** Gaisberg recorded Gauhar Jaan in Calcutta, November 1902, and she announced her name at the end of each record.
+- **79:1:** lined-out Gaelic psalm singing on the Isle of Lewis.
+- **79:2:** Dorsey's wife Nettie died in childbirth, August 1932, and the baby also died.
+- **79:3:** Narada Bhakti Sutra 82, eleven attachments, in this order: dasya, sakhya, kanta, vatsalya.
+- **79:4:** Brackett, Simple Gifts, Alfred (Maine), 1848; Copland's Appalachian Spring, 1944.
+- **80:1:** O'Carolan blinded by smallpox in youth; more than 200 tunes survive.
+- **80:2:** Man Singh Tomar reigned 1486 to 1516; Mankutuhal; the tradition linking Gujari ragas to Mrignayani.
+- **80:3:** Stephen Foster died January 1864 with 38 cents.
+- **80:4:** W. C. Handy at Tutwiler, 1903, as told in his autobiography.
+- **80:5:** Debussy's Suite bergamasque published 1905; title from Verlaine's poem.
+- **81:1:** Strasbourg dancing plague, July 1518, Frau Troffea, musicians hired by the authorities.
+- **81:2:** Davidsbündlertänze (1837) pieces signed F. or E.
+- **81:3:** Rachmaninoff's First Symphony fails, March 1897; Dahl treatment 1900; Second Concerto 1901, dedicated to Dahl.
+- **81:4:** Pictures at an Exhibition, 1874, Hartmann, the Promenade.
+- **81:5:** Albert, Sparks and Helm, 1973, melodic intonation therapy.
+- **82:1:** IRENE (Carl Haber); 1880s Smithsonian experimental recordings recovered by 2013.
+- **82:2:** Argonautica book 4, Orpheus and the Sirens, Butes.
+- **82:3:** Greenland Inuit drum-song duels. Stated generally, with no source named.
+- **82:4:** Japji pauri 20, wording of the paraphrase.
+- **83:1:** Puccini died 1924; Toscanini stopped the Turandot premiere in April 1926.
+- **83:2:** Armstrong, 31 December 1912, Waifs' Home, Peter Davis.
+- **83:3:** Borodin's Prince Igor, about 18 years, unfinished at his death in 1887.
+- **83:4:** Salimpoor et al. 2011, dopamine at musical chills and during anticipation.
+- **83:5:** Belfast Harp Festival, July 1792; Hempson about 97; Bunting aged 19.
+- **83:6:** Jenufa's Prague premiere May 1916; Janáček was 61; his best-known works followed in the next 12 years.
+- **84:1:** Unfinished Symphony 1822; held by Hüttenbrenner about 40 years; premiered Vienna 1865.
+- **84:2:** El Sistema, 1975, eleven children in an underground parking space.
+- **84:3:** UNESCO Manipur sankirtana, 2013; pung drum; tied to life-cycle rites.
+- **84:4:** Lead Belly sang to Pat Neff in 1924 and was pardoned January 1925.
+- **85:1:** O'Neill's Music of Ireland (1903), about 1,850 tunes; James O'Neill transcribed them.
+- **85:3:** Saint-Maurice d'Agaune founded 515 by Sigismund; laus perennis.
+- **86:1:** dhrupad from dhruvapada; dhruva songs in the Natyashastra.
+- **86:2:** Melattur Bhagavata Mela, at Narasimha Jayanti, all-male cast.
+- **86:3:** Anschütz-Kaempfe gyrocompass, 1908.
+- **86:4:** snakes have no external ears; snake-charming shows illegal under the Wildlife Protection Act 1972.
+- **86:5:** Jo Jones throws a cymbal at Parker, Reno Club, about 1936, Parker aged 16. This is jazz lore.
+- **87:1:** Bhikhari Thakur 1887 to 1971; plot of Bidesia.
+- **87:2:** 22 July 2009 was the longest total solar eclipse of the 21st century; clouds over Taregna.
+- **87:3:** Show Boat (1927), Kern and Hammerstein, Ol' Man River.
+- **87:4:** Tindley, about 1900; striking tobacco workers in the 1940s; Zilphia Horton.
+- **88:1:** Max Richter's Sleep (2015), about 8.5 hours, overnight BBC broadcast in September 2015 with beds for the audience.
+- **88:2:** Liikkanen surveys: most people get earworms at least weekly.
+- **88:3:** Frontinus, about 97 CE; settling tanks on the aqueducts.
+- **88:4:** Bruckner revised his earlier symphonies; the Ninth's finale was unfinished at his death in October 1896.
+- **89:1:** Breland and Breland 1961, the raccoon rubbing coins.
+- **89:3:** Hameln records 26 June 1284, 130 children.
+- **89:4:** Mongolian camel-coaxing ritual on the UNESCO urgent safeguarding list, 2015.
+- **90:1:** Parker and Lawrence 2001, Nature, Stenocara beetle.
+- **90:2:** pyrocumulus clouds in Australia's 2019 to 2020 fire season giving little rain and starting fires with lightning.
+- **90:3:** Loss et al. 2014, The Condor: 365 to 988 million US birds killed by glass each year. The note rounds this to about 36 to 99 crore.
+- **90:4:** Watts 1719, Psalm 90; Wesley changed "Our" to "O" in 1738.
+- **101:2:** Tirukkalukundram "Pakshi Tirtham": tradition of two kites fed by a priest at midday.
+- **101:3:** Sambhar Lake, November 2019: thousands of migratory birds died of avian botulism.
+- **102:1:** Mahamaham tank, Kumbakonam: 16 mandapas; festival every 12 years when Jupiter is in Simha in Magha; last held February 2016.
+- **102:3:** Hump-backed mahseer: found only in the Kaveri basin; IUCN Critically Endangered in 2018.
+- **102:4:** Loktak: "athaphum" phumdi fish enclosures; Keibul Lamjao made a national park in 1977.
+- **102:5:** Bellandur lake: froth in 2015, fire in February 2017.
+- **103:1:** Gadisar, Jaisalmer: built in the 14th century by Maharawal Gadsi Singh.
+- **103:2:** Chewang Norphel: artificial glaciers from about 1987; Padma Shri 2015.
+- **103:3:** Kachhua (turtle) sanctuary on the Ganga at Varanasi, 1989. This is the year I am least sure of.
+- **103:4:** Hirakud dam: completed 1957; more than 25 km long with the dykes.
+- **104:1:** Govardhan parikrama: about 21 km; dandavati form.
+- **104:2:** Atal Bhujal Yojana: 25 December 2019; seven states.
+- **104:3:** Jain practice of filtering water through doubled cloth; the residue (jivani) is returned to the source.
+- **105:1:** Talakaveri tirthodbhava at Tula Sankramana, about mid-October.
+- **105:2:** BIS hallmarking mandatory from 16 June 2021.
+- **105:3:** Kolleru lake: court-directed demolition of fish-tank bunds in 2006.
+- **106:1:** Seechewal: Kali Bein kar seva from 2000; Padma Shri 2017.
+- **106:2:** Shivrinarayan: Mahanadi-Shivnath-Jonk confluence; the name is linked to Shabari.
+- **106:3:** Soma sacrifice: 16 ritviks in four groups of four.
+- **106:4:** Udyoga Parva: Krishna stays with Vidura instead of Duryodhana; Vidur Kuti in Bijnor district.
+- **106:5:** Beneshwar fair: Som-Mahi-Jakham confluence, Dungarpur; around Magh Purnima.
+- **106:6:** Cyclone Phailin: landfall near Gopalpur, October 2013; about one million people evacuated.
+- **107:1:** Lotus Temple: opened 1986; 27 petals in groups of three; nine pools.
+- **107:2:** Sitakund near Munger: a hot spring, with cold kunds named after Rama and his brothers.
+- **107:4:** Manikaran gurdwara: langar rice and dal cooked in the hot springs.
+- **107:5:** Mahanarayana Upanishad: "apo va idam sarvam".
+- **107:6:** Ramappa (Rudreshwara) temple: 1213, built by Recherla Rudra under Ganapatideva; UNESCO 2021.
+- **108:1:** the existing व्याख्या takes "महावीर" mainly as Rama. My fact uses Hanuman Dhara and says that some commentators read it as Hanuman.
+- **108:2:** Godavari Maha Pushkaram, July 2015: the "once in 144 years" tradition; Rajamahendravaram.
+- **108:3:** Bindu Sarovar, Siddhpur (Patan district), as "matru-gaya".
+- **108:4:** Ranganathittu: protected in 1940 on Salim Ali's suggestion.
+- **108:5:** Shatrunjaya: more than 3,500 steps; nobody stays on the hill at night.
+- **109:1:** Tapt Kund hot spring below Badrinath temple.
+- **109:2:** Yamuna Action Plan: 1993, with Japanese aid.
+- **109:3:** First ice stupa: winter 2013-14, near Phyang.
+- **109:4:** Amur falcons at Doyang reservoir: 2012 hunting reports led to protection by Pangti.
+- **109:5:** Simon Oraon makes a second Padma Shri fact in my set, after Seechewal in 106:1. They are different people.
+- **110:1:** Kaveri divides at Mukkombu into Kaveri and Kollidam.
+- **110:2:** Punjab Preservation of Subsoil Water Act 2009: no paddy transplanting before about mid-June.
+- **110:3:** Pichola lake: about 1362, built by a Banjara named Pichhu in Rana Lakha's time.
+- **110:4:** Hussain Sagar Buddha: sank March 1990; installed December 1992.
+- **111:1:** Lonar lake turned pink in June 2020 (Haloarchaea).
+- **111:2:** W. G. Archer saw Mithila wall paintings after the 1934 Bihar earthquake.
+- **112:1:** Fatehpur Sikri: building from 1571; left around 1585; water shortage is often given as a reason.
+- **112:2:** Ambapali's invitation and mango grove in the Mahaparinibbana Sutta.
+- **112:3:** Gulf of Khambhat: tidal range up to about 10 m near Bhavnagar.
+- **112:4:** Plachimada: protest from April 2002 led by Mylamma; plant stopped production in March 2004.
+- **112:5:** Nighoj potholes on the Kukadi river.
+- **113:1:** Kailash-Mansarovar route via Nathu La opened June 2015; it is motorable.
+- **113:2:** M. C. Mehta: Ganga petition in 1985; 1987 Supreme Court order against the Jajmau (Kanpur) tanneries.
+- **113:3:** Pulicat: the second-largest brackish lagoon in India after Chilika.
+- **113:4:** Agrasen ki Baoli: more than 100 steps; present structure medieval.
+- **113:5:** Wiltschko et al. 1993, Nature. Australian silvereyes orient under blue and green light and lose direction under red light.
+- **114:1:** Kolkwitz and Marsson 1908 to 1909, saprobic system. Tubifex worms as the sign of the most polluted water.
+- **114:2:** Pitman et al. 2016, Marine Mammal Science. Humpbacks interrupt orca attacks on seals and other species.
+- **114:3:** Yamamoto and Jeffery 2000, Science. Placing an eye part from a surface-fish embryo into a cavefish embryo let the eye develop.
+- **114:4:** Karil (Capparis decidua). Leaves only briefly on new shoots, green stems do the photosynthesis, fruit eaten as "ker".
+- **114:5:** van Lawick-Goodall 1966, Nature. Egyptian vultures in the Serengeti break ostrich eggs with stones.
+- **115:1:** Runyon, Mescher and De Moraes 2006, Science. Dodder finds tomato by smell. I also say it can regrow from haustoria left inside the host.
+- **115:2:** Dill 1977. Archerfish correct for refraction. Author and year are worth checking.
+- **115:3:** Gibbons and Lindenmayer 2002. Eucalypt hollows usually take over a century to form.
+- **115:4:** King, Ocko and Mahadevan 2015, PNAS. Odontotermes obesus mounds in Bangalore; airflow reverses between day and night.
+- **115:5:** Thornton and McAuliffe 2006, Science. Meerkats teach pups in steps: dead scorpion, stingless scorpion, intact scorpion.
+- **116:1:** Censky et al. 1998, Nature. At least 15 green iguanas reached Anguilla in October 1995, probably from Guadeloupe.
+- **116:2:** Lonsdorf, Eberly and Pusey 2004, Nature. Gombe daughters learn termite fishing earlier than sons.
+- **116:3:** Pouyanne 1916, Algeria, Ophrys pseudocopulation. I called him a "French official"; he was a magistrate, so check the wording and the date.
+- **116:4:** Frobisher 1577 to 1578. "Hundreds of tons" of ore from Baffin Island proved worthless and went into walls at Dartford.
+- **116:5:** Henry Ridley 1930, The Dispersal of Plants throughout the World. I call him a former director of the Singapore Botanic Gardens.
+- **117:1:** Gates and Gysel 1978, Ecology. Michigan field-forest edges; the term "ecological trap".
+- **117:2:** Gwynne and Rentz 1983. Julodimorpha bakewelli males court beer bottles; some died from sun and ants.
+- **117:3:** Schjelderup-Ebbe 1921, pecking order in hens.
+- **117:4:** Adult toothed whales and dolphins usually have no olfactory bulb. This fact has no date.
+- **117:5:** Portugal et al. 2016, Current Biology. Secretary bird "Madeleine"; kick about five times body weight; contact far shorter than a blink.
+- **118:1:** Campbell-Staton et al. 2021, Science. Gorongosa, war 1977 to 1992; about half of the surviving females were tuskless.
+- **118:2:** Flower 2011, Proc R Soc B. Fork-tailed drongo false alarms aimed at meerkats and pied babblers.
+- **118:3:** Zi et al. 2003, PNAS (Fudan). Peacock colours come from a photonic-crystal structure of melanin rods.
+- **118:4:** Boesch et al. 2010, PLoS ONE. Taï orphans adopted, some by unrelated adult males.
+- **118:5:** de Waal and van Roosmalen 1979, Arnhem chimpanzee reconciliation.
+- **119:1:** Lorenz and Tinbergen 1938. Greylag goose finishes the egg-retrieval movement even after the egg is removed.
+- **119:2:** Bugnyar, Reber and Buckner 2016, Nature Communications. Ravens cache more carefully when a peephole is open.
+- **119:3:** Kelber, Balkenius and Warrant 2002, Nature. Elephant hawkmoth sees colour in dim starlight.
+- **119:4:** Meijer and Robbers 2014, Proc R Soc B. Wheels set in a Leiden garden and in dunes; wild mice ran, frogs and snails also appeared. I wrote that running earned no reward; check whether food was used to attract animals to the wheel.
+- **119:5:** Berdoy, Webster and Macdonald 2000. Toxoplasma-infected rats are drawn to cat urine.
+- **120:1:** Bates 1862, about eleven years in the Amazon.
+- **120:2:** CSIRO virtual-fence trials on cattle in the 2010s. The details are general and no paper is named; check them.
+- **120:3:** Louie and Wilson 2001, Neuron. Rats replay maze sequences in REM sleep.
+- **120:4:** Seeley 2010, Honeybee Democracy. "A few hundred" scouts and a quorum.
+- **120:5:** Lewis and Rotjan 2009. Hermit crab vacancy chains in Belize.
+- **121:1:** Müller-Lyer 1889. I call him a psychiatrist; the line with outward fins looks longer.
+- **121:2:** Zanette et al. 2011, Science. Song sparrows on the Gulf Islands raised about 40% fewer offspring.
+- **121:3:** Barnes 1989, Science. Arctic ground squirrel body temperature about 3 degrees below zero.
+- **121:4:** Seyfarth, Cheney et al. 1980, Science. Vervet alarm calls at Amboseli.
+- **121:5:** Pulliam 1973, J Theor Biol, a mathematical model of the "many eyes" effect.
+- **122:1:** Huffman 1987, Mahale. A sick female chimp chewed Vernonia pith and was recovering by the next day.
+- **122:2:** Horowitz 2009, Behavioural Processes. The dog's "guilty look" follows the owner's scolding.
+- **122:3:** Cook and Mineka 1989. Snake fear learned from video; no fear learned of flowers.
+- **122:4:** Kriska, Horváth et al. 1998. Mayflies lay eggs on dry asphalt because of polarized reflection.
+- **122:5:** Hollingsworth and Bailey 2000. British Japanese knotweed is largely one female clone; brought to Britain in the 19th century.
+- **123:1:** Cook et al. 1966, Science. Strigol isolated from cotton roots; "अगिया" used as the Hindi name of Striga.
+- **123:2:** Golden lion tamarins reintroduced from 1984 by Kleiman and Beck; captive-born animals struggled.
+- **123:3:** Besnagar Kalpadruma capital, in the Indian Museum, Kolkata. Dated 3rd to 2nd century BCE; check the coin bags, conch and lotus treasures.
+- **123:4:** Baldwin et al. 2014, Science. The hummingbird umami receptor was repurposed to sense sweet.
+- **123:5:** Oliveira, Stevani et al. 2015, Current Biology. Neonothopanus gardneri; glow controlled by a daily clock; insects drawn to lit decoys.
+- **124:1:** Sapolsky and Share 2004, PLoS Biology. Forest Troop males died of TB in the 1980s; the troop's calm culture lasted.
+- **124:2:** James Fisher 1954 named the "dear enemy" effect.
+- **124:3:** Tsoar, Ulanovsky et al. 2011, PNAS. Egyptian fruit bats released far from their cave flew straight home or to known fruit trees.
+- **124:4:** Nothobranchius furzeri eggs stay dormant in dried pond mud in Zimbabwe and Mozambique.
+- **124:5:** Gislén et al. 2003, Current Biology. Moken children see about twice as clearly underwater; later, Swedish children learned it by training.
+- **125:1:** Bartal, Decety and Mason 2011, Science. Rats free trapped cagemates and share a sweet food.
+- **125:3:** Father Mathew signed the abstinence pledge in Cork on 10 April 1838; "lakhs" took it afterwards.
+- **125:4:** Rush's 1784 essay on ardent spirits; the "moral and physical thermometer" with its vice list appeared in later editions.
+- **125:5:** Korczak's orphanage, Warsaw 1912; in August 1942 about 200 children went to Treblinka, and he was offered escape.
+- **125:6:** Templars founded c. 1119 by Hugues de Payens to guard pilgrims on the Jaffa–Jerusalem road.
+- **125:7:** Hannah Mills died at the York asylum in 1790; Tuke opened The Retreat in 1796.
+- **125:8:** Ghent altarpiece completed 1432; the Just Judges panel was stolen in April 1934 and never recovered.
+- **125:9:** Barnardo's first home at Stepney Causeway in 1870. The story of the refused boy who died is hedged with "कहा जाता है".
+- **126:1:** Self-Help (1859) grew out of Smiles's talks to a young men's improvement society in Leeds.
+- **126:2:** Ramakrishna Mission Home of Service, Varanasi, begun 1900 by young men who cared for a sick old woman.
+- **126:3:** Agarkar's opponents staged a mock funeral procession while he was alive. No year is given. This is the one I am least sure of.
+- **126:4:** Fa-Xian, c. 400 CE, describes free charity and medicine houses at Pataliputra.
+- **126:5:** John Pounds taught for about 20 years and died in 1839; the Ragged School Union was formed in 1844.
+- **127:1:** Clarkson's 1785 Cambridge prize essay, and his roadside resolve at Wades Mill.
+- **127:2:** Dorothy Day started the Catholic Worker in 1933.
+- **127:3:** Irula snake catchers' cooperative founded 1978 with Romulus Whitaker.
+- **127:4:** Sneha founded in Chennai in 1986 by Dr Lakshmi Vijayakumar.
+- **127:5:** Lengede, October 1963; 11 miners found alive after 14 days.
+- **128:1:** Kindertransport, November 1938 to September 1939, about 10,000 children.
+- **128:2:** Kali Kamli Wala kshetra in Rishikesh founded 1880 by Swami Vishuddhanand.
+- **128:3:** Trembley's hydra work published 1744.
+- **128:4:** Turtle excluder devices developed in the USA in the 1980s.
+- **129:1:** Hänig 1901 measured taste sensitivity on the tongue; Boring's 1942 chart spread the tongue-map myth.
+- **129:2:** Calcutta Public Library opened 21 March 1836, later the Imperial and then National Library.
+- **129:3:** Darragh Smail coir factory, Alleppey, 1859.
+- **129:4:** Georges Frédéric Strass made lead-glass rhinestones in 18th-century Paris; "strass" is still the word in French and German.
+- **130:1:** Bala Hanuman temple, Jamnagar, Ram dhun unbroken since 1 August 1964, listed by Guinness.
+- **130:2:** K. M. Munshi, then agriculture minister, launched Van Mahotsav nationally in July 1950.
+- **130:3:** Sahodaran Ayyappan's misra bhojanam at Cherai on 29 May 1917.
+- **130:4:** Henry Duncan's Ruthwell savings bank, 1810.
+- **130:5:** Follereau began World Leprosy Day in 1954, held on the last Sunday of January.
+- **131:1:** Ozanam founded the Society of St Vincent de Paul in April 1833, aged 20; he died at 40.
+- **131:2:** Rayat Shikshan Sanstha founded 4 October 1919 at Kale.
+- **131:3:** Chiswick Women's Aid founded 1971 by Erin Pizzey.
+- **132:1:** Jane Addams saw a Madrid bullfight in 1888; Hull House opened the next year.
+- **132:3:** Cubitt's treadmill invented 1818, installed at Brixton in 1821.
+- **133:1:** Nivedita's school at Bagbazar opened 13 November 1898 and was inaugurated by Sarada Devi.
+- **133:2:** Kropotkin's Mutual Aid, 1902.
+- **133:3:** Bentham's 1789 footnote: the question is whether animals can suffer.
+- **133:4:** Maharashtra Mathadi and Hamal workers Act, 1969.
+- **133:5:** Prevention of Food Adulteration Act, India, 1954.
+- **134:1:** Hospital of St Cross, Winchester, founded in the 1130s by Henry of Blois; the Wayfarer's Dole is still given.
+- **134:2:** Le Chambon-sur-Lignon, led by André and Magda Trocmé; "thousands" sheltered.
+- **134:3:** Tirumukkudal inscription of Virarajendra, 1069: a hospital with 15 beds, a physician and a surgeon.
+- **134:4:** Boys Town founded 1917 by Edward Flanagan.
+- **134:5:** Premchand's Panch Parmeshwar, 1916.
+- **134:6:** Bharat Sevashram Sangha founded 1917 by Swami Pranavananda.
+- **135:1:** Pachaiyappa's will of 1794; the school opened in 1842 after litigation.
+- **135:2:** Titus Salt's Saltaire mill opened 1853, with homes, schools, baths and almshouses for workers.
+- **135:3:** Warrington perambulating (horse-drawn) library, 1858.
+- **135:4:** Shahu made primary education free and compulsory in Kolhapur in 1917, and opened hostels.
+- **135:5:** Haibatrao Baba began the Alandi palkhi in 1832; the walk takes about three weeks.
+- **136:1:** Rowntree's York poverty study, 1901, and its poverty life cycle.
+- **136:2:** Sabil-Kuttab of Abd al-Rahman Katkhuda, Cairo, 1744.
+- **136:3:** Monte di Pietà, Perugia, 1462, founded through the Franciscans.
+- **136:4:** Tirumurai Kanda Puranam tradition; Nambiyandar Nambi under Rajaraja I finds the Thevaram leaves in a sealed room at Chidambaram.
+- **136:5:** Anand & Hickey, NEJM 1987, review on pain in newborns.
+- **136:6:** Peter Wolff 1969 (psychiatrist), three cry types: basic/hunger, anger, pain.
+- **136:7:** Kosambi's critical edition of the Shatakatrayam, 1948.
+- **136:8:** Yayati's verse in Adi Parva, also at Manusmriti 2.94.
+- **136:9:** Moksha Patam reached England in the late 19th century; ladders start on virtue squares, snakes on vice squares.
+- **136:10:** Priyadas, Bhaktirasabodhini, 1712, in kavitta metre.
+- **136:11:** Rajjab's Sarvangi is arranged by angas; the wedding-journey legend.
+- **136:12:** Yellow arrows on the Santiago route painted by Elías Valiña, priest of O Cebreiro.
+- **137:1:** Daniel ch. 6, decree of King Darius, thirty days.
+- **137:2:** Prahladpuri temple in the Multan fort, destroyed in 1992.
+- **137:3:** Burnouf's Bhagavata edition and French translation, from 1840.
+- **137:4:** BORI critical edition of the Mahabharata, 1919 to 1966; Sukthankar first general editor.
+- **137:5:** Burzoy's Pahlavi translation in the 6th century; Ibn al-Muqaffa's Arabic around 750.
+- **137:6:** Manas Lankakand line "रामानुज लघु रेख खचाई"; no such line in Valmiki's abduction scene.
+- **138:1:** Field et al. 1986, Pediatrics: 10 days, three sessions a day.
+- **138:2:** John Napier 1956, power grip and precision grip.
+- **138:3:** Anegundi identified with Kishkindha, and older than Hampi as a capital.
+- **138:4:** A Vibhishana shrine at Kelaniya Raja Maha Vihara.
+- **138:5:** Pillalamarri banyan, termite attack 2017-18, drip treatment.
+- **139:1:** Jahangir's chain of justice from the Agra fort to the Yamuna bank (Tuzuk).
+- **139:3:** Arthashastra 1.19 "प्रजासुखे सुखं राज्ञः" and the daily time set for hearing subjects.
+- **139:4:** Thucydides 3.82 on words changing their meaning.
+- **139:5:** Pinchbeck's copper-zinc alloy, early 18th century.
+- **139:6:** Seeds Act 1966 requires germination and purity on the label.
+- **139:7:** Parkinson in The Economist, 1955; ships fell while officials rose.
+- **139:9:** Manu Needhi Cholan's bell, with mention in the Periya Puranam.
+- **139:10:** Ramshalaka grid of 15 x 15 = 225 squares.
+- **139:11:** Gandhari in Stri Parva recalls saying "यतो धर्मस्ततो जयः" to Duryodhana.
+- **139:12:** Sanchi relics found by Cunningham in 1851, enshrined at Chetiyagiri Vihara in 1952.
+- **140:1:** Bhagavata 5.26 lists 28 hells.
+- **140:3:** Bohn & Federle 2004, PNAS, Nepenthes aquaplaning trap.
+- **141:1:** Allchin, The Petition to Ram, London 1966.
+- **141:2:** Tesser's self-evaluation maintenance theory, 1988.
+- **141:3:** Acts 8.18-24, Simon Magus.
+- **141:6:** Burgess's translation of the Surya Siddhanta, 1860; kalpa of 4.32 billion years.
+- **142:1:** Sant Bahinabai's autobiographical abhangas (married as a child, husband's anger).
+- **142:2:** Hess 1965 Scientific American pupil photos; belladonna in Renaissance Italy.
+- **142:3:** Navahna (9) and masaparayan (30) reading breaks marked in printed Manas editions.
+- **142:5:** Stone et al. 1994 hypocrisy induction; I described it only as "health-safety advice".
+- **142:6:** Tischendorf's 1844 account of leaves kept for burning, which the monastery disputes.
+- **142:8:** Piltdown 1912, exposed 1953 by fluorine test; orangutan jaw.
+- **142:9:** Mahimna stotra verse "असितगिरिसमं"; I wrote "a verse" without its number.
+- **142:10:** Valmiki Yuddha 18.33 (vulgate numbering).
+- **142:11:** Bhagavata 2.10.4 "पोषणं तदनुग्रहः" as the basis of Pushtimarg.
+- **143:1:** Smallwood & Schooler 2006, Psychological Bulletin, "The restless mind".
+- **143:2:** Cellular Jail completed in 1906; oil-mill quotas; Savarkar's account. Savarkar had no hit in scr.sh.
+- **143:3:** Kural 452 sits in the chapter on avoiding mean company.
+- **143:5:** Ibn Battuta on Maldives cowries shipped to Bengal (14th century).
+- **143:6:** Raman joined IACS in 1907 while in the Finance Department; Raman effect work done at IACS in 1928.
+- **143:7:** Levi-Montalcini's bedroom lab in Turin under the 1938 racial laws, using sharpened sewing needles; Nobel 1986.
+- **143:8:** Karikó demoted at Penn in 1995; met Weissman at a photocopier in 1997; Nobel 2023.
+- **144:1:** SLV-3 failed 10 Aug 1979 and succeeded 18 July 1980; Dhawan faced the press, then sent Kalam. This is Kalam's own anecdote.
+- **144:2:** Becquerel developed the plates on 1 March 1896.
+- **144:3:** Vasa sank 10 Aug 1628 after about 1,300 m; raised 24 Apr 1961.
+- **144:4:** Stephen Gray: silk dyer, Charterhouse pensioner, conduction in 1729, first Copley Medal in 1731.
+- **144:5:** Sophie Germain wrote to Gauss as LeBlanc from 1804; her identity came out in 1806.
+- **145:1:** Wu's cobalt-60 experiment in Dec 1956; first Wolf Prize in physics in 1978.
+- **145:2:** SESAME inaugurated 16 May 2017 at Allan, Jordan; the eight members as listed.
+- **145:3:** Hodgkin's insulin photo in the mid-1930s; structure solved in 1969.
+- **145:4:** Shechtman observed on 8 Apr 1982, published in 1984, Nobel 2011; he was asked to leave his group.
+- **145:5:** Goodyear's additives (magnesia, quicklime, nitric acid) and debtors' prison; the 1839 stove episode as usually told.
+- **145:6:** The Royal Society was founded in 1660; the motto came later (about 1663). The note says "आगे".
+- **145:7:** Williamina Fleming was hired from Pickering's household in 1881 and identified the Horsehead Nebula in 1888.
+- **146:2:** Meitner refused an invitation to join the bomb work at Los Alamos.
+- **146:3:** Blondlot's N-rays in 1903; Wood removed the prism in 1904.
+- **146:4:** Whipple proposed the bumper shield in the 1940s; Whipple shields are used on the ISS.
+- **146:5:** Martin's Act 1822 covered cattle and horses; the 1835 Act extended protection to dogs.
+- **147:1:** NASA's confidential pilot reporting system began in 1976.
+- **147:2:** Myxoma was released in Australia in 1950; it became less lethal (Fenner).
+- **147:3:** Midgley's CFC candle demonstration in 1930; Molina and Rowland in 1974.
+- **147:4:** Ariane 5 flight 501 on 4 June 1996, lost about 37 s after launch from reused Ariane 4 code (the note says "about forty seconds").
+- **147:5:** Freud's oral cancer from 1923; more than thirty operations.
+- **147:6:** Cajal saw Golgi-stained slides at Simarro's house in Madrid in 1887; Nobel 1906.
+- **148:1:** Pauling and Corey's triple helix, Feb 1953; Pauling acknowledged the error.
+- **148:2:** Sommerfeld was nominated 84 times; Pauli, Debye and Bethe were his students.
+- **148:3:** Radvansky et al. 2011, the doorway effect.
+- **148:4:** Galileo's Neptune sightings in Dec 1612 and Jan 1613.
+- **148:5:** Sanger's Nobels in 1958 and 1980; he declined a knighthood; retired in 1983.
+- **149:1:** Darwin at Down House 1842–1882 and never left Britain after the Beagle voyage.
+- **149:2:** Heisenberg's 1932 prize, his Nov 1933 letter to Born; Born's Nobel in 1954.
+- **149:3:** The Helen fire in 1852; ten days in the boats; Malay Archipelago two years later.
+- **149:4:** Vermeij was blind from age three.
+- **149:5:** Langevin's quartz ultrasonic echo method in 1917.
+- **149:6:** The wording of the 1948 Declaration of Geneva.
+- **149:7:** Fabre at Sérignan from 1879; "harmas" is Provençal for untilled land; ten volumes.
+- **150:1:** Sneddon, Braithwaite and Gentle 2003, trout behaviour after acid injection.
+- **150:2:** Darwin's 1862 prediction of a moth for a spur of about 30 cm; the moth was described in 1903.
+- **150:3:** Frances Arnold's retraction in Jan 2020 of her 2019 Science paper.
+- **150:4:** Pons and Fleischmann's press conference on 23 Mar 1989 at the University of Utah.
+- **150:5:** Darwin's marry notes in July 1838; married Emma in Jan 1839.
+- **150:6:** The Henry Draper Catalogue, 1918–1924, about 225,000 stars.
+- **151:1:** Einstein at the Bern patent office from 1902 as a "third class" examiner.
+- **151:2:** Dancing bears banned under the 1972 Wildlife Protection Act; the last bear rescued by the end of 2009.
+- **151:3:** Davy's 1813 Paris trip by Napoleon's permission to receive the Institut prize; his iodine work there.
+- **151:4:** Curtis and Miller 1986 (JPSP).
+- **151:5:** Kelsey blocked thalidomide in 1960; President's award from Kennedy in 1962.
+- **151:6:** The paraphrase of Tao Te Ching chapter 15.
+- **151:7:** Greatbatch's wrong-resistor episode in 1956.
+- **151:8:** 2^23 = 8,388,608, given as "about 84 lakh".
+- **151:9:** Friedländer in 1909: about 12,000 Murex snails gave about 1.4 g of dye (the note says "around 1.5 g").
+- **152:1:** The Archimedes palimpsest: 10th-century copy, overwritten in the 13th century; Heiberg in 1906; *The Method* survives only there.
+- **152:2:** The Russell–Einstein Manifesto read 9 July 1955 with 11 signatories; Pugwash in 1957; Nobel Peace 1995.
+- **152:3:** Alan Scott's 1980 report on botulinum toxin for strabismus.
+- **152:4:** The coelacanth found in Dec 1938 by Courtenay-Latimer, identified by J. L. B. Smith.
+- **152:5:** Naomi Feil developed Validation between 1963 and 1980.
+- **152:6:** Mary Webster gave up her ministry to care for her parents, wrote press letters in 1963, and founded the council in 1965 that became Carers UK.
+- **152:7:** Guru Har Krishan, Delhi 1664, smallpox, died at about seven; the house is now Bangla Sahib.
+- **152:8:** Mohammed Sharif's son died in 1992 and the family could not cremate him; Sharif received the Padma Shri in 2020.
+- **152:9:** Cheshire took in Arthur Dykes at Le Court, Hampshire, in 1948.
+- **152:10:** the Neighbourhood Network in Palliative Care began in Malappuram in 2001.
+- **152:11:** the Evans-Wentz Bardo Thodol edition appeared in 1927, from a lama's translation.
+- **152:12:** Blundon, Ward et al., Scientific Reports 2020, EEG responses to sound in unresponsive hospice patients.
+- **152:13:** Withering 1785; the Shropshire old woman's recipe; foxglove for dropsy.
+- **153:1:** Jeanne Garnier, Lyon 1842, had lost her husband and children.
+- **153:2:** Hospitaller statutes of the 12th century call the sick their "lords".
+- **153:3:** Couney at Coney Island 1903–1943; parents paid nothing.
+- **154:1:** Elizabeth Feodorovna visited Kalyayev in 1905 and founded the Marfo-Mariinsky convent in 1909.
+- **154:2:** Hemalkasa began in 1973; Magsaysay award to both in 2008.
+- **154:3:** Marjory Warren, West Middlesex, 1935, the workhouse infirmary.
+- **155:1:** Manthey's primary nursing at University of Minnesota Hospitals, about 1969.
+- **155:2:** Jamkhed began in 1970 under Rajanikant and Mabelle Arole.
+- **155:3:** the NHS began on 5 July 1948; Sylvia Diggory, aged 13, was the first patient.
+- **155:4:** Maggie Keswick Jencks died in 1995; the first centre opened in Edinburgh in 1996.
+- **155:5:** Candy Chang's Before I Die wall, New Orleans 2011.
+- **156:1:** Chittaprosad's Hungry Bengal (1944), most copies seized and destroyed.
+- **156:2:** Bauby's stroke in December 1995; the book came out in March 1997 and he died days later.
+- **156:3:** the Shikoku 88-temple route is about 1,200 km and linked to Kukai.
+- **157:1:** Camillus de Lellis, San Giacomo hospital, the order of 1586, the red cross.
+- **157:2:** Schroeder-Sheker's work in the 1970s; the Chalice of Repose at Missoula from 1992.
+- **157:3:** the 60 Parachute Field Ambulance in Korea 1950–54 under A. G. Rangaraj.
+- **157:4:** Lifeline, Sydney 1963, started by Alan Walker after a caller's death.
+- **157:5:** Oscar the cat at Steere House; Dosa, NEJM 2007.
+- **158:1:** Brian Goldman's TEDxToronto talk of 2010.
+- **158:3:** Michigan's disclosure policy from 2001; a 2010 study found fewer claims and lower costs.
+- **158:5:** Glare et al., BMJ 2003, found clinicians' survival estimates optimistic.
+- **159:1:** Sindhutai Sapkal, more than 1,000 orphans, Padma Shri 2021.
+- **159:2:** Jerome's Letter 77 on Fabiola's penance and her hospital in Rome.
+- **159:4:** the Prambanan Shiva temple has its Agastya chamber on the south.
+- **159:5:** Verdi's Casa di Riposo opened in 1902; Verdi called it his finest work.
+- **160:1:** Empress Komyo's dispensary and charity house at Nara in the 8th century.
+- **160:2:** the FAE hospital at Lampang, 1993; Motala's prosthetic leg in 2009.
+- **160:3:** Weiskrantz et al. 1974, blindsight.
+- **161:1:** Our Lady's Hospice, Harold's Cross, 1879; Sisters of Charity founded by Mary Aikenhead in 1815.
+- **161:2:** the 2001 World Health Assembly recommendation of six months' exclusive breastfeeding.
+- **161:4:** Ojibwe manoomin harvested by canoe with two sticks.
+- **162:2:** the Charity Birds Hospital, Chandni Chowk, said to date from 1929. I am least sure of this year.
+- **162:3:** Tiger Mask gift of ten school bags, Maebashi, 25 December 2010.
+- **162:4:** Music & Memory began in 2006; Alive Inside came out in 2014.
+- **163:1:** Fred Hollows lens factories in Eritrea and Nepal opened after his death in 1993.
+- **163:2:** Titmuss, The Gift Relationship, 1970.
+- **164:1:** the Humanitas Deventer scheme from about 2012, with 30 hours a month of company.
+- **164:2:** No One Dies Alone, Sandra Clarke, Sacred Heart, Eugene, 2001.
+- **164:3:** Lini Puthussery, Perambra, died 21 May 2018, left a note to her husband abroad.
+- **164:4:** Buell and Norton, Management Science 2011, the labor illusion.
+- **164:6:** The Himalayan Trust, and the Khumjung school in 1961.
+- **164:7:** Theodore Roosevelt became police commissioner in 1895 and walked night rounds with Jacob Riis; Riis's book appeared in 1890.
+- **165:2:** Henson was on Peary's 1909 expedition and was reburied at Arlington near Peary in 1988.
+- **165:3:** says a girl named Kasane at Nasu appears in the Oku no Hosomichi; please check that detail.
+- **165:5:** Yoshimune's petition box (meyasubako) in 1721, and the Koishikawa free clinic of 1722 that came from a doctor's petition.
+- **166:1:** Rani Mangammal of Madurai ruled about 1689 to 1704 and built choultries (chatrams) and roadside shade trees on pilgrim routes. Please check the regnal years.
+- **166:2:** The Kenya National Library Service started the Garissa camel library in 1996.
+- **166:3:** The savarna jatha of November 1924 led by Mannathu Padmanabhan, and roads on three sides of the Vaikom temple opened in 1925.
+- **166:4:** Canossa, January 1077, three days in the snow.
+- **166:6:** Emma Gatewood thru-hiked the Appalachian Trail alone in 1955, aged 67, the first woman to do so.
+- **166:7:** Truman's "The Buck Stops Here" sign was a 1945 gift.
+- **166:8:** Satish Kumar and E. P. Menon set out on their peace walk in 1962 to the four nuclear capitals, going without money on Vinoba Bhave's advice.
+- **166:9:** The Lopburi monkey banquet has run since 1989 on the last Sunday of November at Phra Prang Sam Yot, and local legend links the town to Hanuman in the Ramakien.
+- **166:10:** The Yelcho rescued all 22 men from Elephant Island on 30 August 1916, on the fourth attempt.
+- **167:1:** Barclay walked 1,000 miles in 1,000 hours at Newmarket in 1809 (about 42 days).
+- **167:2:** Lorena Ramírez, Rarámuri, won the 50 km Cerro Rojo ultra in Puebla in 2017 in her traditional skirt and sandals.
+- **167:3:** Marco Dorigo's ant colony optimisation, from his 1992 thesis at Politecnico di Milano.
+- **167:4:** Dang-Vu et al., Current Biology 2010: people with more sleep spindles slept more stably through noise.
+- **167:5:** Hafele and Keating flew four atomic clocks east and then west around the world in October 1971; the clocks differed by billionths of a second, as relativity predicts.
+- **168:1:** Younger et al., PLOS ONE 2010 (Stanford): looking at a partner's photo reduced heat pain.
+- **168:2:** Souman et al., Current Biology 2009: people walk in circles without sun or landmarks, tested in the Sahara and a German forest.
+- **168:3:** Bobbie the Wonder Dog was lost in Indiana in 1923 and reached Silverton, Oregon in February 1924.
+- **169:1:** Kurihara and Beidler, Science 1968, miraculin.
+- **169:3:** Kublai Khan gave the Polos gold paiza tablets of safe conduct at their departure around 1292.
+- **170:1:** Augustine, Confessions 10.27.
+- **170:2:** Othello is dated about 1603; in Act 2, Iago says he will pour the poison into Othello's ear.
+- **170:3:** Palani panchamirtham received its geographical indication tag in 2019.
+- **170:5:** Faust Part One was published in 1808 and Part Two in 1832.
+- **170:6:** Sigeric's itinerary of 990 lists 79 stages, the basis of the Via Francigena.
+- **171:2:** Thelen and Fisher 1982 linked the disappearing newborn stepping reflex to leg weight. The return of stepping with legs in water is from a later study (Thelen, Fisher and Ridley-Johnson 1984); the note says only "later experiments".
+- **171:4:** Tartuffe was first staged in 1664, banned, and allowed in revised form in 1669.
+- **171:5:** Ovid, Epistulae ex Ponto 4.10: the drop hollows the stone.
+- **171:6:** Thomas Roe's journal describes Jahangir's birthday weighing (tuladan) against gold, silver, jewels and grain. I gave no year because I was unsure whether it was 1616 or 1617, or at Ajmer or Mandu.
+- **172:1:** Woolman walked instead of taking stagecoaches in England in 1772, because of cruelty to the horses and boys.
+- **172:2:** Peace Pilgrim walked from 1953 until 1981; her vow was to walk until given shelter and wait until given food.
+- **172:3:** Maha Ghosananda led the first Dhammayietra, from the border refugee camps to Phnom Penh, in 1992.
+- **172:4:** Ajahn Mun's dates, 1870 to 1949.
+- **173:2:** Mahabharata, Vana Parva, Tirthayatra section: Pulastya tells Bhishma that pilgrimage surpasses sacrifices and is open to the poor.
+- **173:3:** Yoga Sutra 3.37 (3.38 in some editions): "te samadhav upasarga vyutthane siddhayah".
+- **173:4:** The Odai Yamamoto I sherds are more than 16,000 years old and among the oldest fired pottery.
+- **173:6:** The Adventure wreck of 1789 and Greathead's lifeboat Original of 1790.
+- **174:1:** Chaitanya took sannyasa at Katwa from Keshava Bharati in 1510, aged 24, and later lived at Puri at his mother's wish.
+- **174:2:** Charter Oak, Andros 1687 (a tradition), fell in a storm in 1856.
+- **174:3:** Hermann Merkel found the chestnut blight at the Bronx Zoo in 1904; it arrived with imported Asian chestnut nursery stock.
+- **174:4:** Isack and Reyer, Science 1989; the honeyguide's flight showed the direction and distance of the hive.
+- **175:1:** Tree of Ténéré, well dug in 1939, roots about 35 m deep, knocked down by a truck in 1973, now in the Niamey museum.
+- **175:2:** Pico della Mirandola's Oration, 1486.
+- **175:3:** Shang et al., Science 2014, cucumber bitterness genes; the note also says colocynth gets its bitterness from cucurbitacins.
+- **175:4:** Joseph Jacobs, English Fairy Tales 1890, "Cap O' Rushes". I paraphrased the salt line as "as food loves salt".
+- **176:1:** Survivor Tree, a Callery pear found in October 2001, returned to the memorial in 2010.
+- **176:3:** Rudolph Hass, patent 1935, mother tree died 2002, La Habra Heights.
+- **176:4:** Hand-pollination in Maoxian, Sichuan, since the late 20th century. I gave no exact start date.
+- **176:5:** The subhashita line "छेदेऽपि चन्दनतरुः सुरभयति मुखं कुठारस्य".
+- **176:6:** Sycamore Gap felled in September 2023; new shoots from the stump; the National Trust grew saplings from it.
+- **177:1:** Greyfriars Bobby, about 14 years at the grave, died 1872, statue 1873; the note says some historians doubt the story.
+- **177:2:** General Sherman, about 83 m tall, more than 1,400 m³ in volume.
+- **177:5:** Cherry trees to Washington in 1912 (over 3,000, Ozaki), the earlier shipment burned, US dogwoods sent in 1915.
+- **178:1:** Old Tjikko, Kullman 2008, about 9,550 years.
+- **178:2:** Garoé tree, fell 1610, replanted 1949.
+- **178:3:** Cappaert v. United States, 1976.
+- **178:4:** Smithsonian Migratory Bird Center "Bird Friendly" shade-coffee certification. I gave no year.
+- **178:5:** Matthew 5:45, with a nod to 5:44.
+- **178:6:** Yamaki bonsai gifted in 1976; its survival story became known in 2001.
+- **179:1:** Nansen passport 1922, accepted by more than 50 countries, Nobel 1922.
+- **179:3:** The 1925 serum run to Nome: about 1,085 km, 20 mushers, about 150 dogs, 5.5 days.
+- **179:5:** Conolly's plot in Nilambur called the oldest teak plantation (1840s); the note credits Chathu Menon with the seed method.
+- **180:1:** Tsurugaoka Hachimangu ginkgo fell on 10 March 2010, and both the stump and the replanted trunk sprouted.
+- **180:2:** Rinaudo, Niger, 1980s, Right Livelihood Award 2018, "millions of hectares" regreened.
+- **180:3:** American Forests register since 1940, and its point formula.
+- **180:4:** Stromatolite fossils older than 3 billion years.
+- **180:5:** Bhutan planted 108,000 trees in March 2016.
+- **180:6:** Intermarché campaign 2014, about 30% cheaper.
+- **180:7:** Terborgh 1986, figs as a keystone food resource, Peru.
+- **180:8:** Kerala jackfruit named state fruit in March 2018.
+- **180:9:** Carlill v Carbolic Smoke Ball, the 1892 advert and the 1893 judgment. The note calls the court "a high court of England"; it was the Court of Appeal.
+- **181:1:** Kakapo breed in rimu mast years, every 2 to 4 years.
+- **181:2:** Lipo and Hunt's moai "walking" experiment, 2012.
+- **181:4:** Charles II hid in the Boscobel oak in September 1651.
+- **181:5:** Lahaina banyan planted in April 1873 for 50 years of the Protestant mission; scorched in August 2023; new leaves within weeks.
+- **182:1:** Miyawaki method from the 1970s.
+- **182:2:** Lone Cypress held up by cables for decades.
+- **182:3:** South Sea shares rose from about £100 to nearly £1,000 in 1720.
+- **182:4:** Franklinia found 1765, seeds collected in the 1770s, last seen wild in 1803.
+- **182:5:** The 2018 LiDAR survey in Guatemala found more than 60,000 structures.
+- **182:7:** Phylloxera from the 1860s, saved by American rootstock.
+- **183:2:** Kalanamak rice got its GI tag in 2013. I am least sure of this year.
+- **183:3:** Julia Butterfly Hill, 738 days, December 1997 to December 1999.
+- **184:1:** Biosphere 2 opened in 1991; trees were weak, partly blamed on the lack of wind.
+- **184:2:** Cacao pollinated by Forcipomyia midges; low fruit set where the leaf litter they need is missing.
+- **184:3:** Westerveld coined "greenwashing" in 1986.
+- **184:4:** Ars moriendi, Latin texts of the 15th century.
+- **184:5:** Bloom 1985, *Developing Talent in Young People*, 120 people; warm early teachers came first and strict training later.
+- **185:1:** Hartshorne and May 1928, about 11,000 children; children in religious or character-education classes were no more honest.
+- **185:2:** Escalante 1982: 18 passed, 14 questioned, 12 retook and all passed.
+- **185:3:** Fisher, Godwin and Seltman 2014 (Carnegie Mellon), decorated versus bare classroom.
+- **185:4:** Jane Elliott's exercise was on 5 April 1968, third grade, Riceville.
+- **185:5:** Bryan and Walbek 1970: children copied what the adult did, not what he preached.
+- **185:6:** Louis Robinson 1891: over 60 newborns hung from a rod. I left the hanging time vague.
+- **186:1:** Fred Rogers before the Senate subcommittee on 1 May 1969, Senator Pastore, $20 million funding.
+- **186:2:** Kornell and Bjork 2008: 12 painters; most learners wrongly thought grouped study worked better.
+- **186:3:** Jigsaw classroom, Austin, 1971.
+- **186:4:** Roots of Empathy, Mary Gordon, Toronto, 1996; lower aggression in evaluations.
+- **186:6:** Hamlin, Wynn and Bloom 2007: 6- and 10-month-olds; nearly all chose the helper.
+- **187:1:** Abecedarian Project, 1972, Chapel Hill; higher college attendance.
+- **187:2:** Tools of the Mind; Diamond et al 2007 in *Science*.
+- **187:3:** Fischer et al 1991 (*JAMA*): about 91% of six-year-olds matched Joe Camel to cigarettes, about as many as matched Mickey Mouse to his channel.
+- **187:4:** Murrell 1879, *Lancet*, nitroglycerin for angina.
+- **187:5:** Koenig and Harris 2005, 3- and 4-year-olds trust the accurate speaker.
+- **188:1:** Sweden's ban on TV ads aimed at children under 12 dates from 1991.
+- **188:2:** Zimmerman, Christakis and Meltzoff 2007: infants of 8 to 16 months had smaller vocabularies; Baby Einstein refund offer in 2009.
+- **188:3:** Zelazo, Frye and Rapus 1996: 3-year-olds kept sorting by the old rule while able to state the new one.
+- **188:4:** Ruby Bridges on 14 Nov 1960; teacher Barbara Henry taught her alone for the year.
+- **188:5:** Stanford History Education Group, Nov 2016, about 7,800 students; over 80% of middle schoolers took sponsored content for real news.
+- **188:6:** COTPA 2003 section 6: no sale to under-18s, and no sale within 100 yards of an educational institution.
+- **189:1:** Iqbal Masih: bonded at age 4, freed around age 10, human rights award 1994, killed April 1995 at age 12.
+- **189:2:** Montbeillard measured his son (born 1759) about every six months to age 18; published 1777.
+- **189:3:** Giedd et al 1999: 145 subjects; frontal grey matter peaks around age 11 to 12.
+- **189:4:** Jimmy Beveridge, age 9, lost on Palomar Mountain in February 1981 and found dead, which led to Hug-a-Tree. The month and the outcome need checking.
+- **189:5:** Saroo Brierley, lost at Burhanpur in 1986, found Ganesh Talai (Khandwa) using satellite maps, met his mother in 2012.
+- **190:1:** Totto-chan* 1981; Tomoe Gakuen classrooms in railway carriages; headmaster Sosaku Kobayashi.
+- **190:4:** Six Tongan boys on 'Ata from June 1965, 15 months, found by Peter Warner in Sept 1966.
+- **190:5:** Tom Sawyer* 1876, fence-whitewashing scene and Twain's line about work and play.
+- **190:7:** Laura Bridgman entered Perkins in 1837 aged 7; taught about 50 years before Keller.
+- **191:1:** Skeels and Dye 1939: 13 children transferred; Skeels 1966 follow-up found them all self-supporting.
+- **191:2:** Dr Graham's Homes, Kalimpong, founded in 1900 for Anglo-Indian children; the "cottage" description needs checking.
+- **191:3:** Andersen, "The Nightingale", 1843.
+- **191:4:** Winnicott 1953, transitional objects.
+- **191:5:** Marva Collins, 1975, about $5,000 from her pension fund, school on the upper floor of her home.
+- **191:6:** Phules' infanticide-prevention home in 1863; adopted Yashwant in 1874; Yashwant later became a doctor.
+- **191:7:** Jam Sahib Digvijaysinhji sheltered Polish children at Balachadi from 1942; Warsaw square named "Good Maharaja".
+- **191:8:** Circular 10/65, July 1965, Anthony Crosland, eleven-plus exam.
+- **191:9:** Don Bosco met Bartolomeo Garelli in Turin on 8 Dec 1841.
+- **192:1:** Damon 2008: about one in five young people aged 12 to 26 had a clear purpose.
+- **192:2:** Schwitzgebel 2009: ethics books went missing from libraries more often than comparable philosophy books.
+- **192:3:** Tagore's "Tota Kahini" (The Parrot's Training) dated 1918.
+- **193:1:** Kimani Maruge enrolled in Jan 2004 aged 84; recognised as the oldest person to start primary school.
+- **193:2:** Beulah Amsterdam 1972 rouge test; self-recognition at about age 2.
+- **193:3:** Köhler on Tenerife; the chimpanzee Sultan joined two sticks.
+- **193:4:** Eklavya Model Residential Schools began in 1997-98.
+- **193:5:** Eugene Lang, June 1981, 61 sixth graders at his old school in East Harlem.
+- **193:6:** Dr. Seuss, *Horton Hatches the Egg*, 1940.
+- **193:7:** French law of 3 Aug 2018 banning phones in primary and middle schools.
+- **193:8:** Loewy et al 2013 in *Pediatrics*: 272 premature infants in 11 neonatal units; lullabies chosen by parents.
+- **203:18:** Simeulue 'smong' verses from the 1907 tsunami; very few deaths there in 2004 (I wrote "गिनती की", not a number).
+- **203:19:** Tilly Smith, 10, Mai Khao beach, teacher Andrew Kearney two weeks earlier, about 100 people saved.
+- **204:1:** Kamaishi, Toshitaka Katada, "tsunami tendenko", nearly all of about 3,000 schoolchildren survived.
+- **204:2:** Pombaline cage after 1 Nov 1755; troops marching around models (marked "कहा जाता है").
+- **204:3:** Red Cross Fundamental Principles, Vienna 1965, seven named.
+- **205:1:** Rikuzentakata pine, one of about 70,000; preserved as a monument in 2013.
+- **205:4:** Kanto quake 1 Sept 1923, more than 100,000 dead; Disaster Prevention Day since 1960.
+- **206:1:** Oxford Committee for Famine Relief, 5 Oct 1942, Greek famine under blockade.
+- **206:2:** Choctaw gift of $170 in 1847; removal "sixteen years earlier"; Kindred Spirits, Midleton, 2017, steel feathers.
+- **206:3:** Halifax explosion 6 Dec 1917, about 2,000 dead; Boston relief train left the same night; yearly Christmas tree.
+- **206:4:** Buerk's report from Korem on 23 Oct 1984; Band Aid.
+- **207:1:** Galveston 8 Sept 1900, more than 6,000 dead; seawall and raised grade; seawall protected the city in the 1915 storm.
+- **207:2:** EMTALA 1986.
+- **207:3:** Armero, Nov 1985, about 23,000 dead; hazard map issued weeks before.
+- **208:1:** St Francis Dam, 12 March 1928, more than 400 dead; Mulholland's "I was the human" (paraphrased, not quoted).
+- **208:2:** Tay Bridge, 28 Dec 1879; "Beaumont egg" filler (I wrote rosin and iron filings; the real mix may also have had beeswax).
+- **208:3:** Quebec Bridge, 29 Aug 1907, 75 dead; Cooper did not recheck loads after the span was lengthened; Iron Ring from 1925.
+- **208:4:** Cuthbert Heath's 1906 instruction to pay all policyholders in full.
+- **209:1:** San José mine, 5 Aug 2010, about 700 m deep; note found 22 Aug; all rescued 13 Oct after 69 days.
+- **209:2:** Black Sunday, 14 April 1935.
+- **209:3:** Room for the River after 1993 and 1995; about 250,000 evacuated in 1995.
+- **209:4:** ICRC prisoners-of-war agency, Geneva, Aug 1914, card index ("लाखों पत्रक").
+- **209:5:** Prince, Kurukshetra district, 21 July 2006, rescued by the army after about 50 hours.
+- **210:1:** Tristan da Cunha, Oct 1961, about 250 people evacuated; most returned in 1963.
+- **210:2:** Ian Stephens, The Statesman, famine photographs on 22 and 29 Aug 1943.
+- **210:3:** Warsaw Old Town rebuilt using Bellotto's paintings; UNESCO 1980.
+- **210:4:** Shigeru Ban paper log houses for Vietnamese families, Kobe 1995, on sand-filled crates.
+- **211:1:** Rana Plaza, 24 April 2013, more than 1,100 dead; Reshma Begum rescued 10 May.
+- **211:2:** London Debt Agreement, 27 Feb 1953, debt cut by about half.
+- **211:3:** Surat plague Sept 1994; cleanup under commissioner S. R. Rao.
+- **211:4:** Topos of Tlatelolco, Mexico City, 19 Sept 1985.
+- **212:1:** Mann Gulch, 5 Aug 1949, 13 dead; Wagner Dodge's escape fire.
+- **212:2:** MSF founded Dec 1971 in Paris; Nobel 1999.
+- **212:3:** 9/11 boatlift, about 500,000 people in about nine hours.
+- **213:1:** MOSE, 78 gates at three inlets; first raised 3 Oct 2020; St Mark's Square stayed dry.
+- **213:2:** Spitak, 7 Dec 1988, more than 25,000 dead; Gorbachev cut short his US visit; first large foreign aid accepted since WWII.
+- **213:3:** AIDS Memorial Quilt, Cleve Jones, 1987; first shown in Washington that year.
+- **213:4:** DVC set up 7 July 1948; Damodar flood of 1943; "first multipurpose river valley project of independent India".
+- **214:1:** Mount Pelée, 8 May 1902, about 28,000 dead; Ludger Sylbaris in a jail cell after a brawl.
+- **214:2:** Frauenkirche rebuilt 1994–2005; orb and cross by Alan Smith, whose father was an aircrew member in the Dresden raid.
+- **214:3:** Akihito and Michiko kneeling to speak with evacuees after Kobe 1995 and the 2011 tsunami.
+- **214:4:** Aceh, more than 160,000 dead; Helsinki agreement 15 Aug 2005, Ahtisaari; conflict of "about thirty years".
+- **214:5:** Albert Wu, BMJ 2000, "second victim".
+- **214:6:** Francis Greenway arrived 1814 as a convicted forger; Macquarie made him architect; on the Australian $10 note.
+- **215:1:** Nowshad, Broadway, Kochi, Aug 2019 floods, gave sacks of new clothes. Less sure; verify the year.
+- **215:2:** Shidhulai Swanirvar Sangstha, Mohammed Rezwan, boat schools from 2002.
+- **215:3:** Canaries in British coal mines from the early 20th century, phased out 1986.
+- **215:4:** Anupriya of Villupuram, Aug 2018, about ₹9,000 bicycle savings given to Kerala relief; gifted a bicycle. Less sure; verify the details.
+- **215:5:** İzmit, 17 Aug 1999, more than 17,000 dead; Athens quake 7 Sept 1999; Greek and Turkish rescue teams.
+- **215:6:** Magawa (APOPO), more than 100 mines and unexploded shells found; PDSA Gold Medal 2020.
+- **215:7:** Quaker Central Relief Committee, Dublin, Nov 1846, soup kitchens; Quaker bodies won the Nobel Peace Prize in 1947.
+- **216:1:** Chennai floods Dec 2015; Mohammed Yunus helped pregnant Chitra, who named her daughter Yunus. Less sure; verify.
+- **216:2:** Fukushima Daiichi seawall about 6 m against a wave of about 14 m.
+- **216:3:** Cnut and the tide, as told by Henry of Huntingdon (12th c.); covered by PK.
+- **216:4:** Roman votive altars with the formula VSLM (votum solvit libens merito).
+- **216:5:** Deir el-Medina strike in year 29 of Ramesses III, written up by the scribe Amennakht; the papyrus is in Turin.
+- **217:1:** Notes are cleared from the Western Wall twice a year and buried on the Mount of Olives.
+- **217:2:** A Jagannath image called Patitapavana inside the Singhadwara at Puri, for those not allowed inside.
+- **217:3:** The Gajendra Moksha mural at Krishnapuram Palace, Kayamkulam, said to be among the largest murals in Kerala.
+- **217:4:** Bayeux Tapestry is about 70 m long and shows the events of 1066.
+- **217:5:** Borobudur has 2,672 relief panels and 504 Buddha statues, and is called the largest Buddhist monument.
+- **218:2:** The "kamal talai" pichhwai is hung at Nathdwara in summer.
+- **218:3:** At Udayagiri, an inscription of about 401 CE (Chandragupta II); Cave 5 Varaha panel, with Ganga and Yamuna shown on the walls beside it.
+- **218:4:** Sarai Nurmahal near Jalandhar, built by Nur Jahan 1618–1620.
+- **219:1:** Ban Bat's founding is linked to the reign of Rama I; bowls are made from eight pieces.
+- **219:2:** Bara Imambara built in 1784 as famine relief; its central hall has no beams.
+- **219:3:** French compagnonnage, the "Mère" who runs each house, UNESCO listing 2010.
+- **219:4:** Inscription on the south gateway at Sanchi crediting the ivory carvers of Vidisha.
+- **219:5:** At Ajmer, the large deg is attributed to Akbar and the small one to Jahangir; the food is a sweet rice dish.
+- **220:1:** Somanathapura Keshava temple built 1268 by Somanatha, a general of Narasimha III; Mallitamma's signatures.
+- **220:2:** Raku heads take the name Kichizaemon; the current head is the 16th generation; the "Raku" seal came from Hideyoshi.
+- **220:3:** Sripuranthan Nataraja stolen 2006, bought by Australia's National Gallery in 2008, returned 2014.
+- **220:4:** Mary Richardson attacked the Rokeby Venus on 10 March 1914, the day after Pankhurst's arrest.
+- **220:5:** Kalashnikov's letter to Patriarch Kirill, April 2012.
+- **220:6:** Kollwitz's "Grieving Parents", about 18 years of work, now at Vladslo; her son Peter died October 1914.
+- **220:7:** The Kirtimukha story is attributed to the Skanda Purana.
+- **220:8:** In Thai khon, Hanuman's mask is white; UNESCO listing 2018.
+- **220:9:** Koryu-ji Miroku is 7th-century pine and was designated a National Treasure in 1951.
+- **220:10:** The Sanssouci miller's "judges in Berlin" answer is a legend; the present mill is a rebuild.
+- **220:11:** Verrocchio's "Baptism of Christ" dated c. 1472–75; Vasari's claim about it, which the note calls an exaggeration.
+- **221:1:** Wajima-nuri takes over 100 steps; urushi hardens in humidity.
+- **221:4:** Ifugao rice terraces: UNESCO 1995, on the danger list 2001–2012.
+- **222:1:** Nainsukh served Balwant Singh for about 20 years and carried his ashes to Haridwar in 1763, as recorded in the pandas' register there.
+- **222:2:** The date of Dürer's owl watercolour in the Albertina. I left the year out on purpose.
+- **222:3:** Only three complete yohen tenmoku bowls exist, all National Treasures of Japan.
+- **222:4:** The Durham sanctuary knocker gave 37 days of sanctuary; the original is now in a museum.
+- **223:1:** Hilma af Klint's 20-year rule, first major showing 1986, Guggenheim 2018 as that museum's most-visited show.
+- **223:2:** Nishioka rebuilt the Yakushi-ji West Pagoda, finished 1981; the East Pagoda dates from the 8th century.
+- **223:3:** Brunelleschi lost the 1401 competition to Ghiberti; the dome was finished 1436.
+- **223:4:** Ramkinkar Baij's "Santhal Family", 1938, made of cement and gravel, with a dog in the group.
+- **224:1:** Dhammapada verse 80, in the Panditavagga.
+- **224:2:** Scheele's green, 1775; arsenic fumes from damp rooms are given in the note as "believed".
+- **224:3:** Sandesh moulds carved with Bengali letters.
+- **225:1:** Otis's elevator demonstration in New York, 1854.
+- **225:2:** Cheval began in 1879, worked 33 years, listed as a monument in 1969.
+- **225:3:** The David block was first quarried around 1464 for Agostino di Duccio; Michelangelo worked on it 1501–1504.
+- **225:4:** Channapatna toys have GI protection and their origin is linked to Tipu Sultan.
+- **226:2:** Lincoln green was made from woad and weld.
+- **226:3:** Siali leaf plates from Mayurbhanj.
+- **226:4:** Lambot's ferro-cement boat of 1848, shown at the 1855 Paris exhibition.
+- **226:5:** Jane Bostocke's sampler of 1598 as the oldest dated sampler.
+- **226:6:** The Regius Poem dated c. 1390, and which rules it contains.
+- **227:1:** Placement of the Bharata-Savitri verses at the end of the Svargarohana Parva.
+- **227:2:** EU Orphan Works Directive 2012/28/EU, adopted October 2012.
+- **227:3:** Bhuri Bai worked as a labourer at the Bharat Bhavan building site and was encouraged by J. Swaminathan; Padma Shri 2021.
+- **227:4:** Antrea net, found 1913 in Karelia, willow bast, about 10,000 years old, National Museum of Finland.
+- **228:1:** Mona Lisa stolen 21 Aug 1911 by Vincenzo Peruggia, who had worked at the Louvre; four hooks left on the wall; recovered in Florence in 1913.
+- **228:2:** Hermitage cats brought from Kazan by order of Empress Elizabeth in 1745.
+- **228:3:** Italian restorers Lorenzo Cecconi and Orsini varnished the Ajanta murals with shellac around 1920; ASI later removed it.
+- **228:4:** Caravaggio's "Taking of Christ" (1602) identified by Sergio Benedetti in 1990 in a Dublin Jesuit house, where it had hung about 60 years.
+- **228:5:** Guggenheim Bilbao (Frank Gehry) opened October 1997.
+- **229:1:** Guernica (1937) reached Madrid on 10 Sept 1981; Picasso died in 1973.
+- **229:2:** Crypt of Civilization at Oglethorpe University, sealed 28 May 1940, to be opened in 8113.
+- **229:3:** National Gallery paintings stored in the Manod quarry from 1941, and the post-war spread of climate control in galleries.
+- **230:1:** James Smithson died 1829 and never visited the US; nephew clause; Smithsonian founded 1846.
+- **230:2:** IGRMS, Bhopal (Shamla Hills), founded 1977.
+- **230:3:** Museum of Bad Art, Massachusetts, 1994, Scott Wilson finding a painting in the trash.
+- **231:1:** Club di Giulietta volunteers answer thousands of letters a year.
+- **231:2:** Tillya Tepe gold, 1978, Sarianidi, about 20,000 objects; hidden 1989; vault opened 2003.
+- **231:3:** Shankar's International Dolls Museum, Delhi, founded 1965 by K. Shankar Pillai.
+- **231:4:** Fort Rock sandals, Luther Cressman 1938, sagebrush bark, about 9,000 to 10,000 years old.
+- **232:1:** Empathy Museum, Roman Krznaric, London 2015, "A Mile in My Shoes".
+- **232:2:** Borja Ecce Homo by Elías García Martínez around 1930; Cecilia Giménez's restoration attempt in 2012.
+- **232:3:** Manchester 2015 scan of more than 800 animal mummies, about a third with no animal remains.
+- **232:4:** Getty kouros bought 1985; label reads "Greek, about 530 B.C., or modern forgery".
+- **233:1:** Tradescant collection passed to Ashmole by deed of gift; Ashmolean opened 1683.
+- **233:2:** Taj Trapezium Zone, Supreme Court order of 1996 on coal-burning industries.
+- **233:3:** Aranmula kannadi is a copper-tin alloy mirror that reflects from its front surface.
+- **234:1:** Sutton Hoo ship burial, 1939, Basil Brown, 7th century; only rivets and the imprint in the sand remained.
+- **234:2:** Thomas Cole, "The Voyage of Life", 1840, scene details as I describe them.
+- **234:3:** Pietà attacked 21 May 1972; arm and nose broken; repaired with fragments and marble dust.
+- **234:4:** Gardner Museum theft, 18 March 1990, 13 works, empty frames kept under the founder's wishes.
+- **235:1:** Vermeer's "Girl Reading a Letter at an Open Window" in Dresden since 1742, long given to other painters; Cupid uncovered in the restoration finished 2021.
+- **235:2:** Met Etruscan warriors bought 1915 to 1921, exposed 1961, the forger producing the thumb.
+- **235:3:** Leonardo's Battle of Anghiari, 1505: the paint ran when fires were lit to dry it.
+- **235:4:** Cimabue's "Christ Mocked" found 2019 near Compiègne, sold for more than 24 million euros.
+- **236:1:** Messiah Stradivarius, 1716, in the Ashmolean since 1939, given by the Hill family on condition it not be played.
+- **236:2:** Datini archive found 1870 under a stairway: about 150,000 letters, ledgers headed with God and profit; Iris Origo's book of 1957.
+- **236:3:** Terracotta Army found March 1974 by farmers digging a well near Xi'an.
+- **236:4:** Assisi earthquake of 26 Sept 1997, frescoes broken into thousands of fragments and reassembled.
+- **237:1:** Pasquino statue unearthed 1501, origin of the word "pasquinade".
+- **237:2:** Cole's silent AMS talk, 31 Oct 1903, showing 2^67−1 is composite (Mersenne had listed it as prime).
+- **237:3:** Gardner studied philosophy, not mathematics; his column ran from late 1956 to 1981.
+- **237:4:** The Lilavati bee problem as worded (root of half the swarm to the jasmine, 8/9 stayed behind, one bee by the lotus); answer 72.
+- **237:5:** Hobbes's 1655 squaring of the circle, refuted by Wallis; the dispute ran until Hobbes died in 1679 ("about 24 years"); Lindemann 1882.
+- **238:1:** Polya, How to Solve It (1945), "more than a million copies".
+- **238:2:** Galois's memoir returned by Poisson in 1831; Liouville published it in 1846.
+- **239:1:** Kovalevskaya taught privately by Weierstrass for 4 years from 1870; Göttingen doctorate in 1874 without an oral exam.
+- **239:2:** Green's 1828 essay had 51 subscribers; about one year of schooling; William Thomson found it in 1845.
+- **239:3:** Russell's letter to Frege dated 16 June 1902, while volume 2 was going to press.
+- **239:4:** Nicely in 1994; Intel's cost about 475 million dollars; the cause was missing lookup-table entries.
+- **239:5:** Kempe 1879; flaw shown by Heawood in 1890, who used the method for the five-colour theorem; the idea was reused in the 1976 proof.
+- **239:6:** Cardano's "as subtle as useless" remark (Ars Magna, 1545); Bombelli 1572.
+- **240:1:** Marjorie Rice found four new pentagon tiling types after a 1975 magazine article.
+- **240:2:** Zhang Yitang, 2013, prime gaps under 70 million, age 58, accountant and Subway jobs.
+- **240:3:** Matsuzaki against Pvt Thomas Wood, Tokyo, 12 Nov 1946; five rounds, abacus won 4–1. I called Matsuzaki a postal-department clerk; please check that.
+- **240:4:** Fermat was a councillor of the Toulouse parlement and published almost nothing.
+- **241:1:** Lagrange's 1755 letter to Euler; Euler named the subject "calculus of variations" and credited Lagrange.
+- **241:2:** Euler wrongly attached Pell's name; Bhaskara II solved x² − 61y² = 1 by chakravala.
+- **241:3:** The 85,900-city instance solved in 2006 by Applegate, Bixby, Chvátal, Cook and others.
+- **241:4:** Bachet (1612) and the weights 1, 3, 9, 27 covering 1 to 40.
+- **241:5:** Bernoulli's challenge in June 1696; Newton solved it in one night and sent it unsigned; the "lion by its claw" remark.
+- **242:1:** God's number is 20, July 2010, by Rokicki, Kociemba, Davidson and Dethridge; about 4.3 × 10^19 positions.
+- **242:2:** Newton's 1662 shorthand list of sins, including the threat to burn his mother and stepfather with the house; deciphered by Westfall.
+- **242:3:** Goldbach's letter to Euler, 7 June 1742, and Euler's reply.
+- **242:4:** Napier 1614, "about twenty years" of calculation; Laplace's remark that logarithms doubled astronomers' lives.
+- **243:1:** Sloane began in 1964 at Cornell; the 1973 book had about 2,400 sequences; online in 1996; more than 300,000 sequences now.
+- **243:2:** Somerville met algebra in a fashion-magazine puzzle; her father's fear about her mind; Somerville College.
+- **243:3:** Abel's 1824 six-page pamphlet printed at his own cost; died 6 April 1829; Crelle's letter arrived two days later.
+- **243:4:** Shanks 1873, 707 digits; Ferguson in the 1940s found the error at the 528th digit.
+- **243:5:** Cicero in Sicily in 75 BCE found Archimedes' tomb (Tusculan Disputations, book 5); sphere and cylinder.
+- **244:1:** Hamilton, 16 Oct 1843, Broom Bridge; the children asking about multiplying triplets (from his 1865 letter).
+- **244:2:** Andrews, spring 1976, Wren Library; "more than 600 formulas".
+- **244:3:** The nine-dot puzzle in Loyd's Cyclopedia of Puzzles (1914).
+- **244:4:** Florence's Arte del Cambio banned the new numerals in account books in 1299.
+- **244:5:** vos Savant, September 1990 Parade; about 10,000 letters.
+- **245:1:** Frederick 2005, the bat-and-ball item.
+- **245:2:** The fifteen-puzzle craze of 1880; Johnson and Story (1879) proved half of all positions unsolvable.
+- **245:3:** Torrey Canyon wrecked 18 March 1967 near Cornwall. Later studies found the dispersant detergents harmed shore life more than the oil did.
+- **245:4:** Ancient Mariner: shipmates hang the dead albatross on his neck, and he tells his tale to the Hermit (summary, no quotation).
+- **246:1:** US Coast Guard 2022 Recreational Boating Statistics: most drowning victims with known life-jacket status were not wearing one. I wrote "most" and gave no percentage.
+- **246:2:** Chakara mud banks near Purakkad, Alappuzha: suspended mud calms monsoon waves, and prawns and fish gather there.
+- **246:3:** Bay of Fundy tidal range of about 16 m at Burntcoat Head, increased by the bay's resonance.
+- **246:4:** Lewis chessmen found 1831 near Uig; mostly walrus ivory; probably Norwegian, 12th century; one kind of warrior bites his shield.
+- **247:1:** Ramapurathu Warrier (18th century) composed Kuchelavritham Vanchipattu, by tradition on a boat trip with Marthanda Varma.
+- **247:2:** English "catamaran" comes from Tamil kattumaram ("tied logs").
+- **247:3:** Pitcairn: John Adams was the only adult man left alive, taught the children from the Bible, and the Topaz arrived in 1808.
+- **247:4:** Seabed 2030 launched in 2017 by the Nippon Foundation and GEBCO; about 6% of the seafloor was mapped at the start.
+- **248:1:** HMS Snipe wrecked off Great Yarmouth in February 1807. Manby's line-throwing device made its first rescue in 1808 and saved hundreds of lives in all.
+- **248:2:** Hamaguchi Goryo burned rice sheaves at Hiro in 1854, later built a sea wall, and the UN observes World Tsunami Awareness Day on 5 November in memory of the story.
+- **248:3:** Zong, 1781: more than 130 Africans thrown overboard; Equiano took the case to Granville Sharp.
+- **248:4:** Kerala floods of August 2018: fishermen rescued thousands, and the Chief Minister called them "Kerala's own army".
+- **249:1:** Peruvian fishermen named El Nino; Camilo Carrillo cited the name to the Lima Geographical Society in 1892.
+- **249:2:** Caulerpa taxifolia patch of about 1 m² noticed in 1984 below the Monaco Oceanographic Museum; a cold-tolerant aquarium strain.
+- **249:3:** Abbie Burgess, aged 17, kept the Matinicus Rock lights lit in January 1856 for about four weeks while her father was stranded ashore.
+- **249:4:** Penlee lifeboat Solomon Browne lost with all 8 crew on 19 December 1981; new volunteers came forward soon after.
+- **250:1:** Point Nemo is about 2,688 km from the nearest land, located by Hrvoje Lukatela in 1992. The ISS is sometimes the nearest human presence.
+- **250:2:** Zhu Yu, Pingzhou Table Talks (about 1119): Guangzhou mariners used a south-pointing needle in cloudy weather.
+- **250:3:** The Californian's wireless operator Cyril Evans had switched off and gone to bed on 14 April 1912; a 24-hour radio watch rule followed.
+- **250:4:** Eyemouth disaster, 14 October 1881: 189 fishermen died, 129 of them from Eyemouth, and the barometer was falling that morning.
+- **251:1:** Sylvia Earle's 1979 JIM suit walk off Oahu at about 381 m, untethered from the surface, for about 2.5 hours.
+- **251:3:** Skellig Michael: about 12 km off the coast, monastery probably founded between the 6th and 8th centuries, UNESCO listing 1996.
+- **251:4:** Ordnance Datum Newlyn, set from tide readings 1915 to 1921; the Amsterdam datum dates from the late 17th century.
+- **252:1:** Rev. John Ashley, Clevedon, 1835: his son asked how sailors on ships in the Bristol Channel could worship; Missions to Seamen founded 1856.
+- **252:2:** James Lofthouse, pharmacist in Fleetwood, made a remedy for fishermen in 1865.
+- **252:5:** UNCLOS Article 98 duty to render assistance; SOLAS requires it regardless of nationality, status or circumstances.
+- **253:1:** Ida Lewis: first rescue 1854, officially credited with 18 lives, Gold Lifesaving Medal 1881, lighthouse renamed after her in 1924.
+- **253:2:** Robert Richard Randall's will of 1801 (he died the same year); Sailors' Snug Harbor opened on Staten Island in 1833.
+- **253:3:** Minot's Ledge: first tower lost in April 1851 with two assistant keepers, new tower lit 1860, and the 1-4-3 flash read locally as "I love you". I gave no year for the flash pattern.
+- **254:1:** Chemmeen, novel 1956; the 1965 film won the President's gold medal.
+- **254:3:** Jensen 2007 (Quarterly Journal of Economics, not named in the note): mobile phone coverage reached northern Kerala 1997 to 2001, waste nearly ended, fishermen's profits rose and prices fell.
+- **255:1:** APCC (now the International Coconut Community) founded 2 September 1969, the date of World Coconut Day.
+- **255:2:** Mary Cover Jones 1924, the boy Peter's fear of a rabbit.
+- **255:3:** Fisher, Aron and Brown 2005, 17 people in love, reward regions active.
+- **255:4:** Moray 1959, own name noticed by about one third.
+- **256:1:** Schooler and Engstler-Schooler 1990; many-lab replication in 2014 with a smaller effect.
+- **256:2:** Cialdini et al. 1976, seven universities, school clothing worn after wins.
+- **256:3:** Tronick still-face experiment dated 1978 (first presented 1975).
+- **257:1:** Rat Park "late 1970s", Bruce Alexander in Canada, later replications mixed.
+- **257:2:** Diamond, Krech and Rosenzweig 1964, thicker cortex in rats from enriched cages.
+- **257:3:** Jamieson et al. 2010, GRE students told arousal helps scored higher in maths.
+- **258:1:** Nickerson and Adams 1979, 15 penny drawings, fewer than half chose the right one.
+- **258:2:** Hunt, Barnett and Branch 1971, about two-thirds relapse within 3 months.
+- **258:3:** Serota and Levine 2010, 1,000 US adults, most told no lies, about half of all lies from 5% of people.
+- **258:4:** Ariely and Wertenbroch 2002, students chose spaced deadlines for three papers.
+- **259:1:** Milinski et al. 2002 in Nature; the note places the experiment at the Max Planck institute in Plön.
+- **259:2:** Curt Richter 1957, rats rescued before swam much longer; the "many times longer" wording.
+- **259:3:** Holland's theory dated 1959, book 1973, six interest types.
+- **259:4:** Mollenhorst, about 1,000 people re-asked after 7 years, about half of close contacts changed. This is the least certain number.
+- **260:1:** Eisenberger et al. 2003 in Science, Cyberball.
+- **260:2:** Neal, Wood et al. 2011, week-old popcorn in a cinema.
+- **260:3:** Garcia and Koelling 1966, nausea from radiation versus electric shock.
+- **260:4:** Isen and Levin 1972, dime found in a phone booth; the note says later effects were smaller.
+- **261:1:** Jung-Beeman et al. 2004, gamma burst over the right temporal area about 0.3 seconds before insight.
+- **261:2:** Hurlburt's beeper sampling, inner speech in about a quarter of samples.
+- **261:3:** Batson et al. 1997, most coin-flippers still gave themselves the pleasant task.
+- **261:4:** Quoidbach et al. 2013, more than 19,000 people.
+- **262:1:** Rimé (Louvain), most emotional episodes shared, often the same day, across many countries.
+- **262:2:** Neal Miller 1944, approach-avoidance conflict; the claim that his analysis favoured reducing fear.
+- **262:3:** Hayward and Hambrick 1997, 106 acquisitions, CEO media praise and higher premiums, losses for the buyer's shareholders.
+- **262:5:** Gollwitzer and Brandstätter 1997, Christmas Eve report, about three-quarters versus one-third.
+- **263:1:** Murray, Holmes and Griffin 1996, positive illusions and more stable couples.
+- **263:2:** Ross and Sicoly 1979, 20 household activities, couples' shares added to more than 100%.
+- **263:3:** Nisbett and Wilson 1977, rightmost of four identical stockings chosen.
+- **264:1:** Freedman 1965, about six weeks later, mild-threat boys played with the forbidden toy far less.
+- **264:2:** Lucas et al. 2003, German panel, 15 years, more than 24,000 people, about 2 years to adapt to marriage.
+- **264:3:** Regan 1971, an unasked-for Coke, about twice as many raffle tickets bought.
+- **264:4:** Kahneman et al. 1993, 60 seconds at 14 °C plus 30 seconds slightly warmer; the note says most chose the longer trial.
+- **264:5:** Goffman's Stigma 1963, including "courtesy stigma" on those who accept stigmatised people.
+- **265:2:** post-COVID parosmia makes familiar smells such as coffee and onion seem foul (general description, no figures).
+- **265:4:** Kappus wrote to Rilke in 1902; ten letters 1903 to 1908; published 1929.
+- **266:1:** Yan Hui's sigh is Analects 9.11 (9.10 in Legge's numbering).
+- **266:2:** Great Debasement 1544 to 1551; the nickname "Old Coppernose" came from copper showing on the king's nose.
+- **266:3:** Horace, Epistles 1.11.27, addressed to Bullatius.
+- **266:4:** De Profundis was written in Reading Gaol in 1897 and partly published in 1905.
+- **267:1:** the Zen entry practices niwazume and tangazume (I left out the number of days).
+- **267:2:** Genesis 32:24-28. 267:4: John 3:1-2 and 19:39.
+- **268:1:** Frank Laubach's 1930 letters to his father from Lanao, Mindanao.
+- **268:2:** Guan Zhong and Bao Shuya, Shiji chapter 62, 7th century BCE.
+- **268:3:** Sai Weng's horse, Huainanzi chapter 18, 2nd century BCE.
+- **268:4:** Margery Kempe's book, called the first autobiography in English; her counsel from Julian of Norwich; the only manuscript found in 1934.
+- **269:2:** Browning's first letter 10 Jan 1845, first meeting May 1845, marriage 12 Sept 1846, over 500 letters.
+- **269:3:** 1 Kings 3:5-12.
+- **270:2:** Bill Wilson in Akron in May 1935; Dr Bob Smith's last drink 10 June 1935.
+- **270:3:** Bai Juyi exiled to Jiangzhou in 815; his letter to Yuan Zhen.
+- **271:1:** Malan met Charlotte Elliott in 1822; the hymn followed about 13 years later.
+- **271:2:** Victor of Aveyron found in 1800; Itard taught him for about five years.
+- **271:4:** the Lamb tragedy of 1796; Tales from Shakespeare 1807.
+- **272:3:** Wolsey's words in 1530, recorded by George Cavendish.
+- **272:4:** 2 Kings 5:20-27. 273:1: 2 Samuel 9.
+- **272:5:** Publilius Syrus was a Syrian-born slave who was freed; his maxim about giving quickly.
+- **273:2:** the Linji record: Linji struck three times by Huangbo, and Dayu's remark about grandmotherly kindness.
+- **273:3:** Caussade directed the Visitation nuns of Nancy; the compilation was published in 1861.
+- **274:1:** Karl Konig founded Camphill near Aberdeen in 1940.
+- **274:2:** Abbe Balley tutored Vianney at Ecully; Vianney was ordained in 1815.
+- **274:3:** Abba Macarius's saying on prayer, from the Apophthegmata Patrum.
+- **275:1:** Du Fu's poem to Wei Ji, about 748.
+- **275:2:** Kuldhara near Jaisalmer was deserted in the 19th century. Legend blames a minister's oppression; some scholars also cite water scarcity.
+- **275:3:** Daphne Sheldrick founded the trust in 1977; it raises orphaned elephant calves in Nairobi.
+- **275:4:** Kati Thanda-Lake Eyre is Australia's lowest point. It fills mainly from distant Queensland rain, and was extensively flooded in 1974.
+- **276:1:** Burke and Wills left Melbourne in 1860. Burke, Wills and King reached the Cooper Creek depot on 21 April 1861, hours after the waiting party had left. King survived with the Yandruwandha people.
+- **276:2:** surangam tunnels in Kasaragod and Dakshina Kannada sometimes run more than 100 m into the hill.
+- **276:3:** the Maharashtra Employment Guarantee Scheme was V. S. Page's idea and went statewide in 1972, during the 1970–73 drought. It became an Act in 1977 and was a model for the 2005 national rural employment act (MGNREGA).
+- **276:4:** parts of Mexico City sink more than 20 cm a year because of groundwater pumping.
+- **276:5:** Bangladesh arsenic: about 5 million tube wells were tested and their spouts painted to mark safe or unsafe water.
+- **276:6:** the Gang Canal of Maharaja Ganga Singh opened on 26 October 1927; Sri Ganganagar is named after him.
+- **277:1:** Polybius 29.27 tells how Popillius Laenas drew a circle around Antiochus IV near Alexandria in 168 BCE.
+- **277:2:** wind-rounded desert sand is generally unsuitable for concrete. This is a general claim with no study cited.
+- **277:3:** Stein found Kharosthi wooden tablets at Niya in 1901, about 3rd century CE. Double tablets were tied shut and sealed with a clay seal.
+- **278:1:** the Indian Supreme Court often appoints senior lawyers as amicus curiae in public-interest cases. I avoided naming where the institution came from.
+- **278:2:** the Good Samaritan, Luke 10:30–37, on the Jerusalem–Jericho road through the Judean desert.
+- **279:1:** San sip wells: a reed straw is pushed into the sand and the water is stored in buried ostrich eggshells.
+- **279:2:** Niyamgiri: a Supreme Court order of April 2013 led to all 12 selected gram sabhas rejecting bauxite mining.
+- **279:3:** the Nubian Sandstone Aquifer lies under Egypt, Libya, Sudan and Chad and holds mostly fossil water. Libya began its Great Man-Made River project in 1984.

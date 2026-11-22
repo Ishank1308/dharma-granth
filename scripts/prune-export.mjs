@@ -87,12 +87,16 @@ let files = 0;
 let total = 0;
 const oversized = [];
 // What the files are, so the build log shows which kind is growing.
-const kinds = { 'Pages (index.html)': 0, 'Page payloads (index.txt)': 0, 'Verse share images (og/verse)': 0, 'Everything else': 0 };
+const kinds = { 'Pages (index.html)': 0, 'Page payloads (index.txt)': 0, 'Verse share images (og/verse)': 0, 'Published commentary (data/hi-commentary)': 0, 'Everything else': 0 };
 const VERSE_IMAGES = join(DIST, 'og', 'verse') + sep;
+const COMMENTARY = join(DIST, 'data', 'hi-commentary') + sep;
 // With NEXT_PUBLIC_SHARE_IMAGE_ORIGIN set, the deploy uploads the verse share images as their own
 // deployment (the Pages project's `share` branch), so they count toward that deployment's limit
 // and not the site's. See docs/deploy-cloudflare.md, "Verse share images".
 const SHARE_IMAGES_SPLIT = Boolean(process.env.NEXT_PUBLIC_SHARE_IMAGE_ORIGIN);
+// Likewise NEXT_PUBLIC_COMMENTARY_ORIGIN: published commentary (one file per section of every book) goes up
+// as the `commentary` branch deployment (docs/commentary-storage.md).
+const COMMENTARY_SPLIT = Boolean(process.env.NEXT_PUBLIC_COMMENTARY_ORIGIN);
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
@@ -106,6 +110,7 @@ const SHARE_IMAGES_SPLIT = Boolean(process.env.NEXT_PUBLIC_SHARE_IMAGE_ORIGIN);
     if (name === 'index.html') kinds['Pages (index.html)']++;
     else if (name === 'index.txt') kinds['Page payloads (index.txt)']++;
     else if (path.startsWith(VERSE_IMAGES)) kinds['Verse share images (og/verse)']++;
+    else if (path.startsWith(COMMENTARY)) kinds['Published commentary (data/hi-commentary)']++;
     else kinds['Everything else']++;
     if (st.size > MAX_FILE_BYTES) oversized.push(`${path.slice(DIST.length + 1)} (${(st.size / 1024 / 1024).toFixed(1)} MB)`);
   }
@@ -117,8 +122,10 @@ console.log(
 );
 console.log(`  ${Object.entries(kinds).map(([kind, count]) => `${kind}: ${count}`).join(' · ')}`);
 const shareImages = kinds['Verse share images (og/verse)'];
-const siteFiles = SHARE_IMAGES_SPLIT ? files - shareImages : files;
+const commentaryFiles = kinds['Published commentary (data/hi-commentary)'];
+const siteFiles = files - (SHARE_IMAGES_SPLIT ? shareImages : 0) - (COMMENTARY_SPLIT ? commentaryFiles : 0);
 if (SHARE_IMAGES_SPLIT) console.log(`  The site deployment is ${siteFiles} files; the ${shareImages} verse share images deploy separately.`);
+if (COMMENTARY_SPLIT) console.log(`  The ${commentaryFiles} published commentary files deploy separately.`);
 
 if (process.env.GITHUB_STEP_SUMMARY) {
   try {
@@ -127,9 +134,12 @@ if (process.env.GITHUB_STEP_SUMMARY) {
       '',
       '| Metric | Value | Limit | Headroom |',
       '|---|---|---|---|',
-      `| **${SHARE_IMAGES_SPLIT ? 'Site Files' : 'Total Files'}** | \`${siteFiles.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | **\`${(MAX_FILES - siteFiles).toLocaleString()} files remaining\`** |`,
+      `| **${SHARE_IMAGES_SPLIT || COMMENTARY_SPLIT ? 'Site Files' : 'Total Files'}** | \`${siteFiles.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | **\`${(MAX_FILES - siteFiles).toLocaleString()} files remaining\`** |`,
       ...(SHARE_IMAGES_SPLIT
         ? [`| **Share Images (own deployment)** | \`${shareImages.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | \`${(MAX_FILES - shareImages).toLocaleString()} files remaining\` |`]
+        : []),
+      ...(COMMENTARY_SPLIT
+        ? [`| **Commentary (own deployment)** | \`${commentaryFiles.toLocaleString()}\` | \`${MAX_FILES.toLocaleString()}\` | \`${(MAX_FILES - commentaryFiles).toLocaleString()} files remaining\` |`]
         : []),
       `| **Export Size** | \`${(total / 1024 / 1024 / 1024).toFixed(2)} GB\` (\`${(total / 1024 / 1024).toFixed(0)} MB\`) | — | — |`,
       `| **Pruned / Freed** | \`${(freed / 1024 / 1024).toFixed(0)} MB\` | — | — |`,
@@ -143,11 +153,12 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   } catch {}
 }
 let ok = true;
-// Each deployment has its own limit: the site, and the share images when they are split off.
-const deployments = SHARE_IMAGES_SPLIT
+// Each deployment has its own limit: the site, and the share images and commentary when they are split off.
+const deployments = SHARE_IMAGES_SPLIT || COMMENTARY_SPLIT
   ? [
       ['The site', siteFiles],
-      ['The verse share images', shareImages],
+      ...(SHARE_IMAGES_SPLIT ? [['The verse share images', shareImages]] : []),
+      ...(COMMENTARY_SPLIT ? [['The published commentary', commentaryFiles]] : []),
     ]
   : [['The export', files]];
 for (const [what, count] of deployments) {

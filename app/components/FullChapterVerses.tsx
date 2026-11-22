@@ -16,6 +16,7 @@ import { canonicalVerseId } from '@/lib/canonical-verse-id';
 import { versePageHref } from '@/lib/verse-paths';
 import { commentaryOf, nearestWithMeaning, verseHasMeaning, type NearbyMeaning } from '@/lib/verse-has-meaning';
 import { commentaryAmbiguities, type CommentaryAmbiguities } from '@/lib/commentary-lookup';
+import { commentaryUnitUrl } from '@/lib/commentary-units.mjs';
 import { normalizeForSearch, normalizeTransliteration } from '@/lib/normalize-search';
 import { splitVyakhyaCommentary, toAsciiDigits, toDevanagari } from '@/lib/verse-format';
 import { useStudyProgress, type VerseRef } from '@/lib/useStudyProgress';
@@ -33,7 +34,7 @@ const ContributeMeaningModal = dynamic(() => import('./ContributeMeaningModal').
 const loadReaderSettingsPanel = () => import('@/app/components/reader/ReaderSettingsPanel');
 const ReaderSettingsPanel = dynamic(() => loadReaderSettingsPanel().then((m) => m.ReaderSettingsPanel), { ssr: false });
 import { VerseCard } from './VerseCard';
-import { DEFAULT_DEPTH, useReadingDepth } from '@/lib/reading-depth';
+import { useReadingDepth } from '@/lib/reading-depth';
 import { useConnectivity } from '@/lib/useConnectivity';
 import { VerseText } from './VerseText';
 import type { VerseInsight } from '@/lib/verse-insights';
@@ -137,11 +138,19 @@ interface Props {
   relatedTeachingsByVerse?: Record<string, Connection[]>;
   /** Curated editorial layers (lib/literary-commentary) for this part's verses, resolved on the server. */
   literaryByVerse?: Record<string, LiteraryVerseMeta>;
+  /**
+   * Without initialChapter: the chapter's published commentary files (lib/commentary-units.mjs),
+   * loaded with the chapter's verses.
+   */
+  commentaryUnits?: string[];
 }
 
 export interface InitialChapter {
   verses: FullVerse[];
+  /** The commentary that fits the page's HTML budget (lib/commentary-budget.ts). */
   commentary?: HiCommentaryFragment;
+  /** Section files holding the rest of this page's commentary, loaded once the page has rendered. */
+  commentaryUnits?: string[];
   commentaryAmbiguity?: { normalized: string[]; raw: string[] };
   source?: FullScripture['source'];
   /** मर्म and जीवन प्रसंग for the verses that have them (lib/verse-insights). */
@@ -167,7 +176,36 @@ function withRich(prev: Set<string>, numbers: Array<string | number>): Set<strin
   return next;
 }
 
-export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {}, literaryByVerse = {} }: Props) {
+/**
+ * Where published commentary is served from: the Pages project's `commentary` deployment on the live
+ * site (docs/commentary-storage.md), this site for a local build.
+ */
+const COMMENTARY_ORIGIN = process.env.NEXT_PUBLIC_COMMENTARY_ORIGIN || '';
+
+/** Load and merge published commentary section files. A file that fails to load is left out. */
+async function fetchCommentaryUnits(
+  scriptureId: string,
+  units: string[],
+  basePath: string,
+  signal: AbortSignal,
+): Promise<HiCommentaryFragment | undefined> {
+  const parts = await Promise.all(
+    units.map(async (unit) => {
+      try {
+        const res = await fetch(commentaryUnitUrl(COMMENTARY_ORIGIN, basePath, scriptureId, unit), { signal });
+        return res.ok ? ((await res.json()) as HiCommentaryFragment) : undefined;
+      } catch (err) {
+        if (signal.aborted) throw err;
+        return undefined;
+      }
+    }),
+  );
+  const merged: HiCommentaryFragment = {};
+  for (const part of parts) if (part) Object.assign(merged, part);
+  return Object.keys(merged).length > 0 ? merged : undefined;
+}
+
+export function FullChapterVerses({ scriptureId, category, chapterId, curatedVerseIds, scriptureTitle, chapterTitle, basePath = '', autoLoad = false, initialChapter, relatedTeachingsByVerse = {}, literaryByVerse = {}, commentaryUnits }: Props) {
   const isOnline = useConnectivity();
   const { settings: readerSettings, update: updateReaderSetting, reset: resetReaderSettings, reducedMotion } = useReaderSettings();
   const { theme, setTheme } = useTheme();
@@ -222,7 +260,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   };
 
   const [chantingMode, setChantingMode] = useState(false);
-  const [readingDepth, setReadingDepth] = useReadingDepth();
+  const [readingDepth] = useReadingDepth();
   const [isConversationMode, setIsConversationMode] = useState(false);
   const showCommentary = readerSettings.showCommentary;
   const [readerSettingsOpen, setReaderSettingsOpen] = useState(false);
@@ -928,14 +966,11 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           return;
         }
 
-        const commentaryRes = await fetch(`${basePath}/data/hi-commentary/${scriptureId}.json`, {
-          signal: controller.signal,
-        });
         const extras = chapter.verses.filter(
           (v) => !curatedVerseSet.has(canonicalVerseId(chapterId, v.number)),
         );
-        const commentary: HiCommentaryFragment | undefined = commentaryRes.ok
-          ? await commentaryRes.json()
+        const commentary = commentaryUnits?.length
+          ? await fetchCommentaryUnits(scriptureId, commentaryUnits, basePath, controller.signal)
           : undefined;
         setState({ kind: 'ready', verses: extras, commentary, commentaryAmbiguity: commentaryAmbiguities(chapterId, chapter.verses.map(v => v.number)), source });
       } catch (err) {
@@ -944,7 +979,24 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
       }
     })();
     return () => controller.abort();
-  }, [state.kind, scriptureId, chapterId, curatedVerseSet, basePath]);
+  }, [state.kind, scriptureId, chapterId, curatedVerseSet, basePath, commentaryUnits]);
+
+  // Commentary past the page's HTML budget (lib/commentary-budget.ts): load its section files once,
+  // after the page has rendered, and merge them in. What the page carried stays as it is.
+  const deferredUnits = initialChapter?.commentaryUnits;
+  useEffect(() => {
+    if (!deferredUnits?.length) return;
+    const controller = new AbortController();
+    fetchCommentaryUnits(scriptureId, deferredUnits, basePath, controller.signal)
+      .then((loaded) => {
+        if (!loaded) return;
+        setState((prev) =>
+          prev.kind === 'ready' ? { ...prev, commentary: { ...loaded, ...(prev.commentary ?? {}) } } : prev,
+        );
+      })
+      .catch(() => {});
+    return () => controller.abort();
+  }, [deferredUnits, scriptureId, basePath]);
 
   // Warm the cache for the next chapter so prev/next navigation feels
   // instant. Failure-silent: a missing shard just means there is no next
@@ -1555,9 +1607,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           settings={readerSettings}
           update={updateReaderSetting}
           reset={() => {
+            // Also forgets the shared depth choice, so the chapter opens at its first depth again.
             resetReaderSettings();
             // The sheet holds these chapter choices too, so its reset returns them to how a chapter first opens.
-            setReadingDepth(DEFAULT_DEPTH);
             setChantingMode(false);
             setIsConversationMode(false);
             setParayanaCadenceMode('sanskrit_only');

@@ -38,9 +38,20 @@ export interface RemoteBook {
   parts: RemotePart[];
 }
 
+/** One book's Hindi व्याख्या file (src/content/vyakhya.ts). */
+export interface RemoteCommentary {
+  file: string;
+  version: string;
+  bytes: number;
+  gz: number;
+  verses: number;
+}
+
 interface RemoteIndex {
   format: number;
   books: Record<string, RemoteBook>;
+  /** Books with Hindi व्याख्या, bundled or not. Absent on sites built before it was published. */
+  commentary?: Record<string, RemoteCommentary>;
 }
 
 export interface Installed {
@@ -212,6 +223,8 @@ export async function startDownload(id: string): Promise<void> {
 
   const tmp = partialDir(id);
   const partFiles: File[] = [];
+  // rename() repoints `tmp` at the finished folder, so the clean-up below must not touch it once it is in place.
+  let saved = false;
   try {
     const index = await fetchIndex();
     const remote = index.books[id];
@@ -235,7 +248,7 @@ export async function startDownload(id: string): Promise<void> {
     // The verse search index is folded chapter by chapter as the book arrives (src/content/download-index.ts).
     const indexer = new SearchIndexWriter(new Directory(tmp, SEARCH_DIR));
     const writeChapter = async (ch: BookChapter) => {
-      new File(tmp, `ch-${ch.number}.json`).write(JSON.stringify(ch));
+      await new File(tmp, `ch-${ch.number}.json`).write(JSON.stringify(ch));
       written++;
       await indexer.addChapter(ch);
     };
@@ -300,10 +313,13 @@ export async function startDownload(id: string): Promise<void> {
     const indexBytes = indexer.finish();
 
     const meta: Installed = { version: remote.version, bytes: remote.bytes + indexBytes, savedAt: new Date().toISOString() };
-    new File(tmp, 'meta.json').write(JSON.stringify(meta));
+    await new File(tmp, 'meta.json').write(JSON.stringify(meta));
     const final = bookDir(id);
     if (final.exists) final.delete();
     tmp.rename(id);
+    saved = true;
+    // Say "Downloaded" only when the book can really be read from its folder.
+    if (!new File(bookDir(id), 'meta.json').exists) throw new DownloadError('incomplete');
     forget(id);
     set({ installed: { ...state.installed, [id]: meta } });
   } catch (e) {
@@ -316,7 +332,7 @@ export async function startDownload(id: string): Promise<void> {
       } catch {}
     }
     try {
-      if (tmp.exists) tmp.delete();
+      if (!saved && tmp.exists) tmp.delete();
     } catch {}
     controllers.delete(id);
     set({ jobs: without(state.jobs, id) });

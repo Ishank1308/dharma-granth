@@ -6,12 +6,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { EmptyArt } from '@/components/art/empty-art';
 import { Backdrop, barSurface, Card, Chip, coverFill, glass, GroupTitle, LargeHeader, Muted } from '@/components/ui';
-import { getEntry } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
 import {
+  ASHTAVAKRA_ID,
   BUNDLED_SEARCHABLE_COUNT,
   MAX_RESULTS,
   prepareSearchIndexes,
+  searchEntry,
   searchSections,
   searchVerses,
   snippetFor,
@@ -51,7 +52,7 @@ const ResultCard = memo(function ResultCard({
   a11y: (ref: string, text: string) => string;
 }) {
   const snippet = useMemo(() => snippetFor(hit, tokens), [hit, tokens]);
-  const entry = getEntry(hit.id);
+  const entry = searchEntry(hit.id);
   const ref = `${entry?.title ?? hit.id} ${formatVerseRef(hit.id, hit.chapter, hit.number)}`;
   if (!snippet) return null;
 
@@ -74,10 +75,15 @@ const ResultCard = memo(function ResultCard({
       accessibilityRole="button"
       accessibilityLabel={a11y(ref, snippet.text)}
       onPress={() =>
-        router.push({
-          pathname: '/scripture/[id]/[chapter]',
-          params: { id: hit.id, chapter: String(hit.chapter), verse: hit.number },
-        })
+        hit.id === ASHTAVAKRA_ID
+          ? router.push({
+              pathname: '/ashtavakra/[chapter]/[verse]',
+              params: { chapter: String(hit.chapter), verse: hit.number },
+            })
+          : router.push({
+              pathname: '/scripture/[id]/[chapter]',
+              params: { id: hit.id, chapter: String(hit.chapter), verse: hit.number },
+            })
       }
       style={({ pressed }) => ({ opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.985 : 1 }] })}>
       <Card style={{ marginBottom: SPACE.md }}>
@@ -236,7 +242,7 @@ export default function SearchScreen() {
                 </Text>
               ) : null}
               {indexing.pending.length > 0 ? (
-                <Muted>{t(S.searchPreparingDownloads(indexing.pending.map((id) => getEntry(id)?.title ?? id).join(', ')))}</Muted>
+                <Muted>{t(S.searchPreparingDownloads(indexing.pending.map((id) => searchEntry(id)?.title ?? id).join(', ')))}</Muted>
               ) : null}
             </View>
           }

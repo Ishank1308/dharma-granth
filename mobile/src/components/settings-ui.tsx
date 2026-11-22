@@ -12,7 +12,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { useState, type ComponentProps, type ReactNode } from 'react';
-import { Platform, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { accentFill, Bilingual, glass, GroupCard, GroupRow, IconTile } from '@/components/ui';
@@ -135,13 +135,10 @@ export function WeekdayPicker({
   );
 }
 
-/** The four themes as small pages in their own colours. */
+/** The two themes as small pages in their own colours. */
 export function ThemePicker() {
   const { palette, settings, updateSettings, lang } = usePrefs();
   const { t } = useI18n();
-  // At large system font sizes the four theme names no longer fit in one row; show them two by two.
-  const { fontScale } = useWindowDimensions();
-  const twoRows = fontScale > 1.3;
   return (
     <View style={styles.themes} accessibilityRole="radiogroup">
       {THEME_ORDER.map((name) => {
@@ -154,7 +151,7 @@ export function ThemePicker() {
             accessibilityState={{ checked: active }}
             accessibilityLabel={t(S.themeA11y(lang === 'hi' ? theme.labelHi : theme.label))}
             onPress={() => updateSettings({ theme: name })}
-            style={[styles.theme, twoRows && styles.themeHalf]}>
+            style={styles.theme}>
             {/* A small page in the theme's own colours: the Gita's first word in the shloka face, then two lines of text. */}
             <View
               style={[
@@ -225,7 +222,6 @@ export function ReminderTimeButton() {
 
 const styles = StyleSheet.create({
   themes: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm },
-  themeHalf: { flexBasis: '45%' },
   theme: { flex: 1, alignItems: 'center', rowGap: 6, minHeight: TOUCH },
   preview: { alignSelf: 'stretch', height: 72, borderRadius: RADIUS.row, padding: 10, rowGap: 5 },
   previewLine: { height: 5, borderRadius: 3 },

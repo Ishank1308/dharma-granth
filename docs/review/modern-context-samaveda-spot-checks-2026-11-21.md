@@ -1,0 +1,1603 @@
+# Samaveda modern-context notes: facts to spot-check (21 November 2026)
+
+Taken from the writers' reports, one line per note. These are the dates, names and numbers a reviewer should check against a source. See `modern-context-samaveda-2026-11-21.md` for how the notes were made.
+
+- **1:4:** John LeConte, 1858, gas flame pulsing in time with music at a musical party.
+- **1:5:** DeCasper and Fifer, Science 1980; newborns under 3 days old changed their sucking rhythm to hear their mother's voice.
+- **1:6:** Balinese kotekan: the polos and sangsih parts interlock, and the combined line is too fast for one player.
+- **1:7:** Rijke 1859: the tube sounds loudest with the gauze about one quarter of the way up from the bottom.
+- **1:8:** Green et al., Scientific Reports 2019, University of Sydney: Holstein-Friesian heifers keep individual voices in both positive and negative contexts.
+- **1:13:** Kircher described the aeolian harp in Musurgia Universalis, 1650 (some sources say Phonurgia Nova, 1673).
+- **1:14:** Kraków Hejnał broadcast daily at noon on Polish Radio since 1927.
+- **1:15:** Suprabhatam attributed to Prativadi Bhayankaram Annan, 15th century; its first line comes from the Bala Kanda.
+- **1:17:** morin khuur strings and bow traditionally of horsehair; UNESCO 2003 proclamation.
+- **1:18:** Ewing and Worzel confirmed the SOFAR channel in 1944, at about 1 km depth.
+- **1:19:** NASA Ames, Chuck Jorgensen, 2004, subvocal speech sensors.
+- **1:20:** about 380,000 years to recombination; baryon acoustic oscillations confirmed in SDSS data in 2005.
+- **1:22:** Paul Lueg filed his patent application in 1934 (it was granted in the US in 1936).
+- **1:23:** Sabine 1895, carrying cushions from Sanders Theatre.
+- **1:24:** Manuel Garcia, laryngoscope, 1854 in Paris.
+- **1:25:** Buys Ballot 1845, near Utrecht. The players were horn players; the note calls them tuhri (trumpet) players.
+- **1:26:** Georgian polyphony on the first UNESCO list of 2001.
+- **1:27:** Chandra 2003, Fabian; the note is B-flat about 57 octaves below middle C.
+- **1:29:** Scott de Martinville's 1860 Au clair de la lune, played back by First Sounds in 2008.
+- **1:30:** Jiahu flutes about 9,000 years old, red-crowned crane bone, Nature 1999, early rice farming at the site.
+- **1:31:** Bell and Tainter photophone, 1880, Washington.
+- **1:32:** John Shore invented the tuning fork in 1711.
+- **1:34:** Ives, The Unanswered Question, dated 1906; the trumpet asks seven times and the flutes are silent after the seventh.
+- **1:35:** Payne and McVay, Science 1971.
+- **1:36:** Tintinnalogia 1668, Duckworth and Stedman; four bells give 24 orders.
+- **1:37:** Kastner pyrophone in the 1870s. The exact mechanism (keys changing the flame position) is described loosely.
+- **1:38:** Haydn Farewell Symphony, 1772, Nikolaus Esterházy. The note says the prince "soon" let the musicians leave.
+- **1:39:** Great Highland bagpipe has three drones, two tenor and one bass.
+- **1:40:** Henwood and Fabrick, American Naturalist 1979; dawn air carries song farther.
+- **1:41:** Behm turned to echo sounding after the Titanic and filed his echo-sounder patent in 1913; it failed for icebergs.
+- **1:42:** plan for 60 infrasound stations; Chelyabinsk, 15 Feb 2013, recorded as far as Antarctica and called the largest event the system has recorded.
+- **1:43:** first Estonian song festival 1869 in Tartu, roughly every five years; UNESCO 2003 Baltic song and dance celebrations.
+- **1:45:** nagaswaram and shehnai players use circular breathing.
+- **1:46:** Ingenhousz, 1779: plants give off oxygen only in light.
+- **1:47:** Dacke et al., 2013, Current Biology: dung beetles orient by the Milky Way; the test was in a Johannesburg planetarium.
+- **1:48:** Leavitt, 1912: Cepheid period-luminosity relation, at Harvard.
+- **1:49:** Dover Sun House, 1948, Massachusetts: Telkes' salt heat storage.
+- **1:50:** Project Ozma, 1960, Green Bank, 26 m dish, Tau Ceti and Epsilon Eridani; "several weeks" of listening.
+- **1:51:** candle flames in microgravity are spherical and dim blue.
+- **1:52:** L'Aigle meteorite fall, 26 April 1803; Biot's report.
+- **1:53:** Venus Tablet of Ammisaduqa covers about 21 years of Venus appearing and disappearing.
+- **1:54:** Livermore Centennial Light, burning since 1901, hand-blown, with a committee that looks after it.
+- **1:55:** Earth receives about one two-billionth of the Sun's output.
+- **1:56:** RV 1.3.11 reads "चोदयित्री सूनृतानां चेतन्ती सुमतीनाम्" (Sarasvati).
+- **1:57:** Katyayana Shulbasutra: east-west line from gnomon shadow tips on a circle. Please confirm it is Katyayana and not only Apastamba or Baudhayana.
+- **1:58:** Cassini family led the Paris Observatory for four generations; the map of France was begun under the grandson and finished by the great-grandson.
+- **1:59:** Carte du Ciel congress, Paris, April 1887, about twenty observatories.
+- **1:60:** photons take thousands of years to escape the Sun's interior, then about 8.5 minutes to reach Earth.
+- **1:61:** Chaucer, Treatise on the Astrolabe, c. 1391, written for his son Lewis.
+- **1:62:** Lunar Society met near the full moon; Watt, Boulton, Wedgwood, Priestley and Erasmus Darwin were members.
+- **1:63:** Hubble launched April 1990; the mirror error was about 1/50 of a hair's width; fixed in December 1993.
+- **1:64:** sea-turtle hatchlings head for the brighter horizon, so artificial lights misdirect them.
+- **1:65:** Akashdeep lamps hung on poles in Kartik at Panchganga ghat, Varanasi, for ancestors.
+- **1:66:** Leviathan of Parsonstown, 1845, about 1.8 m mirror, largest telescope until 1917; spiral nebula structure first seen with it.
+- **1:67:** zero-shadow day in the tropics is publicised by Indian science bodies.
+- **1:68:** Turpan karez carry Tian Shan meltwater underground.
+- **1:69:** about 40 to 50 lightning flashes per second worldwide, mostly over land (satellite data).
+- **1:70:** refraction at the horizon is about half a degree, so sunrise is seen about 2 minutes early.
+- **1:71:** Aeschylus, Agamemnon, 458 BCE: beacon chain from Troy to Argos, named by Clytemnestra.
+- **1:72:** John Walker, 1826, Stockton-on-Tees friction match, not patented.
+- **1:73:** Atamian et al., 2016, Science: young sunflowers track the Sun; mature flowers face east and get more pollinators.
+- **1:74:** MAVEN results, 2015: solar wind stripped much of Mars's atmosphere.
+- **1:75:** Lyot coronagraph, about 1930.
+- **1:76:** "galaxy" comes from Greek gala, milk.
+- **1:77:** Nilakantha Somayaji, Tantrasangraha, about 1500, revised Mercury and Venus model; "Somayaji" because he performed the soma sacrifice.
+- **1:78:** Avestan ahura is cognate with Sanskrit asura (s becomes h, as sapta becomes hapta).
+- **1:79:** Bologna stone, about 1603, Casciarolo, a shoemaker and alchemist.
+- **1:80:** Downes and Blunt, 1877: sunlight inhibits bacteria in solutions.
+- **1:81:** Rømer, 1676, at the Paris Observatory: Io eclipses show light has a finite speed.
+- **1:82:** Babylonian Astronomical Diaries, about 652 to 61 BCE, also record weather, river level and prices.
+- **1:83:** noctilucent clouds first reported in 1885, at about 80 km altitude.
+- **1:84:** Greek colonists took fire from the mother city's prytaneion (Hestia) hearth to light the colony's first fire.
+- **1:85:** Thai Pongal: milk and new rice boiled in a new clay pot in the morning until it overflows, with the cry "Pongalo Pongal".
+- **1:86:** Rhys Jones coined "fire-stick farming" in 1969. I rendered it in Hindi as अग्नि-दण्ड कृषि.
+- **1:87:** Rumford fireplace of the 1790s (shallow, angled sides, narrow throat), widely adopted in London.
+- **1:88:** Davy lamp dated 1815. First mine use was 1816.
+- **1:89:** Swartkrans burnt bones are about 1 million years old. C.K. Brain's work suggests the hominins went from prey of leopards to occupying the cave once fire appears. Wording is hedged.
+- **1:90:** Glasspool, Edwards and Axe 2004: about 420-million-year-old Silurian charcoal from the Welsh Borderland.
+- **1:91:** Baltic Way, 23 August 1989, about 2 million people, about 675 km from Tallinn to Vilnius.
+- **1:92:** first free manned balloon flight on 21 November 1783, about 25 minutes, several km over Paris.
+- **1:93:** Puri kitchen: wood fire, earthen pots each used only once.
+- **1:96:** firing ranges: earthenware below about 1,150°C, stoneware about 1,200 to 1,300°C, porcelain higher.
+- **1:97:** Bizen pottery is unglazed and fired for several days in anagama kilns, where wood ash forms a natural glaze.
+- **1:98:** Nineveh fell in 612 BCE and the fire hardened many tablets. Gilgamesh tablets were found in the 19th century.
+- **1:99:** fire piston in Southeast Asia, the same principle as the diesel engine.
+- **1:100:** Melanophila beetles have infrared pit organs on the thorax.
+- **1:101:** Mundaka Upanishad 1.2.4 lists the seven tongues; 1.2.5 says they carry the offerer like rays of the sun.
+- **1:102:** Ali Kashmiri ibn Luqman's seamless celestial globe, 1589, Kashmir, cast in one piece.
+- **1:103:** Toepler developed the schlieren method in 1864.
+- **1:104:** Trial of the Pyx since at least 1282, with assay by fire (cupellation).
+- **1:105:** Frederick Winsor lit gas lamps on Pall Mall in 1807.
+- **1:106:** Appert's 12,000-franc prize, 1810.
+- **1:107:** Argand lamp of the 1780s, later used in lighthouses.
+- **1:108:** Thangtong Gyalpo's iron-chain bridges; I said some chains are still preserved in Bhutan.
+- **1:109:** Kongming lantern; the Zhuge Liang attribution is marked as legend in the note.
+- **1:110:** irori seat names yokoza (head of house) and kyakuza (guest).
+- **1:111:** William Morris, "The Beauty of Life", 1880: useful or beautiful. Paraphrased, not quoted.
+- **1:112:** the guild "masterpiece" as the origin of the English word.
+- **1:113:** lime is calcined at about 900°C, and limewash discourages mould and insects.
+- **1:114:** Kalibangan fire altars in a row on a platform in the citadel, and some in houses; B.B. Lal and B.K. Thapar, 1960s.
+- **1:115:** Dunne, Evershed et al. 2012, Nature: milk fat residues in Takarkori potsherds, about 7,000 years old.
+- **1:116:** Las Fallas: figures burned on the night of 19 March; UNESCO listing 2016.
+- **1:117:** terracotta ring wells at Hastinapura and Kaushambi, "about 2,000 years or older".
+- **1:118:** Draper point, 1847, about 525°C.
+- **1:119:** Schaefer's dry-ice seeding on 13 November 1946 over Mount Greylock; Vonnegut found silver iodide.
+- **1:120:** differential hardening with a clay coating produces the hamon line.
+- **1:121:** Harappan bricks in the ratio 4:2:1, found from the Indus valley to Gujarat.
+- **1:122:** Dan West's Heifer Project, founded 1944; the idea came from his Spanish Civil War relief work; recipients pass on the first female offspring.
+- **1:123:** "Two leaves and a bud" as the fine-plucking standard, with pluckers returning in regular rounds.
+- **1:125:** Halley's 1686 paper in Philosophical Transactions on trade winds and monsoons, explained by land-sea heating.
+- **1:126:** Dhundi, Kheda district, solar irrigation cooperative in 2016, described as the first of its kind.
+- **1:127:** Sacagawea with Lewis and Clark in 1805, and horses obtained from the Shoshone because of her.
+- **1:128:** Richard Turere's lion lights, solar-powered flashing lights around the boma.
+- **1:130:** Simcha Blass saw the leaking-pipe tree in the 1930s; Netafim was founded in 1965.
+- **1:131:** Fall armyworm first found in India in May 2018 in Karnataka maize, and in many states within a year.
+- **1:132:** The pied cuckoo arrives from Africa with the southwest monsoon.
+- **1:133:** Yacouba Sawadogo revived zai pits during the 1980s droughts; Right Livelihood Award 2018.
+- **1:134:** The Tamil Nadu Kudimaramathu scheme started in 2017.
+- **1:136:** Bertenshaw and Rowlinson 2009, more than 500 farmers, about 258 litres more milk per lactation where cows had names.
+- **1:137:** Pinzón in 1500 found fresh water at sea off the Amazon; the Amazon carries about one fifth of all river flow to the oceans.
+- **1:138:** Saudamini Das and Jeffrey Vincent, PNAS 2009, mangroves in Kendrapara and the 1999 super cyclone.
+- **1:139:** Carver at Tuskegee from 1896, and the movable school wagon.
+- **1:140:** Garstang et al. 2014, Namibian elephants and the infrasound hypothesis. This is the one I am least sure of.
+- **1:141:** Beej Bachao Andolan in the Henwal valley, late 1980s, Vijay Jardhari, baranaja.
+- **1:142:** Ongole cattle taken to Brazil in the late 19th and early 20th century and named Nelore after Nellore district.
+- **1:143:** Koblenz's name comes from the Latin Confluentes.
+- **1:144:** The Banawali terracotta plough model, excavated by R.S. Bisht, in Fatehabad district.
+- **1:145:** Mehrgarh barley, with the settlement dated to about 7000 BCE.
+- **1:146:** Rousseau's music dictionary (18th century) says playing the ranz des vaches was forbidden among Swiss troops serving abroad.
+- **1:147:** Grunion spawn after full and new moons, as high tide recedes; eggs hatch about 10 days later.
+- **1:148:** The March 2014 pulse flow from Morelos Dam reached the Gulf of California.
+- **1:149:** Zhu and Newell coined "atmospheric rivers" in the 1990s.
+- **1:150:** Outram et al. 2009 in Science, Botai horse milk residues about 3500 BCE, possible bit wear on teeth.
+- **1:151:** The Thames was declared biologically dead in 1957 by the Natural History Museum; seals and seahorses are now seen.
+- **1:152:** Anupam Mishra's "Aaj Bhi Khare Hain Talab" (1993) carries no copyright.
+- **1:153:** Bail Pola falls on the Shravan amavasya.
+- **1:155:** Asar 15 is Nepal's National Paddy Day.
+- **1:156:** Balakirev published the Volga Boatmen song in 1866.
+- **1:157:** Kamegowda, Mandya, more than ten ponds, mentioned in Mann Ki Baat in 2020.
+- **1:159:** James Simpson's slow sand filter at Chelsea, 1829.
+- **1:161:** Tirukkural chapter 9 is on hospitality, and kural 90 is the anicham flower and guest couplet.
+- **1:162:** The Nag Hammadi jar was found in December 1945, with leather-bound papyrus codices in Coptic, about 16 centuries old.
+- **1:163:** The Kadavallur Anyonyam is a yearly contest at the Sri Rama temple between the Thrissur and Thirunavaya Vedic schools, with jata-type vikriti recitation.
+- **1:164:** Karelian rune singers sat facing each other holding hands, a helper repeated each line, and Lonnrot published the Kalevala in 1835.
+- **1:165:** In the Yasna, haoma is pounded with pomegranate leaves and water in a metal mortar that rings.
+- **1:166:** The Xhosa imbongi traditionally had licence to criticise as well as praise.
+- **1:167:** Charaka Sharirasthana (I believe chapter 7) gives body fluids in anjali measured by the person's own anjali. I left out the chapter number.
+- **1:168:** Vattaka Jataka is number 35, where a quail chick's act of truth stops a forest fire.
+- **1:169:** The brahmodya "kah svid ekaki carati / surya ekaki carati" is in Vajasaneyi Samhita chapter 23 (Ashvamedha).
+- **1:170:** Mehr et al. 2019 in Science covered an ethnographic corpus of 315 societies, with song found in all of them.
+- **1:171:** "E Ho Mai" was composed by Edith Kanakaole and is sung before hula lessons.
+- **1:173:** Vidyakara's Subhashitaratnakosha was compiled at Jagaddala around 1100, and Ingalls' translation came out in 1965.
+- **1:176:** At the first council at Rajagriha, Upali recited the Vinaya and Ananda the suttas.
+- **1:178:** Narsinh Mehta is placed in the 15th century and composed prabhatiyas.
+- **1:179:** Wang Yirong identified the oracle-bone inscriptions in 1899.
+- **1:181:** Tug-of-war rituals and games were inscribed by UNESCO in 2015 for Cambodia, the Philippines, Korea and Viet Nam.
+- **1:182:** The Codex Amiatinus (Wearmouth-Jarrow, early 8th century) needed about 500 calfskins.
+- **1:183:** Both parent pigeons produce crop milk and both incubate.
+- **1:184:** Yazd's windcatchers; Yazd became a World Heritage site in 2017.
+- **1:185:** The Suppiluliuma and Shattiwaza treaty from Bogazkoy (about the 14th century BCE) names Mitra, Varuna, Indra and the Nasatyas.
+- **1:186:** Sintashta has the earliest known spoked-wheel chariots, around 2000 BCE, buried with horses.
+- **1:187:** Toda dairies are sacred and run by priest-dairymen, and Toda songs name buffaloes.
+- **1:188:** In the closing stanzas of Grimnismal (Codex Regius, 13th century), Odin lists his names.
+- **1:189:** Vidyarambham at Thunchan Parambu, Tirur, Ezhuthachan's birthplace.
+- **1:190:** Jessie Little Doe Baird began Wampanoag reclamation in 1993; there had been no fluent speakers for over a century, and the work drew on 17th-century documents.
+- **1:191:** UNESCO inscribed Arabic coffee in 2015 for the UAE, Saudi Arabia, Oman and Qatar.
+- **1:192:** Mihr Yasht (Yasht 10) gives Mithra a thousand ears and ten thousand eyes.
+- **1:193:** Haridwar pandas keep genealogy registers sorted by region.
+- **1:194:** Haidara moved hundreds of thousands of Timbuktu manuscripts to Bamako in 2012–13.
+- **1:195:** Muttuswami Dikshitar's mudra is "Guruguha".
+- **1:196:** Mibu no Hana Taue is held at Kitahiroshima in June and was inscribed by UNESCO in 2011.
+- **1:197:** The Bengal Fan is the largest submarine fan, about 3,000 km long.
+- **1:198:** The Sacred Harp tunebook (1844, B.F. White and E.J. King); the four parts sit in a hollow square facing inward.
+- **1:199:** Hackman and Oldham 1976 job characteristics model with five core dimensions.
+- **1:200:** J.A. Easterbrook 1959, the cue-utilization hypothesis (arousal narrows the range of cues used).
+- **1:201:** Warneken and Tomasello 2006 in Science (18-month-olds help without reward), and their 2008 study where rewards reduced later helping.
+- **1:202:** Belbin's 1981 book from Henley, and the "Apollo team" finding.
+- **1:203:** Solnick and Hemenway 1998, Harvard School of Public Health. About half chose $50k when others earn $25k over $100k when others earn $200k.
+- **1:204:** Shaw and Olson 2012 (Yale). Children aged 6 to 8 preferred throwing away a fifth eraser to an unequal split.
+- **1:206:** Tierney and Grossman 1995 (Public/Private Ventures). Ages 10 to 16, 18 months, about 46% less drug initiation.
+- **1:207:** Mponeng mine is about 4 km deep and its air is cooled with ice slurry.
+- **1:208:** Woolley et al. 2010 in Science, collective intelligence "c factor".
+- **1:209:** Clance and Imes 1978. I wrote "more than 100" women (the study had about 150).
+- **1:210:** Wording of the Egyptian hetep-di-nesu offering formula: a thousand of bread, beer, oxen and fowl.
+- **1:211:** Maier 1931 two-string problem, solved with pliers as a pendulum.
+- **1:212:** Giné, Karlan and Zinman 2010, CARES commitment account, Philippines, with a urine test after 6 months.
+- **1:214:** Brown et al. 2003 in Psychological Science. 423 older couples over 5 years; giving support, not receiving it, went with lower mortality.
+- **1:215:** Dodds, Muhamad and Watts 2003 in Science. More than 60,000 senders, 18 targets in 13 countries, chains of 5 to 7 steps.
+- **1:216:** Fantz 1961 in Scientific American. The "newborns a few days old" detail comes from his 1963 Science paper.
+- **1:217:** Iriki, Tanaka and Iwamura 1996. Receptive fields extended along the rake after a few minutes of use.
+- **1:218:** Berg, Dickhaut and McCabe 1995 trust game, $10 endowment tripled.
+- **1:220:** Mekonnen and Hoekstra 2012. About 1,000 litres of water per kg of milk and over 5,000 per kg of butter.
+- **1:221:** Ballerini et al. 2008 in PNAS, starlings in Rome following about 6 to 7 nearest neighbours.
+- **1:222:** Badami Cave 3, Mangalesha inscription dated Shaka 500 (578 CE), Trivikrama relief.
+- **1:224:** Mary Budd Rowe 1974 wait-time findings: about 1 second, extended to 3 to 5 seconds.
+- **1:225:** Diana Deutsch 1995 speech-to-song illusion, phrase "sometimes behave so strangely".
+- **1:226:** Dale Carnegie 1936 principle "give honest, sincere appreciation". "Tens of millions of copies" is approximate.
+- **1:227:** Aronson, Willerman and Floyd 1966 pratfall effect (spilled coffee on a quiz tape).
+- **1:228:** Nawijn et al. 2010, 1,530 Dutch adults, higher happiness before the trip.
+- **1:229:** Japanese 72 kō of about five days each, from China, with the example "east wind melts the ice".
+- **1:230:** Sandstrom and Dunn 2014, Starbucks barista study. I named only Sandstrom, because Dunn appears as a co-author in an earlier note.
+- **1:231:** Leong et al. 2015 in the Lancet (PURE). About 140,000 adults in 17 countries; each 5 kg less grip went with about 16% higher all-cause mortality.
+- **1:232:** Hasher, Goldstein and Toppino 1977 illusory truth effect, three sessions two weeks apart.
+- **1:233:** Ainsworth and Bell 1970 Strange Situation.
+- **1:234:** Taraxippus altar near the turning post at the Olympia hippodrome (Pausanias, book 6). I did not cite the book number in the note.
+- **1:235:** Waldfogel 1993 (American Economic Review). Recipients valued gifts 10 to 33% below their price.
+- **1:236:** Hurrian hymn h.6 to Nikkal, Ugarit, found in the 1950s, about 1400 BCE, the oldest nearly complete notated song.
+- **1:237:** Amarna letters found 1887; Rib-Hadda of Byblos wrote the largest number of them.
+- **1:238:** Wang Zhen had more than 60,000 wooden type pieces on two revolving tables arranged by sound; described in his Nong Shu of 1313.
+- **1:239:** Cuban factory readers since the mid-19th century; workers paid the reader and chose the books.
+- **1:240:** Poggio found De rerum natura in 1417 in a German monastery.
+- **1:241:** Ranganathan's Five Laws, 1931; laws 2 and 3 are as quoted.
+- **1:242:** Book of Kells, about 800, at Trinity College Dublin; the Chi-Rho page.
+- **1:243:** the Grimm dictionary was begun in 1838 and finished in 1961.
+- **1:244:** Florence flood on 4 November 1966; "millions of volumes" at the National Central Library.
+- **1:245:** The Times printed by Koenig's steam press on 29 November 1814, about 1,100 sheets an hour.
+- **1:246:** on 1 October 1854 India got all-India stamps and a uniform half-anna rate that did not depend on distance.
+- **1:247:** the 1848 anniversary address by De la Beche praised Mary Anning, who died in 1847.
+- **1:248:** Schechter took more than 100,000 Geniza fragments to Cambridge in 1896–97.
+- **1:249:** Très Riches Heures, about 1412–1416, now at Chantilly.
+- **1:250:** Benfey's Samaveda, Leipzig 1848, with text, German translation and glossary.
+- **1:251:** Petrucci's Odhecaton, 1501, about 100 songs, printed in multiple impressions.
+- **1:252:** Kenya camel library at Garissa, started 1996.
+- **1:253:** Orbis Pictus, Nuremberg 1658, with names in Latin and German.
+- **1:254:** Dunhuang cave opened in 1900, about 50,000 items hidden about 900 years; the International Dunhuang Project began in 1994.
+- **1:255:** Gortyn law code, 5th century BCE, written boustrophedon.
+- **1:256:** Plantin Polyglot, 1568–1573, eight volumes, five languages, edited by Arias Montano.
+- **1:257:** Tripitaka Koreana has more than 80,000 blocks and is on the Memory of the World list.
+- **1:258:** the St Gall Cantatorium dates from the early 10th century and is among the oldest fully neumed chant books.
+- **1:259:** Chesterfield wrote letters to his son for about 30 years; published 1774 by the son's widow.
+- **1:260:** Machaut's "Ma fin est mon commencement" is a retrograde rondeau.
+- **1:261:** the earliest watermarks are from Fabriano, about 1282.
+- **1:262:** Murray's appeal of 1879; the OED was completed in 1928.
+- **1:263:** Indus-style seals found at Ur and Kish.
+- **1:264:** Chappe's Paris–Lille line, 1794.
+- **1:265:** Beowulf survived the 1731 Ashburnham House fire; the poem opens with "Hwæt".
+- **1:266:** Shosoin, mid-8th century, built of triangular logs, raised on posts.
+- **1:267:** Boston Public Library opened in 1854; "Free to All" is inscribed over the entrance of the 1895 building.
+- **1:269:** 15th-century Gujarat Kalpasutra copies, some written entirely in gold ink.
+- **1:270:** the Pinakes ran to 120 books.
+- **1:271:** the Dead Sea Scrolls discovery in 1946–47 by a shepherd looking for a stray goat. The note gives this as the traditional account.
+- **1:272:** Pepys's diary, 1660–1669, in shorthand, stopped because of his eyesight.
+- **1:273:** Cyrus Cylinder, 539 BCE, British Museum; content as summarised.
+- **1:274:** Faraday's 1836 foil-covered room with an electrometer inside; the claim that a metal-bodied car protects mainly as a cage.
+- **1:275:** Taipei 101, about 508 m; damper about 660 t, hung between the 87th and 92nd floors.
+- **1:276:** Campbell's recorder in 1853 and Stokes's modification in 1879.
+- **1:277:** Mongolian dzud of 2009-10, "lakhs of animals" died. I kept it vague because I am not sure of the exact count.
+- **1:278:** Peggy LeMone's estimate that a cumulus cloud's water weighs about 500 t, about 100 elephants.
+- **1:279:** Tower of the Winds credited to Andronicus of Cyrrhus, with a water clock inside and sundials outside.
+- **1:280:** Stagg's advice on 4 June 1944; landing postponed from 5 to 6 June.
+- **1:281:** Morning Glory cloud at Burketown, seen in spring and hundreds of km long.
+- **1:283:** Joseph Duckworth flew into the eye of a hurricane near Texas on 27 July 1943. I described him only as an "officer", without a rank.
+- **1:284:** thunder is rarely heard beyond about 15 to 16 km.
+- **1:285:** Chungungo fog nets on El Tofo, around 1990, Canadian and Chilean researchers.
+- **1:286:** TIROS-1 launched 1 April 1960 and worked about 78 days.
+- **1:287:** water vapour stays in the atmosphere about nine days.
+- **1:288:** Sejong's cheugugi, 1441-42. I left the metal unnamed (iron or bronze).
+- **1:289:** Vädersolstavlan scene dated 20 April 1535, showing sun dogs.
+- **1:290:** Arthur Few at Rice University, thunder acoustics in the 1960s and 70s. The decades are approximate.
+- **1:291:** WMO Resolution 40, adopted 1995 at the Twelfth Congress.
+- **1:292:** Salati et al. 1979, isotope study finding the Amazon recycles about half its rain.
+- **1:293:** Mohammed Bah Abba's pot-in-pot cooler, Rolex Award 2000, described as a teacher.
+- **1:294:** Molchanov's radiosonde, 30 January 1930, Pavlovsk.
+- **1:295:** Bergeron's ice-crystal process, 1933.
+- **1:296:** Perlan 2 reached about 23,200 m on 2 September 2018 over the Andes in Argentina.
+- **1:297:** Richardson's hand forecast took about six weeks; the 1922 book imagined 64,000 human computers.
+- **1:298:** Hadley's 1735 paper, and Hadley as a lawyer.
+- **1:299:** Rigveda 7.103, the frog hymn; frogs compared to vow-keeping brahmins and to a pupil repeating the teacher.
+- **1:300:** Lillers artesian well, "said to be" dug in 1126. This is a traditional claim and I hedged it.
+- **1:301:** Darwin, 1832, spiders landing on the Beagle about 100 km (60 miles) off the Plata.
+- **1:302:** Manley's Central England Temperature series, published 1953 and extended back to 1659 in 1974.
+- **1:303:** Matthew 16:2-3 on red sky at evening and morning.
+- **1:304:** Galton's weather map in The Times, 1 April 1875.
+- **1:305:** Sherwood and Huber 2010 in PNAS, 35 C wet-bulb sustained for some hours.
+- **1:306:** Robert Barker 1775 in Phil Trans on ice-making in India. I said "north India" and named no place.
+- **1:307:** Modjadji, Rain Queen of the Balobedu, Limpopo, passed down through women.
+- **1:308:** Eastern Air Lines crash at JFK on 24 June 1975; Fujita coined "downburst".
+- **1:309:** Vivian, South Dakota hailstone, 23 July 2010, 20 cm, 880 g.
+- **1:310:** Jyotirao Phule opened his household water tank in 1868.
+- **1:311:** Gilbert Walker's Southern Oscillation, identified in the 1920s.
+- **1:312:** Hyperion found 2006 by Chris Atkins and Michael Taylor, about 116 m, tallest known living tree.
+- **1:313:** de Lange and Boucher 1990, plant smoke triggers fynbos seed germination.
+- **1:314:** Nathaniel Ward's sealed bottle with fern, about 1829, origin of the Wardian case.
+- **1:315:** Ta Prohm built by Jayavarman VII in the late 12th century; conservators left trees in place on purpose.
+- **1:316:** Mark Jaffe 1973 coined thigmomorphogenesis; advice against tight staking of young trees.
+- **1:317:** Noël Bernard 1899, orchid seeds germinate only with a fungal partner.
+- **1:318:** Wollemi pine found 1994 by David Noble, fewer than 100 wild trees; 2019-20 fire-retardant drops and irrigation saved the grove.
+- **1:319:** A.S. Watt 1947, "Pattern and process in the plant community", gap-phase cycle.
+- **1:320:** Alsomitra seed wingspan about 13 cm; Igo Etrich based his early gliders on it.
+- **1:321:** Darwin's letter to Hooker dated 22 July 1879 ("abominable mystery", paraphrased).
+- **1:322:** Grinling Gibbons (1648–1721) carved the St Paul's choir stalls, mostly in limewood.
+- **1:323:** Salvinia on the Sepik lagoons in the 1970s; weevil released in the early 1980s, cleared within a few years.
+- **1:324:** Leuzinger and Bader 2019 kauri stump. The paper is in iScience; my note does not name the journal.
+- **1:326:** W.S. Clark 1874 squash lifting about 5,000 lb; Clark was president of Massachusetts Agricultural College.
+- **1:327:** Herrera and Bazaga 2013, same DNA sequence but different methylation in prickly vs smooth holly leaves.
+- **1:329:** Ug99 detected in Uganda 1998-99 and overcame resistance used in many wheat varieties.
+- **1:330:** Appel and Cocroft 2014 (University of Missouri), recorded chewing vibrations raised defence chemicals and wind vibrations did not.
+- **1:331:** Hellriegel and Wilfarth results presented 1886 (published 1888).
+- **1:332:** Ljubljana Marshes Wheel found 2002, over 5,000 years old, ash wood with an oak axle.
+- **1:333:** Prairie States Forestry Project began 1934, shelterbelts from North Dakota to Texas.
+- **1:334:** Nylander 1866, Luxembourg Garden lichens as an air-quality indicator; Usnea called "old man's beard".
+- **1:335:** Hortus Malabaricus, 12 volumes, Amsterdam 1678–1693; Itty Achuden and Konkani physicians as sources.
+- **1:336:** Janzen 1966, bullhorn acacia and ants; trees damaged when ants were removed.
+- **1:337:** Turlings, Tumlinson and Lewis, Science 1990, maize volatiles attract parasitic wasps.
+- **1:338:** Vavilov 1926 centres of origin, crop diversity mostly in mountain regions (Ethiopian highlands, Andes).
+- **1:339:** Völuspá describes the ash Yggdrasil standing evergreen over Urd's well.
+- **1:340:** Hans Sloane 1696, Phil. Trans., Jamaican beans cast ashore on Orkney.
+- **1:341:** Pelletier and Caventou isolated quinine in 1820.
+- **1:342:** bamboo lacks a vascular cambium, reaches full height in months, then hardens for years.
+- **1:343:** Prochlorococcus described 1988 by Chisholm, Olson et al.; most abundant photosynthetic organism.
+- **1:344:** Boswellia sacra in Dhofar; UNESCO listing in 2000.
+- **1:345:** John Chapman (1774–1845), apple nurseries in Ohio and Indiana.
+- **1:346:** ICIPE push-pull (Zeyaur Khan), desmodium repels stemborer and napier grass draws it; both are cattle fodder.
+- **1:347:** Calvin, Benson and Bassham, Chlorella with carbon-14; Calvin's Nobel in Chemistry 1961.
+- **1:348:** Atacama flowering desert after unusual rain, e.g. 2015.
+- **1:349:** Dudley and File 2007, sea rocket grows fewer roots with siblings than with strangers.
+- **1:350:** Babcock milk-fat test, 1890, Wisconsin, not patented, led to paying farmers by fat content.
+- **1:351:** Gerald Borgia 1985, satin bowerbird bower quality and decorations linked to mating success.
+- **1:352:** Wendell Robie's first 100-mile one-day ride, 1955, which became the Tevis Cup; motto "to finish is to win".
+- **1:353:** Chauvet cave found December 1994 by Chauvet and two companions; paintings over 30,000 years old; four horse heads on one panel.
+- **1:354:** Plutarch, Life of Alexander, chapter 6. Bucephalus feared his shadow and was turned toward the sun.
+- **1:355:** Reuter's carrier pigeons between Aachen and Brussels in 1850, arriving well before the mail train.
+- **1:356:** Librado, Orlando et al. 2021 Nature. Domestic horses from the lower Volga-Don steppe, spreading with spoked-wheel chariots from about 2000 BCE.
+- **1:357:** Nagy, Ákos, Biro and Vicsek 2010 Nature, hierarchical leadership in pigeon flocks. The note says "हंगरी के तामाश विचेक, डोरा बीरो"; Biro was at Oxford, so the wording may suggest wrongly that both are Hungarian.
+- **1:358:** Kikkuli text from Hattusa, about 14th century BCE, a training plan of several months, "aika-wartanna".
+- **1:360:** Pilley and Reid 2011. Chaser learned 1,022 object names over three years and could pick out a new object by exclusion.
+- **1:361:** Krista McLennan 2013 (Northampton). Heifers' heart rate and stress signs were lower with a preferred partner. I am less sure of the exact design.
+- **1:362:** Schwing et al. 2017 Current Biology. A kea play-call playback set off play, including aerial play.
+- **1:363:** Wilkinson 1984 Nature, Costa Rica. Vampire bats can die after two or three nights without blood; sharing follows association and reciprocity.
+- **1:364:** Przewalski's horse last seen in the wild around 1969 and reintroduced in 1992 at Hustai and Takhin Tal.
+- **1:365:** Weir, Chappell and Kacelnik 2002 Science. Betty bent wire into a hook.
+- **1:366:** Tan and Hare 2013 PLOS ONE, Lola ya Bonobo sanctuary. Bonobos opened a door for a stranger and shared food.
+- **1:367:** Kempenaers et al. 2010 Current Biology. Street lights make dawn song start earlier, most strongly in the earliest-singing species.
+- **1:368:** Pepperberg's work with Alex, 1977 to 2007, over 100 words. The "what color" question at the mirror is Pepperberg's own account and is attributed as such in the note.
+- **1:369:** Marler and Tamura 1964 Science. White-crowned sparrow dialects; birds that heard no song did not develop full song.
+- **1:371:** O'Connell-Rodwell in Etosha. Seismic playback of alarm calls made herds bunch together. No year is given in the note.
+- **1:372:** Brothers and Lohmann 2015 Current Biology. Loggerhead genetic similarity follows magnetic similarity of the nesting beach.
+- **1:373:** Ringhofer and Yamamoto 2017 Animal Cognition. Horses looked at, touched and pushed the caretaker when food was out of reach.
+- **1:374:** Hagen and Broom 2004, Cambridge. Heifers that learned to open the gate themselves showed more excitement and a higher heart rate.
+- **1:375:** Zitterbart et al. 2011 PLOS ONE. Huddle waves every 30 to 60 seconds.
+- **1:376:** Kendrick et al. 2001 Nature. Sheep recognise 50 faces and remember them for two years.
+- **1:377:** Proops and McComb 2012. Horses match familiar people's voices to their faces; the playback setup is described.
+- **1:378:** Emlen 1970 Science. Indigo buntings learn the centre of sky rotation in a planetarium, even when it is set on another star.
+- **1:379:** Amboseli elephant project, Cynthia Moss, from 1972. Females gather, rumble and trumpet at a birth and help the calf stand. This is from my general memory of Moss and Poole's accounts, so please verify.
+- **1:380:** Streby et al. 2015 Current Biology. Golden-winged warblers in Tennessee left about a day before the April 2014 tornadic storms; the infrasound cause is stated as a likelihood.
+- **1:381:** Milk bottles first opened near Southampton in 1921 (Swaythling); Fisher and Hinde 1949 described the spread across Britain and to several species.
+- **1:382:** Garland et al. 2011. Songs spread east from eastern Australia to French Polynesia, recorded over 11 years.
+- **1:383:** Martin and Eadie 1999 "nest webs", Canadian forests. Woodpecker cavities are reused by ducks, owls and squirrels.
+- **1:384:** Wisdom, banded 1956 by Chandler Robbins on Midway, still laying eggs past age 70.
+- **1:385:** Woolfenden began the Archbold study in 1969, later joined by Fitzpatrick. Young scrub-jays stay on as helpers at the nest.
+- **1:386:** Spottiswoode, Begg and Begg 2016 Science, Niassa Reserve. The "brrr-hm" call greatly raises the chance of being guided; no figures are given in the note.
+- **1:387:** Feh and de Mazières 1993 Animal Behaviour. Grooming at the withers lowers horses' heart rate. That horses groom close partners is stated as general knowledge.
+- **1:388:** Handel wrote Zadok the Priest for George II's coronation in 1727, and it has been sung at the anointing at every British coronation since, including 2023.
+- **1:389:** Canada banned the potlatch by an 1884 amendment to the Indian Act and lifted the ban in 1951.
+- **1:390:** The first folk high school opened at Rødding in 1844. Folk high schools hold no exams, and Grundtvig wrote hundreds of songs.
+- **1:391:** The Central Commission for the Navigation of the Rhine was set up by the Congress of Vienna in 1815 and is the oldest international organisation still working.
+- **1:392:** The Swiss Federal Charter was agreed in August 1291 by Uri, Schwyz and Unterwalden, with a mutual-aid pledge.
+- **1:393:** Sweden passed its Freedom of the Press Act in 1766, with public access to official documents. Anders Chydenius is named as the main mover.
+- **1:394:** Peter Godber fled Hong Kong in 1973 while under investigation, and the ICAC was founded in 1974.
+- **1:395:** Wales passed its Well-being of Future Generations Act in 2015, which created a Future Generations Commissioner. The note calls the legislature "राष्ट्रीय सभा" (National Assembly).
+- **1:396:** The Sendai Framework covers 2015 to 2030 and was adopted at Sendai in March 2015. The area had been hit by the 2011 earthquake and tsunami.
+- **1:397:** Chadwick's sanitary report came out in 1842, and Britain's Public Health Act followed in 1848.
+- **1:398:** Madison's Federalist No. 51 (1788) is paraphrased: government would be unneeded if men were angels; it must control the governed and then itself.
+- **1:399:** The Élysée Treaty was signed on 22 January 1963. The note says the two countries fought three major wars within less than a century (1870, 1914, 1939).
+- **1:400:** Lincoln's Thanksgiving proclamation of 3 October 1863 named the last Thursday of November and listed blessings such as the harvest.
+- **1:401:** The Rijnland water board charter dates from 1255, and the board is described as one of the oldest democratic institutions still working.
+- **1:402:** The Torrens title system came from South Australia's Real Property Act of 1858.
+- **1:403:** Robert's Rules of Order was first published in 1876. The story that Henry Martyn Robert wrote it after failing to run a meeting is given without a date.
+- **1:404:** Degania, founded in 1910 near the southern shore of the Sea of Galilee, is called the first kibbutz.
+- **1:405:** Outward Bound was founded in 1941 at Aberdovey by Kurt Hahn and Lawrence Holt.
+- **1:406:** The Valencia Water Tribunal meets on Thursdays at noon at the Apostles' Door of the cathedral, has judges for eight canals, keeps no written record, and was listed by UNESCO in 2009.
+- **1:407:** Hjedding's cooperative dairy (1882) is called the first in Denmark, with profit shared by the volume of milk delivered.
+- **1:408:** The Lex Rhodia de iactu is cited as Digest 14.2, and general average is said to survive in modern maritime rules.
+- **1:409:** Mendha Lekha is a Gond village where the gram sabha decides by consensus. The note says it was among the first villages to get community forest rights in 2009; I wrote "among the first", not "the first".
+- **1:410:** Landsgemeinde assemblies are still held in Glarus and Appenzell Innerrhoden, with votes by raised hand.
+- **1:411:** Gideon v. Wainwright was decided in 1963. Gideon sent a handwritten petition and was acquitted at retrial.
+- **1:412:** England's Statute of Frauds was passed in 1677 and required certain contracts, such as land sales, to be in writing and signed.
+- **1:413:** The Mahad Satyagraha at Chavdar tank, led by Ambedkar, took place on 20 March 1927.
+- **1:414:** The Sherman Antitrust Act was passed in 1890, and Standard Oil was broken up in 1911.
+- **1:415:** Jongmyo Jerye and its ritual music were proclaimed a UNESCO Masterpiece in 2001, and the rite is held every year.
+- **1:416:** Under Lok Sabha Rule 380 the Speaker can expunge unparliamentary words, and the Lok Sabha Secretariat publishes a compilation of expunged words.
+- **1:417:** At Tham Luang, the 12 boys and their coach were trapped on 23 June 2018 and found nine days later by two British cave divers. All were out by 10 July.
+- **1:418:** The Frontier Nursing Service began in Kentucky in 1925 under Mary Breckinridge, with nurse-midwives travelling on horseback.
+- **1:419:** Brazil's Fome Zero began in 2003, and Brazil left the FAO Hunger Map in 2014.
+- **1:420:** Victoria introduced the secret, government-printed ballot in 1856, later known as the "Australian ballot".
+- **1:421:** Nehru's midnight speech of 14–15 August 1947 is paraphrased, including ending poverty, ignorance and disease.
+- **1:422:** Laxton, Nottinghamshire, still farms open fields, and its Court Leet jury inspects the fields every year and fines encroachments.
+- **1:423:** Figueres abolished Costa Rica's army in 1948, Article 12 of the 1949 constitution bans a standing army, and the Bellavista barracks became the National Museum.
+- **1:424:** The ever-normal granary is attributed to Geng Shouchang in 54 BCE, and Henry Wallace later took up the idea.
+- **1:425:** Semayne's Case (1604), reported by Coke, gives "a man's house is his castle" and the rule to state one's purpose at the door before forcing entry.
+- **1:426:** Cohen et al. 1997 JAMA, 276 volunteers; 1 to 3 types of relationship gave more than 4 times the cold risk of 6 or more types.
+- **1:427:** human milk has more than 200 oligosaccharides, the third largest solid part after lactose and fat.
+- **1:428:** Hill and Lupton coined "oxygen debt" in 1923 (Lupton's first name given as Hartley).
+- **1:429:** Vierordt made the first red cell count in 1852; about 4 to 6 million per microlitre.
+- **1:430:** latherin, the surfactant in horse sweat, University of Glasgow, 2009.
+- **1:431:** Dawes and colleagues saw fetal breathing movements in lambs in the early 1970s; human confirmation followed.
+- **1:432:** Emma Cohen et al. 2010, twelve rowers, higher pain threshold after rowing in sync.
+- **1:433:** Stellar, Keltner et al. 2015, awe linked to lower IL-6.
+- **1:434:** Loewi 1921 frog-heart experiment; Nobel 1936.
+- **1:435:** Berson (Brown University) 2002 Science, melanopsin ganglion cells.
+- **1:436:** Ehrlich 1885 dye spared the brain; Goldmann 1913 dye injected into brain fluid stained the brain only.
+- **1:437:** Engel 1977 Science, the biopsychosocial model.
+- **1:438:** Cambridge 2015 Nature Communications, about a quarter of genes vary with season.
+- **1:439:** Puhan et al. 2006 BMJ, didgeridoo lessons for 4 months in moderate sleep apnoea.
+- **1:440:** Paré's iron hand made by the locksmith known as "le petit Lorrain". The details of the gear-wheel and spring fingers are less certain.
+- **1:441:** WHO 2003 adherence report, about 50% adherence in developed countries.
+- **1:442:** Jenner, 14 May 1796, Sarah Nelmes, James Phipps, the cow Blossom.
+- **1:443:** Reynolds et al. 2016 Diabetologia, 41 patients, about 12% lower blood sugar after meals.
+- **1:444:** Paul et al. 2007, 105 children, buckwheat honey.
+- **1:445:** Stivers et al. 2009 PNAS, 10 languages, about 200 ms gap between turns.
+- **1:446:** Jacobsen et al. 2015 Brain, musical memory relatively spared in Alzheimer's.
+- **1:447:** three NEJM papers in April 2009 on brown fat in adults.
+- **1:448:** Kluger 1975 Science, behavioural fever in desert iguanas.
+- **1:449:** Christopher Lynn 2014 Evolutionary Psychology, fire video with sound lowered blood pressure.
+- **1:450:** Srigley et al. 2014; the first name given as Jocelyn; about three times more hand hygiene when auditors were visible.
+- **1:451:** Wehr 1992, 14-hour nights, sleep split in two with 1 to 3 hours awake between.
+- **1:452:** Foldit 2011, M-PMV protease solved in about three weeks after about 15 years unsolved.
+- **1:453:** James Harrison, more than 1,100 donations, about 2.4 million babies.
+- **1:454:** Lakota winter counts and their keeper.
+- **1:455:** Takaki and the 1884 Tsukuba voyage; diet of barley, meat and milk.
+- **1:456:** Benedetti 2001, east-facing rooms, about 3.5 days shorter stay.
+- **1:457:** FDA health claim for oats in 1997, barley "some years later".
+- **1:458:** Rose et al. 2008 Ophthalmology, Sydney Myopia Study.
+- **1:459:** Gettler, Kuzawa et al. 2011 PNAS, Cebu fathers' testosterone.
+- **1:460:** Berkeley curb-cut activism in the 1970s.
+- **1:461:** Andersson et al. 2011 BMJ, 400 infants, cord clamped at about 3 minutes, iron status at 4 months.
+- **1:462:** Huerta-Sánchez et al. 2014 Nature, EPAS1 from Denisovans.
+- **1:463:** Sundberg 1974, singer's formant near 3 kHz.
+- **1:464:** Martand Sun Temple built by Lalitaditya Muktapida, 8th century, near Anantnag.
+- **1:465:** Jokhang built in Songtsen Gampo's time, 7th century; pilgrims add butter/ghee to the lamps.
+- **1:466:** Rudradaman's Junagadh inscription, about 150 CE. Sudarshana dam built in Mauryan times, broken by a storm, rebuilt by the minister Suvishakha, no extra tax on subjects.
+- **1:467:** Hoba meteorite near Grootfontein, found 1920 by a farmer ploughing, about 60 tonnes, never moved.
+- **1:468:** Gateway of India completed 1924, architect George Wittet.
+- **1:469:** Basilica Cistern, about 532 under Justinian, 336 columns in 12 rows.
+- **1:470:** a clap at Golconda's main gate is heard at the Bala Hissar pavilion.
+- **1:471:** Nellaiappar temple (Tirunelveli) musical pillars cut from one stone; that the sculptors tuned them by thickness and length is given as "माना जाता है" (it is believed).
+- **1:472:** Pappus praised the economy of the honeycomb; Thomas Hales proved the honeycomb conjecture in 1999.
+- **1:473:** Taktsang built 1692 around Padmasambhava's cave, about 900 m above the valley.
+- **1:474:** Belur Chennakeshava consecrated 1117 under Vishnuvardhana; sculptors' names, including Dasoja, carved on the image bases.
+- **1:475:** Venetian campo cisterns: rain filtered through sand into a central well.
+- **1:476:** Arkadiko bridge, Mycenaean, about 13th century BCE, corbel arch without mortar, still in use.
+- **1:477:** Vimal Vasahi built 1031 by Vimal Shah, minister of Bhima I, dedicated to Rishabhanatha.
+- **1:478:** tetrapods designed 1950 at a Grenoble hydraulics laboratory by Pierre Danel and Paul Anglès d'Auriac.
+- **1:479:** Coventry destroyed 14 November 1940; new cathedral by Basil Spence consecrated 1962; "Father Forgive" inscribed in the ruins.
+- **1:480:** Mehtab Bagh's octagonal pool reflects the Taj; Archaeological Survey of India excavations in the 1990s.
+- **1:481:** Darasuram Airavatesvara built under Rajaraja II, 12th century; a mandapa carved as a chariot with wheels and horses.
+- **1:482:** Grandes Écuries, Chantilly, 1719–1735, architect Jean Aubert; now a horse museum.
+- **1:483:** Kinderdijk's 19 windmills, about 1740.
+- **1:484:** Empire State Building completed 1931, struck by lightning usually more than 20 times a year, lightning studied there in the 1930s.
+- **1:485:** Salt Lake Tabernacle 1867; a pin dropped on the stage is heard at the back.
+- **1:486:** Evergreen Point Floating Bridge opened 2016, said to be the world's longest floating bridge.
+- **1:487:** Howrah Bridge opened 1943, cantilever design, joined with rivets rather than bolts, no pier in the river.
+- **1:488:** Bell Rock Lighthouse 1810, Robert Stevenson; the oldest sea-surrounded lighthouse still working.
+- **1:489:** Kumbhabhishekam usually repeated about every 12 years.
+- **1:490:** Circus Maximus about 600 m long; seven laps per race.
+- **1:491:** Hagia Sophia 537, architects Anthemius and Isidore, 40 windows at the base of the dome.
+- **1:492:** Maeslantkering 1997; it closes automatically on a surge forecast.
+- **1:493:** Abu Simbel's two sun-alignment days; moved 1964–68 to escape the Aswan High Dam lake.
+- **1:494:** Elwha's two dams removed 2011–2014, called the largest dam removal to that date; salmon and sediment returned.
+- **1:495:** Jaisalmer fort built 1156 by Rawal Jaisal, 99 bastions, still lived in. The note also says the number 99 is used in the Rigveda for Shambara's forts.
+- **1:496:** Golghar built 1786, Captain John Garstin, after the 1770 famine, about 29 m high.
+- **1:497:** Shwedagon about 100 m high, gold-plated, gem-studded top.
+- **1:498:** Kongo Gumi founded 578 for Shitennō-ji, run by one family for more than 40 generations, absorbed by a larger builder in 2006.
+- **1:499:** Ise Jingu rebuilt every 20 years; 2013 was the 62nd rebuilding.
+- **1:500:** Córdoba Mezquita begun in the 8th century; double arches in red and white stripes.
+- **1:501:** Sas-Bahu temple, Gwalior, built 1093 by Mahipala of the Kachchhapaghata dynasty; the name is said to come from Sahasrabahu.
+- **1:502:** Madhava of Sangamagrama, 14th century. The pi/4 series came about 250 years before Gregory and Leibniz.
+- **1:503:** Osborne Reynolds' dye-in-pipe experiment, Manchester, 1883.
+- **1:504:** The Parshvanath temple at Khajuraho, 10th century, has a 4x4 magic square summing to 34, including broken diagonals.
+- **1:505:** YBC 7289 is dated about 1800 to 1600 BCE and gives 1.41421296, correct to five decimals.
+- **1:506:** Darcy 1856, sand-column experiments in the appendix of his Dijon fountains book.
+- **1:507:** The falcon altar starts at 7.5 square purusha and grows by one square purusha in each later rite, keeping its shape. I am fairly sure of this from the Shulbasutra literature; please verify.
+- **1:508:** Frank Ramsey died in 1930 aged 26. Among any six people there are three mutual acquaintances or three mutual strangers; five people are not enough.
+- **1:509:** Kelvin's tide-predicting machine, 1872, summing constituents with pulleys and a cord.
+- **1:510:** Francis Guthrie posed the four-colour question in 1852 while colouring a map of English counties. Appel and Haken proved it in 1976 with computer help.
+- **1:511:** Emmy Noether's theorem, Gottingen, 1918.
+- **1:512:** Harappan chert weight ratios: 1, 2, 4 ... 64, then 160, 200, 320, 640.
+- **1:513:** Jaipur was founded in 1727 and planned by Vidyadhar Bhattacharya, who came from Bengal, on a grid said to follow the vastu square-mandala.
+- **1:514:** Stolum, Science 1996: in his model, river sinuosity hovers near pi.
+- **1:515:** Virahanka is dated about the 6th to 8th century. The number of long-short syllable patterns of n matras gives 1, 2, 3, 5, 8, 13.
+- **1:516:** Amicable numbers 220 and 284, and Thabit ibn Qurra's 9th-century rule for finding such pairs.
+- **1:518:** Poincaré, Science et méthode (1908): the idea came as he stepped onto a vehicle at Coutances.
+- **1:519:** Kaprekar of Devlali found the 6174 routine in 1949. It needs at most 7 steps.
+- **1:520:** Buffon posed the needle problem in 1733 and published it in 1777. The probability is 2/pi.
+- **1:521:** The Lebombo bone has 29 notches and is over 40,000 years old. The lunar-count reading is stated in the note as uncertain.
+- **1:522:** Rajveer Meena, 21 March 2015, VIT Vellore: 70,000 digits of pi, blindfolded, about 10 hours, a Guinness record.
+- **1:523:** Rudrata's Kavyalankara (9th century) gives the turagapada-bandha on a half chessboard. I described the knight's-move reading in general terms only.
+- **1:524:** Omar Khayyam solved cubic equations through intersecting conic sections.
+- **1:525:** Sangaku tablets of the Edo period, 17th to 19th century, often show the problem and answer without the method.
+- **1:526:** The mahavedi measures 30 (west), 24 (east) and 36 (long). Its right angle was set with a 15-36-39 cord.
+- **1:527:** Liber Abaci, 1202. Fibonacci learned Indian numerals at Bugia, where his father was an official.
+- **1:528:** Plimpton 322 is dated about 1800 BCE and held at Columbia University. Its first row corresponds to the triple 119, 120, 169.
+- **1:529:** The chessboard total is 2^64 - 1, a 20-digit number.
+- **1:530:** The Rhind papyrus was copied by Ahmes about 1550 BCE. Problem 41 is a cylindrical granary 9 cubits across and 10 high, using (8/9 d)^2, which gives pi of about 3.16.
+- **1:531:** Vajasaneyi Samhita 17.2 names the numbers up to parardha (10^12), and samudra is 10^9.
+- **1:532:** Zu Chongzhi's 355/113 (milu) is accurate to six decimals.
+- **1:533:** Ma Jun's south-pointing chariot, 3rd century, worked by gearing, not a magnet. The note says it is a recorded description.
+- **1:534:** Aristarchus put the sun 18 to 20 times farther than the moon. The true ratio is about 400.
+- **1:535:** Natyashastra sarana experiment with two vinas to show the 22 shrutis. I gave no chapter number.
+- **1:536:** The Shulbasutra wheel-shaped altar comes in a spoked and a solid form, with the same area as the falcon altar.
+- **1:537:** Al-Khwarizmi, about 820, wrote his algebra entirely in words.
+- **1:538:** The Oksapmin count on 27 body points, studied by Geoffrey Saxe. The sequence of body parts in the note is given approximately.
+- **1:539:** Tartaglia against Fiore, Venice, 1535, thirty problems each; Fiore solved almost nothing.
+- **1:540:** Plimsoll load line made compulsory by the Merchant Shipping Act 1876.
+- **1:541:** Flying Cloud 1854, New York to San Francisco in 89 days 8 hours. Record stood about 135 years. Eleanor Creesy navigated with Maury's charts.
+- **1:542:** Forbes put the azoic limit at about 300 fathoms (about 550 m). Challenger 1872–76 found life thousands of metres down.
+- **1:543:** Ibn Majid's al-Fawa'id. The isba is a finger-width unit. The kamal's string was held in the teeth.
+- **1:544:** Munk et al. 1963 tracked swell from the Southern Ocean to Alaska, with stations from New Zealand to Alaska.
+- **1:545:** Flinders' circumnavigation 1801–03 on Investigator. His cat Trim. He wrote a tribute to Trim while detained on Mauritius.
+- **1:546:** Pharos attributed to Sostratus of Cnidus. French "phare", Italian "faro".
+- **1:547:** Friendly Floatees, January 1992, 28,800 toys. Some reached Alaska within months.
+- **1:548:** Tupaia of Ra'iatea joined Endeavour in 1769, drew an island chart and spoke with the Māori.
+- **1:549:** Northern cod moratorium, 2 July 1992. "At least 30,000" jobs lost.
+- **1:551:** Levi ben Gershon (Provence) described the cross-staff in the 14th century. Used by 16th-century seamen.
+- **1:552:** Ballast Water Management Convention adopted 2004, in force 8 September 2017.
+- **1:553:** Madrid Protocol 1991. Dogs removed from Antarctica by 1994 over fear of disease spreading to seals.
+- **1:554:** Zacuto's Almanach Perpetuum 1496, with solar declination tables. Said to have been used on da Gama's voyage.
+- **1:555:** Fram drift 1893–96. Rounded hull lifted by the ice.
+- **1:556:** Foulis steam fog whistle, Partridge Island near Saint John NB, 1859, called the first.
+- **1:557:** Carter v Boehm 1766 (insurance on a Sumatra fort) and Marine Insurance Act 1906, section 17.
+- **1:558:** Qiantang bore, watched around the 8th lunar month full moon.
+- **1:559:** Greenwich time ball dropped daily at 1 pm since 1833.
+- **1:560:** 32-point compass rose, 11.25° per point, "boxing the compass".
+- **1:561:** Cook's sauerkraut served at the officers' table, with crew allowance within a week (Endeavour journal 1769). Copley Medal 1776.
+- **1:562:** Landnámabók, Hrafna-Flóki's three ravens.
+- **1:563:** Charrier, Mathevon and Jouventin, Nature 2001. Subantarctic fur seal pups on Amsterdam Island recognise their mother's voice.
+- **1:564:** UNESCO 2012 Bahrain pearling site, including oyster beds and Muharraq houses.
+- **1:565:** Knox-Johnston, 14 June 1968 to 22 April 1969, 312 days, nine starters. Gave his prize money to Crowhurst's family.
+- **1:566:** SOS adopted at Berlin 1906, in force 1 July 1908.
+- **1:567:** Dog watches, 16:00–20:00, split so the rota shifts daily.
+- **1:568:** Nathan Evans' Wellerman, posted late 2020, viral by January 2021.
+- **1:569:** Bali Jatra at Cuttack from Kartik Purnima. Boats with lamps floated that morning.
+- **1:570:** SS Lima milky sea, 25 January 1995. Miller et al. 2005, about 15,000 km².
+- **1:571:** Beypore uru dhows built without drawings, still sold to Gulf buyers.
+- **1:572:** COLREGs 1972, in force 1977. Whistle signals: 1 short blast starboard, 2 port, 3 astern.
+- **1:573:** Malinowski 1922. Kula necklaces go one way, armshells the other.
+- **1:574:** Crosby 1972. Columbus' 1493 second voyage carried horses and other animals.
+- **1:575:** HMS Alarm copper sheathing, 1761.
+- **1:576:** Life on the Mississippi 1883. "Mark twain" means two fathoms.
+- **1:577:** Goethe, Italian Journey, Venice, October 1786. Gondoliers singing Tasso in alternation.
+- **1:578:** Srikalahasti kalamkari uses a bamboo pen with a wool wad tied near the tip, which releases dye under finger pressure.
+- **1:579:** Real Surat zari is flattened silver wire wound on a silk core and gilded with gold.
+- **1:580:** Jute retting in Bengal takes about two to three weeks under water, with weights on the bundles.
+- **1:581:** Chardonnet made artificial silk by forcing a solution through fine holes in the 1880s. It is called the first commercial artificial silk and drew attention at the 1889 Paris Exposition.
+- **1:582:** Co-optex, the Tamil Nadu handloom weavers' cooperative, was founded in 1935.
+- **1:583:** The Gilgit manuscripts were found in 1931 at Naupur, inside a stupa. They are on birch bark, dated about the 5th to 7th century, and include Buddhist sutras.
+- **2:586:** Jharkhand is the largest producer of tussar silk, and the silkworm feeds on Asan and Arjun trees.
+- **2:587:** For about 15 days after Snana Purnima, painted anasara patti are worshipped at Puri in place of the Jagannath images.
+- **2:588:** The Khatri family of Nirona in Kutch kept Rogan painting alive when the art was close to dying out. Rogan paste is castor oil boiled for hours and drawn with a metal stylus.
+- **2:590:** Moulherat and others (2002) found mineralised cotton fibres in a copper bead from a Mehrgarh burial, dated to the 6th millennium BCE.
+- **2:591:** Muga silk is made only in Assam. Antheraea assamensis feeds on som and soalu leaves, and the golden colour is natural. The claim that it "brightens with washing" is given only as "कहा जाता है" (it is said).
+- **2:592:** This is my least certain fact. The Khatri Ajrakh printers left Dhamadka because its water was getting worse, and founded Ajrakhpur near Bhuj after the 2001 earthquake.
+- **2:593:** In Bidri work, the zinc alloy is blackened with a paste of soil from Bidar fort and sal ammoniac (written नवसादर).
+- **2:596:** Herschel devised the cyanotype in 1842. Anna Atkins made her algae book with it in 1843, and it is regarded as the first book illustrated with photographic images.
+- **2:597:** The kani pattern is written in a coded script called talim, and one piece can take several months.
+- **2:598:** Edo-period firefighters wore heavy sashiko-stitched coats soaked in water.
+- **2:599:** Phulkari is darned from the reverse side with untwisted silk floss (pat), and a bagh was traditionally begun at a girl's birth for her wedding.
+- **2:605:** The Dolni Vestonice figurine was found in 1925 and is dated about 29,000 to 25,000 BCE.
+- **2:606:** Jharkhand is the main producer of lac, and lac dye was once used for cloth.
+- **2:607:** The washi method nagashizuki uses neri, a mucilage from tororo-aoi root. UNESCO inscribed washi in 2014.
+- **2:608:** The orange corolla tubes of harsingar were used as a dye and as a cheap substitute for saffron.
+- **2:610:** Manamadurai is known for ghatam making, and the potters tune each pot by tapping it and listening.
+- **2:611:** Paithan is ancient Pratishthana, the Satavahana capital, and Yeola became a Paithani weaving centre in the 18th century.
+- **2:612:** Bagh print cloth is washed in the Baghini river, and the printers believe its minerals brighten the colours. The note gives this as their belief.
+- **2:614:** Lemongrass oil was used on palm-leaf manuscripts, and the incised letters were inked with a paste of charcoal powder and oil.
+- **2:616:** Ella Flatau started the first Danish forest kindergarten in the early 1950s.
+- **2:617:** Gelman and Gallistel 1978, counting principles. Three of the five are listed.
+- **2:618:** Reber 1967, implicit learning of artificial grammars.
+- **2:619:** Tulving and the amnesic patient K.C. (no past episodes, no imagined future). I left out the year; my claims line says 1985, but the 1985 paper may describe patient N.N.
+- **2:620:** Firestein's "Ignorance" course at Columbia and his 2012 book.
+- **2:621:** Richard Q. Bell 1968, direction of effects in socialization.
+- **2:622:** Oslo breakfast, Carl Schiøtz, 1932, and its foods (milk, wholegrain bread, cheese, fruit or raw carrot).
+- **2:623:** Darwin's infant sketch in Mind, 1877, about his first son; his children were late with colour names and he suspected colour blindness.
+- **2:624:** Pestalozzi's Yverdon institute, 1805; the motto "head, heart and hand".
+- **2:625:** Mallakhamb revived by Balambhatdada Deodhar under Peshwa Bajirao II; it is Madhya Pradesh's state sport.
+- **2:626:** A. B. Graham's 1902 rural youth club in Ohio as the origin of 4-H.
+- **2:627:** RESPIRE trial (Kirk Smith, Lancet 2011): chimney stoves and fewer cases of severe child pneumonia. No percentage given.
+- **2:628:** First open-air forest school at Charlottenburg, 1904, for weak children at risk of tuberculosis.
+- **2:629:** Heider and Simmel 1944, film of two triangles and a circle.
+- **2:630:** Vosniadou and Brewer 1992, children's flat or hollow models of the earth.
+- **2:631:** Most plants open their stomata in light and close them in the dark.
+- **2:632:** Waldorf school, Stuttgart 1919, Emil Molt and Steiner; a morning main lesson of about two hours, in blocks of three to four weeks.
+- **2:633:** "A Private Universe" (1987): Harvard graduates explained the seasons by distance from the sun.
+- **2:634:** Haith et al. 1988, anticipatory eye movements in 3.5-month-olds.
+- **2:635:** Alfredo Moser, Uberaba, 2002, bottle light with water and bleach; spread later by Liter of Light.
+- **2:636:** Tronick still-face experiment, presented 1975.
+- **2:637:** Gesell's observation dome with one-way screen at Yale.
+- **2:638:** Su Song's clock tower at Kaifeng, 1088 to 1092, water-driven, with bells or gongs announcing the time.
+- **2:639:** Sudbury Valley School, Framingham, 1968; one vote each for students and staff.
+- **2:640:** Rhoda Kellogg, "Analyzing Children's Art" (1969), drawings by children aged 2 to 8; she found mandalas and suns come before human figures.
+- **3:641:** Roger Hart, "Children's Experience of Place" (1979), a New England town.
+- **3:642:** Reggio Emilia, 1945, Villa Cella; parents sold military vehicles and horses; Malaguzzi and the "hundred languages".
+- **3:643:** Per Henrik Ling, Royal Central Gymnastics Institute, Stockholm, 1813.
+- **3:644:** INCAP Oriente study 1969 to 1977, four villages, atole versus fresco; Hoddinott et al., Lancet 2008, found higher wages in men who had atole very early.
+- **3:645:** Fehr, Bernhard and Rockenbach, Nature 2008, Swiss children aged 3 to 8 sharing sweets.
+- **3:646:** Kodály concept listed by UNESCO as a good safeguarding practice in 2016; hand signs.
+- **3:647:** Horst, Parsons and Bryan 2011: 3-year-olds learned words better from repeated stories.
+- **3:648:** Murdock 1962 serial position curve.
+- **3:649:** Andrew Bell took charge of the Egmore military orphan asylum in Madras in 1789; sand writing; he published his account in 1797.
+- **3:650:** Japanese classroom routine "kiritsu, rei, chakuseki" led by the student on duty; a bow again at the end of the lesson.
+- **4:651:** Nakata and Trehub 2004: 6-month-olds watched video of their mother singing longer than video of her speaking.
+- **4:652:** Lanarkshire milk experiment 1930, about 20,000 children over four months; Gosset ("Student") criticised in 1931 that teachers had changed which children got milk.
+- **4:653:** Edible Schoolyard, Berkeley, 1995, Alice Waters.
+- **4:654:** Bernie Krause recorded Lincoln Meadow (California) in 1988; it was selectively logged the next year and the re-recording had lost most of its density.
+- **4:655:** wild ass of the Little Rann fell to a few hundred by the mid-20th century, mainly from disease; the 2020 count was over 6,000 (6,082).
+- **4:656:** Landsat 1 launched 23 July 1972; Hansen et al. 2013 Science global forest change maps cover 2000 to 2012.
+- **4:657:** cheetah declared extinct in India in 1952; eight cheetahs from Namibia released at Kuno on 17 Sep 2022.
+- **4:658:** East Kolkata Wetlands became a Ramsar site in 2002; Dhrubajyoti Ghosh as the engineer who drew attention to them.
+- **4:659:** Khichan villagers have fed demoiselle cranes for "several decades" (the start date is deliberately left vague).
+- **4:662:** Namibia's 1996 law change created communal conservancies; "more than eighty" exist today.
+- **4:663:** Sukhomajri watershed work dated to the 1970s; the claim that grass returned and milk rose.
+- **4:664:** Ramsar Convention signed 2 Feb 1971; India joined in 1982.
+- **4:665:** Tansley coined "ecosystem" in a 1935 paper in Ecology.
+- **4:666:** Kanha hard-ground barasingha fell to about 66 around 1970; now several hundred.
+- **4:667:** I avoided saying recorded calls were used, because I am not sure they were.
+- **4:668:** first Christmas Bird Count on 25 Dec 1900, led by Frank Chapman, with 27 participants.
+- **4:669:** Sequoia and Kings Canyon began the first National Park Service prescribed-burn programme in 1968.
+- **4:670:** Silent Spring published 27 Sep 1962; US banned DDT for agricultural use in 1972.
+- **4:671:** Silent Valley project was on the Kunthipuzha; Sugathakumari and the KSSP led the protest; declared a national park in 1984.
+- **4:672:** Mauritius kestrel down to four known wild birds in 1974; Carl Jones's work from 1979.
+- **4:673:** Knepp rewilding from 2001; nightingale and turtle dove returned.
+- **4:674:** Costanza et al. 1997 Nature valued ecosystem services at about US$33 trillion a year, above global GNP at the time.
+- **4:675:** Monteverde reserve founded 1972; golden toad last seen 1989.
+- **4:676:** Laporiya chauka system by Laxman Singh, dated to the 1980s.
+- **4:677:** Sandoz fire near Basel on 1 Nov 1986; Rhine Action Programme in 1987 with a "salmon by 2000" goal; salmon returning in the 1990s.
+- **4:678:** the April 1935 dust storm reached Washington while Bennett was testifying before a Senate committee; Soil Conservation Service created in 1935 with Bennett as its first chief.
+- **4:679:** Movile Cave found in 1986 near Mangalia; isolated for about 5.5 million years.
+- **4:680:** Convention on Biological Diversity opened for signature at Rio in June 1992; in force 29 Dec 1993.
+- **4:681:** Lonesome George found in 1971; died 24 June 2012.
+- **4:682:** rats arrived on Lord Howe Island in 1918; stick insect rediscovered on Ball's Pyramid in 2001; bred at Melbourne Zoo, with "thousands" of offspring.
+- **4:683:** Kissimmee channelized 1962 to 1971; restoration 1999 to 2021.
+- **4:684:** I left out Khonoma's sanctuary area because I am not sure of the figure.
+- **4:685:** South Georgia rat eradication 2011 to 2015; declared rodent-free in 2018; pipit recovering.
+- **4:686:** Immerzeel et al. 2020 Nature assessed 78 water towers and ranked the Indus most important and most vulnerable.
+- **4:687:** Gordon et al. 2019 Nature Communications; healthy-reef playback roughly doubled juvenile fish arrivals.
+- **4:688:** gharial project began 1975; National Chambal Sanctuary 1979, spanning three states.
+- **4:689:** Chilika's new mouth opened Sept 2000; fish catch rose several-fold; called Asia's largest brackish lagoon.
+- **4:690:** inner Nanda Devi closed to climbers in 1983; World Heritage Site in 1988.
+- **4:691:** Kokaral dam completed 2005 with World Bank support.
+- **4:692:** beavers gone from Scotland about 400 years; released at Knapdale in May 2009 as the first formal mammal reintroduction in Britain.
+- **4:693:** gaur locally extinct at Bandhavgarh by the 1990s; about 50 moved from Kanha in 2011 and 2012.
+- **4:694:** a reaction under 0.100 s counts as a false start; Bolt was disqualified in the Daegu 2011 100 m final.
+- **4:695:** in the team pursuit, time is taken on the third rider, and a rider sometimes peels off early.
+- **4:696:** Roy Sullivan was struck seven times between 1942 and 1977, and his hair and eyebrows were singed.
+- **4:697:** Fred Lorz (St Louis 1904) rode a large part of the course by car and was disqualified.
+- **4:698:** the Man versus Horse race has run since 1980, is about 35 km, and Huw Lobb was the first human winner in 2004.
+- **4:700:** Bergström and colleagues, 1967, measured muscle glycogen by needle biopsy, and a carbohydrate diet lengthened cycling endurance.
+- **4:701:** Switzer entered as "K. V. Switzer" in 1967; women were official at Boston from 1972.
+- **4:702:** Ironman 1978 in Honolulu: John Collins, 15 starters, Gordon Haller won, distances about 3.9 km, 180 km and a marathon.
+- **4:703:** Ron Hill's daily run streak lasted from December 1964 to January 2017, over 52 years.
+- **4:704:** Jim Peters collapsed from heat at Vancouver 1954 and never raced again.
+- **4:705:** Robert Cade, University of Florida, 1965, Gatorade.
+- **4:706:** Wulf, Höß and Prinz 1998, ski simulator, attention on the wheels versus the feet.
+- **4:707:** Russell Strong, Brisbane 1989, mother to son, living-donor liver transplant. The liver regrows in "कुछ मासों में".
+- **4:708:** Derek Redmond, Barcelona 1992, 400 m semifinal; his father passed security.
+- **4:709:** Grosjean, Bahrain 2020; the halo became mandatory in 2018; he got out in about half a minute.
+- **4:710:** Arati Saha swam the Channel on 29 September 1959 at age 19. Her first attempt in August failed, the swim took over 16 hours, and she got the Padma Shri in 1960.
+- **4:711:** Hakone Ekiden has run since 1920 and is now held 2 and 3 January, with 10 runners per team over about 217 km and a tasuki sash.
+- **4:712:** University of Washington eight, Berlin 1936, coxswain Bob Moch, a narrow win.
+- **4:713:** kabaddi has been in the Asian Games since Beijing 1990 and India won gold; the raider is penalised when the chant breaks.
+- **4:714:** Nevill, Balmer and Williams 2002, crowd noise and referee foul calls.
+- **4:715:** the capoeira circle was inscribed by UNESCO in 2014.
+- **4:716:** Triplett 1898, cycling records and fishing reels.
+- **4:717:** Bobby Jones called a penalty on himself at the 1925 US Open, lost the playoff, and the USGA sportsmanship award bears his name.
+- **4:718:** the last solid gold medals were given at Stockholm 1912; today's gold medal is silver with at least 6 g of gold.
+- **4:719:** Comrades Marathon, Vic Clapham 1921, about 90 km, the direction usually alternates.
+- **4:720:** Maldini played 1985 to 2009 for Milan only, his father Cesare also played there, and shirt 3 is withdrawn.
+- **4:721:** Mah et al. 2011, Stanford basketball, sleep extension, shooting about 9% better.
+- **4:722:** Karageorghis (Brunel), exercise to music that matches its pace gives longer endurance. I gave no numbers.
+- **4:723:** the heptathlon's seven events, first held at Los Angeles 1984, won by Glynis Nunn.
+- **4:724:** Naadam, July, three games, UNESCO 2010.
+- **4:725:** Los Angeles 1932 village at Baldwin Hills, cottages, dining hall, hospital and post office; women stayed in a hotel.
+- **4:726:** Beamon jumped 8.90 m, 55 cm over the old record, which stood 23 years until Powell in 1991.
+- **4:727:** Kanakuri, Stockholm 1912, finished in 1967 at Swedish TV's invitation, recorded as 54 years 8 months and some days.
+- **4:728:** Małachowski auctioned his Rio 2016 discus silver for a boy's eye cancer treatment, and the buyers let him keep the medal.
+- **4:729:** Clemente got his 3000th hit in 1972 and died on 31 December 1972 flying aid to Nicaragua; MLB's award bears his name.
+- **4:730:** Monti gave a bolt to Nash and Dixon at Innsbruck 1964, won bronze, and received the first Pierre de Coubertin medal.
+- **4:731:** London 2012 had about 70,000 Games Makers, from over 200,000 applicants.
+- **4:732:** Nanni's complaint to Ea-nasir, Ur, about 1750 BCE, in the British Museum, among the oldest written complaints.
+- **4:733:** Latin pecunia from pecus; Old English feoh meaning cattle and property; Sanskrit paśu treated as cognate.
+- **4:734:** thousands of US bank failures 1930 to 1933; the 1933 act created federal deposit insurance and failures fell sharply in 1934.
+- **4:735:** the Woolsack dates from Edward III's 14th century, and is now filled with wool from Commonwealth countries.
+- **4:736:** the Kushim tablet from Uruk, about 3100 BCE, is a barley account and possibly the earliest recorded personal name.
+- **4:737:** Fuggerei, Augsburg, 1516; yearly rent 0.88 euro; residents say three daily prayers for the Fuggers.
+- **4:738:** Ricardo 1817, England cloth and Portugal wine, Portugal more efficient in both.
+- **4:739:** Ushavadata (Nahapana's son-in-law), Nasik Pandavleni inscription. Some thousands of karshapanas were placed with two weavers' guilds, and the interest paid for monks' robes and other needs. This is the fact I am least sure of in its details.
+- **4:740:** Rochdale Pioneers, 1844, 28 members, Toad Lane; one member one vote; dividend paid in proportion to purchases.
+- **4:741:** Lionel Robbins' 1932 definition of economics.
+- **4:742:** Arthashastra 1.4 gives the four aims of dandaniti: acquire, protect, increase, bestow on the worthy.
+- **4:743:** commenda, Venice and Genoa; the investor usually took three-quarters of the profit.
+- **4:744:** Les Henokiens founded 1981 in France; firms over 200 years old with a descendant still managing; named after Enoch.
+- **4:745:** Pulitzer's New York World campaign, 1885; more than 100,000 donors, most giving a dollar or less; more than 100,000 dollars raised.
+- **4:746:** Statute of Artificers 1563 required a seven-year apprenticeship. The note now says only that the rule lasted "about 250 years"; the source behind that is the repeal in 1814.
+- **4:747:** in 1882 Bhagwanlal Indraji found a fragment of Ashoka's Rock Edict VIII at Sopara and relic caskets in the stupa there.
+- **4:748:** Corn Laws repealed 1846 under Peel, who left office the same year.
+- **4:749:** Herodotus 4.196 on the silent trade between Carthaginians and Libyans, with a smoke signal.
+- **4:750:** Abraham Darby, coke smelting, Coalbrookdale 1709; the first major cast-iron bridge was later built in the same gorge.
+- **4:751:** Nordhaus, 1990s, history of the labour price of light; the note says it fell "several hundredfold or more".
+- **4:752:** the Floud Commission (1940) recommended a two-thirds share for sharecroppers; the Tebhaga movement was in 1946-47.
+- **4:753:** Bismarck's sickness insurance law, 1883; workers and employers both paid in; it gave treatment and sick pay.
+- **4:754:** the London Stock Exchange motto is Dictum Meum Pactum.
+- **4:755:** the Maria Theresa thaler is restruck dated 1780 and was used in Arabian and Ethiopian trade into the 20th century.
+- **4:756:** Erie Canal 1825, about 580 km; freight cost fell to about one-tenth.
+- **4:757:** Coase 1974 on privately built English lighthouses paid for by port dues.
+- **4:758:** Strabo 11.2.19: perforated troughs and fleecy skins caught gold in Colchis, as the origin of the golden fleece story.
+- **4:759:** Statute of Anne 1710 gave 14 years, renewable once for 14.
+- **4:760:** Credem bank accepts Parmigiano Reggiano wheels as loan collateral and ages them in its own stores.
+- **4:761:** Robert Owen ran New Lanark from 1800 and opened a school for workers' children in 1816.
+- **4:762:** Ideal X sailed 26 April 1956 from Newark to Houston with 58 containers.
+- **4:763:** ASCAP was founded in 1914 with Victor Herbert among the founders; the Supreme Court case was in 1917.
+- **4:764:** Murrah buffalo of Haryana, with curled horns; India is the largest milk producer and a large share of its milk comes from buffaloes.
+- **4:765:** the Exchequer's split hazel tally sticks were abolished in 1826, and burning them caused the 1834 Westminster fire.
+- **4:766:** Article 280; the first Finance Commission was in 1951 under K.C. Neogy.
+- **4:767:** Tennessee Valley Authority, 1933.
+- **4:768:** Harris Tweed Act 1993 (handwoven at home in the Outer Hebrides); Orb mark registered in 1909.
+- **4:769:** Maecenas was patron of Virgil and Horace; French mécène.
+- **4:770:** Galalith, a casein-formaldehyde plastic by Adolf Spitteler and Wilhelm Krische, 1897 (patent about 1899).
+- **4:771:** Duan inkstones from Guangdong, famous since the Tang period, and the "four treasures of the study".
+- **4:772:** the "tin cry" is caused by mechanical twinning.
+- **4:773:** Berzelius coined "catalysis" in 1835.
+- **4:774:** Saxon miners' kobold, arsenical fumes, and cobalt isolated by Georg Brandt around 1735.
+- **4:775:** iron-gall ink darkens after writing as the iron oxidises.
+- **4:776:** Alexander Marcet, 1819, constant ratios of sea salts; Forchhammer confirmed it in 1865.
+- **4:777:** Haüy's broken calcite anecdote and his 1784 essay on crystal structure.
+- **4:778:** Ytterby, a black mineral found in the late 18th century, four elements named after the village.
+- **4:779:** Alfred Wilm, 1906, age hardening found after a weekend; duralumin used in aircraft frames.
+- **4:780:** Harry Brearley, Sheffield, 1913, about 13% chromium, first big use in cutlery.
+- **4:781:** Proust's copper carbonate work in Spain in the 1790s.
+- **4:782:** Staudinger's 1920 macromolecule paper and his 1953 Nobel prize.
+- **4:783:** Perkin, age 18, 1856, trying to make quinine; opened a factory the next year.
+- **4:784:** Georges Claude's neon tubes at the Paris motor show, December 1910.
+- **4:785:** Pfann's zone refining published in 1952 at Bell Labs, used on germanium.
+- **4:786:** tempering colours go from straw yellow to blue as the temperature rises.
+- **4:787:** Tsvet, 1906, chalk column, green and yellow bands, the name "chromatography".
+- **4:788:** Belousov around 1951, paper rejected; Zhabotinsky later; colour waves seen in thin layers.
+- **4:789:** Haber 1909, Bosch industrial by 1913; Smil's estimate that about two-fifths of people depend on it.
+- **4:790:** thermoluminescence dating developed by Martin Aitken and colleagues at Oxford in the 1960s.
+- **4:791:** Scheele's "fire air" around 1771-72, his book delayed to 1777, Priestley published first.
+- **4:792:** Döbereiner, Jena, 1823, hydrogen ignites on platinum; the lamp sold before matches were common.
+- **4:793:** Lydian electrum coins around the 7th century BCE, electrum from river sand.
+- **4:794:** Moseley 1913, atomic number from X-ray frequencies, killed at Gallipoli aged 27.
+- **4:795:** Stanislas Sorel's 1837 patent for hot-dip galvanising.
+- **4:796:** Liberty Bell cast in London in 1752, cracked on its first ring, recast by Pass and Stow with added copper, recast again in 1753 because the tone was disliked.
+- **4:797:** "fulgurite" comes from the Latin for lightning; some are several metres long.
+- **4:798:** Bénédictus, 1903 flask accident, 1909 patent, used in World War I gas-mask eyepieces.
+- **4:799:** Dollond's 1758 achromatic lens patent, with Chester Moor Hall having made one earlier.
+- **4:800:** Goldschmidt found the thermite reaction in 1893 and uses it to weld rail joints on site.
+- **4:801:** chuño (freeze-dried potato) is older than the Inca empire.
+- **4:802:** Hennig Brand, Hamburg, 1669, phosphorus from urine, called the first element found by a known person.
+- **4:803:** Joseph Aspdin, Leeds, 1824 patent, named after Portland stone.
+- **4:804:** Bessemer 1856, steel made in tons within minutes.
+- **4:805:** Willstätter showed magnesium is central to chlorophyll; 1915 Nobel prize.
+- **4:806:** Latin minium (red lead in the Middle Ages), "miniator", and the origin of "miniature".
+- **4:807:** Tang Taizong sent people to Magadha in 647 to learn sugar-making; "sugar" and "candy" come from Sanskrit śarkarā and khaṇḍa.
+- **4:808:** Mawmluh cave stalagmite marks the drought of about 4,200 years ago. The Meghalayan Age was named on this basis in 2018 (the note says only "भूवैज्ञानिकों").
+- **4:809:** Lehmann, 1936, solid inner core. Her paper's title was "P′" (the note says one letter and one mark).
+- **4:810:** Cullinan found 1905, about 3,106 carats, given to Edward VII in 1907 by the Transvaal government.
+- **4:811:** Wieliczka mined for more than 700 years. St Kinga's Chapel is about 100 m down, with chandeliers carved from salt.
+- **4:812:** Verinag as a main source of the Jhelum. Jahangir's octagonal tank about 1620.
+- **4:813:** Stromboli active almost continuously for about 2,000 years, small bursts minutes apart, the "lighthouse of the Mediterranean".
+- **4:814:** Lapis mined at Sar-i Sang for more than 6,000 years. Ultramarine dearer than gold in Europe. Used in the turban of Vermeer's "Girl with a Pearl Earring".
+- **4:815:** Subarnarekha named for its gold, with panning still done on its banks. Gold about 19 times as dense as water.
+- **4:816:** Deccan Traps about 65 million years old, weathering into black regur soil.
+- **4:817:** Blombos engraved ochre, Henshilwood, published 2002, more than 70,000 years old.
+- **4:818:** Inuksuk said to mean roughly "that which acts like a person".
+- **4:819:** Mammoth Cave more than 600 km of mapped passage. Stephen Bishop, enslaved, a guide from 1838, explored and mapped it.
+- **4:820:** Norway's oil fund set up in 1990, one of the largest state funds, with a rule to spend only a small share each year.
+- **4:821:** Geysir (Haukadalur) gave the word "geyser", from the Icelandic verb geysa.
+- **4:822:** Acasta gneiss about 4 billion years old.
+- **4:823:** Arun as an antecedent river, older than the Himalaya.
+- **4:824:** Qorikancha's Inca walls stood in the 1950 Cusco earthquake while the church built on them was badly damaged.
+- **4:825:** William Smith's 1815 map. Prison for debt. First Wollaston Medal in 1831.
+- **4:826:** Jaggar founded the Hawaiian Volcano Observatory at Kilauea in 1912.
+- **4:827:** Paricutin appeared in Dionisio Pulido's cornfield in 1943 and grew more than 300 m in its first year.
+- **4:828:** Almost all of the Onge of Little Andaman survived the 2004 tsunami by following ancestral lore.
+- **4:829:** The Aneyoshi tsunami stone, put up after 1933, says not to build below it. In 2011 the waves stopped somewhat below it.
+- **4:830:** Cronstedt named zeolite ("boiling stone") in 1756.
+- **4:831:** Onkalo (Olkiluoto) stores spent fuel about 400 m down in rock about 2 billion years old, designed for about 100,000 years.
+- **4:832:** Loess Plateau soil hundreds of metres thick in places. Yaodong cave homes.
+- **4:833:** Apollo goodwill moon rocks (1969 and 1972 missions) given to more than 100 countries.
+- **4:834:** Giant's Causeway about 40,000 columns, mostly hexagonal, formed as lava cooled and contracted.
+- **4:836:** Tharp found the Mid-Atlantic rift valley about 1952. Her colleague (Heezen) was at first reluctant to accept it.
+- **4:837:** Agricola's De re metallica (1556) describes breaking rock with fire.
+- **4:838:** Aetites, the "eagle stone". Pliny says it is found in eagles' nests. Iron-mineral hollow nodules.
+- **4:839:** Bartholin's 1669 account of double refraction. Calcite crystal found in 2013 in a 16th-century wreck off Alderney, with the sunstone navigation idea.
+- **4:840:** Waitomo explored in 1887 by Tane Tinorau and Fred Mace by raft. The glowworms are fungus-gnat larvae.
+- **4:841:** At Yamunotri's Surya Kund, pilgrims cook rice and potatoes in cloth bundles.
+- **4:842:** Larderello, 1904: Ginori Conti lit four bulbs with geothermal steam. First commercial geothermal plant in 1913.
+- **4:843:** Lalibela's eleven rock-cut churches, credited by tradition to King Lalibela in the 12th to 13th century.
+- **4:844:** Yanartaş (Chimaera) gas flames burning for millennia, a landmark for sailors.
+- **4:845:** Heimaey, January 1973 (Eldfell): the town was evacuated by fishing boats that night, and months of seawater pumping saved the harbour.
+- **4:846:** Simone, Evans and Spivak 2009 (Evolution), resin envelope lowers immune strain. Spivak is named as at the University of Minnesota.
+- **4:847:** C. V. Riley described the yucca moth in 1872.
+- **4:848:** Ingeborg Beling 1929, bees' time memory; described as a student of von Frisch.
+- **4:849:** C. H. Turner, Chicago PhD 1907, "first African American" there in zoology; colour-vision paper 1910.
+- **4:850:** Mlot, Tovey and Hu 2011, fire-ant rafts. I am sure it was PNAS but did not name the journal.
+- **4:851:** Blackiston, Silva Casey and Weiss 2008, moth (tobacco hornworm) keeps a caterpillar memory through metamorphosis.
+- **4:852:** Gurung honey hunting in Lamjung and Kaski; Apis laboriosa as the largest honeybee.
+- **4:853:** Ji Han, Nanfang Caomu Zhuang c. 304 CE, weaver-ant nests sold for citrus. Present-day use in Vietnam stated.
+- **4:854:** Koebele brought the vedalia beetle in 1888; scale controlled in about two years.
+- **4:855:** Rothenbuhler 1964, hygienic behaviour, said to be inherited.
+- **4:856:** Goldstein, Rosenberg and Cheng 2012, Halobates eggs increase with ocean plastic (Scripps).
+- **4:857:** Charles Anderson 2009, Pantala flavescens crosses the Indian Ocean, arriving in the Maldives late in the year.
+- **4:858:** Bombyx mori domesticated about 5,000 years ago from B. mandarina; adults cannot fly.
+- **4:859:** Alem et al. 2016, Chittka lab at Queen Mary, bumblebee string-pulling learned by watching.
+- **4:860:** Aristotle, Historia Animalium, flower constancy (no book number given).
+- **4:861:** Howard, Dyer et al. 2018 (Science), RMIT, bees place zero below one.
+- **4:862:** Schultheiss et al. 2022, about 2×10^16 ants; ant biomass exceeds wild birds and mammals combined.
+- **4:863:** Bornemissza noticed the problem in the 1950s; dung beetle project ran 1965 to 1985.
+- **4:864:** Colin Butler, "queen substance" in the 1950s.
+- **4:865:** Osmia cornifrons in Aomori apple orchards; most bee species solitary.
+- **4:866:** Langstroth 1851; bee space given as 6 to 9 mm.
+- **4:867:** Réaumur 1719, wasps and wood paper; industrial wood pulp in the 1840s.
+- **4:868:** Jandér and Herre 2010, Smithsonian Tropical Research Institute in Panama, fig sanctions.
+- **4:869:** Charles Butler, The Feminine Monarchie 1609; the 1623 edition has the four-part bee song.
+- **4:870:** Ruth Patrick 1948 survey of Conestoga Creek. I am moderately sure of the year and place.
+- **4:871:** Edmond Albius 1841, aged 12, on Réunion; most vanilla still pollinated by hand.
+- **4:872:** Tel Rehov apiary found 2007 by Amihai Mazar, dated 10th to 9th century BCE.
+- **4:873:** Michelsen, Lindauer et al. 1992 mechanical bee. "Wax-coated" is from memory.
+- **4:874:** Darwin, Origin 1859, tickling aphids with a hair.
+- **4:875:** Starks, Blackie and Seeley 2000, colony fever against chalkbrood.
+- **4:876:** Procopius, monks smuggled silkworm eggs in hollow canes c. 552.
+- **4:877:** Srinivasan et al. 2000 (Science), optic-flow odometer, ANU.
+- **4:878:** Raphaël Dubois named luciferin and luciferase in the 1880s using a Caribbean click beetle.
+- **4:879:** Kleinhenz, Tautz et al. 2003, heater bees, Würzburg.
+- **4:880:** Tschinkel 2004, casts of Florida harvester ant nests 2 to 3 m deep. I am moderately sure of the year and depth.
+- **4:881:** Exultet praises the mother bee; the Latin text is over a thousand years old.
+- **4:882:** Maya keeping of Melipona beecheii in logs for over a thousand years; Madrid Codex has bee pages.
+- **4:883:** Wittlinger, Wehner and Wolf 2006, Cataglyphis ants on stilts and stumps.
+- **4:884:** Isidore Boudin started his San Francisco bakery in 1849, and the mother dough is said to be carried forward daily. The note hedges this as the bakery's tradition.
+- **4:885:** Stamen Grigorov, 1905, Geneva, identified Lactobacillus bulgaricus in yogurt.
+- **4:886:** Melitta Bentz, Dresden, 1908. She used blotting paper from her son's exercise book and got the patent the same year.
+- **4:887:** Manusmriti 6.67 is the kataka-fruit verse. Is the verse number right?
+- **4:888:** peppercorns were found in Ramesses II's nostrils during the 1976 examination of his mummy in Paris. He died about 1213 BCE.
+- **4:889:** Spallanzani swallowed linen bags and perforated wooden tubes around 1780. Gita 15.14 is the vaishvanara verse.
+- **4:890:** Kikunae Ikeda, 1908, glutamate from kombu dashi, named umami.
+- **4:891:** Casimir Funk coined "vitamine" in 1912.
+- **4:892:** the Ebers papyrus (about 1550 BCE) gives a liver remedy for an eye disease that many scholars read as night blindness.
+- **4:893:** the tea-for-horses trade was regular from the Song dynasty on.
+- **4:894:** the kettle sound is called matsukaze, and iron pieces are fixed in some kettles to sweeten it.
+- **4:895:** the Xiaohe cheese is about 3,600 years old and was found on the necks and chests of the burials (Yimin Yang et al., 2014).
+- **4:896:** the Agariyas make salt for about eight months after the monsoon.
+- **4:897:** Xochimilco was inscribed by UNESCO in 1987.
+- **4:898:** Birdseye was in Labrador from 1912 to 1915 and developed quick freezing in the 1920s.
+- **4:899:** Golden Rice was published by the Potrykus and Beyer team in Science in 2000.
+- **4:900:** Bangladesh obtained the GI for hilsa in 2017.
+- **4:901:** Luigi Bezzera's espresso patent, Milan, 1901.
+- **4:902:** John van Hengel opened St. Mary's Food Bank in Phoenix in 1967 as the first food bank.
+- **4:903:** Hanaya Yohei is credited with popularising nigiri in the early 19th century.
+- **4:904:** kimjang was inscribed by UNESCO in 2013.
+- **4:905:** Treaty of Breda, 1667: the Dutch kept Run and New Amsterdam stayed English.
+- **4:907:** the Vestal fire went out at the end of the 4th century. The Vestals also made salted grain flour (mola salsa) for sacrifices.
+- **4:908:** the Neapolitan pizzaiuolo was inscribed by UNESCO in 2017, and the bake takes about 90 seconds.
+- **4:909:** Richard II's 1393 order that ale sellers in London hang out a sign or forfeit their ale. I am moderately sure of the wording.
+- **4:910:** the Codex Alimentarius Commission was set up by FAO and WHO in 1963.
+- **4:911:** the Carnota hórreo is counted among the longest. The note gives no length on purpose.
+- **4:912:** Wiley's Poison Squad started in 1902 and included borax, and the Pure Food and Drug Act followed in 1906.
+- **4:913:** the Qesem cave marrow-storage paper is Blasco, Barkai et al., Science Advances, 2019, on bones 420,000 to 200,000 years old.
+- **4:914:** bog butter from County Meath, 2016, about 10 kg and about 2,000 years old. Please check these details.
+- **4:915:** the "milker" etymology of duhitā is presented as old and now uncertain.
+- **4:916:** the varshamana rain gauge, with a mouth one aratni wide in front of the storehouse, is in Book 2 of the Arthashastra. I deliberately gave no chapter number because I am unsure whether it is 2.5 or 2.24.
+- **4:917:** Boyd Orr: "Food, Health and Income" in 1936, about half the population's diet inadequate, first FAO Director-General, Nobel Peace Prize 1949.
+- **4:918:** Parmentier ate potatoes as a prisoner of war, and the Paris Faculty of Medicine declared the potato edible in 1772.
+- **4:919:** the Meilleur Ouvrier de France competition began in 1924 and winners wear a tricolour collar.
+- **4:920:** Ahn, Ahnert, Bagrow and Barabási, Scientific Reports, 2011: the food-pairing pattern differs between Western and East Asian cuisines.
+- **4:921:** the Chinese rotary winnowing fan appears in Han tomb models and reached Europe in the 18th century. I am moderately sure of this.
+- **4:922:** Cape Town Noon Gun fired from Signal Hill "since 1806", almost daily.
+- **4:923:** UK speaking clock started 24 July 1936; the voice was telephonist Ethel Cain, chosen by competition.
+- **4:924:** GMRT near Narayangaon, 30 dishes of 45 m spread over about 25 km, planned under Govind Swarup.
+- **4:925:** W. H. Shortt was a railway engineer; free-pendulum clock 1921, master pendulum in a vacuum tank.
+- **4:926:** TAI is a weighted average of 400+ atomic clocks, computed by the BIPM at Sèvres.
+- **4:927:** George Graham's deadbeat escapement about 1715.
+- **4:928:** Alexander Bain's electric clock patent 1841, with a master clock driving distant dials.
+- **4:929:** Harvey Fletcher's "Speech and Hearing" 1929; telephone band about 300–3400 Hz. The note says only "later" for the band, implying no direct causal link.
+- **4:930:** North American railroads adopted standard time on 18 November 1883, the "day of two noons".
+- **4:931:** WWII British listeners recognised German operators by their Morse "fist".
+- **4:932:** Cambridge Quarters composed 1793 for Great St Mary's; adopted at Westminster 1859; four quarter bells.
+- **4:933:** Salisbury Cathedral clock about 1386, faceless, among the oldest working mechanical clocks.
+- **4:934:** J. B. Stearns (Boston) practical duplex telegraphy in the early 1870s. I am least sure of this date.
+- **4:935:** Warren Marrison's team built the first quartz clock at Bell Labs in 1927.
+- **4:936:** M. V. Gopalaswamy's Mysore station, 1935, named Akashvani; the national service adopted the name in 1957. Who coined the name is deliberately left unstated.
+- **4:937:** SITE ran from 1 August 1975 for one year, ATS-6 satellite, about 2,400 villages in six states.
+- **4:938:** Fessenden's Christmas Eve 1906 Brant Rock broadcast with violin. The note says the evidence is mainly his own later account.
+- **4:939:** Zimmermann telegram January 1917, decoded by Room 40; Zimmermann called foreign secretary.
+- **4:940:** Oliver Lodge's syntonic tuning patent 1897.
+- **4:941:** Eli Terry's contract of 1806: 4,000 wooden-movement clocks in three years, interchangeable parts.
+- **4:942:** Pony Express from April 1860, about 10 days Missouri to California, ended after the transcontinental telegraph was completed in October 1861.
+- **4:943:** Prague Orloj 1410, attributed to Mikuláš of Kadaň and Jan Šindel, oldest astronomical clock still operating.
+- **4:944:** Dickin Medal instituted 1943 by Maria Dickin of the PDSA; most WWII awards went to pigeons.
+- **4:945:** Hertz 1887 at Karlsruhe, spark gap with a receiving loop across the room.
+- **4:946:** Byzantine 9th-century beacon line to Constantinople with synchronized clocks, attributed to Leo the Mathematician. The note phrases this as "tradition attributes".
+- **4:947:** Jaquet-Droz automata built 1768–1774 (writer, draughtsman, musician), still working in Neuchâtel.
+- **4:948:** Percy Spencer at Raytheon about 1945: chocolate melted near a magnetron, popcorn test.
+- **4:949:** leap seconds since 1972; CGPM 2022 decided to discontinue them by 2035.
+- **4:950:** Breguet tourbillon patent 1801.
+- **4:951:** BBC six-pip time signal since 5 February 1924; the start of the last pip marks the hour.
+- **4:952:** Strowger automatic exchange patent 1891; the undertaker-and-operator story is framed as "it is said".
+- **4:953:** Binaca Geetmala on Radio Ceylon from 1952, hosted by Ameen Sayani, with his greeting "बहनो और भाइयो".
+- **4:954:** Appleton 1924 experiment with the BBC Bournemouth transmitter, showing ionospheric reflection.
+- **4:955:** India's first mobile call, 31 July 1995, Jyoti Basu (Kolkata) to Sukh Ram (Delhi).
+- **4:956:** COSPAS-SARSAT (USSR, USA, Canada, France); first rescue September 1982, a light-aircraft crash in Canada.
+- **4:957:** Siege of Paris 1870–71 pigeon post, with René Dagron's microphotography.
+- **4:958:** Vanguard 1 launched 17 March 1958, first solar-powered satellite; batteries failed within weeks, transmitter ran until about 1964; still in orbit.
+- **4:959:** Arthur C. Clarke's article in Wireless World, October 1945: three satellites at about 36,000 km.
+- **4:960:** Confessions 6.3 has Ambrose reading silently, and Augustine found it remarkable.
+- **4:961:** Hunayn ibn Ishaq collated several Greek manuscripts before translating. The House of Wisdom under al-Ma'mun is called "traditionally regarded" as a translation centre.
+- **4:962:** the Mencius 6A.2 reference and the Gaozi water debate.
+- **4:963:** Merton statutes 1264; Peterhouse founded 1284, its statutes modelled on Merton's.
+- **4:964:** Boethius imprisoned under Theodoric; Lady Philosophy dries his tears and explains Fortune's wheel.
+- **4:965:** Spinoza, Ethics III, definition of joy as passing to greater perfection.
+- **4:966:** Plotinus Ennead 1.6.9, the image of sculpting one's own statue.
+- **4:967:** Chafetz Chaim published 1873 by Yisrael Meir Kagan of Radun; the name comes from Psalm 34.
+- **4:968:** Sidney's Defence of Poesy published 1595, with "vates" and "poiein".
+- **4:969:** Lady Margaret Professorship 1502, called Cambridge's oldest chair.
+- **4:970:** Simone Weil's school-studies essay, c. 1942.
+- **4:971:** al-Qarawiyyin, 859, Fatima al-Fihri, called oldest continuously operating university by Guinness.
+- **4:972:** Erasmus, Education of a Christian Prince, 1516, dedicated to the future Charles V.
+- **4:973:** Parts of Animals 4.10, Anaxagoras on hands, "instrument of instruments".
+- **4:974:** Schiller's Aesthetic Letters 1795, letter 15 on play.
+- **4:975:** Hohenheim founded 1818 by Wilhelm I after the 1816 famine that followed Tambora.
+- **4:976:** Aquinas, adaequatio rei et intellectus.
+- **4:977:** Xenophon's Oeconomicus says farming makes the body strong and the mind generous (chapter 5).
+- **4:978:** Sunzi chapter 4, making oneself invincible first.
+- **4:979:** Bologna's traditional date 1088; Authentica Habita given as "mid-12th century" (1155 or 1158).
+- **4:980:** Accademia della Crusca 1583, sieve emblem, motto, first dictionary 1612.
+- **4:981:** Yuelu Academy 976; Zhu Xi and Zhang Shi met there in 1167; now part of Hunan University.
+- **4:982:** Bachelard, Psychoanalysis of Fire, 1938, and the fire paraphrase (hearth and wildfire, paradise and hell, cookery and apocalypse).
+- **4:983:** the torch race ran from the altar of Prometheus in the Academy to the city; victory went to the runner whose torch stayed lit.
+- **4:984:** Sic et Non c. 1120; the prologue line on doubt leading to inquiry.
+- **4:985:** Montaigne Essays 1.28 on La Boétie (some editions number it 1.27).
+- **4:986:** Grotius 1625; Book III on keeping good faith with enemies.
+- **4:988:** Rousseau's walk to Diderot at Vincennes in 1749; Dijon prize 1750.
+- **4:989:** Paris strike 1229; Parens scientiarum 1231 under Gregory IX.
+- **4:990:** Martianus Capella, 5th century; the trivium and quadrivium.
+- **4:991:** King's College Nine Lessons and Carols, first 1918 (Milner-White), BBC broadcast from 1928; solo chorister chosen at the last moment.
+- **4:992:** Ezra Cornell 1865 and the land-grant link.
+- **4:993:** Golden Verses, review the day three times before sleep.
+- **4:994:** De Caelo 2.13 for Anaximander's earth staying at the centre.
+- **4:995:** the four nations at Paris and the rector chosen by them; the Latin Quarter named after the students' Latin.
+- **4:996:** Jonas 1979 and the wording of his imperative.
+- **4:997:** Pluvinel's academy 1594; Louis XIII his pupil; Pluvinel died 1620.
+- **4:998:** Canal du Midi built 1666 to 1681; Riquet was a salt-tax farmer and died in 1680, months before it opened.
+- **4:999:** the Culavamsa line of Parakramabahu I that no rain water should reach the sea without serving people; Parakrama Samudra, 12th century.
+- **4:1000:** the Great Stink of 1858; Bazalgette's intercepting sewers ended the big cholera outbreaks in London.
+- **4:1001:** Øresund link opened 1 July 2000 (tunnel, Peberholm island, bridge to Malmö); built and run jointly by the two states.
+- **4:1002:** G-Cans at Kasukabe completed 2006; tunnel over 6 km; tank with 59 pillars; outflow to the Edo River.
+- **4:1003:** Pani Panchayat started 1974 by Vilasrao Salunkhe at Naigaon, Purandar; water shared per head, landless included.
+- **4:1004:** Brooklyn Bridge opened 24 May 1883; Emily Roebling was the first to cross by carriage before the opening.
+- **4:1005:** subak tradition about a thousand years old; UNESCO listing in 2012.
+- **4:1007:** the role of the neerkatti in Tamil Nadu tank (eri) systems, including who gets water first in drought years.
+- **4:1008:** Mullaperiyar dam finished 1895 by John Pennycuick; Periyar water sent east by tunnel to the Vaigai.
+- **4:1009:** Mahalaxmi Dhobi Ghat dated to the late 19th century (often given as 1890).
+- **4:1010:** Adalaj stepwell finished 1499, begun by Rana Veer Singh, completed by Rani Rudabai, five storeys.
+- **4:1011:** Tamil Nadu made rooftop rainwater harvesting compulsory in 2003, with a warning that water connections would be cut.
+- **4:1012:** Rajasthan Canal begun 31 March 1958; renamed Indira Gandhi Canal in 1984; water taken at Harike.
+- **4:1013:** Magdeburg Water Bridge opened October 2003; about 918 m long.
+- **4:1014:** Kundi Bhandara at Burhanpur, about 1615, in the time of Abdur Rahim Khankhana; part of it still supplies water.
+- **4:1015:** Mughal kos minars on the Agra–Lahore and Agra–Ajmer roads; many survive in Haryana and Delhi.
+- **4:1016:** John Gibb at Paisley in 1804, a sand filter for his bleachworks, surplus filtered water sold by cart.
+- **4:1017:** the Metropolitan Free Drinking Fountain Association founded in 1859 by Gurney and Wakefield; cattle troughs added in 1867.
+- **4:1018:** Hoover Dam built 1931 to 1936; poured as one mass, the concrete would have taken about 125 years to cool.
+- **4:1019:** Hamburg cholera of 1892, over 8,000 deaths; Altona's sand-filtered water; disease stopped at the boundary between the two towns.
+- **4:1020:** Manga Hiti at Patan, about 570 CE, still flowing.
+- **4:1021:** phad system in the Tapi basin (Panjhra river): bandhara weirs, one agreed crop per phad.
+- **4:1022:** Golden Gate opened 1937; International Orange chosen to show in fog; a painting crew works on it all year.
+- **4:1023:** Austin bought used moonlight towers from Detroit in 1894; about 50 m high; some still stand.
+- **4:1024:** Friedrich Hoffmann's ring kiln patented in 1858.
+- **4:1025:** Woody Guthrie hired by the Bonneville Power Administration in 1941 for one month; 26 songs; Roll On, Columbia later named the state folk song of Washington.
+- **4:1026:** Visvesvaraya's automatic sluice gates at Khadakwasla in 1903; he later became Dewan of Mysore; Engineers' Day on 15 September.
+- **4:1027:** Tower of Hercules, about 2nd century, restored in the late 18th century; oldest Roman lighthouse still in use; UNESCO 2009.
+- **4:1028:** Rjukan has about six months without direct sun; Sam Eyde's idea in 1913; mirrors installed in 2013.
+- **4:1029:** Via Appia begun 312 BCE by Appius Claudius Caecus; called the queen of roads.
+- **4:1030:** Inca chasqui relay runners on the Qhapaq Ñan; UNESCO 2014, six countries.
+- **4:1031:** Toorji ka Jhalra built in the 18th century by a queen of Maharaja Abhay Singh; filled with rubbish for decades; cleaned in the 21st century.
+- **4:1032:** Aqua Virgo built by Agrippa in 19 BCE; Trevi Fountain to Nicola Salvi's design, completed 1762.
+- **4:1033:** Dujiangyan, about 256 BCE, by Li Bing on the Min River; the fish-mouth levee splits the river.
+- **4:1034:** Zabo farming system of Kikruma village, Phek district; the word means holding water back.
+- **4:1035:** Satyamev Jayate Water Cup begun in 2016 by Aamir Khan and Kiran Rao through Paani Foundation.
+- **4:1036:** Kongali (Kati) Bihu in October, with lamps lit in paddy fields; Rongali in April; Bhogali in January.
+- **4:1037:** Karva Chauth: the moon, then the husband's face, viewed through a sieve.
+- **4:1038:** Niiname-sai on 23 November; that date has been a national holiday since 1948.
+- **4:1039:** Songkran 13 to 15 April; added to the UNESCO list in December 2023.
+- **4:1040:** Mahamastakabhisheka about every 12 years, last held in 2018; poured from scaffolding behind the statue.
+- **4:1041:** Narali Purnima on Shravan Purnima marks the start of the new fishing season.
+- **4:1042:** Wangala "Hundred Drums" festival at Asanang near Tura since 1976; sun god Saljong.
+- **4:1043:** Seb-i Arus on 17 December; Rumi died in 1273; one palm up and one down during sema.
+- **4:1044:** Hemis Tsechu on the 10th day of the 5th Tibetan month.
+- **4:1045:** Sonepur Mela starts on Kartik Purnima at the Gandak and Ganga confluence; tradition places Gaj and Grah there.
+- **4:1046:** Thai Royal Ploughing Ceremony in May at Sanam Luang; longest cloth means little rain, shortest means plenty.
+- **4:1047:** Talmud Shabbat 21b; Hillel adds one light each night, Shammai starts at eight and takes one away. The text cites it as "शब्बात खण्ड (पृष्ठ 21)".
+- **4:1048:** In the Julian calendar, 13 December fell near the winter solstice.
+- **4:1049:** Hari-kuyo usually on 8 February; needles pushed into tofu. I dropped the 8 December regional date from the text.
+- **4:1050:** The Gajapati king uses a gold-handled broom and sprinkles sandalwood water.
+- **4:1051:** Inti Raymi revived in Cusco in 1944; staged on 24 June at Sacsayhuaman.
+- **4:1052:** Longyearbyen polar night from late October to mid-February; sun returns to the town around 8 March; people gather on the old hospital steps; Solfestuka.
+- **4:1053:** Bhadrapada Amavasya is called Kushagrahani Amavasya; kusha gathered that day stays pure for the year's rites.
+- **4:1054:** Palio di Siena on 2 July and 16 August; bareback; three laps; a riderless horse can win.
+- **4:1055:** Guelaguetza on the two Mondays after 16 July; the Zapotec word means reciprocal offering.
+- **4:1056:** First-foot gifts: coal, bread, salt.
+- **4:1057:** Dragon Boat Festival on the 5th day of the 5th lunar month; a drummer sets the stroke.
+- **4:1058:** In the Swiss cow descent, cows are decorated only if no animal or herder had a mishap that summer.
+- **4:1059:** Lord Rhys at Cardigan Castle in 1176, winners honoured with chairs; today's National Eisteddfod chair goes to the best poem in strict metre.
+- **4:1060:** Hawker's harvest service at Morwenstow, October 1843, with bread from the new corn.
+- **4:1061:** Thrissur Pooram traced to Sakthan Thampuran in the late 18th century; ten temples converge on Vadakkunnathan.
+- **4:1062:** Hornbill Festival 1 to 10 December at Kisama, started in 2000.
+- **4:1064:** Gion Matsuri begun in 869 to end a plague; floats bound with rope, no nails; procession on 17 July.
+- **4:1065:** Lohri on 13 January; children go house to house singing Dulla Bhatti songs.
+- **4:1066:** Chaharshanbe Suri; the traditional line is paraphrased in the third person.
+- **4:1067:** Mehregan on the 16th of the month Mehr, rendered as "early October" (by the Iranian calendar it is about 8 October); Mithra equated with the Vedic Mitra.
+- **4:1068:** Kukur Tihar is the second day of Tihar; dogs regarded as Yama's messengers.
+- **4:1069:** Sukkot from 15 Tishri for seven days; the roof should let stars show; one symbolic ancestor-guest each day.
+- **4:1070:** In Goa, Narakasura effigies are burnt before dawn on Naraka Chaturdashi.
+- **4:1071:** Aono's Kyoto bloom record goes back to 812; the 2021 peak on 26 March was the earliest in about 1,200 years.
+- **4:1072:** Kagami-biraki around 11 January; the hard mochi is broken with a wooden mallet, not cut.
+- **4:1073:** Bhogi, the first day of Pongal/Sankranti, is dedicated to Indra; old things are burnt in a dawn bonfire.
+- **4:1074:** Le Gentil missed the 1761 transit of Venus because of the war, and clouds hid the June 1769 transit at Pondicherry.
+- **4:1075:** Allende meteorite fell 8 Feb 1969 in Chihuahua; more than 2 tonnes recovered; inclusions about 4.567 billion years old.
+- **4:1076:** Bianchini's meridian line in Santa Maria degli Angeli, Rome, 1702, for Clement XI, used to check the Gregorian calendar and Easter.
+- **4:1077:** Galaxy Zoo launched 2007 from Oxford; Hanny van Arkel was a schoolteacher; the Voorwerp was found in 2007.
+- **4:1079:** Palomar mirror blank cast at Corning in 1934; polishing began 1936 and finished 1947.
+- **4:1080:** Miyake et al. 2012 in Nature; carbon-14 spike in 774–775 CE in Japanese cedar rings.
+- **4:1081:** French decimal time decreed in 1793; compulsory use suspended in April 1795.
+- **4:1082:** Peter Apian noted in 1531 that comet tails point away from the Sun; Biermann's solar-wind inference in 1951.
+- **4:1083:** every latitude gets roughly the same total daylight over a year (ignoring refraction and orbital eccentricity).
+- **4:1084:** Hesiod, Works and Days, lines 383–384.
+- **4:1085:** Milanković's book is dated 1941; axial tilt range 22.1–24.5 degrees over about 41,000 years.
+- **4:1086:** Ulugh Beg's observatory in the 1420s; Fakhri sextant radius about 40 m; catalogue of more than 1,000 stars.
+- **4:1087:** Saturn's hexagon reported by Godfrey in 1988 from Voyager images; each side longer than Earth's diameter; Cassini observed it 2004–2017.
+- **4:1088:** Ibn al-Shatir's sundial for the Umayyad Mosque, 1371–72; fragments in the Damascus museum.
+- **4:1089:** Innes found Proxima Centauri in 1915 at the Union Observatory; distance 4.24 light years.
+- **4:1090:** Pillars of Creation image taken 1 April 1995; Hester and Scowen.
+- **4:1091:** Kepler's second reaction wheel failed in May 2013; K2 began in 2014 using solar pressure.
+- **4:1092:** Apollo–Soyuz docking 17 July 1975; Stafford and Leonov handshake.
+- **4:1093:** Devasthal 3.6 m telescope; altitude about 2,450 m; started March 2016; built with Belgium; India's largest optical telescope.
+- **4:1094:** Mahendra Suri's Yantraraja dated 1370, at Firuz Shah Tughluq's court, as the first known Sanskrit treatise on the astrolabe.
+- **4:1095:** EHT image released 10 April 2019; observations April 2017; eight observatories.
+- **4:1097:** Cassius Dio, Roman History 37.18–19, on the hour-ruler explanation of weekday names.
+- **4:1098:** Jane Taylor's "The Star", 1806, in the collection with Ann Taylor.
+- **4:1099:** Meton, 432 BCE; 19 years about 235 months; 7 intercalary months in 19 years.
+- **4:1100:** Richer at Cayenne in 1672; the clock lost about 2.5 minutes a day.
+- **4:1101:** Pioneer 10 and 11 launched 1972 and 1973; 14 pulsars on the plaque.
+- **4:1102:** 51 Pegasi b announced October 1995; period about 4 days; Nobel Prize 2019.
+- **4:1103:** Apollo 12 ascent stage impact on 20 Nov 1969; reverberations lasted nearly an hour.
+- **4:1104:** Riccioli's Almagestum Novum, 1651, with its lunar "sea" names.
+- **4:1105:** Leonid storm on 12–13 Nov 1833; Olmsted and the radiant in Leo; Revelation 6:13.
+- **4:1106:** 2004 MN4 (Apophis); impact probability of about 2.7% for 2029 in Dec 2004; named after Apep.
+- **4:1107:** most meteors burn up about 80–120 km high.
+- **4:1108:** Bethe 1939 in Physical Review; Nobel Prize 1967.
+- **4:1109:** SN 1006 described by Ali ibn Ridwan in Cairo as far brighter than Venus; seen in Lupus; also recorded in China, Japan and Europe.
+- **4:1110:** International Geophysical Year, 1 July 1957 to 31 Dec 1958; about 67 countries.
+- **4:1111:** Brihadaranyaka 3.9 (I believe 3.9.5) says the twelve Adityas are the twelve months. I cited only "3.9" to be safe.
+- **4:1112:** Jivaka, seven years at Takshashila, told to find a non-medicinal plant within a yojana and found none (Pali Vinaya, Mahavagga VIII).
+- **4:1113:** VC and bar given to only three people; two were doctors (Martin-Leake, Chavasse). Chavasse's VC in 1916, posthumous bar in 1917.
+- **4:1114:** Edler and Hertz, Lund 1953, borrowed an ultrasonic flaw detector from a shipyard (Kockums).
+- **4:1115:** Madras Tuberculosis Chemotherapy Centre opened 1956; home vs sanatorium trial gave about equal results.
+- **4:1116:** civil registration in England and Wales began 1 July 1837; William Farr appointed at the General Register Office in 1839.
+- **4:1117:** Billroth's first successful gastrectomy, Vienna 1881; Brahms dedicated his Op. 51 quartets to him.
+- **4:1118:** Nathan Straus pasteurized milk depots, New York, 1893.
+- **4:1119:** Larrey's "flying ambulances" in the 1790s; he treated by severity, not rank.
+- **4:1120:** Ludwig Rehn, Frankfurt 1896, stab wound of the right ventricle sutured successfully.
+- **4:1121:** coronation set for 26 June 1902; Treves operated two days earlier; crowned 9 August.
+- **4:1122:** Edwin Smith papyrus about 1600 BCE, 48 cases, honey in dressings.
+- **4:1123:** Chamberland porcelain filter 1884; Ivanovsky 1892 showed tobacco-mosaic sap stays infectious after filtering.
+- **4:1124:** Bower bought the manuscript near Kucha in 1890; Hoernle read it; it includes the Navanitaka; "about fifteen centuries old".
+- **4:1125:** WHO multidrug therapy recommended in 1981 (dapsone, rifampicin, clofazimine).
+- **4:1126:** Ridley's first intraocular lens, 29 November 1949, St Thomas'; Perspex splinters in pilots' eyes.
+- **4:1127:** Hirschowitz fibreoptic gastroscope, Michigan 1957; he swallowed it first.
+- **4:1128:** Charnley low-friction hip at Wrightington, 1962; clean-air measures in theatre.
+- **4:1129:** Royal Sea Bathing Hospital, Margate, founded 1791 by Lettsom (it opened about 1796); patients were children with scrofula.
+- **4:1130:** Pinard horn, 1895, wooden.
+- **4:1131:** Chekhov reached Sakhalin in 1890, stayed about three months and filled in census cards himself.
+- **4:1132:** (least certain): Serfoji II reigned 1798–1832; Dhanvantari Mahal, where physicians of several traditions made medicines and wrote down treatments.
+- **4:1133:** Gamgee tissue, 1880, Birmingham.
+- **4:1134:** Beddoes' Pneumatic Institution, Bristol 1799; Davy suggested nitrous oxide for surgical pain.
+- **4:1135:** first shock-wave lithotripsy patient, Munich, February 1980 (Chaussy).
+- **4:1136:** Alma-Ata Declaration, 12 September 1978; food, nutrition, safe water and sanitation among its elements.
+- **4:1137:** Resusci Anne 1960, Laerdal; face from the "Inconnue de la Seine" mask.
+- **4:1138:** Ida Scudder, three calls in one night in the 1890s; Vellore clinic in 1900. The story is her own account.
+- **4:1139:** Percy Lane Oliver, Camberwell 1921, first voluntary blood donor panel.
+- **4:1140:** Lavoisier and Laplace ice calorimeter with a guinea pig, 1780s; respiration as slow combustion.
+- **4:1141:** Manchester and Salford Ladies' Sanitary Reform Association began paid home visitors in 1862.
+- **4:1142:** Star of Life, 1973, Leo Schwartz (NHTSA); the six bars stand for six emergency-service functions.
+- **4:1143:** Declaration of Helsinki, World Medical Association, June 1964.
+- **4:1144:** McCollum and Davis, Wisconsin 1913, the growth factor in butterfat and egg yolk ("fat-soluble A").
+- **4:1145:** Clifford Beers published his autobiography in 1908 and founded the first mental hygiene society that year.
+- **4:1146:** first ultraviolet drinking-water disinfection plant, Marseille 1910.
+- **4:1147:** Codman's End Result Idea; his own hospital in Boston in 1911 published its results, errors included.
+- **4:1148:** Bellevue Hospital ambulance service 1869 under Edward Dalton, "first hospital-based civilian service in the US".
+- **4:1149:** Percivall Pott 1775, chimney sweeps' scrotal cancer from soot, considered the first written link between cancer and an environmental cause.
+- **4:1150:** Tugu inscription (Purnavarman): canal "Gomati", 6122 dhanus, 21 days, 22nd regnal year, 1000 cows; dated to the 5th century.
+- **4:1151:** Hrozny 1915; the sentence nu NINDA-an ezzateni watar-ma ekuteni, at Boğazköy.
+- **4:1152:** Nerchinsk 1689; talks in Latin through two Jesuits; Latin as the authoritative text; lasted more than 150 years (until Aigun 1858).
+- **4:1153:** the Opies' 1959 book; "thousands of children" (often given as about 5,000).
+- **4:1154:** Mahasthan inscription found 1931; Mauryan-era date; content as relief grain to be returned to the granary.
+- **4:1155:** Knorozov 1952; Thompson's opposition.
+- **4:1157:** Sixth Council 1954 to 1956; about 2,500 monks; eight countries; artificial cave.
+- **4:1158:** Kutai yupas: seven stones; about 400 CE; 20,000 cows given by Mulavarman.
+- **4:1159:** Halhed's grammar, Hooghly 1778; Wilkins cut the punches; Panchanan Karmakar learned from him.
+- **4:1160:** al-Kindi's treatise rediscovered in 1987 in an Istanbul library.
+- **4:1161:** Vedic Extensions block added in Unicode 5.2 (2009).
+- **4:1162:** Greek "zygon" written as जुगोन.
+- **4:1163:** Aurel Stein identified Aornos with Pir-Sar in 1926.
+- **4:1164:** Arrian's Greek river names; Alexander's halt at the Hyphasis in 326 BCE.
+- **4:1166:** Subandhu's claim of "a pun in every syllable" (pratyakshara-shlesha); the Harshacharita verse "कवीनामगलद्दर्पो नूनं वासवदत्तया" (scholars debate what it refers to).
+- **4:1167:** Kandahar bilingual edict found 1958; "eusebeia" used for dhamma.
+- **4:1168:** Abhirami Antati, 18th century, 100 verses.
+- **4:1169:** Phags-pa script decreed in 1269; written top to bottom; faded after 1368.
+- **4:1170:** Jakobson's essay "Why Mama and Papa?"; year deliberately left out.
+- **4:1171:** Linguistic Survey of India 1894 to 1928; 179 languages and 544 dialects.
+- **4:1172:** Laguna Copperplate found 1989; Saka 822 (900 CE); read by Postma; debt release for Namwaran's heirs.
+- **4:1173:** Ventris expected an Etruscan-like language; showed it was Greek in 1952.
+- **4:1174:** Siloam inscription found 1880; about 700 BCE; 1200 cubits.
+- **4:1175:** Kavi Vishtaspa in the Gathas; Kayanian "Kay" derived from kavi.
+- **4:1176:** Nirukta 2.11 "ऋषिर्दर्शनात्। स्तोमान्ददर्शेत्यौपमन्यवः" (verse number).
+- **4:1177:** Simurgh from Avestan mərəγō saēnō, cognate with śyena; Simurgh raises Zal in the Shahnameh.
+- **4:1178:** Kharosthi deciphered in the 1830s from bilingual Indo-Greek coins (Masson's collection, Lassen).
+- **4:1179:** RV 1.116.3 to 5 (Bhujyu); Homeric Hymn 33 (the Dioscuri).
+- **4:1180:** śraddhā and Latin credo from one root; Taittiriya Upanishad 1.11.3.
+- **4:1181:** Bede, De temporum ratione, about 725; finger counting up to 9,999.
+- **4:1182:** Liber Linteus in Zagreb, on linen (flax), used as mummy wrapping in Egypt.
+- **4:1183:** Panini 1.3.72 and the यजते / यजति example.
+- **4:1184:** Nanaghat inscription of Naganika; date about the 1st century BCE; sacrifices and dakshinas listed.
+- **4:1185:** Vindolanda tablets found 1973; Claudia Severa's birthday invitation about 100 CE, closing lines in her own hand.
+- **4:1186:** Gezer calendar found 1908 by Macalister; about 10th century BCE; the list of farming months.
+- **4:1187:** Ebla archive 1974 to 1975, Matthiae; tablets on wooden shelves; Sumerian–Eblaite word lists.
+- **4:1188:** India's Protection of Plant Varieties and Farmers' Rights Act 2001 lets farmers save, use, exchange and sell seed, but not as a registered variety's branded seed.
+- **4:1189:** R. H. Richharia, CRRI Cuttack director, later collected about 19,000 rice landraces at Raipur.
+- **4:1190:** Jia Sixie's Qimin Yaoshu, c. 544 CE, 10 juan and 92 chapters, oldest complete Chinese agricultural treatise.
+- **4:1191:** McCormick reaper demonstrated summer 1831 in Virginia; McCormick was 22.
+- **4:1192:** Henri de Laulanié (French Jesuit) developed SRI in Madagascar in the 1980s.
+- **4:1193:** Walker-Gordon Rotolactor 1930, Plainsboro NJ; a version shown at the 1939 New York World's Fair.
+- **4:1194:** Loki Osborn, chilli-grease rope fences and chilli smoke against elephants, Zimbabwe 1990s.
+- **4:1195:** Raiffeisen credit cooperative, Heddesdorf 1864.
+- **4:1196:** Sugarcane Breeding Institute Coimbatore 1912 (Barber, Venkatraman); Co 205 in 1918 as an officinarum x spontaneum hybrid; Venkatraman knighted.
+- **4:1197:** Institute founded Bangalore 1923; headquarters moved to Karnal 1955.
+- **4:1198:** Bangladesh floating gardens (dhap/baira) recognised as FAO GIAHS in 2015.
+- **4:1199:** Macarthur merinos from the Cape 1797; Elizabeth ran the flock from Parramatta while John was in England.
+- **4:1200:** PICS bags (Larry Murdock, Purdue): two inner plastic bags and one outer woven bag; adoption by "lakhs" of farmers.
+- **4:1201:** François Huber, blind, worked with his servant Burnens, invented the leaf hive; Nouvelles observations published 1792.
+- **4:1202:** Hybrid-4 cotton, 1970, C. T. Patel, Surat; first commercial cotton hybrid.
+- **4:1203:** Holme Fen post set level with the ground about 1851; now about 4 m exposed.
+- **4:1204:** Samuel Evans Stokes came to India 1904; Delicious apple plants to Kotgarh 1916; took the name Satyanand.
+- **4:1205:** Ganges Canal opened 8 April 1854 under Cautley; Solani aqueduct; Roorkee college founded for the canal works (now IIT Roorkee).
+- **4:1206:** Takao Furuno, aigamo rice-duck farming from about 1988, Fukuoka; azolla and fish.
+- **4:1207:** Grindmill Songs Project (Poitevin and Rairkar), about 110,000 songs; on PARI from 2017.
+- **4:1209:** Amul buffalo-milk powder plant 1955 credited to H. M. Dalaya; "first of its kind in the world".
+- **4:1210:** Knipling and Bushland sterile insect technique; screwworm eradicated on Curaçao in 1954 within months.
+- **4:1211:** RV 7.18, Sudas at the Parushni, linked to Divodasa's line.
+- **4:1212:** Agricultural Research Institute at Pusa (Bihar) 1905 with Henry Phipps's money; damaged in the 1934 quake; moved to Delhi 1936.
+- **4:1213:** Indonesia's 1986 presidential instruction banning 57 rice pesticides; farmer field schools followed.
+- **4:1214:** Seaman Knapp's 1903 demonstration on Walter Porter's farm at Terrell, Texas, against the boll weevil.
+- **4:1215:** Laung Bhuiyan of Kothilawa (Gaya), about 3 km canal over about 30 years, reported 2020. This rests on news reports; I am least sure of this one.
+- **4:1216:** Blanford's 1880s monsoon forecasts based on Himalayan snow cover.
+- **4:1217:** Njattuvela, 27 periods named for the sun's nakshatra; Thiruvathira period good for planting pepper.
+- **4:1218:** Hatch and Slack 1966, Brisbane sugar-industry laboratory, C4 pathway in sugarcane.
+- **4:1219:** First Krishi Vigyan Kendra 1974 at Puducherry under TNAU.
+- **4:1220:** Happy Seeder developed by PAU with Australian help.
+- **4:1221:** Rab seedbed burning in Konkan; research reports weed-seed and pathogen kill. I am moderately sure of the research claim.
+- **4:1222:** Khadin attributed to the Paliwal Brahmins of Jaisalmer, about the 15th century.
+- **4:1223:** Rahibai Popere, Kombhalne (Akole); called "seed mother" by Mashelkar; Padma Shri 2020.
+- **4:1224:** Norin 10 by Gonjiro Inazuka, Iwate, 1935; taken to the US by S. C. Salmon in 1946.
+- **4:1225:** Yokoi Tokiyoshi's salt-water seed selection for rice, 1882.
+- **4:1264:** Kirby, Cornish & Smith 2008 PNAS, iterated learning of an invented language across "generations".
+- **4:1265:** Ashraf, Karlan & Yin 2006, SEED commitment savings account at a rural Philippine bank (Green Bank of Caraga); savings higher after one year.
+- **4:1266:** Treisman 1960, shadowing; listeners briefly followed the story into the unattended ear.
+- **4:1267:** Buehler, Griffin & Ross 1994. The figures used are a mean estimate of about 34 days against about 55 actual, and fewer than half finishing by their worst-case estimate. Please verify these numbers.
+- **4:1268:** Eskreis-Winkler & Fishbach 2019 Psychological Science, people learn less from failure feedback.
+- **4:1269:** Leventhal et al. 1965, Yale tetanus booklet plus a campus map; uptake "many times higher" (I recall 28% vs 3%).
+- **4:1270:** Jastrow 1899, duck-rabbit in Popular Science Monthly.
+- **4:1271:** Driskell, Copper & Moran 1994 meta-analysis; mental practice helps, less than physical practice, more for tasks with more thinking. Please confirm the co-author names.
+- **4:1272:** Ellsberg 1961 two-urn ambiguity aversion; I wrote white and black balls instead of red and black.
+- **4:1273:** Salthouse 1984, older typists matched young typists' speed by looking further ahead in the text.
+- **4:1274:** Garcia & Tor 2009 N-effect, SAT venues and the 10 vs 100 competitors quiz.
+- **4:1275:** Thibodeau & Boroditsky 2011, crime described as "beast" vs "virus".
+- **4:1276:** Moreland & Beach 1992, four women attended a Pittsburgh class 0 to 15 times.
+- **4:1277:** Quoidbach & Dunn 2013, a week without chocolate increased enjoyment.
+- **4:1278:** Hull 1932 goal gradient; Kivetz, Urminsky & Zheng 2006 coffee card (10 stamps vs 12 with 2 pre-stamped).
+- **4:1279:** Shea & Morgan 1979, random vs blocked practice and later retention.
+- **4:1280:** Kross et al. 2014 JPSP, self-talk using one's own name before a speech.
+- **4:1281:** Collins & Quillian 1969, canary sentence verification times.
+- **4:1282:** Marsh & Parker 1984, big-fish-little-pond effect.
+- **4:1283:** Haken, Kelso & Bunz 1985, antiphase-to-in-phase finger switch that is not reversible.
+- **4:1284:** Keller et al. 2005 Psychological Science, pleasant spring weather helped mood and memory only with more than 30 minutes outdoors.
+- **4:1285:** Horne & Östberg 1976, 19-item questionnaire. The claim that morning types' body temperature peaked earlier needs checking.
+- **4:1286:** Pettigrew & Tropp 2006, 515 studies.
+- **4:1287:** Crossman 1959, cigar makers kept improving over years and millions of cycles until limited by the machine. Exact figures were deliberately left out.
+- **4:1288:** Hutchins 1995, Cognition in the Wild, navigation team on a US Navy ship.
+- **4:1289:** Harbaugh, Mayr & Burghart 2007 Science, food bank transfers; reward activity higher for voluntary giving than for mandatory "tax".
+- **4:1290:** Nevin, Mandell & Atak 1983, behavioural momentum in pigeons.
+- **4:1291:** Allport & Postman 1947, The Psychology of Rumor, serial retelling of a picture.
+- **4:1292:** Samuelson & Zeckhauser 1988, status quo bias in Harvard employees' health-plan choices.
+- **4:1293:** Simons & Levin 1998 door study; about half did not notice the switch.
+- **4:1294:** Wrzesniewski & Dutton 2001, job crafting, with the hospital cleaners example.
+- **4:1295:** Gustav Kramer, around 1950, caged starlings oriented by the sun; mirrors shifted their direction and overcast scattered it. Also check that तिलियर is the right Hindi word for starling.
+- **4:1296:** Trope & Liberman 2003, construal level theory.
+- **4:1297:** Thomas Ward 1994, "structured imagination" in imagined alien creatures.
+- **4:1298:** MacLeod et al. 2010, production effect from reading aloud.
+- **4:1299:** Sullivan & Brown 2013, Institute of Education, 1970 British Cohort Study; reading for pleasure at 10 linked to gains in vocabulary, spelling and maths by 16.
+- **4:1300:** David Rubin 1995, Memory in Oral Traditions.
+- **4:1301:** Sheldon & Elliot 1999, self-concordant goals.
+- **4:1302:** Doctor Yellow inspection train runs "several times a month" on the Shinkansen and measures track and overhead wires. The frequency is approximate.
+- **4:1303:** Darjeeling Himalayan Railway opened 1881, climbs to over 2,000 m with loops and zig-zags, UNESCO 1999.
+- **4:1304:** Two lanterns in the Old North Church steeple, Boston, on the night of 18 April 1775, meaning troops were coming by water.
+- **4:1305:** Henry Bishop's postmark of 1661 showed month and day, to stop carriers delaying letters; called the first postal date stamp.
+- **4:1306:** British Board of Trade signal code of 1857, later the International Code of Signals, with meanings printed in many languages.
+- **4:1307:** "Jaldoot" water train from Miraj to Latur, April 2016, over 300 km, ran for several weeks.
+- **4:1308:** Locomotives Act 1865 red-flag walker; the rule removed in 1896; the London to Brighton run commemorates it.
+- **4:1309:** Post Office Bay barrel on Floreana (Galapagos), dated "from the late 18th century" (traditionally 1793).
+- **4:1310:** Kao and Hockham's 1966 paper said loss in glass fibre comes mainly from impurities; Kao's Nobel 2009.
+- **4:1311:** Bertha Benz, August 1888, Mannheim to Pforzheim, over 100 km with two sons, solvent fuel bought at a Wiesloch pharmacy.
+- **4:1312:** Krishi Darshan began 26 January 1967 with community TV sets in villages near Delhi.
+- **4:1313:** Lifeline Express started 1991 (Impact India Foundation with Indian Railways), treating cataract and hearing problems.
+- **4:1314:** McAdam's rule that no road stone weigh more than six ounces.
+- **4:1315:** Charles Hutton Gregory's first railway semaphore at New Cross, "early 1840s". The year 1841 or 1842 was deliberately left out.
+- **4:1316:** Paris pneumatic post ran 1866 to 1984.
+- **4:1317:** Nilgiri Mountain Railway reached Ooty in 1908, rack section between Kallar and Coonoor, UNESCO 2005.
+- **4:1318:** Mont Cenis (Fréjus) rail tunnel opened 1871, over 12 km long, Sommeiller's compressed-air drills.
+- **4:1319:** After KAL 007 was shot down in September 1983, the US announced GPS would be open to civilian use.
+- **4:1320:** Canada Post Santa letters (postcode H0H 0H0) answered by volunteers "since the 1980s", in the letter's own language and in braille.
+- **4:1321:** Edward Tyer's electric tablet instrument, 1878: only one tablet can be out per single-line section.
+- **4:1322:** India Post's money order service started in 1880.
+- **4:1323:** Northeast Frontier Railway's "Plan Bee", 2017, in Assam: devices playing bee buzzing to keep elephants off the tracks.
+- **4:1324:** Jack Kilby's integrated circuit on germanium, 12 September 1958; Nobel 2000.
+- **4:1325:** Guoliang tunnel road in Henan, dug 1972 to 1977 by 13 villagers with hand tools, about 1.2 km, with windows.
+- **4:1326:** Herodotus 5.52–53 on the Persian Royal Road from Sardis to Susa: 111 stations, about 90 days on foot.
+- **4:1327:** Vail counting printer's type to give the commonest letter, E, a single dot. The note hedges this with "प्रायः बताया जाता है", since the attribution is disputed.
+- **4:1328:** Paul Baran and Donald Davies thought of packet switching separately in the 1960s; Davies coined the word "packet".
+- **4:1329:** Southern US railways changed gauge on 31 May and 1 June 1886, over 10,000 miles in two days.
+- **4:1330:** Typing contest in Cincinnati, 25 July 1888: McGurrin, typing with ten fingers without looking, beat Louis Traub. Please check the date and the spelling "टाउब".
+- **4:1331:** Avabai Jamsetjee Jejeebhoy paid for the Mahim causeway, finished 1845, with no toll charged.
+- **4:1332:** Rainhill Trials, October 1829: the Stephensons' Rocket won with its multi-tube boiler.
+- **4:1333:** Telegrams priced per word; the ABC Telegraphic Code first printed in 1873.
+- **4:1334:** First SMS, 3 December 1992, sent by Neil Papworth from a computer to a Vodafone executive's phone, a Christmas greeting.
+- **4:1335:** US Rural Free Delivery began 1 October 1896 in West Virginia.
+- **4:1336:** V-mail from 1942: letters photographed onto microfilm, flown, then printed small at the destination.
+- **4:1337:** First Kisan Rail, 7 August 2020, from Devlali to Danapur.
+- **4:1338:** George Bradshaw's first printed railway timetable, 1839; the guide ran until 1961.
+- **4:1339:** The Great Eastern laid the 1866 transatlantic cable from Ireland to Newfoundland and was the only ship able to carry the whole cable.
+- **4:1378:** ghati-yantra; a holed copper bowl sinks in one ghati of 24 minutes; 2 ghatis make a muhurta, 30 per day and night.
+- **4:1379:** Argo began in 2000; floats dive to about 2000 m every 10 days; 3000 floats by 2007.
+- **4:1380:** Pliny, Natural History book 16, describes the Chauci living on mounds that tides surround.
+- **4:1381:** RNLI founded 1824 in London after the appeal of Sir William Hillary of the Isle of Man.
+- **4:1382:** the exact 2006 IMD criteria.
+- **4:1383:** Findlater described the Somali low-level jet in 1969.
+- **4:1384:** Redentore vow in 1576, church by Palladio; pontoon bridge and boat feast on the third weekend of July.
+- **4:1385:** the 18 September 1949 date.
+- **4:1386:** the year of the Shiga ordinance (1979 passed, 1980 in force).
+- **4:1387:** Smetana's Vltava composed 1874; two flutes depict a warm spring and a cold spring.
+- **4:1388:** Russian drill reached Lake Vostok water in February 2012; ice about 4 km thick.
+- **4:1389:** Baikal about 25 million years old, 1,642 m deep, about one-fifth of unfrozen surface fresh water; the nerpa is endemic.
+- **4:1391:** Florida Current about 30 Sv; all rivers together about 1 Sv.
+- **4:1392:** Camargue foals are born dark and turn white over some years.
+- **4:1394:** Perrault 1674; Seine basin rain about six times the river's flow, measured over three years.
+- **4:1395:** Horton 1945 stream-order laws; I described the ordering loosely.
+- **4:1396:** Yermak 1899, Makarov, called the first true polar icebreaker.
+- **4:1397:** Ganga-Brahmaputra sediment about one billion tonnes a year (written as सौ करोड़ टन).
+- **4:1400:** INCOIS tsunami warning centre in operation from October 2007.
+- **4:1401:** BBC Shipping Forecast from the 1920s; sea areas read in a fixed order.
+- **4:1402:** the Weddell figure (79–80 m).
+- **4:1403:** Cuyahoga fire June 1969; US Clean Water Act 1972.
+- **4:1404:** NEWater from 2003; membranes, reverse osmosis and UV.
+- **4:1405:** Mauna Kea 4,207 m above sea level, over 10,000 m from the sea floor.
+- **4:1406:** bottle found January 2018 near Wedge Island by Tonya Illman; thrown from the barque Paula on 12 June 1886.
+- **4:1407:** Magellan reached the Pacific in November 1520 and named it for its calm.
+- **4:1408:** Old River Control Structure 1963; about 30% of the flow goes to the Atchafalaya.
+- **4:1409:** Mihir Sen swam the Palk Strait, Talaimannar to Dhanushkodi, in 1966, and other straits the same year.
+- **4:1410:** Banni buffalo recognised as a breed in 2010.
+- **4:1411:** Abhilash Tomy left Mumbai on 1 November 2012 and returned 31 March 2013, solo and nonstop, about 150 days.
+- **4:1412:** Hogenakkal coracles called parisal; once covered with hide.
+- **4:1413:** Ra II in 1970, built by Aymara makers from Lake Titicaca, sailed Morocco to Barbados; Ra I failed in 1969.
+- **4:1414:** Avestan Apam Napat is swift-horsed and lives in the waters; Rigveda 2.35 is the Apam Napat hymn.
+- **4:1415:** Kambala, Srinivasa Gowda 2020, linked to post-harvest thanks to deities.
+- **4:1416:** Chinese junk watertight bulkheads on the UNESCO urgent safeguarding list, 2010.
+- **4:1417:** Alderney wreck of 1592; the calcite sunstone study of 2013.
+- **4:1418:** the five rivers become the Panjnad, which joins the Indus near Mithankot.
+- **4:1421:** Water Music on 17 July 1717; about 50 musicians; played three times, per a newspaper of the day.
+- **4:1422:** about 1,800 deaths in the 1953 flood; Oosterschelde barrier completed 1986.
+- **4:1423:** Kepler 1596; five solids between six orbits.
+- **4:1424:** Angel Falls about 979 m; Jimmie Angel's flight 1933; Pemon name Kerepakupai Merú; spray in the dry season.
+- **4:1425:** photic zone about 200 m; no sunlight below about 1000 m.
+- **4:1427:** Dhaka muslin from Phuti karpas cotton of the Meghna banks; revival effort in the 21st century.
+- **4:1428:** Dowleswaram anicut completed 1852; farmers honour Cotton and have statues of him.
+- **4:1429:** Hess 1962 seafloor spreading.
+- **4:1430:** Cleeves et al. 2014, Science; up to about half of Earth's water older than the Sun.
+- **4:1431:** sea ice rejects brine; old sea ice is nearly fresh.
+- **4:1433:** Kahanamoku won the 100 m freestyle gold in 1912; surfing demonstrations in Australia 1914–15.
+- **4:1434:** kalai tinning with navsar (ammonium chloride) flux.
+- **4:1435:** Harela grains sown about 10 days before, cut at the start of Shravan.
+- **4:1436:** Tolkappiyam names mullai as the pastoral tinai; Sangam poetry pairs it with waiting.
+- **4:1437:** shea tree bears fruit only after about 15 or more years; butter traditionally made by women.
+- **4:1438:** Karnik and others, PLOS ONE 2014, pine sapwood xylem filter removing most bacteria.
+- **4:1439:** Yashina and others, 2012, Silene stenophylla grown from about 32,000-year-old fruit in a Kolyma squirrel burrow; the plants flowered and set seed.
+- **4:1440:** E. H. Wilson, 1910, Min valley landslide broke his leg; "lily limp".
+- **4:1441:** bagasse-based paper mill at Kagithapuram (Karur), a Tamil Nadu state undertaking, since the 1980s.
+- **4:1442:** Bathukamma in Ashvin, nine days; tangedu, gunugu and lotus flowers; immersed in water.
+- **4:1443:** Baldwin and Schultz, Science 1983, poplar and sugar maple seedlings, tannins and phenolics rose in undamaged neighbours.
+- **4:1444:** Robert Bruce, 1823, Singpho chief Bessa Gaum (Bisa Gam) showed him wild Assam tea.
+- **4:1446:** Linnaeus's Saturday "herbationes" from Uppsala with more than 100 students.
+- **4:1447:** Cactoblastis released from 1926; Boonarga memorial hall; the "crores of acres" of prickly pear.
+- **4:1448:** Gagliano and others, Oecologia 2014, Mimosa habituation lasting about a month.
+- **4:1449:** A. B. Frank coined "mycorrhiza" in 1885.
+- **4:1450:** de Clieu, 1723, Martinique; sharing his water ration comes from his own account.
+- **4:1451:** Song, Hu and others, Nature 2018; densified wood tensile strength comparable to many steels.
+- **4:1452:** Ohalo II exposed in 1989 on the SW shore of the Sea of Galilee; about 23,000 years old; wild barley and a grinding stone.
+- **4:1453:** Sri Maha Bodhi, 288 BCE, oldest planted tree with a recorded planting date.
+- **4:1454:** ISS Veggie crop eaten on 10 August 2015.
+- **4:1455:** Engelmann, 1882, Cladophora experiment.
+- **4:1456:** The Power of Movement in Plants, 1880; covered canary-grass tips; Francis later a botanist.
+- **4:1457:** living root bridges on the UNESCO tentative list in 2022; roots guided through areca trunks.
+- **4:1458:** Garner and Allard, 1920, Maryland Mammoth tobacco.
+- **4:1459:** lignum vitae shaft bearings on USS Nautilus (1954). Least sure of this one.
+- **4:1460:** Millennium Seed Bank opened 2000; stored near -20 C; 10% of wild species banked by 2009.
+- **4:1461:** vetiver roots 3 m or more deep; Richard Grimshaw at the World Bank promoting it in India in the 1980s.
+- **4:1462:** Borthwick and Hendricks, 1952, lettuce seed red/far-red response; "phytochrome" named in 1959.
+- **4:1463:** Plumier named Magnolia after Pierre Magnol in 1703; Linnaeus kept the name.
+- **4:1464:** eucalypts resprouting from buds under the bark after the 2019-20 Black Summer fires.
+- **4:1465:** Mawphlang rule that nothing, not even a dry leaf, leaves the grove.
+- **4:1466:** Robert Marsham's "Indications of Spring" from 1736, kept by his family into the 1950s.
+- **4:1467:** Xu, Mackill, Ronald and others, Nature 2006, Sub1; Swarna-Sub1 survives about two weeks under water.
+- **4:1468:** Frankenberg and Joiner, 2011, chlorophyll fluorescence measured from GOSAT.
+- **4:1469:** Sam Van Aken began the Tree of 40 Fruit in 2008 at Syracuse.
+- **4:1470:** Goethe, Metamorphosis of Plants, 1790.
+- **4:1471:** Cedars of God wall, 1876, paid for by Queen Victoria; UNESCO 1998.
+- **4:1472:** Great Banyan about 250 years old; main trunk removed 1925; more than 3,000 prop roots.
+- **4:1474:** śrauta rule that the arani comes from an ashvattha grown on a shami (śamīgarbha). I gave no text reference.
+- **4:1475:** Barus camphor from Dryobalanops aromatica; Malay "kapur Barus".
+- **4:1476:** Okuda, Higashiyama and others, Nature 2009, LURE peptides in Torenia.
+- **4:1477:** Encephalartos woodii found 1895 by John Medley Wood in Ngoye forest; only male clones exist; one at Kew.
+- **4:1478:** Portuguese law requires at least 9 years between cork harvests; trees live about 200 years.
+- **4:1479:** Vallée de Mai a UNESCO site in 1983; coco de mer has the largest seed.
+- **4:1480:** Humboldt, 1800, palo de vaca (Brosimum) in Venezuela.
+- **4:1481:** Stuart Roosa, a former smokejumper, carried a few hundred seeds on Apollo 14 in 1971.
+- **4:1482:** Ceiba as the Maya world tree; national tree of Guatemala; over 40 m tall.
+- **4:1483:** Amborella genome, Science 2013; sister to all other flowering plants.
+- **4:1484:** Hales, Vegetable Staticks, 1727, weighed a potted sunflower to measure its water loss.
+- **4:1485:** G. H. Shull, 1908, hybrid maize.
+- **4:1486:** Brazil nut pollinated by large-bodied bees; plantation yields low; agouti opens the pods and caches seeds.
+- **4:1488:** Pando about 43 ha, one male clone, among the heaviest organisms.
+- **4:1489:** Dmitri Ivanov died of hunger in January 1942 among packets of rice.
+- **4:1490:** in the Nidanakatha, Sotthiya gives the Bodhisatta eight handfuls of kusa grass.
+- **4:1491:** Shigeru Miki named Metasequoia from fossils in 1941; Hu Xiansu and Cheng Wanjun described the living trees in 1948.
+- **4:1492:** Visby lenses are Viking-age rock crystal from Gotland, some set in silver; whether they were used as magnifiers is debated.
+- **4:1493:** Abbe founded the Carl Zeiss Foundation in 1889, and Zeiss brought in an eight-hour day in 1900.
+- **4:1494:** the Nimrud lens was found by Layard in 1850, is about 2,700 years old, and is in the British Museum.
+- **4:1495:** Dobson founded the San Francisco Sidewalk Astronomers in 1968.
+- **4:1496:** the Yerkes refractor is about 1 m (40 inches), began work in 1897, and remains the largest refractor used for astronomy.
+- **4:1497:** Henry Mance made the heliograph at Karachi in 1869; I wrote that it carried messages "tens of km".
+- **4:1498:** Benham's top was sold in 1894.
+- **4:1499:** Gascoigne's spider-thread crosshair dates from about 1640.
+- **4:1500:** Manne Siegbahn won the physics Nobel in 1924 and Kai Siegbahn in 1981.
+- **4:1501:** Ibn Sahl wrote about 984; Rashed's reconstruction came in 1990, from manuscripts in Damascus and Tehran.
+- **4:1502:** the diffraction prize was in 1818, with Poisson as a judge and Arago confirming the bright spot.
+- **4:1503:** Zeeman's discovery was in 1896; Hale found magnetic fields in sunspots in 1908.
+- **4:1504:** Bradley's aberration was announced in 1729, giving about 8 minutes for sunlight to reach Earth.
+- **4:1505:** Hanbury Brown and Twiss published in 1956; the instrument was at Narrabri.
+- **4:1506:** Delambre and Méchain measured the meridian from Dunkirk to Barcelona, 1792–1798. I removed the claim about Méchain's hidden error, so it is no longer in the text.
+- **4:1507:** EAWAG has promoted SODIS since 1991.
+- **4:1508:** Cherenkov's discovery was in 1934, with the Nobel in 1958.
+- **4:1509:** Colladon showed light guided in a water jet in Geneva around 1842.
+- **4:1510:** Sasson's 1975 Kodak camera made 100×100 pixel images and took 23 seconds to record one to tape.
+- **4:1511:** the krypton-86 metre definition (1,650,763.73 wavelengths) ran from 1960 to 1983.
+- **4:1512:** Sagnac's experiment was in 1913, and aircraft gyroscopes use the effect.
+- **4:1513:** Johansson made his gauge blocks in 1896 at Eskilstuna, and the blocks wring together.
+- **4:1514:** Lick was interred under the pier of the roughly 91 cm (36-inch) refractor in 1887.
+- **4:1515:** Snellius measured Alkmaar to Bergen op Zoom by triangulation in 1615.
+- **4:1516:** Odeillo was completed in 1970 and reaches over 3,000°C.
+- **4:1517:** the Bortle scale appeared in Sky & Telescope in 2001, with nine classes.
+- **4:1518:** Bell Labs announced the solar cell in April 1954 (Chapin, Fuller, Pearson), about 6% efficient, demonstrated running a toy and a radio transmitter.
+- **4:1519:** Tommaso da Modena's fresco is from 1352, in the chapter house of San Nicolò, Treviso; Hugh of Saint-Cher is shown with spectacles.
+- **4:1520:** Autochrome went on sale in 1907; the grains were orange, green and violet.
+- **4:1521:** Rowland's ruling engine dates from 1882, at Johns Hopkins.
+- **4:1522:** Scheiner projected the sun's image; Rosa Ursina was printed 1626–1630.
+- **4:1523:** Gaia launched in December 2013, measured over a billion stars, and its data is open.
+- **4:1524:** Land's sheet polariser led to polarising sunglasses in the 1930s.
+- **4:1525:** YInMn blue was made in 2009 at Oregon State University by Subramanian's group.
+- **4:1526:** Schott founded his Jena glassworks in 1884, where borosilicate glass was developed.
+- **4:1527:** Plateau made the phenakistiscope in 1832.
+- **4:1528:** Lebedev measured light pressure in 1900; JAXA flew the IKAROS solar sail in 2010.
+- **4:1529:** Mie published his scattering theory in 1908.
+- **4:1530:** Mouchot's solar engine dates from the 1860s, with a gold medal at the Paris exhibition in 1878.
+- **4:1531:** in the Matrimandir, a heliostat sends a sunbeam onto a crystal globe.
+- **4:1532:** Bouguer's attenuation work was published in 1729.
+- **4:1533:** Malus observed the Luxembourg Palace windows in 1808.
+- **4:1534:** Edmond Becquerel was 19 in 1839, working in his father's laboratory.
+- **4:1535:** Grimaldi's book was published in 1665, two years after his death, and coined "diffraction".
+- **4:1536:** Witelo dedicated his Perspectiva to William of Moerbeke and met him at Viterbo.
+- **4:1537:** Whitworth proposed a standard screw thread in 1841.
+- **4:1538:** Percy Shaw patented the cat's eye in 1934, at Halifax.
+- **4:1539:** Compton's scattering was in 1923, with the Nobel in 1927.
+- **4:1540:** the Fabry–Pérot interferometer dates from 1899, at Marseille.
+- **4:1541:** Crookes made the radiometer 1873–1875; it is driven by thermal effects, not light pressure.
+- **4:1542:** Melvill's salt-in-flame observation was in 1752.
+- **4:1543:** Lippmann's method dates from 1891, with the Nobel in 1908.
+- **4:1544:** Balmer's formula was in 1885; he was about 60 and taught mathematics at a girls' school in Basel.
+- **4:1545:** Vantablack was made in 2014 and absorbs over 99.9% of light.
+- **4:1546:** Olbers posed the paradox in 1823.
+- **4:1547:** Ibn Mu'adh put the start of dawn at about 19° solar depression and estimated the height of the atmosphere.
+- **4:1548:** the zodiacal light is called "false dawn".
+- **4:1549:** Roget began his word lists in 1805; Thesaurus published 1852.
+- **4:1550:** Jnana Panchami falls on Kartika shukla 5; bhandar manuscripts are aired and wrapped anew.
+- **4:1551:** Library of Celsus has a double wall with a gap against humidity; Celsus's tomb is beneath it.
+- **4:1552:** Delivery of Books Act 1954; four depository libraries today (Delhi was possibly added later; the wording allows for that).
+- **4:1553:** Spitzer manuscript found 1906 at Kizil by the Turfan expedition; palm leaf, Kushan period; oldest Sanskrit philosophical manuscript.
+- **4:1554:** Beinecke opened 1963, architect Gordon Bunshaft, translucent marble panels.
+- **4:1555:** Gessner's Bibliotheca universalis, 1545.
+- **4:1556:** Derge Parkhang founded 1729 and still hand-prints.
+- **4:1557:** Khuda Bakhsh library opened to the public in 1891.
+- **4:1558:** in the 1592 war only the Jeonju copy of the Joseon Annals survived, carried by local scholars to Mount Naejang.
+- **4:1559:** Little Free Library, 2009, Todd Bol, Hudson, Wisconsin; model of a schoolhouse, in memory of his teacher mother.
+- **4:1560:** Leuven library burned August 1914, reopened 1928, burned May 1940.
+- **4:1561:** UNESCO Memory of the World 2007, 30 Rigveda manuscripts at BORI.
+- **4:1562:** Raza Library founded by Nawab Faizullah Khan in 1774.
+- **4:1564:** Mary Lemist Titcomb's horse-drawn book wagon, Washington County, Maryland, 1905.
+- **4:1565:** Hanff and Doel letters from 1949, about 20 years; book published 1970.
+- **4:1566:** Internet Archive founded 1996 by Brewster Kahle; Wayback Machine public in 2001.
+- **4:1567:** Wicked Bible 1631, Barker and Lucas, fined 300 pounds.
+- **4:1568:** Nepal-German Manuscript Preservation Project ran 1970 to 2001.
+- **4:1569:** Böhtlingk and Roth dictionary 1855 to 1875, seven volumes.
+- **4:1570:** Brontë tiny books c. 1829.
+- **4:1572:** Mainz Psalter, 14 August 1457, Fust and Schöffer; first dated printed colophon; two-colour initials.
+- **4:1573:** King James Bible ordered 1604, 47 scholars in six companies, printed 1611.
+- **4:1574:** Nirnaya Sagar Press founded by Javaji Dadaji; Kavyamala series.
+- **4:1575:** Solesmes, Paléographie musicale from 1889.
+- **4:1576:** Ernakulam declared first fully literate district, 4 Feb 1990.
+- **4:1577:** Panizzi's 91 cataloguing rules, 1841.
+- **4:1578:** Logos Hope in service since 2009, run by a German charity.
+- **4:1579:** Lindisfarne monks left the island in 875 with Cuthbert's relics and the Gospels.
+- **4:1580:** Aluvihare, Pali canon written down 1st century BCE; library destroyed in the 1848 rising and recopied.
+- **4:1581:** Biblioburro, Luis Soriano, donkeys Alfa and Beto, La Gloria.
+- **4:1582:** Hyakumanto Darani, 764 to 770, Empress Shotoku, one million pagodas.
+- **4:1583:** Naval Kishore Press, Lucknow, 1858.
+- **4:1584:** Chester Beatty moved to Dublin in 1950; collection left to the Irish public on his death in 1968.
+- **4:1585:** Chicago Public Library went fine-free in October 2019 and cleared old fines; returns rose.
+- **4:1586:** Notes and Queries founded 1849 by Thoms, who coined "folk-lore" in 1846.
+- **4:1587:** Shabdakalpadruma published 1822 to 1858.
+- **4:1588:** Klencke Atlas presented to Charles II in 1660, about 1.75 m tall, British Library.
+- **4:1589:** Codex Gigas, 13th century Bohemia, a single scribe according to handwriting study.
+- **4:1590:** William Barrow's research on acidic paper, mid-20th century.
+- **4:1591:** Hereford Mappa Mundi c. 1300, single sheet of vellum, east at top.
+- **4:1592:** Dhavala published 1939 to 1958 in 16 volumes with Hindi translation. Least sure of the volume count.
+- **4:1593:** Carlson's first copy, 22 Oct 1938, Astoria, "10-22-38 Astoria" written on a glass slide.
+- **4:1594:** the scribal verse beginning भग्नपृष्ठकटिग्रीवा; my paraphrase of its meaning.
+- **4:1595:** Memory of Mankind, Hallstatt salt mine, Martin Kunze, from 2012 (year not certain).
+- **4:1596:** Coronelli globes finished 1683 for Louis XIV, about 4 m, now at the BnF.
+- **4:1597:** Tianyi Ge c. 1561, Fan Qin; name from "heaven one produces water"; pond in front against fire.
+- **4:1598:** 1949 UNESCO Public Library Manifesto wording on free use on equal terms regardless of occupation, creed, class or race.
+- **4:1599:** Uigwe taken 1866 from Ganghwa, found in BnF 1975 by Park Byeong-seon, returned 2011 (as a renewable loan).
+- **4:1600:** Pali Text Society founded 1881 by Rhys Davids, who met Pali in the Ceylon civil service.
+- **4:1601:** Derviš Korkut hid the Sarajevo Haggadah in 1942.
+- **4:1602:** Grenfell and Hunt at Oxyrhynchus from 1896; the publication series is still running.
+- **4:1603:** Gutenberg adapted the wine and olive screw press.
+- **4:1604:** Borges, "La biblioteca de Babel", 1941; National Library director from 1955.
+- **4:1605:** U. V. Swaminatha Iyer published Civaka Cintamani in 1887.
+- **4:1720:** Bhopal Upper Lake built under Raja Bhoja (11th century) on the Kolans river; Bhoj Wetland made a Ramsar site in 2002.
+- **4:1722:** bell metal at about 78 copper to 22 tin; Sarthebari items named sarai and kahi.
+- **4:1723:** mingei coined in 1926 by Yanagi with Hamada Shoji and Kawai Kanjiro; Japan Folk Crafts Museum opened in Tokyo in 1936.
+- **4:1724:** 8 ratti = 1 masha, 12 masha = 1 tola; tola fixed at 180 grains in 1833.
+- **4:1725:** north-light sawtooth roofs, glazed on the steep side facing north, in 19th-century English weaving sheds.
+- **4:1726:** Bankura horse from Panchmura is the emblem of the All India Handicrafts Board.
+- **4:1727:** Bayana hoard, 1946, at Hullanpura, about 2,100 Gupta gold coins, the largest Gupta hoard.
+- **4:1728:** Longpi pottery made without a wheel and polished with leaves.
+- **4:1729:** INSV Kaundinya inducted at Karwar in May 2025; stitched with coir rope; design from a 5th-century Ajanta painting.
+- **4:1730:** Sanauli 2018 chariots, solid wooden wheels sheathed in copper, about 4,000 years old.
+- **4:1731:** Thathera craft of Jandiala Guru on UNESCO's intangible heritage list in 2014.
+- **4:1732:** Northern Black Polished Ware dated about 7th to 2nd century BCE.
+- **4:1733:** Needham on harness history; breast-strap then collar harness in China, collar in Europe by about the 10th century.
+- **4:1735:** Palmer's first mail coach, 2 August 1784, Bristol to London in about 16 hours, arriving next morning.
+- **4:1736:** Łukasiewicz kerosene lamp used in an emergency night surgery at a Lviv hospital, July 1853.
+- **4:1737:** ASTRA ole stove from ASTRA at IISc under Amulya Reddy, 1980s; "ole" means stove in Kannada.
+- **4:1738:** Verrier Elwin, "The Agaria", 1942, about the Maikal hills.
+- **4:1739:** Ainnurruvar active from the 9th to 13th century; inscriptions reach Sri Lanka and Sumatra.
+- **4:1740:** Mary Smith of Limehouse used a pea-shooter as a knocker-up.
+- **4:1741:** Böttger's porcelain in 1708 building on Tschirnhaus's experiments; Meissen manufactory 1710.
+- **4:1742:** Kodumanal called Kodumanam in the Pathitrupathu; K. Rajan's digs found bead workshops and iron smelting, about 2,000 years old.
+- **4:1743:** Pipili appliqué began for the canopies and covers of the Puri chariots.
+- **4:1744:** Araniko went to Tibet in 1260 with about 80 craftsmen; White Stupa of the Miaoying temple finished in 1279.
+- **4:1747:** Nachiarkoil kuthuvilakku lamps hold a GI tag; made by sand-mould casting.
+- **4:1748:** Chatham double ropehouse built around 1790, about 346 m long, still making rope.
+- **4:1749:** Murdoch lit his Redruth house with coal gas in 1792; Soho Foundry lit later.
+- **4:1751:** Babur describes the Persian wheel around Lahore and Dipalpur.
+- **4:1752:** Shatapatha Brahmana book 14 says the Mahavira pot is shaped by hand, not on a wheel.
+- **4:1753:** Mandsaur inscription; silk weavers' guild from Lata built the Sun temple in Malava year 493 (about 436 CE) and repaired it in year 529; composed by Vatsabhatti.
+- **4:1754:** wadokei clocks adjusted temporal hours with movable weights or hour plates.
+- **4:1755:** KKGSS Bengeri as the only BIS-certified khadi flag maker for a long time; workforce mostly women.
+- **4:1756:** Indus steatite seals fired after carving, becoming harder and whiter.
+- **4:1759:** Huntsman's crucible steel around 1740, sought for clock springs.
+- **4:1760:** Cugnot's three-wheeled steam vehicle of 1769; the 1770 version is in the Musée des Arts et Métiers.
+- **4:1761:** Colwell et al. 2003; sari folded 4 to 8 times; cholera cases about halved.
+- **4:1762:** Longquan celadon on UNESCO's intangible list in 2009; colour from iron in a low-oxygen firing.
+- **4:1763:** Japanese sword steel folded 10 to 15 times.
+- **4:1764:** Comelli et al. 2016; Tutankhamun's dagger has about 11% nickel plus cobalt, showing meteoric iron.
+- **4:1766:** Pazyryk carpet found by Rudenko in 1949, about 2,500 years old, horsemen on the border.
+- **4:1767:** Nizamabad pottery blackened by smoke, with silvery powder pressed into incised lines.
+- **4:1768:** Rato Machhindranath chariot about 18 to 20 m tall, rebuilt every year before the monsoon.
+- **4:1770:** five aflaj of Oman on the UNESCO list in 2006; water turns timed by sundial by day and stars by night.
+- **4:1771:** Lankensperger 1817; Ackermann's English patent 1818.
+- **4:1772:** Dhar iron pillar over 13 m when whole, Paramara period, longer than the Delhi pillar.
+- **4:1773:** gilded vajra at the top of Swayambhunath's eastern stairway, from Pratap Malla's time in the 17th century.
+- **4:1774:** Watt's horsepower set at 33,000 foot-pounds per minute.
+- **4:1775:** burning glass in Aristophanes' "Clouds", 423 BCE, used to melt a wax tablet.
+- **4:1776:** Zawar zinc smelting about 1,000 years old, using brinjal-shaped retorts and downward distillation.
+- **4:1777:** Bentley's first snowflake photograph was 15 Jan 1885 in Vermont, and he made more than 5,000 photos.
+- **4:1778:** Bjerknes 1904 paper; seven variables.
+- **4:1779:** Cellini's autobiography describes a halo around his shadow's head, strongest on dewy grass.
+- **4:1780:** Kiribati's date-line shift took effect 1 Jan 1995; Caroline Island renamed Millennium Island.
+- **4:1781:** Joseph Henry's telegraph weather network from 1849, with a daily weather map displayed in the Smithsonian building.
+- **4:1782:** Browning, Montana, 23–24 Jan 1916, a 100°F fall (about 56°C) in 24 hours; I treated this as the world record.
+- **4:1783:** Brier score, 1950.
+- **4:1784:** VORTEX field project, 1994–95.
+- **4:1785:** Sotatsu's Fujin Raijin screens, owned by Kennin-ji, a National Treasure.
+- **4:1786:** First International Polar Year 1882–83; "more than ten countries"; idea credited to Weyprecht.
+- **4:1787:** IMD's 24-hour rainfall is read at 08:30 IST.
+- **4:1788:** Yuma has about 90% of possible sunshine.
+- **4:1789:** Langley's bolometer and the 1881 Mount Whitney expedition.
+- **4:1790:** First International Meteorological Congress, Vienna, September 1873.
+- **4:1791:** North Indian Ocean cyclone naming began in 2004; the first name, Onil, was proposed by Bangladesh.
+- **4:1792:** Mount Waialeale is among the wettest places on Earth.
+- **4:1793:** Joanne Simpson's 1949 Chicago PhD made her the first US woman with a meteorology PhD; hot-tower theory with Riehl in 1958.
+- **4:1794:** Societas Meteorologica Palatina, 1780; "more than 30 stations"; readings at 7, 14 and 21 hours.
+- **4:1795:** Mount Washington gust of about 372 km/h on 12 April 1934; it stood as the record for 62 years.
+- **4:1796:** Weather-index crop insurance pilot in Mahabubnagar, 2003, for groundnut and castor farmers.
+- **4:1797:** CoCoRaHS started in 1998 after the July 1997 Fort Collins flood.
+- **4:1798:** Popov's 1895 receiver was used as a thunderstorm detector at a meteorological observatory.
+- **4:1799:** Jefferson bought a thermometer on 4 July 1776 and kept weather records for about 50 years.
+- **4:1800:** AMeDAS began in November 1974 with about 1,300 stations.
+- **4:1801:** Cloud seeding during 1967–72; ENMOD opened for signature in 1977.
+- **4:1802:** Thunderstorm Project 1946–47; Byers and Braham 1949; three stages.
+- **4:1803:** Rainfall figures (Mahabaleshwar 5,000–6,000 mm vs Pune 700–800 mm) and the "under 125 km" distance.
+- **4:1804:** Yu et al. 2015: about 27.7 million tonnes of Saharan dust per year reach the Amazon, and its phosphorus roughly offsets losses.
+- **4:1805:** Eunice Foote 1856; "about a century and a half overlooked".
+- **4:1806:** Bangladesh Cyclone Preparedness Programme started in 1972.
+- **4:1807:** van der Ent and Tuinenburg 2017: water stays in the atmosphere about 8–9 days.
+- **4:1808:** Great Storm of 15–16 Oct 1987 felled about 15 million trees, and the Met Office improved its methods afterwards.
+- **4:1809:** Merryweather's Tempest Prognosticator, 12 leeches, Great Exhibition 1851.
+- **4:1811:** Robinson's four-cup anemometer, 1846, Armagh.
+- **4:1812:** Hinrichs coined "derecho" in 1888.
+- **4:1813:** Pigafetta's account mentions St Elmo's fire.
+- **4:1814:** Teisserenc de Bort; 1902; "about 11–12 km". The naming of the layers is deliberately left undated.
+- **4:1815:** Phalodi 51.0°C on 19 May 2016.
+- **4:1816:** March 2022 was India's warmest March in 122 years, and wheat yields fell.
+- **4:1817:** Glaisher and Coxwell, 5 Sept 1862; Coxwell pulled the valve cord with his teeth.
+- **4:1818:** Le Monnier 1752, fair-weather atmospheric electricity.
+- **4:1819:** Theodoric of Freiberg's water-filled glass spheres, c. 1304–10.
+- **4:1820:** Anna Mani joined IMD Pune in 1948 and led the making of weather instruments in India.
+- **4:1821:** Lake Suwa ice-ridge records kept by Yatsurugi shrine priests since 1443.
+- **4:1822:** Piddington coined "cyclone" in 1848, from the Greek for a snake's coil.
+- **4:1823:** Torne River ice break-up dates since 1693, with a trend towards earlier break-up.
+- **4:1824:** The Brihatsamhita 'garbhalakshana' chapter, and the 195-day figure. I am least sure of this one.
+- **4:1825:** Nakaya's first artificial snow crystal, 1936; the line calling snow crystals "letters from the sky" is paraphrased, not quoted.
+- **4:1826:** Blue Hill Observatory, 1885, Rotch; longest continuous US record at one site.
+- **4:1827:** METSAT launched 12 Sept 2002 and renamed Kalpana-1 in Feb 2003.
+- **4:1828:** Fujiwhara, 1921.
+- **4:1829:** ECMWF operational ensemble forecasts began December 1992.
+- **4:1830:** First International Cloud Atlas 1896, using the ten genera of Hildebrandsson and Abercromby (1887).
+- **4:1831:** Verne's "Le Rayon vert", 1882.
+- **4:1832:** Utqiagvik has about two months without sun, returning in the third week of January.
+- **4:1833:** IMD's long-period average is 87 cm (1971–2020); about three-quarters of annual rain falls in these four months.
+- **4:1834:** Stanislavski's "magic if"; English translation *An Actor Prepares*, 1936.
+- **4:1835:** Lorenzo de' Medici took the young Michelangelo into his house around 1490; he ate with the family and studied the Medici antiquities.
+- **4:1836:** Natyashastra, opening of the vachika chapter: speech is the body of drama.
+- **4:1837:** Taikan and Shunso in Calcutta in 1903. The link to the Bengal wash technique is worded as historians' view.
+- **4:1838:** Cassatt, *The Child's Bath*, 1893, Art Institute of Chicago.
+- **4:1839:** Monet's offer to Clemenceau on 12 November 1918, the day after the armistice; Orangerie rooms opened 1927.
+- **4:1840:** Botticelli, *Birth of Venus*, c.1485, Uffizi, with Zephyr.
+- **4:1841:** Hokusai, *Ejiri in Suruga Province*, *Thirty-six Views of Mount Fuji*, c.1830 to 1832.
+- **4:1842:** Robert Gill sent to Ajanta in 1844, about 20 years of copying; most copies lost in the 1866 Crystal Palace fire at Sydenham.
+- **4:1843:** Brancusi, *Bird in Space*; duty charged 1926, US Customs Court ruled it art in 1928.
+- **4:1844:** S. H. Raza born 1922 in Mandla district; the teacher's dot; Bindu series from about 1980.
+- **4:1845:** Sanjusangendo, 1,000 standing Kannon plus one seated; fire 1249, rebuilt 1266.
+- **4:1846:** Leonardo's *Codex on the Flight of Birds*, c.1505, Biblioteca Reale, Turin.
+- **4:1847:** Sigiriya frescoes from King Kashyapa's time (5th century); poems on the Mirror Wall.
+- **4:1848:** Dodo painting attributed to Mansur, c.1625, now in St Petersburg; called one of the most accurate depictions of the living dodo.
+- **4:1849:** Natyashastra's 36 drishtis (8 rasa, 8 sthayi, 20 sanchari), in the angika abhinaya section.
+- **4:1850:** Todai-ji Nio guardians by Unkei and Kaikei's workshop, 1203, about 69 days.
+- **4:1851:** Uday Shankar's Almora centre founded in the late 1930s and closed in 1944; Guru Dutt was a pupil; Kathakali, Bharatanatyam and Manipuri gurus taught there.
+- **4:1852:** Raphael, *School of Athens*, 1509 to 1511.
+- **4:1853:** Matisse's Rosary Chapel at Vence consecrated 1951, when he was 81; he worked largely from bed.
+- **4:1854:** Thanjavur Quartet's margam order (alarippu, jatiswaram, shabdam, varnam, padam, tillana), early 19th century, Maratha court.
+- **4:1855:** Natyashastra: vira rasa's deity is Mahendra, its colour gaura, its sthayi bhava utsaha.
+- **4:1856:** Lorenzetti's Good and Bad Government frescoes, Siena, 1338 to 1339; the list of virtues beside the ruler.
+- **4:1857:** Winged Victory of Samothrace found in 1863 by Champoiseau; dated about the 2nd century BCE.
+- **4:1858:** Stubbs, about 18 months of dissection, *The Anatomy of the Horse* 1766; *Whistlejacket* c.1762, National Gallery London.
+- **4:1859:** Natyashastra chapter 1: first play at Indra's banner festival; Indra beats the obstacles with the banner staff, which is then called jarjara.
+- **4:1860:** Night Watch* (1642) is a daylight scene darkened by old varnish.
+- **4:1861:** Munch's 1893 *Scream*, National Museum, Oslo; the figure stands on a bridge.
+- **4:1862:** Delacroix, *Liberty Leading the People*, July Revolution of 1830, Louvre.
+- **4:1863:** Mamallapuram relief, 7th-century Pallava; read as Arjuna's penance or as Bhagiratha's.
+- **4:1864:** Goya's *Disasters of War*, made 1810 to 1820, published 1863, 35 years after his death.
+- **4:1865:** Fudo Myoo's flame halo burns defilements; the 9th-century statue at Toji.
+- **4:1866:** Bruegel, *Children's Games*, 1560, Kunsthistorisches Museum Vienna; about 80 games.
+- **4:1867:** Purulia Chhau masks from Charida village; Chhau on the UNESCO list in 2010.
+- **4:1868:** Georges de La Tour, *Magdalene with the Smoking Flame*, c.1640.
+- **4:1869:** Rukmini Devi began Bharatanatyam at about 30; first stage performance at Adyar in 1935; founded Kalakshetra in 1936.
+- **4:1870:** Karnabharam*, attributed to Bhasa: Karna gives his armour and earrings to Indra. Bhasa's plays were recovered in Kerala in the early 20th century by T. Ganapati Sastri.
+- **4:1871:** Laocoön unearthed in Rome in January 1506; placed in the Vatican by Julius II.
+- **4:1872:** Nandalal Bose's black-and-white print of Gandhi with staff, known as *Bapuji*, 1930. Written as a "छापा-चित्र" (printed picture), since it is a linocut.
+- **4:1873:** Henri Rousseau, *The Sleeping Gypsy*, 1897.
+- **4:1874:** Ruskin, *The Elements of Drawing* (1857), "innocence of the eye".
+- **4:1875:** Order of the Kathakali preliminaries: kelikottu, then thodayam behind the hand-held curtain, then purappadu.

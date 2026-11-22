@@ -2,10 +2,12 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import type { ChapterPreview } from '@/lib/read-seeded-chapters';
 import { SCENES, type SceneId } from '@/lib/chapter-scenes';
+import { chapterPhoto } from '@/lib/scene-photos';
 
 /**
  * Small, curated entry points for well-grounded chapter scenes.
- * Existing local scene paintings are shown as STATIC artistic impressions.
+ * Each card shows the photograph or classical painting the chapter itself opens with
+ * (lib/scene-photos.ts); a chapter without one, and Data Saver, keep the drawn painting, still.
  * Only chapters with published verses are linked; the full contents list stays primary.
  */
 type Artwork = 'kurukshetra' | 'yajna' | 'yogi' | 'palace' | 'forest' | 'ocean' | 'devi' | 'kailash';
@@ -61,7 +63,10 @@ export function IllustratedChapterHighlights({
           <p className="editorial-section-eyebrow">ग्रन्थ प्रवेश · Illustrated entry points</p>
           <h2 id="chapter-highlights-title" className="editorial-section-title mt-1">Explore a section</h2>
         </div>
-        <p lang="hi" className="text-xs text-dharma-muted">कलात्मक दृश्य · मूल शास्त्रीय चित्र नहीं</p>
+        <a href="/sources/#picture-credits" className="focus-ring inline-flex min-h-6 items-center rounded-pill px-1 text-caption-1 text-dharma-muted underline decoration-dharma-border underline-offset-2 hover:text-dharma-text">
+          <span data-bi="en">Picture credits</span> <span aria-hidden="true" data-bi="sep">·</span>{' '}
+          <span lang="hi" data-bi="hi" className="font-devanagari">चित्र-श्रेय</span>
+        </a>
       </div>
       <ol className="mt-4 grid snap-x snap-mandatory grid-flow-col auto-cols-[minmax(248px,82vw)] gap-3 overflow-x-auto pb-3 scrollbar-none md:auto-cols-auto md:grid-flow-row md:grid-cols-3 md:overflow-visible">
         {items.map(({ id, painting, scene, chapter }) => (
@@ -75,6 +80,7 @@ export function IllustratedChapterHighlights({
                   aria-hidden="true"
                   data-decorative
                   data-painting={painting}
+                  data-photo={chapterPhoto(scriptureId, id)}
                   className="chapter-highlight-art"
                 />
               </span>

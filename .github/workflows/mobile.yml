@@ -1,0 +1,76 @@
+name: Mobile checks
+
+# The Android app in mobile/ has its own package.json, tsconfig and ESLint
+# config, and the website jobs in ci.yml do not look at it. This workflow
+# type-checks, lints and tests the app.
+#
+# It runs on pull requests that touch mobile/, and again on master after each
+# merge: two pull requests can pass on their own and still break the app
+# together (for example, both adding the same key to strings.ts).
+on:
+  pull_request:
+    branches: ["master"]
+    paths:
+      - "mobile/**"
+      - ".github/workflows/mobile.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "mobile/**"
+      - ".github/workflows/mobile.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A new push to the same pull request cancels the run it replaces. Each commit
+# on master keeps its own result.
+concurrency:
+  group: mobile-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  mobile:
+    name: Mobile type check, lint and tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # No LFS: the app's content build reads public/data and data/, not the
+      # LFS-tracked data/scriptures/mahabharata.ts.
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      # Node 22.18+ runs the shared TypeScript the content scripts import.
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+
+      # The app bundles verse text from the published chapter shards. The
+      # website's dependencies are not installed here, so tsx comes from npx
+      # (same major version as the root package.json).
+      - name: Shard scripture text
+        run: npx -y tsx@4 scripts/shard-scriptures-full.ts
+
+      - name: Install app dependencies
+        working-directory: mobile
+        run: npm ci
+
+      - name: Build app content
+        working-directory: mobile
+        run: npm run content
+
+      - name: Type check
+        working-directory: mobile
+        run: npm run typecheck
+
+      - name: Lint
+        working-directory: mobile
+        run: npm run lint
+
+      - name: Tests
+        working-directory: mobile
+        run: npm test

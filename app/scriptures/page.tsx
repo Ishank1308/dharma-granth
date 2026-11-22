@@ -8,6 +8,7 @@ import { getAllScriptures, getLibraryCounts } from '@/data/scriptures';
 import { getLibraryFacts } from '@/lib/library-server';
 import { ScriptureLibraryClient } from '@/app/components/ScriptureLibraryClient';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { publishedTotals } from '@/lib/ashtavakra';
 
 function loadLibrary() {
@@ -182,6 +183,7 @@ export default function ScripturesPage() {
         width="wide"
         eyebrow="Library"
         title="Scriptures"
+        cover={<PageCover photo="manuscript" />}
         titleHi="ग्रंथालय"
         lead={
           <p>

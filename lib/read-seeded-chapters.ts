@@ -1,5 +1,6 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { compareCommentaryUnits, commentaryUnitChapter } from './commentary-units.mjs';
 
 export interface ChapterPreview {
   id: number;
@@ -202,35 +203,84 @@ export function readSeededChapter(
   return null;
 }
 
+/** Published commentary units per scripture, grouped by chapter: `{ 12: ['12-s1', '12-s2'] }`. */
+const commentaryUnitIndex = new Map<string, Map<number, string[]>>();
+
+function commentaryUnitsByChapter(scriptureId: string): Map<number, string[]> {
+  let index = commentaryUnitIndex.get(scriptureId);
+  if (index) return index;
+  index = new Map();
+  const dir = resolve(process.cwd(), 'public/data/hi-commentary', scriptureId);
+  if (existsSync(dir)) {
+    const units = readdirSync(dir)
+      .filter((f) => /^\d+-[a-z][A-Za-z0-9_]*\.json$/.test(f))
+      .map((f) => f.slice(0, -5))
+      .sort(compareCommentaryUnits);
+    for (const unit of units) {
+      const chapter = commentaryUnitChapter(unit);
+      const list = index.get(chapter);
+      if (list) list.push(unit);
+      else index.set(chapter, [unit]);
+    }
+  }
+  commentaryUnitIndex.set(scriptureId, index);
+  return index;
+}
+
+/** The published commentary units of one chapter (lib/commentary-units.mjs), in order. */
+export function chapterCommentaryUnits(scriptureId: string, chapterId: number): string[] {
+  if (!SAFE_ID.test(scriptureId)) return [];
+  return commentaryUnitsByChapter(scriptureId).get(chapterId) ?? [];
+}
+
+/**
+ * Recently read chapters' commentary. Bounded: with every verse explained the published commentary runs
+ * to more than a gigabyte, so whole books are never held in memory (a build renders chapters in order,
+ * so a short history serves the chapter page, its parts and its verse pages).
+ */
+const COMMENTARY_CACHE_CHAPTERS = 24;
 const commentaryCache = new Map<string, Record<string, unknown> | null>();
 
 /**
- * One chapter's slice of the published Hindi commentary
- * (`public/data/hi-commentary/{id}.json`, keyed `${chapter}:${verse}`), for
- * rendering into the chapter page at build time. Undefined when the scripture
- * has no commentary for that chapter.
+ * One chapter's published Hindi commentary
+ * (`public/data/hi-commentary/{id}/{chapter}-{unit}.json`, keyed `${chapter}:${verse}`), for
+ * rendering into pages at build time. Undefined when the scripture has no commentary for that chapter.
  */
 export function readChapterCommentary<T = unknown>(
   scriptureId: string,
   chapterId: number,
 ): Record<string, T> | undefined {
   if (!SAFE_ID.test(scriptureId)) return undefined;
-  let all = commentaryCache.get(scriptureId);
-  if (all === undefined) {
-    const path = resolve(process.cwd(), 'public/data/hi-commentary', `${scriptureId}.json`);
-    try {
-      all = existsSync(path) ? (JSON.parse(readFileSync(path, 'utf8')) as Record<string, unknown>) : null;
-    } catch (err) {
-      console.error(`Error reading commentary for ${scriptureId}:`, err);
-      all = null;
+  const cacheKey = `${scriptureId}:${chapterId}`;
+  let slice = commentaryCache.get(cacheKey);
+  if (slice !== undefined) {
+    // Most recently used goes to the end.
+    commentaryCache.delete(cacheKey);
+    commentaryCache.set(cacheKey, slice);
+  } else {
+    const merged: Record<string, unknown> = {};
+    const dir = resolve(process.cwd(), 'public/data/hi-commentary', scriptureId);
+    for (const unit of chapterCommentaryUnits(scriptureId, chapterId)) {
+      try {
+        Object.assign(merged, JSON.parse(readFileSync(resolve(dir, `${unit}.json`), 'utf8')) as Record<string, unknown>);
+      } catch (err) {
+        console.error(`Error reading commentary ${scriptureId}/${unit}:`, err);
+      }
     }
-    commentaryCache.set(scriptureId, all);
+    // Units hold only their chapter's keys; the filter guards against a hand-edited file.
+    const prefix = `${chapterId}:`;
+    const own: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(merged)) if (key.startsWith(prefix)) own[key] = value;
+    slice = Object.keys(own).length > 0 ? own : null;
+    commentaryCache.set(cacheKey, slice);
+    if (commentaryCache.size > COMMENTARY_CACHE_CHAPTERS) {
+      commentaryCache.delete(commentaryCache.keys().next().value as string);
+    }
   }
-  if (!all) return undefined;
-  const prefix = `${chapterId}:`;
-  const slice: Record<string, T> = {};
-  for (const [key, value] of Object.entries(all)) {
-    if (key.startsWith(prefix)) slice[key] = value as T;
-  }
-  return Object.keys(slice).length > 0 ? slice : undefined;
+  return slice ? (slice as Record<string, T>) : undefined;
+}
+
+/** Whether a scripture has any published commentary. */
+export function hasPublishedCommentary(scriptureId: string): boolean {
+  return SAFE_ID.test(scriptureId) && commentaryUnitsByChapter(scriptureId).size > 0;
 }
