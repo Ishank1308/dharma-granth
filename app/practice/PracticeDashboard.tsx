@@ -2,11 +2,10 @@
 
 import dynamic from 'next/dynamic';
 import { retryImport } from '@/lib/retry-import';
-import Link from 'next/link';
 import { PageHeader } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
-import { Bookmark, NotebookPen, ScrollText } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
+import { PracticeOpening } from './PracticeOpening';
 import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
 
 const DailyVerse = dynamic(() => retryImport(() => import('@/app/components/DailyVerse').then((m) => m.DailyVerse)));
@@ -55,12 +54,6 @@ const TOOL_GROUPS: Array<{
   { id: 'svadhyaya', title: 'Svadhyaya & Contemplation', titleHi: 'स्वाध्याय व चिन्तन', toolIds: ['reflection', 'reading', 'verse'] },
 ];
 
-const MY_SPACE = [
-  { href: '/practice/gita-sankalpa/', hi: 'गीता संकल्प', en: 'Gita Sankalpa', Icon: ScrollText },
-  { href: '/practice/bookmarks/', hi: 'सुरक्षित श्लोक', en: 'Saved verses', Icon: Bookmark },
-  { href: '/practice/journal/', hi: 'स्वाध्याय डायरी', en: 'Journal', Icon: NotebookPen },
-];
-
 export function PracticeDashboard() {
   const [enabled, setEnabled] = useLocalStorage<Record<ToolId, boolean>>(
     'dharma.practice.tools',
@@ -92,25 +85,10 @@ export function PracticeDashboard() {
 
       <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
         <ObservanceNotice className="-mb-4" />
-        {/* Focused personal spaces: Gita Sankalpa, Saved Verses, and Journal */}
-        <nav aria-label="Personal practice spaces" className="reveal-grid grid grid-cols-1 gap-3 sm:grid-cols-3">
-          {MY_SPACE.map(({ href, hi, en, Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="apple-card flex min-h-[60px] items-center gap-3 px-4 py-3"
-            >
-              <span className="apple-tint-chip" aria-hidden="true">
-                <Icon className="h-4 w-4" />
-              </span>
-              <span className="min-w-0 leading-tight">
-                <span className="block text-subhead font-semibold tracking-[-0.01em] text-dharma-text">{en}</span>{' '}
-                <span lang="hi" className="block font-devanagari text-footnote text-dharma-muted">{hi}</span>
-              </span>
-            </Link>
-          ))}
+        {/* Today's sadhana, large, beside the reader's own spaces: Gita Sankalpa, Saved verses, Journal */}
+        <nav aria-label="Today and your practice spaces">
+          <PracticeOpening active={on} />
         </nav>
-
 
         {/* If PIN is set and dashboard is locked, hide private practices */}
             {/* Streamlined Tool Picker */}
@@ -166,11 +144,12 @@ export function PracticeDashboard() {
 
             {/* Core Practice Grid: Japa, Meditation, Pranayama, Reflection, Reading */}
             <div className="reveal-grid grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
-              {on('japa') && <JapaMala />}
-              {on('meditation') && <MeditationTimer />}
-              {on('pranayama') && <PranayamaPacer />}
-              {on('reflection') && <DailyReflection />}
-              {on('reading') && <ReadingPlan />}
+              {/* Each tool sits in a named cell, so a row of today's tile above can jump to it. */}
+              {on('japa') && <div id="practice-japa" className="grid min-w-0 scroll-mt-24"><JapaMala /></div>}
+              {on('meditation') && <div id="practice-meditation" className="grid min-w-0 scroll-mt-24"><MeditationTimer /></div>}
+              {on('pranayama') && <div id="practice-pranayama" className="grid min-w-0 scroll-mt-24"><PranayamaPacer /></div>}
+              {on('reflection') && <div id="practice-reflection" className="grid min-w-0 scroll-mt-24"><DailyReflection /></div>}
+              {on('reading') && <div id="practice-reading" className="grid min-w-0 scroll-mt-24"><ReadingPlan /></div>}
             </div>
       </div>
     </main>

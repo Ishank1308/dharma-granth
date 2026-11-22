@@ -18,6 +18,7 @@ import {
 import { SITE_URL } from '@/lib/jsonld';
 import { speakSanskritTerm } from '@/lib/soundscape-lazy';
 import { NavagrahaMandalam } from './NavagrahaMandalam';
+import { OnThisPage } from '@/app/components/OnThisPage';
 
 type CategoryKey = 'all' | 'vedic' | 'shanti' | 'stotra';
 function preferredScrollBehavior(): ScrollBehavior {
@@ -210,6 +211,12 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
       <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
         {filtered.length} मन्त्र मिले।
       </p>
+
+      {/* The mantras now showing, so a row never points at one the search has hidden. */}
+      <OnThisPage
+        className="mx-auto mb-8"
+        items={filtered.map((m) => ({ id: m.slug, hi: m.titleHi, en: m.title }))}
+      />
 
       {filtered.length === 0 ? (
         <div className="rounded-3xl border border-dharma-border bg-dharma-card p-10 text-center space-y-3">

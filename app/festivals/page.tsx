@@ -6,8 +6,9 @@ import { festivals, type Festival } from '@/data/festivals';
 import { X, BookOpen, MapPin, Sparkles, Music, Utensils, Leaf, Clock, AlertCircle } from 'lucide-react';
 
 import Link from 'next/link';
-import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
+import { FestivalsOpening } from './FestivalsOpening';
 
 export default function FestivalsPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -37,8 +38,17 @@ export default function FestivalsPage() {
         />
       </div>
 
+      {/* The next festival, large, beside the recurring vratas */}
+      <FestivalsOpening />
+
       {/* Festival Grid */}
-      <section className="max-w-6xl mx-auto px-6 pt-6 relative z-10 pb-20">
+      <section aria-labelledby="festivals-all-heading" className="relative z-10 mx-auto max-w-7xl px-gutter pb-20 pt-14">
+        <SectionTitle
+          id="festivals-all-heading"
+          title="The festivals"
+          titleHi="प्रमुख पर्व"
+          sub={<span lang="hi" className="font-devanagari">हर पर्व का अर्थ, कथा, विधि और मंत्र।</span>}
+        />
         {/* The cards cascade in as they scroll into view (.reveal-grid, motion.css); the HTML is never hidden. */}
         <div className="reveal-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {festivals.map((festival) => (

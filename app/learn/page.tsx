@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, type CSSProperties } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
@@ -11,18 +11,8 @@ import { SadhanaPortability } from '@/app/components/SadhanaPortability';
 import { BackupRestore } from '@/app/components/BackupRestore';
 import { JsonLd } from '@/app/components/JsonLd';
 import { courseListLd, pageLd } from '@/lib/jsonld';
-import {
-  ChevronDown,
-  ChevronUp,
-  CheckCircle2,
-  Clock,
-  Compass,
-  Flame,
-  GraduationCap,
-  Library,
-  Search,
-  Sparkle,
-} from 'lucide-react';
+import { ChevronDown, ChevronUp, CheckCircle2, Search } from 'lucide-react';
+import { LearnOpening } from './LearnOpening';
 
 const FORMAT_NAMES: Record<string, string> = {
   flashcards: 'flashcards',
@@ -87,15 +77,6 @@ export default function LearnPage() {
     return learningPaths.reduce((acc, c) => acc + c.lessons.length, 0);
   }, []);
 
-  const PORTALS = [
-    { href: '/learn/start/', en: 'Find your starting point', hi: 'आरम्भ', sub: 'Five short questions, one calm first step', Icon: Sparkle, chip: '#c2410c' },
-    { href: '/learn/journeys/', en: 'Guided journeys', hi: 'स्वाध्याय यात्राएँ', sub: 'Daily lessons with a reflection', Icon: Flame, chip: '#b45309' },
-    { href: '/wisdom-pathways/', en: 'Wisdom pathways', hi: 'ज्ञान मार्ग', sub: 'Begin from fear, anger, grief or purpose', Icon: Compass, chip: '#15803d' },
-    { href: '/learn/plans/', en: 'Reading plans', hi: 'स्वाध्याय योजना', sub: 'Day-by-day schedules and study orders', Icon: Clock, chip: '#1f4e8c' },
-    { href: '/learn/faq/', en: 'Scripture FAQs', hi: 'जिज्ञासा समाधान', sub: 'Canon, schools of thought and ethics', Icon: GraduationCap, chip: '#6b3fa0' },
-    { href: '/sources/', en: 'Sources and editions', hi: 'स्रोत पारदर्शिता', sub: 'Critical editions, recensions and method', Icon: Library, chip: '#57534e' },
-  ];
-
   const PILLARS = [
     { sa: 'श्रवण', iast: 'Śravaṇa', en: 'Hear and read', text: 'Come to the text with full attention, and read the verse itself before any explanation.' },
     { sa: 'मनन', iast: 'Manana', en: 'Reflect', text: 'Turn it over with reason. Flashcards, mind maps and questions clear the doubts that remain.' },
@@ -132,26 +113,8 @@ export default function LearnPage() {
         </p>
       </PageHeader>
 
-      {/* ── Where to begin: one hub for starting points, journeys, plans and courses ── */}
-      <section aria-labelledby="learn-start-heading" className="mx-auto max-w-content px-gutter pt-10">
-        <h2 id="learn-start-heading" className="sr-only">Where to begin</h2>
-        <ul className="reveal-grid grid grid-cols-2 gap-3 lg:grid-cols-3">
-          {PORTALS.map(({ href, en, hi, sub, Icon, chip }) => (
-            <li key={href}>
-              <Link href={href} style={{ '--chip': chip } as CSSProperties} className="apple-card flex h-full flex-col items-start gap-2 p-4 sm:flex-row sm:gap-3 sm:p-5">
-                <span className="apple-tint-chip mt-0.5" aria-hidden="true">
-                  <Icon className="h-4 w-4" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-subhead font-semibold leading-snug tracking-[-0.02em] text-dharma-text sm:text-body">{en}</span>{' '}
-                  <span lang="hi" className="block font-devanagari text-footnote text-dharma-muted">{hi}</span>{' '}
-                  <span className="mt-1 hidden text-[14px] leading-snug text-dharma-muted sm:block">{sub}</span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* ── Where to begin: the reader's next step, large, beside the ways to study ── */}
+      <LearnOpening getPathwayProgress={progress.getPathwayProgress} />
 
       {/* ── Guided Learning Pathways (also the target of the /learn/pathways/ 301) ── */}
       <section id="courses" aria-labelledby="courses-heading" className="mx-auto max-w-content scroll-mt-24 px-gutter pt-16">

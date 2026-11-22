@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { Timeline } from '@/app/components/Timeline';
 import { timelines, timelineTypeLabels, type TimelineType } from '@/data/timelines';
+import '@/app/styles/long-read.css';
 
 const ERA_INDEX = [
   { id: 'academic-chronology', hi: 'वैदिक और उपनिषद् काल', en: 'Vedic and Upanishadic estimates', kind: 'इतिहास का अनुमान' },
@@ -30,7 +31,7 @@ export default function TimelinesPage() {
   const availableTypes = Array.from(new Set(timelines.map((t) => t.type)));
 
   return (
-    <main className="min-h-screen bg-dharma-bg">
+    <main className="long-read long-read-hi min-h-screen bg-dharma-bg">
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-br from-indigo-900 via-blue-800 to-cyan-900 text-white py-16 overflow-hidden">
         <div className="absolute inset-0 mandala-bg opacity-10" />
