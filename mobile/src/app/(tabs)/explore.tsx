@@ -137,6 +137,7 @@ export default function ExploreScreen() {
             <Tile row={{ title: S.mantrasTitle, detail: S.mantrasRow, icon: 'musical-notes', color: hues.indigo, href: '/explore/mantras' }} />
             <Tile flex={1.4} row={{ title: S.knowledgeTitle, detail: S.knowledgeEntryDetail, icon: 'library', color: hues.peacock, href: '/knowledge' }} />
           </BentoRow>
+          <Tile wide row={{ title: S.learnTitle, detail: S.learnEntryDetail, icon: 'school', color: hues.saffron, href: '/learn' }} />
           <Tile wide row={{ title: S.wisdomTitle, detail: S.wisdomEntryDetail, icon: 'leaf', color: hues.tulsi, href: '/wisdom' }} />
           {/* The website's story mode, wisdom pathways and verse network. */}
           <BentoRow>
