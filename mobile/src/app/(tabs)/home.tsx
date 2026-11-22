@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Mandala } from '@/components/art/mandala';
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
+import { useTabTop } from '@/lib/use-tab-top';
 import { BentoCol, BentoDepth, BentoRow, BentoTile } from '@/components/bento';
 import { Backdrop, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
 import { CATALOG, dailyVerse, getEntry, loadChapter } from '@/content/catalog';
@@ -864,6 +865,7 @@ function TrustStrip() {
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
+  const topRef = useTabTop();
   const { height } = useWindowDimensions();
   const { scrollY, onScroll } = useScrollY();
   const { mood, panchang } = useMood();
@@ -872,6 +874,7 @@ export default function HomeScreen() {
     <Backdrop>
       <BentoDepth.Provider value={depth}>
         <Animated.ScrollView
+          ref={topRef as never}
           onScroll={onScroll}
           scrollEventThrottle={16}
           style={{ backgroundColor: 'transparent' }}

@@ -6,6 +6,7 @@ import Animated from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
+import { useTabTop } from '@/lib/use-tab-top';
 import { BentoCol, BentoDepth, BentoRow, BentoTile } from '@/components/bento';
 import { Backdrop, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
@@ -27,6 +28,7 @@ type IconName = ComponentProps<typeof Ionicons>['name'];
  */
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
+  const topRef = useTabTop();
   const { height } = useWindowDimensions();
   const { palette } = usePrefs();
   const { t, lang } = useI18n();
@@ -51,6 +53,7 @@ export default function ExploreScreen() {
     <Backdrop>
       <BentoDepth.Provider value={depth}>
         <Animated.ScrollView
+          ref={topRef as never}
           onScroll={onScroll}
           scrollEventThrottle={16}
           style={{ backgroundColor: 'transparent' }}

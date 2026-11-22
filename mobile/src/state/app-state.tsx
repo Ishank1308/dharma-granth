@@ -115,9 +115,16 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         };
         const saved = parse(map[KEYS.settings]);
         // First launch: match the phone's dark mode (the splash screen already does) instead of a bright Day theme.
+        // Someone who already has a place in a book or saved verses is not new, whatever the settings key says:
+        // they do not get the first-run welcome.
+        const hasHistory = Boolean(map[KEYS.lastRead] || map[KEYS.bookmarks] || map[KEYS.progress]);
         setSettings(
           saved === undefined
-            ? { ...DEFAULT_SETTINGS, theme: Appearance.getColorScheme() === 'dark' ? 'dark' : DEFAULT_SETTINGS.theme }
+            ? {
+                ...DEFAULT_SETTINGS,
+                theme: Appearance.getColorScheme() === 'dark' ? 'dark' : DEFAULT_SETTINGS.theme,
+                onboarded: hasHistory,
+              }
             : normalizeSettings(saved),
         );
         setBookmarks(normalizeBookmarks(parse(map[KEYS.bookmarks])));
