@@ -72,6 +72,43 @@ export async function buildSearchIndex() {
     ids.push(entry.id);
   }
 
+  // The Ashtavakra Gita has its own reader and data (scripts/build-ashtavakra.mjs), outside the catalog.
+  const ashtavakra = join(content, 'ashtavakra');
+  if (existsSync(join(OUT, 'ashtavakra-meta.json'))) {
+    const meta = JSON.parse(readFileSync(join(OUT, 'ashtavakra-meta.json'), 'utf8'));
+    const d = [];
+    const t = [];
+    const e = [];
+    const n = [];
+    const c = [];
+    for (const m of meta) {
+      const p = join(ashtavakra, `ch-${m.number}.json`);
+      if (!existsSync(p)) continue;
+      const ch = JSON.parse(readFileSync(p, 'utf8'));
+      c.push([ch.number, ch.verses.length]);
+      for (const v of ch.verses) {
+        const line = verseToCorpusLine({
+          number: String(v.verseNumber).split('.').slice(1).join('.') || v.verseNumber,
+          sanskrit: v.sanskrit,
+          hindi: v.literalHindiMeaning,
+          transliteration: v.iast,
+          translation: v.englishTranslation,
+        });
+        d.push(line.d);
+        t.push(line.t);
+        e.push(line.e);
+        n.push(line.n);
+      }
+    }
+    if (n.length) {
+      verses += n.length;
+      const json = JSON.stringify({ d: d.join('\n'), t: t.join('\n'), e: e.join('\n'), c, n: n.join('\n') });
+      bytes += Buffer.byteLength(json);
+      writeFileSync(join(dir, 'ashtavakra.json'), json);
+      ids.push('ashtavakra');
+    }
+  }
+
   // Book ids end up inside the generated TypeScript as plain string literals, so allow only safe characters.
   for (const id of ids) {
     if (!/^[a-z0-9-]+$/.test(id)) throw new Error(`[search] unexpected book id ${JSON.stringify(id)}`);

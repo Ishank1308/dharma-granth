@@ -119,3 +119,45 @@ export function verseMarkNumber(verseNumber: number | string): string {
   const parts = toAsciiDigits(String(verseNumber).trim()).split('.');
   return parts[parts.length - 1] || toAsciiDigits(String(verseNumber));
 }
+
+/** More Devanagari than Latin letters means the block should be set as Hindi. Mirrors lib/verse-format.ts. */
+export function isMostlyDevanagari(text: string | undefined): boolean {
+  if (!text) return false;
+  let deva = 0;
+  let latin = 0;
+  for (const ch of text) {
+    if (ch >= 'ऀ' && ch <= 'ॿ') deva++;
+    else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) latin++;
+  }
+  return deva > latin;
+}
+
+/** "pada—meaning; pada—meaning; …": a word gloss, not prose. */
+export function looksLikeWordGloss(text: string): boolean {
+  const parts = text.split(/;\s*/).filter((p) => p.trim());
+  if (parts.length < 4) return false;
+  const pairs = parts.filter((p) => /^[^—–:]{1,40}\s*[—–]\s*\S/.test(p.trim())).length;
+  return pairs / parts.length > 0.7;
+}
+
+/**
+ * As on the website (lib/verse-format.ts): a verse reads श्लोक → अर्थ → व्याख्या → Commentary.
+ * Hindi exposition is the व्याख्या and English the commentary, whichever field it was stored in
+ * (downloaded Hindi commentary, `explanation`, `commentary`). A word gloss stored in a commentary
+ * field is skipped, because the word-meaning note already shows it.
+ */
+export function splitVyakhyaCommentary(
+  candidates: (string | undefined)[],
+  wordMeaning?: string,
+): { vyakhya?: string; commentary?: string } {
+  let vyakhya: string | undefined;
+  let commentary: string | undefined;
+  const gloss = wordMeaning?.trim();
+  for (const text of candidates) {
+    if (!text || !text.trim()) continue;
+    if ((gloss && text.trim() === gloss) || looksLikeWordGloss(text)) continue;
+    if (isMostlyDevanagari(text)) vyakhya ??= text;
+    else commentary ??= text;
+  }
+  return { vyakhya, commentary };
+}
