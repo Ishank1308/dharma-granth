@@ -12,8 +12,8 @@ import { commentaryUnitOf } from './commentary-units.mjs';
 import { commentaryLookupKey, type CommentaryAmbiguities } from './commentary-lookup';
 
 /**
- * Commentary JSON a page carries in its HTML. Measured 2026-11-21 over the 1,178 pages that had
- * commentary: one page (Maha Upanishad ch. 5, 1.39 MB) was above this, 22 above 600 KB.
+ * Commentary JSON a page carries in its HTML. Measured 2026-11-22 over the 1,178 pages that had
+ * commentary: seven pages were above this (the largest Maha Upanishad ch. 5, 1.39 MB), 26 above 600 KB.
  */
 export const INLINE_COMMENTARY_MAX_BYTES = 1024 * 1024;
 

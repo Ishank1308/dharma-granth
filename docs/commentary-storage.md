@@ -7,7 +7,7 @@ every verse of every book can carry it. Written 2026-11-21.
 
 Until November 2026 `npm run publish:commentary` wrote one JSON file per book,
 `public/data/hi-commentary/<scripture>.json`, the reader downloaded the whole book's file for any chapter, and
-the publisher refused to write more than 60 MB in total. That held about 13,000 explained verses.
+the publisher refused to write more than 60 MB (later 70 MB) in total. That held about 13,000 explained verses.
 
 The library has about 319,000 verses. At the size of today's entries (about 4.4 KB published, 5.8 KB in the
 review queue) full coverage is about 1.4 GB published. One file per book cannot hold that:
@@ -43,7 +43,7 @@ Because the unit depends only on the key, a data repair never moves commentary b
 work out which files a page needs from its verse numbers.
 
 Measured over the current catalogue (319,205 verses): about 10,300 files at full coverage, the largest section
-420 verses (Manusmriti), roughly 1.9 MB. Today's 12,929 entries are 922 files, the largest 1.36 MB.
+420 verses (Manusmriti), roughly 1.9 MB. On 22 November 2026 the 12,929 published entries are 922 files (64.5 MB), the largest 1.67 MB.
 
 ## Who reads it
 
@@ -53,8 +53,8 @@ Measured over the current catalogue (319,205 verses): about 10,300 files at full
 - **Chapter pages** (`app/scripture/[id]/chapter/[chapterId]/chapter-view.tsx`): the page's commentary goes
   into its HTML in reading order up to `INLINE_COMMENTARY_MAX_BYTES` (1 MB, `lib/commentary-budget.ts`). The
   page lists the section files that hold the rest, and the reader (`FullChapterVerses`) loads them once the
-  page has rendered. Today one page passes the budget (Maha Upanishad ch. 5); with full coverage, long
-  chapters will.
+  page has rendered. On 22 November 2026 seven pages pass the budget (Maha Upanishad ch. 5, Shiva Samhita ch. 5, Brahma Sutra
+  ch. 3 and four Sama Veda parts); with full coverage, long chapters will.
 - **Verse pages** carry their own verse's commentary in full, as before.
 - **Scripts** read and write through `scripts/lib/commentary-store.mjs` (`readPublishedCommentary(id)` gives
   a whole book merged, the same object the per-book file held).
