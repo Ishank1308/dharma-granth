@@ -3,7 +3,7 @@ import { router, Stack } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Backdrop, Card, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader, Muted } from '@/components/ui';
+import { Backdrop, Card, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader } from '@/components/ui';
 import { gitaChapter, READING_PLANS } from '@/content/plans';
 import { S, useI18n } from '@/i18n';
 import { streaks, todayChapters } from '@/lib/sankalpa';
