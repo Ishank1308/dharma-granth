@@ -92,6 +92,7 @@ export function WisdomPosterLightbox({
                 <a
                   href={poster.src}
                   download={downloadName}
+                  aria-label={`${poster.titleEn} डाउनलोड करें (Download)`}
                   className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/20"
                 >
                   <Download className="h-3.5 w-3.5" aria-hidden="true" />
@@ -101,6 +102,7 @@ export function WisdomPosterLightbox({
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`${poster.titleEn} WhatsApp पर शेयर करें (Share on WhatsApp)`}
                   className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full bg-emerald-700 hover:bg-emerald-800 px-3 py-1.5 text-xs font-semibold text-white transition"
                 >
                   <Share2 className="h-3.5 w-3.5" aria-hidden="true" />

@@ -22,8 +22,8 @@ const CATEGORY_TABS = [
   { id: 'featured', labelHi: 'प्रमुख ग्रन्थ', labelEn: 'Classics' },
   { id: 'upanishad', labelHi: 'उपनिषद्', labelEn: 'Upanishads' },
   { id: 'veda', labelHi: 'वेद संहिता', labelEn: 'Four Vedas' },
-  { id: 'darshana', labelHi: 'गीता व दर्शन', labelEn: 'Philosophy' },
-  { id: 'itihasa', labelHi: 'इतिहास व काव्‍य', labelEn: 'Itihāsa' },
+  { id: 'itihasa', labelHi: 'इतिहास', labelEn: 'Itihāsa' },
+  { id: 'darshana', labelHi: 'दर्शन', labelEn: 'Darśana' },
   { id: 'purana', labelHi: 'पुराण', labelEn: 'Purāṇas' },
 ] as const;
 
@@ -362,12 +362,12 @@ const SHOWCASE_ITEMS: Record<TabId, ShowcaseScripture[]> = {
  * These are category illustrations, never purported facsimiles of manuscripts.
  */
 const LIBRARY_ART_BY_CATEGORY: Record<TabId, string> = {
-  featured: '/verse-bg/default.webp',
-  upanishad: '/verse-bg/upanishad.webp',
-  veda: '/verse-bg/veda.webp',
-  darshana: '/verse-bg/other.webp',
-  itihasa: '/verse-bg/itihasa.webp',
-  purana: '/verse-bg/purana.webp',
+  featured: '/verse-bg/gita-manuscript.webp',
+  upanishad: '/verse-bg/upanishad-sage.webp',
+  veda: '/verse-bg/veda-yajna.webp',
+  darshana: '/verse-bg/darshana-yoga.webp',
+  itihasa: '/verse-bg/itihasa-valmiki.webp',
+  purana: '/verse-bg/purana-river.webp',
 };
 
 function artworkFor(book: ShowcaseScripture, category: TabId): string {
@@ -376,11 +376,11 @@ function artworkFor(book: ShowcaseScripture, category: TabId): string {
   if (book.id === 'ishavasya') return LIBRARY_ART_BY_CATEGORY.upanishad;
   if (book.id === 'ramayana') return LIBRARY_ART_BY_CATEGORY.itihasa;
   if (book.id === 'bhagavatapurana') return LIBRARY_ART_BY_CATEGORY.purana;
-  if (book.id === 'bhagavadgita') return '/verse-bg/smriti.webp';
+  if (book.id === 'bhagavadgita') return '/verse-bg/gita-manuscript.webp';
   return LIBRARY_ART_BY_CATEGORY.darshana;
 }
 
-export function HomeScriptureTabs() {
+export function HomeScriptureTabs({ totalTexts = 67 }: { totalTexts?: number }) {
   const [activeTab, setActiveTab] = useState<TabId>('featured');
   const tabsId = useId();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -405,50 +405,50 @@ export function HomeScriptureTabs() {
 
   return (
     <div className="w-full">
-      <div
-        role="tablist"
-        aria-label="ग्रन्थ श्रेणियां · Scripture Categories"
-        className="flex items-center gap-2 overflow-x-auto pb-4 pt-1 scrollbar-none sm:mx-auto sm:w-fit sm:flex-wrap sm:justify-center sm:rounded-full sm:border sm:border-dharma-border/70 sm:bg-dharma-card/55 sm:p-1.5 sm:shadow-[inset_0_1px_0_var(--glass-specular-top)] sm:backdrop-blur-xl"
-      >
-        {CATEGORY_TABS.map((tab, index) => {
-          const isSelected = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              ref={(element) => { tabs.current[index] = element; }}
-              id={`${tabsId}-${tab.id}`}
-              role="tab"
-              type="button"
-              aria-selected={isSelected}
-              aria-controls={`${tabsId}-panel`}
-              tabIndex={isSelected ? 0 : -1}
-              onKeyDown={(event) => handleTabKey(event, index)}
-              onClick={() => {
-                if (isSelected) return;
-                triggerTactileFeedback('selection', 'softTap');
-                setActiveTab(tab.id);
-              }}
-              className={`library-category-tab focus-ring relative isolate inline-flex min-h-[44px] shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
-                isSelected
-                  ? 'border-dharma-saffron text-dharma-text'
-                  : 'border-dharma-border/75 bg-dharma-card/65 text-dharma-muted backdrop-blur-md hover:border-dharma-saffron/40 hover:text-dharma-text'
-              }`}
-            >
-              {isSelected && (
-                // A CSS pop-in (colour.css), not a framer-motion layout animation: framer was the
-                // only thing that made the home page load its 42 KB library.
-                <span
-                  aria-hidden="true"
-                  className="library-category-indicator pointer-events-none absolute inset-0 -z-10 rounded-full"
-                />
-              )}
-              <span lang="hi" className="font-devanagari text-sm">
-                {tab.labelHi}
-              </span>
-              <span className="text-[11px] font-normal">({tab.labelEn})</span>
-            </button>
-          );
-        })}
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 scrollbar-none sm:flex-wrap">
+        <Link
+          href="/scriptures/"
+          className="focus-ring inline-flex min-h-[40px] shrink-0 items-center rounded-lg border border-dharma-border/80 bg-dharma-card px-3.5 py-2 text-xs font-semibold text-dharma-text transition-colors hover:border-dharma-saffron/60 hover:text-dharma-saffron"
+        >
+          All {totalTexts}
+        </Link>
+        <div
+          role="tablist"
+          aria-label="ग्रन्थ श्रेणियां · Scripture Categories"
+          className="flex items-center gap-2 sm:flex-wrap"
+        >
+          {CATEGORY_TABS.map((tab, index) => {
+            const isSelected = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                ref={(element) => { tabs.current[index] = element; }}
+                id={`${tabsId}-${tab.id}`}
+                role="tab"
+                type="button"
+                aria-selected={isSelected}
+                aria-controls={`${tabsId}-panel`}
+                tabIndex={isSelected ? 0 : -1}
+                onKeyDown={(event) => handleTabKey(event, index)}
+                onClick={() => {
+                  if (isSelected) return;
+                  triggerTactileFeedback('selection', 'softTap');
+                  setActiveTab(tab.id);
+                }}
+                className={`library-category-tab focus-ring relative isolate inline-flex min-h-[40px] shrink-0 items-center gap-1.5 rounded-lg border px-3.5 py-2 text-xs font-semibold transition-colors ${
+                  isSelected
+                    ? 'border-[#1f1e1c] bg-[#1f1e1c] text-[#fdfbf7] shadow-xs dark:border-dharma-text dark:bg-dharma-text dark:text-dharma-bg'
+                    : 'border-dharma-border/75 bg-dharma-card/85 text-dharma-text/85 hover:border-dharma-saffron/45 hover:text-dharma-text'
+                }`}
+              >
+                <span>{tab.labelEn}</span>
+                <span lang="hi" className="font-devanagari text-[12px] font-medium opacity-85">
+                  ({tab.labelHi})
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       <div
@@ -456,18 +456,16 @@ export function HomeScriptureTabs() {
         role="tabpanel"
         aria-labelledby={`${tabsId}-${activeTab}`}
         data-library-category={activeTab}
-        className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
       >
         {currentItems.map((book) => (
           <article
             key={`${activeTab}-${book.id}`}
-            className="library-showcase-book group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/75 p-5 shadow-raised backdrop-blur-xl transition-all hover:border-dharma-saffron/40 hover:shadow-hover sm:p-6"
-            style={{ borderLeftWidth: '5px', borderLeftColor: book.colour }}
+            className="library-showcase-book group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/75 bg-dharma-card shadow-soft transition-all hover:-translate-y-0.5 hover:border-dharma-saffron/45 hover:shadow-raised"
           >
-            {/* Archival gallery rhythm, inspired by editorial library and museum UI.
-                The locally hosted image is atmospheric artwork, not a claimed source folio. */}
+            {/* Full-bleed photographic header */}
             <div
-              className="library-book-art relative mb-4 h-28 shrink-0 overflow-hidden rounded-xl border border-dharma-border/50 bg-dharma-bg/80 sm:h-32"
+              className="library-book-art relative h-40 shrink-0 overflow-hidden bg-[#1e1711] sm:h-44"
               aria-hidden="true"
               data-decorative
             >
@@ -475,62 +473,61 @@ export function HomeScriptureTabs() {
                 src={artworkFor(book, activeTab)}
                 alt=""
                 fill
-                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 31vw"
                 loading="lazy"
-                className="library-book-art-image object-cover"
+                className="library-book-art-image object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.03]"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-amber-100/10 via-white/15 to-amber-100/10" />
-              <div className="pointer-events-none absolute inset-2 rounded-[10px] border border-[#846341]/25" />
-              <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1.5 px-4 text-center text-[#52381f]">
-                <span lang="hi" className="font-devanagari text-[10px] font-semibold opacity-75">धर्मग्रन्थ · संग्रह</span>
-                <span lang="sa" className="max-w-full font-devanagari text-base font-semibold leading-normal drop-shadow-[0_1px_0_rgba(255,255,255,0.8)] sm:text-lg">
-                  {book.titleSa}
-                </span>
-                <span className="h-px w-12 bg-[#75512b]/40" />
-              </div>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/25 to-transparent" />
             </div>
 
-            {/* Top row: Tags & Tradition */}
-            <div>
-              <div className="flex items-center justify-between gap-2">
-                <span className="inline-flex items-center rounded-md bg-dharma-bg px-2 py-0.5 text-xs font-medium text-dharma-muted border border-dharma-border/60">
-                  {book.categoryTag}
-                </span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
-                  {book.tradition}
-                </span>
+            {/* Card Body */}
+            <div className="flex flex-1 flex-col justify-between p-5">
+              <div>
+                {/* Tradition pill & Metrics */}
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1 rounded-md border border-dharma-saffron/20 bg-dharma-saffron/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#9a4b25] dark:text-[#f0a56b]">
+                    <span>{book.tradition}</span>
+                    <span aria-hidden="true">·</span>
+                    <span lang="hi" className="font-devanagari normal-case font-semibold">
+                      {book.categoryTag}
+                    </span>
+                  </span>
+                  <span className="font-devanagari text-[11px] font-medium tabular-nums text-dharma-muted">
+                    {book.metrics}
+                  </span>
+                </div>
+
+                {/* Scripture Title */}
+                <div className="mt-3">
+                  <h3 lang="sa" className="font-devanagari text-xl font-bold tracking-tight text-dharma-text sm:text-2xl">
+                    {book.titleSa}
+                  </h3>
+                  <p className="mt-0.5 text-xs font-medium text-dharma-muted">
+                    {book.titleEn}
+                  </p>
+                </div>
+
+                {/* Essence Verse Box */}
+                <div className="mt-4 rounded-xl border border-dharma-border/60 bg-dharma-bg/75 p-3.5">
+                  <p lang="sa" className="font-devanagari text-sm font-bold leading-relaxed text-dharma-text">
+                    « {book.essenceQuote} »
+                  </p>
+                  <p lang="hi" className="mt-1.5 font-devanagari text-xs leading-relaxed text-dharma-muted">
+                    {book.essenceMeaning}
+                  </p>
+                </div>
               </div>
 
-              {/* Title Header */}
-              <div className="mt-3.5">
-                <h3 lang="sa" className="font-devanagari text-2xl font-bold tracking-tight text-dharma-text sm:text-[26px]">
-                  {book.titleSa}
-                </h3>
-                <p className="text-xs font-medium text-dharma-muted">
-                  {book.titleEn} · <span className="tabular-nums font-sans">{book.metrics}</span>
-                </p>
+              {/* Bottom Editorial Read Link */}
+              <div className="mt-5 pt-2">
+                <Link
+                  href={book.href}
+                  className="library-showcase-link chevron-nudge focus-ring inline-flex min-h-[40px] items-center gap-1 text-xs font-bold text-[#9a4b25] transition-colors hover:underline dark:text-[#f0a56b]"
+                >
+                  <span lang="hi" className="font-devanagari">अध्ययन आरम्भ करें</span>
+                  <span aria-hidden="true">· Read ›</span>
+                </Link>
               </div>
-
-              {/* Mahāvākya / Essence Preview */}
-              <div className="mt-4 rounded-xl border border-dharma-border/50 bg-dharma-bg/60 p-3">
-                <p lang="sa" className="font-devanagari text-sm font-medium text-dharma-saffron/90 leading-relaxed">
-                  « {book.essenceQuote} »
-                </p>
-                <p lang="hi" className="mt-1 font-devanagari text-xs text-dharma-muted leading-relaxed">
-                  {book.essenceMeaning}
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom: Read Action */}
-            <div className="mt-5 pt-3 border-t border-dharma-border/50">
-              <Link
-                href={book.href}
-                className="library-showcase-link chevron-nudge flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg/80 py-2.5 text-xs font-semibold text-dharma-text transition-all group-hover:border-dharma-saffron/50 group-hover:bg-dharma-saffron/10 group-hover:text-dharma-saffron focus-ring"
-              >
-                <span>अध्ययन आरम्भ करें</span>
-                <span aria-hidden="true">· Read ›</span>
-              </Link>
             </div>
           </article>
         ))}

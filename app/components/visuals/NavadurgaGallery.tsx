@@ -159,6 +159,7 @@ export function NavadurgaGallery({
                 <a
                   href={active.src}
                   download={`dharma-granth-navratri-day-${active.day}-${active.id}.webp`}
+                  aria-label={`दिन ${active.day} ${active.nameEn} डाउनलोड करें (Download)`}
                   className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/20"
                 >
                   <Download className="h-3.5 w-3.5" aria-hidden="true" />
@@ -168,6 +169,7 @@ export function NavadurgaGallery({
                   href={buildNavadurgaWhatsAppHref(active)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`दिन ${active.day} ${active.nameEn} WhatsApp पर शेयर करें (Share on WhatsApp)`}
                   className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full bg-emerald-700 hover:bg-emerald-800 px-3 py-1.5 text-xs font-semibold text-white transition"
                 >
                   <Share2 className="h-3.5 w-3.5" aria-hidden="true" />
@@ -177,6 +179,7 @@ export function NavadurgaGallery({
                   href={active.src}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`दिन ${active.day} ${active.nameEn} मूल चित्र खोलें (Open original image)`}
                   className="inline-flex min-h-[38px] items-center gap-1 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/20"
                 >
                   <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
