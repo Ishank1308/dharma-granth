@@ -237,7 +237,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     command: '> gita',
     title: 'Open Bhagavad Gita (श्रीमद्भगवद्गीता)',
     titleHi: 'श्रीमद्भगवद्गीता खोलें',
-    subtitle: '18 Chapters · 700 Verses with Hindi & English',
+    subtitle: '18 Chapters · 701 Verses with Hindi & English',
     icon: '📖',
     run: (onClose, router) => {
       router.push('/scripture/bhagavadgita/');
@@ -284,9 +284,9 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
   {
     id: 'theme',
     command: '> theme',
-    title: 'Switch Theme: Day / Sunset / Paper / Dark / Follow Sun (सौर चक्र)',
-    titleHi: 'पठन शैली / सौर चक्र बदलें',
-    subtitle: 'Cycle through sacred reading themes',
+    title: 'Switch Theme: Sunset (Light) / Night (Dark)',
+    titleHi: 'पठन शैली बदलें · दिव्य सन्ध्या / रात्रि',
+    subtitle: 'Toggle between luminous Sunset and Ratri Dark mode',
     icon: '🌓',
     run: (onClose, _r, cycleTheme) => {
       if (cycleTheme) cycleTheme();

@@ -45,11 +45,11 @@ export default function VisualConceptsHubPage() {
       <JsonLd
         data={pageLd(
           [
-            { name: 'Concepts', path: '/concepts' },
-            { name: 'Visual Learning Layer', path: '/concepts/visuals' },
+            { name: 'Concepts', path: '/concepts/' },
+            { name: 'Visual Learning Layer', path: '/concepts/visuals/' },
           ],
           articleLd({
-            path: '/concepts/visuals',
+            path: '/concepts/visuals/',
             headline: 'दृश्य ज्ञान दर्शन — 10 वैदिक अवधारणाओं के इंटरैक्टिव आरेख',
             description:
               'धर्म, कर्म, मोक्ष, आत्मन्, ब्रह्मन्, माया, योग, वेदान्त, भक्ति और संसार के पवित्र ज्यामितीय मण्डल, प्रवाह आरेख, और ज्ञान मानचित्र।',
@@ -58,7 +58,7 @@ export default function VisualConceptsHubPage() {
       />
 
       {/* ── Top Header & Breadcrumb ────────────────────────────────────────── */}
-      <header className="border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md sticky top-16 z-20">
+      <header className="border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md sticky top-[52px] z-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between text-xs sm:text-sm text-dharma-muted">
           <div className="flex items-center gap-2">
             <Link

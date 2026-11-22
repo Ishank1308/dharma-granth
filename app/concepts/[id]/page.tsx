@@ -133,78 +133,30 @@ export default async function ConceptDetailPage({ params }: PageProps) {
 
   const cat = categoryLabels[concept.category] || { en: 'Philosophy', hi: 'दर्शन' };
 
-  const faqQuestions = [
-    {
-      '@type': 'Question',
-      name: `What is ${concept.label} (${concept.sanskrit}) in Hindu philosophy?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: concept.simpleDefinition.en,
-      },
-    },
-    {
-      '@type': 'Question',
-      name: `${concept.sanskrit} (${concept.label}) का वास्तविक शास्त्रीय अर्थ क्या है?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: concept.simpleDefinition.hi,
-      },
-    },
-    concept.derivation && {
-      '@type': 'Question',
-      name: `What is the Sanskrit etymology and root of the word ${concept.label}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `Root: ${concept.derivation.root} (${concept.derivation.rootMeaning} / ${concept.derivation.rootMeaningHi}). ${concept.derivation.etymologyEn || concept.derivation.etymologyHi}`,
-      },
-    },
-    concept.misunderstandings?.length > 0 && {
-      '@type': 'Question',
-      name: `What is a common misconception about ${concept.label}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `Misconception: ${concept.misunderstandings[0].myth}\nClassical Clarification: ${concept.misunderstandings[0].correction}`,
-      },
-    },
-  ].filter(Boolean);
-
-  const jsonLdFaq = faqQuestions.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqQuestions,
-  } : null;
-
   return (
     <main className="long-read min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <JsonLd
         data={pageLd(
           [
-            { name: 'Concepts', path: '/concepts' },
-            { name: concept.label, path: `/concepts/${concept.id}` },
+            { name: 'Concepts', path: '/concepts/' },
+            { name: concept.label, path: `/concepts/${concept.id}/` },
           ],
           definedTermLd({
-            path: `/concepts/${concept.id}`,
+            path: `/concepts/${concept.id}/`,
             name: concept.label,
             alt: [concept.sanskrit].filter(Boolean),
             description: `${concept.simpleDefinition.en} ${concept.simpleDefinition.hi}`,
-            setPath: '/concepts',
+            setPath: '/concepts/',
             setName: 'Dharma Granth Concepts',
           }),
         )}
       />
-      {jsonLdFaq && (
-        <script
-          type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
-        />
-      )}
       {/* ── Breadcrumb & Navigation Header ─────────────────────────────────── */}
-      <header className="border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md sticky top-16 z-20">
+      <header className="border-b border-dharma-border bg-dharma-card/60 backdrop-blur-md sticky top-[52px] z-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between text-xs sm:text-sm text-dharma-muted">
           <div className="flex items-center gap-2">
             <Link
-              href="/concepts"
+              href="/concepts/"
               className="inline-flex items-center gap-1.5 hover:text-saffron-700 dark:hover:text-saffron-300 transition-colors font-medium min-h-[44px] items-center"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -290,13 +242,13 @@ export default async function ConceptDetailPage({ params }: PageProps) {
               <ShareCardButton
                 reference={concept.label}
                 concept={{ term: concept.sanskrit, transliteration: concept.transliteration, definition: concept.simpleDefinition.en }}
-                url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}`}
+                url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev'}/concepts/${concept.id}/`}
               />
             </div>
             <ShareChips
               title={`${concept.label} (${concept.sanskrit})`}
               summary={concept.simpleDefinition.en}
-              path={`/concepts/${concept.id}`}
+              path={`/concepts/${concept.id}/`}
             />
           </div>
         </div>
@@ -376,7 +328,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
               </h2>
             </div>
             <Link
-              href="/concepts/visuals"
+              href="/concepts/visuals/"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline min-h-[44px]"
             >
               <span>10 मूल तत्त्वों का सम्पूर्ण दृश्य अन्वेषक</span>
@@ -586,20 +538,6 @@ export default async function ConceptDetailPage({ params }: PageProps) {
         </section>
 
         <ConceptRelations conceptId={concept.id} />
-
-        <section aria-labelledby="faq-heading" className="space-y-3">
-          <h2 id="faq-heading" className="text-xl font-serif font-bold text-dharma-text">
-            <span lang="hi" className="font-devanagari">प्रश्न</span>
-          </h2>
-          <h3 lang="hi" className="font-devanagari text-lg font-semibold text-dharma-text">
-            {concept.sanskrit} क्या है?
-          </h3>
-          <p lang="hi" className="font-devanagari text-sm leading-relaxed text-dharma-text">{concept.simpleDefinition.hi}</p>
-          <p className="text-sm leading-relaxed text-dharma-text-secondary">{concept.simpleDefinition.en}</p>
-          <p lang="hi" className="text-sm text-dharma-text-secondary">
-            यह वही परिभाषा है जो इस पृष्ठ के आरंभ में है। अलग प्रश्न-लेख नहीं लिखा गया।
-          </p>
-        </section>
 
         {/* ── Section 6: Related Concepts (संबंधित अवधारणाएँ) ──────────────── */}
         {concept.relatedConceptIds.some(hasConceptPage) && (

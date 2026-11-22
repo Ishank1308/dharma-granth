@@ -123,6 +123,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationHi: 'धारण करने के कारण ही धर्म को धर्म कहा जाता है; धर्म ही प्रजा को संभाले रखता है। जो धारण करने की शक्ति से संपन्न हो, वही निश्चय ही धर्म है।',
         reference: 'Mahabharata, Karna Parva 69.58',
         referenceHi: 'महाभारत, कर्णपर्व 69.58',
+        href: '/scripture/mahabharata/chapter/8/',
       },
       {
         sanskrit: 'सत्यं वद । धर्मं चर । स्वाध्यायान्मा प्रमदः ॥',
@@ -169,7 +170,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
       },
     ],
     relatedConceptIds: ['karma', 'ahimsa', 'yajna', 'satya', 'moksha'],
-    sources: ['Rigveda 10.90', 'Taittiriya Upanishad 1.11', 'Bhagavad Gita 3.35, 18.47', 'Mahabharata Shanti Parva & Karna Parva', 'Manusmriti 2.6'],
+    sources: ['Rigveda 10.90', 'Taittiriya Upanishad 1.11', 'Bhagavad Gita 3.35, 18.47–48', 'Mahabharata Shanti Parva & Karna Parva', 'Manusmriti 2.6'],
   },
 
   karma: {
@@ -244,6 +245,15 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         referenceHi: 'भगवद्गीता 4.17',
         href: '/scripture/bhagavadgita/chapter/4/verse/17/',
       },
+      {
+        sanskrit: 'कुर्वन्नेवेह कर्माणि जिजीविषेच्छतं समाः ।\nएवं त्वयि नान्यथेतोऽस्ति न कर्म लिप्यते नरे ॥',
+        transliteration: "kurvanneveha karmāṇi jijīviṣecchataṃ samāḥ |\nevaṃ tvayi nānyatheto'sti na karma lipyate nare ||",
+        translationEn: 'Performing actions here, one should desire to live a hundred years. There is no other way — action does not bind a person who lives thus.',
+        translationHi: 'यहाँ कर्म करते हुए ही व्यक्ति सौ वर्ष जीने की इच्छा करे। इसके अतिरिक्त कोई और मार्ग नहीं है; अनासक्त भाव से जीने वाले मनुष्य को कर्म लिप्त नहीं करते।',
+        reference: 'Isha Upanishad 2',
+        referenceHi: 'ईशावास्योपनिषद् 2',
+        href: '/scripture/ishavasya/chapter/1/verse/2/',
+      },
     ],
     traditions: [
       {
@@ -274,7 +284,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
       },
     ],
     relatedConceptIds: ['dharma', 'samsara', 'moksha', 'vairagya', 'yoga'],
-    sources: ['Brihadaranyaka Upanishad 4.4.5', 'Chandogya Upanishad 5.10', 'Bhagavad Gita 2.47, 3.8, 4.17', 'Yoga Sutras 2.12–14'],
+    sources: ['Isha Upanishad 2', 'Brihadaranyaka Upanishad 4.4.5', 'Chandogya Upanishad 5.10', 'Bhagavad Gita 2.47, 3.8, 4.17', 'Yoga Sutras 2.12–14'],
   },
 
   atman: {
@@ -836,6 +846,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         translationHi: 'अहिंसा ही परम धर्म है, अहिंसा ही परम संयम है, अहिंसा ही सबसे बड़ा दान है और अहिंसा ही सर्वोच्च तपस्या है।',
         reference: 'Mahabharata, Anushasana Parva 115.1',
         referenceHi: 'महाभारत, अनुशासन पर्व 115.1',
+        href: '/scripture/mahabharata/chapter/13/',
       },
       {
         sanskrit: 'अहिंसाप्रतिष्ठायां तत्सन्निधौ वैरत्यागः ॥',
@@ -863,6 +874,15 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         reference: 'Bhagavad Gita 13.7',
         referenceHi: 'भगवद्गीता 13.7',
         href: '/scripture/bhagavadgita/chapter/13/verse/7/',
+      },
+      {
+        sanskrit: 'अथ यत्तपो दानमार्जवमहिँसा सत्यवचनमिति ता अस्य दक्षिणाः ॥',
+        transliteration: 'atha yattapo dānamārjavamahim̐sā satyavacanamiti tā asya dakṣiṇāḥ ||',
+        translationEn: 'Austerity, generosity, uprightness, non-violence (ahiṁsā), and truthfulness — these constitute the true sacrificial offerings of life.',
+        translationHi: 'तप, दान, सरलता, अहिंसा और सत्यवचन — ये ही जीवन-रूपी यज्ञ की वास्तविक दक्षिणा हैं।',
+        reference: 'Chandogya Upanishad 3.17.4',
+        referenceHi: 'छान्दोग्योपनिषद् 3.17.4',
+        href: '/scripture/chandogya/chapter/54/verse/3.17.4/',
       },
     ],
     traditions: [
@@ -931,6 +951,15 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
     ],
     verses: [
       {
+        sanskrit: 'अ॒ग्निमी॑ळे पु॒रोहि॑तं य॒ज्ञस्य॑ दे॒वमृ॒त्विज॑म् ।\nहोता॑रं रत्न॒धात॑मम् ॥',
+        transliteration: 'agnimīḷe purohitaṃ yajñasya devamṛtvijam |\nhotāraṃ ratnadhātamam ||',
+        translationEn: 'I praise Agni, the household priest, the divine minister of the sacrifice (Yajna), the invoker, the greatest bestower of spiritual treasure.',
+        translationHi: 'मैं अग्नि की स्तुति करता हूँ, जो पुरोहित हैं, यज्ञ के दिव्य ऋत्विज हैं, होता हैं और रत्नों को सबसे अधिक धारण करने वाले हैं।',
+        reference: 'Rigveda 1.1.1',
+        referenceHi: 'ऋग्वेद 1.1.1',
+        href: '/scripture/rigveda/chapter/1/#verse-1.1',
+      },
+      {
         sanskrit: 'यज्ञार्थात्कर्मणोऽन्यत्र लोकोऽयं कर्मबन्धनः ।\nतदर्थं कर्म कौन्तेय मुक्तसङ्गः समाचर ॥',
         transliteration: 'yajñārthāt karmaṇo\'nyatra loko\'yaṁ karma-bandhanaḥ |\ntad-arthaṁ karma kaunteya mukta-saṅgaḥ samācara ||',
         translationEn: 'Work done as a sacrifice for the Divine binds not; all other work causes bondage in this world. Therefore, O son of Kunti, perform your actions for the sake of Yajna, free from attachment.',
@@ -981,7 +1010,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
       },
     ],
     relatedConceptIds: ['karma', 'dharma', 'seva', 'ahimsa', 'vairagya'],
-    sources: ['Rigveda Purusha Sukta 10.90', 'Bhagavad Gita 3.9–16, 4.24–33', 'Taittiriya Samhita', 'Shatapatha Brahmana'],
+    sources: ['Rigveda 1.1.1 & Purusha Sukta 10.90', 'Bhagavad Gita 3.9–16, 4.24–33', 'Taittiriya Samhita', 'Shatapatha Brahmana'],
   },
 
   samsara: {
@@ -1045,6 +1074,15 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
         href: '/scripture/bhagavadgita/chapter/9/verse/3/',
       },
       {
+        sanskrit: 'इष्टापूर्तं मन्यमाना वरिष्ठं नान्यच्छ्रेयो वेदयन्ते प्रमूढाः ।\nनाकस्य पृष्ठे ते सुकृतेऽनुभूत्वेमं लोकं हीनतरं वा विशन्ति ॥',
+        transliteration: "iṣṭāpūrtaṃ manyamānā variṣṭhaṃ nānyacchreyo vedayante pramūḍhāḥ |\nnākasya pṛṣṭhe te sukṛte'nubhūtvemaṃ lokaṃ hīnataraṃ vā viśanti ||",
+        translationEn: 'Considering outward rites and works alone the highest, the deluded know no higher good; having enjoyed merit in heaven, they re-enter this mortal world again.',
+        translationHi: 'केवल बाह्य इष्टापूर्त कर्मों को ही सर्वोच्च मानने वाले अविवेकी जन आत्म-श्रेय को नहीं जानते; वे स्वर्ग में पुण्य भोगकर पुनः इसी लोक में लौट आते हैं।',
+        reference: 'Mundaka Upanishad 1.2.10',
+        referenceHi: 'मुण्डकोपनिषद् 1.2.10',
+        href: '/scripture/mundaka/chapter/2/verse/10/',
+      },
+      {
         sanskrit: 'पुनरपि जननं पुनरपि मरणं\nपुनरपि जननीजठरे शयनम् ।\nइह संसारे बहुदुस्तारे\nकृपयाऽपारे पाहि मुरारे ॥',
         transliteration: 'punar api jananaṁ punar api maraṇaṁ\npunar api jananī-jaṭhare śayanam |\niha saṁsāre bahu-dustāre\nkṛpayā\'pāre pāhi murāre ||',
         translationEn: 'Birth again, death again, and again lying in a mother’s womb! This cycle of worldly transmigration is terribly hard to cross; protect me, O Lord, through Your boundless compassion.',
@@ -1076,7 +1114,7 @@ export const CONCEPT_DETAILS: Record<string, ConceptDetail> = {
       },
     ],
     relatedConceptIds: ['karma', 'moksha', 'maya', 'atman', 'vairagya'],
-    sources: ['Katha Upanishad 1.3.7', 'Bhagavad Gita 8.15–16', 'Shvetashvatara Upanishad 1.6', 'Bhaja Govindam'],
+    sources: ['Katha Upanishad 1.3.7', 'Mundaka Upanishad 1.2.10', 'Bhagavad Gita 8.15–16, 9.3', 'Shvetashvatara Upanishad 1.6', 'Bhaja Govindam'],
   },
 
   vairagya: {
