@@ -38,7 +38,7 @@ export function ScriptureBook({
   } as CSSProperties;
 
   return (
-    <div className={`sbook-wrap ${className}`} style={style}>
+    <div data-vt-hero className={`sbook-wrap ${className}`} style={style}>
       <div className="sbook-stage">
         <div className="sbook">
           <div className="sbook-body">

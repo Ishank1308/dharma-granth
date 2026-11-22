@@ -12,7 +12,6 @@ import {
   FolderPlus,
   Highlighter,
   Maximize2,
-  Pause,
   Quote,
   ScrollText,
   Sparkles,
@@ -528,7 +527,15 @@ export function VerseCard({
                 title={isReciting ? 'श्लोक उच्चारण रोकें' : 'श्लोक उच्चारण सुनें'}
               >
                 {isReciting ? (
-                  <Pause className="h-4 w-4 text-amber-700 dark:text-amber-300" />
+                  <span
+                    aria-hidden="true"
+                    className="dock-wave dock-wave-sm dock-wave-current is-playing text-amber-700 dark:text-amber-300"
+                  >
+                    <span />
+                    <span />
+                    <span />
+                    <span />
+                  </span>
                 ) : (
                   <Volume2 className="h-4 w-4" />
                 )}

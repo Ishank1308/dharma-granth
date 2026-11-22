@@ -172,3 +172,54 @@ test('a tapped festival card grows into the festival page', async ({ page }) => 
   await expect(page.locator('[style*="view-transition-name"]')).toHaveCount(0);
   expect(await page.evaluate(() => scrollY)).toBe(0);
 });
+
+test('a tapped library card grows into its scripture book', async ({ page }) => {
+  await page.goto('/scriptures/');
+  await page.evaluate(() => {
+    const seen: string[] = [];
+    (window as unknown as { __vt: string[] }).__vt = seen;
+    new MutationObserver(() => {
+      const kind = document.documentElement.getAttribute('data-vt');
+      if (kind) seen.push(`kind:${kind}`);
+      document.querySelectorAll<HTMLElement>('[style*="view-transition-name"]').forEach((el) => {
+        seen.push(`${el.tagName}:${el.style.getPropertyValue('view-transition-name')}`);
+      });
+    }).observe(document.documentElement, { attributes: true, subtree: true, attributeFilter: ['style', 'data-vt'] });
+  });
+  const link = page.locator('article[data-vt-source] a[data-vt="open"][href="/scripture/bhagavadgita/"]').first();
+  await link.evaluate((el) => new Promise<void>((resolve) => {
+    const hydrated = () => Object.keys(el).some((key) => key.startsWith('__reactFiber'));
+    const check = () => (hydrated() ? requestAnimationFrame(() => resolve()) : setTimeout(check, 50));
+    check();
+  }));
+  await link.click();
+  await expect(page).toHaveURL(/\/scripture\/bhagavadgita\/$/);
+  await expect(page.locator('.sbook-wrap[data-vt-hero]')).toBeVisible();
+  const seen = await page.evaluate(() => (window as unknown as { __vt: string[] }).__vt);
+  expect(seen).toContain('kind:open');
+  expect(seen).toContain('ARTICLE:verse-hero');
+  expect(seen).toContain('DIV:verse-hero');
+  await expect(page.locator('html')).not.toHaveAttribute('data-vt', /./);
+  await expect(page.locator('[style*="view-transition-name"]')).toHaveCount(0);
+});
+
+test('the Listen sound wave animates cleanly and stays still in low-power or Reduce Motion', async ({ page }) => {
+  await page.goto('/scripture/bhagavadgita/chapter/1/');
+  const waveAnim = () =>
+    page.evaluate(() => {
+      const wave = document.createElement('span');
+      wave.className = 'dock-wave dock-wave-sm dock-wave-current is-playing';
+      const bar = document.createElement('span');
+      wave.appendChild(bar);
+      document.body.appendChild(wave);
+      const name = getComputedStyle(bar).animationName;
+      wave.remove();
+      return name;
+    });
+  expect(await waveAnim()).toBe('dock-wave');
+  await page.evaluate(() => document.documentElement.setAttribute('data-low-power', 'true'));
+  expect(await waveAnim()).toBe('none');
+  await page.evaluate(() => document.documentElement.removeAttribute('data-low-power'));
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  expect(await waveAnim()).toBe('none');
+});
