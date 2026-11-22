@@ -39,7 +39,7 @@ const MOMENTS: Record<Moment, Pick<Mood, 'greeting' | 'note' | 'icon' | 'glow'>>
   brahma: {
     greeting: S.moodBrahma,
     note: S.moodNoteBrahma,
-    icon: 'star-outline',
+    icon: 'sparkles-outline',
     glow: { light: ['rgba(99,102,241,0.20)', 'rgba(236,72,153,0.12)'], dark: ['rgba(129,140,248,0.26)', 'rgba(236,72,153,0.14)'] },
   },
   morning: {
@@ -57,7 +57,8 @@ const MOMENTS: Record<Moment, Pick<Mood, 'greeting' | 'note' | 'icon' | 'glow'>>
   sandhya: {
     greeting: S.moodSandhya,
     note: S.moodNoteSandhya,
-    icon: 'partly-sunny-outline',
+    // The evening lamp: the closest glyph to a diya's flame.
+    icon: 'flame-outline',
     glow: { light: ['rgba(234,88,12,0.24)', 'rgba(219,39,119,0.16)'], dark: ['rgba(249,115,22,0.24)', 'rgba(244,114,182,0.16)'] },
   },
   night: {

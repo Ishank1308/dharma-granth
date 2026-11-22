@@ -5,6 +5,7 @@ import { ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-n
 import Animated, { type SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { Mandala } from '@/components/art/mandala';
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
 import { BentoCol, BentoDepth, BentoRow, BentoTile } from '@/components/bento';
 import { Backdrop, coverFill, CoverTile, glass, GroupCard, GroupRow, GroupTitle } from '@/components/ui';
@@ -27,6 +28,7 @@ import { dateFromDayKey, useToday } from '@/lib/use-today';
 import { formatVerseRef, sanskritLines } from '@/lib/verse-format';
 import { useAppState, usePrefs } from '@/state/app-state';
 import { coverFor, monogram } from '@/theme/covers';
+import { SANSKRIT_FONT } from '@/theme/fonts';
 import { barClearance, fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
@@ -116,6 +118,7 @@ function Hero({ mood, scrollY }: { mood: Mood; scrollY: SharedValue<number> }) {
   const light = useParallax(scrollY, 0.5, { enabled: rich });
   const words = useParallax(scrollY, 0.18, { enabled: rich, fadeOver: 320 });
   const [warm, cool] = palette.dark ? mood.glow.dark : mood.glow.light;
+  const hues = huesFor(palette);
   const size = TYPE.largeTitle + 4;
 
   return (
@@ -127,8 +130,10 @@ function Hero({ mood, scrollY }: { mood: Mood; scrollY: SharedValue<number> }) {
             styles.heroLight,
             { backgroundImage: `radial-gradient(60% 55% at 18% 30%, ${warm} 0%, transparent 70%), radial-gradient(55% 50% at 92% 62%, ${cool} 0%, transparent 72%)` },
             light,
-          ]}
-        />
+          ]}>
+          {/* A gold mandala behind the words, turning once a minute: the hush of a temple, kept faint. */}
+          <Mandala size={300} color={hues.gold} opacity={palette.dark ? 0.16 : 0.13} petals={16} spin={rich} style={styles.heroMandala} />
+        </Animated.View>
       )}
       <Animated.View style={[{ rowGap: SPACE.md }, words]}>
         <View style={[styles.eyebrow, glass(palette)]}>
@@ -137,6 +142,14 @@ function Hero({ mood, scrollY }: { mood: Mood; scrollY: SharedValue<number> }) {
             {dateLabel ? `${t(mood.greeting)} · ${dateLabel}` : t(mood.greeting)}
           </Text>
         </View>
+        {/* ॥ श्री ॥, the invocation that opens a manuscript, in gilt above the title. */}
+        <Text
+          accessibilityElementsHidden
+          importantForAccessibility="no-hide-descendants"
+          allowFontScaling={false}
+          style={{ fontFamily: SANSKRIT_FONT, color: hues.gold, fontSize: TYPE.title3, lineHeight: TYPE.title3 * 1.6, letterSpacing: 2, marginBottom: -SPACE.sm }}>
+          ॥ श्री ॥
+        </Text>
         <KineticText
           header
           delay={120}
@@ -237,7 +250,7 @@ function FeaturedPassage() {
             delay={500}
             seal={{ text: '॥', color: '#f6c768' }}
             maxFontSizeMultiplier={fontCap(settings.textScale)}
-            style={{ color: '#fffaf0', fontSize: size, lineHeight: size * 1.7, fontWeight: '600' }}
+            style={{ fontFamily: SANSKRIT_FONT, color: '#fffaf0', fontSize: size, lineHeight: size * 1.8 }}
           />
         </View>
 
@@ -573,7 +586,7 @@ function VerseOfTheDay() {
             delay={700}
             seal={{ text: '॥', color: hues.gold }}
             maxFontSizeMultiplier={fontCap(settings.textScale)}
-            style={{ color: palette.text, fontSize: size, lineHeight: size * 1.65 }}
+            style={{ fontFamily: SANSKRIT_FONT, color: palette.text, fontSize: size, lineHeight: size * 1.8 }}
           />
         </View>
     </BentoTile>
@@ -891,6 +904,7 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.pill,
   },
   heroLight: { position: 'absolute', left: -SPACE.lg, right: -SPACE.lg, top: -120, height: 520 },
+  heroMandala: { position: 'absolute', right: -90, top: 70 },
   sunRow: { flexDirection: 'row', alignItems: 'center', columnGap: 5 },
   weekDots: { flexDirection: 'row', justifyContent: 'space-between' },
   weekDot: { width: 10, height: 10, borderRadius: 5 },

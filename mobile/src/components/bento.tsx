@@ -178,12 +178,13 @@ export function BentoTile({
     : undefined;
 
   const body = surface ? { ...surface } : liquidGlass(palette, { strong, tint });
-  const spotColor = palette.dark ? 'rgba(255,255,255,0.16)' : 'rgba(255,255,255,0.65)';
-  const rimColor = palette.dark ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.95)';
+  // Lamplight rather than white light: the reveal glows the warm gold of a diya on a temple wall.
+  const spotColor = palette.dark ? 'rgba(255,196,110,0.20)' : 'rgba(255,226,170,0.70)';
+  const rimColor = palette.dark ? 'rgba(255,205,130,0.55)' : 'rgba(214,160,60,0.55)';
 
   const content = (
     <>
-      <GlassLayers radius={radius} glow={glow} />
+      <GlassLayers radius={radius} glow={glow ?? (palette.dark ? 'rgba(255,190,90,0.10)' : 'rgba(217,150,40,0.08)')} />
       {reveal ? (
         <View pointerEvents="none" style={[StyleSheet.absoluteFill, { borderRadius: radius, overflow: 'hidden' }]}>
           <Animated.View style={[styles.spot, { backgroundImage: `radial-gradient(circle, ${spotColor} 0%, transparent 65%)` }, spot]} />
