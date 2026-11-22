@@ -7,8 +7,9 @@ const { withAppBuildGradle, withGradleProperties } = require('expo/config-plugin
  *    stores uncompressed. scripts/build-content.mjs writes them to src/content/generated/assets/, and this
  *    adds that folder to the app's asset folders, so a fresh `npm run content` is picked up by the next
  *    Gradle build without another prebuild. src/content/bundled-assets.ts reads them.
- * 2. Only ARM builds. Phones and tablets are ARM; x86 builds only served emulators and a few Chromebooks,
- *    which run ARM apps too. Play serves each phone only its own ABI, so this mostly shrinks the .aab.
+ * 2. No 32-bit x86 build. ARM (armeabi-v7a, arm64-v8a) plus x86_64 stay: an x86_64 Chromebook or emulator
+ *    that is handed ARM-only native libs crashes at launch (SoLoader looks only in lib/x86_64 when
+ *    extractNativeLibs is false), and Play serves each device only its own ABI, so phones download no more.
  * 3. Android resource shrinking on top of R8, which drops library resources nothing references.
  * 4. No Fresco GIF or WebP decoders. The app shows no GIFs, and Android decodes static WebP itself
  *    (minSdk 24), so those two native libraries were dead weight.
@@ -17,7 +18,7 @@ const ASSET_DIR = '$rootDir/../src/content/generated/assets';
 const MARKER = '// with-smaller-android: bundled scripture assets';
 
 const PROPS = {
-  reactNativeArchitectures: 'armeabi-v7a,arm64-v8a',
+  reactNativeArchitectures: 'armeabi-v7a,arm64-v8a,x86_64',
   'android.enableShrinkResourcesInReleaseBuilds': 'true',
   'expo.gif.enabled': 'false',
   'expo.webp.enabled': 'false',

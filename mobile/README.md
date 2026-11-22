@@ -115,7 +115,7 @@ removed. The reader shows a credit line (`S.recitationCredit`) on chapters with 
 - Scripture text and the search index ship as deflated APK assets under `assets/content/`, read with
   `src/content/bundled-assets.ts`. They used to be `require()`d into the Hermes bundle, which the APK stores
   uncompressed, so 35 MB of verses took 35 MB on the phone. Expo Go cannot read them; use `npm run android`.
-- ARM only (`armeabi-v7a`, `arm64-v8a`): no x86 or x86_64 builds.
+- `armeabi-v7a`, `arm64-v8a` and `x86_64`; no 32-bit x86. Keep x86_64: a Chromebook or emulator given ARM-only libs crashes at launch ("couldn't find DSO libreactnative.so"). Play serves each device only its own ABI.
 - Android resource shrinking on top of R8, and no Fresco GIF or WebP decoders (no GIFs; Android decodes static WebP).
 
 Measured with `bundletool get-size total` on 2026-11-21, arm64 phone:
