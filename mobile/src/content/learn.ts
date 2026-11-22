@@ -114,6 +114,7 @@ export function appHref(webPath: string): Href | null {
     if (a === 'start') return '/learn/start';
     if (a === 'faq') return '/learn/faq';
     if (a === 'academy') return '/learn';
+    if (a === 'plans') return '/plans';
     if (a === 'journeys') {
       if (!b) return '/learn';
       if (b === 'gita') return '/learn/gita';
@@ -135,6 +136,7 @@ export function appHref(webPath: string): Href | null {
   if (head === 'panchang') return '/explore/panchang';
   if (head === 'festivals') return '/explore/festivals';
   if (head === 'mantras') return '/explore/mantras';
-  if (head === 'practice') return '/journal';
+  if (head === 'practice') return b === undefined && a === 'gita-sankalpa' ? '/plans/sankalpa' : '/journal';
+  if (head === 'ashtavakra') return '/ashtavakra';
   return null;
 }
