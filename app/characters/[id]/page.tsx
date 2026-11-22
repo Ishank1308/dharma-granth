@@ -17,6 +17,7 @@ import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { characters, getCharacter, characterCategories, type Character } from '@/data/characters';
 import { clipDescription } from '@/lib/meta-text';
 import { ShareChips } from '@/app/components/ShareChips';
+import { OnThisPage } from '@/app/components/OnThisPage';
 
 export function generateStaticParams() {
   return characters.map((c) => ({ id: c.id }));
@@ -101,7 +102,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
   } : null;
 
   return (
-    <main className="min-h-screen bg-dharma-bg">
+    <main className="long-read min-h-screen bg-dharma-bg">
       <JsonLd
         data={pageLd(
           [
@@ -158,12 +159,23 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
 
       {/* ── Content ──────────────────────────────────────────────── */}
       <section className="max-w-4xl mx-auto px-6 -mt-8 relative z-10 pb-20 space-y-12">
+        <OnThisPage
+          items={[
+            { id: 'char-biography', en: 'Biography' },
+            { id: 'char-family', en: 'Family Relationships' },
+            { id: 'char-events', en: 'Major Events' },
+            character.dialogues.length > 0 && { id: 'char-dialogues', en: 'Important Dialogues' },
+            character.dilemmas.length > 0 && { id: 'char-dilemmas', en: 'Ethical Dilemmas' },
+            character.verses.length > 0 && { id: 'char-verses', en: 'Related Verses' },
+            character.interpretations.length > 0 && { id: 'char-interpretations', en: 'Interpretations Across Traditions' },
+          ]}
+        />
         {/* ── Biography ───────────────────────────────────────────── */}
         <FadeUpOnView>
           <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
             <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
             <div className="p-6 md:p-8">
-              <h2 className="text-xl font-serif font-bold text-dharma-text mb-4">
+              <h2 id="char-biography" className="text-xl font-serif font-bold text-dharma-text mb-4">
                 Biography
               </h2>
               <p className="text-dharma-text leading-relaxed">
@@ -178,7 +190,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
           <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
             <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
             <div className="p-6 md:p-8">
-              <h2 className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
+              <h2 id="char-family" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
                 <Users className="w-5 h-5 text-violet-600" />
                 Family Relationships
               </h2>
@@ -202,7 +214,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
           <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
             <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
             <div className="p-6 md:p-8">
-              <h2 className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
+              <h2 id="char-events" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
                 <Calendar className="w-5 h-5 text-violet-600" />
                 Major Events
               </h2>
@@ -229,7 +241,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
             <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
               <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
               <div className="p-6 md:p-8">
-                <h2 className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
+                <h2 id="char-dialogues" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
                   <MessageSquare className="w-5 h-5 text-violet-600" />
                   Important Dialogues
                 </h2>
@@ -260,7 +272,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
             <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
               <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
               <div className="p-6 md:p-8">
-                <h2 className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
+                <h2 id="char-dilemmas" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
                   <Scale className="w-5 h-5 text-violet-600" />
                   Ethical Dilemmas
                 </h2>
@@ -295,7 +307,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
             <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
               <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
               <div className="p-6 md:p-8">
-                <h2 className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
+                <h2 id="char-verses" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
                   <BookOpen className="w-5 h-5 text-violet-600" />
                   Related Verses
                 </h2>
@@ -333,7 +345,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
             <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
               <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
               <div className="p-6 md:p-8">
-                <h2 className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
+                <h2 id="char-interpretations" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
                   <GitBranch className="w-5 h-5 text-violet-600" />
                   Interpretations Across Traditions
                 </h2>

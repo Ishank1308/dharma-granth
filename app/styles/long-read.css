@@ -1,0 +1,180 @@
+/* Long pages on a phone ─────────────────────────────────────────────────────
+   Pages written before the design system (a festival, a character, a concept, the sources
+   list) set their running text at 12 to 14px and run for five to thirty screens on a phone.
+   A page opts in with `.long-read` on its <main>; `.long-read-hi` is for a page whose prose is
+   Hindi without lang tags, which needs the taller Devanagari leading.
+
+   What it does:
+   - phones: running paragraphs and lists read at the callout size (16px), with room between
+     the lines; labels, transliteration and anything inside a link or button keep their size
+   - wider screens: a running paragraph stops at the text measure
+   - a heading reached from the contents list lands clear of the sticky header
+   - `.long-read-table` lets a wide table scroll inside its own box
+   - `.on-this-page` is the contents list (app/components/OnThisPage.tsx)
+
+   Sanskrit is left alone: a verse keeps its own size and is never clamped or shortened.
+   Loaded by OnThisPage.tsx (and by a page that uses the class without the list), so pages that
+   do not opt in never download it. No script. */
+
+.long-read {
+    --long-read-leading: var(--leading-relaxed);
+    /* On top of the page's own scroll-padding (globals.css), which clears the sticky header:
+       room for the small label these pages set above a heading, and for the breadcrumb bar a
+       concept page pins under the header. */
+    --long-read-anchor: var(--space-16);
+}
+.long-read-hi,
+.long-read :is([lang='hi'], .font-devanagari) {
+    --long-read-leading: var(--leading-devanagari);
+}
+
+.long-read :is(h2, h3, h4)[id],
+.long-read [data-anchor] {
+    scroll-margin-top: var(--long-read-anchor);
+}
+.long-read :is(h2, h3) {
+    text-wrap: balance;
+}
+
+@media (max-width: 639px) {
+    /* A paragraph or list item that carries a small size of its own. Bold, capital and mono
+       lines are labels, a line that keeps its line breaks is transliteration, a short italic
+       line is a footnote, and a line inside a link or a button is part of a control: all of
+       those keep the size they were given. An italic paragraph with reading leading is a
+       translation, and is read like any other. */
+    .long-read
+        :is(p, li, dd, blockquote):is(.text-2xs, .text-xs, .text-sm, .text-caption, .text-footnote, .text-subhead, .text-\[11px\], .text-\[12px\], .text-\[13px\], .text-\[14px\], .text-\[15px\]):not(.uppercase, .font-bold, .font-semibold, .font-mono, .whitespace-pre-line, .italic:not(.leading-relaxed), .sr-only, [lang='sa'], .shloka-text):not(:is(a, button, summary, label, nav, table, figcaption) *),
+    /* A list that sets a small size for its items. A grid of tiles is not running text. */
+    .long-read
+        :is(ul, ol):is(.text-2xs, .text-xs, .text-sm, .text-caption, .text-footnote, .text-subhead, .text-\[12px\], .text-\[13px\], .text-\[14px\]):not(.grid, .flex, .sr-only):not(:is(a, button, summary, label, nav, table, figcaption) *) {
+        font-size: var(--text-callout);
+        line-height: var(--long-read-leading);
+    }
+    /* A definition list set small as a whole (an edition's details): the values are sentences,
+       the terms stay small capitals. */
+    .long-read dl:is(.text-2xs, .text-xs, .text-sm, .text-caption, .text-footnote) dd {
+        font-size: var(--text-callout);
+        line-height: var(--long-read-leading);
+    }
+    /* A running paragraph that takes a small size from the box around it. max() keeps a larger
+       inherited size as it is. */
+    .long-read
+        :is(p, li, dd, blockquote).leading-relaxed:not([class*='text-xs'], [class*='text-sm'], [class*='text-base'], [class*='text-lg'], [class*='xl'], [class*='text-['], .uppercase, .font-bold, .font-semibold, .font-mono, .italic, .sr-only, [lang='sa'], .shloka-text):not(:is(a, button, summary, label, nav, table, figcaption) *) {
+        font-size: max(1em, var(--text-callout));
+        line-height: var(--long-read-leading);
+    }
+    /* Paragraphs that follow one another with no space set between them. Zero specificity
+       beyond the class, so any margin or space-y utility on the page still wins. */
+    .long-read :where(p + p:not([class*='mt-'], [class*='my-'], [class*='pt-'])) {
+        margin-top: 0.75em;
+    }
+}
+
+@media (min-width: 640px) {
+    /* A running paragraph in a full-width card ran to 120 characters a line. Paragraphs that
+       are centred, already capped, or draw a rule or a fill across their box are left alone. */
+    .long-read :is(p, blockquote).leading-relaxed:not([class*='max-w-'], [class*='border'], [class*='bg-'], .text-center, .mx-auto, [lang='sa'], .shloka-text):not(:is(.text-center, a, button, table) *) {
+        max-width: var(--width-text);
+    }
+}
+
+/* A wide table scrolls inside its own box; the page never scrolls sideways.
+   The wrapper carries tabindex="0", role="region" and an aria-label in the markup, so a
+   keyboard can scroll it. On a phone the table keeps a width its columns can be read at
+   (four columns squeezed into 350px break every other word), and its cells read at the
+   subhead size. */
+.long-read-table {
+    --long-read-table-min: 30rem;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+}
+.long-read-table:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+@media (max-width: 639px) {
+    .long-read-table > table {
+        min-width: var(--long-read-table-min);
+    }
+    .long-read-table :is(td, th) {
+        font-size: max(1em, var(--text-subhead));
+    }
+    .long-read-table th {
+        font-size: var(--text-caption);
+    }
+}
+
+/* The contents list ─────────────────────────────────────────────────────────
+   A grouped list (.apple-group, .apple-row) behind a disclosure. */
+.on-this-page {
+    max-width: var(--width-text);
+}
+.on-this-page > details > summary {
+    cursor: pointer;
+    list-style: none;
+    font-size: var(--text-subhead);
+    font-weight: 600;
+    color: var(--label-primary);
+    -webkit-user-select: none;
+    user-select: none;
+}
+.on-this-page > details > summary::-webkit-details-marker {
+    display: none;
+}
+.on-this-page > details > summary:focus-visible {
+    outline: none;
+    box-shadow: inset var(--focus-ring);
+}
+.on-this-page-count {
+    margin-left: auto;
+    font-size: var(--text-footnote);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    color: var(--label-secondary);
+}
+.on-this-page-chevron {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--label-tertiary);
+    transition: transform var(--duration-standard) var(--ease-standard);
+}
+.on-this-page > details[open] .on-this-page-chevron {
+    transform: rotate(90deg);
+}
+.on-this-page ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--separator);
+}
+.on-this-page li + li {
+    border-top: 1px solid var(--separator);
+}
+.on-this-page a.apple-row {
+    font-size: var(--text-subhead);
+    line-height: var(--leading-normal);
+    color: var(--label-primary);
+    text-decoration: none;
+}
+.on-this-page a.apple-row:focus-visible {
+    outline: none;
+    box-shadow: inset var(--focus-ring);
+}
+.on-this-page-n {
+    flex-shrink: 0;
+    min-width: 1.5em;
+    font-size: var(--text-footnote);
+    font-variant-numeric: tabular-nums;
+    color: var(--label-tertiary);
+}
+.on-this-page-second {
+    color: var(--label-secondary);
+}
+@media print {
+    .on-this-page {
+        display: none;
+    }
+}

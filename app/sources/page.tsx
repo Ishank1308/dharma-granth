@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { SCRIPTURE_SOURCES, type ScriptureSourceMeta } from '@/data/sources-registry';
 import { PHOTO_CREDITS } from '@/lib/scene-photos';
+import { OnThisPage } from '@/app/components/OnThisPage';
 
 export default function SourcesPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,7 +41,7 @@ export default function SourcesPage() {
   }, [sourcesList, searchQuery]);
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main className="long-read min-h-screen bg-dharma-bg text-dharma-text pb-20">
       {/* Header Banner */}
       <section className="border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg dark:from-amber-950/20 py-14 px-5 sm:px-8">
         <div className="mx-auto max-w-5xl">
@@ -116,8 +117,15 @@ export default function SourcesPage() {
 
       {/* Directory of Editions */}
       <section className="mx-auto max-w-5xl px-5 sm:px-8 mt-10">
+        <OnThisPage
+          className="mb-8"
+          items={[
+            { id: 'editions-registry', en: 'Textual Editions Registry' },
+            Object.keys(PHOTO_CREDITS).length > 0 && { id: 'picture-credits', hi: 'श्लोकों के पीछे के चित्र', en: 'Pictures behind the verses' },
+          ]}
+        />
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-dharma-border pb-4 mb-6">
-          <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+          <h2 id="editions-registry" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
             Textual Editions Registry ({filteredSources.length})
           </h2>
 

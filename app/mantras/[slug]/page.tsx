@@ -8,6 +8,7 @@ import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { Copy, MessageCircle, ArrowLeft, ArrowRight, BookOpen, Sparkles, Check, ExternalLink } from 'lucide-react';
 import { MantraDetailClient } from './MantraDetailClient';
 import { NavagrahaMandalam } from '../NavagrahaMandalam';
+import '@/app/styles/long-read.css';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -153,7 +154,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
+    <main className="long-read min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -206,7 +207,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
             </h2>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-dharma-border shadow-xs">
+          <div className="long-read-table rounded-2xl border border-dharma-border shadow-xs" tabIndex={0} role="region" aria-label="Word-by-word meaning table">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-dharma-border bg-dharma-card/80 text-xs font-bold uppercase tracking-wider text-dharma-muted">
                 <tr>

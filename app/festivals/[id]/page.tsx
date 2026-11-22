@@ -23,6 +23,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { ShareCardButton } from '@/app/components/understand/ShareCard';
+import { OnThisPage } from '@/app/components/OnThisPage';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -154,7 +155,7 @@ export default async function FestivalDetailPage(props: PageProps) {
   );
 
   return (
-    <main className="apple-scope min-h-screen bg-dharma-bg pb-20 relative overflow-hidden">
+    <main className="apple-scope long-read long-read-hi min-h-screen bg-dharma-bg pb-20 relative overflow-hidden">
       {/* Sacred Festival Halo Backdrop */}
       <div
         aria-hidden="true"
@@ -239,13 +240,26 @@ export default async function FestivalDetailPage(props: PageProps) {
 
       {/* Main Content Layout */}
       <section className="relative mx-auto max-w-5xl px-gutter -mt-6 sm:-mt-8 space-y-8 z-10">
+        <OnThisPage
+          items={[
+            { id: 'fest-meaning', hi: 'दार्शनिक अर्थ व महत्व', en: 'Spiritual Significance' },
+            { id: 'fest-sources', hi: 'शास्त्रीय स्रोत व प्रमाण', en: 'Scriptural References' },
+            { id: 'fest-deity', hi: 'संबंधित देवता व पावन कथा', en: 'Deity & Narrative' },
+            festival.commonChants.length > 0 && { id: 'fest-chants', hi: 'जप और प्रार्थना', en: 'Chants & Prayers' },
+            festival.scripturalVsCustom.length > 0 && { id: 'fest-custom', hi: 'शास्त्रीय बनाम सांस्कृतिक रिवाज़', en: 'Scripture and Custom' },
+            festival.regionalTraditions.length > 0 && { id: 'fest-regions', hi: 'क्षेत्रीय विविधता', en: 'Regional Traditions' },
+            festival.traditionalPractices.length > 0 && { id: 'fest-practices', hi: 'पारंपरिक अनुष्ठान', en: 'Ritual Practices' },
+            festival.foodTraditions.length > 0 && { id: 'fest-food', hi: 'नैवेद्य व भोजन परंपरा', en: 'Sacred Food Offerings' },
+            Boolean(festival.environmentalConsiderations) && { id: 'fest-nature', hi: 'प्रकृति व पर्यावरण संचेतना', en: 'Ecological Mindfulness' },
+          ]}
+        />
         {/* 1. Meaning & Core Philosophy */}
         <div className="card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             <Sparkles className="h-4 w-4" />
             <span>दार्शनिक अर्थ व महत्व (Spiritual Significance)</span>
           </div>
-          <h2 className="font-serif text-2xl font-bold text-dharma-text">
+          <h2 id="fest-meaning" className="font-serif text-2xl font-bold text-dharma-text">
             {festival.name} क्यों मनाया जाता है?
           </h2>
           <p className="text-sm sm:text-base text-dharma-text leading-relaxed font-devanagari">
@@ -259,7 +273,7 @@ export default async function FestivalDetailPage(props: PageProps) {
             <BookOpen className="h-4 w-4" />
             <span>शास्त्रीय स्रोत व प्रमाण (Scriptural References)</span>
           </div>
-          <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+          <h2 id="fest-sources" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
             किन शास्त्रों में इस पर्व का उल्लेख है?
           </h2>
           <div className="flex flex-wrap gap-2.5 pt-1">
@@ -281,7 +295,7 @@ export default async function FestivalDetailPage(props: PageProps) {
             <Heart className="h-4 w-4" />
             <span>संबंधित देवता व पावन कथा (Deity & Narrative)</span>
           </div>
-          <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+          <h2 id="fest-deity" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
             आराध्य देवता: {festival.relatedDeity}
           </h2>
           <div className="rounded-2xl border border-dharma-border/80 bg-dharma-panel/60 p-5">
@@ -298,7 +312,7 @@ export default async function FestivalDetailPage(props: PageProps) {
               <Music className="h-4 w-4" />
               <span>जप और प्रार्थना (Chants & Prayers)</span>
             </div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+            <h2 id="fest-chants" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
               पवित्र मंत्र और ध्यान
             </h2>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -329,7 +343,7 @@ export default async function FestivalDetailPage(props: PageProps) {
               <AlertCircle className="h-4 w-4" />
               <span>विवेक दर्शन: शास्त्रीय बनाम सांस्कृतिक रिवाज़</span>
             </div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+            <h2 id="fest-custom" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
               शास्त्र क्या कहते हैं और लोक-रिवाज़ क्या हैं?
             </h2>
             <p className="text-xs sm:text-sm text-dharma-muted">
@@ -364,7 +378,7 @@ export default async function FestivalDetailPage(props: PageProps) {
               <MapPin className="h-4 w-4" />
               <span>क्षेत्रीय विविधता (Regional Traditions Across Bharat)</span>
             </div>
-            <h2 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+            <h2 id="fest-regions" className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
               भारत के विभिन्न क्षेत्रों में उत्सव का स्वरूप
             </h2>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -393,7 +407,7 @@ export default async function FestivalDetailPage(props: PageProps) {
                 <CheckCircle2 className="h-4 w-4" />
                 <span>पारंपरिक अनुष्ठान (Ritual Practices)</span>
               </div>
-              <h3 className="font-serif text-lg font-bold text-dharma-text">साधना व विधि</h3>
+              <h3 id="fest-practices" className="font-serif text-lg font-bold text-dharma-text">साधना व विधि</h3>
               <ul className="space-y-2 text-xs sm:text-sm text-dharma-text">
                 {festival.traditionalPractices.map((practice, i) => (
                   <li key={i} className="flex items-start gap-2">
@@ -411,7 +425,7 @@ export default async function FestivalDetailPage(props: PageProps) {
                 <Utensils className="h-4 w-4" />
                 <span>नैवेद्य व भोजन परंपरा (Sacred Food Offerings)</span>
               </div>
-              <h3 className="font-serif text-lg font-bold text-dharma-text">पारंपरिक प्रसाद</h3>
+              <h3 id="fest-food" className="font-serif text-lg font-bold text-dharma-text">पारंपरिक प्रसाद</h3>
               <ul className="space-y-2 text-xs sm:text-sm text-dharma-text">
                 {festival.foodTraditions.map((food, i) => (
                   <li key={i} className="flex items-start gap-2">
@@ -431,7 +445,7 @@ export default async function FestivalDetailPage(props: PageProps) {
               <Leaf className="h-4 w-4" />
               <span>प्रकृति व पर्यावरण संचेतना (Ecological Mindfulness)</span>
             </div>
-            <h3 className="font-serif text-lg font-bold text-dharma-text">
+            <h3 id="fest-nature" className="font-serif text-lg font-bold text-dharma-text">
               उत्सव में प्रकृति संरक्षण
             </h3>
             <p className="text-xs sm:text-sm text-dharma-text leading-relaxed">

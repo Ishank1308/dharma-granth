@@ -28,6 +28,7 @@ import {
 import { ConceptRelations } from '../ConceptRelations';
 import { SaveConceptButton } from '../SaveConceptButton';
 import { ShareChips } from '@/app/components/ShareChips';
+import { OnThisPage } from '@/app/components/OnThisPage';
 import { InteractiveVisualLayer } from '@/app/components/visuals/InteractiveVisualLayer';
 
 interface PageProps {
@@ -174,7 +175,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
   } : null;
 
   return (
-    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-24">
+    <main className="long-read min-h-screen bg-dharma-bg text-dharma-text pb-24">
       <JsonLd
         data={pageLd(
           [
@@ -269,6 +270,18 @@ export default async function ConceptDetailPage({ params }: PageProps) {
 
       {/* ── Main Content Container ────────────────────────────────────────── */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-12 space-y-16">
+        <OnThisPage
+          items={[
+            { id: 'derivation-heading', hi: 'शब्द व्युत्पत्ति व व्याकरण', en: 'Etymology & Derivation' },
+            { id: 'visual-model-heading', hi: 'दृश्य ज्ञान दर्शन', en: 'Sacred Visual Model' },
+            { id: 'contexts-heading', hi: 'विभिन्न सन्दर्भों में अर्थ', en: 'Shades of Meaning' },
+            { id: 'verses-heading', hi: 'शास्त्रीय प्रमाण श्लोक', en: 'Canonical Citations' },
+            { id: 'traditions-heading', hi: 'विभिन्न दर्शनों में दृष्टिकोण', en: 'Philosophical Diversity' },
+            { id: 'myths-heading', hi: 'सामान्य भ्रांतियाँ और शास्त्रीय सत्य', en: 'Clarifications' },
+            concept.relatedConceptIds.some(hasConceptPage) && { id: 'related-heading', hi: 'संबंधित अन्य अवधारणाएँ', en: 'Related Concepts' },
+            { id: 'sources-heading', hi: 'शास्त्रीय संदर्भ व आधार', en: 'Canonical Sources' },
+          ]}
+        />
         {/* ── Section 1: Sanskrit Derivation (व्युत्पत्ति) ────────────────────── */}
         <section aria-labelledby="derivation-heading" className="space-y-6">
           <div className="border-l-4 border-saffron-600 pl-4">
