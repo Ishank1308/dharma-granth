@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SACRED_MANTRAS } from '@/data/mantras';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
+import { PageCover } from '@/app/components/PagePhoto';
 import { Sparkles, BookOpen, Share2, Copy, ArrowRight, ShieldCheck, Heart } from 'lucide-react';
 import { MantrasFilterClient } from './MantrasFilterClient';
 
@@ -116,8 +117,9 @@ export default function MantrasPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-amber-950/25 via-saffron-950/15 to-transparent pt-12 pb-14 border-b border-dharma-border">
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber-950/25 via-saffron-950/15 to-transparent pt-8 sm:pt-12 pb-14 border-b border-dharma-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+          <PageCover photo="yajna" className="mx-auto max-w-3xl" />
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 border border-saffron-500/20 mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span><span lang="hi">शाश्वत मन्त्र कोश</span> · Eternal Vedic Chants</span>

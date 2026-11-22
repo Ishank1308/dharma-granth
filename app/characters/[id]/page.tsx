@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
+import { CHARACTER_PHOTOS } from '@/lib/page-photos';
+import { HeroPhoto } from '@/app/components/PagePhoto';
 import { JsonLd } from '@/app/components/JsonLd';
 import { pageLd, articleLd, definedTermLd } from '@/lib/jsonld';
 import Link from 'next/link';
@@ -63,6 +65,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
   const params = await props.params;
   const character = getCharacter(params.id);
   if (!character) notFound();
+  const photo = CHARACTER_PHOTOS[character.id];
 
   const relatedCharacters = characters
     .filter((c) => c.id !== character.id && c.category === character.category)
@@ -124,7 +127,8 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
         />
       )}
       {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className={`relative bg-gradient-to-br ${character.gradient} text-white py-16 overflow-hidden`}>
+      <section className={`relative isolate bg-gradient-to-br ${character.gradient} text-white py-16 overflow-hidden`}>
+        {photo && <HeroPhoto photo={photo} />}
         <div className="absolute inset-0 mandala-bg opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
         <div className="max-w-4xl mx-auto px-6 relative">

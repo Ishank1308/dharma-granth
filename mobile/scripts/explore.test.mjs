@@ -64,3 +64,55 @@ test('festival calendar links only to festival pages that exist', () => {
   const ids = new Set(festivals.map((f) => f.id));
   for (const d of FESTIVAL_DATES) if (d.festivalId) assert.ok(ids.has(d.festivalId), `${d.name} → ${d.festivalId}`);
 });
+
+test('rituals and the Upakarma guide come across whole, every ritual cover colour resolves', async () => {
+  const { rituals } = await import('../src/content/generated/explore/rituals.ts');
+  const upa = await import('../src/content/generated/explore/upakarma.ts');
+  assert.ok(rituals.length >= 10, `${rituals.length} rituals`);
+  assert.equal(new Set(rituals.map((r) => r.id)).size, rituals.length, 'ritual ids are unique');
+  for (const r of rituals) {
+    assert.ok(r.meaning && r.scripturalBasis && r.symbolism && r.practicalEtiquette.length, r.id);
+    for (const deep of [false, true]) {
+      const [a, b] = festivalColors(r.gradient, deep);
+      assert.notEqual(a, '#ea580c', `${r.id} from-stop (deep=${deep}) is missing from the colour table`);
+      assert.notEqual(b, '#c2410c', `${r.id} to-stop (deep=${deep}) is missing from the colour table`);
+    }
+  }
+  assert.equal(upa.UPAKARMA_STEPS.length, 5);
+  for (const s of upa.UPAKARMA_STEPS) {
+    if (s.mantraRef) assert.ok(upa.UPAKARMA_MANTRAS[s.mantraRef], `step ${s.stepNumber} mantra ${s.mantraRef}`);
+    assert.equal(s.rituals.length, s.ritualsHi.length, `step ${s.stepNumber} has an action list in both languages`);
+  }
+  assert.equal(upa.YAJNOPAVITA_TANTUS.length, 9);
+  // Mantras are shown whole, line by line: none is cut off mid-verse.
+  for (const m of Object.values(upa.UPAKARMA_MANTRAS)) {
+    assert.ok(/॥\s*$/.test(m.sanskrit), `${m.id} ends on a full verse`);
+  }
+});
+
+test('each Panchang page keeps its questions and answers', async () => {
+  const { PAGE_FAQS } = await import('../src/content/generated/explore/faqs.ts');
+  for (const page of ['calendar', 'tithis', 'nakshatras', 'yogas', 'karanas', 'varas']) {
+    assert.ok(PAGE_FAQS[page]?.length >= 3, `${page} has ${PAGE_FAQS[page]?.length} questions`);
+    for (const f of PAGE_FAQS[page]) assert.ok(f.q.length > 10 && f.a.length > 20, `${page}: ${f.q}`);
+  }
+});
+
+test('every day lands on a limb entry the guides have, and the calendar marks match the website', () => {
+  const varanasi = panchang.PRESET_LOCATIONS.find((c) => c.id === 'varanasi');
+  const tithiSlugs = new Set(panchang.UNIQUE_TITHI_ARCHETYPES.map((t) => t.slug));
+  const yogaSlugs = new Set(panchang.YOGA_DATA.map((y) => y.slug));
+  const karanaNames = new Set(panchang.getAllKaranas().map((k) => k.name));
+  const seen = new Set();
+  for (let d = 0; d < 60; d++) {
+    const p = panchang.calculateEducationalPanchang(new Date(2026, 10, 1 + d, 12), varanasi);
+    const n = p.tithi.number;
+    const slug = n === 15 ? 'purnima' : n === 30 ? 'amavasya' : panchang.UNIQUE_TITHI_ARCHETYPES.find((t) => t.shuklaNumber === n || t.krishnaNumber === n)?.slug;
+    assert.ok(slug && tithiSlugs.has(slug), `tithi ${n}`);
+    assert.ok(yogaSlugs.has(panchang.YOGA_DATA[p.yoga.index]?.slug), `yoga ${p.yoga.index}`);
+    assert.ok(karanaNames.has(p.karana.name), `karana ${p.karana.name}`);
+    assert.ok(panchang.getNakshatraBySlug(panchang.nakshatraSlug(p.nakshatra.name)), p.nakshatra.name);
+    seen.add(slug);
+  }
+  assert.ok(seen.size >= 14, 'two months cover nearly every tithi');
+});

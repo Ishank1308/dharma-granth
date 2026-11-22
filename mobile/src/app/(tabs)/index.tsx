@@ -5,6 +5,7 @@ import { ScrollView, SectionList, StyleSheet, Text, TextInput, useWindowDimensio
 import Animated, { useAnimatedScrollHandler, useAnimatedStyle, useSharedValue, type SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { AshtavakraCard } from '@/components/ashtavakra-card';
 import { CoverBook } from '@/components/art/cover-book';
 import { EmptyArt } from '@/components/art/empty-art';
 import { ReadingStreakCard } from '@/components/reading-streak';
@@ -368,6 +369,9 @@ export default function LibraryScreen() {
               <BookShelf />
             </Animated.View>
             <Animated.View entering={stagger(4)}>
+              <AshtavakraCard />
+            </Animated.View>
+            <Animated.View entering={stagger(5)}>
               <KnowledgeCard />
             </Animated.View>
             <View style={[styles.search, glass(palette, true)]}>

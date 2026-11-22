@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useTabTop } from '@/lib/use-tab-top';
 import { EmptyArt } from '@/components/art/empty-art';
+import { PracticeCard } from '@/components/practice-card';
 import { CollectionSheet, useCollectionName } from '@/components/collection-sheet';
 import { accentFill, Backdrop, Card, Chip, coverFill, GroupRow, groupSurface, IconButton, IconTile, LargeHeader, Muted } from '@/components/ui';
 import { getEntry, loadChapter } from '@/content/catalog';
@@ -85,6 +86,7 @@ export default function BookmarksScreen() {
               </View>
               <Ionicons name="chevron-forward" size={18} color={palette.muted} />
             </GroupRow>
+            <PracticeCard />
             {bookmarks.length ? (
               <ScrollView
                 horizontal

@@ -7,6 +7,7 @@ import { X, BookOpen, MapPin, Sparkles, Music, Utensils, Leaf, Clock, AlertCircl
 
 import Link from 'next/link';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { FestivalsOpening } from './FestivalsOpening';
 
 export default function FestivalsPage() {
@@ -27,6 +28,7 @@ export default function FestivalsPage() {
           eyebrow="Festivals"
           eyebrowHi="उत्सव"
           title="Festival Knowledge Centre"
+          cover={<PageCover photo="ganga" />}
           titleHi="उत्सव ज्ञान केंद्र"
           lead={
             <p lang="hi" className="font-devanagari">

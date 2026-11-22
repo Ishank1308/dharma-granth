@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { learningPaths, type LearningPath, type LearningFormat } from '@/data/learning-paths';
 import { useStudyProgress } from '@/lib/useStudyProgress';
 import { CalmProgress } from '@/app/components/CalmProgress';
@@ -90,6 +91,7 @@ export default function LearnPage() {
         eyebrowHi="स्वाध्यायान्मा प्रमदः"
         eyebrowLang="sa"
         title="Study the scriptures"
+        cover={<PageCover photo="ashram" />}
         titleHi="शास्त्र स्वाध्याय"
         lead={
           <p>

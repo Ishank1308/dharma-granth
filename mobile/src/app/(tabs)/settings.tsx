@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { File, Paths } from 'expo-file-system';
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useState } from 'react';
 import { Alert, Linking, Platform, Pressable, StyleSheet, Switch, Text, View } from 'react-native';
@@ -12,7 +12,7 @@ import { Disclosure, ReminderTimeButton, TextSizePicker, ThemePicker, WeekdayPic
 import { accentFill, Backdrop, Bilingual, Card, Chip, glass, GroupCard, GroupRow, IconTile, LargeHeader, Muted, SectionTitle } from '@/components/ui';
 import { CATALOG, getEntry, SITE } from '@/content/catalog';
 import { useDownloads } from '@/content/downloads';
-import { LANGUAGE_SETTINGS, S, useI18n, type LanguageSetting, type Msg } from '@/i18n';
+import { D, LANGUAGE_SETTINGS, S, useI18n, type LanguageSetting, type Msg } from '@/i18n';
 import { BackupError, EFFECTS_SETTINGS, makeBackup, parseBackup, REMINDER_BOOKS, type EffectsSetting, type ReminderBook } from '@/lib/backup';
 import {
   getReminderPermission,
@@ -24,7 +24,9 @@ import { useTabTop } from '@/lib/use-tab-top';
 import { useScrollY } from '@/motion/parallax';
 import { TitleBar } from '@/motion/title-bar';
 import { useAppState } from '@/state/app-state';
+import { useDesk } from '@/state/desk';
 import { useJournal } from '@/state/journal';
+import { exportPractice, importPractice } from '@/state/practice';
 import { addWidgetToHomeScreen } from '@/widget/pin';
 import { barClearance, huesFor, RADIUS, SPACE, switchOffTrack, TOUCH, TYPE } from '@/theme/themes';
 
@@ -218,21 +220,23 @@ export default function SettingsScreen() {
   const { installed } = useDownloads();
   const { palette, settings, updateSettings, exportData, importData, bookmarks, lightEffects } = useAppState();
   const { journal, importJournal } = useJournal();
+  const { desk, importDesk } = useDesk();
   const { t } = useI18n();
   const [busy, setBusy] = useState(false);
   const bundled = CATALOG.filter((b) => b.bundled).length;
 
-  // Each layer keeps its website hue: अर्थ peacock, English indigo, notes saffron.
+  // Each layer keeps its website hue: अर्थ peacock, English indigo, व्याख्या saffron.
   const toggles: {
-    key: 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showNotes';
+    key: 'showTransliteration' | 'showHindi' | 'showEnglish' | 'showVyakhya' | 'showNotes';
     label: Msg;
-    icon: 'text' | 'language' | 'globe-outline' | 'reader';
+    icon: 'text' | 'language' | 'globe-outline' | 'sparkles' | 'reader';
     color: string;
   }[] = [
     { key: 'showTransliteration', label: S.showTransliteration, icon: 'text', color: TILE.gold },
     { key: 'showHindi', label: S.showHindi, icon: 'language', color: TILE.peacock },
     { key: 'showEnglish', label: S.showEnglish, icon: 'globe-outline', color: TILE.indigo },
-    { key: 'showNotes', label: S.showNotes, icon: 'reader', color: TILE.saffron },
+    { key: 'showVyakhya', label: S.showVyakhya, icon: 'sparkles', color: TILE.saffron },
+    { key: 'showNotes', label: S.showNotes, icon: 'reader', color: TILE.gold },
   ];
 
   const errorText = (e: unknown) =>
@@ -245,7 +249,7 @@ export default function SettingsScreen() {
       const file = new File(Paths.cache, `dharma-granth-backup-${date}.json`);
       if (file.exists) file.delete();
       file.create();
-      file.write(JSON.stringify(makeBackup(exportData(), new Date(), { journal }), null, 2));
+      file.write(JSON.stringify(makeBackup(exportData(), new Date(), { journal, desk, practice: await exportPractice() }), null, 2));
       if (await Sharing.isAvailableAsync()) {
         await Sharing.shareAsync(file.uri, { mimeType: 'application/json', dialogTitle: t(S.saveBackupDialog) });
       } else {
@@ -266,6 +270,9 @@ export default function SettingsScreen() {
       const data = parseBackup(await picked.result.text());
       importData(data);
       const reflections = data.journal === undefined ? 0 : importJournal(data.journal);
+      if (data.desk !== undefined) importDesk(data.desk);
+      // Practice (Gita Sankalpa, reading plans) is its own store; it rides along in the same file.
+      if (data.practice !== undefined) await importPractice(data.practice);
       Alert.alert(t(S.backupRestored), t(S.backupRestoredBody(data.bookmarks.length)) + (reflections ? t(S.backupJournalAdded(reflections)) : ''));
     } catch (e) {
       Alert.alert(t(S.importFailed), errorText(e));
@@ -373,6 +380,11 @@ export default function SettingsScreen() {
               <IconTile icon="shield-checkmark" color={TILE.tulsi} />
               <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>{t(S.privacyPolicy)}</Text>
               <Ionicons name="open-outline" size={18} color={palette.muted} />
+            </GroupRow>
+            <GroupRow inset={60} onPress={() => router.push('/about')}>
+              <IconTile icon="reader" color={TILE.peacock} />
+              <Text style={{ flex: 1, color: palette.text, fontSize: TYPE.body }}>{t(D.aboutRow)}</Text>
+              <Ionicons name="chevron-forward" size={18} color={palette.muted} />
             </GroupRow>
             <GroupRow inset={60} onPress={() => updateSettings({ onboarded: false })}>
               <IconTile icon="hand-left" color={TILE.indigo} />

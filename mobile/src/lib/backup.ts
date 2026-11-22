@@ -45,6 +45,8 @@ export interface Settings {
   showHindi: boolean;
   showEnglish: boolean;
   showNotes: boolean;
+  /** The website's Hindi व्याख्या and जीवन सूत्र under each verse (src/content/vyakhya.ts). */
+  showVyakhya: boolean;
   /** Interface language. 'system' follows the phone. Verse text is not affected. */
   language: LanguageSetting;
   /** Opt-in daily verse notification, scheduled on the phone (no server, no push token). */
@@ -68,12 +70,13 @@ export interface Settings {
 }
 
 export const DEFAULT_SETTINGS: Settings = {
-  theme: 'day',
+  theme: 'sunset',
   textScale: 1,
   showTransliteration: true,
   showHindi: true,
   showEnglish: true,
   showNotes: false,
+  showVyakhya: true,
   language: 'system',
   dailyReminder: false,
   reminderHour: 7,
@@ -120,14 +123,29 @@ export interface BackupFile extends AppData {
    * backups still read; an older app ignores it. Passed through here and normalised by the journal store.
    */
   journal?: unknown;
+  /** The study desk's reading queue and weekly goal (@/lib/desk). Optional in the same way. */
+  desk?: unknown;
+  /** Gita Sankalpa and reading plans (src/state/practice.ts). Older backups have none; older apps ignore it. */
+  practice?: unknown;
 }
 
 /** What a backup file holds: the app data, plus the raw sections that other stores normalise themselves. */
 export interface ParsedBackup extends ImportedData {
   journal?: unknown;
+  desk?: unknown;
+  practice?: unknown;
 }
 
-const THEMES: ThemeName[] = ['day', 'sunset', 'paper', 'dark'];
+/**
+ * Theme names a saved setting or backup may hold. Day and Paper were removed (only Sunset and Dark are left),
+ * so those light themes move to Sunset.
+ */
+const THEME_MIGRATION: Record<string, ThemeName> = { day: 'sunset', paper: 'sunset', sunset: 'sunset', dark: 'dark' };
+
+/** The theme a saved name stands for today, or undefined when it names none. */
+export function migrateTheme(raw: unknown): ThemeName | undefined {
+  return typeof raw === 'string' && Object.hasOwn(THEME_MIGRATION, raw) ? THEME_MIGRATION[raw] : undefined;
+}
 
 export function bookmarkKey(b: Pick<Bookmark, 'id' | 'chapter' | 'verse'>): string {
   return `${b.id}:${b.chapter}:${b.verse}`;
@@ -142,12 +160,13 @@ export function normalizeSettings(raw: unknown): Settings {
   const s = (raw && typeof raw === 'object' ? raw : {}) as Partial<Settings>;
   const scale = Number(s.textScale);
   return {
-    theme: THEMES.includes(s.theme as ThemeName) ? (s.theme as ThemeName) : DEFAULT_SETTINGS.theme,
+    theme: migrateTheme(s.theme) ?? DEFAULT_SETTINGS.theme,
     textScale: Number.isFinite(scale) ? Math.min(1.6, Math.max(0.8, scale)) : DEFAULT_SETTINGS.textScale,
     showTransliteration: typeof s.showTransliteration === 'boolean' ? s.showTransliteration : DEFAULT_SETTINGS.showTransliteration,
     showHindi: typeof s.showHindi === 'boolean' ? s.showHindi : DEFAULT_SETTINGS.showHindi,
     showEnglish: typeof s.showEnglish === 'boolean' ? s.showEnglish : DEFAULT_SETTINGS.showEnglish,
     showNotes: typeof s.showNotes === 'boolean' ? s.showNotes : DEFAULT_SETTINGS.showNotes,
+    showVyakhya: typeof s.showVyakhya === 'boolean' ? s.showVyakhya : DEFAULT_SETTINGS.showVyakhya,
     language: LANGUAGES.includes(s.language as LanguageSetting) ? (s.language as LanguageSetting) : DEFAULT_SETTINGS.language,
     dailyReminder: typeof s.dailyReminder === 'boolean' ? s.dailyReminder : DEFAULT_SETTINGS.dailyReminder,
     reminderHour: wholeIn(s.reminderHour, 0, 23, DEFAULT_SETTINGS.reminderHour),
@@ -195,7 +214,7 @@ export function normalizeLastRead(raw: unknown): LastRead | null {
   return r.verse != null && r.verse !== '' ? { id: r.id, chapter, verse: String(r.verse), at } : { id: r.id, chapter, at };
 }
 
-export function makeBackup(data: AppData, now = new Date(), extra: { journal?: unknown } = {}): BackupFile {
+export function makeBackup(data: AppData, now = new Date(), extra: { journal?: unknown; desk?: unknown; practice?: unknown } = {}): BackupFile {
   return { format: BACKUP_FORMAT, version: BACKUP_VERSION, exportedAt: now.toISOString(), ...data, ...extra };
 }
 
@@ -229,6 +248,8 @@ export function parseBackup(text: string): ParsedBackup {
     bookmarks: normalizeBookmarks(b.bookmarks),
     lastRead: normalizeLastRead(b.lastRead),
     ...(b.journal !== undefined ? { journal: b.journal } : {}),
+    ...(b.desk !== undefined ? { desk: b.desk } : {}),
+    ...(b.practice !== undefined ? { practice: b.practice } : {}),
     progress: b.progress,
   };
 }

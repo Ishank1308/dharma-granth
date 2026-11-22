@@ -114,7 +114,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
           }
         };
         const saved = parse(map[KEYS.settings]);
-        // First launch: match the phone's dark mode (the splash screen already does) instead of a bright Day theme.
+        // First launch: match the phone's dark mode (the splash screen already does) instead of the light Sunset theme.
         // Someone who already has a place in a book or saved verses is not new, whatever the settings key says:
         // they do not get the first-run welcome.
         const hasHistory = Boolean(map[KEYS.lastRead] || map[KEYS.bookmarks] || map[KEYS.progress]);

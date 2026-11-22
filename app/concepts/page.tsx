@@ -8,6 +8,7 @@ import { getAllConceptDetails, getConceptDetail } from '@/data/concept-details';
 import { GRAPH_CONCEPTS } from '@/data/knowledge-graph';
 import { graphConceptLink } from '@/lib/knowledge-graph';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 
 export const metadata: Metadata = {
   title: 'Dharmic Concepts & Philosophy Explained (शास्त्रीय अवधारणा ज्ञान ग्राफ)',
@@ -68,6 +69,7 @@ export default function ConceptsPage() {
         eyebrow="Knowledge graph"
         eyebrowHi="तत्त्वमीमांसा"
         title="Concept Knowledge Graph"
+        cover={<PageCover photo="lotus" />}
         titleHi="अवधारणा ज्ञान ग्राफ"
         lead={
           <p lang="hi" className="font-devanagari">

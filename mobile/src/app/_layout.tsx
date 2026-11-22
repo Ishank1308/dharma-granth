@@ -14,6 +14,7 @@ import { ToastProvider } from '@/motion/toast';
 import { useMotion } from '@/motion/use-motion';
 import { RouterRecovery } from '@/lib/router-recovery';
 import { AppStateProvider, usePrefs } from '@/state/app-state';
+import { DeskProvider } from '@/state/desk';
 import { JournalProvider } from '@/state/journal';
 import { SANSKRIT_FONT, SERIF_FONT, SERIF_ITALIC_FONT } from '@/theme/fonts';
 
@@ -98,6 +99,11 @@ function Navigator() {
           <Stack.Screen name="journal/collections" options={{ title: '', animation: push }} />
           <Stack.Screen name="share" options={{ title: '', presentation: 'modal' }} />
           <Stack.Screen name="summary/[id]" options={{ title: '', animation: push }} />
+          <Stack.Screen name="desk/index" options={{ title: '', animation: push }} />
+          <Stack.Screen name="compare/index" options={{ title: '', animation: push }} />
+          <Stack.Screen name="compare/[id]" options={{ title: '', animation: push }} />
+          <Stack.Screen name="sheet" options={{ title: '', animation: push }} />
+          <Stack.Screen name="about" options={{ title: '', animation: push }} />
         </Stack>
         <Welcome />
     </ThemeProvider>
@@ -109,11 +115,13 @@ export default function RootLayout() {
     <GestureHandlerRootView style={styles.root}>
       <AppStateProvider>
         <JournalProvider>
-          <RecitationProvider>
-            <ToastProvider>
-              <Navigator />
-            </ToastProvider>
-          </RecitationProvider>
+          <DeskProvider>
+            <RecitationProvider>
+              <ToastProvider>
+                <Navigator />
+              </ToastProvider>
+            </RecitationProvider>
+          </DeskProvider>
         </JournalProvider>
       </AppStateProvider>
     </GestureHandlerRootView>

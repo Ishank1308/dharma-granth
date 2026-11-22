@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { festivals, type Festival } from '@/data/festivals';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
+import { FESTIVAL_PHOTOS } from '@/lib/page-photos';
+import { HeroPhoto } from '@/app/components/PagePhoto';
 import {
   ArrowLeft,
   BookOpen,
@@ -84,6 +86,7 @@ export default async function FestivalDetailPage(props: PageProps) {
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev';
   const pageUrl = `${siteUrl}/festivals/${festival.id}/`;
+  const photo = FESTIVAL_PHOTOS[festival.id];
 
   const faqItems = [
     {
@@ -168,14 +171,16 @@ export default async function FestivalDetailPage(props: PageProps) {
       />
 
       {/* Hero Header */}
-      <section className={`relative overflow-hidden bg-gradient-to-br ${festival.gradient} text-white py-14 sm:py-20`}>
+      <section className={`relative isolate overflow-hidden bg-gradient-to-br ${festival.gradient} text-white py-14 sm:py-20`}>
+        {photo && <HeroPhoto photo={photo} />}
         <div className="absolute inset-0 mandala-bg opacity-15 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-dharma-bg via-transparent to-transparent pointer-events-none" />
+        {/* Only the hero's foot fades into the page, so the timing card's white text stays on the hero's colour. */}
+        <div className="absolute inset-x-0 bottom-0 h-12 sm:h-16 bg-gradient-to-t from-dharma-bg to-transparent pointer-events-none" />
 
         <div className="relative mx-auto max-w-5xl px-gutter">
           <Link
             href="/festivals/"
-            className="liquid-pill inline-flex items-center gap-2 text-white/90 hover:text-white text-xs sm:text-sm font-semibold mb-6 transition px-4 py-2 rounded-full bg-black/20 backdrop-blur-md border border-white/20 hover:bg-black/30 shadow-xs"
+            className="inline-flex items-center gap-2 text-white/90 hover:text-white text-xs sm:text-sm font-semibold mb-6 transition px-4 py-2 rounded-full bg-black/20 backdrop-blur-md border border-white/20 hover:bg-black/30 shadow-xs"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>सभी त्यौहार (All Festivals)</span>
@@ -220,14 +225,14 @@ export default async function FestivalDetailPage(props: PageProps) {
                   href={`https://api.whatsapp.com/send?text=${shareText}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="liquid-pill inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 px-3.5 py-1.5 text-xs font-bold text-white transition shadow-sm"
+                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 px-3.5 py-1.5 text-xs font-bold text-white transition shadow-sm"
                 >
                   <Share2 className="h-3.5 w-3.5" />
                   <span>WhatsApp Share</span>
                 </a>
                 <Link
                   href="/panchang/"
-                  className="liquid-pill inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/90 hover:text-white px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition"
                 >
                   <Calendar className="h-3.5 w-3.5" />
                   <span>पंचांग देखें</span>

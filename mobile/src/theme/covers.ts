@@ -42,6 +42,8 @@ const BY_ID: Record<string, Partial<Cover>> = {
   durgasaptashati: { epigraph: { sa: 'या देवी सर्वभूतेषु शक्तिरूपेण संस्थिता', source: 'दुर्गासप्तशती 5' } },
   bhagavatapurana: { epigraph: { sa: 'ॐ नमो भगवते वासुदेवाय', source: 'द्वादशाक्षर मन्त्र' } },
   shivpurana: { epigraph: { sa: 'ॐ नमः शिवाय', source: 'पञ्चाक्षर मन्त्र' } },
+  // The website's Ashtavakra palette (app/ashtavakra/ashtavakra.css): midnight indigo, saffron, lamp gold.
+  ashtavakra: { colors: ['#0d1428', '#17213f', '#d7862a'], foil: '#e3b23c', epigraph: { sa: 'मुक्ताभिमानी मुक्तो हि बद्धा बद्धाभिमान्यपि', source: 'अष्टावक्र गीता 1.11' } },
 };
 
 export function coverFor(id: string, category: string): Cover {
