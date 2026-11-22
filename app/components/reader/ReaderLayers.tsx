@@ -495,14 +495,14 @@ export function ReaderLayers({
                             {g.pada}
                           </span>
                         </button>
-                        <div className="relative z-10 flex items-center gap-1">
+                        <div className="relative z-10 flex items-center gap-1.5">
                           <button
                             type="button"
                             onClick={(e) => {
                               e.stopPropagation();
                               withSoundscape((m) => m.speakSanskritTerm(displayTerm, 0.85));
                             }}
-                            className="focus-ring inline-flex h-7 w-7 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-700 hover:bg-amber-500/20 dark:text-amber-300 transition"
+                            className="focus-ring tap-halo inline-flex h-8 w-8 items-center justify-center rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-700 hover:bg-amber-500/20 dark:text-amber-300 transition"
                             aria-label={`उच्चारण सुनें: ${g.pada}`}
                             title="उच्चारण सुनें (Pronounce)"
                           >
@@ -515,7 +515,7 @@ export function ReaderLayers({
                                 e.stopPropagation();
                                 handleInspectPada(g.pada);
                               }}
-                              className="focus-ring inline-flex min-h-[28px] items-center gap-1 rounded-md border border-saffron-500/40 bg-saffron-100/70 dark:bg-saffron-900/40 px-2 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
+                              className="focus-ring tap-halo inline-flex min-h-[32px] items-center gap-1 rounded-md border border-saffron-500/40 bg-saffron-100/70 dark:bg-saffron-900/40 px-2.5 py-1 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
                             >
                               <Search className="h-3 w-3" />
                               <span>धातु</span>
@@ -608,44 +608,54 @@ export function ReaderLayers({
                     {meaningNow.hi === 'review' ? MEANING_COPY.hiReview : MEANING_COPY.hiPending}
                   </p>
                 )}
-                {showHindiTrans && meaningNow.hi === 'text' && (
-                  <Layer
-                    id="layer-hindi"
-                    kind="translation"
-                    title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Literal Hindi Translation'}
-                    titleHi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
-                    badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                        मूलानुवाद · Literal
-                      </span>
+                {((showHindiTrans && meaningNow.hi === 'text') || (showEnglishTrans && meaningNow.en === 'text')) && (
+                  <div
+                    className={
+                      showHindiTrans && meaningNow.hi === 'text' && showEnglishTrans && meaningNow.en === 'text'
+                        ? 'grid grid-cols-1 gap-4 lg:grid-cols-2 lg:items-stretch [&>section]:h-full'
+                        : 'space-y-4'
                     }
                   >
-                    <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
-                      {cleanVerseField(verse.hindi)}
-                    </p>
-                    <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
-                      अक्षरशः अनुवाद — मूल संस्कृत श्लोक के प्रत्येक पद का प्रत्यक्ष अर्थ।
-                    </p>
-                  </Layer>
-                )}
-                {showEnglishTrans && meaningNow.en === 'text' && (
-                  <Layer
-                    id="layer-english"
-                    kind="translation"
-                    title={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'Literal English Translation'}
-                    badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                        Literal Text
-                      </span>
-                    }
-                  >
-                    <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
-                      {cleanVerseField(verse.translation)}
-                    </p>
-                    <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
-                      Direct literal rendering preserving Sanskrit philosophical terminology.
-                    </p>
-                  </Layer>
+                    {showHindiTrans && meaningNow.hi === 'text' && (
+                      <Layer
+                        id="layer-hindi"
+                        kind="translation"
+                        title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Literal Hindi Translation'}
+                        titleHi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
+                        badge={
+                          <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                            मूलानुवाद · Literal
+                          </span>
+                        }
+                      >
+                        <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
+                          {cleanVerseField(verse.hindi)}
+                        </p>
+                        <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
+                          अक्षरशः अनुवाद — मूल संस्कृत श्लोक के प्रत्येक पद का प्रत्यक्ष अर्थ।
+                        </p>
+                      </Layer>
+                    )}
+                    {showEnglishTrans && meaningNow.en === 'text' && (
+                      <Layer
+                        id="layer-english"
+                        kind="translation"
+                        title={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'Literal English Translation'}
+                        badge={
+                          <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                            Literal Text
+                          </span>
+                        }
+                      >
+                        <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
+                          {cleanVerseField(verse.translation)}
+                        </p>
+                        <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
+                          Direct literal rendering preserving Sanskrit philosophical terminology.
+                        </p>
+                      </Layer>
+                    )}
+                  </div>
                 )}
                 {showEnglishTrans && !bothPending && meaningNow.en === 'with' && (
                   <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm text-dharma-muted">

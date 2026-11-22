@@ -999,14 +999,14 @@ export function VerseCard({
                               <button
                                 type="button"
                                 onClick={() => setIsSandhiSplit(!isSandhiSplit)}
-                                className="text-[10px] font-medium text-saffron-700 hover:underline dark:text-saffron-300"
+                                className="tap-halo inline-flex min-h-[32px] items-center rounded-md px-2 text-[11px] font-medium text-saffron-700 hover:underline dark:text-saffron-300"
                               >
                                 {isSandhiSplit ? 'संयुक्त श्लोक देखें' : 'विच्छेद दृश्य (Split View)'}
                               </button>
                             )}
                           </div>
                           {parsedGloss.length > 0 ? (
-                            <div className="flex flex-wrap gap-1.5">
+                            <div className="flex flex-wrap gap-2">
                               {parsedGloss.map((g, gIdx) => {
                                 const isHighlighted = hoveredWordIndex === gIdx;
                                 const isSpoken = activeWordIndex === gIdx;
@@ -1028,7 +1028,7 @@ export function VerseCard({
                                       });
                                       setTimeout(() => setActiveWordIndex((cur) => (cur === gIdx ? null : cur)), 1800);
                                     }}
-                                    className={`inline-flex min-h-[26px] items-center gap-1 rounded-lg border px-2 py-0.5 text-[11px] transition active:scale-95 text-left ${
+                                    className={`tap-halo inline-flex min-h-[34px] sm:min-h-[30px] items-center gap-1.5 rounded-lg border px-2.5 py-1 text-[11px] transition active:scale-95 text-left ${
                                       isSpoken || isHighlighted
                                         ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-2xs'
                                         : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'

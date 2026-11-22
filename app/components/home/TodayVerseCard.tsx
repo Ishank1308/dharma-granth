@@ -357,9 +357,9 @@ export function TodayVerseCard({
                     type="button"
                     onClick={() => speakText(words[activeWordIdx].word)}
                     aria-label={`Pronounce ${words[activeWordIdx].word}`}
-                    className="focus-ring inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-dharma-saffron/15 text-dharma-saffron hover:bg-dharma-saffron/25"
+                    className="focus-ring tap-halo inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-dharma-saffron/15 text-dharma-saffron hover:bg-dharma-saffron/25"
                   >
-                    <Volume2 className="h-3.5 w-3.5" aria-hidden="true" />
+                    <Volume2 className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
               )}
@@ -423,7 +423,7 @@ export function TodayVerseCard({
                       triggerTactileFeedback('selection', 'softTap');
                       setActiveStep(id);
                     }}
-                    className={`focus-ring flex min-h-[40px] items-center justify-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-semibold transition-all ${
+                    className={`focus-ring flex min-h-[44px] items-center justify-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-semibold transition-all ${
                       active
                         ? 'bg-dharma-text text-dharma-bg shadow-xs'
                         : 'text-dharma-muted hover:text-dharma-text'
@@ -603,7 +603,7 @@ export function TodayVerseCard({
               <button
                 type="button"
                 onClick={() => cycleItem(-1)}
-                className="focus-ring inline-flex min-h-[36px] items-center gap-1 rounded-lg border border-dharma-border/70 bg-dharma-card/70 px-2.5 py-1 font-medium text-dharma-text hover:border-dharma-saffron/45"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border/70 bg-dharma-card/70 px-3.5 py-2 font-medium text-dharma-text hover:border-dharma-saffron/45"
                 aria-label="Previous daily verse"
               >
                 <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
@@ -615,7 +615,7 @@ export function TodayVerseCard({
               <button
                 type="button"
                 onClick={() => cycleItem(1)}
-                className="focus-ring inline-flex min-h-[36px] items-center gap-1 rounded-lg border border-dharma-border/70 bg-dharma-card/70 px-2.5 py-1 font-medium text-dharma-text hover:border-dharma-saffron/45"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border/70 bg-dharma-card/70 px-3.5 py-2 font-medium text-dharma-text hover:border-dharma-saffron/45"
                 aria-label="Next daily verse"
               >
                 <span lang="hi" className="font-devanagari">अगला श्लोक</span>
