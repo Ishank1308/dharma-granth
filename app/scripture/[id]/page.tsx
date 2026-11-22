@@ -7,6 +7,7 @@ import type { CSSProperties } from 'react';
 import { scriptureVibe, vibeAttrs } from '@/lib/scripture-vibes';
 import { Motif } from '@/app/components/vibe/Motif';
 import { ScriptureBook } from '@/app/components/vibe/ScriptureBook';
+import { bookFrontispiece } from '@/lib/book-covers';
 import { ScriptureContents } from '@/app/components/ScriptureContents';
 import { IllustratedChapterHighlights } from '@/app/components/scripture/IllustratedChapterHighlights';
 import { FadeUp } from '@/app/components/motion/primitives';
@@ -269,7 +270,7 @@ export default async function ScripturePage(props: PageProps) {
             <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
           </FadeUp>
         </div>
-        <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} className="mx-auto" />
+        <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} picture={bookFrontispiece(meta.id, meta.category)} className="mx-auto" />
         </div>
       </section>
 
