@@ -2,10 +2,11 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { Stack } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { Modal, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Moon3D, phaseFromIllumination } from '@/components/art/moon';
+import { SkyArc, useCityMinute } from '@/components/art/sky-arc';
 import { Backdrop, Card, Chip, glass, GroupCard, GroupRow, GroupTitle, IconButton, LargeHeader, Muted } from '@/components/ui';
 import {
   addDays,
@@ -23,6 +24,7 @@ import {
 } from '@/content/explore';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
+import { Sheet } from '@/motion/sheet';
 import { usePrefs } from '@/state/app-state';
 import { fontCap, huesFor, quietFill, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
@@ -55,6 +57,18 @@ export default function PanchangScreen() {
   const isToday = isoDate(day) === isoDate(today);
   const p = useMemo(() => calculateEducationalPanchang(day, city), [day, city]);
   const muhurta = rahuAbhijit(p);
+  const nowMinute = useCityMinute(city.utcOffsetHours);
+  const skyLabel = !muhurta
+    ? S.skyDayA11y(p.solarTimes.sunrise, p.solarTimes.sunset)
+    : !isToday
+      ? S.skyDayA11y(p.solarTimes.sunrise, p.solarTimes.sunset)
+      : nowMinute < muhurta.sunriseMinute || nowMinute > muhurta.sunsetMinute
+        ? S.skyNightA11y(p.solarTimes.sunrise, p.solarTimes.sunset)
+        : S.skyNowA11y(
+            Math.round(((nowMinute - muhurta.sunriseMinute) / Math.max(1, muhurta.sunsetMinute - muhurta.sunriseMinute)) * 100),
+            p.solarTimes.sunrise,
+            p.solarTimes.sunset,
+          );
 
   const pickDate = () => {
     if (Platform.OS !== 'android') return;
@@ -188,8 +202,14 @@ export default function PanchangScreen() {
               <Tile icon="time" color={hues.indigo} label={t(S.dayLength)} value={p.solarTimes.dayLength} />
               <Tile icon="compass" color={hues.lotus} label={t(S.solarNoon)} value={p.solarTimes.solarNoon} />
             </View>
-            {/* The daylight as one bar, sunrise to sunset, as on the website's muhurta page. */}
+            {/* The sun's path across the day, then the daylight as one bar, sunrise to sunset, as on the website's muhurta page. */}
             <Card strong style={{ marginTop: SPACE.md, rowGap: SPACE.md }}>
+              <SkyArc
+                sunriseMinute={muhurta.sunriseMinute}
+                sunsetMinute={muhurta.sunsetMinute}
+                nowMinute={isToday ? nowMinute : null}
+                accessibilityLabel={t(skyLabel)}
+              />
               <View accessible={false} importantForAccessibility="no-hide-descendants">
                 <View style={[styles.dayBar, { backgroundColor: palette.dark ? 'rgba(251,191,36,0.16)' : 'rgba(217,119,6,0.14)' }]}>
                   <View style={[styles.segment, { left: `${muhurta.rahu.offset * 100}%`, width: `${muhurta.rahu.width * 100}%`, backgroundColor: hues.vermilion }]} />
@@ -437,22 +457,10 @@ function VratList({ kind, fromIso }: { kind: VrataKind; fromIso: string }) {
 }
 
 function CitySheet({ visible, selected, onClose, onPick }: { visible: boolean; selected: string; onClose: () => void; onPick: (id: string) => void }) {
-  const insets = useSafeAreaInsets();
   const { palette } = usePrefs();
   const { t, lang } = useI18n();
   return (
-    <Modal visible={visible} transparent animationType="slide" statusBarTranslucent navigationBarTranslucent onRequestClose={onClose}>
-      <Pressable style={styles.scrim} onPress={onClose} accessible={false} importantForAccessibility="no" />
-      <View
-        accessibilityViewIsModal
-        style={[styles.sheet, { backgroundColor: palette.dark ? '#1c1c1e' : palette.card, paddingBottom: Math.max(insets.bottom, SPACE.lg) + SPACE.sm }]}>
-        <View style={[styles.grabber, { backgroundColor: quietFill(palette) }]} />
-        <View style={styles.sheetHead}>
-          <Text accessibilityRole="header" maxFontSizeMultiplier={TITLE_FONT_CAP} style={{ color: palette.text, fontSize: TYPE.title2, fontWeight: '700' }}>
-            {t(S.chooseCity)}
-          </Text>
-          <IconButton icon="close" onPress={onClose} accessibilityLabel={t(S.close)} color={palette.text} />
-        </View>
+    <Sheet visible={visible} title={t(S.chooseCity)} onClose={onClose} maxHeight="80%">
         <ScrollView accessibilityRole="radiogroup">
           {CITIES.map((c, i) => {
             const active = c.id === selected;
@@ -479,8 +487,7 @@ function CitySheet({ visible, selected, onClose, onPick }: { visible: boolean; s
             );
           })}
         </ScrollView>
-      </View>
-    </Modal>
+    </Sheet>
   );
 }
 
@@ -505,8 +512,4 @@ const styles = StyleSheet.create({
   window: { flexDirection: 'row', alignItems: 'center', columnGap: SPACE.md, minHeight: 40 },
   windowDot: { width: 10, height: 10, borderRadius: 5 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: SPACE.sm, marginBottom: SPACE.md },
-  scrim: { flex: 1, backgroundColor: 'rgba(0,0,0,0.35)' },
-  sheet: { maxHeight: '80%', borderTopLeftRadius: RADIUS.panel, borderTopRightRadius: RADIUS.panel, paddingHorizontal: SPACE.lg, paddingTop: SPACE.sm },
-  grabber: { alignSelf: 'center', width: 40, height: 5, borderRadius: 3, marginBottom: SPACE.sm },
-  sheetHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: SPACE.sm },
 });

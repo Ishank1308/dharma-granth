@@ -3,7 +3,8 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useFonts, type FontSource } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { DailyReminderEffects } from '@/components/daily-reminder-effects';
 import { DailyWidgetEffects } from '@/components/daily-widget-effects';
@@ -42,7 +43,18 @@ function Navigator() {
   // Books and chapters slide in over the page they came from, which drifts back a little behind them (a
   // native animation, so it costs nothing on the JS thread). With reduce motion they simply appear.
   const { animate } = useMotion();
-  const push = animate ? 'ios_from_right' : 'none';
+  const push = animate ? ('ios_from_right' as const) : ('none' as const);
+  // A screen opened from something that flies onto it (a cover onto its title page, a chapter numeral into the
+  // reader; src/motion/shared-origin) cross-fades instead, so the flying piece carries the eye from one screen
+  // to the next. Turning back a chapter slides in from the left, the way a page turns back.
+  type Via = { via?: string; dir?: string } | undefined;
+  const arrive = ({ route }: { route: { params?: object } }) => {
+    const p = route.params as Via;
+    if (!animate) return { title: '', animation: 'none' as const };
+    if (p?.via) return { title: '', animation: 'fade' as const, animationDuration: 240 };
+    if (p?.dir === 'prev') return { title: '', animation: 'slide_from_left' as const };
+    return { title: '', animation: push };
+  };
 
   useEffect(() => {
     if (ready) SplashScreen.hideAsync().catch(() => {});
@@ -78,8 +90,8 @@ function Navigator() {
             animation: reduceMotion ? 'none' : 'default',
           }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="scripture/[id]/index" options={{ title: '', animation: push }} />
-          <Stack.Screen name="scripture/[id]/[chapter]" options={{ title: '', animation: push }} />
+          <Stack.Screen name="scripture/[id]/index" options={arrive} />
+          <Stack.Screen name="scripture/[id]/[chapter]" options={arrive} />
           <Stack.Screen name="journal/index" options={{ title: '', animation: push }} />
           <Stack.Screen name="journal/edit" options={{ title: '', animation: push }} />
           <Stack.Screen name="journal/collections" options={{ title: '', animation: push }} />
@@ -92,14 +104,18 @@ function Navigator() {
 
 export default function RootLayout() {
   return (
-    <AppStateProvider>
-      <JournalProvider>
-        <RecitationProvider>
-          <ToastProvider>
-            <Navigator />
-          </ToastProvider>
-        </RecitationProvider>
-      </JournalProvider>
-    </AppStateProvider>
+    <GestureHandlerRootView style={styles.root}>
+      <AppStateProvider>
+        <JournalProvider>
+          <RecitationProvider>
+            <ToastProvider>
+              <Navigator />
+            </ToastProvider>
+          </RecitationProvider>
+        </JournalProvider>
+      </AppStateProvider>
+    </GestureHandlerRootView>
   );
 }
+
+const styles = StyleSheet.create({ root: { flex: 1 } });

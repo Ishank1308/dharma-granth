@@ -2,12 +2,13 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import type { BottomTabBarProps } from 'expo-router/tabs';
 import { useEffect, useState, type ComponentProps } from 'react';
-import { Pressable, StyleSheet, Text, View, type LayoutRectangle } from 'react-native';
+import { StyleSheet, Text, View, type LayoutRectangle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withSequence, withSpring } from 'react-native-reanimated';
 
 import { barSurface, FloatingBar, glass } from '@/components/ui';
 import { S, useI18n, type Msg } from '@/i18n';
 import { hapticSelect } from '@/motion/haptics';
+import { PressableScale } from '@/motion/pressable-scale';
 import { SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
 import { usePrefs } from '@/state/app-state';
@@ -93,8 +94,9 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
               }
             };
             return (
-              <Pressable
+              <PressableScale
                 key={route.key}
+                scaleTo={0.9}
                 onPress={onPress}
                 onLongPress={() => emitter.emit({ type: 'tabLongPress', target: route.key })}
                 onLayout={(e) => {
@@ -104,10 +106,7 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
                 accessibilityRole="tab"
                 accessibilityState={{ selected: focused }}
                 accessibilityLabel={t(S.tabA11y(label, index + 1, state.routes.length))}
-                style={({ pressed }) => [
-                  styles.tab,
-                  pressed && { opacity: 0.7 },
-                ]}>
+                style={styles.tab}>
                 <TabIcon name={focused ? tab.iconActive : tab.icon} focused={focused} color={focused ? palette.accent : palette.muted} />
                 <Text
                   numberOfLines={1}
@@ -121,24 +120,24 @@ export function FloatingTabBar({ state, emitter, navigateToTab, insets }: Bottom
                   style={{ fontSize: lang === 'hi' ? TYPE.caption + 1 : TYPE.caption, fontWeight: focused ? '700' : '500', color: focused ? palette.accent : palette.muted }}>
                   {label}
                 </Text>
-              </Pressable>
+              </PressableScale>
             );
           })}
         </View>
       </FloatingBar>
-      <Pressable
+      <PressableScale
+        scaleTo={0.9}
         onPress={() => router.push('/search')}
         accessibilityRole="button"
         accessibilityLabel={t(S.searchInsideVerses)}
-        style={({ pressed }) => [
+        style={[
           styles.search,
           glass(palette, true),
           { backgroundColor: barSurface(palette) },
           !palette.lite && { boxShadow: palette.dark ? '0 12px 30px rgba(0,0,0,0.5)' : '0 12px 32px rgba(60,30,10,0.16)' },
-          pressed && { transform: [{ scale: 0.94 }] },
         ]}>
         <Ionicons name="search" size={24} color={palette.text} />
-      </Pressable>
+      </PressableScale>
     </View>
   );
 }
