@@ -132,9 +132,9 @@ test('curated visuals render cleanly across scriptures, mantras, verses, concept
   await assertCuratedImagesLoaded(page, 'img[src="/images/curated/wisdom/gita-2-48.webp"]', 1);
   await expect(page.locator('a[download="dharma-granth-gita-2-48.webp"]')).toBeVisible();
   await expect(page.locator('section[aria-labelledby="verse-poster-gita-2-48"] a[href^="https://api.whatsapp.com/send?text="]')).toBeVisible();
-  const jsonLdText = await page.locator('script[type="application/ld+json"]').first().textContent();
-  expect(jsonLdText ?? '').toContain('"ImageObject"');
-  expect(jsonLdText ?? '').toContain('/images/curated/wisdom/gita-2-48.webp');
+  const jsonLdText = (await page.locator('script[type="application/ld+json"]').allTextContents()).join('\n');
+  expect(jsonLdText).toContain('"ImageObject"');
+  expect(jsonLdText).toContain('/images/curated/wisdom/gita-2-48.webp');
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
 
   // Concepts visual hub renders all 7 curated scriptural posters and opens an accessible lightbox
