@@ -249,7 +249,8 @@ async function buildGita() {
       name: pair(s.name, s.nameHi),
       mahavakya: s.mahavakyaPart,
       theme: pair(s.theme, s.themeHi),
-      range: s.chaptersRange,
+      // "Chapters 1–6" -> "1–6"; the screen adds the word in the reader's language.
+      range: s.chaptersRange.replace(/^\D+/, ''),
       description: pair(s.description, s.descriptionHi),
     })),
     items: GITA_CHAPTER_JOURNEYS.map((c) => ({

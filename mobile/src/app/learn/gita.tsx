@@ -54,7 +54,7 @@ export default function GitaJourneyScreen() {
         </View>
 
         <SectionTabs
-          tabs={shatkas.map((s) => ({ key: s.id, title: `${p(s.name)} · ${s.range}` }))}
+          tabs={shatkas.map((s) => ({ key: s.id, title: `${p(s.name).replace(/\s*\(.*\)\s*$/, '')} · ${s.range}` }))}
           value={shatka}
           onChange={(k) => {
             setShatka(k);
@@ -95,7 +95,7 @@ export default function GitaJourneyScreen() {
                       {p(c.title)}
                     </Text>
                     <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color: palette.muted, fontSize: TYPE.footnote }}>
-                      {`${c.sanskrit} · ${t(S.verseCount(c.verses))}`}
+                      {`${lang === 'hi' ? c.translit : c.sanskrit} · ${t(S.verseCount(c.verses))}`}
                     </Text>
                     <Text maxFontSizeMultiplier={UI_FONT_CAP} style={{ color, fontSize: TYPE.caption, fontWeight: '700', marginTop: 2 }}>
                       {p(c.tag)}
