@@ -9,7 +9,8 @@
  */
 import { useSyncExternalStore } from 'react';
 
-import { CATALOG, CATEGORIES } from './catalog';
+import { ASHTAVAKRA_CHAPTERS, ASHTAVAKRA_VERSES } from './ashtavakra';
+import { CATALOG, CATEGORIES, getEntry } from './catalog';
 import {
   buildIndexFromChapters,
   chunkForLine,
@@ -44,8 +45,28 @@ const SECTION_ORDER = ['upanishad', 'smriti', 'stotra', 'other', 'tantra', 'itih
 
 const isBundledSearchable = (b: CatalogEntry) => b.bundled && Boolean(SEARCH_LOADERS[b.id]);
 
+/**
+ * The Ashtavakra Gita has its own reader (src/app/ashtavakra/) outside the catalog; its verses are
+ * indexed under this id and its hits open that reader.
+ */
+export const ASHTAVAKRA_ID = 'ashtavakra';
+const ASHTAVAKRA_ENTRY: CatalogEntry = {
+  id: ASHTAVAKRA_ID,
+  title: 'Ashtavakra Gita',
+  titleSanskrit: 'अष्टावक्र गीता',
+  category: 'other',
+  totalVerses: ASHTAVAKRA_VERSES,
+  bundled: true,
+  chapters: ASHTAVAKRA_CHAPTERS.map((c) => ({ number: c.number, title: c.title, verseCount: c.verseCount })),
+};
+
+/** A searchable book by id: a catalog entry, or the Ashtavakra Gita. */
+export function searchEntry(id: string): CatalogEntry | undefined {
+  return id === ASHTAVAKRA_ID ? ASHTAVAKRA_ENTRY : getEntry(id);
+}
+
 /** Every book that is or can become searchable, in tie order. Downloaded books join when present. */
-const ordered = CATALOG.filter((b) => isBundledSearchable(b) || !b.bundled).sort((a, b) => {
+const ordered = [...CATALOG, ASHTAVAKRA_ENTRY].filter((b) => isBundledSearchable(b) || !b.bundled).sort((a, b) => {
   if (a.id === 'bhagavadgita' || b.id === 'bhagavadgita') return a.id === 'bhagavadgita' ? -1 : 1;
   return SECTION_ORDER.indexOf(a.category) - SECTION_ORDER.indexOf(b.category);
 });
