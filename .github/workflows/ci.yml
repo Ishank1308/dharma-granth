@@ -31,6 +31,10 @@ env:
   # Verse share images are served from the project's `share` branch deployment
   # (docs/deploy-cloudflare.md, "Verse share images"). Same value as deploy-cloudflare.yml.
   NEXT_PUBLIC_SHARE_IMAGE_ORIGIN: https://share.dharma-granth.pages.dev
+  # Published commentary (one file per section of each book) is served from the project's `commentary`
+  # branch deployment (docs/commentary-storage.md). Same value as deploy-cloudflare.yml and the
+  # connect-src entry in public/_headers.
+  NEXT_PUBLIC_COMMENTARY_ORIGIN: https://commentary.dharma-granth.pages.dev
 
 jobs:
   checks:
@@ -379,6 +383,13 @@ jobs:
       - name: Leave verse share images out of the preview
         if: env.HAS_CLOUDFLARE_SECRETS == 'true'
         run: rm -rf dist/og/verse
+
+      # Published commentary is its own deployment too. A preview's chapter pages carry the pull
+      # request's own commentary in their HTML (up to the page budget, lib/commentary-budget.ts); the
+      # rest loads from the live `commentary` deployment.
+      - name: Leave published commentary out of the preview
+        if: env.HAS_CLOUDFLARE_SECRETS == 'true'
+        run: rm -rf dist/data/hi-commentary
 
       # A non-production branch: Cloudflare serves it at
       # pr-N.dharma-granth.pages.dev with X-Robots-Tag: noindex. Files it

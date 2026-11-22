@@ -3,6 +3,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { sourceVerses, uniqueSource } from "./lib/commentary-source.mjs";
+// Queues and proposals are <id>.json or a folder of section files; published commentary is always a folder
+// (docs/commentary-storage.md).
+import { readPublishedCommentary, readRecord, recordSnapshot, writeRecord } from "./lib/commentary-store.mjs";
 
 const [id, ...args] = process.argv.slice(2);
 const keys = args.filter(a => !a.startsWith("--"));
@@ -12,15 +15,16 @@ if (!id || !keys.length || flags.some(f => !["--replace-handwritten", "--replace
   process.exit(2);
 }
 const source = sourceVerses(id);
-const queuePath = path.resolve("data/ai-commentary", `${id}.json`);
-const originalQueue = fs.readFileSync(queuePath, "utf8");
-const queue = JSON.parse(originalQueue);
+const queuePath = path.resolve("data/ai-commentary", id);
+const originalQueue = recordSnapshot(queuePath);
+if (originalQueue === null) throw new Error(`${id}: no review queue`);
+const queue = readRecord(queuePath);
 const replacement = flags.includes("--replacement");
-const proposalPath = path.resolve("data/ai-commentary/proposals", `${id}.json`);
-const originalProposals = replacement ? fs.readFileSync(proposalPath, "utf8") : null;
-const proposals = replacement ? JSON.parse(originalProposals) : {};
-const publishedPath = path.resolve("public/data/hi-commentary", `${id}.json`);
-const published = fs.existsSync(publishedPath) ? JSON.parse(fs.readFileSync(publishedPath, "utf8")) : {};
+const proposalPath = path.resolve("data/ai-commentary/proposals", id);
+const originalProposals = replacement ? recordSnapshot(proposalPath) : null;
+if (replacement && originalProposals === null) throw new Error(`${id}: no replacement proposals`);
+const proposals = replacement ? readRecord(proposalPath) : {};
+const published = readPublishedCommentary(id);
 for (const key of keys) {
   const item = replacement ? proposals[key] : queue[key];
   if (!item || item.status !== "pending") throw new Error(`${key}: not pending`);
@@ -36,8 +40,8 @@ if (flags.includes("--show")) {
   console.log("Preview only; no entries approved.");
   process.exit(0);
 }
-if (fs.readFileSync(queuePath, "utf8") !== originalQueue) throw new Error("Queue changed during approval; retry after reviewing current entries");
-if (replacement && fs.readFileSync(proposalPath, "utf8") !== originalProposals) throw new Error("Proposals changed during approval; retry after review");
+if (recordSnapshot(queuePath) !== originalQueue) throw new Error("Queue changed during approval; retry after reviewing current entries");
+if (replacement && recordSnapshot(proposalPath) !== originalProposals) throw new Error("Proposals changed during approval; retry after review");
 if (replacement) {
   const dir = path.resolve("data/ai-commentary/history", id);
   fs.mkdirSync(dir, { recursive: true });
@@ -66,16 +70,12 @@ for (const key of keys) {
   if (flags.includes("--replace-handwritten") && pub?.explanation && !pub.ai) queue[key].replacesHandWritten = true;
   else delete queue[key].replacesHandWritten;
 }
-const tmp = `${queuePath}.${randomUUID()}.tmp`;
-try { fs.writeFileSync(tmp, JSON.stringify(queue, null, 2) + "\n", { flag: "wx" }); fs.renameSync(tmp, queuePath); }
-finally { if (fs.existsSync(tmp)) fs.unlinkSync(tmp); }
+writeRecord(queuePath, queue);
 if (replacement) {
-  if (fs.readFileSync(proposalPath, "utf8") !== originalProposals) console.warn("Proposals changed during approval; approved proposals were not removed automatically.");
+  if (recordSnapshot(proposalPath) !== originalProposals) console.warn("Proposals changed during approval; approved proposals were not removed automatically.");
   else {
     for (const key of keys) delete proposals[key];
-    const proposalTmp = `${proposalPath}.${randomUUID()}.tmp`;
-    try { fs.writeFileSync(proposalTmp, JSON.stringify(proposals, null, 2) + "\n", { flag: "wx" }); fs.renameSync(proposalTmp, proposalPath); }
-    finally { if (fs.existsSync(proposalTmp)) fs.unlinkSync(proposalTmp); }
+    writeRecord(proposalPath, proposals);
   }
 }
 console.log(`${keys.length} entries approved; run npm run publish:commentary to publish locally`);

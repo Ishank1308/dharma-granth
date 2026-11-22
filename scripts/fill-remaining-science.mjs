@@ -5,6 +5,7 @@
  * Run: node scripts/fill-remaining-science.mjs
  */
 import fs from 'node:fs';
+import { readPublishedCommentary } from './lib/commentary-store.mjs';
 
 const BOOKS = [
   'bhagavadgita',
@@ -107,9 +108,8 @@ const outDir = 'data/hi-commentary';
 let total = 0;
 for (const id of BOOKS) {
   const book = JSON.parse(fs.readFileSync(`${bookDir}/${id}.json`, 'utf8'));
-  let commentary = {};
-  const cpath = `public/data/hi-commentary/${id}.json`;
-  if (fs.existsSync(cpath)) commentary = JSON.parse(fs.readFileSync(cpath, 'utf8'));
+  // One folder of section files per scripture (docs/commentary-storage.md).
+  const commentary = readPublishedCommentary(id);
   const rest = {};
   for (const ch of book.chapters || []) {
     for (const v of ch.verses || []) {

@@ -27,6 +27,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 import { z } from 'zod';
 import { scriptureCatalog } from '../data/scripture-meta';
+import { readRecord, unitFiles } from './lib/commentary-store.mjs';
 
 const MODEL = 'claude-opus-5';
 const FULL_DIR = path.resolve('public/data/scriptures-full');
@@ -216,7 +217,11 @@ async function main(): Promise<void> {
   if (!chapter) throw new Error(`${scripture} has no chapter ${chapterNo}`);
 
   const suspect = integrityCheck(scripture, chapters, chapter);
-  const human = readJson<HumanCommentary>(path.join(HUMAN_DIR, `${scripture}.json`), {});
+  // Published commentary is a folder of section files (docs/commentary-storage.md).
+  const human = readRecord(path.join(HUMAN_DIR, scripture)) as HumanCommentary;
+  if (unitFiles(path.join(QUEUE_DIR, scripture)).length > 0) {
+    throw new Error(`${scripture}'s review queue is split by section; this generator writes one file. Stage drafts with scripts/stage-commentary.mjs.`);
+  }
   const queueFile = path.join(QUEUE_DIR, `${scripture}.json`);
   const queue = readJson<Record<string, QueuedCommentary>>(queueFile, {});
 

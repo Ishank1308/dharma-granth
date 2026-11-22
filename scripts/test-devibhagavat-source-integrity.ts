@@ -10,6 +10,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { readPublishedCommentary } from './lib/commentary-store.mjs';
 
 type Verse = { number: number | string; sanskrit?: string };
 type Chapter = { number: number | string; verses: Verse[] };
@@ -190,7 +191,7 @@ type StructuredEntry = {
 };
 const structured = JSON.parse(readFileSync('data/ai-commentary/devibhagavat.json', 'utf8')) as Record<string, StructuredEntry>;
 assert.equal(Object.keys(structured).length, 143, 'Devi Bhagavata source batch must contain 143 structured explanations');
-const publishedCommentary = JSON.parse(readFileSync('public/data/hi-commentary/devibhagavat.json', 'utf8')) as
+const publishedCommentary = readPublishedCommentary('devibhagavat') as
   Record<string, { explanation?: string; lifeLesson?: string; ai?: boolean }>;
 const explanationSet = new Set<string>();
 const modernContextSet = new Set<string>();
