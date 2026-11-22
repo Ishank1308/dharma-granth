@@ -17,9 +17,6 @@ import { ChevronRight } from 'lucide-react';
 import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-chapters';
 import { getLibraryFacts } from '@/lib/library-server';
 import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
-import { getScripturePosters, getScriptureScene } from '@/data/curated-visuals';
-import { EditorialSceneBanner, WisdomPosterCard } from '@/app/components/visuals/CuratedVisuals';
-import { NavadurgaGallery } from '@/app/components/visuals/NavadurgaGallery';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -304,47 +301,6 @@ export default async function ScripturePage(props: PageProps) {
 
       <div className="mx-auto max-w-5xl px-6 pb-10 pt-5 sm:pt-7">
         <IllustratedChapterHighlights scriptureId={meta.id} chapters={chapterPreviews} />
-        {(() => {
-          const scriptureScene = getScriptureScene(meta.id);
-          return scriptureScene ? (
-            <div className="mb-8">
-              <EditorialSceneBanner
-                scene={scriptureScene.scene}
-                eyebrowHi={scriptureScene.eyebrowHi}
-                eyebrowEn={scriptureScene.eyebrowEn}
-              />
-            </div>
-          ) : null;
-        })()}
-        {(() => {
-          const scripturePosters = getScripturePosters(meta.id);
-          if (scripturePosters.length === 0) return null;
-          return (
-            <section aria-labelledby="scripture-posters-heading" className="mb-8 space-y-4">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  <span lang="hi" className="font-devanagari normal-case">चित्र-दर्शन</span> · Illustrated Contemplations
-                </p>
-                <h2 id="scripture-posters-heading" className="mt-1 font-serif text-xl sm:text-2xl font-bold text-dharma-text">
-                  <span lang="hi" className="font-devanagari">{meta.titleSanskrit} के प्रमुख भाव-चित्र</span>
-                </h2>
-              </div>
-              <div className={`grid gap-5 ${scripturePosters.length === 1 ? 'max-w-sm' : 'sm:grid-cols-2 lg:grid-cols-3'}`}>
-                {scripturePosters.map((poster) => (
-                  <WisdomPosterCard key={poster.id} poster={poster} />
-                ))}
-              </div>
-            </section>
-          );
-        })()}
-        {meta.id === 'durgasaptashati' && (
-          <div className="mb-8">
-            <NavadurgaGallery
-              headingHi="दुर्गा सप्तशती — नवदुर्गा के 9 पवित्र स्वरूप"
-              headingEn="Nine Forms of Maa Durga from Devi Kavacham"
-            />
-          </div>
-        )}
         <ScriptureContents
           scriptureId={meta.id}
           chapters={chapterPreviews}

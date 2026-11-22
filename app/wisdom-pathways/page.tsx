@@ -5,10 +5,9 @@ import { STARTER_PATHWAYS } from '@/data/wisdom-pathway-starters';
 import { pathwayDiscovery, questionsForStarter, topicsForStarter } from '@/lib/wisdom-pathways';
 import { StarterCard } from '@/components/pathways/StarterCard';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { JsonLd } from '@/app/components/JsonLd';
 import { BookOpen, Clock, Users } from 'lucide-react';
-import { EDITORIAL_SCENES, WISDOM_POSTERS } from '@/data/curated-visuals';
-import { EditorialSceneBanner, WisdomPosterCard } from '@/app/components/visuals/CuratedVisuals';
 
 export const metadata: Metadata = {
   title: 'Wisdom Pathways — From Life to Scripture',
@@ -43,6 +42,7 @@ export default function WisdomPathwaysPage() {
           eyebrow="Wisdom from the Masters"
           eyebrowHi="ज्ञान मार्ग"
           title="Wisdom Pathways"
+          cover={<PageCover photo="forest" />}
           titleHi="जीवन के प्रश्नों से शास्त्र तक"
           lead={
             <>
@@ -58,13 +58,6 @@ export default function WisdomPathwaysPage() {
       </div>
 
       <div className="mx-auto max-w-content px-gutter pb-20 pt-6 space-y-14 relative z-10">
-        {/* Atmospheric Tapovan Visual */}
-        <EditorialSceneBanner
-          scene={EDITORIAL_SCENES.sacredGrove}
-          eyebrowHi="तपोवन स्वाध्याय"
-          eyebrowEn="Contemplative Path"
-        />
-
         {/* Core Canonical Pathways */}
         <section aria-labelledby="canonical-pathways-heading">
           <SectionTitle
@@ -147,23 +140,6 @@ export default function WisdomPathwaysPage() {
                   labelHi: q.question.questionHi,
                 }))}
               />
-            ))}
-          </div>
-        </section>
-
-        {/* Curated Scriptural Contemplation Posters */}
-        <section aria-labelledby="pathway-posters-heading">
-          <SectionTitle
-            id="pathway-posters-heading"
-            eyebrow="Visual Contemplation"
-            eyebrowHi="शास्त्र चित्र-दर्शन"
-            title="Scriptural reflections at a glance"
-            titleHi="धर्म, कर्म, योग और आत्म-दृष्टि के पावन चित्र"
-            sub="Selected illustrated verses from the Bhagavad Gita and Upanishads to pause, reflect, and carry into daily life."
-          />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {WISDOM_POSTERS.slice(0, 6).map((poster) => (
-              <WisdomPosterCard key={poster.id} poster={poster} />
             ))}
           </div>
         </section>

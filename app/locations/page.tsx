@@ -1,12 +1,10 @@
 'use client';
-/* eslint-disable @next/next/no-img-element */
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { MapPin, Navigation, Mountain, Waves, TreePalm, Building2, Compass, Sparkles } from 'lucide-react';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { sacredLocations, locationTypes, type SacredLocation, type LocationType } from '@/data/locations';
-import { getLocationScene } from '@/data/curated-visuals';
 
 const typeIcons: Record<LocationType, React.ReactNode> = {
   city: <Building2 className="w-4 h-4" />,
@@ -202,48 +200,32 @@ export default function LocationsPage() {
             सभी स्थान ({filteredLocations.length})
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredLocations.map((loc) => {
-              const scene = getLocationScene(loc.id);
-              return (
-                <button
-                  key={loc.id}
-                  onClick={() => setSelectedLocation(loc)}
-                  className="group text-left overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:shadow-xl hover:border-teal-300 transition-all duration-300"
-                >
-                  {scene && (
-                    <div className="-mx-5 -mt-5 mb-4 overflow-hidden border-b border-dharma-border/60">
-                      <img
-                        src={scene.src}
-                        alt={scene.alt}
-                        width={scene.width}
-                        height={scene.height}
-                        loading="lazy"
-                        decoding="async"
-                        className="h-32 w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
-                      />
-                    </div>
-                  )}
-                  <div className="flex items-start justify-between mb-3">
-                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${loc.gradient} flex items-center justify-center text-xl shadow-md`}>
-                      {loc.icon}
-                    </div>
-                    <p lang="sa" className="font-devanagari text-base text-saffron-600 opacity-80">
-                      {loc.sanskrit}
-                    </p>
+            {filteredLocations.map((loc) => (
+              <button
+                key={loc.id}
+                onClick={() => setSelectedLocation(loc)}
+                className="group text-left rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:shadow-xl hover:border-teal-300 transition-all duration-300"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${loc.gradient} flex items-center justify-center text-xl shadow-md`}>
+                    {loc.icon}
                   </div>
-                  <h3 className="font-serif font-bold text-dharma-text group-hover:text-teal-700 transition mb-1">
-                    {loc.name}
-                  </h3>
-                  <p className="text-sm text-dharma-muted leading-relaxed mb-3">
-                    {loc.shortDesc}
+                  <p lang="sa" className="font-devanagari text-base text-saffron-600 opacity-80">
+                    {loc.sanskrit}
                   </p>
-                  <div className="flex items-center gap-2 text-xs text-dharma-muted">
-                    <MapPin className="w-3 h-3" />
-                    <span>{loc.presentDayLocation}</span>
-                  </div>
-                </button>
-              );
-            })}
+                </div>
+                <h3 className="font-serif font-bold text-dharma-text group-hover:text-teal-700 transition mb-1">
+                  {loc.name}
+                </h3>
+                <p className="text-sm text-dharma-muted leading-relaxed mb-3">
+                  {loc.shortDesc}
+                </p>
+                <div className="flex items-center gap-2 text-xs text-dharma-muted">
+                  <MapPin className="w-3 h-3" />
+                  <span>{loc.presentDayLocation}</span>
+                </div>
+              </button>
+            ))}
           </div>
         </FadeUpOnView>
       </section>
@@ -252,23 +234,9 @@ export default function LocationsPage() {
 }
 
 function LocationDetail({ location }: { location: SacredLocation }) {
-  const scene = getLocationScene(location.id);
   return (
     <div className="rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
       <div className={`h-1.5 bg-gradient-to-r ${location.gradient}`} />
-      {scene && (
-        <div className="overflow-hidden border-b border-dharma-border/60">
-          <img
-            src={scene.src}
-            alt={scene.alt}
-            width={scene.width}
-            height={scene.height}
-            loading="lazy"
-            decoding="async"
-            className="h-44 w-full object-cover"
-          />
-        </div>
-      )}
       <div className="p-6">
         <div className="flex items-start gap-3 mb-4">
           <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${location.gradient} flex items-center justify-center text-2xl shadow-md flex-shrink-0`}>

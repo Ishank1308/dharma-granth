@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { DictionaryClient } from './DictionaryClient';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 
 export const metadata: Metadata = {
   title: 'Terminology Dictionary (शब्दकोश)',
@@ -25,6 +26,7 @@ export default function DictionaryPage() {
         eyebrow="Dictionary"
         eyebrowHi="शब्दकोश"
         title="Terminology Dictionary"
+        cover={<PageCover photo="manuscript" />}
         titleHi="हिन्दू पारिभाषिक शब्दकोश"
         lead={
           <p>

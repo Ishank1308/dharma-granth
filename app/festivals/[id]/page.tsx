@@ -29,9 +29,6 @@ import { ShareCardButton } from '@/app/components/understand/ShareCard';
 import { OnThisPage } from '@/app/components/OnThisPage';
 import { PujaModeLauncher } from '@/app/components/puja/PujaModeLauncher';
 import { splitStep } from '@/app/components/puja/steps';
-import { getFestivalScene } from '@/data/curated-visuals';
-import { EditorialSceneBanner } from '@/app/components/visuals/CuratedVisuals';
-import { NavadurgaGallery } from '@/app/components/visuals/NavadurgaGallery';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -256,7 +253,6 @@ export default async function FestivalDetailPage(props: PageProps) {
             { id: 'fest-meaning', hi: 'दार्शनिक अर्थ व महत्व', en: 'Spiritual Significance' },
             { id: 'fest-sources', hi: 'शास्त्रीय स्रोत व प्रमाण', en: 'Scriptural References' },
             { id: 'fest-deity', hi: 'संबंधित देवता व पावन कथा', en: 'Deity & Narrative' },
-            festival.id === 'navaratri' && { id: 'navadurga-darshan', hi: 'नवदुर्गा दर्शन (9 दिवस)', en: '9 Forms of Navadurga' },
             festival.commonChants.length > 0 && { id: 'fest-chants', hi: 'जप और प्रार्थना', en: 'Chants & Prayers' },
             Boolean(festival.observanceSteps?.length) && { id: 'steps', hi: 'घर पर पूजा, चरण-दर-चरण', en: 'Step by step at home' },
             festival.scripturalVsCustom.length > 0 && { id: 'fest-custom', hi: 'शास्त्रीय बनाम सांस्कृतिक रिवाज़', en: 'Scripture and Custom' },
@@ -266,16 +262,6 @@ export default async function FestivalDetailPage(props: PageProps) {
             Boolean(festival.environmentalConsiderations) && { id: 'fest-nature', hi: 'प्रकृति व पर्यावरण संचेतना', en: 'Ecological Mindfulness' },
           ]}
         />
-        {(() => {
-          const tagged = getFestivalScene(festival.id);
-          return tagged ? (
-            <EditorialSceneBanner
-              scene={tagged.scene}
-              eyebrowHi={tagged.eyebrowHi}
-              eyebrowEn={tagged.eyebrowEn}
-            />
-          ) : null;
-        })()}
         {/* 1. Meaning & Core Philosophy */}
         <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
@@ -327,9 +313,6 @@ export default async function FestivalDetailPage(props: PageProps) {
             </p>
           </div>
         </div>
-
-        {/* 3b. Complete 9-Day Navadurga Visual Darshan Gallery for Navaratri */}
-        {festival.id === 'navaratri' && <NavadurgaGallery />}
 
         {/* 4. Common Chants & Mantras */}
         {festival.commonChants.length > 0 && (

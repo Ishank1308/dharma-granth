@@ -9,8 +9,6 @@ import { useAccessibleModal } from '@/lib/useAccessibleModal';
 import { PujaMode } from '@/app/components/puja/PujaMode';
 import { PujaModeButton } from '@/app/components/puja/PujaModeLauncher';
 import { rituals, type Ritual } from '@/data/rituals';
-import { EDITORIAL_SCENES } from '@/data/curated-visuals';
-import { EditorialSceneBanner } from '@/app/components/visuals/CuratedVisuals';
 import {
   X,
   BookOpen,
@@ -130,24 +128,6 @@ export default function RitualsPage() {
           </>
         }
       />
-
-      {/* Atmospheric Sacred Rituals Showcase */}
-      <section aria-label="मन्दिर दर्शन व तीर्थ अर्पण झलक" className="mx-auto max-w-7xl px-gutter pt-4 pb-2">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <EditorialSceneBanner
-            scene={EDITORIAL_SCENES.templeDarshan}
-            compact
-            eyebrowHi="गर्भगृह दर्शन"
-            eyebrowEn="Temple Sanctum"
-          />
-          <EditorialSceneBanner
-            scene={EDITORIAL_SCENES.ghatMorning}
-            compact
-            eyebrowHi="प्रातः अर्पण"
-            eyebrowEn="Morning Ghat Offering"
-          />
-        </div>
-      </section>
 
       {/* Featured Upakarma Deep-Dive Guide */}
       <section className="mx-auto max-w-7xl px-gutter pt-4 pb-6">
