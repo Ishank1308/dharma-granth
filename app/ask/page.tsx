@@ -4,6 +4,7 @@ import { AskDharmaClient } from '@/app/components/AskDharmaClient';
 import { ANSWER_THEMES, GRANTH_ANSWERS, granthAnswersByTheme } from '@/data/granth-answers';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 
 export const metadata: Metadata = {
   title: {
@@ -115,6 +116,7 @@ export default function AskDharmaPage() {
         eyebrow="Ask"
         eyebrowHi="धर्म सहायक"
         title="Ask the scriptures"
+        cover={<PageCover photo="lamp" />}
         titleHi="जीवन के प्रश्न, शास्त्रों के प्रकाश में"
         lead={
           <>

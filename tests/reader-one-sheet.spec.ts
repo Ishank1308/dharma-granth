@@ -12,6 +12,19 @@ const gitaChapter = '/scripture/bhagavadgita/chapter/2/';
 const otherChapter = '/scripture/ishavasya/chapter/1/';
 const gitaVerse = '/scripture/bhagavadgita/chapter/2/verse/47/';
 
+/**
+ * A chapter at Study renders every explanation, so it hydrates late and a first press can land before
+ * the button listens. The button only opens the sheet, so pressing again until it shows is safe.
+ */
+async function openAaSheetWhenReady(page: Page): Promise<Locator> {
+  const sheet = page.getByRole('dialog', { name: /Reader settings/ });
+  await expect(async () => {
+    if (!(await sheet.isVisible())) await page.getByRole('button', { name: /Reader settings/ }).first().click({ timeout: 2000 });
+    await expect(sheet).toBeVisible({ timeout: 2000 });
+  }).toPass({ timeout: 30_000 });
+  return sheet;
+}
+
 async function openAaSheet(page: Page): Promise<Locator> {
   await page.getByRole('button', { name: /Reader settings/ }).first().click();
   const sheet = page.getByRole('dialog', { name: /Reader settings/ });
@@ -278,3 +291,48 @@ for (const theme of ['sunset', 'night'] as const) {
     ).toEqual([]);
   });
 }
+
+// One reading depth for chapter and verse pages (lib/reading-depth). Before a first choice each page
+// keeps the view it always opened with; after one, both follow it, and "Reset to defaults" forgets it.
+test('chapter and verse pages share one Read / Understand / Study choice', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const depthIn = (sheet: Locator) => sheet.getByRole('radiogroup', { name: /Reading depth/ });
+
+  await page.goto(gitaChapter);
+  await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+  let sheet = await openAaSheet(page);
+  await expect(depthIn(sheet).getByRole('radio', { name: /Read/ })).toBeChecked();
+
+  await page.goto(gitaVerse);
+  await expect(page.locator('#layer-explanation-title')).toHaveText('Vyakhya (व्याख्या)');
+  sheet = await openAaSheet(page);
+  await expect(depthIn(sheet).getByRole('radio')).toHaveCount(3);
+  await expect(depthIn(sheet).getByRole('radio', { name: /Understand/ })).toBeChecked();
+  // The verse page's own four levels are gone; the perspective stays beside the depth.
+  await expect(sheet.getByRole('button', { name: /Traditional|Quick|शास्त्रीय|त्वरित/ })).toHaveCount(0);
+  await expect(sheet.getByRole('group', { name: /Reading perspective/ }).getByRole('button')).toHaveCount(4);
+
+  // Study chosen on a verse page opens the next chapter at Study.
+  await depthIn(sheet).getByRole('radio', { name: /Study/ }).click();
+  await expect(depthIn(sheet).getByRole('radio', { name: /Study/ })).toBeChecked();
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('dharma.readingDepth'))).toBe('study');
+
+  await page.goto(gitaChapter);
+  await expect(page.locator('article.verse-card:not(.vt)').first()).toBeVisible();
+  sheet = await openAaSheetWhenReady(page);
+  await expect(depthIn(sheet).getByRole('radio', { name: /Study/ })).toBeChecked();
+
+  // Read chosen on the chapter gives the verse page its short view.
+  await depthIn(sheet).getByRole('radio', { name: /Read/ }).click();
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('dharma.readingDepth'))).toBe('read');
+  await page.goto(gitaVerse);
+  await expect(page.locator('#layer-explanation-title')).toHaveText('Key Message');
+  sheet = await openAaSheet(page);
+  await expect(depthIn(sheet).getByRole('radio', { name: /Read/ })).toBeChecked();
+
+  // Reset forgets the choice: each page opens as it did at first.
+  await sheet.getByRole('button', { name: /Reset to defaults/ }).click();
+  await expect(depthIn(sheet).getByRole('radio', { name: /Understand/ })).toBeChecked();
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('dharma.readingDepth'))).toBeNull();
+  await expect(page.locator('#layer-explanation-title')).toHaveText('Vyakhya (व्याख्या)');
+});
