@@ -79,8 +79,8 @@ const draft = JSON.parse(readFileSync('data/written-meanings/devibhagavat.json',
 };
 assert.equal(draft.reviewStatus, 'unreviewed', 'bulk importing the AI-written batch must remain blocked');
 const keys = Object.keys(draft.meanings);
-assert.equal(keys.length, 143, 'source batch should contain chapters 1:1–25, 2:1–40, 3:1–43 and 4:1–35');
-for (const [chapterNumber, verseCount] of [[1, 25], [2, 40], [3, 43], [4, 35]] as const) {
+assert.equal(keys.length, 148, 'source batch should contain chapters 1:1–25, 2:1–40, 3:1–43 and 4:1–40');
+for (const [chapterNumber, verseCount] of [[1, 25], [2, 40], [3, 43], [4, 40]] as const) {
   const sourceChapter = scripture.chapters.find((entry) => Number(entry.number) === chapterNumber);
   assert.ok(sourceChapter, `Missing source chapter ${chapterNumber}`);
   for (let n = 1; n <= verseCount; n++) {
@@ -139,7 +139,7 @@ const publicChapter4 = JSON.parse(readFileSync('public/data/scriptures-full/devi
   chapter: { verses: Array<{ number: number | string; sanskrit?: string; hindi?: string; hindiSource?: string; hindiReviewRequired?: boolean }> };
 };
 assert.equal(publicChapter4.chapter.verses.length, 65, 'Published chapter 4 must preserve all 65 Sanskrit verses');
-for (let n = 1; n <= 35; n++) {
+for (let n = 1; n <= 40; n++) {
   const key = `4:${n}`;
   const verse = publicChapter4.chapter.verses.find((v) => String(v.number) === String(n));
   assert.ok(verse, `Published source verse missing: ${key}`);
@@ -149,9 +149,9 @@ for (let n = 1; n <= 35; n++) {
   assert.equal(verse.sanskrit, chapter4.verses.find(v => String(v.number) === String(n))?.sanskrit,
     `Original Sanskrit modified at ${key}`);
 }
-assert.ok(publicChapter4.chapter.verses.slice(35).every((verse) => verse.hindiSource !== 'ai'),
+assert.ok(publicChapter4.chapter.verses.slice(40).every((verse) => verse.hindiSource !== 'ai'),
   'Unreleased chapter 4 verses must not inherit AI translation status');
-console.log('✓ Devi Bhagavata publishes 143 source-keyed Hindi meanings (chapters 1–2, 3:1–43 and 4:1–35).');
+console.log('✓ Devi Bhagavata publishes 148 source-keyed Hindi meanings (chapters 1–2, 3:1–43 and 4:1–40).');
 
 // Future chapter gate: the next chapter must not inherit the success signal for
 // chapters 1–3. Readers should never confuse the raw Sanskrit chapter count with
@@ -172,14 +172,14 @@ const nextChapter = subsequentChapters.find((entry) => Number(entry.number) === 
 assert.ok(nextChapter, 'Devi Bhagavata 1.5 must exist before drafting the next guarded release');
 assert.ok(nextChapter.verses.length > 0, 'Devi Bhagavata 1.5 has no numbered Sanskrit verses');
 assert.ok(!Object.keys(draft.meanings).some((key) => /^(?:[5-9]|[1-9][0-9]+):/.test(key)),
-  'Unverified later chapters must not be silently added to the 143-verse release batch');
+  'Unverified later chapters must not be silently added to the 148-verse release batch');
 console.log(`✓ Devi Bhagavata later Sanskrit chapters retained; chapter 5 has ${nextChapter.verses.length} verses awaiting independent release checks.`);
 
 
 
 /**
  * Reader-visible structured व्याख्या, separately from verse meanings:
- * all 143 source-checked, AI-assisted notes and modern-context panels must reach the reader.
+ * all 148 source-checked, AI-assisted notes and modern-context panels must reach the reader.
  * This is a structural/source-identity check, not scholar certification.
  */
 type StructuredEntry = {
@@ -190,7 +190,7 @@ type StructuredEntry = {
   lifeLesson?: string;
 };
 const structured = JSON.parse(readFileSync('data/ai-commentary/devibhagavat.json', 'utf8')) as Record<string, StructuredEntry>;
-assert.equal(Object.keys(structured).length, 143, 'Devi Bhagavata source batch must contain 143 structured explanations');
+assert.equal(Object.keys(structured).length, 148, 'Devi Bhagavata source batch must contain 148 structured explanations');
 const publishedCommentary = readPublishedCommentary('devibhagavat') as
   Record<string, { explanation?: string; lifeLesson?: string; ai?: boolean }>;
 const explanationSet = new Set<string>();
@@ -199,7 +199,7 @@ for (const [chapterNumber, sourceChapter, verseCount] of [
   [1, chapter, 25],
   [2, chapter2, 40],
   [3, chapter3, 43],
-  [4, chapter4, 35],
+  [4, chapter4, 40],
 ] as const) {
   for (let n = 1; n <= verseCount; n++) {
     const key = `${chapterNumber}:${n}`;
@@ -245,4 +245,4 @@ const register = execFileSync(process.execPath, [
 ], { encoding: 'utf8' });
 assert.match(register, /sentences to fix 0, तुम to check 0/,
   'Devi Bhagavata explanation has colloquial words or informal address');
-console.log('✓ Devi Bhagavata publishes 143 distinct Sanskrit-keyed व्याख्या and 143 individually written modern-context panels.');
+console.log('✓ Devi Bhagavata publishes 148 distinct Sanskrit-keyed व्याख्या and 148 individually written modern-context panels.');
