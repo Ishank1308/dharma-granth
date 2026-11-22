@@ -223,6 +223,8 @@ export async function startDownload(id: string): Promise<void> {
 
   const tmp = partialDir(id);
   const partFiles: File[] = [];
+  // rename() repoints `tmp` at the finished folder, so the clean-up below must not touch it once it is in place.
+  let saved = false;
   try {
     const index = await fetchIndex();
     const remote = index.books[id];
@@ -315,6 +317,7 @@ export async function startDownload(id: string): Promise<void> {
     const final = bookDir(id);
     if (final.exists) final.delete();
     tmp.rename(id);
+    saved = true;
     forget(id);
     set({ installed: { ...state.installed, [id]: meta } });
   } catch (e) {
@@ -327,7 +330,7 @@ export async function startDownload(id: string): Promise<void> {
       } catch {}
     }
     try {
-      if (tmp.exists) tmp.delete();
+      if (!saved && tmp.exists) tmp.delete();
     } catch {}
     controllers.delete(id);
     set({ jobs: without(state.jobs, id) });
