@@ -212,7 +212,7 @@ export function PranayamaPacer() {
           </button>
         </div>
 
-        <div className="flex w-full items-center justify-between rounded-xl border border-dharma-border/60 bg-dharma-panel-muted px-3 py-2 text-xs text-dharma-muted">
+        <div className="flex flex-wrap w-full items-center justify-between gap-2 rounded-xl border border-dharma-border/60 bg-dharma-panel-muted px-3 py-2 text-xs text-dharma-muted">
           <span>
             आज: <strong className="font-bold text-dharma-text">{cyclesToday}</strong> चक्र · cycles
           </span>

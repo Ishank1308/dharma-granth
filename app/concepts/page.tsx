@@ -9,6 +9,7 @@ import { GRAPH_CONCEPTS } from '@/data/knowledge-graph';
 import { graphConceptLink } from '@/lib/knowledge-graph';
 import { PageHeader } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
+import { OnThisPage } from '@/app/components/OnThisPage';
 
 export const metadata: Metadata = {
   title: 'Dharmic Concepts & Philosophy Explained (शास्त्रीय अवधारणा ज्ञान ग्राफ)',
@@ -63,7 +64,7 @@ export default function ConceptsPage() {
   const articleCount = cards.filter((card) => card.hasPage).length;
 
   return (
-    <main className="min-h-screen bg-dharma-bg">
+    <main className="long-read min-h-screen bg-dharma-bg">
       <PageHeader
         width="wide"
         eyebrow="Knowledge graph"
@@ -78,8 +79,19 @@ export default function ConceptsPage() {
         }
       />
 
+      <div className="max-w-6xl mx-auto px-6 pt-6">
+        <OnThisPage
+          items={[
+            { id: 'concepts-core', hi: 'पच्चीस मूल अवधारणाएँ', en: 'Core concepts' },
+            { id: 'concepts-graph', hi: 'अवधारणा ज्ञान ग्राफ', en: 'Knowledge graph' },
+            { id: 'concepts-visual', hi: 'दृश्य अन्वेषक', en: 'Visual explorer' },
+            { id: 'concepts-directory', hi: 'अवधारणा सूची', en: 'Concept directory' },
+          ]}
+        />
+      </div>
+
       <nav aria-label="पच्चीस मूल अवधारणाएँ" className="max-w-6xl mx-auto px-6 pt-8">
-        <h2 className="font-serif text-xl font-bold text-dharma-text">
+        <h2 id="concepts-core" className="font-serif text-xl font-bold text-dharma-text">
           <span lang="hi" className="font-devanagari">पच्चीस मूल अवधारणाएँ</span>
         </h2>
         <ul className="mt-3 flex flex-wrap gap-2">
@@ -102,7 +114,7 @@ export default function ConceptsPage() {
       </nav>
 
       {/* ── Graph ────────────────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 pt-6 relative z-10 pb-12">
+      <section id="concepts-graph" data-anchor className="max-w-6xl mx-auto px-6 pt-6 relative z-10 pb-12">
         <div className="bg-dharma-card/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-dharma-border p-4 sm:p-6 md:p-8">
           <ConceptGraph articleIds={articleIds} />
         </div>
@@ -116,7 +128,7 @@ export default function ConceptsPage() {
               <Sparkles className="w-3.5 h-3.5" />
               <span lang="hi" className="font-devanagari">दृश्य अन्वेषक</span> <span aria-hidden="true">·</span> <span>Visual explorer</span>
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
+            <h2 id="concepts-visual" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
               दृश्य ज्ञान दर्शन — 10 मूल तत्त्वों के पवित्र आरेख
             </h2>
             <p className="text-sm text-dharma-muted leading-relaxed">
@@ -140,7 +152,7 @@ export default function ConceptsPage() {
           <p className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400 mb-2">
             शास्त्रीय तत्त्वकोश · Philosophical Encyclopedia
           </p>
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-dharma-text mb-4">
+          <h2 id="concepts-directory" className="text-3xl sm:text-4xl font-serif font-bold text-dharma-text mb-4">
             अवधारणा सूची
           </h2>
           <p className="text-dharma-muted text-base leading-relaxed">
@@ -179,7 +191,7 @@ export default function ConceptsPage() {
                 </span>
                 {c.hasPage ? (
                   <Link
-                    href={`/concepts/${c.id}`}
+                    href={`/concepts/${c.id}/`}
                     className="inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-saffron-800 underline-offset-2 hover:underline"
                   >
                     <span>गहन विश्लेषण</span>
@@ -203,11 +215,11 @@ export default function ConceptsPage() {
             वेदान्त का लेख इस सूची में है। ये चार पृष्ठ भी उसी पढ़ने से जुड़े हैं।
           </p>
           <ul className="mt-3 flex flex-wrap gap-3 text-sm">
-            <li><Link href="/concepts/vedanta" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">वेदान्त</Link></li>
-            <li><Link href="/concepts/brahman" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">ब्रह्म</Link></li>
-            <li><Link href="/concepts/atman" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">आत्मा</Link></li>
-            <li><Link href="/concepts/maya" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">माया</Link></li>
-            <li><Link href="/concepts/moksha" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">मोक्ष</Link></li>
+            <li><Link href="/concepts/vedanta/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">वेदान्त</Link></li>
+            <li><Link href="/concepts/brahman/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">ब्रह्म</Link></li>
+            <li><Link href="/concepts/atman/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">आत्मा</Link></li>
+            <li><Link href="/concepts/maya/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">माया</Link></li>
+            <li><Link href="/concepts/moksha/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 underline underline-offset-2">मोक्ष</Link></li>
           </ul>
         </div>
       </section>

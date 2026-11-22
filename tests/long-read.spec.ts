@@ -7,7 +7,13 @@ import { expect, test, type Page } from '@playwright/test';
  * sideways and a wide table scrolls inside its own box.
  */
 const PHONE = { width: 390, height: 844 };
-const LONG_PAGES = ['/festivals/diwali/', '/characters/krishna/', '/concepts/dharma/'];
+const LONG_PAGES = [
+  '/festivals/diwali/',
+  '/characters/krishna/',
+  '/concepts/dharma/',
+  '/methodology/',
+  '/how-dharma-granth-works/',
+];
 
 test.use({ viewport: PHONE });
 
@@ -90,14 +96,26 @@ test('a Sanskrit verse on a long page keeps its own size and is never clamped', 
   }
 });
 
-test('a short contents list starts open', async ({ page }) => {
-  await open(page, '/sources/');
-  const nav = page.locator('#main-content nav[aria-label="On this page"]');
-  await expect(nav.locator('details')).toHaveAttribute('open', /.*/);
-  const hrefs = await nav.locator('ol a').evaluateAll((as) => as.map((a) => a.getAttribute('href') || ''));
-  expect(hrefs.length).toBeLessThanOrEqual(4);
-  for (const href of hrefs) await expect(page.locator(`[id="${href.slice(1)}"]`)).toHaveCount(1);
-});
+for (const shortPath of ['/sources/', '/concepts/']) {
+  test(`a short contents list starts open on ${shortPath}`, async ({ page }) => {
+    await open(page, shortPath);
+    const nav = page.locator('#main-content nav[aria-label="On this page"]');
+    await expect(nav.locator('details')).toHaveAttribute('open', /.*/);
+    const hrefs = await nav.locator('ol a').evaluateAll((as) => as.map((a) => a.getAttribute('href') || ''));
+    expect(hrefs.length).toBeLessThanOrEqual(4);
+    for (const href of hrefs) await expect(page.locator(`[id="${href.slice(1)}"]`)).toHaveCount(1);
+    expect(await sidewaysOverflow(page)).toBeLessThanOrEqual(0);
+  });
+}
+
+for (const zoomPath of ['/practice/', '/characters/']) {
+  test(`200% text size on ${zoomPath} does not overflow sideways`, async ({ page }) => {
+    await open(page, zoomPath);
+    await page.addStyleTag({ content: 'html { font-size: 200% !important; }' });
+    await page.waitForTimeout(150);
+    expect(await sidewaysOverflow(page)).toBeLessThanOrEqual(0);
+  });
+}
 
 test('the mantra list offers only the mantras now showing', async ({ page }) => {
   await open(page, '/mantras/');

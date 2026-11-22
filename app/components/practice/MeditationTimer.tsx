@@ -248,7 +248,7 @@ export function MeditationTimer() {
     >
       <div className="flex flex-col items-center gap-4 h-full">
         {/* Controls Bar: Sound toggle, Custom duration, Motion */}
-        <div className="flex items-center justify-between w-full px-2 py-1 bg-dharma-panel-muted rounded-xl border border-dharma-border/60 text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-1.5 w-full px-2 py-1 bg-dharma-panel-muted rounded-xl border border-dharma-border/60 text-xs">
           <button
             type="button"
             onClick={() => setSoundEnabled(!soundEnabled)}
@@ -264,7 +264,7 @@ export function MeditationTimer() {
             <span>{soundEnabled ? 'घंटी चालू' : 'मूक ध्यान'}</span>
           </button>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1.5">
             <button
               type="button"
               onClick={() => setShowCustomInput(!showCustomInput)}
@@ -302,7 +302,7 @@ export function MeditationTimer() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="w-full flex items-center justify-center gap-2 p-2 bg-indigo-50/60 dark:bg-indigo-950/20 rounded-xl border border-indigo-200 dark:border-indigo-900/40 text-xs"
+              className="w-full flex flex-wrap items-center justify-center gap-2 p-2 bg-indigo-50/60 dark:bg-indigo-950/20 rounded-xl border border-indigo-200 dark:border-indigo-900/40 text-xs"
             >
               <span className="text-dharma-muted">अवधि (मिनट):</span>
               <input
@@ -339,7 +339,7 @@ export function MeditationTimer() {
                     key={opt.id}
                     type="button"
                     onClick={() => setAmbientMode(opt.id)}
-                    className={`flex items-center justify-center gap-1 py-1 px-2 rounded-lg text-2xs font-semibold transition ${
+                    className={`flex min-w-0 items-center justify-center gap-1 py-1 px-2 rounded-lg text-2xs font-semibold transition ${
                       isCur
                         ? 'bg-indigo-600 text-white shadow-xs'
                         : 'border border-dharma-border/80 text-dharma-muted hover:border-indigo-400 hover:text-dharma-text'
@@ -457,7 +457,7 @@ export function MeditationTimer() {
 
         {/* Actions: Start, Pause, Reset */}
         {!done && (
-          <div className="flex gap-2.5 pt-1">
+          <div className="flex flex-wrap justify-center gap-2.5 pt-1">
             <button
               type="button"
               onClick={running ? handlePause : handleStart}
@@ -487,7 +487,7 @@ export function MeditationTimer() {
         )}
 
         {/* Stats summary footer */}
-        <div className="mt-auto w-full pt-2 flex items-center justify-between text-xs text-dharma-muted border-t border-dharma-border/60">
+        <div className="mt-auto w-full pt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-dharma-muted border-t border-dharma-border/60">
           <span>कुल सत्र: <strong className="text-dharma-text">{stats.sessions}</strong></span>
           <span>कुल समय: <strong className="text-dharma-text">{stats.minutes} मिनट</strong></span>
         </div>
