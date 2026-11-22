@@ -22,7 +22,7 @@ import {
 import { S, useI18n } from '@/i18n';
 import { useKeyboardHeight } from '@/lib/use-keyboard-height';
 import { formatVerseRef } from '@/lib/verse-format';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
 import type { Palette } from '@/theme/themes';
 import { BAR_GAP, BAR_HEIGHT, fontCap, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
@@ -125,7 +125,7 @@ export default function SearchScreen() {
   const params = useLocalSearchParams<{ q?: string }>();
   const insets = useSafeAreaInsets();
   const keyboard = useKeyboardHeight();
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t } = useI18n();
   const [query, setQuery] = useState(typeof params.q === 'string' ? params.q : '');
   const [section, setSection] = useState<string | null>(null);

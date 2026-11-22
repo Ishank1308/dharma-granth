@@ -9,7 +9,7 @@ import { Backdrop, glass, GroupCard, GroupRow, GroupTitle, IconTile, LargeHeader
 import { daysBetween, festivalById, formatDay, todayPanchang, upcomingFestivals } from '@/content/explore';
 import { S, useI18n, type Msg } from '@/i18n';
 import { usePanchangCity } from '@/lib/panchang-city';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { barClearance, huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
@@ -23,7 +23,7 @@ type IconName = ComponentProps<typeof Ionicons>['name'];
  */
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const [city] = usePanchangCity();
@@ -131,7 +131,7 @@ interface Row {
 }
 
 function Rows({ rows }: { rows: Row[] }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   return (
     <GroupCard>
@@ -154,7 +154,7 @@ function Rows({ rows }: { rows: Row[] }) {
 }
 
 function Fact({ label, value, color }: { label: string; value: string; color: string }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <View style={styles.fact}>
       <View style={[styles.factDot, { backgroundColor: color }]} />

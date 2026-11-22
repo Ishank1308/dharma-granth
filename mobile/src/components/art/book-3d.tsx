@@ -28,7 +28,7 @@ import { coverFill } from '@/components/ui';
 import { hapticTap } from '@/motion/haptics';
 import { MAX_TILT, SPRING } from '@/motion/tokens';
 import { useMotion } from '@/motion/use-motion';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 
 import { Mandala } from './mandala';
@@ -73,7 +73,7 @@ export function Book3D({
   /** A short line under the monogram, such as the category. */
   label?: string;
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { animate, rich } = useMotion();
   const height = Math.round(width * 1.42);
   const spine = Math.round(width * 0.085);

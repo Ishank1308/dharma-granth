@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Backdrop, Chip, GroupRow, LargeHeader, Muted } from '@/components/ui';
 import { MANTRA_CATEGORIES, mantraLines, MANTRAS, type MantraCategory } from '@/content/explore';
 import { S, useI18n, type Msg } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { huesFor, SPACE, TITLE_FONT_CAP, TYPE } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
@@ -21,7 +21,7 @@ const MANTRA_CATEGORY_LABEL: Record<MantraCategory, Msg> = {
 /** Vedic mantras, शान्ति पाठ and stotras, as dharmagranth.dev/mantras/, filtered by kind. */
 export default function MantrasScreen() {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const hues = huesFor(palette);
   const [cat, setCat] = useState<MantraCategory | 'all'>('all');

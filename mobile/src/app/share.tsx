@@ -13,7 +13,7 @@ import { accentFill, Backdrop, Chip, glass, GroupTitle, Muted } from '@/componen
 import { getEntry, loadChapter, SITE } from '@/content/catalog';
 import { S, useI18n, type Msg } from '@/i18n';
 import { cleanVerseField, formatVerseRef, meaningState, sanskritLines, verseMarkNumber } from '@/lib/verse-format';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { coverFor } from '@/theme/covers';
 import { RADIUS, SPACE, THEMES, TOUCH, TYPE } from '@/theme/themes';
 
@@ -41,7 +41,7 @@ export default function ShareVerseScreen() {
   const verseNo = String(params.verse);
   const insets = useSafeAreaInsets();
   const { width: screenW } = useWindowDimensions();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const entry = getEntry(id);
   const verse = useMemo(() => loadChapter(id, chapterNo)?.verses.find((v) => String(v.number) === verseNo), [id, chapterNo, verseNo]);

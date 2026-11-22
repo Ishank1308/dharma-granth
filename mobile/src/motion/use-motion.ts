@@ -9,7 +9,7 @@
  */
 import { useReducedMotion } from 'react-native-reanimated';
 
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 
 export interface Motion {
   animate: boolean;
@@ -19,7 +19,7 @@ export interface Motion {
 export function useMotion(): Motion {
   // Either source: Reanimated reads the system flag on the UI side, app state (#418) on the JS side.
   const reduced = useReducedMotion();
-  const { lightEffects, reduceMotion } = useAppState();
+  const { lightEffects, reduceMotion } = usePrefs();
   const animate = !reduced && !reduceMotion;
   return { animate, rich: animate && !lightEffects };
 }

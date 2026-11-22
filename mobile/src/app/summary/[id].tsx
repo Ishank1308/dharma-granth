@@ -11,7 +11,7 @@ import { useDownloads } from '@/content/downloads';
 import { summaryCollection } from '@/content/study';
 import { S, useI18n } from '@/i18n';
 import { toDevanagari } from '@/lib/verse-format';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { huesFor, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
@@ -25,7 +25,7 @@ export default function SummaryScreen() {
   const params = useLocalSearchParams<{ id: string; chapter?: string }>();
   const id = String(params.id);
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t, lang } = useI18n();
   const entry = getEntry(id);
   const collection = summaryCollection(id);

@@ -14,7 +14,7 @@ import {
 } from '@/content/downloads';
 import type { CatalogEntry } from '@/content/types';
 import { S, useI18n, type Msg } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { RADIUS, SPACE, TOUCH, TYPE } from '@/theme/themes';
 
 /** The sentence for a failed download. `bytes` is the text's size on the phone, for the free-space message. */
@@ -42,7 +42,7 @@ export function downloadErrorText(code: DownloadErrorCode, bytes: number): Msg {
 /** Download, progress, update and delete for one large text, shown at the top of its chapter list. */
 export function DownloadCard({ entry }: { entry: CatalogEntry }) {
   useRemoteIndex();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const { installed, jobs, errors, index, indexStatus } = useDownloads();
   const id = entry.id;
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
 
 /** Settings → Downloaded texts: what is on the phone, how much space it takes, and delete. */
 export function DownloadsSection() {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const { installed, jobs } = useDownloads();
   const ids = Object.keys(installed).sort();

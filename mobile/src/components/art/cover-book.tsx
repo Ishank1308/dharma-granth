@@ -8,12 +8,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { coverFill } from '@/components/ui';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import type { Cover } from '@/theme/covers';
 import { SANSKRIT_FONT } from '@/theme/fonts';
 
 export function CoverBook({ cover, letter, width = 64, turn = -10 }: { cover: Cover; letter: string; width?: number; turn?: number }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const height = Math.round(width * 1.38);
   const lite = palette.lite;
   return (

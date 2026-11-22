@@ -9,7 +9,7 @@ import { getEntry, loadChapter } from '@/content/catalog';
 import { MOOD_LABELS, S, useI18n } from '@/i18n';
 import { cleanTags, DEFAULT_MOOD, entriesForVerse, formatDay, linkKey, MOODS, type JournalMood, type VerseLink } from '@/lib/journal';
 import { formatVerseRef, sanskritLines, toDevanagari, verseMarkNumber } from '@/lib/verse-format';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { useJournal } from '@/state/journal';
 import { coverFor } from '@/theme/covers';
 import { fontCap, RADIUS, SPACE, TITLE_FONT_CAP, TOUCH, TYPE } from '@/theme/themes';
@@ -23,7 +23,7 @@ export { ErrorBoundary } from '@/components/error-boundary';
 export default function EditReflectionScreen() {
   const params = useLocalSearchParams<{ entry?: string; id?: string; chapter?: string; verse?: string }>();
   const insets = useSafeAreaInsets();
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { journal, saveEntry, deleteEntry } = useJournal();
   const { t, lang } = useI18n();
   const cap = fontCap(settings.textScale);
@@ -204,7 +204,7 @@ export default function EditReflectionScreen() {
 
 /** The verse a reflection is about, every line of it, in the book's colours. */
 function LinkedVerse({ link, onRemove }: { link: VerseLink; onRemove: () => void }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t } = useI18n();
   const book = getEntry(link.id);
   const verse = loadChapter(link.id, link.chapter)?.verses.find((v) => String(v.number) === link.verse);

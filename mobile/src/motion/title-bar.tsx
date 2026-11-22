@@ -17,7 +17,7 @@ import Animated, { type SharedValue } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { barSurface } from '@/components/ui';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { TYPE } from '@/theme/themes';
 
 import { titleSwap, useScrollProgressStyle } from './parallax';
@@ -25,7 +25,7 @@ import { titleSwap, useScrollProgressStyle } from './parallax';
 export const TITLE_BAR_HEIGHT = 48;
 
 export function TitleBar({ scrollY, title }: { scrollY: SharedValue<number>; title: { en: string; hi: string } }) {
-  const { palette, lang } = useAppState();
+  const { palette, lang } = usePrefs();
   const insets = useSafeAreaInsets();
   const { height } = useWindowDimensions();
   const [start, end] = titleSwap(height);

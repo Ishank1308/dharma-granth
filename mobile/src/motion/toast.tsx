@@ -18,7 +18,7 @@ import { AccessibilityInfo, Pressable, StyleSheet, Text, View } from 'react-nati
 import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { BAR_GAP, BAR_HEIGHT, RADIUS, SPACE, TOUCH, TYPE, type Palette } from '@/theme/themes';
 
 import { DURATION, SPRING } from './tokens';
@@ -66,7 +66,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 }
 
 function ToastView({ toast, onDone }: { toast: Current; onDone: () => void }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { animate } = useMotion();
   const insets = useSafeAreaInsets();
   const shown = useSharedValue(0);

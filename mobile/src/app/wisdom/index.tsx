@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Backdrop, Chip, glass, GroupTitle, LargeHeader, Muted } from '@/components/ui';
 import { knowledge, matchWisdom, type WisdomTopic } from '@/content/knowledge';
 import { S, useI18n } from '@/i18n';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { barClearance, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP } from '@/theme/themes';
 
 export { ErrorBoundary } from '@/components/error-boundary';
@@ -18,7 +18,7 @@ export { ErrorBoundary } from '@/components/error-boundary';
  */
 export default function WisdomIndex() {
   const insets = useSafeAreaInsets();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState<string | null>(null);
@@ -80,7 +80,7 @@ export default function WisdomIndex() {
 
 /** A topic as the website's topic card: its own accent colour down the side, title, Sanskrit line, summary. */
 function TopicCard({ topic }: { topic: WisdomTopic }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   return (
     <Pressable

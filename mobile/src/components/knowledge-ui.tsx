@@ -14,7 +14,7 @@ import { useDownloads } from '@/content/downloads';
 import { findByName, type KnowledgeKind, type KVerse } from '@/content/knowledge';
 import { S, useI18n, type Msg } from '@/i18n';
 import { sanskritLines } from '@/lib/verse-format';
-import { useAppState } from '@/state/app-state';
+import { usePrefs } from '@/state/app-state';
 import { fontCap, huesFor, quietFill, RADIUS, SPACE, TOUCH, TYPE, UI_FONT_CAP, type Hues } from '@/theme/themes';
 
 /** A section of a knowledge page: a glass card with a heading in the page's hue. */
@@ -29,7 +29,7 @@ export function KSection({
   children: ReactNode;
   style?: StyleProp<ViewStyle>;
 }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const color = huesFor(palette)[hue];
   return (
     <Card style={[{ rowGap: SPACE.md }, style]}>
@@ -61,7 +61,7 @@ export function Para({
   /** Script of this text: Devanagari gets a taller line. */
   lang?: 'en' | 'hi' | 'sa';
 }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const px = size * settings.textScale;
   return (
     <Text
@@ -80,7 +80,7 @@ export function Para({
 
 /** A small label over a block of text ("Insight", "Today", "Debated"). */
 export function Label({ children, hue }: { children: ReactNode; hue?: keyof Hues }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   return (
     <Text
       maxFontSizeMultiplier={UI_FONT_CAP}
@@ -96,7 +96,7 @@ export function Label({ children, hue }: { children: ReactNode; hue?: keyof Hues
  */
 export function LangNote({ content }: { content: 'en' | 'hi' }) {
   const { t, lang } = useI18n();
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   if (content === lang) return null;
   return (
     <View style={[styles.note, { backgroundColor: quietFill(palette) }]}>
@@ -157,7 +157,7 @@ export function VerseBlock({
   hue?: keyof Hues;
   children?: ReactNode;
 }) {
-  const { palette, settings } = useAppState();
+  const { palette, settings } = usePrefs();
   const { t } = useI18n();
   const open = useOpenVerse()(target ?? null);
   const color = huesFor(palette)[hue];
@@ -219,7 +219,7 @@ export function KVerseBlock({ v, hue }: { v: KVerse; hue?: keyof Hues }) {
 
 /** A row of names; a name that has its own page (a character, place, concept or term) becomes a link. */
 export function NameChips({ names, prefer }: { names: string[]; prefer?: KnowledgeKind }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const { t } = useI18n();
   return (
     <View style={styles.chips}>
@@ -263,7 +263,7 @@ export function openEntry(kind: KnowledgeKind, id: string) {
 
 /** The tinted square at the head of an entry: its emoji (characters, places) or its Devanagari initial. */
 export function EntryTile({ hue, icon, letter, size = 44 }: { hue: keyof Hues; icon?: string; letter?: string; size?: number }) {
-  const { palette } = useAppState();
+  const { palette } = usePrefs();
   const color = huesFor(palette)[hue];
   return (
     <View
