@@ -1,9 +1,17 @@
 'use client';
 /* eslint-disable @next/next/no-img-element */
 
-import { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, ExternalLink, Sparkles, X, ZoomIn } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight, Download, ExternalLink, Share2, Sparkles, X, ZoomIn } from 'lucide-react';
 import { NAVADURGA_CARDS, type NavadurgaCard } from '@/data/curated-visuals';
+
+const SITE_ORIGIN = (process.env.NEXT_PUBLIC_SITE_URL || 'https://dharmagranth.dev').replace(/\/+$/, '');
+
+function buildNavadurgaWhatsAppHref(card: NavadurgaCard): string {
+  const pageUrl = `${SITE_ORIGIN}/festivals/navaratri/#navadurga-darshan`;
+  const text = `🪔 *नवरात्रि दिवस ${card.day} — ${card.nameHi} (${card.nameEn})*\n${card.mantra}\n\n✨ ${card.themeHi}\n\n🔗 सभी 9 नवदुर्गा दर्शन व मंत्र देखें:\n${pageUrl}`;
+  return `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+}
 
 interface NavadurgaGalleryProps {
   id?: string;
@@ -20,12 +28,21 @@ export function NavadurgaGallery({
 }: NavadurgaGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const active: NavadurgaCard | null = activeIndex !== null ? NAVADURGA_CARDS[activeIndex] : null;
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
+
+  const closeModal = () => {
+    setActiveIndex(null);
+    lastTriggerRef.current?.focus();
+  };
 
   useEffect(() => {
     if (activeIndex === null) return;
+    closeButtonRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setActiveIndex(null);
+        lastTriggerRef.current?.focus();
       } else if (event.key === 'ArrowRight') {
         setActiveIndex((prev) => (prev === null ? null : (prev + 1) % NAVADURGA_CARDS.length));
       } else if (event.key === 'ArrowLeft') {
@@ -68,7 +85,10 @@ export function NavadurgaGallery({
           >
             <button
               type="button"
-              onClick={() => setActiveIndex(idx)}
+              onClick={(event) => {
+                lastTriggerRef.current = event.currentTarget;
+                setActiveIndex(idx);
+              }}
               className="focus-ring relative block w-full overflow-hidden text-left"
               aria-label={`दिन ${card.day}: ${card.nameHi} (${card.nameEn}) — पूरा चित्र देखें`}
             >
@@ -118,7 +138,7 @@ export function NavadurgaGallery({
           <button
             type="button"
             aria-label="पृष्ठभूमि पर क्लिक कर बन्द करें (Close lightbox)"
-            onClick={() => setActiveIndex(null)}
+            onClick={closeModal}
             className="absolute inset-0 bg-black/85 backdrop-blur-sm cursor-default"
           />
           <div
@@ -138,16 +158,37 @@ export function NavadurgaGallery({
               <div className="flex items-center gap-2 shrink-0">
                 <a
                   href={active.src}
+                  download={`dharma-granth-navratri-day-${active.day}-${active.id}.webp`}
+                  aria-label={`दिन ${active.day} ${active.nameEn} डाउनलोड करें (Download)`}
+                  className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/20"
+                >
+                  <Download className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span className="hidden sm:inline">Download</span>
+                </a>
+                <a
+                  href={buildNavadurgaWhatsAppHref(active)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`दिन ${active.day} ${active.nameEn} WhatsApp पर शेयर करें (Share on WhatsApp)`}
+                  className="inline-flex min-h-[38px] items-center gap-1.5 rounded-full bg-emerald-700 hover:bg-emerald-800 px-3 py-1.5 text-xs font-semibold text-white transition"
+                >
+                  <Share2 className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span className="hidden sm:inline">WhatsApp</span>
+                </a>
+                <a
+                  href={active.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`दिन ${active.day} ${active.nameEn} मूल चित्र खोलें (Open original image)`}
                   className="inline-flex min-h-[38px] items-center gap-1 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/20"
                 >
                   <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span className="hidden sm:inline">Original</span>
+                  <span className="hidden md:inline">Original</span>
                 </a>
                 <button
+                  ref={closeButtonRef}
                   type="button"
-                  onClick={() => setActiveIndex(null)}
+                  onClick={closeModal}
                   aria-label="बन्द करें (Close)"
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20"
                 >

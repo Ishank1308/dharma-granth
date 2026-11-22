@@ -29,7 +29,7 @@ import { ShareCardButton } from '@/app/components/understand/ShareCard';
 import { OnThisPage } from '@/app/components/OnThisPage';
 import { PujaModeLauncher } from '@/app/components/puja/PujaModeLauncher';
 import { splitStep } from '@/app/components/puja/steps';
-import { EDITORIAL_SCENES } from '@/data/curated-visuals';
+import { getFestivalScene } from '@/data/curated-visuals';
 import { EditorialSceneBanner } from '@/app/components/visuals/CuratedVisuals';
 import { NavadurgaGallery } from '@/app/components/visuals/NavadurgaGallery';
 
@@ -266,13 +266,16 @@ export default async function FestivalDetailPage(props: PageProps) {
             Boolean(festival.environmentalConsiderations) && { id: 'fest-nature', hi: 'प्रकृति व पर्यावरण संचेतना', en: 'Ecological Mindfulness' },
           ]}
         />
-        {festival.id === 'diwali' && (
-          <EditorialSceneBanner
-            scene={EDITORIAL_SCENES.diwaliGhat}
-            eyebrowHi="शुभ दीपावली"
-            eyebrowEn="Festival of Lights"
-          />
-        )}
+        {(() => {
+          const tagged = getFestivalScene(festival.id);
+          return tagged ? (
+            <EditorialSceneBanner
+              scene={tagged.scene}
+              eyebrowHi={tagged.eyebrowHi}
+              eyebrowEn={tagged.eyebrowEn}
+            />
+          ) : null;
+        })()}
         {/* 1. Meaning & Core Philosophy */}
         <div className="fade-up-on-view card-sacred rounded-3xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 sm:p-8 shadow-soft space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">

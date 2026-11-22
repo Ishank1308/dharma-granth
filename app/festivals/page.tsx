@@ -9,18 +9,7 @@ import { X, BookOpen, MapPin, Sparkles, Music, Utensils, Leaf, Clock, AlertCircl
 import Link from 'next/link';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
-import { EDITORIAL_SCENES, NAVADURGA_CARDS } from '@/data/curated-visuals';
-
-const FESTIVAL_CARD_VISUALS: Readonly<Record<string, { src: string; alt: string }>> = {
-  diwali: {
-    src: EDITORIAL_SCENES.diwaliGhat.src,
-    alt: EDITORIAL_SCENES.diwaliGhat.alt,
-  },
-  navaratri: {
-    src: EDITORIAL_SCENES.templeDarshan.src,
-    alt: EDITORIAL_SCENES.templeDarshan.alt,
-  },
-};
+import { getFestivalScene, NAVADURGA_CARDS } from '@/data/curated-visuals';
 import { FestivalsOpening } from './FestivalsOpening';
 
 export default function FestivalsPage() {
@@ -114,7 +103,7 @@ export default function FestivalsPage() {
         {/* The cards cascade in as they scroll into view (.reveal-grid, motion.css); the HTML is never hidden. */}
         <div className="reveal-grid grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {festivals.map((festival) => {
-            const visual = FESTIVAL_CARD_VISUALS[festival.id];
+            const visual = getFestivalScene(festival.id)?.scene;
             return (
               <div key={festival.id}>
                 <Link

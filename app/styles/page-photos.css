@@ -155,7 +155,13 @@
 @media (forced-colors: active), print {
     .page-cover,
     .hero-photo,
-    .hero-photo-credit {
+    .hero-photo-credit,
+    .curated-scene-media {
         display: none !important;
     }
+}
+
+/* Decorative curated editorial scenes follow the same Data Saver rule as PageCover. */
+:root[data-data-saver='true'] .curated-scene-media {
+    display: none;
 }
