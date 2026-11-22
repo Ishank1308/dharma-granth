@@ -107,3 +107,28 @@ test.describe('on a phone', () => {
     await expect.poll(() => animation(/Home/)).toBe('icon-answer');
   });
 });
+
+test.describe('the time of day on home', () => {
+  for (const [time, part, greeting] of [
+    ['2026-11-22T05:10:00', 'brahma', 'ब्राह्म मुहूर्त · The hour before dawn'],
+    ['2026-11-22T08:00:00', 'morning', 'सुप्रभात · Good morning'],
+    ['2026-11-22T17:30:00', 'sandhya', 'शुभ सन्ध्या · Evening sandhya'],
+    ['2026-11-22T22:00:00', 'night', 'शुभ रात्रि · A quiet night'],
+  ] as const) {
+    test(`${part}: the hero greets the hour`, async ({ page }) => {
+      await page.clock.setFixedTime(new Date(time));
+      await page.goto('/');
+      await expect(page.locator('html')).toHaveAttribute('data-daypart', part);
+      const line = page.locator('.daypart-greeting');
+      await expect(line).toBeVisible();
+      expect(await line.evaluate((el) => getComputedStyle(el, '::before').content.replace(/" "|"/g, ''))).toBe(greeting);
+    });
+  }
+
+  test('midday shows no greeting, and the page is as before', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-11-22T13:00:00'));
+    await page.goto('/');
+    await expect(page.locator('html')).toHaveAttribute('data-daypart', 'day');
+    await expect(page.locator('.daypart-greeting')).toBeHidden();
+  });
+});
