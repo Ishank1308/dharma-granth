@@ -147,7 +147,7 @@ export default function AshtavakraVerseScreen() {
             ) : null}
             {v.practicalApplicationHindi ? (
               <View>
-                <SubLabel msg={S.practicalApplication} />
+                <SubLabel msg={S.ashtavakraPractice} />
                 <Prose text={v.practicalApplicationHindi} />
               </View>
             ) : null}

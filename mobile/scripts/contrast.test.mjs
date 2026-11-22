@@ -1,4 +1,4 @@
-// Colour contrast of the four themes against WCAG 2.1 AA, run with `npm test`.
+// Colour contrast of the two themes against WCAG 2.1 AA, run with `npm test`.
 //
 // Glass is translucent, so a colour is checked against the worst thing it can sit on: the theme's
 // background under each aurora pool at its strongest (the pool's centre), with the glass laid over it.
