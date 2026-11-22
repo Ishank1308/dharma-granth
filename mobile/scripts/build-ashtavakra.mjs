@@ -13,7 +13,7 @@
 // The book's commentary is reproduced in original words upstream (CLAUDE.md); this only copies fields.
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { readJson } from './content-lib.mjs';
 
@@ -68,7 +68,7 @@ export async function buildAshtavakra() {
     return;
   }
   mkdirSync(DIR, { recursive: true });
-  const { CHAPTERS } = await import(join(SRC, 'chapters-meta.ts'));
+  const { CHAPTERS } = await import(pathToFileURL(join(SRC, 'chapters-meta.ts')).href);
   const published = [];
   const meta = [];
   let verses = 0;
