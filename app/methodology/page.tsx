@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { getRealVerseCount } from '@/data/scriptures';
 import { formatCount } from '@/lib/holdings-label';
+import { OnThisPage } from '@/app/components/OnThisPage';
 
 export const metadata: Metadata = {
   title: 'Methodology: how this site is made',
@@ -34,35 +35,30 @@ const p = 'mt-3 leading-relaxed text-dharma-text';
 
 export default function MethodologyPage() {
   return (
-    <main id="main" className="min-h-screen bg-dharma-bg">
+    <main id="main" className="long-read min-h-screen bg-dharma-bg">
       <article className="mx-auto max-w-3xl px-4 pb-24 pt-10 sm:px-6">
         <p className="text-sm font-semibold uppercase tracking-wide text-saffron-800 dark:text-saffron-300">Methodology · कार्यपद्धति</p>
         <h1 className="mt-1 font-serif text-3xl font-bold text-dharma-text sm:text-4xl">How this site is made</h1>
         <p className={p}>
           This page says plainly where each kind of content comes from, what is machine-assisted, and what has not been reviewed by a person.
-          It describes what is true today, not what is intended. For a shorter overview, see <Link href="/how-dharma-granth-works" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">how Dharma Granth works</Link>.
+          It describes what is true today, not what is intended. For a shorter overview, see <Link href="/how-dharma-granth-works/" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">how Dharma Granth works</Link>.
         </p>
 
-        <nav aria-label="On this page" className="mt-6 rounded-2xl border border-dharma-border bg-dharma-card p-4">
-          <ol className="list-decimal space-y-1 pl-5 text-sm">
-            {[
-              ['sources', 'Source texts'],
-              ['translations', 'Translations'],
-              ['commentary', 'Commentary and attribution'],
-              ['modern', 'Modern explanations'],
-              ['ai', 'AI assistance'],
-              ['review', 'Human review'],
-              ['corrections', 'Corrections'],
-              ['audio', 'Audio & soundscape architecture'],
-            ].map(([id, label]) => (
-              <li key={id}>
-                <a href={`#${id}`} className="focus-ring inline-flex min-h-[44px] items-center text-saffron-800 hover:underline dark:text-saffron-300">
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
+        <OnThisPage
+          className="mt-6"
+          items={[
+            { id: 'sources', en: 'Source texts' },
+            { id: 'translations', en: 'Translations' },
+            { id: 'commentary', en: 'Commentary and attribution' },
+            { id: 'modern', en: 'Modern explanations' },
+            { id: 'ai', en: 'AI assistance' },
+            { id: 'review', en: 'Human review' },
+            { id: 'corrections', en: 'Corrections' },
+            { id: 'rights', en: 'Rights information' },
+            { id: 'versions', en: 'Version history' },
+            { id: 'audio', en: 'Audio and soundscape architecture' },
+          ]}
+        />
 
         <h2 id="sources" className={h2}>1. Source texts</h2>
         <p className={p}>
@@ -121,7 +117,7 @@ export default function MethodologyPage() {
         <h2 id="rights" className={h2}>8. Rights information</h2>
         <p className={p}>
           The classical Sanskrit texts are ancient and not under copyright, but a particular edition, translation or commentary can be.
-          The <Link href="/sources" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">source library</Link> names
+          The <Link href="/sources/" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">source library</Link> names
           the edition behind each text. Where the licence of an edition or translation has not been confirmed, that is not stated as settled here;
           if you hold rights in material shown on this site, use the correction link on any verse page to tell the editors and it will be reviewed.
           Explanations marked as editorial or AI-assisted are this project’s own drafts.
@@ -144,7 +140,7 @@ export default function MethodologyPage() {
         </p>
 
         <p className="mt-10 text-sm text-dharma-muted">
-          Back to the <Link href="/scriptures" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">scripture library</Link>.
+          Back to the <Link href="/scriptures/" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">scripture library</Link>.
         </p>
       </article>
     </main>

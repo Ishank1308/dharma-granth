@@ -178,8 +178,8 @@ export function CharacterMap() {
   return (
     <div className="character-map">
       {/* Controls Bar */}
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-6">
-        <div className="relative flex-1 max-w-sm">
+      <div className="flex flex-col sm:flex-row flex-wrap gap-4 items-start sm:items-center justify-between mb-6">
+        <div className="relative w-full min-w-0 flex-1 max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-dharma-muted" />
           <input
             type="text"
@@ -195,11 +195,11 @@ export function CharacterMap() {
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 max-w-full">
           <button onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))} className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition" title="ज़ूम आउट">
             <ZoomOut className="w-4 h-4" />
           </button>
-          <span className="text-xs text-dharma-muted w-12 text-center tabular-nums">{Math.round(zoom * 100)}%</span>
+          <span className="text-xs text-dharma-muted min-w-[3rem] px-1 text-center tabular-nums">{Math.round(zoom * 100)}%</span>
           <button onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))} className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition" title="ज़ूम इन">
             <ZoomIn className="w-4 h-4" />
           </button>

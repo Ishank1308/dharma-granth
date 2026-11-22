@@ -4,6 +4,7 @@ import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { articleLd, pageLd } from '@/lib/jsonld';
 import { EDITION_NAME } from '@/lib/editorial-terminology';
 import { STUDY_LAYER_GUIDE } from '@/lib/study-layers';
+import { OnThisPage } from '@/app/components/OnThisPage';
 
 export const metadata: Metadata = {
   title: 'How Dharma Granth works',
@@ -69,7 +70,7 @@ export default function HowDharmaGranthWorksPage() {
     }),
   );
   return (
-    <main id="main" className="min-h-screen bg-dharma-bg">
+    <main id="main" className="long-read min-h-screen bg-dharma-bg">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -85,9 +86,20 @@ export default function HowDharmaGranthWorksPage() {
           of a verse page is — and what it is not.
         </p>
 
-        {POINTS.map((point) => (
+        <OnThisPage
+          className="mt-6"
+          items={[
+            ...POINTS.map((point, i) => ({
+              id: `point-${i + 1}`,
+              en: point.title.replace(/^\d+\.\s*/, ''),
+            })),
+            { id: 'layers', en: 'What each layer is' },
+          ]}
+        />
+
+        {POINTS.map((point, i) => (
           <section key={point.title}>
-            <h2 className={h2}>{point.title}</h2>
+            <h2 id={`point-${i + 1}`} className={h2}>{point.title}</h2>
             <p className={p}>{point.body}</p>
           </section>
         ))}
@@ -112,11 +124,11 @@ export default function HowDharmaGranthWorksPage() {
 
         <p className="mt-10 text-sm text-dharma-muted">
           For full detail — sources, machine assistance, and review practice — see{' '}
-          <Link href="/methodology" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">
+          <Link href="/methodology/" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">
             Methodology: how this site is made
           </Link>
           . Back to the{' '}
-          <Link href="/scriptures" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">
+          <Link href="/scriptures/" className="font-semibold text-saffron-800 underline-offset-2 hover:underline dark:text-saffron-300">
             scripture library
           </Link>
           .
