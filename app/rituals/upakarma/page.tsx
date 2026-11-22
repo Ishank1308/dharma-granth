@@ -5,9 +5,9 @@ import { UPAKARMA_STEPS, UPAKARMA_FAQS } from '@/data/upakarma-data';
 import { UpakarmaClient } from './UpakarmaClient';
 
 export const metadata: Metadata = {
-  title: 'उपाकर्म एवं यज्ञोपवीत संस्कार विधान · Upakarma & Sacred Thread Guide | Dharma Granth',
+  title: { absolute: 'उपाकर्म व यज्ञोपवीत विधान · Upakarma Guide | Dharma Granth' },
   description:
-    'ऋग्वेदीय एवं यजुर्वेदीय श्रावणी उपाकर्म (आवनि अवित्तम) की प्रामाणिक वैदिक विधि — कामोऽकार्षीत् प्रायश्चित्त जप, ब्रह्म-यज्ञ, नूतन यज्ञोपवीत धारण एवं विसर्जन मन्त्र, नौ तन्तुओं का रहस्य और वेद-आरम्भ।',
+    'ऋग्वेदीय व यजुर्वेदीय श्रावणी उपाकर्म की वैदिक विधि — कामोऽकार्षीत् जप, ब्रह्म-यज्ञ, यज्ञोपवीत धारण-विसर्जन मन्त्र और नौ तन्तुओं का अर्थ।',
   alternates: {
     canonical: 'https://dharmagranth.dev/rituals/upakarma/',
   },

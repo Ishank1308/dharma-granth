@@ -10,7 +10,7 @@ import { JsonLd } from '@/app/components/JsonLd';
 import { BookOpen } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'प्रदोष व्रत तिथियाँ 2026–2028 · Pradosh Vrat Dates & Shiva Mahatmya',
+  title: { absolute: 'प्रदोष व्रत तिथियाँ 2026–2028 · Pradosh Vrat Dates | Dharma Granth' },
   description:
     'वर्ष 2026, 2027 एवं 2028 की समस्त प्रदोष व्रत तिथियाँ, प्रदोष काल समय, शिव पुराण के अनुसार व्रत विधि, मंत्र एवं महात्म्य।',
   keywords: [

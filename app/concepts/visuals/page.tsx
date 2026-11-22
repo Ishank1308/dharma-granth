@@ -7,9 +7,9 @@ import { JsonLd } from '@/app/components/JsonLd';
 import { pageLd, articleLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
-  title: 'दृश्य ज्ञान दर्शन — 10 वैदिक अवधारणाओं के इंटरैक्टिव आरेख | Dharma Granth',
+  title: { absolute: 'दृश्य ज्ञान दर्शन — वैदिक अवधारणाओं के आरेख | Dharma Granth' },
   description:
-    'धर्म, कर्म, मोक्ष, आत्मन्, ब्रह्मन्, माया, योग, वेदान्त, भक्ति और संसार के पवित्र ज्यामितीय मण्डल, प्रवाह आरेख, और ज्ञान मानचित्र। Interactive sacred visual learning layer.',
+    'धर्म, कर्म, मोक्ष, आत्मन्, ब्रह्मन्, माया, योग, वेदान्त, भक्ति और संसार के इंटरैक्टिव आरेख व ज्ञान मानचित्र। Interactive visual diagrams.',
   keywords: [
     'Dharma visual diagrams',
     'Karma flowchart',

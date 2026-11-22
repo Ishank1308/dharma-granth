@@ -5,7 +5,7 @@ import { DailyVerseFeed } from './DailyVerseFeed';
 export const metadata: Metadata = {
   title: 'Daily Verse for WhatsApp · दैनिक श्लोक',
   description:
-    "Today's verse as a ready-to-send WhatsApp message: Sanskrit, Hindi and English meaning, and a link to the verse. Copy it into a WhatsApp Channel or send it to a friend.",
+    'Daily Sanskrit verse with Hindi and English meaning, formatted as a ready-to-send WhatsApp message with a direct link to the full shloka.',
   alternates: { canonical: '/daily-verse/' },
   openGraph: {
     title: 'Daily Verse for WhatsApp · दैनिक श्लोक',

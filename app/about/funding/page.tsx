@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'How Dharma Granth Is Funded · धर्म ग्रंथ का व्यय और सहयोग',
+  title: { absolute: 'How Dharma Granth Is Funded · व्यय और सहयोग | Dharma Granth' },
   description:
     'What keeps Dharma Granth free: no fees, no advertising, no accounts, and voluntary contributions by UPI. What contributions pay for, and what is not yet published.',
   alternates: { canonical: '/about/funding/' },

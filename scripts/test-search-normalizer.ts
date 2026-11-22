@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { normalizePhonetic } from '../lib/searchNormalizer';
 import { parseDirectCitation } from '../lib/search-citation';
 import { parseIntent } from '../lib/search-intent';
+import { clipDescription, htmlAttrLength, htmlTitleLength, pickTitle } from '../lib/meta-text';
 
 const GROUPS: string[][] = [
   ['कर्मण्येवाधिकारस्ते', 'karmaṇyevādhikāraste', 'karmanyevadhikaraste'],
@@ -66,5 +67,19 @@ assert.ok(hiCmp && hiCmp.kind === 'compare', 'Hindi compare intent');
 
 assert.equal(parseDirectCitation('Gita 2.47 meaning in hindi')?.href, gitaCitationExpected);
 assert.equal(parseDirectCitation('11.15 in hindi')?.href, '/scripture/bhagavadgita/chapter/11/verse/15/');
+assert.equal(parseDirectCitation('Yoga Sutra 1.2')?.href, '/scripture/yogasutra/chapter/1/verse/2/');
+assert.equal(parseDirectCitation('Ashtavakra Gita 1.3')?.href, '/ashtavakra/1/3/');
+assert.equal(parseDirectCitation('अष्टावक्र गीता 1.3')?.href, '/ashtavakra/1/3/');
+assert.equal(parseDirectCitation('Ashtavakra Gita 1.99'), null);
 
-console.log('normalizePhonetic & citation parser tests: ALL PASSED');
+// Meta-text helpers: HTML-entity-safe description & title bounds
+const entityHeavy = clipDescription("Indra's pride & Agni's test in Kena Upanishad's parable: ".repeat(4), 158);
+assert.ok(htmlAttrLength(entityHeavy) <= 158, `clipDescription HTML attr length should be <= 158, got ${htmlAttrLength(entityHeavy)}`);
+const chosenTitle = pickTitle([
+  'Bhagavad Gita 2.47 (कर्मण्येवाधिकारस्ते) — Hindi & English Meaning | Dharma Granth',
+  'Bhagavad Gita 2.47 (कर्मण्येवाधिकारस्ते) — Hindi & English Meaning',
+]);
+assert.equal(chosenTitle, 'Bhagavad Gita 2.47 (कर्मण्येवाधिकारस्ते) — Hindi & English Meaning');
+assert.ok(htmlTitleLength(chosenTitle) <= 70, `pickTitle HTML length should be <= 70, got ${htmlTitleLength(chosenTitle)}`);
+
+console.log('normalizePhonetic, citation parser & meta-text tests: ALL PASSED');

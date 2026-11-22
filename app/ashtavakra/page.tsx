@@ -7,7 +7,7 @@ import { ChapterPath, type PathChapter } from './ChapterPath';
 import { ContinueReading, DailyVerse, SkipAnimation, type DailyItem } from './VerseBits';
 
 export const metadata: Metadata = {
-  title: 'अष्टावक्र गीता: मूल संस्कृत, हिन्दी भावार्थ और सरल व्याख्या',
+  title: { absolute: 'अष्टावक्र गीता: संस्कृत श्लोक, हिंदी अर्थ व व्याख्या | Dharma Granth' },
   description: 'अष्टावक्र गीता के श्लोक: मूल संस्कृत, पुस्तकानुसार हिन्दी भावार्थ, सरल हिन्दी व्याख्या, आधुनिक उदाहरण और English। हर श्लोक पर स्रोत-सत्यापन की स्थिति।',
   alternates: { canonical: '/ashtavakra/' },
   openGraph: {

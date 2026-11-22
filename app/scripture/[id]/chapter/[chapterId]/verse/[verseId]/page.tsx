@@ -3,7 +3,7 @@ import { sceneAttrs } from '@/lib/chapter-scenes';
 import { photoAttrs } from '@/lib/scene-photos';
 import { FolioMotion } from '@/app/components/motion/FolioMotion';
 import { chapterPainting } from '@/lib/chapter-paintings';
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ChapterVisitRecorder } from '@/app/components/ChapterVisitRecorder';
@@ -156,6 +156,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   const ref = `${meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const words = opening(found.verse.sanskrit, 22);
+  const shortWords = opening(found.verse.sanskrit, 14);
   // The title names only the meanings the page really has; a page with none says so and is kept out of the index
   // (and out of the sitemap, see lib/sitemap-sections.ts) until a meaning is written.
   const has = verseMeaningSummary(meta.id, chapterId, found.verse);
@@ -168,12 +169,29 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     : has.explanation
     ? 'Explanation'
     : 'Original Shloka';
+  const compactPromise = has.hindi && has.english
+    ? 'अर्थ व Meaning'
+    : has.hindi
+    ? 'हिंदी अर्थ'
+    : has.english
+    ? 'Meaning'
+    : has.explanation
+    ? 'व्याख्या'
+    : 'श्लोक';
 
   // Front-load reference and Sanskrit shloka so mobile search results display them without truncation:
-  // e.g. "Bhagavad Gita 2.47 (कर्मण्येवाधिकारस्ते) — Hindi Meaning"
-  const title = words
-    ? `${ref} (${words}) — ${promise}`
-    : `${ref} — ${promise}`;
+  // e.g. "Bhagavad Gita 2.47 (कर्मण्येवाधिकारस्ते) — Hindi & English Meaning"
+  const ogTitle = words ? `${ref} (${words}) — ${promise}` : `${ref} — ${promise}`;
+  const seoTitle = pickTitle([
+    words && `${ref} (${words}) — ${promise} | Dharma Granth`,
+    words && `${ref} (${words}) — ${promise}`,
+    shortWords && `${ref} (${shortWords}) — ${promise}`,
+    words && `${ref} (${words}) — ${compactPromise}`,
+    shortWords && `${ref} (${shortWords}) — ${compactPromise}`,
+    `${ref} — ${promise} | Dharma Granth`,
+    `${ref} — ${promise}`,
+    `${ref} — ${compactPromise}`,
+  ]);
   // Hindi reference stays in the keywords ("श्रीमद्भगवद्गीता 2.47 का हिंदी अर्थ").
   const refHi = `${meta.titleSanskrit ?? meta.title} ${formatVerseRef(meta.id, chapterId, params.verseId)}`;
   const cleanSanskrit = cleanVerseField(found.verse.sanskrit).replace(/\s+/g, ' ').trim();
@@ -183,14 +201,14 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     cleanSanskrit && cleanTranslation
       ? `${ref}: ${cleanSanskrit} — ${cleanTranslation}`
       : cleanSanskrit || cleanTranslation || `${refHi} का मूल श्लोक, हिंदी अर्थ एवं व्याख्या`,
-    160,
+    158,
   );
   const latin = openingLatin(found.verse.transliteration);
   const canonical = versePageHref(meta.id, chapterId, params.verseId);
   const image = verseOgPath(meta.id, chapterId, params.verseId) ?? `/og/${meta.id}.png`;
 
   return {
-    title: { absolute: `${title} — Dharma Granth` },
+    title: { absolute: seoTitle },
     description,
     keywords: [
       ref,
@@ -220,13 +238,13 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title,
+      title: ogTitle,
       description,
       url: canonical,
       tags: meta.tags,
       images: [{ url: image, width: 1200, height: 630, alt: ref }],
     },
-    twitter: { card: 'summary_large_image', title, description, images: [image] },
+    twitter: { card: 'summary_large_image', title: ogTitle, description, images: [image] },
   };
 }
 

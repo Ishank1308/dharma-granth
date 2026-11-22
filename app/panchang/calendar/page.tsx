@@ -22,9 +22,9 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Hindu Festival Calendar 2026–2028 · Daily Panchang, Ekadashi & Vratas',
+  title: { absolute: 'Hindu Festival Calendar 2026–2028 · Daily Panchang & Vratas' },
   description:
-    'Comprehensive monthly Vedic lunisolar calendar for 2026, 2027, and 2028. Explore daily Udaya Tithi, Nakshatra, Yoga, Karana, sacred Ekadashi fasts, Pradosha twilights, Purnima, Amavasya, and major Hindu festivals.',
+    'Monthly Vedic lunisolar calendar for 2026–2028: daily Udaya Tithi, Nakshatra, Yoga, Karana, Ekadashi fasts, Pradosha, Purnima, Amavasya, and major festivals.',
   keywords: [
     'Hindu calendar 2026 2027 2028',
     'panchang calendar',

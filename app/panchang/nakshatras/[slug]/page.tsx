@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { NAKSHATRA_DATA, getNakshatraBySlug, nakshatraSlug } from '@/lib/panchang';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Star, Compass, ArrowLeft, ArrowRight, BookOpen, Sparkles, Calendar, ExternalLink } from 'lucide-react';
@@ -22,15 +22,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const nakshatra = getNakshatraBySlug(resolved.slug);
   if (!nakshatra) return { title: 'Nakshatra Not Found' };
 
-  const title = `${nakshatra.name} Nakshatra (${nakshatra.nameHi}) — Deity, Symbol & Vedic Meaning`;
+  const ogTitle = `${nakshatra.name} Nakshatra (${nakshatra.nameHi}) — Deity, Symbol & Vedic Meaning`;
+  const title = pickTitle([
+    `${nakshatra.name} Nakshatra (${nakshatra.nameHi}) — Deity & Meaning | Dharma Granth`,
+    `${nakshatra.name} Nakshatra (${nakshatra.nameHi}) — Deity, Symbol & Meaning`,
+    `${nakshatra.name} (${nakshatra.nameHi}) Nakshatra — Deity & Meaning`,
+  ]);
   const description = clipDescription(
-    `${nakshatra.name} (${nakshatra.nameHi}) is the ${nakshatra.index + 1}th lunar mansion of the Vedic zodiac. Presiding deity: ${nakshatra.deity}. Ruling planet: ${nakshatra.rulingPlanet}. ${nakshatra.explanation} ${nakshatra.studyTheme}`
+    `${nakshatra.name} (${nakshatra.nameHi}) is the ${nakshatra.index + 1}th lunar mansion of the Vedic zodiac. Presiding deity: ${nakshatra.deity}. Ruling planet: ${nakshatra.rulingPlanet}. ${nakshatra.explanation} ${nakshatra.studyTheme}`,
+    158,
   );
   const canonical = `/panchang/nakshatras/${resolved.slug}/`;
   const ogImageUrl = `/og/nakshatra/${resolved.slug}.png`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: [
       `${nakshatra.name} nakshatra meaning`,
@@ -47,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title: `${title} — Dharma Granth`,
+      title: `${ogTitle} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev${canonical}`,
       images: [
@@ -61,7 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: ogTitle,
       description,
       images: [ogImageUrl],
     },

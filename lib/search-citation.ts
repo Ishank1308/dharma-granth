@@ -24,6 +24,9 @@ const GITA_VERSES = [47, 72, 43, 42, 29, 47, 30, 28, 34, 42, 55, 20, 35, 27, 20,
 /** Katha library chapters are the six vallis, in traditional order. */
 const KATHA_VALLI_VERSES = [29, 25, 17, 15, 15, 18];
 
+/** Published verse counts per Ashtavakra Gita prakarana (chapters 1–20). */
+const ASHTAVAKRA_VERSES = [20, 25, 14, 6, 4, 4, 5, 4, 8, 8, 8, 8, 7, 4, 20, 11, 20, 100, 8, 14];
+
 function clean(raw: string): string {
   return raw
     .replace(/[०-९]/g, (d) => String(DIGITS.indexOf(d)))
@@ -90,14 +93,13 @@ function rigveda(mandala: number, sukta: number, rik: number): DirectCitation | 
 }
 
 function ashtavakra(chapter: number, verse: number): DirectCitation | null {
-  if (chapter < 1 || chapter > 20 || verse < 1) return null;
-  const href = versePageHref('ashtavakra', chapter, verse);
-  if (!href) return null;
+  const max = ASHTAVAKRA_VERSES[chapter - 1];
+  if (!max || verse < 1 || verse > max) return null;
   return {
     scriptureId: 'ashtavakra',
     title: `Ashtavakra Gita ${chapter}.${verse}`,
-    subtitle: 'अष्टावक्रगीता · exact verse',
-    href,
+    subtitle: 'अष्टावक्र गीता · exact verse',
+    href: `/ashtavakra/${chapter}/${verse}/`,
     matchReason: 'Exact reference',
   };
 }
@@ -123,7 +125,7 @@ export function parseDirectCitation(raw: string): DirectCitation | null {
     }
   }
 
-  const avMatch = /^(?:av|ashtavakra|ashtavakragita|अष्टावक्र|अष्टावक्रगीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
+  const avMatch = /^(?:av|ashtavakra|ashtavakra gita|ashtavakragita|अष्टावक्र|अष्टावक्र गीता|अष्टावक्रगीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
   if (avMatch) return ashtavakra(Number(avMatch[1]), Number(avMatch[2]));
 
   const kathaThree = /^(?:katha|kathopanishad|katha upanishad|कठ|कठोपनिषद्)\s*(\d+)\s*[.:]\s*(\d+)\s*[.:]\s*(\d+)$/.exec(q);

@@ -9,7 +9,7 @@ const PAGE_DESCRIPTION = clipDescription(
 );
 
 export const metadata: Metadata = {
-  title: 'Bhagavad Gita Daily Sankalpa · गीता नित्य स्वाध्याय संकल्प',
+  title: { absolute: 'Bhagavad Gita Sankalpa · गीता स्वाध्याय संकल्प | Dharma Granth' },
   description: PAGE_DESCRIPTION,
   keywords: [
     'gita sankalpa',

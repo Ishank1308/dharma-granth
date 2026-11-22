@@ -34,7 +34,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 export default async function WordLetterPage(props: PageProps) {
   const params = await props.params;
   const letter = decodeURIComponent(params.letter);
-  const group = buildWordIndex().groups.find((item) => item.letter === letter);
+  const index = buildWordIndex();
+  const group = index.groups.find((item) => item.letter === letter);
   if (!group) notFound();
 
   return (
@@ -47,9 +48,31 @@ export default async function WordLetterPage(props: PageProps) {
         <span lang="sa">{group.letter}</span>
       </nav>
       <h1 lang="sa" className="mt-4 font-bold" style={{ fontSize: 'clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem)', lineHeight: 1.4 }}>
-        {group.letter}
+        {group.letter} — अष्टावक्र गीता शब्द-अन्वेषण
       </h1>
-      <p lang="hi" className="ash-meta mt-2">{group.words.length} पद-समूह।</p>
+      <p lang="hi" className="ash-meta mt-2">
+        अष्टावक्र गीता के प्रकाशित प्रकरणों में <strong lang="sa">{group.letter}</strong> अक्षर से आरम्भ होने वाले {group.words.length} संस्कृत पद-समूह, उनके प्रसंगानुसार हिंदी अर्थ और प्रत्यक्ष श्लोक-संदर्भ नीचे सूचीबद्ध हैं। किसी भी श्लोक-संदर्भ पर क्लिक करके मूल संस्कृत पाठ, पदच्छेद-अन्वय और सरल व्याख्या पढ़ें।
+      </p>
+
+      <div role="region" aria-label="अक्षर सूची" className="mt-4 flex flex-wrap gap-1.5 rounded-2xl border border-dharma-border bg-dharma-card/60 p-3">
+        {index.groups.map((item) => {
+          const active = item.letter === group.letter;
+          return (
+            <Link
+              key={item.letter}
+              href={`/ashtavakra/words/${encodeURIComponent(item.letter)}/`}
+              aria-current={active ? 'page' : undefined}
+              className={`inline-flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg border px-2.5 py-1 font-devanagari text-sm font-semibold transition ${
+                active
+                  ? 'border-saffron-500 bg-saffron-500/15 text-saffron-800 dark:text-saffron-300'
+                  : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-400'
+              }`}
+            >
+              {item.letter}
+            </Link>
+          );
+        })}
+      </div>
 
       <dl className="mt-6 grid gap-3">
         {group.words.map((word) => (

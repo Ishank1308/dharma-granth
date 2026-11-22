@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { UNIQUE_TITHI_ARCHETYPES, getUniqueTithiBySlug } from '@/lib/panchang';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { Moon, Sun, ArrowLeft, ArrowRight, BookOpen, Sparkles, Calendar, Layers, ShieldCheck, ExternalLink } from 'lucide-react';
@@ -22,15 +22,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const tithi = getUniqueTithiBySlug(resolved.slug);
   if (!tithi) return { title: 'Tithi Not Found' };
 
-  const title = `${tithi.name} Tithi (${tithi.nameHi}) — Meaning, Deity, Rules & Significance`;
+  const ogTitle = `${tithi.name} Tithi (${tithi.nameHi}) — Meaning, Deity, Rules & Significance`;
+  const title = pickTitle([
+    `${tithi.name} Tithi (${tithi.nameHi}) — Meaning, Deity & Rules | Dharma Granth`,
+    `${tithi.name} Tithi (${tithi.nameHi}) — Meaning, Deity & Rules`,
+    `${tithi.name} (${tithi.nameHi}) Tithi — Deity & Significance`,
+  ]);
   const description = clipDescription(
-    `${tithi.name} (${tithi.nameHi}) is the ${tithi.number}th lunar day archetype of Vedic astronomy. Presiding deity: ${tithi.deity}. Category: ${tithi.categoryType} (${tithi.categoryTypeHi}). ${tithi.explanation} ${tithi.spiritualFocus}`
+    `${tithi.name} (${tithi.nameHi}) is the ${tithi.number}th lunar day archetype of Vedic astronomy. Presiding deity: ${tithi.deity}. Category: ${tithi.categoryType} (${tithi.categoryTypeHi}). ${tithi.explanation} ${tithi.spiritualFocus}`,
+    158,
   );
   const canonical = `/panchang/tithis/${resolved.slug}/`;
   const ogImageUrl = `/og/tithi/${resolved.slug}.png`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: [
       `${tithi.name} tithi meaning in hindi`,
@@ -47,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title: `${title} — Dharma Granth`,
+      title: `${ogTitle} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev${canonical}`,
       images: [
@@ -61,7 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: ogTitle,
       description,
       images: [ogImageUrl],
     },

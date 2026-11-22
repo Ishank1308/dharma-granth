@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 
 export const metadata: Metadata = {
-  title: 'Source Library & Text Transparency · स्रोत एवं संस्करण',
+  title: { absolute: 'Source Library & Provenance · स्रोत एवं संस्करण | Dharma Granth' },
   alternates: { canonical: '/sources/' },
   openGraph: {
     title: 'Source Library & Text Transparency · स्रोत एवं संस्करण',

@@ -937,6 +937,7 @@ export const scriptureCatalog: ScriptureMeta[] = [
     totalChapters: 5,
     totalVerses: 16,
     canonicalTotalVerses: 51,
+    selectedVerses: true,
     isCurated: true,
     tags: ["DailyRituals","Sandhya","Agnihotra","Puja","Japa","SuryaNamaskara","Smriti","Dharma","Gayatri","Mantra","Worship","Discipline","NityaKarma","SpiritualPractice"],
     hasData: true,

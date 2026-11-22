@@ -22,6 +22,11 @@ export const VERSE_PAGE_SCRIPTURE_IDS = [
   'shvetashvatara',
   'chandogya',
   'brihadaranyaka',
+  'kaivalya',
+  'amritabindu',
+  'jabala',
+  'yogasutra',
+  'naradabhaktisutra',
   'ramayana',
   'ramcharitmanas',
 ] as const;

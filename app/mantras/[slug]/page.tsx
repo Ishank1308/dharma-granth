@@ -5,7 +5,7 @@ import { SACRED_MANTRAS, getMantraBySlug } from '@/data/mantras';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { MANTRA_PHOTOS } from '@/lib/page-photos';
 import { PageCover } from '@/app/components/PagePhoto';
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { Copy, MessageCircle, ArrowLeft, ArrowRight, BookOpen, Sparkles, Check, ExternalLink } from 'lucide-react';
 import { MantraDetailClient } from './MantraDetailClient';
@@ -25,13 +25,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const mantra = getMantraBySlug(resolved.slug);
   if (!mantra) return { title: 'Mantra Not Found' };
 
-  const title = `${mantra.title} (${mantra.titleHi}) — Meaning & Lyrics`;
-  const description = clipDescription(`${mantra.sanskrit} — ${mantra.hindiMeaning} ${mantra.englishMeaning}`);
+  const ogTitle = `${mantra.title} (${mantra.titleHi}) — Meaning & Lyrics`;
+  const title = pickTitle([
+    `${mantra.title} (${mantra.titleHi}) — अर्थ व Meaning | Dharma Granth`,
+    `${mantra.title} (${mantra.titleHi}) — श्लोक व हिंदी अर्थ`,
+    `${mantra.title} (${mantra.titleHi}) — अर्थ व Meaning`,
+    `${mantra.title} — ${mantra.titleHi}`,
+    `${mantra.title} — Lyrics & Hindi Meaning | Dharma Granth`,
+    `${mantra.title} — श्लोक व हिंदी अर्थ`,
+  ]);
+  const description = clipDescription(`${mantra.sanskrit} — ${mantra.hindiMeaning} ${mantra.englishMeaning}`, 158);
   const canonical = `/mantras/${mantra.slug}/`;
   const ogImageUrl = `/og/mantra/${mantra.slug}.png`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: [
       `${mantra.title} meaning in hindi`,
@@ -48,7 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title: `${title} — Dharma Granth`,
+      title: `${ogTitle} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev/mantras/${mantra.slug}/`,
       images: [
@@ -62,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: ogTitle,
       description,
       images: [ogImageUrl],
     },
@@ -82,40 +90,14 @@ export default async function MantraDetailPage({ params }: PageProps) {
   const prevMantra = currentIndex > 0 ? SACRED_MANTRAS[currentIndex - 1] : undefined;
   const nextMantra = currentIndex < SACRED_MANTRAS.length - 1 ? SACRED_MANTRAS[currentIndex + 1] : undefined;
 
-  const faqItems = [
-    {
-      '@type': 'Question',
-      name: `${mantra.title} (${mantra.titleHi}) का हिन्दी अर्थ क्या है?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: mantra.hindiMeaning,
-      },
+  const faqItems = mantra.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.answer,
     },
-    {
-      '@type': 'Question',
-      name: `What is the English translation and meaning of the ${mantra.title}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: mantra.englishMeaning,
-      },
-    },
-    {
-      '@type': 'Question',
-      name: `What is the scriptural source and coordinates of ${mantra.title}?`,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: `${mantra.sourceCoordinates}. Rishi: ${mantra.rishi || 'Classical Vedic Tradition'}, Devata: ${mantra.devata || 'Parabrahman'}, Chhandas: ${mantra.chhandas || 'Vedic Metre'}.`,
-      },
-    },
-    ...mantra.faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: f.answer,
-      },
-    })),
-  ];
+  }));
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -124,7 +106,7 @@ export default async function MantraDetailPage({ params }: PageProps) {
         '@type': 'Article',
         '@id': `${pageUrl}#article`,
         headline: `${mantra.title} (${mantra.titleHi}) — Lyrics, Meaning in Hindi & English`,
-        description: clipDescription(`${mantra.sanskrit} — ${mantra.hindiMeaning}`),
+        description: clipDescription(`${mantra.sanskrit} — ${mantra.hindiMeaning}`, 158),
         abstract: mantra.hindiMeaning,
         text: [mantra.sanskrit, mantra.transliteration, mantra.hindiMeaning, mantra.englishMeaning].join('\n\n'),
         inLanguage: ['sa', 'hi', 'en'],
@@ -139,11 +121,15 @@ export default async function MantraDetailPage({ params }: PageProps) {
           logo: { '@type': 'ImageObject', url: `${siteUrl}/icon-512.png` },
         },
       },
-      {
-        '@type': 'FAQPage',
-        '@id': `${pageUrl}#faq`,
-        mainEntity: faqItems,
-      },
+      ...(faqItems.length > 0
+        ? [
+            {
+              '@type': 'FAQPage',
+              '@id': `${pageUrl}#faq`,
+              mainEntity: faqItems,
+            },
+          ]
+        : []),
       {
         '@type': 'BreadcrumbList',
         itemListElement: [

@@ -29,9 +29,9 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | bhagavatapurana | 14408 | 14408 | 14408 | 0 | 7 | 0 | 7 | 0 |
 | brahmasutra | 564 | 564 | 564 | 0 | 564 | 0 | 564 | 1 |
 | brahmavaivartapuran | 10 | 10 | 10 | 0 | 10 | 0 | 10 | 1 |
-| brihadaranyaka | 435 | 435 | 435 | 0 | 435 | 0 | 0 | 0 |
-| chandogya | 628 | 628 | 628 | 0 | 627 | 1 | 627 | 2 |
-| durgasaptashati | 634 | 634 | 634 | 0 | 634 | 0 | 597 | 9 |
+| brihadaranyaka | 435 | 435 | 435 | 0 | 435 | 0 | 435 | 0 |
+| chandogya | 628 | 628 | 628 | 0 | 627 | 1 | 628 | 14 |
+| durgasaptashati | 634 | 634 | 634 | 0 | 634 | 0 | 634 | 14 |
 | ishavasya | 18 | 18 | 18 | 0 | 18 | 0 | 18 | 3 |
 | jabala | 6 | 6 | 6 | 0 | 6 | 0 | 6 | 1 |
 | kaivalya | 24 | 24 | 24 | 0 | 24 | 0 | 24 | 6 |
@@ -45,7 +45,7 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | mahaupanishad | 553 | 553 | 553 | 0 | 553 | 0 | 553 | 0 |
 | maitri | 99 | 99 | 99 | 0 | 99 | 0 | 99 | 0 |
 | mandukya | 12 | 12 | 12 | 0 | 12 | 0 | 12 | 3 |
-| manusmriti | 2684 | 2684 | 2684 | 0 | 2682 | 2 | 0 | 0 |
+| manusmriti | 2684 | 2684 | 2684 | 0 | 2682 | 2 | 4 | 4 |
 | markandeypuran | 4324 | 4324 | 4324 | 0 | 670 | 1 | 117 | 0 |
 | muktika | 137 | 137 | 137 | 0 | 137 | 0 | 137 | 0 |
 | mundaka | 64 | 64 | 64 | 0 | 64 | 0 | 64 | 64 |
@@ -53,7 +53,7 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | niralamba | 21 | 21 | 21 | 0 | 21 | 0 | 21 | 0 |
 | nityakarmakriya | 16 | 16 | 16 | 0 | 16 | 0 | 16 | 13 |
 | padmapuran | 18 | 18 | 18 | 0 | 18 | 0 | 18 | 2 |
-| prashna | 67 | 67 | 67 | 0 | 67 | 0 | 67 | 21 |
+| prashna | 67 | 67 | 67 | 0 | 67 | 0 | 67 | 67 |
 | ramayana | 23595 | 23595 | 23595 | 0 | 0 | 0 | 4 | 4 |
 | ramcharitmanas | 6172 | 6172 | 6172 | 0 | 89 | 0 | 35 | 35 |
 | ravanasamhita | 43 | 43 | 43 | 0 | 43 | 0 | 43 | 43 |
@@ -75,6 +75,6 @@ See also `VERSE_AUDIT.md` (raw field inventory) and `docs/editorial-coverage-rep
 | yogasutra | 195 | 195 | 195 | 0 | 195 | 0 | 195 | 3 |
 | yogavasishtha | 13 | 13 | 13 | 0 | 13 | 0 | 13 | 13 |
 | yogavasistha | 13 | 13 | 13 | 0 | 13 | 0 | 13 | 13 |
-| **Total** | 318932 | 318932 | 198712 | 7199 | 87563 | 5293 | 20833 | 664 |
+| **Total** | 318932 | 318932 | 198712 | 7199 | 87563 | 5293 | 21310 | 731 |
 
 Measured 67/67 catalogued scripture files.

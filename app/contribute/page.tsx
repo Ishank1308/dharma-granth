@@ -5,7 +5,7 @@ import { ContributeClient } from './ContributeClient';
 export const metadata: Metadata = {
   title: 'ऐच्छिक सहयोग व सेवा · Voluntary Contribution',
   description:
-    'धर्म ग्रंथ के निःशुल्क, विज्ञापन-मुक्त और डिजिटल शास्त्र संरक्षण के लिए प्रत्यक्ष UPI व सत्यापित QR द्वारा ऐच्छिक सहयोग। Direct UPI and verified QR for supporting Dharma Granth.',
+    'धर्म ग्रंथ के निःशुल्क, विज्ञापन-मुक्त शास्त्र संरक्षण हेतु प्रत्यक्ष UPI व सत्यापित QR द्वारा ऐच्छिक सहयोग। Direct UPI support for Dharma Granth.',
   alternates: { canonical: '/contribute/' },
   openGraph: {
     title: 'ऐच्छिक सहयोग व सेवा · Voluntary Contribution — Dharma Granth',

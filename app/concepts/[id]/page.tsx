@@ -1,4 +1,4 @@
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -47,9 +47,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const graph = buildGraphPage(resolved.id);
   if (!concept) {
     if (!graph) return { title: 'अवधारणा नहीं मिली (Concept Not Found)' };
-    const title = `${graph.label} (${graph.sanskrit}) Meaning in Hindi & English — शास्त्रीय दर्शन`;
+    const title = pickTitle([
+      `${graph.label} (${graph.sanskrit}) — Hindi & English Meaning | Dharma Granth`,
+      `${graph.label} (${graph.sanskrit}) — शास्त्रीय अर्थ व Meaning`,
+      `${graph.label} (${graph.sanskrit}) — Meaning & Philosophy`,
+      `${graph.label} — शास्त्रीय अर्थ | Dharma Granth`,
+    ]);
     const description = clipDescription(
       [graph.overviewHi, graph.overviewEn].filter(Boolean).join(' — ') || graph.label,
+      158,
     );
     const keywords = [
       graph.label,
@@ -60,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       'dharma granth',
     ];
     return {
-      title,
+      title: { absolute: title },
       description,
       keywords,
       alternates: { canonical: `/concepts/${graph.id}/` },
@@ -68,7 +74,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         type: 'article',
         locale: 'hi_IN',
         alternateLocale: ['en_US'],
-        title: `${title} — Dharma Granth`,
+        title,
         description,
         url: `https://dharmagranth.dev/concepts/${graph.id}/`,
         images: [DEFAULT_OG_IMAGE],
@@ -77,9 +83,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const title = `${concept.label} (${concept.sanskrit}) Meaning in Hindi & English — शास्त्रीय अर्थ`;
+  const title = pickTitle([
+    `${concept.label} (${concept.sanskrit}) — Hindi & English Meaning | Dharma Granth`,
+    `${concept.label} (${concept.sanskrit}) — शास्त्रीय अर्थ व Meaning`,
+    `${concept.label} (${concept.sanskrit}) — Meaning & Philosophy`,
+    `${concept.label} — शास्त्रीय अर्थ | Dharma Granth`,
+  ]);
   const description = clipDescription(
     `${concept.sanskrit} (${concept.label}): ${concept.simpleDefinition.hi} ${concept.simpleDefinition.en}`,
+    158,
   );
   const keywords = [
     concept.label,
@@ -96,7 +108,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   ];
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords,
     alternates: { canonical: `/concepts/${concept.id}/` },
@@ -104,7 +116,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'article',
       locale: 'hi_IN',
       alternateLocale: ['en_US'],
-      title: `${title} — Dharma Granth`,
+      title,
       description,
       url: `https://dharmagranth.dev/concepts/${concept.id}/`,
       images: [DEFAULT_OG_IMAGE],

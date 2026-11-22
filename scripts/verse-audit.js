@@ -2,7 +2,57 @@ const fs = require("fs");
 const path = require("path");
 
 const baseDir = path.join(__dirname, "..", "public", "data", "scriptures-full");
+const commRoot = path.join(__dirname, "..", "public", "data", "hi-commentary");
 const outFile = path.join(__dirname, "..", "VERSE_AUDIT.md");
+
+function canonicalVerseId(chapterNumber, verseNumber) {
+  const s = String(verseNumber);
+  if (!s.includes(".")) return s;
+  const parts = s.split(".");
+  if (parts.length >= 2 && Number(parts[0]) === chapterNumber) {
+    return parts.slice(1).join(".");
+  }
+  return parts[parts.length - 1] ?? s;
+}
+
+function buildChapterAmbiguities(chapterId, numbers) {
+  const normalized = new Set();
+  const raw = new Set();
+  const seenNormalized = new Set();
+  const seenRaw = new Set();
+  for (const number of numbers) {
+    const rawKey = `${chapterId}:${number}`;
+    if (seenRaw.has(rawKey)) raw.add(rawKey);
+    seenRaw.add(rawKey);
+    const value = Number(canonicalVerseId(chapterId, number));
+    if (!Number.isFinite(value)) continue;
+    const key = `${chapterId}:${value}`;
+    if (seenNormalized.has(key)) normalized.add(key);
+    seenNormalized.add(key);
+  }
+  return { normalized, raw };
+}
+
+function readPublishedOverlay(id) {
+  const dir = path.join(commRoot, id);
+  const out = {};
+  if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) return out;
+  for (const f of fs.readdirSync(dir)) {
+    if (!/^\d+-[a-z][A-Za-z0-9_]*\.json$/.test(f)) continue;
+    Object.assign(out, JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
+  }
+  return out;
+}
+
+function lookupOverlay(overlay, chapterId, number, ambiguity) {
+  const rawKey = `${chapterId}:${number}`;
+  if (overlay[rawKey] != null) return ambiguity.raw.has(rawKey) ? undefined : overlay[rawKey];
+  const value = Number(canonicalVerseId(chapterId, number));
+  if (!Number.isFinite(value)) return undefined;
+  const normalizedKey = `${chapterId}:${value}`;
+  if (normalizedKey !== rawKey && ambiguity.normalized.has(normalizedKey)) return undefined;
+  return overlay[normalizedKey];
+}
 
 function isBlank(value) {
   if (value == null) return true;
@@ -79,6 +129,7 @@ let grandUnusableTranslation = 0;
 for (const file of files) {
   const data = JSON.parse(fs.readFileSync(path.join(baseDir, file), "utf8"));
   const id = data.id || file.replace(".json", "");
+  const overlay = readPublishedOverlay(id);
   const total = typeof data.totalVerses === "number" ? data.totalVerses : 0;
   let loaded = 0;
   let emptySanskrit = 0;
@@ -94,7 +145,12 @@ for (const file of files) {
 
   for (const ch of data.chapters || []) {
     const chNum = ch.number ?? "?";
-    for (const v of ch.verses || []) {
+    const numCh = Number(chNum);
+    const chVerses = ch.verses || [];
+    const amb = Number.isFinite(numCh)
+      ? buildChapterAmbiguities(numCh, chVerses.map((x) => x.number ?? ""))
+      : { normalized: new Set(), raw: new Set() };
+    for (const v of chVerses) {
       loaded++;
       const ref = `${chNum}:${v.number}`;
       verseRefCounts[ref] = (verseRefCounts[ref] || 0) + 1;
@@ -116,7 +172,8 @@ for (const file of files) {
         }
       }
       if (isBlank(v.hindi)) emptyHindi++;
-      const c = commentaryOf(v);
+      const pubComm = Number.isFinite(numCh) ? lookupOverlay(overlay, numCh, v.number ?? "", amb) : undefined;
+      const c = (pubComm && pubComm.explanation) || commentaryOf(v);
       if (isBlank(c)) {
         emptyCommentary++;
         if (commentarySamples.length < 3) {

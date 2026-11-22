@@ -7,7 +7,7 @@ import { PageCover } from '@/app/components/PagePhoto';
 import { CharacterGroups } from './CharacterGroups';
 
 export const metadata: Metadata = {
-  title: 'Hindu Scriptural Characters & Lineages (पात्र ज्ञान ग्राफ)',
+  title: { absolute: 'Hindu Scriptural Characters (पात्र ज्ञान ग्राफ) | Dharma Granth' },
   description:
     'Explore family trees, spiritual lineages, dialogues, and moral dilemmas of key characters from the Mahabharata, Ramayana, Upanishads, and Puranas.',
   keywords: [

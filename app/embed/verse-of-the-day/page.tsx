@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { EmbedCard } from './EmbedCard';
 
 export const metadata: Metadata = {
-  title: 'Daily Sacred Verse Widget · दैनिक श्लोक विजेट · Dharma Granth',
+  title: { absolute: 'Daily Verse Widget · दैनिक श्लोक विजेट | Dharma Granth' },
   description:
     'Embeddable Daily Verse widget featuring Sanskrit shloka, Hindi meaning, English translation and authentic scriptural citation.',
   alternates: { canonical: '/embed/verse-of-the-day/' },

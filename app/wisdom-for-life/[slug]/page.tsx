@@ -1,4 +1,4 @@
-import { clipDescription } from '@/lib/meta-text';
+import { clipDescription, pickTitle } from '@/lib/meta-text';
 import { getLibraryFacts } from '@/lib/library-server';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -33,14 +33,24 @@ export async function generateMetadata(
   }
 
   const heading = searchHeading(topic.slug, topic.verses);
-  const title = heading
+  const ogTitle = heading
     ? `${heading.en} — ${topic.titleHi}`
     : `${topic.titleEn} (${topic.titleHi}) — Wisdom for Life`;
+  const title = pickTitle([
+    heading && `${heading.en} — ${topic.titleHi} | Dharma Granth`,
+    heading && `${heading.en} — ${topic.titleHi}`,
+    `${topic.titleEn} (${topic.titleHi}) — Gita & Scriptures | Dharma Granth`,
+    `${topic.titleEn} (${topic.titleHi}) — शास्त्रीय मार्गदर्शन`,
+    `${topic.titleEn} — ${topic.titleHi}`,
+    heading?.en,
+    `${topic.titleEn} | Dharma Granth`,
+  ]);
   const lead = topic.verses[0];
   const description = clipDescription(
     [lead?.sanskritDevanagari, lead?.literalTranslationHi || lead?.literalTranslationEn, topic.shortDescHi || topic.shortDescEn]
       .filter(Boolean)
       .join(' — '),
+    158,
   );
 
   const keywords = [
@@ -56,7 +66,7 @@ export async function generateMetadata(
   ].filter((k): k is string => Boolean(k));
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords,
     alternates: { canonical: `/wisdom-for-life/${topic.slug}/` },
@@ -65,13 +75,13 @@ export async function generateMetadata(
       locale: 'en_US',
       alternateLocale: ['hi_IN'],
       images: [DEFAULT_OG_IMAGE],
-      title: `${title} — Dharma Granth`,
+      title: `${ogTitle} — Dharma Granth`,
       description,
       url: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}/`,
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: ogTitle,
       description,
       images: [DEFAULT_OG_IMAGE],
     },
