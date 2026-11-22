@@ -91,7 +91,7 @@ export function PracticeDashboard() {
 
       <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
         {/* Focused personal spaces: Gita Sankalpa, Saved Verses, and Journal */}
-        <nav aria-label="Personal practice spaces" className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <nav aria-label="Personal practice spaces" className="reveal-grid grid grid-cols-1 gap-3 sm:grid-cols-3">
           {MY_SPACE.map(({ href, hi, en, Icon }) => (
             <Link
               key={href}
@@ -163,7 +163,7 @@ export function PracticeDashboard() {
             {on('verse') && <DailyVerse />}
 
             {/* Core Practice Grid: Japa, Meditation, Pranayama, Reflection, Reading */}
-            <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
+            <div className="reveal-grid grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
               {on('japa') && <JapaMala />}
               {on('meditation') && <MeditationTimer />}
               {on('pranayama') && <PranayamaPacer />}
