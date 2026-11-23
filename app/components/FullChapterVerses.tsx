@@ -40,7 +40,7 @@ import { VerseText } from './VerseText';
 import type { VerseInsight } from '@/lib/verse-insights';
 const MobileFocusMode = dynamic(() => import('./MobileFocusMode').then((m) => m.MobileFocusMode), { ssr: false });
 const ConversationModeView = dynamic(() => import('./conversation/ConversationModeView').then((m) => m.ConversationModeView), { ssr: false });
-import { triggerTactileFeedback } from '@/lib/haptics';
+import { triggerTactileFeedbackLazy as triggerTactileFeedback } from '@/lib/haptics-lazy';
 import { saveChapterVersesToDB, getCachedChapterVersesFromDB } from '@/lib/db/granth-indexeddb';
 import type { LiteraryVerseMeta } from '@/lib/literary-commentary';
 import type { SvadhyayaTab } from '@/app/components/reader/SvadhyayaSplitDrawer';
@@ -256,6 +256,17 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   const closeFocusMode = useCallback(() => setFocusModeOpen(false), []);
   const [focusVerseIndex, setFocusVerseIndex] = useState(0);
   const [currentViewportVerse, setCurrentViewportVerse] = useState<string | null>(null);
+  const [visitedVerseNumbers, setVisitedVerseNumbers] = useState<Set<string>>(() => new Set());
+  useEffect(() => {
+    if (!currentViewportVerse) return;
+    const key = String(currentViewportVerse);
+    setVisitedVerseNumbers((prev) => {
+      if (prev.has(key)) return prev;
+      const next = new Set(prev);
+      next.add(key);
+      return next;
+    });
+  }, [currentViewportVerse]);
   // Spatial focus: the lifted verse, and what the dock asks it to open (Anvaya, Bhāṣya or nothing).
   const [focusedVerse, setFocusedVerse] = useState<string | null>(null);
   const [readerMode, setReaderMode] = useState<ReaderMode>('samhita');
@@ -1082,7 +1093,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     className="min-h-11 max-w-[44vw] cursor-pointer rounded-lg bg-transparent px-2 py-1 text-xs font-semibold text-dharma-text outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                   >
                     <option value="" disabled className="bg-dharma-card text-dharma-text">
-                      श्लोक पर जाएं ▾
+                      श्लोक पर जाएं
                     </option>
                     {state.verses.map((v) => (
                       <option key={String(v.number)} value={String(v.number)} className="bg-dharma-card text-dharma-text">
@@ -1335,6 +1346,10 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                 if (!targetV) return null;
                 const nextMilestoneIdx = indices[indices.indexOf(idx) + 1] ?? total;
                 const isCurrentBand = activeVerseIdx >= idx && activeVerseIdx < nextMilestoneIdx;
+                const isVisitedBand =
+                  !isCurrentBand &&
+                  (idx === 0 || state.verses.slice(idx, nextMilestoneIdx).some((v) => visitedVerseNumbers.has(String(v.number))));
+                const asciiLabel = toAsciiDigits(targetV.number);
                 return (
                   <button
                     key={String(targetV.number)}
@@ -1343,15 +1358,23 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                       triggerTactileFeedback('selection', 'softTap');
                       scrollToVerse(targetV.number, 'smooth', false, 'start');
                     }}
-                    title={`श्लोक ${toAsciiDigits(targetV.number)} पर जाएँ`}
-                    aria-label={`Jump to verse ${toAsciiDigits(targetV.number)}`}
-                    className={`focus-ring tap-halo inline-flex h-8 min-w-[32px] items-center justify-center rounded-full px-1.5 text-[11px] font-semibold tabular-nums transition ${
+                    title={`श्लोक ${asciiLabel} पर जाएँ`}
+                    aria-label={isVisitedBand ? `Jump to verse ${asciiLabel} (visited)` : `Jump to verse ${asciiLabel}`}
+                    className={`focus-ring tap-halo relative inline-flex h-8 min-w-[32px] items-center justify-center rounded-full px-1.5 text-[11px] font-semibold tabular-nums transition ${
                       isCurrentBand
                         ? 'bg-dharma-saffron text-dharma-bg shadow-2xs font-bold'
-                        : 'text-dharma-muted hover:bg-dharma-bg/80 hover:text-dharma-text'
+                        : isVisitedBand
+                          ? 'text-dharma-text/85 hover:bg-dharma-bg/80 hover:text-dharma-text'
+                          : 'text-dharma-muted hover:bg-dharma-bg/80 hover:text-dharma-text'
                     }`}
                   >
-                    {toAsciiDigits(targetV.number)}
+                    {asciiLabel}
+                    {isVisitedBand && (
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-emerald-500"
+                      />
+                    )}
                   </button>
                 );
               });

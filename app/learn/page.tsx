@@ -182,7 +182,7 @@ export default function LearnPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="reveal-grid fluid-grid-lg">
           {filteredCourses.map((course) => {
             const pathwayProgress = progress.getPathwayProgress(course.id);
             const completedCount = pathwayProgress?.completedSteps?.length ?? 0;

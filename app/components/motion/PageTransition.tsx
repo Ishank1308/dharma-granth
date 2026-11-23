@@ -2,34 +2,32 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { routeDepth } from '@/lib/view-transition';
 
 /**
- * Per-route arrival plus a brief shimmer sweep across the top of the viewport, in CSS
- * (app/motion.css, section 12), so the layout carries no motion library.
+ * Per-route stage + shimmer sweep across the top of the viewport, in CSS
+ * (app/motion.css, section 12; app/styles/page-transitions.css), with zero external motion bundle.
  *
- * - The wrapper is keyed by `pathname`, so React remounts the page content (which settles in) and
- *   the shimmer (which sweeps once) on every navigation. No exit wait, so streaming is never held up.
- * - Nothing animates on the first load: the exported HTML is the page at rest, and the classes
- *   are only added once the app is running.
- * - Chapter to chapter, a leaf the colour of the page turns away on its spine instead.
- * - Reduced motion: the CSS switches every piece off.
- * - A change animated by lib/view-transition (verse to verse, chapter to chapter, opening a
- *   verse) skips the settle and the leaf, since the browser moves the screens itself.
+ * - `data-vt-stage` gives View Transitions a universal content plane on routes that don't
+ *   declare their own `[data-vt-pane]`, so every one of the 91 templates transitions smoothly.
+ * - When `lib/view-transition` is driving a View Transition (`data-vt` on `<html>`), CSS arrival
+ *   classes step aside so the compositor moves the planes once.
+ * - On history `popstate` or browsers without `startViewTransition`, spatial direction is still
+ *   preserved: chapter page-turns (`page-turn-*`), hierarchical step-back (`page-back`), and
+ *   forward arrivals (`page-settle`).
+ * - Nothing animates on first load: exported HTML starts completely at rest.
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  // Same tree on the server and the first client render; animations start with the first navigation.
   const [live, setLive] = useState(false);
   const firstPath = useRef(pathname);
   useEffect(() => {
     if (pathname !== firstPath.current) setLive(true);
   }, [pathname]);
 
-  // Chapter to chapter turns like a page: forward swings in from the right edge, back from the left.
   const lastPath = useRef(pathname);
   const turn = useRef<0 | 1 | -1>(0);
-  // When lib/view-transition is animating this change (data-vt on <html>), the browser
-  // already moves the screens, so the arrival classes and the leaf stay off.
+  const steppingBack = useRef(false);
   const viaViewTransition = useRef(false);
   if (lastPath.current !== pathname) {
     viaViewTransition.current = typeof document !== 'undefined' && document.documentElement.hasAttribute('data-vt');
@@ -37,12 +35,24 @@ export function PageTransition({ children }: { children: ReactNode }) {
     const from = chapterOf(lastPath.current);
     const to = chapterOf(pathname);
     turn.current = from && to && from[1] === to[1] && from[2] !== to[2] ? (Number(to[2]) > Number(from[2]) ? 1 : -1) : 0;
+    steppingBack.current = turn.current === 0 && routeDepth(pathname) < routeDepth(lastPath.current);
     lastPath.current = pathname;
   }
   const moved = live || pathname !== firstPath.current;
   const forward = turn.current === 1;
   const pageTurn = moved && turn.current !== 0 && !viaViewTransition.current;
-  const settle = moved && !viaViewTransition.current;
+  const stepBack = moved && !pageTurn && steppingBack.current && !viaViewTransition.current;
+  const settle = moved && !pageTurn && !stepBack && !viaViewTransition.current;
+
+  const stageClass = pageTurn
+    ? forward
+      ? 'page-turn-forward'
+      : 'page-turn-back'
+    : stepBack
+      ? 'page-back'
+      : settle
+        ? 'page-settle'
+        : undefined;
 
   return (
     <>
@@ -71,7 +81,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
           />
         </div>
       )}
-      <div key={pathname} className={pageTurn ? (forward ? 'page-turn-forward' : 'page-turn-back') : settle ? 'page-settle' : undefined}>
+      <div key={pathname} data-vt-stage className={stageClass}>
         {children}
       </div>
     </>

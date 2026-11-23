@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, useCallback, useEffect } from 'react';
-import { triggerTactileFeedback } from './haptics';
+import { triggerTactileFeedbackLazy as triggerTactileFeedback } from './haptics-lazy';
 
 export interface SwipeGestureOptions {
   onSwipeNext?: () => void;

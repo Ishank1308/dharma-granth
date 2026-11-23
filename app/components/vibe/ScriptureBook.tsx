@@ -47,7 +47,13 @@ export function ScriptureBook({
             <div className="sbook-titlepage">
               <div className="sbook-titlepage-frame">
                 <Motif id={vibe.motif} className="sbook-titlepage-motif" />
-                {vibe.epigraph ? (
+                <div className="sbook-titlepage-heading">
+                  <p lang="sa" className="shloka-text sbook-epigraph-title">
+                    {titleSa}
+                  </p>
+                  <p className="sbook-titlepage-en font-serif">{titleEn}</p>
+                </div>
+                {vibe.epigraph && (
                   <figure className="sbook-epigraph">
                     <blockquote lang="sa" className="shloka-text">
                       {vibe.epigraph.sa}
@@ -56,10 +62,6 @@ export function ScriptureBook({
                       {vibe.epigraph.source}
                     </figcaption>
                   </figure>
-                ) : (
-                  <p lang="sa" className="shloka-text sbook-epigraph sbook-epigraph-title">
-                    {titleSa}
-                  </p>
                 )}
                 <span aria-hidden="true" className="sbook-shrih font-sanskrit">
                   ॥ श्रीः ॥
@@ -73,7 +75,11 @@ export function ScriptureBook({
               <div className="sbook-frontis">
                 <div className="sbook-frontis-window">
                   <Motif id={vibe.motif} className="sbook-frontis-motif" />
-                  {picture && <span className="sbook-frontis-art" data-photo={picture} />}
+                  {picture && (
+                    <span className="sbook-frontis-art" data-photo={picture}>
+                      <span className="cinemagraph-beam" />
+                    </span>
+                  )}
                 </div>
                 <FoilRule className="sbook-frontis-rule" />
               </div>

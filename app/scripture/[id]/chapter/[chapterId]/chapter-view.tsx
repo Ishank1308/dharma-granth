@@ -413,7 +413,7 @@ export function ChapterView({ params, part: partNumber = 1 }: { params: ChapterP
       />
       {/* A book's chapter opening, as an Apple large title: the chapter, its Sanskrit name and two quiet actions,
           nothing else between the reader and the first verse. The summary lives in "About this chapter" below. */}
-      <header className="mx-auto max-w-3xl px-4 pb-3 pt-4 sm:px-6 sm:pb-6 sm:pt-8">
+      <header data-vt-hero className="mx-auto max-w-3xl px-4 pb-3 pt-4 sm:px-6 sm:pb-6 sm:pt-8">
         {painting && <div className="chapter-painting" aria-hidden="true" />}
         <div className="flex flex-wrap items-center gap-2">
           <Link

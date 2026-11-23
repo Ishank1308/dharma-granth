@@ -452,20 +452,21 @@ export function HomeScriptureTabs() {
       </div>
 
       <div
+        key={activeTab}
         id={`${tabsId}-panel`}
         role="tabpanel"
         aria-labelledby={`${tabsId}-${activeTab}`}
         data-library-category={activeTab}
-        className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        className="fluid-grid-md fluid-panel-swap mt-6"
       >
         {currentItems.map((book) => (
           <article
             key={`${activeTab}-${book.id}`}
-            className="library-showcase-book group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/75 p-5 shadow-raised backdrop-blur-xl transition-all hover:border-dharma-saffron/40 hover:shadow-hover sm:p-6"
+            data-vt-source
+            className="library-showcase-book fluid-cq group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/75 p-5 shadow-raised backdrop-blur-xl transition-all hover:border-dharma-saffron/40 hover:shadow-hover sm:p-6"
             style={{ borderLeftWidth: '5px', borderLeftColor: book.colour }}
           >
-            {/* Archival gallery rhythm, inspired by editorial library and museum UI.
-                The locally hosted image is atmospheric artwork, not a claimed source folio. */}
+            {/* Archival gallery rhythm: still artwork with an isolated cinemagraph sunbeam. */}
             <div
               className="library-book-art relative mb-4 h-28 shrink-0 overflow-hidden rounded-xl border border-dharma-border/50 bg-dharma-bg/80 sm:h-32"
               aria-hidden="true"
@@ -479,6 +480,7 @@ export function HomeScriptureTabs() {
                 loading="lazy"
                 className="library-book-art-image object-cover"
               />
+              <span className="cinemagraph-beam" />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-amber-100/10" />
               <div className="pointer-events-none absolute inset-2 rounded-[10px] border border-white/25 dark:border-amber-200/15" />
             </div>
@@ -519,6 +521,7 @@ export function HomeScriptureTabs() {
             <div className="mt-5 pt-3 border-t border-dharma-border/50">
               <Link
                 href={book.href}
+                data-vt="open"
                 className="library-showcase-link chevron-nudge flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg/80 py-2.5 text-xs font-semibold text-dharma-text transition-all group-hover:border-dharma-saffron/50 group-hover:bg-dharma-saffron/10 group-hover:text-dharma-saffron focus-ring"
               >
                 <span>अध्ययन आरम्भ करें</span>

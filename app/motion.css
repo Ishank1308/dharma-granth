@@ -67,10 +67,12 @@
     }
 }
 
-/* Cascade index along a row (0, 1, 2, 3, then again). */
-.reveal-grid > :nth-child(4n + 2) { --reveal-i: 1; }
-.reveal-grid > :nth-child(4n + 3) { --reveal-i: 2; }
-.reveal-grid > :nth-child(4n + 4) { --reveal-i: 3; }
+/* Cascade index along a fluid row (0..5, then again, so 2-, 3-, 4-, and 5-column grids wave smoothly). */
+.reveal-grid > :nth-child(6n + 2) { --reveal-i: 1; }
+.reveal-grid > :nth-child(6n + 3) { --reveal-i: 2; }
+.reveal-grid > :nth-child(6n + 4) { --reveal-i: 3; }
+.reveal-grid > :nth-child(6n + 5) { --reveal-i: 4; }
+.reveal-grid > :nth-child(6n + 6) { --reveal-i: 5; }
 
 /* 3. Home hero ─────────────────────────────────────────────────────────
    Entrance: each line comes into focus in turn (blur + rise). Opacity never starts at 0,
@@ -697,6 +699,12 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
 @keyframes page-settle {
     from { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.985); filter: blur(8px); }
 }
+@keyframes page-back-settle {
+    from { opacity: 0; transform: translate3d(0, -10px, 0) scale(0.988); filter: blur(4px); }
+}
+@keyframes fluid-panel-in {
+    from { opacity: 0; transform: translate3d(0, 10px, 0) scale(0.992); }
+}
 @keyframes page-turn-forward {
     from { opacity: 0; transform: translate3d(24px, 0, 0); }
 }
@@ -718,6 +726,12 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
 .page-settle {
     animation: page-settle var(--duration-deliberate) var(--ease-out) backwards;
 }
+.page-back {
+    animation: page-back-settle var(--duration-base) var(--motion-spring) backwards;
+}
+.fluid-panel-swap {
+    animation: fluid-panel-in var(--duration-base) var(--motion-spring) backwards;
+}
 .page-turn-forward {
     animation: page-turn-forward var(--duration-base) var(--motion-spring) backwards;
 }
@@ -738,6 +752,8 @@ nav[aria-label='Mobile quick navigation'] [aria-current='page']::after {
     .chrome-rise,
     .chrome-icon-swap,
     .page-settle,
+    .page-back,
+    .fluid-panel-swap,
     .page-turn-forward,
     .page-turn-back {
         animation: none;

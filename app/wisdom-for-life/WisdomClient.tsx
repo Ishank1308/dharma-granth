@@ -9,13 +9,10 @@ import {
   ShieldAlert,
   Sparkles,
   HeartHandshake,
-  CheckCircle2,
   Clock,
   Compass,
   Filter,
-  Layers,
   X,
-  ExternalLink,
 } from 'lucide-react';
 import type { WisdomCategory, WisdomTopicCard } from '@/lib/wisdom-topic-card';
 import {
@@ -154,7 +151,7 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
               Explore a question, situation, or practice through selected passages and sources. These are study pathways, not diagnosis or treatment.
               <span lang="hi" className="ml-1 font-devanagari">चयनित श्लोकों और स्रोतों के साथ जीवन-विषय का अध्ययन करें। यह निदान या उपचार नहीं है।</span>
             </p>
-            <div aria-labelledby="life-discovery-heading" className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+            <div aria-labelledby="life-discovery-heading" className="fluid-grid-xs">
               {DISCOVERY_KIND_ORDER.map((kind) => {
                 const kindId = `life-discovery-${kind}`;
                 const kindLabel = DISCOVERY_KIND_LABELS[kind];
@@ -418,6 +415,7 @@ function WisdomTopicCard({
         </span>
         <Link
           href={`/wisdom-for-life/${topic.slug}`}
+          data-vt="open"
           className="tap-target inline-flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors group-hover:translate-x-1 duration-200"
           aria-label={`Explore scriptural guidance for ${topic.titleEn}`}
         >

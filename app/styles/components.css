@@ -73,6 +73,76 @@
     box-shadow: var(--focus-ring), var(--shadow-raised);
 }
 
+/* Intrinsic Fluid Grid Layouts & Container-Responsive Cells ───────────────
+   Auto-fit tracks size themselves to the available container width (whether full-bleed
+   or beside a filter rail), eliminating rigid breakpoint jumps from 320px to ultrawide. */
+.fluid-grid-xs,
+.fluid-grid-sm,
+.fluid-grid-md,
+.fluid-grid-lg {
+    display: grid;
+    gap: var(--grid-gap-fluid, 1rem);
+    align-items: stretch;
+}
+.fluid-grid-xs {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13.25rem), 1fr));
+}
+.fluid-grid-sm {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.25rem), 1fr));
+}
+.fluid-grid-md {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+}
+.fluid-grid-lg {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 23.5rem), 1fr));
+}
+/* Single-result grids don't stretch a compact card across 1280px when auto-fill is preferred. */
+.fluid-grid-fill-sm {
+    display: grid;
+    gap: var(--grid-gap-fluid, 1rem);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.25rem), 1fr));
+}
+.fluid-grid-fill-md {
+    display: grid;
+    gap: var(--grid-gap-fluid, 1rem);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+}
+.fluid-grid-fill-lg {
+    display: grid;
+    gap: var(--grid-gap-fluid, 1rem);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 23.5rem), 1fr));
+}
+.fluid-cq {
+    container-type: inline-size;
+    min-width: 0;
+}
+@container (max-width: 19rem) {
+    .fluid-cq-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* High-Fidelity Wireframe Blueprint Inspector ([data-wireframe='true']) ───
+   Used in rapid prototyping frames (/design-system-preview/) to inspect structural
+   grid rhythm, card geometry, hierarchy zones and 44px touch targets over live DOM. */
+[data-wireframe='true'] {
+    background-image:
+        linear-gradient(to right, color-mix(in srgb, var(--tint) 11%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in srgb, var(--tint) 11%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+[data-wireframe='true'] :is(.apple-card, .verse-card, [data-wf-box]) {
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    background: color-mix(in srgb, var(--surface-canvas) 92%, var(--tint) 8%) !important;
+    outline: 1.5px dashed color-mix(in srgb, var(--tint) 65%, var(--label-primary));
+    outline-offset: -1.5px;
+}
+[data-wireframe='true'] :is(a, button) {
+    outline: 1px solid color-mix(in srgb, var(--hue-peacock) 55%, transparent);
+}
+
 /* Grouped lists ─────────────────────────────────────────────────────── */
 .apple-group {
     overflow: hidden;

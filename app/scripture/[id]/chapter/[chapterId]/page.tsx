@@ -53,6 +53,7 @@ export default async function ChapterPage(props: PageProps) {
     <>
       {meta ? (
         <Breadcrumbs
+          className="hidden sm:block"
           items={[
             { label: 'Library', href: '/scriptures/' },
             { label: meta.title, href: `/scripture/${meta.id}/` },
