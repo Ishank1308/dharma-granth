@@ -34,12 +34,14 @@ export function dayOfYear(d: Date = new Date()): number {
   return Math.floor((d.getTime() - start.getTime()) / 86_400_000);
 }
 
-/** Offset an ISO date string (YYYY-MM-DD) by N days. */
+/** Offset an ISO date string (YYYY-MM-DD) by N calendar days using timezone-neutral UTC noon math. */
 export function offsetISODate(isoDate: string, days: number): string {
   const [y, m, d] = isoDate.split('-').map(Number);
-  const date = new Date(y, m - 1, d);
-  date.setDate(date.getDate() + days);
-  return localISODate(date);
+  const utc = new Date(Date.UTC(y, m - 1, d + days, 12, 0, 0));
+  const yy = utc.getUTCFullYear();
+  const mm = String(utc.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(utc.getUTCDate()).padStart(2, '0');
+  return `${yy}-${mm}-${dd}`;
 }
 
 const HINDI_MONTHS = [
@@ -51,12 +53,12 @@ const HINDI_MONTHS = [
 export function formatDisplayDate(isoDate: string): { en: string; hi: string; isToday: boolean } {
   const today = localISODate();
   const [y, m, d] = isoDate.split('-').map(Number);
-  const dateObj = new Date(y, m - 1, d);
+  const dateObj = new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
   const isToday = isoDate === today;
 
   const en = isToday
     ? 'Today'
-    : dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    : dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
   const hi = isToday
     ? 'आज'
     : `${d} ${HINDI_MONTHS[m - 1]} ${y}`;

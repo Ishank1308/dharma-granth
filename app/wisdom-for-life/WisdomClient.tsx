@@ -93,7 +93,7 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
   return (
     <div className="relative">
       {/* ── Search & Emotional Compass Bar ────────────────────────── */}
-      <section className="relative -mt-10 z-20 max-w-6xl mx-auto px-4 sm:px-6">
+      <section className="relative mt-2 z-20 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="rounded-3xl border border-dharma-border bg-dharma-card/95 backdrop-blur-xl p-5 sm:p-7 shadow-2xl transition-all">
           <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4">
             {/* Live Search Input */}
@@ -233,6 +233,7 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
               <button
                 key={cat.key}
                 type="button"
+                aria-pressed={isSelected}
                 onClick={() => {
                   setSelectedCategory(cat.key);
                   setActiveIntent(null);
@@ -276,13 +277,15 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {filteredTopics.map((topic, index) => {
-              const isFeatured = index % 4 === 0;
+              const isOddTail = filteredTopics.length % 2 === 1 && index === filteredTopics.length - 1;
+              const row = Math.floor(index / 2);
+              const isFeatured = isOddTail || (row % 2 === 0 ? index % 2 === 0 : index % 2 === 1);
               return (
                 <WisdomTopicCard
                   key={topic.id}
                   topic={topic}
                   isFeatured={isFeatured}
-                  className={isFeatured ? 'md:col-span-8' : 'md:col-span-4'}
+                  className={isOddTail ? 'md:col-span-12' : isFeatured ? 'md:col-span-8' : 'md:col-span-4'}
                 />
               );
             })}
@@ -414,7 +417,7 @@ function WisdomTopicCard({
           सम्पूर्ण शास्त्रीय समाधान
         </span>
         <Link
-          href={`/wisdom-for-life/${topic.slug}`}
+          href={`/wisdom-for-life/${topic.slug}/`}
           data-vt="open"
           className="tap-target inline-flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors group-hover:translate-x-1 duration-200"
           aria-label={`Explore scriptural guidance for ${topic.titleEn}`}

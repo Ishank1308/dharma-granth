@@ -10,6 +10,8 @@ import {
   getWisdomTopic,
 } from '@/data/wisdom-for-life';
 import { TopicDetailClient } from './TopicDetailClient';
+import { TopicIllustration } from '../TopicIllustrations';
+import { getLiteraryVerseMeta, type VerseEditorialLayer } from '@/lib/literary-commentary';
 import { conceptPageHref } from '@/lib/concept-page-href';
 import { searchHeading } from '@/data/search-intent';
 
@@ -157,6 +159,12 @@ export default async function WisdomTopicPage(
     ],
   };
 
+  const curatedLiteraryByVerseId: Record<string, VerseEditorialLayer> = {};
+  topic.verses.forEach((v) => {
+    const meta = getLiteraryVerseMeta(v.scriptureId, v.chapterNumber, v.verseNumber);
+    if (meta.isCurated) curatedLiteraryByVerseId[v.id] = meta;
+  });
+
   return (
     <div className="min-h-screen bg-dharma-bg">
       <JsonLd
@@ -183,6 +191,8 @@ export default async function WisdomTopicPage(
         prevTopic={prevTopic}
         nextTopic={nextTopic}
         searchLine={heading}
+        illustration={<TopicIllustration topicId={topic.id} size={160} />}
+        curatedLiteraryByVerseId={curatedLiteraryByVerseId}
       />
     </div>
   );

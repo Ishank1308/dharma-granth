@@ -44,6 +44,8 @@ export function useLanguagePreference() {
     if (applied.current === preference) return;
     applied.current = preference;
     document.documentElement.dataset.uiLang = preference;
+    document.documentElement.lang =
+      preference === 'english' ? 'en' : preference === 'sanskrit' ? 'sa' : 'hi';
   }, [preference]);
 
   return { preference, setPreference };

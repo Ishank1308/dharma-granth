@@ -42,22 +42,6 @@ type ContemplationStep = 'apply' | 'reflect' | 'practice';
 
 const railCard = RAIL_CARD;
 
-const FORM_RULES: ReadonlyArray<readonly [RegExp, string]> = [
-  [/(?:स्य|योः|नाम्|णाम्|sya|yoḥ|nām|ṇām)$/, 'षष्ठी विभक्ति · Genitive relation'],
-  [/(?:एषु|ेषु|सु|षु|eṣu|su|ṣu)$/, 'सप्तमी बहुवचन · Locative plural'],
-  [/(?:ाय|ये|āya)$/, 'चतुर्थी विभक्ति · Dative form'],
-  [/(?:ेन|ेण|भिः|ैः|ena|eṇa|bhiḥ|aiḥ)$/, 'तृतीया विभक्ति · Instrumental form'],
-  [/(?:म्|ं|am|ṃ)$/, 'सुबन्त पद · Inflected nominal'],
-  [/(?:ति|ते|न्ति|न्ते|तु|ताम्|ti|te|nti|nte|tu)$/, 'तिङन्त क्रियापद · Finite verb form'],
-];
-
-/** Lightweight morphological hint when a pada has not yet been entered into the curated dhatu lexicon. */
-function inferSanskritFormHint(pada: string): string {
-  const clean = pada.trim().toLowerCase();
-  if (!clean) return 'प्रसंगगत पद (Contextual form)';
-  return FORM_RULES.find(([re]) => re.test(clean))?.[1] ?? 'संहिता-विभक्त पद · Inflected pada';
-}
-
 /**
  * Right sticky rail (`lg:col-span-3`, `lg:sticky lg:top-20 space-y-5`).
  * Provides Active Word Breakdown, 3-Step Contemplation (`त्रि-चरणीय स्वाध्याय`),
@@ -163,24 +147,30 @@ export function StudyCompanionRail({
               )}
             </div>
 
-            <dl className="mt-3 grid grid-cols-1 gap-1.5 border-t border-amber-700/20 dark:border-amber-500/20 pt-2.5 text-xs">
-              <div className="flex items-baseline justify-between gap-2">
-                <dt className="font-semibold text-dharma-muted">
-                  <span lang="hi" className="font-devanagari">धातु</span> · Root
-                </dt>
-                <dd className="text-right font-medium text-dharma-text">
-                  {activeLexicon?.rootDhatu ?? 'संहिता मूल (Contextual stem)'}
-                </dd>
-              </div>
-              <div className="flex items-baseline justify-between gap-2">
-                <dt className="font-semibold text-dharma-muted">
-                  <span lang="hi" className="font-devanagari">रूप</span> · Form
-                </dt>
-                <dd className="text-right font-medium text-dharma-text">
-                  {activeLexicon?.grammarCategory ?? inferSanskritFormHint(activeGloss.pada)}
-                </dd>
-              </div>
-            </dl>
+            {(activeLexicon?.rootDhatu || activeLexicon?.grammarCategory) && (
+              <dl className="mt-3 grid grid-cols-1 gap-1.5 border-t border-amber-700/20 dark:border-amber-500/20 pt-2.5 text-xs">
+                {activeLexicon.rootDhatu && (
+                  <div className="flex items-baseline justify-between gap-2">
+                    <dt className="font-semibold text-dharma-muted">
+                      <span lang="hi" className="font-devanagari">धातु</span> · Root
+                    </dt>
+                    <dd className="text-right font-medium text-dharma-text">
+                      {activeLexicon.rootDhatu}
+                    </dd>
+                  </div>
+                )}
+                {activeLexicon.grammarCategory && (
+                  <div className="flex items-baseline justify-between gap-2">
+                    <dt className="font-semibold text-dharma-muted">
+                      <span lang="hi" className="font-devanagari">रूप</span> · Form
+                    </dt>
+                    <dd className="text-right font-medium text-dharma-text">
+                      {activeLexicon.grammarCategory}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            )}
           </div>
         ) : (
           <p className="mt-2.5 rounded-xl border border-stone-300/50 dark:border-stone-800 bg-stone-100/60 dark:bg-stone-900/40 p-3 text-xs leading-relaxed text-dharma-muted">
@@ -230,7 +220,7 @@ export function StudyCompanionRail({
                   triggerTactileFeedback('selection', 'softTap');
                   setStep(item.id);
                 }}
-                className={`focus-ring flex min-h-[44px] flex-col items-center justify-center rounded-lg px-1.5 py-1 text-center text-xs font-semibold transition [[data-lite=true]_&]:transition-none ${
+                className={`focus-ring flex min-h-[44px] flex-col items-center justify-center rounded-lg px-1.5 py-1 text-center text-xs font-semibold transition [[data-lite-mode=true]_&]:transition-none ${
                   active
                     ? 'bg-dharma-card text-dharma-text shadow-2xs ring-1 ring-amber-600/35'
                     : 'text-dharma-muted hover:text-dharma-text'
@@ -281,7 +271,7 @@ export function StudyCompanionRail({
               <button
                 type="button"
                 onClick={() => noteTextareaRef.current?.focus()}
-                className="focus-ring inline-flex min-h-[36px] items-center gap-1 rounded-lg border border-amber-700/35 bg-amber-100/75 dark:border-amber-500/35 dark:bg-amber-900/35 px-2.5 py-1 text-xs font-semibold text-amber-950 dark:text-amber-100 hover:border-amber-700/60 [[data-lite=true]_&]:transition-none"
+                className="focus-ring inline-flex min-h-[36px] items-center gap-1 rounded-lg border border-amber-700/35 bg-amber-100/75 dark:border-amber-500/35 dark:bg-amber-900/35 px-2.5 py-1 text-xs font-semibold text-amber-950 dark:text-amber-100 hover:border-amber-700/60 [[data-lite-mode=true]_&]:transition-none"
               >
                 <span lang="hi" className="font-devanagari">नीचे मनन लिखें</span>
                 <span>· Write note ↓</span>
@@ -297,7 +287,7 @@ export function StudyCompanionRail({
               <p lang="en" className="text-xs leading-relaxed text-dharma-muted">
                 {contemplation.practiceEn}
               </p>
-              <label className="flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-xl border border-amber-700/30 bg-amber-50/70 dark:border-amber-500/30 dark:bg-amber-950/30 px-3 py-2 text-xs font-semibold text-dharma-text transition hover:border-amber-600/60 [[data-lite=true]_&]:transition-none">
+              <label className="flex min-h-[44px] cursor-pointer items-center gap-2.5 rounded-xl border border-amber-700/30 bg-amber-50/70 dark:border-amber-500/30 dark:bg-amber-950/30 px-3 py-2 text-xs font-semibold text-dharma-text transition hover:border-amber-600/60 [[data-lite-mode=true]_&]:transition-none">
                 <input
                   type="checkbox"
                   checked={practiceDone}
@@ -352,7 +342,7 @@ export function StudyCompanionRail({
           value={note}
           onChange={(e) => setNote(e.target.value)}
           placeholder="Write your personal reflection on this shloka…"
-          className="mt-2.5 w-full resize-y rounded-xl border border-stone-300/70 dark:border-stone-700/80 bg-dharma-bg/85 p-3 text-sm leading-relaxed text-dharma-text outline-none transition placeholder:text-dharma-muted focus:border-amber-600 focus:ring-2 focus:ring-amber-600/20 [[data-lite=true]_&]:transition-none"
+          className="mt-2.5 w-full resize-y rounded-xl border border-stone-300/70 dark:border-stone-700/80 bg-dharma-bg/85 p-3 text-sm leading-relaxed text-dharma-text outline-none transition placeholder:text-dharma-muted focus:border-amber-600 focus:ring-2 focus:ring-amber-600/20 [[data-lite-mode=true]_&]:transition-none"
         />
 
         <p className="mt-1.5 text-[11px] text-dharma-muted">
@@ -374,7 +364,7 @@ export function StudyCompanionRail({
                 <VerseRouteLink
                   href={item.href}
                   data-vt="open"
-                  className="focus-ring group flex min-h-[44px] items-center justify-between gap-2 rounded-xl border border-stone-300/55 dark:border-stone-800 bg-stone-100/55 dark:bg-stone-900/45 px-3 py-2 text-left transition hover:border-amber-600/55 hover:bg-amber-50/45 dark:hover:bg-stone-800/70 [[data-lite=true]_&]:transition-none"
+                  className="focus-ring group flex min-h-[44px] items-center justify-between gap-2 rounded-xl border border-stone-300/55 dark:border-stone-800 bg-stone-100/55 dark:bg-stone-900/45 px-3 py-2 text-left transition hover:border-amber-600/55 hover:bg-amber-50/45 dark:hover:bg-stone-800/70 [[data-lite-mode=true]_&]:transition-none"
                 >
                   <span className="min-w-0">
                     <span className="block truncate text-xs font-semibold text-dharma-text group-hover:text-amber-900 dark:group-hover:text-amber-200">

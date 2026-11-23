@@ -15,7 +15,7 @@ export function HomeHero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="hero-stage relative isolate overflow-x-clip px-5 pb-12 pt-10 text-left sm:px-6 sm:pb-16 sm:pt-20 lg:pt-24"
+      className="hero-stage relative isolate overflow-x-clip px-5 pb-10 pt-8 text-left sm:px-6 sm:pb-16 sm:pt-20 lg:pt-24"
     >
       <HeroHalo />
       <div
@@ -30,9 +30,9 @@ export function HomeHero() {
           <p className="daypart-greeting mb-3 font-devanagari text-footnote font-semibold text-dharma-muted" />
           <p className="inline-flex flex-wrap items-center gap-1.5 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/10 px-3 py-1.5 text-[11px] font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md sm:gap-2 sm:px-3.5 sm:py-2 sm:text-xs">
             <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-dharma-saffron" />
-            <span>A living archive of Indian wisdom</span>
-            <span aria-hidden="true" className="opacity-50">·</span>
-            <span lang="hi" className="font-devanagari">सनातन ग्रन्थ कोश</span>
+            <span data-bi="en">A living archive of Indian wisdom</span>
+            <span data-bi="sep" aria-hidden="true" className="opacity-50">·</span>
+            <span lang="hi" data-bi="hi" className="font-devanagari">सनातन ग्रन्थ कोश</span>
           </p>
 
           <h1
@@ -173,7 +173,7 @@ export function HomeHero() {
         </aside>
       </div>
 
-      <div className="relative mx-auto mt-16 max-w-[1180px] border-t border-dharma-border/70 pt-8 sm:mt-20 sm:pt-10">
+      <div className="relative mx-auto mt-12 max-w-[1180px] border-t border-dharma-border/70 pt-6 sm:mt-20 sm:pt-10">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.15em] text-dharma-saffron">Begin with a question</p>

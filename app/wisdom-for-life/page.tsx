@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: 'Wisdom for Life — जीवन के लिए शास्त्रीय मार्गदर्शन — Dharma Granth',
     description:
       'Life questions opened through verses already in the library, without requiring a scripture name first.',
-    url: 'https://dharmagranth.dev/wisdom-for-life',
+    url: 'https://dharmagranth.dev/wisdom-for-life/',
   },
 };
 
@@ -89,7 +89,7 @@ export default function WisdomForLifeIndexPage() {
           {SEARCH_INTENTS.map((item) => (
             <li key={item.slug}>
               <Link
-                href={`/wisdom-for-life/${item.slug}`}
+                href={`/wisdom-for-life/${item.slug}/`}
                 className="inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-card px-3 text-sm font-semibold text-saffron-600"
               >
                 <span lang="hi" className="font-devanagari">{item.titleHi}</span>

@@ -33,7 +33,6 @@ import { ModernContextBody, ReflectionBody, parseModernContext } from './ModernC
 import { ConnectedFlow, SacredSection } from '@/app/components/reader/SacredReadingFlow';
 import { detectChandas } from '@/lib/chandas-detector';
 import { triggerTactileFeedback } from '@/lib/haptics';
-import { showSabdaPeek } from '@/lib/prana-capsule-store';
 import { SamvadaStrip } from '@/app/components/reader/SamvadaStrip';
 import type { VerseInsight } from '@/lib/verse-insights';
 import { EDITORIAL_DRAFT_LABEL, STUDY_TRANSLATION_SHORT } from '@/lib/editorial-terminology';
@@ -891,46 +890,68 @@ export function VerseCard({
                             )}
                           </div>
                           {parsedGloss.length > 0 ? (
-                            <div className="flex flex-wrap gap-2">
-                              {parsedGloss.map((g, gIdx) => {
-                                const isHighlighted = hoveredWordIndex === gIdx;
-                                const isSpoken = activeWordIndex === gIdx;
-                                return (
-                                  <button
-                                    key={gIdx}
-                                    type="button"
-                                    onMouseEnter={() => setHoveredWordIndex(gIdx)}
-                                    onMouseLeave={() => setHoveredWordIndex(null)}
-                                    onClick={() => {
-                                      triggerTactileFeedback('selection', 'softTap');
-                                      setActiveWordIndex(gIdx);
-                                      showSabdaPeek({
-                                        word: g.pada,
-                                        wordDevanagari: g.pada,
-                                        meaningHi: g.meaning,
-                                        verseRef: `${scriptureTitle} ${chapterId}.${v.number}`,
-                                      });
-                                      setTimeout(() => setActiveWordIndex((cur) => (cur === gIdx ? null : cur)), 1800);
-                                    }}
-                                    className={`tap-halo inline-flex min-h-[34px] sm:min-h-[30px] items-center gap-1.5 rounded-lg border px-2.5 py-1 text-[11px] transition active:scale-95 text-left ${
-                                      isSpoken || isHighlighted
-                                        ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-2xs'
-                                        : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'
-                                    }`}
-                                    aria-label={`शब्दार्थ देखें: ${g.pada}`}
-                                    title={`${g.pada}: शब्दार्थ देखें`}
-                                  >
-                                    <span className="font-devanagari text-xs font-semibold text-amber-900 dark:text-amber-200">{g.pada}</span>
-                                    {g.meaning && (
-                                      <>
-                                        <span className="text-amber-400/80 dark:text-amber-600/80 font-serif text-[10px]">·</span>
-                                        <span className="text-dharma-muted text-[10px] font-sans leading-tight">{g.meaning}</span>
-                                      </>
+                            <>
+                              <div className="flex flex-wrap gap-2">
+                                {parsedGloss.map((g, gIdx) => {
+                                  const isHighlighted = hoveredWordIndex === gIdx;
+                                  const isSpoken = activeWordIndex === gIdx;
+                                  return (
+                                    <button
+                                      key={gIdx}
+                                      type="button"
+                                      aria-pressed={isSpoken}
+                                      onMouseEnter={() => setHoveredWordIndex(gIdx)}
+                                      onMouseLeave={() => setHoveredWordIndex(null)}
+                                      onClick={() => {
+                                        triggerTactileFeedback('selection', 'softTap');
+                                        setActiveWordIndex((cur) => (cur === gIdx ? null : gIdx));
+                                      }}
+                                      className={`tap-halo inline-flex min-h-[34px] sm:min-h-[30px] items-center gap-1.5 rounded-lg border px-2.5 py-1 text-[11px] transition active:scale-95 text-left ${
+                                        isSpoken || isHighlighted
+                                          ? 'border-amber-400 bg-amber-100/90 text-amber-950 dark:border-amber-400 dark:bg-amber-900/40 dark:text-amber-100 ring-1 ring-amber-400/50 shadow-2xs'
+                                          : 'border-amber-200/70 bg-amber-50/60 text-dharma-text hover:border-amber-300 hover:bg-amber-100/40 dark:border-amber-900/50 dark:bg-amber-950/30'
+                                      }`}
+                                      aria-label={`शब्दार्थ देखें: ${g.pada}`}
+                                      title={`${g.pada}: शब्दार्थ देखें`}
+                                    >
+                                      <span className="font-devanagari text-xs font-semibold text-amber-900 dark:text-amber-200">{g.pada}</span>
+                                      {g.meaning && (
+                                        <>
+                                          <span className="text-amber-400/80 dark:text-amber-600/80 font-serif text-[10px]">·</span>
+                                          <span className="text-dharma-muted text-[10px] font-sans leading-tight">{g.meaning}</span>
+                                        </>
+                                      )}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                              {activeWordIndex !== null && parsedGloss[activeWordIndex] && (
+                                <div
+                                  role="status"
+                                  aria-live="polite"
+                                  className="mt-2.5 flex items-start justify-between gap-3 rounded-xl border border-amber-400/50 bg-amber-100/75 px-3 py-2 text-xs text-amber-950 dark:border-amber-500/40 dark:bg-amber-950/50 dark:text-amber-100"
+                                >
+                                  <div className="min-w-0">
+                                    <span lang="sa" className="font-devanagari text-sm font-bold">
+                                      {parsedGloss[activeWordIndex].pada}
+                                    </span>
+                                    {parsedGloss[activeWordIndex].meaning && (
+                                      <span className="ml-2 text-dharma-text dark:text-amber-100/90">
+                                        — {parsedGloss[activeWordIndex].meaning}
+                                      </span>
                                     )}
+                                  </div>
+                                  <button
+                                    type="button"
+                                    onClick={() => setActiveWordIndex(null)}
+                                    aria-label="शब्दार्थ बंद करें"
+                                    className="tap-halo inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-amber-800 hover:bg-amber-200/60 dark:text-amber-200 dark:hover:bg-amber-900/60"
+                                  >
+                                    <X className="h-3.5 w-3.5" aria-hidden="true" />
                                   </button>
-                                );
-                              })}
-                            </div>
+                                </div>
+                              )}
+                            </>
                           ) : (
                             <p lang="sa" className="font-devanagari text-xs leading-relaxed text-dharma-text">
                               {v.wordMeaning}

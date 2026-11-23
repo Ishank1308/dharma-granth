@@ -1,9 +1,8 @@
 'use client';
 
 import { useState, useCallback, type ReactNode } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Grid, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { toAsciiDigits } from '@/lib/verse-format';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { useSwipeGesture } from '@/lib/useSwipeGesture';

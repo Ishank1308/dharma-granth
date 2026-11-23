@@ -301,8 +301,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     if (!chapterReady || isOnline !== true) return;
     const warm = () => {
       if (document.documentElement.hasAttribute('data-data-saver')) return;
-      void loadReaderSettingsPanel().catch(() => {});
-      void loadReaderDialogImpl().catch(() => {});
+      void loadReaderSettingsPanel().catch(() => { });
+      void loadReaderDialogImpl().catch(() => { });
     };
     if ('requestIdleCallback' in window) {
       const idle = window.requestIdleCallback(warm, { timeout: 10_000 });
@@ -358,14 +358,23 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   // ── Mobile Reader & Level State ──
   const [{ index: activeVerseIndex, direction: verseDirection }, setActiveVerse] = useState({ index: 0, direction: 0 });
 
-  const handleOpenSvadhyaya = (tab: SvadhyayaTab, data?: unknown) => {
+  const handleOpenSvadhyaya = (tab: SvadhyayaTab, data?: unknown, verse?: FullVerse) => {
     setSvadhyayaTab(tab);
     if (tab === 'concept' && typeof data === 'string') {
       setSvadhyayaConcept(data);
     } else if (tab === 'parallel' && data) {
       setSvadhyayaParallel(data as typeof svadhyayaParallel);
-    } else if (tab === 'manana' && data) {
+    }
+    if (tab === 'manana' && data) {
       setSvadhyayaMananaContext(data as typeof svadhyayaMananaContext);
+    } else if (verse) {
+      setSvadhyayaMananaContext({
+        scriptureSlug: scriptureId,
+        scriptureTitle: scriptureTitle ?? scriptureId,
+        chapter: chapterId,
+        verseNum: verse.number,
+        sanskrit: verse.sanskrit,
+      });
     }
     setSvadhyayaOpen(true);
     triggerTactileFeedback('selection', 'softTap');
@@ -828,7 +837,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           prev.kind === 'ready' ? { ...prev, commentary: { ...loaded, ...(prev.commentary ?? {}) } } : prev,
         );
       })
-      .catch(() => {});
+      .catch(() => { });
     return () => controller.abort();
   }, [deferredUnits, scriptureId, basePath]);
 
@@ -1185,6 +1194,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
           <div
             className="space-y-8"
             data-verse-size={readerSettings.sanskritSize}
+            data-translation-size={readerSettings.translationSize}
             data-verse-leading={readerSettings.lineSpacing}
             onClickCapture={hydrated ? openPlainVerseInPlace : undefined}
           >
@@ -1317,7 +1327,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                         }}
                         versePageHref={versePageHref(scriptureId, chapterId, v.number)}
                         studyRequested={studyRequested.has(String(v.number))}
-                        onOpenSvadhyaya={handleOpenSvadhyaya}
+                        onOpenSvadhyaya={(tab, data) => handleOpenSvadhyaya(tab, data, v)}
                         isActive={index === activeVerseIndex}
                         meaningNearby={meaningNearby.get(String(v.number))}
                       />
@@ -1360,13 +1370,12 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
                     }}
                     title={`श्लोक ${asciiLabel} पर जाएँ`}
                     aria-label={isVisitedBand ? `Jump to verse ${asciiLabel} (visited)` : `Jump to verse ${asciiLabel}`}
-                    className={`focus-ring tap-halo relative inline-flex h-8 min-w-[32px] items-center justify-center rounded-full px-1.5 text-[11px] font-semibold tabular-nums transition ${
-                      isCurrentBand
-                        ? 'bg-dharma-saffron text-dharma-bg shadow-2xs font-bold'
-                        : isVisitedBand
-                          ? 'text-dharma-text/85 hover:bg-dharma-bg/80 hover:text-dharma-text'
-                          : 'text-dharma-muted hover:bg-dharma-bg/80 hover:text-dharma-text'
-                    }`}
+                    className={`focus-ring tap-halo relative inline-flex h-8 min-w-[32px] items-center justify-center rounded-full px-1.5 text-[11px] font-semibold tabular-nums transition ${isCurrentBand
+                      ? 'bg-dharma-saffron text-dharma-bg shadow-2xs font-bold'
+                      : isVisitedBand
+                        ? 'text-dharma-text/85 hover:bg-dharma-bg/80 hover:text-dharma-text'
+                        : 'text-dharma-muted hover:bg-dharma-bg/80 hover:text-dharma-text'
+                      }`}
                   >
                     {asciiLabel}
                     {isVisitedBand && (
@@ -1396,7 +1405,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
               if (slug === scriptureId && ch === chapterId) {
                 scrollToVerse(vNum);
               } else {
-                window.location.href = `/scripture/${slug}/?ch=${ch}&verse=${vNum}`;
+                window.location.href = `/scripture/${slug}/chapter/${ch}/#verse-${vNum}`;
               }
             }}
           />

@@ -474,6 +474,14 @@
 .ash-verse-flow[data-ash-translation-size='md'] { --ash-translation-size: clamp(1rem, calc(.95rem + .45vw), 1.15rem); }
 .ash-verse-flow[data-ash-translation-size='lg'] { --ash-translation-size: clamp(1.1rem, calc(1rem + .65vw), 1.3rem); }
 .ash-verse-flow[data-ash-translation-size='xl'] { --ash-translation-size: clamp(1.25rem, calc(1.1rem + .75vw), 1.5rem); }
+.ash-verse-flow[data-ash-contrast='high'] {
+  --dharma-muted: var(--dharma-text);
+  --dharma-border: currentColor;
+}
+.ash-verse-flow[data-ash-width='narrow'] {
+  max-inline-size: 36rem;
+  margin-inline: auto;
+}
 .ash-verse-flow .ash-full-sanskrit {
   max-inline-size: 36em;
   margin-inline: auto;

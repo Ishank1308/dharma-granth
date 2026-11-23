@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
-import { Timeline } from '@/app/components/Timeline';
 import { timelines, timelineTypeLabels, type TimelineType } from '@/data/timelines';
 import '@/app/styles/long-read.css';
 
@@ -37,7 +36,7 @@ export default function TimelinesPage() {
         <div className="relative mx-auto max-w-6xl px-6">
           <FadeUp>
             <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-saffron-500/25 bg-saffron-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-saffron-800 dark:text-saffron-300">
-              कालरेखा — शास्त्रीय कालखंड (Scriptural Timelines)
+              <span lang="hi" data-bi="hi">कालरेखा — शास्त्रीय कालखंड</span><span data-bi="sep"> (</span><span data-bi="en">Scriptural Timelines</span><span data-bi="sep">)</span>
             </p>
             <h1 className="mb-4 font-serif text-4xl font-bold text-dharma-text sm:text-5xl">
               <span lang="hi" data-bi="hi">कालखंड एवं परंपरा</span><span data-bi="sep"> (</span><span data-bi="en">Timelines &amp; Traditions</span><span data-bi="sep">)</span>
@@ -77,7 +76,7 @@ export default function TimelinesPage() {
                     setActiveType('all');
                     setPendingEra(era.id);
                   }}
-                  className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"
+                  className="focus-ring rounded font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"
                 >
                   <span lang="hi" className="font-devanagari">{era.hi}</span>
                   <span className="font-normal text-dharma-text-secondary"> · {era.en}</span>
@@ -90,10 +89,12 @@ export default function TimelinesPage() {
 
         {/* ── Filter Bar ──────────────────────────────────────────── */}
         <FadeUp>
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div role="group" aria-label="कालखंड श्रेणी फ़िल्टर · Timeline category filter" className="flex flex-wrap gap-2 mb-8">
             <button
+              type="button"
+              aria-pressed={activeType === 'all'}
               onClick={() => setActiveType('all')}
-              className={`min-h-[44px] px-4 py-2 rounded-xl text-sm font-semibold transition ${
+              className={`focus-ring min-h-[44px] px-4 py-2 rounded-xl text-sm font-semibold transition ${
                 activeType === 'all'
                   ? 'bg-saffron-700 text-white shadow-sm'
                   : 'bg-dharma-card text-dharma-text border border-dharma-border hover:border-saffron-400'
@@ -107,8 +108,10 @@ export default function TimelinesPage() {
               return (
                 <button
                   key={type}
+                  type="button"
+                  aria-pressed={activeType === type}
                   onClick={() => setActiveType(type)}
-                  className={`min-h-[44px] px-4 py-2 rounded-xl text-sm font-semibold transition ${
+                  className={`focus-ring min-h-[44px] px-4 py-2 rounded-xl text-sm font-semibold transition ${
                     activeType === type
                       ? 'bg-saffron-700 text-white shadow-sm'
                       : 'bg-dharma-card text-dharma-text border border-dharma-border hover:border-saffron-400'
@@ -127,7 +130,7 @@ export default function TimelinesPage() {
             const meta = timelineTypeLabels[timeline.type];
             return (
               <FadeUpOnView key={timeline.id}>
-                <div id={timeline.id} className="scroll-mt-24 rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
+                <div id={timeline.id} className="scroll-mt-24 card-sacred rounded-card border border-dharma-border bg-dharma-card shadow-raised overflow-hidden">
                   <div className="h-1.5 bg-gradient-to-r from-saffron-500 to-amber-600" />
                   <div className="p-6 md:p-8">
                     {/* Timeline header */}
@@ -190,7 +193,7 @@ export default function TimelinesPage() {
                                   <Link
                                     key={fig}
                                     href={`/characters/${fig}/`}
-                                    className="text-[10px] font-semibold text-violet-800 bg-violet-50 px-2 py-0.5 rounded-full border border-violet-200 hover:bg-violet-100 dark:text-violet-200 dark:bg-violet-950/50 dark:border-violet-500/30 dark:hover:bg-violet-900/50 transition"
+                                    className="focus-ring inline-flex min-h-[32px] items-center text-xs font-semibold text-violet-800 bg-violet-50 px-2.5 py-1 rounded-full border border-violet-200 hover:bg-violet-100 dark:text-violet-200 dark:bg-violet-950/50 dark:border-violet-500/30 dark:hover:bg-violet-900/50 transition"
                                   >
                                     {fig}
                                   </Link>

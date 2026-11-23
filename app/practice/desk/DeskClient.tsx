@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { ArrowDown, ArrowUp, Lock, Trash2, Wifi, WifiOff } from 'lucide-react';
 import { RecommendationCards } from '@/app/components/study/RecommendationCards';
 import { BackupRestore } from '@/app/components/BackupRestore';
+import { PracticeSubNav } from '@/app/components/practice/PracticeSubNav';
 import { HistoryControls } from './HistoryControls';
 import { SavedCollections } from './SavedCollections';
 import { daysAgo } from '@/lib/format';
 import { clearOwnData } from '@/lib/backup';
+import { clearAllPersonalStudyData } from '@/lib/study/storage';
 import { readRecentChapters, type ChapterVisit } from '@/lib/reading-history';
 import { READING_JOURNEYS } from '@/data/reading-journeys';
 import { WeeklySummary } from './WeeklySummary';
@@ -53,7 +55,7 @@ const verseHref = (s: { scriptureId: string; chapterId?: number; verseId: number
 function Section({ id, title, titleHi, children }: { id: string; title: string; titleHi: string; children: ReactNode }) {
   return (
     <section aria-labelledby={id} className="rounded-2xl border border-dharma-border bg-dharma-card p-5">
-      <h2 id={id} className="font-serif text-xl font-bold text-dharma-text">{title} <span lang="hi" className="font-devanagari text-base font-normal text-dharma-muted">· {titleHi}</span></h2>
+      <h2 id={id} className="font-serif text-xl font-bold text-dharma-text"><span data-bi="en">{title}</span><span data-bi="sep"> · </span><span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-base font-normal text-dharma-muted">{titleHi}</span></h2>
       <div className="mt-3 text-sm">{children}</div>
     </section>
   );
@@ -166,18 +168,22 @@ export function DeskClient() {
     setPinMsg('PIN removed.');
   };
 
-  const clearAll = () => {
-    if (!window.confirm('Delete everything stored by Dharma Granth in this browser (saved verses, notes, queue, journeys, settings, Sadhana)? This cannot be undone.\n\nBack up first if you may want it again.')) return;
+  const clearAll = async () => {
+    if (!window.confirm('Delete everything stored by Dharma Granth in this browser (saved verses, notes, journal, queue, journeys, settings, Sadhana)? This cannot be undone.\n\nBack up first if you may want it again.')) return;
     const n = clearOwnData();
+    await clearAllPersonalStudyData().catch(() => {});
     load();
     flash(`${n} stored items deleted.`);
   };
 
   if (!ready) return (
-    <main id="main" className="mx-auto max-w-3xl space-y-5 px-4 py-10 sm:px-6">
+    <main id="main" className="mx-auto max-w-3xl space-y-5 px-4 pt-10 pb-24 sm:px-6 lg:pb-12">
+      <PracticeSubNav />
       <header>
-        <h1 className="font-serif text-3xl font-bold text-dharma-text">My Study Desk</h1>
-        <p lang="hi" className="font-devanagari text-lg text-dharma-muted">मेरा अध्ययन-पटल</p>
+        <h1 className="font-serif text-3xl font-bold text-dharma-text">
+          <span data-bi="en">My Study Desk</span>
+          <span lang="hi" data-bi="hi" data-bi-lead className="block font-devanagari text-lg font-normal text-dharma-muted">मेरा अध्ययन-पटल</span>
+        </h1>
         <p className="mt-2 text-sm text-dharma-muted">Your private reading notes, saved verses and study progress, stored only in this browser.</p>
       </header>
       <p role="status" className="text-sm text-dharma-muted">Loading your study desk…</p>
@@ -187,10 +193,13 @@ export function DeskClient() {
   const activeJourneys = READING_JOURNEYS.filter((j) => (journeyProgress[j.id] ?? []).length > 0);
 
   return (
-    <main id="main" className="mx-auto max-w-3xl space-y-5 px-4 py-10 sm:px-6">
+    <main id="main" className="mx-auto max-w-3xl space-y-5 px-4 pt-10 pb-24 sm:px-6 lg:pb-12">
+      <PracticeSubNav />
       <header>
-        <h1 className="font-serif text-3xl font-bold text-dharma-text">My Study Desk</h1>
-        <p lang="hi" className="font-devanagari text-lg text-dharma-muted">मेरा अध्ययन-पटल</p>
+        <h1 className="font-serif text-3xl font-bold text-dharma-text">
+          <span data-bi="en">My Study Desk</span>
+          <span lang="hi" data-bi="hi" data-bi-lead className="block font-devanagari text-lg font-normal text-dharma-muted">मेरा अध्ययन-पटल</span>
+        </h1>
         <p className="mt-2 text-sm text-dharma-muted">
           <strong className="text-dharma-text">Stored only in this browser.</strong> No account, nothing uploaded. Clearing your browser data, or using another device, will not carry this over unless you export a backup. Notes are never shared by the share buttons.
         </p>

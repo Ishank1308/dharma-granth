@@ -367,6 +367,7 @@ export function getTodayAssignment(
   chapters: GitaChapterMeta[];
   isFulfilledToday: boolean;
   dayIndexInCycle: number;
+  isReviewDay?: boolean;
 } {
   const isFulfilledToday = state.completedDates.includes(todayStr);
 
@@ -384,6 +385,15 @@ export function getTodayAssignment(
     // Mon: 1-3, Tue: 4-6, Wed: 7-9, Thu: 10-12, Fri: 13-15, Sat: 16-18, Sun: contemplation/review
     const [y, m, d] = todayStr.split('-').map(Number);
     const dayOfWeek = new Date(Date.UTC(y, m - 1, d)).getUTCDay(); // 0 is Sunday, 1 is Monday ...
+    if (dayOfWeek === 0) {
+      return {
+        chapters: [],
+        isFulfilledToday,
+        dayIndexInCycle: 7,
+        isReviewDay: true,
+      };
+    }
+
     let startCh = 1;
     if (dayOfWeek === 1) startCh = 1;
     else if (dayOfWeek === 2) startCh = 4;
@@ -391,13 +401,12 @@ export function getTodayAssignment(
     else if (dayOfWeek === 4) startCh = 10;
     else if (dayOfWeek === 5) startCh = 13;
     else if (dayOfWeek === 6) startCh = 16;
-    else startCh = 1; // Sunday reflection
 
     const chapters = GITA_CHAPTERS.filter((c) => c.number >= startCh && c.number < startCh + 3);
     return {
       chapters: chapters.length > 0 ? chapters : [GITA_CHAPTERS[11]],
       isFulfilledToday,
-      dayIndexInCycle: dayOfWeek === 0 ? 7 : dayOfWeek,
+      dayIndexInCycle: dayOfWeek,
     };
   }
 

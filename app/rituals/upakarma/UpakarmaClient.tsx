@@ -1,21 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import {
   Sparkles,
-  BookOpen,
   CheckCircle2,
   Circle,
   Copy,
   Check,
   Layers,
-  Flame,
   RotateCcw,
-  Compass,
   Info,
-  ShieldCheck,
-  ChevronRight,
   Sun,
 } from 'lucide-react';
 import {
@@ -24,8 +18,6 @@ import {
   YAJNOPAVITA_TANTUS,
   REGIONAL_UPAKARMA_TRADITIONS,
   UPAKARMA_FAQS,
-  type UpakarmaStep,
-  type UpakarmaMantra,
 } from '@/data/upakarma-data';
 
 export function UpakarmaClient() {
@@ -65,17 +57,22 @@ export function UpakarmaClient() {
       <section className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <span className="text-xs uppercase tracking-wider font-semibold text-saffron-600 dark:text-saffron-400">
-              क्रमबद्ध अनुष्ठान विधि · Sequential Liturgical Walkthrough
+            <span className="text-xs uppercase tracking-wider font-semibold text-saffron-700 dark:text-saffron-300">
+              <span lang="hi" data-bi="hi" className="font-devanagari">क्रमबद्ध अनुष्ठान विधि</span>
+              <span data-bi="sep" aria-hidden="true"> · </span>
+              <span data-bi="en">Sequential Liturgical Walkthrough</span>
             </span>
             <h2 className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
-              उपाकर्म के 5 पवित्र सोपान (5 Sacred Steps)
+              <span lang="hi" data-bi="hi" className="font-devanagari">उपाकर्म के 5 पवित्र सोपान</span>
+              <span data-bi="sep" aria-hidden="true"> (</span>
+              <span data-bi="en">5 Sacred Steps</span>
+              <span data-bi="sep" aria-hidden="true">)</span>
             </h2>
           </div>
 
           <div className="flex items-center gap-2 text-xs text-dharma-muted">
-            <span>सम्पन्न सोपान:</span>
-            <strong className="text-saffron-700 dark:text-saffron-400 font-bold">
+            <span lang="hi">सम्पन्न सोपान:</span>
+            <strong className="text-saffron-700 dark:text-saffron-300 font-bold">
               {Object.values(completedSteps).filter(Boolean).length} / 5
             </strong>
           </div>
@@ -99,7 +96,7 @@ export function UpakarmaClient() {
                   <span
                     className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                       isActive
-                        ? 'bg-saffron-600 text-white'
+                        ? 'bg-saffron-700 text-white'
                         : 'bg-dharma-bg border border-dharma-border text-dharma-muted'
                     }`}
                   >
@@ -114,13 +111,13 @@ export function UpakarmaClient() {
                         ? `सोपान ${step.stepNumber} चिह्न हटाएं`
                         : `सोपान ${step.stepNumber} सम्पन्न चिह्नित करें`
                     }
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-full text-dharma-muted hover:text-emerald-600 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                    className="focus-ring tap-halo inline-flex h-8 w-8 items-center justify-center rounded-full text-dharma-muted hover:text-emerald-600 transition"
                     title={isCompleted ? 'चिह्न हटाएं' : 'सम्पन्न चिह्नित करें'}
                   >
                     {isCompleted ? (
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" aria-hidden="true" />
                     ) : (
-                      <Circle className="w-4 h-4" />
+                      <Circle className="w-4 h-4" aria-hidden="true" />
                     )}
                   </button>
                 </div>
@@ -129,12 +126,12 @@ export function UpakarmaClient() {
                   type="button"
                   onClick={() => setActiveStepIndex(idx)}
                   aria-pressed={isActive}
-                  className="w-full flex-1 px-3 pb-3 pt-1.5 text-left flex flex-col justify-end rounded-b-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
+                  className="focus-ring w-full flex-1 px-3 pb-3 pt-1.5 text-left flex flex-col justify-end rounded-b-2xl"
                 >
                   <div className="min-w-0">
-                    <h4 className="font-serif font-bold text-xs text-dharma-text line-clamp-1">
+                    <span lang="hi" className="block font-serif font-bold text-xs text-dharma-text line-clamp-1">
                       {step.nameHi.split('(')[0].trim()}
-                    </h4>
+                    </span>
                     <span className="text-[10px] text-dharma-muted block mt-0.5">{step.durationHi}</span>
                   </div>
                 </button>
@@ -147,8 +144,11 @@ export function UpakarmaClient() {
         <div className="rounded-3xl border border-dharma-border bg-dharma-card p-6 md:p-8 shadow-sm">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-dharma-border">
             <div>
-              <span className="text-xs font-bold text-saffron-600 uppercase tracking-wider block">
-                सोपान {currentStep.stepNumber} · Step {currentStep.stepNumber} of 5 ({currentStep.durationHi})
+              <span className="text-xs font-bold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider block">
+                <span lang="hi" data-bi="hi" className="font-devanagari">सोपान {currentStep.stepNumber}</span>
+                <span data-bi="sep" aria-hidden="true"> · </span>
+                <span data-bi="en">Step {currentStep.stepNumber} of 5</span>{' '}
+                <span>({currentStep.durationHi})</span>
               </span>
               <h3 className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-1">
                 {currentStep.nameHi}
@@ -158,16 +158,26 @@ export function UpakarmaClient() {
 
             <button
               type="button"
+              aria-pressed={!!completedSteps[currentStep.stepNumber]}
               onClick={() => toggleStepCompleted(currentStep.stepNumber)}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold border transition ${
+              className={`focus-ring inline-flex min-h-[44px] items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold border transition ${
                 completedSteps[currentStep.stepNumber]
                   ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
                   : 'bg-dharma-bg hover:bg-dharma-border/30 text-dharma-text border-dharma-border'
               }`}
             >
-              <CheckCircle2 className="w-4 h-4" />
+              <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
               <span>
-                {completedSteps[currentStep.stepNumber] ? 'सम्पन्न (Marked Done)' : 'सम्पन्न चिह्नित करें'}
+                {completedSteps[currentStep.stepNumber] ? (
+                  <>
+                    <span lang="hi" data-bi="hi" className="font-devanagari">सम्पन्न</span>
+                    <span data-bi="sep" aria-hidden="true"> (</span>
+                    <span data-bi="en">Marked Done</span>
+                    <span data-bi="sep" aria-hidden="true">)</span>
+                  </>
+                ) : (
+                  <span lang="hi">सम्पन्न चिह्नित करें</span>
+                )}
               </span>
             </button>
           </div>
@@ -200,8 +210,8 @@ export function UpakarmaClient() {
           {activeMantra && (
             <div className="rounded-2xl border border-saffron-500/30 bg-gradient-to-br from-saffron-500/5 via-amber-500/5 to-transparent p-5 space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs uppercase font-bold text-saffron-700 dark:text-saffron-400 tracking-wider flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5" />
+                <span className="text-xs uppercase font-bold text-saffron-700 dark:text-saffron-300 tracking-wider flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>{activeMantra.titleHi}</span>
                 </span>
 
@@ -209,13 +219,14 @@ export function UpakarmaClient() {
                   <button
                     type="button"
                     onClick={() => copyText(activeMantra.sanskrit, activeMantra.id)}
-                    className="p-1.5 rounded-lg border border-dharma-border bg-dharma-card hover:bg-dharma-bg text-dharma-muted hover:text-saffron-600 transition"
+                    aria-label="मन्त्र कॉपी करें (Copy mantra)"
+                    className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-dharma-border bg-dharma-card hover:bg-dharma-bg text-dharma-muted hover:text-saffron-700 dark:hover:text-saffron-300 transition"
                     title="मन्त्र कॉपी करें"
                   >
                     {copiedKey === activeMantra.id ? (
-                      <Check className="w-4 h-4 text-emerald-600" />
+                      <Check className="w-4 h-4 text-emerald-600" aria-hidden="true" />
                     ) : (
-                      <Copy className="w-4 h-4" />
+                      <Copy className="w-4 h-4" aria-hidden="true" />
                     )}
                   </button>
                 </div>
@@ -232,8 +243,8 @@ export function UpakarmaClient() {
               </div>
 
               <div className="space-y-1 text-xs">
-                <strong className="text-dharma-text block">सरल हिन्दी अर्थ:</strong>
-                <p className="text-dharma-muted leading-relaxed">{activeMantra.hindi}</p>
+                <strong lang="hi" className="text-dharma-text block">सरल हिन्दी अर्थ:</strong>
+                <p lang="hi" className="text-dharma-muted leading-relaxed">{activeMantra.hindi}</p>
               </div>
 
               {/* 108 Counter Specific to Kamokarshin */}
@@ -241,10 +252,13 @@ export function UpakarmaClient() {
                 <div className="mt-4 pt-4 border-t border-saffron-500/20 rounded-xl bg-white/40 dark:bg-black/20 p-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                      <h5 className="font-serif font-bold text-sm text-dharma-text">
-                        108 कामोऽकार्षीत् जप गणक (Interactive Japa Counter)
-                      </h5>
-                      <p className="text-xs text-dharma-muted mt-0.5">
+                      <h4 className="font-serif font-bold text-sm text-dharma-text">
+                        <span lang="hi" data-bi="hi" className="font-devanagari">108 कामोऽकार्षीत् जप गणक</span>
+                        <span data-bi="sep" aria-hidden="true"> (</span>
+                        <span data-bi="en">Interactive Japa Counter</span>
+                        <span data-bi="sep" aria-hidden="true">)</span>
+                      </h4>
+                      <p lang="hi" className="text-xs text-dharma-muted mt-0.5">
                         प्रत्येक जप के साथ मन्यु और काम को साक्षी भाव से विसर्जित करें।
                       </p>
                     </div>
@@ -260,7 +274,7 @@ export function UpakarmaClient() {
                       <button
                         type="button"
                         onClick={() => setJapaCount((prev) => Math.min(108, prev + 1))}
-                        className="px-4 py-2 rounded-xl bg-saffron-600 hover:bg-saffron-700 text-white font-bold text-xs transition shadow-xs"
+                        className="focus-ring inline-flex min-h-[44px] items-center justify-center px-4 py-2 rounded-xl bg-saffron-700 hover:bg-saffron-800 text-white font-bold text-xs transition shadow-xs"
                       >
                         +1 जप
                       </button>
@@ -268,16 +282,24 @@ export function UpakarmaClient() {
                       <button
                         type="button"
                         onClick={() => setJapaCount(0)}
-                        className="p-2 rounded-xl border border-dharma-border bg-dharma-card hover:bg-dharma-bg text-dharma-muted"
+                        aria-label="जप गणक पुनः आरम्भ करें (Reset counter)"
+                        className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-dharma-border bg-dharma-card hover:bg-dharma-bg text-dharma-muted hover:text-dharma-text"
                         title="पुनः आरम्भ (Reset)"
                       >
-                        <RotateCcw className="w-4 h-4" />
+                        <RotateCcw className="w-4 h-4" aria-hidden="true" />
                       </button>
                     </div>
                   </div>
 
                   {/* Progress Bar */}
-                  <div className="h-2 w-full bg-dharma-bg rounded-full overflow-hidden mt-3 border border-dharma-border">
+                  <div
+                    role="progressbar"
+                    aria-valuemin={0}
+                    aria-valuemax={108}
+                    aria-valuenow={japaCount}
+                    aria-label="108 कामोऽकार्षीत् जप प्रगति"
+                    className="h-2 w-full bg-dharma-bg rounded-full overflow-hidden mt-3 border border-dharma-border"
+                  >
                     <div
                       className="h-full bg-gradient-to-r from-amber-500 to-saffron-600 transition-all duration-300"
                       style={{ width: `${(japaCount / 108) * 100}%` }}
@@ -293,13 +315,15 @@ export function UpakarmaClient() {
       {/* ─── SECTION 2: YAJNOPAVITA ANATOMY & MYSTICAL SYMBOLISM ───────────── */}
       <section className="rounded-3xl border border-dharma-border bg-dharma-card p-6 md:p-8 space-y-6 shadow-sm">
         <div>
-          <span className="text-xs uppercase tracking-wider font-semibold text-saffron-600 dark:text-saffron-400">
-            आध्यात्मिक स्वरूप एवं प्रतीकवाद · Divine Architecture
+          <span className="text-xs uppercase tracking-wider font-semibold text-saffron-700 dark:text-saffron-300">
+            <span lang="hi" data-bi="hi" className="font-devanagari">आध्यात्मिक स्वरूप एवं प्रतीकवाद</span>
+            <span data-bi="sep" aria-hidden="true"> · </span>
+            <span data-bi="en">Divine Architecture</span>
           </span>
-          <h2 className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
+          <h2 lang="hi" className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
             यज्ञोपवीत की संरचना एवं नौ तन्तुओं का रहस्य
           </h2>
-          <p className="text-xs sm:text-sm text-dharma-muted mt-1 max-w-2xl leading-relaxed">
+          <p lang="hi" className="text-xs sm:text-sm text-dharma-muted mt-1 max-w-2xl leading-relaxed">
             जनेऊ मात्र एक सूती धागा नहीं, अपितु सम्पूर्ण ब्रह्माण्डीय शक्तियों और तीन ऋणों का देह पर प्रत्यक्ष आवरण है।
           </p>
         </div>
@@ -308,7 +332,7 @@ export function UpakarmaClient() {
         <div className="grid sm:grid-cols-3 gap-4">
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">1. <span lang="hi" data-bi="hi">देव-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Deva Rina</span><span data-bi="sep">)</span></h4>
+              <h3 className="font-serif font-bold text-sm text-dharma-text">1. <span lang="hi" data-bi="hi">देव-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Deva Rina</span><span data-bi="sep">)</span></h3>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 font-semibold">
                 सत्त्व गुण
               </span>
@@ -320,7 +344,7 @@ export function UpakarmaClient() {
 
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">2. <span lang="hi" data-bi="hi">ऋषि-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Rishi Rina</span><span data-bi="sep">)</span></h4>
+              <h3 className="font-serif font-bold text-sm text-dharma-text">2. <span lang="hi" data-bi="hi">ऋषि-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Rishi Rina</span><span data-bi="sep">)</span></h3>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-800 dark:text-blue-300 font-semibold">
                 रजस् गुण
               </span>
@@ -332,7 +356,7 @@ export function UpakarmaClient() {
 
           <div className="p-4 rounded-2xl border border-dharma-border bg-dharma-bg/60 space-y-2">
             <div className="flex items-center justify-between">
-              <h4 className="font-serif font-bold text-sm text-dharma-text">3. <span lang="hi" data-bi="hi">पितृ-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Pitru Rina</span><span data-bi="sep">)</span></h4>
+              <h3 className="font-serif font-bold text-sm text-dharma-text">3. <span lang="hi" data-bi="hi">पितृ-ऋण</span><span data-bi="sep"> (</span><span data-bi="en">Pitru Rina</span><span data-bi="sep">)</span></h3>
               <span className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 font-semibold">
                 तमस् गुण
               </span>
@@ -345,27 +369,40 @@ export function UpakarmaClient() {
 
         {/* 9 Divine Tantus Interactive Grid */}
         <div className="space-y-3 pt-4 border-t border-dharma-border/60">
-          <h4 className="text-sm font-serif font-bold text-dharma-text flex items-center gap-2">
-            <Layers className="w-4 h-4 text-saffron-600" />
-            <span>प्रत्येक सूत्र के नौ तन्तु (9 Divine Threads)</span>
-          </h4>
+          <h3 className="text-sm font-serif font-bold text-dharma-text flex items-center gap-2">
+            <Layers className="w-4 h-4 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
+            <span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">प्रत्येक सूत्र के नौ तन्तु</span>
+              <span data-bi="sep" aria-hidden="true"> (</span>
+              <span data-bi="en">9 Divine Threads</span>
+              <span data-bi="sep" aria-hidden="true">)</span>
+            </span>
+          </h3>
 
-          <div className="grid grid-cols-3 sm:grid-cols-9 gap-2">
-            {YAJNOPAVITA_TANTUS.map((tantu) => (
-              <button
-                type="button"
-                key={tantu.number}
-                onClick={() => setSelectedTantuNumber(tantu.number)}
-                className={`p-2.5 rounded-xl border text-center transition ${
-                  selectedTantuNumber === tantu.number
-                    ? 'border-saffron-600 bg-saffron-50 dark:bg-saffron-950/40 text-saffron-900 dark:text-saffron-300 font-bold shadow-xs'
-                    : 'border-dharma-border bg-dharma-bg hover:border-dharma-text/20 text-dharma-text'
-                }`}
-              >
-                <span className="block text-xs font-mono">तन्तु {tantu.number}</span>
-                <span className="text-[11px] truncate block opacity-90">{tantu.deityHi.split(' ')[0]}</span>
-              </button>
-            ))}
+          <div
+            role="group"
+            aria-label="यज्ञोपवीत के नौ तन्तु (9 Divine Threads)"
+            className="grid grid-cols-3 sm:grid-cols-9 gap-2"
+          >
+            {YAJNOPAVITA_TANTUS.map((tantu) => {
+              const isSelected = selectedTantuNumber === tantu.number;
+              return (
+                <button
+                  type="button"
+                  key={tantu.number}
+                  aria-pressed={isSelected}
+                  onClick={() => setSelectedTantuNumber(tantu.number)}
+                  className={`focus-ring min-h-[44px] p-2.5 rounded-xl border text-center transition ${
+                    isSelected
+                      ? 'border-saffron-600 bg-saffron-50 dark:bg-saffron-950/40 text-saffron-900 dark:text-saffron-300 font-bold shadow-xs'
+                      : 'border-dharma-border bg-dharma-bg hover:border-dharma-text/20 text-dharma-text'
+                  }`}
+                >
+                  <span className="block text-xs font-mono">तन्तु {tantu.number}</span>
+                  <span className="text-[11px] truncate block opacity-90">{tantu.deityHi.split(' ')[0]}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Active Tantu Explainer Box */}
@@ -374,10 +411,10 @@ export function UpakarmaClient() {
             return (
               <div className="p-4 rounded-2xl bg-dharma-bg/80 border border-dharma-border text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <span className="font-bold text-saffron-700 dark:text-saffron-400 block mb-0.5">
+                  <span className="font-bold text-saffron-700 dark:text-saffron-300 block mb-0.5">
                     तन्तु {activeTantu.number}: {activeTantu.deityHi} ({activeTantu.deity})
                   </span>
-                  <p className="text-dharma-text leading-relaxed">{activeTantu.principleHi}</p>
+                  <p lang="hi" className="text-dharma-text leading-relaxed">{activeTantu.principleHi}</p>
                 </div>
                 <div className="text-dharma-muted italic shrink-0">
                   {activeTantu.principle}
@@ -388,9 +425,18 @@ export function UpakarmaClient() {
 
           {/* Brahmagranthi Note */}
           <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200 leading-relaxed flex items-start gap-3">
-            <Sun className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+            <Sun className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
             <div>
-              <strong>ब्रह्मग्रन्थि (The Sacred Knot of Unity):</strong> जनेऊ के तीनों सूत्रों को एक साथ बांधने वाली ग्रन्थि को ‘ब्रह्मग्रन्थि’ कहते हैं। यह इस सत्य का स्मरण कराती है कि सृष्टि के समस्त रूप, गुण और ऋण अन्ततः उस एक अद्वैत परब्रह्म (सच्चिदानन्द) में ही प्रतिष्ठित हैं।
+              <strong>
+                <span lang="hi" data-bi="hi" className="font-devanagari">ब्रह्मग्रन्थि</span>
+                <span data-bi="sep" aria-hidden="true"> (</span>
+                <span data-bi="en">The Sacred Knot of Unity</span>
+                <span data-bi="sep" aria-hidden="true">)</span>
+                :
+              </strong>{' '}
+              <span lang="hi">
+                जनेऊ के तीनों सूत्रों को एक साथ बांधने वाली ग्रन्थि को ‘ब्रह्मग्रन्थि’ कहते हैं। यह इस सत्य का स्मरण कराती है कि सृष्टि के समस्त रूप, गुण और ऋण अन्ततः उस एक अद्वैत परब्रह्म (सच्चिदानन्द) में ही प्रतिष्ठित हैं।
+              </span>
             </div>
           </div>
         </div>
@@ -399,10 +445,12 @@ export function UpakarmaClient() {
       {/* ─── SECTION 3: REGIONAL TRADITIONS & FAQS ─────────────────────────── */}
       <section className="space-y-6">
         <div>
-          <span className="text-xs uppercase tracking-wider font-semibold text-saffron-600 dark:text-saffron-400">
-            भारत की विविधता में एकात्मता · Pan-Indian Observance
+          <span className="text-xs uppercase tracking-wider font-semibold text-saffron-700 dark:text-saffron-300">
+            <span lang="hi" data-bi="hi" className="font-devanagari">भारत की विविधता में एकात्मता</span>
+            <span data-bi="sep" aria-hidden="true"> · </span>
+            <span data-bi="en">Pan-Indian Observance</span>
           </span>
-          <h2 className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
+          <h2 lang="hi" className="text-xl md:text-2xl font-serif font-bold text-dharma-text mt-0.5">
             क्षेत्रीय परम्पराएँ एवं उपाकर्म रूप
           </h2>
         </div>
@@ -411,7 +459,7 @@ export function UpakarmaClient() {
           {REGIONAL_UPAKARMA_TRADITIONS.map((trad, idx) => (
             <div key={idx} className="p-5 rounded-2xl border border-dharma-border bg-dharma-card space-y-2 shadow-xs">
               <div className="flex items-center justify-between">
-                <span className="text-xs uppercase font-bold text-saffron-600 tracking-wider">
+                <span className="text-xs uppercase font-bold text-saffron-700 dark:text-saffron-300 tracking-wider">
                   {trad.region}
                 </span>
                 <span className="text-[11px] text-dharma-muted">{trad.timing}</span>
@@ -419,7 +467,7 @@ export function UpakarmaClient() {
               <h3 className="font-serif font-bold text-base text-dharma-text">
                 {trad.nameHi} ({trad.name})
               </h3>
-              <p className="text-xs text-dharma-text leading-relaxed">{trad.descriptionHi}</p>
+              <p lang="hi" className="text-xs text-dharma-text leading-relaxed">{trad.descriptionHi}</p>
               <p className="text-xs text-dharma-muted leading-relaxed italic pt-1 border-t border-dharma-border/50">
                 {trad.description}
               </p>
@@ -430,8 +478,13 @@ export function UpakarmaClient() {
         {/* FAQs */}
         <div className="pt-6 space-y-4">
           <h3 className="text-lg font-serif font-bold text-dharma-text flex items-center gap-2">
-            <Info className="w-5 h-5 text-saffron-600" />
-            <span>उपाकर्म एवं यज्ञोपवीत प्रश्नोत्तरी (Frequently Asked Questions)</span>
+            <Info className="w-5 h-5 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
+            <span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">उपाकर्म एवं यज्ञोपवीत प्रश्नोत्तरी</span>
+              <span data-bi="sep" aria-hidden="true"> (</span>
+              <span data-bi="en">Frequently Asked Questions</span>
+              <span data-bi="sep" aria-hidden="true">)</span>
+            </span>
           </h3>
 
           <div className="space-y-3">

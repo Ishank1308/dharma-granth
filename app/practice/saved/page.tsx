@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PracticeSubNav } from '@/app/components/practice/PracticeSubNav';
 import { OfflineLibraryManager } from '@/app/components/scripture/OfflineLibraryManager';
 
 export const metadata: Metadata = {
@@ -12,8 +13,9 @@ export default function SavedPage() {
   return (
     <main className="min-h-screen bg-dharma-bg px-5 py-12 sm:px-6">
       <div className="mx-auto max-w-3xl">
+        <PracticeSubNav className="mb-6" />
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron-700 dark:text-saffron-400">
-          <span lang="hi" className="font-devanagari">ऑफ़लाइन ग्रंथालय</span> · Offline library
+          <span lang="hi" data-bi="hi" className="font-devanagari">ऑफ़लाइन ग्रंथालय</span><span data-bi="sep"> · </span><span data-bi="en">Offline library</span>
         </p>
         <h1 className="mt-2 font-serif text-3xl font-bold text-dharma-text sm:text-4xl">Saved on this device</h1>
         <p className="mt-2 text-dharma-muted">

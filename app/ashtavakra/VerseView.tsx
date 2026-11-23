@@ -7,6 +7,7 @@ import { SacredSection } from '@/app/components/reader/SacredReadingFlow';
 import { VerseTreeStructure, type VerseTreeBranch } from '@/app/components/reader/VerseTreeStructure';
 import { SACRED_SECTION_LABEL } from '@/lib/sacred-reading-order';
 import { AshtavakraReadingGuide } from './AshtavakraReadingGuide';
+import { DeepNoteDisclosure } from './DeepNoteDisclosure';
 import { ReflectionBody } from '@/app/components/ModernContextBlock';
 
 /** Splits blank-line separated text into paragraphs; keeps single line breaks. */
@@ -159,37 +160,41 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
               <span className="font-semibold">In simple English: </span>{v.simpleEnglishExplanation}
             </p>
           )}
-          {v.philosophicalExplanationHindi && (
-            <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                गहरी दार्शनिक व्याख्या · Deep philosophical insight
-              </p>
-              <Paras text={v.philosophicalExplanationHindi} className={proseRelaxedHi} />
-              {v.analogyHindi && (
-                <p lang="hi" className="mt-3 rounded-xl border border-dharma-border bg-dharma-card-soft p-3 font-devanagari text-sm leading-relaxed text-dharma-text">
-                  <span className="font-bold">उदाहरण से समझें:</span> {v.analogyHindi}
-                </p>
-              )}
-            </div>
-          )}
-          {v.commonMisunderstandingHindi && (
-            <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20">
-              <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-rose-800 dark:text-rose-300">
-                सामान्य भ्रम निवारण · What it does NOT mean
-              </p>
-              <p lang="hi" className="font-devanagari text-sm leading-relaxed text-rose-950 dark:text-rose-100">
-                {v.commonMisunderstandingHindi}
-              </p>
-            </div>
-          )}
-          {concept && (
-            <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
-                प्रतीकात्मक चित्र-व्याख्या · Symbolic visual
-              </p>
-              <p className="mb-2 text-[11px] leading-relaxed text-dharma-muted">संपादकीय सहायक चित्र; यह श्लोक का शाब्दिक अर्थ नहीं है।</p>
-              <ConceptVisual id={concept} />
-            </div>
+          {(v.philosophicalExplanationHindi || v.commonMisunderstandingHindi || concept) && (
+            <DeepNoteDisclosure id={`${id}-deep-note`}>
+                {v.philosophicalExplanationHindi && (
+                  <div>
+                    <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                      गहरी दार्शनिक व्याख्या · Deep philosophical insight
+                    </p>
+                    <Paras text={v.philosophicalExplanationHindi} className={proseRelaxedHi} />
+                    {v.analogyHindi && (
+                      <p lang="hi" className="mt-3 rounded-xl border border-dharma-border bg-dharma-card-soft p-3 font-devanagari text-sm leading-relaxed text-dharma-text">
+                        <span className="font-bold">उदाहरण से समझें:</span> {v.analogyHindi}
+                      </p>
+                    )}
+                  </div>
+                )}
+                {v.commonMisunderstandingHindi && (
+                  <div className="rounded-2xl border border-rose-200/80 bg-rose-50/60 p-4 dark:border-rose-900/40 dark:bg-rose-950/20">
+                    <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-rose-800 dark:text-rose-300">
+                      सामान्य भ्रम निवारण · What it does NOT mean
+                    </p>
+                    <p lang="hi" className="font-devanagari text-sm leading-relaxed text-rose-950 dark:text-rose-100">
+                      {v.commonMisunderstandingHindi}
+                    </p>
+                  </div>
+                )}
+                {concept && (
+                  <div>
+                    <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
+                      प्रतीकात्मक चित्र-व्याख्या · Symbolic visual
+                    </p>
+                    <p className="mb-2 text-[11px] leading-relaxed text-dharma-muted">संपादकीय सहायक चित्र; यह श्लोक का शाब्दिक अर्थ नहीं है।</p>
+                    <ConceptVisual id={concept} />
+                  </div>
+                )}
+            </DeepNoteDisclosure>
           )}
         </div>
       ),

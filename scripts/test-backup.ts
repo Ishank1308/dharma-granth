@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { createBackup, restoreBackup, type BackupFile } from '@/lib/backup';
+import { clearOwnData, createBackup, restoreBackup, type BackupFile } from '@/lib/backup';
 
 class MemoryStorage implements Storage {
   private values = new Map<string, string>();
@@ -14,6 +14,7 @@ class MemoryStorage implements Storage {
 const storage = new MemoryStorage();
 storage.setItem('dharma.japa.count', '12');
 storage.setItem('dharmagranth_reflections', '["saved"]');
+storage.setItem('dharmagranth:note:bhagavadgita:2:47', 'Act without clinging to results.');
 storage.setItem('bookmarkedSections', '["gita-2"]');
 storage.setItem('unrelated-site-key', 'leave me');
 
@@ -23,6 +24,7 @@ assert.ok(exported.exportedAt);
 assert.deepEqual(exported.data, {
   'dharma.japa.count': '12',
   dharmagranth_reflections: '["saved"]',
+  'dharmagranth:note:bhagavadgita:2:47': 'Act without clinging to results.',
   bookmarkedSections: '["gita-2"]',
 });
 
@@ -31,16 +33,28 @@ const imported: BackupFile = {
   schemaVersion: 1,
   version: 1,
   exportedAt: new Date().toISOString(),
-  data: { 'dharma.japa.count': '20', 'dharmagranth_vows': '["one"]' },
+  data: {
+    'dharma.japa.count': '20',
+    'dharmagranth_vows': '["one"]',
+    'dharmagranth:practice:bhagavadgita:2:47': '{"completedDate":"2026-11-23"}',
+  },
 };
-assert.equal(restoreBackup(JSON.stringify(imported), 'merge', storage), 2);
+assert.equal(restoreBackup(JSON.stringify(imported), 'merge', storage), 3);
 assert.equal(storage.getItem('dharma.japa.count'), '20');
 assert.equal(storage.getItem('dharmagranth_reflections'), '["saved"]');
+assert.equal(storage.getItem('dharmagranth:note:bhagavadgita:2:47'), 'Act without clinging to results.');
+assert.equal(storage.getItem('dharmagranth:practice:bhagavadgita:2:47'), '{"completedDate":"2026-11-23"}');
 
-assert.equal(restoreBackup(JSON.stringify(imported), 'replace', storage), 2);
+assert.equal(restoreBackup(JSON.stringify(imported), 'replace', storage), 3);
 assert.equal(storage.getItem('dharmagranth_reflections'), null);
+assert.equal(storage.getItem('dharmagranth:note:bhagavadgita:2:47'), null);
 assert.equal(storage.getItem('dharma.japa.count'), '20');
 assert.equal(storage.getItem('unrelated-site-key'), 'leave me');
+
+assert.equal(clearOwnData(storage), 3);
+assert.equal(storage.getItem('dharmagranth:practice:bhagavadgita:2:47'), null);
+assert.equal(storage.getItem('unrelated-site-key'), 'leave me');
+restoreBackup(JSON.stringify(imported), 'merge', storage);
 
 const beforeInvalid = storage.getItem('dharma.japa.count');
 assert.throws(() => restoreBackup('{"format":"foreign","version":1,"data":{}}', 'replace', storage));

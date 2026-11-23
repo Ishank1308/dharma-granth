@@ -65,6 +65,18 @@ export function MobileNavDrawer({
     };
   }, [open]);
 
+  // Close the drawer automatically if the viewport widens past the lg breakpoint so desktop scroll lock cannot stick.
+  useEffect(() => {
+    if (!open) return;
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const handleViewport = () => {
+      if (mq.matches) onClose();
+    };
+    handleViewport();
+    mq.addEventListener('change', handleViewport);
+    return () => mq.removeEventListener('change', handleViewport);
+  }, [open, onClose]);
+
   // Focus trapping and Escape key support for navigation drawer
   useEffect(() => {
     if (!open) return;
@@ -82,21 +94,23 @@ export function MobileNavDrawer({
 
       if (e.key === 'Tab') {
         if (!drawerRef.current) return;
-        const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        );
+        const focusable = Array.from(
+          drawerRef.current.querySelectorAll<HTMLElement>(
+            'a[href]:not([tabindex="-1"]), button:not([disabled]):not([tabindex="-1"]), input:not([disabled]):not([tabindex="-1"]), select:not([disabled]):not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter((el) => el.offsetParent !== null);
         if (focusable.length === 0) return;
 
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
 
         if (e.shiftKey) {
-          if (document.activeElement === first) {
+          if (document.activeElement === first || !drawerRef.current.contains(document.activeElement)) {
             e.preventDefault();
             last?.focus();
           }
         } else {
-          if (document.activeElement === last) {
+          if (document.activeElement === last || !drawerRef.current.contains(document.activeElement)) {
             e.preventDefault();
             first?.focus();
           }
@@ -243,7 +257,7 @@ export function MobileNavDrawer({
                       <div className="flex flex-col min-w-0">
                         <div className="flex items-center gap-1.5">
                           <span className="truncate text-sm font-bold">{item.label}</span>
-                          <span className="hidden xs:inline text-xs font-normal text-dharma-muted truncate">
+                          <span className="hidden min-[380px]:inline text-xs font-normal text-dharma-muted truncate">
                             ({item.labelEn})
                           </span>
                         </div>

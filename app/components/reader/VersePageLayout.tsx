@@ -62,13 +62,19 @@ export function VersePageLayout({
     if (dialogOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (document.querySelector('[role="dialog"][aria-modal="true"]')) return;
       const target = event.target as HTMLElement | null;
       if (
         target &&
         (target.tagName === 'INPUT' ||
           target.tagName === 'TEXTAREA' ||
           target.tagName === 'SELECT' ||
-          target.isContentEditable)
+          target.isContentEditable ||
+          Boolean(
+            target.closest(
+              'button, a, summary, [role="tab"], [role="menuitem"], [role="menuitemradio"], [role="option"], [role="combobox"], [role="radiogroup"]',
+            ),
+          ))
       ) {
         return;
       }
@@ -95,11 +101,11 @@ export function VersePageLayout({
 
   return (
     <div
-      className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start [[data-lite=true]_&]:transition-none"
+      className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 sm:py-5 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start [[data-lite-mode=true]_&]:transition-none"
       {...swipeHandlers}
     >
       {!focusMode && mobileTopBar && (
-        <div className="lg:hidden min-w-0">
+        <div className="hidden sm:block lg:hidden min-w-0">
           {mobileTopBar}
         </div>
       )}

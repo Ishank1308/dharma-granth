@@ -80,6 +80,7 @@ const THEME_INIT_SCRIPT = `
     var lang = JSON.parse(localStorage.getItem('dharma.language_preference') || 'null');
     if (lang === 'hindi' || lang === 'english' || lang === 'sanskrit') {
       document.documentElement.setAttribute('data-ui-lang', lang);
+      document.documentElement.setAttribute('lang', lang === 'english' ? 'en' : lang === 'sanskrit' ? 'sa' : 'hi');
     }
   } catch (e) {}
   // The home-page splash plays once per browser session; later page loads

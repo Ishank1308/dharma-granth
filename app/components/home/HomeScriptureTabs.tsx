@@ -501,7 +501,7 @@ export function HomeScriptureTabs() {
                 <h3 lang="sa" className="font-devanagari text-2xl font-bold tracking-tight text-dharma-text sm:text-[26px]">
                   {book.titleSa}
                 </h3>
-                <p className="text-xs font-medium text-dharma-muted">
+                <p className="text-[13px] font-medium text-dharma-text/80">
                   {book.titleEn} · <span className="tabular-nums font-sans">{book.metrics}</span>
                 </p>
               </div>
@@ -524,8 +524,10 @@ export function HomeScriptureTabs() {
                 data-vt="open"
                 className="library-showcase-link chevron-nudge flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg/80 py-2.5 text-xs font-semibold text-dharma-text transition-all group-hover:border-dharma-saffron/50 group-hover:bg-dharma-saffron/10 group-hover:text-dharma-saffron focus-ring"
               >
-                <span>अध्ययन आरम्भ करें</span>
-                <span aria-hidden="true">· Read ›</span>
+                <span lang="hi" data-bi="hi">अध्ययन आरम्भ करें</span>
+                <span data-bi="sep" aria-hidden="true"> · </span>
+                <span data-bi="en">Read</span>{' '}
+                <span aria-hidden="true">›</span>
               </Link>
             </div>
           </article>

@@ -474,7 +474,7 @@ export function SvadhyayaSplitDrawer({
                       श्लोक: <span className="font-semibold text-indigo-700 dark:text-indigo-300">{mananaContext.scriptureTitle} {mananaContext.chapter}.{mananaContext.verseNum}</span>
                     </>
                   ) : (
-                    'वर्तमान श्लोक पर चिंतन'
+                    'टिप्पणी सहेजने के लिए किसी श्लोक से खोलें · Open from a verse to attach a note'
                   )}
                 </p>
               </div>
@@ -522,7 +522,7 @@ export function SvadhyayaSplitDrawer({
                   <button
                     type="button"
                     onClick={handleSaveNote}
-                    disabled={!noteContent.trim() && selectedTags.length === 0}
+                    disabled={!mananaContext || (!noteContent.trim() && selectedTags.length === 0)}
                     className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-indigo-700 disabled:opacity-50 cursor-pointer"
                   >
                     {savedSuccess ? (

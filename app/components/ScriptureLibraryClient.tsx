@@ -371,7 +371,7 @@ export function ScriptureLibraryClient({
         <div className="mx-auto mt-2.5 flex max-w-7xl items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5">
           {[
             { id: 'all', label: `सभी ${items.length}` },
-            { id: 'vedanta', label: 'वेदान्त व गीता', matchCat: ['vedanta', 'gita'] },
+            { id: 'vedanta', label: 'वेदान्त', matchCat: ['vedanta'] },
             { id: 'upanishad', label: 'उपनिषद्', matchCat: ['upanishad'] },
             { id: 'veda', label: 'वेद', matchCat: ['veda'] },
             { id: 'itihasa', label: 'इतिहास', matchCat: ['itihasa'] },
@@ -386,6 +386,7 @@ export function ScriptureLibraryClient({
               <button
                 key={pill.id}
                 type="button"
+                aria-pressed={Boolean(isActive)}
                 onClick={() => {
                   triggerTactileFeedback('light', 'softTap');
                   if (isAll) {
@@ -417,7 +418,7 @@ export function ScriptureLibraryClient({
 
       <div className="pt-6 lg:grid lg:grid-cols-[17.5rem_minmax(0,1fr)] lg:gap-10">
         <aside aria-label="Filters" className="hidden lg:block">
-          <div className="sticky top-[136px] max-h-[calc(100dvh-160px)] overflow-y-auto rounded-[18px] bg-dharma-card p-3">
+          <div className="sticky top-[168px] max-h-[calc(100dvh-188px)] overflow-y-auto rounded-[18px] bg-dharma-card p-3">
             <div className="flex items-center justify-between px-2 pb-2">
               <h2 className="text-body font-semibold text-dharma-text">
                 <span data-bi="en">Filters</span> <span lang="hi" data-bi="hi" data-bi-lead className="ml-1 font-devanagari text-sm font-normal text-dharma-muted">फ़िल्टर</span>
@@ -567,7 +568,7 @@ export function ScriptureLibraryClient({
         </div>
       </div>
 
-      <FilterSheet open={sheetOpen} onClose={() => setSheetOpen(false)} resultCount={results.length} activeCount={activeCount} onClear={clearAll}>
+      <FilterSheet open={sheetOpen} onClose={() => setSheetOpen(false)} resultCount={results.length} activeCount={activeCount} onClear={clearFilters}>
         {panel('sheet')}
       </FilterSheet>
     </div>

@@ -307,7 +307,7 @@ export function ReaderLayers({
           </p>
           {/* Interactive Padachheda word pills: updates selectedWordIndex in StudyCompanionRail without layout shift */}
           {!settings.liteMode && glosses.length > 0 && onSelectWord && (
-            <div className="mt-3 rounded-2xl border border-amber-700/20 bg-amber-50/45 dark:border-amber-500/20 dark:bg-amber-950/20 px-3 py-2.5 [[data-lite=true]_&]:hidden">
+            <div className="hidden lg:block mt-3 rounded-2xl border border-amber-700/20 bg-amber-50/45 dark:border-amber-500/20 dark:bg-amber-950/20 px-3 py-2.5 [[data-lite-mode=true]_&]:hidden">
               <div className="mb-1.5 flex items-center justify-between gap-2 text-[11px] font-semibold text-dharma-muted">
                 <span>
                   <span lang="hi" className="font-devanagari text-dharma-text">पदच्छेद</span>{' '}
@@ -324,7 +324,7 @@ export function ReaderLayers({
                       type="button"
                       aria-pressed={isSelected}
                       onClick={() => onSelectWord(idx)}
-                      className={`focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition [[data-lite=true]_&]:transition-none ${
+                      className={`focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition [[data-lite-mode=true]_&]:transition-none ${
                         isSelected
                           ? 'border-amber-700 bg-amber-800 text-amber-50 shadow-2xs dark:border-amber-300 dark:bg-amber-300 dark:text-stone-950'
                           : 'border-amber-700/30 bg-dharma-card/90 text-dharma-text hover:border-amber-600/60 hover:bg-amber-100/60 dark:border-amber-500/25 dark:hover:bg-amber-900/35'
@@ -407,8 +407,8 @@ export function ReaderLayers({
         <Layer
           id="layer-padas"
           kind="aid"
-          title="Word by word (पदच्छेद व अन्वय)"
-          titleHi="पदच्छेद"
+          title="Word by word"
+          titleHi="पदच्छेद व अन्वय"
         >
           <div className="mb-2.5 flex items-center justify-between text-xs text-dharma-muted">
             <span>किसी पद को चुनें — उसका अर्थ और व्याकरण देखें:</span>
@@ -508,21 +508,25 @@ export function ReaderLayers({
             <div
               className={
                 showHindiTrans && meaningNow.hi === 'text' && showEnglishTrans && meaningNow.en === 'text'
-                  ? 'grid grid-cols-1 gap-3 md:grid-cols-2 [[data-lang=hi]_&]:grid-cols-1 [[data-lang=en]_&]:grid-cols-1'
+                  ? 'grid grid-cols-1 gap-3 md:grid-cols-2 [[data-ui-lang=hindi]_&]:grid-cols-1 [[data-ui-lang=english]_&]:grid-cols-1'
                   : 'space-y-3'
               }
             >
               {showHindiTrans && meaningNow.hi === 'text' && (
-                <div className="[[data-lang=en]_&]:hidden h-full">
+                <div className="[[data-ui-lang=english]_&]:hidden h-full">
                   <Layer
                     id="layer-hindi"
                     kind="translation"
                     title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Hindi Meaning'}
                     titleHi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'भावार्थ (हिन्दी)'}
                     badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                        मूलानुवाद · Literal
-                      </span>
+                      p.hindiIsAi ? (
+                        <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>AI-सहायता प्राप्त प्रारूप</AiBadge>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                          मूलानुवाद · Literal
+                        </span>
+                      )
                     }
                   >
                     <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
@@ -532,15 +536,19 @@ export function ReaderLayers({
                 </div>
               )}
               {showEnglishTrans && meaningNow.en === 'text' && (
-                <div className="[[data-lang=hi]_&]:hidden h-full">
+                <div className="[[data-ui-lang=hindi]_&]:hidden h-full">
                   <Layer
                     id="layer-english"
                     kind="translation"
                     title={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'English Translation'}
                     badge={
-                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                        Literal Text
-                      </span>
+                      p.englishIsAi ? (
+                        <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>AI-assisted draft</AiBadge>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                          Literal Text
+                        </span>
+                      )
                     }
                   >
                     <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
@@ -631,7 +639,7 @@ export function ReaderLayers({
                     id="layer-explanation"
                     kind="editorial"
                     title={isQuick ? 'Key Message' : 'Vyakhya (व्याख्या)'}
-                    titleHi={isQuick ? 'मुख्य संदेश' : 'व्याख्या'}
+                    titleHi={isQuick ? 'मुख्य संदेश' : undefined}
                     badge={p.explanationIsAi ? <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</AiBadge> : undefined}
                     collapsible={false}
                   >

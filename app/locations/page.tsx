@@ -58,7 +58,7 @@ export default function LocationsPage() {
               onClick={() => setSelectedType('all')}
               className={`focus-ring inline-flex min-h-[44px] items-center rounded-xl px-4 py-2 text-sm font-semibold transition ${
                 selectedType === 'all'
-                  ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-sm'
+                  ? 'bg-gradient-to-r from-teal-700 to-cyan-700 text-white shadow-sm'
                   : 'bg-dharma-card/85 text-dharma-text border border-dharma-border hover:border-teal-500/50'
               }`}
             >
@@ -76,7 +76,7 @@ export default function LocationsPage() {
                   onClick={() => setSelectedType(type.key)}
                   className={`focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition ${
                     active
-                      ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-sm'
+                      ? 'bg-gradient-to-r from-teal-700 to-cyan-700 text-white shadow-sm'
                       : 'bg-dharma-card/85 text-dharma-text border border-dharma-border hover:border-teal-500/50'
                   }`}
                 >
@@ -91,7 +91,7 @@ export default function LocationsPage() {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* ── Map ───────────────────────────────────────────────── */}
           <FadeUp className="lg:col-span-2">
-            <div className="rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl shadow-raised overflow-hidden">
+            <div className="card-sacred rounded-card border border-dharma-border/80 bg-dharma-card shadow-raised overflow-hidden">
               <div className="h-1.5 bg-gradient-to-r from-teal-500 to-cyan-600" />
               <div className="p-4 sm:p-5">
                 <p id="sacred-map-note" lang="hi" className="mb-3 font-devanagari text-sm leading-relaxed text-dharma-muted">

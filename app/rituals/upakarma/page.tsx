@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { BookOpen, Sparkles, ShieldCheck, ChevronRight, Layers, Sun } from 'lucide-react';
+import { Sparkles, ShieldCheck, ChevronRight, Layers, Sun } from 'lucide-react';
 import { UPAKARMA_STEPS, UPAKARMA_FAQS } from '@/data/upakarma-data';
 import { UpakarmaClient } from './UpakarmaClient';
 
@@ -83,7 +83,7 @@ export default function UpakarmaPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dharma-bg text-dharma-text pb-20">
+    <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -93,47 +93,59 @@ export default function UpakarmaPage() {
       <section className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-amber-500/15 via-saffron-500/5 to-transparent pt-10 pb-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Breadcrumbs */}
-          <nav className="flex items-center gap-1.5 text-xs text-dharma-muted mb-4">
-            <Link href="/" className="hover:text-saffron-600 transition">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs text-dharma-muted mb-4">
+            <Link href="/" className="focus-ring rounded px-1 py-0.5 hover:text-saffron-700 dark:hover:text-saffron-300 transition">
               Home
             </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <Link href="/rituals/" className="hover:text-saffron-600 transition">
-              अनुष्ठान (Rituals)
+            <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+            <Link href="/rituals/" className="focus-ring rounded px-1 py-0.5 hover:text-saffron-700 dark:hover:text-saffron-300 transition">
+              <span lang="hi" data-bi="hi" className="font-devanagari">अनुष्ठान</span>
+              <span data-bi="sep" aria-hidden="true"> (</span>
+              <span data-bi="en">Rituals</span>
+              <span data-bi="sep" aria-hidden="true">)</span>
             </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-dharma-text font-medium">उपाकर्म विधान (Upakarma Guide)</span>
+            <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+            <span aria-current="page" className="text-dharma-text font-medium">
+              <span lang="hi" data-bi="hi" className="font-devanagari">उपाकर्म विधान</span>
+              <span data-bi="sep" aria-hidden="true"> (</span>
+              <span data-bi="en">Upakarma Guide</span>
+              <span data-bi="sep" aria-hidden="true">)</span>
+            </span>
           </nav>
 
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-saffron-500/10 border border-saffron-500/20 text-xs font-semibold text-saffron-700 dark:text-saffron-300 mb-3">
-              <Sun className="w-3.5 h-3.5" />
-              <span>श्रावणी पूर्णिमा · Shravani Upakarma & Avani Avittam</span>
+              <Sun className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>
+                <span lang="hi" data-bi="hi" className="font-devanagari">श्रावणी पूर्णिमा</span>
+                <span data-bi="sep" aria-hidden="true"> · </span>
+                <span data-bi="en">Shravani Upakarma &amp; Avani Avittam</span>
+              </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-dharma-text tracking-tight leading-tight mb-4">
-              उपाकर्म एवं यज्ञोपवीत संस्कार विधान
+              <span lang="hi" className="font-devanagari">उपाकर्म एवं यज्ञोपवीत संस्कार विधान</span>
               <span className="block text-xl sm:text-2xl font-serif text-saffron-700 dark:text-saffron-400 font-normal mt-1">
                 Canonical Upakarma Liturgy, Mantras & Sacred Symbolism
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base text-dharma-muted leading-relaxed mb-6">
+            <p lang="hi" className="text-sm sm:text-base text-dharma-muted leading-relaxed mb-6">
               तैत्तिरीय आरण्यक और गृह्यसूत्रों पर आधारित श्रावणी उपाकर्म की समग्र वैदिक दर्शिका। जानिए वर्ष भर के प्रमादों के निष्कासन हेतु कामोऽकार्षीत् प्रायश्चित्त जप (108 आवर्तन), ब्रह्म-यज्ञ, नूतन यज्ञोपवीत धारण-विसर्जन मन्त्र और जनेऊ के नौ तन्तुओं का गूढ़ आध्यात्मिक रहस्य।
             </p>
 
             <div className="flex flex-wrap items-center gap-4 text-xs text-dharma-muted">
               <span className="inline-flex items-center gap-1.5 bg-dharma-card px-3 py-1.5 rounded-lg border border-dharma-border">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>5 प्रामाणिक सोपान</span>
+                <ShieldCheck className="w-4 h-4 text-emerald-600" aria-hidden="true" />
+                <span lang="hi">5 प्रामाणिक सोपान</span>
               </span>
               <span className="inline-flex items-center gap-1.5 bg-dharma-card px-3 py-1.5 rounded-lg border border-dharma-border">
-                <Sparkles className="w-4 h-4 text-amber-500" />
-                <span>108 प्रायश्चित्त जप गणक</span>
+                <Sparkles className="w-4 h-4 text-amber-500" aria-hidden="true" />
+                <span lang="hi">108 प्रायश्चित्त जप गणक</span>
               </span>
               <span className="inline-flex items-center gap-1.5 bg-dharma-card px-3 py-1.5 rounded-lg border border-dharma-border">
-                <Layers className="w-4 h-4 text-blue-500" />
-                <span>यज्ञोपवीत के 9 तन्तु</span>
+                <Layers className="w-4 h-4 text-blue-500" aria-hidden="true" />
+                <span lang="hi">यज्ञोपवीत के 9 तन्तु</span>
               </span>
             </div>
           </div>
@@ -141,46 +153,46 @@ export default function UpakarmaPage() {
       </section>
 
       {/* Main Interactive Guide */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8">
         <UpakarmaClient />
 
         {/* Cross Links */}
         <div className="mt-12 pt-8 border-t border-dharma-border">
-          <h4 className="text-sm font-serif font-bold text-dharma-text mb-3">
+          <h2 lang="hi" className="text-sm font-serif font-bold text-dharma-text mb-3">
             सम्बन्धित वैदिक मन्त्र एवं पञ्चाङ्ग दर्शिकाएँ:
-          </h4>
+          </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
             <Link
               href="/mantras/gayatri-mantra/"
-              className="p-3 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-500/50 transition text-center"
+              className="focus-ring p-3 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-500/50 transition text-center"
             >
-              <strong className="block text-dharma-text">गायत्री मन्त्र</strong>
+              <strong lang="hi" className="block text-dharma-text">गायत्री मन्त्र</strong>
               <span className="text-dharma-muted text-[11px]">Daily Sandhyavandana Core</span>
             </Link>
             <Link
               href="/panchang/purnima/"
-              className="p-3 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-500/50 transition text-center"
+              className="focus-ring p-3 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-500/50 transition text-center"
             >
-              <strong className="block text-dharma-text">पूर्णिमा तिथियाँ</strong>
+              <strong lang="hi" className="block text-dharma-text">पूर्णिमा तिथियाँ</strong>
               <span className="text-dharma-muted text-[11px]">Shravana Purnima Observance</span>
             </Link>
             <Link
               href="/panchang/varas/guruvara/"
-              className="p-3 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-500/50 transition text-center"
+              className="focus-ring p-3 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-500/50 transition text-center"
             >
-              <strong className="block text-dharma-text">गुरुवार विवरण</strong>
+              <strong lang="hi" className="block text-dharma-text">गुरुवार विवरण</strong>
               <span className="text-dharma-muted text-[11px]">Brihaspati &amp; Veda Study</span>
             </Link>
             <Link
               href="/rituals/"
-              className="p-3 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-500/50 transition text-center"
+              className="focus-ring p-3 rounded-xl border border-dharma-border bg-dharma-card hover:border-saffron-500/50 transition text-center"
             >
-              <strong className="block text-dharma-text">सम्पूर्ण अनुष्ठान</strong>
+              <strong lang="hi" className="block text-dharma-text">सम्पूर्ण अनुष्ठान</strong>
               <span className="text-dharma-muted text-[11px]">Temple &amp; Vedic Explainer</span>
             </Link>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

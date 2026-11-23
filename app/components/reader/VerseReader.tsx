@@ -49,7 +49,6 @@ const EmbedVerseDialog = dynamic(() => import('@/app/components/EmbedVerseDialog
 const ReaderSettingsPanel = dynamic(() => import('./ReaderSettingsPanel').then((m) => m.ReaderSettingsPanel), { ssr: false });
 const SacredShareModal = dynamic(() => import('@/app/components/share/SacredShareModal').then((m) => m.SacredShareModal), { ssr: false });
 import { useSwipeGesture } from '@/lib/useSwipeGesture';
-import { MobileReadingProgress } from './MobileReadingProgress';
 const MobileSwipeIndicator = dynamic(() => import('./MobileSwipeIndicator').then((m) => m.MobileSwipeIndicator), { ssr: false });
 const MobileVerseCarousel = dynamic(() => import('./MobileVerseCarousel').then((m) => m.MobileVerseCarousel), { ssr: false });
 const PinnedShloka = dynamic(() => import('./PinnedShloka').then((m) => m.PinnedShloka), { ssr: false });
@@ -413,6 +412,7 @@ export function VerseReader(props: VerseReaderProps) {
       data-hide-decor={settings.hideDecor || settings.focusMode || settings.liteMode ? '' : undefined}
       data-focus={settings.focusMode ? '' : undefined}
       data-lite={settings.liteMode ? 'true' : undefined}
+      data-lite-mode={settings.liteMode ? 'true' : undefined}
       className="reader-root min-h-screen bg-dharma-bg text-dharma-text selection:bg-saffron-500/25"
     >
       <style>{`
@@ -527,18 +527,17 @@ export function VerseReader(props: VerseReaderProps) {
             <Menu className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
-        <div className="h-px bg-transparent sm:hidden" aria-hidden="true">
-          <div className="h-full bg-dharma-saffron" style={{ width: `${percent}%` }} />
+        <div
+          className="h-0.5 bg-dharma-text/10 sm:hidden"
+          role="progressbar"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={percent}
+          aria-label="अध्याय पठन प्रगति · Chapter reading progress"
+        >
+          <div className="h-full bg-dharma-saffron transition-[width] duration-300" style={{ width: `${percent}%` }} />
         </div>
       </header>
-
-      {/* Mobile Reading Progress Bar */}
-      <MobileReadingProgress
-        currentVerseNumber={verse.number}
-        totalVerses={total}
-        currentIndex={index}
-        chapterTitle={chapterTitle}
-      />
 
       {/* Tactile Edge Swipe Indicator */}
       {swipeLoaded && (

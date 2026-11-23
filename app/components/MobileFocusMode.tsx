@@ -199,16 +199,17 @@ export function MobileFocusMode({
       if (e.key === 'Escape') {
         e.preventDefault();
         e.stopPropagation();
-        onClose();
-      } else if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        if (showMenu) setShowMenu(false);
+        else onClose();
+      } else if (!showMenu && (e.key === 'ArrowRight' || e.key === 'PageDown')) {
         next();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      } else if (!showMenu && (e.key === 'ArrowLeft' || e.key === 'PageUp')) {
         prev();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, next, prev, onClose]);
+  }, [isOpen, showMenu, next, prev, onClose]);
 
   // Gestures via PanInfo
   const handlePanEnd = (_e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
@@ -217,8 +218,8 @@ export function MobileFocusMode({
     if (Math.abs(x) > Math.abs(y)) {
       if (x < -SWIPE_THRESHOLD) next();
       else if (x > SWIPE_THRESHOLD) prev();
-    } else if (y > 75) {
-      // Pull down to dismiss
+    } else if (y > 75 && (cardScrollRef.current?.scrollTop ?? 0) <= 0) {
+      // Pull down from the top to dismiss; never close while scrolling up a long commentary.
       onClose();
     }
   };
@@ -265,7 +266,7 @@ export function MobileFocusMode({
         aria-modal="true"
         aria-label={`एकाग्रता मोड · श्लोक ${verseLabel}`}
         tabIndex={-1}
-        className="fixed inset-0 z-50 flex flex-col bg-stone-950/95 text-stone-100 backdrop-blur-xl touch-none select-none"
+        className="fixed inset-0 z-50 flex flex-col bg-stone-950/95 text-stone-100 backdrop-blur-xl touch-none"
       >
         {/* Progress bar at the top */}
         <div className="h-1 w-full bg-stone-800">
@@ -500,10 +501,10 @@ export function MobileFocusMode({
         {/* ── Main Swipeable Content Container ───────────────── */}
         <div
           className="relative flex-1 overflow-hidden touch-pan-y"
-          ref={cardScrollRef}
         >
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
+              ref={cardScrollRef}
               key={currentIndex}
               custom={direction}
               variants={reduce ? undefined : slideVariants}
@@ -575,8 +576,9 @@ export function MobileFocusMode({
                   >
                     {showHindi && currentVerse.hindi && (
                       <div className="rounded-2xl border border-stone-800/85 bg-stone-900/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-                        <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-saffron-400 font-devanagari">
-                          हिन्दी भावार्थ · Hindi Meaning
+                        <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-saffron-400">
+                          <span lang="hi" className="font-devanagari tracking-normal normal-case">हिन्दी भावार्थ</span> · Hindi Meaning
+                          {currentVerse.hindiSource === 'ai' ? ' · AI study draft' : ''}
                         </p>
                         <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-100`}>
                           {currentVerse.hindi}
@@ -587,7 +589,7 @@ export function MobileFocusMode({
                     {showEnglish && currentVerse.translation && (
                       <div className="rounded-2xl border border-stone-800/85 bg-stone-900/70 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                         <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-stone-400">
-                          English Meaning
+                          English Meaning{currentVerse.translationSource === 'ai' ? ' · AI study draft' : ''}
                         </p>
                         <p lang="en" className={`font-serif ${translationSizeClass} text-stone-200`}>
                           {currentVerse.translation}
@@ -602,9 +604,13 @@ export function MobileFocusMode({
                   <div className="space-y-4">
                     {explanation && (
                       <div className="rounded-2xl border border-stone-800/85 bg-stone-900/65 p-5">
-                        <p lang="hi" className="mb-2 text-xs font-bold text-saffron-300 flex items-center gap-1.5 font-devanagari">
+                        <p className="mb-2 text-xs font-bold text-saffron-300 flex flex-wrap items-center gap-1.5">
                           <BookOpen className="h-3.5 w-3.5 shrink-0 text-saffron-400" aria-hidden="true" />
-                          <span>व्याख्या · Scriptural Commentary</span>
+                          <span lang="hi" className="font-devanagari">व्याख्या</span>
+                          <span>· Editorial Explanation</span>
+                          <span className="font-normal text-stone-400">
+                            · Not scripture{comment?.ai || comment?.explanationAi ? ' (AI-assisted draft)' : ''}
+                          </span>
                         </p>
                         <p lang="hi" className={`whitespace-pre-line font-devanagari ${translationSizeClass} text-stone-200`}>
                           {explanation}
@@ -616,9 +622,11 @@ export function MobileFocusMode({
                       <div className={lesson && science ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'space-y-4'}>
                         {lesson && (
                           <div className="rounded-2xl border border-amber-400/25 bg-gradient-to-br from-amber-500/12 via-stone-900/75 to-transparent p-4 sm:p-5">
-                            <p lang="hi" className="mb-1.5 text-xs font-bold text-amber-300 flex items-center gap-1.5 font-devanagari">
+                            <p className="mb-1.5 text-xs font-bold text-amber-300 flex flex-wrap items-center gap-1.5">
                               <Lightbulb className="h-3.5 w-3.5 shrink-0 text-amber-400" aria-hidden="true" />
-                              <span>आज की सीख · Life Insight</span>
+                              <span lang="hi" className="font-devanagari">आज की सीख</span>
+                              <span>· Life Insight</span>
+                              <span className="font-normal text-stone-400">· Not scripture</span>
                             </p>
                             <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-100`}>
                               {lesson}
@@ -628,9 +636,11 @@ export function MobileFocusMode({
 
                         {science && (
                           <div className="rounded-2xl border border-teal-400/25 bg-gradient-to-br from-teal-500/10 via-stone-900/75 to-transparent p-4 sm:p-5">
-                            <p lang="hi" className="mb-1.5 text-xs font-bold text-teal-300 flex items-center gap-1.5 font-devanagari">
+                            <p className="mb-1.5 text-xs font-bold text-teal-300 flex flex-wrap items-center gap-1.5">
                               <FlaskConical className="h-3.5 w-3.5 shrink-0 text-teal-400" aria-hidden="true" />
-                              <span>दृष्टि व मनोविज्ञान · Context &amp; Science</span>
+                              <span lang="hi" className="font-devanagari">दृष्टि व मनोविज्ञान</span>
+                              <span>· Context &amp; Science</span>
+                              <span className="font-normal text-stone-400">· Not scripture</span>
                             </p>
                             <p lang="hi" className={`font-devanagari ${translationSizeClass} text-stone-200`}>
                               {science}

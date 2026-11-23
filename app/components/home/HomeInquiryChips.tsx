@@ -62,9 +62,9 @@ export function HomeInquiryChips() {
               <guide.icon className="h-5 w-5" aria-hidden="true" />
             </span>
             <div className="min-w-0 flex-1">
-              <h3 id={'home-guide-' + guide.id} className="text-dharma-text">
-                <span lang="hi" className="block font-devanagari text-lg font-semibold leading-snug">{guide.hindi}</span>{' '}
-                <span className="mt-0.5 block text-xs font-normal text-dharma-muted">{guide.english}</span>
+              <h3 id={'home-guide-' + guide.id} className="font-devanagari text-lg font-semibold leading-snug text-dharma-text">
+                <span lang="hi" data-bi="hi" className="block">{guide.hindi}</span>{' '}
+                <span data-bi="en" data-bi-lead className="mt-0.5 block text-xs font-normal text-dharma-muted">{guide.english}</span>
               </h3>
             </div>
             <span aria-hidden="true" className="text-xs font-semibold tabular-nums text-dharma-muted">
@@ -77,14 +77,14 @@ export function HomeInquiryChips() {
                 <Link
                   href={item.href}
                   onClick={() => triggerTactileFeedback('selection', 'softTap')}
-                  className="focus-ring group flex h-full min-h-[65px] items-center gap-2.5 rounded-xl border border-dharma-border/70 bg-dharma-card/75 px-3 py-2.5 text-dharma-text shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md motion-safe:transition-[transform,border-color,background-color,box-shadow] motion-safe:duration-standard motion-safe:hover:-translate-y-0.5 hover:border-dharma-saffron/45 hover:bg-dharma-card/95"
+                  className="focus-ring group flex h-full min-h-[58px] sm:min-h-[64px] items-center gap-2.5 rounded-xl border border-dharma-border/70 bg-dharma-card/75 px-3 py-2.5 text-dharma-text shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md motion-safe:transition-[transform,border-color,background-color,box-shadow] motion-safe:duration-standard motion-safe:hover:-translate-y-0.5 hover:border-dharma-saffron/45 hover:bg-dharma-card/95"
                 >
                   <span aria-hidden="true" className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-dharma-saffron/12 text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)]">
                     <item.Icon className="h-4 w-4" />
                   </span>
-                  <span className="min-w-0 flex-1">
-                    <span lang="hi" className="block font-devanagari text-sm font-semibold leading-relaxed">{item.hindi}</span>{' '}
-                    <span className="block text-xs leading-snug text-dharma-muted">{item.english}</span>
+                  <span className="min-w-0 flex-1 font-devanagari text-sm font-semibold leading-relaxed">
+                    <span lang="hi" data-bi="hi" className="block">{item.hindi}</span>{' '}
+                    <span data-bi="en" data-bi-lead className="block text-xs font-normal leading-snug text-dharma-muted">{item.english}</span>
                   </span>
                   <ChevronRight aria-hidden="true" className="h-4 w-4 shrink-0 text-dharma-muted motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5" />
                 </Link>

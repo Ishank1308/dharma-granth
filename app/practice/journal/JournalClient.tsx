@@ -30,6 +30,7 @@ import { createJournalBackup, parseJournalBackup, type JournalRestoreMode } from
 import { runStudyDataMigration } from '@/lib/study/migration';
 import type { JournalEntry, JournalMood } from '@/lib/study/types';
 import { JournalEditorModal } from '@/components/study/JournalEditorModal';
+import { PracticeSubNav } from '@/app/components/practice/PracticeSubNav';
 import { triggerTactileFeedback } from '@/lib/haptics';
 
 const MOOD_FILTERS: Array<{ id: JournalMood | 'all'; labelEn: string; labelHi: string; emoji: string }> = [
@@ -234,6 +235,7 @@ export function JournalClient() {
       {/* Editorial Header */}
       <section className="relative overflow-hidden border-b border-stone-200/80 bg-white/80 py-10 sm:py-16 backdrop-blur-md dark:border-stone-800/80 dark:bg-stone-900/80 manuscript-surface">
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <PracticeSubNav className="mb-6" />
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-saffron-500/10 border border-saffron-500/20 text-saffron-800 dark:text-saffron-300 font-mono text-[11px] uppercase tracking-widest font-bold">

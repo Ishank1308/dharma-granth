@@ -26,6 +26,7 @@ test('the header language choice shows labels in one language and survives a rel
 
   await chooseInHeader(page, /हिन्दी \(Hindi\)/);
   await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'hindi');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'hi');
   await expect(english).toBeHidden();
   await expect(hindi).toBeVisible();
   // Both halves stay in the page for crawlers and screen readers that ignore the choice.
@@ -33,15 +34,18 @@ test('the header language choice shows labels in one language and survives a rel
 
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'hindi');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'hi');
   await expect(english).toBeHidden();
   await expect(hindi).toBeVisible();
 
   await chooseInHeader(page, /^English/);
   await expect(page.locator('html')).toHaveAttribute('data-ui-lang', 'english');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(english).toBeVisible();
   await expect(hindi).toBeHidden();
 
   await chooseInHeader(page, /द्विभाषी/);
+  await expect(page.locator('html')).toHaveAttribute('lang', 'hi');
   await expect(english).toBeVisible();
   await expect(hindi).toBeVisible();
 });
