@@ -1,7 +1,9 @@
+import type React from 'react';
 import Link from 'next/link';
 import { Compass, Sparkles, Flame } from 'lucide-react';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
 import { HomeLivePanchang } from './HomeLivePanchang';
+import { HomeSadhanaPulse } from './HomeSadhanaPulse';
 
 export function HomeSanctuaryGateway() {
   return (
@@ -18,7 +20,10 @@ export function HomeSanctuaryGateway() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-12 sm:gap-5">
         {/* 1. Live Panchang & Muhurta */}
-        <article className="apple-card group relative isolate flex min-h-[220px] sm:min-h-[275px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-saffron/35 bg-dharma-card/75 bg-gradient-to-br from-dharma-saffron/12 via-dharma-card/70 to-dharma-card/80 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-7 sm:p-7">
+        <article
+          style={{ '--chip': 'var(--hue-saffron)' } as React.CSSProperties}
+          className="apple-card group relative isolate flex min-h-[220px] sm:min-h-[275px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-saffron/35 bg-dharma-card/75 bg-gradient-to-br from-dharma-saffron/12 via-dharma-card/70 to-dharma-card/80 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-7 sm:p-7"
+        >
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-20 size-72 rounded-full border border-dharma-saffron/15" />
           <div aria-hidden="true" className="pointer-events-none absolute -right-8 -top-12 size-52 rounded-full border border-dharma-saffron/10" />
           <div>
@@ -49,7 +54,10 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 2. Wisdom Pathways & Life Guidance */}
-        <article className="apple-card group relative isolate flex min-h-[220px] sm:min-h-[275px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 via-dharma-card/70 to-dharma-maroon/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-5 sm:p-7">
+        <article
+          style={{ '--chip': 'var(--hue-lotus)' } as React.CSSProperties}
+          className="apple-card group relative isolate flex min-h-[220px] sm:min-h-[275px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 via-dharma-card/70 to-dharma-maroon/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 md:col-span-2 xl:col-span-5 sm:p-7"
+        >
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -bottom-16 size-52 rounded-full border border-dharma-maroon/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
@@ -98,7 +106,10 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 3. Sacred Mantras & Pilgrimage */}
-        <article className="apple-card group relative isolate flex min-h-[200px] sm:min-h-[235px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-saffron/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
+        <article
+          style={{ '--chip': 'var(--hue-peacock)' } as React.CSSProperties}
+          className="apple-card group relative isolate flex min-h-[200px] sm:min-h-[235px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-saffron/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7"
+        >
           <div aria-hidden="true" className="pointer-events-none absolute -right-12 -top-16 size-44 rounded-full border border-dharma-saffron/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
@@ -141,7 +152,10 @@ export function HomeSanctuaryGateway() {
         </article>
 
         {/* 4. Daily Sadhana & Puja Vidhi */}
-        <article className="apple-card group relative isolate flex min-h-[200px] sm:min-h-[235px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-gold/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7">
+        <article
+          style={{ '--chip': 'var(--hue-gold)' } as React.CSSProperties}
+          className="apple-card group relative isolate flex min-h-[200px] sm:min-h-[235px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border/80 bg-dharma-card/75 bg-gradient-to-br from-dharma-card/80 to-dharma-gold/12 p-6 shadow-raised backdrop-blur-xl motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 xl:col-span-6 sm:p-7"
+        >
           <div aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-14 size-44 rounded-full border border-dharma-gold/15" />
           <div>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
@@ -164,6 +178,7 @@ export function HomeSanctuaryGateway() {
             <p lang="hi" className="mt-2.5 font-devanagari text-sm leading-relaxed text-dharma-muted">
               शांत 108-मनका जप माला, प्राणायाम श्वास-लय, 365-दिवसीय गीता स्वाध्याय संकल्प और पारम्परिक वैदिक पूजा विधान।
             </p>
+            <HomeSadhanaPulse />
           </div>
 
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
