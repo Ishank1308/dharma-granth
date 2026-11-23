@@ -1,0 +1,62 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import { Bookmark, BookmarkCheck } from 'lucide-react';
+import { isBookmarked, toggleBookmark, type ReaderRef, type ReaderVerseText } from '@/lib/reader-actions';
+
+/**
+ * End-of-verse card rendered lazily only once the reader has scrolled or interacted.
+ */
+export function VerseCompletionInner({
+  reference,
+  readerRef,
+  verse,
+  nextHref,
+  chapterHref,
+  conceptHref = '/concepts',
+}: {
+  reference: string;
+  readerRef: ReaderRef;
+  verse: ReaderVerseText;
+  nextHref?: string;
+  chapterHref: string;
+  conceptHref?: string;
+}) {
+  const [saved, setSaved] = useState(() => isBookmarked(readerRef, verse));
+  const [note, setNote] = useState('');
+
+  const save = () => {
+    const state = toggleBookmark(readerRef, verse);
+    if (state === null) return setNote('Sorry, this could not be saved because the browser is not allowing storage.');
+    setSaved(state);
+    setNote(state ? 'Saved for later.' : 'Removed from saved verses.');
+  };
+
+  const item = 'focus-ring inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition';
+  const plain = `${item} border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-400`;
+
+  return (
+    <section aria-labelledby="completion-h" className="understand-fade mt-8 rounded-2xl border border-dharma-border bg-dharma-card p-5 text-center sm:p-6">
+      <h2 id="completion-h" className="font-serif text-lg font-bold text-dharma-text">
+        You have explored {reference}.
+      </h2>
+      <p lang="hi" className="mt-1 font-devanagari text-sm text-dharma-muted">आपने इस श्लोक का अध्ययन किया।</p>
+      <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-center">
+        {nextHref && (
+          <Link href={nextHref} className={`${item} border-saffron-700 bg-saffron-700 text-white hover:bg-saffron-800`}>
+            Continue to next verse
+          </Link>
+        )}
+        <Link href={chapterHref} className={plain}>Read the full passage</Link>
+        <Link href={conceptHref} className={plain}>Explore related ideas</Link>
+        <button type="button" onClick={save} aria-pressed={saved} className={plain}>
+          {saved ? <BookmarkCheck className="h-4 w-4" aria-hidden="true" /> : <Bookmark className="h-4 w-4" aria-hidden="true" />}
+          {saved ? 'Saved' : 'Save for later'}
+        </button>
+        <Link href="/learn/plans/" className={plain}>Add to a reading plan</Link>
+      </div>
+      <p role="status" aria-live="polite" className="mt-2 min-h-[1.25rem] text-sm text-dharma-muted">{note}</p>
+    </section>
+  );
+}

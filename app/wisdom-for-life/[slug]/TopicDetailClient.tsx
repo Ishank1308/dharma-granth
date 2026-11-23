@@ -31,7 +31,6 @@ import { TopicIllustration } from '../TopicIllustrations';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { ShareVerseButton } from '@/app/components/ShareVerseButton';
 import { ShareChips } from '@/app/components/ShareChips';
-import { downloadVerseCardPng } from '@/lib/verse-card-png';
 import { whatsappShareUrl } from '@/lib/whatsapp';
 import dynamic from 'next/dynamic';
 
@@ -76,6 +75,7 @@ export function TopicDetailClient({
 
   const handleDownloadVerse = async (verse: ScriptureReference) => {
     try {
+      const { downloadVerseCardPng } = await import('@/lib/verse-card-png');
       await downloadVerseCardPng({
         reference: verse.referenceDisplay,
         sanskrit: verse.sanskritDevanagari,

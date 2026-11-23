@@ -187,7 +187,7 @@ export default async function ConceptDetailPage({ params }: PageProps) {
       </header>
 
       {/* ── Hero Section (Matra-Safe Devanagari Calligraphy + 2-Column Liquid Glass Bento) ── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 sm:pt-14 pb-12 border-b border-dharma-border">
+      <section data-vt-hero className="relative overflow-hidden bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 sm:pt-14 pb-12 border-b border-dharma-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center">
           {/* Sanskrit Calligraphy Badge: never use background-clip:text or positive tracking on Devanagari (preserves rephs, matras & shirorekha) */}
           <div className="mb-7 flex items-center justify-center gap-6">
@@ -203,9 +203,11 @@ export default async function ConceptDetailPage({ params }: PageProps) {
                 className="block font-devanagari text-5xl sm:text-6xl md:text-7xl font-bold tracking-normal leading-[1.45] text-dharma-saffron py-1"
               >
                 {concept.sanskrit}
-              </span>
+              </span>{' '}
               <span className="mt-1.5 block font-serif text-base sm:text-lg tracking-widest uppercase text-dharma-muted">
-                {concept.transliteration} · {concept.label}
+                {concept.transliteration && concept.transliteration.trim().toLowerCase() !== concept.label.trim().toLowerCase()
+                  ? `${concept.transliteration} · ${concept.label}`
+                  : concept.label}
               </span>
             </h1>
 

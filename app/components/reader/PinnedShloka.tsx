@@ -97,7 +97,7 @@ export function PinnedShloka({
   }
 
   return (
-    <div data-focus-hide className="pointer-events-none sticky top-[5.25rem] z-20 -mx-4 h-0 sm:top-16 xl:hidden">
+    <div data-focus-hide className="pointer-events-none sticky top-[5.25rem] z-20 -mx-4 h-0 sm:top-16 lg:hidden">
       {pinned ? (
         <section
           data-pinned-shloka="bar"

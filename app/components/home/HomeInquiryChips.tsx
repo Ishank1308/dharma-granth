@@ -63,7 +63,7 @@ export function HomeInquiryChips() {
             </span>
             <div className="min-w-0 flex-1">
               <h3 id={'home-guide-' + guide.id} className="text-dharma-text">
-                <span lang="hi" className="block font-devanagari text-lg font-semibold leading-snug">{guide.hindi}</span>
+                <span lang="hi" className="block font-devanagari text-lg font-semibold leading-snug">{guide.hindi}</span>{' '}
                 <span className="mt-0.5 block text-xs font-normal text-dharma-muted">{guide.english}</span>
               </h3>
             </div>
@@ -83,7 +83,7 @@ export function HomeInquiryChips() {
                     <item.Icon className="h-4 w-4" />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span lang="hi" className="block font-devanagari text-sm font-semibold leading-relaxed">{item.hindi}</span>
+                    <span lang="hi" className="block font-devanagari text-sm font-semibold leading-relaxed">{item.hindi}</span>{' '}
                     <span className="block text-xs leading-snug text-dharma-muted">{item.english}</span>
                   </span>
                   <ChevronRight aria-hidden="true" className="h-4 w-4 shrink-0 text-dharma-muted motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5" />

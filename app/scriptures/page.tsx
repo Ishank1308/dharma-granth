@@ -149,6 +149,7 @@ export default function ScripturesPage() {
               <Link
                 key={item.id}
                 href={item.href}
+                data-vt="open"
                 className={`group card-sacred sheen-sweep relative flex min-h-[215px] flex-col justify-between overflow-hidden rounded-panel border border-dharma-border bg-dharma-card p-5 pl-7 shadow-raised motion-safe:transition-transform motion-safe:duration-base motion-safe:hover:-translate-y-1 hover:border-dharma-saffron/50 sm:p-6 sm:pl-8 ${item.layout} ${item.gradient}`}
               >
                 <span aria-hidden="true" className={`absolute inset-y-0 left-0 w-1.5 ${item.spineColor} rounded-l-card`} />

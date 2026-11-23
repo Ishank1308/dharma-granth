@@ -160,11 +160,12 @@ export default function ConceptsPage() {
           </p>
         </div>
 
-        <div className="reveal-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="reveal-grid fluid-grid-fill-sm">
           {cards.map((c) => (
             <div
               key={c.id}
-              className="group rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-sm hover:shadow-md hover:border-saffron-500/40 transition-all flex flex-col justify-between"
+              data-vt-source={c.hasPage ? '' : undefined}
+              className="apple-card fluid-cq group rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-sm hover:shadow-md hover:border-saffron-500/40 transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
@@ -192,6 +193,7 @@ export default function ConceptsPage() {
                 {c.hasPage ? (
                   <Link
                     href={`/concepts/${c.id}/`}
+                    data-vt="open"
                     className="inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-saffron-800 underline-offset-2 hover:underline"
                   >
                     <span>गहन विश्लेषण</span>

@@ -28,8 +28,8 @@ export function HomeHero() {
           {/* A greeting for the hour (सुप्रभात, शुभ सन्ध्या…). Its words are CSS content keyed on
               <html data-daypart>, set before first paint, so the HTML is the same at every hour. */}
           <p className="daypart-greeting mb-3 font-devanagari text-footnote font-semibold text-dharma-muted" />
-          <p className="inline-flex flex-wrap items-center gap-2 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/10 px-3.5 py-2 text-xs font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md">
-            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-dharma-saffron" />
+          <p className="inline-flex flex-wrap items-center gap-1.5 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/10 px-3 py-1.5 text-[11px] font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md sm:gap-2 sm:px-3.5 sm:py-2 sm:text-xs">
+            <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-dharma-saffron" />
             <span>A living archive of Indian wisdom</span>
             <span aria-hidden="true" className="opacity-50">·</span>
             <span lang="hi" className="font-devanagari">सनातन ग्रन्थ कोश</span>
@@ -60,12 +60,14 @@ export function HomeHero() {
           <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
             <Link
               href="/scriptures/"
+              data-vt="open"
               className="cta-primary focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-full bg-dharma-saffron px-5 py-3 text-sm font-semibold text-dharma-bg shadow-raised motion-safe:transition-transform motion-safe:hover:-translate-y-0.5"
             >
               Explore the library <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </Link>
             <Link
               href="/scripture/bhagavadgita/"
+              data-vt="open"
               className="chevron-nudge focus-ring inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-dharma-saffron hover:underline"
             >
               Start with the Gita <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -82,11 +84,12 @@ export function HomeHero() {
           <div className="pointer-events-none absolute -inset-3 rounded-[38px] border border-dharma-saffron/10 sm:-inset-4" aria-hidden="true" />
           <Link
             href="/scripture/bhagavadgita/chapter/2/verse/47/"
+            data-vt="open"
             data-tilt="subtle"
             className="focus-ring group relative flex min-h-[355px] flex-col justify-between overflow-hidden rounded-[30px] border border-amber-200/25 bg-[#321c27] p-6 text-[#fff7e9] shadow-[0_28px_68px_-36px_rgba(58,29,15,0.6)] motion-safe:hover:shadow-[0_34px_74px_-30px_rgba(58,29,15,0.65)] sm:min-h-[400px] sm:p-9"
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_25%,rgba(245,189,100,0.21),transparent_42%),linear-gradient(140deg,rgba(181,88,53,0.13),transparent_65%)]" aria-hidden="true" />
-            {/* Existing local Itihāsa artwork: contextual depth, not an illustration of this specific verse. */}
+            {/* Existing local Itihāsa artwork: still frame with an isolated cinemagraph dawn-beam. */}
             <div
               aria-hidden="true"
               data-decorative
@@ -96,6 +99,7 @@ export function HomeHero() {
                 maskImage: 'linear-gradient(to right, transparent, black 55%)',
               }}
             />
+            <span aria-hidden="true" className="cinemagraph-beam" />
             <div data-depth="4" className="pointer-events-none absolute -right-24 top-12 size-[310px] rounded-full border border-amber-200/15 sm:size-[370px]" aria-hidden="true" />
             <div data-depth="8" className="pointer-events-none absolute -right-12 top-24 size-[235px] rounded-full border border-amber-200/20 sm:size-[275px]" aria-hidden="true" />
             <div data-depth="4" className="pointer-events-none absolute -right-4 top-32 size-[165px] rounded-full border border-amber-200/15 sm:size-[200px]" aria-hidden="true" />
@@ -139,6 +143,7 @@ export function HomeHero() {
           <div className="mt-3 grid grid-cols-2 gap-3 sm:mt-4 sm:gap-4">
             <Link
               href="/scripture/ishavasya/"
+              data-vt="open"
               className="apple-card focus-ring group flex min-h-[138px] flex-col justify-between rounded-[22px] border border-dharma-border/80 bg-dharma-card/75 p-4 shadow-raised backdrop-blur-xl motion-safe:transition-[transform,border-color,box-shadow] motion-safe:duration-base motion-safe:hover:-translate-y-1 hover:border-dharma-saffron/45 sm:p-5"
             >
               <span className="flex items-center justify-between text-dharma-saffron">
@@ -152,6 +157,7 @@ export function HomeHero() {
             </Link>
             <Link
               href="/daily-verse/"
+              data-vt="open"
               className="apple-card focus-ring group flex min-h-[138px] flex-col justify-between rounded-[22px] border border-dharma-saffron/25 bg-dharma-saffron/10 p-4 backdrop-blur-xl motion-safe:transition-[transform,border-color,box-shadow] motion-safe:duration-base motion-safe:hover:-translate-y-1 hover:border-dharma-saffron/50 sm:p-5"
             >
               <span className="flex items-center justify-between text-dharma-saffron">

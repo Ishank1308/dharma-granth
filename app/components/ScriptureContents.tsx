@@ -267,15 +267,16 @@ export function ScriptureContents({ scriptureId, chapters, totalChapters }: Scri
             </button>
           </div>
         ) : (
-          <ol className="reveal-grid mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <ol className="reveal-grid fluid-grid-fill-md mt-4">
             {visibleChapters.map((chapter) => {
               const isLastRead = visit?.chapterId === chapter.id;
               const isVisited = visitedIds.has(chapter.id);
               return (
-                <li key={chapter.id} className="scroll-mt-24">
+                <li key={chapter.id} className="fluid-cq scroll-mt-24">
                   <Link
                     href={chapterHref(scriptureId, chapter.id)}
                     ref={isLastRead ? lastReadLinkRef : undefined}
+                    data-vt="open"
                     data-tilt
                     className={`vibe-card group relative flex min-h-[104px] items-center gap-4 rounded-2xl border bg-dharma-card p-4 hover:border-saffron-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 ${isLastRead ? 'border-saffron-400/70' : 'border-dharma-border'
                       }`}

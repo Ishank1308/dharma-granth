@@ -110,7 +110,7 @@ export function GraphConceptPage({ model }: { model: GraphPageModel }) {
           <span className="font-semibold text-dharma-text">{model.label}</span>
         </div>
       </header>
-      <section className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 pb-10 sm:pt-14">
+      <section data-vt-hero className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-saffron-950/20 via-transparent to-transparent pt-10 pb-10 sm:pt-14">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
           <div className="mb-4 flex items-center justify-center gap-6">
             <div aria-hidden="true" data-decor className="hidden md:flex flex-col items-center gap-2 select-none text-dharma-saffron/40">
@@ -121,9 +121,11 @@ export function GraphConceptPage({ model }: { model: GraphPageModel }) {
             <h1 className="inline-flex flex-col items-center font-normal">
               <span lang="sa" className="block py-1 font-devanagari text-5xl font-bold tracking-normal leading-[1.45] text-dharma-saffron sm:text-6xl">
                 {model.sanskrit}
-              </span>
+              </span>{' '}
               <span className="mt-1.5 block font-serif text-sm sm:text-base uppercase tracking-widest text-dharma-muted">
-                {model.transliteration} · {model.label}
+                {model.transliteration && model.transliteration.trim().toLowerCase() !== model.label.trim().toLowerCase()
+                  ? `${model.transliteration} · ${model.label}`
+                  : model.label}
               </span>
             </h1>
             <div aria-hidden="true" data-decor className="hidden md:flex flex-col items-center gap-2 select-none text-dharma-saffron/40">

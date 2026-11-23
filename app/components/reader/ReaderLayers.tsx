@@ -4,13 +4,10 @@ import dynamic from 'next/dynamic';
 import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { PadaLine } from '@/app/components/PadaLine';
 import {
-  Atom,
-  BookOpen,
   ChevronDown,
   Compass,
   Languages,
   Lightbulb,
-  Quote,
   ScrollText,
   Sparkles,
   Search,
@@ -20,10 +17,8 @@ import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 import { ExplainLine } from '@/app/components/study/ExplainLine';
 // Shown only for some reading modes, so each loads when it first renders, not with every verse page.
 const CompareViews = dynamic(() => import('@/app/components/study/CompareViews').then((m) => m.CompareViews));
-const CommentaryCompare = dynamic(() => import('@/app/components/study/CommentaryCompare').then((m) => m.CommentaryCompare));
-import { COMMENTARIES, verseKey } from '@/data/study-review';
 const SanskritWordExplorerDrawer = dynamic(() => import('@/app/components/understand/SanskritWordExplorerDrawer').then((m) => m.SanskritWordExplorerDrawer), { ssr: false });
-import { ReaderDialog } from '@/app/components/reader/ReaderDialog';
+const PadachhedaWordDialog = dynamic(() => import('@/app/components/reader/PadachhedaWordDialog').then((m) => m.PadachhedaWordDialog), { ssr: false });
 import type { SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
 import type { ReaderProvenance, ReaderVerseText } from '@/lib/reader-actions';
 import type { ReaderSettings } from '@/lib/useReaderSettings';
@@ -52,10 +47,10 @@ const TRANSLATION_SIZE = {
   xl: 'text-xl sm:text-2xl',
 } as const;
 
-// Devanagari carries stacked marks above and below the line, so it needs more leading than Latin.
+// Devanagari carries stacked marks above and below the line, so it needs generous leading (>= 1.95 normal) so matras never clip.
 const DEVANAGARI_LEADING = {
-  compact: 'leading-[1.7]',
-  normal: 'leading-[1.85]',
+  compact: 'leading-[1.8]',
+  normal: 'leading-[1.95]',
   relaxed: 'leading-[2.05]',
   loose: 'leading-[2.35]',
 } as const;
@@ -69,65 +64,16 @@ const LATIN_LEADING = {
 
 /* ── The six kinds of content, each with its own frame, chip and icon ─── */
 
-type Kind = 'source' | 'aid' | 'translation' | 'tradition' | 'editorial' | 'reflection' | 'research' | 'sources';
+type Kind = 'source' | 'aid' | 'translation' | 'editorial' | 'reflection' | 'research' | 'sources';
 
-const KINDS: Record<Kind, { chip: string; chipHi: string; frame: string; chipCls: string; Icon: typeof BookOpen }> = {
-  source: {
-    chip: 'Source scripture',
-    chipHi: 'मूल पाठ',
-    frame: 'border-2 border-amber-700/35 bg-amber-50/70 dark:border-amber-500/30 dark:bg-amber-950/25',
-    chipCls: 'border-amber-700/40 bg-amber-100 text-amber-950 dark:border-amber-500/40 dark:bg-amber-900/40 dark:text-amber-100',
-    Icon: ScrollText,
-  },
-  aid: {
-    chip: 'Reading aid for the source',
-    chipHi: 'मूल पाठ सहायक',
-    frame: 'border border-amber-700/25 bg-amber-50/40 dark:border-amber-500/20 dark:bg-amber-950/15',
-    chipCls: 'border-amber-700/30 bg-amber-50 text-amber-950 dark:border-amber-500/30 dark:bg-amber-900/30 dark:text-amber-100',
-    Icon: Languages,
-  },
-  translation: {
-    chip: 'Translation',
-    chipHi: 'अनुवाद',
-    frame: 'border border-dharma-border border-l-4 border-l-saffron-600 bg-dharma-card',
-    chipCls: 'border-saffron-600/40 bg-saffron-100 text-saffron-950 dark:border-saffron-500/40 dark:bg-saffron-900/40 dark:text-saffron-100',
-    Icon: Languages,
-  },
-  tradition: {
-    chip: 'Traditional commentary',
-    chipHi: 'परम्परागत भाष्य',
-    frame: 'border border-stone-400/50 border-l-4 border-l-stone-600 bg-stone-100/70 dark:border-stone-600/50 dark:border-l-stone-400 dark:bg-stone-900/40',
-    chipCls: 'border-stone-500/40 bg-stone-200 text-stone-900 dark:border-stone-500/40 dark:bg-stone-800 dark:text-stone-100',
-    Icon: Quote,
-  },
-  editorial: {
-    chip: 'Editorial explanation',
-    chipHi: 'संपादकीय व्याख्या',
-    frame: 'border border-sky-500/30 border-l-4 border-l-sky-600 bg-sky-50/60 dark:border-sky-500/25 dark:bg-sky-950/20',
-    chipCls: 'border-sky-600/40 bg-sky-100 text-sky-950 dark:border-sky-500/40 dark:bg-sky-900/40 dark:text-sky-100',
-    Icon: Lightbulb,
-  },
-  reflection: {
-    chip: 'Modern reflection · not scripture',
-    chipHi: 'आधुनिक चिंतन',
-    frame: 'border border-emerald-600/30 border-l-4 border-l-emerald-600 bg-emerald-50/60 dark:border-emerald-500/25 dark:bg-emerald-950/20',
-    chipCls: 'border-emerald-600/40 bg-emerald-100 text-emerald-950 dark:border-emerald-500/40 dark:bg-emerald-900/40 dark:text-emerald-100',
-    Icon: Compass,
-  },
-  research: {
-    chip: 'Research context · not scripture',
-    chipHi: 'शोध संदर्भ',
-    frame: 'border border-indigo-500/30 border-l-4 border-l-indigo-600 bg-indigo-50/60 dark:border-indigo-400/25 dark:bg-indigo-950/20',
-    chipCls: 'border-indigo-600/40 bg-indigo-100 text-indigo-950 dark:border-indigo-400/40 dark:bg-indigo-900/40 dark:text-indigo-100',
-    Icon: Atom,
-  },
-  sources: {
-    chip: 'Sources and edition',
-    chipHi: 'स्रोत',
-    frame: 'border border-dharma-border bg-dharma-card/70',
-    chipCls: 'border-dharma-border bg-dharma-bg text-dharma-text',
-    Icon: BookOpen,
-  },
+const KINDS: Record<Kind, { chip: string; chipHi: string }> = {
+  source: { chip: 'Source scripture', chipHi: 'मूल पाठ' },
+  aid: { chip: 'Reading aid for the source', chipHi: 'मूल पाठ सहायक' },
+  translation: { chip: 'Translation', chipHi: 'अनुवाद' },
+  editorial: { chip: 'Editorial explanation', chipHi: 'संपादकीय व्याख्या' },
+  reflection: { chip: 'Modern reflection · not scripture', chipHi: 'आधुनिक चिंतन' },
+  research: { chip: 'Research context · not scripture', chipHi: 'शोध संदर्भ' },
+  sources: { chip: 'Sources and edition', chipHi: 'स्रोत' },
 };
 
 function AiBadge({ children, title }: { children: ReactNode; title?: string }) {
@@ -194,7 +140,7 @@ function Layer({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={`relative rounded-card ${kind === 'source' ? 'verse-card single-verse px-3 py-4 sm:px-6 sm:py-6' : 'bg-dharma-card'}`}
+      className={`relative rounded-card ${kind === 'source' ? 'verse-card single-verse px-3 py-3 sm:px-5 sm:py-4' : 'bg-dharma-card'}`}
     >
       {collapsible ? (
         <details ref={ref} open className="group">
@@ -234,6 +180,8 @@ export function ReaderLayers({
   onUpdateSetting,
   insight,
   sourceStatus,
+  selectedWordIndex = 0,
+  onSelectWord,
 }: {
   scriptureId: string;
   verse: ReaderVerseText;
@@ -245,6 +193,9 @@ export function ReaderLayers({
   insight?: VerseInsight;
   /** Status chips rendered by the page (TrustBadges), placed at the top of the Sources card. */
   sourceStatus?: ReactNode;
+  /** Active interactive padachheda pill index, synced with StudyCompanionRail. */
+  selectedWordIndex?: number;
+  onSelectWord?: (index: number) => void;
 }) {
   const [activeLexiconEntry, setActiveLexiconEntry] = useState<SanskritLexiconEntry | null>(null);
   const [selectedWordGloss, setSelectedWordGloss] = useState<{
@@ -281,16 +232,12 @@ export function ReaderLayers({
   const bothPending = showHindiTrans && showEnglishTrans && meaningNow.hi === 'pending' && meaningNow.en === 'pending';
   const hasPadas = Boolean(settings.showCommentary && !isQuick && !settings.liteMode && glosses.length > 0);
   const [showPadas, setShowPadas] = useState(false);
-  // Traditional commentary appears only once a reviewed commentary exists for this verse;
-  // until then the layer would just repeat the text above around an "add commentary" notice.
-  const hasCommentary = (COMMENTARIES[verseKey(scriptureId, chapterId, verse.number)]?.length ?? 0) > 0;
-  const showTradition = settings.showCommentary && !isQuick && !settings.liteMode && hasCommentary;
   const showMarma = Boolean(insight?.marma && settings.showCommentary && !settings.liteMode);
   // Sacred reading order (lib/sacred-reading-order): one Vyakhya branch carries
-  // the core shift (marma), the explanation, the English commentary and the traditional bhashya together;
+  // the core shift (marma), the explanation and the English commentary together;
   // Modern Context carries the lesson and the research note; Reflection carries
   // only the चिंतन प्रश्न. Gates are unchanged from the old Vigyan branch.
-  const hasVyakhya = settings.showCommentary && (showMarma || Boolean(verse.explanation) || Boolean(verse.commentary) || showTradition);
+  const hasVyakhya = settings.showCommentary && (showMarma || Boolean(verse.explanation) || Boolean(verse.commentary));
   const modernParsed = verse.reflection ? parseModernContext(verse.reflection) : null;
   const showModernLesson = Boolean(!settings.liteMode && verse.reflection && modernParsed
     && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText));
@@ -313,7 +260,7 @@ export function ReaderLayers({
   };
 
   return (
-    <article id={`verse-${verse.number}`} className="space-y-5" aria-label={`Verse ${verse.number}`}>
+    <article id={`verse-${verse.number}`} className="space-y-3.5 sm:space-y-4" aria-label={`Verse ${verse.number}`}>
       {/* Reading depth and perspective live in the reader's control row (ReaderControlBar). */}
       {settings.liteMode && (
         <div className="flex items-center justify-between rounded-xl border border-dharma-border/60 bg-dharma-card/50 px-3.5 py-2 text-xs text-dharma-muted">
@@ -346,47 +293,60 @@ export function ReaderLayers({
       >
         {lines.length > 0 ? (
           <>
-          <div className="relative">
-            {/* Left & Right Sacred Manuscript Margin Wings on Wide Screens */}
-            <div
-              aria-hidden="true"
-              data-decor
-              className="pointer-events-none absolute inset-y-4 left-3.5 z-10 hidden flex-col items-center justify-between text-amber-700/45 dark:text-amber-300/35 lg:flex"
-            >
-              <span className="font-serif text-xs">𑁍</span>
-              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
-              <span className="my-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] px-2 py-0.5 font-devanagari text-[10px] font-semibold text-amber-800/80 dark:text-amber-200/75">
-                मूल पाठ
+          <p id="sanskrit-text" lang="sa" className={`verse-folio min-w-0 rounded-2xl px-2 py-3.5 text-center font-devanagari font-semibold text-dharma-text sm:px-6 sm:py-5 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
+            {lines.map((line, i) => (
+              <span key={i} className="block">
+                <PadaLine line={line} />
               </span>
-              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
-              <span className="font-serif text-xs">✦</span>
-            </div>
-            <div
-              aria-hidden="true"
-              data-decor
-              className="pointer-events-none absolute inset-y-4 right-3.5 z-10 hidden flex-col items-center justify-between text-amber-700/45 dark:text-amber-300/35 lg:flex"
-            >
-              <span className="font-serif text-xs">𑁍</span>
-              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
-              <span className="my-1.5 rounded-full border border-amber-500/25 bg-amber-500/[0.07] px-2 py-0.5 font-serif text-[10px] font-semibold tabular-nums text-amber-800/80 dark:text-amber-200/75">
-                {chapterId}.{verseMarkNumber(verse.number)}
-              </span>
-              <span className="h-full w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent" />
-              <span className="font-serif text-xs">✦</span>
-            </div>
-            <p id="sanskrit-text" lang="sa" className={`verse-folio min-w-0 rounded-2xl px-2 py-6 text-center font-devanagari font-semibold text-dharma-text sm:px-10 ${SANSKRIT_SIZE[settings.sanskritSize]} ${devLeading}`}>
-              {lines.map((line, i) => (
-                <span key={i} className="block">
-                  <PadaLine line={line} />
+            ))}
+            <span aria-hidden="true" className="verse-mark mt-1.5 block text-sm font-semibold sm:text-base">
+              ॥ {verseMarkNumber(verse.number)} ॥
+            </span>
+            {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
+            <span className="photo-light" />
+          </p>
+          {/* Interactive Padachheda word pills: updates selectedWordIndex in StudyCompanionRail without layout shift */}
+          {!settings.liteMode && glosses.length > 0 && onSelectWord && (
+            <div className="mt-3 rounded-2xl border border-amber-700/20 bg-amber-50/45 dark:border-amber-500/20 dark:bg-amber-950/20 px-3 py-2.5 [[data-lite=true]_&]:hidden">
+              <div className="mb-1.5 flex items-center justify-between gap-2 text-[11px] font-semibold text-dharma-muted">
+                <span>
+                  <span lang="hi" className="font-devanagari text-dharma-text">पदच्छेद</span>{' '}
+                  <span>· Tap a word to inspect grammar</span>
                 </span>
-              ))}
-              <span aria-hidden="true" className="verse-mark mt-2 block text-base font-semibold">
-                ॥ {verseMarkNumber(verse.number)} ॥
-              </span>
-              {/* The light over a chapter photo (scene-photos.css); hidden everywhere else. */}
-              <span className="photo-light" />
-            </p>
-          </div>
+              </div>
+              <div role="group" aria-label="Interactive padachheda words" className="flex flex-wrap gap-1.5">
+                {glosses.map((g, idx) => {
+                  const isSelected = selectedWordIndex === idx;
+                  const lex = verse.lexicon?.[g.pada];
+                  return (
+                    <button
+                      key={`${g.pada}-${idx}`}
+                      type="button"
+                      aria-pressed={isSelected}
+                      onClick={() => onSelectWord(idx)}
+                      className={`focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition [[data-lite=true]_&]:transition-none ${
+                        isSelected
+                          ? 'border-amber-700 bg-amber-800 text-amber-50 shadow-2xs dark:border-amber-300 dark:bg-amber-300 dark:text-stone-950'
+                          : 'border-amber-700/30 bg-dharma-card/90 text-dharma-text hover:border-amber-600/60 hover:bg-amber-100/60 dark:border-amber-500/25 dark:hover:bg-amber-900/35'
+                      }`}
+                    >
+                      {lex?.termDevanagari ? (
+                        <span lang="sa" className="font-devanagari">{lex.termDevanagari}</span>
+                      ) : (
+                        <span lang="sa-Latn" className="font-serif italic">{g.pada}</span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+              {glosses[selectedWordIndex] && (
+                <p className="mt-2 border-t border-amber-700/15 dark:border-amber-500/15 pt-1.5 text-xs text-dharma-text lg:sr-only">
+                  <span className="font-semibold">{glosses[selectedWordIndex].pada}:</span>{' '}
+                  <span>{glosses[selectedWordIndex].meaning}</span>
+                </p>
+              )}
+            </div>
+          )}
           {!settings.liteMode && (
             <ExplainLine lines={lines} scopeId="sanskrit-text" verseLabel={formatVerseRef(scriptureId, chapterId, verse.number)} fullTranslation={cleanVerseField(verse.translation)} entries={verse.lineExplanations} />
           )}
@@ -395,7 +355,7 @@ export function ReaderLayers({
           <p className="text-center text-sm text-dharma-muted">The Sanskrit text is not available for this verse.</p>
         )}
         {!isQuick && (verse.transliteration || hasPadas) && (
-          <div className="mt-4 pt-1">
+          <div className="mt-2.5">
             {/* Reading aids for the shloka: folded until the reader asks for them. */}
             <div className="flex flex-wrap items-center justify-center gap-2">
               {verse.transliteration && (
@@ -521,21 +481,95 @@ export function ReaderLayers({
         </div>
       )}
 
+      {/* 2 · Direct Meaning (भावार्थ): immediately below the shloka so Hindi & English meaning
+          are visible above the fold on both phone and desktop without scrolling past navigation. */}
+      {hasArth && (
+        <div id={`${anchorPrefix}-arth`} className="scroll-mt-32 space-y-3 sm:scroll-mt-24 sm:space-y-4">
+          {bothPending && (
+            <p className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm italic text-dharma-muted">
+              <span lang="hi" className="font-devanagari">{MEANING_COPY.bothPendingHi}</span>
+              {' · '}
+              <span lang="en">{MEANING_COPY.bothPendingEn}</span>
+            </p>
+          )}
+          {showHindiTrans && !bothPending && meaningNow.hi === 'with' && (
+            <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm text-dharma-muted">
+              <a href={`../${verse.hindiSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                {MEANING_COPY.hiWith(verse.hindiSeeVerse!)}
+              </a>
+            </p>
+          )}
+          {showHindiTrans && !bothPending && (meaningNow.hi === 'pending' || meaningNow.hi === 'review') && (
+            <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm italic text-dharma-muted">
+              {meaningNow.hi === 'review' ? MEANING_COPY.hiReview : MEANING_COPY.hiPending}
+            </p>
+          )}
+          {((showHindiTrans && meaningNow.hi === 'text') || (showEnglishTrans && meaningNow.en === 'text')) && (
+            <div className="space-y-3">
+              {showHindiTrans && meaningNow.hi === 'text' && (
+                <div className="[[data-lang=en]_&]:hidden">
+                  <Layer
+                    id="layer-hindi"
+                    kind="translation"
+                    title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Hindi Meaning'}
+                    titleHi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'भावार्थ (हिन्दी)'}
+                    badge={
+                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                        मूलानुवाद · Literal
+                      </span>
+                    }
+                  >
+                    <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
+                      {cleanVerseField(verse.hindi)}
+                    </p>
+                  </Layer>
+                </div>
+              )}
+              {showEnglishTrans && meaningNow.en === 'text' && (
+                <div className="[[data-lang=hi]_&]:hidden">
+                  <Layer
+                    id="layer-english"
+                    kind="translation"
+                    title={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'English Translation'}
+                    badge={
+                      <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
+                        Literal Text
+                      </span>
+                    }
+                  >
+                    <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
+                      {cleanVerseField(verse.translation)}
+                    </p>
+                  </Layer>
+                </div>
+              )}
+            </div>
+          )}
+          {showEnglishTrans && !bothPending && meaningNow.en === 'with' && (
+            <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm text-dharma-muted">
+              <a href={`../${verse.translationSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
+                {MEANING_COPY.enWith(verse.translationSeeVerse!)}
+              </a>
+            </p>
+          )}
+          {showEnglishTrans && !bothPending && meaningNow.en === 'pending' && (
+            <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm italic text-dharma-muted">
+              {MEANING_COPY.enPending}
+            </p>
+          )}
+        </div>
+      )}
 
-      {/* Original Sanskrit stays above navigation, keeping scripture the primary focus. */}
+      {/* Study path strip: jumps across Original Sanskrit, Meaning, Vyakhya, Modern Context, Reflection & Sources. */}
       {!settings.liteMode && !settings.focusMode && (
         <nav
           id="reader-study-guide"
           aria-label="श्लोक अध्ययन मार्ग · Verse study guide"
-          className="scroll-mt-28 rounded-[20px] border border-dharma-border/80 bg-dharma-card/85 px-3 py-3 shadow-sm sm:px-4"
+          className="scroll-mt-28 rounded-[18px] border border-dharma-border/80 bg-dharma-card/85 px-3 py-2 shadow-sm sm:px-4"
         >
-          {/* Text size lives in the Aa sheet (ReaderSettingsPanel), with the other reading choices. */}
-          <div className="mb-2.5 min-w-0">
-            <p lang="hi" className="font-devanagari text-sm font-bold text-dharma-text">अध्ययन मार्ग</p>
-            <p className="text-[11px] font-medium text-dharma-muted">Explore this verse · अर्थ से चिंतन तक</p>
-          </div>
-          <div className="-mx-1 flex min-w-0 snap-x snap-proximity gap-2 overflow-x-auto px-1 pb-1">
-            <a href="#layer-sanskrit" aria-label="मूल श्लोक · Original Sanskrit" className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-amber-500/70">
+          <div className="-mx-1 flex min-w-0 snap-x snap-proximity items-center gap-1.5 overflow-x-auto px-1 py-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <span lang="hi" className="mr-1 shrink-0 font-devanagari text-xs font-bold text-dharma-muted">अध्ययन मार्ग:</span>
+            <a href="#layer-sanskrit" aria-label="मूल श्लोक · Original Sanskrit" className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-amber-500/70">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-amber-600 dark:bg-amber-400" />
               <span lang="hi" className="font-devanagari">मूल श्लोक</span>
             </a>
@@ -544,7 +578,7 @@ export function ReaderLayers({
                 key={step.id}
                 href={'#' + anchorPrefix + '-' + step.id}
                 aria-label={step.hi + ' · ' + step.en}
-                className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-2 rounded-full border border-dharma-border bg-dharma-bg/70 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-saffron-500/60 hover:bg-saffron-500/10"
+                className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-bg/70 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-saffron-500/60 hover:bg-saffron-500/10"
               >
                 <span aria-hidden="true" className="font-mono text-[10px] font-bold tabular-nums text-saffron-700 dark:text-saffron-300">{String(i + 1).padStart(2, '0')}</span>
                 <span lang="hi" className="font-devanagari">{step.hi}</span>
@@ -557,106 +591,13 @@ export function ReaderLayers({
         </nav>
       )}
 
-      {/* 2–9 · The knowledge tree in sacred reading order (lib/sacred-reading-order):
-          अर्थ → व्याख्या → आधुनिक संदर्भ → चिंतन. Native <details> branches, so
-          every layer stays in the server HTML. */}
+      {/* 3–9 · Deeper study tree in sacred reading order (lib/sacred-reading-order):
+          व्याख्या → आधुनिक संदर्भ → चिंतन. Native <details> branches keep every layer in server HTML. */}
       <VerseTreeStructure
         persistent
         anchorPrefix={anchorPrefix}
         branches={(
           [
-          hasArth && {
-            id: 'arth',
-            labelHi: SACRED_SECTION_LABEL.arth.hi,
-            labelEn: SACRED_SECTION_LABEL.arth.en,
-            icon: ScrollText,
-            defaultOpen: true,
-            content: (
-              <div className="space-y-4">
-                {bothPending && (
-                  <p className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm italic text-dharma-muted">
-                    <span lang="hi" className="font-devanagari">{MEANING_COPY.bothPendingHi}</span>
-                    {' · '}
-                    <span lang="en">{MEANING_COPY.bothPendingEn}</span>
-                  </p>
-                )}
-                {showHindiTrans && !bothPending && meaningNow.hi === 'with' && (
-                  // The edition translates this verse together with others; the passage lives on the first of them.
-                  <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm text-dharma-muted">
-                    <a href={`../${verse.hindiSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                      {MEANING_COPY.hiWith(verse.hindiSeeVerse!)}
-                    </a>
-                  </p>
-                )}
-                {showHindiTrans && !bothPending && (meaningNow.hi === 'pending' || meaningNow.hi === 'review') && (
-                  <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm italic text-dharma-muted">
-                    {meaningNow.hi === 'review' ? MEANING_COPY.hiReview : MEANING_COPY.hiPending}
-                  </p>
-                )}
-                {((showHindiTrans && meaningNow.hi === 'text') || (showEnglishTrans && meaningNow.en === 'text')) && (
-                  <div
-                    className={
-                      showHindiTrans && meaningNow.hi === 'text' && showEnglishTrans && meaningNow.en === 'text'
-                        ? 'grid grid-cols-1 gap-4 lg:grid-cols-2 lg:items-stretch [&>section]:h-full'
-                        : 'space-y-4'
-                    }
-                  >
-                    {showHindiTrans && meaningNow.hi === 'text' && (
-                      <Layer
-                        id="layer-hindi"
-                        kind="translation"
-                        title={verse.hindiRange ? `Hindi Translation · verses ${verse.hindiRange.replace('-', '–')}` : 'Literal Hindi Translation'}
-                        titleHi={verse.hindiRange ? MEANING_COPY.hiRange(verse.hindiRange) : 'मूल हिन्दी अनुवाद (अक्षरशः)'}
-                        badge={
-                          <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                            मूलानुवाद · Literal
-                          </span>
-                        }
-                      >
-                        <p lang="hi" className={`whitespace-pre-line font-devanagari text-dharma-text ${tSize} ${devLeading}`}>
-                          {cleanVerseField(verse.hindi)}
-                        </p>
-                        <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
-                          अक्षरशः अनुवाद — मूल संस्कृत श्लोक के प्रत्येक पद का प्रत्यक्ष अर्थ।
-                        </p>
-                      </Layer>
-                    )}
-                    {showEnglishTrans && meaningNow.en === 'text' && (
-                      <Layer
-                        id="layer-english"
-                        kind="translation"
-                        title={verse.translationRange ? MEANING_COPY.enRange(verse.translationRange) : 'Literal English Translation'}
-                        badge={
-                          <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                            Literal Text
-                          </span>
-                        }
-                      >
-                        <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
-                          {cleanVerseField(verse.translation)}
-                        </p>
-                        <p className="mt-2 text-[11px] text-dharma-muted border-t border-dharma-border/50 pt-2">
-                          Direct literal rendering preserving Sanskrit philosophical terminology.
-                        </p>
-                      </Layer>
-                    )}
-                  </div>
-                )}
-                {showEnglishTrans && !bothPending && meaningNow.en === 'with' && (
-                  <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm text-dharma-muted">
-                    <a href={`../${verse.translationSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
-                      {MEANING_COPY.enWith(verse.translationSeeVerse!)}
-                    </a>
-                  </p>
-                )}
-                {showEnglishTrans && !bothPending && meaningNow.en === 'pending' && (
-                  <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm italic text-dharma-muted">
-                    {MEANING_COPY.enPending}
-                  </p>
-                )}
-              </div>
-            ),
-          },
           hasVyakhya && {
             id: 'vyakhya',
             labelHi: SACRED_SECTION_LABEL.vyakhya.hi,
@@ -706,23 +647,6 @@ export function ReaderLayers({
                     <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
                       {verse.commentary}
                     </p>
-                  </Layer>
-                )}
-                {showTradition && (
-                  <Layer
-                    id="layer-tradition"
-                    kind="tradition"
-                    title="Traditional Commentary (परम्परागत भाष्य)"
-                    titleHi="परम्परागत भाष्य"
-                    collapsible={!isTraditional && perspective !== 'researcher'}
-                  >
-                    <div className="rounded-xl border border-stone-300 bg-stone-50/70 dark:border-stone-700 dark:bg-stone-900/40 p-3.5 mb-3 text-xs text-stone-700 dark:text-stone-300">
-                      <p className="font-semibold text-stone-900 dark:text-stone-200">Pluralistic Tradition Neutrality (सम्प्रदाय-तटस्थता):</p>
-                      <p className="mt-1 leading-relaxed">
-                        Classical commentaries represent distinct philosophical darshanas (Advaita, Vishishtadvaita, Dvaita). Dharma Granth presents multiple traditional viewpoints without declaring any single tradition as universal or exclusive.
-                      </p>
-                    </div>
-                    <CommentaryCompare scriptureId={scriptureId} chapterId={chapterId} verse={verse} />
                   </Layer>
                 )}
               </div>
@@ -879,82 +803,11 @@ export function ReaderLayers({
 
       {/* Word-by-Word (पदच्छेद) Meaning Popover */}
       {selectedWordGloss && (
-        <ReaderDialog
-          open={selectedWordGloss !== null}
+        <PadachhedaWordDialog
+          selectedWordGloss={selectedWordGloss}
           onClose={() => setSelectedWordGloss(null)}
-          title={selectedWordGloss.lexicon?.termIast || selectedWordGloss.pada}
-          titleHi={selectedWordGloss.lexicon?.termDevanagari || selectedWordGloss.pada}
-          variant="modal"
-        >
-          <div className="space-y-4 text-sm">
-            {/* Word Heading Card */}
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-500/30 bg-amber-50/60 dark:bg-amber-950/30 p-4">
-              <div>
-                <span lang="sa" className="block font-devanagari text-2xl font-bold text-dharma-text">
-                  {selectedWordGloss.lexicon?.termDevanagari || selectedWordGloss.pada}
-                </span>
-                <span lang="sa-Latn" className="mt-0.5 block font-serif text-sm italic text-amber-900 dark:text-amber-200">
-                  {selectedWordGloss.lexicon?.termIast || selectedWordGloss.pada}
-                </span>
-              </div>
-            </div>
-
-            {/* Contextual Hindi & English Meanings */}
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-xl border border-dharma-border bg-dharma-card p-3.5">
-                <span className="text-2xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  हिन्दी अर्थ (Hindi Meaning)
-                </span>
-                <p lang="hi" className="mt-1 font-devanagari text-sm font-medium text-dharma-text">
-                  {selectedWordGloss.lexicon?.simpleHindi ||
-                    selectedWordGloss.lexicon?.contextualMeaningHi ||
-                    selectedWordGloss.meaning}
-                </p>
-              </div>
-              <div className="rounded-xl border border-dharma-border bg-dharma-card p-3.5">
-                <span className="text-2xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  English Meaning
-                </span>
-                <p className="mt-1 text-sm font-medium text-dharma-text">
-                  {selectedWordGloss.lexicon?.simpleEnglish ||
-                    selectedWordGloss.lexicon?.contextualMeaning ||
-                    selectedWordGloss.meaning}
-                </p>
-              </div>
-            </div>
-
-            {/* Classical Dhatu & Grammar Details if available */}
-            {selectedWordGloss.lexicon ? (
-              <div className="rounded-xl border border-amber-500/25 bg-amber-500/5 p-3.5">
-                <span className="text-2xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-                  मूल धातु व व्याकरण (Root & Grammar)
-                </span>
-                <p className="mt-1 text-xs font-semibold text-dharma-text">
-                  धातु: {selectedWordGloss.lexicon.rootDhatu}
-                </p>
-                <p className="mt-0.5 text-xs text-dharma-muted">
-                  {selectedWordGloss.lexicon.grammarCategory}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const lex = selectedWordGloss.lexicon;
-                    setSelectedWordGloss(null);
-                    if (lex) setActiveLexiconEntry(lex);
-                  }}
-                  className="mt-3 focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border border-saffron-500/40 bg-saffron-100/80 dark:bg-saffron-900/40 px-3 py-1 text-xs font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
-                >
-                  <Search className="h-3.5 w-3.5" />
-                  <span>विस्तृत धातु अन्वेषण (Deep Dhatu Analysis)</span>
-                </button>
-              </div>
-            ) : (
-              <p className="text-2xs text-dharma-muted italic">
-                श्लोक संदर्भ: यह पद मूल श्लोक के पदच्छेद एवं अन्वय का प्रत्यक्ष भाग है।
-              </p>
-            )}
-          </div>
-        </ReaderDialog>
+          onDeepInspect={(lex) => setActiveLexiconEntry(lex)}
+        />
       )}
     </article>
   );

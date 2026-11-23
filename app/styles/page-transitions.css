@@ -1,19 +1,34 @@
-/* Page transitions (lib/view-transition.ts, app/components/motion/RouteTransitions.tsx).
-   The browser's View Transitions animate between two screens on client navigation.
-   lib/view-transition sets data-vt on <html> for the length of one transition:
+/* Structural screen-to-screen View Transitions (lib/view-transition.ts, RouteTransitions.tsx).
+   The browser's View Transitions API connects every route change across the UX:
 
-     next / prev  the reading pane leaves to one side and the new one slides in from the
-                  other, settling on a spring: a page turned under the thumb.
-     open         the tapped verse panel grows into the verse page's Sanskrit panel
-                  ("verse-hero"); the rest of the new page rises in behind it.
+     next / prev          sequential reading pane slides like a turned leaf on a spring
+     nav-next / nav-prev  lateral spatial glide along the primary navigation rail
+     open                 deeper screen rises forward; shared `verse-hero` morphs into place
+     back                 child detail contracts softly back into its parent container
+     navigate             calm cross-plane settle between peer screens
 
-   The site header and everything outside the pane only cross-fade, so they hold still.
-   The script never sets data-vt under reduced motion or the quiet modes; the media query
-   below is a second guard. */
+   Persistent site chrome (header and mobile bottom bar) stays pinned on its own compositor
+   plane outside immersive reader mode, so only the content stage moves. */
 
 @media (prefers-reduced-motion: no-preference) {
-    :root[data-vt] [data-vt-pane] {
+    /* Universal content plane: use a route's explicit [data-vt-pane] when present,
+       or fall back to the root [data-vt-stage] wrapper so all 91 templates participate. */
+    :root[data-vt] [data-vt-pane],
+    :root[data-vt] [data-vt-stage]:not(:has([data-vt-pane])) {
         view-transition-name: reading-pane;
+    }
+
+    /* Keep site navigation bars rock-steady across non-reader hub/book/chapter transitions. */
+    :root[data-vt]:not([data-reader]) [data-site-header] {
+        view-transition-name: site-chrome-top;
+    }
+    :root[data-vt]:not([data-reader]) nav[aria-label='Mobile quick navigation'] {
+        view-transition-name: site-chrome-bottom;
+    }
+    :root[data-vt]::view-transition-group(site-chrome-top),
+    :root[data-vt]::view-transition-group(site-chrome-bottom) {
+        animation-duration: 0.18s;
+        z-index: 50;
     }
 
     :root[data-vt]::view-transition-old(root),
@@ -37,31 +52,45 @@
         object-position: top center;
     }
 
-    /* Verse to verse, chapter to chapter: forward. */
+    /* 1. Sequential page-turn: verse ↔ verse, chapter ↔ chapter */
     :root[data-vt='next']::view-transition-old(reading-pane) {
-        animation: vt-leave-left 0.32s var(--ease-in) both;
+        animation: vt-leave-left 0.3s var(--ease-in) both;
     }
     :root[data-vt='next']::view-transition-new(reading-pane) {
-        animation: vt-arrive-right 0.62s var(--motion-spring) both;
+        animation: vt-arrive-right 0.58s var(--motion-spring) both;
     }
-    /* And back. */
     :root[data-vt='prev']::view-transition-old(reading-pane) {
-        animation: vt-leave-right 0.32s var(--ease-in) both;
+        animation: vt-leave-right 0.3s var(--ease-in) both;
     }
     :root[data-vt='prev']::view-transition-new(reading-pane) {
-        animation: vt-arrive-left 0.62s var(--motion-spring) both;
+        animation: vt-arrive-left 0.58s var(--motion-spring) both;
     }
 
-    /* Opening a verse: its panel grows into place, the page rises in behind. */
+    /* 2. Primary navigation rail: subtle lateral spatial continuity */
+    :root[data-vt='nav-next']::view-transition-old(reading-pane) {
+        animation: vt-rail-leave-left 0.22s var(--ease-in) both;
+    }
+    :root[data-vt='nav-next']::view-transition-new(reading-pane) {
+        animation: vt-rail-arrive-right 0.46s var(--motion-spring) both;
+    }
+    :root[data-vt='nav-prev']::view-transition-old(reading-pane) {
+        animation: vt-rail-leave-right 0.22s var(--ease-in) both;
+    }
+    :root[data-vt='nav-prev']::view-transition-new(reading-pane) {
+        animation: vt-rail-arrive-left 0.46s var(--motion-spring) both;
+    }
+
+    /* 3. Hierarchical drill-in (open): background recedes, deeper screen rises, shared hero morphs */
     :root[data-vt='open']::view-transition-old(reading-pane) {
-        animation: vt-fade-out 0.18s var(--ease-in) both;
+        animation: vt-recede-out 0.22s var(--ease-in) both;
     }
     :root[data-vt='open']::view-transition-new(reading-pane) {
-        animation: vt-rise 0.5s var(--motion-spring) 0.06s both;
+        animation: vt-rise 0.48s var(--motion-spring) 0.04s both;
     }
     :root[data-vt]::view-transition-group(verse-hero) {
-        animation-duration: 0.56s;
+        animation-duration: 0.52s;
         animation-timing-function: var(--motion-spring);
+        z-index: 30;
     }
     :root[data-vt]::view-transition-old(verse-hero),
     :root[data-vt]::view-transition-new(verse-hero) {
@@ -70,28 +99,46 @@
         object-position: center;
     }
     :root[data-vt]::view-transition-old(verse-hero) {
-        animation: vt-fade-out 0.24s var(--ease-standard) both;
+        animation: vt-fade-out 0.22s var(--ease-standard) both;
     }
     :root[data-vt]::view-transition-new(verse-hero) {
-        animation: vt-fade-in 0.32s var(--ease-standard) both;
+        animation: vt-fade-in 0.3s var(--ease-standard) both;
+    }
+
+    /* 4. Hierarchical step-out (back): child contracts softly, parent container settles forward */
+    :root[data-vt='back']::view-transition-old(reading-pane) {
+        animation: vt-contract-out 0.22s var(--ease-in) both;
+        z-index: 2;
+    }
+    :root[data-vt='back']::view-transition-new(reading-pane) {
+        animation: vt-parent-restore 0.44s var(--motion-spring) both;
+        z-index: 1;
+    }
+
+    /* 5. Peer screen transition (navigate): calm cross-plane settle */
+    :root[data-vt='navigate']::view-transition-old(reading-pane) {
+        animation: vt-fade-out 0.18s var(--ease-in) both;
+    }
+    :root[data-vt='navigate']::view-transition-new(reading-pane) {
+        animation: vt-peer-in 0.4s var(--motion-spring) 0.02s both;
     }
 }
 
 @keyframes vt-leave-left {
     to {
-        transform: translateX(-28%);
+        transform: translate3d(-26%, 0, 0);
         opacity: 0;
     }
 }
 @keyframes vt-leave-right {
     to {
-        transform: translateX(28%);
+        transform: translate3d(26%, 0, 0);
         opacity: 0;
     }
 }
 @keyframes vt-arrive-right {
     from {
-        transform: translateX(42%);
+        transform: translate3d(38%, 0, 0);
         opacity: 0;
     }
     40% {
@@ -100,16 +147,64 @@
 }
 @keyframes vt-arrive-left {
     from {
-        transform: translateX(-42%);
+        transform: translate3d(-38%, 0, 0);
         opacity: 0;
     }
     40% {
         opacity: 1;
     }
 }
+@keyframes vt-rail-leave-left {
+    to {
+        transform: translate3d(-24px, 0, 0);
+        opacity: 0;
+    }
+}
+@keyframes vt-rail-leave-right {
+    to {
+        transform: translate3d(24px, 0, 0);
+        opacity: 0;
+    }
+}
+@keyframes vt-rail-arrive-right {
+    from {
+        transform: translate3d(32px, 0, 0);
+        opacity: 0;
+    }
+}
+@keyframes vt-rail-arrive-left {
+    from {
+        transform: translate3d(-32px, 0, 0);
+        opacity: 0;
+    }
+}
+@keyframes vt-recede-out {
+    to {
+        transform: scale(0.978) translate3d(0, -8px, 0);
+        opacity: 0;
+    }
+}
 @keyframes vt-rise {
     from {
-        transform: translateY(32px);
+        transform: translate3d(0, 24px, 0) scale(0.992);
+        opacity: 0;
+    }
+}
+@keyframes vt-contract-out {
+    to {
+        transform: translate3d(0, 18px, 0) scale(0.975);
+        opacity: 0;
+    }
+}
+@keyframes vt-parent-restore {
+    from {
+        transform: scale(0.985) translate3d(0, -8px, 0);
+        opacity: 0.35;
+    }
+}
+@keyframes vt-peer-in {
+    from {
+        transform: translate3d(0, 12px, 0);
         opacity: 0;
     }
 }

@@ -225,6 +225,7 @@ export interface SacredActionItem {
   id: string;
   command: string;
   title: string;
+  shortTitle: string;
   titleHi: string;
   subtitle: string;
   icon: string;
@@ -236,6 +237,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     id: 'gita',
     command: '> gita',
     title: 'Open Bhagavad Gita (श्रीमद्भगवद्गीता)',
+    shortTitle: 'Bhagavad Gita',
     titleHi: 'श्रीमद्भगवद्गीता खोलें',
     subtitle: '18 Chapters · 701 Verses with Hindi & English',
     icon: '📖',
@@ -248,6 +250,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     id: 'panchang',
     command: '> panchang',
     title: 'Open Today\'s Vedic Panchang (पंचांग)',
+    shortTitle: 'Today\'s Panchang',
     titleHi: 'आज का वैदिक पंचांग खोलें',
     subtitle: 'Tithi, Vara, Nakshatra, Yoga, Karana & Shubh Muhurta',
     icon: '📅',
@@ -260,6 +263,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     id: 'sadhana',
     command: '> sadhana',
     title: 'Open Daily Sadhana (दैनिक साधना)',
+    shortTitle: 'Daily Sadhana',
     titleHi: 'दैनिक साधना खोलें',
     subtitle: '108 Japa Counter, Meditation Timer & Journal',
     icon: '✨',
@@ -272,6 +276,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     id: 'meditation',
     command: '> meditation',
     title: 'Start 10-Minute Meditation Timer',
+    shortTitle: '10-Min Meditation',
     titleHi: '10 मिनट ध्यान साधना प्रारंभ करें',
     subtitle: 'Timed Silent Meditation with Diya & Wake-Lock',
     icon: '🧘',
@@ -285,6 +290,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     id: 'theme',
     command: '> theme',
     title: 'Switch Theme: Sunset (Light) / Night (Dark)',
+    shortTitle: 'Switch Theme',
     titleHi: 'पठन शैली बदलें · दिव्य सन्ध्या / रात्रि',
     subtitle: 'Toggle between luminous Sunset and Ratri Dark mode',
     icon: '🌓',
@@ -298,6 +304,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     id: 'resume',
     command: '> resume',
     title: 'Resume Last Read Verse',
+    shortTitle: 'Resume Reading',
     titleHi: 'अंतिम पठित श्लोक से पुनः प्रारंभ करें',
     subtitle: 'Jump directly to your last bookmark',
     icon: '📖',
@@ -807,7 +814,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                 {typeaheadSuggestion?.suffix ? (
                   <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 flex items-center overflow-hidden text-title-3 font-normal sm:text-title-2 select-none"
+                    className="pointer-events-none absolute inset-0 flex items-center overflow-hidden text-base font-normal sm:text-title-2 select-none"
                   >
                     <span className="invisible whitespace-pre">{query}</span>
                     <span className="text-label-tertiary/60 whitespace-pre">{typeaheadSuggestion.suffix}</span>
@@ -823,10 +830,10 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={onInputKeyDown}
-                  placeholder="Gita 2.47 · कर्म · भय · > actions"
+                  placeholder="Gita 2.47 · कर्म · भय · > gita"
                   aria-label="Search scriptures, verses, topics and practices"
                   aria-describedby={statusId}
-                  className="relative z-1 min-h-[44px] w-full bg-transparent text-title-3 font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
+                  className="relative z-1 min-h-[44px] w-full bg-transparent text-base font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
                   role="combobox"
                   aria-expanded={display.length > 0 && !isActionQuery}
                   aria-autocomplete="list"
@@ -1175,12 +1182,13 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                           key={a.id}
                           type="button"
                           onClick={() => a.run(onClose, router, cycleTheme)}
-                          className="focus-ring flex items-center gap-2.5 p-2.5 rounded-card border border-separator bg-surface-raised hover:bg-fill-quaternary hover:border-tint/40 active:scale-97 text-left transition"
+                          title={a.title}
+                          className="focus-ring flex min-h-[44px] items-center gap-2 p-2 rounded-card border border-separator bg-surface-raised hover:bg-fill-quaternary hover:border-tint/40 active:scale-97 text-left transition sm:gap-2.5 sm:p-2.5"
                         >
                           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-control bg-fill-tertiary text-base">
                             {a.icon}
                           </span>
-                          <span className="truncate text-footnote font-medium text-label-primary">{a.title}</span>
+                          <span className="truncate text-caption font-medium text-label-primary sm:text-footnote">{a.shortTitle}</span>
                         </button>
                       ))}
                     </div>

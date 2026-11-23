@@ -2,13 +2,11 @@
 
 import { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { navigateWithTransition, notifyRouteCommitted, type TransitionKind } from '@/lib/view-transition';
+import { inferRouteTransition, navigateWithTransition, notifyRouteCommitted } from '@/lib/view-transition';
 
-const VERSE_PAGE = /^\/scripture\/[^/]+\/chapter\/[^/]+\/verse\/[^/]+\/?$/;
-
-/** The verse panel or card container that belongs to the tapped link. */
+/** The verse panel or card container that belongs to the tapped link for shared-element morphs. */
 function heroFor(anchor: HTMLAnchorElement): HTMLElement | null {
-  // A card container marked data-vt-source (e.g. a Library book card) grows as a whole,
+  // A card container marked data-vt-source (e.g. a Library book card or Concept card) grows as a whole,
   // even when its link is a nested CTA on desktop. Otherwise a card link marked data-vt="open"
   // grows into the target page's data-vt-hero element.
   const source = anchor.closest<HTMLElement>('[data-vt-source]');
@@ -17,7 +15,7 @@ function heroFor(anchor: HTMLAnchorElement): HTMLElement | null {
   if (own) return own;
   let node: HTMLElement | null = anchor.parentElement;
   for (let depth = 0; node && depth < 6; depth += 1, node = node.parentElement) {
-    if (node.tagName === 'MAIN' || node.tagName === 'BODY') break;
+    if (node.tagName === 'MAIN' || node.tagName === 'BODY' || node.tagName === 'NAV' || node.tagName === 'HEADER') break;
     const folios = node.querySelectorAll<HTMLElement>('.verse-folio');
     if (folios.length === 1) return folios[0];
     if (folios.length > 1) break;
@@ -26,12 +24,14 @@ function heroFor(anchor: HTMLAnchorElement): HTMLElement | null {
 }
 
 /**
- * Mounted once in the root layout. It tells lib/view-transition when a new route has
- * rendered, and turns ordinary link taps into animated page changes:
- * rel="next" / rel="prev" links slide like a turned page, and a link to a verse page
- * grows the tapped verse into it. A card link marked data-vt="open" grows into the
- * element marked data-vt-hero on the page it opens (a festival card into the festival's
- * hero). Everything else navigates as before.
+ * Mounted once in the root layout. Connects every screen-to-screen client navigation
+ * through structural View Transitions:
+ * - Sequential next/prev links and sibling chapters/verses turn like pages
+ * - Primary nav rail glides laterally (`nav-next` / `nav-prev`)
+ * - Drilling deeper into books, chapters, verses, concepts or festivals opens forward
+ *   (morphing shared `[data-vt-source]` / `a[data-vt="open"]` / `.verse-folio` into `[data-vt-hero]`)
+ * - Stepping up to a parent screen recedes cleanly (`back`)
+ * - Peer routes cross-settle smoothly (`navigate`)
  */
 export function RouteTransitions() {
   const pathname = usePathname();
@@ -45,22 +45,31 @@ export function RouteTransitions() {
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const anchor = (e.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
-      if (!anchor || anchor.hasAttribute('download')) return;
+      if (!anchor || anchor.hasAttribute('download') || anchor.dataset.vt === 'none') return;
       if (anchor.target && anchor.target !== '_self') return;
-      const url = new URL(anchor.href, window.location.href);
+      let url: URL;
+      try {
+        url = new URL(anchor.href, window.location.href);
+      } catch {
+        return;
+      }
       if (url.origin !== window.location.origin || url.pathname === window.location.pathname) return;
 
-      const rel = (anchor.getAttribute('rel') ?? '').split(/\s+/);
-      let kind: TransitionKind | null = null;
-      if (rel.includes('next')) kind = 'next';
-      else if (rel.includes('prev')) kind = 'prev';
-      else if (VERSE_PAGE.test(url.pathname) || anchor.dataset.vt) kind = 'open';
-      if (!kind) return;
+      const rel = (anchor.getAttribute('rel') ?? '').split(/\s+/).filter(Boolean);
+      const kind = inferRouteTransition(window.location.pathname, url.pathname, {
+        rel,
+        vtAttr: anchor.dataset.vt,
+      });
 
       e.preventDefault();
-      navigateWithTransition(router, url.pathname + url.search + url.hash, kind, kind === 'open' ? heroFor(anchor) : null);
+      navigateWithTransition(
+        router,
+        url.pathname + url.search + url.hash,
+        kind,
+        kind === 'open' ? heroFor(anchor) : null,
+      );
     };
-    // Capture phase, so this runs before next/link's own handler, which then sees
+    // Capture phase so this runs before next/link's own handler, which then sees
     // defaultPrevented and leaves the navigation to us.
     document.addEventListener('click', onClick, true);
     return () => document.removeEventListener('click', onClick, true);

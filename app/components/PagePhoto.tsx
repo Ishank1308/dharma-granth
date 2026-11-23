@@ -3,9 +3,10 @@ import type { CoverPhoto } from '@/lib/page-photos';
 /**
  * A picture at the top of a page outside the reader (lib/page-photos.ts). Plain markup with no
  * state, so it renders the same on the server and works inside client pages. The picture is a CSS
- * background (app/styles/page-photos.css), so it is decorative: it is hidden from screen readers,
- * Data Saver loads none, and print and forced colours show none. The small link under it goes to
- * the picture's author and licence on /sources/.
+ * background (app/styles/page-photos.css) with an isolated compositor cinemagraph layer
+ * (.cinemagraph-fx) so the still frame stays anchored while only one localized element (a diya
+ * flame, water glint, valley mist, or sunbeam) breathes smoothly. Data Saver loads none, and
+ * Reduce Motion, low-power, print and forced colours keep it completely still.
  */
 function Credit({ photo, className }: { photo: CoverPhoto; className: string }) {
   return (
@@ -21,11 +22,13 @@ function Credit({ photo, className }: { photo: CoverPhoto; className: string }) 
   );
 }
 
-/** A wide picture with rounded corners above a page's title, like a chapter's opening picture. */
+/** A wide picture with rounded corners above a page's title, with an isolated cinemagraph layer. */
 export function PageCover({ photo, className = '' }: { photo: CoverPhoto; className?: string }) {
   return (
     <div className={`page-cover ${className}`} data-photo={photo}>
-      <span className="page-cover-art" aria-hidden="true" />
+      <span className="page-cover-art" aria-hidden="true">
+        <span className="cinemagraph-fx" />
+      </span>
       <Credit photo={photo} className="page-cover-credit" />
     </div>
   );
@@ -39,7 +42,9 @@ export function PageCover({ photo, className = '' }: { photo: CoverPhoto; classN
 export function HeroPhoto({ photo }: { photo: CoverPhoto }) {
   return (
     <>
-      <span className="hero-photo" data-photo={photo} aria-hidden="true" />
+      <span className="hero-photo" data-photo={photo} aria-hidden="true">
+        <span className="cinemagraph-fx" />
+      </span>
       <Credit photo={photo} className="hero-photo-credit" />
     </>
   );

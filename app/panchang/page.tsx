@@ -85,7 +85,7 @@ export default function PanchangPage() {
             Classical scriptural guidelines, authentic astronomical dates, and spiritual contemplation for key lunar days.
           </p>
 
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="reveal-grid fluid-grid-xs mt-6">
             {[
               {
                 href: '/panchang/ekadashi/',
@@ -149,7 +149,7 @@ export default function PanchangPage() {
             ))}
           </div>
 
-          <div className="mt-5 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className="reveal-grid fluid-grid-xs mt-5 sm:mt-8">
             {/* 1. 16 Tithis Master Directory Banner */}
             <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-amber-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">

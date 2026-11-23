@@ -20,16 +20,16 @@ export default function AshtavakraLayout({ children }: { children: ReactNode }) 
     <AshShell>
       {/* Applies a saved visual mode before first paint. */}
       <script dangerouslySetInnerHTML={{ __html: ASH_INIT_SCRIPT }} />
-      <div className="mx-auto max-w-5xl px-4 pt-4 sm:px-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="border-b border-dharma-border/50 bg-dharma-bg/80">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 overflow-x-auto whitespace-nowrap px-4 py-1 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <Link
             href="/ashtavakra/"
             lang="hi"
-            className="inline-flex min-h-[44px] items-center font-devanagari text-base font-bold text-dharma-text"
+            className="inline-flex min-h-[44px] shrink-0 items-center font-devanagari text-sm font-bold text-dharma-text sm:text-base"
           >
             अष्टावक्र गीता
           </Link>
-          <nav aria-label="अष्टावक्र गीता" className="flex flex-wrap gap-x-4 gap-y-1">
+          <nav aria-label="अष्टावक्र गीता" className="flex shrink-0 items-center gap-x-2.5 sm:gap-x-4">
             <Link href="/ashtavakra/#chapters" className={navLink}>प्रकरण 1–{published.chapters}</Link>
             <Link href="/ashtavakra/#concepts" className={navLink}>अवधारणाएँ</Link>
             <Link href="/ashtavakra/words/" className={navLink}>शब्द</Link>

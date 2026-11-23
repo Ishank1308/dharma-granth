@@ -70,7 +70,7 @@ export default function SourcesPage() {
           </p>
 
           {/* Epistemic Tiers Grid */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-3 text-xs">
+          <div className="mt-8 fluid-grid-md text-xs">
             <div className="rounded-2xl border border-amber-500/30 bg-amber-50/50 dark:bg-amber-950/20 p-4">
               <div className="flex items-center gap-1.5 font-bold uppercase tracking-wide text-amber-900 dark:text-amber-200">
                 <ScrollText className="h-4 w-4 text-amber-700 dark:text-amber-400" />
@@ -140,11 +140,11 @@ export default function SourcesPage() {
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="reveal-grid fluid-grid-lg">
           {filteredSources.map((s) => (
             <article
               key={s.id}
-              className="rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-xs hover:border-saffron-400 transition"
+              className="apple-card fluid-cq rounded-2xl border border-dharma-border bg-dharma-card p-6 shadow-xs hover:border-saffron-400 transition"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-dharma-border/60 pb-3">
                 <div>

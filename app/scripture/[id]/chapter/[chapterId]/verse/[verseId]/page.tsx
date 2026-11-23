@@ -143,6 +143,21 @@ function opening(sanskrit: string | undefined, max = 24): string {
   return plain(phrase, max);
 }
 
+/** Detect classical Sanskrit chandas or sutra form from Devanagari akshara counts. */
+function detectVerseMeter(scriptureId: string, sanskrit: string | undefined): { sa: string; en: string } | undefined {
+  if (!sanskrit) return undefined;
+  if (scriptureId.endsWith('sutra')) return { sa: 'सूत्र', en: 'Sūtra' };
+  if (scriptureId === 'ramcharitmanas') return { sa: 'चौपाई · दोहा', en: 'Chaupai · Doha' };
+  const bodyLines = extractVerseSpeaker(undefined, verseLines(cleanVerseField(sanskrit))).verseLines;
+  const text = bodyLines.join(' ');
+  // Count Devanagari consonant/independent-vowel nuclei (aksharas).
+  const aksharas = (text.match(/[\u0905-\u0914]|[\u0915-\u0939](?!\u094D)/g) ?? []).length;
+  if (aksharas >= 29 && aksharas <= 35) return { sa: 'अनुष्टुभ्', en: 'Anuṣṭubh' };
+  if (aksharas >= 41 && aksharas <= 46) return { sa: 'त्रिष्टुभ्', en: 'Triṣṭubh' };
+  if (aksharas >= 47 && aksharas <= 51) return { sa: 'जगती', en: 'Jagatī' };
+  return undefined;
+}
+
 export function generateStaticParams() {
   return verseStaticParams();
 }
@@ -393,12 +408,38 @@ export default async function VersePage(props: PageProps) {
     title: c.title,
     titleSanskrit: c.titleSanskrit,
     verseCount: c.verseCount,
-    href: `/scripture/${meta.id}/chapter/${c.id}`,
+    href: `/scripture/${meta.id}/chapter/${c.id}/`,
   }));
   const verseLinks = verses.flatMap((v) => {
     const href = versePageHref(meta.id, chapterId, v.number);
-    return href ? [{ number: v.number, href }] : [];
+    if (!href) return [];
+    const preview = plain(v.translation || v.hindi || opening(v.sanskrit, 32), 36);
+    return [{ number: v.number, href, ...(preview ? { preview } : {}) }];
   });
+
+  const traditionBadge: 'sruti' | 'smriti' =
+    meta.category === 'veda' || meta.category === 'upanishad' ? 'sruti' : 'smriti';
+  const meterLabel = detectVerseMeter(meta.id, verse.sanskrit);
+  const insightData = getVerseInsight(meta.id, chapterId, params.verseId);
+  const parallelLinks = [
+    ...knowledge.verses.map((v) => ({
+      href: v.href,
+      reference: v.reference,
+      subtitleHi: v.sanskrit ? plain(v.sanskrit, 36) : undefined,
+    })),
+    ...knowledge.concepts.map((c) => ({
+      href: c.href,
+      reference: c.labelEn,
+      subtitleHi: c.labelHi,
+    })),
+    ...(insightData?.situations ?? []).map((s) => ({
+      href: s.href.endsWith('/') ? s.href : `${s.href}/`,
+      reference: s.en,
+      subtitleHi: s.hi,
+    })),
+  ]
+    .filter((item, idx, arr) => arr.findIndex((x) => x.href === item.href) === idx)
+    .slice(0, 3);
 
   const pedagogical = getPedagogicalVerse(meta.id, chapterId, params.verseId);
   const sourceMeta = getScriptureSourceMeta(meta.id, meta.title, meta.titleSanskrit);
@@ -415,6 +456,7 @@ export default async function VersePage(props: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Breadcrumbs
+        className="hidden sm:block"
         items={[
           { label: 'Library', href: '/scriptures/' },
           { label: meta.title, href: `/scripture/${meta.id}/` },
@@ -435,10 +477,12 @@ export default async function VersePage(props: PageProps) {
         scriptureId={meta.id}
         scriptureTitle={meta.title}
         scriptureTitleSanskrit={meta.titleSanskrit}
+        traditionBadge={traditionBadge}
+        meterLabel={meterLabel}
         chapterId={chapterId}
         chapterTitle={chapterName}
-        scriptureHref={`/scripture/${meta.id}`}
-        chapterHref={chapterHref}
+        scriptureHref={`/scripture/${meta.id}/`}
+        chapterHref={`${chapterHref}/`}
         pageUrl={pageUrl}
         chapters={chapterLinks}
         verses={verseLinks}
@@ -489,7 +533,8 @@ export default async function VersePage(props: PageProps) {
             badges={badgesFor({ scriptureId: meta.id, chapter: chapterId, verse: params.verseId, hasEditorial: Boolean(pedagogical), records: REVIEW_RECORDS, corrections: PENDING_CORRECTIONS })}
           />
         }
-        insight={getVerseInsight(meta.id, chapterId, params.verseId)}
+        insight={insightData}
+        parallelLinks={parallelLinks}
       >
         <VerseAnswers scriptureId={meta.id} chapterId={chapterId} verseId={String(params.verseId)} />
         {!pedagogical && !explanation && <ReviewRequiredNotice className="mt-8" />}

@@ -61,10 +61,12 @@
     --space-16: 4rem;     /* 64 */
     --space-20: 5rem;     /* 80 */
     --space-24: 6rem;     /* 96 */
-    /* Page rhythm: the side gutter, the gap between sections, and the content widths. */
-    --space-gutter: clamp(1.25rem, 0.9rem + 1.5vw, 1.5rem);
+    /* Page rhythm: the side gutter, fluid grid gaps, the gap between sections, and content widths. */
+    --space-gutter: clamp(1rem, 0.75rem + 1.5vw, 1.75rem);
+    --grid-gap-fluid: clamp(0.75rem, 0.5rem + 1.1vw, 1.375rem);
     --space-section: clamp(3.5rem, 2rem + 6vw, 6rem);
-    --width-content: 980px;
+    --width-content: 1040px;
+    --width-wide: 1280px;
     --width-reading: var(--dharma-reading-max, 760px);
     --width-text: 680px;
     /* Smallest comfortable touch target. */

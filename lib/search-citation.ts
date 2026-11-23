@@ -105,7 +105,7 @@ function ashtavakra(chapter: number, verse: number): DirectCitation | null {
 }
 
 /**
- * `bg 2.47`, `gita 6.16`, `katha 1.3.3`, `rv 1.1.1`, `av 1.1`.
+ * `bg 2.47`, `gita 2-47`, `gita 6:16`, `katha 1 3 14`, `rv 1.1.1`, `av 1-1`.
  * Returns null when the reference is not a published verse.
  */
 export function parseDirectCitation(raw: string): DirectCitation | null {
@@ -113,28 +113,28 @@ export function parseDirectCitation(raw: string): DirectCitation | null {
   if (!qFull) return null;
   const q = clean(stripSearchSuffixes(qFull));
 
-  const gitaMatch = /^(?:bg|gita|geeta|bhagavad gita|bhagavadgita|bhagwat gita|bhagvat gita|गीता|भगवद्गीता|श्रीमद्भगवद्गीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|sloka|shlok|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
+  const gitaMatch = /^(?:bg|gita|geeta|bhagavad gita|bhagavadgita|bhagwat gita|bhagvat gita|गीता|भगवद्गीता|श्रीमद्भगवद्गीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|sloka|shlok|śloka|v|श्लोक)?\s*[.:\-/ ]\s*(\d+)$/.exec(q);
   if (gitaMatch) return gita(Number(gitaMatch[1]), Number(gitaMatch[2]));
 
-  // Search-Console queries like "11.15 in hindi" or "2.47 shloka" where suffix implies a verse lookup.
+  // Search-Console queries like "11.15 in hindi" or "2-47 shloka" where suffix implies a verse lookup.
   if (q !== qFull) {
-    const bareGitaWithSuffix = /^(\d{1,2})\s*[.:]\s*(\d{1,2})$/.exec(q);
+    const bareGitaWithSuffix = /^(\d{1,2})\s*[.:\-/]\s*(\d{1,2})$/.exec(q);
     if (bareGitaWithSuffix) {
       const hit = gita(Number(bareGitaWithSuffix[1]), Number(bareGitaWithSuffix[2]));
       if (hit) return hit;
     }
   }
 
-  const avMatch = /^(?:av|ashtavakra|ashtavakra gita|ashtavakragita|अष्टावक्र|अष्टावक्र गीता|अष्टावक्रगीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|śloka|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
+  const avMatch = /^(?:av|ashtavakra|ashtavakra gita|ashtavakragita|अष्टावक्र|अष्टावक्र गीता|अष्टावक्रगीता)\s*(?:chapter|ch|adhyaya|अध्याय)?\s*(\d+)\s*(?:verse|shloka|śloka|v|श्लोक)?\s*[.:\-/ ]\s*(\d+)$/.exec(q);
   if (avMatch) return ashtavakra(Number(avMatch[1]), Number(avMatch[2]));
 
-  const kathaThree = /^(?:katha|kathopanishad|katha upanishad|कठ|कठोपनिषद्)\s*(\d+)\s*[.:]\s*(\d+)\s*[.:]\s*(\d+)$/.exec(q);
+  const kathaThree = /^(?:katha|kathopanishad|katha upanishad|कठ|कठोपनिषद्)\s*(\d+)\s*(?:[.:\-/]|\s)\s*(\d+)\s*(?:[.:\-/]|\s)\s*(\d+)$/.exec(q);
   if (kathaThree) return kathaTraditional(Number(kathaThree[1]), Number(kathaThree[2]), Number(kathaThree[3]));
 
-  const kathaTwo = /^(?:katha|kathopanishad|katha upanishad|कठ|कठोपनिषद्)\s*(?:chapter|ch|valli|अध्याय)?\s*(\d+)\s*(?:verse|v|श्लोक)?\s*[.: ]\s*(\d+)$/.exec(q);
+  const kathaTwo = /^(?:katha|kathopanishad|katha upanishad|कठ|कठोपनिषद्)\s*(?:chapter|ch|valli|अध्याय)?\s*(\d+)\s*(?:verse|v|श्लोक)?\s*[.:\-/ ]\s*(\d+)$/.exec(q);
   if (kathaTwo) return kathaLibrary(Number(kathaTwo[1]), Number(kathaTwo[2]));
 
-  const rig = /^(?:rv|rigveda|rig veda|ऋग्वेद)\s*(\d+)\s*[.:]\s*(\d+)\s*[.:]\s*(\d+)$/.exec(q);
+  const rig = /^(?:rv|rigveda|rig veda|ऋग्वेद)\s*(\d+)\s*(?:[.:\-/]|\s)\s*(\d+)\s*(?:[.:\-/]|\s)\s*(\d+)$/.exec(q);
   if (rig) return rigveda(Number(rig[1]), Number(rig[2]), Number(rig[3]));
 
   return schemeCitation(q);
@@ -146,7 +146,7 @@ const ALIASES = CITATION_SCHEMES.flatMap((s) => s.aliases.map((a) => [a, s] as c
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s*');
 const SCHEME_RE = new RegExp(
   `^(${ALIASES.map(([a]) => escape(a)).join('|')})\\s*(?:chapter|ch|adhyaya|अध्याय|valli|वल्ली|pada|पाद|sutra|सूत्र|mantra|मन्त्र)?\\s*` +
-    `(\\d+(?:\\s*(?:[.:]|\\s|verse|v|shloka|श्लोक)\\s*\\d+){0,2})$`,
+    `(\\d+(?:\\s*(?:[.:\\-/]|\\s|verse|v|shloka|श्लोक)\\s*\\d+){0,2})$`,
 );
 
 function labelsOf(entry: CitationChapterEntry): string[] {
@@ -172,7 +172,7 @@ function schemeCitation(q: string): DirectCitation | null {
   const scheme = ALIASES.find(([a]) => new RegExp(`^${escape(a)}$`).test(m[1]))?.[1];
   const chapters = scheme && CITATION_MAP[scheme.id];
   if (!scheme || !chapters) return null;
-  const n = m[2].split(/\s*(?:[.:]|\s|verse|v|shloka|श्लोक)\s*/).filter(Boolean).map((x) => String(Number(x)));
+  const n = m[2].split(/\s*(?:[.:\-/]|\s|verse|v|shloka|श्लोक)\s*/).filter(Boolean).map((x) => String(Number(x)));
   const shown = n.join('.');
   const ids = Object.keys(chapters);
   const has = (chapter: string, label: string) => chapters[chapter] !== undefined && labelsOf(chapters[chapter]).includes(label);
@@ -233,6 +233,6 @@ export function citationScriptureHint(raw: string): string | null {
   const direct = parseDirectCitation(raw);
   if (direct) return direct.scriptureId;
   const q = clean(raw);
-  const first = q.split(/[\s.:]+/)[0] ?? '';
+  const first = q.split(/[\s.:\-/]+/)[0] ?? '';
   return HINTS[first.replace(/\s+/g, '')] ?? ALIASES.find(([a]) => new RegExp(`^${escape(a)}(?:\\s|\\d|$)`).test(q))?.[1].id ?? null;
 }

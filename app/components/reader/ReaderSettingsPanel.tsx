@@ -4,8 +4,8 @@ import { useId, type ReactNode } from 'react';
 import { Maximize2, RotateCcw, SlidersHorizontal } from 'lucide-react';
 import { THEME_NAMES, type Theme } from '@/app/components/ThemeProvider';
 import type { ContrastPref, LineSpacing, NumberFormatPref, ReaderLanguagePref, ReaderSettings, ReadingWidth, SanskritScript, SizeStep } from '@/lib/useReaderSettings';
-import { triggerTactileFeedback } from '@/lib/haptics';
-import { depthForMode, modeForDepth } from '@/lib/reading-depth';
+import { triggerTactileFeedbackLazy as triggerTactileFeedback } from '@/lib/haptics-lazy';
+import { depthForMode, modeForDepth, saveReadingDepth, useReadingDepth, type ReadingDepth } from '@/lib/reading-depth';
 import { ReaderControlBar, VERSE_DEPTH_HINTS } from './ReaderControlBar';
 import { ReaderDialog } from './ReaderDialog';
 import { ReadingDepthSwitch } from './ReadingDepthSwitch';
@@ -204,6 +204,52 @@ export function ReaderSettingsPanel({
 }) {
   const themeName = useId();
   const depthLabel = useId();
+  const [chapterDepth] = useReadingDepth();
+  const effectiveDepth: ReadingDepth = scope === 'verse' ? depthForMode(settings.readerMode) : chapterDepth;
+
+  const applyPreset = (preset: 'simple' | 'study' | 'scholar') => {
+    triggerTactileFeedback('selection', 'softTap');
+    chapter?.setRecitation(false);
+    if (preset === 'simple') {
+      saveReadingDepth('read');
+      update('readerMode', 'quick');
+      update('perspective', 'beginner');
+      update('showTransliteration', false);
+      update('showHindi', true);
+      update('showEnglish', true);
+      update('showCommentary', true);
+      update('liteMode', false);
+    } else if (preset === 'study') {
+      saveReadingDepth('understand');
+      update('readerMode', 'simple');
+      update('perspective', 'student');
+      update('showTransliteration', false);
+      update('showHindi', true);
+      update('showEnglish', true);
+      update('showCommentary', true);
+      update('liteMode', false);
+    } else {
+      saveReadingDepth('study');
+      update('readerMode', 'deep');
+      update('perspective', 'researcher');
+      update('showTransliteration', true);
+      update('showHindi', true);
+      update('showEnglish', true);
+      update('showCommentary', true);
+      update('liteMode', false);
+    }
+  };
+
+  const activePreset = chapter?.recitation
+    ? null
+    : effectiveDepth === 'study' && settings.showTransliteration && settings.showCommentary
+      ? 'scholar'
+      : effectiveDepth === 'understand' && !settings.showTransliteration && settings.showCommentary
+        ? 'study'
+        : effectiveDepth === 'read' && !settings.showTransliteration
+          ? 'simple'
+          : null;
+
   return (
     <ReaderDialog
       open={open}
@@ -232,6 +278,41 @@ export function ReaderSettingsPanel({
             कर्मण्येवाधिकारस्ते<br />मा फलेषु कदाचन ।
           </p>
         </div>
+
+        {(chapter || scope === 'verse') && (
+          <div role="group" aria-label="One-tap presets">
+            <p className="mb-2 text-subhead font-semibold text-label-primary">
+              <LegendText en="One-tap presets" hi="सहज पठन शैली" />
+            </p>
+            <div className="grid grid-cols-3 gap-1.5">
+              {([
+                { id: 'simple', en: 'Simple', hi: 'सरल' },
+                { id: 'study', en: 'Study', hi: 'स्वाध्याय' },
+                { id: 'scholar', en: 'Scholar', hi: 'विद्वत्' },
+              ] as const).map((preset) => {
+                const isSelected = activePreset === preset.id;
+                return (
+                  <button
+                    key={preset.id}
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() => applyPreset(preset.id)}
+                    className={`focus-ring flex min-h-[46px] flex-col items-center justify-center rounded-xl border px-2 py-1.5 text-center text-subhead font-semibold transition-all ${
+                      isSelected
+                        ? 'border-separator bg-surface-elevated text-label-primary shadow-xs ring-1 ring-accent/40'
+                        : 'border-separator/80 bg-surface-raised text-label-secondary hover:bg-fill-quaternary hover:text-label-primary'
+                    }`}
+                  >
+                    <span>{preset.en}</span>
+                    <span lang="hi" className="font-devanagari text-caption-2 font-normal text-label-secondary">
+                      {preset.hi}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {(chapter || scope === 'verse') && (
           <div>

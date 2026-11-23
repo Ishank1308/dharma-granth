@@ -1,10 +1,12 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { LayoutGrid, LayoutList, Search, SlidersHorizontal, X } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, LayoutGrid, LayoutList, Search, SlidersHorizontal, X } from 'lucide-react';
 import type { ScriptureCategory } from '@/data/types';
+import type { DirectCitation } from '@/lib/search-citation';
 import { useLocalStorage } from '@/lib/useLocalStorage';
-import { triggerTactileFeedback } from '@/lib/haptics';
+import { triggerTactileFeedbackLazy as triggerTactileFeedback } from '@/lib/haptics-lazy';
 import { useConnectivity } from '@/lib/useConnectivity';
 import {
   EMPTY_FILTERS,
@@ -146,6 +148,26 @@ export function ScriptureLibraryClient({
   const results = useMemo(() => sortItems(applyFilters(searchable, filters), sortMode), [searchable, filters, sortMode]);
   const activeCount = activeFilterCount(filters);
   const hasQuery = filters.q.trim().length > 0;
+  const [directCitation, setDirectCitation] = useState<DirectCitation | null>(null);
+
+  useEffect(() => {
+    const raw = filters.q.trim();
+    if (!raw || !/[0-9\u0966-\u096F]/.test(raw)) {
+      setDirectCitation(null);
+      return;
+    }
+    let active = true;
+    import('@/lib/search-citation')
+      .then((m) => {
+        if (active) setDirectCitation(m.parseDirectCitation(raw));
+      })
+      .catch(() => {
+        if (active) setDirectCitation(null);
+      });
+    return () => {
+      active = false;
+    };
+  }, [filters.q]);
 
   /* ── Filter model ─────────────────────────────────────────────── */
 
@@ -325,7 +347,7 @@ export function ScriptureLibraryClient({
               autoComplete="off"
               value={filters.q}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search title, Sanskrit name, author, topic…"
+              placeholder="Search title, topic, or verse (e.g. Gita 2.47, Yoga Sutra 1.2)…"
               className="min-h-[44px] w-full rounded-field border-0 bg-dharma-text/[0.06] py-2.5 pl-11 pr-4 text-body text-dharma-text outline-none transition placeholder:text-dharma-muted focus:ring-2 focus:ring-dharma-saffron/40"
             />
           </label>
@@ -480,6 +502,33 @@ export function ScriptureLibraryClient({
           )}
 
           <div className="mt-6">
+            {directCitation && (
+              <div className="mb-5">
+                <Link
+                  href={directCitation.href}
+                  data-vt="open"
+                  className="apple-card focus-ring group flex items-center justify-between gap-4 border border-dharma-saffron/35 p-4 transition hover:border-dharma-saffron/70"
+                >
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-dharma-saffron">
+                      <span>Exact reference</span>{' '}
+                      <span aria-hidden="true">·</span>{' '}
+                      <span lang="hi" className="font-devanagari">सीधा श्लोक</span>
+                    </p>
+                    <p className="mt-1 truncate text-base font-semibold text-dharma-text group-hover:text-dharma-saffron">
+                      {directCitation.title}
+                    </p>
+                    <p lang="hi" className="mt-0.5 truncate font-devanagari text-xs text-dharma-muted">
+                      {directCitation.subtitle}
+                    </p>
+                  </div>
+                  <span className="inline-flex min-h-[40px] shrink-0 items-center gap-1.5 rounded-full bg-dharma-saffron px-3.5 py-2 text-xs font-bold text-dharma-bg shadow-xs transition group-hover:translate-x-0.5">
+                    <span>Open</span>
+                    <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </span>
+                </Link>
+              </div>
+            )}
             <p lang="hi" className="mb-4 font-devanagari text-xs leading-relaxed text-dharma-muted">
               भाषा प्रतिशत केवल यहाँ उपलब्ध श्लोकों में भाषा-पाठ की उपलब्धता दिखाते हैं; ये सम्पूर्ण ग्रंथ के प्रकाशन या विद्वत्-सत्यापन का प्रमाण नहीं हैं।
             </p>
@@ -500,9 +549,9 @@ export function ScriptureLibraryClient({
                 <NoResults query={filters.q.trim()} onClear={() => setQuery('')} />
               )
             ) : (
-              <ul className={`reveal-grid grid gap-4 ${viewMode === 'detailed' ? 'grid-cols-1 xl:grid-cols-2' : 'grid-cols-1 max-sm:gap-2.5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4'}`}>
+              <ul className={`reveal-grid ${viewMode === 'detailed' ? 'fluid-grid-fill-lg' : 'fluid-grid-fill-sm max-sm:gap-2.5'}`}>
                 {results.map((item) => (
-                  <li key={item.id} className="min-w-0">
+                  <li key={item.id} className="fluid-cq min-w-0">
                     <LibraryCard
                       item={item}
                       categoryLabel={categories.find((c) => c.id === item.category)?.label ?? item.category}
