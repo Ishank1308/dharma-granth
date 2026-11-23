@@ -194,7 +194,7 @@ export default function MethodologyPage() {
                       {section.titleHi}
                     </span>
                   </h2>
-                  <div className="mt-3 space-y-2.5 text-subhead leading-relaxed text-dharma-text-secondary">
+                  <div className="mt-3 space-y-2.5 text-body leading-relaxed text-dharma-text-secondary">
                     {section.paragraphs.map((para, i) => (
                       <p key={i}>{para}</p>
                     ))}
