@@ -393,6 +393,9 @@ a.apple-row:active,
        verses and hydrated cards therefore begin at the same measure. */
     --verse-sa-size: clamp(1.25rem, 1.08rem + 0.85vw, 1.75rem);
     --verse-sa-leading: 2.2;
+    --verse-tr-size: var(--text-body);
+    --verse-tr-hi-leading: 2.05;
+    --verse-tr-en-leading: 1.85;
     --verse-pad: clamp(var(--space-4), 0.6rem + 2.4vw, var(--space-8));
     padding: var(--space-3) var(--verse-pad) var(--verse-pad);
     border: 0;
@@ -400,6 +403,12 @@ a.apple-row:active,
     background-color: var(--surface-raised);
     box-shadow: var(--shadow-raised);
     overflow: visible;
+}
+@media (min-width: 768px) {
+    .verse-card.book-verse,
+    .verse-card.vt {
+        --verse-tr-size: 1.125rem;
+    }
 }
 /* Phones (up to 480px): a 12px inner edge instead of 16–18px, so the shloka, the meanings
    and the व्याख्या get the width back without the card losing its frame. */
@@ -427,10 +436,43 @@ a.apple-row:active,
 [data-verse-size='xl'] :is(.verse-card.book-verse, .verse-card.vt) {
     --verse-sa-size: clamp(1.45rem, 1.2rem + 1.2vw, 2.125rem);
 }
-[data-verse-leading='compact'] :is(.verse-card.book-verse, .verse-card.vt) { --verse-sa-leading: 1.95; }
-[data-verse-leading='normal'] :is(.verse-card.book-verse, .verse-card.vt) { --verse-sa-leading: 2.05; }
-[data-verse-leading='relaxed'] :is(.verse-card.book-verse, .verse-card.vt) { --verse-sa-leading: 2.2; }
-[data-verse-leading='loose'] :is(.verse-card.book-verse, .verse-card.vt) { --verse-sa-leading: 2.4; }
+[data-translation-size='sm'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-tr-size: clamp(0.875rem, 0.85rem + 0.15vw, 0.95rem);
+}
+[data-translation-size='md'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-tr-size: var(--text-body);
+}
+@media (min-width: 768px) {
+    [data-translation-size='md'] :is(.verse-card.book-verse, .verse-card.vt) {
+        --verse-tr-size: 1.125rem;
+    }
+}
+[data-translation-size='lg'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-tr-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+}
+[data-translation-size='xl'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-tr-size: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+}
+[data-verse-leading='compact'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-leading: 1.95;
+    --verse-tr-hi-leading: 1.8;
+    --verse-tr-en-leading: 1.55;
+}
+[data-verse-leading='normal'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-leading: 2.05;
+    --verse-tr-hi-leading: 1.9;
+    --verse-tr-en-leading: 1.75;
+}
+[data-verse-leading='relaxed'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-leading: 2.2;
+    --verse-tr-hi-leading: 2.05;
+    --verse-tr-en-leading: 1.85;
+}
+[data-verse-leading='loose'] :is(.verse-card.book-verse, .verse-card.vt) {
+    --verse-sa-leading: 2.4;
+    --verse-tr-hi-leading: 2.35;
+    --verse-tr-en-leading: 2.05;
+}
 /* Reciting or highlighted: the ring follows the card's corners. */
 .verse-card.book-verse.book-verse-ringed {
     border-radius: var(--radius-card);
@@ -548,25 +590,15 @@ p.verse-folio[lang='sa'] > span {
 }
 .verse-card.book-verse section[id$='-arth'] p[lang='hi'],
 .verse-card.vt .vt-hi {
-    font-size: var(--text-body);
-    line-height: 1.9;
+    font-size: var(--verse-tr-size, var(--text-body));
+    line-height: var(--verse-tr-hi-leading, 1.9);
     color: var(--label-primary);
 }
 .verse-card.book-verse section[id$='-arth'] p[lang='en'],
 .verse-card.vt .vt-en {
-    font-size: var(--text-body);
-    line-height: 1.75;
+    font-size: var(--verse-tr-size, var(--text-body));
+    line-height: var(--verse-tr-en-leading, 1.75);
     color: var(--label-secondary);
-}
-@media (min-width: 768px) {
-    .verse-card.book-verse section[id$='-arth'] p[lang='hi'],
-    .verse-card.vt .vt-hi {
-        font-size: 1.125rem;
-    }
-    .verse-card.book-verse section[id$='-arth'] p[lang='en'],
-    .verse-card.vt .vt-en {
-        font-size: 1.125rem;
-    }
 }
 /* A meaning not written yet is a quiet note in its slot. Without this the rules above set it at
    body size, which reads as content when it repeats under every verse of a long chapter. */
@@ -782,8 +814,12 @@ p.verse-folio[lang='sa'] > span {
             animation-range: entry 0% entry 55%;
         }
         :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
-            :is(.verse-card.book-verse, .verse-card.today-verse, .verse-card.single-verse) .verse-folio::after,
-            .verse-card.vt .vt-leaf::after {
+            :is(
+                .verse-card.book-verse .verse-folio,
+                .verse-card.today-verse .verse-folio,
+                .verse-card.single-verse .verse-folio,
+                .verse-card.vt .vt-leaf
+            )::after {
             animation: verse-light linear both;
             animation-timeline: view();
             animation-range: entry 40% exit 60%;

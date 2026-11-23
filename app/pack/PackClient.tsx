@@ -53,7 +53,37 @@ export function PackClient() {
 
   useEffect(() => {
     setSaved(readBookmarks().map((b) => ({ scriptureId: b.scriptureId, chapter: b.chapterId ?? 1, verse: String(b.verseId), label: `${b.scriptureTitle} ${b.chapterId}.${b.verseId}` })));
-    try { setNotes(JSON.parse(localStorage.getItem('dharma.notes') ?? '[]')); } catch { setNotes([]); }
+    try {
+      const merged: Array<{ scriptureId: string; chapterId: number; verseId: number | string; text: string }> = [];
+      const seen = new Set<string>();
+      const rawNotes = JSON.parse(localStorage.getItem('dharma.notes') ?? '[]');
+      if (Array.isArray(rawNotes)) {
+        for (const n of rawNotes) {
+          if (n && typeof n === 'object' && typeof n.text === 'string' && n.text.trim()) {
+            const k = `${n.scriptureId}:${n.chapterId}:${n.verseId}`;
+            seen.add(k);
+            merged.push(n);
+          }
+        }
+      }
+      for (let i = 0; i < localStorage.length; i++) {
+        const storageKey = localStorage.key(i);
+        if (!storageKey?.startsWith('dharmagranth:note:')) continue;
+        const parts = storageKey.slice('dharmagranth:note:'.length).split(':');
+        if (parts.length !== 3) continue;
+        const [scriptureId, chRaw, verseId] = parts;
+        const chapterId = Number(chRaw);
+        const text = localStorage.getItem(storageKey) ?? '';
+        const k = `${scriptureId}:${chapterId}:${verseId}`;
+        if (chapterId && text.trim() && !seen.has(k)) {
+          seen.add(k);
+          merged.push({ scriptureId, chapterId, verseId, text });
+        }
+      }
+      setNotes(merged);
+    } catch {
+      setNotes([]);
+    }
   }, []);
 
   const add = (list: Item[]) => setItems((prev) => [...prev, ...list.filter((n) => !prev.some((p) => key(p) === key(n)))]);
@@ -65,6 +95,7 @@ export function PackClient() {
       setBusy(true); setError('');
       const cache = new Map<string, unknown>();
       const out: Loaded[] = [];
+      const failed: string[] = [];
       for (const it of items) {
         const ck = `${it.scriptureId}:${it.chapter}`;
         if (!cache.has(ck)) {
@@ -75,7 +106,7 @@ export function PackClient() {
         }
         const d = cache.get(ck) as { source?: { repo?: string; license?: string }; chapter?: { verses?: Array<Record<string, string | number>> } } | null;
         const v = d?.chapter?.verses?.find((x) => String(x.number) === it.verse);
-        if (!v) { setError(`Could not load ${it.label}. It stays out of the pack.`); continue; }
+        if (!v) { failed.push(it.label); continue; }
         out.push({
           item: it,
           sanskrit: cleanVerseField(String(v.sanskrit ?? '')),
@@ -89,7 +120,13 @@ export function PackClient() {
           license: d?.source?.license ?? '',
         });
       }
-      if (!cancelled) { setLoaded(out); setBusy(false); }
+      if (!cancelled) {
+        setLoaded(out);
+        if (failed.length > 0) {
+          setError(`Could not load ${failed.join(', ')}. ${failed.length === 1 ? 'It stays' : 'They stay'} out of the pack.`);
+        }
+        setBusy(false);
+      }
     })();
     return () => { cancelled = true; };
   }, [items]);

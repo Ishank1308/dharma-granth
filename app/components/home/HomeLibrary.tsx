@@ -12,7 +12,7 @@ export function HomeLibrary() {
   const libraryTotal = getLibraryStats().texts;
 
   return (
-    <section aria-labelledby="home-library-heading" className="mx-auto max-w-content px-5 pb-20 pt-section">
+    <section aria-labelledby="home-library-heading" className="mx-auto max-w-content px-5 pb-14 sm:pb-20 pt-section">
       <SectionTitle
         id="home-library-heading"
         size="title-1"

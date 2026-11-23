@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
-import { learningPaths, type LearningPath, type LearningFormat } from '@/data/learning-paths';
+import { learningPaths, type LearningFormat } from '@/data/learning-paths';
 import { useStudyProgress } from '@/lib/useStudyProgress';
 import { CalmProgress } from '@/app/components/CalmProgress';
 import { SadhanaPortability } from '@/app/components/SadhanaPortability';
@@ -26,13 +26,13 @@ const FORMAT_NAMES: Record<string, string> = {
 // the layout also wraps every /learn/* sub-page. Each course's full Course data
 // is on its own /learn/<id> page.
 const LEARN_JSON_LD = pageLd(
-  [{ name: 'Learn', path: '/learn' }],
+  [{ name: 'Learn', path: '/learn/' }],
   courseListLd({
-    path: '/learn',
+    path: '/learn/',
     name: 'Learn Hindu Scriptures — Flashcards, Timelines & Mind Maps',
     description:
       'Interactive ways to study Hindu scriptures: flashcards, slide decks, mind maps, quizzes, and timelines covering the Vedas, Upanishads, Bhagavad Gita, and the epics.',
-    courses: learningPaths.map((c) => ({ path: `/learn/${c.id}`, name: c.title })),
+    courses: learningPaths.map((c) => ({ path: `/learn/${c.id}/`, name: c.title })),
   }),
 );
 
@@ -106,8 +106,10 @@ export default function LearnPage() {
             {totalCompletedLessons > 0 ? ` · ${totalCompletedLessons} read` : ''}
           </span>
           <span aria-hidden="true"> · </span>
-          <Link href="/learn/academy/" className="text-dharma-saffron hover:underline">
-            <span>Course levels</span> <span lang="hi" className="font-devanagari">धर्म अकादमी</span>{' '}
+          <Link href="/learn/academy/" className="focus-ring rounded text-dharma-saffron hover:underline">
+            <span data-bi="en">Course levels</span>
+            <span data-bi="sep" aria-hidden="true"> · </span>
+            <span lang="hi" data-bi="hi" className="font-devanagari">धर्म अकादमी</span>{' '}
             <span aria-hidden="true">›</span>
           </Link>
         </p>
@@ -140,6 +142,7 @@ export default function LearnPage() {
                   type="button"
                   aria-pressed={selectedDifficulty === tab.id}
                   onClick={() => setSelectedDifficulty(tab.id as typeof selectedDifficulty)}
+                  className="focus-ring"
                 >
                   <span>{tab.en}</span> <span lang="hi" className="sr-only">{tab.hi}</span>
                 </button>
@@ -170,7 +173,7 @@ export default function LearnPage() {
                 type="button"
                 aria-pressed={selectedFormat === fmt.id}
                 onClick={() => setSelectedFormat(fmt.id)}
-                className={`min-h-9 rounded-full px-3.5 text-footnote transition ${
+                className={`focus-ring min-h-9 rounded-full px-3.5 text-footnote transition ${
                   selectedFormat === fmt.id
                     ? 'bg-dharma-text text-dharma-bg'
                     : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
@@ -248,12 +251,12 @@ export default function LearnPage() {
                     type="button"
                     aria-expanded={isExpanded}
                     onClick={() => setExpandedCourseId(isExpanded ? null : course.id)}
-                    className="inline-flex min-h-11 items-center gap-1 text-subhead text-dharma-saffron"
+                    className="focus-ring rounded-lg inline-flex min-h-11 items-center gap-1 text-subhead text-dharma-saffron"
                   >
                     <span>{isExpanded ? 'Hide lessons' : 'Show lessons'}</span>
                     {isExpanded ? <ChevronUp className="h-4 w-4" aria-hidden="true" /> : <ChevronDown className="h-4 w-4" aria-hidden="true" />}
                   </button>
-                  <Link href={`/learn/${course.id}`} className="apple-pill tap-target">
+                  <Link href={`/learn/${course.id}/`} className="focus-ring apple-pill tap-target">
                     <span>{completedCount === 0 ? 'Begin' : isFinished ? 'Review' : 'Continue'}</span>
                     <span className="sr-only"> {course.title}</span>
                   </Link>
@@ -273,7 +276,7 @@ export default function LearnPage() {
                 setSelectedFormat('all');
                 setSearchQuery('');
               }}
-              className="mt-2 min-h-11 text-subhead text-dharma-saffron"
+              className="focus-ring rounded-lg px-3 mt-2 min-h-11 text-subhead text-dharma-saffron"
             >
               Clear filters
             </button>

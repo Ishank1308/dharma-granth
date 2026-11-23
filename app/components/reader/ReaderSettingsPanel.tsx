@@ -397,7 +397,7 @@ export function ReaderSettingsPanel({
         <Segmented legend="Translation size" legendHi="अनुवाद आकार" value={settings.translationSize} options={SIZES} onChange={(v) => update('translationSize', v)} columns="grid-cols-4" />
         <Segmented legend="Line spacing" legendHi="पंक्ति अंतराल" value={settings.lineSpacing} options={SPACINGS} onChange={(v) => update('lineSpacing', v)} columns="grid-cols-4" />
         {scope === 'verse' && <Segmented legend="Reading width" legendHi="पठन चौड़ाई" value={settings.readingWidth} options={WIDTHS} onChange={(v) => update('readingWidth', v)} columns="grid-cols-3" />}
-        {scope === 'verse' && <Segmented legend="Contrast" legendHi="विरोधाभास" value={settings.contrast} options={CONTRASTS} onChange={(v) => update('contrast', v)} columns="grid-cols-2" />}
+        {scope === 'verse' && <Segmented legend="Contrast" legendHi="उच्च स्पष्टता" value={settings.contrast} options={CONTRASTS} onChange={(v) => update('contrast', v)} columns="grid-cols-2" />}
 
         <fieldset className="rounded-card border border-separator/80 bg-surface-raised/80 p-3 shadow-2xs">
           <legend className="px-1 text-subhead font-semibold text-label-primary">{scope === 'chapter' ? 'Show reading layers' : 'Show elements'}</legend>

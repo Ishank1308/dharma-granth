@@ -122,8 +122,8 @@ export function PracticeOpening({ active }: { active: (id: TodayPracticeId) => b
                     <a href={`#practice-${p.id}`} className="bento-row">
                       <span className="bento-row-label min-w-0">
                         <span className="bento-mark" data-done={state ? 'true' : 'false'} aria-hidden="true" />
-                        <span>{p.en}</span>{' '}
-                        <span lang="hi" className="font-devanagari text-dharma-muted">{p.hi}</span>
+                        <span data-bi="en">{p.en}</span>{' '}
+                        <span lang="hi" data-bi="hi" className="font-devanagari text-dharma-muted">{p.hi}</span>
                       </span>
                       <span className="bento-row-state" data-practice-state={p.id}>
                         {state ? <span>{state}<span className="sr-only"> today</span></span> : today ? <span>Not yet<span className="sr-only"> today</span></span> : null}
@@ -158,9 +158,9 @@ export function PracticeOpening({ active }: { active: (id: TodayPracticeId) => b
             <span className="apple-tint-chip" aria-hidden="true">
               <Icon className="h-4 w-4" />
             </span>
-            <span className="mt-auto min-w-0 pt-2 leading-tight">
-              <span className="block text-subhead font-semibold tracking-[-0.01em] text-dharma-text sm:text-body">{en}</span>{' '}
-              <span lang="hi" className="block font-devanagari text-footnote text-dharma-muted">{hi}</span>
+            <span className="mt-auto min-w-0 pt-2 text-subhead font-semibold tracking-[-0.01em] text-dharma-text leading-tight sm:text-body">
+              <span data-bi="en" className="block">{en}</span>{' '}
+              <span lang="hi" data-bi="hi" data-bi-lead className="block font-devanagari text-footnote font-normal text-dharma-muted">{hi}</span>
               {sub && <>{' '}<span className="mt-1 block text-[14px] leading-snug text-dharma-muted">{sub}</span></>}
               {href === '/practice/bookmarks/' && (
                 <>{' '}<span className="mt-1 block min-h-[1.125rem] text-footnote tabular-nums text-dharma-muted" data-saved-count>{today && today.saved > 0 ? `${today.saved} saved` : ''}</span></>

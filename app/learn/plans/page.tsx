@@ -17,7 +17,7 @@ import {
   RotateCcw,
   Sparkles,
 } from 'lucide-react';
-import { READING_PLANS, type ReadingPlan, type ReadingPlanDay } from '@/data/reading-plans';
+import { READING_PLANS } from '@/data/reading-plans';
 import { triggerTactileFeedback } from '@/lib/haptics';
 import { ShareLinkButtons } from '@/app/components/ShareLinkButtons';
 import { StudyPlans } from './StudyPlans';
@@ -105,25 +105,31 @@ export default function ReadingPlansPage() {
         <div className="mx-auto max-w-5xl">
           <Link
             href="/learn/"
-            className="focus-ring inline-flex items-center gap-1.5 text-xs font-semibold text-dharma-muted hover:text-dharma-text transition mb-4"
+            className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg text-xs font-semibold text-dharma-muted hover:text-dharma-text transition mb-4"
           >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Back to Learning Hub · अध्ययन केंद्र</span>
+            <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>
+              <span data-bi="en">Back to Learning Hub</span>
+              <span data-bi="sep" aria-hidden="true"> · </span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">अध्ययन केंद्र</span>
+            </span>
           </Link>
 
           <div className="flex items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-saffron-500/15 text-saffron-800 dark:text-saffron-300">
-              <Calendar className="h-4.5 w-4.5" />
+              <Calendar className="h-4.5 w-4.5" aria-hidden="true" />
             </span>
             <span className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
-              Calm Schedules · स्वाध्याय योजना
+              <span data-bi="en">Calm Schedules</span>
+              <span data-bi="sep" aria-hidden="true"> · </span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">स्वाध्याय योजना</span>
             </span>
           </div>
 
           <h1 className="mt-2 font-serif text-3xl sm:text-4xl font-bold text-dharma-text">
             Scripture Reading Plans
           </h1>
-          <p className="mt-1 font-devanagari text-xl text-dharma-muted">
+          <p lang="hi" className="mt-1 font-devanagari text-xl text-dharma-muted">
             सहज, शांत एवं संरचित अध्ययन समय-सारिणी
           </p>
 
@@ -134,22 +140,25 @@ export default function ReadingPlansPage() {
           {/* /learn/paths/ was merged into this page; these jump links keep its two sections easy to find. */}
           <nav aria-label="Kinds of plans on this page" className="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
             <a href="#reading-plans" className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-dharma-text hover:border-saffron-400">
-              <span lang="hi" className="font-devanagari font-normal">दैनिक योजनाएँ</span>
-              <span>· Day-by-day plans</span>
+              <span lang="hi" data-bi="hi" className="font-devanagari font-normal">दैनिक योजनाएँ</span>
+              <span data-bi="sep" aria-hidden="true">·</span>
+              <span data-bi="en">Day-by-day plans</span>
             </a>
             <a href="#study-orders" className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-dharma-text hover:border-saffron-400">
-              <span lang="hi" className="font-devanagari font-normal">पढ़ने के क्रम</span>
-              <span>· Study orders</span>
+              <span lang="hi" data-bi="hi" className="font-devanagari font-normal">पढ़ने के क्रम</span>
+              <span data-bi="sep" aria-hidden="true">·</span>
+              <span data-bi="en">Study orders</span>
             </a>
             <a href="#guided-readings" className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-3.5 py-2 text-dharma-text hover:border-saffron-400">
-              <span lang="hi" className="font-devanagari font-normal">निर्देशित स्वाध्याय</span>
-              <span>· Guided readings</span>
+              <span lang="hi" data-bi="hi" className="font-devanagari font-normal">निर्देशित स्वाध्याय</span>
+              <span data-bi="sep" aria-hidden="true">·</span>
+              <span data-bi="en">Guided readings</span>
             </a>
           </nav>
 
           {/* Privacy & Non-punitive ethos note */}
           <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-emerald-600/30 bg-emerald-50/50 dark:bg-emerald-950/20 px-3.5 py-2 text-xs text-emerald-950 dark:text-emerald-200">
-            <HeartHandshake className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+            <HeartHandshake className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
             <span>
               <strong>Non-punitive design:</strong> Progress is stored solely on your device. Missed days are welcome — resume anytime with a calm mind.
             </span>
@@ -179,7 +188,7 @@ export default function ReadingPlansPage() {
                 >
                   <div className="flex w-full items-center justify-between gap-2">
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-saffron-500/30 bg-saffron-50/70 dark:bg-saffron-950/40 px-2.5 py-0.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-300">
-                      <Clock className="h-3 w-3" />
+                      <Clock className="h-3 w-3" aria-hidden="true" />
                       <span>{plan.dailyMinutes} min/day</span>
                     </span>
                     <span className="text-xs font-semibold text-dharma-muted">
@@ -243,7 +252,7 @@ export default function ReadingPlansPage() {
                 className="focus-ring inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-saffron-700 px-5 text-sm font-semibold text-white shadow-xs transition hover:bg-saffron-800"
               >
                 <span>Continue Day {nextUpDay.dayNumber}</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             )}
           </div>
@@ -288,9 +297,9 @@ export default function ReadingPlansPage() {
                 <button
                   type="button"
                   onClick={resetActivePlanProgress}
-                  className="focus-ring inline-flex items-center gap-1 text-xs font-medium text-dharma-muted hover:text-dharma-text"
+                  className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-lg px-2 text-xs font-medium text-dharma-muted hover:text-dharma-text"
                 >
-                  <RotateCcw className="h-3 w-3" />
+                  <RotateCcw className="h-3 w-3" aria-hidden="true" />
                   <span>Reset plan progress</span>
                 </button>
               </div>
@@ -330,6 +339,7 @@ export default function ReadingPlansPage() {
                     {/* Completion button */}
                     <button
                       type="button"
+                      aria-pressed={isDone}
                       onClick={() => toggleDayCompletion(day.dayNumber)}
                       aria-label={
                         isDone
@@ -339,9 +349,9 @@ export default function ReadingPlansPage() {
                       className="focus-ring tap-halo mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-dharma-muted hover:text-saffron-700 dark:hover:text-saffron-300 transition"
                     >
                       {isDone ? (
-                        <CheckCircle2 className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                        <CheckCircle2 className="h-6 w-6 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
                       ) : (
-                        <Circle className="h-6 w-6 text-dharma-muted/60 hover:text-saffron-600" />
+                        <Circle className="h-6 w-6 text-dharma-muted/60 hover:text-saffron-600" aria-hidden="true" />
                       )}
                     </button>
 
@@ -351,24 +361,25 @@ export default function ReadingPlansPage() {
                           Day {day.dayNumber}
                         </span>
                         <span className="inline-flex items-center gap-1 text-[11px] text-dharma-muted">
-                          <Clock className="h-3 w-3" />
+                          <Clock className="h-3 w-3" aria-hidden="true" />
                           <span>~{day.estimatedMinutes} min</span>
                         </span>
                       </div>
 
-                      <div className="mt-1">
-                        <span className="font-serif text-base font-bold text-dharma-text">
+                      <div className="mt-1 font-serif text-base font-bold text-dharma-text">
+                        <span data-bi="en">
                           {day.title}
                         </span>
-                        <span lang="hi" className="ml-2 font-devanagari text-sm text-dharma-muted">
+                        <span lang="hi" data-bi="hi" data-bi-lead className="ml-2 font-devanagari text-sm font-normal text-dharma-muted">
                           {day.titleHi}
                         </span>
                       </div>
 
                       <p className="mt-1 text-xs text-dharma-muted leading-relaxed">
-                        {day.focusTheme}
-                        <span lang="hi" className="block sm:inline sm:ml-1 font-devanagari text-dharma-muted">
-                          ({day.focusThemeHi})
+                        <span data-bi="en">{day.focusTheme}</span>
+                        <span data-bi="sep" aria-hidden="true" className="hidden sm:inline"> · </span>
+                        <span lang="hi" data-bi="hi" className="block sm:inline font-devanagari text-dharma-muted">
+                          {day.focusThemeHi}
                         </span>
                       </p>
                     </div>
@@ -380,9 +391,9 @@ export default function ReadingPlansPage() {
                       href={day.href}
                       className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3.5 text-xs font-semibold text-dharma-text hover:border-saffron-500 hover:text-saffron-800 dark:hover:text-saffron-300 transition"
                     >
-                      <BookOpen className="h-3.5 w-3.5 text-saffron-600" />
+                      <BookOpen className="h-3.5 w-3.5 text-saffron-600" aria-hidden="true" />
                       <span>Read Scripture</span>
-                      <ArrowRight className="h-3.5 w-3.5 opacity-60" />
+                      <ArrowRight className="h-3.5 w-3.5 opacity-60" aria-hidden="true" />
                     </Link>
                   </div>
                 </li>
@@ -402,9 +413,9 @@ export default function ReadingPlansPage() {
         >
           <Link
             href="/learn/journeys/"
-            className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
+            className="focus-ring group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
           >
-            <Compass className="h-5 w-5 text-saffron-700 dark:text-saffron-300" />
+            <Compass className="h-5 w-5 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
             <h4 className="mt-2 font-serif text-base font-bold text-dharma-text group-hover:text-saffron-800 dark:group-hover:text-saffron-300">
               Guided Journeys
             </h4>
@@ -415,9 +426,9 @@ export default function ReadingPlansPage() {
 
           <Link
             href="/learn/faq/"
-            className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
+            className="focus-ring group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
           >
-            <GraduationCap className="h-5 w-5 text-saffron-700 dark:text-saffron-300" />
+            <GraduationCap className="h-5 w-5 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
             <h4 className="mt-2 font-serif text-base font-bold text-dharma-text group-hover:text-saffron-800 dark:group-hover:text-saffron-300">
               Scripture FAQs
             </h4>
@@ -428,9 +439,9 @@ export default function ReadingPlansPage() {
 
           <Link
             href="/practice/bookmarks/"
-            className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
+            className="focus-ring group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
           >
-            <BookOpen className="h-5 w-5 text-saffron-700 dark:text-saffron-300" />
+            <BookOpen className="h-5 w-5 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
             <h4 className="mt-2 font-serif text-base font-bold text-dharma-text group-hover:text-saffron-800 dark:group-hover:text-saffron-300">
               Personal Sanctuary
             </h4>

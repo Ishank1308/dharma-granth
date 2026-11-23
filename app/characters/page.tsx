@@ -57,7 +57,7 @@ export default function CharactersPage() {
           titleHi="संबंध मानचित्र"
           sub={<span lang="hi" className="font-devanagari">कौन किससे कैसे जुड़ा है: पात्र चुनें और संबंध देखें।</span>}
         />
-        <div className="bg-dharma-card/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-dharma-border p-4 sm:p-6 md:p-8">
+        <div className="rounded-card border border-dharma-border bg-dharma-card shadow-raised p-4 sm:p-6 md:p-8">
           <CharacterMap />
         </div>
       </section>

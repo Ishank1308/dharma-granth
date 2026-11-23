@@ -65,6 +65,7 @@ const isOwnKey = (key: string) =>
   key.startsWith('dharma_') ||
   key.startsWith('dharma-') ||
   key.startsWith('dharmagranth_') ||
+  key.startsWith('dharmagranth:') ||
   EXTRA_KEYS.includes(key);
 
 function readOwnData(storage: Storage): Record<string, string> {

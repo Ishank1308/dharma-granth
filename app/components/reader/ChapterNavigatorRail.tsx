@@ -129,7 +129,7 @@ export function ChapterNavigatorRail({
           type="button"
           onClick={onOpenChapters}
           aria-haspopup="dialog"
-          className="focus-ring mt-1 flex min-h-[44px] w-full items-center justify-between gap-2 rounded-xl border border-stone-300/60 dark:border-stone-700/80 bg-stone-100/70 dark:bg-stone-900/50 px-3 py-2 text-left text-xs font-semibold text-dharma-text transition hover:border-amber-600/50 hover:text-amber-900 dark:hover:text-amber-200 [[data-lite=true]_&]:transition-none"
+          className="focus-ring mt-1 flex min-h-[44px] w-full items-center justify-between gap-2 rounded-xl border border-stone-300/60 dark:border-stone-700/80 bg-stone-100/70 dark:bg-stone-900/50 px-3 py-2 text-left text-xs font-semibold text-dharma-text transition hover:border-amber-600/50 hover:text-amber-900 dark:hover:text-amber-200 [[data-lite-mode=true]_&]:transition-none"
         >
           <span className="min-w-0">
             <span className="block text-[10px] font-bold uppercase tracking-wider text-dharma-muted">
@@ -166,7 +166,7 @@ export function ChapterNavigatorRail({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={`Filter (e.g. ${asciiChapter}.1)…`}
-              className="min-h-[38px] w-full rounded-xl border border-stone-300/60 dark:border-stone-700/80 bg-dharma-bg/80 pl-8 pr-2.5 text-xs text-dharma-text outline-none transition placeholder:text-dharma-muted focus:border-amber-600 focus:ring-2 focus:ring-amber-600/20 [[data-lite=true]_&]:transition-none"
+              className="min-h-[38px] w-full rounded-xl border border-stone-300/60 dark:border-stone-700/80 bg-dharma-bg/80 pl-8 pr-2.5 text-xs text-dharma-text outline-none transition placeholder:text-dharma-muted focus:border-amber-600 focus:ring-2 focus:ring-amber-600/20 [[data-lite-mode=true]_&]:transition-none"
             />
           </label>
         )}
@@ -184,7 +184,7 @@ export function ChapterNavigatorRail({
                   href={v.href}
                   aria-current={current ? 'true' : undefined}
                   aria-label={isSaved ? `Verse ${asciiNum}, saved` : `Verse ${asciiNum}`}
-                  className={`focus-ring group relative flex min-h-[44px] items-center justify-between gap-2 rounded-xl border px-2.5 py-1.5 text-left transition [[data-lite=true]_&]:transition-none ${
+                  className={`focus-ring group relative flex min-h-[44px] items-center justify-between gap-2 rounded-xl border px-2.5 py-1.5 text-left transition [[data-lite-mode=true]_&]:transition-none ${
                     current
                       ? 'border-amber-700/45 bg-amber-100/85 text-amber-950 shadow-2xs dark:border-amber-400/45 dark:bg-amber-900/40 dark:text-amber-100'
                       : 'border-transparent text-dharma-text hover:border-stone-300/60 hover:bg-stone-100/70 dark:hover:border-stone-700/70 dark:hover:bg-stone-800/50'

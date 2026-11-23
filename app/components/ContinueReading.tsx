@@ -5,7 +5,7 @@ import { X } from 'lucide-react';
 import { forgetScripture, useRecentChapters, type ChapterVisit } from '@/lib/reading-history';
 
 function chapterHref(v: ChapterVisit, chapterId = v.chapterId): string {
-  return `/scripture/${v.scriptureId}/chapter/${chapterId}`;
+  return `/scripture/${v.scriptureId}/chapter/${chapterId}/`;
 }
 
 /** Resume in the chapter at the saved verse (not the single-verse page). */

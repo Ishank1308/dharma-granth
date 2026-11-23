@@ -19,6 +19,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
+import { PracticeSubNav } from '@/app/components/practice/PracticeSubNav';
 import {
   GITA_CHAPTERS,
   type GitaChapterMeta,
@@ -84,7 +85,7 @@ export function GitaSankalpaClient() {
     return () => window.removeEventListener('dharma-offline-changed', refreshOffline);
   }, []);
 
-  const { chapters: todayChapters, isFulfilledToday, dayIndexInCycle } = getTodayAssignment(state, todayStr);
+  const { chapters: todayChapters, isFulfilledToday, dayIndexInCycle, isReviewDay } = getTodayAssignment(state, todayStr);
   const activeChapter = todayChapters[0] ?? GITA_CHAPTERS[0];
 
   const handleStartSankalpa = () => {
@@ -140,7 +141,11 @@ export function GitaSankalpaClient() {
     }
   };
 
-  const invocation = getTraditionalSankalpaInvocation(liveKala.varaHi, liveKala.tithiHi, activeChapter.nameHi);
+  const invocation = getTraditionalSankalpaInvocation(
+    liveKala.varaHi,
+    liveKala.tithiHi,
+    isReviewDay ? 'श्रीमद्भगवद्गीता (पुनरावलोकन)' : activeChapter.nameHi,
+  );
 
   const renderMalaCard = (ch: GitaChapterMeta) => {
     const done = state.cycleChapters.includes(ch.number);
@@ -201,6 +206,8 @@ export function GitaSankalpaClient() {
           <li className="text-saffron-700 dark:text-saffron-400">गीता संकल्प</li>
         </ol>
       </nav>
+
+      <PracticeSubNav className="mb-6" />
 
       {/* ── Sacred Header ── */}
       <div className="relative overflow-hidden rounded-3xl border border-saffron-500/30 bg-gradient-to-br from-saffron-500/15 via-amber-500/10 to-transparent p-6 sm:p-10 shadow-xs">
@@ -309,8 +316,8 @@ export function GitaSankalpaClient() {
                   : 'border-dharma-border bg-dharma-card hover:border-saffron-400/50'
               }`}
             >
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-400">सप्ताहिक (Weekly)</span>
-              <h3 className="mt-1 font-serif text-lg font-bold text-dharma-text">सप्ताहिक पारायण</h3>
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-400">साप्ताहिक (Weekly)</span>
+              <h3 className="mt-1 font-serif text-lg font-bold text-dharma-text">साप्ताहिक पारायण</h3>
               <p className="text-xs text-dharma-muted mt-0.5">3 Chapters / Day</p>
               <p className="mt-3 text-xs leading-relaxed text-dharma-muted">
                 सोमवार से शनिवार प्रतिदिन 3 अध्याय, रविवार को मनन व पुनरावलोकन।
@@ -343,7 +350,7 @@ export function GitaSankalpaClient() {
             <button
               type="button"
               onClick={handleStartSankalpa}
-              className="inline-flex items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white px-8 py-3.5 text-sm font-bold shadow-xs transition"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl bg-saffron-700 hover:bg-saffron-800 text-white px-8 py-3.5 text-sm font-bold shadow-xs transition"
             >
               <span>संकल्प आरम्भ करें · Begin Daily Sankalpa</span>
               <ArrowRight className="h-4 w-4" />
@@ -366,61 +373,183 @@ export function GitaSankalpaClient() {
                 {state.mode === '18-days'
                   ? `चक्र ${state.currentCycle} · दिवस ${dayIndexInCycle} of 18`
                   : state.mode === 'weekly-parayana'
-                  ? `सप्ताहिक पारायण दिवस ${dayIndexInCycle}`
+                  ? `साप्ताहिक पारायण दिवस ${dayIndexInCycle}`
                   : 'नित्य अध्याय संकल्प'}
               </span>
             </div>
 
-            <div className="mt-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div className="space-y-2">
-                <span className="text-xs font-semibold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  {activeChapter.shatkaHi} ({activeChapter.shatka} Shatka)
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
-                  अध्याय {activeChapter.number}: {activeChapter.nameHi}
-                </h3>
-                <p className="font-serif text-sm italic text-dharma-muted">
-                  {activeChapter.name} · {activeChapter.verses} श्लोक
-                </p>
-                <p className="text-xs sm:text-sm text-dharma-muted max-w-xl leading-relaxed mt-1">
-                  {activeChapter.themeHi}
-                </p>
-              </div>
+            {isReviewDay ? (
+              <div className="mt-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div className="space-y-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                    रविवार · सप्ताह का विश्राम एवं मनन दिवस
+                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
+                    मनन व पुनरावलोकन (Contemplation &amp; Review)
+                  </h3>
+                  <p className="text-xs sm:text-sm text-dharma-muted max-w-xl leading-relaxed mt-1">
+                    आज का दिन पूरे सप्ताह में पढ़े अध्यायों के मुख्य श्लोकों के स्मरण, मनन और स्वाध्याय-टिप्पणी लिखने के लिए समर्पित है।
+                  </p>
+                </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
-                <Link
-                  href={`/scripture/bhagavadgita/chapter/${activeChapter.number}/`}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white px-6 py-3.5 text-sm font-bold shadow-xs transition"
-                >
-                  <BookOpen className="h-4 w-4" />
-                  <span>अध्याय पढ़ें · Read Chapter</span>
-                </Link>
-
-                <button
-                  type="button"
-                  onClick={handleMarkFulfilled}
-                  disabled={isFulfilledToday}
-                  className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold transition border ${
-                    isFulfilledToday
-                      ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 cursor-default'
-                      : 'border-dharma-border bg-dharma-panel hover:bg-emerald-500/10 hover:border-emerald-500/40 text-dharma-text'
-                  }`}
-                >
-                  {isFulfilledToday ? (
-                    <>
-                      <CheckCircle2 className="h-4 w-4 text-emerald-600" />
-                      <span>आज का पाठ सम्पन्न · Done Today</span>
-                    </>
-                  ) : (
-                    <>
-                      <Circle className="h-4 w-4 text-dharma-muted" />
-                      <span>पाठ पूर्ण हुआ चिह्नित करें</span>
-                    </>
-                  )}
-                </button>
+                <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+                  <Link
+                    href="/scripture/bhagavadgita/"
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl bg-saffron-700 hover:bg-saffron-800 text-white px-6 py-3.5 text-sm font-bold shadow-xs transition"
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    <span>गीता पुनरावलोकन · Review Gita</span>
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={handleMarkFulfilled}
+                    disabled={isFulfilledToday}
+                    className={`inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold transition border ${
+                      isFulfilledToday
+                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 cursor-default'
+                        : 'border-dharma-border bg-dharma-panel hover:bg-emerald-500/10 hover:border-emerald-500/40 text-dharma-text'
+                    }`}
+                  >
+                    {isFulfilledToday ? (
+                      <>
+                        <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                        <span>आज का मनन सम्पन्न · Done Today</span>
+                      </>
+                    ) : (
+                      <>
+                        <Circle className="h-4 w-4 text-dharma-muted" />
+                        <span>आज का मनन पूर्ण चिह्नित करें</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
-            </div>
+            ) : todayChapters.length > 1 ? (
+              <div className="mt-6 space-y-5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-dharma-text">
+                      आज के {todayChapters.length} निर्धारित अध्याय (Today&apos;s {todayChapters.length} Assigned Chapters)
+                    </h3>
+                    <p className="text-xs sm:text-sm text-dharma-muted mt-0.5">
+                      साप्ताहिक पारायण क्रम के अनुसार आज अध्याय {todayChapters[0].number} से {todayChapters[todayChapters.length - 1].number} का पाठ निर्धारित है।
+                    </p>
+                  </div>
+                </div>
+
+                <ul className="grid gap-3 sm:grid-cols-3">
+                  {todayChapters.map((ch) => {
+                    const chDone = state.cycleChapters.includes(ch.number) || isFulfilledToday;
+                    return (
+                      <li
+                        key={ch.number}
+                        className={`flex flex-col justify-between rounded-2xl border p-4 transition ${
+                          chDone
+                            ? 'border-emerald-500/40 bg-emerald-500/5'
+                            : 'border-dharma-border bg-dharma-panel/60'
+                        }`}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                              अध्याय {ch.number}
+                            </span>
+                            {chDone && <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" aria-label="पूर्ण" />}
+                          </div>
+                          <p className="mt-1 font-serif text-lg font-bold text-dharma-text">{ch.nameHi}</p>
+                          <p className="text-xs text-dharma-muted">
+                            {ch.name} · {ch.verses} श्लोक
+                          </p>
+                        </div>
+                        <Link
+                          href={`/scripture/bhagavadgita/chapter/${ch.number}/`}
+                          className="mt-4 inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-saffron-700 hover:bg-saffron-800 px-3 py-2 text-xs font-bold text-white shadow-xs transition"
+                        >
+                          <BookOpen className="h-3.5 w-3.5" aria-hidden="true" />
+                          <span>अध्याय {ch.number} पढ़ें</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    onClick={handleMarkFulfilled}
+                    disabled={isFulfilledToday}
+                    className={`inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold transition border ${
+                      isFulfilledToday
+                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 cursor-default'
+                        : 'border-dharma-border bg-dharma-panel hover:bg-emerald-500/10 hover:border-emerald-500/40 text-dharma-text'
+                    }`}
+                  >
+                    {isFulfilledToday ? (
+                      <>
+                        <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                        <span>आज का पाठ सम्पन्न · Done Today</span>
+                      </>
+                    ) : (
+                      <>
+                        <Circle className="h-4 w-4 text-dharma-muted" />
+                        <span>तीनों अध्याय पूर्ण हुए चिह्नित करें</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="mt-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div className="space-y-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
+                    {activeChapter.shatkaHi} ({activeChapter.shatka} Shatka)
+                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
+                    अध्याय {activeChapter.number}: {activeChapter.nameHi}
+                  </h3>
+                  <p className="font-serif text-sm italic text-dharma-muted">
+                    {activeChapter.name} · {activeChapter.verses} श्लोक
+                  </p>
+                  <p className="text-xs sm:text-sm text-dharma-muted max-w-xl leading-relaxed mt-1">
+                    {activeChapter.themeHi}
+                  </p>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+                  <Link
+                    href={`/scripture/bhagavadgita/chapter/${activeChapter.number}/`}
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl bg-saffron-700 hover:bg-saffron-800 text-white px-6 py-3.5 text-sm font-bold shadow-xs transition"
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    <span>अध्याय पढ़ें · Read Chapter</span>
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={handleMarkFulfilled}
+                    disabled={isFulfilledToday}
+                    className={`inline-flex min-h-[44px] items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-bold transition border ${
+                      isFulfilledToday
+                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 cursor-default'
+                        : 'border-dharma-border bg-dharma-panel hover:bg-emerald-500/10 hover:border-emerald-500/40 text-dharma-text'
+                    }`}
+                  >
+                    {isFulfilledToday ? (
+                      <>
+                        <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                        <span>आज का पाठ सम्पन्न · Done Today</span>
+                      </>
+                    ) : (
+                      <>
+                        <Circle className="h-4 w-4 text-dharma-muted" />
+                        <span>पाठ पूर्ण हुआ चिह्नित करें</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            )}
 
             {/* Celebration banner */}
             {celebrate && (

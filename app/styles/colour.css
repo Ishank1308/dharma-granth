@@ -57,6 +57,7 @@ body::after {
     inset: -8vmax;
     z-index: -1;
     pointer-events: none;
+    opacity: 0.7;
     background:
         radial-gradient(24vmax 20vmax at 28% 30%, color-mix(in srgb, var(--hue-saffron) calc(var(--tone-aurora) * 0.85), transparent), transparent 68%),
         radial-gradient(22vmax 20vmax at 72% 38%, color-mix(in srgb, var(--hue-lotus) calc(var(--tone-aurora) * 0.75), transparent), transparent 68%),
@@ -249,22 +250,17 @@ footer[aria-labelledby='footer-heading'] {
     background-repeat: no-repeat;
 }
 
-/* 4. Cards & Universal Frosted Glass Surfaces ───────────────────────────
-   Every card surface across the project (.apple-card, .card-sacred, .scripture-card,
-   .pillar-card, .granth-card, and rounded cards using .bg-dharma-card / .bg-surface-raised)
-   wears the Translucent Frosted Glass (Liquid Glass 2.0) material:
+/* 4. Cards & Opt-In Frosted Glass Surfaces ──────────────────────────────
+   Frosted glass surfaces across the project (.glass-card, .apple-card, .card-sacred,
+   .scripture-card, .pillar-card, .granth-card) and opt-in .glass-pill buttons/inputs wear
+   the Translucent Frosted Glass (Liquid Glass 2.0) material rather than scoping every
+   generic rounded .bg-dharma-card / .bg-surface-raised element:
    - Translucent base (--glass-surface) with 22px backdrop blur & 195% saturation
    - Diagonal glass reflection sheen (--glass-sheen) + corner sacred-hue caustic wash
    - 1.5px luminous top specular edge + 1px perimeter refraction rim + ambient depth shadow
    - Neutralized opaque Tailwind gradient stops (via-dharma-card / to-dharma-card) so gradients
       stay translucent over the fluid aurora. */
-:is(
-    .apple-card,
-    .card-sacred,
-    .scripture-card,
-    .pillar-card,
-    :where(section, article, div, aside, nav, a, button, header, details, li, ul, form):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-card, .rounded-panel, .rounded-group):is(.bg-dharma-card, .bg-surface-raised)
-) {
+:is(.glass-card, .apple-card, .card-sacred, .scripture-card, .pillar-card, .granth-card) {
     --card-hue: var(--chip, var(--cycle-hue, var(--tint)));
     --tw-gradient-via: var(--glass-surface);
     --tw-gradient-to: var(--glass-surface);
@@ -278,7 +274,7 @@ footer[aria-labelledby='footer-heading'] {
         inset 0 0 0 1px color-mix(in srgb, var(--card-hue) calc(var(--tone-edge) * 0.55), var(--glass-specular-rim)),
         0 18px 42px -28px color-mix(in srgb, var(--card-hue) var(--tone-glow), transparent);
 }
-:where(a, button, input, select):is(.rounded-full, .rounded-pill):is(.bg-dharma-card, .bg-surface-raised) {
+.glass-pill {
     background-color: var(--glass-surface) !important;
     background-image: var(--glass-sheen);
     -webkit-backdrop-filter: blur(14px) saturate(175%);
@@ -288,23 +284,11 @@ footer[aria-labelledby='footer-heading'] {
         0 4px 14px -6px rgba(var(--shadow-ink), 0.12);
 }
 :root:is([data-theme='night'], [data-theme='dark'])
-    :is(
-        .apple-card,
-        .card-sacred,
-        .scripture-card,
-        .pillar-card,
-        :where(section, article, div, aside, nav, a, button, header, details, li, ul, form):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-card, .rounded-panel, .rounded-group):is(.bg-dharma-card, .bg-surface-raised)
-    ) {
+    :is(.glass-card, .apple-card, .card-sacred, .scripture-card, .pillar-card, .granth-card) {
     /* Deep icon colours lift toward light on the dark canvas. */
     --card-hue: color-mix(in srgb, var(--chip, var(--cycle-hue, var(--tint))) 72%, var(--color-absolute-white));
 }
-:is(
-    .apple-card,
-    .card-sacred,
-    .scripture-card,
-    .pillar-card,
-    :where(section, article, div, aside, nav, a, button, header, details, li, ul, form):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-card, .rounded-panel, .rounded-group):is(.bg-dharma-card, .bg-surface-raised)
-):not([class*='bg-gradient']) {
+:is(.glass-card, .apple-card, .card-sacred, .scripture-card, .pillar-card, .granth-card):not([class*='bg-gradient']) {
     background-image:
         radial-gradient(
             130% 90% at 0% 0%,
@@ -448,7 +432,8 @@ a.apple-card:focus-visible {
 
 /* Selected text and scrollbars in the tint. */
 ::selection {
-    background-color: color-mix(in srgb, var(--hue-saffron) 26%, transparent);
+    background-color: color-mix(in srgb, var(--hue-saffron) 28%, transparent);
+    color: var(--label-primary);
 }
 :root {
     scrollbar-color: color-mix(in srgb, var(--tint) 45%, transparent) transparent;
@@ -753,7 +738,7 @@ a.apple-card:focus-visible {
 .panchang-scope .grid > :nth-child(6n + 4) { --cycle-hue: var(--hue-lotus); }
 .panchang-scope .grid > :nth-child(6n + 5) { --cycle-hue: var(--hue-tulsi); }
 .panchang-scope .grid > :nth-child(6n + 6) { --cycle-hue: var(--hue-gold); }
-.panchang-scope :is(.card-sacred, .rounded-3xl.bg-dharma-card, .rounded-2xl.bg-dharma-card, .rounded-xl.bg-dharma-card, .grid > .rounded-2xl.bg-dharma-bg) {
+.panchang-scope :is(.card-sacred, .glass-card, .apple-card) {
     --card-hue: var(--cycle-hue, var(--limb));
     background-color: var(--glass-surface);
     -webkit-backdrop-filter: var(--glass-blur-card);
@@ -768,7 +753,7 @@ a.apple-card:focus-visible {
         inset 0 2px 0 color-mix(in srgb, var(--card-hue) 50%, var(--glass-specular-top)),
         0 16px 36px -28px color-mix(in srgb, var(--card-hue) var(--tone-glow), transparent);
 }
-:root:is([data-theme='night'], [data-theme='dark']) .panchang-scope :is(.card-sacred, .rounded-3xl.bg-dharma-card, .rounded-2xl.bg-dharma-card, .rounded-xl.bg-dharma-card, .grid > .rounded-2xl.bg-dharma-bg) {
+:root:is([data-theme='night'], [data-theme='dark']) .panchang-scope :is(.card-sacred, .glass-card, .apple-card) {
     --card-hue: color-mix(in srgb, var(--cycle-hue, var(--limb)) 80%, var(--color-absolute-white));
 }
 /* Inside a card, its number chip and accent text follow the card's own hue. */
@@ -1123,14 +1108,15 @@ nav a[data-limb][aria-current='page'] {
         .card-sacred,
         .scripture-card,
         .pillar-card,
+        .granth-card,
+        .glass-card,
+        .glass-pill,
         .home-book,
         .library-showcase-book,
         .eyebrow-capsule,
         .verse-card.today-verse,
         .verse-card.single-verse,
-        :where(section, article, div, aside, nav, a, button, header, details, li, ul, form):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-card, .rounded-panel, .rounded-group):is(.bg-dharma-card, .bg-surface-raised),
-        :where(a, button, input, select):is(.rounded-full, .rounded-pill):is(.bg-dharma-card, .bg-surface-raised),
-        .panchang-scope :is(.card-sacred, .rounded-3xl.bg-dharma-card, .rounded-2xl.bg-dharma-card, .rounded-xl.bg-dharma-card, .grid > .rounded-2xl.bg-dharma-bg)
+        .panchang-scope :is(.card-sacred, .glass-card, .apple-card)
     ) {
     background-color: var(--surface-raised) !important;
     -webkit-backdrop-filter: none;
@@ -1165,10 +1151,12 @@ nav a[data-limb][aria-current='page'] {
         .card-sacred,
         .scripture-card,
         .pillar-card,
+        .granth-card,
+        .glass-card,
+        .glass-pill,
         .home-book,
         .library-showcase-book,
-        .eyebrow-capsule,
-        :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+        .eyebrow-capsule
     ) {
         background-color: var(--surface-raised) !important;
         -webkit-backdrop-filter: none;
@@ -1192,10 +1180,12 @@ nav a[data-limb][aria-current='page'] {
         .card-sacred,
         .scripture-card,
         .pillar-card,
+        .granth-card,
+        .glass-card,
+        .glass-pill,
         .home-book,
         .library-showcase-book,
-        .eyebrow-capsule,
-        :where(section, article, div, aside, nav):is(.rounded-3xl, .rounded-2xl, .rounded-xl, .rounded-card, .rounded-panel):is(.bg-dharma-card, .bg-surface-raised)
+        .eyebrow-capsule
     ) {
         background-color: var(--surface-raised) !important;
         background-image: none !important;

@@ -84,11 +84,11 @@ export const PATHS: Record<string, JourneyPath> = {
     titleHi: 'गीता: आरंभिक पाठ',
     summary: 'A guided course through the Gita’s main ideas, with one verse explained step by step.',
     minutes: '10 min a day',
-    href: '/learn/journeys/bhagavad-gita-for-beginners',
+    href: '/learn/journeys/gita-for-beginners/',
     steps: [
-      { label: 'Chapter 1: The Human Dilemma', href: '/scripture/bhagavadgita/chapter/1' },
-      { label: 'Chapter 2: Equanimity in Action', href: '/scripture/bhagavadgita/chapter/2' },
-      { label: 'Study Gita 2.47 in Simple mode', href: '/scripture/bhagavadgita/chapter/2/verse/47' },
+      { label: 'Chapter 1: The Human Dilemma', href: '/scripture/bhagavadgita/chapter/1/' },
+      { label: 'Chapter 2: Equanimity in Action', href: '/scripture/bhagavadgita/chapter/2/' },
+      { label: 'Study Gita 2.47 in Simple mode', href: '/scripture/bhagavadgita/chapter/2/verse/47/' },
     ],
   },
   dailyWisdom: {
@@ -97,10 +97,10 @@ export const PATHS: Record<string, JourneyPath> = {
     titleHi: 'पाँच मिनट का दैनिक चिंतन',
     summary: 'One verse, one reflection, one quiet moment each day.',
     minutes: '5 min a day',
-    href: '/daily',
+    href: '/daily/',
     steps: [
-      { label: 'Daily verse session', href: '/daily' },
-      { label: 'Wisdom for life situations', href: '/wisdom-for-life' },
+      { label: 'Daily verse session', href: '/daily/' },
+      { label: 'Wisdom for life situations', href: '/wisdom-for-life/' },
     ],
   },
   upanishads: {
@@ -109,10 +109,10 @@ export const PATHS: Record<string, JourneyPath> = {
     titleHi: 'उपनिषद् परिचय',
     summary: 'The central ideas of the Upanishads, one lesson at a time.',
     minutes: '15–20 min a session',
-    href: '/learn/journeys/understanding-the-self',
+    href: '/learn/journeys/understanding-the-self/',
     steps: [
-      { label: 'Isha Upanishad Mantra 1', href: '/scripture/ishavasya/chapter/1/verse/1' },
-      { label: 'Concepts: Atman and Brahman', href: '/concepts/atman' },
+      { label: 'Isha Upanishad Mantra 1', href: '/scripture/ishavasya/chapter/1/verse/1/' },
+      { label: 'Concepts: Atman and Brahman', href: '/concepts/atman/' },
     ],
   },
   bhakti: {
@@ -121,10 +121,10 @@ export const PATHS: Record<string, JourneyPath> = {
     titleHi: 'भक्ति परिचय',
     summary: 'The devotional traditions and what they teach.',
     minutes: '10–15 min a session',
-    href: '/learn/journeys/introduction-to-bhakti',
+    href: '/learn/journeys/introduction-to-bhakti/',
     steps: [
-      { label: 'Bhakti traditions course', href: '/learn/journeys/introduction-to-bhakti' },
-      { label: 'Wisdom: Devotion', href: '/wisdom-for-life/devotion' },
+      { label: 'Bhakti traditions course', href: '/learn/journeys/introduction-to-bhakti/' },
+      { label: 'Wisdom: Devotion', href: '/wisdom-for-life/devotion/' },
     ],
   },
   sanskrit: {
@@ -133,10 +133,10 @@ export const PATHS: Record<string, JourneyPath> = {
     titleHi: 'श्लोकों से संस्कृत',
     summary: 'Learn key Sanskrit words from verses, using word meanings and sandhi splits.',
     minutes: '10 min a session',
-    href: '/learn/journeys/sanskrit-through-verses',
+    href: '/dictionary/',
     steps: [
-      { label: 'Dictionary of key terms', href: '/dictionary' },
-      { label: 'Word meanings in Gita 2.47', href: '/scripture/bhagavadgita/chapter/2/verse/47' },
+      { label: 'Dictionary of key terms', href: '/dictionary/' },
+      { label: 'Word meanings in Gita 2.47', href: '/scripture/bhagavadgita/chapter/2/verse/47/' },
     ],
   },
   focus: {
@@ -145,10 +145,10 @@ export const PATHS: Record<string, JourneyPath> = {
     titleHi: 'एकाग्रता के सात दिन',
     summary: 'Seven verses from the Gita on cultivating a steady, gathered mind.',
     minutes: '7 min a day',
-    href: '/learn/journeys/seven-days-of-focus',
+    href: '/learn/journeys/seven-days-of-focus/',
     steps: [
-      { label: 'Day 1: A Resolved Intellect (BG 2.41)', href: '/learn/journeys/seven-days-of-focus' },
-      { label: 'Wisdom: Focus', href: '/wisdom-for-life/focus' },
+      { label: 'Day 1: A Resolved Intellect (BG 2.41)', href: '/learn/journeys/seven-days-of-focus/' },
+      { label: 'Wisdom: Focus', href: '/wisdom-for-life/focus/' },
     ],
   },
 };
@@ -190,10 +190,10 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       category: 'Primary Reading Journey',
       categoryHi: 'मुख्य अध्ययन यात्रा',
       id: 'sanskrit-journey',
-      title: 'Sanskrit Through Verses',
+      title: 'Sanskrit Dictionary & Verse Words',
       titleHi: 'श्लोकों से संस्कृत',
-      summary: 'Learn root words, sandhi divisions, and declensions from foundational verses.',
-      href: '/learn/journeys/sanskrit-through-verses',
+      summary: 'Explore root words, sandhi divisions, and key philosophical vocabulary with verse citations.',
+      href: '/dictionary/',
       reason: reasonPrefix,
     };
   } else if (a.interest === 'devotion' || a.challenge === 'god') {
@@ -204,7 +204,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Introduction to Bhakti',
       titleHi: 'भक्ति का स्वरूप',
       summary: 'Explore verses on surrender, divine presence, and compassionate living.',
-      href: '/learn/journeys/introduction-to-bhakti',
+      href: '/learn/journeys/introduction-to-bhakti/',
       reason: reasonPrefix,
     };
   } else if (a.interest === 'self_knowledge' || a.challenge === 'self') {
@@ -215,7 +215,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Understanding the Self (Atman)',
       titleHi: 'आत्म-बोध यात्रा',
       summary: 'A guided pathway into the Upanishadic teachings on consciousness and the witness self.',
-      href: '/learn/journeys/understanding-the-self',
+      href: '/learn/journeys/understanding-the-self/',
       reason: reasonPrefix,
     };
   } else if (a.challenge === 'focus' || a.interest === 'meditation') {
@@ -226,7 +226,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Seven Days of Focus',
       titleHi: 'एकाग्रता के सात दिन',
       summary: 'Seven verses from the Gita on training attention and releasing mental scattering.',
-      href: '/learn/journeys/seven-days-of-focus',
+      href: '/learn/journeys/seven-days-of-focus/',
       reason: reasonPrefix,
     };
   } else {
@@ -237,7 +237,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Bhagavad Gita for Beginners',
       titleHi: 'गीता: आरंभिक पाठ',
       summary: '18 serene steps exploring life, purpose, duty, and inner equanimity.',
-      href: '/learn/journeys/bhagavad-gita-for-beginners',
+      href: '/learn/journeys/gita-for-beginners/',
       reason: reasonPrefix,
     };
   }
@@ -252,7 +252,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Isha Upanishad (ईशावास्योपनिषद्)',
       titleHi: 'ईशावास्योपनिषद्',
       summary: '18 essential mantras reconciling active worldly duty with contemplative stillness.',
-      href: '/scripture/ishavasya',
+      href: '/scripture/ishavasya/',
       reason: `Connects with your interest in ${INTEREST_LABELS[a.interest]}.`,
     };
   } else if (a.interest === 'stories') {
@@ -263,7 +263,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Valmiki Ramayana (वाल्मीकि रामायण)',
       titleHi: 'वाल्मीकि रामायण',
       summary: 'Epic narrative depicting noble character, ethical dilemmas, and selfless relationships.',
-      href: '/scripture/ramayana',
+      href: '/scripture/ramayana/',
       reason: 'Ideal narrative entry point featuring noble characters and philosophical dialogues.',
     };
   } else {
@@ -274,7 +274,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Bhagavad Gita (श्रीमद्भगवद्गीता)',
       titleHi: 'श्रीमद्भगवद्गीता',
       summary: '700 canonical verses offering direct wisdom for duty, action, and peace of mind.',
-      href: '/scripture/bhagavadgita',
+      href: '/scripture/bhagavadgita/',
       reason: 'Universal philosophical starting point addressing human crisis directly in dialogue.',
     };
   }
@@ -289,7 +289,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Dharma (धर्म · Order & Right Action)',
       titleHi: 'धर्म — कर्तव्य और व्यवस्था',
       summary: 'The cosmic and personal harmony upheld through righteous living and duty.',
-      href: '/concepts/dharma',
+      href: '/concepts/dharma/',
       reason: 'Directly addresses your interest in understanding duty and life choices.',
     };
   } else if (a.challenge === 'uncertainty') {
@@ -297,10 +297,10 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       category: 'Introductory Concept',
       categoryHi: 'प्रारंभिक अवधारणा',
       id: 'concept-samatvam',
-      title: 'Samatvam (समत्वम् · Equanimity)',
-      titleHi: 'समत्वम् — चित्त की स्थिरता',
-      summary: 'The art of maintaining balanced composure in success and adversity.',
-      href: '/concepts/samatvam',
+      title: 'Vairagya & Equanimity (वैराग्य एवं समत्वम्)',
+      titleHi: 'वैराग्य व समत्वम् — चित्त की स्थिरता',
+      summary: 'Cultivating steady composure and non-attachment amidst changing outcomes.',
+      href: '/concepts/detachment/',
       reason: 'Provides foundational resilience when dealing with uncertain outcomes.',
     };
   } else if (a.interest === 'devotion' || a.challenge === 'god') {
@@ -311,7 +311,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Bhakti (भक्ति · Loving Surrender)',
       titleHi: 'भक्ति — समर्पण और प्रेम',
       summary: 'Devotional surrender that dissolves anxiety and ego-centered isolation.',
-      href: '/concepts/bhakti',
+      href: '/concepts/bhakti/',
       reason: 'Explores the philosophy of divine relationship and surrendered action.',
     };
   } else {
@@ -337,7 +337,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Five-Minute Daily Contemplation',
       titleHi: 'पाँच मिनट का दैनिक चिंतन',
       summary: 'One reviewed verse, pronunciation audio, and a 30-second modern reflection.',
-      href: '/daily',
+      href: '/daily/',
       reason: 'Fits naturally into a 5-minute morning or evening pause.',
     };
   } else if (a.interest === 'meditation') {
@@ -345,21 +345,21 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       category: 'Daily Practice',
       categoryHi: 'दैनिक साधना',
       id: 'daily-meditation',
-      title: 'Quiet Meditation & Breath Timer',
+      title: 'Quiet Meditation & Breath Pacer',
       titleHi: 'ध्यान व श्वास साधना',
-      summary: 'Gentle bell timer with tanpura acoustics and verse contemplation.',
-      href: '/practice',
-      reason: 'Designed for silent meditation without timers or commercial notifications.',
+      summary: 'A quiet, silent meditation timer and breath pacer with zero audio distractions.',
+      href: '/practice/',
+      reason: 'Designed for silent meditation and unhurried breath awareness without commercial notifications.',
     };
   } else {
     dailyPractice = {
       category: 'Daily Practice',
       categoryHi: 'दैनिक साधना',
       id: 'daily-reflection',
-      title: 'Evening Reflection & Gratitude',
-      titleHi: 'सांध्य चिंतन व कृतज्ञता',
-      summary: 'A private local journal to review your actions, intentions, and peaceful moments.',
-      href: '/practice',
+      title: 'Daily Reflection & Study Journal',
+      titleHi: 'दैनिक चिंतन व स्वाध्याय डायरी',
+      summary: 'A private local space on your device to record daily check-ins, verse notes, and quiet moments.',
+      href: '/practice/',
       reason: 'Supports steady, private reflection without streak pressure.',
     };
   }
@@ -374,7 +374,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Wisdom for Life Situations',
       titleHi: 'जीवन की परिस्थितियों के लिए मार्गदर्शन',
       summary: 'Explore 13 thematic topics (Fear, Anger, Focus, Grief) with verified scriptural context.',
-      href: '/wisdom-for-life',
+      href: '/wisdom-for-life/',
       reason: 'A situation-first alternative if you prefer topical exploration over systematic chapter study.',
     };
   } else {
@@ -385,7 +385,7 @@ export function buildRecommendations(a: DiscoverAnswers): RecommendationSuite {
       title: 'Bhagavad Gita for Beginners',
       titleHi: 'गीता: आरंभिक पाठ',
       summary: 'A step-by-step introduction to the core philosophical dialogues of the Gita.',
-      href: '/learn/journeys/bhagavad-gita-for-beginners',
+      href: '/learn/journeys/gita-for-beginners/',
       reason: 'A systematic foundational path if you wish to study the root philosophical text directly.',
     };
   }

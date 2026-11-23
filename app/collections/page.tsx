@@ -32,10 +32,10 @@ export default function CollectionsPage() {
           <p className="text-xs font-semibold uppercase tracking-widest text-saffron-700 dark:text-saffron-400 mb-2">
             Personal Study
           </p>
-          <h1 className="font-serif text-[clamp(2rem,calc(1.55rem+2.4vw),3rem)] leading-[1.15] font-bold mb-2 text-dharma-text">
-            Study Collections
+          <h1 className="font-serif text-[clamp(2rem,calc(1.55rem+2.4vw),3rem)] leading-[1.15] font-bold mb-3 text-dharma-text">
+            <span data-bi="en">Study Collections</span>
+            <span lang="hi" data-bi="hi" data-bi-lead className="mt-1 block font-devanagari text-base sm:text-lg font-semibold text-dharma-muted">श्लोक संग्रह</span>
           </h1>
-          <p lang="hi" className="font-devanagari text-base sm:text-lg font-semibold text-dharma-muted mb-3">श्लोक संग्रह</p>
           <p className="text-lg text-dharma-muted max-w-2xl">
             Organize your saved verses into thematic collections. Track your highlights and personal notes across all scriptures.
           </p>
@@ -54,7 +54,7 @@ export default function CollectionsPage() {
         ये सूचियाँ पहले से बने पृष्ठ खोलती हैं। खाता सर्वर नहीं है। दूसरी ब्राउज़र पर ले जाने के लिए साधना पृष्ठ की बैकअप फ़ाइल उपयोग करें।
       </p>
       <p className="mt-2 text-sm">
-        <Link href="/practice/" className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">साधना · backup file</Link>
+        <Link href="/practice/desk/" className="focus-ring rounded font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"><span lang="hi" data-bi="hi">अध्ययन-पटल</span><span data-bi="sep"> · </span><span data-bi="en">Backup &amp; restore</span></Link>
       </p>
       <ul className="mt-4 grid gap-4 md:grid-cols-2">
         {STUDY_PLAYLISTS.map((playlist) => (
@@ -67,7 +67,7 @@ export default function CollectionsPage() {
             <ul className="mt-2 space-y-1">
               {playlist.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">
+                  <Link href={link.href} className="focus-ring rounded text-sm font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">
                     <span lang="hi" className="font-devanagari">{link.titleHi}</span>
                   </Link>
                 </li>

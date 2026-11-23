@@ -153,34 +153,50 @@ export default async function ChapterPage(props: { params: Promise<{ chapter: st
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-4xl gap-10 px-4 pb-24 sm:px-6">
-        <section aria-labelledby="intro" className="ash-card">
-          <h2 id="intro" className="font-bold" style={{ fontSize: '1.4rem' }}>अध्याय का परिचय</h2>
-          <Paras text={d.introduction} className="ash-hindi mt-2" />
-        </section>
+      <div className="mx-auto grid max-w-4xl gap-10 px-4 pt-6 pb-24 sm:px-6">
+        <details className="ash-card">
+          <summary className="focus-ring flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-3 rounded-xl font-bold text-dharma-text [&::-webkit-details-marker]:hidden">
+            <span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">अध्याय परिचय, मुख्य शिक्षा और प्रमुख अवधारणाएँ</span>
+              <span data-bi="sep"> · </span>
+              <span data-bi="en">Chapter overview &amp; key concepts</span>
+            </span>
+            <span className="shrink-0 text-xs font-medium text-dharma-muted">
+              <span lang="hi" data-bi="hi" className="font-devanagari">पढ़ें</span>
+              <span data-bi="sep"> · </span>
+              <span data-bi="en">Read</span>
+            </span>
+          </summary>
+          <div className="mt-4 grid gap-6 border-t border-dharma-border/60 pt-5">
+            <section aria-labelledby="intro" className="rounded-2xl border border-dharma-border/70 bg-dharma-bg/40 p-4 sm:p-5">
+              <h2 id="intro" className="font-bold" style={{ fontSize: '1.4rem' }}>अध्याय का परिचय</h2>
+              <Paras text={d.introduction} className="ash-hindi mt-2" />
+            </section>
 
-        <section aria-labelledby="cq" className="ash-card">
-          <h2 id="cq" className="font-bold" style={{ fontSize: '1.25rem' }}>केंद्रीय प्रश्न</h2>
-          <p lang="hi" className="ash-hindi mt-2 font-bold">{d.centralQuestion}</p>
-          <h2 className="font-bold mt-5" style={{ fontSize: '1.25rem' }}>अध्याय की मुख्य शिक्षा</h2>
-          <p lang="hi" className="ash-hindi mt-2">{d.mainTeaching}</p>
-        </section>
+            <section aria-labelledby="cq" className="rounded-2xl border border-dharma-border/70 bg-dharma-bg/40 p-4 sm:p-5">
+              <h2 id="cq" className="font-bold" style={{ fontSize: '1.25rem' }}>केंद्रीय प्रश्न</h2>
+              <p lang="hi" className="ash-hindi mt-2 font-bold">{d.centralQuestion}</p>
+              <h2 className="font-bold mt-5" style={{ fontSize: '1.25rem' }}>अध्याय की मुख्य शिक्षा</h2>
+              <p lang="hi" className="ash-hindi mt-2">{d.mainTeaching}</p>
+            </section>
 
-        <section aria-labelledby="pre" className="ash-card" style={{ borderColor: 'var(--ash-accent)' }}>
-          <h2 id="pre" className="font-bold" style={{ fontSize: '1.25rem' }}>पढ़ने से पहले समझें</h2>
-          <ul lang="hi" className="ash-hindi mt-2 grid gap-2" style={{ listStyle: 'disc', paddingLeft: '1.25rem' }}>
-            {d.beforeYouRead.map((b) => <li key={b}>{b}</li>)}
-          </ul>
-        </section>
+            <section aria-labelledby="pre" className="rounded-2xl border bg-dharma-bg/40 p-4 sm:p-5" style={{ borderColor: 'var(--ash-accent)' }}>
+              <h2 id="pre" className="font-bold" style={{ fontSize: '1.25rem' }}>पढ़ने से पहले समझें</h2>
+              <ul lang="hi" className="ash-hindi mt-2 grid gap-2" style={{ listStyle: 'disc', paddingLeft: '1.25rem' }}>
+                {d.beforeYouRead.map((b) => <li key={b}>{b}</li>)}
+              </ul>
+            </section>
 
-        <section aria-labelledby="concepts" className="grid gap-3">
-          <h2 id="concepts" className="font-bold" style={{ fontSize: '1.25rem' }}>प्रमुख अवधारणाएँ</h2>
-          <dl className="grid gap-3 md:grid-cols-2">
-            {d.concepts.map((c) => (
-              <div key={c.term} className="ash-card"><dt lang="sa" className="font-bold">{c.term}</dt><dd lang="hi" className="ash-hindi">{c.definition}</dd></div>
-            ))}
-          </dl>
-        </section>
+            <section aria-labelledby="concepts" className="grid gap-3">
+              <h2 id="concepts" className="font-bold" style={{ fontSize: '1.25rem' }}>प्रमुख अवधारणाएँ</h2>
+              <dl className="grid gap-3 md:grid-cols-2">
+                {d.concepts.map((c) => (
+                  <div key={c.term} className="rounded-2xl border border-dharma-border/70 bg-dharma-bg/40 p-4"><dt lang="sa" className="font-bold">{c.term}</dt><dd lang="hi" className="ash-hindi">{c.definition}</dd></div>
+                ))}
+              </dl>
+            </section>
+          </div>
+        </details>
 
         <section id="verses" aria-labelledby="verses-h" className="grid gap-6 sm:gap-8 scroll-mt-6">
           <div>

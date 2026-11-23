@@ -18,6 +18,7 @@ import { ChapterPreview, readSeededChapterPreviews } from '@/lib/read-seeded-cha
 import { getLibraryFacts } from '@/lib/library-server';
 import { OfflineScriptureToggle } from '@/app/components/scripture/OfflineScriptureToggle';
 import { clipDescription, pickTitle } from '@/lib/meta-text';
+import { getCoverEnglishTitle } from '@/lib/gita-press-titles';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -222,7 +223,7 @@ export default async function ScripturePage(props: PageProps) {
             </nav>
           </FadeUp>
           <FadeUp delay={0.05}>
-            <p className="editorial-section-eyebrow">Scripture contents · ग्रंथ सूची</p>
+            <p className="editorial-section-eyebrow"><span data-bi="en">Scripture contents</span><span data-bi="sep"> · </span><span lang="hi" data-bi="hi">ग्रंथ सूची</span></p>
             <h1 className="mt-2 font-serif text-[clamp(1.5rem,11vw,3rem)] font-bold tracking-tight text-dharma-text md:text-5xl">{meta.title}</h1>
           </FadeUp>
           <FadeUp delay={0.1}>
@@ -242,13 +243,13 @@ export default async function ScripturePage(props: PageProps) {
                   href={`/scripture/${meta.id}/chapter/${firstReadableChapter.id}/`}
                   className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-saffron-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-saffron-800"
                 >
-                  पढ़ना शुरू करें · Start reading <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                  <span lang="hi" data-bi="hi">पढ़ना शुरू करें</span><span data-bi="sep"> · </span><span data-bi="en">Start reading</span> <ChevronRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
                 <a
                   href="#contents-heading"
                   className="focus-ring inline-flex min-h-11 items-center justify-center rounded-full border border-dharma-border bg-dharma-card px-4 py-2.5 text-sm font-semibold text-dharma-text transition hover:border-dharma-saffron"
                 >
-                  अध्याय सूची · Browse chapters
+                  <span lang="hi" data-bi="hi">अध्याय सूची</span><span data-bi="sep"> · </span><span data-bi="en">Browse chapters</span>
                 </a>
               </div>
             )}
@@ -279,7 +280,7 @@ export default async function ScripturePage(props: PageProps) {
             <OfflineScriptureToggle scriptureId={meta.id} title={meta.title} />
           </FadeUp>
         </div>
-        <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={meta.title} picture={bookFrontispiece(meta.id, meta.category)} className="mx-auto" />
+        <ScriptureBook vibe={vibe} titleSa={meta.titleSanskrit} titleEn={getCoverEnglishTitle(meta.id, meta.title)} picture={bookFrontispiece(meta.id, meta.category)} className="mx-auto" />
         </div>
       </section>
 
@@ -299,7 +300,7 @@ export default async function ScripturePage(props: PageProps) {
             </div>
             <Link
               href="/practice/gita-sankalpa/"
-              className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-3 text-xs sm:text-sm font-bold shadow-xs transition"
+              className="shrink-0 inline-flex items-center gap-2 rounded-2xl bg-saffron-700 hover:bg-saffron-800 text-white px-5 py-3 text-xs sm:text-sm font-bold shadow-xs transition"
             >
               <span>संकल्प लें · Begin Sankalpa</span>
               <ChevronRight className="h-4 w-4" />

@@ -136,6 +136,7 @@ export function SiteNav({
   // Global key bindings
   useEffect(() => {
     function handleGlobalKey(e: KeyboardEvent) {
+      if (e.isComposing || e.keyCode === 229) return;
       // Close search even if the lazily mounted dialog has not attached its key listener yet.
       if (e.key === 'Escape') {
         setSearchOpen(false);

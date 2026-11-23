@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import { BackupRestore } from '@/app/components/BackupRestore';
+import { PracticeSubNav } from '@/app/components/practice/PracticeSubNav';
 import { WellbeingSnapshot } from '@/app/components/dashboard/WellbeingSnapshot';
 
 // Personal browser state loads after the public dashboard shell.
@@ -40,6 +41,7 @@ export function DashboardClient() {
       </section>
 
       <div className="mx-auto max-w-6xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
+        <PracticeSubNav />
         <WellbeingSnapshot />
         <DailyDharmaDashboard />
         <BackupRestore />

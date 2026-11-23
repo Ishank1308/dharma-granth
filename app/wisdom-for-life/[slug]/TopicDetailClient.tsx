@@ -27,7 +27,6 @@ import {
 // Types only: the topic arrives as a prop, so the page does not ship every topic's data (about 90 KB gzip).
 import type { WisdomTopic, ScriptureReference } from '@/data/wisdom-for-life';
 import { libraryLocation, wisdomVerseHref } from '@/lib/wisdom-links';
-import { TopicIllustration } from '../TopicIllustrations';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { ShareVerseButton } from '@/app/components/ShareVerseButton';
 import { ShareChips } from '@/app/components/ShareChips';
@@ -36,7 +35,24 @@ import dynamic from 'next/dynamic';
 
 // Loaded when a verse's story deck is first opened, so it stays out of the page's first-load JS.
 const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
-import { getLiteraryVerseMeta } from '@/lib/literary-commentary';
+import type { VerseEditorialLayer } from '@/lib/literary-commentary';
+
+const EMPTY_LITERARY_META: VerseEditorialLayer = {
+  isCurated: false,
+  editorialStatus: 'draft',
+  editorialLabel: 'Editorial · Not Scripture',
+  coreShiftEn: '',
+  coreShiftHi: '',
+  situationalMoments: [],
+  misreadingEn: '',
+  misreadingHi: '',
+  deeperTruthEn: '',
+  deeperTruthHi: '',
+  humanQuestionEn: '',
+  humanQuestionHi: '',
+  microPracticeEn: '',
+  microPracticeHi: '',
+};
 
 export function TopicDetailClient({
   topic,
@@ -44,6 +60,8 @@ export function TopicDetailClient({
   nextTopic,
   libraryFacts = {},
   searchLine,
+  illustration,
+  curatedLiteraryByVerseId = {},
 }: {
   topic: WisdomTopic;
   prevTopic?: WisdomTopic;
@@ -51,6 +69,8 @@ export function TopicDetailClient({
   /** Where each cited text's Sanskrit comes from, measured from the library's data files. */
   libraryFacts?: Record<string, { host?: string; fetched?: string }>;
   searchLine?: { hi: string; en: string } | null;
+  illustration?: React.ReactNode;
+  curatedLiteraryByVerseId?: Record<string, VerseEditorialLayer>;
 }) {
   const [copiedVerseId, setCopiedVerseId] = useState<string | null>(null);
   const [activeStoryVerse, setActiveStoryVerse] = useState<ScriptureReference | null>(null);
@@ -160,7 +180,7 @@ export function TopicDetailClient({
 
               {/* Serene Bespoke Illustration Card */}
               <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-3xl bg-white/5 border border-white/15 backdrop-blur-md p-4 flex items-center justify-center shrink-0 shadow-2xl">
-                <TopicIllustration topicId={topic.id} size={160} />
+                {illustration}
               </div>
             </div>
           </FadeUp>
@@ -254,11 +274,7 @@ export function TopicDetailClient({
 
           <div className="space-y-8">
             {topic.verses.map((verse, index) => {
-              const literaryMeta = getLiteraryVerseMeta(
-                verse.scriptureId,
-                verse.chapterNumber,
-                verse.verseNumber,
-              );
+              const literaryMeta = curatedLiteraryByVerseId[verse.id] ?? EMPTY_LITERARY_META;
               return (
               <article
                 key={verse.id}
@@ -871,11 +887,7 @@ export function TopicDetailClient({
             transliteration: activeStoryVerse.sanskritTransliteration,
             hindi: activeStoryVerse.literalTranslationHi,
             english: activeStoryVerse.literalTranslationEn,
-            meta: getLiteraryVerseMeta(
-              activeStoryVerse.scriptureId,
-              activeStoryVerse.chapterNumber,
-              activeStoryVerse.verseNumber,
-            ),
+            meta: curatedLiteraryByVerseId[activeStoryVerse.id] ?? EMPTY_LITERARY_META,
             chapterHref: activeStoryVerse.readerHref,
             verseHref: `https://dharmagranth.dev/wisdom-for-life/${topic.slug}#verse-${activeStoryVerse.id}`,
           }}

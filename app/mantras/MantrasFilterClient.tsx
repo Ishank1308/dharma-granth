@@ -135,11 +135,11 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
     }
   };
 
-  const categories: Array<{ key: CategoryKey; label: string }> = [
-    { key: 'all', label: `All Mantras · सभी मन्त्र (${counts.all})` },
-    { key: 'vedic', label: `Vedic Mahamantras · वैदिक मन्त्र (${counts.vedic})` },
-    { key: 'shanti', label: `Shanti Patha · शान्ति पाठ (${counts.shanti})` },
-    { key: 'stotra', label: `Stotras · स्तोत्र (${counts.stotra})` },
+  const categories: Array<{ key: CategoryKey; en: string; hi: string; count: number }> = [
+    { key: 'all', en: 'All Mantras', hi: 'सभी मन्त्र', count: counts.all },
+    { key: 'vedic', en: 'Vedic Mahamantras', hi: 'वैदिक मन्त्र', count: counts.vedic },
+    { key: 'shanti', en: 'Shanti Patha', hi: 'शान्ति पाठ', count: counts.shanti },
+    { key: 'stotra', en: 'Stotras', hi: 'स्तोत्र', count: counts.stotra },
   ];
 
   return (
@@ -157,16 +157,16 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="मन्त्र खोजें — गायत्री, महामृत्युंजय, शान्ति पाठ, हनुमान चालीसा…"
             aria-label="मन्त्र खोजें (Search sacred mantras)"
-            className="focus-ring w-full min-h-[44px] rounded-2xl border border-dharma-border bg-dharma-card pl-11 pr-10 py-2.5 text-sm text-dharma-text placeholder:text-dharma-muted transition-colors hover:border-saffron-500/50"
+            className="focus-ring w-full min-h-[44px] rounded-2xl border border-dharma-border bg-dharma-card pl-11 pr-11 py-2.5 text-sm text-dharma-text placeholder:text-dharma-muted transition-colors hover:border-saffron-500/50"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery('')}
               aria-label="खोज साफ़ करें (Clear search)"
-              className="focus-ring absolute right-2.5 top-1/2 -translate-y-1/2 inline-flex h-8 w-8 items-center justify-center rounded-full text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text"
+              className="focus-ring absolute right-0.5 top-1/2 -translate-y-1/2 inline-flex h-11 w-11 items-center justify-center rounded-full text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text"
             >
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4" aria-hidden="true" />
             </button>
           )}
         </div>
@@ -186,11 +186,16 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                 onClick={() => setActiveCategory(tab.key)}
                 className={`focus-ring inline-flex min-h-[44px] items-center px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
                   active
-                    ? 'bg-dharma-saffron text-dharma-bg shadow-sm'
+                    ? 'bg-saffron-700 text-white shadow-sm hover:bg-saffron-800'
                     : 'border border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-400'
                 }`}
               >
-                {tab.label}
+                <span>
+                  <span data-bi="en">{tab.en}</span>
+                  <span data-bi="sep" aria-hidden="true"> · </span>
+                  <span lang="hi" data-bi="hi" className="font-devanagari">{tab.hi}</span>
+                </span>
+                <span className="ml-1.5 tabular-nums">({tab.count})</span>
               </button>
             );
           })}
@@ -221,9 +226,11 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
               setQuery('');
               setActiveCategory('all');
             }}
-            className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg"
+            className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-saffron-700 px-4 py-2 text-xs font-semibold text-white transition hover:bg-saffron-800"
           >
-            सभी मन्त्र दिखाएँ · Show all mantras
+            <span lang="hi" data-bi="hi" className="font-devanagari">सभी मन्त्र दिखाएँ</span>
+            <span data-bi="sep" aria-hidden="true">·</span>
+            <span data-bi="en">Show all mantras</span>
           </button>
         </div>
       ) : (
@@ -250,7 +257,9 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/30 bg-saffron-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
-                        {m.categoryLabelHi} · {m.categoryLabel}
+                        <span lang="hi" data-bi="hi" className="font-devanagari">{m.categoryLabelHi}</span>
+                        <span data-bi="sep" aria-hidden="true">·</span>
+                        <span data-bi="en">{m.categoryLabel}</span>
                       </span>
                       <span className="text-xs text-dharma-muted font-medium">
                         {m.sourceCoordinates}
@@ -264,10 +273,12 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                         aria-controls={detailId}
                         className="focus-ring rounded-lg text-left hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors"
                       >
-                        <span>{m.title}</span>{' '}
-                        <span lang="sa" className="font-devanagari font-normal text-dharma-muted">
-                          ({m.titleHi})
+                        <span data-bi="en">{m.title}</span>
+                        <span data-bi="sep" aria-hidden="true"> (</span>
+                        <span lang="sa" data-bi="hi" data-bi-lead className="font-devanagari font-normal text-dharma-muted">
+                          {m.titleHi}
                         </span>
+                        <span data-bi="sep" aria-hidden="true">)</span>
                       </button>
                     </h2>
                   </div>
@@ -279,7 +290,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                       aria-label={`Copy ${m.title}`}
                       className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-semibold text-dharma-text hover:border-saffron-500 transition"
                     >
-                      {isCopied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+                      {isCopied ? <Check className="h-3.5 w-3.5 text-emerald-600" aria-hidden="true" /> : <Copy className="h-3.5 w-3.5" aria-hidden="true" />}
                       <span>{isCopied ? 'Copied' : 'Copy'}</span>
                     </button>
                     <a
@@ -289,7 +300,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                       aria-label={`Share ${m.title} on WhatsApp`}
                       className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-dharma-border bg-dharma-bg px-3.5 py-2 text-xs font-semibold text-emerald-800 dark:text-emerald-300 hover:border-emerald-500 transition"
                     >
-                      <MessageCircle className="h-3.5 w-3.5" />
+                      <MessageCircle className="h-3.5 w-3.5" aria-hidden="true" />
                       <span>WhatsApp</span>
                     </a>
                   </div>
@@ -311,7 +322,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                 {/* Meanings */}
                 <div className="space-y-3 my-4">
                   <div className="rounded-xl border border-dharma-border/80 bg-dharma-bg/60 p-4">
-                    <span className="font-devanagari text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300 block mb-1">
+                    <span lang="hi" className="font-devanagari text-xs font-bold uppercase tracking-wider text-saffron-800 dark:text-saffron-300 block mb-1">
                       हिन्दी भावार्थ
                     </span>
                     <p lang="hi" className="font-devanagari text-sm sm:text-base leading-relaxed text-dharma-text">
@@ -358,11 +369,11 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                     onClick={() => toggleExpanded(m.slug)}
                     className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-saffron-500/35 bg-saffron-500/10 px-4 py-2 text-xs font-bold text-saffron-800 dark:text-saffron-300 transition hover:bg-saffron-500/15"
                   >
-                    <span lang="hi" className="font-devanagari">
+                    <span lang="hi" data-bi="hi" className="font-devanagari">
                       {isExpanded ? 'व्याख्या छिपाएँ' : 'पदच्छेद व विस्तृत व्याख्या देखें'}
                     </span>
-                    <span aria-hidden="true">·</span>
-                    <span lang="en">{isExpanded ? 'Hide Explanation' : 'Detailed Explanation'}</span>
+                    <span data-bi="sep" aria-hidden="true">·</span>
+                    <span lang="en" data-bi="en">{isExpanded ? 'Hide Explanation' : 'Detailed Explanation'}</span>
                     {isExpanded ? (
                       <ChevronUp className="h-4 w-4 shrink-0" aria-hidden="true" />
                     ) : (
@@ -397,7 +408,7 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                         <div className="grid gap-1.5 sm:hidden">
                           {m.wordMeanings.map((w, idx) => (
                             <details key={idx} className="group rounded-xl border border-dharma-border/80 bg-dharma-bg/60 px-3 py-2">
-                              <summary className="focus-ring flex cursor-pointer list-none items-center gap-2 rounded-md [&::-webkit-details-marker]:hidden">
+                              <summary className="focus-ring flex min-h-[44px] cursor-pointer list-none items-center gap-2 rounded-md [&::-webkit-details-marker]:hidden">
                                 <span lang="sa" className="min-w-0 flex-[0_1_42%] font-devanagari text-sm font-semibold leading-snug text-saffron-900 dark:text-saffron-200">
                                   {w.sanskrit}
                                 </span>
@@ -419,9 +430,14 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                           <table className="w-full text-left text-sm">
                             <thead className="border-b border-dharma-border bg-dharma-bg/80 text-xs font-bold uppercase tracking-wider text-dharma-muted">
                               <tr>
-                                <th scope="col" className="p-3.5 sm:px-4">पद (Sanskrit)</th>
+                                <th scope="col" className="p-3.5 sm:px-4">
+                                  <span lang="sa" data-bi="hi" className="font-devanagari">पद</span>
+                                  <span data-bi="sep" aria-hidden="true"> (</span>
+                                  <span data-bi="en">Sanskrit</span>
+                                  <span data-bi="sep" aria-hidden="true">)</span>
+                                </th>
                                 <th scope="col" className="p-3.5 sm:px-4">IAST</th>
-                                <th scope="col" className="p-3.5 sm:px-4">हिन्दी अर्थ</th>
+                                <th scope="col" lang="hi" className="p-3.5 sm:px-4">हिन्दी अर्थ</th>
                                 <th scope="col" className="p-3.5 sm:px-4">English Meaning</th>
                               </tr>
                             </thead>
@@ -524,11 +540,11 @@ export function MantrasFilterClient({ mantras }: { mantras: SacredMantra[] }) {
                         className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-full border border-dharma-border bg-dharma-bg px-4 py-2 text-xs font-semibold text-dharma-muted transition-colors hover:border-saffron-400 hover:text-dharma-text"
                       >
                         <ChevronUp className="h-4 w-4" aria-hidden="true" />
-                        <span lang="hi" className="font-devanagari">
+                        <span lang="hi" data-bi="hi" className="font-devanagari">
                           व्याख्या छिपाएँ
                         </span>
-                        <span aria-hidden="true">·</span>
-                        <span lang="en">Close detailed explanation</span>
+                        <span data-bi="sep" aria-hidden="true">·</span>
+                        <span lang="en" data-bi="en">Close detailed explanation</span>
                       </button>
                     </div>
                   </div>

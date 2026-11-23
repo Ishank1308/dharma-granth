@@ -6,6 +6,7 @@ import { PageHeader } from '@/app/components/apple/PageHeader';
 import { PageCover } from '@/app/components/PagePhoto';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { PracticeOpening } from './PracticeOpening';
+import { PracticeSubNav } from '@/app/components/practice/PracticeSubNav';
 import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
 
 const TodayVerseCard = dynamic(() => retryImport(() => import('@/app/components/home/TodayVerseCard').then((m) => m.TodayVerseCard)));
@@ -76,14 +77,15 @@ export function PracticeDashboard() {
         titleHi="शान्त मन, पवित्र अभ्यास"
         lead={
           <p>
-            <span>108-bead japa counter, quiet meditation, sacred pranayama, and scripture reflection.</span>{' '}
-            <span lang="hi" className="font-devanagari">108 मनका जप, शान्त ध्यान, प्राणायाम व दैनिक चिन्तन।</span>
+            <span data-bi="en">108-bead japa counter, quiet meditation, sacred pranayama, and scripture reflection.</span>{' '}
+            <span lang="hi" data-bi="hi" className="font-devanagari">108 मनका जप, शान्त ध्यान, प्राणायाम व दैनिक चिन्तन।</span>
           </p>
         }
       >
       </PageHeader>
 
       <div className="mx-auto max-w-content space-y-10 px-gutter pt-8">
+        <PracticeSubNav />
         <ObservanceNotice className="-mb-4" />
         {/* Today's sadhana, large, beside the reader's own spaces: Gita Sankalpa, Saved verses, Journal */}
         <nav aria-label="Today and your practice spaces">
@@ -98,14 +100,14 @@ export function PracticeDashboard() {
                 <span lang="hi" data-bi="hi" data-bi-lead className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">दैनिक साधन</span>
               </h2>
               <p className="mt-1 text-subhead text-dharma-muted">
-                <span>Choose which practices to keep active.</span>{' '}
-                <span lang="hi" className="font-devanagari">आवश्यकतानुसार साधन सक्रिय करें।</span>
+                <span data-bi="en">Choose which practices to keep active.</span>{' '}
+                <span lang="hi" data-bi="hi" className="font-devanagari">आवश्यकतानुसार साधन सक्रिय करें।</span>
               </p>
               <div className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                 {TOOL_GROUPS.map((group) => (
                   <fieldset key={group.id} className="min-w-0">
                     <legend className="mb-2 text-footnote text-dharma-muted">
-                      <span>{group.title}</span> <span lang="hi" className="font-devanagari">· {group.titleHi}</span>
+                      <span data-bi="en">{group.title}</span> <span data-bi="sep" aria-hidden="true">· </span><span lang="hi" data-bi="hi" className="font-devanagari">{group.titleHi}</span>
                     </legend>
                     <div className="flex flex-wrap gap-2">
                       {group.toolIds.map((toolId) => {
@@ -124,8 +126,8 @@ export function PracticeDashboard() {
                             }`}
                           >
                             <span>
-                              <span>{tool.sub}</span>{' '}
-                              <span lang="hi" className="font-devanagari">{tool.label}</span>
+                              <span data-bi="en">{tool.sub}</span>{' '}
+                              <span lang="hi" data-bi="hi" className="font-devanagari">{tool.label}</span>
                             </span>
                           </button>
                         );

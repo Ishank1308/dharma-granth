@@ -314,6 +314,7 @@ export function VerseGraphNetwork({ scriptureId, chapterId, verseId, currentVers
                   <g
                     key={`node-${node.id}`}
                     onClick={() => setSelectedNodeId(node.id)}
+                    style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
                     className="cursor-pointer transition-transform duration-200 hover:scale-105"
                     tabIndex={0}
                     role="button"
@@ -335,6 +336,7 @@ export function VerseGraphNetwork({ scriptureId, chapterId, verseId, currentVers
                         stroke={meta.color}
                         strokeWidth="2.5"
                         strokeDasharray="3,3"
+                        style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
                         className="animate-spin-slow"
                       />
                     )}

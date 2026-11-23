@@ -16,6 +16,7 @@ import {
   type LibraryItem,
   type ViewMode,
 } from '@/lib/library';
+import { getCoverEnglishTitle } from '@/lib/gita-press-titles';
 
 const NOT_RECORDED = 'Not yet recorded';
 
@@ -87,30 +88,6 @@ function Detail({ label, children }: { label: string; children: ReactNode }) {
 
 const missing = <span className="text-dharma-muted">{NOT_RECORDED}</span>;
 
-// English cover names follow the local Gita Press editions when that title is
-// present in the source collection; all other scriptures use the catalogue name.
-const GITA_PRESS_COVER_TITLES: Readonly<Record<string, string>> = {
-  ashtavakra: 'Ashtavakra Gita',
-  bhagavadgita: 'Shrimad Bhagavad Gita',
-  ishavasya: 'Ishavashya Upanishad',
-  kena: 'Keno Upanishad',
-  mundaka: 'Mundako Upanishad',
-  chandogya: 'Chandogyo Upanishad',
-  brihadaranyaka: 'Brihadaranyak Upanishad',
-  shvetashvatara: 'Shwetashwatara Upanishad',
-  taittiriya: 'Taitiriya Upanishad',
-  prashna: 'Prashnopanishad',
-  mahabharata: 'Mahabharat',
-  garudpurana: 'Garuda Puran',
-  harivanshpuran: 'Harivansh Puran',
-  naradapuran: 'Narad Puran',
-  padmapuran: 'Padma Puran',
-  brahmasutra: 'Vedant Darshan (Brahma Sutra)',
-  vivekchudamani: 'Vivek Chudamani',
-  viduraniti: 'Vidura Niti',
-  vinayapatrika: 'Vinaya Patrika',
-};
-
 // Spine colour per tradition, shared with the home page's book tiles (lifted on dark themes by .home-book).
 const CATEGORY_COLOURS: Readonly<Record<string, string>> = {
   veda: '#2f6f5e',
@@ -152,7 +129,7 @@ export function LibraryCard({
   if (item.facts.hindiCommentary) commentary.push('Hindi verse-by-verse commentary');
   if (item.explanation) commentary.push('Book overview (English & Hindi)');
   const readingHref = item.id === 'ashtavakra' ? '/ashtavakra/' : `/scripture/${item.id}/`;
-  const englishTitle = GITA_PRESS_COVER_TITLES[item.id] ?? item.title;
+  const englishTitle = getCoverEnglishTitle(item.id, item.title);
   // A partial text says how much of the traditional whole the library holds.
   const ofAbout = item.canonicalTotalVerses != null && item.canonicalTotalVerses > item.totalVerses
     ? ` of about ${formatNumber(item.canonicalTotalVerses)}`

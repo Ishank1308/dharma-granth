@@ -54,6 +54,13 @@ export function SadhanaPortability() {
   // Restore from Sync String
   async function handleRestoreFromSyncCode() {
     if (!inputSyncCode.trim()) return;
+    if (
+      !window.confirm(
+        'यह इस ब्राउज़र की जप, ध्यान, चिंतन, संकल्प, स्वाध्याय डायरी व अध्ययन प्रगति को सिंक कोड के डेटा से बदलेगा। अनुपयुक्त कोड कुछ नहीं लिखेगा। जारी रखें?'
+      )
+    ) {
+      return;
+    }
     setRestoringCode(true);
     try {
       const res = await restoreSadhanaFromSyncString(inputSyncCode);

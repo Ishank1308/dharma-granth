@@ -21,6 +21,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { readHref } from '@/lib/verse-paths';
 import { migrateLegacyBookmarks } from '@/lib/reader-actions';
+import { PracticeSubNav } from '@/app/components/practice/PracticeSubNav';
 import { SavedScriptures } from '@/app/components/SavedScriptures';
 import {
   useStudyProgress,
@@ -193,6 +194,7 @@ export default function BookmarksAndAnnotationsPage() {
 
   return (
     <main className="min-h-screen py-8 sm:py-12 px-4 sm:px-6 max-w-7xl mx-auto">
+      <PracticeSubNav className="mb-6" />
       {/* Sanctuary Header */}
       <header className="relative isolate mb-8 overflow-hidden rounded-[28px] border border-dharma-border bg-dharma-card/90 p-5 shadow-sm sm:p-8">
         <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-24 -z-10 h-64 w-64 rounded-full bg-saffron-500/10 blur-3xl" />
@@ -202,7 +204,7 @@ export default function BookmarksAndAnnotationsPage() {
               <Lock className="h-4 w-4" />
             </span>
             <span className="text-footnote font-semibold uppercase tracking-wider text-tint">
-              Personal Sanctuary · व्यक्तिगत स्वाध्याय
+              <span data-bi="en">Personal Sanctuary</span><span data-bi="sep"> · </span><span lang="hi" data-bi="hi">व्यक्तिगत स्वाध्याय</span>
             </span>
           </div>
           <h1 className="mt-3 max-w-3xl text-[clamp(1.9rem,calc(1.5rem+2vw),3rem)] leading-[1.13] font-serif font-bold text-label-primary tracking-tight [overflow-wrap:anywhere]">

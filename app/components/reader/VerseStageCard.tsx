@@ -197,16 +197,16 @@ export function VerseStageCard({
         rel={dir}
         onClick={() => triggerTactileFeedback('selection', 'click')}
         aria-label={aria}
-        className={`focus-ring inline-flex min-h-[48px] min-w-0 items-center gap-2.5 rounded-2xl border border-stone-300/70 dark:border-stone-700/80 bg-dharma-card px-4 py-2 text-dharma-text shadow-2xs transition hover:border-amber-600/60 hover:bg-amber-50/40 dark:hover:bg-stone-800/70 active:scale-[0.98] [[data-lite=true]_&]:shadow-none [[data-lite=true]_&]:transition-none ${
+        className={`focus-ring inline-flex min-h-[48px] min-w-0 items-center gap-2.5 rounded-2xl border border-stone-300/70 dark:border-stone-700/80 bg-dharma-card px-4 py-2 text-dharma-text shadow-2xs transition hover:border-amber-600/60 hover:bg-amber-50/40 dark:hover:bg-stone-800/70 active:scale-[0.98] [[data-lite-mode=true]_&]:shadow-none [[data-lite-mode=true]_&]:transition-none ${
           dir === 'next' ? 'flex-row-reverse text-right ml-auto' : ''
         }`}
       >
         <Icon className="h-4 w-4 shrink-0 text-amber-800 dark:text-amber-300" aria-hidden="true" />
         <span className="min-w-0 leading-tight">
           <span className="block text-[11px] font-medium text-dharma-muted">
-            <span lang="hi" className="font-devanagari">{hiLabel}</span>
-            <span aria-hidden="true"> · </span>
-            <span>{enLabel}</span>
+            <span lang="hi" data-bi="hi" className="font-devanagari">{hiLabel}</span>
+            <span data-bi="sep" aria-hidden="true"> · </span>
+            <span data-bi="en">{enLabel}</span>
           </span>
           <span lang="hi" className="block truncate font-devanagari text-sm font-semibold tabular-nums text-dharma-text">
             {refText}
@@ -229,7 +229,7 @@ export function VerseStageCard({
       {pinnedShlokaBar}
 
       {/* Stage Header Card: Tradition badge, Chandas meter, Verse H1, Listen (सुनें), and Focus (स्वाध्याय) */}
-      <header className={`mb-4 ${RAIL_CARD} sm:px-5`}>
+      <header className={`mb-3 sm:mb-4 ${RAIL_CARD} !p-3 sm:!px-5 sm:!py-4`}>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="inline-flex items-center gap-1 rounded-full border border-amber-700/35 bg-amber-100/80 dark:border-amber-500/35 dark:bg-amber-900/40 px-2.5 py-0.5 text-[11px] font-semibold text-amber-950 dark:text-amber-100">
@@ -279,7 +279,7 @@ export function VerseStageCard({
               onClick={onToggleFocus}
               aria-pressed={focusMode}
               aria-label={focusMode ? 'Exit focus mode · स्वाध्याय बंद करें' : 'Focus mode · स्वाध्याय'}
-              className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3 text-xs font-semibold transition ${LITE_COMPAT} ${
+              className={`focus-ring hidden sm:inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3 text-xs font-semibold transition ${LITE_COMPAT} ${
                 focusMode
                   ? 'border-amber-700 bg-amber-800 text-amber-50 dark:border-amber-300 dark:bg-amber-300 dark:text-stone-950'
                   : 'border-stone-300/75 dark:border-stone-700 bg-stone-100/80 dark:bg-stone-800/70 text-dharma-text hover:border-amber-600/50'

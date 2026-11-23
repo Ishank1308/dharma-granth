@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   X,
   Share2,
@@ -294,9 +295,9 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
     },
   }[template];
 
-  return (
+  const modal = (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5 overflow-y-auto">
+      <div className="fixed inset-0 z-[70] flex items-center justify-center p-2 sm:p-5 overflow-y-auto">
         <div
           aria-hidden="true"
           className="fixed inset-0 bg-stone-950/80 backdrop-blur-md"
@@ -653,4 +654,6 @@ export function PatrikaShareStudioModal({ isOpen, onClose, data }: Props) {
       </div>
     </AnimatePresence>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modal, document.body) : null;
 }

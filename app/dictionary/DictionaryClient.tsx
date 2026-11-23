@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, X, BookOpen, Sparkles, Filter } from 'lucide-react';
-import { dictionary, termCategories, type DictionaryTerm, type TermCategory } from '@/data/dictionary';
+import { Search, X, BookOpen, Sparkles } from 'lucide-react';
+import { dictionary, termCategories, type TermCategory } from '@/data/dictionary';
 import { plural, verseCount } from '@/lib/format';
 
 export function DictionaryClient() {
@@ -43,30 +43,35 @@ export function DictionaryClient() {
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 mb-3">
           {/* Search Input */}
           <div className="relative flex-1 max-w-lg">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-dharma-muted" />
+            <Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-dharma-muted" aria-hidden="true" />
             <input
               type="text"
               aria-label="Search dictionary terms"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search concepts e.g. Dharma, Atman, Moksha, कर्म..."
-              className="w-full min-h-[44px] rounded-xl border border-dharma-border/80 bg-dharma-bg pl-10 pr-10 py-2 text-sm text-dharma-text placeholder:text-dharma-muted/70 outline-none focus:border-saffron-400 focus:ring-2 focus:ring-saffron-400/20 transition shadow-inner"
+              className="focus-ring w-full min-h-[44px] rounded-xl border border-dharma-border/80 bg-dharma-bg pl-10 pr-10 py-2 text-sm text-dharma-text placeholder:text-dharma-muted/70 focus:border-saffron-400 focus:ring-2 focus:ring-saffron-400/20 transition shadow-inner"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-1 top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center text-dharma-muted hover:text-dharma-text"
+                className="focus-ring rounded-full absolute right-1 top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center text-dharma-muted hover:text-dharma-text"
                 aria-label="Clear search"
               >
-                <X className="h-4 w-4" />
+                <X className="h-4 w-4" aria-hidden="true" />
               </button>
             )}
           </div>
 
           {/* Matches Counter */}
-          <div className="flex items-center gap-2 text-xs font-medium text-dharma-muted shrink-0">
-            <Sparkles className="w-3.5 h-3.5 text-saffron-600" />
+          <div
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            className="flex items-center gap-2 text-xs font-medium text-dharma-muted shrink-0"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-saffron-600" aria-hidden="true" />
             <span>
               Showing <span className="font-bold text-dharma-text">{filteredTerms.length}</span> of {dictionary.length} terms
             </span>
@@ -74,13 +79,18 @@ export function DictionaryClient() {
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <div
+          role="group"
+          aria-label="Filter dictionary terms by category"
+          className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none"
+        >
           <button
             type="button"
+            aria-pressed={selectedCategory === 'all'}
             onClick={() => setSelectedCategory('all')}
-            className={`shrink-0 min-h-[44px] rounded-full px-3 py-1 text-xs font-semibold transition ${
+            className={`focus-ring shrink-0 min-h-[44px] rounded-full px-3 py-1 text-xs font-semibold transition ${
               selectedCategory === 'all'
-                ? 'bg-saffron-600 text-white shadow-sm'
+                ? 'bg-saffron-700 text-white shadow-sm hover:bg-saffron-800'
                 : 'border border-dharma-border bg-dharma-bg text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
             }`}
           >
@@ -93,18 +103,23 @@ export function DictionaryClient() {
               <button
                 key={cat.key}
                 type="button"
+                aria-pressed={isSelected}
                 onClick={() => setSelectedCategory(cat.key)}
-                className={`shrink-0 inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition ${
+                className={`focus-ring shrink-0 inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition ${
                   isSelected
-                    ? 'bg-saffron-600 text-white shadow-sm'
+                    ? 'bg-saffron-700 text-white shadow-sm hover:bg-saffron-800'
                     : 'border border-dharma-border bg-dharma-bg text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'
                 }`}
               >
-                <span>{cat.label}</span>
-                <span lang="sa" className="font-devanagari text-[11px]">
-                  ({cat.sanskrit})
+                <span>
+                  <span data-bi="en">{cat.label}</span>
+                  <span data-bi="sep" aria-hidden="true"> (</span>
+                  <span lang="sa" data-bi="hi" data-bi-lead className="font-devanagari text-[11px]">
+                    {cat.sanskrit}
+                  </span>
+                  <span data-bi="sep" aria-hidden="true">)</span>
                 </span>
-                <span className="text-[10px] opacity-75">{count}</span>
+                <span className="text-[11px] opacity-90">{count}</span>
               </button>
             );
           })}
@@ -114,7 +129,7 @@ export function DictionaryClient() {
       {/* Results Grid */}
       {filteredTerms.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-dharma-border bg-dharma-card p-12 text-center max-w-lg mx-auto">
-          <BookOpen className="w-10 h-10 text-saffron-500 mx-auto mb-3 opacity-60" />
+          <BookOpen className="w-10 h-10 text-saffron-500 mx-auto mb-3 opacity-60" aria-hidden="true" />
           <h3 className="text-base font-serif font-bold text-dharma-text mb-1">
             No terms match &ldquo;{searchQuery}&rdquo; yet
           </h3>
@@ -127,7 +142,7 @@ export function DictionaryClient() {
               setSearchQuery('');
               setSelectedCategory('all');
             }}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-saffron-600 text-white text-xs font-semibold hover:bg-saffron-700 shadow-sm transition"
+            className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 px-4 py-2 rounded-xl bg-saffron-700 text-white text-xs font-semibold hover:bg-saffron-800 shadow-sm transition"
           >
             Reset Filters
           </button>
@@ -148,8 +163,8 @@ export function DictionaryClient() {
                   transition={{ duration: 0.15 }}
                 >
                   <Link
-                    href={`/dictionary/${term.id}`}
-                    className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-6 hover:shadow-xl hover:border-saffron-300 transition-all duration-300"
+                    href={`/dictionary/${term.id}/`}
+                    className="focus-ring group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-dharma-border bg-dharma-card p-4 sm:p-6 hover:shadow-xl hover:border-saffron-300 transition-all duration-300"
                   >
                     <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${catMeta?.gradient || 'from-saffron-500 to-amber-600'}`} />
 
@@ -159,7 +174,7 @@ export function DictionaryClient() {
                           <h3 className="break-words text-lg sm:text-xl font-serif font-bold text-dharma-text group-hover:text-saffron-700 transition">
                             {term.term}
                           </h3>
-                          <p lang="sa" className="font-devanagari text-base text-saffron-600 font-medium">
+                          <p lang="sa" className="font-devanagari text-base text-saffron-700 dark:text-saffron-300 font-medium">
                             {term.sanskrit}
                           </p>
                         </div>
@@ -178,7 +193,7 @@ export function DictionaryClient() {
                         {term.crossTradition.length} {plural(term.crossTradition.length, 'tradition')} · {verseCount(term.verses.length)}
                       </span>
                       <span className="font-semibold text-saffron-700 group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                        Explore →
+                        Explore <span aria-hidden="true">→</span>
                       </span>
                     </div>
                   </Link>

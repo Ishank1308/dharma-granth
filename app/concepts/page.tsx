@@ -102,7 +102,7 @@ export default function ConceptsPage() {
               <li key={concept.id}>
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-card px-3 text-sm text-dharma-text hover:border-saffron-400"
+                  className="focus-ring inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-card px-3 text-sm text-dharma-text hover:border-saffron-400"
                 >
                   <span lang="sa" className="font-devanagari">{concept.sanskrit}</span>
                   <span className="ml-2 text-dharma-muted">{concept.label}</span>
@@ -115,7 +115,7 @@ export default function ConceptsPage() {
 
       {/* ── Graph ────────────────────────────────────────────────── */}
       <section id="concepts-graph" data-anchor className="max-w-6xl mx-auto px-6 pt-6 relative z-10 pb-12">
-        <div className="bg-dharma-card/50 backdrop-blur-sm rounded-3xl shadow-2xl border border-dharma-border p-4 sm:p-6 md:p-8">
+        <div className="rounded-card border border-dharma-border bg-dharma-card shadow-raised p-4 sm:p-6 md:p-8">
           <ConceptGraph articleIds={articleIds} />
         </div>
       </section>
@@ -126,7 +126,7 @@ export default function ConceptsPage() {
           <div className="space-y-2 max-w-2xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-bold text-xs border border-saffron-500/20">
               <Sparkles className="w-3.5 h-3.5" />
-              <span lang="hi" className="font-devanagari">दृश्य अन्वेषक</span> <span aria-hidden="true">·</span> <span>Visual explorer</span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">दृश्य अन्वेषक</span> <span data-bi="sep" aria-hidden="true">·</span> <span data-bi="en">Visual explorer</span>
             </span>
             <h2 id="concepts-visual" className="font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
               दृश्य ज्ञान दर्शन — 10 मूल तत्त्वों के पवित्र आरेख
@@ -138,10 +138,15 @@ export default function ConceptsPage() {
           </div>
           <Link
             href="/concepts/visuals/"
-            className="apple-pill shrink-0"
+            className="apple-pill focus-ring shrink-0"
           >
             <Compass className="w-4 h-4" />
-            <span>दृश्य अन्वेषक खोलें (Open Visual Explorer)</span>
+            <span>
+              <span lang="hi" data-bi="hi">दृश्य अन्वेषक खोलें</span>
+              <span data-bi="sep"> (</span>
+              <span data-bi="en">Open Visual Explorer</span>
+              <span data-bi="sep">)</span>
+            </span>
           </Link>
         </div>
       </section>
@@ -150,7 +155,7 @@ export default function ConceptsPage() {
       <section className="max-w-6xl mx-auto px-6 pb-24 border-t border-dharma-border pt-16">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <p className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-400 mb-2">
-            शास्त्रीय तत्त्वकोश · Philosophical Encyclopedia
+            <span lang="hi" data-bi="hi">शास्त्रीय तत्त्वकोश</span><span data-bi="sep"> · </span><span data-bi="en">Philosophical Encyclopedia</span>
           </p>
           <h2 id="concepts-directory" className="text-3xl sm:text-4xl font-serif font-bold text-dharma-text mb-4">
             अवधारणा सूची
@@ -194,7 +199,7 @@ export default function ConceptsPage() {
                   <Link
                     href={`/concepts/${c.id}/`}
                     data-vt="open"
-                    className="inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-saffron-800 dark:text-saffron-300 underline-offset-2 hover:underline"
+                    className="focus-ring rounded inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-saffron-800 dark:text-saffron-300 underline-offset-2 hover:underline"
                   >
                     <span>गहन विश्लेषण</span>
                     <span aria-hidden="true">→</span>
@@ -217,11 +222,11 @@ export default function ConceptsPage() {
             वेदान्त का लेख इस सूची में है। ये चार पृष्ठ भी उसी पढ़ने से जुड़े हैं।
           </p>
           <ul className="mt-3 flex flex-wrap gap-3 text-sm">
-            <li><Link href="/concepts/vedanta/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">वेदान्त</Link></li>
-            <li><Link href="/concepts/brahman/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">ब्रह्म</Link></li>
-            <li><Link href="/concepts/atman/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">आत्मा</Link></li>
-            <li><Link href="/concepts/maya/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">माया</Link></li>
-            <li><Link href="/concepts/moksha/" className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">मोक्ष</Link></li>
+            <li><Link href="/concepts/vedanta/" className="focus-ring rounded inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">वेदान्त</Link></li>
+            <li><Link href="/concepts/brahman/" className="focus-ring rounded inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">ब्रह्म</Link></li>
+            <li><Link href="/concepts/atman/" className="focus-ring rounded inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">आत्मा</Link></li>
+            <li><Link href="/concepts/maya/" className="focus-ring rounded inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">माया</Link></li>
+            <li><Link href="/concepts/moksha/" className="focus-ring rounded inline-flex min-h-[44px] min-w-[44px] items-center justify-center font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">मोक्ष</Link></li>
           </ul>
         </div>
       </section>

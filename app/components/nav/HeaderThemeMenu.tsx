@@ -83,7 +83,7 @@ export function HeaderThemeMenu({
           tabIndex={-1}
           aria-label="Theme · थीम"
           onBlur={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+            if (!themeMenuRef.current?.contains(event.relatedTarget as Node | null)) {
               setThemeMenuOpen(false);
             }
           }}

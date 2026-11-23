@@ -96,7 +96,7 @@ export function parseVerseShortcut(rawQuery: string): DirectVerseShortcut | null
     }
 
     const href = scriptureId === 'ashtavakra'
-      ? `/ashtavakra/${chapter}#verse-${verse}`
+      ? `/ashtavakra/${chapter}/#verse-${verse}`
       : `/scripture/bhagavadgita/chapter/${chapter}/verse/${verse}/`;
 
     return {
@@ -281,7 +281,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     subtitle: 'Timed Silent Meditation with Diya & Wake-Lock',
     icon: '🧘',
     run: (onClose, router) => {
-      router.push('/practice#meditation');
+      router.push('/practice/#meditation');
       triggerPranaToast({ message: 'ध्यान साधना प्रारंभ · 10-Minute Meditation Timer', icon: '🧘' });
       onClose();
     },
@@ -553,24 +553,19 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     return () => animation.cancel();
   }, [isOpen, reduce, anchor]);
 
-  // Capture the opener before moving focus into the dialog.
+  // Capture the opener before moving focus into the dialog and return focus cleanly on dismiss.
   useEffect(() => {
     if (!isOpen) return;
-    const opener = anchor ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    const active = document.activeElement instanceof HTMLElement && document.activeElement !== document.body
+      ? document.activeElement
+      : null;
+    const opener = anchor ?? active;
     return () => {
-      if (opener && opener !== document.body && opener.isConnected) opener.focus({ preventScroll: true });
+      if (opener && opener !== document.body && opener.isConnected) {
+        requestAnimationFrame(() => opener.focus({ preventScroll: true }));
+      }
     };
   }, [isOpen, anchor]);
-
-  // Focus goes back to whatever opened the search (the header button, a hero field)
-  // when it closes, so keyboard and screen reader users keep their place.
-  useEffect(() => {
-    if (!isOpen) return;
-    const opener = document.activeElement instanceof HTMLElement && document.activeElement !== document.body ? document.activeElement : null;
-    return () => {
-      if (opener && opener.isConnected) requestAnimationFrame(() => opener.focus({ preventScroll: true }));
-    };
-  }, [isOpen]);
 
   // Reset and focus on open.
   useEffect(() => {
@@ -645,6 +640,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
   useLayoutEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
+      if (e.isComposing || e.keyCode === 229) return;
       // Escape must close the dialog even before its animated panel ref is ready.
       if (e.key === 'Escape') {
         e.preventDefault();
@@ -655,7 +651,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
       const win = windowRef.current;
       if (!win) return;
       const focusable = Array.from(
-        win.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+        win.querySelectorAll<HTMLElement>(
+          'a[href]:not([tabindex="-1"]), button:not([disabled]):not([tabindex="-1"]), input:not([disabled]):not([tabindex="-1"]), [tabindex]:not([tabindex="-1"])',
+        ),
       ).filter((el) => el.offsetParent !== null);
       if (focusable.length === 0) return;
       const first = focusable[0];

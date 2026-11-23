@@ -8,6 +8,9 @@
  * Preserves zero-account identity and zero-server privacy.
  */
 
+import { CREDENTIAL_KEYS } from '@/lib/backup';
+import { exportFullStudyBackup, restoreFullStudyBackup } from '@/lib/study/storage';
+import type { DharmaStudyBackupV2 } from '@/lib/study/types';
 import { getAllMananaItems, saveMananaItem, type StoredMananaItem } from './granth-indexeddb';
 
 export interface SadhanaSyncPayload {
@@ -16,6 +19,7 @@ export interface SadhanaSyncPayload {
   source: 'dharmagranth.dev' | 'dharmagranth.in';
   localStorageState: Record<string, string>;
   mananaState: StoredMananaItem[];
+  studyBackupV2?: DharmaStudyBackupV2;
 }
 
 const SYNC_PREFIX = 'DG-SYNC-v1-';
@@ -128,10 +132,14 @@ export async function collectSadhanaPayload(): Promise<SadhanaSyncPayload> {
   const localStorageState: Record<string, string> = {};
 
   if (typeof window !== 'undefined' && window.localStorage) {
-    // Collect known keys plus any custom dharma_ keys
+    // Collect known keys plus any dharma*/dharmagranth* keys, excluding credentials.
     for (let i = 0; i < window.localStorage.length; i++) {
       const key = window.localStorage.key(i);
-      if (key && (key.startsWith('dharma') || DHARMA_LOCALSTORAGE_KEYS.includes(key))) {
+      if (
+        key &&
+        !CREDENTIAL_KEYS.includes(key) &&
+        (key.startsWith('dharma') || DHARMA_LOCALSTORAGE_KEYS.includes(key))
+      ) {
         const val = window.localStorage.getItem(key);
         if (val !== null) {
           localStorageState[key] = val;
@@ -147,13 +155,65 @@ export async function collectSadhanaPayload(): Promise<SadhanaSyncPayload> {
     mananaState = [];
   }
 
+  let studyBackupV2: DharmaStudyBackupV2 | undefined;
+  try {
+    studyBackupV2 = await exportFullStudyBackup();
+  } catch {
+    studyBackupV2 = undefined;
+  }
+
   return {
     version: 1,
     exportedAt: new Date().toISOString(),
     source: 'dharmagranth.dev',
     localStorageState,
     mananaState,
+    studyBackupV2,
   };
+}
+
+async function applyRestoredPayload(payload: SadhanaSyncPayload): Promise<number> {
+  if (payload.version !== 1 || !payload.localStorageState || typeof payload.localStorageState !== 'object') {
+    throw new Error('Incompatible backup payload version');
+  }
+
+  let restoredCount = 0;
+
+  if (typeof window !== 'undefined' && window.localStorage) {
+    for (const [key, value] of Object.entries(payload.localStorageState)) {
+      if (CREDENTIAL_KEYS.includes(key)) continue;
+      if (typeof value !== 'string') continue;
+      if (!key.startsWith('dharma') && !DHARMA_LOCALSTORAGE_KEYS.includes(key)) continue;
+      window.localStorage.setItem(key, value);
+      restoredCount++;
+    }
+  }
+
+  if (Array.isArray(payload.mananaState)) {
+    for (const item of payload.mananaState) {
+      await saveMananaItem(item);
+      restoredCount++;
+    }
+  }
+
+  if (payload.studyBackupV2) {
+    await restoreFullStudyBackup(payload.studyBackupV2);
+    const stats = payload.studyBackupV2.stats;
+    if (stats) {
+      restoredCount +=
+        (stats.journalCount || 0) +
+        (stats.annotationCount || 0) +
+        (stats.savedVerseCount || 0) +
+        (stats.collectionCount || 0);
+    }
+  }
+
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event('dharma-bookmark-updated'));
+    window.dispatchEvent(new Event('storage'));
+  }
+
+  return restoredCount;
 }
 
 /**
@@ -184,34 +244,7 @@ export async function restoreSadhanaFromSyncString(
     const bytes = base64UrlToUint8Array(b64Url);
     const jsonStr = await decompressData(bytes);
     const payload = JSON.parse(jsonStr) as SadhanaSyncPayload;
-
-    if (payload.version !== 1 || !payload.localStorageState) {
-      throw new Error('Incompatible backup payload version');
-    }
-
-    let restoredCount = 0;
-
-    // 1. Restore localStorage items
-    if (typeof window !== 'undefined' && window.localStorage) {
-      for (const [key, value] of Object.entries(payload.localStorageState)) {
-        window.localStorage.setItem(key, value);
-        restoredCount++;
-      }
-    }
-
-    // 2. Restore user_manana items into IndexedDB
-    if (Array.isArray(payload.mananaState)) {
-      for (const item of payload.mananaState) {
-        await saveMananaItem(item);
-        restoredCount++;
-      }
-    }
-
-    // Dispatch reload events
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new Event('dharma-bookmark-updated'));
-      window.dispatchEvent(new Event('storage'));
-    }
+    const restoredCount = await applyRestoredPayload(payload);
 
     return {
       success: true,
@@ -262,29 +295,7 @@ export async function importDharmaBackupFile(
     }
 
     const payload = JSON.parse(jsonStr) as SadhanaSyncPayload;
-    if (payload.version !== 1 || !payload.localStorageState) {
-      throw new Error('Invalid .dharma backup file');
-    }
-
-    let restoredCount = 0;
-    if (typeof window !== 'undefined' && window.localStorage) {
-      for (const [key, value] of Object.entries(payload.localStorageState)) {
-        window.localStorage.setItem(key, value);
-        restoredCount++;
-      }
-    }
-
-    if (Array.isArray(payload.mananaState)) {
-      for (const item of payload.mananaState) {
-        await saveMananaItem(item);
-        restoredCount++;
-      }
-    }
-
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new Event('dharma-bookmark-updated'));
-      window.dispatchEvent(new Event('storage'));
-    }
+    const restoredCount = await applyRestoredPayload(payload);
 
     return {
       success: true,

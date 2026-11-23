@@ -49,7 +49,7 @@ export default function FestivalsPage() {
               <Link
                 href={`/festivals/${festival.id}/`}
                 data-vt="open"
-                className="card-sacred group block relative overflow-hidden rounded-2xl border border-dharma-border/80 bg-dharma-card/85 backdrop-blur-xl p-6 text-left shadow-soft hover:shadow-xl hover:border-saffron-400/50 hover:-translate-y-0.5 transition-all h-full"
+                className="focus-ring card-sacred group block relative overflow-hidden rounded-card border border-dharma-border/80 bg-dharma-card/85 p-6 text-left shadow-raised hover:shadow-lifted hover:border-saffron-400/50 hover:-translate-y-0.5 transition-all h-full"
               >
                 <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${festival.gradient}`} />
                 <div className="flex items-start gap-4 mb-3">
