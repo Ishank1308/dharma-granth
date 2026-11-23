@@ -23,11 +23,11 @@ export const STUDY_PLAYLISTS: StudyPlaylist[] = [
     id: 'leadership',
     titleHi: 'नेतृत्व',
     titleEn: 'Leadership',
-    noteHi: 'नेतृत्व का विषय, गीता ३.२१, और धर्म।',
+    noteHi: 'नेतृत्व का विषय, गीता 3.21, और धर्म।',
     noteEn: 'Leadership topic, Gita 3.21, and Dharma.',
     links: [
       { titleHi: 'नेतृत्व और लोकसंग्रह', titleEn: 'Leadership', href: '/wisdom-for-life/leadership' },
-      { titleHi: 'भगवद्गीता ३.२१', titleEn: 'Gita 3.21', href: '/scripture/bhagavadgita/chapter/3/verse/21' },
+      { titleHi: 'भगवद्गीता 3.21', titleEn: 'Gita 3.21', href: '/scripture/bhagavadgita/chapter/3/verse/21' },
       { titleHi: 'धर्म', titleEn: 'Dharma', href: '/concepts/dharma' },
     ],
   },
@@ -58,12 +58,12 @@ export const STUDY_PLAYLISTS: StudyPlaylist[] = [
     id: 'inner-peace',
     titleHi: 'भीतरी शांति',
     titleEn: 'Inner Peace',
-    noteHi: 'तनाव, संतोष, और गीता २.१४।',
+    noteHi: 'तनाव, संतोष, और गीता 2.14।',
     noteEn: 'Stress, contentment, and Gita 2.14.',
     links: [
       { titleHi: 'तनाव और चिंता', titleEn: 'Stress', href: '/wisdom-for-life/stress-and-worry' },
       { titleHi: 'संतोष', titleEn: 'Contentment', href: '/wisdom-for-life/contentment' },
-      { titleHi: 'भगवद्गीता २.१४', titleEn: 'Gita 2.14', href: '/scripture/bhagavadgita/chapter/2/verse/14' },
+      { titleHi: 'भगवद्गीता 2.14', titleEn: 'Gita 2.14', href: '/scripture/bhagavadgita/chapter/2/verse/14' },
     ],
   },
   {

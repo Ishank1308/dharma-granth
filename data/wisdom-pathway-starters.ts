@@ -66,7 +66,7 @@ const fearToCourageStages = buildWisdomStages([
     titleEn: 'Abhaya, the first quality',
     titleHi: 'अभय — प्रथम गुण',
     focusEn: 'Gita 16.1 names fearlessness the first mark of a purified heart. Read the verse slowly, then its Arth.',
-    focusHi: 'गीता १६.१ अभय को शुद्ध अंतःकरण का पहला लक्षण कहती है। श्लोक को धीरे पढ़ें, फिर उसका अर्थ देखें।',
+    focusHi: 'गीता 16.1 अभय को शुद्ध अंतःकरण का पहला लक्षण कहती है। श्लोक को धीरे पढ़ें, फिर उसका अर्थ देखें।',
     lensIndexes: [0],
     conceptSlugs: ['fear', 'wisdom'],
   },

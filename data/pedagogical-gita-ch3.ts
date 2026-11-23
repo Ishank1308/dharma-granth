@@ -150,8 +150,8 @@ export const GITA_3_9_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय ३, श्लोक ९ (Chapter 3, Verse 9)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २७ (Mahābhārata, Bhīṣma Parva 27.9)',
+    reference: 'अध्याय 3, श्लोक 9 (Chapter 3, Verse 9)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 27 (Mahābhārata, Bhīṣma Parva 27.9)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -296,8 +296,8 @@ export const GITA_3_21_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय ३, श्लोक २१ (Chapter 3, Verse 21)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २७ (Mahābhārata, Bhīṣma Parva 27.21)',
+    reference: 'अध्याय 3, श्लोक 21 (Chapter 3, Verse 21)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 27 (Mahābhārata, Bhīṣma Parva 27.21)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -442,8 +442,8 @@ export const GITA_3_30_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय ३, श्लोक ३० (Chapter 3, Verse 30)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २७ (Mahābhārata, Bhīṣma Parva 27.30)',
+    reference: 'अध्याय 3, श्लोक 30 (Chapter 3, Verse 30)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 27 (Mahābhārata, Bhīṣma Parva 27.30)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -588,8 +588,8 @@ export const GITA_3_35_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय ३, श्लोक ३५ (Chapter 3, Verse 35)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २७ (Mahābhārata, Bhīṣma Parva 27.35)',
+    reference: 'अध्याय 3, श्लोक 35 (Chapter 3, Verse 35)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 27 (Mahābhārata, Bhīṣma Parva 27.35)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -693,7 +693,7 @@ export const GITA_3_42_PEDAGOGICAL: PedagogicalVerseData = {
     instructionEn:
       'When an irritating trigger occurs today: 1) Notice the sensation in the body, 2) Notice the emotional thought in the mind, 3) Activate the discerning intellect, 4) Rest as the silent witness that observes all three. Feel the irritation evaporate.',
     instructionHi:
-      'जब कोई क्रोध दिलाने वाली बात हो: १) शरीर में तनाव देखें, २) मन में उठते विचार को देखें, ३) विवेक से निर्णय लें, ४) इन तीनों को देखने वाले शांत साक्षी में टिकें।',
+      'जब कोई क्रोध दिलाने वाली बात हो: 1) शरीर में तनाव देखें, 2) मन में उठते विचार को देखें, 3) विवेक से निर्णय लें, 4) इन तीनों को देखने वाले शांत साक्षी में टिकें।',
     duration: '3 mins',
   },
 
@@ -734,8 +734,8 @@ export const GITA_3_42_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय ३, श्लोक ४२ (Chapter 3, Verse 42)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २७ (Mahābhārata, Bhīṣma Parva 27.42)',
+    reference: 'अध्याय 3, श्लोक 42 (Chapter 3, Verse 42)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 27 (Mahābhārata, Bhīṣma Parva 27.42)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',

@@ -26,17 +26,17 @@ export default function CollectionsPage() {
   // The header is static, so it renders (and is exported) straight away; only
   // the reader's collections below wait for localStorage.
   const header = (
-    <section className="bg-gradient-to-br from-saffron-900 via-saffron-800 to-amber-900 text-white py-14">
+    <section className="border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg py-12 text-dharma-text dark:from-amber-950/20 sm:py-14">
       <div className="max-w-6xl mx-auto px-6">
         <FadeUp>
-          <p className="text-xs font-semibold uppercase tracking-widest text-saffron-200 mb-2">
+          <p className="text-xs font-semibold uppercase tracking-widest text-saffron-700 dark:text-saffron-400 mb-2">
             Personal Study
           </p>
-          <h1 className="font-serif text-[clamp(2rem,calc(1.55rem+2.4vw),3rem)] leading-[1.15] font-bold mb-2">
+          <h1 className="font-serif text-[clamp(2rem,calc(1.55rem+2.4vw),3rem)] leading-[1.15] font-bold mb-2 text-dharma-text">
             Study Collections
           </h1>
-          <p lang="hi" className="font-devanagari text-base sm:text-lg font-semibold text-saffron-100 mb-3">श्लोक संग्रह</p>
-          <p className="text-lg opacity-90 max-w-2xl">
+          <p lang="hi" className="font-devanagari text-base sm:text-lg font-semibold text-dharma-muted mb-3">श्लोक संग्रह</p>
+          <p className="text-lg text-dharma-muted max-w-2xl">
             Organize your saved verses into thematic collections. Track your highlights and personal notes across all scriptures.
           </p>
         </FadeUp>
@@ -54,7 +54,7 @@ export default function CollectionsPage() {
         ये सूचियाँ पहले से बने पृष्ठ खोलती हैं। खाता सर्वर नहीं है। दूसरी ब्राउज़र पर ले जाने के लिए साधना पृष्ठ की बैकअप फ़ाइल उपयोग करें।
       </p>
       <p className="mt-2 text-sm">
-        <Link href="/practice" className="font-semibold text-saffron-800 underline underline-offset-2">साधना · backup file</Link>
+        <Link href="/practice/" className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">साधना · backup file</Link>
       </p>
       <ul className="mt-4 grid gap-4 md:grid-cols-2">
         {STUDY_PLAYLISTS.map((playlist) => (
@@ -67,7 +67,7 @@ export default function CollectionsPage() {
             <ul className="mt-2 space-y-1">
               {playlist.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm font-semibold text-saffron-800 underline underline-offset-2">
+                  <Link href={link.href} className="text-sm font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2">
                     <span lang="hi" className="font-devanagari">{link.titleHi}</span>
                   </Link>
                 </li>
@@ -118,11 +118,11 @@ export default function CollectionsPage() {
   }
 
   const highlightColors: Record<string, string> = {
-    saffron: 'border-saffron-300 bg-saffron-50/50',
-    amber: 'border-amber-300 bg-amber-50/50',
-    rose: 'border-rose-300 bg-rose-50/50',
-    emerald: 'border-emerald-300 bg-emerald-50/50',
-    indigo: 'border-indigo-300 bg-indigo-50/50',
+    saffron: 'border-saffron-300 bg-saffron-50/50 dark:border-saffron-500/35 dark:bg-saffron-950/25',
+    amber: 'border-amber-300 bg-amber-50/50 dark:border-amber-500/35 dark:bg-amber-950/25',
+    rose: 'border-rose-300 bg-rose-50/50 dark:border-rose-500/35 dark:bg-rose-950/25',
+    emerald: 'border-emerald-300 bg-emerald-50/50 dark:border-emerald-500/35 dark:bg-emerald-950/25',
+    indigo: 'border-indigo-300 bg-indigo-50/50 dark:border-indigo-500/35 dark:bg-indigo-950/25',
   };
 
   return (
@@ -137,17 +137,17 @@ export default function CollectionsPage() {
         <FadeUpOnView>
           <div className="grid grid-cols-3 gap-4">
             <div className="rounded-2xl bg-dharma-card border border-dharma-border p-5 text-center shadow-sm">
-              <FolderOpen className="w-6 h-6 text-saffron-600 mx-auto mb-2" />
+              <FolderOpen className="w-6 h-6 text-saffron-600 dark:text-saffron-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-dharma-text">{collections.length}</p>
               <p className="text-xs text-dharma-muted">Collections</p>
             </div>
             <div className="rounded-2xl bg-dharma-card border border-dharma-border p-5 text-center shadow-sm">
-              <Highlighter className="w-6 h-6 text-amber-600 mx-auto mb-2" />
+              <Highlighter className="w-6 h-6 text-amber-600 dark:text-amber-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-dharma-text">{highlights.length}</p>
               <p className="text-xs text-dharma-muted">Highlights</p>
             </div>
             <div className="rounded-2xl bg-dharma-card border border-dharma-border p-5 text-center shadow-sm">
-              <StickyNote className="w-6 h-6 text-indigo-600 mx-auto mb-2" />
+              <StickyNote className="w-6 h-6 text-indigo-600 dark:text-indigo-400 mx-auto mb-2" />
               <p className="text-2xl font-bold text-dharma-text">{notes.length}</p>
               <p className="text-xs text-dharma-muted">Notes</p>
             </div>
@@ -159,7 +159,7 @@ export default function CollectionsPage() {
           <h2 className="text-2xl font-serif font-bold text-dharma-text">Your Collections</h2>
           <button
             onClick={() => setShowCreate(true)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 text-white text-sm font-bold hover:from-saffron-700 hover:to-amber-700 transition shadow-md"
+            className="inline-flex min-h-[44px] items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-saffron-600 to-amber-600 text-white text-sm font-bold hover:from-saffron-700 hover:to-amber-700 transition shadow-md"
           >
             <Plus className="w-4 h-4" />
             New Collection
@@ -170,7 +170,7 @@ export default function CollectionsPage() {
         {collections.length === 0 ? (
           <FadeUpOnView>
             <div className="rounded-2xl border border-dashed border-dharma-border bg-dharma-card p-12 text-center max-w-2xl mx-auto">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-saffron-100 text-saffron-600 mb-4">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-saffron-100 text-saffron-600 dark:bg-saffron-500/15 dark:text-saffron-300 mb-4">
                 <FolderOpen className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-serif font-bold text-dharma-text mb-2">
@@ -182,16 +182,16 @@ export default function CollectionsPage() {
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <button
                   onClick={() => setShowCreate(true)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-saffron-600 text-white text-sm font-semibold hover:bg-saffron-700 transition"
+                  className="inline-flex min-h-[44px] items-center gap-2 px-5 py-2.5 rounded-full bg-saffron-600 text-white text-sm font-semibold hover:bg-saffron-700 transition"
                 >
                   <Plus className="w-4 h-4" />
                   Create your first collection
                 </button>
                 <Link
-                  href="/scripture/bhagavadgita"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-dharma-border bg-dharma-card text-dharma-text text-sm font-semibold hover:bg-dharma-bg transition"
+                  href="/scripture/bhagavadgita/"
+                  className="inline-flex min-h-[44px] items-center gap-2 px-5 py-2.5 rounded-full border border-dharma-border bg-dharma-card text-dharma-text text-sm font-semibold hover:bg-dharma-bg transition"
                 >
-                  <BookOpen className="w-4 h-4 text-saffron-600" />
+                  <BookOpen className="w-4 h-4 text-saffron-600 dark:text-saffron-400" />
                   Explore Bhagavad Gita
                 </Link>
               </div>
@@ -204,16 +204,18 @@ export default function CollectionsPage() {
               return (
                 <StaggerItem key={col.id}>
                   <div className="rounded-2xl border border-dharma-border bg-dharma-card overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button
-                      onClick={() => setExpandedId(isExpanded ? null : col.id)}
-                      className="w-full text-left p-5"
-                    >
-                      <div className="flex items-start justify-between gap-3 mb-2">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-saffron-100 to-amber-100 text-saffron-700 flex items-center justify-center">
+                    <div className="p-5">
+                      <div className="flex items-start justify-between gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setExpandedId(isExpanded ? null : col.id)}
+                          aria-expanded={isExpanded}
+                          className="focus-ring flex min-w-0 flex-1 items-center gap-3 rounded-xl text-left"
+                        >
+                          <div className="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-saffron-100 to-amber-100 text-saffron-700 dark:from-saffron-500/20 dark:to-amber-500/20 dark:text-saffron-300 flex items-center justify-center">
                             <FolderOpen className="w-5 h-5" />
                           </div>
-                          <div>
+                          <div className="min-w-0">
                             <h3 className="text-base font-serif font-bold text-dharma-text">
                               {col.name}
                             </h3>
@@ -221,31 +223,27 @@ export default function CollectionsPage() {
                               {verseCount(col.verseRefs.length)}
                             </p>
                           </div>
-                        </div>
-                        <div className="flex items-center gap-1">
+                        </button>
+                        <div className="flex items-center gap-1 shrink-0">
                           {col.verseRefs.length > 0 && (
                             <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleExportCollection(col);
-                              }}
-                              className="p-2 rounded-lg text-dharma-muted hover:bg-saffron-500/10 hover:text-saffron-700 transition"
+                              type="button"
+                              onClick={() => handleExportCollection(col)}
+                              className="tap-halo inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg text-dharma-muted hover:bg-saffron-500/10 hover:text-saffron-700 dark:hover:text-saffron-300 transition"
                               title="Copy collection notes as Markdown"
                               aria-label="Copy collection notes as Markdown"
                             >
                               {copiedId === col.id ? (
-                                <Check className="w-4 h-4 text-emerald-600" />
+                                <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                               ) : (
                                 <Copy className="w-4 h-4" />
                               )}
                             </button>
                           )}
                           <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              deleteCollection(col.id);
-                            }}
-                            className="p-2 rounded-lg text-dharma-muted hover:bg-rose-500/10 hover:text-rose-600 transition"
+                            type="button"
+                            onClick={() => deleteCollection(col.id)}
+                            className="tap-halo inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-lg text-dharma-muted hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 transition"
                             title="Delete collection"
                             aria-label="Delete collection"
                           >
@@ -254,11 +252,11 @@ export default function CollectionsPage() {
                         </div>
                       </div>
                       {col.description && (
-                        <p className="text-sm text-dharma-muted leading-relaxed">
+                        <p className="mt-2 text-sm text-dharma-muted leading-relaxed">
                           {col.description}
                         </p>
                       )}
-                    </button>
+                    </div>
 
                     <AnimatePresence>
                       {isExpanded && (
@@ -281,7 +279,7 @@ export default function CollectionsPage() {
                                 >
                                   <div className="flex items-start justify-between gap-2 mb-2">
                                     <div>
-                                      <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-700">
+                                      <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
                                         {ref.scriptureTitle}
                                       </span>
                                       <p className="text-xs font-semibold text-dharma-text">
@@ -291,15 +289,16 @@ export default function CollectionsPage() {
                                     <div className="flex items-center gap-2 flex-shrink-0">
                                       <Link
                                         href={readHref(ref.scriptureId, ref.chapterId, ref.verseId)}
-                                        className="inline-flex items-center gap-1 text-xs font-semibold text-saffron-700 hover:text-saffron-800 transition"
+                                        className="inline-flex min-h-[40px] items-center gap-1 text-xs font-semibold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300 dark:hover:text-saffron-200 transition"
                                       >
                                         <BookOpen className="w-3 h-3" />
                                         Open
                                         <ArrowRight className="w-3 h-3" />
                                       </Link>
                                       <button
+                                        type="button"
                                         onClick={() => removeFromCollection(col.id, ref.scriptureId, ref.verseId)}
-                                        className="p-1 rounded-md text-dharma-muted hover:bg-rose-500/10 hover:text-rose-600 transition"
+                                        className="tap-halo inline-flex min-h-[36px] min-w-[36px] items-center justify-center rounded-md text-dharma-muted hover:bg-rose-500/10 hover:text-rose-600 dark:hover:text-rose-400 transition"
                                         title="Remove verse from collection"
                                         aria-label="Remove verse from collection"
                                       >
@@ -344,7 +343,7 @@ export default function CollectionsPage() {
                   </div>
                   <Link
                     href={chapterVerseHref(h.scriptureId, h.chapterId, h.verseId)}
-                    className="text-sm font-semibold text-dharma-text hover:text-saffron-700 transition"
+                    className="text-sm font-semibold text-dharma-text hover:text-saffron-700 dark:hover:text-saffron-300 transition"
                   >
                     View verse →
                   </Link>
@@ -364,10 +363,10 @@ export default function CollectionsPage() {
               {notes.map((n) => (
                 <div
                   key={`${n.scriptureId}-${n.chapterId}-${n.verseId}`}
-                  className="rounded-xl border border-indigo-200 bg-indigo-50/30 p-4"
+                  className="rounded-xl border border-indigo-200 bg-indigo-50/30 dark:border-indigo-500/30 dark:bg-indigo-950/25 p-4"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-700">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">
                       {n.scriptureId} • Ch {n.chapterId} • V {n.verseId}
                     </span>
                     <StickyNote className="w-3.5 h-3.5 text-indigo-400" />

@@ -74,7 +74,7 @@ export default async function TermPage(props: { params: Promise<{ id: string }> 
         <div className="max-w-4xl mx-auto px-6 relative">
           <FadeUp>
             <Link
-              href="/dictionary"
+              href="/dictionary/"
               className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition mb-2"
             >
               <ArrowLeft className="w-4 h-4" />
@@ -145,7 +145,7 @@ export default async function TermPage(props: { params: Promise<{ id: string }> 
                 {term.keyTexts.map((text) => (
                   <span
                     key={text}
-                    className="px-3 py-1.5 bg-saffron-50 text-saffron-800 rounded-full text-sm font-semibold border border-saffron-200"
+                    className="px-3 py-1.5 bg-saffron-50 text-saffron-800 rounded-full text-sm font-semibold border border-saffron-200 dark:bg-saffron-950/40 dark:text-saffron-200 dark:border-saffron-500/30"
                   >
                     {text}
                   </span>
@@ -162,7 +162,7 @@ export default async function TermPage(props: { params: Promise<{ id: string }> 
               <div className={`h-1.5 bg-gradient-to-r ${cat?.gradient}`} />
               <div className="p-6 md:p-8">
                 <h2 className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
-                  <BookOpen className="w-5 h-5 text-saffron-600" />
+                  <BookOpen className="w-5 h-5 text-saffron-600 dark:text-saffron-400" />
                   Related Verses
                 </h2>
                 <div className="space-y-4">
@@ -182,7 +182,7 @@ export default async function TermPage(props: { params: Promise<{ id: string }> 
                       <p className="text-sm text-dharma-text leading-relaxed mb-2">
                         {verse.translation}
                       </p>
-                      <span className="text-[10px] font-bold text-saffron-700 uppercase tracking-wider">
+                      <span className="text-[10px] font-bold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider">
                         {verse.reference}
                       </span>
                     </div>
@@ -200,13 +200,13 @@ export default async function TermPage(props: { params: Promise<{ id: string }> 
               <div className={`h-1.5 bg-gradient-to-r ${cat?.gradient}`} />
               <div className="p-6 md:p-8">
                 <h2 className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
-                  <GitBranch className="w-5 h-5 text-saffron-600" />
+                  <GitBranch className="w-5 h-5 text-saffron-600 dark:text-saffron-400" />
                   Interpretations Across Traditions
                 </h2>
                 <div className="space-y-4">
                   {term.crossTradition.map((interp, i) => (
                     <div key={i} className="rounded-xl border border-dharma-border bg-dharma-bg/40 p-5">
-                      <h3 className="font-serif font-bold text-saffron-700 mb-2">
+                      <h3 className="font-serif font-bold text-saffron-700 dark:text-saffron-300 mb-2">
                         {interp.tradition}
                       </h3>
                       <p className="text-sm text-dharma-text leading-relaxed">
@@ -225,7 +225,7 @@ export default async function TermPage(props: { params: Promise<{ id: string }> 
           <FadeUpOnView>
             <div>
               <h2 className="flex items-center gap-2 text-lg font-serif font-bold text-dharma-text mb-4">
-                <Link2 className="w-4 h-4 text-saffron-600" />
+                <Link2 className="w-4 h-4 text-saffron-600 dark:text-saffron-400" />
                 Related Terms
               </h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -234,15 +234,15 @@ export default async function TermPage(props: { params: Promise<{ id: string }> 
                   return (
                     <Link
                       key={rel.id}
-                      href={`/dictionary/${rel.id}`}
+                      href={`/dictionary/${rel.id}/`}
                       className="group rounded-xl border border-dharma-border bg-dharma-card p-5 hover:shadow-lg hover:border-saffron-300 transition"
                     >
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <h3 className="font-serif font-bold text-dharma-text group-hover:text-saffron-700 transition">
+                          <h3 className="font-serif font-bold text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">
                             {rel.term}
                           </h3>
-                          <p lang="sa" className="font-devanagari text-sm text-saffron-600">
+                          <p lang="sa" className="font-devanagari text-sm text-saffron-600 dark:text-saffron-300">
                             {rel.sanskrit}
                           </p>
                         </div>
@@ -262,15 +262,15 @@ export default async function TermPage(props: { params: Promise<{ id: string }> 
         {/* ── Navigation ─────────────────────────────────────────── */}
         <div className="flex items-center justify-between pt-4">
           <Link
-            href="/dictionary"
-            className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-saffron-700 hover:text-saffron-800 transition"
+            href="/dictionary/"
+            className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300 dark:hover:text-saffron-200 transition"
           >
             <ArrowLeft className="w-4 h-4" />
             All Terms
           </Link>
           <Link
-            href="/concepts"
-            className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-saffron-700 hover:text-saffron-800 transition"
+            href="/concepts/"
+            className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300 dark:hover:text-saffron-200 transition"
           >
             Concept Graph
             <ArrowRight className="w-4 h-4" />

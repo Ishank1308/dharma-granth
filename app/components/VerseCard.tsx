@@ -670,7 +670,7 @@ export function VerseCard({
                         onClick={() => setHoveredWordIndex(isHovered ? null : wIdx)}
                         aria-pressed={isHovered}
                         lang="sa"
-                        className={`cursor-pointer rounded-xl px-3 py-1.5 text-base md:text-lg font-devanagari font-bold transition-all ${
+                        className={`tap-halo cursor-pointer rounded-xl px-3 py-1.5 text-base md:text-lg font-devanagari font-bold transition-all ${
                           isHovered
                             ? 'bg-saffron-600 text-white shadow-md scale-105 ring-2 ring-saffron-400'
                             : 'bg-dharma-card/90 text-dharma-text border border-dharma-border/80 hover:border-saffron-400 hover:bg-saffron-50 dark:hover:bg-saffron-950/40'

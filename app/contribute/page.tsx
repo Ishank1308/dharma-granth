@@ -44,7 +44,7 @@ export default function ContributePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contributeJsonLd) }}
       />
-      <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20 selection:bg-amber-200 selection:text-amber-900">
+      <main className="min-h-screen bg-dharma-bg text-dharma-text pb-20 selection:bg-amber-200 selection:text-amber-900 dark:selection:bg-saffron-700 dark:selection:text-amber-50">
         <ContributeClient />
       </main>
     </>

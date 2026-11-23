@@ -50,7 +50,7 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
     rootMeaningHi: 'करना, यत्न करना, कर्तव्य का संपादन',
     grammarCategory: 'नपुंसकलिङ्ग संज्ञा (कर्मन्) · कर्मणि: सप्तमी विभक्ति, एकवचन',
     contextualMeaning: 'In the sphere of rightful duty, righteous effort, and active agency. In Gita 2.47, it denotes the sphere of action belonging to the seeker—neither fatalistic passivity nor arrogant entitlement.',
-    contextualMeaningHi: 'कर्तव्य और पुरुषार्थ के क्षेत्र में। गीता २.४७ में इसका अर्थ मनुष्य के अधिकार और सामर्थ्य का सक्रिय क्षेत्र है, न कि भाग्यवादी अकर्मण्यता।',
+    contextualMeaningHi: 'कर्तव्य और पुरुषार्थ के क्षेत्र में। गीता 2.47 में इसका अर्थ मनुष्य के अधिकार और सामर्थ्य का सक्रिय क्षेत्र है, न कि भाग्यवादी अकर्मण्यता।',
     simpleEnglish: 'Action, duty, or intentional deed.',
     simpleHindi: 'कर्तव्य, कर्म, सचेत यत्न।',
     commonMisunderstandings: [
@@ -223,7 +223,7 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
     ],
     conceptId: 'yoga',
     reviewStatus: 'approved',
-    classicalAttribution: 'पातञ्जल योगसूत्र व भगवद्गीता २.४८, २.५०'
+    classicalAttribution: 'पातञ्जल योगसूत्र व भगवद्गीता 2.48, 2.50'
   },
 
   atman: {
@@ -310,7 +310,7 @@ export const SANSKRIT_LEXICON: Record<string, SanskritLexiconEntry> = {
     ],
     conceptId: 'psychology',
     reviewStatus: 'approved',
-    classicalAttribution: 'गीता २.५४-७२ शाङ्करभाष्य'
+    classicalAttribution: 'गीता 2.54-72 शाङ्करभाष्य'
   }
 };
 

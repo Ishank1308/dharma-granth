@@ -141,11 +141,11 @@ export function ContributeMeaningModal({
             {/* Header */}
             <div className="flex items-center justify-between border-b border-dharma-border px-5 py-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-saffron-500/10 text-saffron-700">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-saffron-500/10 text-saffron-700 dark:text-saffron-300">
                   <Edit3 className="h-4 w-4" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold uppercase tracking-[0.5px] text-saffron-700">Contribute meaning</div>
+                  <div className="text-sm font-semibold uppercase tracking-[0.5px] text-saffron-700 dark:text-saffron-300">Contribute meaning</div>
                   <div className="font-serif text-lg font-bold text-dharma-text">
                     {scriptureTitle || scriptureId} · {ch}:{v}
                   </div>
@@ -153,7 +153,7 @@ export function ContributeMeaningModal({
               </div>
               <button
                 onClick={onClose}
-                className="rounded-full p-2 text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text"
+                className="tap-halo inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text"
                 aria-label="Close"
               >
                 <X className="h-5 w-5" />
@@ -164,7 +164,7 @@ export function ContributeMeaningModal({
               {/* Verse context */}
               {sanskrit && (
                 <div className="rounded-xl border border-dharma-border bg-dharma-bg p-4">
-                  <div className="text-[10px] uppercase text-saffron-700 mb-1">मूल संस्कृत</div>
+                  <div className="text-[10px] uppercase text-saffron-700 dark:text-saffron-300 mb-1">मूल संस्कृत</div>
                   <p lang="sa" className="font-devanagari text-base leading-relaxed text-dharma-text whitespace-pre-line">{sanskrit}</p>
                 </div>
               )}
@@ -172,7 +172,7 @@ export function ContributeMeaningModal({
               {/* Form */}
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="contribute-explanation" className="block text-xs font-semibold uppercase text-emerald-700 mb-1.5">व्याख्या / Explanation</label>
+                  <label htmlFor="contribute-explanation" className="block text-xs font-semibold uppercase text-emerald-700 dark:text-emerald-300 mb-1.5">व्याख्या / Explanation</label>
                   <textarea
                     id="contribute-explanation"
                     value={form.explanation}
@@ -183,7 +183,7 @@ export function ContributeMeaningModal({
                 </div>
 
                 <div>
-                  <label htmlFor="contribute-science" className="block text-xs font-semibold uppercase text-indigo-700 mb-1.5">आधुनिक दृष्टि / Science or modern parallel (optional)</label>
+                  <label htmlFor="contribute-science" className="block text-xs font-semibold uppercase text-indigo-700 dark:text-indigo-300 mb-1.5">आधुनिक दृष्टि / Science or modern parallel (optional)</label>
                   <textarea
                     id="contribute-science"
                     value={form.science}
@@ -194,7 +194,7 @@ export function ContributeMeaningModal({
                 </div>
 
                 <div>
-                  <label htmlFor="contribute-life-lesson" className="block text-xs font-semibold uppercase text-amber-700 mb-1.5">जीवन शिक्षा / Life lesson (optional)</label>
+                  <label htmlFor="contribute-life-lesson" className="block text-xs font-semibold uppercase text-amber-700 dark:text-amber-300 mb-1.5">जीवन शिक्षा / Life lesson (optional)</label>
                   <textarea
                     id="contribute-life-lesson"
                     value={form.lifeLesson}
@@ -205,7 +205,7 @@ export function ContributeMeaningModal({
                 </div>
 
                 <div>
-                  <label htmlFor="contribute-hindi" className="block text-xs font-semibold uppercase text-rose-700 mb-1.5">हिन्दी अर्थ / Hindi translation or arth (optional)</label>
+                  <label htmlFor="contribute-hindi" className="block text-xs font-semibold uppercase text-rose-700 dark:text-rose-300 mb-1.5">हिन्दी अर्थ / Hindi translation or arth (optional)</label>
                   <textarea
                     id="contribute-hindi"
                     value={form.hindi}
@@ -230,11 +230,11 @@ export function ContributeMeaningModal({
               {/* Live snippet preview */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <div className="text-xs font-semibold uppercase tracking-wider text-saffron-700">Ready-to-paste fragment (for hi-commentary file)</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">Ready-to-paste fragment (for hi-commentary file)</div>
                   {hasAnyInput && (
                     <button
                       onClick={handleCopySnippet}
-                      className="inline-flex items-center gap-1.5 rounded-md border border-dharma-border bg-dharma-bg px-2.5 py-1 text-xs font-medium text-dharma-text hover:bg-white active:bg-saffron-50"
+                      className="tap-halo inline-flex min-h-[36px] items-center gap-1.5 rounded-md border border-dharma-border bg-dharma-bg px-2.5 py-1 text-xs font-medium text-dharma-text hover:bg-dharma-card-soft dark:hover:bg-stone-800"
                     >
                       <Copy className="h-3.5 w-3.5" />
                       {copied === 'snippet' ? 'Copied!' : 'Copy snippet'}
@@ -257,7 +257,7 @@ export function ContributeMeaningModal({
             <div className="flex flex-col gap-2 border-t border-dharma-border bg-dharma-bg px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
               <button
                 onClick={onClose}
-                className="rounded-xl border border-dharma-border px-4 py-2 text-sm font-medium text-dharma-text hover:bg-white"
+                className="min-h-[44px] rounded-xl border border-dharma-border px-4 py-2 text-sm font-medium text-dharma-text hover:bg-dharma-card"
               >
                 Close
               </button>
@@ -266,7 +266,7 @@ export function ContributeMeaningModal({
                 <button
                   onClick={handleCopyFull}
                   disabled={!hasAnyInput}
-                  className="inline-flex items-center gap-2 rounded-xl border border-dharma-border bg-white px-4 py-2 text-sm font-semibold text-dharma-text hover:bg-saffron-50 disabled:opacity-50"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-dharma-border bg-dharma-card px-4 py-2 text-sm font-semibold text-dharma-text hover:bg-saffron-500/10 disabled:opacity-50"
                 >
                   <Copy className="h-4 w-4" />
                   {copied === 'full' ? 'Copied full package!' : 'Copy full package'}

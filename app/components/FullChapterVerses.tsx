@@ -855,7 +855,7 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
   if (state.kind === 'idle') {
     return (
       <div className="rounded-2xl border border-dashed border-saffron-300 bg-saffron-500/10 p-6 text-center">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-saffron-100/80 text-saffron-700 mb-3">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-saffron-100/80 text-saffron-700 dark:bg-saffron-500/15 dark:text-saffron-300 mb-3">
           <BookOpen className="w-6 h-6" />
         </div>
         <h3 className="text-lg font-serif font-bold text-dharma-text mb-1">पूरा अध्याय पढ़ें</h3>
@@ -922,8 +922,8 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     return (
       <div className="rounded-2xl border border-dashed border-dharma-border bg-dharma-card p-6 text-center text-sm text-dharma-muted">
         इस ग्रंथ का पूर्ण-पाठ अभी तैयार नहीं हुआ है। पूर्ण पाठ संग्रहीत करने के लिए{' '}
-        <code className="font-mono text-xs px-1.5 py-0.5 rounded bg-stone-100">npm run seed:all</code> चलाएँ ताकि{' '}
-        <code className="font-mono text-xs px-1.5 py-0.5 rounded bg-stone-100">public/data/scriptures-full/</code> भर जाए।
+        <code className="font-mono text-xs px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-dharma-text">npm run seed:all</code> चलाएँ ताकि{' '}
+        <code className="font-mono text-xs px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-dharma-text">public/data/scriptures-full/</code> भर जाए।
       </div>
     );
   }
@@ -933,9 +933,9 @@ export function FullChapterVerses({ scriptureId, category, chapterId, curatedVer
     return (
       <div
         role="alert"
-        className="rounded-2xl border border-rose-200 bg-rose-50/10 p-6 text-center"
+        className="rounded-2xl border border-rose-200 bg-rose-50/10 dark:border-rose-500/30 dark:bg-rose-950/25 p-6 text-center"
       >
-        <p className="font-semibold text-rose-900">
+        <p className="font-semibold text-rose-900 dark:text-rose-200">
           {offline ? 'आप ऑफ़लाइन हैं — अध्याय लोड नहीं हो सका।' : 'अध्याय लोड नहीं हो सका।'}
         </p>
         <p className="mt-1 text-sm text-dharma-muted">

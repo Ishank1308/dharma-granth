@@ -152,7 +152,7 @@ export function InteractiveVisualLayer({
             type="button"
             onClick={() => handleModeChange('geometry')}
             aria-pressed={mode === 'geometry'}
-            className={`flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-semibold transition-all ${
+            className={`tap-halo flex min-h-[40px] items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-semibold transition-all ${
               mode === 'geometry'
                 ? 'bg-saffron-600 text-white shadow-md'
                 : 'text-dharma-muted hover:text-dharma-text'
@@ -166,7 +166,7 @@ export function InteractiveVisualLayer({
             type="button"
             onClick={() => handleModeChange('flowchart')}
             aria-pressed={mode === 'flowchart'}
-            className={`flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-semibold transition-all ${
+            className={`tap-halo flex min-h-[40px] items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-semibold transition-all ${
               mode === 'flowchart'
                 ? 'bg-saffron-600 text-white shadow-md'
                 : 'text-dharma-muted hover:text-dharma-text'
@@ -180,7 +180,7 @@ export function InteractiveVisualLayer({
             type="button"
             onClick={() => handleModeChange('knowledge')}
             aria-pressed={mode === 'knowledge'}
-            className={`flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-semibold transition-all ${
+            className={`tap-halo flex min-h-[40px] items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-semibold transition-all ${
               mode === 'knowledge'
                 ? 'bg-saffron-600 text-white shadow-md'
                 : 'text-dharma-muted hover:text-dharma-text'
@@ -194,7 +194,7 @@ export function InteractiveVisualLayer({
             type="button"
             onClick={() => handleModeChange('stages')}
             aria-pressed={mode === 'stages'}
-            className={`flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-semibold transition-all ${
+            className={`tap-halo flex min-h-[40px] items-center gap-1.5 rounded-xl px-2.5 py-1.5 font-semibold transition-all ${
               mode === 'stages'
                 ? 'bg-saffron-600 text-white shadow-md'
                 : 'text-dharma-muted hover:text-dharma-text'
@@ -607,7 +607,7 @@ export function InteractiveVisualLayer({
       <div className="border-t border-dharma-border/60 bg-dharma-card/50 px-4 py-2.5 sm:px-6 flex flex-wrap items-center justify-between text-xs text-dharma-muted">
         <span>स्रोत प्रमाण: {data.scriptureSource}</span>
         <Link
-          href={`/concepts/${data.id}`}
+          href={`/concepts/${data.id}/`}
           className="font-semibold text-saffron-700 dark:text-saffron-400 hover:underline inline-flex items-center gap-1"
         >
           <span>विस्तृत शास्त्रीय टीका पढ़ें</span>

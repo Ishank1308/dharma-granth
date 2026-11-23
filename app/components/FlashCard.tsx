@@ -111,7 +111,7 @@ export function FlashCard({ data, onNext, onPrevious, onReset, currentIndex, tot
             <div className="flex items-center gap-1">
               <button
                 onClick={handleReset}
-                className="p-2 rounded-lg hover:bg-saffron-50 transition"
+                className="tap-halo p-2 rounded-lg hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition"
                 title="Reset to first card (R)"
               >
                 <RotateCcw className="w-4 h-4" />
@@ -119,7 +119,7 @@ export function FlashCard({ data, onNext, onPrevious, onReset, currentIndex, tot
               {onShuffle && (
                 <button
                   onClick={onShuffle}
-                  className="p-2 rounded-lg hover:bg-saffron-50 transition"
+                  className="tap-halo p-2 rounded-lg hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition"
                   title="Shuffle cards (S)"
                 >
                   <Shuffle className="w-4 h-4" />

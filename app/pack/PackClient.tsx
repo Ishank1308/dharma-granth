@@ -161,12 +161,12 @@ export function PackClient() {
           <span role="status" className="text-sm text-dharma-muted">{busy ? 'Preparing…' : loaded.length === 0 ? 'Add at least one verse to see a preview.' : `${loaded.length} verse${loaded.length === 1 ? '' : 's'} ready.`}</span>
         </div>
         {error && <p role="alert" className="mt-2 text-sm text-rose-700 dark:text-rose-300">{error}</p>}
-        <p className="mt-2 text-sm text-dharma-muted"><Link href="/practice/desk/" className="underline underline-offset-2">Back to my study desk</Link></p>
+        <p className="mt-2 text-sm text-dharma-muted"><Link href="/practice/desk/" className="text-saffron-800 dark:text-saffron-300 underline underline-offset-2">Back to my study desk</Link></p>
       </div>
 
       {loaded.length > 0 && (
-        <article id="pack-print" aria-label="Study pack preview" className="mt-6 rounded-2xl border border-dharma-border bg-white p-6 text-black">
-          <h2 className="font-serif text-2xl font-bold">{title}</h2>
+        <article id="pack-print" aria-label="Study pack preview" className="mt-6 rounded-2xl border border-dharma-border bg-white p-6 text-black shadow-md dark:border-stone-700">
+          <h2 className="font-serif text-2xl font-bold text-neutral-950">{title}</h2>
           <p className="text-sm text-neutral-600">Prepared from Dharma Granth · {new Date().toLocaleDateString(undefined, { numberingSystem: 'latn' })} · Editorial notes are labelled and are not scripture.</p>
 
           {loaded.map((l) => {
@@ -174,7 +174,7 @@ export function PackClient() {
             const note = notes.find((n) => n.scriptureId === l.item.scriptureId && n.chapterId === l.item.chapter && String(n.verseId) === l.item.verse);
             return (
               <section key={key(l.item)} className="pack-verse mt-6 border-t border-neutral-300 pt-4">
-                <h3 className="font-serif text-lg font-bold">{l.item.label}</h3>
+                <h3 className="font-serif text-lg font-bold text-neutral-950">{l.item.label}</h3>
                 {opts.verse && l.sanskrit && (
                   <p lang="sa" className="mt-2 font-devanagari text-xl leading-[2]">{verseLines(l.sanskrit).map((x, i) => <span key={i} className="block">{x}</span>)}</p>
                 )}

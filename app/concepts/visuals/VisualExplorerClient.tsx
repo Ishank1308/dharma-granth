@@ -34,7 +34,7 @@ export function VisualExplorerClient() {
                 type="button"
                 onClick={() => handleSelectConcept(concept.id)}
                 aria-pressed={isSelected}
-                className={`group flex items-center gap-2.5 rounded-2xl border px-3.5 py-2.5 transition-all snap-center ${
+                className={`group flex min-h-[48px] items-center gap-2.5 rounded-2xl border px-3.5 py-2.5 transition-all snap-center ${
                   isSelected
                     ? 'border-saffron-500 bg-gradient-to-r from-saffron-600 to-amber-700 text-white shadow-lg ring-4 ring-saffron-500/20'
                     : 'border-dharma-border/80 bg-dharma-card hover:border-saffron-400 hover:bg-dharma-bg'
@@ -78,7 +78,7 @@ export function VisualExplorerClient() {
             </p>
           </div>
           <Link
-            href={`/concepts/${selectedConcept.id}`}
+            href={`/concepts/${selectedConcept.id}/`}
             className="focus-ring inline-flex items-center gap-2 rounded-xl bg-saffron-700 px-4 py-2 text-xs font-semibold text-white shadow-md hover:bg-saffron-800 transition-all min-h-[44px]"
           >
             <BookOpen className="h-3.5 w-3.5" />

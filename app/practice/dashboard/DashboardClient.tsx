@@ -15,22 +15,22 @@ const DailyDharmaDashboard = dynamic(
 export function DashboardClient() {
   return (
     <main className="min-h-screen bg-dharma-bg">
-      <section className="bg-gradient-to-br from-saffron-900 via-saffron-800 to-amber-900 py-12 text-white sm:py-14">
+      <section className="border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg py-12 text-dharma-text dark:from-amber-950/20 sm:py-14">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 sm:flex-row sm:items-end sm:justify-between sm:px-6">
           <div className="fade-up-in">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-saffron-200">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-saffron-700 dark:text-saffron-400">
               Private study space · निजी स्वाध्याय
             </p>
-            <h1 className="mb-3 font-serif text-3xl font-bold sm:text-4xl md:text-5xl">
+            <h1 className="mb-3 font-serif text-3xl font-bold text-dharma-text sm:text-4xl md:text-5xl">
               Make room for a little study
             </h1>
-            <p className="max-w-2xl text-base opacity-90 sm:text-lg">
+            <p className="max-w-2xl text-base text-dharma-muted sm:text-lg">
               Read, reflect, or pause. Your personal practice stays in this browser, and you can return whenever it feels useful.
             </p>
           </div>
           <Link
             href="/practice/"
-            className="focus-ring inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-saffron-900 transition hover:bg-saffron-50"
+            className="focus-ring inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-saffron-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-saffron-800"
           >
             <BookOpen className="h-4 w-4" aria-hidden="true" />
             Open practice tools

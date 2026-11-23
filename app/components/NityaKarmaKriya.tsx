@@ -189,7 +189,7 @@ export function NityaKarmaKriya() {
       <div className="rounded-2xl border border-dharma-border bg-dharma-card p-5 shadow-xl md:p-8">
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-saffron-200 bg-saffron-100 px-4 py-2 text-xs font-bold uppercase tracking-widest text-saffron-800">
+            <p className="inline-flex items-center gap-2 rounded-full border border-saffron-200 bg-saffron-100 px-4 py-2 text-xs font-bold uppercase tracking-widest text-saffron-800 dark:border-saffron-500/35 dark:bg-saffron-500/15 dark:text-saffron-200">
               <Sparkles className="h-3.5 w-3.5" />
               नित्य कर्म क्रिया
             </p>
@@ -210,11 +210,11 @@ export function NityaKarmaKriya() {
                     {completedSet.size}/{steps.length} क्रिया
                   </p>
                 </div>
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-saffron-100 text-lg font-bold text-saffron-800 ring-4 ring-saffron-50">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-saffron-100 text-lg font-bold text-saffron-800 ring-4 ring-saffron-50 dark:bg-saffron-500/15 dark:text-saffron-200 dark:ring-saffron-500/10">
                   {progress}%
                 </div>
               </div>
-              <div className="h-3 overflow-hidden rounded-full bg-saffron-100">
+              <div className="h-3 overflow-hidden rounded-full bg-saffron-100 dark:bg-dharma-border">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-saffron-500 to-amber-500 transition-all"
                   style={{ width: `${progress}%` }}
@@ -223,7 +223,7 @@ export function NityaKarmaKriya() {
               <button
                 type="button"
                 onClick={() => setCompletedIds([])}
-                className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dharma-border bg-dharma-card px-3 py-2 text-sm font-semibold text-dharma-muted transition hover:border-saffron-300 hover:text-saffron-700"
+                className="mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-dharma-border bg-dharma-card px-3 py-2 text-sm font-semibold text-dharma-muted transition hover:border-saffron-300 hover:text-saffron-700 dark:hover:text-saffron-300"
               >
                 <RotateCcw className="h-4 w-4" />
                 आज रीसेट करें
@@ -253,9 +253,9 @@ export function NityaKarmaKriya() {
                     key={time}
                     type="button"
                     onClick={() => setActiveTime(time)}
-                    className={`rounded-xl border p-3 text-left transition ${
+                    className={`min-h-[44px] rounded-xl border p-3 text-left transition ${
                       active
-                        ? 'border-saffron-400 bg-saffron-100 text-saffron-900 shadow-sm'
+                        ? 'border-saffron-400 bg-saffron-100 text-saffron-900 shadow-sm dark:border-saffron-500/45 dark:bg-saffron-500/15 dark:text-saffron-200'
                         : 'border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-300'
                     }`}
                   >
@@ -282,7 +282,7 @@ export function NityaKarmaKriya() {
                     key={step.id}
                     className={`rounded-xl border p-4 transition ${
                       done
-                        ? 'border-emerald-300 bg-emerald-50/80'
+                        ? 'border-emerald-300 bg-emerald-50/80 dark:border-emerald-500/40 dark:bg-emerald-950/30'
                         : 'border-dharma-border bg-dharma-bg'
                     }`}
                   >
@@ -291,10 +291,10 @@ export function NityaKarmaKriya() {
                         type="button"
                         onClick={() => toggleStep(step.id)}
                         aria-label={`Mark ${step.title} complete`}
-                        className={`mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition ${
+                        className={`tap-halo mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition ${
                           done
                             ? 'border-emerald-500 bg-emerald-600 text-white'
-                            : 'border-dharma-border bg-dharma-card text-dharma-muted hover:border-saffron-400 hover:text-saffron-700'
+                            : 'border-dharma-border bg-dharma-card text-dharma-muted hover:border-saffron-400 hover:text-saffron-700 dark:hover:text-saffron-300'
                         }`}
                       >
                         <CheckCircle2 className="h-5 w-5" />

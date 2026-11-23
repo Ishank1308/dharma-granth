@@ -33,18 +33,16 @@ export default function TimelinesPage() {
   return (
     <main className="long-read long-read-hi min-h-screen bg-dharma-bg">
       {/* ── Hero ─────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-indigo-900 via-blue-800 to-cyan-900 text-white py-16 overflow-hidden">
-        <div className="absolute inset-0 mandala-bg opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-        <div className="max-w-6xl mx-auto px-6 relative">
+      <section className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg py-12 text-dharma-text dark:from-amber-950/20 sm:py-16">
+        <div className="relative mx-auto max-w-6xl px-6">
           <FadeUp>
-            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-200 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-saffron-500/25 bg-saffron-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-saffron-800 dark:text-saffron-300">
               कालरेखा — शास्त्रीय कालखंड (Scriptural Timelines)
             </p>
-            <h1 className="text-5xl font-serif font-bold mb-4">
-              <span lang="hi" data-bi="hi">कालखंड एवं परंपरा</span><span data-bi="sep"> (</span><span data-bi="en">Timelines & Traditions</span><span data-bi="sep">)</span>
+            <h1 className="mb-4 font-serif text-4xl font-bold text-dharma-text sm:text-5xl">
+              <span lang="hi" data-bi="hi">कालखंड एवं परंपरा</span><span data-bi="sep"> (</span><span data-bi="en">Timelines &amp; Traditions</span><span data-bi="sep">)</span>
             </h1>
-            <p className="text-xl opacity-90 max-w-2xl">
+            <p className="max-w-2xl text-lg text-dharma-muted sm:text-xl">
               कथा-क्रम, पारंपरिक कालगणना, ऐतिहासिक-शैक्षणिक दिनांक, टीका-परंपरा का विकास, प्रमुख आचार्यों और संतों का काल, और पांडुलिपियों का इतिहास — सभी अलग-अलग कालखंडों में। पारंपरिक पवित्र कालगणना और ऐतिहासिक-शैक्षणिक दिनांक अलग-अलग प्रस्तुत किए गए हैं, एकाकृत नहीं।
             </p>
           </FadeUp>
@@ -52,11 +50,11 @@ export default function TimelinesPage() {
       </section>
 
       {/* ── Content ──────────────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 -mt-8 relative z-10 pb-20">
+      <section className="max-w-6xl mx-auto px-6 py-8 pb-20">
         {/* ── Important Notice ────────────────────────────────────── */}
         <FadeUp>
-          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 mb-6">
-            <p className="text-sm text-amber-900 leading-relaxed">
+          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-5 mb-6 dark:border-amber-500/35 dark:bg-amber-950/30">
+            <p className="text-sm text-amber-950 dark:text-amber-200 leading-relaxed">
               <strong>महत्वपूर्ण:</strong> पारंपरिक पवित्र कालगणना (युग प्रणाली और पुराणिक स्रोतों पर आधारित) और ऐतिहासिक-शैक्षणिक दिनांक (पुरातत्व और भाषाविज्ञान पर आधारित) मौलिक रूप से भिन्न दृष्टिकोण हैं। ये यहाँ अलग-अलग कालखंडों में प्रस्तुत हैं और इन्हें एकाकृत या मिश्रित नहीं किया जाना चाहिए।
             </p>
           </div>
@@ -79,7 +77,7 @@ export default function TimelinesPage() {
                     setActiveType('all');
                     setPendingEra(era.id);
                   }}
-                  className="font-semibold text-saffron-600 underline underline-offset-2"
+                  className="font-semibold text-saffron-800 dark:text-saffron-300 underline underline-offset-2"
                 >
                   <span lang="hi" className="font-devanagari">{era.hi}</span>
                   <span className="font-normal text-dharma-text-secondary"> · {era.en}</span>
@@ -95,10 +93,10 @@ export default function TimelinesPage() {
           <div className="flex flex-wrap gap-2 mb-8">
             <button
               onClick={() => setActiveType('all')}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${
+              className={`min-h-[44px] px-4 py-2 rounded-xl text-sm font-semibold transition ${
                 activeType === 'all'
-                  ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-md'
-                  : 'bg-dharma-card text-dharma-text border border-dharma-border hover:border-indigo-300'
+                  ? 'bg-saffron-700 text-white shadow-sm'
+                  : 'bg-dharma-card text-dharma-text border border-dharma-border hover:border-saffron-400'
               }`}
             >
               सभी कालखंड ({timelines.length})
@@ -110,10 +108,10 @@ export default function TimelinesPage() {
                 <button
                   key={type}
                   onClick={() => setActiveType(type)}
-                  className={`px-4 py-2 rounded-xl text-sm font-semibold transition ${
+                  className={`min-h-[44px] px-4 py-2 rounded-xl text-sm font-semibold transition ${
                     activeType === type
-                      ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-md'
-                      : 'bg-dharma-card text-dharma-text border border-dharma-border hover:border-indigo-300'
+                      ? 'bg-saffron-700 text-white shadow-sm'
+                      : 'bg-dharma-card text-dharma-text border border-dharma-border hover:border-saffron-400'
                   }`}
                 >
                   {meta.label.split('(')[0].trim()} ({count})
@@ -130,7 +128,7 @@ export default function TimelinesPage() {
             return (
               <FadeUpOnView key={timeline.id}>
                 <div id={timeline.id} className="scroll-mt-24 rounded-2xl border border-dharma-border bg-dharma-card shadow-xl overflow-hidden">
-                  <div className="h-1.5 bg-gradient-to-r from-indigo-500 to-blue-600" />
+                  <div className="h-1.5 bg-gradient-to-r from-saffron-500 to-amber-600" />
                   <div className="p-6 md:p-8">
                     {/* Timeline header */}
                     <div className="mb-6">
@@ -139,7 +137,7 @@ export default function TimelinesPage() {
                           {timeline.title}
                         </h2>
                         {timeline.sanskrit && (
-                          <span lang="sa" className="font-devanagari text-base text-saffron-600">
+                          <span lang="sa" className="font-devanagari text-base text-saffron-700 dark:text-saffron-300">
                             {timeline.sanskrit}
                           </span>
                         )}
@@ -150,24 +148,24 @@ export default function TimelinesPage() {
                     </div>
 
                     {/* Timeline events */}
-                    <div className="relative pl-6 border-l-2 border-indigo-200 space-y-5">
+                    <div className="relative pl-6 border-l-2 border-saffron-300/70 dark:border-saffron-500/30 space-y-5">
                       {timeline.events.map((event) => (
                         <div key={event.id} className="relative">
                           {/* Dot */}
-                          <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 border-2 border-white shadow-sm" />
+                          <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-saffron-600 border-2 border-dharma-card shadow-sm" />
 
                           {/* Content */}
-                          <div className="rounded-xl border border-dharma-border bg-dharma-bg/40 p-4 hover:border-indigo-200 transition">
+                          <div className="rounded-xl border border-dharma-border bg-dharma-bg/40 p-4 hover:border-saffron-300 dark:hover:border-saffron-500/40 transition">
                             <div className="flex items-start justify-between gap-4 mb-2">
                               <h3 className="font-serif font-bold text-dharma-text">
                                 {event.title}
                                 {event.sanskrit && (
-                                  <span lang="sa" className="font-devanagari text-sm text-saffron-700 dark:text-saffron-400 ml-2">
+                                  <span lang="sa" className="font-devanagari text-sm text-saffron-700 dark:text-saffron-300 ml-2">
                                     {event.sanskrit}
                                   </span>
                                 )}
                               </h3>
-                              <span className="text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full whitespace-nowrap border border-indigo-200">
+                              <span className="text-xs font-bold text-indigo-800 bg-indigo-50 px-2.5 py-1 rounded-full whitespace-nowrap border border-indigo-200 dark:text-indigo-200 dark:bg-indigo-950/50 dark:border-indigo-500/30">
                                 {event.date}
                               </span>
                             </div>
@@ -180,7 +178,7 @@ export default function TimelinesPage() {
                             {event.relatedTexts && event.relatedTexts.length > 0 && (
                               <div className="flex flex-wrap gap-1.5 mt-2">
                                 {event.relatedTexts.map((text) => (
-                                  <span key={text} className="text-[10px] font-semibold text-saffron-700 bg-saffron-50 px-2 py-0.5 rounded-full border border-saffron-200">
+                                  <span key={text} className="text-[10px] font-semibold text-saffron-800 bg-saffron-50 px-2 py-0.5 rounded-full border border-saffron-200 dark:text-saffron-200 dark:bg-saffron-950/40 dark:border-saffron-500/30">
                                     {text}
                                   </span>
                                 ))}
@@ -191,8 +189,8 @@ export default function TimelinesPage() {
                                 {event.relatedFigures.map((fig) => (
                                   <Link
                                     key={fig}
-                                    href={`/characters/${fig}`}
-                                    className="text-[10px] font-semibold text-violet-700 bg-violet-50 px-2 py-0.5 rounded-full border border-violet-200 hover:bg-violet-100 transition"
+                                    href={`/characters/${fig}/`}
+                                    className="text-[10px] font-semibold text-violet-800 bg-violet-50 px-2 py-0.5 rounded-full border border-violet-200 hover:bg-violet-100 dark:text-violet-200 dark:bg-violet-950/50 dark:border-violet-500/30 dark:hover:bg-violet-900/50 transition"
                                   >
                                     {fig}
                                   </Link>

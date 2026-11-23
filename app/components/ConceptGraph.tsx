@@ -308,7 +308,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
         <div className="hidden items-center gap-2 lg:flex">
           <button
             onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))}
-            className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition"
+            className="tap-halo p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition"
             title="ज़ूम आउट"
           >
             <ZoomOut className="w-4 h-4" />
@@ -318,14 +318,14 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
           </span>
           <button
             onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))}
-            className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition"
+            className="tap-halo p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition"
             title="ज़ूम इन"
           >
             <ZoomIn className="w-4 h-4" />
           </button>
           <button
             onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }}
-            className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition"
+            className="tap-halo p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition"
             title="दृश्य रीसेट"
           >
             <Maximize className="w-4 h-4" />
@@ -404,7 +404,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                               <li key={connection.id}>
                                 {articles.has(connection.id) ? (
                                   <Link
-                                    href={`/concepts/${connection.id}`}
+                                    href={`/concepts/${connection.id}/`}
                                     className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-dharma-border bg-dharma-bg px-3 text-sm text-dharma-text hover:border-saffron-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500"
                                   >
                                     <span lang="sa" className="font-devanagari text-saffron-700 dark:text-saffron-300">{connection.sanskrit}</span>
@@ -423,7 +423,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                       )}
                       {articles.has(concept.id) && (
                         <Link
-                          href={`/concepts/${concept.id}`}
+                          href={`/concepts/${concept.id}/`}
                           className="inline-flex min-h-[44px] items-center gap-2 font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300"
                         >
                           Open concept page <ChevronRight aria-hidden="true" className="h-4 w-4" />
@@ -625,7 +625,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                     {selectedConcept.sanskrit.slice(0, 2)}
                   </div>
                   <div>
-                    <p lang="sa" className="font-devanagari text-3xl text-saffron-700 leading-tight">
+                    <p lang="sa" className="font-devanagari text-3xl text-saffron-700 dark:text-saffron-300 leading-tight">
                       {selectedConcept.sanskrit}
                     </p>
                     <div className="flex items-center gap-2 mt-1">
@@ -640,7 +640,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                 </div>
                 <button
                   onClick={() => setSelectedId(null)}
-                  className="p-2 rounded-lg text-dharma-muted hover:text-dharma-text hover:bg-saffron-50 transition"
+                  className="tap-halo p-2 rounded-lg text-dharma-muted hover:text-dharma-text hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -664,7 +664,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
               <div className="mb-6">
                 {articles.has(selectedConcept.id) ? (
                   <Link
-                    href={`/concepts/${selectedConcept.id}`}
+                    href={`/concepts/${selectedConcept.id}/`}
                     className="inline-flex items-center justify-between w-full p-3 rounded-xl bg-saffron-500/10 hover:bg-saffron-500/20 text-saffron-800 dark:text-saffron-200 border border-saffron-500/30 font-semibold text-sm transition-all group min-h-[44px]"
                   >
                     <span className="flex items-center gap-2">
@@ -690,7 +690,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                     {selectedConcept.scriptureRefs.map((ref) => (
                       <span
                         key={ref}
-                        className="px-3 py-1 bg-saffron-50 text-saffron-800 rounded-full text-xs font-semibold border border-saffron-200"
+                        className="px-3 py-1 bg-saffron-50 text-saffron-800 rounded-full text-xs font-semibold border border-saffron-200 dark:bg-saffron-950/40 dark:text-saffron-200 dark:border-saffron-500/30"
                       >
                         {ref}
                       </span>
@@ -712,7 +712,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                         verse.scriptureId && verse.chapterId && verse.verseId
                           ? readHref(verse.scriptureId, verse.chapterId, verse.verseId)
                           : verse.scriptureId
-                            ? `/scripture/${verse.scriptureId}`
+                            ? `/scripture/${verse.scriptureId}/`
                             : null;
                       return (
                         <div
@@ -734,13 +734,13 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                             {verse.translation}
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-bold text-saffron-700 uppercase tracking-wider">
+                            <span className="text-[10px] font-bold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider">
                               {verse.reference}
                             </span>
                             {verseUrl && (
                               <Link
                                 href={verseUrl}
-                                className="inline-flex min-h-[44px] items-center text-xs font-semibold text-saffron-600 hover:text-saffron-800 transition"
+                                className="inline-flex min-h-[44px] items-center text-xs font-semibold text-saffron-700 hover:text-saffron-800 dark:text-saffron-300 dark:hover:text-saffron-200 transition"
                               >
                                 Read in context →
                               </Link>
@@ -767,7 +767,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                         <button
                           key={conn.id}
                           onClick={() => setSelectedId(conn.id)}
-                          className="flex items-center gap-3 p-3 rounded-xl border border-dharma-border hover:border-saffron-300 bg-dharma-card hover:bg-saffron-50/50 transition-all text-left group"
+                          className="flex items-center gap-3 p-3 rounded-xl border border-dharma-border hover:border-saffron-300 bg-dharma-card hover:bg-saffron-50/50 dark:hover:bg-saffron-950/30 transition-all text-left group"
                         >
                           <div
                             className={`w-10 h-10 rounded-xl bg-gradient-to-br ${cat?.gradient} flex items-center justify-center text-white text-sm font-bold shadow-sm flex-shrink-0`}
@@ -775,7 +775,7 @@ export function ConceptGraph({ articleIds }: { articleIds: string[] }) {
                             {conn.sanskrit.slice(0, 2)}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p lang="sa" className="font-devanagari text-sm text-saffron-700 leading-tight">
+                            <p lang="sa" className="font-devanagari text-sm text-saffron-700 dark:text-saffron-300 leading-tight">
                               {conn.sanskrit}
                             </p>
                             <p className="text-sm font-semibold text-dharma-text truncate">

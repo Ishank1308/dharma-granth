@@ -36,7 +36,7 @@ export const READING_PLANS: ReadingPlan[] = [
   {
     id: 'gita-18-days',
     title: '18-Day Bhagavad Gita Immersion',
-    titleHi: '१८ दिवसीय भगवद्गीता स्वाध्याय',
+    titleHi: '18 दिवसीय भगवद्गीता स्वाध्याय',
     category: 'immersive',
     totalDays: 18,
     dailyMinutes: 15,
@@ -46,7 +46,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 1,
         title: 'Chapter 1: Arjuna Vishada Yoga',
-        titleHi: 'अध्याय १: अर्जुनविषादयोग',
+        titleHi: 'अध्याय 1: अर्जुनविषादयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 1,
         href: '/scripture/bhagavadgita/chapter/1',
@@ -57,7 +57,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 2,
         title: 'Chapter 2: Sankhya Yoga',
-        titleHi: 'अध्याय २: सांख्ययोग',
+        titleHi: 'अध्याय 2: सांख्ययोग',
         scriptureId: 'bhagavadgita',
         chapterId: 2,
         href: '/scripture/bhagavadgita/chapter/2',
@@ -68,7 +68,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 3,
         title: 'Chapter 3: Karma Yoga',
-        titleHi: 'अध्याय ३: कर्मयोग',
+        titleHi: 'अध्याय 3: कर्मयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 3,
         href: '/scripture/bhagavadgita/chapter/3',
@@ -79,7 +79,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 4,
         title: 'Chapter 4: Jnana Karma Sannyasa Yoga',
-        titleHi: 'अध्याय ४: ज्ञानकर्मसंन्यासयोग',
+        titleHi: 'अध्याय 4: ज्ञानकर्मसंन्यासयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 4,
         href: '/scripture/bhagavadgita/chapter/4',
@@ -90,7 +90,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 5,
         title: 'Chapter 5: Karma Sannyasa Yoga',
-        titleHi: 'अध्याय ५: कर्मसंन्यासयोग',
+        titleHi: 'अध्याय 5: कर्मसंन्यासयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 5,
         href: '/scripture/bhagavadgita/chapter/5',
@@ -101,7 +101,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 6,
         title: 'Chapter 6: Dhyana Yoga',
-        titleHi: 'अध्याय ६: ध्यानयोग',
+        titleHi: 'अध्याय 6: ध्यानयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 6,
         href: '/scripture/bhagavadgita/chapter/6',
@@ -112,7 +112,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 7,
         title: 'Chapter 7: Jnana Vijnana Yoga',
-        titleHi: 'अध्याय ७: ज्ञानविज्ञानयोग',
+        titleHi: 'अध्याय 7: ज्ञानविज्ञानयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 7,
         href: '/scripture/bhagavadgita/chapter/7',
@@ -123,7 +123,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 8,
         title: 'Chapter 8: Akshara Brahma Yoga',
-        titleHi: 'अध्याय ८: अक्षरब्रह्मयोग',
+        titleHi: 'अध्याय 8: अक्षरब्रह्मयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 8,
         href: '/scripture/bhagavadgita/chapter/8',
@@ -134,7 +134,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 9,
         title: 'Chapter 9: Raja Vidya Raja Guhya Yoga',
-        titleHi: 'अध्याय ९: राजविद्याराजगुह्ययोग',
+        titleHi: 'अध्याय 9: राजविद्याराजगुह्ययोग',
         scriptureId: 'bhagavadgita',
         chapterId: 9,
         href: '/scripture/bhagavadgita/chapter/9',
@@ -145,7 +145,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 10,
         title: 'Chapter 10: Vibhuti Yoga',
-        titleHi: 'अध्याय १०: विभूतियोग',
+        titleHi: 'अध्याय 10: विभूतियोग',
         scriptureId: 'bhagavadgita',
         chapterId: 10,
         href: '/scripture/bhagavadgita/chapter/10',
@@ -156,7 +156,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 11,
         title: 'Chapter 11: Vishvarupa Darshana Yoga',
-        titleHi: 'अध्याय ११: विश्वरूपदर्शनयोग',
+        titleHi: 'अध्याय 11: विश्वरूपदर्शनयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 11,
         href: '/scripture/bhagavadgita/chapter/11',
@@ -167,7 +167,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 12,
         title: 'Chapter 12: Bhakti Yoga',
-        titleHi: 'अध्याय १२: भक्तियोग',
+        titleHi: 'अध्याय 12: भक्तियोग',
         scriptureId: 'bhagavadgita',
         chapterId: 12,
         href: '/scripture/bhagavadgita/chapter/12',
@@ -178,7 +178,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 13,
         title: 'Chapter 13: Kshetra Kshetrajna Vibhaga Yoga',
-        titleHi: 'अध्याय १३: क्षेत्रक्षेत्रज्ञविभागयोग',
+        titleHi: 'अध्याय 13: क्षेत्रक्षेत्रज्ञविभागयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 13,
         href: '/scripture/bhagavadgita/chapter/13',
@@ -189,7 +189,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 14,
         title: 'Chapter 14: Gunatraya Vibhaga Yoga',
-        titleHi: 'अध्याय १४: गुणत्रयविभागयोग',
+        titleHi: 'अध्याय 14: गुणत्रयविभागयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 14,
         href: '/scripture/bhagavadgita/chapter/14',
@@ -200,7 +200,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 15,
         title: 'Chapter 15: Purushottama Yoga',
-        titleHi: 'अध्याय १५: पुरुषोत्तमयोग',
+        titleHi: 'अध्याय 15: पुरुषोत्तमयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 15,
         href: '/scripture/bhagavadgita/chapter/15',
@@ -211,7 +211,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 16,
         title: 'Chapter 16: Daivasura Sampad Vibhaga Yoga',
-        titleHi: 'अध्याय १६: दैवासुरसम्पद्विभागयोग',
+        titleHi: 'अध्याय 16: दैवासुरसम्पद्विभागयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 16,
         href: '/scripture/bhagavadgita/chapter/16',
@@ -222,7 +222,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 17,
         title: 'Chapter 17: Shraddhatraya Vibhaga Yoga',
-        titleHi: 'अध्याय १७: श्रद्धात्रयविभागयोग',
+        titleHi: 'अध्याय 17: श्रद्धात्रयविभागयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 17,
         href: '/scripture/bhagavadgita/chapter/17',
@@ -233,7 +233,7 @@ export const READING_PLANS: ReadingPlan[] = [
       {
         dayNumber: 18,
         title: 'Chapter 18: Moksha Sannyasa Yoga',
-        titleHi: 'अध्याय १८: मोक्षसंन्यासयोग',
+        titleHi: 'अध्याय 18: मोक्षसंन्यासयोग',
         scriptureId: 'bhagavadgita',
         chapterId: 18,
         href: '/scripture/bhagavadgita/chapter/18',
@@ -247,7 +247,7 @@ export const READING_PLANS: ReadingPlan[] = [
   {
     id: 'foundation-7-days',
     title: '7-Day Sanatana Foundation',
-    titleHi: '७ दिवसीय सनातन धर्म आधार',
+    titleHi: '7 दिवसीय सनातन धर्म आधार',
     category: 'beginner',
     totalDays: 7,
     dailyMinutes: 10,

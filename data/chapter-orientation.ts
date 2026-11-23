@@ -1931,7 +1931,7 @@ export const chapterOrientations: ChapterOrientation[] = [
     scriptureId: 'ishavasya',
     chapter: 1,
     nameEn: 'Isha Upanishad (Vājasaneyi Saṁhitā Chapter 40)',
-    nameHi: 'ईशावास्योपनिषद् (वाजसनेयि-संहिता ४०वां अध्याय)',
+    nameHi: 'ईशावास्योपनिषद् (वाजसनेयि-संहिता 40वां अध्याय)',
     speakers: 'Vedic Ṛṣi of the Shukla Yajurveda.',
     listeners: 'The spiritual seeker discerning the unity of life.',
     speakersList: ['ऋषि (Vedic Seer)'],

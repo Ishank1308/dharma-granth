@@ -108,8 +108,8 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
       labelEn: SACRED_SECTION_LABEL.arth.en,
       defaultOpen: true,
       content: (
-        <div className="min-w-0 space-y-3">
-        <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/70 p-4 shadow-2xs sm:p-5">
+        <div className={v.englishTranslation ? 'min-w-0 grid grid-cols-1 gap-3 md:grid-cols-2' : 'min-w-0 space-y-3'}>
+        <div className="h-full rounded-2xl border border-dharma-border/70 bg-dharma-card-soft/70 p-4 shadow-2xs sm:p-5">
           <p className="mb-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
             शाब्दिक हिन्दी अर्थ · Literal Hindi Meaning
           </p>
@@ -118,7 +118,7 @@ export function VerseFull({ v }: { v: AshtavakraVerse }) {
           </p>
         </div>
         {v.englishTranslation && (
-          <div className="rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4 shadow-2xs sm:p-5">
+          <div className="h-full rounded-2xl border border-dharma-border/70 bg-dharma-card/70 p-4 shadow-2xs sm:p-5">
             <p className="mb-2 text-xs font-bold uppercase tracking-wider text-dharma-muted">
               English Translation
             </p>

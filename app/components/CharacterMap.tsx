@@ -196,14 +196,14 @@ export function CharacterMap() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2 max-w-full">
-          <button onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))} className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition" title="ज़ूम आउट">
+          <button onClick={() => setZoom((z) => Math.max(0.5, z - 0.2))} className="tap-halo p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition" title="ज़ूम आउट">
             <ZoomOut className="w-4 h-4" />
           </button>
           <span className="text-xs text-dharma-muted min-w-[3rem] px-1 text-center tabular-nums">{Math.round(zoom * 100)}%</span>
-          <button onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))} className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition" title="ज़ूम इन">
+          <button onClick={() => setZoom((z) => Math.min(2.5, z + 0.2))} className="tap-halo p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition" title="ज़ूम इन">
             <ZoomIn className="w-4 h-4" />
           </button>
-          <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }} className="p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 transition" title="दृश्य रीसेट">
+          <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }} className="tap-halo p-2 rounded-lg bg-dharma-card border border-dharma-border hover:bg-saffron-50 dark:hover:bg-saffron-950/40 transition" title="दृश्य रीसेट">
             <Maximize className="w-4 h-4" />
           </button>
         </div>
@@ -285,7 +285,7 @@ export function CharacterMap() {
                   >
                     <circle
                       r={isSelected ? 28 : 22}
-                      className={isSelected ? 'fill-saffron-200' : 'fill-dharma-card'}
+                      className={isSelected ? 'fill-saffron-200 dark:fill-saffron-900/70' : 'fill-dharma-card'}
                       stroke={isSelected ? '#f97316' : '#d4c5b0'}
                       strokeWidth={isSelected ? 3 : 2}
                       opacity={isDimmed ? 0.3 : 1}
@@ -341,7 +341,7 @@ export function CharacterMap() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-xl font-serif font-bold text-dharma-text">{selectedCharacter.name}</h3>
-                  <p className="text-sm text-saffron-700 font-semibold">{selectedCharacter.sanskrit}</p>
+                  <p className="text-sm text-saffron-700 dark:text-saffron-300 font-semibold">{selectedCharacter.sanskrit}</p>
                   <p className="text-xs text-dharma-muted mt-1">{selectedCharacter.shortDesc}</p>
                 </div>
                 <button onClick={() => setSelectedId(null)} className="text-dharma-muted hover:text-dharma-text shrink-0">
@@ -399,10 +399,10 @@ export function CharacterMap() {
                   </p>
                   <div className="space-y-3">
                     {selectedCharacter.dialogues.map((d, i) => (
-                      <div key={i} className="bg-saffron-50/50 rounded-xl p-3 border border-saffron-100">
+                      <div key={i} className="bg-saffron-50/50 rounded-xl p-3 border border-saffron-100 dark:bg-saffron-950/30 dark:border-saffron-500/25">
                         <p className="text-sm italic text-dharma-text leading-relaxed">&ldquo;{d.text}&rdquo;</p>
                         <p className="text-xs text-dharma-muted mt-1.5">— {d.speaker}, {d.context}</p>
-                        <p className="text-xs text-saffron-700 font-semibold mt-0.5">{d.reference}</p>
+                        <p className="text-xs text-saffron-700 dark:text-saffron-300 font-semibold mt-0.5">{d.reference}</p>
                       </div>
                     ))}
                   </div>
@@ -420,7 +420,7 @@ export function CharacterMap() {
                       <div key={i} className="bg-dharma-card border border-dharma-border rounded-xl p-3">
                         <p className="text-sm font-semibold text-dharma-text">{d.title}</p>
                         <p className="text-xs text-dharma-muted mt-1">{d.description}</p>
-                        <p className="text-xs text-emerald-700 mt-1.5 font-medium">समाधान: {d.resolution}</p>
+                        <p className="text-xs text-emerald-700 dark:text-emerald-300 mt-1.5 font-medium">समाधान: {d.resolution}</p>
                       </div>
                     ))}
                   </div>

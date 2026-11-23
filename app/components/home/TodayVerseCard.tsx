@@ -201,7 +201,7 @@ export function TodayVerseCard({
                 setShowTranslit((v) => !v);
               }}
               aria-pressed={showTranslit}
-              className={`focus-ring inline-flex min-h-[38px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+              className={`focus-ring tap-halo inline-flex min-h-[38px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
                 showTranslit
                   ? 'border-dharma-saffron/50 bg-dharma-saffron/15 text-dharma-saffron'
                   : 'border-dharma-border/80 bg-dharma-bg/70 text-dharma-muted hover:text-dharma-text'
@@ -214,7 +214,7 @@ export function TodayVerseCard({
 
           <Link
             href={verseHref}
-            className="verse-ref focus-ring inline-flex min-h-[38px] items-center gap-1 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/12 px-3.5 py-1.5 text-xs font-semibold tabular-nums text-dharma-text hover:border-dharma-saffron"
+            className="verse-ref focus-ring tap-halo inline-flex min-h-[38px] items-center gap-1 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/12 px-3.5 py-1.5 text-xs font-semibold tabular-nums text-dharma-text hover:border-dharma-saffron"
             aria-label={`${item.scriptureTitle} ${item.chapterId}.${item.verseId}`}
           >
             <span>{item.scriptureTitle}</span>
@@ -282,7 +282,7 @@ export function TodayVerseCard({
                         triggerTactileFeedback('selection', 'softTap');
                         setActiveWordIdx(idx);
                       }}
-                      className={`focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs transition-all ${
+                      className={`focus-ring tap-halo inline-flex min-h-[36px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs transition-all ${
                         selected
                           ? 'border-dharma-saffron bg-dharma-saffron/15 font-bold text-dharma-text shadow-2xs'
                           : 'border-dharma-border/70 bg-dharma-card/80 text-dharma-text/85 hover:border-dharma-saffron/45'
@@ -446,7 +446,7 @@ export function TodayVerseCard({
                     type="button"
                     onClick={handleCompleteSadhana}
                     aria-pressed={sadhanaDone}
-                    className={`focus-ring inline-flex min-h-[42px] w-full items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+                    className={`focus-ring inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all ${
                       sadhanaDone
                         ? 'border border-emerald-500/40 bg-emerald-600/15 text-emerald-900 dark:text-emerald-200'
                         : 'bg-dharma-saffron text-dharma-bg shadow-xs hover:opacity-95'

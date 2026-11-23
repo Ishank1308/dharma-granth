@@ -104,7 +104,7 @@ export default function ReadingPlansPage() {
       <section className="border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg dark:from-amber-950/20 py-12 px-5 sm:px-8">
         <div className="mx-auto max-w-5xl">
           <Link
-            href="/learn"
+            href="/learn/"
             className="focus-ring inline-flex items-center gap-1.5 text-xs font-semibold text-dharma-muted hover:text-dharma-text transition mb-4"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
@@ -336,7 +336,7 @@ export default function ReadingPlansPage() {
                           ? `Mark Day ${day.dayNumber} as uncompleted`
                           : `Mark Day ${day.dayNumber} as completed`
                       }
-                      className="focus-ring mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-dharma-muted hover:text-saffron-700 transition"
+                      className="focus-ring tap-halo mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-dharma-muted hover:text-saffron-700 dark:hover:text-saffron-300 transition"
                     >
                       {isDone ? (
                         <CheckCircle2 className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
@@ -378,7 +378,7 @@ export default function ReadingPlansPage() {
                   <div className="flex items-center justify-end sm:justify-center shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-dharma-border/40">
                     <Link
                       href={day.href}
-                      className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3.5 text-xs font-semibold text-dharma-text hover:border-saffron-500 hover:text-saffron-800 dark:hover:text-saffron-300 transition"
+                      className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-bg px-3.5 text-xs font-semibold text-dharma-text hover:border-saffron-500 hover:text-saffron-800 dark:hover:text-saffron-300 transition"
                     >
                       <BookOpen className="h-3.5 w-3.5 text-saffron-600" />
                       <span>Read Scripture</span>
@@ -414,7 +414,7 @@ export default function ReadingPlansPage() {
           </Link>
 
           <Link
-            href="/learn/faq"
+            href="/learn/faq/"
             className="group rounded-2xl border border-dharma-border bg-dharma-card p-5 hover:border-saffron-400 hover:shadow-sm transition"
           >
             <GraduationCap className="h-5 w-5 text-saffron-700 dark:text-saffron-300" />
