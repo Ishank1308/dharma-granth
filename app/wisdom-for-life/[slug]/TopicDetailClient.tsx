@@ -15,7 +15,6 @@ import {
   Heart,
   HelpCircle,
   Lightbulb,
-  Share2,
   ShieldAlert,
   Sparkles,
   Tag,
@@ -27,7 +26,6 @@ import {
 // Types only: the topic arrives as a prop, so the page does not ship every topic's data (about 90 KB gzip).
 import type { WisdomTopic, ScriptureReference } from '@/data/wisdom-for-life';
 import { libraryLocation, wisdomVerseHref } from '@/lib/wisdom-links';
-import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
 import { ShareVerseButton } from '@/app/components/ShareVerseButton';
 import { ShareChips } from '@/app/components/ShareChips';
 import { whatsappShareUrl } from '@/lib/whatsapp';
@@ -35,6 +33,7 @@ import dynamic from 'next/dynamic';
 
 // Loaded when a verse's story deck is first opened, so it stays out of the page's first-load JS.
 const StoryDeckModal = dynamic(() => import('@/app/components/reader/StoryDeckModal').then((m) => m.StoryDeckModal), { ssr: false });
+const TopicInteractiveWalkthrough = dynamic(() => import('@/app/components/wisdom/TopicInteractiveWalkthrough').then((m) => m.TopicInteractiveWalkthrough), { ssr: false });
 import type { VerseEditorialLayer } from '@/lib/literary-commentary';
 
 const EMPTY_LITERARY_META: VerseEditorialLayer = {
@@ -74,6 +73,7 @@ export function TopicDetailClient({
 }) {
   const [copiedVerseId, setCopiedVerseId] = useState<string | null>(null);
   const [activeStoryVerse, setActiveStoryVerse] = useState<ScriptureReference | null>(null);
+  const [showWalkthrough, setShowWalkthrough] = useState(false);
   const [imageNote, setImageNote] = useState('');
 
   const handleCopyVerse = (verse: ScriptureReference) => {
@@ -136,59 +136,81 @@ export function TopicDetailClient({
         </Link>
       </nav>
 
-      {/* ── Hero Banner with Calm Illustration ──────────────────── */}
-      <header className="relative bg-gradient-to-br from-stone-900 via-stone-900 to-stone-950 text-white overflow-hidden py-14 sm:py-20 border-b border-white/10">
-        <div className="absolute inset-0 mandala-bg opacity-15" />
-        <div className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-20 bg-gradient-to-br ${topic.colorGradient}`} />
+      {/* ── Dharma Sanctuary Hero ───────────────────────────────── */}
+      <header className="relative bg-dharma-card border-b border-dharma-border text-dharma-text overflow-hidden py-12 sm:py-16">
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-15 bg-gradient-to-br ${topic.colorGradient}`}
+        />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
-          <FadeUp>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8 justify-between">
-              <div className="flex-1 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 mb-4">
-                  <Compass className="w-3.5 h-3.5" />
-                  <span>{topic.categoryLabelEn} • <span lang="hi">{topic.categoryLabelHi}</span></span>
-                </div>
+          <div className="fade-up-in flex flex-col md:flex-row items-center md:items-start gap-8 justify-between">
+            <div className="flex-1 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400 bg-dharma-bg px-3.5 py-1.5 rounded-full border border-dharma-border mb-4">
+                <Compass className="w-3.5 h-3.5" aria-hidden="true" />
+                <span>
+                  <span data-bi="en">{topic.categoryLabelEn}</span>
+                  <span data-bi="sep"> · </span>
+                  <span lang="hi" data-bi="hi">{topic.categoryLabelHi}</span>
+                </span>
+              </div>
 
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-2 leading-tight">
-                  {topic.titleEn}
-                </h1>
-                <p lang="hi" className="text-2xl sm:text-3xl font-devanagari font-bold text-amber-300 mb-3">
-                  {topic.titleHi}
-                </p>
-                <p lang="sa" className="text-sm sm:text-base font-devanagari text-white/80 italic mb-6">
-                  {topic.sanskritSubtitle}
-                </p>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-dharma-text mb-2 leading-tight">
+                {topic.titleEn}
+              </h1>
+              <p lang="hi" className="text-2xl sm:text-3xl font-devanagari font-bold text-saffron-700 dark:text-saffron-400 mb-3">
+                {topic.titleHi}
+              </p>
+              <p lang="sa" className="text-sm sm:text-base font-devanagari text-dharma-muted italic mb-5">
+                {topic.sanskritSubtitle}
+              </p>
 
-                <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-2xl font-light">
-                  {topic.shortDescEn}
-                </p>
+              <p className="text-base sm:text-lg text-dharma-muted leading-relaxed max-w-2xl">
+                {topic.shortDescEn}
+              </p>
+
+              <div className="mt-5 flex flex-wrap items-center justify-center md:justify-start gap-2.5">
+                <button
+                  type="button"
+                  aria-expanded={showWalkthrough}
+                  aria-controls={showWalkthrough ? 'wisdom-inquiry-studio' : undefined}
+                  onClick={() => setShowWalkthrough((v) => !v)}
+                  className="inline-flex min-h-[44px] items-center gap-2 px-4 rounded-full bg-saffron-700 text-white text-xs font-bold hover:bg-saffron-800 transition shadow-sm"
+                >
+                  <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>
+                    <span lang="hi" data-bi="hi">संवादात्मक स्वाध्याय पथ</span>
+                    <span data-bi="sep"> · </span>
+                    <span data-bi="en">Interactive 5-Step Inquiry</span>
+                  </span>
+                </button>
                 <ShareChips
-                  tone="dark"
-                  className="mt-5 justify-center md:justify-start"
                   title={`${topic.titleEn} (${topic.titleHi})`}
                   summary={topic.shortDescEn}
                   path={`/wisdom-for-life/${topic.slug}`}
                 />
-                {searchLine && (
-                  <p className="mt-4 max-w-2xl text-sm text-amber-100">
-                    <span lang="hi" className="font-devanagari font-semibold">{searchLine.hi}</span>
-                    <span className="mt-1 block">{searchLine.en}</span>
-                  </p>
-                )}
               </div>
-
-              {/* Serene Bespoke Illustration Card */}
-              <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-3xl bg-white/5 border border-white/15 backdrop-blur-md p-4 flex items-center justify-center shrink-0 shadow-2xl">
-                {illustration}
-              </div>
+              {searchLine && (
+                <p className="mt-4 max-w-2xl text-sm text-dharma-muted">
+                  <span lang="hi" className="font-devanagari font-semibold text-dharma-text">{searchLine.hi}</span>
+                  <span className="mt-1 block">{searchLine.en}</span>
+                </p>
+              )}
             </div>
-          </FadeUp>
+
+            {/* Serene Bespoke Illustration Card */}
+            <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-3xl bg-dharma-bg border border-dharma-border p-4 flex items-center justify-center shrink-0 shadow-sm">
+              {illustration}
+            </div>
+          </div>
         </div>
       </header>
 
       {/* ── Main Content Container ───────────────────────────────── */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 -mt-6 relative z-20 space-y-12">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 relative z-20 space-y-12">
+        {showWalkthrough && (
+          <TopicInteractiveWalkthrough topic={topic} onClose={() => setShowWalkthrough(false)} />
+        )}
         {/* ── 1. COMPASSIONATE INTRODUCTION ────────────────────────── */}
         <section
           id="compassionate-introduction"

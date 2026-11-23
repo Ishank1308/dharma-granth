@@ -5,7 +5,16 @@ interface IllustrationProps {
   size?: number;
 }
 
+function svgClassName(className?: string) {
+  return className
+    ? `motion-safe:transition-transform motion-safe:duration-500 ${className}`
+    : 'motion-safe:transition-transform motion-safe:duration-500';
+}
+
 export function StressIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const glowId = `stress-glow-${uid}`;
+  const waveId = `stress-wave-${uid}`;
   return (
     <svg
       width={size}
@@ -13,21 +22,21 @@ export function StressIllustration({ className = '', size = 160 }: IllustrationP
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="stress-glow" cx="50%" cy="40%" r="55%">
+        <radialGradient id={glowId} cx="50%" cy="40%" r="55%">
           <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.6" />
           <stop offset="60%" stopColor="#0d9488" stopOpacity="0.2" />
           <stop offset="100%" stopColor="#0f766e" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="stress-wave" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={waveId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#5eead4" />
           <stop offset="100%" stopColor="#0f766e" />
         </linearGradient>
       </defs>
-      <circle cx="100" cy="100" r="85" fill="url(#stress-glow)" />
+      <circle cx="100" cy="100" r="85" fill={`url(#${glowId})`} />
       {/* Concentric calming ripples */}
       <circle cx="100" cy="115" r="60" stroke="#2dd4bf" strokeWidth="1.5" strokeOpacity="0.3" strokeDasharray="3 3" />
       <circle cx="100" cy="115" r="42" stroke="#5eead4" strokeWidth="1.5" strokeOpacity="0.4" />
@@ -35,7 +44,7 @@ export function StressIllustration({ className = '', size = 160 }: IllustrationP
       {/* Serene water waves turning flat */}
       <path
         d="M35 135 C 60 120, 80 145, 100 132 C 120 120, 140 142, 165 130"
-        stroke="url(#stress-wave)"
+        stroke={`url(#${waveId})`}
         strokeWidth="2.5"
         strokeLinecap="round"
       />
@@ -68,6 +77,9 @@ export function StressIllustration({ className = '', size = 160 }: IllustrationP
 }
 
 export function FearIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const sunId = `fear-sun-${uid}`;
+  const shieldId = `shield-grad-${uid}`;
   return (
     <svg
       width={size}
@@ -75,21 +87,21 @@ export function FearIllustration({ className = '', size = 160 }: IllustrationPro
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="fear-sun" cx="50%" cy="50%" r="50%">
+        <radialGradient id={sunId} cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#fef08a" stopOpacity="0.9" />
           <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.4" />
           <stop offset="100%" stopColor="#b45309" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={shieldId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#fbbf24" />
           <stop offset="100%" stopColor="#b45309" />
         </linearGradient>
       </defs>
-      <circle cx="100" cy="95" r="75" fill="url(#fear-sun)" />
+      <circle cx="100" cy="95" r="75" fill={`url(#${sunId})`} />
       {/* Rays of abhaya */}
       {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
         <line
@@ -111,7 +123,7 @@ export function FearIllustration({ className = '', size = 160 }: IllustrationPro
       {/* Steadfast Abhaya Flame */}
       <path
         d="M100 45 C 92 65, 88 78, 100 90 C 112 78, 108 65, 100 45 Z"
-        fill="url(#shield-grad)"
+        fill={`url(#${shieldId})`}
       />
       <circle cx="100" cy="74" r="5" fill="#fef08a" />
     </svg>
@@ -119,6 +131,8 @@ export function FearIllustration({ className = '', size = 160 }: IllustrationPro
 }
 
 export function AngerIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const coolId = `anger-cool-${uid}`;
   return (
     <svg
       width={size}
@@ -126,17 +140,17 @@ export function AngerIllustration({ className = '', size = 160 }: IllustrationPr
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="anger-cool" cx="50%" cy="50%" r="50%">
+        <radialGradient id={coolId} cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#f43f5e" stopOpacity="0.3" />
           <stop offset="60%" stopColor="#38bdf8" stopOpacity="0.3" />
           <stop offset="100%" stopColor="#0284c7" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="80" fill="url(#anger-cool)" />
+      <circle cx="100" cy="100" r="80" fill={`url(#${coolId})`} />
       {/* Cooling water reservoir */}
       <ellipse cx="100" cy="140" rx="65" ry="20" fill="#0284c7" fillOpacity="0.3" />
       <ellipse cx="100" cy="140" rx="45" ry="12" stroke="#38bdf8" strokeWidth="1.5" />
@@ -160,6 +174,8 @@ export function AngerIllustration({ className = '', size = 160 }: IllustrationPr
 }
 
 export function GriefIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const dawnId = `grief-dawn-${uid}`;
   return (
     <svg
       width={size}
@@ -167,17 +183,17 @@ export function GriefIllustration({ className = '', size = 160 }: IllustrationPr
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="grief-dawn" cx="50%" cy="75%" r="65%">
+        <radialGradient id={dawnId} cx="50%" cy="75%" r="65%">
           <stop offset="0%" stopColor="#fbbf24" stopOpacity="0.8" />
           <stop offset="45%" stopColor="#818cf8" stopOpacity="0.3" />
           <stop offset="100%" stopColor="#312e81" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="85" fill="url(#grief-dawn)" />
+      <circle cx="100" cy="100" r="85" fill={`url(#${dawnId})`} />
       {/* Gentle horizon and golden sunrise of immortality */}
       <path d="M25 145 Q 100 135 175 145" stroke="#a5b4fc" strokeWidth="1.5" strokeDasharray="3 3" />
       <circle cx="100" cy="140" r="28" fill="#fbbf24" fillOpacity="0.9" />
@@ -197,6 +213,8 @@ export function GriefIllustration({ className = '', size = 160 }: IllustrationPr
 }
 
 export function DutyIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const wheelId = `wheel-grad-${uid}`;
   return (
     <svg
       width={size}
@@ -204,17 +222,17 @@ export function DutyIllustration({ className = '', size = 160 }: IllustrationPro
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id="wheel-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={wheelId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#60a5fa" />
           <stop offset="100%" stopColor="#1e40af" />
         </linearGradient>
       </defs>
       {/* Dharmachakra wheel of ethical cosmic order */}
-      <circle cx="100" cy="95" r="55" stroke="url(#wheel-grad)" strokeWidth="4" />
+      <circle cx="100" cy="95" r="55" stroke={`url(#${wheelId})`} strokeWidth="4" />
       <circle cx="100" cy="95" r="45" stroke="#93c5fd" strokeWidth="1.5" strokeDasharray="4 4" />
       <circle cx="100" cy="95" r="14" fill="#1e3a8a" stroke="#60a5fa" strokeWidth="2.5" />
       <circle cx="100" cy="95" r="5" fill="#dbeafe" />
@@ -239,6 +257,8 @@ export function DutyIllustration({ className = '', size = 160 }: IllustrationPro
 }
 
 export function DisciplineIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const glowId = `tapas-glow-${uid}`;
   return (
     <svg
       width={size}
@@ -246,17 +266,17 @@ export function DisciplineIllustration({ className = '', size = 160 }: Illustrat
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="tapas-glow" cx="50%" cy="50%" r="50%">
+        <radialGradient id={glowId} cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#fdba74" stopOpacity="0.8" />
           <stop offset="50%" stopColor="#ea580c" stopOpacity="0.3" />
           <stop offset="100%" stopColor="#7c2d12" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="75" fill="url(#tapas-glow)" />
+      <circle cx="100" cy="100" r="75" fill={`url(#${glowId})`} />
       {/* Sacred archer's bow */}
       <path
         d="M60 45 C 45 80, 45 120, 60 155"
@@ -280,6 +300,8 @@ export function DisciplineIllustration({ className = '', size = 160 }: Illustrat
 }
 
 export function ConcentrationIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const beamId = `dhyana-beam-${uid}`;
   return (
     <svg
       width={size}
@@ -287,17 +309,17 @@ export function ConcentrationIllustration({ className = '', size = 160 }: Illust
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="dhyana-beam" cx="50%" cy="50%" r="50%">
+        <radialGradient id={beamId} cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#67e8f9" stopOpacity="0.9" />
           <stop offset="40%" stopColor="#0891b2" stopOpacity="0.3" />
           <stop offset="100%" stopColor="#164e63" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="80" fill="url(#dhyana-beam)" />
+      <circle cx="100" cy="100" r="80" fill={`url(#${beamId})`} />
       {/* Concentric rings of stillness */}
       <circle cx="100" cy="100" r="60" stroke="#0891b2" strokeWidth="1" strokeDasharray="2 3" opacity="0.6" />
       <circle cx="100" cy="100" r="44" stroke="#22d3ee" strokeWidth="1.5" opacity="0.7" />
@@ -320,6 +342,8 @@ export function ConcentrationIllustration({ className = '', size = 160 }: Illust
 }
 
 export function LeadershipIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const glowId = `lead-glow-${uid}`;
   return (
     <svg
       width={size}
@@ -327,17 +351,17 @@ export function LeadershipIllustration({ className = '', size = 160 }: Illustrat
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="lead-glow" cx="50%" cy="40%" r="55%">
+        <radialGradient id={glowId} cx="50%" cy="40%" r="55%">
           <stop offset="0%" stopColor="#fde047" stopOpacity="0.7" />
           <stop offset="60%" stopColor="#ca8a04" stopOpacity="0.2" />
           <stop offset="100%" stopColor="#713f12" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="80" fill="url(#lead-glow)" />
+      <circle cx="100" cy="100" r="80" fill={`url(#${glowId})`} />
       {/* The majestic protective banyan canopy (Loka-sangraha) */}
       <path
         d="M100 45 C 65 45, 45 70, 55 95 C 40 105, 55 125, 75 120 C 85 130, 115 130, 125 120 C 145 125, 160 105, 145 95 C 155 70, 135 45, 100 45 Z"
@@ -360,6 +384,8 @@ export function LeadershipIllustration({ className = '', size = 160 }: Illustrat
 }
 
 export function FamilyIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const glowId = `family-glow-${uid}`;
   return (
     <svg
       width={size}
@@ -367,17 +393,17 @@ export function FamilyIllustration({ className = '', size = 160 }: IllustrationP
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="family-glow" cx="50%" cy="50%" r="55%">
+        <radialGradient id={glowId} cx="50%" cy="50%" r="55%">
           <stop offset="0%" stopColor="#f472b6" stopOpacity="0.6" />
           <stop offset="60%" stopColor="#db2777" stopOpacity="0.2" />
           <stop offset="100%" stopColor="#831843" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="80" fill="url(#family-glow)" />
+      <circle cx="100" cy="100" r="80" fill={`url(#${glowId})`} />
       {/* Sheltering hearth hands / roof of mutual care */}
       <path
         d="M50 115 C 50 75, 100 60, 100 60 C 100 60, 150 75, 150 115"
@@ -406,6 +432,8 @@ export function FamilyIllustration({ className = '', size = 160 }: IllustrationP
 }
 
 export function DevotionIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const glowId = `bhakti-glow-${uid}`;
   return (
     <svg
       width={size}
@@ -413,17 +441,17 @@ export function DevotionIllustration({ className = '', size = 160 }: Illustratio
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="bhakti-glow" cx="50%" cy="40%" r="55%">
+        <radialGradient id={glowId} cx="50%" cy="40%" r="55%">
           <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.8" />
           <stop offset="60%" stopColor="#e11d48" stopOpacity="0.25" />
           <stop offset="100%" stopColor="#881337" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="80" fill="url(#bhakti-glow)" />
+      <circle cx="100" cy="100" r="80" fill={`url(#${glowId})`} />
       {/* Offering hands cradling a sacred blossom */}
       <path
         d="M60 145 C 65 125, 80 115, 95 125"
@@ -460,6 +488,8 @@ export function DevotionIllustration({ className = '', size = 160 }: Illustratio
 }
 
 export function SelfKnowledgeIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const lightId = `atman-light-${uid}`;
   return (
     <svg
       width={size}
@@ -467,17 +497,17 @@ export function SelfKnowledgeIllustration({ className = '', size = 160 }: Illust
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="atman-light" cx="50%" cy="50%" r="50%">
+        <radialGradient id={lightId} cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#c084fc" stopOpacity="0.9" />
           <stop offset="50%" stopColor="#7e22ce" stopOpacity="0.3" />
           <stop offset="100%" stopColor="#3b0764" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="80" fill="url(#atman-light)" />
+      <circle cx="100" cy="100" r="80" fill={`url(#${lightId})`} />
       {/* Sacred mirror frame */}
       <circle cx="100" cy="100" r="55" stroke="#c084fc" strokeWidth="2.5" />
       <circle cx="100" cy="100" r="46" stroke="#e9d5ff" strokeWidth="1" strokeDasharray="3 3" />
@@ -503,6 +533,8 @@ export function SelfKnowledgeIllustration({ className = '', size = 160 }: Illust
 }
 
 export function MeaningOfLifeIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const coreId = `moksha-core-${uid}`;
   return (
     <svg
       width={size}
@@ -510,17 +542,17 @@ export function MeaningOfLifeIllustration({ className = '', size = 160 }: Illust
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="moksha-core" cx="50%" cy="50%" r="50%">
+        <radialGradient id={coreId} cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#fde047" stopOpacity="0.9" />
           <stop offset="50%" stopColor="#9333ea" stopOpacity="0.4" />
           <stop offset="100%" stopColor="#3b0764" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="82" fill="url(#moksha-core)" />
+      <circle cx="100" cy="100" r="82" fill={`url(#${coreId})`} />
       {/* Four Purushartha petals (Dharma, Artha, Kama, Moksha) */}
       <path
         d="M100 35 C 120 65, 120 85, 100 100 C 80 85, 80 65, 100 35 Z"
@@ -550,6 +582,8 @@ export function MeaningOfLifeIllustration({ className = '', size = 160 }: Illust
 }
 
 export function RelationshipsIllustration({ className = '', size = 160 }: IllustrationProps) {
+  const uid = React.useId().replace(/:/g, '');
+  const glowId = `rel-glow-${uid}`;
   return (
     <svg
       width={size}
@@ -557,17 +591,17 @@ export function RelationshipsIllustration({ className = '', size = 160 }: Illust
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={svgClassName(className)}
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="rel-glow" cx="50%" cy="50%" r="55%">
+        <radialGradient id={glowId} cx="50%" cy="50%" r="55%">
           <stop offset="0%" stopColor="#f472b6" stopOpacity="0.5" />
           <stop offset="70%" stopColor="#db2777" stopOpacity="0.15" />
           <stop offset="100%" stopColor="#831843" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="100" cy="100" r="85" fill="url(#rel-glow)" />
+      <circle cx="100" cy="100" r="85" fill={`url(#${glowId})`} />
       {/* Two interlinked sacred rings of Maitri and mutual honoring */}
       <circle cx="82" cy="100" r="42" stroke="#f472b6" strokeWidth="2" strokeOpacity="0.8" />
       <circle cx="118" cy="100" r="42" stroke="#fb7185" strokeWidth="2" strokeOpacity="0.8" />

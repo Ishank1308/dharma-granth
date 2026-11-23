@@ -19,6 +19,7 @@ import { ExplainLine } from '@/app/components/study/ExplainLine';
 const CompareViews = dynamic(() => import('@/app/components/study/CompareViews').then((m) => m.CompareViews));
 const SanskritWordExplorerDrawer = dynamic(() => import('@/app/components/understand/SanskritWordExplorerDrawer').then((m) => m.SanskritWordExplorerDrawer), { ssr: false });
 const PadachhedaWordDialog = dynamic(() => import('@/app/components/reader/PadachhedaWordDialog').then((m) => m.PadachhedaWordDialog), { ssr: false });
+const InteractiveSvadhyayaWidget = dynamic(() => import('@/app/components/reader/InteractiveSvadhyayaWidget').then((m) => m.InteractiveSvadhyayaWidget), { ssr: false });
 import type { SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
 import type { ReaderProvenance, ReaderVerseText } from '@/lib/reader-actions';
 import type { ReaderSettings } from '@/lib/useReaderSettings';
@@ -165,9 +166,16 @@ function Layer({
 export { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
 
 const dash = (s: string) => s.replace(/[\s|।॥0-9.]+$/, '');
+const isHi = (s?: string) => /[ऀ-ॿ]/.test(s ?? '');
 
 const aidToggle =
   'focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-full border border-separator/60 bg-dharma-text/[0.06] px-4 py-2 text-footnote font-medium text-dharma-text transition hover:bg-dharma-text/[0.1] active:scale-[0.98] aria-expanded:border-dharma-saffron/40 aria-expanded:bg-dharma-saffron/15 aria-expanded:text-dharma-saffron';
+const guideChip =
+  'focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-bg/70 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-saffron-500/60 hover:bg-saffron-500/10';
+const literalBadge =
+  'inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200';
+const noticeBox = 'rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm text-dharma-muted';
+const sourceDt = 'text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted';
 
 /* ── The layers: root shloka, then the अर्थ → व्याख्या → विज्ञान tree ── */
 
@@ -232,25 +240,21 @@ export function ReaderLayers({
   const bothPending = showHindiTrans && showEnglishTrans && meaningNow.hi === 'pending' && meaningNow.en === 'pending';
   const hasPadas = Boolean(settings.showCommentary && !isQuick && !settings.liteMode && glosses.length > 0);
   const [showPadas, setShowPadas] = useState(false);
+  const [showSvadhyayaFlow, setShowSvadhyayaFlow] = useState(false);
+  const expHi = isHi(verse.explanation);
+  const refHi = isHi(verse.reflection);
+  const resHi = isHi(verse.research);
   const showMarma = Boolean(insight?.marma && settings.showCommentary && !settings.liteMode);
-  // Sacred reading order (lib/sacred-reading-order): one Vyakhya branch carries
-  // the core shift (marma), the explanation and the English commentary together;
-  // Modern Context carries the lesson and the research note; Reflection carries
-  // only the चिंतन प्रश्न. Gates are unchanged from the old Vigyan branch.
   const hasVyakhya = settings.showCommentary && (showMarma || Boolean(verse.explanation) || Boolean(verse.commentary));
   const modernParsed = verse.reflection ? parseModernContext(verse.reflection) : null;
   const showModernLesson = Boolean(!settings.liteMode && verse.reflection && modernParsed
     && (!modernParsed.hasStructuredFormat || modernParsed.contextText || modernParsed.applicationText));
   const hasModern = settings.showCommentary && (showModernLesson || Boolean(!isQuick && !settings.liteMode && verse.research));
   const hasReflection = Boolean(settings.showCommentary && !settings.liteMode && modernParsed?.hasStructuredFormat && modernParsed.reflectionQuestion);
-  // Only offer links to sections that exist for this verse and reading mode.
   const anchorPrefix = `reader-study-${scriptureId}-${chapterId}-${String(verse.number).replace(/[^A-Za-z0-9_-]/g, '-')}`;
-  const studySteps = [
-    { id: 'arth', hi: SACRED_SECTION_LABEL.arth.hi, en: SACRED_SECTION_LABEL.arth.en, enabled: hasArth },
-    { id: 'vyakhya', hi: SACRED_SECTION_LABEL.vyakhya.hi, en: SACRED_SECTION_LABEL.vyakhya.en, enabled: hasVyakhya },
-    { id: 'modern', hi: SACRED_SECTION_LABEL.modern.hi, en: SACRED_SECTION_LABEL.modern.en, enabled: hasModern },
-    { id: 'reflection', hi: SACRED_SECTION_LABEL.reflection.hi, en: SACRED_SECTION_LABEL.reflection.en, enabled: hasReflection },
-  ].filter((step) => step.enabled);
+  const studySteps = (['arth', 'vyakhya', 'modern', 'reflection'] as const).filter(
+    (_, i) => [hasArth, hasVyakhya, hasModern, hasReflection][i],
+  );
 
   const handleInspectPada = (pada: string) => {
     const entry = verse.lexicon?.[pada];
@@ -324,7 +328,7 @@ export function ReaderLayers({
                       type="button"
                       aria-pressed={isSelected}
                       onClick={() => onSelectWord(idx)}
-                      className={`focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition [[data-lite-mode=true]_&]:transition-none ${
+                      className={`focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition ${
                         isSelected
                           ? 'border-amber-700 bg-amber-800 text-amber-50 shadow-2xs dark:border-amber-300 dark:bg-amber-300 dark:text-stone-950'
                           : 'border-amber-700/30 bg-dharma-card/90 text-dharma-text hover:border-amber-600/60 hover:bg-amber-100/60 dark:border-amber-500/25 dark:hover:bg-amber-900/35'
@@ -354,7 +358,7 @@ export function ReaderLayers({
         ) : (
           <p className="text-center text-sm text-dharma-muted">The Sanskrit text is not available for this verse.</p>
         )}
-        {!isQuick && (verse.transliteration || hasPadas) && (
+        {!isQuick && (verse.transliteration || hasPadas || (!settings.liteMode && lines.length > 0)) && (
           <div className="mt-2.5">
             {/* Reading aids for the shloka: folded until the reader asks for them. */}
             <div className="flex flex-wrap items-center justify-center gap-2">
@@ -382,6 +386,18 @@ export function ReaderLayers({
                   <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
                   <span lang="hi" data-bi="hi" className="font-devanagari">पदच्छेद</span>
                   <span data-bi="en">Word by word</span>
+                </button>
+              )}
+              {!settings.liteMode && lines.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setShowSvadhyayaFlow((v) => !v)}
+                  aria-expanded={showSvadhyayaFlow}
+                  className={aidToggle}
+                >
+                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span lang="hi" data-bi="hi" className="font-devanagari">स्वाध्याय पथ</span>{' '}
+                  <span data-bi="en">4-Step Studio</span>
                 </button>
               )}
             </div>
@@ -481,26 +497,36 @@ export function ReaderLayers({
         </div>
       )}
 
+      {showSvadhyayaFlow && !settings.liteMode && (
+        <InteractiveSvadhyayaWidget
+          scriptureId={scriptureId}
+          chapterId={chapterId}
+          verse={verse}
+          glosses={glosses}
+          onClose={() => setShowSvadhyayaFlow(false)}
+        />
+      )}
+
       {/* 2 · Direct Meaning (भावार्थ): immediately below the shloka so Hindi & English meaning
           are visible above the fold on both phone and desktop without scrolling past navigation. */}
       {hasArth && (
         <div id={`${anchorPrefix}-arth`} className="scroll-mt-32 space-y-3 sm:scroll-mt-24 sm:space-y-4">
           {bothPending && (
-            <p className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm italic text-dharma-muted">
+            <p className={`${noticeBox} italic`}>
               <span lang="hi" className="font-devanagari">{MEANING_COPY.bothPendingHi}</span>
               {' · '}
               <span lang="en">{MEANING_COPY.bothPendingEn}</span>
             </p>
           )}
           {showHindiTrans && !bothPending && meaningNow.hi === 'with' && (
-            <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm text-dharma-muted">
+            <p lang="hi" className={`${noticeBox} font-devanagari`}>
               <a href={`../${verse.hindiSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
                 {MEANING_COPY.hiWith(verse.hindiSeeVerse!)}
               </a>
             </p>
           )}
           {showHindiTrans && !bothPending && (meaningNow.hi === 'pending' || meaningNow.hi === 'review') && (
-            <p lang="hi" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 font-devanagari text-sm italic text-dharma-muted">
+            <p lang="hi" className={`${noticeBox} font-devanagari italic`}>
               {meaningNow.hi === 'review' ? MEANING_COPY.hiReview : MEANING_COPY.hiPending}
             </p>
           )}
@@ -523,9 +549,7 @@ export function ReaderLayers({
                       p.hindiIsAi ? (
                         <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>AI-सहायता प्राप्त प्रारूप</AiBadge>
                       ) : (
-                        <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                          मूलानुवाद · Literal
-                        </span>
+                        <span className={literalBadge}>मूलानुवाद · Literal</span>
                       )
                     }
                   >
@@ -545,9 +569,7 @@ export function ReaderLayers({
                       p.englishIsAi ? (
                         <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>AI-assisted draft</AiBadge>
                       ) : (
-                        <span className="inline-flex items-center gap-1 rounded-full border border-saffron-500/40 bg-saffron-100/60 dark:bg-saffron-900/30 px-2.5 py-0.5 text-[11px] font-bold text-saffron-900 dark:text-saffron-200">
-                          Literal Text
-                        </span>
+                        <span className={literalBadge}>Literal Text</span>
                       )
                     }
                   >
@@ -560,14 +582,14 @@ export function ReaderLayers({
             </div>
           )}
           {showEnglishTrans && !bothPending && meaningNow.en === 'with' && (
-            <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm text-dharma-muted">
+            <p lang="en" className={noticeBox}>
               <a href={`../${verse.translationSeeVerse}/`} className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
                 {MEANING_COPY.enWith(verse.translationSeeVerse!)}
               </a>
             </p>
           )}
           {showEnglishTrans && !bothPending && meaningNow.en === 'pending' && (
-            <p lang="en" className="rounded-2xl border border-dharma-border bg-dharma-card px-4 py-3 text-sm italic text-dharma-muted">
+            <p lang="en" className={`${noticeBox} italic`}>
               {MEANING_COPY.enPending}
             </p>
           )}
@@ -587,18 +609,18 @@ export function ReaderLayers({
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-amber-600 dark:bg-amber-400" />
               <span lang="hi" className="font-devanagari">मूल श्लोक</span>
             </a>
-            {studySteps.map((step, i) => (
+            {studySteps.map((id, i) => (
               <a
-                key={step.id}
-                href={'#' + anchorPrefix + '-' + step.id}
-                aria-label={step.hi + ' · ' + step.en}
-                className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-bg/70 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-saffron-500/60 hover:bg-saffron-500/10"
+                key={id}
+                href={`#${anchorPrefix}-${id}`}
+                aria-label={`${SACRED_SECTION_LABEL[id].hi} · ${SACRED_SECTION_LABEL[id].en}`}
+                className={guideChip}
               >
                 <span aria-hidden="true" className="font-mono text-[10px] font-bold tabular-nums text-saffron-700 dark:text-saffron-300">{String(i + 1).padStart(2, '0')}</span>
-                <span lang="hi" className="font-devanagari">{step.hi}</span>
+                <span lang="hi" className="font-devanagari">{SACRED_SECTION_LABEL[id].hi}</span>
               </a>
             ))}
-            <a href="#layer-sources" aria-label="स्रोत एवं संस्करण · Sources and edition" className="focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center rounded-full border border-dharma-border bg-dharma-bg/70 px-3 text-xs font-semibold text-dharma-text transition-colors hover:border-saffron-500/60 hover:bg-saffron-500/10">
+            <a href="#layer-sources" aria-label="स्रोत एवं संस्करण · Sources and edition" className={guideChip}>
               <span lang="hi" className="font-devanagari">स्रोत</span>
             </a>
           </div>
@@ -644,8 +666,8 @@ export function ReaderLayers({
                     collapsible={false}
                   >
                     <p
-                      lang={/[ऀ-ॿ]/.test(verse.explanation ?? '') ? 'hi' : 'en'}
-                      className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.explanation ?? '') ? `${devLeading} font-devanagari` : `${latinLeading} font-serif`}`}
+                      lang={expHi ? 'hi' : 'en'}
+                      className={`whitespace-pre-line text-dharma-text ${tSize} ${expHi ? `${devLeading} font-devanagari` : `${latinLeading} font-serif`}`}
                     >
                       {verse.explanation}
                     </p>
@@ -687,8 +709,8 @@ export function ReaderLayers({
                   >
                     <ModernContextBody
                       parsed={modernParsed}
-                      lang={/[ऀ-ॿ]/.test(verse.reflection) ? 'hi' : 'en'}
-                      className={`${tSize} ${/[ऀ-ॿ]/.test(verse.reflection) ? devLeading : latinLeading}`}
+                      lang={refHi ? 'hi' : 'en'}
+                      className={`${tSize} ${refHi ? devLeading : latinLeading}`}
                       hideContextHeading={!isQuick}
                     />
                   </Layer>
@@ -696,8 +718,8 @@ export function ReaderLayers({
                 {!isQuick && !settings.liteMode && verse.research && (
                   <Layer id="layer-research" kind="research" title="Comparative Research Note" titleHi="शोध टिप्पणी" badge={p.researchIsAi ? <AiBadge title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</AiBadge> : aiCommentary} collapsible={perspective !== 'researcher'}>
                     <p
-                      lang={/[ऀ-ॿ]/.test(verse.research) ? 'hi' : 'en'}
-                      className={`whitespace-pre-line text-dharma-text ${tSize} ${/[ऀ-ॿ]/.test(verse.research) ? devLeading : latinLeading} ${/[ऀ-ॿ]/.test(verse.research) ? 'font-devanagari' : 'font-serif'}`}
+                      lang={resHi ? 'hi' : 'en'}
+                      className={`whitespace-pre-line text-dharma-text ${tSize} ${resHi ? `${devLeading} font-devanagari` : `${latinLeading} font-serif`}`}
                     >
                       {verse.research}
                     </p>
@@ -728,8 +750,8 @@ export function ReaderLayers({
               >
                 <ReflectionBody
                   question={modernParsed.reflectionQuestion}
-                  lang={verse.reflection && /[ऀ-ॿ]/.test(verse.reflection) ? 'hi' : 'en'}
-                  className={`${tSize} ${verse.reflection && /[ऀ-ॿ]/.test(verse.reflection) ? devLeading : latinLeading}`}
+                  lang={refHi ? 'hi' : 'en'}
+                  className={`${tSize} ${refHi ? devLeading : latinLeading}`}
                 />
               </Layer>
             ),
@@ -767,19 +789,19 @@ export function ReaderLayers({
         <dl className="grid grid-cols-1 gap-x-6 gap-y-3 text-sm sm:grid-cols-2">
           {p.edition && (
             <div className="sm:col-span-2">
-              <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted">Sanskrit edition</dt>
+              <dt className={sourceDt}>Sanskrit edition</dt>
               <dd className="mt-0.5 text-dharma-text">{p.edition}</dd>
             </div>
           )}
           {p.translator && (
             <div>
-              <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted">Translation</dt>
+              <dt className={sourceDt}>Translation</dt>
               <dd className="mt-0.5 text-dharma-text">{p.translator}</dd>
             </div>
           )}
           {p.sourceHost && (
             <div>
-              <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted">Source</dt>
+              <dt className={sourceDt}>Source</dt>
               <dd className="mt-0.5 text-dharma-text">{p.sourceUrl ? (
                   <a href={p.sourceUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-saffron-800 underline underline-offset-2 dark:text-saffron-300">
                     {p.sourceHost}
@@ -790,18 +812,18 @@ export function ReaderLayers({
             </div>
           )}
           <div>
-            <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted">Last updated</dt>
+            <dt className={sourceDt}>Last updated</dt>
             <dd className="mt-0.5 text-dharma-text">{p.lastUpdated ? p.lastUpdated.slice(0, 10) : <span className="text-dharma-muted">Not recorded</span>}</dd>
           </div>
           {p.sourceLicense && (
             <div className="sm:col-span-2">
-              <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted">Licence note (as recorded)</dt>
+              <dt className={sourceDt}>Licence note (as recorded)</dt>
               <dd className="mt-0.5 text-dharma-muted">{p.sourceLicense}</dd>
             </div>
           )}
           {p.variantNote && (
             <div className="sm:col-span-2">
-              <dt className="text-[11px] font-semibold uppercase tracking-[0.12em] text-dharma-muted">
+              <dt className={sourceDt}>
                 <span lang="hi" className="font-devanagari normal-case tracking-normal">पाठ-भेद</span> · Variant readings
               </dt>
               <dd className="mt-0.5 text-dharma-text">{p.variantNote}</dd>
