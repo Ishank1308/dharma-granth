@@ -2825,7 +2825,7 @@ export const learningPaths: LearningPath[] = [
           question: 'What are the three canonical pillars of the Prasthanatrayi?',
         },
         back: {
-          hindi: '१. श्रुति प्रस्थान (उपनिषद्), २. स्मृति प्रस्थान (भगवद्गीता), ३. न्याय प्रस्थान (ब्रह्मसूत्र)।',
+          hindi: '1. श्रुति प्रस्थान (उपनिषद्), 2. स्मृति प्रस्थान (भगवद्गीता), 3. न्याय प्रस्थान (ब्रह्मसूत्र)।',
           english: '1. Śruti Prasthāna (Upanishads), 2. Smṛti Prasthāna (Bhagavad Gita), 3. Nyāya Prasthāna (Brahma Sūtras).',
           explanation: 'Any authentic school of Vedanta must provide comprehensive commentaries (Bhashyas) reconciling these three.',
           keywords: ['Prasthanatrayi', 'Upanishads', 'Gita', 'Brahma Sutras'],

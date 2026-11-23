@@ -140,7 +140,7 @@ function Layer({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={`relative rounded-card ${kind === 'source' ? 'verse-card single-verse px-3 py-3 sm:px-5 sm:py-4' : 'bg-dharma-card'}`}
+      className={`relative rounded-card ${kind === 'source' ? 'verse-card single-verse px-3 py-3 sm:px-5 sm:py-4' : 'bg-dharma-card h-full'}`}
     >
       {collapsible ? (
         <details ref={ref} open className="group">
@@ -505,9 +505,15 @@ export function ReaderLayers({
             </p>
           )}
           {((showHindiTrans && meaningNow.hi === 'text') || (showEnglishTrans && meaningNow.en === 'text')) && (
-            <div className="space-y-3">
+            <div
+              className={
+                showHindiTrans && meaningNow.hi === 'text' && showEnglishTrans && meaningNow.en === 'text'
+                  ? 'grid grid-cols-1 gap-3 md:grid-cols-2 [[data-lang=hi]_&]:grid-cols-1 [[data-lang=en]_&]:grid-cols-1'
+                  : 'space-y-3'
+              }
+            >
               {showHindiTrans && meaningNow.hi === 'text' && (
-                <div className="[[data-lang=en]_&]:hidden">
+                <div className="[[data-lang=en]_&]:hidden h-full">
                   <Layer
                     id="layer-hindi"
                     kind="translation"
@@ -526,7 +532,7 @@ export function ReaderLayers({
                 </div>
               )}
               {showEnglishTrans && meaningNow.en === 'text' && (
-                <div className="[[data-lang=hi]_&]:hidden">
+                <div className="[[data-lang=hi]_&]:hidden h-full">
                   <Layer
                     id="layer-english"
                     kind="translation"

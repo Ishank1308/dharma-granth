@@ -147,7 +147,7 @@ export const SAMPLE_DAILY_JOURNEYS: Record<string, DailyDharmaSession> = {
     chapterNumber: 2,
     verseNumber: 47,
     referenceDisplayEn: 'Bhagavad Gita 2.47',
-    referenceDisplayHi: 'श्रीमद्भगवद्गीता २.४७',
+    referenceDisplayHi: 'श्रीमद्भगवद्गीता 2.47',
     sanskritDevanagari: 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन ।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥',
     sanskritTransliteration: "karmaṇyevādhikāraste mā phaleṣu kadācana |\nmā karmaphalaheturbhūrmā te saṅgo'stvakarmaṇi ||",
     meter: 'Anuṣṭubh (32 syllables)',
@@ -245,7 +245,7 @@ export const SAMPLE_DAILY_JOURNEYS: Record<string, DailyDharmaSession> = {
     },
     practicalAction: {
       titleEn: 'The Agency Inventory (15 Minutes)',
-      titleHi: 'सामर्थ्य सूची (१५ मिनट)',
+      titleHi: 'सामर्थ्य सूची (15 मिनट)',
       estimatedMinutes: 15,
       steps: [
         'Write down the project or situation causing you the greatest mental agitation today.',

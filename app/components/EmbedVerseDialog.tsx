@@ -54,7 +54,7 @@ export function EmbedVerseDialog({
       onClose={onClose}
       title="Embed this verse"
       titleHi="श्लोक एम्बेड करें"
-      icon={<Code2 className="h-5 w-5 text-saffron-700" aria-hidden="true" />}
+      icon={<Code2 className="h-5 w-5 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />}
     >
       <p className="mb-4 text-sm text-dharma-muted">
         Paste this into your website or blog. It is plain HTML with a link back to {label} on Dharma Granth, with no script and no tracking.
@@ -72,7 +72,7 @@ export function EmbedVerseDialog({
       </select>
       <p className="mb-1 text-sm font-semibold text-dharma-text">Preview</p>
       <div
-        className="mb-4 overflow-x-auto rounded-xl border border-dharma-border bg-white p-2"
+        className="mb-4 overflow-x-auto rounded-xl border border-dharma-border bg-white p-2 text-stone-900"
         // The embed HTML escapes all verse text (lib/embed.ts), so this renders data, not markup.
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: html }}

@@ -158,8 +158,8 @@ export const GITA_2_11_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक ११ (Chapter 2, Verse 11)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.11)',
+    reference: 'अध्याय 2, श्लोक 11 (Chapter 2, Verse 11)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.11)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -267,7 +267,7 @@ export const GITA_2_13_PEDAGOGICAL: PedagogicalVerseData = {
     instructionEn:
       'Close your eyes for 2 minutes and recall a vivid memory from 10 or 20 years ago. Notice how physical surroundings, appearance, and thoughts were completely different, but the awareness observing them is the very same awareness here right now.',
     instructionHi:
-      'दो मिनट के लिए आंखें बंद करें और १०-१५ वर्ष पुरानी कोई बात याद करें। महसूस करें कि सब कुछ बदल जाने के बावजूद उसे देखने वाली चेतना आज भी वही है।',
+      'दो मिनट के लिए आंखें बंद करें और 10-15 वर्ष पुरानी कोई बात याद करें। महसूस करें कि सब कुछ बदल जाने के बावजूद उसे देखने वाली चेतना आज भी वही है।',
     duration: '2 minutes',
   },
 
@@ -308,8 +308,8 @@ export const GITA_2_13_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक १३ (Chapter 2, Verse 13)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.13)',
+    reference: 'अध्याय 2, श्लोक 13 (Chapter 2, Verse 13)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.13)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -413,11 +413,11 @@ export const GITA_2_14_PEDAGOGICAL: PedagogicalVerseData = {
 
   tryThisToday: {
     title: 'The 90-Second Weather Observation',
-    titleHi: '९० सेकंड का मौसम-अवलोकन',
+    titleHi: '90 सेकंड का मौसम-अवलोकन',
     instructionEn:
       'When a wave of irritation, anxiety, or craving hits you today, pause and observe it purely as physiological weather for 90 seconds without reacting or trying to distract yourself. Watch it rise, peak, and begin to fade.',
     instructionHi:
-      'जब भी आज कोई झुंझलाहट या घबराहट आए, तुरंत प्रतिक्रिया देने के बजाय ९० सेकंड शांत रहकर उसे केवल एक शारीरिक संवेदन के रूप में देखें।',
+      'जब भी आज कोई झुंझलाहट या घबराहट आए, तुरंत प्रतिक्रिया देने के बजाय 90 सेकंड शांत रहकर उसे केवल एक शारीरिक संवेदन के रूप में देखें।',
     duration: '< 2 minutes',
   },
 
@@ -458,8 +458,8 @@ export const GITA_2_14_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक १४ (Chapter 2, Verse 14)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.14)',
+    reference: 'अध्याय 2, श्लोक 14 (Chapter 2, Verse 14)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.14)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -567,7 +567,7 @@ export const GITA_2_20_PEDAGOGICAL: PedagogicalVerseData = {
     instructionEn:
       'Close your eyes for 3 minutes. Notice your breath moving in and out, and thoughts drifting past. Now ask: "Who is the silent awareness that is observing both breath and thoughts?" Rest quietly as that observer.',
     instructionHi:
-      '३ मिनट के लिए आंखें बंद करें। अपनी सांस और विचारों को आते-जाते देखें और पहचानें कि आप वे विचार नहीं, बल्कि उन्हें देखने वाले शांत साक्षी हैं।',
+      '3 मिनट के लिए आंखें बंद करें। अपनी सांस और विचारों को आते-जाते देखें और पहचानें कि आप वे विचार नहीं, बल्कि उन्हें देखने वाले शांत साक्षी हैं।',
     duration: '3 minutes',
   },
 
@@ -608,8 +608,8 @@ export const GITA_2_20_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक २० (Chapter 2, Verse 20)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.20); कठोपनिषद् १.२.१८',
+    reference: 'अध्याय 2, श्लोक 20 (Chapter 2, Verse 20)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.20); कठोपनिषद् 1.2.18',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -758,8 +758,8 @@ export const GITA_2_22_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक २२ (Chapter 2, Verse 22)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.22)',
+    reference: 'अध्याय 2, श्लोक 22 (Chapter 2, Verse 22)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.22)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -873,11 +873,11 @@ export const GITA_2_48_PEDAGOGICAL: PedagogicalVerseData = {
 
   tryThisToday: {
     title: 'The 3-Breath Equanimity Pause',
-    titleHi: '३ गहरी सांसों का समत्व-विराम',
+    titleHi: '3 गहरी सांसों का समत्व-विराम',
     instructionEn:
       'When you encounter an unexpected interruption, sharp email, or small win today, pause for exactly 3 conscious breaths before reacting. Observe the feeling without letting it push your mind off balance.',
     instructionHi:
-      'आज जब भी कोई अचानक तनाव या उत्तेजना आए, तुरंत प्रतिक्रिया देने से पहले ३ गहरी सांसें लें और मन को शांत केंद्र में लाएं।',
+      'आज जब भी कोई अचानक तनाव या उत्तेजना आए, तुरंत प्रतिक्रिया देने से पहले 3 गहरी सांसें लें और मन को शांत केंद्र में लाएं।',
     duration: '< 2 minutes',
   },
 
@@ -918,8 +918,8 @@ export const GITA_2_48_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक ४८ (Chapter 2, Verse 48)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.48)',
+    reference: 'अध्याय 2, श्लोक 48 (Chapter 2, Verse 48)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.48)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -1027,7 +1027,7 @@ export const GITA_2_55_PEDAGOGICAL: PedagogicalVerseData = {
     instructionEn:
       'When you feel a sudden urge to buy something unnecessary or check your phone for validation today, take 3 deep breaths and repeat: "In this moment, I am already complete; nothing external is required for my peace."',
     instructionHi:
-      'जब भी आज कुछ अनावश्यक खरीदने या फोन पर लाइक्स देखने की तीव्र इच्छा हो, तो ३ गहरी सांसें लें और महसूस करें कि आप इस पल में पूरी तरह पर्याप्त और शांत हैं।',
+      'जब भी आज कुछ अनावश्यक खरीदने या फोन पर लाइक्स देखने की तीव्र इच्छा हो, तो 3 गहरी सांसें लें और महसूस करें कि आप इस पल में पूरी तरह पर्याप्त और शांत हैं।',
     duration: '1 minute',
   },
 
@@ -1068,8 +1068,8 @@ export const GITA_2_55_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक ५५ (Chapter 2, Verse 55)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.55)',
+    reference: 'अध्याय 2, श्लोक 55 (Chapter 2, Verse 55)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.55)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -1218,8 +1218,8 @@ export const GITA_2_56_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक ५६ (Chapter 2, Verse 56)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.56)',
+    reference: 'अध्याय 2, श्लोक 56 (Chapter 2, Verse 56)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.56)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -1361,8 +1361,8 @@ export const GITA_2_62_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक ६२ (Chapter 2, Verse 62)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.62)',
+    reference: 'अध्याय 2, श्लोक 62 (Chapter 2, Verse 62)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.62)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -1470,7 +1470,7 @@ export const GITA_2_63_PEDAGOGICAL: PedagogicalVerseData = {
     instructionEn:
       'Commit to one inviolable rule today: When you notice blood rushing with anger, do not send that email, do not reply to that message, and do not make that decision for at least 15 minutes until memory and intellect come back online.',
     instructionHi:
-      'आज एक नियम बनाएं: जब भी अत्यधिक क्रोध आए, तो कम से कम १५ मिनट तक न तो कोई ईमेल भेजें, न कोई संदेश टाइप करें और न ही कोई बड़ा निर्णय लें।',
+      'आज एक नियम बनाएं: जब भी अत्यधिक क्रोध आए, तो कम से कम 15 मिनट तक न तो कोई ईमेल भेजें, न कोई संदेश टाइप करें और न ही कोई बड़ा निर्णय लें।',
     duration: '15-minute rule',
   },
 
@@ -1511,8 +1511,8 @@ export const GITA_2_63_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'श्रीमद्भगवद्गीता (Bhagavad Gita)',
-    reference: 'अध्याय २, श्लोक ६३ (Chapter 2, Verse 63)',
-    epicContext: 'महाभारत, भीष्म पर्व, अध्याय २६ (Mahābhārata, Bhīṣma Parva 26.63)',
+    reference: 'अध्याय 2, श्लोक 63 (Chapter 2, Verse 63)',
+    epicContext: 'महाभारत, भीष्म पर्व, अध्याय 26 (Mahābhārata, Bhīṣma Parva 26.63)',
     sanskritEdition: 'गीताप्रेस गोरखपुर (Gita Press Gorakhpur) & भांडारकर प्राच्य विद्या संशोधन मंदिर (BORI Critical Edition)',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल स्मृति पाठ (Canonical Smriti Scripture)',
@@ -1620,7 +1620,7 @@ export const ISHA_1_PEDAGOGICAL: PedagogicalVerseData = {
     instructionEn:
       'Look at three things in your living space or desk today (your computer, water glass, or a plant). Acknowledge that you did not create them from scratch; view them as sacred trusts to be treated with quiet reverence and gratitude.',
     instructionHi:
-      'आज अपने आस-पास की किन्हीं ३ वस्तुओं को देखें और यह महसूस करें कि वे प्रकृति और समाज का उपहार हैं। उनके प्रति कृतज्ञता व्यक्त करें।',
+      'आज अपने आस-पास की किन्हीं 3 वस्तुओं को देखें और यह महसूस करें कि वे प्रकृति और समाज का उपहार हैं। उनके प्रति कृतज्ञता व्यक्त करें।',
     duration: '< 5 minutes',
   },
 
@@ -1661,8 +1661,8 @@ export const ISHA_1_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'ईशावास्योपनिषद् (Isha Upanishad)',
-    reference: 'मंत्र १ (Mantra 1)',
-    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय ४० (Shukla Yajurveda 40.1)',
+    reference: 'मंत्र 1 (Mantra 1)',
+    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय 40 (Shukla Yajurveda 40.1)',
     sanskritEdition: 'चौखम्बा विद्याभवन / अद्वैत आश्रम / आदि शंकराचार्य भाष्य संस्करण',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल श्रुति पाठ (Canonical Shruti Scripture)',

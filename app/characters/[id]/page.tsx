@@ -144,8 +144,8 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
         <div className="max-w-4xl mx-auto px-6 relative">
           <FadeUp>
             <Link
-              href="/characters"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition mb-6"
+              href="/characters/"
+              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
               All Characters
@@ -205,17 +205,17 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
             <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
             <div className="p-6 md:p-8">
               <h2 id="char-family" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
-                <Users className="w-5 h-5 text-violet-600" />
+                <Users className="w-5 h-5 text-violet-600 dark:text-violet-400" />
                 Family Relationships
               </h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {character.relations.map((rel, i) => (
                   <div
                     key={i}
-                    className="flex items-center justify-between rounded-xl border border-dharma-border bg-dharma-bg/50 p-4 hover:border-violet-200 transition"
+                    className="flex items-center justify-between rounded-xl border border-dharma-border bg-dharma-bg/50 p-4 hover:border-violet-200 dark:hover:border-violet-500/40 transition"
                   >
                     <span className="font-semibold text-dharma-text">{rel.name}</span>
-                    <span className="text-sm text-violet-700 font-medium">{rel.relation}</span>
+                    <span className="text-sm text-violet-700 dark:text-violet-300 font-medium">{rel.relation}</span>
                   </div>
                 ))}
               </div>
@@ -229,7 +229,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
             <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
             <div className="p-6 md:p-8">
               <h2 id="char-events" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
-                <Calendar className="w-5 h-5 text-violet-600" />
+                <Calendar className="w-5 h-5 text-violet-600 dark:text-violet-400" />
                 Major Events
               </h2>
               <div className="space-y-4">
@@ -256,20 +256,20 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
               <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
               <div className="p-6 md:p-8">
                 <h2 id="char-dialogues" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
-                  <MessageSquare className="w-5 h-5 text-violet-600" />
+                  <MessageSquare className="w-5 h-5 text-violet-600 dark:text-violet-400" />
                   Important Dialogues
                 </h2>
                 <div className="space-y-5">
                   {character.dialogues.map((dialogue, i) => (
-                    <div key={i} className="border-l-4 border-violet-300 pl-5">
+                    <div key={i} className="border-l-4 border-violet-300 dark:border-violet-500/50 pl-5">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="font-bold text-violet-700">{dialogue.speaker}</span>
+                        <span className="font-bold text-violet-700 dark:text-violet-300">{dialogue.speaker}</span>
                         <span className="text-xs text-dharma-muted">— {dialogue.context}</span>
                       </div>
                       <p className="text-dharma-text leading-relaxed italic mb-2">
                         &ldquo;{dialogue.text}&rdquo;
                       </p>
-                      <p className="text-xs font-bold text-saffron-700 uppercase tracking-wider">
+                      <p className="text-xs font-bold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider">
                         {dialogue.reference}
                       </p>
                     </div>
@@ -287,7 +287,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
               <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
               <div className="p-6 md:p-8">
                 <h2 id="char-dilemmas" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
-                  <Scale className="w-5 h-5 text-violet-600" />
+                  <Scale className="w-5 h-5 text-violet-600 dark:text-violet-400" />
                   Ethical Dilemmas
                 </h2>
                 <div className="space-y-5">
@@ -300,7 +300,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
                         {dilemma.description}
                       </p>
                       <div className="border-t border-dharma-border pt-3 mt-3">
-                        <p className="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-1">
+                        <p className="text-xs font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider mb-1">
                           Resolution
                         </p>
                         <p className="text-sm text-dharma-text leading-relaxed">
@@ -322,7 +322,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
               <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
               <div className="p-6 md:p-8">
                 <h2 id="char-verses" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
-                  <BookOpen className="w-5 h-5 text-violet-600" />
+                  <BookOpen className="w-5 h-5 text-violet-600 dark:text-violet-400" />
                   Related Verses
                 </h2>
                 <div className="space-y-4">
@@ -342,7 +342,7 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
                       <p className="text-sm text-dharma-text leading-relaxed mb-2">
                         {verse.translation}
                       </p>
-                      <span className="text-[10px] font-bold text-saffron-700 uppercase tracking-wider">
+                      <span className="text-[10px] font-bold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider">
                         {verse.reference}
                       </span>
                     </div>
@@ -360,13 +360,13 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
               <div className={`h-1.5 bg-gradient-to-r ${character.gradient}`} />
               <div className="p-6 md:p-8">
                 <h2 id="char-interpretations" className="flex items-center gap-2 text-xl font-serif font-bold text-dharma-text mb-6">
-                  <GitBranch className="w-5 h-5 text-violet-600" />
+                  <GitBranch className="w-5 h-5 text-violet-600 dark:text-violet-400" />
                   Interpretations Across Traditions
                 </h2>
                 <div className="space-y-4">
                   {character.interpretations.map((interp, i) => (
                     <div key={i} className="rounded-xl border border-dharma-border bg-dharma-bg/40 p-5">
-                      <h3 className="font-serif font-bold text-violet-700 mb-2">
+                      <h3 className="font-serif font-bold text-violet-700 dark:text-violet-300 mb-2">
                         {interp.tradition}
                       </h3>
                       <p className="text-sm text-dharma-text leading-relaxed">
@@ -391,16 +391,16 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
                 {relatedCharacters.map((rel) => (
                   <Link
                     key={rel.id}
-                    href={`/characters/${rel.id}`}
-                    className="group rounded-xl border border-dharma-border bg-dharma-card p-5 hover:shadow-lg hover:border-violet-300 transition"
+                    href={`/characters/${rel.id}/`}
+                    className="group rounded-xl border border-dharma-border bg-dharma-card p-5 hover:shadow-lg hover:border-violet-300 dark:hover:border-violet-500/50 transition"
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <span className="text-2xl">{rel.icon}</span>
                       <div>
-                        <h3 className="font-serif font-bold text-dharma-text group-hover:text-violet-700 transition">
+                        <h3 className="font-serif font-bold text-dharma-text group-hover:text-violet-700 dark:group-hover:text-violet-300 transition">
                           {rel.name}
                         </h3>
-                        <p lang="sa" className="font-devanagari text-xs text-saffron-600">
+                        <p lang="sa" className="font-devanagari text-xs text-saffron-600 dark:text-saffron-300">
                           {rel.sanskrit}
                         </p>
                       </div>
@@ -418,15 +418,15 @@ export default async function CharacterPage(props: { params: Promise<{ id: strin
         {/* ── Navigation ─────────────────────────────────────────── */}
         <div className="flex items-center justify-between pt-4">
           <Link
-            href="/characters"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-violet-700 hover:text-violet-800 transition"
+            href="/characters/"
+            className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-violet-700 hover:text-violet-800 dark:text-violet-300 dark:hover:text-violet-200 transition"
           >
             <ArrowLeft className="w-4 h-4" />
             All Characters
           </Link>
           <Link
-            href="/locations"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-violet-700 hover:text-violet-800 transition"
+            href="/locations/"
+            className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-violet-700 hover:text-violet-800 dark:text-violet-300 dark:hover:text-violet-200 transition"
           >
             Sacred Locations →
           </Link>

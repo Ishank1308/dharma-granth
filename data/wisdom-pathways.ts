@@ -76,7 +76,7 @@ export const wisdomPathways: WisdomPathway[] = [
     },
     scripturalFoundations: {
       en: 'Gita 16.1 names fearlessness (abhaya) the first divine quality. The Taittiriya Upanishad declares that one who knows the bliss of Brahman never fears. Brihadaranyaka traces fear to perceiving “a second.”',
-      hi: 'गीता १६.१ अभय को दैवी संपदा का पहला गुण कहती है। तैत्तिरीय उपनिषद् कहता है कि ब्रह्म के आनंद को जानने वाला कभी नहीं डरता। बृहदारण्यक भय की जड़ “दूसरे” की प्रतीति में बताता है।',
+      hi: 'गीता 16.1 अभय को दैवी संपदा का पहला गुण कहती है। तैत्तिरीय उपनिषद् कहता है कि ब्रह्म के आनंद को जानने वाला कभी नहीं डरता। बृहदारण्यक भय की जड़ “दूसरे” की प्रतीति में बताता है।',
     },
     verseLenses: [
       {
@@ -146,7 +146,7 @@ export const wisdomPathways: WisdomPathway[] = [
     },
     scripturalFoundations: {
       en: 'The Gita’s karma teaching separates the sphere of effort from the sphere of fruit. Chapters 2 and 3 return to this: act steadily, offer the result, and let equanimity be the sign.',
-      hi: 'गीता का कर्म-उपदेश प्रयत्न के क्षेत्र को फल के क्षेत्र से अलग करता है। अध्याय २ और ३ इसी पर लौटते हैं — स्थिर होकर कर्म करो, परिणाम अर्पित करो, समत्व ही लक्षण है।',
+      hi: 'गीता का कर्म-उपदेश प्रयत्न के क्षेत्र को फल के क्षेत्र से अलग करता है। अध्याय 2 और 3 इसी पर लौटते हैं — स्थिर होकर कर्म करो, परिणाम अर्पित करो, समत्व ही लक्षण है।',
     },
     verseLenses: [
       {
@@ -252,7 +252,7 @@ export const wisdomPathways: WisdomPathway[] = [
     mastersFocusEn: 'Patanjali on stilling, Krishna on practice and dispassion.',
     introduction: {
       en: 'Patanjali defines yoga as the stilling of the mind’s turnings. The Gita agrees in chapter 6: the restless mind is mastered little by little, by practice held with patience.',
-      hi: 'पतंजलि योग को चित्तवृत्तियों के निरोध के रूप में परिभाषित करते हैं। गीता अध्याय ६ में सहमत है — चंचल मन धीरे-धीरे, धैर्ययुक्त अभ्यास से वश में होता है।',
+      hi: 'पतंजलि योग को चित्तवृत्तियों के निरोध के रूप में परिभाषित करते हैं। गीता अध्याय 6 में सहमत है — चंचल मन धीरे-धीरे, धैर्ययुक्त अभ्यास से वश में होता है।',
     },
     whyHumansFace: {
       en: 'The mind wanders by habit toward craving and threat. Without training, attention is pulled rather than placed.',
@@ -260,7 +260,7 @@ export const wisdomPathways: WisdomPathway[] = [
     },
     scripturalFoundations: {
       en: 'Yoga Sutra 1.2 gives the definition; 1.12–1.14 give the method: practice (abhyasa) and dispassion (vairagya), sustained over time. Gita 6.10–6.26 shows the same path on a seat, with breath and return.',
-      hi: 'योगसूत्र १.२ परिभाषा देता है; १.१२–१.१४ विधि — दीर्घकालीन अभ्यास और वैराग्य। गीता ६.१०–६.२६ उसी मार्ग को आसन, श्वास और लौटने के अभ्यास में दिखाती है।',
+      hi: 'योगसूत्र 1.2 परिभाषा देता है; 1.12–1.14 विधि — दीर्घकालीन अभ्यास और वैराग्य। गीता 6.10–6.26 उसी मार्ग को आसन, श्वास और लौटने के अभ्यास में दिखाती है।',
     },
     verseLenses: [
       {
@@ -269,7 +269,7 @@ export const wisdomPathways: WisdomPathway[] = [
         arthEn: 'Little by little the mind is withdrawn and settled in the Self; then think of nothing else.',
         arthHi: 'धीरे-धीरे मन को विषयों से हटाकर आत्मा में स्थापित करें; फिर अन्य कुछ न सोचें।',
         vyakhyaEn: 'Patanjali’s commentarial tradition hears 1.14 here: practice becomes firm when done long, without break, and with devotion.',
-        vyakhyaHi: 'परंपरागत व्याख्या यहाँ १.१४ सुनती है — दीर्घकाल, नैरंतर्य और सत्कार से सेवन ही दृढ़ अभ्यास है।',
+        vyakhyaHi: 'परंपरागत व्याख्या यहाँ 1.14 सुनती है — दीर्घकाल, नैरंतर्य और सत्कार से सेवन ही दृढ़ अभ्यास है।',
         modernContextEn: 'Count returns, not minutes. Each noticing and returning is one repetition of mastery.',
         modernContextHi: 'मिनट नहीं, लौटने की गणना करें। प्रत्येक स्मरण और वापसी अधिकार की एक आवृत्ति है।',
         lineageIds: ['patanjali', 'shankara'],
@@ -435,7 +435,7 @@ export const wisdomPathways: WisdomPathway[] = [
     mastersFocusEn: 'Krishna to grieving Arjuna, the Upanishadic Self, saints who sang through loss.',
     introduction: {
       en: 'Gita 2.11 begins where grief begins: “You grieve for those who should not be grieved for.” Krishna neither dismisses tears nor leaves Arjuna inside them; he widens the seer.',
-      hi: 'गीता २.११ वहीं आरंभ होती है जहाँ शोक आरंभ होता है — “अशोच्यों के लिए तुम शोक करते हो।” श्रीकृष्ण आँसुओं का तिरस्कार नहीं करते, न ही अर्जुन को उसी में छोड़ते हैं; वे दृष्टा को विस्तार देते हैं।',
+      hi: 'गीता 2.11 वहीं आरंभ होती है जहाँ शोक आरंभ होता है — “अशोच्यों के लिए तुम शोक करते हो।” श्रीकृष्ण आँसुओं का तिरस्कार नहीं करते, न ही अर्जुन को उसी में छोड़ते हैं; वे दृष्टा को विस्तार देते हैं।',
     },
     whyHumansFace: {
       en: 'Grief binds love to a form that has changed. The heart protests impermanence because it loves deeply.',

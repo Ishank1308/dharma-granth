@@ -334,8 +334,8 @@ export function ContributeClient() {
               <button
                 type="button"
                 onClick={handleSelectOpen}
-                className={`font-semibold underline-offset-2 hover:underline transition ${
-                  isOpenAmount ? 'text-saffron-700 dark:text-saffron-400 font-bold' : 'text-dharma-muted'
+                className={`tap-halo inline-flex min-h-[44px] items-center font-semibold underline-offset-2 hover:underline transition ${
+                  isOpenAmount ? 'text-saffron-700 dark:text-saffron-300 font-bold' : 'text-dharma-muted'
                 }`}
               >
                 {isOpenAmount ? '✓ ऐप में राशि तय होगी (सक्रिय)' : 'बिना राशि तय किए स्कैन करें'}
@@ -368,7 +368,7 @@ export function ContributeClient() {
                   className={`inline-flex min-h-[44px] shrink-0 items-center justify-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition active:scale-95 ${
                     copied
                       ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'border border-dharma-border bg-dharma-panel text-dharma-text hover:border-saffron-400 hover:text-saffron-700'
+                      : 'border border-dharma-border bg-dharma-panel text-dharma-text hover:border-saffron-400 hover:text-saffron-700 dark:hover:text-saffron-300'
                   }`}
                   aria-label="Copy UPI ID to clipboard"
                 >
@@ -418,7 +418,7 @@ export function ContributeClient() {
                     key={app.id}
                     href={app.getUri(currentAmount)}
                     onClick={() => triggerTactileFeedback('selection', 'softTap')}
-                    className="flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-panel px-3 py-2 text-xs font-semibold text-dharma-text transition hover:border-saffron-400 hover:text-saffron-700 active:scale-95"
+                    className="flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-panel px-3 py-2 text-xs font-semibold text-dharma-text transition hover:border-saffron-400 hover:text-saffron-700 dark:hover:text-saffron-300 active:scale-95"
                   >
                     <span>{app.nameHi}</span>
                   </a>
@@ -485,7 +485,7 @@ export function ContributeClient() {
               type="button"
               onClick={handleDownloadQr}
               disabled={!qrDataUrl}
-              className="mt-4 inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-panel px-4 py-2 text-xs font-semibold text-dharma-text transition hover:border-saffron-400 hover:text-saffron-700 active:scale-95 disabled:opacity-50"
+              className="mt-4 inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-panel px-4 py-2 text-xs font-semibold text-dharma-text transition hover:border-saffron-400 hover:text-saffron-700 dark:hover:text-saffron-300 active:scale-95 disabled:opacity-50"
             >
               <Download className="h-4 w-4" aria-hidden="true" />
               <span>QR कोड डाउनलोड करें (Save QR)</span>
@@ -558,7 +558,7 @@ export function ContributeClient() {
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  className="flex w-full items-start justify-between gap-4 text-left font-devanagari text-sm font-bold text-dharma-text transition hover:text-saffron-700"
+                  className="flex min-h-[44px] w-full items-center justify-between gap-4 py-2 text-left font-devanagari text-sm font-bold text-dharma-text transition hover:text-saffron-700 dark:hover:text-saffron-300"
                   aria-expanded={isOpen}
                 >
                   <span>{faq.questionHi}</span>

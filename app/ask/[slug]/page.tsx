@@ -54,7 +54,7 @@ function VerseCard({ group }: { group: AnswerVerseGroup }) {
   const joint = group.verses.length > 1;
   return (
     <article className="grid gap-3 rounded-2xl border border-dharma-border bg-dharma-bg/60 p-4 sm:p-5">
-      <p className="text-sm font-semibold text-saffron-700">
+      <p className="text-sm font-semibold text-saffron-700 dark:text-saffron-300">
         <span lang="hi" className="font-devanagari">{group.labelHi}</span>{' '}
         <span className="text-dharma-muted">{group.labelEn}</span>
       </p>
@@ -78,13 +78,13 @@ function VerseCard({ group }: { group: AnswerVerseGroup }) {
       </div>
       {group.verses.filter((v) => v.vyakhya).map((v) => (
         <details key={v.v} className="group rounded-xl border border-dharma-border px-4 py-2">
-          <summary className="flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-saffron-700">
+          <summary className="flex min-h-11 cursor-pointer items-center gap-2 text-sm font-semibold text-saffron-700 dark:text-saffron-300">
             <span lang="hi">पूरी व्याख्या पढ़ें</span> <span className="font-normal text-dharma-muted">Full explanation{joint ? ` · ${v.labelEn}` : ''}</span>
           </summary>
           <p lang="hi" className="whitespace-pre-line pb-2 pt-1 font-devanagari text-sm leading-relaxed">{v.vyakhya}</p>
         </details>
       ))}
-      <Link href={group.verses[0].href} className="inline-flex min-h-11 items-center justify-self-end text-xs text-dharma-muted underline underline-offset-2 hover:text-saffron-700">
+      <Link href={group.verses[0].href} className="inline-flex min-h-11 items-center justify-self-end text-xs text-dharma-muted underline underline-offset-2 hover:text-saffron-700 dark:hover:text-saffron-300">
         <span lang="hi">श्लोक पृष्ठ</span>&nbsp;<span>· verse page</span>
       </Link>
     </article>
@@ -122,7 +122,7 @@ export default async function GranthAnswerPage(props: { params: Promise<{ slug: 
       <section className="border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg px-5 py-10 dark:from-amber-950/20 sm:px-8 sm:py-14">
         <div className="mx-auto max-w-3xl">
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-xs text-dharma-muted">
-            <Link href="/ask/" className="inline-flex items-center gap-1 hover:text-saffron-700">
+            <Link href="/ask/" className="inline-flex items-center gap-1 hover:text-saffron-700 dark:hover:text-saffron-300">
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
               <span lang="hi">ग्रन्थ से पूछिए</span> <span>Ask the scriptures</span>
             </Link>
@@ -154,7 +154,7 @@ export default async function GranthAnswerPage(props: { params: Promise<{ slug: 
           )}
 
           <div className="mt-6 rounded-3xl border-2 border-saffron-500/40 bg-dharma-card p-5 shadow-sm sm:p-6">
-            <p className="text-xs font-bold uppercase tracking-widest text-saffron-700">
+            <p className="text-xs font-bold uppercase tracking-widest text-saffron-700 dark:text-saffron-300">
               <span lang="hi">सार</span> <span>In one line</span>
             </p>
             <p lang="hi" className="mt-2 font-devanagari text-lg leading-relaxed sm:text-xl">{answer.sarHi}</p>
@@ -260,7 +260,7 @@ export default async function GranthAnswerPage(props: { params: Promise<{ slug: 
                       <span lang="hi" className="block font-devanagari font-semibold">{n.questionHi}</span>
                       <span className="block text-sm text-dharma-muted">{n.questionEn}</span>
                     </span>
-                    <ArrowRight className="h-4 w-4 shrink-0 text-saffron-700" aria-hidden="true" />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
                   </Link>
                 </li>
               ))}
@@ -269,7 +269,7 @@ export default async function GranthAnswerPage(props: { params: Promise<{ slug: 
         )}
 
         <p className="text-center">
-          <Link href="/ask/" className="inline-flex min-h-11 items-center gap-2 font-semibold text-saffron-700 underline underline-offset-4">
+          <Link href="/ask/" className="inline-flex min-h-11 items-center gap-2 font-semibold text-saffron-700 dark:text-saffron-300 underline underline-offset-4">
             <span lang="hi">अपना प्रश्न पूछें</span> <span>Ask your own question</span>
           </Link>
         </p>

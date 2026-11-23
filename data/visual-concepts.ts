@@ -157,9 +157,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'श्रीमद्भगवद्गीता', ref: '३.३५ — श्रेयान्स्वधर्मो विगुणः' },
-        { name: 'महाभारत (शान्तिपर्व)', ref: '१०९.१० — धारणाद्धर्म इत्याहुः' },
-        { name: 'मनुस्मृति', ref: '६.९२ — धृतिः क्षमा दमोऽस्तेयं' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '3.35 — श्रेयान्स्वधर्मो विगुणः' },
+        { name: 'महाभारत (शान्तिपर्व)', ref: '109.10 — धारणाद्धर्म इत्याहुः' },
+        { name: 'मनुस्मृति', ref: '6.92 — धृतिः क्षमा दमोऽस्तेयं' },
       ],
       corePillars: [
         { hi: 'धृति (धैर्य एवं स्थिरता)', en: 'Steadfast Patience' },
@@ -240,9 +240,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'श्रीमद्भगवद्गीता', ref: '४.३७ — ज्ञानाग्निः सर्वकर्माणि भस्मसात्कुरुते' },
-        { name: 'बृहदारण्यक उपनिषद्', ref: '४.४.५ — यथाकारी यथाचारी तथा भवति' },
-        { name: 'पतंजलि योगसूत्र', ref: '२.१२ — क्लेशमूलः कर्माशयो दृष्टादृष्टजन्मवेदनीयः' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '4.37 — ज्ञानाग्निः सर्वकर्माणि भस्मसात्कुरुते' },
+        { name: 'बृहदारण्यक उपनिषद्', ref: '4.4.5 — यथाकारी यथाचारी तथा भवति' },
+        { name: 'पतंजलि योगसूत्र', ref: '2.12 — क्लेशमूलः कर्माशयो दृष्टादृष्टजन्मवेदनीयः' },
       ],
       corePillars: [
         { hi: 'संचित (पूर्व जन्मों का संचित बीज)', en: 'Sanchita: Stored Potential' },
@@ -321,9 +321,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'मांडूक्य उपनिषद्', ref: '७ — शांतं शिवमद्वैतं चतुर्थं मन्यन्ते' },
-        { name: 'श्रीमद्भगवद्गीता', ref: '५.२४ — योऽन्तःसुखोऽन्तरारामः' },
-        { name: 'विवेकचूड़ामणि', ref: 'श्लोक २ — दुर्लभं त्रयमेवैतद्देवानुग्रहहेतुकम्' },
+        { name: 'मांडूक्य उपनिषद्', ref: '7 — शांतं शिवमद्वैतं चतुर्थं मन्यन्ते' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '5.24 — योऽन्तःसुखोऽन्तरारामः' },
+        { name: 'विवेकचूड़ामणि', ref: 'श्लोक 2 — दुर्लभं त्रयमेवैतद्देवानुग्रहहेतुकम्' },
       ],
       corePillars: [
         { hi: 'जीवनमुक्ति (जीते जी आत्म-साक्षात्कार)', en: 'Jivanmukti: Living Freedom' },
@@ -404,9 +404,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'तैत्तिरीय उपनिषद्', ref: '२.१-५ — पंचकोश विवेक' },
-        { name: 'कठ उपनिषद्', ref: '१.२.१८ — न जायते म्रियते वा विपश्चित्' },
-        { name: 'श्रीमद्भगवद्गीता', ref: '२.२० — नैनं छिन्दन्ति शस्त्राणि' },
+        { name: 'तैत्तिरीय उपनिषद्', ref: '2.1-5 — पंचकोश विवेक' },
+        { name: 'कठ उपनिषद्', ref: '1.2.18 — न जायते म्रियते वा विपश्चित्' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '2.20 — नैनं छिन्दन्ति शस्त्राणि' },
       ],
       corePillars: [
         { hi: 'नित्य (त्रिकाल-अबाधित सत्य)', en: 'Eternal, untouched by time' },
@@ -487,9 +487,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'तैत्तिरीय उपनिषद्', ref: '२.१ — सत्यं ज्ञानमनन्तं ब्रह्म' },
-        { name: 'छांदोग्य उपनिषद्', ref: '६.८.७ — तत्त्वमसि श्वेतकेतो' },
-        { name: 'ब्रह्म सूत्र', ref: '१.१.२ — जन्माद्यस्य यतः' },
+        { name: 'तैत्तिरीय उपनिषद्', ref: '2.1 — सत्यं ज्ञानमनन्तं ब्रह्म' },
+        { name: 'छांदोग्य उपनिषद्', ref: '6.8.7 — तत्त्वमसि श्वेतकेतो' },
+        { name: 'ब्रह्म सूत्र', ref: '1.1.2 — जन्माद्यस्य यतः' },
       ],
       corePillars: [
         { hi: 'सत्-चित्-आनंद (अस्तित्व-चेतना-आनंद)', en: 'Sat-Chit-Ananda: Triune Essence' },
@@ -511,10 +511,10 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
       titleHi: 'ब्रह्मन् के साक्षात्कार के सोपान',
       titleEn: 'Four Classical Vedantic Mahavakyas',
       items: [
-        { step: 1, nameHi: 'प्रज्ञानं ब्रह्म (ऋग्वेद)', nameEn: 'Consciousness is Brahman', sanskrit: 'ऐतरेयोपनिषद् ३.१.४', descHi: 'लक्षण वाक्य — चेतना ही सम्पूर्ण अस्तित्व का मूल तत्त्व है।', descEn: 'The Definitive Statement: Pure consciousness is the foundation of all.' },
-        { step: 2, nameHi: 'तत्त्वमसि (सामवेद)', nameEn: 'That Thou Art', sanskrit: 'छांदोग्योपनिषद् ६.८.७', descHi: 'उपदेश वाक्य — गुरु द्वारा शिष्य को अपनी वास्तविक सत्ता का बोध।', descEn: 'The Instructional Statement: Your deepest essence is identical with That.' },
-        { step: 3, nameHi: 'अयमात्मा ब्रह्म (अथर्ववेद)', nameEn: 'This Self is Brahman', sanskrit: 'मांडूक्योपनिषद् २', descHi: 'अनुभव वाक्य — आंतरिक साक्षी और विराट सत्ता का एकत्व।', descEn: 'The Experiential Statement: This innermost witness is none other than the Absolute.' },
-        { step: 4, nameHi: 'अहं ब्रह्मास्मि (यजुर्वेद)', nameEn: 'I am Brahman', sanskrit: 'बृहदारण्यकोपनिषद् १.४.१०', descHi: 'साक्षात्कार वाक्य — मुक्त पुरुष का अखंड परमानंद उद्घोष।', descEn: 'The Realization Statement: The fearless declaration of total non-dual freedom.' },
+        { step: 1, nameHi: 'प्रज्ञानं ब्रह्म (ऋग्वेद)', nameEn: 'Consciousness is Brahman', sanskrit: 'ऐतरेयोपनिषद् 3.1.4', descHi: 'लक्षण वाक्य — चेतना ही सम्पूर्ण अस्तित्व का मूल तत्त्व है।', descEn: 'The Definitive Statement: Pure consciousness is the foundation of all.' },
+        { step: 2, nameHi: 'तत्त्वमसि (सामवेद)', nameEn: 'That Thou Art', sanskrit: 'छांदोग्योपनिषद् 6.8.7', descHi: 'उपदेश वाक्य — गुरु द्वारा शिष्य को अपनी वास्तविक सत्ता का बोध।', descEn: 'The Instructional Statement: Your deepest essence is identical with That.' },
+        { step: 3, nameHi: 'अयमात्मा ब्रह्म (अथर्ववेद)', nameEn: 'This Self is Brahman', sanskrit: 'मांडूक्योपनिषद् 2', descHi: 'अनुभव वाक्य — आंतरिक साक्षी और विराट सत्ता का एकत्व।', descEn: 'The Experiential Statement: This innermost witness is none other than the Absolute.' },
+        { step: 4, nameHi: 'अहं ब्रह्मास्मि (यजुर्वेद)', nameEn: 'I am Brahman', sanskrit: 'बृहदारण्यकोपनिषद् 1.4.10', descHi: 'साक्षात्कार वाक्य — मुक्त पुरुष का अखंड परमानंद उद्घोष।', descEn: 'The Realization Statement: The fearless declaration of total non-dual freedom.' },
       ],
     },
   },
@@ -570,9 +570,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'श्वेताश्वतर उपनिषद्', ref: '४.१० — मायां तु प्रकृतिं विद्यान्मायिनं च महेश्वरम्' },
-        { name: 'श्रीमद्भगवद्गीता', ref: '७.१४ — मामेव ये प्रपद्यन्ते मायामेतां तरन्ति ते' },
-        { name: 'विवेकचूड़ामणि', ref: 'श्लोक १०८ — अव्यक्तनाम्नी परमेशशक्तिः' },
+        { name: 'श्वेताश्वतर उपनिषद्', ref: '4.10 — मायां तु प्रकृतिं विद्यान्मायिनं च महेश्वरम्' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '7.14 — मामेव ये प्रपद्यन्ते मायामेतां तरन्ति ते' },
+        { name: 'विवेकचूड़ामणि', ref: 'श्लोक 108 — अव्यक्तनाम्नी परमेशशक्तिः' },
       ],
       corePillars: [
         { hi: 'आवरण (सत्य को ढंकने वाली शक्ति)', en: 'Avarana: Veiling Power' },
@@ -651,9 +651,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'पतंजलि योगसूत्र', ref: '१.२ — योगश्चित्तवृत्तिनिरोधः' },
-        { name: 'श्रीमद्भगवद्गीता', ref: '२.४८ — समत्वं योग उच्यते' },
-        { name: 'श्रीमद्भगवद्गीता', ref: '२.५० — योगः कर्मसु कौशलम्' },
+        { name: 'पतंजलि योगसूत्र', ref: '1.2 — योगश्चित्तवृत्तिनिरोधः' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '2.48 — समत्वं योग उच्यते' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '2.50 — योगः कर्मसु कौशलम्' },
       ],
       corePillars: [
         { hi: 'समत्व (सुख-दुःख में मन का संतुलन)', en: 'Samatvam: Equanimity in all states' },
@@ -735,9 +735,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'ब्रह्म सूत्र', ref: '१.१.१ — अथातो ब्रह्मजिज्ञासा' },
-        { name: 'मांडूक्य कारिका', ref: '१.१६ — अनादिमायया सुप्तो' },
-        { name: 'श्रीमद्भगवद्गीता', ref: '१५.१५ — वेदान्तकृद्वेदविदेव चाहम्' },
+        { name: 'ब्रह्म सूत्र', ref: '1.1.1 — अथातो ब्रह्मजिज्ञासा' },
+        { name: 'मांडूक्य कारिका', ref: '1.16 — अनादिमायया सुप्तो' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '15.15 — वेदान्तकृद्वेदविदेव चाहम्' },
       ],
       corePillars: [
         { hi: 'प्रस्थानत्रयी (उपनिषद्, गीता, ब्रह्मसूत्र)', en: 'Prasthanatrayi: The Triple Canon' },
@@ -817,9 +817,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'नारद भक्ति सूत्र', ref: 'सूत्र २ — सा तु अस्मिन् परमप्रेमरूपा' },
-        { name: 'श्रीमद्भागवत पुराण', ref: '७.५.२३ — नवधा भक्ति' },
-        { name: 'श्रीमद्भगवद्गीता', ref: '१२.२ — मय्यावेश्य मनो ये मां' },
+        { name: 'नारद भक्ति सूत्र', ref: 'सूत्र 2 — सा तु अस्मिन् परमप्रेमरूपा' },
+        { name: 'श्रीमद्भागवत पुराण', ref: '7.5.23 — नवधा भक्ति' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '12.2 — मय्यावेश्य मनो ये मां' },
       ],
       corePillars: [
         { hi: 'अनन्य प्रेम (बिना किसी स्वार्थ के केवल प्रेम)', en: 'Ahaituki Bhakti: Unmotivated Love' },
@@ -905,9 +905,9 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
     },
     knowledgeMap: {
       scriptures: [
-        { name: 'कठ उपनिषद्', ref: '१.२.६ — पुनः पुनर्वशमापद्यते मे' },
-        { name: 'श्रीमद्भगवद्गीता', ref: '८.१५ — मामुपेत्य पुनर्जन्म दुःखालयमशाश्वतम्' },
-        { name: 'भज गोविंदम्', ref: 'श्लोक २१ — पुनरपि जननं पुनरपि मरणम्' },
+        { name: 'कठ उपनिषद्', ref: '1.2.6 — पुनः पुनर्वशमापद्यते मे' },
+        { name: 'श्रीमद्भगवद्गीता', ref: '8.15 — मामुपेत्य पुनर्जन्म दुःखालयमशाश्वतम्' },
+        { name: 'भज गोविंदम्', ref: 'श्लोक 21 — पुनरपि जननं पुनरपि मरणम्' },
       ],
       corePillars: [
         { hi: 'अनित्य (सर्वदा परिवर्तनशील एवं नश्वर)', en: 'Anitya: Transient and Ever-shifting' },
@@ -917,7 +917,7 @@ export const VISUAL_CONCEPTS: Record<string, VisualConceptData> = {
       ],
       practices: [
         { hi: 'तीव्र वैराग्य — नश्वर सुखों के मिथ्यापन का बोध', en: 'Cultivating detachment from passing mirages' },
-        { hi: 'असंग-शस्त्र द्वारा संसार-वृक्ष का छेदन (गीता १५.३)', en: 'Cutting the Ashvattha tree with detachment' },
+        { hi: 'असंग-शस्त्र द्वारा संसार-वृक्ष का छेदन (गीता 15.3)', en: 'Cutting the Ashvattha tree with detachment' },
         { hi: 'भगवत्-शरण — परमात्मा की कृपा से भवसागर पार', en: 'Divine surrender to cross the cosmic ocean' },
       ],
       ultimateFruit: {

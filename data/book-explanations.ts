@@ -432,17 +432,17 @@ export const bookExplanations: Record<string, BookExplanation> = {
   muktika: {
     overview: {
       en: "The Muktika Upanishad contains Lord Rama's teaching to Hanuman regarding the canon of the 108 Upanishads, the four stages of Mukti, and the power of self-knowledge.",
-      hi: "मुक्तिका उपनिषद् श्रीराम द्वारा हनुमान जी को दिए गए उपदेश में १०८ उपनिषदों की प्रामाणिक सूची और मोक्ष के स्वरूप का वर्णन करता है।",
+      hi: "मुक्तिका उपनिषद् श्रीराम द्वारा हनुमान जी को दिए गए उपदेश में 108 उपनिषदों की प्रामाणिक सूची और मोक्ष के स्वरूप का वर्णन करता है।",
     },
     focus: {
       en: "Read it for the traditional canon of Upanishadic literature and the direct path to liberation.",
-      hi: "इसे १०८ उपनिषदों की पारंपरिक सूची और आत्मज्ञान से मुक्ति का मार्ग समझने के लिए पढ़ें।",
+      hi: "इसे 108 उपनिषदों की पारंपरिक सूची और आत्मज्ञान से मुक्ति का मार्ग समझने के लिए पढ़ें।",
     },
   },
   naradapuran: {
     overview: {
       en: "The Narada Purana is one of the eighteen Mahapuranas, narrated by sage Narada. It celebrates the nine forms of devotion (Navavidha Bhakti), sacred singing (nama-sankirtana), and the Gandharva Veda.",
-      hi: "नारदपुराण १८ महापुराणों में से एक है, जिसमें देवर्षि नारद द्वारा नवविधा भक्ति, नाम-संकीर्तन, गंधर्व वेद (पवित्र संगीत) और धर्ममय जीवन का विस्तार से प्रतिपादन किया गया है।",
+      hi: "नारदपुराण 18 महापुराणों में से एक है, जिसमें देवर्षि नारद द्वारा नवविधा भक्ति, नाम-संकीर्तन, गंधर्व वेद (पवित्र संगीत) और धर्ममय जीवन का विस्तार से प्रतिपादन किया गया है।",
     },
     focus: {
       en: "Read it for the devotional path of divine love, sacred music, and the spiritual sanctification of daily life.",

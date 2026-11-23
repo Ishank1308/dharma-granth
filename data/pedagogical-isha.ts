@@ -109,7 +109,7 @@ export const ISHA_1_PEDAGOGICAL: PedagogicalVerseData = {
     instructionEn:
       'Before your next meal or purchase, pause for 10 seconds. Recognize that it comes from the earth and cosmic order. Receive it with reverence and release possessive grasping.',
     instructionHi:
-      'अगले भोजन या खरीदारी से पहले १० सेकंड ठहरें। विचार करें कि यह सब प्रकृति और परमात्मा की देन है। कृतज्ञता से ग्रहण करें और लोभ त्यागें।',
+      'अगले भोजन या खरीदारी से पहले 10 सेकंड ठहरें। विचार करें कि यह सब प्रकृति और परमात्मा की देन है। कृतज्ञता से ग्रहण करें और लोभ त्यागें।',
     duration: '1 minute',
   },
 
@@ -150,8 +150,8 @@ export const ISHA_1_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'ईशावास्योपनिषद् (Isha Upanishad)',
-    reference: 'मंत्र १ (Mantra 1)',
-    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय ४० (Shukla Yajurveda 40.1)',
+    reference: 'मंत्र 1 (Mantra 1)',
+    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय 40 (Shukla Yajurveda 40.1)',
     sanskritEdition: 'चौखम्बा विद्याभवन / अद्वैत आश्रम / आदि शंकराचार्य भाष्य संस्करण',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल श्रुति पाठ (Canonical Shruti Scripture)',
@@ -296,8 +296,8 @@ export const ISHA_2_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'ईशावास्योपनिषद् (Isha Upanishad)',
-    reference: 'मंत्र २ (Mantra 2)',
-    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय ४० (Shukla Yajurveda 40.2)',
+    reference: 'मंत्र 2 (Mantra 2)',
+    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय 40 (Shukla Yajurveda 40.2)',
     sanskritEdition: 'चौखम्बा विद्याभवन / अद्वैत आश्रम / आदि शंकराचार्य भाष्य संस्करण',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल श्रुति पाठ (Canonical Shruti Scripture)',
@@ -442,8 +442,8 @@ export const ISHA_4_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'ईशावास्योपनिषद् (Isha Upanishad)',
-    reference: 'मंत्र ४ (Mantra 4)',
-    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय ४० (Shukla Yajurveda 40.4)',
+    reference: 'मंत्र 4 (Mantra 4)',
+    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय 40 (Shukla Yajurveda 40.4)',
     sanskritEdition: 'चौखम्बा विद्याभवन / अद्वैत आश्रम / आदि शंकराचार्य भाष्य संस्करण',
     meter: 'त्रिष्टुप् छन्द (Triṣṭubh — 11 syllables × 4 quarters)',
     epistemicTier: 'मूल श्रुति पाठ (Canonical Shruti Scripture)',
@@ -582,14 +582,14 @@ export const ISHA_6_PEDAGOGICAL: PedagogicalVerseData = {
       summaryEn:
         'This mantra forms the direct philosophical basis for Bhagavad Gita 6.29 (sarva-bhūta-stham ātmānam), bridging the Upanishads and the Gita.',
       summaryHi:
-        'यह मंत्र गीता के छठे अध्याय (श्लोक २९) का सीधा आधार है — उपनिषद और गीता के समन्वय का अनुपम प्रमाण।',
+        'यह मंत्र गीता के छठे अध्याय (श्लोक 29) का सीधा आधार है — उपनिषद और गीता के समन्वय का अनुपम प्रमाण।',
     },
   },
 
   sourceTransparency: {
     scripture: 'ईशावास्योपनिषद् (Isha Upanishad)',
-    reference: 'मंत्र ६ (Mantra 6)',
-    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय ४० (Shukla Yajurveda 40.6)',
+    reference: 'मंत्र 6 (Mantra 6)',
+    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय 40 (Shukla Yajurveda 40.6)',
     sanskritEdition: 'चौखम्बा विद्याभवन / अद्वैत आश्रम / आदि शंकराचार्य भाष्य संस्करण',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल श्रुति पाठ (Canonical Shruti Scripture)',
@@ -734,8 +734,8 @@ export const ISHA_7_PEDAGOGICAL: PedagogicalVerseData = {
 
   sourceTransparency: {
     scripture: 'ईशावास्योपनिषद् (Isha Upanishad)',
-    reference: 'मंत्र ७ (Mantra 7)',
-    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय ४० (Shukla Yajurveda 40.7)',
+    reference: 'मंत्र 7 (Mantra 7)',
+    epicContext: 'शुक्ल यजुर्वेद, माध्यन्दिन संहिता, अध्याय 40 (Shukla Yajurveda 40.7)',
     sanskritEdition: 'चौखम्बा विद्याभवन / अद्वैत आश्रम / आदि शंकराचार्य भाष्य संस्करण',
     meter: 'अनुष्टुप् छन्द (Anuṣṭubh — 8 syllables × 4 quarters)',
     epistemicTier: 'मूल श्रुति पाठ (Canonical Shruti Scripture)',

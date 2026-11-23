@@ -45,7 +45,7 @@ export function Timeline({ events, className = '' }: TimelineProps) {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setViewMode('vertical')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition ${
+            className={`flex min-h-[44px] items-center gap-2 px-4 py-2 rounded-lg font-semibold transition ${
               viewMode === 'vertical'
                 ? 'bg-gradient-to-r from-saffron-600 to-amber-600 text-white'
                 : 'bg-dharma-card border border-dharma-border hover:bg-saffron-500/10'
@@ -56,7 +56,7 @@ export function Timeline({ events, className = '' }: TimelineProps) {
           </button>
           <button
             onClick={() => setViewMode('horizontal')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition ${
+            className={`flex min-h-[44px] items-center gap-2 px-4 py-2 rounded-lg font-semibold transition ${
               viewMode === 'horizontal'
                 ? 'bg-gradient-to-r from-saffron-600 to-amber-600 text-white'
                 : 'bg-dharma-card border border-dharma-border hover:bg-saffron-500/10'
@@ -75,7 +75,7 @@ export function Timeline({ events, className = '' }: TimelineProps) {
               placeholder="Search events..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 pr-4 py-2 border border-dharma-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 bg-dharma-card"
+              className="min-h-[44px] pl-10 pr-4 py-2 border border-dharma-border rounded-lg text-sm text-dharma-text focus:outline-none focus:ring-2 focus:ring-saffron-500 bg-dharma-card"
             />
           </div>
           <div className="relative">
@@ -83,7 +83,7 @@ export function Timeline({ events, className = '' }: TimelineProps) {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="pl-10 pr-8 py-2 border border-dharma-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 bg-dharma-card text-dharma-text"
+              className="min-h-[44px] pl-10 pr-8 py-2 border border-dharma-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 bg-dharma-card text-dharma-text"
             >
               {categories.map(cat => (
                 <option key={cat} value={cat}>
@@ -119,11 +119,11 @@ export function Timeline({ events, className = '' }: TimelineProps) {
                 >
                   <div className="flex items-center gap-3 mb-3 md:justify-end">
                     {event.icon && (
-                      <div className="p-2 bg-saffron-100 rounded-lg text-saffron-700">
+                      <div className="p-2 bg-saffron-100 rounded-lg text-saffron-700 dark:bg-saffron-500/15 dark:text-saffron-300">
                         {event.icon}
                       </div>
                     )}
-                    <span className="text-sm font-bold text-saffron-700 bg-saffron-500/10 px-3 py-1 rounded-full">
+                    <span className="text-sm font-bold text-saffron-700 bg-saffron-500/10 px-3 py-1 rounded-full dark:text-saffron-300">
                       {event.year}
                     </span>
                   </div>
@@ -131,7 +131,7 @@ export function Timeline({ events, className = '' }: TimelineProps) {
                     {event.title}
                   </h3>
                   {event.sanskrit && (
-                    <p lang="sa" className="font-devanagari text-lg text-saffron-700 mb-2">
+                    <p lang="sa" className="font-devanagari text-lg text-saffron-700 dark:text-saffron-300 mb-2">
                       {event.sanskrit}
                     </p>
                   )}
@@ -171,11 +171,11 @@ export function Timeline({ events, className = '' }: TimelineProps) {
                 >
                   <div className="flex items-center gap-3 mb-3">
                     {event.icon && (
-                      <div className="p-2 bg-saffron-100 rounded-lg text-saffron-700">
+                      <div className="p-2 bg-saffron-100 rounded-lg text-saffron-700 dark:bg-saffron-500/15 dark:text-saffron-300">
                         {event.icon}
                       </div>
                     )}
-                    <span className="text-sm font-bold text-saffron-700 bg-saffron-50 px-3 py-1 rounded-full">
+                    <span className="text-sm font-bold text-saffron-700 bg-saffron-50 px-3 py-1 rounded-full dark:bg-saffron-500/10 dark:text-saffron-300">
                       {event.year}
                     </span>
                   </div>
@@ -183,7 +183,7 @@ export function Timeline({ events, className = '' }: TimelineProps) {
                     {event.title}
                   </h3>
                   {event.sanskrit && (
-                    <p lang="sa" className="font-devanagari text-lg text-saffron-700 mb-2">
+                    <p lang="sa" className="font-devanagari text-lg text-saffron-700 dark:text-saffron-300 mb-2">
                       {event.sanskrit}
                     </p>
                   )}

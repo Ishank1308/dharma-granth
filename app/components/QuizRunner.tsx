@@ -65,18 +65,18 @@ export function QuizRunner({ quiz, onComplete, bestScore }: QuizRunnerProps) {
         animate={{ opacity: 1, scale: 1 }}
         className="max-w-2xl mx-auto text-center"
       >
-        <div className={`inline-flex items-center justify-center w-24 h-24 rounded-full mb-6 ${passed ? 'bg-gradient-to-br from-saffron-400 to-amber-500' : 'bg-gradient-to-br from-stone-300 to-stone-400'}`}>
+        <div className={`inline-flex items-center justify-center w-24 h-24 rounded-full mb-6 ${passed ? 'bg-gradient-to-br from-saffron-400 to-amber-500' : 'bg-gradient-to-br from-stone-300 to-stone-400 dark:from-stone-700 dark:to-stone-600'}`}>
           {passed ? <Trophy className="w-12 h-12 text-white" /> : <RotateCcw className="w-12 h-12 text-white" />}
         </div>
         <h3 className="text-3xl font-serif font-bold text-dharma-text mb-2">
           {passed ? '🎉 Well Done!' : 'Keep Studying!'}
         </h3>
         <p className="text-lg text-dharma-muted mb-6">
-          You scored <span className="font-bold text-saffron-700">{score} / {total}</span> ({percentage}%)
+          You scored <span className="font-bold text-saffron-700 dark:text-saffron-300">{score} / {total}</span> ({percentage}%)
         </p>
 
         {passed && (
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-saffron-100 to-amber-100 text-saffron-800 text-sm font-bold border border-saffron-200 mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-saffron-100 to-amber-100 text-saffron-800 text-sm font-bold border border-saffron-200 dark:from-saffron-950/50 dark:to-amber-950/50 dark:text-saffron-200 dark:border-saffron-500/30 mb-6">
             <Award className="w-4 h-4" />
             Certificate eligible — visit the pathway page to claim it
           </div>
@@ -96,22 +96,22 @@ export function QuizRunner({ quiz, onComplete, bestScore }: QuizRunnerProps) {
             return (
               <div
                 key={q.id}
-                className={`rounded-xl border p-4 ${correct ? 'border-emerald-200 bg-emerald-50/50' : 'border-rose-200 bg-rose-50/50'}`}
+                className={`rounded-xl border p-4 ${correct ? 'border-emerald-200 bg-emerald-50/50 dark:border-emerald-500/35 dark:bg-emerald-950/30' : 'border-rose-200 bg-rose-50/50 dark:border-rose-500/35 dark:bg-rose-950/30'}`}
               >
                 <div className="flex items-start gap-3">
                   {correct ? (
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
                   ) : (
-                    <XCircle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
+                    <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 flex-shrink-0 mt-0.5" />
                   )}
                   <div>
                     <p className="text-sm font-semibold text-dharma-text mb-1">{q.question}</p>
                     <p className="text-xs text-dharma-muted">
-                      Correct: <span className="font-medium text-emerald-700">{q.options[q.correctIndex]}</span>
+                      Correct: <span className="font-medium text-emerald-700 dark:text-emerald-300">{q.options[q.correctIndex]}</span>
                     </p>
                     {!correct && userAnswer !== null && (
                       <p className="text-xs text-dharma-muted">
-                        Your answer: <span className="font-medium text-rose-700">{q.options[userAnswer]}</span>
+                        Your answer: <span className="font-medium text-rose-700 dark:text-rose-300">{q.options[userAnswer]}</span>
                       </p>
                     )}
                   </div>
@@ -173,7 +173,7 @@ export function QuizRunner({ quiz, onComplete, bestScore }: QuizRunnerProps) {
           {/* Question */}
           <div className="mb-6">
             {question.questionSanskrit && (
-              <p lang="sa" className="font-devanagari text-xl text-saffron-700 mb-2">
+              <p lang="sa" className="font-devanagari text-xl text-saffron-700 dark:text-saffron-300 mb-2">
                 {question.questionSanskrit}
               </p>
             )}
@@ -189,11 +189,11 @@ export function QuizRunner({ quiz, onComplete, bestScore }: QuizRunnerProps) {
               const isCorrect = idx === question.correctIndex;
               const showResult = answered;
 
-              let className = 'border-dharma-border bg-dharma-card hover:border-saffron-300 hover:bg-saffron-50/30';
+              let className = 'border-dharma-border bg-dharma-card hover:border-saffron-300 hover:bg-saffron-500/[0.06]';
               if (showResult && isCorrect) {
-                className = 'border-emerald-300 bg-emerald-50/50';
+                className = 'border-emerald-300 bg-emerald-50/50 dark:border-emerald-500/40 dark:bg-emerald-950/35';
               } else if (showResult && isSelected && !isCorrect) {
-                className = 'border-rose-300 bg-rose-50/50';
+                className = 'border-rose-300 bg-rose-50/50 dark:border-rose-500/40 dark:bg-rose-950/35';
               } else if (showResult) {
                 className = 'border-dharma-border bg-dharma-card opacity-60';
               }
@@ -210,10 +210,10 @@ export function QuizRunner({ quiz, onComplete, bestScore }: QuizRunnerProps) {
                       {option}
                     </span>
                     {showResult && isCorrect && (
-                      <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
                     )}
                     {showResult && isSelected && !isCorrect && (
-                      <XCircle className="w-5 h-5 text-rose-600 flex-shrink-0" />
+                      <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 flex-shrink-0" />
                     )}
                   </div>
                 </button>
@@ -230,9 +230,9 @@ export function QuizRunner({ quiz, onComplete, bestScore }: QuizRunnerProps) {
                 className="overflow-hidden mb-6"
                 aria-live="polite"
               >
-                <div className="rounded-xl bg-saffron-50/50 border border-saffron-200 p-4">
+                <div className="rounded-xl bg-saffron-50/50 border border-saffron-200 dark:bg-saffron-950/25 dark:border-saffron-500/30 p-4">
                   <p className="text-sm text-dharma-text leading-relaxed">
-                    <span className="font-bold text-saffron-700">Explanation: </span>
+                    <span className="font-bold text-saffron-700 dark:text-saffron-300">Explanation: </span>
                     {question.explanation}
                   </p>
                 </div>
