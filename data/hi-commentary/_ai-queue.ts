@@ -26,26 +26,34 @@ const norm = (s = "") => s.replace(/[\s|।॥०-९\d.]/g, "");
 
 /** Current Sanskrit per "chapter:verse", to catch drafts whose verse has since moved. */
 function currentSanskrit(scriptureId: string): Map<string, string> {
-  const out = new Map<string, string>();
   const file = path.join(FULL_DIR, `${scriptureId}.json`);
-  if (!fs.existsSync(file)) return out;
+  if (!fs.existsSync(file)) return new Map<string, string>();
   const book = JSON.parse(fs.readFileSync(file, "utf8")) as {
     chapters?: Array<{ number: number | string; verses?: Array<{ number: number | string; sanskrit?: string }> }>;
   };
-  const ambiguous = new Set<string>();
+  const raw = new Map<string, string>();
+  const ambiguousRaw = new Set<string>();
+  const normalized = new Map<string, string>();
+  const ambiguousNormalized = new Set<string>();
   for (const ch of book.chapters ?? []) {
     for (const v of ch.verses ?? []) {
-      // Match both the reader's canonical key and its raw-number fallback.
+      // Match both the reader's canonical key and its raw-number fallback,
+      // letting exact chapter:number keys take precedence over shortened fallbacks.
       const chapter = Number(ch.number);
+      const rawKey = `${chapter}:${v.number}`;
+      if (raw.has(rawKey)) { raw.delete(rawKey); ambiguousRaw.add(rawKey); }
+      else if (!ambiguousRaw.has(rawKey)) raw.set(rawKey, norm(v.sanskrit));
+
       const number = Number(canonicalVerseId(chapter, v.number));
-      const keys = new Set([`${chapter}:${v.number}`]);
-      if (Number.isFinite(number)) keys.add(`${chapter}:${number}`);
-      for (const key of keys) {
-        if (out.has(key)) { out.delete(key); ambiguous.add(key); }
-        else if (!ambiguous.has(key)) out.set(key, norm(v.sanskrit));
-      }
+      if (!Number.isFinite(number)) continue;
+      const normalizedKey = `${chapter}:${number}`;
+      if (normalized.has(normalizedKey)) { normalized.delete(normalizedKey); ambiguousNormalized.add(normalizedKey); }
+      else if (!ambiguousNormalized.has(normalizedKey)) normalized.set(normalizedKey, norm(v.sanskrit));
     }
   }
+  const out = new Map(normalized);
+  for (const [key, value] of raw) out.set(key, value);
+  for (const key of ambiguousRaw) out.delete(key);
   return out;
 }
 
