@@ -89,7 +89,7 @@ const SCRIPTURE_LENSES: AskScriptureLens[] = [
     labelEn: 'Upanishads',
     matchRef: (t, h) =>
       /उपनिषद|upanishad|कठ|ईश|मुण्डक|माण्डूक्य|छान्दोग्य|बृहदारण्यक/i.test(t) ||
-      Boolean(h && /(katha|isha|mundaka|mandukya|chandogya|brihadaranyaka|taittiriya)/.test(h)),
+      Boolean(h && /(katha|ishavasya|mundaka|mandukya|chandogya|brihadaranyaka|taittiriya|prashna|shvetashvatara)/.test(h)),
   },
   {
     id: 'ramayana',
@@ -98,7 +98,7 @@ const SCRIPTURE_LENSES: AskScriptureLens[] = [
     labelEn: 'Ramayana & Manas',
     matchRef: (t, h) =>
       /मानस|रामायण|ramcharitmanas|ramayana/i.test(t) ||
-      Boolean(h && /(ramcharitmanas|valmikiramayana)/.test(h)),
+      Boolean(h && /(ramcharitmanas|ramayana)/.test(h)),
   },
 ];
 

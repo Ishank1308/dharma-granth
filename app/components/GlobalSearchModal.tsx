@@ -248,17 +248,17 @@ export interface ScriptureScopeItem {
 }
 
 const UPANISHAD_SLUGS = [
-  'isha',
+  'ishavasya',
   'kena',
   'katha',
-  'prasna',
+  'prashna',
   'mundaka',
   'mandukya',
   'taittiriya',
   'aitareya',
   'chandogya',
   'brihadaranyaka',
-  'svetasvatara',
+  'shvetashvatara',
 ];
 
 export const SCRIPTURE_SCOPES: ScriptureScopeItem[] = [
@@ -286,12 +286,12 @@ export const SCRIPTURE_SCOPES: ScriptureScopeItem[] = [
     badge: '🪷',
     href: '/ashtavakra/',
     sampleQueries: ['@ashtavakra 1.3', '@ashtavakra साक्षी', '@ashtavakra मुक्ति'],
-    matchHref: (href) => href.startsWith('/ashtavakra/') || href.includes('/scripture/ashtavakra'),
+    matchHref: (href) => href.startsWith('/ashtavakra/'),
   },
   {
     id: 'upanishads',
     token: '@upanishads',
-    aliases: ['upanishads', 'upanishad', 'उपनिषद्', 'katha', 'isha', 'mundaka', 'mandukya'],
+    aliases: ['upanishads', 'upanishad', 'उपनिषद्', 'katha', 'isha', 'ishavasya', 'mundaka', 'mandukya'],
     shard: 'katha',
     titleEn: 'Principal Upanishads',
     titleHi: 'प्रमुख उपनिषद्',
@@ -299,7 +299,7 @@ export const SCRIPTURE_SCOPES: ScriptureScopeItem[] = [
     badge: '🔥',
     href: '/scriptures/',
     sampleQueries: ['@upanishads आत्मा', '@upanishads ॐ', '@upanishads नचिकेता'],
-    matchHref: (href) => UPANISHAD_SLUGS.some((slug) => href.includes(`/scripture/${slug}`)),
+    matchHref: (href) => UPANISHAD_SLUGS.some((slug) => href.includes(`/scripture/${slug}/`)),
   },
   {
     id: 'ramcharitmanas',
@@ -312,7 +312,7 @@ export const SCRIPTURE_SCOPES: ScriptureScopeItem[] = [
     badge: '🏹',
     href: '/scripture/ramcharitmanas/',
     sampleQueries: ['@manas भक्ति', '@manas धर्म', '@manas हनुमान'],
-    matchHref: (href) => href.includes('/scripture/ramcharitmanas') || href.includes('/scripture/valmikiramayana'),
+    matchHref: (href) => href.includes('/scripture/ramcharitmanas/') || href.includes('/scripture/ramayana/'),
   },
   {
     id: 'rigveda',
@@ -325,20 +325,20 @@ export const SCRIPTURE_SCOPES: ScriptureScopeItem[] = [
     badge: '☀️',
     href: '/scripture/rigveda/',
     sampleQueries: ['@rigveda अग्नि', '@rigveda गायत्री', '@rigveda सत्य'],
-    matchHref: (href) => href.includes('/scripture/rigveda'),
+    matchHref: (href) => href.includes('/scripture/rigveda/'),
   },
   {
     id: 'yoga',
     token: '@yoga',
     aliases: ['yoga', 'patanjali', 'yogasutra', 'योगसूत्र'],
-    shard: 'patanjaliyogasutra',
+    shard: 'yogasutra',
     titleEn: 'Patanjali Yoga Sutras',
     titleHi: 'पातञ्जल योगसूत्र',
     subtitle: 'Samadhi, Sadhana, Vibhuti & Kaivalya',
     badge: '🧘',
-    href: '/scripture/patanjaliyogasutra/',
+    href: '/scripture/yogasutra/',
     sampleQueries: ['@yoga चित्तवृत्ति', '@yoga अभ्यास', '@yoga समाधि'],
-    matchHref: (href) => href.includes('/scripture/patanjali') || href.includes('/scripture/yogasutra'),
+    matchHref: (href) => href.includes('/scripture/yogasutra/'),
   },
 ];
 
