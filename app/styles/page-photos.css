@@ -43,6 +43,10 @@
 .page-cover[data-photo='vrindavan'] { --cover-focus: 50% 64%; }
 .page-cover[data-photo='kailash'] { --cover-focus: 40% 34%; }
 .page-cover[data-photo='devi'] { --cover-focus: 44% 56%; }
+.page-cover[data-photo='yogi'] { --cover-focus: 50% 58%; }
+.page-cover[data-photo='palmleaf'] { --cover-focus: 50% 50%; }
+.page-cover[data-photo='stepwell'] { --cover-focus: 50% 54%; }
+.page-cover[data-photo='corridor'] { --cover-focus: 50% 54%; }
 
 /* The credit link: small, under the picture's right edge, still 24px tall to tap (WCAG 2.2). */
 .page-photo-credit {
@@ -265,15 +269,40 @@
         animation: cg-water-glint 6.8s ease-in-out infinite;
     }
 
-    /* 3. Ashram, Forest & Kailash Mist Cinemagraph: peaks/trees still, valley mist glides */
+    /* 3. Himalayan, Ashram, Forest & Kailash Mist Cinemagraph: peaks/trees still, valley mist glides */
     :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
-        :is([data-photo='ashram'], [data-photo='dawn'], [data-photo='kailash'], [data-photo='forest'], [data-photo='vrindavan'], [data-photo='kishkindha']) .cinemagraph-fx {
+        :is([data-photo='yogi'], [data-photo='ashram'], [data-photo='dawn'], [data-photo='kailash'], [data-photo='forest'], [data-photo='vrindavan'], [data-photo='kishkindha']) .cinemagraph-fx {
         inset: 0 0 0 -320px;
         background: var(--fx-mist, radial-gradient(closest-side, rgba(255,255,255,0.22), transparent)) 0 65% / 640px 100% repeat-x;
         opacity: 0.62;
         -webkit-mask-image: linear-gradient(180deg, transparent 24%, #000 58%, transparent 96%);
         mask-image: linear-gradient(180deg, transparent 24%, #000 58%, transparent 96%);
         animation: cg-mist-glide 26s linear infinite;
+    }
+
+    /* 4. Sanctuary Corridor, Stepwell & Palm-Leaf Directional Sunbeam/Dust Cinemagraph */
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        :is([data-photo='corridor'], [data-photo='palmleaf']) .cinemagraph-fx {
+        background:
+            var(--fx-dust, none) 0 0 / 260px 260px repeat,
+            radial-gradient(56% 88% at 32% 24%, rgba(255, 228, 168, 0.36), rgba(255, 194, 108, 0.14) 50%, transparent 78%);
+        mix-blend-mode: screen;
+        -webkit-mask-image: linear-gradient(112deg, #000 18%, #000 54%, transparent 82%);
+        mask-image: linear-gradient(112deg, #000 18%, #000 54%, transparent 82%);
+        animation: cg-sunbeam-breathe 9s ease-in-out infinite;
+    }
+    :root:not([data-low-power='true']):not([data-data-saver='true']):not([data-lite-mode='true']):not([data-reading-lite='true'])
+        [data-photo='stepwell'] .cinemagraph-fx {
+        background: radial-gradient(
+            60% 85% at 72% 22%,
+            rgba(255, 226, 164, 0.3),
+            rgba(245, 188, 102, 0.1) 52%,
+            transparent 78%
+        );
+        mix-blend-mode: screen;
+        -webkit-mask-image: linear-gradient(124deg, transparent 20%, #000 50%, transparent 80%);
+        mask-image: linear-gradient(124deg, transparent 20%, #000 50%, transparent 80%);
+        animation: cg-sunbeam-breathe 10s ease-in-out infinite;
     }
 
     /* Standalone isolated sunbeam for still editorial artwork cards (Home hero, archival book cards, frontispiece) */

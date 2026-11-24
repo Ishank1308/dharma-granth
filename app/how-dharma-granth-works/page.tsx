@@ -7,6 +7,7 @@ import { EDITION_NAME } from '@/lib/editorial-terminology';
 import { STUDY_LAYER_GUIDE } from '@/lib/study-layers';
 import { OnThisPage } from '@/app/components/OnThisPage';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 
 export const metadata: Metadata = {
   title: 'How Dharma Granth works',
@@ -82,6 +83,7 @@ export default function HowDharmaGranthWorksPage() {
           eyebrowHi="पठन संरचना"
           title="How Dharma Granth works"
           titleHi="शास्त्र प्रथम, अध्ययन-सहायक द्वितीय"
+          cover={<PageCover photo="corridor" />}
           lead={
             <p>
               This library holds scripture with care and study aids with honesty. These seven principles explain what each layer of a verse page is — and what it is not.

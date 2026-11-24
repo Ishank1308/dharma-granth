@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { VrataDatesTable, type VrataDateItem } from '@/app/panchang/components/VrataDatesTable';
 import { JsonLd } from '@/app/components/JsonLd';
@@ -139,6 +140,7 @@ export default function AmavasyaPage() {
         eyebrowHi="पितृ तर्पण एवं मौन साधना"
         title="Amavasya Calendar (2026–2028)"
         titleHi="अमावस्या तिथियाँ व पितृ तर्पण माहात्म्य"
+        cover={<PageCover photo="stars" />}
         lead="अमावस्या वह तिथि है जब सूर्य और चंद्रमा एक ही राशि में स्थित होते हैं। यह बाह्य चकाचौंध से हटकर अंतर्मुखी होने, मौन साधना करने और पूर्वजों के प्रति कृतज्ञता ज्ञापित करने का पावन दिन है।"
         width="wide"
       />

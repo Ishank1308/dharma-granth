@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { JsonLd } from '@/app/components/JsonLd';
 import { CalendarClient } from './CalendarClient';
@@ -138,6 +139,7 @@ export default function PanchangCalendarPage() {
           eyebrowHi="वैदिक सौर-चान्द्र पंचांग कैलेंडर"
           title="Solar & Lunar Festival Calendar"
           titleHi="दैनिक तिथि, नक्षत्र एवं प्रमुख पर्व पंचांग (2026–2028)"
+          cover={<PageCover photo="dawn" />}
           lead="Explore day-by-day Udaya Tithis, Nakshatras, sacred Ekadashi vratas, Pradosha twilights, Purnima and Amavasya cycles, and major Hindu festivals across 2026, 2027, and 2028 with astronomical precision and Gita Press scriptural context."
           width="wide"
         />

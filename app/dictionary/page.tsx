@@ -26,7 +26,7 @@ export default function DictionaryPage() {
         eyebrow="Dictionary"
         eyebrowHi="शब्दकोश"
         title="Terminology Dictionary"
-        cover={<PageCover photo="manuscript" />}
+        cover={<PageCover photo="palmleaf" />}
         titleHi="हिन्दू पारिभाषिक शब्दकोश"
         lead={
           <p>

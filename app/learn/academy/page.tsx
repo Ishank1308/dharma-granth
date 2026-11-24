@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import Link from 'next/link';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { ACADEMY_COURSES, ACADEMY_LEVELS, ACADEMY_ORDERS } from '@/data/academy-index';
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ export default function AcademyPage() {
         eyebrowHi="सीखें"
         title="Dharma Academy"
         titleHi="धर्म अकादमी"
+        cover={<PageCover photo="gurukul" />}
         lead={
           <p lang="hi" className="font-devanagari">
             ये वही पाठ्यक्रम हैं जो सीखें पृष्ठ पर हैं। पूरा होने का पत्र पाठ्यक्रम पृष्ठ पर तब दिखता है जब हर पाठ चिह्नित हो। यह पद या सार्वजनिक अंक नहीं है।
