@@ -188,6 +188,18 @@ function ensureVerseIndex(): Promise<void> {
         if (!res.ok) throw new Error(`verse index: HTTP ${res.status}`);
         return res.json() as Promise<VerseIndexFile>;
       })
+      .then(async (first) => {
+        if (!first.parts?.length) return first;
+        const rest = await Promise.all(
+          first.parts.map((partPath) =>
+            fetch(`${BASE_PATH}${partPath}`).then((res) => {
+              if (!res.ok) throw new Error(`verse index part ${partPath}: HTTP ${res.status}`);
+              return res.json() as Promise<VerseIndexFile>;
+            }),
+          ),
+        );
+        return first.rows.length ? [first, ...rest] : rest;
+      })
       .then(loadVerseIndex)
       .catch((err) => {
         verseIndexRequest = null;

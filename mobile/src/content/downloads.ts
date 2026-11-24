@@ -38,9 +38,10 @@ export interface RemoteBook {
   parts: RemotePart[];
 }
 
-/** One book's Hindi व्याख्या file (src/content/vyakhya.ts). */
+/** One book's Hindi व्याख्या file or part list (src/content/vyakhya.ts). */
 export interface RemoteCommentary {
-  file: string;
+  file?: string;
+  parts?: RemotePart[];
   version: string;
   bytes: number;
   gz: number;
