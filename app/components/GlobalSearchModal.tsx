@@ -224,6 +224,7 @@ const SUGGESTED_SEARCHES = [
 export interface SacredActionItem {
   id: string;
   command: string;
+  slash: string;
   title: string;
   shortTitle: string;
   titleHi: string;
@@ -232,10 +233,144 @@ export interface SacredActionItem {
   run: (onClose: () => void, router: ReturnType<typeof useRouter>, cycleTheme?: () => void) => void;
 }
 
+export interface ScriptureScopeItem {
+  id: string;
+  token: string;
+  aliases: string[];
+  shard: string;
+  titleEn: string;
+  titleHi: string;
+  subtitle: string;
+  badge: string;
+  href: string;
+  sampleQueries: string[];
+  matchHref: (href: string) => boolean;
+}
+
+const UPANISHAD_SLUGS = [
+  'isha',
+  'kena',
+  'katha',
+  'prasna',
+  'mundaka',
+  'mandukya',
+  'taittiriya',
+  'aitareya',
+  'chandogya',
+  'brihadaranyaka',
+  'svetasvatara',
+];
+
+export const SCRIPTURE_SCOPES: ScriptureScopeItem[] = [
+  {
+    id: 'gita',
+    token: '@gita',
+    aliases: ['gita', 'bg', 'bhagavadgita', 'गीता'],
+    shard: 'bhagavadgita',
+    titleEn: 'Bhagavad Gita',
+    titleHi: 'श्रीमद्भगवद्गीता',
+    subtitle: '18 Chapters · 701 Verses',
+    badge: '📖',
+    href: '/scripture/bhagavadgita/',
+    sampleQueries: ['@gita 2.47', '@gita कर्म', '@gita स्थितप्रज्ञ', '@gita भय'],
+    matchHref: (href) => href.includes('/scripture/bhagavadgita/'),
+  },
+  {
+    id: 'ashtavakra',
+    token: '@ashtavakra',
+    aliases: ['ashtavakra', 'अष्टावक्र'],
+    shard: 'ashtavakra',
+    titleEn: 'Ashtavakra Gita',
+    titleHi: 'अष्टावक्र गीता',
+    subtitle: '20 Chapters · Pure Advaita Sakshi',
+    badge: '🪷',
+    href: '/ashtavakra/',
+    sampleQueries: ['@ashtavakra 1.3', '@ashtavakra साक्षी', '@ashtavakra मुक्ति'],
+    matchHref: (href) => href.startsWith('/ashtavakra/') || href.includes('/scripture/ashtavakra'),
+  },
+  {
+    id: 'upanishads',
+    token: '@upanishads',
+    aliases: ['upanishads', 'upanishad', 'उपनिषद्', 'katha', 'isha', 'mundaka', 'mandukya'],
+    shard: 'katha',
+    titleEn: 'Principal Upanishads',
+    titleHi: 'प्रमुख उपनिषद्',
+    subtitle: 'Isha, Katha, Mundaka, Mandukya & Chandogya',
+    badge: '🔥',
+    href: '/scriptures/',
+    sampleQueries: ['@upanishads आत्मा', '@upanishads ॐ', '@upanishads नचिकेता'],
+    matchHref: (href) => UPANISHAD_SLUGS.some((slug) => href.includes(`/scripture/${slug}`)),
+  },
+  {
+    id: 'ramcharitmanas',
+    token: '@manas',
+    aliases: ['manas', 'ramcharitmanas', 'ramayana', 'मानस', 'रामायण'],
+    shard: 'ramcharitmanas',
+    titleEn: 'Shri Ramcharitmanas',
+    titleHi: 'श्रीरामचरितमानस',
+    subtitle: '7 Kandas · Bhakti & Maryada',
+    badge: '🏹',
+    href: '/scripture/ramcharitmanas/',
+    sampleQueries: ['@manas भक्ति', '@manas धर्म', '@manas हनुमान'],
+    matchHref: (href) => href.includes('/scripture/ramcharitmanas') || href.includes('/scripture/valmikiramayana'),
+  },
+  {
+    id: 'rigveda',
+    token: '@rigveda',
+    aliases: ['rigveda', 'veda', 'ऋग्वेद', 'वेद'],
+    shard: 'rigveda',
+    titleEn: 'Rigveda Samhita',
+    titleHi: 'ऋग्वेद संहिता',
+    subtitle: 'Vedic Suktas & Hymns',
+    badge: '☀️',
+    href: '/scripture/rigveda/',
+    sampleQueries: ['@rigveda अग्नि', '@rigveda गायत्री', '@rigveda सत्य'],
+    matchHref: (href) => href.includes('/scripture/rigveda'),
+  },
+  {
+    id: 'yoga',
+    token: '@yoga',
+    aliases: ['yoga', 'patanjali', 'yogasutra', 'योगसूत्र'],
+    shard: 'patanjaliyogasutra',
+    titleEn: 'Patanjali Yoga Sutras',
+    titleHi: 'पातञ्जल योगसूत्र',
+    subtitle: 'Samadhi, Sadhana, Vibhuti & Kaivalya',
+    badge: '🧘',
+    href: '/scripture/patanjaliyogasutra/',
+    sampleQueries: ['@yoga चित्तवृत्ति', '@yoga अभ्यास', '@yoga समाधि'],
+    matchHref: (href) => href.includes('/scripture/patanjali') || href.includes('/scripture/yogasutra'),
+  },
+];
+
+function parseScriptureScope(rawQuery: string): {
+  activeScope: ScriptureScopeItem | null;
+  mentionMenuQuery: string | null;
+  scopedSearchQuery: string;
+} {
+  const trimmedStart = rawQuery.trimStart();
+  if (!trimmedStart.startsWith('@')) {
+    return { activeScope: null, mentionMenuQuery: null, scopedSearchQuery: rawQuery };
+  }
+  const match = trimmedStart.match(/^@([^\s]*)(?:\s+([\s\S]*))?$/);
+  if (!match) {
+    return { activeScope: null, mentionMenuQuery: '', scopedSearchQuery: '' };
+  }
+  const tokenPart = match[1].toLowerCase();
+  const rest = (match[2] ?? '').trim();
+  const hasTrailingSpace = /^@[^\s]+\s/.test(trimmedStart);
+
+  const exactScope = SCRIPTURE_SCOPES.find((s) => s.aliases.includes(tokenPart));
+  if (exactScope && (hasTrailingSpace || rest.length > 0)) {
+    return { activeScope: exactScope, mentionMenuQuery: null, scopedSearchQuery: rest };
+  }
+  return { activeScope: null, mentionMenuQuery: tokenPart, scopedSearchQuery: '' };
+}
+
 export const SACRED_ACTIONS: SacredActionItem[] = [
   {
     id: 'gita',
     command: '> gita',
+    slash: '/gita',
     title: 'Open Bhagavad Gita (श्रीमद्भगवद्गीता)',
     shortTitle: 'Bhagavad Gita',
     titleHi: 'श्रीमद्भगवद्गीता खोलें',
@@ -249,6 +384,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
   {
     id: 'panchang',
     command: '> panchang',
+    slash: '/panchang',
     title: 'Open Today\'s Vedic Panchang (पंचांग)',
     shortTitle: 'Today\'s Panchang',
     titleHi: 'आज का वैदिक पंचांग खोलें',
@@ -262,6 +398,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
   {
     id: 'sadhana',
     command: '> sadhana',
+    slash: '/sadhana',
     title: 'Open Daily Sadhana (दैनिक साधना)',
     shortTitle: 'Daily Sadhana',
     titleHi: 'दैनिक साधना खोलें',
@@ -273,8 +410,37 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
     },
   },
   {
+    id: 'learn',
+    command: '> learn',
+    slash: '/learn',
+    title: 'Open Scripture Study Hub (शास्त्र स्वाध्याय)',
+    shortTitle: 'Study Hub',
+    titleHi: 'शास्त्र स्वाध्याय एवं अध्ययन मार्ग खोलें',
+    subtitle: 'Guided Pathways, Flashcards, Mind Maps & Timelines',
+    icon: '🎓',
+    run: (onClose, router) => {
+      router.push('/learn/');
+      onClose();
+    },
+  },
+  {
+    id: 'ask',
+    command: '> ask',
+    slash: '/ask',
+    title: 'Ask the Scriptures (धर्म सहायक)',
+    shortTitle: 'Ask Dharma',
+    titleHi: 'धर्म सहायक — जीवन के प्रश्न पूछें',
+    subtitle: '50 Curated Life Questions Grounded in Canonical Verses',
+    icon: '🪔',
+    run: (onClose, router) => {
+      router.push('/ask/');
+      onClose();
+    },
+  },
+  {
     id: 'meditation',
     command: '> meditation',
+    slash: '/meditation',
     title: 'Start 10-Minute Meditation Timer',
     shortTitle: '10-Min Meditation',
     titleHi: '10 मिनट ध्यान साधना प्रारंभ करें',
@@ -289,6 +455,7 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
   {
     id: 'theme',
     command: '> theme',
+    slash: '/theme',
     title: 'Switch Theme: Sunset (Light) / Night (Dark)',
     shortTitle: 'Switch Theme',
     titleHi: 'पठन शैली बदलें · दिव्य सन्ध्या / रात्रि',
@@ -303,11 +470,12 @@ export const SACRED_ACTIONS: SacredActionItem[] = [
   {
     id: 'resume',
     command: '> resume',
+    slash: '/resume',
     title: 'Resume Last Read Verse',
     shortTitle: 'Resume Reading',
     titleHi: 'अंतिम पठित श्लोक से पुनः प्रारंभ करें',
     subtitle: 'Jump directly to your last bookmark',
-    icon: '📖',
+    icon: '🔖',
     run: (onClose, router) => {
       try {
         const raw = localStorage.getItem('dharma_parayana_progress');
@@ -436,13 +604,51 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
   const trimmed = deferredQuery.trim();
   const isStale = query !== deferredQuery;
 
-  // Real-time typeahead, direct citation, trilingual vocabulary and quick-pick predictions
-  const typeaheadSuggestion = useMemo(() => getTypeaheadSuggestion(query), [query]);
-  const quickPickSuggestions = useMemo(() => getTypeaheadSuggestions(query, 4), [query]);
-  const trilingualHint = useMemo(() => getTrilingualEquivalent(query), [query]);
-  const verseShortcut = useMemo(() => parseVerseShortcut(query), [query]);
+  // Parse @scripture scope and / or > quick commands (Antigravity Canvas UX)
+  const scopeInfo = useMemo(() => parseScriptureScope(query), [query]);
+  const deferredScopeInfo = useMemo(() => parseScriptureScope(deferredQuery), [deferredQuery]);
+  const activeScope = scopeInfo.activeScope;
+  const isMentionQuery = scopeInfo.mentionMenuQuery !== null;
+  const matchingScopes = useMemo(() => {
+    if (!isMentionQuery) return [];
+    const q = (scopeInfo.mentionMenuQuery ?? '').toLowerCase();
+    if (!q) return SCRIPTURE_SCOPES;
+    return SCRIPTURE_SCOPES.filter(
+      (s) =>
+        s.token.toLowerCase().includes(q) ||
+        s.aliases.some((al) => al.toLowerCase().includes(q)) ||
+        s.titleEn.toLowerCase().includes(q) ||
+        s.titleHi.includes(q),
+    );
+  }, [isMentionQuery, scopeInfo.mentionMenuQuery]);
 
-  const isActionQuery = trimmed.startsWith('>');
+  const effectiveLiveQuery = activeScope ? scopeInfo.scopedSearchQuery : query;
+  const effectiveTrimmed = deferredScopeInfo.activeScope
+    ? deferredScopeInfo.scopedSearchQuery.trim()
+    : trimmed;
+
+  // Real-time typeahead, direct citation, trilingual vocabulary and quick-pick predictions
+  const typeaheadSuggestion = useMemo(
+    () => (isMentionQuery ? null : getTypeaheadSuggestion(effectiveLiveQuery)),
+    [effectiveLiveQuery, isMentionQuery],
+  );
+  const quickPickSuggestions = useMemo(
+    () => (isMentionQuery ? [] : getTypeaheadSuggestions(effectiveLiveQuery, 4)),
+    [effectiveLiveQuery, isMentionQuery],
+  );
+  const trilingualHint = useMemo(
+    () => (isMentionQuery ? null : getTrilingualEquivalent(effectiveLiveQuery)),
+    [effectiveLiveQuery, isMentionQuery],
+  );
+  const verseShortcut = useMemo(
+    () =>
+      parseVerseShortcut(
+        activeScope ? `${activeScope.id} ${scopeInfo.scopedSearchQuery}` : query,
+      ),
+    [activeScope, scopeInfo.scopedSearchQuery, query],
+  );
+
+  const isActionQuery = trimmed.startsWith('>') || trimmed.startsWith('/');
   const actionFilter = isActionQuery ? trimmed.slice(1).trim().toLowerCase() : '';
   const matchingActions = useMemo(() => {
     if (!isActionQuery) return [];
@@ -450,6 +656,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     return SACRED_ACTIONS.filter(
       (a) =>
         a.command.toLowerCase().includes(actionFilter) ||
+        a.slash.toLowerCase().includes(actionFilter) ||
         a.title.toLowerCase().includes(actionFilter) ||
         a.titleHi.toLowerCase().includes(actionFilter)
     );
@@ -477,7 +684,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     };
   }, [isOpen, coreReady]);
 
-  const scriptureHint = coreScriptureHint(trimmed);
+  const scriptureHint = deferredScopeInfo.activeScope?.shard || coreScriptureHint(effectiveTrimmed);
   useEffect(() => {
     if (!coreReady || !scriptureHint || scriptureHint === shardToken) return;
     let cancelled = false;
@@ -593,12 +800,31 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
   }, [isOpen]);
 
   const verseReady = verseState === 'ready';
-  const result = useMemo(
-    () => (trimmed ? searchWithIntent(trimmed, { group: selectedGroup, limit: RESULT_LIMIT }) : null),
+  const result = useMemo(() => {
+    if (!effectiveTrimmed || isActionQuery || isMentionQuery) return null;
+    const activeDeferredScope = deferredScopeInfo.activeScope;
+    const raw = searchWithIntent(effectiveTrimmed, {
+      group: activeDeferredScope ? null : selectedGroup,
+      limit: activeDeferredScope ? RESULT_LIMIT * 3 : RESULT_LIMIT,
+    });
+    if (!activeDeferredScope) return raw;
+    const scopedItems = raw.results.filter((r) => activeDeferredScope.matchHref(r.href));
+    const groupCounts: Partial<Record<SearchResultGroup, number>> = {};
+    for (const item of scopedItems) {
+      groupCounts[item.group] = (groupCounts[item.group] ?? 0) + 1;
+    }
+    const filteredByGroup = selectedGroup
+      ? scopedItems.filter((r) => r.group === selectedGroup)
+      : scopedItems;
+    return {
+      ...raw,
+      results: filteredByGroup.slice(0, RESULT_LIMIT),
+      totalMatches: scopedItems.length,
+      groupCounts,
+    };
     // The indexes arrive after the dialog opens; searching again when they do fills in verses and chapters.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [trimmed, selectedGroup, chaptersReady, verseReady, coreReady, shardToken],
-  );
+  }, [effectiveTrimmed, isActionQuery, isMentionQuery, deferredScopeInfo.activeScope, selectedGroup, chaptersReady, verseReady, coreReady, shardToken]);
 
   // Results in the order they are shown (by group), so the arrow keys follow what the eye sees.
   const display = useMemo(() => {
@@ -672,23 +898,46 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     return () => document.removeEventListener('keydown', onKey);
   }, [isOpen, onClose]);
 
+  const applyScopeSelection = (scope: ScriptureScopeItem) => {
+    setQuery(`${scope.token} `);
+    setSelectedIndex(-1);
+    inputRef.current?.focus();
+  };
+
   const onInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // Enter and arrows while a Hindi/Devanagari IME is composing pick a candidate; they must not navigate.
     if (e.nativeEvent.isComposing || e.keyCode === 229) return;
 
-    // Tab advances focus per WAI-ARIA. Right Arrow accepts a completion.
+    // Tab advances focus per WAI-ARIA unless completing an @scripture mention.
+    if (e.key === 'Tab' && isMentionQuery && matchingScopes.length > 0 && !e.shiftKey) {
+      e.preventDefault();
+      const chosen = matchingScopes[selectedIndex >= 0 ? selectedIndex % matchingScopes.length : 0];
+      if (chosen) applyScopeSelection(chosen);
+      return;
+    }
+
+    // Right Arrow accepts a completion.
     if (
       e.key === 'ArrowRight' &&
       inputRef.current?.selectionStart === query.length &&
       typeaheadSuggestion?.completion &&
-      typeaheadSuggestion.completion !== query
+      typeaheadSuggestion.completion !== effectiveLiveQuery
     ) {
       e.preventDefault();
-      setQuery(typeaheadSuggestion.completion);
+      setQuery(
+        activeScope
+          ? `${activeScope.token} ${typeaheadSuggestion.completion}`
+          : typeaheadSuggestion.completion,
+      );
       return;
     }
 
     if (e.key === 'ArrowDown') {
+      if (isMentionQuery && matchingScopes.length > 0) {
+        e.preventDefault();
+        setSelectedIndex((i) => (i + 1) % matchingScopes.length);
+        return;
+      }
       if (isActionQuery && matchingActions.length > 0) {
         e.preventDefault();
         setSelectedIndex((i) => (i + 1) % matchingActions.length);
@@ -699,6 +948,11 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
         setSelectedIndex((i) => (i + 1) % display.length);
       }
     } else if (e.key === 'ArrowUp') {
+      if (isMentionQuery && matchingScopes.length > 0) {
+        e.preventDefault();
+        setSelectedIndex((i) => (i < 0 ? matchingScopes.length - 1 : (i - 1 + matchingScopes.length) % matchingScopes.length));
+        return;
+      }
       if (isActionQuery && matchingActions.length > 0) {
         e.preventDefault();
         setSelectedIndex((i) => i < 0 ? matchingActions.length - 1 : (i - 1 + matchingActions.length) % matchingActions.length);
@@ -715,9 +969,15 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
       e.preventDefault();
       setSelectedIndex(display.length - 1);
     } else if (e.key === 'Enter') {
+      if (isMentionQuery && matchingScopes.length > 0) {
+        e.preventDefault();
+        const chosen = matchingScopes[selectedIndex >= 0 ? selectedIndex % matchingScopes.length : 0];
+        if (chosen) applyScopeSelection(chosen);
+        return;
+      }
       if (isActionQuery && matchingActions.length > 0) {
         e.preventDefault();
-        const action = matchingActions[selectedIndex % matchingActions.length] || matchingActions[0];
+        const action = matchingActions[selectedIndex >= 0 ? selectedIndex % matchingActions.length : 0] || matchingActions[0];
         action.run(onClose, router, cycleTheme);
         return;
       }
@@ -726,6 +986,12 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
         remember(query);
         onClose();
         router.push(verseShortcut.href);
+        return;
+      }
+      if (activeScope && !effectiveTrimmed) {
+        e.preventDefault();
+        onClose();
+        router.push(activeScope.href);
         return;
       }
       // An explicitly arrow-selected result takes priority over a predictive jump.
@@ -739,8 +1005,8 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
       if (display[selectedIndex] || (display.length > 0 && selectedIndex < 0)) {
         e.preventDefault();
         openFromKeyboard(display[selectedIndex] || display[0]);
-      } else if (trimmed) {
-        remember(trimmed);
+      } else if (effectiveTrimmed) {
+        remember(query);
       }
     }
   };
@@ -828,7 +1094,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={onInputKeyDown}
-                  placeholder="Gita 2.47 · कर्म · भय · > gita"
+                  placeholder="Gita 2.47 · कर्म · /panchang · @gita भय"
                   aria-label="Search scriptures, verses, topics and practices"
                   aria-describedby={statusId}
                   className="relative z-1 min-h-[44px] w-full bg-transparent text-base font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
@@ -1113,6 +1379,30 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
               </div>
             )}
 
+            {/* Active @scripture Scope Pill Bar */}
+            {activeScope && (
+              <div className="flex items-center justify-between gap-2 border-b border-separator/80 bg-tint-fill/35 px-4 py-2 sm:px-6 text-footnote">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="text-sm" aria-hidden="true">{activeScope.badge}</span>
+                  <span className="font-mono text-caption font-bold text-tint">{activeScope.token}</span>
+                  <span className="truncate font-medium text-label-primary">
+                    <span lang="hi" className="font-devanagari">{activeScope.titleHi}</span> · {activeScope.titleEn}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery(scopeInfo.scopedSearchQuery);
+                    inputRef.current?.focus();
+                  }}
+                  className="focus-ring inline-flex min-h-[32px] shrink-0 items-center gap-1 rounded-pill border border-separator bg-surface-raised px-2.5 text-caption font-semibold text-label-secondary hover:text-label-primary"
+                >
+                  <X className="h-3 w-3" aria-hidden="true" />
+                  <span>Clear scope</span>
+                </button>
+              </div>
+            )}
+
             {/* Body */}
             <div
               role="region"
@@ -1120,18 +1410,71 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
               tabIndex={0}
               className="focus-ring min-h-0 flex-1 overflow-y-auto p-3 sm:p-5"
             >
-              {isActionQuery ? (
+              {isMentionQuery ? (
+                <div className="space-y-3 py-1">
+                  <div className="flex items-center justify-between px-1">
+                    <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-tint">
+                      <Compass className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span>
+                        <span lang="hi" data-bi="hi" className="font-devanagari">शास्त्र-सीमा चुनें</span>
+                        <span data-bi="sep"> · </span>
+                        <span data-bi="en">Scope Search by Scripture (@)</span>
+                      </span>
+                    </h3>
+                    <span className="text-caption font-mono text-label-tertiary">↑↓ · Tab / Enter</span>
+                  </div>
+                  {matchingScopes.length === 0 ? (
+                    <p className="p-4 text-center text-subhead text-label-secondary">
+                      No scripture scope matches &ldquo;@{scopeInfo.mentionMenuQuery}&rdquo;. Try <code className="text-tint">@gita</code>, <code className="text-tint">@ashtavakra</code>, or <code className="text-tint">@upanishads</code>.
+                    </p>
+                  ) : (
+                    <ul className="grid gap-2 sm:grid-cols-2">
+                      {matchingScopes.map((scope, idx) => {
+                        const highlighted = idx === (selectedIndex >= 0 ? selectedIndex % matchingScopes.length : 0);
+                        return (
+                          <li key={scope.id}>
+                            <button
+                              type="button"
+                              onClick={() => applyScopeSelection(scope)}
+                              className={`focus-ring w-full text-left p-3 rounded-card border transition flex items-center justify-between gap-3 ${
+                                highlighted
+                                  ? 'border-tint/60 bg-tint-fill ring-1 ring-tint/30'
+                                  : 'border-separator bg-surface-raised hover:bg-fill-quaternary'
+                              }`}
+                            >
+                              <div className="flex items-center gap-3 min-w-0">
+                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-fill-tertiary text-xl">
+                                  {scope.badge}
+                                </span>
+                                <div className="min-w-0">
+                                  <p className="truncate text-subhead font-semibold text-label-primary">
+                                    <span lang="hi" className="font-devanagari">{scope.titleHi}</span> · {scope.titleEn}
+                                  </p>
+                                  <p className="truncate text-caption text-label-secondary">{scope.subtitle}</p>
+                                </div>
+                              </div>
+                              <span className="shrink-0 rounded-control border border-separator bg-fill-quaternary px-2 py-1 font-mono text-caption font-semibold text-tint">
+                                {scope.token}
+                              </span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+              ) : isActionQuery ? (
                 <div className="space-y-3 py-1">
                   <div className="flex items-center justify-between px-1">
                     <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-tint">
                       <Sparkles className="h-3.5 w-3.5" />
-                      <span><span lang="hi" data-bi="hi">पवित्र क्रियाएँ</span><span data-bi="sep"> · </span><span data-bi="en">Sacred Actions</span></span>
+                      <span><span lang="hi" data-bi="hi">पवित्र क्रियाएँ</span><span data-bi="sep"> · </span><span data-bi="en">Sacred Commands (/ or &gt;)</span></span>
                     </h3>
                     <span className="text-caption font-mono text-label-tertiary">Use ↑↓ and Enter</span>
                   </div>
                   {matchingActions.length === 0 ? (
                     <p className="p-4 text-center text-subhead text-label-secondary">
-                      No actions match &ldquo;{actionFilter}&rdquo; yet. You could try <code className="text-tint">&gt; gita</code>, <code className="text-tint">&gt; panchang</code>, or <code className="text-tint">&gt; meditation</code>.
+                      No commands match &ldquo;{actionFilter}&rdquo; yet. Try <code className="text-tint">/gita</code>, <code className="text-tint">/panchang</code>, <code className="text-tint">/sadhana</code>, or <code className="text-tint">/meditation</code>.
                     </p>
                   ) : (
                     <ul className="grid gap-2">
@@ -1141,7 +1484,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                             type="button"
                             onClick={() => action.run(onClose, router, cycleTheme)}
                             className={`focus-ring w-full text-left p-3.5 rounded-card border transition flex items-center justify-between gap-3 ${
-                              idx === selectedIndex % matchingActions.length
+                              idx === (selectedIndex >= 0 ? selectedIndex % matchingActions.length : 0)
                                 ? 'border-tint/60 bg-tint-fill ring-1 ring-tint/30'
                                 : 'border-separator bg-surface-raised hover:bg-fill-quaternary'
                             }`}
@@ -1156,13 +1499,50 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                               </div>
                             </div>
                             <span className="rounded-control border border-separator bg-fill-quaternary px-2 py-1 font-mono text-caption font-semibold text-tint">
-                              {action.command}
+                              {action.slash}
                             </span>
                           </button>
                         </li>
                       ))}
                     </ul>
                   )}
+                </div>
+              ) : activeScope && !effectiveTrimmed ? (
+                <div className="space-y-4 py-2">
+                  <div className="rounded-card border border-separator bg-surface-raised p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="space-y-1">
+                      <p className="text-caption font-mono font-bold text-tint">{activeScope.token} · Active Scripture Scope</p>
+                      <h3 className="text-title-3 font-semibold text-label-primary">
+                        <span lang="hi" className="font-devanagari">{activeScope.titleHi}</span> · {activeScope.titleEn}
+                      </h3>
+                      <p className="text-footnote text-label-secondary">
+                        Type any verse number, Sanskrit word, or Hindi/English theme to search solely within {activeScope.titleEn}.
+                      </p>
+                    </div>
+                    <Link
+                      href={activeScope.href}
+                      onClick={onClose}
+                      className="apple-pill shrink-0 min-h-[44px] px-4"
+                    >
+                      <span>Open {activeScope.titleEn}</span>
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  </div>
+                  <div className="space-y-2 px-1">
+                    <p className="text-caption font-semibold text-label-secondary">Try scoped queries:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {activeScope.sampleQueries.map((sq) => (
+                        <button
+                          key={sq}
+                          type="button"
+                          onClick={() => runSearch(sq)}
+                          className="focus-ring inline-flex min-h-[40px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
+                        >
+                          {sq}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               ) : !trimmed ? (
                 <div className="space-y-6 py-1">
@@ -1171,11 +1551,11 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     <div className="mb-2 flex items-center justify-between px-1">
                       <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-tint">
                         <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                        <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">पवित्र क्रियाएँ</span><span><span data-bi="sep"> · </span><span data-bi="en">Sacred Actions</span> ({'>'})</span>
+                        <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">पवित्र क्रियाएँ</span><span><span data-bi="sep"> · </span><span data-bi="en">Quick Commands</span> (<code>/</code>)</span>
                       </h3>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                      {SACRED_ACTIONS.map((a) => (
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {SACRED_ACTIONS.slice(0, 8).map((a) => (
                         <button
                           key={a.id}
                           type="button"
@@ -1191,6 +1571,32 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       ))}
                     </div>
                   </section>
+
+                  {/* @ Scripture Scope Quick-Picks */}
+                  <section aria-label="Scope by Scripture">
+                    <div className="mb-2 flex items-center justify-between px-1">
+                      <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-label-secondary">
+                        <Compass className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
+                        <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">शास्त्र-सीमा</span>
+                        <span><span data-bi="sep"> · </span><span data-bi="en">Scope by Scripture</span> (<code>@</code>)</span>
+                      </h3>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {SCRIPTURE_SCOPES.map((scope) => (
+                        <button
+                          key={scope.id}
+                          type="button"
+                          onClick={() => applyScopeSelection(scope)}
+                          className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
+                        >
+                          <span aria-hidden="true">{scope.badge}</span>
+                          <span className="font-mono text-caption text-tint">{scope.token}</span>
+                          <span lang="hi" className="font-devanagari text-caption text-label-secondary">{scope.titleHi}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+
                   {recent.length > 0 && (
                     <section aria-labelledby={`${listboxId}-recent`}>
                       <div className="mb-2 flex items-center justify-between px-1">
@@ -1269,14 +1675,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                 </div>
               ) : null}
 
-              {trimmed && result && result.totalMatches > 0 && verseLoading && isOnline && (
+              {effectiveTrimmed && result && result.totalMatches > 0 && verseLoading && isOnline && (
                 <div role="status" className="mb-3 flex items-center gap-2 rounded-card border border-separator bg-surface-raised/70 px-3 py-2 text-footnote text-label-secondary">
                   <span className="h-3 w-3 animate-spin rounded-full border-2 border-tint border-t-transparent" aria-hidden="true" />
                   Loading verse text… verse results will appear in a moment.
                 </div>
               )}
 
-              {trimmed && waitingForIndex && (
+              {effectiveTrimmed && waitingForIndex && (
                 <div className="flex flex-col items-center gap-3 px-3 py-12 text-center text-subhead text-label-secondary">
                   <span className="h-6 w-6 animate-spin rounded-full border-2 border-tint border-t-transparent" aria-hidden="true" />
                   <p>
@@ -1285,7 +1691,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                 </div>
               )}
 
-              {trimmed && result && result.totalMatches === 0 && !waitingForIndex && (
+              {effectiveTrimmed && result && result.totalMatches === 0 && !waitingForIndex && (
                 <div className="px-3 py-10 text-center">
                   {selectedGroup && allCategoryMatches > 0 && (
                     <div role="status" className="mx-auto mb-5 max-w-lg rounded-card border border-tint/25 bg-tint-fill p-4 text-footnote text-label-primary">
@@ -1297,11 +1703,11 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   )}
                   <HelpCircle className="mx-auto mb-3 h-10 w-10 text-label-tertiary" aria-hidden="true" />
                   <h3 className="text-title-3 font-semibold text-label-primary">
-                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं मिला</span> · {selectedGroup ? 'Nothing in this category' : 'Nothing found'} for “{trimmed}”
+                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं मिला</span> · {selectedGroup ? 'Nothing in this category' : 'Nothing found'} for “{effectiveTrimmed}”
                   </h3>
                   <ul className="mx-auto mt-3 max-w-md space-y-1 text-left text-footnote text-label-secondary">
                     <li>• You could try part of the verse in Devanagari or Roman letters (“karmanye vadhikaraste”).</li>
-                    <li>• Try a reference such as “Gita 2.47” or “Katha 1.2”.</li>
+                    <li>• Try a reference such as “Gita 2.47” or “@gita कर्म”.</li>
                     <li>• Try one idea: “fear”, “anger”, “meaning of life”, “भय”.</li>
                   </ul>
                   <ul className="mx-auto mt-5 flex max-w-lg flex-wrap justify-center gap-2">
@@ -1319,7 +1725,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   </ul>
                   <div className="mt-6 flex flex-wrap justify-center gap-3">
                     <Link
-                      href={`/scriptures/?q=${encodeURIComponent(trimmed)}`}
+                      href={`/scriptures/?q=${encodeURIComponent(effectiveTrimmed)}`}
                       onClick={onClose}
                       className="apple-pill min-h-[44px] px-5"
                     >
@@ -1336,7 +1742,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                 </div>
               )}
 
-              {trimmed && result && result.totalMatches > 0 && (
+              {effectiveTrimmed && result && result.totalMatches > 0 && (
                 <div id={listboxId} role="listbox" aria-label="Search results" className="space-y-6">
                   {SEARCH_GROUPS.map((group) => {
                     const items = display.filter((r) => r.group === group.id);
@@ -1408,7 +1814,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                               </div>
 
                               <p lang={style.lang} className={`line-clamp-4 whitespace-pre-line ${style.className}`}>
-                                <Highlighted text={matched} query={trimmed} />
+                                <Highlighted text={matched} query={effectiveTrimmed} />
                               </p>
                               {showSubtitle && <p className="mt-0.5 text-caption text-label-secondary">{item.subtitle}</p>}
 
@@ -1416,7 +1822,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                                 <p className="mt-2.5 rounded-card border border-separator/60 bg-fill-quaternary/40 p-2.5 text-footnote leading-relaxed text-label-primary">
                                   <span className="mr-1.5 font-semibold text-label-secondary">Translation:</span>
                                   <span lang={isDevanagariText(item.translationExcerpt) ? 'hi' : 'en'} className={isDevanagariText(item.translationExcerpt) ? 'font-devanagari leading-[1.8]' : ''}>
-                                    <Highlighted text={item.translationExcerpt} query={trimmed} />
+                                    <Highlighted text={item.translationExcerpt} query={effectiveTrimmed} />
                                   </span>
                                   {item.translationIsAi && (
                                     <span className="ml-2 rounded-pill border border-violet-500/30 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200" title={STUDY_TRANSLATION_SHORT.detail}>{STUDY_TRANSLATION_SHORT.en}</span>
@@ -1427,7 +1833,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                               {item.group === 'verse' && item.commentaryExcerpt && item.matchedField === 'explanation' && (
                                 <p className="mt-2 rounded-card border border-separator/60 bg-fill-quaternary/40 p-2.5 text-footnote leading-relaxed text-label-primary">
                                   <span className="mr-1.5 font-semibold text-label-secondary">Explanation:</span>
-                                  <Highlighted text={item.commentaryExcerpt} query={trimmed} />
+                                  <Highlighted text={item.commentaryExcerpt} query={effectiveTrimmed} />
                                   {item.aiDrafted && (
                                     <span className="ml-2 rounded-pill border border-violet-500/30 bg-violet-500/10 px-1.5 py-px text-[10px] font-semibold text-violet-900 dark:text-violet-200" title={EDITORIAL_DRAFT_LABEL.detail}>{EDITORIAL_DRAFT_LABEL.en}</span>
                                   )}
@@ -1452,10 +1858,11 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
 
             {/* Footer: keys and count */}
             <div className="flex items-center justify-between border-t border-separator bg-surface-canvas/60 px-4 py-2.5 text-caption text-label-tertiary">
-              <div className="hidden items-center gap-4 sm:flex">
+              <div className="hidden items-center gap-3.5 sm:flex">
                 <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">↑↓</kbd> Navigate</span>
                 <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">↵</kbd> Open</span>
-                <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">Tab</kbd> Filters</span>
+                <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">/</kbd> Commands</span>
+                <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">@</kbd> Scripture</span>
                 <span className="flex items-center gap-1"><kbd className="rounded-control border border-separator bg-surface-raised px-1.5 py-0.5 font-mono text-[10px] text-label-secondary shadow-xs">Esc</kbd> Close</span>
               </div>
               <span className="ml-auto font-medium text-label-secondary">

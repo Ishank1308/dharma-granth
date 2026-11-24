@@ -15,6 +15,9 @@ const ReadingPlan = dynamic(() => retryImport(() => import('@/app/components/pra
 const JapaMala = dynamic(() => retryImport(() => import('@/app/components/practice/JapaMala').then((m) => m.JapaMala)));
 const MeditationTimer = dynamic(() => retryImport(() => import('@/app/components/practice/MeditationTimer').then((m) => m.MeditationTimer)));
 const PranayamaPacer = dynamic(() => retryImport(() => import('@/app/components/practice/PranayamaPacer').then((m) => m.PranayamaPacer)));
+const GuidedSadhanaSessionWidget = dynamic(() =>
+  retryImport(() => import('@/app/components/practice/GuidedSadhanaSessionWidget').then((m) => m.GuidedSadhanaSessionWidget)),
+);
 
 /**
  * Streamlined, calm daily spiritual practice (साधना) sanctuary:
@@ -91,6 +94,8 @@ export function PracticeDashboard() {
         <nav aria-label="Today and your practice spaces">
           <PracticeOpening active={on} />
         </nav>
+
+        <GuidedSadhanaSessionWidget />
 
         {/* If PIN is set and dashboard is locked, hide private practices */}
             {/* Streamlined Tool Picker */}
