@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { PanchangCalendar } from '@/app/components/PanchangCalendar';
+import { InteractiveKalaStudio } from '@/app/components/panchang/InteractiveKalaStudio';
 import { PanchangCosmos } from '@/app/components/cosmos/PanchangCosmos';
 import { SectionTitle } from '@/app/components/apple/PageHeader';
 import { ObservanceNotice } from '@/app/components/puja/ObservanceNotice';
@@ -46,6 +47,7 @@ export default function PanchangPage() {
       <section className="relative mx-auto max-w-6xl px-gutter -mt-6 sm:-mt-8 pb-10 sm:pb-16 z-10">
         <ObservanceNotice className="mb-4 bg-dharma-bg/90 backdrop-blur-md" />
         <PanchangCalendar />
+        <InteractiveKalaStudio />
 
         {/* ─── FULL MONTHLY FESTIVAL CALENDAR BANNER ─────────────────────── */}
         <div className="mt-5 sm:mt-8 rounded-2xl border-2 border-saffron-400/40 bg-gradient-to-r from-saffron-500/10 via-amber-500/10 to-orange-500/10 p-4 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-5">

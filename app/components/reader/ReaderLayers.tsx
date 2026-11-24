@@ -14,8 +14,8 @@ import {
 } from 'lucide-react';
 import { cleanVerseField, meaningState, MEANING_COPY, verseLines, verseMarkNumber, formatVerseRef } from '@/lib/verse-format';
 import { parseWordMeanings, type WordGloss } from '@/lib/word-gloss';
-import { ExplainLine } from '@/app/components/study/ExplainLine';
 // Shown only for some reading modes, so each loads when it first renders, not with every verse page.
+const ExplainLine = dynamic(() => import('@/app/components/study/ExplainLine').then((m) => m.ExplainLine));
 const CompareViews = dynamic(() => import('@/app/components/study/CompareViews').then((m) => m.CompareViews));
 const SanskritWordExplorerDrawer = dynamic(() => import('@/app/components/understand/SanskritWordExplorerDrawer').then((m) => m.SanskritWordExplorerDrawer), { ssr: false });
 const PadachhedaWordDialog = dynamic(() => import('@/app/components/reader/PadachhedaWordDialog').then((m) => m.PadachhedaWordDialog), { ssr: false });
@@ -241,6 +241,29 @@ export function ReaderLayers({
   const hasPadas = Boolean(settings.showCommentary && !isQuick && !settings.liteMode && glosses.length > 0);
   const [showPadas, setShowPadas] = useState(false);
   const [showSvadhyayaFlow, setShowSvadhyayaFlow] = useState(false);
+
+  // Listen for keyboard lens toggles dispatched from VersePageLayout
+  useEffect(() => {
+    const onToggleSvadhyaya = () => {
+      if (!settings.liteMode && lines.length > 0) setShowSvadhyayaFlow((v) => !v);
+    };
+    const onTogglePadas = () => {
+      if (hasPadas) setShowPadas((v) => !v);
+    };
+    const onToggleIast = () => {
+      if (verse.transliteration) {
+        onUpdateSetting?.('showTransliteration', !settings.showTransliteration);
+      }
+    };
+    window.addEventListener('dharma:toggle-svadhyaya', onToggleSvadhyaya);
+    window.addEventListener('dharma:toggle-padas', onTogglePadas);
+    window.addEventListener('dharma:toggle-iast', onToggleIast);
+    return () => {
+      window.removeEventListener('dharma:toggle-svadhyaya', onToggleSvadhyaya);
+      window.removeEventListener('dharma:toggle-padas', onTogglePadas);
+      window.removeEventListener('dharma:toggle-iast', onToggleIast);
+    };
+  }, [settings.liteMode, settings.showTransliteration, lines.length, hasPadas, verse.transliteration, onUpdateSetting]);
   const expHi = isHi(verse.explanation);
   const refHi = isHi(verse.reflection);
   const resHi = isHi(verse.research);
@@ -317,6 +340,11 @@ export function ReaderLayers({
                   <span lang="hi" className="font-devanagari text-dharma-text">पदच्छेद</span>{' '}
                   <span>· Tap a word to inspect grammar</span>
                 </span>
+                <span className="hidden xl:inline-flex items-center gap-1 font-mono text-[10px] text-dharma-muted" aria-hidden="true">
+                  <kbd className="rounded border border-amber-700/30 dark:border-amber-500/30 px-1">[</kbd>
+                  <kbd className="rounded border border-amber-700/30 dark:border-amber-500/30 px-1">]</kbd>
+                  <span>Jump</span>
+                </span>
               </div>
               <div role="group" aria-label="Interactive padachheda words" className="flex flex-wrap gap-1.5">
                 {glosses.map((g, idx) => {
@@ -351,7 +379,7 @@ export function ReaderLayers({
               )}
             </div>
           )}
-          {!settings.liteMode && (
+          {!settings.liteMode && Boolean(verse.lineExplanations?.length) && (
             <ExplainLine lines={lines} scopeId="sanskrit-text" verseLabel={formatVerseRef(scriptureId, chapterId, verse.number)} fullTranslation={cleanVerseField(verse.translation)} entries={verse.lineExplanations} />
           )}
           </>
@@ -373,6 +401,7 @@ export function ReaderLayers({
                   <Languages className="h-3.5 w-3.5" aria-hidden="true" />
                   <span data-bi="en">IAST</span>
                   <span lang="hi" data-bi="hi" className="font-devanagari">लिप्यन्तरण</span>
+                  <kbd aria-hidden="true" className="hidden rounded border border-current/25 px-1 font-mono text-[10px] opacity-70 lg:inline">I</kbd>
                 </button>
               )}
               {hasPadas && (
@@ -386,6 +415,7 @@ export function ReaderLayers({
                   <ScrollText className="h-3.5 w-3.5" aria-hidden="true" />
                   <span lang="hi" data-bi="hi" className="font-devanagari">पदच्छेद</span>
                   <span data-bi="en">Word by word</span>
+                  <kbd aria-hidden="true" className="hidden rounded border border-current/25 px-1 font-mono text-[10px] opacity-70 lg:inline">W</kbd>
                 </button>
               )}
               {!settings.liteMode && lines.length > 0 && (
@@ -398,6 +428,26 @@ export function ReaderLayers({
                   <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                   <span lang="hi" data-bi="hi" className="font-devanagari">स्वाध्याय पथ</span>{' '}
                   <span data-bi="en">4-Step Studio</span>
+                  <kbd aria-hidden="true" className="hidden rounded border border-current/25 px-1 font-mono text-[10px] opacity-70 lg:inline">S</kbd>
+                </button>
+              )}
+              {!settings.liteMode && !settings.focusMode && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const noteBox = document.querySelector<HTMLTextAreaElement>(
+                      'aside[aria-label="Study companion"] textarea',
+                    );
+                    if (noteBox) {
+                      noteBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      noteBox.focus();
+                    }
+                  }}
+                  className={`${aidToggle} hidden lg:inline-flex`}
+                >
+                  <span lang="hi" data-bi="hi" className="font-devanagari">टिप्पणी</span>
+                  <span data-bi="en">Note</span>
+                  <kbd aria-hidden="true" className="rounded border border-current/25 px-1 font-mono text-[10px] opacity-70">N</kbd>
                 </button>
               )}
             </div>

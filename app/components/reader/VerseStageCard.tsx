@@ -29,6 +29,10 @@ const VerseMoreActions = dynamic(
   () => import('./VerseMoreActions').then((m) => m.VerseMoreActions),
   { ssr: false },
 );
+const ReaderShortcutsPanel = dynamic(
+  () => import('./ReaderShortcutsPanel').then((m) => m.ReaderShortcutsPanel),
+  { ssr: false },
+);
 
 export interface StageVerseLink {
   number: number | string;
@@ -134,6 +138,13 @@ export function VerseStageCard({
   const [moreActions, setMoreActions] = useState(false);
   const moreActionsLoaded = useEverTrue(moreActions);
   const [speaking, setSpeaking] = useState(false);
+  const [showShortcuts, setShowShortcuts] = useState(false);
+
+  useEffect(() => {
+    const onToggleShortcuts = () => setShowShortcuts((v) => !v);
+    window.addEventListener('dharma:toggle-shortcuts', onToggleShortcuts);
+    return () => window.removeEventListener('dharma:toggle-shortcuts', onToggleShortcuts);
+  }, []);
 
   // Stop any active browser speech synthesis when navigating between verses or unmounting.
   useEffect(() => {
@@ -295,8 +306,25 @@ export function VerseStageCard({
                 F
               </kbd>
             </button>
+
+            <button
+              type="button"
+              onClick={() => setShowShortcuts((v) => !v)}
+              aria-expanded={showShortcuts}
+              aria-label="कुंजीपटल संकेत · Keyboard shortcuts"
+              title="कुंजीपटल संकेत · Keyboard shortcuts (?)"
+              className={`focus-ring hidden lg:inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border text-xs font-mono font-bold transition ${LITE_COMPAT} ${
+                showShortcuts
+                  ? 'border-amber-700 bg-amber-800 text-amber-50 dark:border-amber-300 dark:bg-amber-300 dark:text-stone-950'
+                  : 'border-stone-300/75 dark:border-stone-700 bg-stone-100/80 dark:bg-stone-800/70 text-dharma-muted hover:border-amber-600/50 hover:text-dharma-text'
+              }`}
+            >
+              ?
+            </button>
           </div>
         </div>
+
+        {showShortcuts && <ReaderShortcutsPanel onClose={() => setShowShortcuts(false)} />}
 
         <div className="mt-2.5 text-center">
           <p className="hidden text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-300 sm:block">

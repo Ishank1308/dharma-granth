@@ -13,6 +13,7 @@ import { JsonLd } from '@/app/components/JsonLd';
 import { courseListLd, pageLd } from '@/lib/jsonld';
 import { ChevronDown, ChevronUp, CheckCircle2, Search } from 'lucide-react';
 import { LearnOpening } from './LearnOpening';
+import { InteractiveShravanaStudio } from '@/app/components/learn/InteractiveShravanaStudio';
 
 const FORMAT_NAMES: Record<string, string> = {
   flashcards: 'flashcards',
@@ -117,6 +118,8 @@ export default function LearnPage() {
 
       {/* ── Where to begin: the reader's next step, large, beside the ways to study ── */}
       <LearnOpening getPathwayProgress={progress.getPathwayProgress} />
+
+      <InteractiveShravanaStudio />
 
       {/* ── Guided Learning Pathways (also the target of the /learn/pathways/ 301) ── */}
       <section id="courses" aria-labelledby="courses-heading" className="mx-auto max-w-content scroll-mt-24 px-gutter pt-16">

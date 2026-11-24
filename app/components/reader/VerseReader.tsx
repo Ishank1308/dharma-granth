@@ -257,6 +257,12 @@ export function VerseReader(props: VerseReaderProps) {
     say(state ? 'Verse saved' : 'Removed from saved verses');
   }, [ref, verse, scriptureId, chapterId, say]);
 
+  useEffect(() => {
+    const handleToggleBookmark = () => onBookmark();
+    window.addEventListener('dharma:toggle-bookmark', handleToggleBookmark);
+    return () => window.removeEventListener('dharma:toggle-bookmark', handleToggleBookmark);
+  }, [onBookmark]);
+
   /* ── Sacred Share Card Modal ── */
   const [showShareModal, setShowShareModal] = useState(false);
   const shareLoaded = useEverTrue(showShareModal);
@@ -555,6 +561,7 @@ export function VerseReader(props: VerseReaderProps) {
         onToggleFocus={toggleFocusMode}
         prevHref={prev?.href}
         nextHref={next?.href}
+        padaCount={glosses.length}
         dialogOpen={Boolean(dialog || carouselOpen || showShareModal)}
         swipeHandlers={handlers as unknown as Record<string, unknown>}
         paneStyle={paneStyle}

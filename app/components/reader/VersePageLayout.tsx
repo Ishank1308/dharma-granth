@@ -19,6 +19,8 @@ export interface VersePageLayoutProps {
   onToggleFocus: () => void;
   prevHref?: string;
   nextHref?: string;
+  /** Number of interactive padachheda glosses available for `[` and `]` keyboard jumps. */
+  padaCount?: number;
   /** Suppresses global shortcuts while a modal/drawer is open. */
   dialogOpen?: boolean;
   swipeHandlers?: Record<string, unknown>;
@@ -35,7 +37,7 @@ export interface VersePageLayoutProps {
 
 /**
  * Responsive 12-column desktop reading grid for the Dharma Granth verse detail page.
- * Manages `selectedWordIndex`, syncs `focusMode`, and wires `ArrowLeft`, `ArrowRight`, and `f` shortcuts.
+ * Manages `selectedWordIndex`, syncs `focusMode`, and wires `ArrowLeft`, `ArrowRight`, `[`, `]`, `s`, `w`, `i`, `n`, `b`, `?`, and `f` shortcuts.
  */
 export function VersePageLayout({
   verseIdentity,
@@ -43,6 +45,7 @@ export function VersePageLayout({
   onToggleFocus,
   prevHref,
   nextHref,
+  padaCount = 0,
   dialogOpen = false,
   swipeHandlers,
   paneStyle,
@@ -84,6 +87,52 @@ export function VersePageLayout({
         onToggleFocus();
         return;
       }
+      if (event.key === '[' && padaCount > 0) {
+        event.preventDefault();
+        setSelectedWordIndex((prev) => (prev - 1 + padaCount) % padaCount);
+        return;
+      }
+      if (event.key === ']' && padaCount > 0) {
+        event.preventDefault();
+        setSelectedWordIndex((prev) => (prev + 1) % padaCount);
+        return;
+      }
+      if (event.key === 's' || event.key === 'S') {
+        event.preventDefault();
+        window.dispatchEvent(new CustomEvent('dharma:toggle-svadhyaya'));
+        return;
+      }
+      if (event.key === 'w' || event.key === 'W') {
+        event.preventDefault();
+        window.dispatchEvent(new CustomEvent('dharma:toggle-padas'));
+        return;
+      }
+      if (event.key === 'i' || event.key === 'I') {
+        event.preventDefault();
+        window.dispatchEvent(new CustomEvent('dharma:toggle-iast'));
+        return;
+      }
+      if (event.key === 'b' || event.key === 'B') {
+        event.preventDefault();
+        window.dispatchEvent(new CustomEvent('dharma:toggle-bookmark'));
+        return;
+      }
+      if (event.key === 'n' || event.key === 'N') {
+        const noteBox = document.querySelector<HTMLTextAreaElement>(
+          'aside[aria-label="Study companion"] textarea',
+        );
+        if (noteBox) {
+          event.preventDefault();
+          noteBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          noteBox.focus();
+        }
+        return;
+      }
+      if (event.key === '?') {
+        event.preventDefault();
+        window.dispatchEvent(new CustomEvent('dharma:toggle-shortcuts'));
+        return;
+      }
       if ((event.key === 'ArrowLeft' || event.key === 'h' || event.key === 'k') && prevHref) {
         event.preventDefault();
         navigateWithTransition(router, prevHref, 'prev');
@@ -97,7 +146,7 @@ export function VersePageLayout({
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [dialogOpen, prevHref, nextHref, onToggleFocus, router]);
+  }, [dialogOpen, prevHref, nextHref, padaCount, onToggleFocus, router]);
 
   return (
     <div
