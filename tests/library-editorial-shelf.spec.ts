@@ -9,7 +9,7 @@ test('library editorial collection gives four real books varied shelf widths', a
   const cards = page.locator(featured).getByRole('link');
   await expect(cards).toHaveCount(4);
 
-  const urls = ['/scripture/viduraniti/', '/scripture/shivaswarodaya/', '/ashtavakra/', '/scripture/naradabhaktisutra/'];
+  const urls = ['/scripture/viduraniti/', '/scripture/yogasutra/', '/ashtavakra/', '/scripture/naradabhaktisutra/'];
   for (let i = 0; i < urls.length; i++) {
     await expect(cards.nth(i)).toHaveAttribute('href', urls[i]);
   }

@@ -70,7 +70,6 @@ Included Scriptures:
   - Patanjali Yoga Sutras
   - Brahma Sutras (`brahmasutra`)
   - Vidura Niti (`viduraniti`)
-  - Shiva Swarodaya (`shivaswarodaya`)
   - Shiva Samhita (`shivasamhita`)
   - Narada Bhakti Sutras (`naradabhaktisutra`)
   - Shandilya Bhakti Sutras (`shandilyabhaktisutra`)

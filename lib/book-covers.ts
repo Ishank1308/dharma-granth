@@ -35,7 +35,6 @@ const BY_ID: Record<string, PhotoId> = {
   lingapuran: 'shiva',
   skandapuran: 'shiva',
   shivasamhita: 'kailash',
-  shivaswarodaya: 'kailash',
   // Krishna and Vishnu
   bhagavatapurana: 'krishna',
   harivanshpuran: 'vrindavan',

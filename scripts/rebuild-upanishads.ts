@@ -428,7 +428,6 @@ const TARGETS: Record<string, Target> = {
   vinayapatrika: { files: [], local: true, build: () => [], chapterUnit: "" },
   taittiriya: { files: [], local: true, build: () => [], chapterUnit: "" },
   shivasamhita: { files: ["https://sanskritdocuments.org/doc_shiva/shivasaMhitA.itx"], build: shivaSamhita, chapterUnit: "Paṭala" },
-  shivaswarodaya: { files: [], local: true, build: () => [], chapterUnit: "" },
   shandilyabhaktisutra: { files: [], local: true, build: () => [], chapterUnit: "" },
   kaushitaki: { files: ["kaushhiitaki.itx"], build: kaushitaki, chapterUnit: "Adhyāya" },
   // The file name in the old source record (brihadaaraNyaka.itx) no longer exists on the site.

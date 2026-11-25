@@ -110,7 +110,6 @@ import { nityakarmakriyaHi } from './hi-commentary/nityakarmakriya';
 import { ravanasamhitaHi } from './hi-commentary/ravanasamhita';
 import { shandilyabhaktisutraHi } from './hi-commentary/shandilyabhaktisutra';
 import { shivasamhitaHi } from './hi-commentary/shivasamhita';
-import { shivaswarodayaHi } from './hi-commentary/shivaswarodaya';
 import { skandapuranHi } from './hi-commentary/skandapuran';
 import { tejobinduHi } from './hi-commentary/tejobindu';
 import { vamanpuranHi } from './hi-commentary/vamanpuran';
@@ -177,7 +176,6 @@ const fragments: Record<string, HiCommentaryFragment> = {
   ravanasamhita: ravanasamhitaHi,
   shandilyabhaktisutra: shandilyabhaktisutraHi,
   shivasamhita: shivasamhitaHi,
-  shivaswarodaya: shivaswarodayaHi,
   skandapuran: skandapuranHi,
   tejobindu: tejobinduHi,
   vamanpuran: vamanpuranHi,
