@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { FadeUp } from '@/app/components/motion/primitives';
+import { HeroPhoto } from '@/app/components/PagePhoto';
 import { WisdomClient } from './WisdomClient';
 import { toTopicCard } from '@/lib/wisdom-topic-card';
 import { wisdomTopics, wisdomCategories } from '@/data/wisdom-for-life';
@@ -26,9 +27,10 @@ export default function WisdomForLifeIndexPage() {
   return (
     <main className="min-h-screen bg-dharma-bg">
       {/* ── Hero Section ─────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-saffron-900 via-amber-900 to-stone-950 text-white py-16 sm:py-24 overflow-hidden">
-        <div className="absolute inset-0 mandala-bg opacity-15" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+      <section className="relative isolate bg-gradient-to-br from-saffron-900 via-amber-900 to-stone-950 text-white py-16 sm:py-24 overflow-hidden">
+        <HeroPhoto photo="yogi" />
+        <div className="pointer-events-none absolute inset-0 mandala-bg opacity-15" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <FadeUp>

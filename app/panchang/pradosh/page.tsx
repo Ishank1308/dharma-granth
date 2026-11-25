@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { VrataDatesTable, type VrataDateItem } from '@/app/panchang/components/VrataDatesTable';
 import { JsonLd } from '@/app/components/JsonLd';
@@ -166,6 +167,7 @@ export default function PradoshPage() {
         eyebrowHi="शिव सायुज्य एवं प्रदोष काल"
         title="Pradosh Vrat Dates (2026–2028)"
         titleHi="प्रदोष व्रत तिथियाँ व शिव महात्म्य"
+        cover={<PageCover photo="shiva" />}
         lead="शिव पुराण एवं स्कंद पुराण के अनुसार प्रत्येक पक्ष की त्रयोदशी तिथि का प्रदोष काल आशुतोष भगवान शिव की कृपा प्राप्त करने का सर्वश्रेष्ठ मुहूर्त है।"
         width="wide"
       />

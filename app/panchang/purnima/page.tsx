@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { VrataDatesTable, type VrataDateItem } from '@/app/panchang/components/VrataDatesTable';
 import { JsonLd } from '@/app/components/JsonLd';
@@ -139,6 +140,7 @@ export default function PurnimaPage() {
         eyebrowHi="सत्यनारायण व्रत व चंद्र दर्शन"
         title="Purnima Calendar (2026–2028)"
         titleHi="पूर्णिमा तिथियाँ व सत्यनारायण व्रत माहात्म्य"
+        cover={<PageCover photo="cosmos" />}
         lead="पूर्णिमा वह तिथि है जब चंद्रमा अपनी समस्त सोलह कलाओं से परिपूर्ण होकर आकाश को अमृतमयी चाँदनी से आलोकित करता है। यह श्री सत्यनारायण भगवान की कथा, उपवास, गंगा स्नान और दीपदान का परम पावन दिन है।"
         width="wide"
       />

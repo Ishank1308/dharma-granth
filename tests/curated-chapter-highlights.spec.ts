@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 // Each card shows the photo or classical painting its chapter opens with (lib/scene-photos.ts), held
-// still; a chapter without one (Gita 6, whose photo is not fetched yet) keeps its drawing.
+// still; when Data Saver is on it falls back to the SVG still drawing.
 test('Gita chapter highlights use real linked chapters and static local artwork', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -12,7 +12,7 @@ test('Gita chapter highlights use real linked chapters and static local artwork'
   await expect(links).toHaveCount(3);
   const expected = [1, 3, 6];
   const artwork = ['kurukshetra', 'yajna', 'yogi'];
-  const photo = ['kurukshetra', 'yajna', null];
+  const photo = ['kurukshetra', 'yajna', 'yogi'];
 
   for (let i = 0; i < expected.length; i++) {
     await expect(links.nth(i)).toHaveAttribute('href', `/scripture/bhagavadgita/chapter/${expected[i]}/`);

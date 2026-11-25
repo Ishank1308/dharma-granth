@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FadeUp, FadeUpOnView } from '@/app/components/motion/primitives';
+import { PageCover } from '@/app/components/PagePhoto';
 import { timelines, timelineTypeLabels, type TimelineType } from '@/data/timelines';
 import '@/app/styles/long-read.css';
 
@@ -54,6 +55,7 @@ export default function TimelinesPage() {
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg py-12 text-dharma-text dark:from-amber-950/20 sm:py-16">
         <div className="relative mx-auto max-w-6xl px-6">
+          <PageCover photo="stepwell" />
           <FadeUp>
             <p className="mb-4 inline-flex flex-wrap items-center gap-1 rounded-full border border-saffron-500/25 bg-saffron-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-saffron-800 dark:text-saffron-300">
               <span lang="hi" data-bi="hi">कालरेखा — शास्त्रीय कालखंड</span><span data-bi="sep"> (</span><span data-bi="en">Scriptural Timelines</span><span data-bi="sep">)</span>

@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { DEFAULT_OG_IMAGE } from '@/lib/og';
 import { Breadcrumbs } from '@/app/components/Breadcrumbs';
 import { PageHeader, SectionTitle } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 import { PanchangLimbSwitcher } from '@/app/panchang/components/PanchangLimbSwitcher';
 import { VrataDatesTable } from '@/app/panchang/components/VrataDatesTable';
 import { EKADASHI_DATES } from '@/data/ekadashi-dates';
@@ -108,6 +109,7 @@ export default function EkadashiPage() {
         eyebrowHi="हरि-वासर एवं व्रत दर्शन"
         title="Ekadashi Vrata Dates (2026–2028)"
         titleHi="एकादशी व्रत तिथियाँ व माहात्म्य"
+        cover={<PageCover photo="vishnu" />}
         lead="पद्म पुराण एवं विष्णु पुराण के अनुसार प्रत्येक मास के शुक्ल व कृष्ण पक्ष की एकादशी तिथि मन, प्राण और इंद्रियों के शुद्धिकरण का परम साधन है।"
         width="wide"
       />

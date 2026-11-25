@@ -8,11 +8,11 @@ import type { PhotoId } from './scene-photos';
  * credited on /sources/#picture-credits). Next emits a picture a stylesheet names once, as one
  * hashed file, so showing it on more pages adds no file to the export.
  *
- * `yogi` has no photo yet, so it is left out of the type: every id here has a file.
+ * Every PhotoId in manifest.json now has a verified file on disk in app/styles/photos/.
  * tests/page-photos.spec.ts checks that a festival, a character, a mantra and a section page
  * each load their picture.
  */
-export type CoverPhoto = Exclude<PhotoId, 'yogi'>;
+export type CoverPhoto = PhotoId;
 
 export const FESTIVAL_PHOTOS: Readonly<Record<string, CoverPhoto>> = {
   diwali: 'lamp',

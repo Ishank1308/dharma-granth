@@ -251,5 +251,45 @@
     "author": "Indian from Mewar, Rajasthan, Northern India",
     "license": "Public domain",
     "source": "https://commons.wikimedia.org/wiki/File:Ganesa_writing_the_Mahabharat.jpeg"
+  },
+  "yogi": {
+    "file": "Middle himalayas in morning mist.JPG",
+    "trim": [
+      10,
+      0,
+      18,
+      0
+    ],
+    "title": "Middle himalayas in morning mist",
+    "author": "Prabhatbaghel",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Middle_himalayas_in_morning_mist.JPG"
+  },
+  "palmleaf": {
+    "file": "6th-century Brihat Samhita of Varahamihira, Bhattotpala commentary manuscript, Chapter 3, Sanskrit, Grantha script, palm leaf 1 2r 2v.jpg",
+    "title": "6th-century Brihat Samhita of Varahamihira, Bhattotpala commentary manuscript, Chapter 3, Sanskrit, Grantha script, palm leaf 1 2r 2v",
+    "author": "Ms Sarah Welch",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:6th-century_Brihat_Samhita_of_Varahamihira,_Bhattotpala_commentary_manuscript,_Chapter_3,_Sanskrit,_Grantha_script,_palm_leaf_1_2r_2v.jpg"
+  },
+  "stepwell": {
+    "file": "Surya Kund 01.jpg",
+    "trim": [
+      12,
+      0,
+      0,
+      0
+    ],
+    "title": "Surya Kund 01",
+    "author": "Bernard Gagnon",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Surya_Kund_01.jpg"
+  },
+  "corridor": {
+    "file": "Pillars at the Veerabhadra Temple, Lepakshi, Andhra Pradesh, India (2018).jpg",
+    "title": "Pillars at the Veerabhadra Temple, Lepakshi, Andhra Pradesh, India (2018)",
+    "author": "Skasturee",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pillars_at_the_Veerabhadra_Temple,_Lepakshi,_Andhra_Pradesh,_India_(2018).jpg"
   }
 }

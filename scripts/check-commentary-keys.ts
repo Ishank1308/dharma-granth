@@ -22,12 +22,16 @@ for (const id of ids) {
   const sourcePath = path.resolve("public/data/scriptures-full", `${id}.json`);
   if (!fs.existsSync(sourcePath)) { report(`${id}: scripture source missing`); continue; }
   const book = JSON.parse(fs.readFileSync(sourcePath, "utf8"));
-  const verses = new Map<string, string[]>();
+  const rawVerses = new Map<string, string[]>();
+  const normalizedVerses = new Map<string, string[]>();
   for (const chapter of book.chapters ?? []) for (const verse of chapter.verses ?? []) {
     const n = Number(chapter.number), numeric = Number(canonicalVerseId(n, verse.number));
-    const keys = new Set([`${n}:${verse.number}`]);
-    if (Number.isFinite(numeric)) keys.add(`${n}:${numeric}`);
-    for (const key of keys) verses.set(key, [...(verses.get(key) ?? []), verse.sanskrit]);
+    const rawKey = `${n}:${verse.number}`;
+    rawVerses.set(rawKey, [...(rawVerses.get(rawKey) ?? []), verse.sanskrit]);
+    if (Number.isFinite(numeric)) {
+      const normKey = `${n}:${numeric}`;
+      normalizedVerses.set(normKey, [...(normalizedVerses.get(normKey) ?? []), verse.sanskrit]);
+    }
   }
   const queue = readRecord(path.join(queueDir, id));
   for (const [kind, dir] of [["queue", queueDir], ["published", publishedDir], ["proposal", proposalDir]] as const) {
@@ -39,7 +43,7 @@ for (const id of ids) {
     for (const [key, raw] of Object.entries(entries)) {
       checked++;
       const entry = raw as { sanskrit?: string; sanskritOpening?: string; sourceWitness?: string; status?: string; replacesQueueSnapshot?: unknown } | null;
-      const matching = verses.get(key) ?? [];
+      const matching = rawVerses.get(key) ?? normalizedVerses.get(key) ?? [];
       if (matching.length !== 1) { report(`${id} ${kind} ${key}: ${matching.length ? "ambiguous source key" : "no source verse"}`); continue; }
       if (!entry || typeof entry !== "object") { report(`${id} ${kind} ${key}: invalid entry`); continue; }
       if (kind !== "published" && entry.status === "source-checked") {

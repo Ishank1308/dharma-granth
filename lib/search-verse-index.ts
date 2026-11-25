@@ -23,6 +23,7 @@ export interface VerseIndexFile {
   v: 1;
   scriptures: string[];
   rows: VerseRow[];
+  parts?: string[];
 }
 
 export const FLAG_EXPLANATION_AI = 1;
@@ -75,26 +76,30 @@ const byRef = new Map<string, VerseEntry>();
 
 export const verseRef = (scriptureId: string, chapter: number, verse: string | number) => `${scriptureId}:${chapter}:${verse}`;
 
-export function loadVerseIndex(file: VerseIndexFile): void {
-  entries = file.rows.map(([s, chapter, verse, sanskrit, transliteration, hindi, english, explanation, flags]) => {
-    const scriptureId = file.scriptures[s];
-    return {
-      id: `verse-${scriptureId}-${chapter}-${verse}`,
-      scriptureId,
-      chapter,
-      verse,
-      sanskrit,
-      transliteration,
-      hindi,
-      english,
-      explanation,
-      flags,
-      devKey: normalizeDevanagari(sanskrit).replace(/ /g, ''),
-      romanKey: compactTransliteration(transliteration),
-      textKey: normalizeForSearch(`${english} ${hindi} ${explanation}`),
-      dup: 0 as 0 | 1 | 2,
-    };
-  });
+export function loadVerseIndex(input: VerseIndexFile | VerseIndexFile[]): void {
+  const files = Array.isArray(input) ? input : [input];
+  entries = [];
+  for (const file of files) {
+    for (const [s, chapter, verse, sanskrit, transliteration, hindi, english, explanation, flags] of file.rows) {
+      const scriptureId = file.scriptures[s];
+      entries.push({
+        id: `verse-${scriptureId}-${chapter}-${verse}`,
+        scriptureId,
+        chapter,
+        verse,
+        sanskrit,
+        transliteration,
+        hindi,
+        english,
+        explanation,
+        flags,
+        devKey: normalizeDevanagari(sanskrit).replace(/ /g, ''),
+        romanKey: compactTransliteration(transliteration),
+        textKey: normalizeForSearch(`${english} ${hindi} ${explanation}`),
+        dup: 0 as 0 | 1 | 2,
+      });
+    }
+  }
   // Repeated Sanskrit under different references is a data problem (templated or copied rows).
   // Search shows each such text once, below genuine matches, instead of flooding the results.
   const seen = new Map<string, VerseEntry>();

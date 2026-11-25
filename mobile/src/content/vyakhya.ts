@@ -93,11 +93,19 @@ async function update(id: string): Promise<void> {
   const index = await fetchIndex();
   const remote = index.commentary?.[id];
   if (!remote || installed[id] === remote.version) return;
+  const partFiles = remote.parts?.length ? remote.parts.map((p) => p.file) : remote.file ? [remote.file] : [];
+  if (partFiles.length === 0) return;
   if (Platform.OS === 'web') {
-    const res = await fetch(`${APP_DATA}${remote.file}`);
-    const data = (await res.json()) as { id?: string; chapters?: Record<string, ChapterVyakhya> };
-    if (data.id !== id || !data.chapters) return;
-    memory.set(id, data.chapters);
+    const merged: Record<string, ChapterVyakhya> = {};
+    for (const partFile of partFiles) {
+      const res = await fetch(`${APP_DATA}${partFile}`);
+      const data = (await res.json()) as { id?: string; chapters?: Record<string, ChapterVyakhya> };
+      if (data.id !== id || !data.chapters) return;
+      for (const [ch, entries] of Object.entries(data.chapters)) {
+        merged[ch] = { ...(merged[ch] ?? {}), ...entries };
+      }
+    }
+    memory.set(id, merged);
     installed = { ...installed, [id]: remote.version };
     listeners.forEach((l) => l());
     return;
@@ -109,12 +117,18 @@ async function update(id: string): Promise<void> {
   // rename() repoints `tmp` at the finished folder, so the clean-up below must not touch it once it is in place.
   let saved = false;
   try {
-    await File.downloadFileAsync(`${APP_DATA}${remote.file}`, target, { idempotent: true });
-    const data = JSON.parse(await target.text()) as { id?: string; chapters?: Record<string, ChapterVyakhya> };
-    if (data.id !== id || !data.chapters) return;
+    const merged: Record<string, ChapterVyakhya> = {};
+    for (const partFile of partFiles) {
+      await File.downloadFileAsync(`${APP_DATA}${partFile}`, target, { idempotent: true });
+      const data = JSON.parse(await target.text()) as { id?: string; chapters?: Record<string, ChapterVyakhya> };
+      if (data.id !== id || !data.chapters) return;
+      for (const [ch, entries] of Object.entries(data.chapters)) {
+        merged[ch] = { ...(merged[ch] ?? {}), ...entries };
+      }
+    }
     if (tmp.exists) tmp.delete();
     tmp.create({ intermediates: true });
-    for (const [chapter, notes] of Object.entries(data.chapters)) {
+    for (const [chapter, notes] of Object.entries(merged)) {
       await new File(tmp, `ch-${chapter}.json`).write(JSON.stringify(notes));
     }
     await new File(tmp, 'meta.json').write(JSON.stringify({ version: remote.version, savedAt: new Date().toISOString() }));

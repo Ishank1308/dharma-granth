@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { FolderOpen, Plus, Trash2, BookOpen, ArrowRight, Highlighter, StickyNote, X, Copy, Check } from 'lucide-react';
 import { useStudyProgress } from '@/lib/useStudyProgress';
 import { FadeUp, FadeUpOnView, Stagger, StaggerItem } from '@/app/components/motion/primitives';
+import { PageCover } from '@/app/components/PagePhoto';
 import { chapterVerseHref, readHref } from '@/lib/verse-paths';
 import { verseCount } from '@/lib/format';
 import { STUDY_PLAYLISTS } from '@/data/study-playlists';
@@ -28,6 +29,7 @@ export default function CollectionsPage() {
   const header = (
     <section className="border-b border-dharma-border bg-gradient-to-b from-amber-50/70 via-dharma-card to-dharma-bg py-12 text-dharma-text dark:from-amber-950/20 sm:py-14">
       <div className="max-w-6xl mx-auto px-6">
+        <PageCover photo="corridor" />
         <FadeUp>
           <p className="text-xs font-semibold uppercase tracking-widest text-saffron-700 dark:text-saffron-400 mb-2">
             Personal Study

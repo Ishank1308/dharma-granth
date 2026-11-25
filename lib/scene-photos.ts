@@ -52,6 +52,10 @@ export const PHOTO_IDS = [
   'rama',
   'gurukul',
   'vyasa',
+  // Architectural and philological anchors for standalone hubs (lib/page-photos.ts).
+  'palmleaf',
+  'stepwell',
+  'corridor',
 ] as const;
 export type PhotoId = (typeof PHOTO_IDS)[number];
 

@@ -2,6 +2,7 @@
 [data-photo='kurukshetra'] { --photo: image-set(url('./photos/kurukshetra.avif') type('image/avif'), url('./photos/kurukshetra.webp') type('image/webp')); --photo-focus: 50% 70%; --photo-fx: var(--fx-dust); }
 [data-photo='gita-chariot'] { --photo: image-set(url('./photos/gita-chariot.avif') type('image/avif'), url('./photos/gita-chariot.webp') type('image/webp')); --photo-focus: 50% 45%; --photo-fx: var(--fx-dust); }
 [data-photo='vishvarupa'] { --photo: image-set(url('./photos/vishvarupa.avif') type('image/avif'), url('./photos/vishvarupa.webp') type('image/webp')); --photo-focus: 50% 45%; --photo-fx: var(--fx-none); }
+[data-photo='yogi'] { --photo: image-set(url('./photos/yogi.avif') type('image/avif'), url('./photos/yogi.webp') type('image/webp')); --photo-focus: 50% 56%; --photo-fx: var(--fx-mist); }
 [data-photo='ashram'] { --photo: image-set(url('./photos/ashram.avif') type('image/avif'), url('./photos/ashram.webp') type('image/webp')); --photo-focus: 50% 65%; --photo-fx: var(--fx-mist); }
 [data-photo='yajna'] { --photo: image-set(url('./photos/yajna.avif') type('image/avif'), url('./photos/yajna.webp') type('image/webp')); --photo-focus: 50% 55%; --photo-fx: var(--fx-embers); }
 [data-photo='dawn'] { --photo: image-set(url('./photos/dawn.avif') type('image/avif'), url('./photos/dawn.webp') type('image/webp')); --photo-focus: 50% 60%; --photo-fx: var(--fx-mist); }
@@ -30,3 +31,6 @@
 [data-photo='rama'] { --photo: image-set(url('./photos/rama.avif') type('image/avif'), url('./photos/rama.webp') type('image/webp')); --photo-focus: 50% 38%; --photo-fx: var(--fx-none); }
 [data-photo='gurukul'] { --photo: image-set(url('./photos/gurukul.avif') type('image/avif'), url('./photos/gurukul.webp') type('image/webp')); --photo-focus: 50% 44%; --photo-fx: var(--fx-none); }
 [data-photo='vyasa'] { --photo: image-set(url('./photos/vyasa.avif') type('image/avif'), url('./photos/vyasa.webp') type('image/webp')); --photo-focus: 50% 52%; --photo-fx: var(--fx-none); }
+[data-photo='palmleaf'] { --photo: image-set(url('./photos/palmleaf.avif') type('image/avif'), url('./photos/palmleaf.webp') type('image/webp')); --photo-focus: 50% 50%; --photo-fx: var(--fx-dust); }
+[data-photo='stepwell'] { --photo: image-set(url('./photos/stepwell.avif') type('image/avif'), url('./photos/stepwell.webp') type('image/webp')); --photo-focus: 50% 52%; --photo-fx: var(--fx-none); }
+[data-photo='corridor'] { --photo: image-set(url('./photos/corridor.avif') type('image/avif'), url('./photos/corridor.webp') type('image/webp')); --photo-focus: 50% 52%; --photo-fx: var(--fx-dust); }

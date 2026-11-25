@@ -31,6 +31,7 @@ const DATA = join(ROOT, 'public/data/scriptures-full');
 const OUT = join(DIST, 'app-data/v1');
 const PARTS = join(OUT, 'parts');
 const PART_BYTES = 6 * 1024 * 1024;
+const VYAKHYA_PART_BYTES = 12 * 1024 * 1024;
 // Bumped when the part layout changes in a way an older app cannot read.
 const FORMAT = 1;
 
@@ -60,15 +61,60 @@ for (const id of listBookIds(DATA)) {
   // The व्याख्या is too large to ship inside the app, so every book that has one gets a download.
   const notes = readCommentary(DATA, book);
   if (notes) {
-    const json = JSON.stringify({ id, chapters: notes.chapters });
-    const name = `${id}.vyakhya.${hash(json).slice(0, 12)}.json`;
-    writeFileSync(join(PARTS, name), json);
-    files++;
-    const bytes = Buffer.byteLength(json);
-    const gz = gzipSync(json).length;
-    totalBytes += bytes;
-    totalGz += gz;
-    commentary[id] = { file: `parts/${name}`, version: hash(json).slice(0, 16), bytes, gz, verses: notes.verses };
+    const singleJson = JSON.stringify({ id, chapters: notes.chapters });
+    if (Buffer.byteLength(singleJson) <= VYAKHYA_PART_BYTES) {
+      const name = `${id}.vyakhya.${hash(singleJson).slice(0, 12)}.json`;
+      writeFileSync(join(PARTS, name), singleJson);
+      files++;
+      const bytes = Buffer.byteLength(singleJson);
+      const gz = gzipSync(singleJson).length;
+      totalBytes += bytes;
+      totalGz += gz;
+      commentary[id] = { file: `parts/${name}`, version: hash(singleJson).slice(0, 16), bytes, gz, verses: notes.verses };
+    } else {
+      const parts = [];
+      let pieces = {};
+      let pieceBytes = 0;
+      const flushCommentary = () => {
+        if (Object.keys(pieces).length === 0) return;
+        parts.push(JSON.stringify({ id, chapters: pieces }));
+        pieces = {};
+        pieceBytes = 0;
+      };
+      const sortedChapters = Object.entries(notes.chapters).sort((a, b) => Number(a[0]) - Number(b[0]));
+      for (const [chNum, chNotes] of sortedChapters) {
+        for (const [vKey, vEntry] of Object.entries(chNotes)) {
+          const entryBytes = Buffer.byteLength(JSON.stringify(vKey)) + Buffer.byteLength(JSON.stringify(vEntry)) + 2;
+          if (pieceBytes + entryBytes > VYAKHYA_PART_BYTES && pieceBytes > 0) {
+            flushCommentary();
+          }
+          if (!pieces[chNum]) {
+            pieces[chNum] = {};
+            pieceBytes += Buffer.byteLength(JSON.stringify(chNum)) + 4 + (pieceBytes === 0 ? Buffer.byteLength(id) + 24 : 0);
+          }
+          pieces[chNum][vKey] = vEntry;
+          pieceBytes += entryBytes;
+        }
+      }
+      flushCommentary();
+      const entries = parts.map((json, n) => {
+        const name = `${id}.vyakhya.${n + 1}.${hash(json).slice(0, 12)}.json`;
+        writeFileSync(join(PARTS, name), json);
+        files++;
+        const bytes = Buffer.byteLength(json);
+        const gz = gzipSync(json).length;
+        totalBytes += bytes;
+        totalGz += gz;
+        return { file: `parts/${name}`, bytes, gz };
+      });
+      commentary[id] = {
+        version: hash(entries.map((e) => e.file).join('\n')).slice(0, 16),
+        bytes: entries.reduce((sum, e) => sum + e.bytes, 0),
+        gz: entries.reduce((sum, e) => sum + e.gz, 0),
+        verses: notes.verses,
+        parts: entries,
+      };
+    }
   }
 
   if (isBundled(book)) continue;

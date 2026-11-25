@@ -6,6 +6,7 @@ import { getRealVerseCount } from '@/data/scriptures';
 import { formatCount } from '@/lib/holdings-label';
 import { OnThisPage } from '@/app/components/OnThisPage';
 import { PageHeader } from '@/app/components/apple/PageHeader';
+import { PageCover } from '@/app/components/PagePhoto';
 
 export const metadata: Metadata = {
   title: 'Methodology: how this site is made',
@@ -136,6 +137,7 @@ export default function MethodologyPage() {
           eyebrowHi="कार्यपद्धति एवं प्रामाणिकता"
           title="How this site is made"
           titleHi="स्रोत, अनुवाद और समीक्षा की स्पष्ट नीति"
+          cover={<PageCover photo="vyasa" />}
           lead={
             <p>
               This page states plainly where each kind of content comes from, what is machine-assisted, and what has not yet been reviewed by a scholar. For a quick reader guide, see{' '}

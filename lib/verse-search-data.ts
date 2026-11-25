@@ -83,3 +83,47 @@ export function buildVerseIndex(): VerseIndexFile {
   cached = { v: 1, scriptures, rows };
   return cached;
 }
+
+export const VERSE_INDEX_PART_BYTES = 10 * 1024 * 1024;
+
+let cachedParts: { manifest: VerseIndexFile; parts: VerseIndexFile[] } | null = null;
+
+/**
+ * Splits buildVerseIndex() into <=10 MiB static JSON parts so no file crosses
+ * Cloudflare Pages' 25 MiB single-file limit while preserving all verses.
+ */
+export function buildVerseIndexParts(maxBytes = VERSE_INDEX_PART_BYTES): {
+  manifest: VerseIndexFile;
+  parts: VerseIndexFile[];
+} {
+  if (cachedParts && maxBytes === VERSE_INDEX_PART_BYTES) return cachedParts;
+  const full = buildVerseIndex();
+  const baseOverhead = Buffer.byteLength(JSON.stringify({ v: 1, scriptures: full.scriptures, rows: [] }));
+  const parts: VerseIndexFile[] = [];
+  let chunk: VerseRow[] = [];
+  let chunkBytes = baseOverhead;
+
+  for (const row of full.rows) {
+    const rowBytes = Buffer.byteLength(JSON.stringify(row)) + 1;
+    if (chunk.length > 0 && chunkBytes + rowBytes > maxBytes) {
+      parts.push({ v: 1, scriptures: full.scriptures, rows: chunk });
+      chunk = [];
+      chunkBytes = baseOverhead;
+    }
+    chunk.push(row);
+    chunkBytes += rowBytes;
+  }
+  if (chunk.length > 0 || parts.length === 0) {
+    parts.push({ v: 1, scriptures: full.scriptures, rows: chunk });
+  }
+
+  const manifest: VerseIndexFile = {
+    v: 1,
+    scriptures: full.scriptures,
+    rows: [],
+    parts: parts.map((_, i) => `/search-index/parts/${i}.json`),
+  };
+  const result = { manifest, parts };
+  if (maxBytes === VERSE_INDEX_PART_BYTES) cachedParts = result;
+  return result;
+}
