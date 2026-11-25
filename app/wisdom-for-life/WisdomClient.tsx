@@ -114,16 +114,16 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
                   if (activeIntent) setActiveIntent(null);
                 }}
                 placeholder="Search a question, topic, scripture, or passage..."
-                className="w-full rounded-2xl border border-dharma-border bg-dharma-bg/80 pl-12 pr-10 py-3.5 text-sm sm:text-base text-dharma-text placeholder:text-dharma-muted focus:border-saffron-500 focus:outline-none focus:ring-2 focus:ring-saffron-500/20 transition-all shadow-inner"
+                className="w-full min-h-[44px] rounded-2xl border border-dharma-border bg-dharma-bg/80 pl-12 pr-12 py-3.5 text-sm sm:text-base text-dharma-text placeholder:text-dharma-muted focus:border-saffron-500 focus:outline-none focus:ring-2 focus:ring-saffron-500/20 transition-all shadow-inner"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded-full text-dharma-muted hover:text-dharma-text hover:bg-black/5 dark:hover:bg-white/10 transition"
+                  className="focus-ring absolute right-1.5 top-1/2 -translate-y-1/2 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-dharma-muted hover:text-dharma-text hover:bg-black/5 dark:hover:bg-white/10 transition"
                   aria-label="Clear search query"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-4 h-4" aria-hidden="true" />
                 </button>
               )}
             </div>
@@ -165,8 +165,9 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
                     className="min-w-0 rounded-2xl border border-dharma-border/70 bg-dharma-bg/35 p-3"
                   >
                     <h3 id={`${kindId}-heading`} className="mb-2 text-xs font-semibold text-dharma-muted">
-                      {kindLabel.en}
-                      <span className="ml-1.5 font-devanagari" lang="hi">· {kindLabel.hi}</span>
+                      <span data-bi="en">{kindLabel.en}</span>
+                      <span data-bi="sep" aria-hidden="true"> · </span>
+                      <span data-bi="hi" className="font-devanagari" lang="hi">{kindLabel.hi}</span>
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {intents.map((intent) => {
@@ -184,14 +185,16 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
                                 setSearchQuery('');
                               }
                             }}
-                            className={`inline-flex min-h-11 max-w-full items-center gap-1.5 rounded-xl border px-3 text-left text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 ${
+                            className={`inline-flex min-h-[44px] max-w-full items-center gap-1.5 rounded-xl border px-3 text-left text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron-500 focus-visible:ring-offset-2 ${
                               isSelected
-                                ? 'border-saffron-600 bg-saffron-600 text-white'
+                                ? 'border-saffron-700 bg-saffron-700 text-white'
                                 : 'border-dharma-border bg-dharma-bg/60 text-dharma-text hover:border-saffron-400'
                             }`}
                           >
-                            <span>{intent.labelEn}</span>
-                            <span className="text-[10px] opacity-75 font-devanagari" lang="hi">({intent.labelHi})</span>
+                            <span data-bi="en">{intent.labelEn}</span>
+                            <span className={`text-[11px] font-devanagari ${isSelected ? 'text-white/95' : 'text-dharma-muted'}`} lang="hi" data-bi="hi">
+                              {intent.labelHi}
+                            </span>
                           </button>
                         );
                       })}
@@ -218,9 +221,9 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
             <button
               type="button"
               onClick={clearFilters}
-              className="text-xs text-saffron-600 dark:text-saffron-400 hover:underline font-semibold flex items-center gap-1"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-xl px-2.5 text-xs text-saffron-700 dark:text-saffron-300 hover:underline font-semibold"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-3.5 h-3.5" aria-hidden="true" />
               Reset all filters
             </button>
           )}
@@ -238,15 +241,15 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
                   setSelectedCategory(cat.key);
                   setActiveIntent(null);
                 }}
-                className={`whitespace-nowrap px-4 py-2 rounded-2xl text-xs sm:text-sm font-medium border transition-all ${
+                className={`focus-ring inline-flex min-h-[44px] items-center whitespace-nowrap px-4 py-2 rounded-2xl text-xs sm:text-sm font-medium border transition-all ${
                   isSelected
-                    ? 'border-saffron-600 bg-saffron-600 text-white shadow-md'
+                    ? 'border-saffron-700 bg-saffron-700 text-white shadow-md'
                     : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-300 hover:bg-dharma-card/80'
                 }`}
               >
-                <span>{cat.labelEn}</span>
-                {/* No dimming on the selected saffron chip: at 80% it fell to 3.52:1. */}
-                <span lang="hi" className={`ml-1.5 font-devanagari text-xs ${isSelected ? '' : 'opacity-80'}`}>
+                <span data-bi="en">{cat.labelEn}</span>
+                <span data-bi="sep" aria-hidden="true">{' '}</span>
+                <span lang="hi" data-bi="hi" className={`font-devanagari text-xs ${isSelected ? 'text-white/95' : 'text-dharma-muted'}`}>
                   {cat.labelHi}
                 </span>
               </button>
@@ -259,7 +262,7 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
       <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
         {filteredTopics.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-dharma-border bg-dharma-card/60 p-12 text-center max-w-xl mx-auto my-8">
-            <Sparkles className="w-10 h-10 text-saffron-500 mx-auto mb-3 opacity-60" />
+            <Sparkles className="w-10 h-10 text-saffron-500 mx-auto mb-3 opacity-60" aria-hidden="true" />
             <h3 className="text-lg font-bold text-dharma-text mb-1">
               No matching life topics found
             </h3>
@@ -269,7 +272,7 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
             <button
               type="button"
               onClick={clearFilters}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-saffron-600 text-white text-xs font-bold shadow-md hover:bg-saffron-700 transition"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-2 px-5 py-2.5 rounded-full bg-saffron-700 text-white text-xs font-bold shadow-md hover:bg-saffron-800 transition"
             >
               {`Show all ${wisdomTopics.length} topics`}
             </button>
@@ -299,10 +302,12 @@ export function WisdomClient({ wisdomTopics, wisdomCategories }: { wisdomTopics:
               <ShieldAlert className="w-6 h-6" />
             </div>
             <div className="space-y-2">
-              <h3 className="text-base sm:text-lg font-serif font-bold text-dharma-text flex items-center gap-2">
-                <span>शास्त्रीय मार्गदर्शन एवं संदर्भ सूचना</span>
-                <span className="editorial-meta-pill text-amber-800 dark:text-amber-400 bg-amber-500/10 border-amber-500/20">
-                  Important Contextual Note
+              <h3 className="text-base sm:text-lg font-serif font-bold text-dharma-text flex flex-wrap items-center gap-2">
+                <span lang="hi" data-bi="hi" className="font-devanagari">शास्त्रीय मार्गदर्शन एवं संदर्भ सूचना</span>
+                <span data-bi="sep" aria-hidden="true">·</span>
+                <span data-bi="en">Editorial Guide &amp; Contextual Note</span>
+                <span className="editorial-meta-pill text-amber-800 dark:text-amber-300 bg-amber-500/10 border-amber-500/20">
+                  Editorial Application · Not Scripture
                 </span>
               </h3>
               <p className="text-sm text-dharma-muted leading-relaxed">
@@ -419,7 +424,7 @@ function WisdomTopicCard({
         <Link
           href={`/wisdom-for-life/${topic.slug}/`}
           data-vt="open"
-          className="tap-target inline-flex items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors group-hover:translate-x-1 duration-200"
+          className="focus-ring tap-target inline-flex min-h-[44px] items-center gap-1.5 text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors group-hover:translate-x-1 duration-200"
           aria-label={`Explore scriptural guidance for ${topic.titleEn}`}
         >
           <span>Explore Teachings</span>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
@@ -121,17 +121,24 @@ interface StoredMananaState {
  */
 export function AskDharmaClient({ questionBank = [] }: { questionBank?: QuestionBankEntry[] }) {
   const router = useRouter();
+  const baseId = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const studioTriggerRef = useRef<HTMLButtonElement>(null);
+  const studioSectionRef = useRef<HTMLElement>(null);
+  const stageTabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [queryInput, setQueryInput] = useState('');
   const [asked, setAsked] = useState('');
   const [answer, setAnswer] = useState<CopilotAnswer | null>(null);
   const [matches, setMatches] = useState<QuestionMatch[] | null>(null);
   const [activeLens, setActiveLens] = useState<AskScriptureLens['id']>('all');
+  const [popoverIndex, setPopoverIndex] = useState(-1);
 
   // Interactive 3-Step Dharma Manana Studio state
   const [studioOpen, setStudioOpen] = useState(false);
   const [studioStage, setStudioStage] = useState<0 | 1 | 2>(0);
   const [pauseSeconds, setPauseSeconds] = useState(30);
   const [pauseRunning, setPauseRunning] = useState(false);
+  const [timerStatus, setTimerStatus] = useState('');
   const [checkedSteps, setCheckedSteps] = useState<number[]>([]);
   const [privateNote, setPrivateNote] = useState('');
 
@@ -168,6 +175,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
       setPauseSeconds((prev) => {
         if (prev <= 1) {
           setPauseRunning(false);
+          setTimerStatus('30 सेकंड मौन विराम पूर्ण हुआ · 30s contemplation complete');
           return 0;
         }
         return prev - 1;
@@ -205,7 +213,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
   };
 
   const extractLensFromQuery = (raw: string): { cleanText: string; lensId: AskScriptureLens['id'] | null } => {
-    const m = raw.trim().match(/^@(all|gita|bg|गीता|upanishads?|उपनिषद्?|manas|ramayana|मानस|रामायण)\b\s*(.*)$/i);
+    const m = raw.trim().match(/^@(all|gita|bg|गीता|upanishads?|उपनिषद्?|manas|ramayana|मानस|रामायण)(?=\s|$)\s*(.*)$/i);
     if (!m) return { cleanText: raw.trim(), lensId: null };
     const tag = m[1].toLowerCase();
     const rest = m[2].trim();
@@ -217,11 +225,29 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
     return { cleanText: rest, lensId: 'all' };
   };
 
+  const closeStudio = () => {
+    setStudioOpen(false);
+    requestAnimationFrame(() => studioTriggerRef.current?.focus({ preventScroll: true }));
+  };
+
+  useEffect(() => {
+    if (!studioOpen) return undefined;
+    const onKey = (e: globalThis.KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      if (!studioSectionRef.current?.contains(document.activeElement)) return;
+      e.preventDefault();
+      closeStudio();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [studioOpen]);
+
   const runSlashCommand = (cmdId: string) => {
     if (cmdId === 'studio') {
       setStudioOpen(true);
       setStudioStage(0);
       setQueryInput('');
+      setPopoverIndex(-1);
       return;
     }
     if (cmdId === 'random') {
@@ -239,6 +265,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
       setAsked('');
       setAnswer(null);
       setMatches(null);
+      setPopoverIndex(-1);
     }
   };
 
@@ -257,10 +284,19 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
     }
 
     const { cleanText, lensId } = extractLensFromQuery(trimmed);
-    if (lensId) setActiveLens(lensId);
-    const effective = cleanText || COPILOT_EXAMPLES[0]?.hi || 'कर्म योग क्या है?';
+    if (lensId) {
+      setActiveLens(lensId);
+      if (!cleanText) {
+        setQueryInput('');
+        setPopoverIndex(-1);
+        inputRef.current?.focus();
+        return;
+      }
+    }
+    const effective = cleanText || COPILOT_EXAMPLES[0]?.hi || 'कर्मयोग क्या है?';
     setQueryInput(effective);
     setAsked(effective);
+    setPopoverIndex(-1);
     setMatches(matchQuestions(effective, questionBank));
     setAnswer(answerQuestion(effective));
   };
@@ -280,6 +316,83 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
   }, [isSlashMode, slashFilter]);
 
   const isMentionMode = trimmedInput.startsWith('@') && !trimmedInput.includes(' ');
+  const mentionFilter = isMentionMode ? trimmedInput.slice(1).toLowerCase() : '';
+  const visibleLenses = useMemo(() => {
+    if (!isMentionMode) return [];
+    if (!mentionFilter) return SCRIPTURE_LENSES;
+    return SCRIPTURE_LENSES.filter(
+      (l) =>
+        l.token.toLowerCase().includes(mentionFilter) ||
+        l.id.includes(mentionFilter) ||
+        l.labelEn.toLowerCase().includes(mentionFilter) ||
+        l.labelHi.includes(mentionFilter),
+    );
+  }, [isMentionMode, mentionFilter]);
+
+  const activePopover = isSlashMode && visibleCommands.length > 0
+    ? 'slash'
+    : isMentionMode && visibleLenses.length > 0
+      ? 'mention'
+      : null;
+  const slashListId = `${baseId}-slash-list`;
+  const mentionListId = `${baseId}-mention-list`;
+
+  useEffect(() => {
+    setPopoverIndex(-1);
+  }, [queryInput]);
+
+  const selectLensFromPopover = (lens: AskScriptureLens) => {
+    setActiveLens(lens.id);
+    setQueryInput('');
+    setPopoverIndex(-1);
+    inputRef.current?.focus();
+  };
+
+  const onInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+    if (!activePopover) return;
+    const count = activePopover === 'slash' ? visibleCommands.length : visibleLenses.length;
+    if (count === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setPopoverIndex((i) => (i + 1) % count);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setPopoverIndex((i) => (i < 0 ? count - 1 : (i - 1 + count) % count));
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      setQueryInput('');
+      setPopoverIndex(-1);
+    } else if (e.key === 'Tab' && !e.shiftKey && activePopover === 'mention') {
+      e.preventDefault();
+      const chosen = visibleLenses[popoverIndex >= 0 ? popoverIndex % count : 0];
+      if (chosen) selectLensFromPopover(chosen);
+    } else if (e.key === 'Enter') {
+      if (activePopover === 'slash') {
+        e.preventDefault();
+        const chosen = visibleCommands[popoverIndex >= 0 ? popoverIndex % count : 0];
+        if (chosen) runSlashCommand(chosen.id);
+      } else if (activePopover === 'mention') {
+        e.preventDefault();
+        const chosen = visibleLenses[popoverIndex >= 0 ? popoverIndex % count : 0];
+        if (chosen) selectLensFromPopover(chosen);
+      }
+    }
+  };
+
+  const handleStageKeyDown = (e: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const last = STUDIO_STAGES.length - 1;
+    let next: number;
+    if (e.key === 'ArrowRight') next = index === last ? 0 : index + 1;
+    else if (e.key === 'ArrowLeft') next = index === 0 ? last : index - 1;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = last;
+    else return;
+    e.preventDefault();
+    setStudioStage(next as 0 | 1 | 2);
+    stageTabRefs.current[next]?.focus();
+  };
   const currentLensObj = SCRIPTURE_LENSES.find((l) => l.id === activeLens) ?? SCRIPTURE_LENSES[0];
 
   const scopedVerses = useMemo(() => {
@@ -342,9 +455,9 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
                 type="button"
                 aria-pressed={selected}
                 onClick={() => setActiveLens(lens.id)}
-                className={`focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 text-caption font-semibold transition ${
+                className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3 text-caption font-semibold transition ${
                   selected
-                    ? 'border-dharma-saffron bg-dharma-saffron text-dharma-bg shadow-2xs'
+                    ? 'border-dharma-saffron bg-dharma-saffron text-white shadow-2xs dark:text-black'
                     : 'border-dharma-border bg-dharma-bg/70 text-dharma-text hover:border-dharma-saffron/50'
                 }`}
               >
@@ -358,11 +471,28 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
 
         <div className="flex flex-col gap-3 sm:flex-row">
           <input
+            ref={inputRef}
             id="ask-dharma-q"
             value={queryInput}
             onChange={(event) => setQueryInput(event.target.value)}
+            onKeyDown={onInputKeyDown}
             placeholder="उदाहरण: क्रोध कैसे संभालें? · /manana · @gita कर्तव्य"
             lang="hi"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={activePopover !== null}
+            aria-controls={
+              activePopover === 'slash'
+                ? slashListId
+                : activePopover === 'mention'
+                  ? mentionListId
+                  : undefined
+            }
+            aria-activedescendant={
+              popoverIndex >= 0 && activePopover
+                ? `ask-${activePopover}-opt-${popoverIndex}`
+                : undefined
+            }
             className="apple-field"
           />
           <button type="submit" className="apple-pill shrink-0 min-h-[44px]">
@@ -378,16 +508,33 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             aria-label="त्वरित निर्देश · Quick commands"
             className="rounded-2xl border border-dharma-border bg-dharma-bg/85 p-2.5 space-y-1.5"
           >
-            <p className="px-2 text-[11px] font-semibold uppercase tracking-wider text-dharma-saffron">
-              त्वरित निर्देश · Slash Commands
-            </p>
-            <div className="grid gap-1.5 sm:grid-cols-2">
-              {visibleCommands.map((cmd) => (
+            <div className="flex items-center justify-between px-2 text-[11px] font-semibold text-saffron-800 dark:text-saffron-300">
+              <span>
+                <span lang="hi" data-bi="hi" className="font-devanagari">त्वरित निर्देश</span>
+                <span data-bi="sep" aria-hidden="true"> · </span>
+                <span data-bi="en" className="uppercase tracking-wider">Slash Commands</span>
+              </span>
+              <span className="font-mono text-dharma-muted">↑↓ · Enter</span>
+            </div>
+            <div id={slashListId} role="listbox" aria-label="Slash commands" className="grid gap-1.5 sm:grid-cols-2">
+              {visibleCommands.map((cmd, idx) => {
+                const highlighted = popoverIndex >= 0 && idx === popoverIndex % visibleCommands.length;
+                return (
                 <button
                   key={cmd.id}
+                  id={`ask-slash-opt-${idx}`}
                   type="button"
+                  role="option"
+                  aria-selected={highlighted}
                   onClick={() => runSlashCommand(cmd.id)}
-                  className="focus-ring flex min-h-[44px] items-center justify-between gap-2 rounded-xl border border-dharma-border/80 bg-dharma-card px-3 py-2 text-left transition hover:border-dharma-saffron/60"
+                  onMouseMove={() => {
+                    if (popoverIndex !== idx) setPopoverIndex(idx);
+                  }}
+                  className={`focus-ring flex min-h-[44px] items-center justify-between gap-2 rounded-xl border px-3 py-2 text-left transition ${
+                    highlighted
+                      ? 'border-dharma-saffron bg-dharma-saffron/12 ring-1 ring-dharma-saffron/30'
+                      : 'border-dharma-border/80 bg-dharma-card hover:border-dharma-saffron/60'
+                  }`}
                 >
                   <span className="min-w-0">
                     <span lang="hi" className="block truncate font-devanagari text-xs font-semibold text-dharma-text">
@@ -397,11 +544,12 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
                       {cmd.detailHi}
                     </span>
                   </span>
-                  <code className="shrink-0 rounded border border-dharma-border bg-dharma-bg px-2 py-0.5 font-mono text-xs text-dharma-saffron">
+                  <code className="shrink-0 rounded border border-dharma-border bg-dharma-bg px-2 py-0.5 font-mono text-xs text-saffron-800 dark:text-saffron-300">
                     {cmd.slash}
                   </code>
                 </button>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -411,23 +559,48 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
           <div
             role="region"
             aria-label="शास्त्र चुनें · Select scripture lens"
-            className="rounded-2xl border border-dharma-border bg-dharma-bg/85 p-2.5 flex flex-wrap items-center gap-2"
+            className="rounded-2xl border border-dharma-border bg-dharma-bg/85 p-2.5 space-y-2"
           >
-            <span className="px-1 text-xs font-semibold text-dharma-muted">शास्त्र चुनें:</span>
-            {SCRIPTURE_LENSES.map((lens) => (
-              <button
-                key={lens.id}
-                type="button"
-                onClick={() => {
-                  setActiveLens(lens.id);
-                  setQueryInput('');
-                }}
-                className="focus-ring inline-flex min-h-[38px] items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-3 text-xs font-semibold text-dharma-text hover:border-dharma-saffron"
-              >
-                <span className="font-mono text-dharma-saffron">{lens.token}</span>
-                <span lang="hi" className="font-devanagari">{lens.labelHi}</span>
-              </button>
-            ))}
+            <div className="flex items-center justify-between px-1 text-xs font-semibold text-dharma-muted">
+              <span lang="hi" className="font-devanagari">शास्त्र चुनें:</span>
+              <span className="font-mono text-[11px]">↑↓ · Tab / Enter</span>
+            </div>
+            {visibleLenses.length === 0 ? (
+              <p className="px-1 text-xs text-dharma-muted">
+                <span lang="hi" className="font-devanagari">कोई मेल नहीं — </span>
+                <code className="text-saffron-800 dark:text-saffron-300">@gita</code>,{' '}
+                <code className="text-saffron-800 dark:text-saffron-300">@upanishad</code>,{' '}
+                <code className="text-saffron-800 dark:text-saffron-300">@manas</code>
+              </p>
+            ) : (
+              <div id={mentionListId} role="listbox" aria-label="Scripture scope options" className="flex flex-wrap items-center gap-2">
+                {visibleLenses.map((lens, idx) => {
+                  const highlighted = popoverIndex >= 0 && idx === popoverIndex % visibleLenses.length;
+                  return (
+                  <button
+                    key={lens.id}
+                    id={`ask-mention-opt-${idx}`}
+                    type="button"
+                    role="option"
+                    aria-selected={highlighted}
+                    onClick={() => selectLensFromPopover(lens)}
+                    onMouseMove={() => {
+                      if (popoverIndex !== idx) setPopoverIndex(idx);
+                    }}
+                    className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3.5 text-xs font-semibold text-dharma-text transition ${
+                      highlighted
+                        ? 'border-dharma-saffron bg-dharma-saffron/12 ring-1 ring-dharma-saffron/30'
+                        : 'border-dharma-border bg-dharma-card hover:border-dharma-saffron'
+                    }`}
+                  >
+                    <span className="font-mono text-saffron-800 dark:text-saffron-300">{lens.token}</span>
+                    <span lang="hi" data-bi="hi" className="font-devanagari">{lens.labelHi}</span>
+                    <span data-bi="en-only">{lens.labelEn}</span>
+                  </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
 
@@ -438,7 +611,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
                 key={example.en}
                 type="button"
                 onClick={() => ask(example.hi)}
-                className="min-h-10 rounded-full bg-dharma-text/[0.06] px-3.5 text-left text-[14px] text-dharma-text transition hover:bg-dharma-text/[0.1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dharma-saffron"
+                className="min-h-[44px] rounded-full bg-dharma-text/[0.06] px-3.5 text-left text-[14px] text-dharma-text transition hover:bg-dharma-text/[0.1] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dharma-saffron"
               >
                 <span lang="hi">{example.hi}</span>
               </button>
@@ -446,6 +619,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
           </div>
 
           <button
+            ref={studioTriggerRef}
             type="button"
             aria-expanded={studioOpen}
             aria-controls={studioOpen ? 'ask-manana-studio' : undefined}
@@ -463,16 +637,17 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
       {/* Interactive 3-Step Dharma Manana Studio */}
       {studioOpen && (
         <section
+          ref={studioSectionRef}
           id="ask-manana-studio"
           aria-labelledby="ask-manana-heading"
           className="apple-card overflow-hidden border border-dharma-saffron/35 p-5 sm:p-7 space-y-5"
         >
           <div className="flex flex-wrap items-start justify-between gap-3 border-b border-dharma-border pb-4">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-dharma-saffron">
-                <span lang="hi" data-bi="hi" className="font-devanagari normal-case">संपादकीय अभ्यास · मूल शास्त्र नहीं</span>
+              <p className="text-[11px] font-bold text-saffron-800 dark:text-saffron-300">
+                <span lang="hi" data-bi="hi" className="font-devanagari">संपादकीय अभ्यास · मूल शास्त्र नहीं</span>
                 <span data-bi="sep"> · </span>
-                <span data-bi="en">Editorial Application · Not Scripture</span>
+                <span data-bi="en" className="uppercase tracking-wider">Editorial Application · Not Scripture</span>
               </p>
               <h2 id="ask-manana-heading" className="mt-1 text-title-3 font-semibold text-dharma-text">
                 <span lang="hi" data-bi="hi" className="font-devanagari">त्रि-सोपान धर्म मनन स्टूडियो</span>
@@ -482,7 +657,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             </div>
             <button
               type="button"
-              onClick={() => setStudioOpen(false)}
+              onClick={closeStudio}
               aria-label="मनन स्टूडियो बंद करें · Close Reflection Studio"
               className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-dharma-border bg-dharma-bg text-dharma-muted hover:text-dharma-text"
             >
@@ -490,14 +665,22 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             </button>
           </div>
 
-          <div role="group" aria-label="मनन चरण · Studio stages" className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+          <div role="tablist" aria-label="मनन चरण · Studio stages" className="grid grid-cols-1 gap-2 sm:grid-cols-3">
             {STUDIO_STAGES.map((s, idx) => {
               const active = studioStage === idx;
               return (
                 <button
                   key={s.num}
+                  ref={(el) => {
+                    stageTabRefs.current[idx] = el;
+                  }}
+                  id={`${baseId}-stage-tab-${idx}`}
                   type="button"
-                  aria-pressed={active}
+                  role="tab"
+                  aria-selected={active}
+                  aria-controls={`${baseId}-stage-panel`}
+                  tabIndex={active ? 0 : -1}
+                  onKeyDown={(e) => handleStageKeyDown(e, idx)}
                   onClick={() => setStudioStage(idx as 0 | 1 | 2)}
                   className={`focus-ring flex min-h-[44px] items-center gap-2 rounded-xl border px-3.5 py-2 text-left text-xs font-semibold transition ${
                     active
@@ -505,7 +688,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
                       : 'border-dharma-border bg-dharma-bg/60 text-dharma-muted hover:text-dharma-text'
                   }`}
                 >
-                  <span className="font-mono text-[11px] font-bold tabular-nums text-dharma-saffron">{s.num}</span>
+                  <span className="font-mono text-[11px] font-bold tabular-nums text-saffron-800 dark:text-saffron-300">{s.num}</span>
                   <span>
                     <span lang="hi" data-bi="hi" className="font-devanagari">{s.hi}</span>
                     <span data-bi="sep"> · </span>
@@ -515,6 +698,12 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
               );
             })}
           </div>
+
+          <div
+            id={`${baseId}-stage-panel`}
+            role="tabpanel"
+            aria-labelledby={`${baseId}-stage-tab-${studioStage}`}
+          >
 
           {studioStage === 0 && (
             <div className="space-y-4">
@@ -603,9 +792,10 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
                     type="button"
                     onClick={() => {
                       if (pauseSeconds === 0) setPauseSeconds(30);
+                      setTimerStatus(pauseRunning ? '' : '30 सेकंड मौन विराम प्रारंभ · Contemplation timer started');
                       setPauseRunning((r) => !r);
                     }}
-                    className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-dharma-saffron px-4 text-xs font-semibold text-dharma-bg"
+                    className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-dharma-saffron px-4 text-xs font-semibold text-white dark:text-black"
                   >
                     {pauseRunning ? <Pause className="h-3.5 w-3.5" aria-hidden="true" /> : <Play className="h-3.5 w-3.5" aria-hidden="true" />}
                     <span lang="hi" className="font-devanagari">{pauseRunning ? 'विराम' : '30s मौन'}</span>
@@ -615,6 +805,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
                     onClick={() => {
                       setPauseRunning(false);
                       setPauseSeconds(30);
+                      setTimerStatus('');
                     }}
                     aria-label="समय पुनः 30 सेकंड करें · Reset 30s timer"
                     className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-dharma-border bg-dharma-card text-dharma-text"
@@ -622,10 +813,15 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
                     <RotateCcw className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
+                <p role="status" aria-live="polite" className="sr-only">
+                  {timerStatus}
+                </p>
               </div>
               <div className="sm:col-span-7 space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
-                  आत्म-विवेक प्रश्न · Self-Inquiry
+                <p className="text-xs font-semibold text-saffron-800 dark:text-saffron-300">
+                  <span lang="hi" data-bi="hi" className="font-devanagari">आत्म-विवेक प्रश्न</span>
+                  <span data-bi="sep" aria-hidden="true"> · </span>
+                  <span data-bi="en" className="uppercase tracking-wider">Self-Inquiry</span>
                 </p>
                 <p lang="hi" className="font-devanagari text-base leading-relaxed text-dharma-text">
                   {asked
@@ -693,6 +889,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
               </div>
             </div>
           )}
+          </div>
         </section>
       )}
 
@@ -703,18 +900,24 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             className="apple-card grid gap-2 p-5 transition hover:-translate-y-0.5 sm:p-7"
           >
             <span id="granth-matches" className="text-footnote font-semibold text-dharma-saffron">
-              <span lang="hi">आपका उत्तर</span> <span>Your answer</span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">आपका उत्तर</span>
+              <span data-bi="sep" aria-hidden="true"> · </span>
+              <span data-bi="en">Your answer</span>
             </span>
             <span lang="hi" className="font-devanagari text-2xl font-semibold">{matches[0].entry.questionHi}</span>
             <span className="text-dharma-text-secondary">{matches[0].entry.questionEn}</span>
             <span lang="hi" className="font-devanagari text-lg leading-relaxed">{matches[0].entry.sarHi}</span>
             <span className="mt-1 inline-flex items-center gap-1.5 text-dharma-saffron">
-              <span lang="hi">पूरा उत्तर पढ़ें</span> <span>Read the answer</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <span lang="hi" data-bi="hi" className="font-devanagari">पूरा उत्तर पढ़ें</span>
+              <span data-bi="sep" aria-hidden="true"> · </span>
+              <span data-bi="en">Read the answer</span> <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </Link>
           {matches.length > 1 && (
             <p className="px-1 text-sm text-dharma-text-secondary">
-              <span lang="hi">मिलते‑जुलते प्रश्न:</span> <span>Close questions:</span>{' '}
+              <span lang="hi" data-bi="hi" className="font-devanagari">मिलते‑जुलते प्रश्न:</span>
+              <span data-bi="sep" aria-hidden="true"> </span>
+              <span data-bi="en">Close questions:</span>{' '}
               {matches.slice(1, 3).map(({ entry }, i) => (
                 <span key={entry.slug}>
                   {i > 0 && ' · '}
@@ -741,7 +944,7 @@ export function AskDharmaClient({ questionBank = [] }: { questionBank?: Question
             <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="text-sm text-dharma-text-secondary">{asked}</p>
               {activeLens !== 'all' && (
-                <span className="rounded-full border border-dharma-saffron/40 bg-dharma-saffron/10 px-2.5 py-0.5 text-xs font-semibold text-dharma-saffron">
+                <span className="rounded-full border border-dharma-saffron/40 bg-dharma-saffron/10 px-2.5 py-0.5 text-xs font-semibold text-saffron-800 dark:text-saffron-300">
                   {currentLensObj.token} · {currentLensObj.labelHi}
                 </span>
               )}

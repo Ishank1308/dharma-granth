@@ -52,9 +52,11 @@ export default function PanchangPage() {
         {/* ─── FULL MONTHLY FESTIVAL CALENDAR BANNER ─────────────────────── */}
         <div className="mt-5 sm:mt-8 rounded-2xl border-2 border-saffron-400/40 bg-gradient-to-r from-saffron-500/10 via-amber-500/10 to-orange-500/10 p-4 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-5">
           <div className="space-y-1.5 max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 text-caption-1 font-bold uppercase tracking-wider text-dharma-saffron">
-              <Calendar className="w-4 h-4" />
-              <span>मासिक पंचांग व पर्व कैलेंडर · 2026–2028</span>
+            <span className="inline-flex flex-wrap items-center gap-1.5 text-caption-1 font-bold uppercase tracking-wider text-dharma-saffron">
+              <Calendar className="w-4 h-4 shrink-0" aria-hidden="true" />
+              <span>
+                <span lang="hi" className="font-devanagari normal-case">मासिक पंचांग व पर्व कैलेंडर</span> · 2026–2028
+              </span>
             </span>
             <h3 className="text-title-2 font-bold text-dharma-text">
               Interactive Solar & Lunar Festival Calendar
@@ -66,7 +68,7 @@ export default function PanchangPage() {
           <div className="flex-shrink-0">
             <Link
               href="/panchang/calendar/"
-              className="inline-flex items-center gap-2 rounded-xl bg-dharma-saffron hover:bg-saffron-700 text-white px-5 py-3 text-footnote font-semibold shadow-md transition-all hover:scale-[1.02]"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-dharma-saffron hover:bg-saffron-700 text-white px-5 py-3 text-footnote font-semibold shadow-md transition-all hover:scale-[1.02]"
             >
               <span>मासिक कैलेंडर खोलें</span>
               <ArrowRight className="w-4 h-4" />
@@ -134,7 +136,7 @@ export default function PanchangPage() {
                       {v.badge}
                     </span>
                   </div>
-                  <h3 className="font-serif font-bold text-base text-dharma-text group-hover:text-saffron-700 transition">
+                  <h3 className="font-serif font-bold text-base text-dharma-text group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">
                     {v.title}
                   </h3>
                   <p className="text-2xs text-saffron-700 dark:text-saffron-400 font-semibold mb-1.5">
@@ -144,7 +146,7 @@ export default function PanchangPage() {
                     {v.desc}
                   </p>
                 </div>
-                <div className="mt-4 flex items-center justify-end text-xs font-semibold text-saffron-700 group-hover:translate-x-1 transition-transform">
+                <div className="mt-4 flex items-center justify-end text-xs font-semibold text-saffron-700 dark:text-saffron-400 group-hover:translate-x-1 transition-transform">
                   तिथियाँ देखें &rarr;
                 </div>
               </Link>
@@ -156,11 +158,11 @@ export default function PanchangPage() {
             <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-amber-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  <Moon className="w-3.5 h-3.5" />
-                  <span>1. तिथि · 16 Lunar Days</span>
+                  <Moon className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>1. <span lang="hi" className="font-devanagari normal-case">तिथि</span> · 16 Lunar Days</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
-                  16 Tithis (पंच-तिथि वर्ग)
+                  <span data-bi="en">16 Tithis</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi" className="font-devanagari">पंच-तिथि वर्ग</span><span data-bi="sep">)</span>
                 </h3>
                 <p className="text-xs text-dharma-muted">
                   Pratipada to Purnima &amp; Amavasya — Nanda, Bhadra, Jaya, Rikta, and Poorna classes.
@@ -181,8 +183,8 @@ export default function PanchangPage() {
             <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-orange-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>2. वार · 7 Weekdays</span>
+                  <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>2. <span lang="hi" className="font-devanagari normal-case">वार</span> · 7 Weekdays</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
                   <span data-bi="en">7 Varas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">सप्त वासर</span><span data-bi="sep">)</span>
@@ -206,8 +208,8 @@ export default function PanchangPage() {
             <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-indigo-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  <Star className="w-3.5 h-3.5" />
-                  <span>3. नक्षत्र · 27 Asterisms</span>
+                  <Star className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>3. <span lang="hi" className="font-devanagari normal-case">नक्षत्र</span> · 27 Asterisms</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
                   <span data-bi="en">27 Nakshatras</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">27 नक्षत्र</span><span data-bi="sep">)</span>
@@ -231,8 +233,8 @@ export default function PanchangPage() {
             <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-emerald-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  <Sun className="w-3.5 h-3.5" />
-                  <span>4. योग · 27 Nitya Yogas</span>
+                  <Sun className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>4. <span lang="hi" className="font-devanagari normal-case">योग</span> · 27 Nitya Yogas</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
                   <span data-bi="en">27 Yogas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">27 नित्य योग</span><span data-bi="sep">)</span>
@@ -256,8 +258,8 @@ export default function PanchangPage() {
             <div className="apple-card rounded-2xl border border-dharma-border bg-dharma-card bg-gradient-to-br from-rose-500/10 via-saffron-500/5 to-transparent p-5 flex flex-col justify-between gap-4">
               <div className="space-y-1">
                 <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                  <Layers className="w-3.5 h-3.5" />
-                  <span>5. करण · 11 Half-Tithis</span>
+                  <Layers className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>5. <span lang="hi" className="font-devanagari normal-case">करण</span> · 11 Half-Tithis</span>
                 </span>
                 <h3 className="font-serif text-lg font-bold text-dharma-text">
                   <span data-bi="en">11 Karanas</span><span data-bi="sep"> (</span><span lang="hi" data-bi="hi">11 करण</span><span data-bi="sep">)</span>
@@ -300,7 +302,7 @@ export default function PanchangPage() {
             <div className="shrink-0 self-start md:self-center">
               <Link
                 href="/panchang/solar-vratas/"
-                className="inline-flex items-center gap-2 rounded-2xl bg-saffron-600 hover:bg-saffron-700 text-white px-5 py-3 text-sm font-bold transition shadow-xs"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl bg-saffron-700 hover:bg-saffron-800 text-white px-5 py-3 text-sm font-bold transition shadow-xs"
               >
                 <span>Explore Solar Vratas</span>
                 <ArrowRight className="w-4 h-4" />
@@ -330,7 +332,7 @@ export default function PanchangPage() {
             <div className="shrink-0 self-start md:self-center">
               <Link
                 href="/panchang/muhurta/"
-                className="inline-flex items-center gap-2 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 text-sm font-bold transition shadow-xs"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-2xl bg-blue-700 hover:bg-blue-800 text-white px-5 py-3 text-sm font-bold transition shadow-xs"
               >
                 <span>Open Muhurta Calendar</span>
                 <ArrowRight className="w-4 h-4" />

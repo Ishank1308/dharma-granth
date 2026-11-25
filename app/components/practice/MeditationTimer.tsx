@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { useReducedMotionPreference } from '@/lib/useReducedMotionPreference';
-import { ToolCard, localISODate } from './shared';
+import { ToolCard, localISODate, notifyPracticeSync } from './shared';
 import { DiyaPullCord } from './DiyaPullCord';
 import { triggerHaptic } from '@/lib/haptics';
 import { updateSadhanaSession } from '@/lib/prana-capsule-store';
@@ -67,7 +67,17 @@ export function MeditationTimer() {
   const endTimeRef = useRef<number | null>(null);
   const wakeLockRef = useRef<WakeLockSentinel | null>(null);
   const secondsLeftRef = useRef(secondsLeft);
+  const didMountSyncRef = useRef(false);
+  const [liveStatus, setLiveStatus] = useState('');
   secondsLeftRef.current = secondsLeft;
+
+  useEffect(() => {
+    if (!didMountSyncRef.current) {
+      didMountSyncRef.current = true;
+      return;
+    }
+    notifyPracticeSync();
+  }, [stats]);
 
   const releaseWakeLock = useCallback(async () => {
     if (wakeLockRef.current) {
@@ -105,7 +115,7 @@ export function MeditationTimer() {
     const checkTime = () => {
       if (!endTimeRef.current) return;
       const now = Date.now();
-      const remaining = Math.max(0, Math.round((endTimeRef.current - now) / 1000));
+      const remaining = Math.max(0, Math.ceil((endTimeRef.current - now) / 1000));
       setSecondsLeft(remaining);
       updateSadhanaSession({
         type: 'meditation',
@@ -118,6 +128,7 @@ export function MeditationTimer() {
       if (remaining <= 0) {
         setRunning(false);
         setDone(true);
+        setLiveStatus(`सत्र पूर्ण · ${minutes} minute meditation complete`);
         endTimeRef.current = null;
         updateSadhanaSession({
           type: 'meditation',
@@ -187,17 +198,19 @@ export function MeditationTimer() {
     requestWakeLock();
     endTimeRef.current = Date.now() + secondsLeft * 1000;
     setRunning(true);
+    setLiveStatus(`ध्यान प्रारंभ · Meditation started for ${minutes} minutes`);
   }
 
   function handlePause() {
     triggerHaptic('light');
     releaseWakeLock();
     if (endTimeRef.current) {
-      const rem = Math.max(0, Math.round((endTimeRef.current - Date.now()) / 1000));
+      const rem = Math.max(0, Math.ceil((endTimeRef.current - Date.now()) / 1000));
       setSecondsLeft(rem);
     }
     endTimeRef.current = null;
     setRunning(false);
+    setLiveStatus('ध्यान विराम · Meditation paused');
   }
 
   function reset() {
@@ -206,6 +219,7 @@ export function MeditationTimer() {
     endTimeRef.current = null;
     setRunning(false);
     setDone(false);
+    setLiveStatus('ध्यान टाइमर रीसेट · Timer reset');
   }
 
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
@@ -229,29 +243,31 @@ export function MeditationTimer() {
           <div className="flex flex-wrap items-center gap-1.5">
             <button
               type="button"
+              aria-expanded={showCustomInput}
               onClick={() => setShowCustomInput(!showCustomInput)}
-              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium transition ${
+              className={`focus-ring inline-flex min-h-[44px] items-center gap-1 px-3 py-1 rounded-lg font-medium transition ${
                 showCustomInput
                   ? 'bg-indigo-100 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300'
                   : 'text-dharma-muted hover:text-dharma-text'
               }`}
               title="कस्टम समय सेट करें · Custom duration"
             >
-              <Sliders className="w-3.5 h-3.5" />
+              <Sliders className="w-3.5 h-3.5" aria-hidden="true" />
               <span>कस्टम</span>
             </button>
 
             <button
               type="button"
+              aria-pressed={reducedMotionManual}
               onClick={() => setReducedMotionManual(!reducedMotionManual)}
-              className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg font-medium transition ${
+              className={`focus-ring inline-flex min-h-[44px] items-center gap-1 px-3 py-1 rounded-lg font-medium transition ${
                 isReducedMotion
                   ? 'bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300'
                   : 'text-dharma-muted hover:text-dharma-text'
               }`}
               title="गति कम करें · Reduced motion"
             >
-              <Wind className="w-3.5 h-3.5" />
+              <Wind className="w-3.5 h-3.5" aria-hidden="true" />
               <span className="hidden sm:inline">{isReducedMotion ? 'शांत' : 'गति'}</span>
             </button>
           </div>
@@ -264,22 +280,24 @@ export function MeditationTimer() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="w-full flex flex-wrap items-center justify-center gap-2 p-2 bg-indigo-50/60 dark:bg-indigo-950/20 rounded-xl border border-indigo-200 dark:border-indigo-900/40 text-xs"
+              className="w-full flex flex-wrap items-center justify-center gap-2 p-2.5 bg-indigo-50/60 dark:bg-indigo-950/20 rounded-xl border border-indigo-200 dark:border-indigo-900/40 text-xs"
             >
-              <span className="text-dharma-muted">अवधि (मिनट):</span>
+              <label htmlFor="meditation-custom-min" className="text-dharma-muted">
+                अवधि (मिनट):
+              </label>
               <input
+                id="meditation-custom-min"
                 type="number"
                 min="1"
                 max="180"
                 value={customMinutes}
                 onChange={(e) => setCustomMinutes(e.target.value)}
-                className="w-16 px-2 py-1 rounded border border-dharma-border bg-white dark:bg-stone-900 text-center font-bold text-dharma-text text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                aria-label="Custom minutes"
+                className="min-h-[44px] w-16 px-2 py-1 rounded-lg border border-dharma-border bg-white dark:bg-stone-900 text-center font-bold text-dharma-text text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <button
                 type="button"
                 onClick={applyCustom}
-                className="px-3 py-1 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
+                className="focus-ring min-h-[44px] px-4 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition"
               >
                 लागू करें · Set
               </button>
@@ -294,11 +312,12 @@ export function MeditationTimer() {
               <button
                 key={m}
                 type="button"
+                aria-pressed={m === minutes && !showCustomInput}
                 onClick={() => pick(m)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition ${
+                className={`focus-ring min-h-[44px] px-3.5 py-1.5 rounded-full text-xs font-semibold border transition ${
                   m === minutes && !showCustomInput
                     ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm'
-                    : 'border-dharma-border text-dharma-muted hover:border-indigo-300 hover:text-indigo-700'
+                    : 'border-dharma-border text-dharma-muted hover:border-indigo-300 hover:text-indigo-700 dark:hover:text-indigo-300'
                 }`}
               >
                 {m} min
@@ -336,7 +355,7 @@ export function MeditationTimer() {
               <p className="text-xs text-dharma-muted mt-0.5 italic">
                 {summaryQuote.en}
               </p>
-              <span className="text-[10px] text-indigo-600/70 dark:text-indigo-400/70 mt-1 block">
+              <span className="text-[10px] text-indigo-700 dark:text-indigo-300 mt-1 block">
                 — {summaryQuote.src}
               </span>
             </div>
@@ -345,9 +364,9 @@ export function MeditationTimer() {
               <button
                 type="button"
                 onClick={reset}
-                className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 px-5 py-2 rounded-full text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition"
               >
-                <RotateCcw className="w-3.5 h-3.5" /> पुनः ध्यान करें · Meditate Again
+                <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" /> पुनः ध्यान करें · Meditate Again
               </button>
             </div>
           </motion.div>
@@ -370,13 +389,19 @@ export function MeditationTimer() {
             </span>
 
             {running && (
-              <span className="text-[11px] font-medium text-indigo-600 dark:text-indigo-400 mt-2 tracking-wide flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse" />
-                सांस पर ध्यान केंद्रित रखें · Gentle awareness
+              <span className="text-[11px] font-medium text-indigo-700 dark:text-indigo-300 mt-2 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse" aria-hidden="true" />
+                <span lang="hi" className="font-devanagari">श्वास पर ध्यान केंद्रित रखें</span>
+                <span aria-hidden="true">·</span>
+                <span className="tracking-wide">Gentle awareness</span>
               </span>
             )}
           </div>
         )}
+
+        <p role="status" aria-live="polite" className="sr-only">
+          {liveStatus}
+        </p>
 
         {/* Progress bar */}
         {!done && (
@@ -394,15 +419,15 @@ export function MeditationTimer() {
             <button
               type="button"
               onClick={running ? handlePause : handleStart}
-              className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full text-sm font-bold bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow hover:shadow-md transition active:scale-95"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 px-6 py-2.5 rounded-full text-sm font-bold bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow hover:shadow-md transition active:scale-95"
             >
               {running ? (
                 <>
-                  <Pause className="w-4 h-4" /> विराम · Pause
+                  <Pause className="w-4 h-4" aria-hidden="true" /> विराम · Pause
                 </>
               ) : (
                 <>
-                  <Play className="w-4 h-4" /> प्रारंभ · Start
+                  <Play className="w-4 h-4" aria-hidden="true" /> प्रारंभ · Start
                 </>
               )}
             </button>
@@ -411,9 +436,9 @@ export function MeditationTimer() {
               <button
                 type="button"
                 onClick={reset}
-                className="inline-flex items-center gap-1 px-4 py-2 rounded-full text-xs font-semibold border border-dharma-border text-dharma-muted hover:text-indigo-700 hover:border-indigo-300 transition"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1 px-4 py-2 rounded-full text-xs font-semibold border border-dharma-border text-dharma-muted hover:text-indigo-700 dark:hover:text-indigo-300 hover:border-indigo-300 transition"
               >
-                <RotateCcw className="w-3.5 h-3.5" /> रीसेट · Reset
+                <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" /> रीसेट · Reset
               </button>
             )}
           </div>

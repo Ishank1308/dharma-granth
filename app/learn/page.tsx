@@ -107,7 +107,7 @@ export default function LearnPage() {
             {totalCompletedLessons > 0 ? ` · ${totalCompletedLessons} read` : ''}
           </span>
           <span aria-hidden="true"> · </span>
-          <Link href="/learn/academy/" className="focus-ring rounded text-dharma-saffron hover:underline">
+          <Link href="/learn/academy/" className="focus-ring inline-flex min-h-[44px] items-center rounded text-dharma-saffron hover:underline">
             <span data-bi="en">Course levels</span>
             <span data-bi="sep" aria-hidden="true"> · </span>
             <span lang="hi" data-bi="hi" className="font-devanagari">धर्म अकादमी</span>{' '}
@@ -145,7 +145,7 @@ export default function LearnPage() {
                   type="button"
                   aria-pressed={selectedDifficulty === tab.id}
                   onClick={() => setSelectedDifficulty(tab.id as typeof selectedDifficulty)}
-                  className="focus-ring"
+                  className="focus-ring !min-h-[44px]"
                 >
                   <span>{tab.en}</span> <span lang="hi" className="sr-only">{tab.hi}</span>
                 </button>
@@ -176,7 +176,7 @@ export default function LearnPage() {
                 type="button"
                 aria-pressed={selectedFormat === fmt.id}
                 onClick={() => setSelectedFormat(fmt.id)}
-                className={`focus-ring min-h-9 rounded-full px-3.5 text-footnote transition ${
+                className={`focus-ring min-h-[44px] rounded-full px-3.5 text-footnote transition ${
                   selectedFormat === fmt.id
                     ? 'bg-dharma-text text-dharma-bg'
                     : 'bg-dharma-text/[0.06] text-dharma-text hover:bg-dharma-text/[0.1]'
@@ -254,7 +254,7 @@ export default function LearnPage() {
                     type="button"
                     aria-expanded={isExpanded}
                     onClick={() => setExpandedCourseId(isExpanded ? null : course.id)}
-                    className="focus-ring rounded-lg inline-flex min-h-11 items-center gap-1 text-subhead text-dharma-saffron"
+                    className="focus-ring rounded-lg inline-flex min-h-[44px] items-center gap-1 text-subhead text-dharma-saffron"
                   >
                     <span>{isExpanded ? 'Hide lessons' : 'Show lessons'}</span>
                     {isExpanded ? <ChevronUp className="h-4 w-4" aria-hidden="true" /> : <ChevronDown className="h-4 w-4" aria-hidden="true" />}

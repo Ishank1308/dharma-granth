@@ -111,7 +111,7 @@ export function PinnedShloka({
               <X className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
-          <div className="px-3 pb-3">{shloka('text-base leading-[1.9]')}</div>
+          <div className="px-3 pb-3">{shloka('text-base leading-[1.95]')}</div>
         </section>
       ) : (
         <div className="flex justify-end px-3">

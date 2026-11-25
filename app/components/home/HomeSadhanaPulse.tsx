@@ -51,7 +51,7 @@ export function HomeSadhanaPulse() {
     <div className="mt-3 flex min-h-[28px] flex-wrap items-center justify-between gap-1.5" role="group" aria-label="आज की साधना स्थिति · Today's sadhana pulse">
       <div className="flex flex-wrap items-center gap-1.5">
         {items.map((item, idx) => (
-          <button key={item.en} type="button" aria-pressed={selected === idx} onClick={() => setSelected(selected === idx ? null : idx)} className={`tap-halo focus-ring inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium transition-colors ${selected === idx ? 'border-dharma-saffron/60 bg-dharma-saffron/15 text-dharma-text' : 'border-dharma-border/75 bg-dharma-bg/65 text-dharma-muted hover:border-dharma-saffron/45 hover:text-dharma-text'}`}>
+          <button key={item.en} type="button" aria-pressed={selected === idx} onClick={() => setSelected(selected === idx ? null : idx)} className={`tap-halo focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${selected === idx ? 'border-dharma-saffron/60 bg-dharma-saffron/15 text-dharma-text' : 'border-dharma-border/75 bg-dharma-bg/65 text-dharma-muted hover:border-dharma-saffron/45 hover:text-dharma-text'}`}>
             <span aria-hidden="true" className={`h-2 w-2 rounded-full ${item.active ? 'bg-dharma-gold shadow-[0_0_6px_var(--hue-gold)]' : 'bg-dharma-muted/40'}`} />
             <span lang="hi" data-bi="hi" className="font-devanagari">{item.hi}</span>{' '}<span data-bi="en-only">{item.en}</span>
           </button>

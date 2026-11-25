@@ -79,7 +79,7 @@ export function PadachhedaWordDialog({
                 onClose();
                 if (lex) onDeepInspect(lex);
               }}
-              className="mt-3 focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border border-saffron-500/40 bg-saffron-100/80 dark:bg-saffron-900/40 px-3 py-1 text-xs font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
+              className="mt-3 focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-saffron-500/40 bg-saffron-100/80 dark:bg-saffron-900/40 px-3.5 py-2 text-xs font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
             >
               <Search className="h-3.5 w-3.5" />
               <span>विस्तृत धातु अन्वेषण (Deep Dhatu Analysis)</span>

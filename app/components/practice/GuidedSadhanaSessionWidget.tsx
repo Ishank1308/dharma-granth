@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { Check, Flame, Lock, Pause, Play, RotateCcw, Sparkles, Wind, X } from 'lucide-react';
-import { localISODate } from './shared';
+import { localISODate, notifyPracticeSync } from './shared';
 
 const STEPS = [
   { num: '01', hi: 'प्राण-स्थिरता', en: 'Calm Breath' },
@@ -23,21 +23,32 @@ export function GuidedSadhanaSessionWidget() {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<0 | 1 | 2>(0);
 
-  // Step 1: 4s Inhale / 6s Exhale breath settle
+  // Step 1: 4s Inhale / 6s Exhale breath settle (wall-clock drift-safe)
   const [breathRunning, setBreathRunning] = useState(false);
   const [breathPhase, setBreathPhase] = useState<'inhale' | 'exhale'>('inhale');
   const [breathSec, setBreathSec] = useState(4);
   const [breathCycles, setBreathCycles] = useState(0);
+  const breathPhaseRef = useRef<'inhale' | 'exhale'>('inhale');
+  const breathSecRef = useRef(4);
+  const breathEndRef = useRef<number | null>(null);
+  breathPhaseRef.current = breathPhase;
+  breathSecRef.current = breathSec;
 
   // Step 2: 11-Bead Sukshma Japa
   const [mantraIdx, setMantraIdx] = useState(0);
   const [beads, setBeads] = useState(0);
 
-  // Step 3: 60s Silent Sit & local Sankalpa
+  // Step 3: 60s Silent Sit & local Sankalpa (wall-clock drift-safe)
   const [sitRunning, setSitRunning] = useState(false);
   const [sitSec, setSitSec] = useState(60);
   const [sitCompleted, setSitCompleted] = useState(false);
   const [sankalpa, setSankalpa] = useState('');
+  const sitSecRef = useRef(60);
+  const sitEndRef = useRef<number | null>(null);
+  sitSecRef.current = sitSec;
+
+  const [liveStatus, setLiveStatus] = useState('');
+  const stepTabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   useEffect(() => {
     try {
@@ -53,87 +64,174 @@ export function GuidedSadhanaSessionWidget() {
     }
   }, []);
 
-  // Breath timer
-  useEffect(() => {
-    if (!breathRunning) return undefined;
-    const id = window.setInterval(() => {
-      setBreathSec((prev) => {
-        if (prev <= 1) {
-          if (breathPhase === 'inhale') {
-            setBreathPhase('exhale');
-            return 6;
-          }
-          setBreathPhase('inhale');
-          setBreathCycles((c) => {
-            const nextC = c + 1;
-            try {
-              const day = localISODate();
-              const raw = window.localStorage.getItem('dharma.practice.pranayama');
-              const existing = raw ? (JSON.parse(raw) as { date?: string; cyclesToday?: number }) : {};
-              const base = existing.date === day ? Number(existing.cyclesToday) || 0 : 0;
-              window.localStorage.setItem(
-                'dharma.practice.pranayama',
-                JSON.stringify({ ...existing, date: day, cyclesToday: base + 1 }),
-              );
-              window.dispatchEvent(new Event('storage'));
-            } catch {}
-            return nextC;
-          });
-          return 4;
-        }
-        return prev - 1;
+  const persistBreathCycle = useCallback(() => {
+    try {
+      const day = localISODate();
+      const key = 'dharma.practice.pranayama';
+      const raw = window.localStorage.getItem(key);
+      const existing = raw ? (JSON.parse(raw) as { date?: string; cyclesToday?: number; lifetimeCycles?: number }) : {};
+      const base = existing.date === day ? Number(existing.cyclesToday) || 0 : 0;
+      const lifetime = Number(existing.lifetimeCycles) || 0;
+      const payload = JSON.stringify({
+        ...existing,
+        date: day,
+        cyclesToday: base + 1,
+        lifetimeCycles: lifetime + 1,
       });
-    }, 1000);
-    return () => window.clearInterval(id);
-  }, [breathRunning, breathPhase]);
+      window.localStorage.setItem(key, payload);
+      notifyPracticeSync(key, payload);
+    } catch {}
+  }, []);
 
-  // 60s Silent Sit timer
-  useEffect(() => {
-    if (!sitRunning) return undefined;
-    const id = window.setInterval(() => {
-      setSitSec((prev) => {
-        if (prev <= 1) {
-          setSitRunning(false);
-          setSitCompleted(true);
-          try {
-            const day = localISODate();
-            const raw = window.localStorage.getItem('dharma.practice.meditation');
-            const existing = raw ? (JSON.parse(raw) as { history?: Record<string, number> }) : {};
-            const history = { ...(existing.history ?? {}) };
-            history[day] = (Number(history[day]) || 0) + 1;
-            window.localStorage.setItem(
-              'dharma.practice.meditation',
-              JSON.stringify({ ...existing, history }),
-            );
-            window.dispatchEvent(new Event('storage'));
-          } catch {}
-          return 0;
-        }
-        return prev - 1;
+  const persistSitComplete = useCallback(() => {
+    try {
+      const day = localISODate();
+      const key = 'dharma.practice.meditation';
+      const raw = window.localStorage.getItem(key);
+      const existing = raw ? (JSON.parse(raw) as { sessions?: number; minutes?: number; history?: Record<string, number> }) : {};
+      const history = { ...(existing.history ?? {}) };
+      history[day] = (Number(history[day]) || 0) + 1;
+      const payload = JSON.stringify({
+        ...existing,
+        sessions: (Number(existing.sessions) || 0) + 1,
+        minutes: (Number(existing.minutes) || 0) + 1,
+        history,
       });
-    }, 1000);
-    return () => window.clearInterval(id);
-  }, [sitRunning]);
+      window.localStorage.setItem(key, payload);
+      notifyPracticeSync(key, payload);
+    } catch {}
+  }, []);
+
+  // Breath timer (wall-clock delta so background tabs never drift and updaters stay pure)
+  useEffect(() => {
+    if (!breathRunning) {
+      breathEndRef.current = null;
+      return undefined;
+    }
+    if (!breathEndRef.current) {
+      breathEndRef.current = Date.now() + breathSecRef.current * 1000;
+    }
+    const tick = () => {
+      if (!breathEndRef.current) return;
+      const now = Date.now();
+      const remainingMs = breathEndRef.current - now;
+      if (remainingMs <= 0) {
+        if (breathPhaseRef.current === 'inhale') {
+          breathPhaseRef.current = 'exhale';
+          breathEndRef.current = now + 6000;
+          setBreathPhase('exhale');
+          setBreathSec(6);
+          setLiveStatus('रेचक · Exhale 6 seconds');
+        } else {
+          breathPhaseRef.current = 'inhale';
+          breathEndRef.current = now + 4000;
+          setBreathPhase('inhale');
+          setBreathSec(4);
+          setBreathCycles((c) => c + 1);
+          persistBreathCycle();
+          setLiveStatus('पूरक · Inhale 4 seconds');
+        }
+        return;
+      }
+      const nextSec = Math.max(1, Math.ceil(remainingMs / 1000));
+      if (nextSec !== breathSecRef.current) {
+        setBreathSec(nextSec);
+      }
+    };
+    const id = window.setInterval(tick, 250);
+    const onVisibility = () => {
+      if (!document.hidden) tick();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      window.clearInterval(id);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [breathRunning, persistBreathCycle]);
+
+  // 60s Silent Sit timer (wall-clock delta, pure state updates)
+  useEffect(() => {
+    if (!sitRunning) {
+      sitEndRef.current = null;
+      return undefined;
+    }
+    if (!sitEndRef.current) {
+      sitEndRef.current = Date.now() + sitSecRef.current * 1000;
+    }
+    const tick = () => {
+      if (!sitEndRef.current) return;
+      const remainingMs = sitEndRef.current - Date.now();
+      if (remainingMs <= 0) {
+        sitEndRef.current = null;
+        setSitRunning(false);
+        setSitCompleted(true);
+        setSitSec(0);
+        persistSitComplete();
+        setLiveStatus('60-सेकंड मौन पूर्ण · 1-minute silent sit complete');
+        return;
+      }
+      const nextSec = Math.max(1, Math.ceil(remainingMs / 1000));
+      if (nextSec !== sitSecRef.current) {
+        setSitSec(nextSec);
+      }
+    };
+    const id = window.setInterval(tick, 250);
+    const onVisibility = () => {
+      if (!document.hidden) tick();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      window.clearInterval(id);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [sitRunning, persistSitComplete]);
 
   const advanceBead = () => {
     if (beads >= 11) return;
     const next = beads + 1;
     setBeads(next);
+    setLiveStatus(next >= 11 ? '11 मनके पूर्ण · 11 beads complete' : `मनका ${next} / 11 · Bead ${next} of 11`);
     try {
       const day = localISODate();
-      const raw = window.localStorage.getItem('dharma.practice.japa');
-      const existing = raw ? (JSON.parse(raw) as { date?: string; count?: number; rounds?: number }) : {};
+      const key = 'dharma.practice.japa';
+      const raw = window.localStorage.getItem(key);
+      const existing = raw ? (JSON.parse(raw) as { date?: string; count?: number; rounds?: number; lifetimeRounds?: number }) : {};
       const prevCount = existing.date === day ? Number(existing.count) || 0 : 0;
       const prevRounds = existing.date === day ? Number(existing.rounds) || 0 : 0;
       const sum = prevCount + 1;
-      const nextRounds = prevRounds + Math.floor(sum / 108);
+      const gainedRounds = Math.floor(sum / 108);
+      const nextRounds = prevRounds + gainedRounds;
       const nextCount = sum % 108;
-      window.localStorage.setItem(
-        'dharma.practice.japa',
-        JSON.stringify({ ...existing, date: day, count: nextCount, rounds: nextRounds }),
-      );
-      window.dispatchEvent(new Event('storage'));
+      const payload = JSON.stringify({
+        ...existing,
+        date: day,
+        count: nextCount,
+        rounds: nextRounds,
+        lifetimeRounds: (Number(existing.lifetimeRounds) || 0) + gainedRounds,
+      });
+      window.localStorage.setItem(key, payload);
+      notifyPracticeSync(key, payload);
     } catch {}
+  };
+
+  const handleStepKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Home' || e.key === 'End') {
+      e.preventDefault();
+      const next: 0 | 1 | 2 =
+        e.key === 'Home' ? 0
+        : e.key === 'End' ? 2
+        : e.key === 'ArrowRight' ? (((step + 1) % 3) as 0 | 1 | 2)
+        : (((step + 2) % 3) as 0 | 1 | 2);
+      setStep(next);
+      stepTabRefs.current[next]?.focus();
+    }
+  };
+
+  const handleBeadKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      advanceBead();
+    }
   };
 
   const handleSankalpaChange = (value: string) => {
@@ -156,11 +254,11 @@ export function GuidedSadhanaSessionWidget() {
     return (
       <div className="apple-card flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 border border-dharma-saffron/35 bg-gradient-to-r from-dharma-saffron/10 via-dharma-card to-dharma-card">
         <div className="space-y-1">
-          <p className="inline-flex items-center gap-1.5 text-caption font-semibold text-dharma-saffron">
-            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-            <span lang="hi" data-bi="hi" className="font-devanagari">निर्देशित दैनिक क्रम</span>
+          <p className="inline-flex flex-wrap items-center gap-1.5 text-caption font-semibold text-dharma-saffron">
+            <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+            <span lang="hi" data-bi="hi" className="font-devanagari">संपादकीय अभ्यास · मूल शास्त्र नहीं</span>
             <span data-bi="sep"> · </span>
-            <span data-bi="en">Guided Daily Sequence</span>
+            <span data-bi="en">Editorial Application · Not Scripture</span>
           </p>
           <h2 className="text-title-3 font-semibold text-dharma-text">
             <span data-bi="en">5-Minute Guided Sadhana Flow</span>
@@ -194,9 +292,9 @@ export function GuidedSadhanaSessionWidget() {
       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-dharma-border pb-4">
         <div>
           <p className="text-[11px] font-bold uppercase tracking-wider text-dharma-saffron">
-            <span lang="hi" data-bi="hi" className="font-devanagari normal-case">संपादकीय साधना सहायक · उपकरण पर निजी</span>
+            <span lang="hi" data-bi="hi" className="font-devanagari normal-case">संपादकीय साधना अभ्यास · मूल शास्त्र नहीं · उपकरण पर निजी</span>
             <span data-bi="sep"> · </span>
-            <span data-bi="en">Guided Practice Flow · Private on Device</span>
+            <span data-bi="en">Editorial Application · Not Scripture · Private on Device</span>
           </p>
           <h2 id="guided-sadhana-heading" className="mt-1 text-title-2 font-semibold text-dharma-text">
             <span data-bi="en">5-Minute Sadhana Studio</span>
@@ -218,14 +316,26 @@ export function GuidedSadhanaSessionWidget() {
         </button>
       </div>
 
-      <div role="group" aria-label="साधना चरण · Sadhana steps" className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+      <div
+        role="tablist"
+        aria-label="साधना चरण · Sadhana steps"
+        className="grid grid-cols-1 gap-2 sm:grid-cols-3"
+      >
         {STEPS.map((s, idx) => {
           const active = step === idx;
           return (
             <button
               key={s.num}
+              ref={(el) => {
+                stepTabRefs.current[idx] = el;
+              }}
+              id={`guided-sadhana-tab-${idx}`}
               type="button"
-              aria-pressed={active}
+              role="tab"
+              aria-selected={active}
+              aria-controls={`guided-sadhana-panel-${idx}`}
+              tabIndex={active ? 0 : -1}
+              onKeyDown={handleStepKeyDown}
               onClick={() => setStep(idx as 0 | 1 | 2)}
               className={`focus-ring flex min-h-[44px] items-center gap-2 rounded-xl border px-3.5 py-2 text-left text-xs font-semibold transition ${
                 active
@@ -244,8 +354,17 @@ export function GuidedSadhanaSessionWidget() {
         })}
       </div>
 
+      <p role="status" aria-live="polite" className="sr-only">
+        {liveStatus}
+      </p>
+
       {step === 0 && (
-        <div className="grid gap-5 sm:grid-cols-12 items-center rounded-2xl border border-dharma-border bg-dharma-bg/65 p-5">
+        <div
+          id="guided-sadhana-panel-0"
+          role="tabpanel"
+          aria-labelledby="guided-sadhana-tab-0"
+          className="grid gap-5 sm:grid-cols-12 items-center rounded-2xl border border-dharma-border bg-dharma-bg/65 p-5"
+        >
           <div className="sm:col-span-5 flex flex-col items-center gap-3 text-center">
             <div className="flex h-24 w-24 flex-col items-center justify-center rounded-full border-2 border-dharma-saffron/50 bg-dharma-card shadow-2xs">
               <Wind className="h-4 w-4 text-dharma-saffron" aria-hidden="true" />
@@ -266,9 +385,11 @@ export function GuidedSadhanaSessionWidget() {
               <button
                 type="button"
                 onClick={() => {
+                  breathEndRef.current = null;
                   setBreathRunning(false);
                   setBreathPhase('inhale');
                   setBreathSec(4);
+                  setLiveStatus('श्वास चक्र रीसेट · Breath pacer reset');
                 }}
                 aria-label="श्वास चक्र रीसेट करें · Reset breath pacer"
                 className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-dharma-border bg-dharma-card text-dharma-text"
@@ -296,7 +417,12 @@ export function GuidedSadhanaSessionWidget() {
       )}
 
       {step === 1 && (
-        <div className="space-y-4 rounded-2xl border border-dharma-border bg-dharma-bg/65 p-5">
+        <div
+          id="guided-sadhana-panel-1"
+          role="tabpanel"
+          aria-labelledby="guided-sadhana-tab-1"
+          className="space-y-4 rounded-2xl border border-dharma-border bg-dharma-bg/65 p-5"
+        >
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex flex-wrap gap-1.5" role="group" aria-label="मन्त्र चयन · Select mantra">
               {MANTRAS.map((m, idx) => (
@@ -305,7 +431,7 @@ export function GuidedSadhanaSessionWidget() {
                   type="button"
                   aria-pressed={idx === mantraIdx}
                   onClick={() => setMantraIdx(idx)}
-                  className={`focus-ring min-h-[38px] rounded-full border px-3 text-xs font-semibold transition ${
+                  className={`focus-ring min-h-[44px] rounded-full border px-3 text-xs font-semibold transition ${
                     idx === mantraIdx
                       ? 'border-dharma-saffron bg-dharma-saffron text-dharma-bg'
                       : 'border-dharma-border bg-dharma-card text-dharma-text'
@@ -344,6 +470,7 @@ export function GuidedSadhanaSessionWidget() {
               <button
                 type="button"
                 disabled={beads >= 11}
+                onKeyDown={handleBeadKeyDown}
                 onClick={advanceBead}
                 className="focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-full bg-dharma-saffron px-6 text-sm font-semibold text-dharma-bg transition hover:opacity-90 disabled:opacity-50"
               >
@@ -377,7 +504,12 @@ export function GuidedSadhanaSessionWidget() {
       )}
 
       {step === 2 && (
-        <div className="space-y-4 rounded-2xl border border-dharma-border bg-dharma-bg/65 p-5">
+        <div
+          id="guided-sadhana-panel-2"
+          role="tabpanel"
+          aria-labelledby="guided-sadhana-tab-2"
+          className="space-y-4 rounded-2xl border border-dharma-border bg-dharma-bg/65 p-5"
+        >
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="space-y-1">
               <p className="text-xs font-semibold text-dharma-saffron">
@@ -392,7 +524,10 @@ export function GuidedSadhanaSessionWidget() {
               <button
                 type="button"
                 onClick={() => {
-                  if (sitSec === 0) setSitSec(60);
+                  if (sitSec === 0) {
+                    sitSecRef.current = 60;
+                    setSitSec(60);
+                  }
                   setSitRunning((r) => !r);
                 }}
                 className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-dharma-saffron px-4 text-xs font-semibold text-dharma-bg"

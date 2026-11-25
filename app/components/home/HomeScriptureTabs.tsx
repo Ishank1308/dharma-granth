@@ -498,7 +498,7 @@ export function HomeScriptureTabs() {
 
               {/* Title Header */}
               <div className="mt-3.5">
-                <h3 lang="sa" className="font-devanagari text-2xl font-bold tracking-tight text-dharma-text sm:text-[26px]">
+                <h3 lang="sa" className="font-devanagari text-2xl font-bold text-dharma-text sm:text-[26px]">
                   {book.titleSa}
                 </h3>
                 <p className="text-[13px] font-medium text-dharma-text/80">

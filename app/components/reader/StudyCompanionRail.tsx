@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import type { SanskritLexiconEntry } from '@/data/sanskrit-lexicon';
 import type { WordGloss } from '@/lib/word-gloss';
@@ -62,6 +62,21 @@ export function StudyCompanionRail({
   const noteId = useId();
   const tabBaseId = useId();
   const noteTextareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const CONTEMPLATION_STEPS: ContemplationStep[] = ['apply', 'reflect', 'practice'];
+
+  const handleTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>, idx: number) => {
+    let next = idx;
+    if (event.key === 'ArrowRight') next = (idx + 1) % CONTEMPLATION_STEPS.length;
+    else if (event.key === 'ArrowLeft') next = (idx - 1 + CONTEMPLATION_STEPS.length) % CONTEMPLATION_STEPS.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = CONTEMPLATION_STEPS.length - 1;
+    else return;
+    event.preventDefault();
+    event.stopPropagation();
+    setStep(CONTEMPLATION_STEPS[next]);
+    tabRefs.current[next]?.focus();
+  };
 
   const { hydrated, note, setNote, saveStatus, practiceDone, togglePractice } = useLocalVerseState({
     scriptureId,
@@ -100,7 +115,7 @@ export function StudyCompanionRail({
                 type="button"
                 onClick={() => onSelectWord((safeIndex - 1 + glosses.length) % glosses.length)}
                 aria-label="Previous word in verse"
-                className={`focus-ring inline-flex h-7 w-7 items-center justify-center rounded-lg border border-stone-300/70 dark:border-stone-700 text-dharma-text hover:bg-stone-100 dark:hover:bg-stone-800 ${LITE_COMPAT}`}
+                className={`focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-stone-300/70 dark:border-stone-700 text-dharma-text hover:bg-stone-100 dark:hover:bg-stone-800 ${LITE_COMPAT}`}
               >
                 <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
               </button>
@@ -111,7 +126,7 @@ export function StudyCompanionRail({
                 type="button"
                 onClick={() => onSelectWord((safeIndex + 1) % glosses.length)}
                 aria-label="Next word in verse"
-                className={`focus-ring inline-flex h-7 w-7 items-center justify-center rounded-lg border border-stone-300/70 dark:border-stone-700 text-dharma-text hover:bg-stone-100 dark:hover:bg-stone-800 ${LITE_COMPAT}`}
+                className={`focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-stone-300/70 dark:border-stone-700 text-dharma-text hover:bg-stone-100 dark:hover:bg-stone-800 ${LITE_COMPAT}`}
               >
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </button>
@@ -198,6 +213,7 @@ export function StudyCompanionRail({
         <div
           role="tablist"
           aria-label="Three-step contemplation"
+          aria-orientation="horizontal"
           className="mt-3 grid grid-cols-3 gap-1 rounded-xl bg-stone-200/65 dark:bg-stone-900/80 p-1"
         >
           {(
@@ -206,20 +222,25 @@ export function StudyCompanionRail({
               { id: 'reflect', num: '2', hi: 'मनन', en: 'Reflect' },
               { id: 'practice', num: '3', hi: 'संकल्प', en: 'Practice' },
             ] as const
-          ).map((item) => {
+          ).map((item, idx) => {
             const active = step === item.id;
             return (
               <button
                 key={item.id}
+                ref={(el) => {
+                  tabRefs.current[idx] = el;
+                }}
                 id={`${tabBaseId}-tab-${item.id}`}
                 type="button"
                 role="tab"
                 aria-selected={active}
                 aria-controls={`${tabBaseId}-panel-${item.id}`}
+                tabIndex={active ? 0 : -1}
                 onClick={() => {
                   triggerTactileFeedback('selection', 'softTap');
                   setStep(item.id);
                 }}
+                onKeyDown={(e) => handleTabKeyDown(e, idx)}
                 className={`focus-ring flex min-h-[44px] flex-col items-center justify-center rounded-lg px-1.5 py-1 text-center text-xs font-semibold transition [[data-lite-mode=true]_&]:transition-none ${
                   active
                     ? 'bg-dharma-card text-dharma-text shadow-2xs ring-1 ring-amber-600/35'
@@ -239,7 +260,8 @@ export function StudyCompanionRail({
           id={`${tabBaseId}-panel-${step}`}
           role="tabpanel"
           aria-labelledby={`${tabBaseId}-tab-${step}`}
-          className="mt-3 min-h-[112px] rounded-xl border border-stone-300/50 dark:border-stone-800 bg-stone-100/55 dark:bg-stone-900/45 p-3 text-xs leading-relaxed text-dharma-text"
+          tabIndex={0}
+          className="focus-ring mt-3 min-h-[112px] rounded-xl border border-stone-300/50 dark:border-stone-800 bg-stone-100/55 dark:bg-stone-900/45 p-3 text-xs leading-relaxed text-dharma-text"
         >
           {step === 'apply' && (
             <div className="space-y-1.5">
@@ -271,7 +293,7 @@ export function StudyCompanionRail({
               <button
                 type="button"
                 onClick={() => noteTextareaRef.current?.focus()}
-                className="focus-ring inline-flex min-h-[36px] items-center gap-1 rounded-lg border border-amber-700/35 bg-amber-100/75 dark:border-amber-500/35 dark:bg-amber-900/35 px-2.5 py-1 text-xs font-semibold text-amber-950 dark:text-amber-100 hover:border-amber-700/60 [[data-lite-mode=true]_&]:transition-none"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-xl border border-amber-700/35 bg-amber-100/75 dark:border-amber-500/35 dark:bg-amber-900/35 px-3 py-1.5 text-xs font-semibold text-amber-950 dark:text-amber-100 hover:border-amber-700/60 [[data-lite-mode=true]_&]:transition-none"
               >
                 <span lang="hi" className="font-devanagari">नीचे मनन लिखें</span>
                 <span>· Write note ↓</span>

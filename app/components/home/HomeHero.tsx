@@ -28,7 +28,7 @@ export function HomeHero() {
           {/* A greeting for the hour (सुप्रभात, शुभ सन्ध्या…). Its words are CSS content keyed on
               <html data-daypart>, set before first paint, so the HTML is the same at every hour. */}
           <p className="daypart-greeting mb-3 font-devanagari text-footnote font-semibold text-dharma-muted" />
-          <p className="inline-flex flex-wrap items-center gap-1.5 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/10 px-3 py-1.5 text-[11px] font-semibold text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md sm:gap-2 sm:px-3.5 sm:py-2 sm:text-xs">
+          <p className="inline-flex flex-wrap items-center gap-1.5 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/10 px-3 py-1.5 text-[11px] font-semibold text-saffron-800 shadow-[inset_0_1px_0_var(--glass-specular-top)] backdrop-blur-md dark:text-saffron-300 sm:gap-2 sm:px-3.5 sm:py-2 sm:text-xs">
             <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-dharma-saffron" />
             <span data-bi="en">A living archive of Indian wisdom</span>
             <span data-bi="sep" aria-hidden="true" className="opacity-50">·</span>
@@ -61,7 +61,7 @@ export function HomeHero() {
             <Link
               href="/scriptures/"
               data-vt="open"
-              className="cta-primary focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-full bg-dharma-saffron px-5 py-3 text-sm font-semibold text-dharma-bg shadow-raised motion-safe:transition-transform motion-safe:hover:-translate-y-0.5"
+              className="cta-primary focus-ring inline-flex min-h-[48px] items-center gap-2 rounded-full bg-dharma-saffron px-5 py-3 text-sm font-semibold text-white shadow-raised motion-safe:transition-transform motion-safe:hover:-translate-y-0.5 dark:text-black"
             >
               Explore the library <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </Link>
@@ -150,8 +150,8 @@ export function HomeHero() {
                 <Compass aria-hidden="true" className="h-5 w-5" />
                 <ArrowUpRight aria-hidden="true" className="h-4 w-4 motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />
               </span>
-              <span>
-                <strong lang="hi" className="block font-devanagari text-base text-dharma-text">ईशावास्योपनिषद्</strong>
+              <span className="min-w-0">
+                <strong lang="hi" className="block font-devanagari text-base text-dharma-text [overflow-wrap:anywhere]">ईशावास्योपनिषद्</strong>
                 <span className="mt-1 block text-xs text-dharma-muted">Discover the Upanishads</span>
               </span>
             </Link>

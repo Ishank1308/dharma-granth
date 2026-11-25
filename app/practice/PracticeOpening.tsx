@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import Link from 'next/link';
 import { Bookmark, NotebookPen, ScrollText } from 'lucide-react';
 import { Bento, BentoCell, Bi } from '@/app/components/bento/Bento';
-import { localISODate } from '@/app/components/practice/shared';
+import { PRACTICE_SYNC_EVENT, localISODate } from '@/app/components/practice/shared';
 import { parseStored } from '@/lib/safe-stored';
 
 /**
@@ -61,10 +61,10 @@ function readToday(): Today {
   const reflections = parseStored<Record<string, unknown>>(get('dharma.practice.reflections'), {});
   const saved = parseStored<unknown[]>(get('dharma.bookmarkedVerses'), []);
 
-  const beads = japa.date === day ? japa.count : 0;
-  const malas = japa.date === day ? japa.rounds : 0;
+  const beads = japa.date === day ? Number(japa.count) || 0 : 0;
+  const malas = japa.date === day ? Number(japa.rounds) || 0 : 0;
   const minutes = Number(meditation.history?.[day]) || 0;
-  const breaths = pranayama.date === day ? pranayama.cyclesToday : 0;
+  const breaths = pranayama.date === day ? Number(pranayama.cyclesToday) || 0 : 0;
 
   return {
     done: {
@@ -84,16 +84,25 @@ export function PracticeOpening({ active }: { active: (id: TodayPracticeId) => b
   useEffect(() => {
     const read = () => setToday(readToday());
     read();
-    // The tools further down save as the reader practises, and a save in this tab sends no
-    // storage event. Read again each time the tile scrolls back into view.
+    // The tools further down save as the reader practises; sync on custom same-tab event,
+    // cross-tab storage, focus/visibility, and whenever the tile scrolls back into view.
+    const onVisibility = () => {
+      if (!document.hidden) read();
+    };
     const seen = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) read();
     });
     if (tile.current) seen.observe(tile.current);
     window.addEventListener('storage', read);
+    window.addEventListener(PRACTICE_SYNC_EVENT, read);
+    window.addEventListener('focus', read);
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
       seen.disconnect();
       window.removeEventListener('storage', read);
+      window.removeEventListener(PRACTICE_SYNC_EVENT, read);
+      window.removeEventListener('focus', read);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 
@@ -119,7 +128,7 @@ export function PracticeOpening({ active }: { active: (id: TodayPracticeId) => b
                 const state = today?.done[p.id] ?? '';
                 return (
                   <li key={p.id}>
-                    <a href={`#practice-${p.id}`} className="bento-row">
+                    <a href={`#practice-${p.id}`} className="bento-row min-h-[44px]">
                       <span className="bento-row-label min-w-0">
                         <span className="bento-mark" data-done={state ? 'true' : 'false'} aria-hidden="true" />
                         <span data-bi="en">{p.en}</span>{' '}

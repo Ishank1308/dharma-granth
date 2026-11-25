@@ -158,7 +158,11 @@ export function ProgressiveVerseCard({
       <div className="p-5 sm:p-7 lg:p-8">
         <header className="mb-6 flex items-center justify-between gap-4">
           <div>
-            <p className="font-devanagari text-xs font-semibold tracking-wide text-[#D97706]">श्लोक · Verse</p>
+            <p className="text-xs font-semibold text-[#D97706]">
+              <span lang="hi" data-bi="hi" className="font-devanagari">श्लोक</span>
+              <span data-bi="sep" aria-hidden="true"> · </span>
+              <span data-bi="en" className="tracking-wide">Verse</span>
+            </p>
             <h2 className="mt-1 font-serif text-lg font-semibold text-[#F4E8D2]">{verse.number}</h2>
           </div>
           <div className="flex items-center gap-2" role="toolbar" aria-label="Verse actions">
@@ -231,7 +235,11 @@ export function ProgressiveVerseCard({
               )}
               {activeTab === 'modern' && !loading && deepLayers?.modernContext && (
                 <aside className="rounded-xl border-l-2 border-[#D97706] bg-[#D97706]/[0.07] p-4">
-                  <p className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#F3A53B]">जीवन में प्रयोग · In practice</p>
+                  <p className="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-[#F3A53B]">
+                    <span lang="hi" data-bi="hi" className="font-devanagari normal-case">जीवन में प्रयोग</span>
+                    <span data-bi="sep" aria-hidden="true"> · </span>
+                    <span data-bi="en">In practice</span>
+                  </p>
                   <p lang={deepLayers.modernContext.language} className={`${deepLayers.modernContext.language === 'hi' ? 'font-devanagari leading-[2]' : 'font-serif leading-relaxed'} text-sm text-[#E6D5B8] sm:text-base`}>{deepLayers.modernContext.example}</p>
                 </aside>
               )}

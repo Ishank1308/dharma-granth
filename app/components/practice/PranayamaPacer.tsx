@@ -1,11 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { Wind, Play, Pause, RotateCcw, Smartphone, AlertTriangle } from 'lucide-react';
 import { useReducedMotionPreference } from '@/lib/useReducedMotionPreference';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { triggerHaptic } from '@/lib/haptics';
-import { ToolCard, localISODate } from './shared';
+import { ToolCard, localISODate, notifyPracticeSync } from './shared';
 
 type PhaseKey = 'inhale' | 'holdIn' | 'exhale' | 'holdOut';
 
@@ -76,6 +76,17 @@ export function PranayamaPacer() {
   const countedRef = useRef(0);
   const lastPhaseRef = useRef<number>(-1);
   const rafRef = useRef<number | null>(null);
+  const didMountSyncRef = useRef(false);
+  const radioRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const [livePhase, setLivePhase] = useState('');
+
+  useEffect(() => {
+    if (!didMountSyncRef.current) {
+      didMountSyncRef.current = true;
+      return;
+    }
+    notifyPracticeSync();
+  }, [state.date, state.cyclesToday, state.lifetimeCycles]);
 
   const stop = useCallback(() => {
     setRunning(false);
@@ -94,6 +105,8 @@ export function PranayamaPacer() {
       setView({ phase: at.phase, progress: at.progress, remaining: at.remaining, cycles: at.cycles });
       if (at.phaseIndex !== lastPhaseRef.current) {
         lastPhaseRef.current = at.phaseIndex;
+        const phaseLabel = PHASES[at.phase];
+        setLivePhase(`${phaseLabel.en}, ${pattern.secs[at.phaseIndex]} seconds`);
         if (vibrate) triggerHaptic('selection');
       }
       if (at.cycles > countedRef.current) {
@@ -119,14 +132,27 @@ export function PranayamaPacer() {
 
   function choose(id: string) {
     stop();
+    setLivePhase('');
     setView({ phase: 'inhale', progress: 0, remaining: (PATTERNS.find((p) => p.id === id) ?? PATTERNS[1]).secs[0], cycles: 0 });
     setState((prev) => ({ ...prev, patternId: id }));
   }
 
   function reset() {
     stop();
+    setLivePhase('');
     setView({ phase: 'inhale', progress: 0, remaining: pattern.secs[0], cycles: 0 });
   }
+
+  const handleRadioKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const idx = PATTERNS.findIndex((p) => p.id === pattern.id);
+      const delta = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1;
+      const nextIdx = (idx + delta + PATTERNS.length) % PATTERNS.length;
+      choose(PATTERNS[nextIdx].id);
+      radioRefs.current[nextIdx]?.focus();
+    }
+  };
 
   // Circle size: grows through the inhale, stays full on the hold, shrinks through the exhale, stays small on the rest.
   const MIN = 0.58;
@@ -142,30 +168,42 @@ export function PranayamaPacer() {
   return (
     <ToolCard icon={<Wind className="w-5 h-5 text-emerald-600" />} title="Prāṇāyāma Breath Pacer" titleHindi="प्राणायाम · श्वास-गति" accent="emerald">
       <div className="flex flex-col items-center gap-5">
-        <div role="radiogroup" aria-label="Breathing pattern" className="flex flex-wrap justify-center gap-2">
-          {PATTERNS.map((p) => (
-            <button
-              key={p.id}
-              type="button"
-              role="radio"
-              aria-checked={p.id === pattern.id}
-              onClick={() => choose(p.id)}
-              className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
-                p.id === pattern.id
-                  ? 'border-emerald-400 bg-emerald-100 text-emerald-900 dark:border-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-200'
-                  : 'border-dharma-border text-dharma-muted hover:border-emerald-300'
-              }`}
-            >
-              <span lang="hi" className="font-devanagari">{p.nameHi}</span> · {p.name}
-            </button>
-          ))}
+        <div
+          role="radiogroup"
+          aria-label="Breathing pattern"
+          className="flex flex-wrap justify-center gap-2"
+        >
+          {PATTERNS.map((p, idx) => {
+            const checked = p.id === pattern.id;
+            return (
+              <button
+                key={p.id}
+                ref={(el) => {
+                  radioRefs.current[idx] = el;
+                }}
+                type="button"
+                role="radio"
+                aria-checked={checked}
+                tabIndex={checked ? 0 : -1}
+                onKeyDown={handleRadioKeyDown}
+                onClick={() => choose(p.id)}
+                className={`focus-ring min-h-[44px] rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
+                  checked
+                    ? 'border-emerald-400 bg-emerald-100 text-emerald-900 dark:border-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-200'
+                    : 'border-dharma-border text-dharma-muted hover:border-emerald-300'
+                }`}
+              >
+                <span lang="hi" className="font-devanagari">{p.nameHi}</span> · {p.name}
+              </button>
+            );
+          })}
         </div>
         <p className="max-w-xs text-center text-xs text-dharma-muted">{pattern.note}</p>
 
         <div className="relative flex h-[224px] w-[224px] items-center justify-center" aria-hidden={!running}>
-          <div className="absolute inset-0 rounded-full border border-dashed border-emerald-300/50" />
+          <div className="absolute inset-0 rounded-full border border-dashed border-emerald-400/60 dark:border-emerald-500/45" />
           <div
-            className="absolute rounded-full bg-gradient-to-br from-emerald-300/70 via-teal-400/60 to-emerald-600/70 shadow-[0_0_36px_rgba(16,185,129,0.35)]"
+            className="absolute rounded-full bg-gradient-to-br from-emerald-300/75 via-teal-400/65 to-emerald-500/70 dark:from-emerald-800/85 dark:via-teal-800/80 dark:to-emerald-950/90 shadow-[0_0_36px_rgba(16,185,129,0.35)]"
             style={{
               width: '100%',
               height: '100%',
@@ -176,39 +214,39 @@ export function PranayamaPacer() {
           <div className="relative z-10 flex flex-col items-center text-center">
             <span className="text-2xl font-bold tabular-nums text-emerald-950 dark:text-emerald-50">{running ? view.remaining : pattern.secs[0]}</span>
             <span className="text-sm font-semibold text-emerald-950 dark:text-emerald-50">{running ? label.en : 'Ready'}</span>
-            <span lang="hi" className="font-devanagari text-xs text-emerald-900/80 dark:text-emerald-100/80">{running ? label.hi : 'तैयार'}</span>
+            <span lang="hi" className="font-devanagari text-xs text-emerald-900 dark:text-emerald-100">{running ? label.hi : 'तैयार'}</span>
           </div>
         </div>
 
         <p role="status" aria-live="polite" className="sr-only">
-          {running ? `${label.en}, ${view.remaining} seconds` : 'Paused'}
+          {running ? livePhase : 'Paused'}
         </p>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-2">
           <button
             type="button"
             onClick={() => (running ? stop() : setRunning(true))}
-            className="inline-flex items-center gap-1.5 rounded-full bg-emerald-700 px-5 py-2 text-sm font-bold text-white transition hover:bg-emerald-800 active:scale-95"
+            className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-emerald-700 px-5 py-2 text-sm font-bold text-white transition hover:bg-emerald-800 active:scale-95"
           >
-            {running ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+            {running ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
             {running ? 'Pause · रुकें' : 'Begin · आरंभ'}
           </button>
           <button
             type="button"
             onClick={reset}
-            className="inline-flex items-center gap-1 rounded-full border border-dharma-border px-3.5 py-2 text-xs font-semibold text-dharma-muted transition hover:border-emerald-300 hover:text-emerald-800"
+            className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border px-4 py-2 text-xs font-semibold text-dharma-muted transition hover:border-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-300"
           >
-            <RotateCcw className="h-3.5 w-3.5" /> Reset
+            <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" /> Reset
           </button>
           <button
             type="button"
             onClick={() => setVibrate(!vibrate)}
             aria-pressed={vibrate}
-            className={`inline-flex items-center gap-1 rounded-full border px-3.5 py-2 text-xs font-semibold transition ${
+            className={`focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full border px-4 py-2 text-xs font-semibold transition ${
               vibrate ? 'border-amber-300 bg-amber-100 text-amber-900 dark:bg-amber-950/40 dark:text-amber-200' : 'border-dharma-border text-dharma-muted'
             }`}
           >
-            <Smartphone className="h-3.5 w-3.5" /> {vibrate ? 'कंपन' : 'स्थिर'}
+            <Smartphone className="h-3.5 w-3.5" aria-hidden="true" /> {vibrate ? 'कंपन' : 'स्थिर'}
           </button>
         </div>
 

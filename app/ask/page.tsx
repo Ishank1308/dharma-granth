@@ -147,9 +147,9 @@ export default function AskDharmaPage() {
         <div className="reveal-grid grid gap-x-6 gap-y-8 md:grid-cols-2">
           {ANSWER_THEMES.map((theme) => (
             <div key={theme.id}>
-              <h3 className="mb-2 px-1 text-footnote text-dharma-muted">
-                <span lang="hi" className="font-devanagari text-subhead font-semibold text-dharma-text">{theme.titleHi}</span>{' '}
-                <span>{theme.titleEn}</span>
+              <h3 className="mb-2 px-1 text-subhead font-semibold text-dharma-text">
+                <span lang="hi" data-bi="hi" className="font-devanagari">{theme.titleHi}</span>{' '}
+                <span data-bi="en" data-bi-lead className="text-footnote font-normal text-dharma-muted">{theme.titleEn}</span>
               </h3>
               <ul className="apple-group">
                 {granthAnswersByTheme(theme.id).map((a) => (

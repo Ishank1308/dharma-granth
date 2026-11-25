@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState, type KeyboardEvent } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Clock, Compass, Layers, Moon, Sparkles, Star, Sun } from 'lucide-react';
+
+const LIMB_ICONS = [Moon, Clock, Star, Sun, Layers] as const;
 
 interface LimbInfo {
   num: string;
@@ -157,6 +159,20 @@ export function InteractiveKalaStudio() {
   const [mode, setMode] = useState<'limbs' | 'ahoratra'>('limbs');
   const [limbIdx, setLimbIdx] = useState(0);
   const [windowIdx, setWindowIdx] = useState(1);
+  const limbsTabRef = useRef<HTMLButtonElement>(null);
+  const ahoratraTabRef = useRef<HTMLButtonElement>(null);
+
+  const handleModeKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Home' || e.key === 'End') {
+      e.preventDefault();
+      const next =
+        e.key === 'Home' ? 'limbs'
+        : e.key === 'End' ? 'ahoratra'
+        : mode === 'limbs' ? 'ahoratra' : 'limbs';
+      setMode(next);
+      (next === 'limbs' ? limbsTabRef : ahoratraTabRef).current?.focus();
+    }
+  };
 
   const activeLimb = FIVE_LIMBS[limbIdx] ?? FIVE_LIMBS[0];
   const activeWin = AHORATRA_WINDOWS[windowIdx] ?? AHORATRA_WINDOWS[0];
@@ -177,9 +193,9 @@ export function InteractiveKalaStudio() {
       className="mt-6 sm:mt-8 apple-card rounded-3xl border border-dharma-border bg-dharma-card p-5 sm:p-7 shadow-raised space-y-5"
     >
       <div className="flex flex-wrap items-start justify-between gap-3 border-b border-dharma-border pb-4">
-        <div className="space-y-1">
-          <p className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-saffron">
-            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+        <div className="min-w-0 space-y-1">
+          <p className="inline-flex flex-wrap items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-saffron">
+            <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             <span lang="hi" data-bi="hi" className="font-devanagari normal-case">संवादात्मक अध्ययन सहायक · ज्योतिष भविष्यवाणी नहीं</span>
             <span data-bi="sep"> · </span>
             <span data-bi="en">Interactive Study Aid · Not Personal Astrology</span>
@@ -191,10 +207,20 @@ export function InteractiveKalaStudio() {
           </h2>
         </div>
 
-        <div role="group" aria-label="अध्ययन मोड · Studio mode" className="flex flex-wrap gap-1.5">
+        <div
+          role="tablist"
+          aria-label="अध्ययन मोड · Studio mode"
+          className="flex flex-wrap gap-1.5"
+        >
           <button
+            ref={limbsTabRef}
+            id="kala-tab-limbs"
             type="button"
-            aria-pressed={mode === 'limbs'}
+            role="tab"
+            aria-selected={mode === 'limbs'}
+            aria-controls="kala-panel-limbs"
+            tabIndex={mode === 'limbs' ? 0 : -1}
+            onKeyDown={handleModeKeyDown}
             onClick={() => setMode('limbs')}
             className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 text-xs font-semibold transition ${
               mode === 'limbs'
@@ -207,8 +233,14 @@ export function InteractiveKalaStudio() {
             <span data-bi="en-only">5 Limbs</span>
           </button>
           <button
+            ref={ahoratraTabRef}
+            id="kala-tab-ahoratra"
             type="button"
-            aria-pressed={mode === 'ahoratra'}
+            role="tab"
+            aria-selected={mode === 'ahoratra'}
+            aria-controls="kala-panel-ahoratra"
+            tabIndex={mode === 'ahoratra' ? 0 : -1}
+            onKeyDown={handleModeKeyDown}
             onClick={() => setMode('ahoratra')}
             className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 text-xs font-semibold transition ${
               mode === 'ahoratra'
@@ -224,12 +256,11 @@ export function InteractiveKalaStudio() {
       </div>
 
       {mode === 'limbs' ? (
-        <div className="space-y-4">
+        <div id="kala-panel-limbs" role="tabpanel" aria-labelledby="kala-tab-limbs" className="space-y-4">
           <div role="group" aria-label="पञ्चाङ्ग के 5 अंग · Select Panchang limb" className="grid grid-cols-2 gap-2 sm:grid-cols-5">
             {FIVE_LIMBS.map((limb, idx) => {
               const selected = idx === limbIdx;
-              const Icons = [Moon, Clock, Star, Sun, Layers];
-              const Icon = Icons[idx] ?? Star;
+              const Icon = LIMB_ICONS[idx] ?? Star;
               return (
                 <button
                   key={limb.num}
@@ -237,6 +268,8 @@ export function InteractiveKalaStudio() {
                   aria-pressed={selected}
                   onClick={() => setLimbIdx(idx)}
                   className={`focus-ring flex min-h-[44px] items-center gap-2 rounded-xl border px-3 py-2 text-left text-xs font-semibold transition ${
+                    idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+                  } ${
                     selected
                       ? 'border-dharma-saffron bg-dharma-saffron/15 text-dharma-text'
                       : 'border-dharma-border bg-dharma-bg/60 text-dharma-muted hover:text-dharma-text'
@@ -257,7 +290,7 @@ export function InteractiveKalaStudio() {
             <div className="md:col-span-4 flex flex-col items-center text-center gap-2">
               <div className="relative flex h-24 w-24 items-center justify-center">
                 <svg className="h-24 w-24 -rotate-90" viewBox="0 0 96 96" aria-hidden="true">
-                  <circle cx="48" cy="48" r={ringR} fill="none" stroke="currentColor" strokeWidth="6" className="text-dharma-border" />
+                  <circle cx="48" cy="48" r={ringR} fill="none" stroke="currentColor" strokeWidth="6" className="text-dharma-text/20" />
                   <circle
                     cx="48"
                     cy="48"
@@ -268,7 +301,7 @@ export function InteractiveKalaStudio() {
                     strokeDasharray={ringC}
                     strokeDashoffset={limbDashOffset}
                     strokeLinecap="round"
-                    className="text-dharma-saffron transition-[stroke-dashoffset] duration-300"
+                    className="text-dharma-saffron transition-[stroke-dashoffset] duration-300 motion-reduce:transition-none"
                   />
                 </svg>
                 <span lang="hi" className="absolute font-devanagari text-lg font-bold text-dharma-text">
@@ -309,7 +342,7 @@ export function InteractiveKalaStudio() {
           </div>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div id="kala-panel-ahoratra" role="tabpanel" aria-labelledby="kala-tab-ahoratra" className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <label htmlFor="ahoratra-slider" className="text-xs font-semibold text-dharma-muted">
               <span lang="hi" data-bi="hi" className="font-devanagari">सूर्य-चक्र प्रहर चुनें (01 से 06):</span>
@@ -327,11 +360,12 @@ export function InteractiveKalaStudio() {
             max={AHORATRA_WINDOWS.length - 1}
             step={1}
             value={windowIdx}
+            aria-valuetext={`${activeWin.timeLabel}, ${activeWin.en} (${activeWin.hi})`}
             onChange={(e) => setWindowIdx(Number(e.target.value))}
-            className="w-full accent-[var(--tint)] cursor-pointer"
+            className="focus-ring min-h-[44px] w-full accent-[var(--tint)] cursor-pointer rounded-lg"
           />
 
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-6">
+          <div role="group" aria-label="दैनिक प्रहर · Daily windows" className="grid grid-cols-2 gap-2 sm:grid-cols-6">
             {AHORATRA_WINDOWS.map((w, idx) => (
               <button
                 key={w.id}
@@ -345,7 +379,8 @@ export function InteractiveKalaStudio() {
                 }`}
               >
                 <span className="block font-mono text-[10px] tabular-nums text-dharma-saffron">{w.timeLabel.split(' ')[0]}</span>
-                <span lang="hi" className="block truncate font-devanagari">{w.hi}</span>
+                <span lang="hi" data-bi="hi" className="block truncate font-devanagari">{w.hi}</span>
+                <span data-bi="en-only" className="block truncate">{w.en}</span>
               </button>
             ))}
           </div>
@@ -353,17 +388,17 @@ export function InteractiveKalaStudio() {
           <div className="grid gap-4 md:grid-cols-12 items-center rounded-2xl border border-dharma-border bg-dharma-bg/65 p-4 sm:p-6">
             <div className="md:col-span-4 flex flex-col items-center">
               <svg viewBox="0 0 220 110" className="w-full max-w-[210px]" aria-hidden="true">
-                <line x1="16" y1="92" x2="204" y2="92" stroke="currentColor" strokeWidth="1.5" className="text-dharma-border" />
+                <line x1="16" y1="92" x2="204" y2="92" stroke="currentColor" strokeWidth="1.5" className="text-dharma-text/30" />
                 <path
                   d="M 34 92 A 76 68 0 0 1 186 92"
                   fill="none"
                   stroke="currentColor"
                   strokeDasharray="4 4"
                   strokeWidth="1.5"
-                  className="text-dharma-muted/50"
+                  className="text-dharma-muted"
                 />
-                <circle cx={sunX} cy={sunY} r="9" className="fill-amber-500 transition-all duration-300" />
-                <circle cx={sunX} cy={sunY} r="15" className="fill-amber-500/20 transition-all duration-300" />
+                <circle cx={sunX} cy={sunY} r="15" className="fill-[#c2410c]/20 dark:fill-[#fbbf24]/25 transition-all duration-300 motion-reduce:transition-none" />
+                <circle cx={sunX} cy={sunY} r="9" className="fill-[#c2410c] dark:fill-[#fbbf24] transition-all duration-300 motion-reduce:transition-none" />
               </svg>
               <span className="font-mono text-xs font-semibold tabular-nums text-dharma-muted">{activeWin.timeLabel}</span>
             </div>

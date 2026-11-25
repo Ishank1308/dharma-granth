@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import { VerseRouteLink } from './VerseRouteLink';
 import {
@@ -139,11 +139,19 @@ export function VerseStageCard({
   const moreActionsLoaded = useEverTrue(moreActions);
   const [speaking, setSpeaking] = useState(false);
   const [showShortcuts, setShowShortcuts] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const shortcutsBtnRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const onToggleShortcuts = () => setShowShortcuts((v) => !v);
     window.addEventListener('dharma:toggle-shortcuts', onToggleShortcuts);
     return () => window.removeEventListener('dharma:toggle-shortcuts', onToggleShortcuts);
+  }, []);
+
+  useEffect(() => {
+    const onFsChange = () => setIsFullscreen(Boolean(document.fullscreenElement));
+    document.addEventListener('fullscreenchange', onFsChange);
+    return () => document.removeEventListener('fullscreenchange', onFsChange);
   }, []);
 
   // Stop any active browser speech synthesis when navigating between verses or unmounting.
@@ -308,9 +316,11 @@ export function VerseStageCard({
             </button>
 
             <button
+              ref={shortcutsBtnRef}
               type="button"
               onClick={() => setShowShortcuts((v) => !v)}
               aria-expanded={showShortcuts}
+              aria-controls={showShortcuts ? 'reader-shortcuts-panel' : undefined}
               aria-label="कुंजीपटल संकेत · Keyboard shortcuts"
               title="कुंजीपटल संकेत · Keyboard shortcuts (?)"
               className={`focus-ring hidden lg:inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border text-xs font-mono font-bold transition ${LITE_COMPAT} ${
@@ -324,10 +334,24 @@ export function VerseStageCard({
           </div>
         </div>
 
-        {showShortcuts && <ReaderShortcutsPanel onClose={() => setShowShortcuts(false)} />}
+        {showShortcuts && (
+          <ReaderShortcutsPanel
+            onClose={() => {
+              setShowShortcuts(false);
+              if (shortcutsBtnRef.current && shortcutsBtnRef.current.offsetParent !== null) {
+                shortcutsBtnRef.current.focus({ preventScroll: true });
+              }
+            }}
+          />
+        )}
 
         <div className="mt-2.5 text-center">
-          <p className="hidden text-xs font-semibold uppercase tracking-wider text-amber-900 dark:text-amber-300 sm:block">
+          <p
+            lang={/[\u0900-\u097F]/.test(chapterTitle) ? 'hi' : undefined}
+            className={`hidden text-xs font-semibold text-amber-900 dark:text-amber-300 sm:block ${
+              /[\u0900-\u097F]/.test(chapterTitle) ? 'font-devanagari' : 'uppercase tracking-wider'
+            }`}
+          >
             {chapterTitle}
           </p>
           <h1 className="text-title-2 font-semibold text-dharma-text sm:mt-0.5 sm:text-title-1">
@@ -343,7 +367,10 @@ export function VerseStageCard({
           className={`mb-5 flex flex-wrap items-center gap-2 ${RAIL_CARD} p-2.5 text-xs`}
         >
           <button type="button" onClick={onToggleFocus} className={actionBtn}>
-            <Focus className="h-4 w-4" aria-hidden="true" /> Exit focus mode
+            <Focus className="h-4 w-4" aria-hidden="true" />
+            <span lang="hi" data-bi="hi" className="font-devanagari">स्वाध्याय बंद करें</span>
+            <span data-bi="sep" aria-hidden="true">·</span>
+            <span data-bi="en">Exit focus mode</span>
           </button>
           <button
             type="button"
@@ -359,8 +386,16 @@ export function VerseStageCard({
               <span lang="hi" data-bi="hi" className="font-devanagari">पठन व्यवस्था</span>
             </span>
           </button>
-          <button type="button" onClick={onToggleFullscreen} aria-label="Full screen" className={actionBtn}>
-            <span>Full screen</span>
+          <button
+            type="button"
+            onClick={onToggleFullscreen}
+            aria-pressed={isFullscreen}
+            aria-label={isFullscreen ? 'Exit full screen · पूर्ण स्क्रीन बंद करें' : 'Full screen · पूर्ण स्क्रीन'}
+            className={actionBtn}
+          >
+            <span lang="hi" data-bi="hi" className="font-devanagari">{isFullscreen ? 'सामान्य दृश्य' : 'पूर्ण स्क्रीन'}</span>
+            <span data-bi="sep" aria-hidden="true">·</span>
+            <span data-bi="en">{isFullscreen ? 'Exit full screen' : 'Full screen'}</span>
           </button>
           <span role="status" className="ml-auto px-2 text-dharma-muted tabular-nums">
             Verse {toAsciiDigits(index + 1)} of {toAsciiDigits(total)} · {toAsciiDigits(percent)}%

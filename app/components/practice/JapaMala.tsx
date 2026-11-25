@@ -13,7 +13,7 @@ import {
 } from 'framer-motion';
 import { CircleDot, Eye, RotateCcw, Smartphone, Undo2 } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
-import { ToolCard, localISODate } from './shared';
+import { ToolCard, localISODate, notifyPracticeSync } from './shared';
 import { RudrakshaBead, RudrakshaDefs, SilkTassel } from './Rudraksha';
 
 /*
@@ -213,7 +213,9 @@ export function JapaMala() {
 
   const audioRef = useRef<MalaAudio | null>(null);
   const motionRef = useRef<ReturnType<typeof animate> | null>(null);
+  const turnTimeoutRef = useRef<number | null>(null);
   const turningRef = useRef(false);
+  const didMountSyncRef = useRef(false);
   const stampsRef = useRef<number[]>([]);
   const [bpm, setBpm] = useState<number | null>(null);
   const [bloom, setBloom] = useState(0);
@@ -228,12 +230,22 @@ export function JapaMala() {
     if (!turningRef.current && Math.round(pos.get()) !== count) pos.set(count);
   }, [count, pos]);
 
+  // Notify PracticeOpening after useLocalStorage persists updates.
+  useEffect(() => {
+    if (!didMountSyncRef.current) {
+      didMountSyncRef.current = true;
+      return;
+    }
+    notifyPracticeSync();
+  }, [state.date, state.count, state.rounds, state.lifetimeRounds]);
+
   useEffect(() => {
     setWakeLockSupported(typeof navigator !== 'undefined' && 'wakeLock' in navigator);
   }, []);
 
   useEffect(
     () => () => {
+      if (turnTimeoutRef.current !== null) window.clearTimeout(turnTimeoutRef.current);
       motionRef.current?.stop();
       audioRef.current?.ctx.close().catch(() => {});
       audioRef.current = null;
@@ -302,8 +314,10 @@ export function JapaMala() {
       turningRef.current = true;
       setTurning(true);
       glideTo(SUMERU, () => {
-        window.setTimeout(
+        if (turnTimeoutRef.current !== null) window.clearTimeout(turnTimeoutRef.current);
+        turnTimeoutRef.current = window.setTimeout(
           () => {
+            turnTimeoutRef.current = null;
             pos.set(0);
             turningRef.current = false;
             setTurning(false);
@@ -318,6 +332,7 @@ export function JapaMala() {
     setState((prev) => ({ ...prev, date: today, count: next, rounds: prev.date === today ? prev.rounds : 0 }));
     if (sound) playClack(sound);
     if (vibrationEnabled) vibrate(12);
+    setAnnounce(`मनका ${next} / ${MALA} · Bead ${next} of ${MALA}`);
     glideTo(next);
   }, [audio, glideTo, pos, recordPace, reduce, setState, today, vibrationEnabled]);
 
@@ -336,9 +351,11 @@ export function JapaMala() {
         lifetimeRounds: Math.max(0, prev.lifetimeRounds - 1),
       }));
       pos.set(MALA - 1);
+      setAnnounce(`वापस: ${MALA - 1} / ${MALA} · Undone to ${MALA - 1} of ${MALA}`);
     } else {
       countRef.current = c - 1;
       setState((prev) => ({ ...prev, date: today, count: c - 1, rounds: r }));
+      setAnnounce(`वापस: ${c - 1} / ${MALA} · Undone to ${c - 1} of ${MALA}`);
       glideTo(c - 1);
     }
     if (vibrationEnabled) vibrate(8);
@@ -351,6 +368,7 @@ export function JapaMala() {
     glideTo(0);
     stampsRef.current = [];
     setBpm(null);
+    setAnnounce(`चक्र शून्य · Round reset to 0 of ${MALA}`);
   }, [glideTo, setState, today]);
 
   const resetToday = useCallback(() => {
@@ -364,6 +382,7 @@ export function JapaMala() {
     stampsRef.current = [];
     setBpm(null);
     setConfirmReset(false);
+    setAnnounce('आज का जप शून्य किया गया · Today’s count cleared');
   }, [pos, setState, today]);
 
   async function toggleWakeLock() {
@@ -423,7 +442,7 @@ export function JapaMala() {
   for (let i = anchor - WINDOW; i <= anchor + WINDOW; i++) if (i >= 0 && i <= SUMERU) beads.push(i);
 
   const pill =
-    'inline-flex min-h-[36px] items-center gap-1.5 rounded-full border border-[#f5ebe0]/15 px-3 text-xs font-semibold text-[#f5ebe0]/85 transition hover:border-[#e07a5f]/60 hover:text-[#f5ebe0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e07a5f]';
+    'inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-[#f5ebe0]/15 px-3.5 text-xs font-semibold text-[#f5ebe0]/85 transition hover:border-[#e07a5f]/60 hover:text-[#f5ebe0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e07a5f] disabled:opacity-45';
 
   return (
     <ToolCard icon={<CircleDot className="h-5 w-5 text-saffron-600" />} title="108-Bead Rudraksha Mala" titleHindi="जप साधना" accent="saffron">

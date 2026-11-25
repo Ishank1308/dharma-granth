@@ -65,7 +65,7 @@ export function PracticeDashboard() {
   );
 
   function toggle(id: ToolId) {
-    setEnabled({ ...enabled, [id]: !enabled[id] });
+    setEnabled((prev) => ({ ...prev, [id]: prev[id] === false }));
   }
 
   const on = (id: ToolId) => enabled[id] !== false;
@@ -102,7 +102,7 @@ export function PracticeDashboard() {
             <section aria-labelledby="practice-tools-heading">
               <h2 id="practice-tools-heading" className="text-title-2 font-semibold text-dharma-text">
                 <span data-bi="en">Core practices</span>{' '}
-                <span lang="hi" data-bi="hi" data-bi-lead className="ml-1 font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">दैनिक साधन</span>
+                <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari text-base font-normal tracking-normal text-dharma-muted sm:text-[20px]">दैनिक साधन</span>
               </h2>
               <p className="mt-1 text-subhead text-dharma-muted">
                 <span data-bi="en">Choose which practices to keep active.</span>{' '}

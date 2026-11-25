@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import {
   Check,
   ChevronLeft,
@@ -187,15 +187,45 @@ export function InteractiveSvadhyayaWidget({
   const [timerDuration, setTimerDuration] = useState<30 | 60>(30);
   const [remainingSec, setRemainingSec] = useState<number>(30);
   const [timerRunning, setTimerRunning] = useState(false);
+  const stageTabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const studioRef = useRef<HTMLElement | null>(null);
 
-  // Reset per-verse transient state if verse changes while open
+  useEffect(() => {
+    const onEscape = (e: globalThis.KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      if (document.querySelector('[role="dialog"][aria-modal="true"]')) return;
+      const active = document.activeElement;
+      if (active && studioRef.current?.contains(active)) {
+        e.preventDefault();
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', onEscape);
+    return () => window.removeEventListener('keydown', onEscape);
+  }, [onClose]);
+
+  // Reset per-verse transient state when the verse changes while open.
   useEffect(() => {
     setStage(0);
     setActivePadaIdx(0);
     setActivePillarIdx(0);
     setTimerRunning(false);
-    setRemainingSec(timerDuration);
-  }, [verseKey, timerDuration]);
+    setTimerDuration(30);
+    setRemainingSec(30);
+  }, [verseKey]);
+
+  const handleStageKeyDown = (event: KeyboardEvent<HTMLButtonElement>, idx: number) => {
+    let next = idx;
+    if (event.key === 'ArrowRight') next = (idx + 1) % STAGES.length;
+    else if (event.key === 'ArrowLeft') next = (idx - 1 + STAGES.length) % STAGES.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = STAGES.length - 1;
+    else return;
+    event.preventDefault();
+    event.stopPropagation();
+    setStage(next as 0 | 1 | 2 | 3);
+    stageTabRefs.current[next]?.focus();
+  };
 
   // Load persisted Sankalpa checks on mount / verse change
   useEffect(() => {
@@ -328,6 +358,7 @@ export function InteractiveSvadhyayaWidget({
 
   return (
     <section
+      ref={studioRef}
       id="svadhyaya-studio"
       aria-labelledby="svadhyaya-studio-title"
       className="rounded-card border border-dharma-border bg-dharma-card p-4 shadow-raised sm:p-6"
@@ -364,8 +395,9 @@ export function InteractiveSvadhyayaWidget({
       {/* 4-Stage Stepper Header + Progress Bar */}
       <div className="mt-4 space-y-3">
         <div
-          role="group"
+          role="tablist"
           aria-label="स्वाध्याय सोपान · Svadhyaya stages"
+          aria-orientation="horizontal"
           className="grid grid-cols-2 gap-2 sm:grid-cols-4"
         >
           {STAGES.map((s, idx) => {
@@ -373,9 +405,17 @@ export function InteractiveSvadhyayaWidget({
             return (
               <button
                 key={s.num}
+                ref={(el) => {
+                  stageTabRefs.current[idx] = el;
+                }}
+                id={`svadhyaya-stage-tab-${idx}`}
                 type="button"
-                aria-pressed={isActive}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`svadhyaya-stage-panel-${idx}`}
+                tabIndex={isActive ? 0 : -1}
                 onClick={() => setStage(idx as 0 | 1 | 2 | 3)}
+                onKeyDown={(e) => handleStageKeyDown(e, idx)}
                 className={`focus-ring flex min-h-[44px] min-w-0 items-center gap-2 rounded-xl border px-3 py-2 text-left text-xs font-semibold transition ${
                   isActive
                     ? 'border-saffron-600/60 bg-saffron-500/15 text-dharma-text shadow-2xs dark:border-saffron-400/60 dark:bg-saffron-400/15'
@@ -452,7 +492,13 @@ export function InteractiveSvadhyayaWidget({
       </div>
 
       {/* Active Stage Workspace */}
-      <div className="mt-4 pt-1">
+      <div
+        id={`svadhyaya-stage-panel-${stage}`}
+        role="tabpanel"
+        aria-labelledby={`svadhyaya-stage-tab-${stage}`}
+        tabIndex={0}
+        className="focus-ring mt-4 rounded-xl pt-1"
+      >
         {/* STAGE 1: 01 श्रवण · Shloka */}
         {stage === 0 && (
           <div className="space-y-4">
@@ -533,7 +579,7 @@ export function InteractiveSvadhyayaWidget({
                         onClick={() => setActivePadaIdx(idx)}
                         className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
                           isSelected
-                            ? 'border-saffron-600 bg-saffron-600 text-white shadow-2xs dark:border-saffron-400 dark:bg-saffron-400 dark:text-stone-950'
+                            ? 'border-saffron-700 bg-saffron-700 text-white shadow-2xs dark:border-saffron-400 dark:bg-saffron-400 dark:text-stone-950'
                             : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-saffron-500/50'
                         }`}
                       >
@@ -609,7 +655,7 @@ export function InteractiveSvadhyayaWidget({
                     {(activeLex?.simpleHindi || activeLex?.contextualMeaningHi) && (
                       <p
                         lang="hi"
-                        className="mt-1 font-devanagari text-sm leading-[1.9] text-dharma-muted"
+                        className="mt-1 font-devanagari text-sm leading-[1.95] text-dharma-muted"
                       >
                         {activeLex.simpleHindi || activeLex.contextualMeaningHi}
                       </p>
@@ -1101,7 +1147,7 @@ export function InteractiveSvadhyayaWidget({
                         >
                           {isChecked && <Check className="h-3.5 w-3.5 stroke-[2.5]" />}
                         </span>
-                        <span lang="hi" className="min-w-0 flex-1 font-devanagari text-sm leading-[1.85]">
+                        <span lang="hi" className="min-w-0 flex-1 font-devanagari text-sm leading-[1.95]">
                           {item.title && (
                             <strong className="font-semibold text-dharma-text">
                               {toAsciiDigits(item.title)}:{' '}
@@ -1125,7 +1171,7 @@ export function InteractiveSvadhyayaWidget({
                   </h3>
                   <blockquote
                     lang={/[ऀ-ॿ]/.test(reflectionQuestion) ? 'hi' : 'en'}
-                    className="border-l-2 border-saffron-500 pl-3 font-devanagari text-sm font-medium leading-[1.9] text-dharma-text dark:border-saffron-400"
+                    className="border-l-2 border-saffron-500 pl-3 font-devanagari text-sm font-medium leading-[1.95] text-dharma-text dark:border-saffron-400"
                   >
                     &ldquo;{toAsciiDigits(reflectionQuestion)}&rdquo;
                   </blockquote>
@@ -1208,7 +1254,7 @@ export function InteractiveSvadhyayaWidget({
                       <button
                         type="button"
                         onClick={handleStartPause}
-                        className="focus-ring inline-flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full border border-saffron-600 bg-saffron-600 px-3.5 text-xs font-semibold text-white transition hover:bg-saffron-700 dark:border-saffron-400 dark:bg-saffron-400 dark:text-stone-950 dark:hover:bg-saffron-300"
+                        className="focus-ring inline-flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full border border-saffron-700 bg-saffron-700 px-3.5 text-xs font-semibold text-white transition hover:bg-saffron-800 dark:border-saffron-400 dark:bg-saffron-400 dark:text-stone-950 dark:hover:bg-saffron-300"
                       >
                         {timerRunning ? (
                           <>

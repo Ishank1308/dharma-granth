@@ -16,6 +16,7 @@ export interface VersePageLayoutProps {
   /** Unique key per verse (`scriptureId:chapterId:verseNumber`) to reset active word selection cleanly. */
   verseIdentity: string;
   focusMode: boolean;
+  liteMode?: boolean;
   onToggleFocus: () => void;
   prevHref?: string;
   nextHref?: string;
@@ -42,6 +43,7 @@ export interface VersePageLayoutProps {
 export function VersePageLayout({
   verseIdentity,
   focusMode,
+  liteMode = false,
   onToggleFocus,
   prevHref,
   nextHref,
@@ -56,6 +58,7 @@ export function VersePageLayout({
 }: VersePageLayoutProps) {
   const router = useRouter();
   const [selectedWordIndex, setSelectedWordIndex] = useState(0);
+  const singleColumn = focusMode || liteMode;
 
   useEffect(() => {
     setSelectedWordIndex(0);
@@ -87,12 +90,12 @@ export function VersePageLayout({
         onToggleFocus();
         return;
       }
-      if (event.key === '[' && padaCount > 0) {
+      if (event.key === '[' && padaCount > 0 && !liteMode) {
         event.preventDefault();
         setSelectedWordIndex((prev) => (prev - 1 + padaCount) % padaCount);
         return;
       }
-      if (event.key === ']' && padaCount > 0) {
+      if (event.key === ']' && padaCount > 0 && !liteMode) {
         event.preventDefault();
         setSelectedWordIndex((prev) => (prev + 1) % padaCount);
         return;
@@ -117,7 +120,7 @@ export function VersePageLayout({
         window.dispatchEvent(new CustomEvent('dharma:toggle-bookmark'));
         return;
       }
-      if (event.key === 'n' || event.key === 'N') {
+      if ((event.key === 'n' || event.key === 'N') && !singleColumn) {
         const noteBox = document.querySelector<HTMLTextAreaElement>(
           'aside[aria-label="Study companion"] textarea',
         );
@@ -146,20 +149,20 @@ export function VersePageLayout({
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [dialogOpen, prevHref, nextHref, padaCount, onToggleFocus, router]);
+  }, [dialogOpen, prevHref, nextHref, padaCount, liteMode, singleColumn, onToggleFocus, router]);
 
   return (
     <div
       className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 sm:py-5 lg:py-8 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start [[data-lite-mode=true]_&]:transition-none"
       {...swipeHandlers}
     >
-      {!focusMode && mobileTopBar && (
+      {!singleColumn && mobileTopBar && (
         <div className="hidden sm:block lg:hidden min-w-0">
           {mobileTopBar}
         </div>
       )}
 
-      {!focusMode && (
+      {!singleColumn && (
         <aside
           aria-label="Chapter navigation"
           className={`hidden lg:flex lg:flex-col lg:col-span-3 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-hidden min-w-0 pr-0.5 ${LITE_COMPAT}`}
@@ -173,7 +176,7 @@ export function VersePageLayout({
         data-vt-pane
         style={paneStyle}
         className={`min-w-0 ${
-          focusMode
+          singleColumn
             ? 'lg:col-span-8 lg:col-start-3 pb-28 sm:pb-20'
             : 'lg:col-span-6 pb-4 lg:pb-20'
         }`}
@@ -186,7 +189,7 @@ export function VersePageLayout({
         })}
       </main>
 
-      {!focusMode && (
+      {!singleColumn && (
         <aside
           aria-label="Study companion"
           className={`min-w-0 lg:col-span-3 lg:sticky lg:top-20 space-y-5 pb-28 sm:pb-20 lg:pb-6 ${LITE_COMPAT}`}

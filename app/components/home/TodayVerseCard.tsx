@@ -169,13 +169,13 @@ export function TodayVerseCard({
       {/* ── Top Fluent Glass Header Bar ── */}
       <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-dharma-border/60 pb-4">
         <div className="flex flex-wrap items-center gap-2.5">
-          <h2 id="today-verse-heading" className="inline-flex items-center gap-2 text-sm font-bold tracking-normal text-dharma-saffron">
+          <h2 id="today-verse-heading" className="inline-flex items-center gap-2 text-sm font-bold text-dharma-saffron">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-dharma-saffron/15 text-dharma-saffron shadow-[inset_0_1px_0_var(--glass-specular-top)]">
               <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
-            <span>Verse of the day</span>
-            <span aria-hidden="true">·</span>
-            <span lang="hi" className="font-devanagari">आज का श्लोक</span>
+            <span data-bi="en">Verse of the day</span>
+            <span data-bi="sep" aria-hidden="true">·</span>
+            <span lang="hi" data-bi="hi" className="font-devanagari">आज का श्लोक</span>
           </h2>
 
           {item.theme && (
@@ -201,7 +201,7 @@ export function TodayVerseCard({
                 setShowTranslit((v) => !v);
               }}
               aria-pressed={showTranslit}
-              className={`focus-ring tap-halo inline-flex min-h-[38px] items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
+              className={`focus-ring tap-halo inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3.5 py-2 text-xs font-semibold transition-colors ${
                 showTranslit
                   ? 'border-dharma-saffron/50 bg-dharma-saffron/15 text-dharma-saffron'
                   : 'border-dharma-border/80 bg-dharma-bg/70 text-dharma-muted hover:text-dharma-text'
@@ -214,7 +214,7 @@ export function TodayVerseCard({
 
           <Link
             href={verseHref}
-            className="verse-ref focus-ring tap-halo inline-flex min-h-[38px] items-center gap-1 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/12 px-3.5 py-1.5 text-xs font-semibold tabular-nums text-dharma-text hover:border-dharma-saffron"
+            className="verse-ref focus-ring tap-halo inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-saffron/30 bg-dharma-saffron/12 px-3.5 py-2 text-xs font-semibold tabular-nums text-dharma-text hover:border-dharma-saffron"
             aria-label={`${item.scriptureTitle} ${item.chapterId}.${item.verseId}`}
           >
             <span>{item.scriptureTitle}</span>
@@ -282,7 +282,7 @@ export function TodayVerseCard({
                         triggerTactileFeedback('selection', 'softTap');
                         setActiveWordIdx(idx);
                       }}
-                      className={`focus-ring tap-halo inline-flex min-h-[36px] items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs transition-all ${
+                      className={`focus-ring tap-halo inline-flex min-h-[44px] items-center gap-1.5 rounded-xl border px-3 py-2 text-xs transition-all ${
                         selected
                           ? 'border-dharma-saffron bg-dharma-saffron/15 font-bold text-dharma-text shadow-2xs'
                           : 'border-dharma-border/70 bg-dharma-card/80 text-dharma-text/85 hover:border-dharma-saffron/45'
@@ -314,8 +314,10 @@ export function TodayVerseCard({
           <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
             {item.hindi && (
               <div className="rounded-2xl border border-dharma-border/75 bg-dharma-bg/70 p-4 shadow-2xs">
-                <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-saffron font-devanagari">
-                  हिन्दी भावार्थ · Hindi Meaning
+                <p className="mb-1.5 text-[11px] font-bold text-dharma-saffron">
+                  <span lang="hi" data-bi="hi" className="font-devanagari">हिन्दी भावार्थ</span>
+                  <span data-bi="sep" aria-hidden="true"> · </span>
+                  <span data-bi="en" className="uppercase tracking-wider">Hindi Meaning</span>
                 </p>
                 <p lang="hi" className="font-devanagari text-sm sm:text-[15px] leading-[1.85] text-dharma-text">
                   {item.hindi}
@@ -367,7 +369,7 @@ export function TodayVerseCard({
                       triggerTactileFeedback('selection', 'softTap');
                       setActiveStep(id);
                     }}
-                    className={`focus-ring flex min-h-[44px] items-center justify-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-semibold transition-all ${
+                    className={`focus-ring flex min-h-[46px] items-center justify-center gap-1.5 rounded-lg px-2 py-2 text-xs font-semibold transition-all ${
                       active
                         ? 'bg-dharma-text text-dharma-bg shadow-xs'
                         : 'text-dharma-muted hover:text-dharma-text'
@@ -449,7 +451,7 @@ export function TodayVerseCard({
                     className={`focus-ring inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all ${
                       sadhanaDone
                         ? 'border border-emerald-500/40 bg-emerald-600/15 text-emerald-900 dark:text-emerald-200'
-                        : 'bg-dharma-saffron text-dharma-bg shadow-xs hover:opacity-95'
+                        : 'bg-dharma-saffron text-white shadow-xs hover:opacity-95 dark:text-black'
                     }`}
                   >
                     <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
@@ -524,7 +526,7 @@ export function TodayVerseCard({
             <div className="flex flex-wrap items-center gap-2.5">
               <Link
                 href={verseHref}
-                className="chevron-nudge focus-ring inline-flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-xl bg-dharma-saffron px-4 py-2.5 text-xs sm:text-sm font-bold text-dharma-bg shadow-xs transition hover:opacity-95"
+                className="chevron-nudge focus-ring inline-flex min-h-[46px] flex-1 items-center justify-center gap-1.5 rounded-xl bg-dharma-saffron px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xs transition hover:opacity-95 dark:text-black"
               >
                 <BookOpen className="h-4 w-4 shrink-0" aria-hidden="true" />
                 <span>Read in context</span>
@@ -533,12 +535,12 @@ export function TodayVerseCard({
               <button
                 type="button"
                 onClick={handleShareClick}
-                className="focus-ring inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-4 py-2.5 text-xs sm:text-sm font-semibold text-dharma-text transition hover:border-dharma-saffron/50 hover:text-dharma-saffron"
+                className="focus-ring inline-flex min-h-[46px] items-center justify-center gap-1.5 rounded-xl border border-dharma-border bg-dharma-card px-4 py-2.5 text-xs sm:text-sm font-semibold text-dharma-text transition hover:border-dharma-saffron/50 hover:text-dharma-saffron"
               >
                 <Share2 className="h-4 w-4 text-dharma-saffron" aria-hidden="true" />
-                <span>Share card</span>
-                <span aria-hidden="true" className="text-dharma-muted">·</span>
-                <span lang="hi" className="font-devanagari">साझा करें</span>
+                <span data-bi="en">Share card</span>
+                <span data-bi="sep" aria-hidden="true" className="text-dharma-muted">·</span>
+                <span lang="hi" data-bi="hi" className="font-devanagari">साझा करें</span>
               </button>
             </div>
 
