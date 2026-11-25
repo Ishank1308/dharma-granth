@@ -40,7 +40,6 @@ const PLATES: Record<string, ImageSourcePropType> = {
   brahmavaivartapuran: require('../../../assets/covers/plates/brahmavaivartapuran.webp'),
   shivpurana: require('../../../assets/covers/plates/shivpurana.webp'),
   lingapuran: require('../../../assets/covers/plates/lingapuran.webp'),
-  shivaswarodaya: require('../../../assets/covers/plates/shivaswarodaya.webp'),
   skandapuran: require('../../../assets/covers/plates/skandapuran.webp'),
   vishnupurana: require('../../../assets/covers/plates/vishnupurana.webp'),
   mahanarayana: require('../../../assets/covers/plates/mahanarayana.webp'),

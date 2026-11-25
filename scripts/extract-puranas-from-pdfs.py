@@ -142,12 +142,6 @@ SCRIPTURE_MAP = {
         "category": "tantra",
         "pdfs": [DHARMA_ROOT / "shiva_sahinta_withhinditika.pdf"],
     },
-    "shivaswarodaya": {
-        "title": "Shiva Swarodaya",
-        "titleSanskrit": "शिवस्वरोदय",
-        "category": "tantra",
-        "pdfs": [DHARMA_ROOT / "shiva-swarodaya-sanskrit-hindi.pdf"],
-    },
     "yogarasayanam": {
         "title": "Yoga Rasayanam",
         "titleSanskrit": "योगरसायनम्",

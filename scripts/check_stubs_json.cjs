@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const ids = ['jabala', 'kaushitaki', 'mahanarayana', 'maitri', 'muktika', 'niralamba', 'shivaswarodaya', 'tejobindu', 'yogarasayanam'];
+const ids = ['jabala', 'kaushitaki', 'mahanarayana', 'maitri', 'muktika', 'niralamba', 'tejobindu', 'yogarasayanam'];
 
 for (const id of ids) {
   const p = path.resolve('public/data/scriptures-full', id + '.json');

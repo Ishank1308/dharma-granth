@@ -1531,20 +1531,6 @@ async function seedShivaSamhita(): Promise<FullScripture> {
   };
 }
 
-async function seedShivaSwarodaya(): Promise<FullScripture> {
-  log("Shiva Swarodaya — no full itx available; writing curated fallback.");
-  return {
-    id: "shivaswarodaya",
-    title: "Shiva Swarodaya",
-    titleSanskrit: "शिवस्वरोदय",
-    category: "tantra",
-    source: { repo: "https://sanskritdocuments.org/", license: "Full text not available. Curated highlights are hand-authored.", fetchedAt: new Date().toISOString() },
-    totalVerses: 0,
-    totalChapters: 0,
-    chapters: [],
-  };
-}
-
 async function seedYogaVasistha(): Promise<FullScripture> {
   log("Yoga Vasistha — no full itx available; writing curated fallback.");
   return {
@@ -1695,7 +1681,6 @@ const SEEDERS: Array<{ name: string; fn: () => Promise<FullScripture> }> = [
   { name: "padmapuran", fn: seedPadmaPurana },
   { name: "brahmandpuran", fn: seedBrahmandaPurana },
   { name: "shivasamhita", fn: seedShivaSamhita },
-  { name: "shivaswarodaya", fn: seedShivaSwarodaya },
   { name: "yogavasistha", fn: seedYogaVasistha },
   { name: "yogarasayanam", fn: seedYogaRasayanam },
   { name: "vinayapatrika", fn: seedVinayaPatrika },

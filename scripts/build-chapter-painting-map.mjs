@@ -137,7 +137,6 @@ const CURATED = {
   durgasaptashati: list('ocean', 'devi', 'devi', 'devi', 'kailash', 'devi', 'storm', 'lanka', 'devi', 'storm', 'dawn', 'temple', 'ganga'),
   yogasutra: list('yogi', 'yogi', 'stars', 'dawn'),
   shivasamhita: range(1, 5, 'yogi'),
-  shivaswarodaya: list('yogi', 'cosmos', 'yogi', 'stars'),
   yogarasayanam: range(1, 3, 'yogi'),
   brahmasutra: range(1, 4, 'manuscript'),
   vivekchudamani: list('manuscript'),

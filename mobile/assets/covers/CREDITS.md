@@ -15,7 +15,6 @@ cover's arch and saved as small WebP files. Sources are on Wikimedia Commons.
 | brahmavaivartapuran | Radha and Krishna | Raja Ravi Varma | [File:Radha Madhavam.jpg](https://commons.wikimedia.org/wiki/File:Radha_Madhavam.jpg) |
 | shivpurana | Shiva, Parvati and Nandi | Raja Ravi Varma | [File:An Oleograph of Shiva, Parvati and Nandi by Raja Ravi Varma.jpg](https://commons.wikimedia.org/wiki/File:An_Oleograph_of_Shiva,_Parvati_and_Nandi_by_Raja_Ravi_Varma.jpg) |
 | lingapuran | Descent of Ganga | Raja Ravi Varma | [File:Ravi Varma-Descent of Ganga.jpg](https://commons.wikimedia.org/wiki/File:Ravi_Varma-Descent_of_Ganga.jpg) |
-| shivaswarodaya | Shiva family (Shiva, Parvati, Ganesha, Nandi) | Unknown, perhaps Raja Ravi Varma | [File:Siva-parvati-by-raja-ravi-varma.jpg](https://commons.wikimedia.org/wiki/File:Siva-parvati-by-raja-ravi-varma.jpg) |
 | skandapuran | Kartikeya / Shanmukha Subramanya | Raja Ravi Varma | [File:Murugan by Raja Ravi Varma.jpg](https://commons.wikimedia.org/wiki/File:Murugan_by_Raja_Ravi_Varma.jpg) |
 | vishnupurana | Vishnu on Shesha (Sheshashayi) | Ravi Varma Press | [File:Sheshashayi, Ravi Varma Press.jpg](https://commons.wikimedia.org/wiki/File:Sheshashayi,_Ravi_Varma_Press.jpg) |
 | mahanarayana | Vishnu on Shesha (Sheshanarayana) | Raja Ravi Varma | [File:Raja Ravi Varma, Seshanarayana (Oleographic print).jpg](https://commons.wikimedia.org/wiki/File:Raja_Ravi_Varma,_Seshanarayana_(Oleographic_print).jpg) |

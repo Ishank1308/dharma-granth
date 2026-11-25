@@ -60,7 +60,6 @@ export const SCRIPTURE_NAMES: Record<string, { title: string; titleSanskrit: str
   "yogavasishtha": { title: "Yoga Vasishtha", titleSanskrit: "योगवासिष्ठ" },
   "ravanasamhita": { title: "Ravana Samhita", titleSanskrit: "रावण संहिता" },
   "shivasamhita": { title: "Shiva Samhita", titleSanskrit: "शिवसंहिता" },
-  "shivaswarodaya": { title: "Shiva Swarodaya", titleSanskrit: "शिवस्वरोदय" },
   "yogarasayanam": { title: "Yoga Rasayanam", titleSanskrit: "योगरसायनम्" },
   "vinayapatrika": { title: "Vinaya Patrika", titleSanskrit: "विनयपत्रिका" },
   "brahmavaivartapuran": { title: "Brahmavaivarta Purana", titleSanskrit: "ब्रह्मवैवर्तपुराण" },

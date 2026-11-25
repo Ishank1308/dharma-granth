@@ -411,21 +411,6 @@ export const SCRIPTURE_SOURCES: Record<string, Partial<ScriptureSourceMeta>> = {
     alternativeReadingNote: 'Collated with Bibliotheca Indica and Chowkhamba recensions.',
   },
 
-  shivaswarodaya: {
-    sourceScriptureTitle: 'Shiva Swarodaya',
-    sourceScriptureTitleSanskrit: 'शिवस्वरोदय',
-    sanskritEdition: 'Pandit Basti Ram Samvat 1952 Critical Recension / Khemraj Shrikrishnadass',
-    sanskritEditionDetails: 'Complete dialogue between Shiva and Parvati on Svara Yoga, Ida-Pingala-Sushumna rhythms, and the five tattvas in respiration.',
-    publisherArchive: 'Gita Press & Classical Tantra Archives',
-    archiveUrl: 'https://sanskritdocuments.org/doc_yoga/shivasvarodaya.html',
-    primaryTranslator: 'Rai Bahadur Srisa Chandra Vasu & Dharma Granth Research Team',
-    traditionalCommentaryAuthor: 'Lord Shiva (उमामहेश्वर संवाद)',
-    editorialReviewer: 'Dharma Granth Research Team',
-    dateReviewed: '2026-10-19',
-    numberingSystemNote: '395 metrical verses partitioned into 4 thematic chapters.',
-    alternativeReadingNote: 'Collated with Kaivalyadhama Svara Yoga research papers.',
-  },
-
   yogarasayanam: {
     sourceScriptureTitle: 'Yoga Rasayanam',
     sourceScriptureTitleSanskrit: 'योगरसायनम्',

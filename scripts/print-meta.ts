@@ -5,7 +5,6 @@ const missingIds = [
   "padmapuran",
   "brahmandpuran",
   "shivasamhita",
-  "shivaswarodaya",
   "yogavasistha",
   "yogarasayanam",
   "vinayapatrika",

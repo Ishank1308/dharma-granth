@@ -793,20 +793,6 @@ export const scriptureCatalog: ScriptureMeta[] = [
     hasData: true,
   },
   {
-    id: "shivaswarodaya",
-    title: "Shiva Swarodaya",
-    titleSanskrit: "शिवस्वरोदय",
-    titleIast: "Śiva Svarodaya",
-    category: "tantra",
-    description:
-      "A 395-verse Tantric dialogue between Shiva and Parvati — the complete science of Svara Yoga, unique in the tradition for being entirely practical and predictive. 'Svarameva param jnanam' — the breath itself is the supreme knowledge. Ch.1: The three svaras (Ida/left-nostril/lunar, Pingala/right-nostril/solar, Sushumna/bilateral); the ultradian nasal cycle as real-time body-mind diagnostic; 'svarajño jīvati' — one who knows the svara truly lives. Ch.2 Tattva Viveka: detecting which of the five elements (earth/water/fire/air/ether) is active in the breath via breath shape, temperature, and duration; matching action to tattva; Sushumna as the supreme window for meditation. Ch.3 Svara Phala: svara-prashna — reading the breath at the moment of decision; health as rhythmic nasal alternation; disrupted cycle as earliest diagnostic signal. Ch.4 Mahaprana: 'svare sūryaḥ pratiṣṭhitaḥ' — the sun is established in the breath; individual breath as localised expression of the cosmic breath; macrocosm-microcosm identity.",
-    totalChapters: 4,
-    totalVerses: 395,
-    isCurated: true,
-    tags: ["Tantra","SvaraYoga","Breath","Nostril","NasalCycle","Prana","Tattva","IdaPingala","Sushumna","Prediction","BreathDiagnosis","Shiva","Chronobiology"],
-    hasData: true,
-  },
-  {
     id: "yogarasayanam",
     title: "Yoga Rasayanam",
     titleSanskrit: "योगरसायनम्",

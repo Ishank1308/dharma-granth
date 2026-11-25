@@ -165,7 +165,6 @@ const BY_BOOK: Record<string, EmblemName> = {
   vishnupurana: 'conch',
   // Yoga and tantra
   shivasamhita: 'trishul',
-  shivaswarodaya: 'trishul',
   nityakarmakriya: 'kalasha',
 };
 const BY_CATEGORY: Record<string, EmblemName> = {
