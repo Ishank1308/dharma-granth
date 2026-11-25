@@ -88,10 +88,11 @@ export function todayChapters(state: SankalpaState, today = dayKey()): { chapter
   const done = state.completedDates.includes(today);
   if (state.mode === 'daily-chapter') return { chapters: [state.targetChapter], done, dayInCycle: 1 };
   if (state.mode === 'weekly-parayana') {
-    // Monday 1–3, Tuesday 4–6 … Saturday 16–18; Sunday is for reflection on chapter 1–3 again.
+    // Monday 1–3, Tuesday 4–6 … Saturday 16–18; Sunday is contemplation/review (no new chapters).
     const dow = new Date(utc(today)).getUTCDay();
-    const start = dow === 0 ? 1 : (dow - 1) * 3 + 1;
-    return { chapters: [start, start + 1, start + 2], done, dayInCycle: dow === 0 ? 7 : dow };
+    if (dow === 0) return { chapters: [], done, dayInCycle: 7 };
+    const start = (dow - 1) * 3 + 1;
+    return { chapters: [start, start + 1, start + 2], done, dayInCycle: dow };
   }
   const read = new Set(state.cycleChapters);
   const next = Array.from({ length: 18 }, (_, i) => i + 1).find((n) => !read.has(n)) ?? 1;
