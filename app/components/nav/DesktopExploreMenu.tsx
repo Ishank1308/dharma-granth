@@ -86,9 +86,10 @@ export function DesktopExploreMenu({
               const GroupIcon = group.icon;
               return (
                 <div key={group.name} className="space-y-1.5">
-                  <div className="flex items-center gap-1.5 px-2 pb-1 text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
+                  <div className="flex items-center gap-1.5 px-2 pb-1 text-[11px] font-bold text-saffron-700 dark:text-saffron-300">
                     <GroupIcon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                    <span>{group.name}</span>
+                    <span lang="hi" data-bi="hi" className="font-devanagari">{group.name}</span>
+                    <span data-bi="en-only" className="uppercase tracking-wider">{group.nameEn}</span>
                   </div>
                   <div className="space-y-0.5">
                     {group.items.map((item) => {

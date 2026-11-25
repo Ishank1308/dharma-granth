@@ -132,11 +132,20 @@ export function LearnOpening({
               <span className="apple-tint-chip" aria-hidden="true">
                 <Icon className="h-4 w-4" />
               </span>
-              <span className="mt-auto min-w-0 pt-2">
+              <span className={`${tile === 'tall' ? 'mt-4' : 'mt-auto'} min-w-0 pt-2`}>
                 <span className="block text-subhead font-semibold leading-snug tracking-[-0.02em] text-dharma-text sm:text-body">{en}</span>{' '}
                 <span lang="hi" className="block font-devanagari text-footnote text-dharma-muted">{hi}</span>{' '}
                 <span className={`mt-1 text-[14px] leading-snug text-dharma-muted ${tile === 'tall' ? 'block' : 'hidden sm:block'}`}>{sub}</span>
               </span>
+              {tile === 'tall' && (
+                <span className="mt-auto pt-3 text-footnote font-medium text-dharma-saffron">
+                  <span data-bi="en">Explore journeys</span>
+                  <span data-bi="sep" aria-hidden="true"> · </span>
+                  <span lang="hi" data-bi="hi" className="font-devanagari">यात्राएँ देखें</span>
+                  {' '}
+                  <span aria-hidden="true">›</span>
+                </span>
+              )}
             </Link>
           </BentoCell>
         ))}

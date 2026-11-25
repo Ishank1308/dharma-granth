@@ -64,22 +64,22 @@ export function ShareVerseButton(props: Props) {
         <button
           type="button"
           onClick={handleOpen}
-          className="inline-flex items-center gap-1.5 rounded-full border border-dharma-border/60 bg-dharma-bg px-3 py-1 text-xs font-medium text-dharma-muted transition hover:border-saffron-400 hover:text-saffron-700 hover:bg-saffron-50/50 cursor-pointer"
+          className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-dharma-border/70 bg-dharma-bg px-3.5 py-2 text-xs font-medium text-dharma-text-secondary transition hover:border-dharma-saffron/60 hover:bg-saffron-500/10 hover:text-saffron-800 dark:hover:text-saffron-300 cursor-pointer"
           aria-label="पत्रिका साझा करें (Share Quote Card)"
           title="पत्रिका कोट स्टूडियो (9:16, 4:5, 1:1)"
         >
-          <Share2 className="h-3.5 w-3.5" />
-          <span>साझा करें</span>
+          <Share2 className="h-3.5 w-3.5" aria-hidden="true" />
+          <span lang="hi" className="font-devanagari">साझा करें</span>
         </button>
       ) : (
         <button
           type="button"
           onClick={handleOpen}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/80 text-dharma-muted backdrop-blur transition hover:border-saffron-300 hover:text-saffron-700 shadow-2xs cursor-pointer"
+          className="focus-ring inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-dharma-border/70 bg-dharma-card/85 text-dharma-text-secondary backdrop-blur transition hover:border-dharma-saffron/60 hover:text-saffron-800 dark:hover:text-saffron-300 shadow-2xs cursor-pointer"
           aria-label="पत्रिका साझा करें (Share Quote Card)"
           title="पत्रिका कोट स्टूडियो (9:16, 4:5, 1:1)"
         >
-          <Share2 className="h-4 w-4" />
+          <Share2 className="h-4 w-4" aria-hidden="true" />
         </button>
       )}
 

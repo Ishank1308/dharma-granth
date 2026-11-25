@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Check, ChevronLeft, ChevronRight, Eye, RotateCcw, Sparkles } from 'lucide-react';
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Eye, EyeOff, RotateCcw, Sparkles } from 'lucide-react';
 import { learningPaths } from '@/data/learning-paths';
 
 interface RecallCardItem {
@@ -25,6 +25,8 @@ export function InteractiveShravanaStudio() {
   const [cardIdx, setCardIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [masteredIds, setMasteredIds] = useState<string[]>([]);
+  const [liveMsg, setLiveMsg] = useState('');
+  const cardRegionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {
@@ -75,13 +77,51 @@ export function InteractiveShravanaStudio() {
       ? masteredIds.filter((id) => id !== active.id)
       : [...masteredIds, active.id];
     setMasteredIds(next);
+    setLiveMsg(isMastered ? `${active.term}: unmarked` : `${active.term}: स्पष्ट चिह्नित · marked clear`);
     try {
       if (next.length === 0) window.localStorage.removeItem(STORAGE_KEY);
       else window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     } catch {}
   };
 
-  if (!active) return null;
+  const goPrev = useCallback(() => {
+    if (cards.length === 0) return;
+    const nextIdx = (safeIdx - 1 + cards.length) % cards.length;
+    setCardIdx(nextIdx);
+    setRevealed(false);
+    setLiveMsg(`Card ${nextIdx + 1} of ${cards.length}: ${cards[nextIdx]?.term ?? ''}`);
+  }, [cards, safeIdx]);
+
+  const goNext = useCallback(() => {
+    if (cards.length === 0) return;
+    const nextIdx = (safeIdx + 1) % cards.length;
+    setCardIdx(nextIdx);
+    setRevealed(false);
+    setLiveMsg(`Card ${nextIdx + 1} of ${cards.length}: ${cards[nextIdx]?.term ?? ''}`);
+  }, [cards, safeIdx]);
+
+  useEffect(() => {
+    const el = cardRegionRef.current;
+    if (!el) return;
+    const onKeyDown = (e: globalThis.KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && target !== el && target.closest('input, textarea, select, a, button')) return;
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goPrev();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goNext();
+      } else if (e.key === ' ' || e.key === 'Enter' || e.key === 'r' || e.key === 'R') {
+        e.preventDefault();
+        setRevealed((v) => !v);
+      }
+    };
+    el.addEventListener('keydown', onKeyDown);
+    return () => el.removeEventListener('keydown', onKeyDown);
+  }, [goNext, goPrev]);
+
+  if (allCards.length === 0) return null;
 
   return (
     <section
@@ -91,12 +131,12 @@ export function InteractiveShravanaStudio() {
     >
       <div className="apple-card p-5 sm:p-7 space-y-5 border border-dharma-border">
         <div className="flex flex-wrap items-start justify-between gap-3 border-b border-dharma-border pb-4">
-          <div className="space-y-1">
-            <p className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-saffron">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-              <span lang="hi" data-bi="hi" className="font-devanagari normal-case">संवादात्मक स्मरण अभ्यास · उपकरण पर सुरक्षित</span>
+          <div className="min-w-0 space-y-1">
+            <p className="inline-flex flex-wrap items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-dharma-saffron">
+              <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+              <span lang="hi" data-bi="hi" className="font-devanagari normal-case">संपादकीय अभ्यास · मूल शास्त्र नहीं · उपकरण पर सुरक्षित</span>
               <span data-bi="sep"> · </span>
-              <span data-bi="en">Interactive Concept Recall · Saved on Device</span>
+              <span data-bi="en">Editorial Application · Not Scripture · Saved on Device</span>
             </p>
             <h2 id="learn-shravana-heading" className="text-title-2 font-semibold text-dharma-text">
               <span data-bi="en">Quick Concept Studio</span>
@@ -107,19 +147,22 @@ export function InteractiveShravanaStudio() {
 
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-dharma-border bg-dharma-bg px-3 py-1 font-mono text-xs font-semibold tabular-nums text-dharma-saffron">
-              {masteredIds.length} / {allCards.length} स्पष्ट
+              {masteredIds.length} / {allCards.length}{' '}
+              <span lang="hi" data-bi="hi" className="font-devanagari">स्पष्ट</span>
+              <span data-bi="en-only">clear</span>
             </span>
             {masteredIds.length > 0 && (
               <button
                 type="button"
                 onClick={() => {
                   setMasteredIds([]);
+                  setLiveMsg('स्मरण प्रगति रीसेट की गई · Recall progress reset');
                   try {
                     window.localStorage.removeItem(STORAGE_KEY);
                   } catch {}
                 }}
                 aria-label="स्मरण प्रगति रीसेट करें · Reset recall progress"
-                className="focus-ring inline-flex min-h-[38px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-3 text-xs text-dharma-muted hover:text-dharma-text"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full border border-dharma-border bg-dharma-bg px-3.5 text-xs text-dharma-muted hover:text-dharma-text"
               >
                 <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
                 <span>Reset</span>
@@ -147,7 +190,7 @@ export function InteractiveShravanaStudio() {
                   setCardIdx(0);
                   setRevealed(false);
                 }}
-                className={`focus-ring min-h-[40px] rounded-full border px-3.5 text-xs font-semibold transition ${
+                className={`focus-ring min-h-[44px] rounded-full border px-3.5 text-xs font-semibold transition ${
                   levelFilter === lvl.id
                     ? 'border-dharma-saffron bg-dharma-saffron text-dharma-bg'
                     : 'border-dharma-border bg-dharma-bg/70 text-dharma-text hover:border-dharma-saffron/50'
@@ -161,14 +204,39 @@ export function InteractiveShravanaStudio() {
           </div>
 
           <span className="font-mono text-xs tabular-nums text-dharma-muted">
-            Card {safeIdx + 1} / {cards.length}
+            {cards.length > 0 ? `Card ${safeIdx + 1} / ${cards.length}` : '0 / 0'}
           </span>
         </div>
 
+        <p role="status" aria-live="polite" className="sr-only">
+          {liveMsg}
+        </p>
+
         {/* Active Recall Card */}
-        <div className="rounded-2xl border border-dharma-border bg-dharma-bg/65 p-5 sm:p-6 space-y-4">
+        {!active ? (
+          <div className="rounded-2xl border border-dharma-border bg-dharma-bg/65 p-6 text-center space-y-3">
+            <p className="text-sm text-dharma-muted">No concept cards in this level yet.</p>
+            <button
+              type="button"
+              onClick={() => {
+                setLevelFilter('all');
+                setCardIdx(0);
+              }}
+              className="focus-ring inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-card px-4 text-xs font-semibold text-dharma-saffron"
+            >
+              Show all concepts
+            </button>
+          </div>
+        ) : (
+        <div
+          ref={cardRegionRef}
+          tabIndex={0}
+          role="region"
+          aria-label={`अवधारणा स्मरण कार्ड · Concept recall card: ${active.term}. Use Space to reveal or hide, Left and Right arrows for previous or next card.`}
+          className="focus-ring rounded-2xl border border-dharma-border bg-dharma-bg/65 p-5 sm:p-6 space-y-4 outline-none"
+        >
           <div className="flex flex-wrap items-start justify-between gap-3">
-            <div>
+            <div className="min-w-0">
               <p className="text-xs font-semibold text-dharma-saffron">{active.scriptureAnchor}</p>
               <p lang="sa" className="mt-1 font-devanagari text-2xl sm:text-3xl font-semibold text-dharma-text">
                 {active.sanskrit}
@@ -185,7 +253,7 @@ export function InteractiveShravanaStudio() {
               onClick={toggleMastered}
               className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-4 text-xs font-semibold transition ${
                 isMastered
-                  ? 'border-emerald-600 bg-emerald-600 text-white'
+                  ? 'border-emerald-700 bg-emerald-700 text-white'
                   : 'border-dharma-border bg-dharma-card text-dharma-text hover:border-dharma-saffron'
               }`}
             >
@@ -195,27 +263,37 @@ export function InteractiveShravanaStudio() {
             </button>
           </div>
 
-          {!revealed ? (
-            <div className="pt-2">
-              <button
-                type="button"
-                onClick={() => setRevealed(true)}
-                className="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-full bg-dharma-saffron px-5 text-xs font-semibold text-dharma-bg transition hover:opacity-90"
-              >
-                <Eye className="h-4 w-4" aria-hidden="true" />
-                <span lang="hi" data-bi="hi" className="font-devanagari">अर्थ एवं दार्शनिक संदर्भ देखें</span>
-                <span data-bi="en-only">Reveal Meaning & Context</span>
-              </button>
-            </div>
-          ) : (
-            <div className="space-y-3 border-t border-dharma-border pt-4">
+          <div className="pt-1">
+            <button
+              type="button"
+              aria-expanded={revealed}
+              aria-controls="shravana-recall-answer"
+              onClick={() => setRevealed((v) => !v)}
+              className={`focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-full px-5 text-xs font-semibold transition ${
+                revealed
+                  ? 'border border-dharma-border bg-dharma-card text-dharma-text hover:border-dharma-saffron'
+                  : 'bg-dharma-saffron text-dharma-bg hover:opacity-90'
+              }`}
+            >
+              {revealed ? <EyeOff className="h-4 w-4" aria-hidden="true" /> : <Eye className="h-4 w-4" aria-hidden="true" />}
+              <span lang="hi" data-bi="hi" className="font-devanagari">
+                {revealed ? 'अर्थ छिपाएँ' : 'अर्थ एवं दार्शनिक संदर्भ देखें'}
+              </span>
+              <span data-bi="en-only">
+                {revealed ? 'Hide Meaning & Context' : 'Reveal Meaning & Context'}
+              </span>
+            </button>
+          </div>
+
+          {revealed && (
+            <div id="shravana-recall-answer" className="space-y-3 border-t border-dharma-border pt-4">
               <p className="text-sm sm:text-base leading-relaxed text-dharma-text">{active.definition}</p>
               <p className="rounded-xl border border-dharma-border bg-dharma-card p-3.5 text-xs sm:text-sm leading-relaxed text-dharma-muted">
                 <strong className="text-dharma-text">Philosophical Context:</strong> {active.philosophicalContext}
               </p>
               <Link
                 href={`/learn/${active.pathId}/`}
-                className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 text-xs font-semibold text-dharma-saffron hover:underline"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 text-xs font-semibold text-dharma-saffron hover:underline"
               >
                 <span>Open pathway: {active.pathTitle}</span>
                 <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -226,10 +304,7 @@ export function InteractiveShravanaStudio() {
           <div className="flex items-center justify-between gap-3 pt-2 border-t border-dharma-border/60">
             <button
               type="button"
-              onClick={() => {
-                setCardIdx((i) => (i - 1 + cards.length) % cards.length);
-                setRevealed(false);
-              }}
+              onClick={goPrev}
               aria-label="पिछली अवधारणा · Previous concept"
               className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-4 text-xs font-semibold text-dharma-text hover:border-dharma-saffron"
             >
@@ -239,10 +314,7 @@ export function InteractiveShravanaStudio() {
             </button>
             <button
               type="button"
-              onClick={() => {
-                setCardIdx((i) => (i + 1) % cards.length);
-                setRevealed(false);
-              }}
+              onClick={goNext}
               aria-label="अगली अवधारणा · Next concept"
               className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-dharma-border bg-dharma-card px-4 text-xs font-semibold text-dharma-text hover:border-dharma-saffron"
             >
@@ -252,6 +324,7 @@ export function InteractiveShravanaStudio() {
             </button>
           </div>
         </div>
+        )}
       </div>
     </section>
   );

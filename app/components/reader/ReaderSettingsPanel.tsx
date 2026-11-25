@@ -138,7 +138,7 @@ const CONTRASTS: Array<Choice<ContrastPref>> = [
 
 /** Sample sized exactly like the verse, so a change can be judged before closing the panel. */
 const PREVIEW_SIZE: Record<SizeStep, string> = { sm: 'text-xl', md: 'text-2xl', lg: 'text-[1.75rem]', xl: 'text-3xl' };
-const PREVIEW_LEADING: Record<LineSpacing, string> = { compact: 'leading-[1.7]', normal: 'leading-[1.85]', relaxed: 'leading-[2.05]', loose: 'leading-[2.35]' };
+const PREVIEW_LEADING: Record<LineSpacing, string> = { compact: 'leading-[1.8]', normal: 'leading-[1.95]', relaxed: 'leading-[2.05]', loose: 'leading-[2.35]' };
 
 const SIZES: Array<Choice<SizeStep>> = [
   { id: 'sm', label: 'S' },
@@ -273,7 +273,11 @@ export function ReaderSettingsPanel({
     >
       <div className="space-y-6">
         <div aria-hidden="true" className="rounded-card border border-separator/80 bg-surface-raised p-4 text-center shadow-xs">
-          <p className="mb-1 text-caption-2 font-semibold uppercase tracking-wider text-label-tertiary">Preview · पूर्वावलोकन</p>
+          <p className="mb-1 text-caption-2 font-semibold uppercase tracking-wider text-label-tertiary">
+            <span data-bi="en">Preview</span>
+            <span data-bi="sep" aria-hidden="true"> · </span>
+            <span lang="hi" data-bi="hi" className="font-devanagari normal-case">पूर्वावलोकन</span>
+          </p>
           <p lang="sa" className={`font-devanagari text-label-primary ${PREVIEW_SIZE[settings.sanskritSize]} ${PREVIEW_LEADING[settings.lineSpacing]}`}>
             कर्मण्येवाधिकारस्ते<br />मा फलेषु कदाचन ।
           </p>

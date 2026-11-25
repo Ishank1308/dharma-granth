@@ -33,7 +33,7 @@ export function HomeSanctuaryGateway() {
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
             <Link
               href="/panchang/"
-              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg transition-opacity hover:opacity-90"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90 dark:text-black"
             >
               <span lang="hi" className="font-devanagari">दैनिक पंचांग</span>
               <span aria-hidden="true">›</span>
@@ -60,11 +60,11 @@ export function HomeSanctuaryGateway() {
         >
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -bottom-16 size-52 rounded-full border border-dharma-maroon/15" />
           <div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-800 dark:text-saffron-300">
               <Compass className="h-4 w-4" aria-hidden="true" />
-              <span data-bi="en">Guided Inquiry</span>
+              <span data-bi="en" className="uppercase tracking-wider">Guided Inquiry</span>
               <span data-bi="sep" aria-hidden="true">·</span>
-              <span lang="hi" data-bi="hi" className="font-devanagari normal-case">ज्ञान मार्ग</span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">ज्ञान मार्ग</span>
             </span>
 
             <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-dharma-text sm:text-2xl">
@@ -85,7 +85,7 @@ export function HomeSanctuaryGateway() {
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
             <Link
               href="/wisdom-pathways/"
-              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg transition-opacity hover:opacity-90"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90 dark:text-black"
             >
               <span lang="hi" className="font-devanagari">ज्ञान मार्ग चुनें</span>
               <span aria-hidden="true">›</span>
@@ -112,11 +112,11 @@ export function HomeSanctuaryGateway() {
         >
           <div aria-hidden="true" className="pointer-events-none absolute -right-12 -top-16 size-44 rounded-full border border-dharma-saffron/15" />
           <div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-800 dark:text-saffron-300">
               <Sparkles className="h-4 w-4" aria-hidden="true" />
-              <span data-bi="en">Vedic Chants</span>
+              <span data-bi="en" className="uppercase tracking-wider">Vedic Chants</span>
               <span data-bi="sep" aria-hidden="true">·</span>
-              <span lang="hi" data-bi="hi" className="font-devanagari normal-case">मन्त्र व तीर्थ</span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">मन्त्र व तीर्थ</span>
             </span>
 
             <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-dharma-text sm:text-2xl">
@@ -137,7 +137,7 @@ export function HomeSanctuaryGateway() {
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
             <Link
               href="/mantras/"
-              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg transition-opacity hover:opacity-90"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90 dark:text-black"
             >
               <span lang="hi" className="font-devanagari">मन्त्र संग्रह खोलें</span>
               <span aria-hidden="true">›</span>
@@ -158,11 +158,11 @@ export function HomeSanctuaryGateway() {
         >
           <div aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-14 size-44 rounded-full border border-dharma-gold/15" />
           <div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-dharma-saffron">
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-saffron-800 dark:text-saffron-300">
               <Flame className="h-4 w-4" aria-hidden="true" />
-              <span data-bi="en">Daily Practice</span>
+              <span data-bi="en" className="uppercase tracking-wider">Daily Practice</span>
               <span data-bi="sep" aria-hidden="true">·</span>
-              <span lang="hi" data-bi="hi" className="font-devanagari normal-case">दैनिक साधना</span>
+              <span lang="hi" data-bi="hi" className="font-devanagari">दैनिक साधना</span>
             </span>
 
             <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-dharma-text sm:text-2xl">
@@ -184,7 +184,7 @@ export function HomeSanctuaryGateway() {
           <div className="mt-5 flex flex-wrap gap-2 pt-3 border-t border-dharma-border/60">
             <Link
               href="/practice/"
-              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-dharma-bg transition-opacity hover:opacity-90"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full bg-dharma-saffron px-4 py-2 text-xs font-semibold text-white transition-opacity hover:opacity-90 dark:text-black"
             >
               <span lang="hi" className="font-devanagari">साधना कक्ष</span>
               <span aria-hidden="true">›</span>

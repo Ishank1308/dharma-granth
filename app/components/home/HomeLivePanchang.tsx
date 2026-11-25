@@ -79,10 +79,11 @@ export function HomeLivePanchang() {
       </div>
 
       <h3 className="mt-3 text-xl font-semibold tracking-[-0.02em] text-dharma-text sm:text-2xl">
-        <Link href="/panchang/" className="hover:text-dharma-saffron transition-colors">
-          <span>Today&apos;s Vedic Almanac</span>{' '}
-          <span lang="hi" className="font-devanagari font-normal text-dharma-muted">
-            · आज का पंचांग
+        <Link href="/panchang/" className="focus-ring rounded hover:text-dharma-saffron transition-colors">
+          <span data-bi="en">Today&apos;s Vedic Almanac</span>{' '}
+          <span data-bi="sep" aria-hidden="true" className="font-normal text-dharma-muted">· </span>
+          <span lang="hi" data-bi="hi" data-bi-lead className="font-devanagari font-normal text-dharma-muted">
+            आज का पंचांग
           </span>
         </Link>
       </h3>

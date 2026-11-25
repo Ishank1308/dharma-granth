@@ -163,7 +163,10 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
   // Detect prefers-reduced-motion & Escape key cleanly
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key !== 'Escape') return;
+      if (document.querySelector('[role="dialog"][aria-modal="true"]')) return;
+      e.preventDefault();
+      onClose();
     };
     window.addEventListener('keydown', onKeyDown);
     if (typeof window.matchMedia !== 'function') {
@@ -517,6 +520,7 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
       <div
         role="tablist"
         aria-label="5-Step Dharmic Inquiry"
+        aria-orientation="horizontal"
         className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 p-2.5 sm:p-3 border-b border-dharma-border bg-dharma-bg/40"
       >
         {STUDIO_STEPS.map((step, idx) => {
@@ -563,7 +567,8 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
         id={`wisdom-step-panel-${activeStep}`}
         role="tabpanel"
         aria-labelledby={`wisdom-step-tab-${activeStep}`}
-        className="p-5 sm:p-8 space-y-6"
+        tabIndex={0}
+        className="p-5 sm:p-8 space-y-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-saffron-600"
       >
         {/* ── STEP 01: ACKNOWLEDGE ── */}
         {activeStep === 0 && (
@@ -588,7 +593,7 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="rounded-2xl border border-dharma-border bg-dharma-bg/50 p-4 space-y-2">
-                <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-dharma-muted font-devanagari">
+                <p lang="hi" className="text-xs font-bold text-dharma-muted font-devanagari">
                   मानवीय अनुभव (हिंदी)
                 </p>
                 <p lang="hi" className="font-devanagari text-sm text-dharma-text leading-loose">
@@ -709,7 +714,7 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="rounded-2xl border border-dharma-border bg-dharma-bg/50 p-4 space-y-1.5">
-                <p lang="hi" className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300 font-devanagari">
+                <p lang="hi" className="text-xs font-bold text-saffron-700 dark:text-saffron-300 font-devanagari">
                   हिंदी भावार्थ
                 </p>
                 <p lang="hi" className="font-devanagari text-sm sm:text-base text-dharma-text leading-loose">
@@ -865,9 +870,9 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
                       {secondsLeft}s
                     </span>
                     <span className="text-xs font-bold text-saffron-700 dark:text-saffron-300 mt-0.5">
-                      <span lang="hi" className="font-devanagari">{currentPhase.labelHi}</span>
-                      {' · '}
-                      <span>{currentPhase.labelEn}</span>
+                      <span lang="hi" data-bi="hi" className="font-devanagari">{currentPhase.labelHi}</span>
+                      <span data-bi="sep" aria-hidden="true"> · </span>
+                      <span data-bi="en">{currentPhase.labelEn}</span>
                     </span>
                   </div>
                 </div>
@@ -896,9 +901,9 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
                       >
                         <div className="font-mono tabular-nums font-bold text-dharma-text">{p.seconds}s</div>
                         <div>
-                          <span lang="hi" className="font-devanagari">{p.labelHi}</span>
-                          {' · '}
-                          <span>{p.labelEn}</span>
+                          <span lang="hi" data-bi="hi" className="font-devanagari">{p.labelHi}</span>
+                          <span data-bi="sep" aria-hidden="true"> · </span>
+                          <span data-bi="en">{p.labelEn}</span>
                         </div>
                       </div>
                     );
@@ -977,9 +982,9 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
                   <span data-bi="en">Action Checklist</span>
                 </p>
                 <p className="text-xs text-dharma-muted">
-                  <span lang="hi" data-bi="hi">आपकी प्रगति इसी उपकरण पर सुरक्षित रहती है।</span>
+                  <span lang="hi" data-bi="hi" className="font-devanagari">संपादकीय अभ्यास · मूल शास्त्र नहीं · आपकी प्रगति इसी उपकरण पर सुरक्षित रहती है।</span>
                   <span data-bi="sep"> · </span>
-                  <span data-bi="en">Progress is saved locally on this device.</span>
+                  <span data-bi="en">Editorial Application · Not Scripture · Progress is saved locally on this device.</span>
                 </p>
               </div>
 
@@ -1034,7 +1039,7 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
               className="h-2 w-full rounded-full bg-dharma-bg overflow-hidden border border-dharma-border"
             >
               <div
-                className="h-full bg-emerald-600 transition-all duration-300"
+                className="h-full bg-emerald-700 motion-safe:transition-[width] motion-safe:duration-300 motion-reduce:transition-none"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
@@ -1059,7 +1064,7 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
                       aria-hidden="true"
                       className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-xs font-bold transition ${
                         isChecked
-                          ? 'border-emerald-600 bg-emerald-600 text-white'
+                          ? 'border-emerald-700 bg-emerald-700 text-white'
                           : 'border-dharma-border bg-dharma-card text-transparent'
                       }`}
                     >
@@ -1068,7 +1073,7 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
                     <span className="space-y-1 min-w-0">
                       <span className="block text-sm font-bold text-dharma-text">
                         <span className="font-mono tabular-nums text-xs text-saffron-700 dark:text-saffron-400 mr-1.5">
-                          0{i + 1}
+                          {String(i + 1).padStart(2, '0')}
                         </span>
                         <span lang="hi" data-bi="hi" className="font-devanagari">{step.titleHi}</span>
                         <span data-bi="sep"> · </span>
@@ -1092,11 +1097,18 @@ export function TopicInteractiveWalkthrough({ topic, onClose }: TopicInteractive
         {activeStep === 4 && selectedQuestion && (
           <div className="space-y-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
-                05 <span lang="hi" data-bi="hi">आत्म-चिंतन — शांत प्रश्न एवं निजी मनन</span>
-                <span data-bi="sep"> · </span>
-                <span data-bi="en">Self-Inquiry & Private Reflection</span>
-              </p>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
+                  05 <span lang="hi" data-bi="hi">आत्म-चिंतन — शांत प्रश्न एवं निजी मनन</span>
+                  <span data-bi="sep"> · </span>
+                  <span data-bi="en">Self-Inquiry &amp; Private Reflection</span>
+                </p>
+                <p className="mt-0.5 text-[11px] text-dharma-muted">
+                  <span lang="hi" data-bi="hi" className="font-devanagari">संपादकीय अभ्यास · मूल शास्त्र नहीं</span>
+                  <span data-bi="sep" aria-hidden="true"> · </span>
+                  <span data-bi="en">Editorial Application · Not Scripture</span>
+                </p>
+              </div>
 
               <div className="flex items-center gap-1.5" role="group" aria-label="Self-inquiry question stepper">
                 <button

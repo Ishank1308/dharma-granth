@@ -210,9 +210,11 @@ export function MobileNavDrawer({
             <div className="flex items-center justify-between mb-2 px-1">
               <h3
                 id="drawer-nav-heading"
-                className="text-[11px] font-bold uppercase tracking-wider text-dharma-muted"
+                className="text-[11px] font-bold text-dharma-muted"
               >
-                मुख्य अनुभाग · Navigation
+                <span lang="hi" data-bi="hi" className="font-devanagari">मुख्य अनुभाग</span>
+                <span data-bi="sep"> · </span>
+                <span data-bi="en" className="uppercase tracking-wider">Navigation</span>
               </h3>
               <span className="text-[10px] text-dharma-muted font-devanagari">
                 {drawerSections.length} पावन विभाग
@@ -255,10 +257,11 @@ export function MobileNavDrawer({
                       </span>
 
                       <div className="flex flex-col min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <span className="truncate text-sm font-bold">{item.label}</span>
-                          <span className="hidden min-[380px]:inline text-xs font-normal text-dharma-muted truncate">
-                            ({item.labelEn})
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <span lang="hi" data-bi="hi" className="truncate font-devanagari text-sm font-bold">{item.label}</span>
+                          <span data-bi="sep" aria-hidden="true" className="hidden min-[380px]:inline text-xs font-normal text-dharma-muted">·</span>
+                          <span data-bi="en" data-bi-lead className="hidden min-[380px]:inline truncate text-xs font-normal text-dharma-muted">
+                            {item.labelEn}
                           </span>
                         </div>
                         <span className="truncate text-[11px] font-normal text-dharma-muted">
@@ -413,9 +416,10 @@ export function MobileNavDrawer({
                 const GroupIcon = group.icon;
                 return (
                   <div key={group.name} className="space-y-1.5">
-                    <div className="flex items-center gap-1.5 px-1 text-[10.5px] font-semibold text-saffron-700 dark:text-saffron-300 uppercase tracking-wider">
-                      <GroupIcon className="h-3 w-3" aria-hidden="true" />
-                      <span>{group.name}</span>
+                    <div className="flex items-center gap-1.5 px-1 text-[10.5px] font-semibold text-saffron-700 dark:text-saffron-300">
+                      <GroupIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
+                      <span lang="hi" data-bi="hi" className="font-devanagari">{group.name}</span>
+                      <span data-bi="en-only" className="uppercase tracking-wider">{group.nameEn}</span>
                     </div>
                     <div className="flex flex-wrap gap-1.5">
                       {group.items.map((item) => (
@@ -423,7 +427,7 @@ export function MobileNavDrawer({
                           key={item.href}
                           href={item.href}
                           onClick={onClose}
-                          className={`inline-flex min-h-[38px] items-center rounded-xl border px-3 py-1.5 text-xs font-semibold transition active:scale-95 ${
+                          className={`inline-flex min-h-[44px] items-center rounded-xl border px-3 py-2 text-xs font-semibold transition active:scale-95 ${
                             isActive(item.href)
                               ? 'border-saffron-400 bg-saffron-500/10 text-saffron-700 dark:text-saffron-300 font-bold'
                               : 'border-dharma-border/80 bg-dharma-bg text-dharma-muted hover:border-saffron-300 hover:text-dharma-text'

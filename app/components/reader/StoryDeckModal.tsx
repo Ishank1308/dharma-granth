@@ -206,8 +206,9 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
           <div className="p-4 pb-2">
             <div className="flex items-center justify-between mb-2.5">
               <div className="flex items-center gap-2">
-                <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-saffron-500/20 text-saffron-300 text-[11px] font-bold tracking-wider uppercase border border-saffron-500/30">
-                  <Clock className="w-3 h-3" /> 60-सेकंड सार
+                <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-saffron-500/20 text-saffron-300 text-[11px] font-bold border border-saffron-500/30">
+                  <Clock className="w-3 h-3" aria-hidden="true" />
+                  <span lang="hi" className="font-devanagari">60-सेकंड सार</span>
                 </span>
                 <span className="text-xs text-stone-400 font-medium">
                   {toAsciiDigits(data.verseRef)}
@@ -217,9 +218,9 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                 type="button"
                 onClick={onClose}
                 aria-label="कथा डेक बंद करें"
-                className="w-8 h-8 rounded-full flex items-center justify-center text-stone-400 hover:text-white hover:bg-white/10 transition"
+                className="min-h-[44px] min-w-[44px] rounded-full flex items-center justify-center text-stone-300 hover:text-white hover:bg-white/10 transition"
               >
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
 
@@ -255,8 +256,10 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   transition={{ duration: 0.2 }}
                   className="flex-1 flex flex-col justify-center space-y-6"
                 >
-                  <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-widest">
-                    <HelpCircle className="w-4 h-4" /> कार्ड 1 · आधुनिक द्वंद्व (The Human Struggle)
+                  <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-400">
+                    <HelpCircle className="w-4 h-4" aria-hidden="true" />
+                    <span lang="hi" className="font-devanagari">कार्ड 1 · आधुनिक द्वंद्व</span>
+                    <span className="uppercase tracking-widest">(The Human Struggle)</span>
                   </div>
 
                   <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white leading-snug">
@@ -291,8 +294,10 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   transition={{ duration: 0.2 }}
                   className="flex-1 flex flex-col justify-center space-y-5 text-center"
                 >
-                  <div className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-saffron-400 uppercase tracking-widest">
-                    <Sparkles className="w-3.5 h-3.5" /> कार्ड 2 · मूल श्लोक (Canonical Sanskrit)
+                  <div className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-saffron-400">
+                    <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
+                    <span lang="hi" className="font-devanagari">कार्ड 2 · मूल श्लोक</span>
+                    <span className="uppercase tracking-widest">(Canonical Sanskrit)</span>
                   </div>
 
                   <div className="relative rounded-2xl border border-amber-500/30 bg-amber-950/20 p-6 sm:p-8 backdrop-blur-sm shadow-inner">
@@ -318,13 +323,15 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   transition={{ duration: 0.2 }}
                   className="flex-1 flex flex-col justify-center space-y-5"
                 >
-                  <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-300 uppercase tracking-widest">
-                    <BookOpen className="w-4 h-4" /> कार्ड 3 · साहित्यिक भावार्थ (Writerly Meaning)
+                  <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-300">
+                    <BookOpen className="w-4 h-4" aria-hidden="true" />
+                    <span lang="hi" className="font-devanagari">कार्ड 3 · साहित्यिक भावार्थ</span>
+                    <span className="uppercase tracking-widest">(Writerly Meaning)</span>
                   </div>
 
                   {data.hindi && (
                     <div className="space-y-1">
-                      <p className="text-[11px] font-bold text-saffron-400 uppercase tracking-wider">
+                      <p lang="hi" className="font-devanagari text-[11px] font-bold text-saffron-400">
                         सरल हिंदी भावार्थ:
                       </p>
                       <p lang="hi" className="font-devanagari text-base sm:text-lg text-stone-100 leading-relaxed">
@@ -363,14 +370,18 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   transition={{ duration: 0.2 }}
                   className="flex-1 flex flex-col justify-center space-y-4"
                 >
-                  <div className="inline-flex items-center gap-2 text-xs font-bold text-rose-400 uppercase tracking-widest">
-                    <AlertCircle className="w-4 h-4" /> कार्ड 4 · भ्रम निवारण (Misreading vs Truth)
+                  <div className="inline-flex items-center gap-2 text-xs font-bold text-rose-400">
+                    <AlertCircle className="w-4 h-4" aria-hidden="true" />
+                    <span lang="hi" className="font-devanagari">कार्ड 4 · भ्रम निवारण</span>
+                    <span className="uppercase tracking-widest">(Misreading vs Truth)</span>
                   </div>
 
                   {/* Misreading Box */}
                   <div className="rounded-2xl border border-rose-500/30 bg-rose-950/30 p-4 space-y-1.5">
-                    <p className="text-xs font-bold text-rose-300 uppercase tracking-wider flex items-center gap-1.5">
-                      <span>❌</span> सामान्य भ्रम (What It Does NOT Mean)
+                    <p className="text-xs font-bold text-rose-300 flex items-center gap-1.5">
+                      <span aria-hidden="true">❌</span>
+                      <span lang="hi" className="font-devanagari">सामान्य भ्रम</span>
+                      <span className="uppercase tracking-wider">(What It Does NOT Mean)</span>
                     </p>
                     <p lang="hi" className="font-devanagari text-sm text-stone-200 leading-relaxed">
                       {data.meta.misreadingHi}
@@ -382,8 +393,10 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
 
                   {/* Deeper Truth Box */}
                   <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/30 p-4 space-y-1.5">
-                    <p className="text-xs font-bold text-emerald-300 uppercase tracking-wider flex items-center gap-1.5">
-                      <span>✓</span> वास्तविक दृष्टि (The Deeper Truth)
+                    <p className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                      <span aria-hidden="true">✓</span>
+                      <span lang="hi" className="font-devanagari">वास्तविक दृष्टि</span>
+                      <span className="uppercase tracking-wider">(The Deeper Truth)</span>
                     </p>
                     <p lang="hi" className="font-devanagari text-sm text-stone-100 leading-relaxed font-medium">
                       {data.meta.deeperTruthHi}
@@ -405,13 +418,15 @@ export function StoryDeckModal({ isOpen, onClose, data, onOpenShare }: Props) {
                   transition={{ duration: 0.2 }}
                   className="flex-1 flex flex-col justify-center space-y-6"
                 >
-                  <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-300 uppercase tracking-widest">
-                    <Lightbulb className="w-4 h-4" /> कार्ड 5 · आज का सूक्ष्म अभ्यास (Micro-Practice)
+                  <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-300">
+                    <Lightbulb className="w-4 h-4" aria-hidden="true" />
+                    <span lang="hi" className="font-devanagari">कार्ड 5 · आज का सूक्ष्म अभ्यास</span>
+                    <span className="uppercase tracking-widest">(Micro-Practice)</span>
                   </div>
 
                   <div className="rounded-2xl border border-amber-400/30 bg-gradient-to-br from-amber-500/15 via-saffron-500/10 to-transparent p-5 space-y-3">
-                    <p className="text-xs font-bold text-amber-300 uppercase tracking-wider">
-                      1-मिनट आत्म-चिंतन:
+                    <p lang="hi" className="font-devanagari text-xs font-bold text-amber-300">
+                      1-मिनट आत्म-चिंतन · Editorial Practice:
                     </p>
                     <p lang="hi" className="font-devanagari text-base sm:text-lg text-white font-medium leading-relaxed">
                       {data.meta.microPracticeHi}

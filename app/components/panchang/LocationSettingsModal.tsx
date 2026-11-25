@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Check, Globe, MapPin, Search, Sliders, X, AlertCircle } from 'lucide-react';
 import { LocationConfig, PRESET_LOCATIONS } from '@/lib/panchang';
 
@@ -19,6 +19,10 @@ export function LocationSettingsModal({
 }: LocationSettingsModalProps) {
   const [activeTab, setActiveTab] = useState<'presets' | 'custom'>('presets');
   const [searchQuery, setSearchQuery] = useState('');
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const presetsTabRef = useRef<HTMLButtonElement>(null);
+  const customTabRef = useRef<HTMLButtonElement>(null);
 
   // Custom location fields
   const [customName, setCustomName] = useState('');
@@ -32,12 +36,49 @@ export function LocationSettingsModal({
 
   useEffect(() => {
     if (!isOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    closeBtnRef.current?.focus();
+
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        onClose();
+        return;
+      }
+      if (e.key === 'Tab' && dialogRef.current) {
+        const focusables = dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]):not([tabindex="-1"]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     }
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      previousFocus?.focus?.();
+    };
   }, [isOpen, onClose]);
+
+  const handleTabKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'Home' || e.key === 'End') {
+      e.preventDefault();
+      const next =
+        e.key === 'Home' ? 'presets'
+        : e.key === 'End' ? 'custom'
+        : activeTab === 'presets' ? 'custom' : 'presets';
+      setActiveTab(next);
+      (next === 'presets' ? presetsTabRef : customTabRef).current?.focus();
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -106,11 +147,13 @@ export function LocationSettingsModal({
     >
       <button
         type="button"
+        tabIndex={-1}
         aria-label="Close dialog backdrop"
         className="fixed inset-0 bg-black/60 backdrop-blur-sm -z-10 cursor-default"
         onClick={onClose}
       />
       <div
+        ref={dialogRef}
         className="w-full max-w-xl max-h-[90vh] flex flex-col rounded-3xl border border-dharma-border bg-dharma-card shadow-2xl overflow-hidden"
       >
         {/* Header */}
@@ -129,39 +172,58 @@ export function LocationSettingsModal({
             </div>
           </div>
           <button
+            ref={closeBtnRef}
             type="button"
             onClick={onClose}
-            className="rounded-xl p-2 text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text transition"
+            className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text transition"
             aria-label="Close dialog"
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
 
         {/* Mode Tabs */}
-        <div className="flex border-b border-dharma-border px-6 pt-3 gap-2 bg-dharma-panel/50">
+        <div
+          role="tablist"
+          aria-label="Location input mode"
+          className="flex border-b border-dharma-border px-6 pt-3 gap-2 bg-dharma-panel/50"
+        >
           <button
+            ref={presetsTabRef}
+            id="loc-tab-presets"
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'presets'}
+            aria-controls="loc-panel-presets"
+            tabIndex={activeTab === 'presets' ? 0 : -1}
+            onKeyDown={handleTabKeyDown}
             onClick={() => setActiveTab('presets')}
-            className={`flex items-center gap-2 border-b-2 px-4 py-2.5 text-xs font-bold transition ${
+            className={`focus-ring flex min-h-[44px] items-center gap-2 border-b-2 px-4 py-2.5 text-xs font-bold transition ${
               activeTab === 'presets'
                 ? 'border-saffron-600 text-saffron-700 dark:text-saffron-400'
                 : 'border-transparent text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            <Globe className="h-3.5 w-3.5" />
+            <Globe className="h-3.5 w-3.5" aria-hidden="true" />
             <span>Preset Cities ({PRESET_LOCATIONS.length})</span>
           </button>
           <button
+            ref={customTabRef}
+            id="loc-tab-custom"
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'custom'}
+            aria-controls="loc-panel-custom"
+            tabIndex={activeTab === 'custom' ? 0 : -1}
+            onKeyDown={handleTabKeyDown}
             onClick={() => setActiveTab('custom')}
-            className={`flex items-center gap-2 border-b-2 px-4 py-2.5 text-xs font-bold transition ${
+            className={`focus-ring flex min-h-[44px] items-center gap-2 border-b-2 px-4 py-2.5 text-xs font-bold transition ${
               activeTab === 'custom'
                 ? 'border-saffron-600 text-saffron-700 dark:text-saffron-400'
                 : 'border-transparent text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            <Sliders className="h-3.5 w-3.5" />
+            <Sliders className="h-3.5 w-3.5" aria-hidden="true" />
             <span>Custom Coordinates</span>
           </button>
         </div>
@@ -169,16 +231,17 @@ export function LocationSettingsModal({
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto p-6">
           {activeTab === 'presets' && (
-            <div className="space-y-4">
+            <div id="loc-panel-presets" role="tabpanel" aria-labelledby="loc-tab-presets" className="space-y-4">
               {/* Search box */}
               <div className="relative">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-dharma-muted" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-dharma-muted" aria-hidden="true" />
                 <input
                   type="text"
+                  aria-label="Search city, state, or country"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search city, state, or country..."
-                  className="w-full rounded-xl border border-dharma-border bg-dharma-bg py-2.5 pl-10 pr-4 text-xs sm:text-sm text-dharma-text placeholder:text-dharma-muted focus:border-saffron-500 focus:outline-none focus:ring-1 focus:ring-saffron-500"
+                  className="w-full min-h-[44px] rounded-xl border border-dharma-border bg-dharma-bg py-2.5 pl-10 pr-4 text-xs sm:text-sm text-dharma-text placeholder:text-dharma-muted focus:border-saffron-500 focus:outline-none focus:ring-1 focus:ring-saffron-500"
                 />
               </div>
 
@@ -190,6 +253,7 @@ export function LocationSettingsModal({
                     <button
                       key={loc.id}
                       type="button"
+                      aria-pressed={isSelected}
                       onClick={() => {
                         onSelectLocation(loc);
                         onClose();
@@ -244,15 +308,15 @@ export function LocationSettingsModal({
           )}
 
           {activeTab === 'custom' && (
-            <form onSubmit={handleSaveCustom} className="space-y-4">
+            <form id="loc-panel-custom" role="tabpanel" aria-labelledby="loc-tab-custom" onSubmit={handleSaveCustom} className="space-y-4">
               <p className="text-xs text-dharma-muted leading-relaxed">
                 Provide custom geographic coordinates for your town or village. High precision
                 ensures reliable local sunrise and astronomical elongation calculations.
               </p>
 
               {customError && (
-                <div className="flex items-center gap-2 rounded-xl bg-rose-500/15 p-3 text-xs text-rose-700 dark:text-rose-300">
-                  <AlertCircle className="h-4 w-4 shrink-0" />
+                <div role="alert" className="flex items-center gap-2 rounded-xl bg-rose-500/15 p-3 text-xs text-rose-700 dark:text-rose-300">
+                  <AlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
                   <span>{customError}</span>
                 </div>
               )}
@@ -349,13 +413,13 @@ export function LocationSettingsModal({
                 <button
                   type="button"
                   onClick={() => setActiveTab('presets')}
-                  className="rounded-xl border border-dharma-border bg-dharma-card px-4 py-2 text-xs font-semibold text-dharma-muted hover:text-dharma-text transition"
+                  className="focus-ring inline-flex min-h-[44px] items-center rounded-xl border border-dharma-border bg-dharma-card px-4 py-2 text-xs font-semibold text-dharma-muted hover:text-dharma-text transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-saffron-700 px-5 py-2 text-xs font-bold text-white shadow hover:bg-saffron-600 transition"
+                  className="focus-ring inline-flex min-h-[44px] items-center rounded-xl bg-saffron-700 px-5 py-2 text-xs font-bold text-white shadow hover:bg-saffron-600 transition"
                 >
                   Apply Custom Location
                 </button>

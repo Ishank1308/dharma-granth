@@ -215,20 +215,20 @@ export function PanchangCalendar() {
             <button
               type="button"
               onClick={() => setIsLocationModalOpen(true)}
-              className="group inline-flex max-w-full flex-wrap items-center gap-x-2 rounded-full bg-dharma-text/[0.04] px-3 py-1.5 text-xs font-semibold text-dharma-text hover:text-saffron-700 dark:hover:text-saffron-400 transition"
+              className="focus-ring group inline-flex min-h-[44px] max-w-full flex-wrap items-center gap-x-2 rounded-full bg-dharma-text/[0.04] px-3.5 py-2 text-xs font-semibold text-dharma-text hover:text-saffron-800 dark:hover:text-saffron-300 transition"
               title="Click to change location or enter custom coordinates"
             >
-              <MapPin className="h-3.5 w-3.5 text-saffron-600 group-hover:scale-110 transition-transform" />
-              <span className="font-medium text-dharma-text-secondary">स्थान:</span>
+              <MapPin className="h-3.5 w-3.5 text-saffron-700 dark:text-saffron-300 group-hover:scale-110 transition-transform" aria-hidden="true" />
+              <span lang="hi" className="font-devanagari font-medium text-dharma-text-secondary">स्थान:</span>
               <span className="font-bold">{location.name}</span>
-              <span className="ml-1 text-caption text-dharma-saffron underline underline-offset-2">
+              <span className="ml-1 text-caption text-saffron-800 dark:text-saffron-300 underline underline-offset-2">
                 बदलें (Change)
               </span>
             </button>
 
             {/* Timezone Badge */}
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-dharma-text/[0.04] px-3 py-1.5 text-xs text-dharma-text-secondary">
-              <Clock className="h-3.5 w-3.5" />
+            <span className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-dharma-text/[0.04] px-3.5 py-2 text-xs text-dharma-text-secondary">
+              <Clock className="h-3.5 w-3.5" aria-hidden="true" />
               <span className="tabular-nums font-medium text-dharma-text">
                 {location.timezone} (UTC{location.utcOffsetHours >= 0 ? `+${location.utcOffsetHours}` : location.utcOffsetHours})
               </span>
@@ -236,7 +236,7 @@ export function PanchangCalendar() {
 
             {!location.hasReliableCoordinates && (
               <span className="inline-flex items-center gap-1 rounded-xl bg-amber-500/15 px-2.5 py-1 text-[11px] font-semibold text-amber-800 dark:text-amber-200">
-                <AlertTriangle className="h-3 w-3" />
+                <AlertTriangle className="h-3 w-3" aria-hidden="true" />
                 <span>Coordinates unverified</span>
               </span>
             )}
@@ -246,9 +246,9 @@ export function PanchangCalendar() {
             <button
               type="button"
               onClick={() => setIsDataSourceModalOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-full bg-dharma-text/[0.04] px-3 py-1.5 text-xs font-medium text-dharma-text-secondary hover:text-dharma-text transition"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-dharma-text/[0.04] px-3.5 py-2 text-xs font-medium text-dharma-text-secondary hover:text-dharma-text transition"
             >
-              <Database className="h-3.5 w-3.5" />
+              <Database className="h-3.5 w-3.5" aria-hidden="true" />
               <span>डेटा स्रोत (Data Sources)</span>
             </button>
           </div>
@@ -257,15 +257,22 @@ export function PanchangCalendar() {
         {/* Date Display and Day Navigation. The opening day card links here ("Another day"). */}
         <div id="panchang-day" className="flex scroll-mt-24 flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-              <span>{panchang.dayOfWeek} · {panchang.dayOfWeekHi}</span>
-              <span>•</span>
-              <span>{panchang.ritu.nameHi} ऋतु ({panchang.ritu.seasonEn})</span>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold text-saffron-800 dark:text-saffron-300">
+              <span>
+                <span className="uppercase tracking-wider">{panchang.dayOfWeek}</span>
+                <span className="text-dharma-text-secondary"> · </span>
+                <span lang="hi" className="font-devanagari">{panchang.dayOfWeekHi}</span>
+              </span>
+              <span aria-hidden="true" className="text-dharma-text-secondary">•</span>
+              <span>
+                <span lang="hi" className="font-devanagari">{panchang.ritu.nameHi} ऋतु</span>{' '}
+                <span className="uppercase tracking-wider">({panchang.ritu.seasonEn})</span>
+              </span>
             </div>
             <h2 className="mt-1 font-serif text-2xl sm:text-3xl font-bold text-dharma-text">
               {panchang.fullDateEnglish}
             </h2>
-            <p lang="hi" className="text-sm sm:text-base font-devanagari text-dharma-muted">
+            <p lang="hi" className="text-sm sm:text-base font-devanagari text-dharma-text-secondary">
               {panchang.fullDateHindi} · {panchang.tithi.nameHi} ({panchang.paksha.nameHi})
             </p>
           </div>
@@ -277,9 +284,9 @@ export function PanchangCalendar() {
                 type="button"
                 onClick={handlePrevDay}
                 aria-label="Previous day"
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-dharma-text hover:bg-dharma-card transition"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-semibold text-dharma-text hover:bg-dharma-card transition"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronLeft className="h-4 w-4" aria-hidden="true" />
                 <span>Previous Day</span>
               </button>
 
@@ -288,9 +295,9 @@ export function PanchangCalendar() {
                 onClick={handleToday}
                 disabled={isToday}
                 aria-label="Jump to today"
-                className={`rounded-lg px-3.5 py-1.5 text-xs font-bold transition ${
+                className={`focus-ring min-h-[44px] rounded-lg px-3.5 py-2 text-xs font-bold transition ${
                   isToday
-                    ? 'bg-saffron-600 text-white shadow-sm'
+                    ? 'bg-saffron-700 text-white shadow-sm dark:bg-dharma-saffron dark:text-black'
                     : 'text-dharma-text hover:bg-dharma-card'
                 }`}
               >
@@ -301,10 +308,10 @@ export function PanchangCalendar() {
                 type="button"
                 onClick={handleNextDay}
                 aria-label="Next day"
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-dharma-text hover:bg-dharma-card transition"
+                className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-semibold text-dharma-text hover:bg-dharma-card transition"
               >
                 <span>Next Day</span>
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-4 w-4" aria-hidden="true" />
               </button>
             </div>
 
@@ -315,7 +322,7 @@ export function PanchangCalendar() {
                 value={panchang.isoDate}
                 onChange={handleDateChange}
                 aria-label="Select custom date"
-                className="rounded-full bg-dharma-text/[0.04] px-3 py-2 text-xs font-semibold text-dharma-text focus:ring-2 focus:ring-dharma-saffron focus:outline-none transition"
+                className="min-h-[44px] rounded-full bg-dharma-text/[0.04] px-3.5 py-2 text-xs font-semibold text-dharma-text focus:ring-2 focus:ring-dharma-saffron focus:outline-none transition"
               />
             </div>
           </div>
@@ -328,25 +335,25 @@ export function PanchangCalendar() {
               type="button"
               onClick={() => setActiveView('day')}
               aria-pressed={activeView === 'day'}
-              className="flex items-center gap-2"
+              className="focus-ring flex min-h-[44px] items-center gap-2 px-3.5"
             >
-              <Calendar className="h-3.5 w-3.5 text-saffron-600" />
+              <Calendar className="h-3.5 w-3.5 text-saffron-700 dark:text-saffron-300" aria-hidden="true" />
               <span>Day View (दैनिक)</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveView('week')}
               aria-pressed={activeView === 'week'}
-              className="flex items-center gap-2"
+              className="focus-ring flex min-h-[44px] items-center gap-2 px-3.5"
             >
-              <CalendarDays className="h-3.5 w-3.5 text-indigo-500" />
+              <CalendarDays className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-300" aria-hidden="true" />
               <span>Week View (साप्ताहिक)</span>
             </button>
             <Link
               href={panchang ? `/panchang/calendar/?year=${panchang.isoDate.split('-')[0]}&month=${Number(panchang.isoDate.split('-')[1])}&date=${panchang.isoDate}` : '/panchang/calendar/'}
-              className="flex items-center gap-2 text-dharma-text hover:text-dharma-saffron transition-colors"
+              className="focus-ring flex min-h-[44px] items-center gap-2 rounded-control px-3.5 text-footnote font-medium text-dharma-text hover:text-saffron-800 dark:hover:text-saffron-300 transition-colors"
             >
-              <Moon className="h-3.5 w-3.5 text-amber-500" />
+              <Moon className="h-3.5 w-3.5 text-amber-600 dark:text-amber-300" aria-hidden="true" />
               <span>Month Calendar (मासिक)</span>
             </Link>
           </div>
@@ -545,8 +552,8 @@ export function PanchangCalendar() {
           {/* 1. TITHI CARD */}
           <div className="apple-card p-5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                1. Tithi · तिथि
+              <span className="text-[11px] font-bold text-saffron-800 dark:text-saffron-300">
+                <span className="uppercase tracking-wider">1. Tithi</span> · <span lang="hi" className="font-devanagari">तिथि</span>
               </span>
               <span className="rounded-full bg-saffron-500/10 px-2 py-0.5 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
                 Lunar Day
@@ -575,8 +582,8 @@ export function PanchangCalendar() {
           {/* 2. PAKSHA CARD */}
           <div className="apple-card p-5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                2. Paksha · पक्ष
+              <span className="text-[11px] font-bold text-saffron-800 dark:text-saffron-300">
+                <span className="uppercase tracking-wider">2. Paksha</span> · <span lang="hi" className="font-devanagari">पक्ष</span>
               </span>
               <span className="rounded-full bg-saffron-500/10 px-2 py-0.5 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
                 {panchang.paksha.isWaxing ? 'Waxing' : 'Waning'}
@@ -605,8 +612,8 @@ export function PanchangCalendar() {
           {/* 3. NAKSHATRA CARD */}
           <div className="apple-card p-5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                3. Nakshatra · नक्षत्र
+              <span className="text-[11px] font-bold text-saffron-800 dark:text-saffron-300">
+                <span className="uppercase tracking-wider">3. Nakshatra</span> · <span lang="hi" className="font-devanagari">नक्षत्र</span>
               </span>
               <span className="rounded-full bg-saffron-500/10 px-2 py-0.5 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
                 Pada {panchang.nakshatra.pada} of 4
@@ -641,8 +648,8 @@ export function PanchangCalendar() {
           {/* 4. YOGA CARD */}
           <div className="apple-card p-5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                4. Yoga · योग
+              <span className="text-[11px] font-bold text-saffron-800 dark:text-saffron-300">
+                <span className="uppercase tracking-wider">4. Yoga</span> · <span lang="hi" className="font-devanagari">योग</span>
               </span>
               <span
                 className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
@@ -679,8 +686,8 @@ export function PanchangCalendar() {
           {/* 5. KARANA CARD */}
           <div className="apple-card p-5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                5. Karana · करण
+              <span className="text-[11px] font-bold text-saffron-800 dark:text-saffron-300">
+                <span className="uppercase tracking-wider">5. Karana</span> · <span lang="hi" className="font-devanagari">करण</span>
               </span>
               <span className="rounded-full bg-saffron-500/10 px-2 py-0.5 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
                 {panchang.karana.nature}
@@ -709,8 +716,8 @@ export function PanchangCalendar() {
           {/* 6. RITU (SEASON) CARD */}
           <div className="apple-card p-5">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                6. Ritu · वैदिक ऋतु
+              <span className="text-[11px] font-bold text-saffron-800 dark:text-saffron-300">
+                <span className="uppercase tracking-wider">6. Ritu</span> · <span lang="hi" className="font-devanagari">वैदिक ऋतु</span>
               </span>
               <span className="rounded-full bg-saffron-500/10 px-2 py-0.5 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
                 {panchang.ritu.seasonEn}
@@ -909,8 +916,8 @@ export function PanchangCalendar() {
             </div>
 
             <Link
-              href={`/scripture/${panchang.studySuggestion.scriptureId}`}
-              className="inline-flex min-h-11 items-center gap-1.5 shrink-0 text-[14px] text-dharma-saffron hover:underline"
+              href={`/scripture/${panchang.studySuggestion.scriptureId}/`}
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 shrink-0 text-[14px] font-semibold text-saffron-800 dark:text-saffron-300 hover:underline"
             >
               <span>ग्रंथालय में अध्ययन करें (Study in Library)</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -938,7 +945,7 @@ export function PanchangCalendar() {
 
           <Link
             href="/festivals/"
-            className="text-xs font-bold text-saffron-700 dark:text-saffron-400 hover:underline inline-flex items-center gap-1"
+            className="focus-ring min-h-[44px] text-xs font-bold text-saffron-800 dark:text-saffron-300 hover:underline inline-flex items-center gap-1"
           >
             <span>सभी पर्व देखें (All Festivals)</span>
             <ArrowRight className="h-3.5 w-3.5" />
@@ -976,7 +983,7 @@ export function PanchangCalendar() {
                 <span className="text-dharma-muted">{fest.dateStr}</span>
                 <Link
                   href="/festivals/"
-                  className="tap-target inline-flex items-center font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
+                  className="focus-ring tap-target inline-flex min-h-[44px] items-center px-2 font-semibold text-saffron-800 dark:text-saffron-300 hover:underline"
                 >
                   विवरण &rarr;
                 </Link>

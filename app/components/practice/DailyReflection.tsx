@@ -10,7 +10,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
-import { ToolCard, localISODate, dayOfYear, offsetISODate, formatDisplayDate } from './shared';
+import { ToolCard, localISODate, dayOfYear, offsetISODate, formatDisplayDate, notifyPracticeSync } from './shared';
 import { triggerHaptic } from '@/lib/haptics';
 import {
   entryText,
@@ -30,7 +30,7 @@ const PROMPTS: { en: string; hi: string }[] = [
   { en: 'What fear shaped a decision today?', hi: 'आज किस भय ने मेरा कोई निर्णय प्रभावित किया?' },
   { en: 'When did I feel most still today?', hi: 'आज मैं सबसे अधिक शांत कब था/थी?' },
   { en: 'What duty am I avoiding, and why?', hi: 'मैं किस कर्तव्य से बच रहा/रही हूँ, और क्यों?' },
-  { en: 'What would I do differently if no one were watching?', hi: 'अगर कोई न देख रहा होता तो मैं क्या अलग करता/करती?' },
+  { en: 'What would I do differently if no one were watching?', hi: 'यदि कोई न देख रहा होता तो मैं क्या अलग करता/करती?' },
   { en: 'What am I attached to that is changing?', hi: 'मैं किस परिवर्तनशील वस्तु से आसक्त हूँ?' },
   { en: 'Whose wisdom guided me today?', hi: 'आज किसके ज्ञान ने मेरा मार्गदर्शन किया?' },
   { en: 'What did anger cost me this week?', hi: 'इस सप्ताह क्रोध ने मुझसे क्या छीना?' },
@@ -42,7 +42,7 @@ const QUESTIONS: { key: keyof ReflectionFields; hi: string; en: string }[] = [
   { key: 'learned', hi: 'आज क्या समझ आया?', en: 'What did you learn?' },
   { key: 'challenged', hi: 'क्या कठिन लगा?', en: 'What challenged you?' },
   { key: 'apply', hi: 'आज यह कैसे लागू होता है?', en: 'How does this apply today?' },
-  { key: 'action', hi: 'अब कौन सा कदम लोगे?', en: 'What action will you take?' },
+  { key: 'action', hi: 'अब आप कौन सा प्रयास करेंगे?', en: 'What action will you take?' },
 ];
 
 const FIELD_LABEL: Record<keyof ReflectionFields, string> = {
@@ -74,6 +74,23 @@ export function DailyReflection() {
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
   const [confirmDelete, setConfirmDelete] = useState(false);
   const saveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const idleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const didMountSyncRef = useRef(false);
+
+  useEffect(() => {
+    if (!didMountSyncRef.current) {
+      didMountSyncRef.current = true;
+      return;
+    }
+    notifyPracticeSync();
+  }, [entries]);
+
+  useEffect(() => {
+    return () => {
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+      if (idleTimeoutRef.current) clearTimeout(idleTimeoutRef.current);
+    };
+  }, []);
 
   if (!currentDate) {
     return (
@@ -111,9 +128,10 @@ export function DailyReflection() {
   function markSaving() {
     setSaveStatus('saving');
     if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+    if (idleTimeoutRef.current) clearTimeout(idleTimeoutRef.current);
     saveTimeoutRef.current = setTimeout(() => {
       setSaveStatus('saved');
-      setTimeout(() => setSaveStatus('idle'), 2000);
+      idleTimeoutRef.current = setTimeout(() => setSaveStatus('idle'), 2000);
     }, 600);
   }
 
@@ -195,22 +213,22 @@ export function DailyReflection() {
       accent="rose"
     >
       <div className="flex flex-col gap-3 h-full">
-        <div className="flex items-center justify-between px-2 py-1.5 bg-dharma-panel-muted rounded-xl border border-dharma-border text-xs">
-          <div className="flex items-center gap-1">
+        <div className="flex items-center justify-between px-2 py-1 bg-dharma-panel-muted rounded-xl border border-dharma-border text-xs">
+          <div className="flex items-center gap-1 min-w-0">
             <button
               type="button"
               onClick={goPrevDay}
-              className="p-1 rounded-lg text-dharma-muted hover:text-dharma-text"
+              className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-dharma-muted hover:text-dharma-text"
               title="पिछला दिन · Previous day"
               aria-label="Previous day"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4" aria-hidden="true" />
             </button>
 
             <button
               type="button"
               onClick={goToday}
-              className={`px-2 py-0.5 rounded-md font-semibold ${
+              className={`focus-ring inline-flex min-h-[44px] items-center px-2.5 rounded-md font-semibold truncate ${
                 dateInfo.isToday ? 'bg-dharma-bg text-dharma-text' : 'text-dharma-text'
               }`}
               title="आज पर जाएं · Jump to today"
@@ -223,40 +241,40 @@ export function DailyReflection() {
               type="button"
               onClick={goNextDay}
               disabled={currentDate >= today}
-              className="p-1 rounded-lg text-dharma-muted hover:text-dharma-text disabled:cursor-not-allowed disabled:text-dharma-text-secondary"
+              className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-dharma-muted hover:text-dharma-text disabled:cursor-not-allowed disabled:text-dharma-text-secondary"
               title="अगला दिन · Next day"
               aria-label="Next day"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 shrink-0">
             {written && (
               <button
                 type="button"
                 onClick={() => setConfirmDelete(!confirmDelete)}
-                className="p-1.5 rounded-lg text-dharma-muted hover:text-dharma-text"
+                className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-dharma-muted hover:text-dharma-text"
                 title="इस दिन का चिंतन हटाएं · Delete entry for this date"
                 aria-label="Delete entry"
               >
-                <Trash2 className="w-3.5 h-3.5" />
+                <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
               </button>
             )}
             <button
               type="button"
               onClick={handleExport}
-              className="p-1.5 rounded-lg text-dharma-muted hover:text-dharma-text"
+              className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-dharma-muted hover:text-dharma-text"
               title="चिंतन एक्सपोर्ट करें · Export reflections"
               aria-label="Export reflections as markdown"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Download className="w-3.5 h-3.5" aria-hidden="true" />
             </button>
           </div>
         </div>
 
         {confirmDelete && (
-          <div className="p-2.5 rounded-xl border border-dharma-border bg-dharma-bg text-xs flex items-center justify-between gap-2">
+          <div className="p-2.5 rounded-xl border border-dharma-border bg-dharma-bg text-xs flex flex-wrap items-center justify-between gap-2">
             <span className="text-dharma-text font-medium">
               क्या आप {dateInfo.hi} का चिंतन हटाना चाहते हैं?
             </span>
@@ -264,14 +282,14 @@ export function DailyReflection() {
               <button
                 type="button"
                 onClick={() => setConfirmDelete(false)}
-                className="px-2 py-0.5 rounded border border-dharma-border bg-dharma-card text-dharma-text"
+                className="focus-ring inline-flex min-h-[44px] items-center px-3 rounded-lg border border-dharma-border bg-dharma-card text-dharma-text"
               >
                 रद्द करें
               </button>
               <button
                 type="button"
                 onClick={handleDeleteCurrent}
-                className="px-2 py-0.5 rounded bg-dharma-card border border-dharma-border text-dharma-text font-bold"
+                className="focus-ring inline-flex min-h-[44px] items-center px-3 rounded-lg bg-dharma-card border border-dharma-border text-dharma-text font-bold"
               >
                 हटाएं
               </button>
@@ -349,7 +367,7 @@ export function DailyReflection() {
         )}
 
         <div className="flex items-center justify-between text-xs text-dharma-muted">
-          <span className="inline-flex items-center gap-1.5 font-medium">
+          <span role="status" aria-live="polite" className="inline-flex items-center gap-1.5 font-medium">
             {saveStatus === 'saving' ? (
               <span>सहेजा जा रहा है... · Saving</span>
             ) : saveStatus === 'saved' || written ? (

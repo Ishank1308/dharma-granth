@@ -558,6 +558,7 @@ export function VerseReader(props: VerseReaderProps) {
       <VersePageLayout
         verseIdentity={`${scriptureId}:${chapterId}:${verse.number}`}
         focusMode={settings.focusMode}
+        liteMode={settings.liteMode}
         onToggleFocus={toggleFocusMode}
         prevHref={prev?.href}
         nextHref={next?.href}

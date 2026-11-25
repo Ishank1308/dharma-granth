@@ -144,7 +144,7 @@ export function AccuracyNotice({
               <button
                 type="button"
                 onClick={onOpenDataSourceModal}
-                className="mt-3 text-left text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
+                className="mt-2 inline-flex min-h-[44px] items-center text-left text-xs font-semibold text-saffron-700 dark:text-saffron-400 hover:underline focus-ring rounded-lg"
               >
                 Read full data-source methodology &rarr;
               </button>

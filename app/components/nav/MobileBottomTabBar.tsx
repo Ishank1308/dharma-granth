@@ -96,7 +96,7 @@ export function MobileBottomTabBar({
           <div className="relative">
             <Bookmark className="h-5 w-5" aria-hidden="true" />
             {bookmarkCount > 0 && (
-              <span className="absolute -top-1 -right-2 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-dharma-saffron px-1 text-[9px] font-semibold text-dharma-bg">
+              <span className="absolute -top-1 -right-2 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-dharma-saffron px-1 text-[9px] font-semibold text-white dark:text-black">
                 {bookmarkCount > 9 ? '9+' : bookmarkCount}
               </span>
             )}

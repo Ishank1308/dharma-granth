@@ -9,6 +9,21 @@ import type { CSSProperties, ReactNode } from 'react';
  * nothing ever leaves the device, there are no accounts and no rankings.
  */
 
+export const PRACTICE_SYNC_EVENT = 'dharma:practice-sync';
+
+/** Notify same-tab listeners (PracticeOpening, useLocalStorage) after a practice storage update. */
+export function notifyPracticeSync(key?: string, newValue?: string): void {
+  if (typeof window === 'undefined') return;
+  if (key && newValue !== undefined) {
+    try {
+      window.dispatchEvent(new StorageEvent('storage', { key, newValue }));
+    } catch {
+      window.dispatchEvent(new Event('storage'));
+    }
+  }
+  window.dispatchEvent(new Event(PRACTICE_SYNC_EVENT));
+}
+
 /** Local-timezone ISO day (YYYY-MM-DD). Aligns with Indian Standard Time
  * (Asia/Kolkata) so sadhana and sankalpa roll over at IST midnight. */
 export function localISODate(d: Date = new Date()): string {

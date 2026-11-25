@@ -52,6 +52,7 @@ import { triggerPranaToast } from '@/lib/prana-capsule-store';
 import { executeSearchWithWorker } from '@/lib/workers/search-worker-client';
 import { useConnectivity } from '@/lib/useConnectivity';
 import { usePerformanceMode } from '@/lib/performance-mode';
+import { parseDirectCitation } from '@/lib/search-citation';
 
 export interface DirectVerseShortcut {
   scriptureId: string;
@@ -69,44 +70,44 @@ export function parseVerseShortcut(rawQuery: string): DirectVerseShortcut | null
   const normalizeDevanagariDigits = (str: string) =>
     str.replace(/[०-९]/g, (d) => String('०१२३४५६७८९'.indexOf(d)));
 
-  const clean = normalizeDevanagariDigits(q.toLowerCase());
+  const clean = normalizeDevanagariDigits(q.toLowerCase()).trim();
 
-  let scriptureId = 'bhagavadgita';
-  let scriptureTitle = 'Bhagavad Gita';
-  let scriptureTitleHi = 'श्रीमद्भगवद्गीता';
-
-  if (clean.includes('ashtavakra') || clean.includes('अष्टावक्र')) {
-    scriptureId = 'ashtavakra';
-    scriptureTitle = 'Ashtavakra Gita';
-    scriptureTitleHi = 'अष्टावक्र गीता';
+  // Check canonical citation parser first so all scriptures validate exact chapter/verse bounds.
+  const direct = parseDirectCitation(q);
+  if (direct) {
+    const nums = direct.title.match(/\d+/g);
+    if (nums && nums.length >= 2) {
+      const chapter = parseInt(nums[nums.length - 2], 10);
+      const verse = parseInt(nums[nums.length - 1], 10);
+      return {
+        scriptureId: direct.scriptureId,
+        scriptureTitle: direct.title.replace(/\s+\d+(?:\.\d+)*$/, ''),
+        scriptureTitleHi: direct.subtitle.split('·')[0].trim(),
+        chapter,
+        verse,
+        href: direct.href,
+      };
+    }
   }
 
-  // Match: (optional scripture prefix) (optional ch/chapter/अध्याय) <chapter> (separator) (optional v/verse/श्लोक) <verse>
-  const match = clean.match(/(?:(?:gita|bg|bhagavad\s*gita|गीता|ashtavakra|अष्टावक्र)\s*)?(?:(?:chapter|ch|अध्याय)\s*)?(\d{1,3})(?:[\s.:/-]|(?:verse|v|श्लोक)\s*)+(\d{1,3})/i);
-
-  if (match) {
-    const chapter = parseInt(match[1], 10);
-    const verse = parseInt(match[2], 10);
-
-    if (scriptureId === 'bhagavadgita' && (chapter < 1 || chapter > 18 || verse < 1 || verse > 80)) {
-      return null;
+  // Fallback for bare "2.47" or "chapter 2 verse 47" (without a non-Gita scripture prefix).
+  const bareMatch = clean.match(
+    /^(?:(?:gita|bg|bhagavad\s*gita|bhagavadgita|गीता|भगवद्गीता|श्रीमद्भगवद्गीता)\s*)?(?:(?:chapter|ch|अध्याय)\s*)?(\d{1,2})(?:[\s.:/-]|(?:verse|v|श्लोक)\s*)+(\d{1,2})$/i,
+  );
+  if (bareMatch) {
+    const chapter = parseInt(bareMatch[1], 10);
+    const verse = parseInt(bareMatch[2], 10);
+    const gitaDirect = parseDirectCitation(`gita ${chapter}.${verse}`);
+    if (gitaDirect) {
+      return {
+        scriptureId: 'bhagavadgita',
+        scriptureTitle: 'Bhagavad Gita',
+        scriptureTitleHi: 'श्रीमद्भगवद्गीता',
+        chapter,
+        verse,
+        href: gitaDirect.href,
+      };
     }
-    if (scriptureId === 'ashtavakra' && (chapter < 1 || chapter > 20 || verse < 1 || verse > 100)) {
-      return null;
-    }
-
-    const href = scriptureId === 'ashtavakra'
-      ? `/ashtavakra/${chapter}/#verse-${verse}`
-      : `/scripture/bhagavadgita/chapter/${chapter}/verse/${verse}/`;
-
-    return {
-      scriptureId,
-      scriptureTitle,
-      scriptureTitleHi,
-      chapter,
-      verse,
-      href,
-    };
   }
 
   return null;
@@ -271,6 +272,16 @@ const UPANISHAD_SLUGS = [
   'chandogya',
   'brihadaranyaka',
   'shvetashvatara',
+  'kaushitaki',
+  'maitri',
+  'mahanarayana',
+  'mahaupanishad',
+  'kaivalya',
+  'amritabindu',
+  'tejobindu',
+  'jabala',
+  'niralamba',
+  'muktika',
 ];
 
 export const SCRIPTURE_SCOPES: ScriptureScopeItem[] = [
@@ -844,14 +855,42 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
     return SEARCH_GROUPS.flatMap((g) => result.results.filter((r) => r.group === g.id));
   }, [result]);
 
-  useEffect(() => {
-    setSelectedIndex(-1);
-  }, [display]);
+  const activeListMeta = useMemo(() => {
+    if (isMentionQuery && matchingScopes.length > 0) {
+      return {
+        mode: 'mention' as const,
+        listboxId: `${listboxId}-mentions`,
+        optionPrefix: 'search-mention-',
+        length: matchingScopes.length,
+      };
+    }
+    if (isActionQuery && matchingActions.length > 0) {
+      return {
+        mode: 'action' as const,
+        listboxId: `${listboxId}-actions`,
+        optionPrefix: 'search-action-',
+        length: matchingActions.length,
+      };
+    }
+    if (!isMentionQuery && !isActionQuery && display.length > 0) {
+      return {
+        mode: 'results' as const,
+        listboxId,
+        optionPrefix: 'search-item-',
+        length: display.length,
+      };
+    }
+    return null;
+  }, [isMentionQuery, matchingScopes.length, isActionQuery, matchingActions.length, display.length, listboxId]);
 
   useEffect(() => {
-    if (!isOpen || display.length === 0 || selectedIndex < 0) return;
-    document.getElementById(`search-item-${selectedIndex}`)?.scrollIntoView({ block: 'nearest' });
-  }, [selectedIndex, isOpen, display]);
+    setSelectedIndex(-1);
+  }, [display, query]);
+
+  useEffect(() => {
+    if (!isOpen || !activeListMeta || selectedIndex < 0) return;
+    document.getElementById(`${activeListMeta.optionPrefix}${selectedIndex}`)?.scrollIntoView({ block: 'nearest' });
+  }, [selectedIndex, isOpen, activeListMeta]);
 
   const remember = useCallback(
     (text: string) => {
@@ -878,7 +917,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
   useLayoutEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.isComposing || e.keyCode === 229) return;
+      if (e.isComposing || e.keyCode === 229 || e.defaultPrevented) return;
       // Escape must close the dialog even before its animated panel ref is ready.
       if (e.key === 'Escape') {
         e.preventDefault();
@@ -1111,10 +1150,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   aria-describedby={statusId}
                   className="relative z-1 min-h-[44px] w-full bg-transparent text-base font-normal text-label-primary outline-none placeholder:text-label-tertiary sm:text-title-2"
                   role="combobox"
-                  aria-expanded={display.length > 0 && !isActionQuery}
+                  aria-expanded={activeListMeta !== null}
                   aria-autocomplete="list"
-                  aria-controls={display.length > 0 && !isActionQuery ? listboxId : undefined}
-                  aria-activedescendant={display.length > 0 && selectedIndex >= 0 && !isActionQuery ? `search-item-${selectedIndex}` : undefined}
+                  aria-controls={activeListMeta?.listboxId}
+                  aria-activedescendant={
+                    activeListMeta && selectedIndex >= 0
+                      ? `${activeListMeta.optionPrefix}${selectedIndex}`
+                      : undefined
+                  }
                   autoComplete="off"
                   autoCapitalize="off"
                   spellCheck={false}
@@ -1228,7 +1271,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                 <button
                   type="button"
                   onClick={() => setVerseState('idle')}
-                  className="focus-ring inline-flex min-h-[32px] shrink-0 items-center gap-1.5 rounded-pill bg-rose-600 px-3 text-footnote font-semibold text-white hover:bg-rose-700"
+                  className="focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-pill bg-rose-600 px-3.5 text-footnote font-semibold text-white hover:bg-rose-700"
                 >
                   <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" /> Try again
                 </button>
@@ -1245,7 +1288,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                 <button
                   type="button"
                   onClick={() => runSearch(suggestion)}
-                  className="focus-ring min-h-[32px] shrink-0 rounded-pill bg-tint px-3 text-footnote font-semibold text-on-tint hover:opacity-90"
+                  className="focus-ring min-h-[44px] shrink-0 rounded-pill bg-tint px-3.5 text-footnote font-semibold text-on-tint hover:opacity-90"
                 >
                   Search this instead
                 </button>
@@ -1301,10 +1344,10 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       {verseShortcut.chapter}.{verseShortcut.verse}
                     </span>
                     <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-300">
-                          त्वरित श्लोक दर्शन · Direct Verse Jump
-                        </span>
+                      <div className="flex items-center gap-1.5 text-[10px] font-bold text-saffron-800 dark:text-saffron-300">
+                        <span lang="hi" data-bi="hi" className="font-devanagari">त्वरित श्लोक दर्शन</span>
+                        <span data-bi="sep" aria-hidden="true">·</span>
+                        <span data-bi="en" className="uppercase tracking-wider">Direct Verse Jump</span>
                       </div>
                       <p className="truncate text-sm sm:text-base font-bold text-label-primary group-hover:text-saffron-700 dark:group-hover:text-saffron-300 transition">
                         {verseShortcut.scriptureTitleHi} · अध्याय {verseShortcut.chapter}, श्लोक {verseShortcut.verse}
@@ -1343,8 +1386,10 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     </span>
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-saffron-700 dark:text-saffron-400">
-                          त्वरित प्रवेश · Instant Jump
+                        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-saffron-800 dark:text-saffron-300">
+                          <span lang="hi" data-bi="hi" className="font-devanagari">त्वरित प्रवेश</span>
+                          <span data-bi="sep" aria-hidden="true">·</span>
+                          <span data-bi="en" className="uppercase tracking-wider">Instant Jump</span>
                         </span>
                         <span className="rounded-full bg-saffron-100 dark:bg-saffron-900/50 px-2 py-0.5 text-[10px] font-semibold text-saffron-800 dark:text-saffron-300">
                           {typeaheadSuggestion.category}
@@ -1407,7 +1452,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     setQuery(scopeInfo.scopedSearchQuery);
                     inputRef.current?.focus();
                   }}
-                  className="focus-ring inline-flex min-h-[32px] shrink-0 items-center gap-1 rounded-pill border border-separator bg-surface-raised px-2.5 text-caption font-semibold text-label-secondary hover:text-label-primary"
+                  className="focus-ring inline-flex min-h-[44px] shrink-0 items-center gap-1 rounded-pill border border-separator bg-surface-raised px-3 text-caption font-semibold text-label-secondary hover:text-label-primary"
                 >
                   <X className="h-3 w-3" aria-hidden="true" />
                   <span>Clear scope</span>
@@ -1440,15 +1485,21 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       No scripture scope matches &ldquo;@{scopeInfo.mentionMenuQuery}&rdquo;. Try <code className="text-tint">@gita</code>, <code className="text-tint">@ashtavakra</code>, or <code className="text-tint">@upanishads</code>.
                     </p>
                   ) : (
-                    <ul className="grid gap-2 sm:grid-cols-2">
+                    <ul id={`${listboxId}-mentions`} role="listbox" aria-label="Scope search by scripture" className="grid gap-2 sm:grid-cols-2">
                       {matchingScopes.map((scope, idx) => {
-                        const highlighted = idx === (selectedIndex >= 0 ? selectedIndex % matchingScopes.length : 0);
+                        const highlighted = selectedIndex >= 0 && idx === selectedIndex % matchingScopes.length;
                         return (
-                          <li key={scope.id}>
+                          <li key={scope.id} role="presentation">
                             <button
+                              id={`search-mention-${idx}`}
                               type="button"
+                              role="option"
+                              aria-selected={highlighted}
                               onClick={() => applyScopeSelection(scope)}
-                              className={`focus-ring w-full text-left p-3 rounded-card border transition flex items-center justify-between gap-3 ${
+                              onMouseMove={() => {
+                                if (selectedIndex !== idx) setSelectedIndex(idx);
+                              }}
+                              className={`focus-ring w-full min-h-[44px] text-left p-3 rounded-card border transition flex items-center justify-between gap-3 ${
                                 highlighted
                                   ? 'border-tint/60 bg-tint-fill ring-1 ring-tint/30'
                                   : 'border-separator bg-surface-raised hover:bg-fill-quaternary'
@@ -1489,33 +1540,42 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       No commands match &ldquo;{actionFilter}&rdquo; yet. Try <code className="text-tint">/gita</code>, <code className="text-tint">/panchang</code>, <code className="text-tint">/sadhana</code>, or <code className="text-tint">/meditation</code>.
                     </p>
                   ) : (
-                    <ul className="grid gap-2">
-                      {matchingActions.map((action, idx) => (
-                        <li key={action.id}>
+                    <ul id={`${listboxId}-actions`} role="listbox" aria-label="Sacred commands" className="grid gap-2">
+                      {matchingActions.map((action, idx) => {
+                        const highlighted = selectedIndex >= 0 && idx === selectedIndex % matchingActions.length;
+                        return (
+                        <li key={action.id} role="presentation">
                           <button
+                            id={`search-action-${idx}`}
                             type="button"
+                            role="option"
+                            aria-selected={highlighted}
                             onClick={() => action.run(onClose, router, cycleTheme)}
-                            className={`focus-ring w-full text-left p-3.5 rounded-card border transition flex items-center justify-between gap-3 ${
-                              idx === (selectedIndex >= 0 ? selectedIndex % matchingActions.length : 0)
+                            onMouseMove={() => {
+                              if (selectedIndex !== idx) setSelectedIndex(idx);
+                            }}
+                            className={`focus-ring w-full min-h-[44px] text-left p-3.5 rounded-card border transition flex items-center justify-between gap-3 ${
+                              highlighted
                                 ? 'border-tint/60 bg-tint-fill ring-1 ring-tint/30'
                                 : 'border-separator bg-surface-raised hover:bg-fill-quaternary'
                             }`}
                           >
-                            <div className="flex items-center gap-3">
+                            <div className="flex min-w-0 flex-1 items-center gap-3">
                               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-fill-tertiary text-2xl">
                                 {action.icon}
                               </span>
-                              <div>
-                                <p className="text-subhead font-semibold text-label-primary">{action.title}</p>
-                                <p className="text-caption text-label-secondary">{action.titleHi} · {action.subtitle}</p>
+                              <div className="min-w-0">
+                                <p className="truncate text-subhead font-semibold text-label-primary">{action.title}</p>
+                                <p className="truncate text-caption text-label-secondary">{action.titleHi} · {action.subtitle}</p>
                               </div>
                             </div>
-                            <span className="rounded-control border border-separator bg-fill-quaternary px-2 py-1 font-mono text-caption font-semibold text-tint">
+                            <span className="shrink-0 rounded-control border border-separator bg-fill-quaternary px-2 py-1 font-mono text-caption font-semibold text-tint">
                               {action.slash}
                             </span>
                           </button>
                         </li>
-                      ))}
+                        );
+                      })}
                     </ul>
                   )}
                 </div>
@@ -1525,7 +1585,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     <div className="space-y-1">
                       <p className="text-caption font-mono font-bold text-tint">{activeScope.token} · Active Scripture Scope</p>
                       <h3 className="text-title-3 font-semibold text-label-primary">
-                        <span lang="hi" className="font-devanagari">{activeScope.titleHi}</span> · {activeScope.titleEn}
+                        <span lang="hi" data-bi="hi" className="font-devanagari">{activeScope.titleHi}</span>
+                        <span data-bi="sep" aria-hidden="true"> · </span>
+                        <span data-bi="en">{activeScope.titleEn}</span>
                       </h3>
                       <p className="text-footnote text-label-secondary">
                         Type any verse number, Sanskrit word, or Hindi/English theme to search solely within {activeScope.titleEn}.
@@ -1548,7 +1610,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                           key={sq}
                           type="button"
                           onClick={() => runSearch(sq)}
-                          className="focus-ring inline-flex min-h-[40px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
+                          className="focus-ring inline-flex min-h-[44px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
                         >
                           {sq}
                         </button>
@@ -1563,7 +1625,10 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     <div className="mb-2 flex items-center justify-between px-1">
                       <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-tint">
                         <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                        <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">पवित्र क्रियाएँ</span><span><span data-bi="sep"> · </span><span data-bi="en">Quick Commands</span> (<code>/</code>)</span>
+                        <span lang="hi" data-bi="hi" className="font-devanagari">पवित्र क्रियाएँ</span>
+                        <span data-bi="sep" aria-hidden="true">·</span>
+                        <span data-bi="en">Quick Commands</span>
+                        <code className="rounded border border-separator bg-fill-quaternary px-1.5 py-0.5 font-mono text-[11px] text-label-secondary">/</code>
                       </h3>
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -1573,7 +1638,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                           type="button"
                           onClick={() => a.run(onClose, router, cycleTheme)}
                           title={a.title}
-                          className="focus-ring flex min-h-[44px] items-center gap-2 p-2 rounded-card border border-separator bg-surface-raised hover:bg-fill-quaternary hover:border-tint/40 active:scale-97 text-left transition sm:gap-2.5 sm:p-2.5"
+                          className="focus-ring flex min-h-[44px] items-center gap-2 p-2 rounded-card border border-separator bg-surface-raised hover:bg-fill-quaternary hover:border-tint/40 active:scale-[0.97] text-left transition sm:gap-2.5 sm:p-2.5"
                         >
                           <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-control bg-fill-tertiary text-base">
                             {a.icon}
@@ -1589,8 +1654,10 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                     <div className="mb-2 flex items-center justify-between px-1">
                       <h3 className="flex items-center gap-1.5 text-footnote font-semibold text-label-secondary">
                         <Compass className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
-                        <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">शास्त्र-सीमा</span>
-                        <span><span data-bi="sep"> · </span><span data-bi="en">Scope by Scripture</span> (<code>@</code>)</span>
+                        <span lang="hi" data-bi="hi" className="font-devanagari">शास्त्र-सीमा</span>
+                        <span data-bi="sep" aria-hidden="true">·</span>
+                        <span data-bi="en">Scope by Scripture</span>
+                        <code className="rounded border border-separator bg-fill-quaternary px-1.5 py-0.5 font-mono text-[11px] text-label-secondary">@</code>
                       </h3>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -1599,7 +1666,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                           key={scope.id}
                           type="button"
                           onClick={() => applyScopeSelection(scope)}
-                          className="focus-ring inline-flex min-h-[40px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
+                          className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary transition"
                         >
                           <span aria-hidden="true">{scope.badge}</span>
                           <span className="font-mono text-caption text-tint">{scope.token}</span>
@@ -1614,12 +1681,14 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                       <div className="mb-2 flex items-center justify-between px-1">
                         <h3 id={`${listboxId}-recent`} className="flex items-center gap-1.5 text-footnote font-semibold text-label-secondary">
                           <Clock className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
-                          <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">हाल की खोज</span><span><span data-bi="sep"> · </span><span data-bi="en">Recent searches</span></span>
+                          <span lang="hi" data-bi="hi" className="font-devanagari">हाल की खोज</span>
+                          <span data-bi="sep" aria-hidden="true">·</span>
+                          <span data-bi="en">Recent searches</span>
                         </h3>
                         <button
                           type="button"
                           onClick={() => setRecent([])}
-                          className="focus-ring inline-flex min-h-[32px] items-center gap-1.5 rounded-pill px-2.5 text-caption font-medium text-label-tertiary hover:text-rose-600 hover:bg-fill-quaternary transition"
+                          className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-pill px-3 text-caption font-medium text-label-tertiary hover:text-rose-600 hover:bg-fill-quaternary transition"
                         >
                           <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
                           Clear history
@@ -1645,7 +1714,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   <section aria-labelledby={`${listboxId}-suggested`}>
                     <h3 id={`${listboxId}-suggested`} className="mb-2 flex items-center gap-1.5 px-1 text-footnote font-semibold text-label-secondary">
                       <Sparkles className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
-                      <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">सुझाई खोज</span><span><span data-bi="sep"> · </span><span data-bi="en">Try searching</span></span>
+                      <span lang="hi" data-bi="hi" className="font-devanagari">सुझाई खोज</span>
+                      <span data-bi="sep" aria-hidden="true">·</span>
+                      <span data-bi="en">Try searching</span>
                     </h3>
                     <ul className="flex flex-wrap gap-2">
                       {SUGGESTED_SEARCHES.map((s) => (
@@ -1653,7 +1724,7 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                           <button
                             type="button"
                             onClick={() => runSearch(s.query)}
-                            className="focus-ring inline-flex min-h-[44px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary active:scale-97 transition"
+                            className="focus-ring inline-flex min-h-[44px] items-center rounded-pill border border-separator bg-surface-raised px-3.5 text-footnote font-medium text-label-primary hover:border-tint/40 hover:bg-fill-quaternary active:scale-[0.97] transition"
                           >
                             {s.label}
                           </button>
@@ -1665,7 +1736,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   <section aria-labelledby={`${listboxId}-topics`}>
                     <h3 id={`${listboxId}-topics`} className="mb-2 flex items-center gap-1.5 px-1 text-footnote font-semibold text-label-secondary">
                       <Flame className="h-3.5 w-3.5 text-tint" aria-hidden="true" />
-                      <span lang="hi" data-bi="hi" className="font-devanagari normal-case tracking-normal">अध्ययन विषय</span><span><span data-bi="sep"> · </span><span data-bi="en">Study topics</span></span>
+                      <span lang="hi" data-bi="hi" className="font-devanagari">अध्ययन विषय</span>
+                      <span data-bi="sep" aria-hidden="true">·</span>
+                      <span data-bi="en">Study topics</span>
                     </h3>
                     <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                       {studyTopics.map((t) => (
@@ -1715,7 +1788,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                   )}
                   <HelpCircle className="mx-auto mb-3 h-10 w-10 text-label-tertiary" aria-hidden="true" />
                   <h3 className="text-title-3 font-semibold text-label-primary">
-                    <span lang="hi" className="font-devanagari">कोई परिणाम नहीं मिला</span> · {selectedGroup ? 'Nothing in this category' : 'Nothing found'} for “{effectiveTrimmed}”
+                    <span lang="hi" data-bi="hi" className="font-devanagari">कोई परिणाम नहीं मिला</span>
+                    <span data-bi="sep" aria-hidden="true"> · </span>
+                    <span data-bi="en">{selectedGroup ? 'Nothing in this category' : 'Nothing found'} for “{effectiveTrimmed}”</span>
                   </h3>
                   <ul className="mx-auto mt-3 max-w-md space-y-1 text-left text-footnote text-label-secondary">
                     <li>• You could try part of the verse in Devanagari or Roman letters (“karmanye vadhikaraste”).</li>
@@ -1765,7 +1840,9 @@ export function GlobalSearchModal({ isOpen, onClose, initialQuery = '', anchor }
                         <div aria-hidden="true" className="flex items-center justify-between border-b border-separator px-1 pb-1.5">
                           <h3 id={headingId} className="flex items-center gap-2 text-footnote font-semibold text-label-secondary">
                             {groupIcon(group.id)}
-                            <span lang="hi" className="font-devanagari normal-case tracking-normal">{group.hindiLabel}</span> · {group.label}
+                            <span lang="hi" data-bi="hi" className="font-devanagari">{group.hindiLabel}</span>
+                            <span data-bi="sep" aria-hidden="true">·</span>
+                            <span data-bi="en">{group.label}</span>
                           </h3>
                           <span className="font-mono text-caption text-label-tertiary">{items.length}</span>
                         </div>

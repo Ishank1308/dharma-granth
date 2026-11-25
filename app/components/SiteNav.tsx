@@ -327,7 +327,7 @@ export function SiteNav({
               {/* Desktop CTA */}{' '}
               <Link
                 href="/scripture/bhagavadgita/"
-                className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-footnote text-dharma-bg transition hover:opacity-90"
+                className="hidden min-[1800px]:inline-flex items-center rounded-full bg-dharma-saffron px-3.5 py-1.5 text-footnote font-semibold text-white transition hover:opacity-90 dark:text-black"
               >
                 पठन आरम्भ करें
               </Link>

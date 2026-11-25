@@ -242,48 +242,54 @@ export function SvadhyayaSplitDrawer({
             type="button"
             onClick={onClose}
             aria-label="संदंशिका बंद करें (Close drawer)"
-            className="rounded-full p-1.5 text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text transition"
+            className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text transition"
           >
-            <X className="h-4 w-4" />
+            <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
 
         {/* Tab Navigation Pill Bar */}
-        <div className="flex border-b border-dharma-border/70 bg-dharma-bg/50 px-2 py-1.5 gap-1">
+        <div role="tablist" aria-label="स्वाध्याय पट्टिका · Study workbench tabs" className="flex border-b border-dharma-border/70 bg-dharma-bg/50 px-2 py-1.5 gap-1">
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'concept'}
             onClick={() => onTabChange('concept')}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-lg transition ${
+            className={`focus-ring flex-1 flex min-h-[44px] items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-lg transition ${
               activeTab === 'concept'
-                ? 'bg-dharma-card text-saffron-700 shadow-2xs dark:text-saffron-400'
+                ? 'bg-dharma-card text-saffron-700 shadow-2xs dark:text-saffron-300'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            <Compass className="h-3.5 w-3.5" />
+            <Compass className="h-3.5 w-3.5" aria-hidden="true" />
             <span>संकल्पना</span>
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'parallel'}
             onClick={() => onTabChange('parallel')}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-lg transition ${
+            className={`focus-ring flex-1 flex min-h-[44px] items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-lg transition ${
               activeTab === 'parallel'
-                ? 'bg-dharma-card text-saffron-700 shadow-2xs dark:text-saffron-400'
+                ? 'bg-dharma-card text-saffron-700 shadow-2xs dark:text-saffron-300'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            <Layers className="h-3.5 w-3.5" />
+            <Layers className="h-3.5 w-3.5" aria-hidden="true" />
             <span>समानांतर</span>
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === 'manana'}
             onClick={() => onTabChange('manana')}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-lg transition ${
+            className={`focus-ring flex-1 flex min-h-[44px] items-center justify-center gap-1.5 py-1.5 text-xs font-semibold rounded-lg transition ${
               activeTab === 'manana'
-                ? 'bg-dharma-card text-saffron-700 shadow-2xs dark:text-saffron-400'
+                ? 'bg-dharma-card text-saffron-700 shadow-2xs dark:text-saffron-300'
                 : 'text-dharma-muted hover:text-dharma-text'
             }`}
           >
-            <FileText className="h-3.5 w-3.5" />
+            <FileText className="h-3.5 w-3.5" aria-hidden="true" />
             <span>मनन टिप्पणी</span>
           </button>
         </div>
@@ -300,9 +306,9 @@ export function SvadhyayaSplitDrawer({
                     key={c.slug}
                     type="button"
                     onClick={() => setSelectedConceptSlug(c.slug)}
-                    className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-medium transition ${
+                    className={`focus-ring shrink-0 rounded-full min-h-[44px] px-3.5 py-1 text-xs font-medium transition ${
                       selectedConceptSlug === c.slug
-                        ? 'bg-saffron-600 text-white font-bold'
+                        ? 'bg-saffron-700 text-white font-bold'
                         : 'border border-dharma-border bg-dharma-bg text-dharma-text hover:border-saffron-300'
                     }`}
                   >
@@ -489,8 +495,9 @@ export function SvadhyayaSplitDrawer({
                     <button
                       key={t}
                       type="button"
+                      aria-pressed={selectedTags.includes(t)}
                       onClick={() => toggleTag(t)}
-                      className={`rounded-full px-2.5 py-0.5 text-xs font-medium transition ${
+                      className={`focus-ring rounded-full min-h-[44px] px-3 py-1 text-xs font-medium transition ${
                         selectedTags.includes(t)
                           ? 'bg-indigo-600 text-white font-bold'
                           : 'border border-dharma-border bg-dharma-bg text-dharma-text hover:border-indigo-300'
@@ -523,7 +530,7 @@ export function SvadhyayaSplitDrawer({
                     type="button"
                     onClick={handleSaveNote}
                     disabled={!mananaContext || (!noteContent.trim() && selectedTags.length === 0)}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-indigo-700 disabled:opacity-50 cursor-pointer"
+                    className="focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-indigo-600 px-4 py-2 text-xs font-bold text-white transition hover:bg-indigo-700 disabled:opacity-50 cursor-pointer"
                   >
                     {savedSuccess ? (
                       <>

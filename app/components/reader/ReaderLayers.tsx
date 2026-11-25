@@ -241,6 +241,7 @@ export function ReaderLayers({
   const hasPadas = Boolean(settings.showCommentary && !isQuick && !settings.liteMode && glosses.length > 0);
   const [showPadas, setShowPadas] = useState(false);
   const [showSvadhyayaFlow, setShowSvadhyayaFlow] = useState(false);
+  const svadhyayaTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   // Listen for keyboard lens toggles dispatched from VersePageLayout
   useEffect(() => {
@@ -265,6 +266,7 @@ export function ReaderLayers({
     };
   }, [settings.liteMode, settings.showTransliteration, lines.length, hasPadas, verse.transliteration, onUpdateSetting]);
   const expHi = isHi(verse.explanation);
+  const comHi = isHi(verse.commentary);
   const refHi = isHi(verse.reflection);
   const resHi = isHi(verse.research);
   const showMarma = Boolean(insight?.marma && settings.showCommentary && !settings.liteMode);
@@ -290,18 +292,24 @@ export function ReaderLayers({
     <article id={`verse-${verse.number}`} className="space-y-3.5 sm:space-y-4" aria-label={`Verse ${verse.number}`}>
       {/* Reading depth and perspective live in the reader's control row (ReaderControlBar). */}
       {settings.liteMode && (
-        <div className="flex items-center justify-between rounded-xl border border-dharma-border/60 bg-dharma-card/50 px-3.5 py-2 text-xs text-dharma-muted">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
-            <span className="font-semibold text-dharma-text">विशुद्ध पाठ (Reading Lite Mode)</span>
-            <span>· Distraction-free scripture focus</span>
+        <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-dharma-border/60 bg-dharma-card/50 px-3.5 py-2 text-xs text-dharma-muted">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-500" aria-hidden="true" />
+            <span className="font-semibold text-dharma-text">
+              <span lang="hi" data-bi="hi" className="font-devanagari">विशुद्ध पाठ</span>
+              <span data-bi="sep" aria-hidden="true"> · </span>
+              <span data-bi="en">Reading Lite Mode</span>
+            </span>
+            <span className="hidden sm:inline">· Distraction-free scripture focus</span>
           </div>
           <button
             type="button"
             onClick={() => onUpdateSetting?.('liteMode', false)}
-            className="focus-ring inline-flex min-h-[44px] items-center rounded-lg px-3 font-semibold text-saffron-700 dark:text-saffron-400 hover:underline"
+            className="focus-ring inline-flex min-h-[44px] items-center rounded-lg px-3 font-semibold text-saffron-700 dark:text-saffron-300 hover:underline"
           >
-            Exit Lite Mode
+            <span lang="hi" data-bi="hi" className="font-devanagari">पूर्ण दृश्य</span>
+            <span data-bi="sep" aria-hidden="true"> · </span>
+            <span data-bi="en">Exit Lite Mode</span>
           </button>
         </div>
       )}
@@ -356,7 +364,7 @@ export function ReaderLayers({
                       type="button"
                       aria-pressed={isSelected}
                       onClick={() => onSelectWord(idx)}
-                      className={`focus-ring inline-flex min-h-[36px] items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition ${
+                      className={`focus-ring inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs font-semibold transition ${
                         isSelected
                           ? 'border-amber-700 bg-amber-800 text-amber-50 shadow-2xs dark:border-amber-300 dark:bg-amber-300 dark:text-stone-950'
                           : 'border-amber-700/30 bg-dharma-card/90 text-dharma-text hover:border-amber-600/60 hover:bg-amber-100/60 dark:border-amber-500/25 dark:hover:bg-amber-900/35'
@@ -371,12 +379,38 @@ export function ReaderLayers({
                   );
                 })}
               </div>
-              {glosses[selectedWordIndex] && (
-                <p className="mt-2 border-t border-amber-700/15 dark:border-amber-500/15 pt-1.5 text-xs text-dharma-text lg:sr-only">
-                  <span className="font-semibold">{glosses[selectedWordIndex].pada}:</span>{' '}
-                  <span>{glosses[selectedWordIndex].meaning}</span>
-                </p>
-              )}
+              {glosses[selectedWordIndex] && (() => {
+                const active = glosses[selectedWordIndex];
+                const lex = verse.lexicon?.[active.pada];
+                return (
+                  <div
+                    aria-live={settings.focusMode ? 'polite' : undefined}
+                    className={`mt-2.5 border-t border-amber-700/15 dark:border-amber-500/15 pt-2 text-xs text-dharma-text ${
+                      settings.focusMode ? '' : 'lg:sr-only'
+                    }`}
+                  >
+                    <p className="leading-relaxed">
+                      {lex?.termDevanagari && (
+                        <span lang="sa" className="font-devanagari font-bold mr-1.5">{lex.termDevanagari}</span>
+                      )}
+                      <span lang="sa-Latn" className="font-serif italic font-semibold text-amber-900 dark:text-amber-200 mr-1.5">
+                        {active.pada}:
+                      </span>
+                      <span>{lex?.simpleHindi || lex?.contextualMeaningHi || active.meaning}</span>
+                    </p>
+                    {lex?.simpleEnglish && lex.simpleEnglish !== active.meaning && (
+                      <p className="mt-0.5 text-[11px] text-dharma-muted">{lex.simpleEnglish}</p>
+                    )}
+                    {(lex?.rootDhatu || lex?.grammarCategory) && (
+                      <p className="mt-0.5 text-[11px] text-dharma-muted">
+                        {lex.rootDhatu ? `धातु: ${lex.rootDhatu}` : ''}
+                        {lex.rootDhatu && lex.grammarCategory ? ' · ' : ''}
+                        {lex.grammarCategory ?? ''}
+                      </p>
+                    )}
+                  </div>
+                );
+              })()}
             </div>
           )}
           {!settings.liteMode && Boolean(verse.lineExplanations?.length) && (
@@ -420,9 +454,11 @@ export function ReaderLayers({
               )}
               {!settings.liteMode && lines.length > 0 && (
                 <button
+                  ref={svadhyayaTriggerRef}
                   type="button"
                   onClick={() => setShowSvadhyayaFlow((v) => !v)}
                   aria-expanded={showSvadhyayaFlow}
+                  aria-controls={showSvadhyayaFlow ? 'svadhyaya-studio' : undefined}
                   className={aidToggle}
                 >
                   <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
@@ -526,7 +562,7 @@ export function ReaderLayers({
                                 e.stopPropagation();
                                 handleInspectPada(g.pada);
                               }}
-                              className="focus-ring tap-halo inline-flex min-h-[32px] items-center gap-1 rounded-md border border-saffron-500/40 bg-saffron-100/70 dark:bg-saffron-900/40 px-2.5 py-1 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
+                              className="focus-ring tap-halo inline-flex min-h-[44px] items-center gap-1 rounded-md border border-saffron-500/40 bg-saffron-100/70 dark:bg-saffron-900/40 px-3 py-1.5 text-[11px] font-bold text-saffron-800 dark:text-saffron-200 hover:border-saffron-600 transition"
                             >
                               <Search className="h-3 w-3" />
                               <span>धातु</span>
@@ -553,7 +589,10 @@ export function ReaderLayers({
           chapterId={chapterId}
           verse={verse}
           glosses={glosses}
-          onClose={() => setShowSvadhyayaFlow(false)}
+          onClose={() => {
+            setShowSvadhyayaFlow(false);
+            svadhyayaTriggerRef.current?.focus({ preventScroll: true });
+          }}
         />
       )}
 
@@ -730,7 +769,10 @@ export function ReaderLayers({
                     title="Commentary & Explanation"
                     collapsible={false}
                   >
-                    <p lang="en" className={`whitespace-pre-line font-serif text-dharma-text ${tSize} ${latinLeading}`}>
+                    <p
+                      lang={comHi ? 'hi' : 'en'}
+                      className={`whitespace-pre-line text-dharma-text ${tSize} ${comHi ? `${devLeading} font-devanagari` : `${latinLeading} font-serif`}`}
+                    >
                       {verse.commentary}
                     </p>
                   </Layer>
@@ -817,7 +859,7 @@ export function ReaderLayers({
             <Link
               key={s.slug}
               href={s.href}
-              className="focus-ring inline-flex min-h-[32px] items-center gap-1 rounded-full border border-indigo-200/80 bg-indigo-50/70 px-2.5 py-0.5 text-xs font-semibold text-indigo-800 transition hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-200 dark:hover:bg-indigo-500/20"
+              className="focus-ring inline-flex min-h-[44px] items-center gap-1 rounded-full border border-indigo-200/80 bg-indigo-50/70 px-3 py-1 text-xs font-semibold text-indigo-800 transition hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-400/30 dark:bg-indigo-500/10 dark:text-indigo-200 dark:hover:bg-indigo-500/20"
             >
               <span lang="en">{s.en}</span>
               <span aria-hidden="true" className="opacity-50">·</span>

@@ -82,17 +82,23 @@ export default function WisdomForLifeIndexPage() {
         </div>
       </section>
 
-      <section aria-labelledby="search-phrases" className="mx-auto max-w-6xl px-6 py-8">
+      <section aria-labelledby="search-phrases" className="mx-auto max-w-6xl px-4 sm:px-6 py-8">
         <h2 id="search-phrases" className="font-serif text-2xl font-bold text-dharma-text">
-          <span lang="hi" className="font-devanagari">खोज के वाक्य</span>
+          <span lang="hi" data-bi="hi" className="font-devanagari">खोज के वाक्य</span>
+          <span data-bi="sep" aria-hidden="true"> · </span>
+          <span data-bi="en">Common Life Questions</span>
         </h2>
-        <p lang="hi" className="mt-2 text-sm text-dharma-text">हर वाक्य उसी जीवन-विषय को खोलता है। नया पृष्ठ नहीं बनाया गया।</p>
+        <p className="mt-2 text-sm text-dharma-muted">
+          <span lang="hi" data-bi="hi" className="font-devanagari">हर वाक्य उसी जीवन-विषय को खोलता है। नया पृष्ठ नहीं बनाया गया।</span>
+          <span data-bi="sep" aria-hidden="true"> · </span>
+          <span data-bi="en">Each question opens the matching life-wisdom topic directly.</span>
+        </p>
         <ul className="mt-3 flex flex-wrap gap-2">
           {SEARCH_INTENTS.map((item) => (
             <li key={item.slug}>
               <Link
                 href={`/wisdom-for-life/${item.slug}/`}
-                className="inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-card px-3 text-sm font-semibold text-saffron-600"
+                className="focus-ring inline-flex min-h-[44px] items-center rounded-full border border-dharma-border bg-dharma-card px-3.5 text-sm font-semibold text-saffron-700 dark:text-saffron-300 transition hover:border-saffron-500/60"
               >
                 <span lang="hi" className="font-devanagari">{item.titleHi}</span>
               </Link>

@@ -22,7 +22,7 @@ const PLANS: Plan[] = [
     title: 'Bhagavad Gita in 18 days',
     titleHindi: 'गीता — प्रतिदिन एक अध्याय',
     days: 18,
-    hrefForDay: (d) => `/scripture/bhagavadgita/chapter/${d}`,
+    hrefForDay: (d) => `/scripture/bhagavadgita/chapter/${d}/`,
     labelForDay: (d) => `अध्याय ${d}`,
   },
   {
@@ -30,7 +30,7 @@ const PLANS: Plan[] = [
     title: 'Katha Upanishad in 6 days',
     titleHindi: 'कठोपनिषद् — प्रतिदिन एक वल्ली',
     days: 6,
-    hrefForDay: (d) => `/scripture/katha/chapter/${d}`,
+    hrefForDay: (d) => `/scripture/katha/chapter/${d}/`,
     labelForDay: (d) => `वल्ली ${d}`,
   },
 ];
@@ -76,12 +76,12 @@ export function ReadingPlan() {
                 onClick={() => setProgress({ ...progress, planId: p.id })}
                 className="text-left rounded-xl border border-dharma-border hover:border-emerald-300 p-4 transition group"
               >
-                <p className="text-sm font-bold text-dharma-text group-hover:text-emerald-700 transition">
+                <p className="text-sm font-bold text-dharma-text group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition">
                   {p.title}
                 </p>
                 <p lang="hi" className="font-devanagari text-xs text-dharma-muted mt-0.5">{p.titleHindi}</p>
                 {partial > 0 && (
-                  <p className="text-xs text-emerald-700 mt-1">
+                  <p className="text-xs text-emerald-700 dark:text-emerald-400 mt-1">
                     {partial}/{p.days} done — continue
                   </p>
                 )}
@@ -99,7 +99,7 @@ export function ReadingPlan() {
             <button
               type="button"
               onClick={() => setProgress({ ...progress, planId: null })}
-              className="text-xs font-semibold text-dharma-muted hover:text-emerald-700 shrink-0"
+              className="focus-ring inline-flex min-h-[44px] items-center rounded-lg px-2.5 text-xs font-semibold text-dharma-muted hover:text-emerald-700 dark:hover:text-emerald-300 shrink-0"
             >
               Change
             </button>
@@ -119,18 +119,20 @@ export function ReadingPlan() {
             {Array.from({ length: plan.days }, (_, i) => i + 1).map((day) => {
               const isDone = done.includes(day);
               return (
-                <li key={day} className="flex items-center gap-2 text-sm">
+                <li key={day} className="flex items-center gap-1 text-sm">
                   <button
                     type="button"
                     onClick={() => toggleDay(day)}
+                    aria-pressed={isDone}
                     aria-label={`Mark day ${day} ${isDone ? 'incomplete' : 'complete'}`}
-                    className={isDone ? 'text-emerald-600' : 'text-dharma-muted hover:text-emerald-600'}
+                    className={`focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg ${isDone ? 'text-emerald-700 dark:text-emerald-400' : 'text-dharma-muted hover:text-emerald-700 dark:hover:text-emerald-300'}`}
                   >
-                    {isDone ? <CheckCircle2 className="w-4 h-4" /> : <Circle className="w-4 h-4" />}
+                    {isDone ? <CheckCircle2 className="w-4 h-4" aria-hidden="true" /> : <Circle className="w-4 h-4" aria-hidden="true" />}
                   </button>
-                  <Link lang="hi"
+                  <Link
+                    lang="hi"
                     href={plan.hrefForDay(day)}
-                    className={`font-devanagari hover:text-emerald-700 transition ${
+                    className={`focus-ring inline-flex min-h-[44px] items-center rounded-lg px-1.5 font-devanagari hover:text-emerald-700 dark:hover:text-emerald-300 transition ${
                       isDone ? 'text-dharma-muted line-through' : 'text-dharma-text'
                     }`}
                   >

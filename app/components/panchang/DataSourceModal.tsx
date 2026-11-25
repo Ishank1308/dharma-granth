@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { BookOpen, Compass, ExternalLink, Globe2, HelpCircle, ShieldAlert, Sparkles, X } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { BookOpen, Compass, Globe2, HelpCircle, ShieldAlert, Sparkles, X } from 'lucide-react';
 
 interface DataSourceModalProps {
   isOpen: boolean;
@@ -9,13 +9,41 @@ interface DataSourceModalProps {
 }
 
 export function DataSourceModal({ isOpen, onClose }: DataSourceModalProps) {
-  React.useEffect(() => {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
     if (!isOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    closeBtnRef.current?.focus();
+
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        onClose();
+        return;
+      }
+      if (e.key === 'Tab' && dialogRef.current) {
+        const focusables = dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     }
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      previousFocus?.focus?.();
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -29,11 +57,13 @@ export function DataSourceModal({ isOpen, onClose }: DataSourceModalProps) {
     >
       <button
         type="button"
+        tabIndex={-1}
         aria-label="Close dialog backdrop"
         className="fixed inset-0 bg-black/60 backdrop-blur-sm -z-10 cursor-default"
         onClick={onClose}
       />
       <div
+        ref={dialogRef}
         className="w-full max-w-2xl max-h-[90vh] flex flex-col rounded-3xl border border-dharma-border bg-dharma-card shadow-2xl overflow-hidden"
       >
         {/* Header */}
@@ -52,12 +82,13 @@ export function DataSourceModal({ isOpen, onClose }: DataSourceModalProps) {
             </div>
           </div>
           <button
+            ref={closeBtnRef}
             type="button"
             onClick={onClose}
-            className="rounded-xl p-2 text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text transition"
+            className="focus-ring inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl text-dharma-muted hover:bg-dharma-bg hover:text-dharma-text transition"
             aria-label="Close dialog"
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
 
@@ -198,7 +229,7 @@ export function DataSourceModal({ isOpen, onClose }: DataSourceModalProps) {
           <button
             type="button"
             onClick={onClose}
-            className="rounded-xl bg-saffron-700 px-5 py-2 text-xs font-bold text-white shadow hover:bg-saffron-600 transition"
+            className="focus-ring inline-flex min-h-[44px] items-center rounded-xl bg-saffron-700 px-5 py-2 text-xs font-bold text-white shadow hover:bg-saffron-600 transition"
           >
             Understood · Close
           </button>

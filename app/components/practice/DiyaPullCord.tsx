@@ -188,7 +188,7 @@ export function DiyaPullCord({
         onClick={() => {
           if (performance.now() - dragEndedAtRef.current > 300) onPull();
         }}
-        className="-mt-px flex h-11 w-11 cursor-grab touch-none items-start justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:cursor-grabbing"
+        className="-mt-px flex min-h-[44px] min-w-[44px] h-11 w-11 shrink-0 cursor-grab touch-none items-start justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 active:cursor-grabbing"
       >
         <span className="mt-0.5 block h-5 w-3.5 rounded-b-full rounded-t-sm bg-gradient-to-b from-amber-400 to-amber-700 shadow-md" />
       </motion.button>

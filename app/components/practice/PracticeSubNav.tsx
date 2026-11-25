@@ -32,7 +32,7 @@ export function PracticeSubNav({ className = '' }: { className?: string }) {
 
   return (
     <nav aria-label="Practice sections · साधना अनुभाग" className={className}>
-      <div className="flex min-w-0 snap-x snap-proximity items-center gap-2 overflow-x-auto rounded-2xl border border-separator bg-dharma-card/85 p-1.5 shadow-2xs scrollbar-none">
+      <div className="flex min-w-0 snap-x snap-proximity items-center gap-1.5 overflow-x-auto rounded-2xl border border-separator bg-dharma-card/85 p-1.5 shadow-2xs scrollbar-none md:flex-wrap md:overflow-visible">
         {PRACTICE_ITEMS.map(({ href, en, hi, Icon }) => {
           const active = pathname === href;
           return (
@@ -40,7 +40,7 @@ export function PracticeSubNav({ className = '' }: { className?: string }) {
               key={href}
               href={href}
               aria-current={active ? 'page' : undefined}
-              className={`focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-2 rounded-xl px-3.5 py-2 text-xs font-semibold transition-colors whitespace-nowrap ${
+              className={`focus-ring inline-flex min-h-[44px] shrink-0 snap-start items-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold transition-colors whitespace-nowrap ${
                 active
                   ? 'bg-saffron-700 text-white shadow-xs'
                   : 'border border-separator/70 bg-surface-raised text-label-secondary hover:border-saffron-500/50 hover:text-label-primary'
